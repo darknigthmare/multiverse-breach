@@ -2,10 +2,21 @@
 // resolve the same identities, without spending resources or choosing at random.
 import { previewBattleItemDamage } from './battleItemShield.js';
 import { getEffectiveCombatDefense } from './combatStatPreparation.js';
+import { resolveCombatAbility, resolveUniverseSummon } from './combatIdentity.js';
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const positive = (value, fallback) => Number.isFinite(Number(value)) && Number(value) > 0 ? Number(value) : fallback;
 export const rpgUnitId = unit => unit?.battleId || unit?.runtimeId || unit?.id;
 const beneficialEffects = new Set(['heal', 'revive', 'buff', 'guard', 'cleanse']);
+
+// The command label and the actual RPG resolver share the same authored action.
+// Unlisted actors keep their exact supplied ability object and custom metadata.
+export function getRpgCombatantAbility(actor, abilityType) {
+  if (['simple', 'secondary', 'defense', 'special'].includes(abilityType)) {
+    const authored = resolveCombatAbility(actor, abilityType);
+    if (authored?.provenance?.identityAuthored) return authored.sourceAbility;
+  }
+  return actor?.[abilityType] || null;
+}
 
 export function getRpgActionProfile(actor, abilityType, side = 'player', arena = {}) {
   const enemyFallbacks = {
@@ -13,7 +24,11 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
     secondary: { name: 'Strong attack', type: 'bullet', dmg: 1.45, cd: 3 },
     special: { name: 'Special', type: 'group', dmg: 1.15, targeting: { shape: 'group' } }
   };
-  const action = actor?.[abilityType] || (side === 'enemy' ? enemyFallbacks[abilityType] : null);
+  // An invocation is a separate command. It never aliases an actor's existing
+  // secondary or special, including their medical and defensive semantics.
+  const summon = abilityType === 'summon' ? resolveUniverseSummon(actor) : null;
+  const action = abilityType === 'summon' ? summon?.action
+    : getRpgCombatantAbility(actor, abilityType) || (side === 'enemy' ? enemyFallbacks[abilityType] : null);
   if (!action) return null;
   const explicit = Object.assign({},
     typeof action.targeting === 'object' ? action.targeting : null,
@@ -26,7 +41,8 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
   const loreEffect = actor.id === 'arca_loom' && abilityType === 'secondary' ? 'heal'
     : actor.id === 'arca_bastion' && abilityType === 'secondary' ? 'guard' : null;
   const declaredEffect = explicit.effect || action.effect?.type || (typeof action.effect === 'string' ? action.effect : null);
-  const effect = abilityType === 'defense' ? 'guard' : declaredEffect || loreEffect
+  const defensiveEffect = beneficialEffects.has(declaredEffect) ? declaredEffect : /heal|restore|regen/.test(type) ? 'heal' : 'guard';
+  const effect = abilityType === 'defense' ? defensiveEffect : declaredEffect || loreEffect
     || (/reviv|resurrect/.test(type) ? 'revive'
       : /heal|restore|regen/.test(type) ? 'heal'
         : /cleanse|purify/.test(type) ? 'cleanse'
@@ -53,21 +69,28 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
     else shape = 'single';
   }
   if (!['single', 'group', 'multi', 'area', 'line', 'cone'].includes(shape)) shape = 'single';
-  const melee = explicit.delivery === 'melee' || (explicit.delivery !== 'ranged'
+  const declaredDelivery = ['melee', 'ranged', 'projectile', 'beam', 'area', 'support', 'self'].includes(explicit.delivery);
+  const melee = explicit.delivery === 'melee' || (!declaredDelivery
     && (/melee|slash|punch|bite|claw|dodge_strike|drill_smash/.test(type)
       || (!type && abilityType === 'simple' && !/gun|laser|cards|staff|bow/.test(actor.weaponType || actor.weapon || ''))));
   const scale = positive(arena.width, 760) / 760;
+  const authoredMeleeApproach = action !== actor?.[abilityType] && melee && effect === 'damage';
   return {
     abilityType,
+    summon,
     name: action.name || abilityType,
     action,
     effect,
     targetSide,
+    excludeSelf: explicit.excludeSelf === true,
     shape,
     delivery: targetSide === 'self' ? 'self' : beneficialEffects.has(effect) ? 'support' : melee ? 'melee' : 'ranged',
     maxTargets: shape === 'single' ? 1 : finiteTargets || (shape === 'multi' ? 2 : Infinity),
     minTargets: Math.max(1, Math.round(positive(explicit.minTargets, 1))),
-    range: positive(explicit.range ?? action.rpgRange, Math.hypot(arena.width || 760, arena.height || 420)),
+    // Authored melee range describes contact after the existing RPG approach.
+    // It must not prevent selecting an opponent in the opposing formation.
+    range: authoredMeleeApproach ? Math.hypot(arena.width || 760, arena.height || 420)
+      : positive(explicit.range ?? action.rpgRange, Math.hypot(arena.width || 760, arena.height || 420)),
     areaRadius: positive(explicit.areaRadius ?? explicit.radius ?? action.areaRadius, 105 * scale),
     lineWidth: positive(explicit.lineWidth ?? action.lineWidth, 38 * scale),
     coneAngle: clamp(positive(explicit.coneAngle ?? action.coneAngle, 55), 1, 180),
@@ -85,6 +108,10 @@ export function getRpgEligibleTargets({ actor, profile, allies, opponents }) {
   if (!actor || !profile) return [];
   const candidates = profile.targetSide === 'self' ? [actor] : profile.targetSide === 'ally' ? allies : opponents;
   return candidates.filter(unit => {
+    if (profile.excludeSelf) {
+      const performerId = profile.summon?.performerRole === 'reinforcement' ? profile.summon.sourceHeroId : null;
+      if (performerId ? (unit.sourceHeroId || unit.sourceId || unit.id) === performerId : unit === actor) return false;
+    }
     if (profile.effect === 'revive') return unit.currentHp <= 0;
     if (unit.currentHp <= 0 || unit.state === 'dead') return false;
     if (profile.effect === 'heal') {

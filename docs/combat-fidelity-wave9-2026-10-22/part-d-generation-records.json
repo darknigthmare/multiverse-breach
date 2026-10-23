@@ -1,0 +1,801 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "part": "D",
+  "records": [
+    {
+      "heroId": "chris_redfield",
+      "sourceWork": "Resident Evil 5 (2009)",
+      "useOldReference": true,
+      "version": "Chris Redfield, default BSAA field outfit in Resident Evil5(2009): muscular adult man, short brown hair, light stubble, olive tactical vest/webbing over a LIGHT TAN short-sleeved collared shirt, small BSAA shoulder patch, exposed muscular forearms, dark charcoal cargo trousers, brown-black tactical boots, black fingerless gloves, utility belt and visible M92F thigh holster. No later black turtleneck, winter coat, bionic armor or transformed form.",
+      "weapon": "Ordinary sidearm is the physical black M92F handgun. Satellite Laser uses the separate handheld L.T.D. laser TARGET DESIGNATOR: compact grey military targeting device with optical sight and a tiny red lens, physically held in both hands; it is NOT an arm cannon or laser-emitting body. The orbital strike arrives from outside the screen in runtime, so do not draw a giant beam or explosion from Chris, his hand or the device.",
+      "rows": [
+        "INTRO: 1 upright scanning with M92F still holstered, 2 touching earpiece with free hand and leaning forward, 3 drawing the black M92F while bending knees, 4 two-handed low ready stance with muzzle pointed safely down.",
+        "OUTRO: 1 lowering M92F, 2 checking chamber with both hands and head tilted, 3 reholstering the handgun, 4 turning shoulders to leave with empty hand giving a short follow-me signal.",
+        "ROUND VICTORY: 1 exhaling and lowering shoulders, 2 checking the perimeter with pistol down, 3 brief fist near chest with handgun safely lowered, 4 balanced ready stance after small forward step.",
+        "ROUND DEFEAT: living regroup. 1 recoil with guarding forearm and knees bent, 2 low crouch with pistol down, 3 one knee on ground and free hand bracing, 4 rising halfway with determined forward gaze.",
+        "FINALE ADAPTATION Satellite Laser, no victim/gore: 1 reaching for the separate L.T.D. device on sling, device vertical/down and NOT emitting, 2 raising the physically handheld target designator to eye level, two hands supporting it, tiny red front lens aimed RIGHT, 3 deeper braced forward stance while keeping device aimed RIGHT with a very small red targeting indicator, 4 powering down and lowering the complete device to waist, NOT emitting. Orbital beam itself is external runtime VFX, do not paint it in these body cells.",
+        "MATCH VICTORY: 1 lowering the targeting device, 2 setting it securely on sling against torso, 3 touching radio with relief, 4 standing with M92F holstered and giving a modest nod.",
+        "MATCH DEFEAT: alive and fatigued. 1 shoulders sagging with handgun down, 2 sinking to one knee and clutching chest, 3 sitting back on heel head lowered, 4 lifting head and bracing to stand. No body injury or death.",
+        "SUPER Satellite Laser: 1 drawing the separate portable L.T.D. from sling with its lens pointed DOWN, 2 raising the device to eye-level two-handed aiming RIGHT, 3 shifting feet wide and leaning forward to hold a steady target lock, tiny red targeting lens only, 4 lowering the powered-off device to waist while straightening. The device remains separate from both hands/arms. No large energy blast, body beam, explosion, satellite prop or second person in any cell."
+      ],
+      "universe": "Resident Evil",
+      "name": "Chris Redfield",
+      "sourceReference": {
+        "simple": "Resident Evil 5 : Chris commence avec un M92F et sa riposte de corps-à-corps comprend Straight. Le couvert réduit les dégâts sans résistance surnaturelle.",
+        "secondary": "Resident Evil 5 : Chris commence avec un M92F et sa riposte de corps-à-corps comprend Straight. Le couvert réduit les dégâts sans résistance surnaturelle.",
+        "defense": "Resident Evil 5 : Chris commence avec un M92F et sa riposte de corps-à-corps comprend Straight. Le couvert réduit les dégâts sans résistance surnaturelle.",
+        "special": "Chris participe au ciblage du satellite contre Uroboros Aheri ; le dispositif est une arme scenarisee."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Tir du M92F de Chris",
+          "effect": "damage",
+          "delivery": "projectile",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "secondary": {
+          "name": "Straight de Chris",
+          "effect": "damage",
+          "delivery": "melee",
+          "range": 85,
+          "targetSide": "enemy"
+        },
+        "defense": {
+          "name": "Couvert de Chris Redfield",
+          "effect": "guard",
+          "delivery": "support",
+          "range": 1,
+          "targetSide": "self"
+        },
+        "special": {
+          "name": "Satellite Laser",
+          "effect": "damage",
+          "delivery": "beam",
+          "range": 640,
+          "targetSide": "enemy"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/chris-redfield.png",
+      "referenceArchive": "docs/combat-fidelity-wave9-2026-10-22/part-d-references/chris_redfield-old-base.png",
+      "referenceAssetSha256": "69c395511c288b9950af06a81c58728aab7d7aecdef23058b8cfaec513c2417a",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-references/chris_redfield-old-base.png",
+      "prompt": "Draw a native production-game SPRITE ATLAS with EXACTLY32 newly drawn COMPLETE full-body poses of ONE character, four equal columns by EIGHT equal rows, tall portrait canvas about1024x2048, transparent RGBA. Detailed crisp pixel-art rendering, adult game-character proportions. No words, labels, grid, borders, numbers, scenery, painted floor, cast-shadow disks, extra people or victims. Every cell has ONE entire character plus their currently held equipment, with at least12% transparent margin on all sides. All limbs, head, hair, boots and weapon tips must remain inside the cell. Same body drawing scale throughout the entire source; crouches and kneels remain naturally shorter, never inflated to standing height. Side/three-quarter view generally facing RIGHT.\n\nEXACT IDENTITY: Chris Redfield, default BSAA field outfit in Resident Evil5(2009): muscular adult man, short brown hair, light stubble, olive tactical vest/webbing over a LIGHT TAN short-sleeved collared shirt, small BSAA shoulder patch, exposed muscular forearms, dark charcoal cargo trousers, brown-black tactical boots, black fingerless gloves, utility belt and visible M92F thigh holster. No later black turtleneck, winter coat, bionic armor or transformed form.\nEQUIPMENT/ACTION IDENTITY: Ordinary sidearm is the physical black M92F handgun. Satellite Laser uses the separate handheld L.T.D. laser TARGET DESIGNATOR: compact grey military targeting device with optical sight and a tiny red lens, physically held in both hands; it is NOT an arm cannon or laser-emitting body. The orbital strike arrives from outside the screen in runtime, so do not draw a giant beam or explosion from Chris, his hand or the device.\nThe attached old atlas is an appearance reference only; redraw every pose, follow the exact continuity and equipment text above rather than copying its generic gun.\n\nEIGHT ROW STORYBOARD from top to bottom, four anatomical poses per row from left to right:\nROW1 INTRO: 1 upright scanning with M92F still holstered, 2 touching earpiece with free hand and leaning forward, 3 drawing the black M92F while bending knees, 4 two-handed low ready stance with muzzle pointed safely down.\nROW2 OUTRO: 1 lowering M92F, 2 checking chamber with both hands and head tilted, 3 reholstering the handgun, 4 turning shoulders to leave with empty hand giving a short follow-me signal.\nROW3 ROUND VICTORY: 1 exhaling and lowering shoulders, 2 checking the perimeter with pistol down, 3 brief fist near chest with handgun safely lowered, 4 balanced ready stance after small forward step.\nROW4 ROUND DEFEAT: living regroup. 1 recoil with guarding forearm and knees bent, 2 low crouch with pistol down, 3 one knee on ground and free hand bracing, 4 rising halfway with determined forward gaze.\nROW5 FINALE ADAPTATION Satellite Laser, no victim/gore: 1 reaching for the separate L.T.D. device on sling, device vertical/down and NOT emitting, 2 raising the physically handheld target designator to eye level, two hands supporting it, tiny red front lens aimed RIGHT, 3 deeper braced forward stance while keeping device aimed RIGHT with a very small red targeting indicator, 4 powering down and lowering the complete device to waist, NOT emitting. Orbital beam itself is external runtime VFX, do not paint it in these body cells.\nROW6 MATCH VICTORY: 1 lowering the targeting device, 2 setting it securely on sling against torso, 3 touching radio with relief, 4 standing with M92F holstered and giving a modest nod.\nROW7 MATCH DEFEAT: alive and fatigued. 1 shoulders sagging with handgun down, 2 sinking to one knee and clutching chest, 3 sitting back on heel head lowered, 4 lifting head and bracing to stand. No body injury or death.\nROW8 SUPER Satellite Laser: 1 drawing the separate portable L.T.D. from sling with its lens pointed DOWN, 2 raising the device to eye-level two-handed aiming RIGHT, 3 shifting feet wide and leaning forward to hold a steady target lock, tiny red targeting lens only, 4 lowering the powered-off device to waist while straightening. The device remains separate from both hands/arms. No large energy blast, body beam, explosion, satellite prop or second person in any cell.\n\nActive weapon opening must be clearly visible in columns2 and3 of the finale/super rows; columns1 and4 are preparation/lowered recovery and must NOT fire. Keep muzzle flashes extremely compact to make the actual aperture readable. Runtime owns bullets, travelling bolts and target explosions, so do not duplicate those across body cells. Four truly different anatomical poses in EVERY row; changing face, flash, glow or color alone is insufficient. Verify total32 complete figures in8 rows before output. Non-graphic fictional combat only, no blood, injured target or execution.",
+      "promptFile": "docs/combat-fidelity-wave9-2026-10-22/part-d-prompts/chris_redfield-original.txt",
+      "targetBodyHeight": 190,
+      "sourceRows": 8,
+      "reviewed": true,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "sources": [
+        {
+          "generatedPath": "/workspace/generated_images/exec-b17bf831-60fa-44df-b6b9-3b2e79993715.png",
+          "archivedPath": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-original.png",
+          "sha256": "7d4e98652c44ce05f3b6c7c8931355c39974fd785ba0d529debbe290498f07da",
+          "rows": 8,
+          "prompt": "Draw a native production-game SPRITE ATLAS with EXACTLY32 newly drawn COMPLETE full-body poses of ONE character, four equal columns by EIGHT equal rows, tall portrait canvas about1024x2048, transparent RGBA. Detailed crisp pixel-art rendering, adult game-character proportions. No words, labels, grid, borders, numbers, scenery, painted floor, cast-shadow disks, extra people or victims. Every cell has ONE entire character plus their currently held equipment, with at least12% transparent margin on all sides. All limbs, head, hair, boots and weapon tips must remain inside the cell. Same body drawing scale throughout the entire source; crouches and kneels remain naturally shorter, never inflated to standing height. Side/three-quarter view generally facing RIGHT.\n\nEXACT IDENTITY: Chris Redfield, default BSAA field outfit in Resident Evil5(2009): muscular adult man, short brown hair, light stubble, olive tactical vest/webbing over a LIGHT TAN short-sleeved collared shirt, small BSAA shoulder patch, exposed muscular forearms, dark charcoal cargo trousers, brown-black tactical boots, black fingerless gloves, utility belt and visible M92F thigh holster. No later black turtleneck, winter coat, bionic armor or transformed form.\nEQUIPMENT/ACTION IDENTITY: Ordinary sidearm is the physical black M92F handgun. Satellite Laser uses the separate handheld L.T.D. laser TARGET DESIGNATOR: compact grey military targeting device with optical sight and a tiny red lens, physically held in both hands; it is NOT an arm cannon or laser-emitting body. The orbital strike arrives from outside the screen in runtime, so do not draw a giant beam or explosion from Chris, his hand or the device.\nThe attached old atlas is an appearance reference only; redraw every pose, follow the exact continuity and equipment text above rather than copying its generic gun.\n\nEIGHT ROW STORYBOARD from top to bottom, four anatomical poses per row from left to right:\nROW1 INTRO: 1 upright scanning with M92F still holstered, 2 touching earpiece with free hand and leaning forward, 3 drawing the black M92F while bending knees, 4 two-handed low ready stance with muzzle pointed safely down.\nROW2 OUTRO: 1 lowering M92F, 2 checking chamber with both hands and head tilted, 3 reholstering the handgun, 4 turning shoulders to leave with empty hand giving a short follow-me signal.\nROW3 ROUND VICTORY: 1 exhaling and lowering shoulders, 2 checking the perimeter with pistol down, 3 brief fist near chest with handgun safely lowered, 4 balanced ready stance after small forward step.\nROW4 ROUND DEFEAT: living regroup. 1 recoil with guarding forearm and knees bent, 2 low crouch with pistol down, 3 one knee on ground and free hand bracing, 4 rising halfway with determined forward gaze.\nROW5 FINALE ADAPTATION Satellite Laser, no victim/gore: 1 reaching for the separate L.T.D. device on sling, device vertical/down and NOT emitting, 2 raising the physically handheld target designator to eye level, two hands supporting it, tiny red front lens aimed RIGHT, 3 deeper braced forward stance while keeping device aimed RIGHT with a very small red targeting indicator, 4 powering down and lowering the complete device to waist, NOT emitting. Orbital beam itself is external runtime VFX, do not paint it in these body cells.\nROW6 MATCH VICTORY: 1 lowering the targeting device, 2 setting it securely on sling against torso, 3 touching radio with relief, 4 standing with M92F holstered and giving a modest nod.\nROW7 MATCH DEFEAT: alive and fatigued. 1 shoulders sagging with handgun down, 2 sinking to one knee and clutching chest, 3 sitting back on heel head lowered, 4 lifting head and bracing to stand. No body injury or death.\nROW8 SUPER Satellite Laser: 1 drawing the separate portable L.T.D. from sling with its lens pointed DOWN, 2 raising the device to eye-level two-handed aiming RIGHT, 3 shifting feet wide and leaning forward to hold a steady target lock, tiny red targeting lens only, 4 lowering the powered-off device to waist while straightening. The device remains separate from both hands/arms. No large energy blast, body beam, explosion, satellite prop or second person in any cell.\n\nActive weapon opening must be clearly visible in columns2 and3 of the finale/super rows; columns1 and4 are preparation/lowered recovery and must NOT fire. Keep muzzle flashes extremely compact to make the actual aperture readable. Runtime owns bullets, travelling bolts and target explosions, so do not duplicate those across body cells. Four truly different anatomical poses in EVERY row; changing face, flash, glow or color alone is insufficient. Verify total32 complete figures in8 rows before output. Non-graphic fictional combat only, no blood, injured target or execution.",
+          "promptFile": "docs/combat-fidelity-wave9-2026-10-22/part-d-prompts/chris_redfield-original.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-references/chris_redfield-old-base.png"
+          ],
+          "operation": "native-imagegen",
+          "calibration": {
+            "kind": "anatomical-head-to-sole-visible-alpha-roi",
+            "row": 0,
+            "col": 0,
+            "measurementRoi": [
+              95,
+              17,
+              114,
+              214
+            ],
+            "bodyBounds": {
+              "left": 95,
+              "top": 17,
+              "width": 114,
+              "height": 214
+            },
+            "bodyHeight": 214,
+            "alphaThreshold": 24,
+            "headAndFeetVisuallyReviewed": true,
+            "excludesWeaponEffects": true,
+            "proofImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-contacts/chris_redfield-calibration.png",
+            "visibleBodyPixels": 14493,
+            "nativeAlphaSegmentationUsedForMeasurement": true,
+            "notes": "Standing first figure head-to-sole range; lowered equipment is lateral and does not extend the stature. No muzzle flash in calibration pose. One scale is shared by every retained row from this source."
+          }
+        },
+        {
+          "generatedPath": "/workspace/generated_images/exec-b5a58868-05e8-47a3-8fdc-ef1e1c6c6db1.png",
+          "archivedPath": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-super-correction.png",
+          "sha256": "3363c1b0b2718d2a55988a999a1a4904d903db6f52ba045a72a666d94f594e16",
+          "rows": 1,
+          "prompt": "Draw EXACTLY FOUR NEW COMPLETE full-body pixel-art sprites in ONE horizontal row, FOUR columns by ONE row, transparent RGBA. Native correction of the last source row whose feet were cropped; replace every cropped body with a NEW whole drawing including BOTH COMPLETE FEET and a large transparent bottom margin. Use attached source for identity and costume only. Chris Redfield, default BSAA field outfit in Resident Evil5(2009): muscular adult man, short brown hair, light stubble, olive tactical vest/webbing over a LIGHT TAN short-sleeved collared shirt, small BSAA shoulder patch, exposed muscular forearms, dark charcoal cargo trousers, brown-black tactical boots, black fingerless gloves, utility belt and visible M92F thigh holster. No later black turtleneck, winter coat, bionic armor or transformed form. Ordinary sidearm is the physical black M92F handgun. Satellite Laser uses the separate handheld L.T.D. laser TARGET DESIGNATOR: compact grey military targeting device with optical sight and a tiny red lens, physically held in both hands; it is NOT an arm cannon or laser-emitting body. The orbital strike arrives from outside the screen in runtime, so do not draw a giant beam or explosion from Chris, his hand or the device. One consistent anatomical source scale, no scenery/floor/shadow/grid/text/victim. Four different super Satellite Laser poses: (1) upright reaching for portable L.T.D. on sling at waist, optical lens DOWN/off, feet complete and separated, (2) aiming the physical separate grey L.T.D. at eye-level to RIGHT, two hands holding device, optical red lens clearly visible at front, knees slightly flexed, (3) wide committed forward stance taking a target lock through L.T.D. with elbows bent differently and front knee deeper, tiny red lens only, (4) powered-off device lowered to waist on sling with torso straightening, no active lens. It must be a handheld targeting device, never an arm cannon; never paint a large beam, orbital blast or explosion on the character. All boot soles/toes/heels and device tips fully visible within each cell, at least15% transparent margin. Four complete actual bodies, no pose duplication or cropping.",
+          "promptFile": "docs/combat-fidelity-wave9-2026-10-22/part-d-prompts/chris_redfield-super-correction.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-original.png"
+          ],
+          "operation": "native-imagegen-row-correction",
+          "reason": "Original row7 crops several boots. Replace the whole super row with four new complete native drawings.",
+          "calibration": {
+            "kind": "anatomical-head-to-sole-visible-alpha-roi",
+            "row": 0,
+            "col": 0,
+            "measurementRoi": [
+              151,
+              86,
+              308,
+              589
+            ],
+            "bodyBounds": {
+              "left": 151,
+              "top": 86,
+              "width": 308,
+              "height": 589
+            },
+            "bodyHeight": 589,
+            "alphaThreshold": 24,
+            "headAndFeetVisuallyReviewed": true,
+            "excludesWeaponEffects": true,
+            "proofImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-contacts/chris_redfield-super-correction-calibration.png",
+            "visibleBodyPixels": 105956,
+            "nativeAlphaSegmentationUsedForMeasurement": true,
+            "notes": "Corrective first figure is an upright/bent-knee preparation in the same identity. Head-to-sole calibration bridges native drawing density; crouch ratios in the source are preserved. The body stance difference is documented, not certified source timing."
+          }
+        }
+      ],
+      "rowSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 1,
+          "row": 0
+        }
+      ]
+    },
+    {
+      "heroId": "claire_redfield",
+      "sourceWork": "Resident Evil 2 remake (2019)",
+      "useOldReference": true,
+      "version": "Claire Redfield, default Resident Evil2 remake2019: adult woman with auburn hair in a high practical ponytail, red leather motorcycle jacket with sleeves pushed up, dark charcoal scoop-neck top, fitted dark blue denim jeans, brown leather belt/hip holster and brown lace boots, dark fingerless gloves. No1998 biker shorts, no Revelations outfit, no superhuman armor.",
+      "weapon": "Basic weapon is her SLS60 compact REVOLVER with a visible cylinder, not a semiautomatic pistol. The secondary/super uses a separate GM79 standalone black single-shot GRENADE LAUNCHER, short thick barrel and shoulder stock, physically held with two hands. Compact muzzle flash only; the travelling incendiary round and target explosion are runtime VFX, never a long flamethrower jet.",
+      "rows": [
+        "INTRO: 1 alert upright with SLS60 holstered, 2 brushing ponytail back and looking ahead, 3 drawing compact revolver with knees flexed, 4 two-handed low pistol ready stance.",
+        "OUTRO: 1 revolver lowered, 2 checking its cylinder with both hands, 3 closing and reholstering SLS60, 4 turning shoulders and giving restrained reassuring open-palm signal.",
+        "ROUND VICTORY: 1 releasing tense breath, 2 looking across room with revolver down, 3 small relieved smile and hand at jacket collar, 4 returning to balanced low ready posture.",
+        "ROUND DEFEAT: alive. 1 flinch with forearm raised, 2 bent-knee low guarded retreat, 3 one knee down and free hand braced, 4 starting to rise with revolver kept down.",
+        "FINALE ADAPTATION GM79 Flame Round, no victim/gore: 1 kneeling slightly and preparing the separate GM79 with barrel DOWN and breech near waist, 2 standing wide and shouldering launcher with muzzle aimed RIGHT, 3 clear recoil with both hands gripping launcher and tiny orange muzzle flash at the real opening, 4 lowering the complete launcher and straightening into recovery, NOT emitting. No sustained flame jet or painted travelling grenade.",
+        "MATCH VICTORY: 1 lowering launcher, 2 slinging it securely behind shoulder, 3 resting free hand on hip with relieved smile, 4 gentle wave and relaxed standing posture.",
+        "MATCH DEFEAT: alive fatigue. 1 shoulders sag, 2 kneeling with palm on thigh, 3 head lowered while resting on heel, 4 lifting eyes and one hand to jacket collar. No corpse.",
+        "SUPER GM79 Flame Round: 1 holding the separate launcher with barrel DOWN while loading its break-open breech, 2 closed launcher at shoulder aimed RIGHT with both elbows flexed, 3 torso recoils and leading knee flexes during one compact orange flash at muzzle, 4 lowering the launcher to waist and stepping back into recovery, no flash. Full standalone launcher and stock must stay attached to hands and inside every cell."
+      ],
+      "universe": "Resident Evil",
+      "name": "Claire Redfield",
+      "sourceReference": {
+        "simple": "Resident Evil 2 (2019) : Claire utilise SLS 60 et GM 79 à grenades incendiaires. Le repli est une adaptation physique et non une esquive spéciale absente de ce jeu.",
+        "secondary": "Resident Evil 2 (2019) : Claire utilise SLS 60 et GM 79 à grenades incendiaires. Le repli est une adaptation physique et non une esquive spéciale absente de ce jeu.",
+        "defense": "Resident Evil 2 (2019) : Claire utilise SLS 60 et GM 79 à grenades incendiaires. Le repli est une adaptation physique et non une esquive spéciale absente de ce jeu.",
+        "special": "Le lance-grenades GM 79 de Claire peut tirer des munitions incendiaires."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Tir du SLS 60 de Claire",
+          "effect": "damage",
+          "delivery": "projectile",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "secondary": {
+          "name": "Grenade incendiaire du GM 79",
+          "effect": "damage",
+          "delivery": "projectile",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "defense": {
+          "name": "Repli de Claire derrière le mobilier",
+          "effect": "guard",
+          "delivery": "support",
+          "range": 1,
+          "targetSide": "self"
+        },
+        "special": {
+          "name": "GM 79 Flame Round",
+          "effect": "damage",
+          "delivery": "area",
+          "range": 640,
+          "targetSide": "enemy"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/claire-redfield.png",
+      "referenceArchive": "docs/combat-fidelity-wave9-2026-10-22/part-d-references/claire_redfield-old-base.png",
+      "referenceAssetSha256": "17127ecfc80bc1b866f0b23cfc14335494373e531137159c49c0bfc5691d8ecb",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-references/claire_redfield-old-base.png",
+      "prompt": "Draw a native production-game SPRITE ATLAS with EXACTLY32 newly drawn COMPLETE full-body poses of ONE character, four equal columns by EIGHT equal rows, tall portrait canvas about1024x2048, transparent RGBA. Detailed crisp pixel-art rendering, adult game-character proportions. No words, labels, grid, borders, numbers, scenery, painted floor, cast-shadow disks, extra people or victims. Every cell has ONE entire character plus their currently held equipment, with at least12% transparent margin on all sides. All limbs, head, hair, boots and weapon tips must remain inside the cell. Same body drawing scale throughout the entire source; crouches and kneels remain naturally shorter, never inflated to standing height. Side/three-quarter view generally facing RIGHT.\n\nEXACT IDENTITY: Claire Redfield, default Resident Evil2 remake2019: adult woman with auburn hair in a high practical ponytail, red leather motorcycle jacket with sleeves pushed up, dark charcoal scoop-neck top, fitted dark blue denim jeans, brown leather belt/hip holster and brown lace boots, dark fingerless gloves. No1998 biker shorts, no Revelations outfit, no superhuman armor.\nEQUIPMENT/ACTION IDENTITY: Basic weapon is her SLS60 compact REVOLVER with a visible cylinder, not a semiautomatic pistol. The secondary/super uses a separate GM79 standalone black single-shot GRENADE LAUNCHER, short thick barrel and shoulder stock, physically held with two hands. Compact muzzle flash only; the travelling incendiary round and target explosion are runtime VFX, never a long flamethrower jet.\nThe attached old atlas is an appearance reference only; redraw every pose, follow the exact continuity and equipment text above rather than copying its generic gun.\n\nEIGHT ROW STORYBOARD from top to bottom, four anatomical poses per row from left to right:\nROW1 INTRO: 1 alert upright with SLS60 holstered, 2 brushing ponytail back and looking ahead, 3 drawing compact revolver with knees flexed, 4 two-handed low pistol ready stance.\nROW2 OUTRO: 1 revolver lowered, 2 checking its cylinder with both hands, 3 closing and reholstering SLS60, 4 turning shoulders and giving restrained reassuring open-palm signal.\nROW3 ROUND VICTORY: 1 releasing tense breath, 2 looking across room with revolver down, 3 small relieved smile and hand at jacket collar, 4 returning to balanced low ready posture.\nROW4 ROUND DEFEAT: alive. 1 flinch with forearm raised, 2 bent-knee low guarded retreat, 3 one knee down and free hand braced, 4 starting to rise with revolver kept down.\nROW5 FINALE ADAPTATION GM79 Flame Round, no victim/gore: 1 kneeling slightly and preparing the separate GM79 with barrel DOWN and breech near waist, 2 standing wide and shouldering launcher with muzzle aimed RIGHT, 3 clear recoil with both hands gripping launcher and tiny orange muzzle flash at the real opening, 4 lowering the complete launcher and straightening into recovery, NOT emitting. No sustained flame jet or painted travelling grenade.\nROW6 MATCH VICTORY: 1 lowering launcher, 2 slinging it securely behind shoulder, 3 resting free hand on hip with relieved smile, 4 gentle wave and relaxed standing posture.\nROW7 MATCH DEFEAT: alive fatigue. 1 shoulders sag, 2 kneeling with palm on thigh, 3 head lowered while resting on heel, 4 lifting eyes and one hand to jacket collar. No corpse.\nROW8 SUPER GM79 Flame Round: 1 holding the separate launcher with barrel DOWN while loading its break-open breech, 2 closed launcher at shoulder aimed RIGHT with both elbows flexed, 3 torso recoils and leading knee flexes during one compact orange flash at muzzle, 4 lowering the launcher to waist and stepping back into recovery, no flash. Full standalone launcher and stock must stay attached to hands and inside every cell.\n\nActive weapon opening must be clearly visible in columns2 and3 of the finale/super rows; columns1 and4 are preparation/lowered recovery and must NOT fire. Keep muzzle flashes extremely compact to make the actual aperture readable. Runtime owns bullets, travelling bolts and target explosions, so do not duplicate those across body cells. Four truly different anatomical poses in EVERY row; changing face, flash, glow or color alone is insufficient. Verify total32 complete figures in8 rows before output. Non-graphic fictional combat only, no blood, injured target or execution.",
+      "promptFile": "docs/combat-fidelity-wave9-2026-10-22/part-d-prompts/claire_redfield-original.txt",
+      "targetBodyHeight": 190,
+      "sourceRows": 8,
+      "reviewed": true,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "sources": [
+        {
+          "generatedPath": "/workspace/generated_images/exec-5ab259c7-22da-452b-9cd8-299a87dba182.png",
+          "archivedPath": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-original.png",
+          "sha256": "370864fa5aa4200b3a925abd0e554ecd241b2b2764e8a4b535ed875f7a2ef856",
+          "rows": 7,
+          "prompt": "Draw a native production-game SPRITE ATLAS with EXACTLY32 newly drawn COMPLETE full-body poses of ONE character, four equal columns by EIGHT equal rows, tall portrait canvas about1024x2048, transparent RGBA. Detailed crisp pixel-art rendering, adult game-character proportions. No words, labels, grid, borders, numbers, scenery, painted floor, cast-shadow disks, extra people or victims. Every cell has ONE entire character plus their currently held equipment, with at least12% transparent margin on all sides. All limbs, head, hair, boots and weapon tips must remain inside the cell. Same body drawing scale throughout the entire source; crouches and kneels remain naturally shorter, never inflated to standing height. Side/three-quarter view generally facing RIGHT.\n\nEXACT IDENTITY: Claire Redfield, default Resident Evil2 remake2019: adult woman with auburn hair in a high practical ponytail, red leather motorcycle jacket with sleeves pushed up, dark charcoal scoop-neck top, fitted dark blue denim jeans, brown leather belt/hip holster and brown lace boots, dark fingerless gloves. No1998 biker shorts, no Revelations outfit, no superhuman armor.\nEQUIPMENT/ACTION IDENTITY: Basic weapon is her SLS60 compact REVOLVER with a visible cylinder, not a semiautomatic pistol. The secondary/super uses a separate GM79 standalone black single-shot GRENADE LAUNCHER, short thick barrel and shoulder stock, physically held with two hands. Compact muzzle flash only; the travelling incendiary round and target explosion are runtime VFX, never a long flamethrower jet.\nThe attached old atlas is an appearance reference only; redraw every pose, follow the exact continuity and equipment text above rather than copying its generic gun.\n\nEIGHT ROW STORYBOARD from top to bottom, four anatomical poses per row from left to right:\nROW1 INTRO: 1 alert upright with SLS60 holstered, 2 brushing ponytail back and looking ahead, 3 drawing compact revolver with knees flexed, 4 two-handed low pistol ready stance.\nROW2 OUTRO: 1 revolver lowered, 2 checking its cylinder with both hands, 3 closing and reholstering SLS60, 4 turning shoulders and giving restrained reassuring open-palm signal.\nROW3 ROUND VICTORY: 1 releasing tense breath, 2 looking across room with revolver down, 3 small relieved smile and hand at jacket collar, 4 returning to balanced low ready posture.\nROW4 ROUND DEFEAT: alive. 1 flinch with forearm raised, 2 bent-knee low guarded retreat, 3 one knee down and free hand braced, 4 starting to rise with revolver kept down.\nROW5 FINALE ADAPTATION GM79 Flame Round, no victim/gore: 1 kneeling slightly and preparing the separate GM79 with barrel DOWN and breech near waist, 2 standing wide and shouldering launcher with muzzle aimed RIGHT, 3 clear recoil with both hands gripping launcher and tiny orange muzzle flash at the real opening, 4 lowering the complete launcher and straightening into recovery, NOT emitting. No sustained flame jet or painted travelling grenade.\nROW6 MATCH VICTORY: 1 lowering launcher, 2 slinging it securely behind shoulder, 3 resting free hand on hip with relieved smile, 4 gentle wave and relaxed standing posture.\nROW7 MATCH DEFEAT: alive fatigue. 1 shoulders sag, 2 kneeling with palm on thigh, 3 head lowered while resting on heel, 4 lifting eyes and one hand to jacket collar. No corpse.\nROW8 SUPER GM79 Flame Round: 1 holding the separate launcher with barrel DOWN while loading its break-open breech, 2 closed launcher at shoulder aimed RIGHT with both elbows flexed, 3 torso recoils and leading knee flexes during one compact orange flash at muzzle, 4 lowering the launcher to waist and stepping back into recovery, no flash. Full standalone launcher and stock must stay attached to hands and inside every cell.\n\nActive weapon opening must be clearly visible in columns2 and3 of the finale/super rows; columns1 and4 are preparation/lowered recovery and must NOT fire. Keep muzzle flashes extremely compact to make the actual aperture readable. Runtime owns bullets, travelling bolts and target explosions, so do not duplicate those across body cells. Four truly different anatomical poses in EVERY row; changing face, flash, glow or color alone is insufficient. Verify total32 complete figures in8 rows before output. Non-graphic fictional combat only, no blood, injured target or execution.",
+          "promptFile": "docs/combat-fidelity-wave9-2026-10-22/part-d-prompts/claire_redfield-original.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-references/claire_redfield-old-base.png"
+          ],
+          "operation": "native-imagegen",
+          "calibration": {
+            "kind": "anatomical-head-to-sole-visible-alpha-roi",
+            "row": 0,
+            "col": 0,
+            "measurementRoi": [
+              82,
+              13,
+              100,
+              233
+            ],
+            "bodyBounds": {
+              "left": 82,
+              "top": 13,
+              "width": 100,
+              "height": 233
+            },
+            "bodyHeight": 233,
+            "alphaThreshold": 24,
+            "headAndFeetVisuallyReviewed": true,
+            "excludesWeaponEffects": true,
+            "proofImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-contacts/claire_redfield-calibration.png",
+            "visibleBodyPixels": 14071,
+            "nativeAlphaSegmentationUsedForMeasurement": true,
+            "notes": "Standing first figure head-to-sole range; lowered equipment is lateral and does not extend the stature. No muzzle flash in calibration pose. One scale is shared by every retained row from this source."
+          }
+        },
+        {
+          "generatedPath": "/workspace/generated_images/exec-7e2945c8-9fbe-49c0-8eb3-d57a171775b3.png",
+          "archivedPath": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-round-defeat-correction.png",
+          "sha256": "53a315d1d74aa6c8b1c2c696eec920329653faab04200006d580aae600b632c2",
+          "rows": 1,
+          "prompt": "Draw EXACTLY FOUR NEW COMPLETE full-body sprites in ONE horizontal row, FOUR columns by ONE row. Native pixel-art correction for Claire Redfield from Resident Evil2 remake2019. Transparent RGBA, no text, floor, shadows or grid. Attached source is the corrected appearance reference; keep its red leather jacket, dark charcoal scoop top, auburn high ponytail, blue jeans, brown boots and belt/holster. Claire Redfield, default Resident Evil2 remake2019: adult woman with auburn hair in a high practical ponytail, red leather motorcycle jacket with sleeves pushed up, dark charcoal scoop-neck top, fitted dark blue denim jeans, brown leather belt/hip holster and brown lace boots, dark fingerless gloves. No1998 biker shorts, no Revelations outfit, no superhuman armor. This is the missing ROUND DEFEAT regroup sequence: (1) upright recoil with right forearm shielding face and left hand holding the SLS60 REVOLVER safely DOWN, (2) low bent-knee guarded retreat with shoulders forward and gun down, (3) one knee down, empty free palm braced near knee, head turned toward the fight, (4) starting to rise into crouched alert stance with pistol lowered. All four are living recovery poses, no blood or victim. Each pose must have different torso, arms and leg positions. No GM79 aiming/firing here. Exactly one whole Claire per cell, complete feet/hair/hands/prop. Preserve one shared source scale and leave15% transparent margin around each cell. No repeated body, recolor-only pose or clipped limb.",
+          "promptFile": "docs/combat-fidelity-wave9-2026-10-22/part-d-prompts/claire_redfield-round-defeat-correction.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-original.png"
+          ],
+          "operation": "native-imagegen-row-correction",
+          "reason": "Initial sheet contains only seven rows: roundDefeat is absent. Four newly drawn regroup poses supply that missing row.",
+          "calibration": {
+            "kind": "anatomical-head-to-sole-visible-alpha-roi",
+            "row": 0,
+            "col": 0,
+            "measurementRoi": [
+              127,
+              37,
+              337,
+              650
+            ],
+            "bodyBounds": {
+              "left": 127,
+              "top": 37,
+              "width": 337,
+              "height": 650
+            },
+            "bodyHeight": 650,
+            "alphaThreshold": 24,
+            "headAndFeetVisuallyReviewed": true,
+            "excludesWeaponEffects": true,
+            "proofImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-contacts/claire_redfield-round-defeat-correction-calibration.png",
+            "visibleBodyPixels": 118003,
+            "nativeAlphaSegmentationUsedForMeasurement": true,
+            "notes": "Corrective first figure is an upright/bent-knee preparation in the same identity. Head-to-sole calibration bridges native drawing density; crouch ratios in the source are preserved. The body stance difference is documented, not certified source timing."
+          }
+        }
+      ],
+      "rowSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 1,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        }
+      ]
+    },
+    {
+      "heroId": "ada_wong",
+      "sourceWork": "Resident Evil 4: Separate Ways (2005)",
+      "useOldReference": false,
+      "rejectedReference": "The old local sprite depicts the2023 long-sleeved red knit outfit, black tights and grapple combat; it is not the requested Separate Ways2005 version and is not supplied to image_gen.",
+      "version": "Ada Wong, an ADULT woman in Resident Evil4 Separate Ways ORIGINAL2005: short sleek black bob, elegant red HALTER-NECK full-length Chinese-style dress with bare shoulders and BARE ARMS, subtle gold butterfly embroidery, high side slit with a practical black thigh holster/strap, black high-heeled shoes and black choker. Fully clothed, neutral tactical presentation, no sexualized camera. No long sleeves, red sweater, black tights, boots,2023 grapple equipment or costume mixing.",
+      "weapon": "Basic sidearm is the physical black Blacktail semiautomatic handgun. Her super/secondary use the real separate black EXPLOSIVE CROSSBOW with visible transverse bow limbs and central bolt rail, held at shoulder with both hands. No grappling hook, tether, dagger assassination, bow made of light or body projectile. The moving explosive bolt and its target detonation are runtime VFX; body art has only the actual loaded weapon/compact release accent.",
+      "rows": [
+        "INTRO: 1 upright scanning with Blacktail holstered, 2 turning head while adjusting a practical wrist glove, 3 drawing the Blacktail in a compact bent-knee posture, 4 low two-handed ready stance facing RIGHT.",
+        "OUTRO: 1 lowering handgun, 2 checking its slide with both hands, 3 returning pistol to holster, 4 turning shoulders away and giving a brief restrained nod.",
+        "ROUND VICTORY: 1 exhale with handgun down, 2 slight head tilt while checking surroundings, 3 one hand on hip and calm confident expression, 4 compact ready stance with weight shifted forward.",
+        "ROUND DEFEAT: alive regroup. 1 recoil with forearm shielding face, 2 crouching while keeping dress and limbs anatomically intact, 3 one knee down with free palm bracing, 4 rising halfway with handgun down.",
+        "FINALE ADAPTATION Explosive Crossbow, no victim/gore: 1 bringing out separate crossbow at waist with bow/rail pointed DOWN, 2 standing braced with loaded crossbow at shoulder aimed RIGHT, 3 forward step and short release/recoil with both hands retaining weapon, tiny release accent only at rail tip, 4 lowering unloaded crossbow and recovering upright. No long travelling bolt painted across cell, no hook/tether, no explosion on her body.",
+        "MATCH VICTORY: 1 lowering crossbow, 2 securing weapon on sling, 3 composed hand-on-hip stance while looking aside, 4 turning away with subtle farewell gesture.",
+        "MATCH DEFEAT: tired but living. 1 shoulders lower, 2 sinking to one knee with palm on thigh, 3 head bowed with empty hand at collar, 4 lifting gaze and bracing to get up. No gore or injury.",
+        "SUPER Explosive Crossbow: 1 loading the separate crossbow at waist with rail DOWN, 2 raising actual crossbow to shoulder aimed RIGHT with front hand under rail, 3 releasing one explosive bolt through physical weapon with small recoil, left knee bent and shoulders rotated, 4 lowering the whole crossbow while straightening, no release accent. Four anatomically different full-body poses; keep both real bow limbs and weapon stock contained."
+      ],
+      "universe": "Resident Evil",
+      "name": "Ada Wong",
+      "sourceReference": {
+        "simple": "Resident Evil 4: Separate Ways (2005) : Ada utilise le Blacktail et l’arbalète à carreaux explosifs. Le repli ne lui attribue pas le combat au grappin du remake de 2023.",
+        "secondary": "Resident Evil 4: Separate Ways (2005) : Ada utilise le Blacktail et l’arbalète à carreaux explosifs. Le repli ne lui attribue pas le combat au grappin du remake de 2023.",
+        "defense": "Resident Evil 4: Separate Ways (2005) : Ada utilise le Blacktail et l’arbalète à carreaux explosifs. Le repli ne lui attribue pas le combat au grappin du remake de 2023.",
+        "special": "Ada utilise une arbalete avec carreaux explosifs ; le tir reste une attaque de projectile."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Tir du Blacktail d’Ada",
+          "effect": "damage",
+          "delivery": "projectile",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "secondary": {
+          "name": "Carreau explosif d’Ada",
+          "effect": "damage",
+          "delivery": "projectile",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "defense": {
+          "name": "Repli de l’agente Ada",
+          "effect": "guard",
+          "delivery": "support",
+          "range": 1,
+          "targetSide": "self"
+        },
+        "special": {
+          "name": "Explosive Crossbow",
+          "effect": "damage",
+          "delivery": "projectile",
+          "range": 640,
+          "targetSide": "enemy"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/ada-wong.png",
+      "referenceArchive": "docs/combat-fidelity-wave9-2026-10-22/part-d-references/ada_wong-old-base.png",
+      "referenceAssetSha256": "a8924494038863555230cddda6412a4d9e530905219dd9a56e368da965896b89",
+      "referenceImage": null,
+      "prompt": "Draw a native production-game SPRITE ATLAS with EXACTLY32 newly drawn COMPLETE full-body poses of ONE character, four equal columns by EIGHT equal rows, tall portrait canvas about1024x2048, transparent RGBA. Detailed crisp pixel-art rendering, adult game-character proportions. No words, labels, grid, borders, numbers, scenery, painted floor, cast-shadow disks, extra people or victims. Every cell has ONE entire character plus their currently held equipment, with at least12% transparent margin on all sides. All limbs, head, hair, boots and weapon tips must remain inside the cell. Same body drawing scale throughout the entire source; crouches and kneels remain naturally shorter, never inflated to standing height. Side/three-quarter view generally facing RIGHT.\n\nEXACT IDENTITY: Ada Wong, an ADULT woman in Resident Evil4 Separate Ways ORIGINAL2005: short sleek black bob, elegant red HALTER-NECK full-length Chinese-style dress with bare shoulders and BARE ARMS, subtle gold butterfly embroidery, high side slit with a practical black thigh holster/strap, black high-heeled shoes and black choker. Fully clothed, neutral tactical presentation, no sexualized camera. No long sleeves, red sweater, black tights, boots,2023 grapple equipment or costume mixing.\nEQUIPMENT/ACTION IDENTITY: Basic sidearm is the physical black Blacktail semiautomatic handgun. Her super/secondary use the real separate black EXPLOSIVE CROSSBOW with visible transverse bow limbs and central bolt rail, held at shoulder with both hands. No grappling hook, tether, dagger assassination, bow made of light or body projectile. The moving explosive bolt and its target detonation are runtime VFX; body art has only the actual loaded weapon/compact release accent.\nNo appearance image is attached because the old local atlas belongs to the wrong version or wrong colors. Draw only the exact version described above.\n\nEIGHT ROW STORYBOARD from top to bottom, four anatomical poses per row from left to right:\nROW1 INTRO: 1 upright scanning with Blacktail holstered, 2 turning head while adjusting a practical wrist glove, 3 drawing the Blacktail in a compact bent-knee posture, 4 low two-handed ready stance facing RIGHT.\nROW2 OUTRO: 1 lowering handgun, 2 checking its slide with both hands, 3 returning pistol to holster, 4 turning shoulders away and giving a brief restrained nod.\nROW3 ROUND VICTORY: 1 exhale with handgun down, 2 slight head tilt while checking surroundings, 3 one hand on hip and calm confident expression, 4 compact ready stance with weight shifted forward.\nROW4 ROUND DEFEAT: alive regroup. 1 recoil with forearm shielding face, 2 crouching while keeping dress and limbs anatomically intact, 3 one knee down with free palm bracing, 4 rising halfway with handgun down.\nROW5 FINALE ADAPTATION Explosive Crossbow, no victim/gore: 1 bringing out separate crossbow at waist with bow/rail pointed DOWN, 2 standing braced with loaded crossbow at shoulder aimed RIGHT, 3 forward step and short release/recoil with both hands retaining weapon, tiny release accent only at rail tip, 4 lowering unloaded crossbow and recovering upright. No long travelling bolt painted across cell, no hook/tether, no explosion on her body.\nROW6 MATCH VICTORY: 1 lowering crossbow, 2 securing weapon on sling, 3 composed hand-on-hip stance while looking aside, 4 turning away with subtle farewell gesture.\nROW7 MATCH DEFEAT: tired but living. 1 shoulders lower, 2 sinking to one knee with palm on thigh, 3 head bowed with empty hand at collar, 4 lifting gaze and bracing to get up. No gore or injury.\nROW8 SUPER Explosive Crossbow: 1 loading the separate crossbow at waist with rail DOWN, 2 raising actual crossbow to shoulder aimed RIGHT with front hand under rail, 3 releasing one explosive bolt through physical weapon with small recoil, left knee bent and shoulders rotated, 4 lowering the whole crossbow while straightening, no release accent. Four anatomically different full-body poses; keep both real bow limbs and weapon stock contained.\n\nActive weapon opening must be clearly visible in columns2 and3 of the finale/super rows; columns1 and4 are preparation/lowered recovery and must NOT fire. Keep muzzle flashes extremely compact to make the actual aperture readable. Runtime owns bullets, travelling bolts and target explosions, so do not duplicate those across body cells. Four truly different anatomical poses in EVERY row; changing face, flash, glow or color alone is insufficient. Verify total32 complete figures in8 rows before output. Non-graphic fictional combat only, no blood, injured target or execution.",
+      "promptFile": "docs/combat-fidelity-wave9-2026-10-22/part-d-prompts/ada_wong-original.txt",
+      "targetBodyHeight": 190,
+      "sourceRows": 8,
+      "reviewed": true,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "sources": [
+        {
+          "generatedPath": "/workspace/generated_images/exec-1020fa82-a8bd-4190-8a41-1c4d8a325217.png",
+          "archivedPath": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/ada_wong-original.png",
+          "sha256": "943efd30d91ad77aa3382abc71f1b121286fbc6eea1cd0d3c20bebc0d04da917",
+          "rows": 8,
+          "prompt": "Draw a native production-game SPRITE ATLAS with EXACTLY32 newly drawn COMPLETE full-body poses of ONE character, four equal columns by EIGHT equal rows, tall portrait canvas about1024x2048, transparent RGBA. Detailed crisp pixel-art rendering, adult game-character proportions. No words, labels, grid, borders, numbers, scenery, painted floor, cast-shadow disks, extra people or victims. Every cell has ONE entire character plus their currently held equipment, with at least12% transparent margin on all sides. All limbs, head, hair, boots and weapon tips must remain inside the cell. Same body drawing scale throughout the entire source; crouches and kneels remain naturally shorter, never inflated to standing height. Side/three-quarter view generally facing RIGHT.\n\nEXACT IDENTITY: Ada Wong, an ADULT woman in Resident Evil4 Separate Ways ORIGINAL2005: short sleek black bob, elegant red HALTER-NECK full-length Chinese-style dress with bare shoulders and BARE ARMS, subtle gold butterfly embroidery, high side slit with a practical black thigh holster/strap, black high-heeled shoes and black choker. Fully clothed, neutral tactical presentation, no sexualized camera. No long sleeves, red sweater, black tights, boots,2023 grapple equipment or costume mixing.\nEQUIPMENT/ACTION IDENTITY: Basic sidearm is the physical black Blacktail semiautomatic handgun. Her super/secondary use the real separate black EXPLOSIVE CROSSBOW with visible transverse bow limbs and central bolt rail, held at shoulder with both hands. No grappling hook, tether, dagger assassination, bow made of light or body projectile. The moving explosive bolt and its target detonation are runtime VFX; body art has only the actual loaded weapon/compact release accent.\nNo appearance image is attached because the old local atlas belongs to the wrong version or wrong colors. Draw only the exact version described above.\n\nEIGHT ROW STORYBOARD from top to bottom, four anatomical poses per row from left to right:\nROW1 INTRO: 1 upright scanning with Blacktail holstered, 2 turning head while adjusting a practical wrist glove, 3 drawing the Blacktail in a compact bent-knee posture, 4 low two-handed ready stance facing RIGHT.\nROW2 OUTRO: 1 lowering handgun, 2 checking its slide with both hands, 3 returning pistol to holster, 4 turning shoulders away and giving a brief restrained nod.\nROW3 ROUND VICTORY: 1 exhale with handgun down, 2 slight head tilt while checking surroundings, 3 one hand on hip and calm confident expression, 4 compact ready stance with weight shifted forward.\nROW4 ROUND DEFEAT: alive regroup. 1 recoil with forearm shielding face, 2 crouching while keeping dress and limbs anatomically intact, 3 one knee down with free palm bracing, 4 rising halfway with handgun down.\nROW5 FINALE ADAPTATION Explosive Crossbow, no victim/gore: 1 bringing out separate crossbow at waist with bow/rail pointed DOWN, 2 standing braced with loaded crossbow at shoulder aimed RIGHT, 3 forward step and short release/recoil with both hands retaining weapon, tiny release accent only at rail tip, 4 lowering unloaded crossbow and recovering upright. No long travelling bolt painted across cell, no hook/tether, no explosion on her body.\nROW6 MATCH VICTORY: 1 lowering crossbow, 2 securing weapon on sling, 3 composed hand-on-hip stance while looking aside, 4 turning away with subtle farewell gesture.\nROW7 MATCH DEFEAT: tired but living. 1 shoulders lower, 2 sinking to one knee with palm on thigh, 3 head bowed with empty hand at collar, 4 lifting gaze and bracing to get up. No gore or injury.\nROW8 SUPER Explosive Crossbow: 1 loading the separate crossbow at waist with rail DOWN, 2 raising actual crossbow to shoulder aimed RIGHT with front hand under rail, 3 releasing one explosive bolt through physical weapon with small recoil, left knee bent and shoulders rotated, 4 lowering the whole crossbow while straightening, no release accent. Four anatomically different full-body poses; keep both real bow limbs and weapon stock contained.\n\nActive weapon opening must be clearly visible in columns2 and3 of the finale/super rows; columns1 and4 are preparation/lowered recovery and must NOT fire. Keep muzzle flashes extremely compact to make the actual aperture readable. Runtime owns bullets, travelling bolts and target explosions, so do not duplicate those across body cells. Four truly different anatomical poses in EVERY row; changing face, flash, glow or color alone is insufficient. Verify total32 complete figures in8 rows before output. Non-graphic fictional combat only, no blood, injured target or execution.",
+          "promptFile": "docs/combat-fidelity-wave9-2026-10-22/part-d-prompts/ada_wong-original.txt",
+          "referenceInputs": [],
+          "operation": "native-imagegen",
+          "calibration": {
+            "kind": "anatomical-head-to-sole-visible-alpha-roi",
+            "row": 0,
+            "col": 0,
+            "measurementRoi": [
+              76,
+              4,
+              86,
+              217
+            ],
+            "bodyBounds": {
+              "left": 76,
+              "top": 4,
+              "width": 86,
+              "height": 217
+            },
+            "bodyHeight": 217,
+            "alphaThreshold": 24,
+            "headAndFeetVisuallyReviewed": true,
+            "excludesWeaponEffects": true,
+            "proofImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-contacts/ada_wong-calibration.png",
+            "visibleBodyPixels": 11098,
+            "nativeAlphaSegmentationUsedForMeasurement": true,
+            "notes": "Standing first figure head-to-sole range; lowered equipment is lateral and does not extend the stature. No muzzle flash in calibration pose. One scale is shared by every retained row from this source."
+          }
+        }
+      ],
+      "rowSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ]
+    },
+    {
+      "heroId": "barry_burton",
+      "sourceWork": "Resident Evil remake (2002)",
+      "useOldReference": false,
+      "rejectedReference": "Old local atlas inverts the red-shirt/light S.T.A.R.S.vest color scheme and uses a magnum for its basic attack. Preserve it as old evidence, not a generation appearance input.",
+      "version": "Barry Burton in Resident Evil REMAKE2002: stocky broad-shouldered middle-aged adult man with short brown hair, full brown beard, RED short-sleeved shirt UNDER a LIGHT TAN/cream S.T.A.R.S.tactical utility vest, S.T.A.R.S.shoulder patch, dark charcoal cargo trousers, brown leather belt and holsters, brown tactical boots, dark fingerless gloves. No red vest over beige shirt, no old grey-haired Revelations2 outfit, no cyber armor.",
+      "weapon": "His BASIC weapon is Samurai Edge, a black/silver Beretta-style semiautomatic handgun with wooden grip. His separate personal MAGNUM is a substantial stainless/silver REVOLVER with a visible cylinder and long barrel; super Barry Magnum uses that revolver, not an assault rifle or supernatural beam. One selected gun is held at a time while the other is holstered.",
+      "rows": [
+        "INTRO: 1 relaxed veteran stance with Samurai Edge holstered, 2 checking utility pouch while looking ahead, 3 drawing Samurai Edge with free hand supporting wrist, 4 stable two-handed low ready stance.",
+        "OUTRO: 1 lowering Samurai Edge, 2 inspecting slide/chamber carefully, 3 reholstering handgun, 4 turning away with a small reassuring hand signal.",
+        "ROUND VICTORY: 1 breathing out with gun down, 2 broad shoulders relaxing, 3 giving a modest thumb-up with sidearm kept safely down, 4 returning to calm balanced stance.",
+        "ROUND DEFEAT: living regroup. 1 guarded recoil, 2 crouching with broad knees flexed, 3 one knee down and free hand on ground, 4 starting to rise with firearm lowered.",
+        "FINALE ADAPTATION Barry Magnum, no victim/gore: 1 drawing separate silver long-barrel MAGNUM REVOLVER at waist with barrel DOWN, 2 upright braced two-handed aim RIGHT, 3 visible strong recoil with torso leaning back and barrel still forward, one tiny muzzle flash at opening, 4 lowering magnum and settling shoulders, no emission. No sustained beam or giant flame.",
+        "MATCH VICTORY: 1 lowering revolver, 2 checking its cylinder, 3 safely holstering magnum and exhaling, 4 giving an approving nod with empty hands near belt.",
+        "MATCH DEFEAT: alive fatigue. 1 shoulders sag with handgun down, 2 dropping to one knee, 3 resting on heel with free palm at brow, 4 looking up and steadying himself. No corpse.",
+        "SUPER Barry Magnum: 1 loading/checking separate silver MAGNUM cylinder at waist with muzzle DOWN, 2 closing cylinder and raising revolver into two-handed aim RIGHT, 3 full-body recoil with elbows bent and rear leg taking weight, compact muzzle flash only, 4 lowering magnum to waist and regaining balance with no flash. Keep the complete long barrel and cylinder clear in each active cell."
+      ],
+      "universe": "Resident Evil",
+      "name": "Barry Burton",
+      "sourceReference": {
+        "simple": "Resident Evil (2002) : Barry porte le Samurai Edge et son magnum personnel. Les deux tirs sont des armes physiques et le couvert ne crée pas un bouclier magique.",
+        "secondary": "Resident Evil (2002) : Barry porte le Samurai Edge et son magnum personnel. Les deux tirs sont des armes physiques et le couvert ne crée pas un bouclier magique.",
+        "defense": "Resident Evil (2002) : Barry porte le Samurai Edge et son magnum personnel. Les deux tirs sont des armes physiques et le couvert ne crée pas un bouclier magique.",
+        "special": "Le magnum de Barry est son arme personnelle ; aucune capacite surnaturelle n est attribuee au tir."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Tir du Samurai Edge de Barry",
+          "effect": "damage",
+          "delivery": "projectile",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "secondary": {
+          "name": "Décharge du magnum de Barry",
+          "effect": "damage",
+          "delivery": "projectile",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "defense": {
+          "name": "Couvert du vétéran S.T.A.R.S.",
+          "effect": "guard",
+          "delivery": "support",
+          "range": 1,
+          "targetSide": "self"
+        },
+        "special": {
+          "name": "Barry Magnum",
+          "effect": "damage",
+          "delivery": "projectile",
+          "range": 640,
+          "targetSide": "enemy"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/barry-burton.png",
+      "referenceArchive": "docs/combat-fidelity-wave9-2026-10-22/part-d-references/barry_burton-old-base.png",
+      "referenceAssetSha256": "6d305c9acb68c253f3f45616808bf7c0e7318e474d026812479206864af35cfb",
+      "referenceImage": null,
+      "prompt": "Draw a native production-game SPRITE ATLAS with EXACTLY32 newly drawn COMPLETE full-body poses of ONE character, four equal columns by EIGHT equal rows, tall portrait canvas about1024x2048, transparent RGBA. Detailed crisp pixel-art rendering, adult game-character proportions. No words, labels, grid, borders, numbers, scenery, painted floor, cast-shadow disks, extra people or victims. Every cell has ONE entire character plus their currently held equipment, with at least12% transparent margin on all sides. All limbs, head, hair, boots and weapon tips must remain inside the cell. Same body drawing scale throughout the entire source; crouches and kneels remain naturally shorter, never inflated to standing height. Side/three-quarter view generally facing RIGHT.\n\nEXACT IDENTITY: Barry Burton in Resident Evil REMAKE2002: stocky broad-shouldered middle-aged adult man with short brown hair, full brown beard, RED short-sleeved shirt UNDER a LIGHT TAN/cream S.T.A.R.S.tactical utility vest, S.T.A.R.S.shoulder patch, dark charcoal cargo trousers, brown leather belt and holsters, brown tactical boots, dark fingerless gloves. No red vest over beige shirt, no old grey-haired Revelations2 outfit, no cyber armor.\nEQUIPMENT/ACTION IDENTITY: His BASIC weapon is Samurai Edge, a black/silver Beretta-style semiautomatic handgun with wooden grip. His separate personal MAGNUM is a substantial stainless/silver REVOLVER with a visible cylinder and long barrel; super Barry Magnum uses that revolver, not an assault rifle or supernatural beam. One selected gun is held at a time while the other is holstered.\nNo appearance image is attached because the old local atlas belongs to the wrong version or wrong colors. Draw only the exact version described above.\n\nEIGHT ROW STORYBOARD from top to bottom, four anatomical poses per row from left to right:\nROW1 INTRO: 1 relaxed veteran stance with Samurai Edge holstered, 2 checking utility pouch while looking ahead, 3 drawing Samurai Edge with free hand supporting wrist, 4 stable two-handed low ready stance.\nROW2 OUTRO: 1 lowering Samurai Edge, 2 inspecting slide/chamber carefully, 3 reholstering handgun, 4 turning away with a small reassuring hand signal.\nROW3 ROUND VICTORY: 1 breathing out with gun down, 2 broad shoulders relaxing, 3 giving a modest thumb-up with sidearm kept safely down, 4 returning to calm balanced stance.\nROW4 ROUND DEFEAT: living regroup. 1 guarded recoil, 2 crouching with broad knees flexed, 3 one knee down and free hand on ground, 4 starting to rise with firearm lowered.\nROW5 FINALE ADAPTATION Barry Magnum, no victim/gore: 1 drawing separate silver long-barrel MAGNUM REVOLVER at waist with barrel DOWN, 2 upright braced two-handed aim RIGHT, 3 visible strong recoil with torso leaning back and barrel still forward, one tiny muzzle flash at opening, 4 lowering magnum and settling shoulders, no emission. No sustained beam or giant flame.\nROW6 MATCH VICTORY: 1 lowering revolver, 2 checking its cylinder, 3 safely holstering magnum and exhaling, 4 giving an approving nod with empty hands near belt.\nROW7 MATCH DEFEAT: alive fatigue. 1 shoulders sag with handgun down, 2 dropping to one knee, 3 resting on heel with free palm at brow, 4 looking up and steadying himself. No corpse.\nROW8 SUPER Barry Magnum: 1 loading/checking separate silver MAGNUM cylinder at waist with muzzle DOWN, 2 closing cylinder and raising revolver into two-handed aim RIGHT, 3 full-body recoil with elbows bent and rear leg taking weight, compact muzzle flash only, 4 lowering magnum to waist and regaining balance with no flash. Keep the complete long barrel and cylinder clear in each active cell.\n\nActive weapon opening must be clearly visible in columns2 and3 of the finale/super rows; columns1 and4 are preparation/lowered recovery and must NOT fire. Keep muzzle flashes extremely compact to make the actual aperture readable. Runtime owns bullets, travelling bolts and target explosions, so do not duplicate those across body cells. Four truly different anatomical poses in EVERY row; changing face, flash, glow or color alone is insufficient. Verify total32 complete figures in8 rows before output. Non-graphic fictional combat only, no blood, injured target or execution.",
+      "promptFile": "docs/combat-fidelity-wave9-2026-10-22/part-d-prompts/barry_burton-original.txt",
+      "targetBodyHeight": 190,
+      "sourceRows": 8,
+      "reviewed": true,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "sources": [
+        {
+          "generatedPath": "/workspace/generated_images/exec-bb236fcb-dee1-44e3-b23b-a835f42f04a9.png",
+          "archivedPath": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/barry_burton-original.png",
+          "sha256": "55933367656698bf75b73e2db740809076117f8b3dcd87759d3b99c42429c3b8",
+          "rows": 8,
+          "prompt": "Draw a native production-game SPRITE ATLAS with EXACTLY32 newly drawn COMPLETE full-body poses of ONE character, four equal columns by EIGHT equal rows, tall portrait canvas about1024x2048, transparent RGBA. Detailed crisp pixel-art rendering, adult game-character proportions. No words, labels, grid, borders, numbers, scenery, painted floor, cast-shadow disks, extra people or victims. Every cell has ONE entire character plus their currently held equipment, with at least12% transparent margin on all sides. All limbs, head, hair, boots and weapon tips must remain inside the cell. Same body drawing scale throughout the entire source; crouches and kneels remain naturally shorter, never inflated to standing height. Side/three-quarter view generally facing RIGHT.\n\nEXACT IDENTITY: Barry Burton in Resident Evil REMAKE2002: stocky broad-shouldered middle-aged adult man with short brown hair, full brown beard, RED short-sleeved shirt UNDER a LIGHT TAN/cream S.T.A.R.S.tactical utility vest, S.T.A.R.S.shoulder patch, dark charcoal cargo trousers, brown leather belt and holsters, brown tactical boots, dark fingerless gloves. No red vest over beige shirt, no old grey-haired Revelations2 outfit, no cyber armor.\nEQUIPMENT/ACTION IDENTITY: His BASIC weapon is Samurai Edge, a black/silver Beretta-style semiautomatic handgun with wooden grip. His separate personal MAGNUM is a substantial stainless/silver REVOLVER with a visible cylinder and long barrel; super Barry Magnum uses that revolver, not an assault rifle or supernatural beam. One selected gun is held at a time while the other is holstered.\nNo appearance image is attached because the old local atlas belongs to the wrong version or wrong colors. Draw only the exact version described above.\n\nEIGHT ROW STORYBOARD from top to bottom, four anatomical poses per row from left to right:\nROW1 INTRO: 1 relaxed veteran stance with Samurai Edge holstered, 2 checking utility pouch while looking ahead, 3 drawing Samurai Edge with free hand supporting wrist, 4 stable two-handed low ready stance.\nROW2 OUTRO: 1 lowering Samurai Edge, 2 inspecting slide/chamber carefully, 3 reholstering handgun, 4 turning away with a small reassuring hand signal.\nROW3 ROUND VICTORY: 1 breathing out with gun down, 2 broad shoulders relaxing, 3 giving a modest thumb-up with sidearm kept safely down, 4 returning to calm balanced stance.\nROW4 ROUND DEFEAT: living regroup. 1 guarded recoil, 2 crouching with broad knees flexed, 3 one knee down and free hand on ground, 4 starting to rise with firearm lowered.\nROW5 FINALE ADAPTATION Barry Magnum, no victim/gore: 1 drawing separate silver long-barrel MAGNUM REVOLVER at waist with barrel DOWN, 2 upright braced two-handed aim RIGHT, 3 visible strong recoil with torso leaning back and barrel still forward, one tiny muzzle flash at opening, 4 lowering magnum and settling shoulders, no emission. No sustained beam or giant flame.\nROW6 MATCH VICTORY: 1 lowering revolver, 2 checking its cylinder, 3 safely holstering magnum and exhaling, 4 giving an approving nod with empty hands near belt.\nROW7 MATCH DEFEAT: alive fatigue. 1 shoulders sag with handgun down, 2 dropping to one knee, 3 resting on heel with free palm at brow, 4 looking up and steadying himself. No corpse.\nROW8 SUPER Barry Magnum: 1 loading/checking separate silver MAGNUM cylinder at waist with muzzle DOWN, 2 closing cylinder and raising revolver into two-handed aim RIGHT, 3 full-body recoil with elbows bent and rear leg taking weight, compact muzzle flash only, 4 lowering magnum to waist and regaining balance with no flash. Keep the complete long barrel and cylinder clear in each active cell.\n\nActive weapon opening must be clearly visible in columns2 and3 of the finale/super rows; columns1 and4 are preparation/lowered recovery and must NOT fire. Keep muzzle flashes extremely compact to make the actual aperture readable. Runtime owns bullets, travelling bolts and target explosions, so do not duplicate those across body cells. Four truly different anatomical poses in EVERY row; changing face, flash, glow or color alone is insufficient. Verify total32 complete figures in8 rows before output. Non-graphic fictional combat only, no blood, injured target or execution.",
+          "promptFile": "docs/combat-fidelity-wave9-2026-10-22/part-d-prompts/barry_burton-original.txt",
+          "referenceInputs": [],
+          "operation": "native-imagegen",
+          "calibration": {
+            "kind": "anatomical-head-to-sole-visible-alpha-roi",
+            "row": 0,
+            "col": 0,
+            "measurementRoi": [
+              73,
+              6,
+              103,
+              203
+            ],
+            "bodyBounds": {
+              "left": 73,
+              "top": 6,
+              "width": 103,
+              "height": 203
+            },
+            "bodyHeight": 203,
+            "alphaThreshold": 24,
+            "headAndFeetVisuallyReviewed": true,
+            "excludesWeaponEffects": true,
+            "proofImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-contacts/barry_burton-calibration.png",
+            "visibleBodyPixels": 13220,
+            "nativeAlphaSegmentationUsedForMeasurement": true,
+            "notes": "Standing first figure head-to-sole range; lowered equipment is lateral and does not extend the stature. No muzzle flash in calibration pose. One scale is shared by every retained row from this source."
+          }
+        }
+      ],
+      "rowSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ]
+    },
+    {
+      "heroId": "carlos_oliveira",
+      "sourceWork": "Resident Evil 3 remake (2020)",
+      "useOldReference": true,
+      "version": "Carlos Oliveira, Resident Evil3 REMAKE2020: adult muscular Latin American man with thick medium-short CURLY dark hair and short stubble, black short-sleeved tactical T-shirt, olive U.B.C.S.plate carrier/utility vest, UBCS shoulder insignia, grey-green/dark cargo trousers with knee pads, dark tactical boots, black fingerless gloves and radio earpiece. No1999 smooth short haircut, no futuristic armor or zombie form.",
+      "weapon": "His real CQBR is a compact black AR15/M4-style short-barrel CARBINE with shoulder stock, visible box magazine, short rail handguard and front sight. Front hand supports handguard and rear hand grips pistol grip. No AK banana magazine, minigun, energy gun or body cannon. Simple and super use controlled CQBR shots; secondary is a close physical clearing strike with CQBR safely slung.",
+      "rows": [
+        "INTRO: 1 carbine on sling with muzzle down, 2 touching earpiece and checking perimeter, 3 taking carbine in both hands while lowering knees, 4 ready stance CQBR held safely low.",
+        "OUTRO: 1 lowering CQBR, 2 inspecting magazine/receiver with both hands, 3 securing carbine onto sling against chest, 4 turning shoulders away with free hand signalling teammates to follow.",
+        "ROUND VICTORY: 1 breathing out with carbine down, 2 shifting feet while checking perimeter, 3 short approving thumb-up with weapon held safely by sling, 4 returning to controlled low ready stance.",
+        "ROUND DEFEAT: alive regroup. 1 recoil with free forearm protecting face, 2 low crouch with carbine held down, 3 kneeling and bracing one palm, 4 beginning to stand with weapon secured.",
+        "FINALE ADAPTATION Rafale du CQBR, no victim/gore: 1 carbine held DOWN while checking magazine, 2 shoulders squared with CQBR aimed RIGHT and cheek near stock, 3 short controlled burst recoil with support hand on handguard and tiny muzzle flash at opening, 4 lowering CQBR to low ready and stepping back, no flash. No large projectile, tracer painted across body cell, fire cone or explosion.",
+        "MATCH VICTORY: 1 lowering carbine, 2 securing sling with both hands, 3 relaxing shoulders with hand touching radio, 4 small relieved nod while hands rest near vest.",
+        "MATCH DEFEAT: alive fatigue. 1 shoulders sag with weapon down, 2 one knee down palm on thigh, 3 resting on heel head bowed and CQBR held safe, 4 lifting head and preparing to rise.",
+        "SUPER Rafale du CQBR de Carlos: 1 CQBR DOWN at waist while seating magazine with support hand, 2 raising the complete short carbine to shoulder aimed RIGHT, 3 torso/arms take compact burst recoil with tiny local muzzle flash and bent forward knee, 4 lowering weapon to waist and returning rear foot to balance, NOT emitting. Four genuinely different body poses; held rifle remains complete and physically gripped."
+      ],
+      "universe": "Resident Evil",
+      "name": "Carlos Oliveira",
+      "sourceReference": {
+        "simple": "Carlos emploie le CQBR et le corps-à-corps dans Resident Evil 3 (2020) ; aucune capacité virale personnelle ne lui est donnée.",
+        "secondary": "Carlos emploie le CQBR et le corps-à-corps dans Resident Evil 3 (2020) ; aucune capacité virale personnelle ne lui est donnée.",
+        "defense": "Carlos emploie le CQBR et le corps-à-corps dans Resident Evil 3 (2020) ; aucune capacité virale personnelle ne lui est donnée.",
+        "special": "Resident Evil 3, remake de 2020 : Carlos Oliveira porte le fusil d'assaut CQBR durant les séquences du commissariat et de l'hôpital."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Tir du CQBR de Carlos",
+          "effect": "damage",
+          "delivery": "projectile",
+          "range": 480,
+          "targetSide": "enemy"
+        },
+        "secondary": {
+          "name": "Frappe de dégagement de Carlos",
+          "effect": "damage",
+          "delivery": "melee",
+          "range": 85,
+          "targetSide": "enemy"
+        },
+        "defense": {
+          "name": "Couvert de l’opérateur Oliveira",
+          "effect": "guard",
+          "delivery": "support",
+          "range": 1,
+          "targetSide": "self"
+        },
+        "special": {
+          "name": "Rafale du CQBR de Carlos",
+          "effect": "damage",
+          "delivery": "projectile",
+          "range": 640,
+          "targetSide": "enemy"
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/carlos-oliveira.png",
+      "referenceArchive": "docs/combat-fidelity-wave9-2026-10-22/part-d-references/carlos_oliveira-old-base.png",
+      "referenceAssetSha256": "6f545d79f031a43c4ffe93ce55b6fea8a6604198428ae7257f3241273fcc2415",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-references/carlos_oliveira-old-base.png",
+      "prompt": "Draw a native production-game SPRITE ATLAS with EXACTLY32 newly drawn COMPLETE full-body poses of ONE character, four equal columns by EIGHT equal rows, tall portrait canvas about1024x2048, transparent RGBA. Detailed crisp pixel-art rendering, adult game-character proportions. No words, labels, grid, borders, numbers, scenery, painted floor, cast-shadow disks, extra people or victims. Every cell has ONE entire character plus their currently held equipment, with at least12% transparent margin on all sides. All limbs, head, hair, boots and weapon tips must remain inside the cell. Same body drawing scale throughout the entire source; crouches and kneels remain naturally shorter, never inflated to standing height. Side/three-quarter view generally facing RIGHT.\n\nEXACT IDENTITY: Carlos Oliveira, Resident Evil3 REMAKE2020: adult muscular Latin American man with thick medium-short CURLY dark hair and short stubble, black short-sleeved tactical T-shirt, olive U.B.C.S.plate carrier/utility vest, UBCS shoulder insignia, grey-green/dark cargo trousers with knee pads, dark tactical boots, black fingerless gloves and radio earpiece. No1999 smooth short haircut, no futuristic armor or zombie form.\nEQUIPMENT/ACTION IDENTITY: His real CQBR is a compact black AR15/M4-style short-barrel CARBINE with shoulder stock, visible box magazine, short rail handguard and front sight. Front hand supports handguard and rear hand grips pistol grip. No AK banana magazine, minigun, energy gun or body cannon. Simple and super use controlled CQBR shots; secondary is a close physical clearing strike with CQBR safely slung.\nThe attached old atlas is an appearance reference only; redraw every pose, follow the exact continuity and equipment text above rather than copying its generic gun.\n\nEIGHT ROW STORYBOARD from top to bottom, four anatomical poses per row from left to right:\nROW1 INTRO: 1 carbine on sling with muzzle down, 2 touching earpiece and checking perimeter, 3 taking carbine in both hands while lowering knees, 4 ready stance CQBR held safely low.\nROW2 OUTRO: 1 lowering CQBR, 2 inspecting magazine/receiver with both hands, 3 securing carbine onto sling against chest, 4 turning shoulders away with free hand signalling teammates to follow.\nROW3 ROUND VICTORY: 1 breathing out with carbine down, 2 shifting feet while checking perimeter, 3 short approving thumb-up with weapon held safely by sling, 4 returning to controlled low ready stance.\nROW4 ROUND DEFEAT: alive regroup. 1 recoil with free forearm protecting face, 2 low crouch with carbine held down, 3 kneeling and bracing one palm, 4 beginning to stand with weapon secured.\nROW5 FINALE ADAPTATION Rafale du CQBR, no victim/gore: 1 carbine held DOWN while checking magazine, 2 shoulders squared with CQBR aimed RIGHT and cheek near stock, 3 short controlled burst recoil with support hand on handguard and tiny muzzle flash at opening, 4 lowering CQBR to low ready and stepping back, no flash. No large projectile, tracer painted across body cell, fire cone or explosion.\nROW6 MATCH VICTORY: 1 lowering carbine, 2 securing sling with both hands, 3 relaxing shoulders with hand touching radio, 4 small relieved nod while hands rest near vest.\nROW7 MATCH DEFEAT: alive fatigue. 1 shoulders sag with weapon down, 2 one knee down palm on thigh, 3 resting on heel head bowed and CQBR held safe, 4 lifting head and preparing to rise.\nROW8 SUPER Rafale du CQBR de Carlos: 1 CQBR DOWN at waist while seating magazine with support hand, 2 raising the complete short carbine to shoulder aimed RIGHT, 3 torso/arms take compact burst recoil with tiny local muzzle flash and bent forward knee, 4 lowering weapon to waist and returning rear foot to balance, NOT emitting. Four genuinely different body poses; held rifle remains complete and physically gripped.\n\nActive weapon opening must be clearly visible in columns2 and3 of the finale/super rows; columns1 and4 are preparation/lowered recovery and must NOT fire. Keep muzzle flashes extremely compact to make the actual aperture readable. Runtime owns bullets, travelling bolts and target explosions, so do not duplicate those across body cells. Four truly different anatomical poses in EVERY row; changing face, flash, glow or color alone is insufficient. Verify total32 complete figures in8 rows before output. Non-graphic fictional combat only, no blood, injured target or execution.",
+      "promptFile": "docs/combat-fidelity-wave9-2026-10-22/part-d-prompts/carlos_oliveira-original.txt",
+      "targetBodyHeight": 190,
+      "sourceRows": 8,
+      "reviewed": true,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "sources": [
+        {
+          "generatedPath": "/workspace/generated_images/exec-c9babc92-6c7e-4372-be22-e490a1884ba3.png",
+          "archivedPath": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/carlos_oliveira-original.png",
+          "sha256": "c6802f75b19c86b1ba74628c13b58614ec04a559e5ab5ee3d35ba3c8efda2d4e",
+          "rows": 8,
+          "prompt": "Draw a native production-game SPRITE ATLAS with EXACTLY32 newly drawn COMPLETE full-body poses of ONE character, four equal columns by EIGHT equal rows, tall portrait canvas about1024x2048, transparent RGBA. Detailed crisp pixel-art rendering, adult game-character proportions. No words, labels, grid, borders, numbers, scenery, painted floor, cast-shadow disks, extra people or victims. Every cell has ONE entire character plus their currently held equipment, with at least12% transparent margin on all sides. All limbs, head, hair, boots and weapon tips must remain inside the cell. Same body drawing scale throughout the entire source; crouches and kneels remain naturally shorter, never inflated to standing height. Side/three-quarter view generally facing RIGHT.\n\nEXACT IDENTITY: Carlos Oliveira, Resident Evil3 REMAKE2020: adult muscular Latin American man with thick medium-short CURLY dark hair and short stubble, black short-sleeved tactical T-shirt, olive U.B.C.S.plate carrier/utility vest, UBCS shoulder insignia, grey-green/dark cargo trousers with knee pads, dark tactical boots, black fingerless gloves and radio earpiece. No1999 smooth short haircut, no futuristic armor or zombie form.\nEQUIPMENT/ACTION IDENTITY: His real CQBR is a compact black AR15/M4-style short-barrel CARBINE with shoulder stock, visible box magazine, short rail handguard and front sight. Front hand supports handguard and rear hand grips pistol grip. No AK banana magazine, minigun, energy gun or body cannon. Simple and super use controlled CQBR shots; secondary is a close physical clearing strike with CQBR safely slung.\nThe attached old atlas is an appearance reference only; redraw every pose, follow the exact continuity and equipment text above rather than copying its generic gun.\n\nEIGHT ROW STORYBOARD from top to bottom, four anatomical poses per row from left to right:\nROW1 INTRO: 1 carbine on sling with muzzle down, 2 touching earpiece and checking perimeter, 3 taking carbine in both hands while lowering knees, 4 ready stance CQBR held safely low.\nROW2 OUTRO: 1 lowering CQBR, 2 inspecting magazine/receiver with both hands, 3 securing carbine onto sling against chest, 4 turning shoulders away with free hand signalling teammates to follow.\nROW3 ROUND VICTORY: 1 breathing out with carbine down, 2 shifting feet while checking perimeter, 3 short approving thumb-up with weapon held safely by sling, 4 returning to controlled low ready stance.\nROW4 ROUND DEFEAT: alive regroup. 1 recoil with free forearm protecting face, 2 low crouch with carbine held down, 3 kneeling and bracing one palm, 4 beginning to stand with weapon secured.\nROW5 FINALE ADAPTATION Rafale du CQBR, no victim/gore: 1 carbine held DOWN while checking magazine, 2 shoulders squared with CQBR aimed RIGHT and cheek near stock, 3 short controlled burst recoil with support hand on handguard and tiny muzzle flash at opening, 4 lowering CQBR to low ready and stepping back, no flash. No large projectile, tracer painted across body cell, fire cone or explosion.\nROW6 MATCH VICTORY: 1 lowering carbine, 2 securing sling with both hands, 3 relaxing shoulders with hand touching radio, 4 small relieved nod while hands rest near vest.\nROW7 MATCH DEFEAT: alive fatigue. 1 shoulders sag with weapon down, 2 one knee down palm on thigh, 3 resting on heel head bowed and CQBR held safe, 4 lifting head and preparing to rise.\nROW8 SUPER Rafale du CQBR de Carlos: 1 CQBR DOWN at waist while seating magazine with support hand, 2 raising the complete short carbine to shoulder aimed RIGHT, 3 torso/arms take compact burst recoil with tiny local muzzle flash and bent forward knee, 4 lowering weapon to waist and returning rear foot to balance, NOT emitting. Four genuinely different body poses; held rifle remains complete and physically gripped.\n\nActive weapon opening must be clearly visible in columns2 and3 of the finale/super rows; columns1 and4 are preparation/lowered recovery and must NOT fire. Keep muzzle flashes extremely compact to make the actual aperture readable. Runtime owns bullets, travelling bolts and target explosions, so do not duplicate those across body cells. Four truly different anatomical poses in EVERY row; changing face, flash, glow or color alone is insufficient. Verify total32 complete figures in8 rows before output. Non-graphic fictional combat only, no blood, injured target or execution.",
+          "promptFile": "docs/combat-fidelity-wave9-2026-10-22/part-d-prompts/carlos_oliveira-original.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-references/carlos_oliveira-old-base.png"
+          ],
+          "operation": "native-imagegen",
+          "calibration": {
+            "kind": "anatomical-head-to-sole-visible-alpha-roi",
+            "row": 0,
+            "col": 0,
+            "measurementRoi": [
+              73,
+              5,
+              104,
+              222
+            ],
+            "bodyBounds": {
+              "left": 73,
+              "top": 5,
+              "width": 104,
+              "height": 222
+            },
+            "bodyHeight": 222,
+            "alphaThreshold": 24,
+            "headAndFeetVisuallyReviewed": true,
+            "excludesWeaponEffects": true,
+            "proofImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-contacts/carlos_oliveira-calibration.png",
+            "visibleBodyPixels": 15022,
+            "nativeAlphaSegmentationUsedForMeasurement": true,
+            "notes": "Standing first figure head-to-sole range; lowered equipment is lateral and does not extend the stature. No muzzle flash in calibration pose. One scale is shared by every retained row from this source."
+          }
+        }
+      ],
+      "rowSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        },
+        {
+          "source": 0,
+          "row": 4
+        },
+        {
+          "source": 0,
+          "row": 5
+        },
+        {
+          "source": 0,
+          "row": 6
+        },
+        {
+          "source": 0,
+          "row": 7
+        }
+      ]
+    }
+  ]
+}

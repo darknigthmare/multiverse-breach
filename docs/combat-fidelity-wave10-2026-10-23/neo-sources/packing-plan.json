@@ -1,0 +1,527 @@
+{
+  "heroId": "neo",
+  "registryStem": "neo",
+  "universe": "The Matrix",
+  "sourceWork": "The Matrix Reloaded (2003)",
+  "date": "2026-10-23",
+  "archiveDir": "docs/combat-fidelity-wave10-2026-10-23/neo-sources",
+  "outputDir": "public/sprites/generated/melee-neo-wave10",
+  "reference": {
+    "asset": "public/sprites/generated/heroes/the-matrix/neo.png",
+    "savedImage": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-reference-original.png"
+  },
+  "correctionId": "neo-corrective-states",
+  "sources": [
+    {
+      "id": "neo-motion-a",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-motion-a.native.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 0,
+        "column": 0,
+        "state": "idle",
+        "bodyBounds": {
+          "x": 61,
+          "y": 7,
+          "width": 104,
+          "height": 210
+        },
+        "raisedArmsExcluded": false,
+        "reason": "Visual crown-to-sole anatomical ROI; weapons and raised arms excluded. A source-wide scale preserves the lower projection of crouches, airborne tucks and prone bodies."
+      }
+    },
+    {
+      "id": "neo-motion-b",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-motion-b.native.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 6,
+        "column": 0,
+        "state": "taunt1",
+        "bodyBounds": {
+          "x": 50,
+          "y": 1372,
+          "width": 109,
+          "height": 233
+        },
+        "raisedArmsExcluded": false,
+        "reason": "Visual crown-to-sole anatomical ROI; weapons and raised arms excluded. A source-wide scale preserves the lower projection of crouches, airborne tucks and prone bodies."
+      }
+    },
+    {
+      "id": "neo-defense",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-defense.native.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 4,
+        "column": 3,
+        "state": "shieldExit",
+        "bodyBounds": {
+          "x": 737,
+          "y": 985,
+          "width": 93,
+          "height": 241
+        },
+        "raisedArmsExcluded": false,
+        "reason": "Visual crown-to-sole anatomical ROI; weapons and raised arms excluded. A source-wide scale preserves the lower projection of crouches, airborne tucks and prone bodies."
+      }
+    },
+    {
+      "id": "neo-combat-a",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-combat-a.native.png",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 6,
+        "column": 3,
+        "state": "chargeRecovery",
+        "bodyBounds": {
+          "x": 823,
+          "y": 1300,
+          "width": 160,
+          "height": 220
+        },
+        "raisedArmsExcluded": false,
+        "reason": "Visual crown-to-sole anatomical ROI; weapons and raised arms excluded. A source-wide scale preserves the lower projection of crouches, airborne tucks and prone bodies."
+      }
+    },
+    {
+      "id": "neo-combat-b",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-combat-b-replacement.native.png",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 5,
+        "column": 0,
+        "state": "intro",
+        "bodyBounds": {
+          "x": 50,
+          "y": 1135,
+          "width": 120,
+          "height": 237
+        },
+        "raisedArmsExcluded": false,
+        "reason": "Visual crown-to-sole anatomical ROI; weapons and raised arms excluded. A source-wide scale preserves the lower projection of crouches, airborne tucks and prone bodies."
+      },
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-combat-b-replacement.prompt.txt"
+    },
+    {
+      "id": "neo-ledge",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-ledge.native.png",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 1,
+        "column": 0,
+        "state": "ledgeHang",
+        "bodyBounds": {
+          "x": 44,
+          "y": 329,
+          "width": 170,
+          "height": 255
+        },
+        "raisedArmsExcluded": true,
+        "reason": "Visual crown-to-sole anatomical ROI; weapons and raised arms excluded. A source-wide scale preserves the lower projection of crouches, airborne tucks and prone bodies."
+      }
+    },
+    {
+      "id": "neo-corrective-states",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-corrective-states.native.png",
+      "states": [
+        "shieldBreak",
+        "crouchLight",
+        "ledgeCatch"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 0,
+        "column": 0,
+        "state": "shieldBreak",
+        "bodyBounds": {
+          "x": 55,
+          "y": 29,
+          "width": 221,
+          "height": 367
+        },
+        "reason": "Native corrective upright shieldBreak opening pose, crown to soles with hands below crown; one common source scale for all corrective rows."
+      }
+    }
+  ],
+  "atlases": [
+    {
+      "id": "neo-motion-a",
+      "batch": "Motion",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "selection": {
+        "idle": {
+          "sourceId": "neo-motion-a",
+          "row": 0
+        },
+        "walk": {
+          "sourceId": "neo-motion-a",
+          "row": 1
+        },
+        "run": {
+          "sourceId": "neo-motion-a",
+          "row": 2
+        },
+        "turn": {
+          "sourceId": "neo-motion-a",
+          "row": 3
+        },
+        "jumpStart": {
+          "sourceId": "neo-motion-a",
+          "row": 4
+        },
+        "jumpRise": {
+          "sourceId": "neo-motion-a",
+          "row": 5
+        },
+        "jumpApex": {
+          "sourceId": "neo-motion-a",
+          "row": 6
+        },
+        "fall": {
+          "sourceId": "neo-motion-a",
+          "row": 7
+        }
+      }
+    },
+    {
+      "id": "neo-motion-b",
+      "batch": "Motion",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "selection": {
+        "fastFall": {
+          "sourceId": "neo-motion-b",
+          "row": 0
+        },
+        "land": {
+          "sourceId": "neo-motion-b",
+          "row": 1
+        },
+        "crouchEnter": {
+          "sourceId": "neo-motion-b",
+          "row": 2
+        },
+        "crouchIdle": {
+          "sourceId": "neo-motion-b",
+          "row": 3
+        },
+        "crouchExit": {
+          "sourceId": "neo-motion-b",
+          "row": 4
+        },
+        "crouchCharge": {
+          "sourceId": "neo-motion-b",
+          "row": 5
+        },
+        "taunt1": {
+          "sourceId": "neo-motion-b",
+          "row": 6
+        },
+        "hitStun": {
+          "sourceId": "neo-motion-b",
+          "row": 7
+        }
+      }
+    },
+    {
+      "id": "neo-defense",
+      "batch": "Motion",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "selection": {
+        "shieldEnter": {
+          "sourceId": "neo-defense",
+          "row": 0
+        },
+        "shieldHold": {
+          "sourceId": "neo-defense",
+          "row": 1
+        },
+        "shieldHit": {
+          "sourceId": "neo-defense",
+          "row": 2
+        },
+        "perfectShield": {
+          "sourceId": "neo-defense",
+          "row": 3
+        },
+        "shieldExit": {
+          "sourceId": "neo-defense",
+          "row": 4
+        },
+        "dead": {
+          "sourceId": "neo-defense",
+          "row": 5
+        },
+        "defeat": {
+          "sourceId": "neo-defense",
+          "row": 6
+        },
+        "shieldBreak": {
+          "sourceId": "neo-corrective-states",
+          "row": 0
+        }
+      }
+    },
+    {
+      "id": "neo-combat-a",
+      "batch": "Combat",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "selection": {
+        "attackLight1": {
+          "sourceId": "neo-combat-a",
+          "row": 0
+        },
+        "attackLight2": {
+          "sourceId": "neo-combat-a",
+          "row": 1
+        },
+        "attackLight3": {
+          "sourceId": "neo-combat-a",
+          "row": 2
+        },
+        "chargeStart": {
+          "sourceId": "neo-combat-a",
+          "row": 3
+        },
+        "chargeLoop": {
+          "sourceId": "neo-combat-a",
+          "row": 4
+        },
+        "chargeRelease": {
+          "sourceId": "neo-combat-a",
+          "row": 5
+        },
+        "chargeRecovery": {
+          "sourceId": "neo-combat-a",
+          "row": 6
+        },
+        "crouchLight": {
+          "sourceId": "neo-corrective-states",
+          "row": 1
+        }
+      }
+    },
+    {
+      "id": "neo-combat-b",
+      "batch": "Combat",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "selection": {
+        "attackRecovery": {
+          "sourceId": "neo-combat-b",
+          "row": 0
+        },
+        "special": {
+          "sourceId": "neo-combat-b",
+          "row": 1
+        },
+        "aerialNeutral": {
+          "sourceId": "neo-combat-b",
+          "row": 2
+        },
+        "aerialForward": {
+          "sourceId": "neo-combat-b",
+          "row": 3
+        },
+        "aerialDown": {
+          "sourceId": "neo-combat-b",
+          "row": 4
+        },
+        "intro": {
+          "sourceId": "neo-combat-b",
+          "row": 5
+        },
+        "victory": {
+          "sourceId": "neo-combat-b",
+          "row": 6
+        },
+        "ledgeAttack": {
+          "sourceId": "neo-combat-b",
+          "row": 7
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-combat-b.native.png",
+          "rows": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "poses": 32,
+          "reason": "Initial overcrowded victory/ledgeAttack rows had connected shoes/head silhouettes in columns1/3. Entire initial32 rejected; native replacement32 retained."
+        }
+      ]
+    },
+    {
+      "id": "neo-ledge",
+      "batch": "Combat",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "selection": {
+        "ledgeCatch": {
+          "sourceId": "neo-corrective-states",
+          "row": 2
+        },
+        "ledgeHang": {
+          "sourceId": "neo-ledge",
+          "row": 1
+        },
+        "ledgeClimb": {
+          "sourceId": "neo-ledge",
+          "row": 2
+        },
+        "ledgeDrop": {
+          "sourceId": "neo-ledge",
+          "row": 3
+        },
+        "ledgeJump": {
+          "sourceId": "neo-ledge",
+          "row": 4
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-ledge.native.png",
+          "row": 0,
+          "state": "ledgeCatch",
+          "poses": 4,
+          "reason": "Higher-clearance native Catch replacement provides visibly connected fingers/wrists. Original untouched and retained as rejected row."
+        }
+      ]
+    }
+  ],
+  "sourceReference": "Authored crossover movement and choreography based on the stated version and equipment; not copied official animation and not certified frame-for-frame canon. Simple/air/ledge actions follow the actual simple profile; charge/special use the secondary profile.",
+  "visualReview": {
+    "complete": true,
+    "outfit": "Reloaded closed black high-collar cassock, short black hair, narrow sunglasses, bare hands.",
+    "weapons": "Unarmed martial actions throughout. Bullet Time Counter is physical secondary dodge/counter, with no projectile.",
+    "limitations": [
+      "Original adapted crossover choreography; no certified official1:1 animation or exported game frames.",
+      "Runtime facing mirrors the native source, including costume asymmetry."
+    ]
+  },
+  "incompleteInitialSources": [
+    {
+      "id": "neo-defense",
+      "observedRows": 7,
+      "expectedRows": 8,
+      "missingState": "shieldBreak"
+    },
+    {
+      "id": "neo-combat-a",
+      "observedRows": 7,
+      "expectedRows": 8,
+      "missingState": "crouchLight"
+    }
+  ]
+}

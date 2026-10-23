@@ -1,0 +1,11 @@
+{
+  "holdStartedAt": "2026-10-22T20:16:29.092467+00:00",
+  "runnerPid": 8480,
+  "auditPid": 8530,
+  "holdMethod": "SIGSTOP only on runner parent; audit child continues independently.",
+  "reason": "Root requested steps3/4 wait until concurrent browser fixtures are complete because generated frontend JSON can trigger HMR.",
+  "resumeRequires": "Explicit root green light for3/4/5",
+  "resumedAt": "2026-10-22T20:20:25.480933+00:00",
+  "resumeAuthorization": "Root confirms all parallel browser/runtime fixtures PASS; steps3/4/5 may follow audit completion without further hold.",
+  "timingNote": "Step2 wall time includes the parent hold; the independent audit child continued throughout."
+}

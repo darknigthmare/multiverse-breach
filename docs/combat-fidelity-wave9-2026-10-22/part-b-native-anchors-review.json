@@ -1,0 +1,165 @@
+{
+  "date": "2026-10-22",
+  "coordinateSpace": "Exact normalized256x256 sprite cell pixels before per-row renderScale; origins measured on connected physical muzzle, actual blue hand or native-drawn technical drone focus. Not actor-space offsets.",
+  "method": "Visual contact inspection with32px technical grid and RGBA-neighbourhood checks at measured weapon apertures; no anatomy or pixels modified.",
+  "measurementPrecision": "Integer pixel anchor; handwritten annotation about1–2px visual precision, no claim of source-game coordinates.",
+  "anchorFile": "src/game/combat/nativeSuperAnchorsWave9PartB.generated.json",
+  "anchorFileSha256": "41627b85bb96250aceea35607682e7d6190f43a28c4fcda98647f6f5114eff8c",
+  "records": [
+    {
+      "id": "shepard",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/shepard.png",
+      "sheetSha256": "d23f840cbafcbd365896e90f433511832b7aaa591e93946d19608d5ad90f0ed2",
+      "anchors": {
+        "fatality": [
+          {
+            "x": 227,
+            "y": 131
+          },
+          {
+            "x": 205,
+            "y": 99
+          },
+          {
+            "x": 181,
+            "y": 99
+          },
+          null
+        ],
+        "super": [
+          {
+            "x": 188,
+            "y": 109
+          },
+          {
+            "x": 213,
+            "y": 121
+          },
+          {
+            "x": 172,
+            "y": 124
+          },
+          null
+        ]
+      },
+      "originKind": "native-physical-weapon-aperture",
+      "nullMeans": "No valid emission origin for that exact native pose: lowered weapon, no deployed drone, or no casting hand."
+    },
+    {
+      "id": "garrus",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/garrus.png",
+      "sheetSha256": "d277069c5206870cb2757e86179353c4eea5e7f6cd2a7f0875066d6ae5743042",
+      "anchors": {
+        "fatality": [
+          {
+            "x": 207,
+            "y": 179
+          },
+          {
+            "x": 208,
+            "y": 162
+          },
+          {
+            "x": 206,
+            "y": 165
+          },
+          null
+        ],
+        "super": [
+          null,
+          {
+            "x": 201,
+            "y": 156
+          },
+          {
+            "x": 198,
+            "y": 158
+          },
+          null
+        ]
+      },
+      "originKind": "native-physical-weapon-aperture",
+      "nullMeans": "No valid emission origin for that exact native pose: lowered weapon, no deployed drone, or no casting hand."
+    },
+    {
+      "id": "liara",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/liara.png",
+      "sheetSha256": "f6ec455eb1482eb45c398110f812b74c0a5c85434475588067bb7d469e23a86a",
+      "anchors": {
+        "fatality": [
+          {
+            "x": 178,
+            "y": 110
+          },
+          {
+            "x": 149,
+            "y": 127
+          },
+          {
+            "x": 155,
+            "y": 108
+          },
+          null
+        ],
+        "super": [
+          {
+            "x": 206,
+            "y": 124
+          },
+          {
+            "x": 159,
+            "y": 135
+          },
+          {
+            "x": 160,
+            "y": 134
+          },
+          {
+            "x": 175,
+            "y": 124
+          }
+        ]
+      },
+      "originKind": "native-biotic-palm",
+      "nullMeans": "No valid emission origin for that exact native pose: lowered weapon, no deployed drone, or no casting hand."
+    },
+    {
+      "id": "tali",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/tali.png",
+      "sheetSha256": "8a6332a16eeb184029b02984453f42f23e270373dc55e14bdb1cedfe23c51e90",
+      "anchors": {
+        "fatality": [
+          null,
+          {
+            "x": 179,
+            "y": 139
+          },
+          {
+            "x": 167,
+            "y": 138
+          },
+          null
+        ],
+        "super": [
+          null,
+          {
+            "x": 178,
+            "y": 142
+          },
+          {
+            "x": 167,
+            "y": 140
+          },
+          null
+        ]
+      },
+      "originKind": "native-technical-drone-focus",
+      "nullMeans": "No valid emission origin for that exact native pose: lowered weapon, no deployed drone, or no casting hand."
+    }
+  ],
+  "wrex": "Self guard has no emission origin and no damage beam.",
+  "source1to1Verified": false,
+  "runtimePointSchema": "{x:number,y:number}|null",
+  "measurementSource": "docs/combat-fidelity-wave9-2026-10-22/part-b-native-anchor-measurements.json",
+  "schemaCorrection": "Initial xy tuples were incompatible with the existing runtime point-object schema; the archived measurement source and presentation builder now regenerate object points and check exact equality. Coordinates/nulls/PNG pixels unchanged."
+}

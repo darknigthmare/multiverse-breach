@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "status": "final-production-freeze-passed-and-evidence-frozen",
+  "productionGate": "Root final freeze after corrected Lilith native32/base16 PNGs and PartC registries, retaining prior support/clone fixes. No production source or image changed by this agent during proof runs.",
+  "node": {
+    "command": "node --test scripts/summonAnimationWave11.test.mjs",
+    "exitCode": 0,
+    "execSession": 31622,
+    "tests": 16,
+    "passed": 16,
+    "failed": 0,
+    "durationMs": 28173.487525,
+    "log": "../summon-node-final.log",
+    "checks": [
+      "7 exact native identities; mismatched universe/performer/source/action/kind rejected",
+      "112 real RGBA cells; 16 distinct each, common BODY190 scale, baseline244 and clear margins",
+      "23 previous native assets and28 four-pose legacy sheets retain exact bytes/fullmetadata and280 historical geometrysamples",
+      "Both camps: actual16 source draws, cost100 ATB+100charge once, free cancellation, pause, return, single impact at attackcol2, used-command refusal",
+      "Both camps: interrupted/disposed/dead/removed callers cannot cause late impacts; target identity remains committed",
+      "Five real weapon apertures projected by phase/frame/facing; lowered weapons and two melee sources have no fictitious muzzle",
+      "40 same-universe partner bindings:28 native,12 real fallbacks; outside-batch rawDog action preserved",
+      "Hermione guard allies once with no HP changes, no newasset and actual calm legacyrow0 at impact",
+      "All7 offensives require accepted HP-lowering contact; fixed contact after target movement orKO"
+    ]
+  },
+  "browser": {
+    "command": "node docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-browser.mjs --after-production-freeze",
+    "exitCode": 0,
+    "execSession": 7427,
+    "actualGameCanvasFlows": 16,
+    "nativeFlows": 14,
+    "fallbackFlows": 2,
+    "distinctSourceCells": 112,
+    "nativeCells": 112,
+    "opposingNativeCells": 112,
+    "nativePixelMirrorChecks": 224,
+    "allEffectsOnce": true,
+    "offensiveFlows": 14,
+    "offensiveHpImpacts": 14,
+    "supportFlows": 2,
+    "supportEffectEvents": 2,
+    "supportDamageImpacts": 0,
+    "supportAlliedHpUnchanged": true,
+    "pageErrors": [],
+    "productionInputsStableDuringRun": true,
+    "sourceSnapshotScope": "Recursively resolved literal relative JS/JSX/JSON imports reachable from GameCanvas, plus the seven new native reinforcement PNGs and the twenty frozen Part B native32/base16 PNGs. This does not snapshot remote dependencies or claim every dynamically constructed import.",
+    "sourceFiles": 312,
+    "sourceHashesRetainedIn": "summon-wave11-result.json",
+    "effectTicks": [
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99
+    ],
+    "sourceAttackColumnAtImpact": 2,
+    "captureCount": 16,
+    "captureReview": "All16 final captures visually inspected in the two final contact montages. Real physical weapons and melee approaches; Hermione old legacy-run arrival/return and calm row0 Protego, no offensive beam. No new native asset counted for Hermione.",
+    "actualUiControls": "Real GameCanvas command button, free cancellation, U/Numpad5, target confirmation, real sessionPaused hostprop, resume and already-used disabledcommand.",
+    "fixtures": [
+      "HP100000/charge100/ATB100/autoBattleoff; supportallies HP40000/60000.",
+      "Actualproduction update/draw, commit pauses at tick0 to avoid browserlatency skippingarrival.",
+      "112 unique newnative sourcecells eachrendered inbothcamps, not224differentposes.",
+      "Hermione has no newnative atlas, dedicated pose or nativepixelmirror counted.",
+      "Developmentserver integration only; finalproductionHTTPdistribution outside thisevidence."
+    ]
+  },
+  "frozenPartB": {
+    "pngs": 20,
+    "registries": 2,
+    "anchorsAndAbilities": true,
+    "hashesMatchDeliveryBeforeAndAfter": true,
+    "deliverySha256": "b85012063f66dc6b6939fc28ad751d577c54e6454f631974d9a8ae7365d21e28"
+  },
+  "preservedAttempts": {
+    "nodeFixtureImport": {
+      "log": "../summon-node-attempt-1-fixture-import.log",
+      "exitCode": 1,
+      "reason": "Copied fixture imported old uppercase ROSTER_REINFORCEMENTS_WAVE10 export from Wave11 module. Fixed test import only."
+    },
+    "browserFixtureRow": {
+      "directory": "summon-attempt-1-fixture-row/",
+      "exitCode": 1,
+      "reason": "Fixture incorrectly demanded legacyrow0 during arrival/return; renderer legitimately uses runrow1 and calmrow0 at Protego impact. No productionchange."
+    },
+    "intermediateCompleteRun": {
+      "directory": "summon-intermediate-before-support-projectile-fix/",
+      "exitCode": 0,
+      "flows": 16,
+      "reason": "Earlier complete passing run preserved before final source/asset revalidations.",
+      "changedProductionInputsComparedWithFinalBeforeLilith": [
+        {
+          "path": "src/game/combat/characterAnimationsWave11PartC.generated.json",
+          "intermediateSha256": "d95dc0963af7ae7c3ebc5d516b1740a94c3a63478d8d684eeb014fa7123d4e00",
+          "finalSha256": "64f881d7a95cdf7823cdccfc2c0ae25c888d218f5f40ce86a2815d9b47374852"
+        },
+        {
+          "path": "src/game/combat/characterSpriteCorrectionsWave11PartC.generated.json",
+          "intermediateSha256": "e58ef1e72484c77b38c1adec819273dff3974de0b33aa2b90879f5c0902fe538",
+          "finalSha256": "40025270ffe6f2cb9eaf58fef8bc1d97ba643d010697e62e67714924704c9b77"
+        }
+      ]
+    },
+    "tooling": "npx eslint unavailable; command/error log preserved in ../summon-eslint-unavailable.log. Repository-installed oxlint used instead, exit0."
+  },
+  "lilithCorrectionRevalidation": {
+    "priorFullArchive": "summon-before-lilith-correction-final/",
+    "archiveManifestSha256": "f59ccd806d8a42d254f9b518363bf87368a18a29732643fc088f6866b059090c",
+    "priorArchiveFiles": 54,
+    "allPriorArchivedHashesVerified": true,
+    "rootApprovedLilithInputFiles": [
+      {
+        "path": "src/game/combat/characterAnimationsWave11PartC.generated.json",
+        "sha256": "64f881d7a95cdf7823cdccfc2c0ae25c888d218f5f40ce86a2815d9b47374852"
+      },
+      {
+        "path": "public/sprites/generated/combat-character-animations-wave11/lilith_borderlands.png",
+        "sha256": "b53698259049e4b0a1bcd6255af62d3069170b11d5cab83977efc83e1fd98c0b"
+      },
+      {
+        "path": "src/game/combat/characterSpriteCorrectionsWave11PartC.generated.json",
+        "sha256": "40025270ffe6f2cb9eaf58fef8bc1d97ba643d010697e62e67714924704c9b77"
+      },
+      {
+        "path": "public/sprites/generated/combat-character-corrections-wave11/lilith_borderlands.png",
+        "sha256": "0e82e3fd3b5a6f4a1465b8a7ffccb16dd093b20cf352175ba1cc9f5e93f95228"
+      }
+    ],
+    "inputHashesCheckedBeforeLilithFlowsAndAfterRun": true,
+    "changedMetadataInputsComparedWithPriorFinal": [
+      {
+        "path": "src/game/combat/characterAnimationsWave11PartC.generated.json",
+        "intermediateSha256": "d95dc0963af7ae7c3ebc5d516b1740a94c3a63478d8d684eeb014fa7123d4e00",
+        "finalSha256": "64f881d7a95cdf7823cdccfc2c0ae25c888d218f5f40ce86a2815d9b47374852"
+      },
+      {
+        "path": "src/game/combat/characterSpriteCorrectionsWave11PartC.generated.json",
+        "intermediateSha256": "e58ef1e72484c77b38c1adec819273dff3974de0b33aa2b90879f5c0902fe538",
+        "finalSha256": "40025270ffe6f2cb9eaf58fef8bc1d97ba643d010697e62e67714924704c9b77"
+      }
+    ],
+    "allOther310SnapshotInputsUnchanged": true
+  },
+  "syntaxChecksExitCode": 0,
+  "lint": {
+    "tool": "repository-installed oxlint",
+    "exitCode": 0,
+    "log": "../summon-lint.log"
+  },
+  "productionFilesChangedByHarness": false,
+  "uiClosed": true,
+  "source1to1Verified": false,
+  "canon1to1Verified": false,
+  "files": [
+    {
+      "path": "scripts/summonAnimationWave11.test.mjs",
+      "sha256": "7ca875dd690d72180dca4909cf2963557ef400a49a0a34e2348e3c234e6b5a4a",
+      "bytes": 31249
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-node-final.log",
+      "sha256": "266afb9fc6721a18f865a82911eeda5112863cbaae6c1278000d8ae49e5cd2e4",
+      "bytes": 2208
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-browser.mjs",
+      "sha256": "5d3729ea2207829e68220859cde4f011f97af23fed7f041f2a9a51c5cf252dfc",
+      "bytes": 23597
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-result.json",
+      "sha256": "885235b1423aad38eb807ffe6057458ee216c83576d3c817e5ceed04f9721171",
+      "bytes": 2796681
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-final.log",
+      "sha256": "e57958c86468e54c063e3014dd22a6bb140f29220caaa6275ef89f0d406fec51",
+      "bytes": 1782
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-review.md",
+      "sha256": "c9d39c6fc3b8720c8b71a94efdf956411cdc1d869bea1d6e9d685715726f7c5d",
+      "bytes": 3667
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-lilith-inputs-before.json",
+      "sha256": "2e1146f11026ccc60393aeef402b5a23dc613cf52c9db1518df6d4909a3e88bf",
+      "bytes": 1020
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-lilith-inputs-after.json",
+      "sha256": "1523204d36f05174cdebca1820757872b294c354e221af2d9b4d5d2f3496dde6",
+      "bytes": 845
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-furiosa-enemy-impact.png",
+      "sha256": "fbf0acd9162927e322e8b749a7e0f0bc832d91281230eaa28c5a03644e1719ea",
+      "bytes": 47567
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-furiosa-player-impact.png",
+      "sha256": "da40df961245bcf1ceaeca7604434e1ec1b1ebd72d8fa01f0892fda1f957037e",
+      "bytes": 47978
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-greer-enemy-impact.png",
+      "sha256": "f20a5f35954a48366c47001fe6cecff68acdf2b885528895d9af371b331587d3",
+      "bytes": 46157
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-greer-player-impact.png",
+      "sha256": "33abfc90235a8440bb42fd4d5d4217d86f1154271b15c5c261c2b89c6e6d5724",
+      "bytes": 46509
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-hermione-enemy-impact.png",
+      "sha256": "d3fcab6b5c8a4fd67be156808a4d84faa52c78fc892a6d0d19e6f0144d7cd445",
+      "bytes": 42884
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-hermione-player-impact.png",
+      "sha256": "6566790a17a3f7021d6c2bd0238e39968127b02ca9402c612180eb2c5a46bf6e",
+      "bytes": 43117
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-korben-enemy-impact.png",
+      "sha256": "b5465b028a021941bf68b0b8b208d2eb8c0872b59dc9c47a5e0e6f83a9d67c14",
+      "bytes": 43911
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-korben-player-impact.png",
+      "sha256": "c9bf6b89ddc621471fab0f3c8b67a11e62a0b0e9730e6edd16466a2588b05402",
+      "bytes": 44215
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-lancelot-enemy-impact.png",
+      "sha256": "b0ba0c2ee4ff2396d0644c66c959e4044611b7b8c1249a6efad7c7da35c7bdd5",
+      "bytes": 46648
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-lancelot-player-impact.png",
+      "sha256": "972b758e2464fe5eed38f62e8feb2c4099ec0f201833c2be6dc2f63fbed48f09",
+      "bytes": 46767
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-roland-enemy-impact.png",
+      "sha256": "22407d12682b818ab609a1a3c16b4e8b98ccef4b3a6e1be7aa77b88f18846b3d",
+      "bytes": 47424
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-roland-player-impact.png",
+      "sha256": "232e1b679962306c15f49c7798eb88d170d3f33891653ecebfa03bb887faa80b",
+      "bytes": 47662
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-ronon-enemy-impact.png",
+      "sha256": "9119cc194216ab1fea5ba4675fe16ffcbd1e5a6b66f84973baf007e9dd3718a5",
+      "bytes": 47018
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-ronon-player-impact.png",
+      "sha256": "434715c2cf8c1f5f7c5c4bed539fc5844f51c2467dcec4b7f66b20f7f0e7f9f4",
+      "bytes": 47095
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-spike-enemy-impact.png",
+      "sha256": "b0b33666933fd8c5ca50742173a7ac31376f5049c54a4646cc30922d5f44d616",
+      "bytes": 43228
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-spike-player-impact.png",
+      "sha256": "9c6331d8119b4dba27cf9368c214e880739cde08f15e04b4e7b95cfe03e3c794",
+      "bytes": 43549
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-final-captures-1.png",
+      "sha256": "5462d75a3f7c57195ce5643548454bf173d972d2d19209e11920b182ceed02ab",
+      "bytes": 120413
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-final-captures-2.png",
+      "sha256": "64773605fc8495898021505f8ca78ace0bc24b4dd7d1bea0f16d05723ef4943b",
+      "bytes": 119395
+    }
+  ]
+}

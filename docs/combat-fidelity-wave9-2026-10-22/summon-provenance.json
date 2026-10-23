@@ -1,0 +1,2243 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "provider": "OpenAI",
+  "tool": "image_gen",
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "actualNativeGenerationCalls": 5,
+  "nativePoses": 64,
+  "rosterPerformers": 4,
+  "supernaturalEntityBodies": 0,
+  "preservedHistoricalEntityAtlases": 28,
+  "rectangularCellsPreserveBodyScaleAndWeaponReach": true,
+  "sources": [
+    {
+      "id": "gears-dom",
+      "archivedPath": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/dom-original.png",
+      "sha256": "3f9820ab7b0ae87b39726938cbcad72fd2d8f2f6c687d14820b7da2b18706eec",
+      "originalGeneratedPath": "/workspace/generated_images/exec-73a951db-61ff-46fb-be06-19867bba2b08.png",
+      "promptFile": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/dom-prompt.txt",
+      "promptSha256": "e3daf5dc6e9ec499dcf89052050afeb4e3f22940333e150873bcdda7b6d23b15",
+      "prompt": "Create a genuinely NEW native transparent game sprite atlas with EXACTLY4 columns and4 rows, sixteen individually drawn full-body poses. Equal rectangular cells, generous fully transparent gutters, no text, borders, grid, scenery, target, second person, injury or gore. Crisp detailed colored pixel-art suited to a side-view game. Every pose faces right, head-to-feet visible, ALL physical equipment fully contained. Body dimensions and anatomy keep ONE consistent scale across the entire sheet, including crouching and recoil. Every row has FOUR meaningfully distinct evolving poses, not copies or recolored cells. Exact row order: row1 ARRIVAL four walking-to-braced poses; row2 PREPARATION four aiming/bracing poses; row3 ATTACK four weapon action poses; row4 RECOVERY four lowering/withdrawing poses. Keep both hands physically connected to wrists and weapon grips. Native art supplies the body and physical weapon. No long beams, detached projectiles or explosion sprites: the game renderer supplies time-synchronized travel and contact. Use the attached image only for Dominic 'Dom' Santiago's identity and original COG costume in Gears of War2(2008): muscular Latino adult man, short black hair and beard, scarred face, bare tattooed arms, dark bulky blue-lit COG body armor, gloves, knee armor and boots. This is a FOUR-row reinforcement atlas, not the reference animation. For this action he carries the original bulky short-barrel Gnasher shotgun, NOT the reference's long Lancer chainsaw rifle; no chainsaw on the Gnasher. Arrival with Gnasher low in both hands, then plant feet. Preparation raise stock to shoulder and settle cheek weld with correct two-handed grip. Attack controlled short Gnasher volley with visible recoil, tiny local muzzle flash at most; distinct lean/recoil/pump/reset poses. Recovery lower shotgun safely, shift weight and take two withdrawal steps. His Maria memories and Cole's slogans create no visual power. Exactly4x4 native poses, true transparency.",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/dom-reference.png",
+      "referencedSourceSha256": "95d4f3b258edb5c1cc684b07cbe790762ec967f6cd24e72ee19e94f4bded4857",
+      "identityReferenceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/dom-identity-reference.png",
+      "originalSourceFile": null,
+      "originalPrompt": null,
+      "originalToolArguments": null,
+      "toolArguments": {
+        "prompt": "Create a genuinely NEW native transparent game sprite atlas with EXACTLY4 columns and4 rows, sixteen individually drawn full-body poses. Equal rectangular cells, generous fully transparent gutters, no text, borders, grid, scenery, target, second person, injury or gore. Crisp detailed colored pixel-art suited to a side-view game. Every pose faces right, head-to-feet visible, ALL physical equipment fully contained. Body dimensions and anatomy keep ONE consistent scale across the entire sheet, including crouching and recoil. Every row has FOUR meaningfully distinct evolving poses, not copies or recolored cells. Exact row order: row1 ARRIVAL four walking-to-braced poses; row2 PREPARATION four aiming/bracing poses; row3 ATTACK four weapon action poses; row4 RECOVERY four lowering/withdrawing poses. Keep both hands physically connected to wrists and weapon grips. Native art supplies the body and physical weapon. No long beams, detached projectiles or explosion sprites: the game renderer supplies time-synchronized travel and contact. Use the attached image only for Dominic 'Dom' Santiago's identity and original COG costume in Gears of War2(2008): muscular Latino adult man, short black hair and beard, scarred face, bare tattooed arms, dark bulky blue-lit COG body armor, gloves, knee armor and boots. This is a FOUR-row reinforcement atlas, not the reference animation. For this action he carries the original bulky short-barrel Gnasher shotgun, NOT the reference's long Lancer chainsaw rifle; no chainsaw on the Gnasher. Arrival with Gnasher low in both hands, then plant feet. Preparation raise stock to shoulder and settle cheek weld with correct two-handed grip. Attack controlled short Gnasher volley with visible recoil, tiny local muzzle flash at most; distinct lean/recoil/pump/reset poses. Recovery lower shotgun safely, shift weight and take two withdrawal steps. His Maria memories and Cole's slogans create no visual power. Exactly4x4 native poses, true transparency.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/public/sprites/generated/heroes/gears-of-war/dom.png"
+        ],
+        "transparent_background": true
+      },
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeGenerationCalls": 1,
+      "accepted": true,
+      "sourceWork": "Gears of War 2 (2008)",
+      "reviewed": true,
+      "reviewNotes": "All sixteen native whole-body poses inspected: own costume, body and physical weapon; right-facing, complete feet, no extra performer. Wide cells retain weapon reach under one body scale. Local native muzzle flashes are an adapted firing burst, while the RPG owns one impact. Leon's native correction retains an empty physical tube after firing; invisible RGB under zero alpha is cleaned only during packing.",
+      "networkVerified": false,
+      "canon1to1Verified": false
+    },
+    {
+      "id": "resident-evil-leon",
+      "archivedPath": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/leon-original.png",
+      "sha256": "91dd5dbda540a86c6ad054af8f99cc17e32593ce29f20828f1be27908c3d5012",
+      "originalGeneratedPath": "/workspace/generated_images/exec-7421de9b-ae17-4c42-baa9-e60103573152.png",
+      "promptFile": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/leon-prompt.txt",
+      "promptSha256": "742ba6eb2f8c8059e02321a90f11dde842aef926d98a78193e75f4eba5c5142c",
+      "prompt": "Edit this exact sixteen-pose4x4 Leon sprite atlas while preserving the native body poses, original RE4(2005) brown shearling jacket costume, adult proportions, physical shoulder launcher, and exact grid. Remove the ENTIRE brown/black vignette background and all atmospheric shadow behind the subjects. Every space between and around all bodies, boots and equipment must have truly transparent alpha, including large completely empty transparent gutters and image edges. No backdrop, no ground shadow, no new scenery. Keep all subjects whole with generous transparent margin; do not crop, repeat or combine cells. Also physically correct launcher continuity: after the firing frame (row3 column2), the red warhead has LEFT the tube, so row3 columns3&4 and every recovery-row4 frame show an EMPTY front launcher tube with no red warhead sticking out. Native original redraw only for that necessary tube detail, retain the rest of each whole-body pose. No detached rocket, no enemy, no injury. EXACTLY4 columns ×4 rows, original sixteen distinct poses, true transparent background.",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/leon-reference.png",
+      "referencedSourceSha256": "11dd781ca50671ba33d24dd62bde4e28e8a2aa6ebfa3f9b3cb1da9cd664d6c60",
+      "identityReferenceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/leon-identity-reference.png",
+      "originalSourceFile": "/workspace/generated_images/exec-21126f61-fb87-4d19-a3bf-28bc910404da.png",
+      "originalPrompt": "Create a genuinely NEW native transparent game sprite atlas with EXACTLY4 columns and4 rows, sixteen individually drawn full-body poses. Equal rectangular cells, generous fully transparent gutters, no text, borders, grid, scenery, target, second person, injury or gore. Crisp detailed colored pixel-art suited to a side-view game. Every pose faces right, head-to-feet visible, ALL physical equipment fully contained. Body dimensions and anatomy keep ONE consistent scale across the entire sheet, including crouching and recoil. Every row has FOUR meaningfully distinct evolving poses, not copies or recolored cells. Exact row order: row1 ARRIVAL four walking-to-braced poses; row2 PREPARATION four aiming/bracing poses; row3 ATTACK four weapon action poses; row4 RECOVERY four lowering/withdrawing poses. Keep both hands physically connected to wrists and weapon grips. Native art supplies the body and physical weapon. No long beams, detached projectiles or explosion sprites: the game renderer supplies time-synchronized travel and contact. Use the attached image only for Leon S.Kennedy in original Resident Evil4(2005), young adult agent with ash-blond side-part hair, brown shearling-collar flight jacket, black fitted shirt, dark tactical trousers, gloves, holsters and boots. NOT RPD police costume, NOT2023 redesign. This must be a NEW FOUR-row sixteen-pose reinforcement atlas. Physical action: Special Rocket Launcher used for the final Saddler encounter, an olive long shoulder-fired launcher with a red-tipped warhead as seen in the reference. Arrival carry launcher diagonally at safe low-ready; preparation raise to right shoulder, supporting hand under barrel and firing hand on actual grip; attack brace and operate launcher with four distinct aim/fire/recoil/settle poses, tiny local backblast/muzzle puff only, never a detached rocket or giant explosion; recovery lower the empty physical tube and step away. Keep the entire tube inside each cell with abundant transparent room. No victim, no monster, no injury. Exactly4x4 new native poses, true transparency.",
+      "originalToolArguments": {
+        "prompt": "Create a genuinely NEW native transparent game sprite atlas with EXACTLY4 columns and4 rows, sixteen individually drawn full-body poses. Equal rectangular cells, generous fully transparent gutters, no text, borders, grid, scenery, target, second person, injury or gore. Crisp detailed colored pixel-art suited to a side-view game. Every pose faces right, head-to-feet visible, ALL physical equipment fully contained. Body dimensions and anatomy keep ONE consistent scale across the entire sheet, including crouching and recoil. Every row has FOUR meaningfully distinct evolving poses, not copies or recolored cells. Exact row order: row1 ARRIVAL four walking-to-braced poses; row2 PREPARATION four aiming/bracing poses; row3 ATTACK four weapon action poses; row4 RECOVERY four lowering/withdrawing poses. Keep both hands physically connected to wrists and weapon grips. Native art supplies the body and physical weapon. No long beams, detached projectiles or explosion sprites: the game renderer supplies time-synchronized travel and contact. Use the attached image only for Leon S.Kennedy in original Resident Evil4(2005), young adult agent with ash-blond side-part hair, brown shearling-collar flight jacket, black fitted shirt, dark tactical trousers, gloves, holsters and boots. NOT RPD police costume, NOT2023 redesign. This must be a NEW FOUR-row sixteen-pose reinforcement atlas. Physical action: Special Rocket Launcher used for the final Saddler encounter, an olive long shoulder-fired launcher with a red-tipped warhead as seen in the reference. Arrival carry launcher diagonally at safe low-ready; preparation raise to right shoulder, supporting hand under barrel and firing hand on actual grip; attack brace and operate launcher with four distinct aim/fire/recoil/settle poses, tiny local backblast/muzzle puff only, never a detached rocket or giant explosion; recovery lower the empty physical tube and step away. Keep the entire tube inside each cell with abundant transparent room. No victim, no monster, no injury. Exactly4x4 new native poses, true transparency.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/public/sprites/generated/combat-character-animations-wave5/leon.png"
+        ],
+        "transparent_background": true
+      },
+      "toolArguments": {
+        "prompt": "Edit this exact sixteen-pose4x4 Leon sprite atlas while preserving the native body poses, original RE4(2005) brown shearling jacket costume, adult proportions, physical shoulder launcher, and exact grid. Remove the ENTIRE brown/black vignette background and all atmospheric shadow behind the subjects. Every space between and around all bodies, boots and equipment must have truly transparent alpha, including large completely empty transparent gutters and image edges. No backdrop, no ground shadow, no new scenery. Keep all subjects whole with generous transparent margin; do not crop, repeat or combine cells. Also physically correct launcher continuity: after the firing frame (row3 column2), the red warhead has LEFT the tube, so row3 columns3&4 and every recovery-row4 frame show an EMPTY front launcher tube with no red warhead sticking out. Native original redraw only for that necessary tube detail, retain the rest of each whole-body pose. No detached rocket, no enemy, no injury. EXACTLY4 columns ×4 rows, original sixteen distinct poses, true transparent background.",
+        "referenced_image_paths": [
+          "/workspace/generated_images/exec-21126f61-fb87-4d19-a3bf-28bc910404da.png"
+        ],
+        "transparent_background": true
+      },
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeGenerationCalls": 2,
+      "accepted": true,
+      "sourceWork": "Resident Evil 4 (2005), original agent version",
+      "reviewed": true,
+      "reviewNotes": "All sixteen native whole-body poses inspected: own costume, body and physical weapon; right-facing, complete feet, no extra performer. Wide cells retain weapon reach under one body scale. Local native muzzle flashes are an adapted firing burst, while the RPG owns one impact. Leon's native correction retains an empty physical tube after firing; invisible RGB under zero alpha is cleaned only during packing.",
+      "networkVerified": false,
+      "canon1to1Verified": false
+    },
+    {
+      "id": "mass-effect-garrus",
+      "archivedPath": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/garrus-original.png",
+      "sha256": "e869aab812235c02fdaf781bfd731fe06b5db7a16efc89d0310e626bedaf239b",
+      "originalGeneratedPath": "/workspace/generated_images/exec-1cf80b23-1515-4eb9-a6c2-67146a92d8e1.png",
+      "promptFile": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/garrus-prompt.txt",
+      "promptSha256": "89fe8cb4bff52c71432fcf8a8391b3647dc93d924383078d52fe754533bdcb4b",
+      "prompt": "Draw a NEW NATIVE transparent pixel-art game sprite atlas, EXACTLY FOUR columns and FOUR rows, sixteen DIFFERENT whole-body poses. Equal cells with large fully transparent empty gutters. All poses face RIGHT, shoes visible, every weapon fully inside cell. Same physical body scale and adult proportions in all sixteen cells. No background, vignette, shadow backdrop, grid, border, labels, second body, enemy, injury or scene. Exact rows: ARRIVAL four distinct walking/settling poses; PREPARATION four distinct raising/aiming/bracing poses; ATTACK four distinct physical firing/recoil/reset poses; RECOVERY four lowering/withdrawal poses. Do not copy the attached atlas layout or its seven/eight rows, use it ONLY for character identity/costume. Native body and native physical weapon, no detached projectile, no long energy beam, no large flash obscuring anatomy. Garrus Vakarian in ME2(2010): tall lean male turian with blue facial markings, scarred right facial side, targeting visor over his anatomical LEFT eye, swept plated head crest and mandibles. Worn cobalt-blue/charcoal segmented armor, three-finger hands, digitigrade turian legs. His own long conventional futuristic sniper rifle, dark metal barrel with scope. Keep his alien head and feet fully inside every cell with a wide top margin; no human face or helmet. Action is his real weapon-launched Concussive Shot, NOT biotics, magic wings, Archangel aura, proximity mine, or eye beam. Arrival carry rifle in two hands; preparation settle stock and aim to right; attack four evolving aim/fire/recoil/reset poses with at most a TINY pale blue muzzle pulse from the barrel; recovery lowers rifle and backs away. Exactly4x4, alpha-transparent.",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/garrus-reference.png",
+      "referencedSourceSha256": "fc7279961c44a56e01e254c662c6a68bee62e09d9eb252158e39b61f50fc2e32",
+      "identityReferenceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/garrus-identity-reference.png",
+      "originalSourceFile": null,
+      "originalPrompt": null,
+      "originalToolArguments": null,
+      "toolArguments": {
+        "prompt": "Draw a NEW NATIVE transparent pixel-art game sprite atlas, EXACTLY FOUR columns and FOUR rows, sixteen DIFFERENT whole-body poses. Equal cells with large fully transparent empty gutters. All poses face RIGHT, shoes visible, every weapon fully inside cell. Same physical body scale and adult proportions in all sixteen cells. No background, vignette, shadow backdrop, grid, border, labels, second body, enemy, injury or scene. Exact rows: ARRIVAL four distinct walking/settling poses; PREPARATION four distinct raising/aiming/bracing poses; ATTACK four distinct physical firing/recoil/reset poses; RECOVERY four lowering/withdrawal poses. Do not copy the attached atlas layout or its seven/eight rows, use it ONLY for character identity/costume. Native body and native physical weapon, no detached projectile, no long energy beam, no large flash obscuring anatomy. Garrus Vakarian in ME2(2010): tall lean male turian with blue facial markings, scarred right facial side, targeting visor over his anatomical LEFT eye, swept plated head crest and mandibles. Worn cobalt-blue/charcoal segmented armor, three-finger hands, digitigrade turian legs. His own long conventional futuristic sniper rifle, dark metal barrel with scope. Keep his alien head and feet fully inside every cell with a wide top margin; no human face or helmet. Action is his real weapon-launched Concussive Shot, NOT biotics, magic wings, Archangel aura, proximity mine, or eye beam. Arrival carry rifle in two hands; preparation settle stock and aim to right; attack four evolving aim/fire/recoil/reset poses with at most a TINY pale blue muzzle pulse from the barrel; recovery lowers rifle and backs away. Exactly4x4, alpha-transparent.",
+        "referenced_image_paths": [
+          "/workspace/generated_images/exec-f8c3deda-4f59-4f2b-b062-c8f96996e39f.png"
+        ],
+        "transparent_background": true
+      },
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeGenerationCalls": 1,
+      "accepted": true,
+      "sourceWork": "Mass Effect 2 (2010), Garrus after Archangel recruitment",
+      "reviewed": true,
+      "reviewNotes": "All sixteen native whole-body poses inspected: own costume, body and physical weapon; right-facing, complete feet, no extra performer. Wide cells retain weapon reach under one body scale. Local native muzzle flashes are an adapted firing burst, while the RPG owns one impact. Leon's native correction retains an empty physical tube after firing; invisible RGB under zero alpha is cleaned only during packing.",
+      "networkVerified": false,
+      "canon1to1Verified": false
+    },
+    {
+      "id": "ghost-in-the-shell-batou",
+      "archivedPath": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/batou-original.png",
+      "sha256": "e83ff4e5f5c3ad08a2bcd2e55e68a87b63aaca3acc3e74733d04326c187e8ccb",
+      "originalGeneratedPath": "/workspace/generated_images/exec-6dd0b832-5885-49d9-8e30-6ebcc4911e3e.png",
+      "promptFile": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/batou-prompt.txt",
+      "promptSha256": "b10520364d819acb13a72a732715bb9ec11b740bea8cc349846d9faf51faecbc",
+      "prompt": "Draw a NEW NATIVE transparent pixel-art game sprite atlas, EXACTLY FOUR columns and FOUR rows, sixteen DIFFERENT whole-body poses. Equal cells with large fully transparent empty gutters. All poses face RIGHT, shoes visible, every weapon fully inside cell. Same physical body scale and adult proportions in all sixteen cells. No background, vignette, shadow backdrop, grid, border, labels, second body, enemy, injury or scene. Exact rows: ARRIVAL four distinct walking/settling poses; PREPARATION four distinct raising/aiming/bracing poses; ATTACK four distinct physical firing/recoil/reset poses; RECOVERY four lowering/withdrawal poses. Do not copy the attached atlas layout or its seven/eight rows, use it ONLY for character identity/costume. Native body and native physical weapon, no detached projectile, no long energy beam, no large flash obscuring anatomy. Batou in GhostintheShell:StandAloneComplex2002 season1. Massive adult male cyborg, light skin, WHITE/gray hair drawn back into a tiny tied tail, two round cybernetic lens eyes (sensors only), square strong jaw, light beige tactical bomber jacket over black shirt, dark charcoal cargo pants with knee pads, black boots. This SAC costume excludes Oshii1995movie/Arise/liveaction versions. He holds his own dark compact conventional assault rifle in both hands; real trigger/support grips with connected wrists. Action is a physical supporting firearm volley; no beam/projectile from eyes, no magic cyborgshield, no extra creature. Arrival steps in with rifle at low ready; preparation braces and aims; attack four evolving firearm poses, tiny local warm muzzle flash only; recovery gun lowers and he steps back. Never a second copy of Batou or folded extra person in a cell. Exactly4x4 new native full-body poses on true transparency.",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/batou-reference.png",
+      "referencedSourceSha256": "4198a67bec992746108d439365bec5afc698158f9b2ba058a61dbff1e4726403",
+      "identityReferenceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/batou-identity-reference.png",
+      "originalSourceFile": null,
+      "originalPrompt": null,
+      "originalToolArguments": null,
+      "toolArguments": {
+        "prompt": "Draw a NEW NATIVE transparent pixel-art game sprite atlas, EXACTLY FOUR columns and FOUR rows, sixteen DIFFERENT whole-body poses. Equal cells with large fully transparent empty gutters. All poses face RIGHT, shoes visible, every weapon fully inside cell. Same physical body scale and adult proportions in all sixteen cells. No background, vignette, shadow backdrop, grid, border, labels, second body, enemy, injury or scene. Exact rows: ARRIVAL four distinct walking/settling poses; PREPARATION four distinct raising/aiming/bracing poses; ATTACK four distinct physical firing/recoil/reset poses; RECOVERY four lowering/withdrawal poses. Do not copy the attached atlas layout or its seven/eight rows, use it ONLY for character identity/costume. Native body and native physical weapon, no detached projectile, no long energy beam, no large flash obscuring anatomy. Batou in GhostintheShell:StandAloneComplex2002 season1. Massive adult male cyborg, light skin, WHITE/gray hair drawn back into a tiny tied tail, two round cybernetic lens eyes (sensors only), square strong jaw, light beige tactical bomber jacket over black shirt, dark charcoal cargo pants with knee pads, black boots. This SAC costume excludes Oshii1995movie/Arise/liveaction versions. He holds his own dark compact conventional assault rifle in both hands; real trigger/support grips with connected wrists. Action is a physical supporting firearm volley; no beam/projectile from eyes, no magic cyborgshield, no extra creature. Arrival steps in with rifle at low ready; preparation braces and aims; attack four evolving firearm poses, tiny local warm muzzle flash only; recovery gun lowers and he steps back. Never a second copy of Batou or folded extra person in a cell. Exactly4x4 new native full-body poses on true transparency.",
+        "referenced_image_paths": [
+          "/workspace/generated_images/exec-416cfdfd-ce40-4799-afaf-39ca8813f63d.png"
+        ],
+        "transparent_background": true
+      },
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeGenerationCalls": 1,
+      "accepted": true,
+      "sourceWork": "Ghost in the Shell: Stand Alone Complex (2002), season 1",
+      "reviewed": true,
+      "reviewNotes": "All sixteen native whole-body poses inspected: own costume, body and physical weapon; right-facing, complete feet, no extra performer. Wide cells retain weapon reach under one body scale. Local native muzzle flashes are an adapted firing burst, while the RPG owns one impact. Leon's native correction retains an empty physical tube after firing; invisible RGB under zero alpha is cleaned only during packing.",
+      "networkVerified": false,
+      "canon1to1Verified": false
+    }
+  ],
+  "entries": [
+    {
+      "id": "gears-dom",
+      "key": "Gears of War::Dom Santiago::Salve de Gnasher de Dom",
+      "universe": "Gears of War",
+      "entityName": "Dom Santiago",
+      "actionName": "Salve de Gnasher de Dom",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "dom",
+      "sheet": "/sprites/generated/summon-animations-wave9/dom.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "f1b96c84b2b055482711470bd70c89d215993349b49776d484e7463222a21b3b",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/dom-original.png",
+      "sourceImageSha256": "3f9820ab7b0ae87b39726938cbcad72fd2d8f2f6c687d14820b7da2b18706eec",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/dom-reference.png",
+      "referenceImageSha256": "95d4f3b258edb5c1cc684b07cbe790762ec967f6cd24e72ee19e94f4bded4857",
+      "sourceWork": "Gears of War 2 (2008)",
+      "sourceReference": "Gears of War 2 (2008). Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. All sixteen native whole-body poses inspected: own costume, body and physical weapon; right-facing, complete feet, no extra performer. Wide cells retain weapon reach under one body scale. Local native muzzle flashes are an adapted firing burst, while the RPG owns one impact. Leon's native correction retains an empty physical tube after firing; invisible RGB under zero alpha is cleaned only during packing.",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          {
+            "x": 353,
+            "y": 109
+          },
+          {
+            "x": 356,
+            "y": 103
+          },
+          {
+            "x": 342,
+            "y": 102
+          }
+        ],
+        "attack": [
+          {
+            "x": 327,
+            "y": 104
+          },
+          {
+            "x": 333,
+            "y": 105
+          },
+          null,
+          {
+            "x": 334,
+            "y": 110
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.6761565836298933,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 3,
+          "targetBodyHeight": 190,
+          "method": "visually-selected-standing-body-reference",
+          "sourceBodyHeight": 281,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/dom-original.png",
+            "sourceImageSha256": "3f9820ab7b0ae87b39726938cbcad72fd2d8f2f6c687d14820b7da2b18706eec",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 331
+            },
+            "scale": 0.6761565836298933,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 28,
+                  "top": 26,
+                  "width": 250,
+                  "height": 287,
+                  "pixels": 36486
+                },
+                "output": {
+                  "left": 169,
+                  "top": 49,
+                  "width": 169,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 343,
+                  "top": 32,
+                  "width": 238,
+                  "height": 281,
+                  "pixels": 34744
+                },
+                "output": {
+                  "left": 170,
+                  "top": 53,
+                  "width": 161,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 657,
+                  "top": 40,
+                  "width": 245,
+                  "height": 273,
+                  "pixels": 35357
+                },
+                "output": {
+                  "left": 170,
+                  "top": 59,
+                  "width": 166,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 980,
+                  "top": 33,
+                  "width": 234,
+                  "height": 281,
+                  "pixels": 36699
+                },
+                "output": {
+                  "left": 177,
+                  "top": 54,
+                  "width": 158,
+                  "height": 190
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/dom-original.png",
+            "sourceImageSha256": "3f9820ab7b0ae87b39726938cbcad72fd2d8f2f6c687d14820b7da2b18706eec",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 329,
+              "bottom": 638
+            },
+            "scale": 0.6761565836298933,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 28,
+                  "top": 21,
+                  "width": 268,
+                  "height": 276,
+                  "pixels": 36280
+                },
+                "output": {
+                  "left": 169,
+                  "top": 57,
+                  "width": 181,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 342,
+                  "top": 19,
+                  "width": 275,
+                  "height": 277,
+                  "pixels": 36395
+                },
+                "output": {
+                  "left": 169,
+                  "top": 56,
+                  "width": 186,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 659,
+                  "top": 26,
+                  "width": 276,
+                  "height": 270,
+                  "pixels": 36922
+                },
+                "output": {
+                  "left": 172,
+                  "top": 61,
+                  "width": 187,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 978,
+                  "top": 27,
+                  "width": 248,
+                  "height": 270,
+                  "pixels": 35517
+                },
+                "output": {
+                  "left": 175,
+                  "top": 61,
+                  "width": 168,
+                  "height": 183
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/dom-original.png",
+            "sourceImageSha256": "3f9820ab7b0ae87b39726938cbcad72fd2d8f2f6c687d14820b7da2b18706eec",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 637,
+              "bottom": 941
+            },
+            "scale": 0.6761565836298933,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 17,
+                  "width": 309,
+                  "height": 277,
+                  "pixels": 39971
+                },
+                "output": {
+                  "left": 168,
+                  "top": 55,
+                  "width": 209,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 333,
+                  "top": 22,
+                  "width": 253,
+                  "height": 273,
+                  "pixels": 36839
+                },
+                "output": {
+                  "left": 163,
+                  "top": 58,
+                  "width": 171,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 648,
+                  "top": 19,
+                  "width": 245,
+                  "height": 276,
+                  "pixels": 38638
+                },
+                "output": {
+                  "left": 164,
+                  "top": 56,
+                  "width": 166,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 962,
+                  "top": 14,
+                  "width": 253,
+                  "height": 283,
+                  "pixels": 37067
+                },
+                "output": {
+                  "left": 165,
+                  "top": 53,
+                  "width": 171,
+                  "height": 191
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/dom-original.png",
+            "sourceImageSha256": "3f9820ab7b0ae87b39726938cbcad72fd2d8f2f6c687d14820b7da2b18706eec",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 940,
+              "bottom": 1254
+            },
+            "scale": 0.6761565836298933,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 60,
+                  "top": 8,
+                  "width": 219,
+                  "height": 287,
+                  "pixels": 37478
+                },
+                "output": {
+                  "left": 191,
+                  "top": 50,
+                  "width": 148,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 345,
+                  "top": 14,
+                  "width": 252,
+                  "height": 275,
+                  "pixels": 35824
+                },
+                "output": {
+                  "left": 171,
+                  "top": 54,
+                  "width": 170,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 679,
+                  "top": 14,
+                  "width": 221,
+                  "height": 278,
+                  "pixels": 33516
+                },
+                "output": {
+                  "left": 185,
+                  "top": 54,
+                  "width": 149,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 1002,
+                  "top": 14,
+                  "width": 222,
+                  "height": 279,
+                  "pixels": 33304
+                },
+                "output": {
+                  "left": 192,
+                  "top": 54,
+                  "width": 150,
+                  "height": 189
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fa6fe3c889817c9d64b83f028f0088ccd6ae5a421333cc9a9ed5f00821887f78",
+              "be549c5f099c1f6d7a3507a34a743207478653b954cc71c294214807bca065aa",
+              "16fade53a5ce3a352ca3d6c602c68ff164c6b94cb0360ed11d64173efbe55e09",
+              "0b72f6e0bc596f7cccfb88dc553b866bb88b720b5528f1ec4d647441b658c647"
+            ],
+            "visiblePixels": [
+              16704,
+              15935,
+              16226,
+              16749
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c9f494c1b72b18d02f419f8e2da19419ce5e1de60170a01d76838ed1fd021a4a",
+              "26a922ecd5242d2c3b14cbe550d39ec0f16665731ba9af4a895d6ab269e21d76",
+              "140557e807c382c4cb4f59b67cefe9c2affca239829f908c385df4937408e8c5",
+              "eb874c39dade09dc522908f6a351f00b91b0c76f619148a9531e67905578e598"
+            ],
+            "visiblePixels": [
+              16643,
+              16630,
+              16942,
+              16321
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "80dc1d3d9b8aa4322e7a2ff150131eafd441a344e79d26321e1f7ed1438d3cb8",
+              "a6935adf1269d242d8eed778f905db69e76e7ba6cff4e49b6d301fdc9c4dc3e0",
+              "58989eb32c0dea9bf4f13c68be13309f5d7921aff37c441ba921b015f15c6788",
+              "51e50a602acb0afd000ba43a1c58eabc7bbd3532ece07d7c3080115c49831330"
+            ],
+            "visiblePixels": [
+              18306,
+              16943,
+              17739,
+              16976
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "425adedbd2f3749660e681f60bc3253c092ce37195c8607c8c9c13dfd2f8ed40",
+              "a7022c89f5889c33a633a06ceec7772e240323bd7153ad2c805853c1a1165894",
+              "b31f9d433daca5b161991865cfb9d423c18badd6e23098d7249a459b30a56002",
+              "cadadfeadf806f29c939abaffa9d774fa4a1136a08d15c642bb58fa77c9e1f00"
+            ],
+            "visiblePixels": [
+              17109,
+              16415,
+              15363,
+              15267
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "resident-evil-leon",
+      "key": "Resident Evil::Leon S. Kennedy::Special Rocket Launcher",
+      "universe": "Resident Evil",
+      "entityName": "Leon S. Kennedy",
+      "actionName": "Special Rocket Launcher",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "leon",
+      "sheet": "/sprites/generated/summon-animations-wave9/leon.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "4a019c63a78d6f9edf6280a7765da27455a516456f43f256d5b155183bc82242",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/leon-original.png",
+      "sourceImageSha256": "91dd5dbda540a86c6ad054af8f99cc17e32593ce29f20828f1be27908c3d5012",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/leon-reference.png",
+      "referenceImageSha256": "11dd781ca50671ba33d24dd62bde4e28e8a2aa6ebfa3f9b3cb1da9cd664d6c60",
+      "sourceWork": "Resident Evil 4 (2005), original agent version",
+      "sourceReference": "Resident Evil 4 (2005), original agent version. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. All sixteen native whole-body poses inspected: own costume, body and physical weapon; right-facing, complete feet, no extra performer. Wide cells retain weapon reach under one body scale. Local native muzzle flashes are an adapted firing burst, while the RPG owns one impact. Leon's native correction retains an empty physical tube after firing; invisible RGB under zero alpha is cleaned only during packing.",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          {
+            "x": 347,
+            "y": 100
+          },
+          {
+            "x": 345,
+            "y": 93
+          },
+          {
+            "x": 350,
+            "y": 94
+          },
+          {
+            "x": 352,
+            "y": 90
+          }
+        ],
+        "attack": [
+          {
+            "x": 353,
+            "y": 96
+          },
+          {
+            "x": 339,
+            "y": 94
+          },
+          {
+            "x": 326,
+            "y": 82
+          },
+          {
+            "x": 344,
+            "y": 94
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.76,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 3,
+          "targetBodyHeight": 190,
+          "method": "visually-selected-standing-body-reference",
+          "sourceBodyHeight": 250,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/leon-original.png",
+            "sourceImageSha256": "91dd5dbda540a86c6ad054af8f99cc17e32593ce29f20828f1be27908c3d5012",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 263
+            },
+            "scale": 0.76,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 112,
+                  "top": 9,
+                  "width": 206,
+                  "height": 247,
+                  "pixels": 23394
+                },
+                "output": {
+                  "left": 195,
+                  "top": 55,
+                  "width": 157,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 467,
+                  "top": 9,
+                  "width": 236,
+                  "height": 248,
+                  "pixels": 24507
+                },
+                "output": {
+                  "left": 173,
+                  "top": 55,
+                  "width": 179,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 842,
+                  "top": 5,
+                  "width": 230,
+                  "height": 253,
+                  "pixels": 25061
+                },
+                "output": {
+                  "left": 166,
+                  "top": 52,
+                  "width": 175,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 1217,
+                  "top": 8,
+                  "width": 268,
+                  "height": 250,
+                  "pixels": 26196
+                },
+                "output": {
+                  "left": 159,
+                  "top": 54,
+                  "width": 204,
+                  "height": 190
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/leon-original.png",
+            "sourceImageSha256": "91dd5dbda540a86c6ad054af8f99cc17e32593ce29f20828f1be27908c3d5012",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 258,
+              "bottom": 531
+            },
+            "scale": 0.76,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 78,
+                  "top": 8,
+                  "width": 275,
+                  "height": 258,
+                  "pixels": 30751
+                },
+                "output": {
+                  "left": 169,
+                  "top": 47,
+                  "width": 209,
+                  "height": 196
+                }
+              },
+              {
+                "source": {
+                  "left": 464,
+                  "top": 13,
+                  "width": 269,
+                  "height": 253,
+                  "pixels": 29331
+                },
+                "output": {
+                  "left": 171,
+                  "top": 51,
+                  "width": 204,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 824,
+                  "top": 12,
+                  "width": 296,
+                  "height": 254,
+                  "pixels": 30460
+                },
+                "output": {
+                  "left": 153,
+                  "top": 50,
+                  "width": 225,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 1218,
+                  "top": 12,
+                  "width": 289,
+                  "height": 255,
+                  "pixels": 30435
+                },
+                "output": {
+                  "left": 160,
+                  "top": 50,
+                  "width": 220,
+                  "height": 194
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/leon-original.png",
+            "sourceImageSha256": "91dd5dbda540a86c6ad054af8f99cc17e32593ce29f20828f1be27908c3d5012",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 524,
+              "bottom": 787
+            },
+            "scale": 0.76,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 72,
+                  "top": 10,
+                  "width": 282,
+                  "height": 247,
+                  "pixels": 29928
+                },
+                "output": {
+                  "left": 165,
+                  "top": 56,
+                  "width": 214,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 417,
+                  "top": 9,
+                  "width": 328,
+                  "height": 246,
+                  "pixels": 36463
+                },
+                "output": {
+                  "left": 135,
+                  "top": 56,
+                  "width": 249,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 785,
+                  "top": 9,
+                  "width": 275,
+                  "height": 248,
+                  "pixels": 33841
+                },
+                "output": {
+                  "left": 123,
+                  "top": 56,
+                  "width": 209,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 1171,
+                  "top": 7,
+                  "width": 297,
+                  "height": 249,
+                  "pixels": 34264
+                },
+                "output": {
+                  "left": 125,
+                  "top": 54,
+                  "width": 226,
+                  "height": 189
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/leon-original.png",
+            "sourceImageSha256": "91dd5dbda540a86c6ad054af8f99cc17e32593ce29f20828f1be27908c3d5012",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 775,
+              "bottom": 1024
+            },
+            "scale": 0.76,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 77,
+                  "top": 9,
+                  "width": 229,
+                  "height": 240,
+                  "pixels": 25330
+                },
+                "output": {
+                  "left": 169,
+                  "top": 62,
+                  "width": 174,
+                  "height": 182
+                }
+              },
+              {
+                "source": {
+                  "left": 464,
+                  "top": 6,
+                  "width": 222,
+                  "height": 242,
+                  "pixels": 25004
+                },
+                "output": {
+                  "left": 171,
+                  "top": 59,
+                  "width": 169,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 838,
+                  "top": 7,
+                  "width": 207,
+                  "height": 241,
+                  "pixels": 25465
+                },
+                "output": {
+                  "left": 163,
+                  "top": 60,
+                  "width": 157,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 1231,
+                  "top": 6,
+                  "width": 222,
+                  "height": 243,
+                  "pixels": 24973
+                },
+                "output": {
+                  "left": 170,
+                  "top": 59,
+                  "width": 169,
+                  "height": 185
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "778055f72ceb79e5fb3b0dbe7f430194176f7e00af4e7bc446874c8bc76f8d10",
+              "a188788b2b9a298f9b04868f6cf0630f109c8932a441f463270e26666e121e3c",
+              "5821bc8fe2997ee729345e029e5b86cef8c0623344f2000439c604353952adc2",
+              "6d354ab86a190c096cca9ec7c8e62815d2a14d79bd958cbe857a6260d38add45"
+            ],
+            "visiblePixels": [
+              13600,
+              14098,
+              14507,
+              15172
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7580ecc3a08bd1c5bbb87048c6658fcf4cf3cf3db4b3adc4b6d891856b3e3e57",
+              "a938522904f53e97c4aa2b83fd4c59759b1e92d525c33f4be74ac5bb8bb2bc1c",
+              "9bf70ec025d8ca3b4418862acc5609f0303e07f14db85a8344300a6910890156",
+              "420fdc4638edb689b349971413dd0331e4ce3114f3fecb3a9c784d5a63118c35"
+            ],
+            "visiblePixels": [
+              17794,
+              16864,
+              17594,
+              17608
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c33e669554ab30651895b1dd6c419b1884909078c121de363d26a5d00b9e4f28",
+              "be41205e5bb5daafceb7ced696dcd4a59099abd418cfdf570587564c1fbee7df",
+              "21e91a235520374b7debfb1750cb55d6247ad9ad6876adea7b50997e07467077",
+              "8cc087a7c1af8d3113402caa2345e08a8ef5cfea07d21ed7f534e424b2917c7c"
+            ],
+            "visiblePixels": [
+              17337,
+              21047,
+              19525,
+              19816
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "cf0f1456597979b43cd112a3a11e9571df565734d82bc44c59f52c6476a272db",
+              "994de70e874c250a83e5503935cac10a43b76aa33c6b75b9c5b4ef03caa58750",
+              "51e5a4bd34ea70b32616f19b1a0140c98244565721e978a94266ca841aeb0db7",
+              "466f59aa50dfad2d62b66afb0f5296515b8fc1882aa60f64765e1f9c99ae1901"
+            ],
+            "visiblePixels": [
+              14591,
+              14487,
+              14697,
+              14494
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "mass-effect-garrus",
+      "key": "Mass Effect::Garrus Vakarian::Concussive Shot",
+      "universe": "Mass Effect",
+      "entityName": "Garrus Vakarian",
+      "actionName": "Concussive Shot",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "garrus",
+      "sheet": "/sprites/generated/summon-animations-wave9/garrus.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "bfe4f2ad3c5e9cf700ba521e4d6c1a7010c60a6c4456927b5c294a273d76c263",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/garrus-original.png",
+      "sourceImageSha256": "e869aab812235c02fdaf781bfd731fe06b5db7a16efc89d0310e626bedaf239b",
+      "sourceDimensions": [
+        1402,
+        1122
+      ],
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/garrus-reference.png",
+      "referenceImageSha256": "fc7279961c44a56e01e254c662c6a68bee62e09d9eb252158e39b61f50fc2e32",
+      "sourceWork": "Mass Effect 2 (2010), Garrus after Archangel recruitment",
+      "sourceReference": "Mass Effect 2 (2010), Garrus after Archangel recruitment. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. All sixteen native whole-body poses inspected: own costume, body and physical weapon; right-facing, complete feet, no extra performer. Wide cells retain weapon reach under one body scale. Local native muzzle flashes are an adapted firing burst, while the RPG owns one impact. Leon's native correction retains an empty physical tube after firing; invisible RGB under zero alpha is cleaned only during packing.",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          {
+            "x": 376,
+            "y": 119
+          },
+          {
+            "x": 369,
+            "y": 114
+          }
+        ],
+        "attack": [
+          {
+            "x": 366,
+            "y": 117
+          },
+          {
+            "x": 355,
+            "y": 119
+          },
+          {
+            "x": 361,
+            "y": 132
+          },
+          {
+            "x": 370,
+            "y": 127
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.7011070110701108,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 3,
+          "targetBodyHeight": 190,
+          "method": "visually-selected-standing-body-reference",
+          "sourceBodyHeight": 271,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/garrus-original.png",
+            "sourceImageSha256": "e869aab812235c02fdaf781bfd731fe06b5db7a16efc89d0310e626bedaf239b",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 306
+            },
+            "scale": 0.7011070110701108,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 58,
+                  "top": 20,
+                  "width": 237,
+                  "height": 272,
+                  "pixels": 29797
+                },
+                "output": {
+                  "left": 174,
+                  "top": 53,
+                  "width": 166,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 429,
+                  "top": 22,
+                  "width": 249,
+                  "height": 270,
+                  "pixels": 29065
+                },
+                "output": {
+                  "left": 188,
+                  "top": 55,
+                  "width": 175,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 785,
+                  "top": 19,
+                  "width": 256,
+                  "height": 273,
+                  "pixels": 30222
+                },
+                "output": {
+                  "left": 192,
+                  "top": 53,
+                  "width": 179,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 1145,
+                  "top": 21,
+                  "width": 235,
+                  "height": 271,
+                  "pixels": 28701
+                },
+                "output": {
+                  "left": 199,
+                  "top": 54,
+                  "width": 165,
+                  "height": 190
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/garrus-original.png",
+            "sourceImageSha256": "e869aab812235c02fdaf781bfd731fe06b5db7a16efc89d0310e626bedaf239b",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 305,
+              "bottom": 584
+            },
+            "scale": 0.7011070110701108,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 61,
+                  "top": 15,
+                  "width": 236,
+                  "height": 256,
+                  "pixels": 28453
+                },
+                "output": {
+                  "left": 176,
+                  "top": 65,
+                  "width": 165,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 418,
+                  "top": 14,
+                  "width": 262,
+                  "height": 257,
+                  "pixels": 29731
+                },
+                "output": {
+                  "left": 180,
+                  "top": 64,
+                  "width": 184,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 762,
+                  "top": 16,
+                  "width": 288,
+                  "height": 254,
+                  "pixels": 29601
+                },
+                "output": {
+                  "left": 176,
+                  "top": 65,
+                  "width": 202,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 1121,
+                  "top": 13,
+                  "width": 268,
+                  "height": 257,
+                  "pixels": 29298
+                },
+                "output": {
+                  "left": 182,
+                  "top": 63,
+                  "width": 188,
+                  "height": 180
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/garrus-original.png",
+            "sourceImageSha256": "e869aab812235c02fdaf781bfd731fe06b5db7a16efc89d0310e626bedaf239b",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 583,
+              "bottom": 851
+            },
+            "scale": 0.7011070110701108,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 6,
+                  "width": 299,
+                  "height": 254,
+                  "pixels": 30504
+                },
+                "output": {
+                  "left": 158,
+                  "top": 66,
+                  "width": 210,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 405,
+                  "top": 10,
+                  "width": 321,
+                  "height": 250,
+                  "pixels": 31539
+                },
+                "output": {
+                  "left": 171,
+                  "top": 69,
+                  "width": 225,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 775,
+                  "top": 10,
+                  "width": 252,
+                  "height": 249,
+                  "pixels": 29683
+                },
+                "output": {
+                  "left": 185,
+                  "top": 69,
+                  "width": 177,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 1116,
+                  "top": 10,
+                  "width": 275,
+                  "height": 250,
+                  "pixels": 28421
+                },
+                "output": {
+                  "left": 178,
+                  "top": 69,
+                  "width": 193,
+                  "height": 175
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/garrus-original.png",
+            "sourceImageSha256": "e869aab812235c02fdaf781bfd731fe06b5db7a16efc89d0310e626bedaf239b",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 840,
+              "bottom": 1122
+            },
+            "scale": 0.7011070110701108,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 65,
+                  "top": 9,
+                  "width": 227,
+                  "height": 265,
+                  "pixels": 28568
+                },
+                "output": {
+                  "left": 179,
+                  "top": 58,
+                  "width": 159,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 421,
+                  "top": 12,
+                  "width": 235,
+                  "height": 262,
+                  "pixels": 27782
+                },
+                "output": {
+                  "left": 183,
+                  "top": 60,
+                  "width": 165,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 775,
+                  "top": 12,
+                  "width": 240,
+                  "height": 260,
+                  "pixels": 27443
+                },
+                "output": {
+                  "left": 185,
+                  "top": 60,
+                  "width": 168,
+                  "height": 182
+                }
+              },
+              {
+                "source": {
+                  "left": 1147,
+                  "top": 1,
+                  "width": 205,
+                  "height": 273,
+                  "pixels": 28472
+                },
+                "output": {
+                  "left": 200,
+                  "top": 53,
+                  "width": 144,
+                  "height": 191
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "50662c14d2d3cf820248d6cc239d0f89608da0974077a798b45d403b37386eeb",
+              "8539fccfd4181c2a8af6667daada13166b5bd4fb8db63e56e74964c01e4ba40b",
+              "bd73d793aee15e3225b4ec1b1a128789565f8b316b576b0c8527516daef297c2",
+              "4ef418e561f942bdc7a5f02e9d64cc7aeba8c25d572f9b2d424243d590800fc6"
+            ],
+            "visiblePixels": [
+              14709,
+              14344,
+              14795,
+              14123
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b3f25153da5e26a5df9ea1bba4f872667bf828244b7ab344b4fad13e20ebf1a4",
+              "fd6b3a91997725200deaaa4ef712b8f679701bc3cf5582770770ef76aab65d58",
+              "e18af87588a9794524ac775c1182dbfeb5d069d960ee5dc77ec7abf28f15b17b",
+              "7f096062b4caf85f79845efdefbccc848f4b8ee73a207b6668250cdaf0906dd5"
+            ],
+            "visiblePixels": [
+              13917,
+              14672,
+              14546,
+              14396
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b3a96dcbbd72f04a527331a5d1d2cb1255e06062afc75da751550fecf518d6cb",
+              "8a5a63192057012f4a18f8ca318fff4d13362e3ed521b07d1743e14d56e7f4e4",
+              "fc0f692f0a2045ebbbffe3a31d88cf17fac41b547c2f54d9700a6ceffacbde67",
+              "b129799e74472b2d227fd3141ff3d37428676e731882865b2b9f0942750efdeb"
+            ],
+            "visiblePixels": [
+              15052,
+              15498,
+              14667,
+              14012
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f44bbc0415f093b8b65e81f665f6fb312b7f6da30ca9475c7055797b980fc596",
+              "d34c70a0e1df5ca6b6b1b9a5fd875a0302a63f3bb0563a158afc687cc044d220",
+              "f908d62a318eadccf3474b0cd477648f59480fd7f33bd2cd2cd1779d2a02def9",
+              "4a90c3102d2ce88659c71bcc10d0a4d0aa33b5a72229d831f967fbdb958df25b"
+            ],
+            "visiblePixels": [
+              14066,
+              13684,
+              13449,
+              14022
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "ghost-in-the-shell-batou",
+      "key": "Ghost in the Shell::Batou::Rafale d’appui de Batou",
+      "universe": "Ghost in the Shell",
+      "entityName": "Batou",
+      "actionName": "Rafale d’appui de Batou",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "batou",
+      "sheet": "/sprites/generated/summon-animations-wave9/batou.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "b8d528f99b8294ff214ab745d66a08844a5d4d23642f26eb163973544e4e17ca",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/batou-original.png",
+      "sourceImageSha256": "e83ff4e5f5c3ad08a2bcd2e55e68a87b63aaca3acc3e74733d04326c187e8ccb",
+      "sourceDimensions": [
+        1237,
+        1272
+      ],
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/batou-reference.png",
+      "referenceImageSha256": "4198a67bec992746108d439365bec5afc698158f9b2ba058a61dbff1e4726403",
+      "sourceWork": "Ghost in the Shell: Stand Alone Complex (2002), season 1",
+      "sourceReference": "Ghost in the Shell: Stand Alone Complex (2002), season 1. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. All sixteen native whole-body poses inspected: own costume, body and physical weapon; right-facing, complete feet, no extra performer. Wide cells retain weapon reach under one body scale. Local native muzzle flashes are an adapted firing burst, while the RPG owns one impact. Leon's native correction retains an empty physical tube after firing; invisible RGB under zero alpha is cleaned only during packing.",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          {
+            "x": 330,
+            "y": 112
+          },
+          {
+            "x": 342,
+            "y": 110
+          },
+          {
+            "x": 337,
+            "y": 119
+          }
+        ],
+        "attack": [
+          {
+            "x": 324,
+            "y": 110
+          },
+          {
+            "x": 322,
+            "y": 115
+          },
+          {
+            "x": 333,
+            "y": 113
+          },
+          {
+            "x": 336,
+            "y": 112
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.6012658227848101,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 3,
+          "targetBodyHeight": 190,
+          "method": "visually-selected-standing-body-reference",
+          "sourceBodyHeight": 316,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/batou-original.png",
+            "sourceImageSha256": "e83ff4e5f5c3ad08a2bcd2e55e68a87b63aaca3acc3e74733d04326c187e8ccb",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 361
+            },
+            "scale": 0.6012658227848101,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 67,
+                  "top": 33,
+                  "width": 185,
+                  "height": 319,
+                  "pixels": 32166
+                },
+                "output": {
+                  "left": 203,
+                  "top": 52,
+                  "width": 111,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 362,
+                  "top": 36,
+                  "width": 208,
+                  "height": 313,
+                  "pixels": 29645
+                },
+                "output": {
+                  "left": 195,
+                  "top": 54,
+                  "width": 125,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 43,
+                  "width": 208,
+                  "height": 302,
+                  "pixels": 31559
+                },
+                "output": {
+                  "left": 194,
+                  "top": 58,
+                  "width": 125,
+                  "height": 182
+                }
+              },
+              {
+                "source": {
+                  "left": 1012,
+                  "top": 35,
+                  "width": 184,
+                  "height": 316,
+                  "pixels": 33384
+                },
+                "output": {
+                  "left": 214,
+                  "top": 53,
+                  "width": 111,
+                  "height": 190
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/batou-original.png",
+            "sourceImageSha256": "e83ff4e5f5c3ad08a2bcd2e55e68a87b63aaca3acc3e74733d04326c187e8ccb",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 360,
+              "bottom": 669
+            },
+            "scale": 0.6012658227848101,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 47,
+                  "top": 9,
+                  "width": 203,
+                  "height": 289,
+                  "pixels": 33747
+                },
+                "output": {
+                  "left": 191,
+                  "top": 70,
+                  "width": 122,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 354,
+                  "top": 13,
+                  "width": 234,
+                  "height": 284,
+                  "pixels": 32705
+                },
+                "output": {
+                  "left": 190,
+                  "top": 73,
+                  "width": 141,
+                  "height": 171
+                }
+              },
+              {
+                "source": {
+                  "left": 666,
+                  "top": 18,
+                  "width": 252,
+                  "height": 280,
+                  "pixels": 33384
+                },
+                "output": {
+                  "left": 192,
+                  "top": 76,
+                  "width": 152,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 961,
+                  "top": 27,
+                  "width": 259,
+                  "height": 271,
+                  "pixels": 34018
+                },
+                "output": {
+                  "left": 183,
+                  "top": 81,
+                  "width": 156,
+                  "height": 163
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/batou-original.png",
+            "sourceImageSha256": "e83ff4e5f5c3ad08a2bcd2e55e68a87b63aaca3acc3e74733d04326c187e8ccb",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 668,
+              "bottom": 959
+            },
+            "scale": 0.6012658227848101,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 10,
+                  "width": 279,
+                  "height": 278,
+                  "pixels": 34574
+                },
+                "output": {
+                  "left": 184,
+                  "top": 76,
+                  "width": 168,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 345,
+                  "top": 13,
+                  "width": 259,
+                  "height": 274,
+                  "pixels": 33284
+                },
+                "output": {
+                  "left": 185,
+                  "top": 77,
+                  "width": 156,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 666,
+                  "top": 13,
+                  "width": 236,
+                  "height": 277,
+                  "pixels": 32948
+                },
+                "output": {
+                  "left": 192,
+                  "top": 77,
+                  "width": 142,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 993,
+                  "top": 10,
+                  "width": 227,
+                  "height": 276,
+                  "pixels": 33043
+                },
+                "output": {
+                  "left": 202,
+                  "top": 76,
+                  "width": 136,
+                  "height": 166
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/summon-sources/batou-original.png",
+            "sourceImageSha256": "e83ff4e5f5c3ad08a2bcd2e55e68a87b63aaca3acc3e74733d04326c187e8ccb",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 946,
+              "bottom": 1272
+            },
+            "scale": 0.6012658227848101,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 56,
+                  "top": 6,
+                  "width": 209,
+                  "height": 301,
+                  "pixels": 32714
+                },
+                "output": {
+                  "left": 197,
+                  "top": 63,
+                  "width": 126,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 373,
+                  "top": 1,
+                  "width": 193,
+                  "height": 306,
+                  "pixels": 32713
+                },
+                "output": {
+                  "left": 201,
+                  "top": 60,
+                  "width": 116,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 694,
+                  "top": 11,
+                  "width": 208,
+                  "height": 296,
+                  "pixels": 28776
+                },
+                "output": {
+                  "left": 208,
+                  "top": 66,
+                  "width": 125,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 1031,
+                  "top": 4,
+                  "width": 160,
+                  "height": 303,
+                  "pixels": 31507
+                },
+                "output": {
+                  "left": 225,
+                  "top": 62,
+                  "width": 96,
+                  "height": 182
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f8e433d590110f17558d495ce7a540aa40cd6bdf5e45a80bebc0608880337636",
+              "f25d341f5c743b05e5994cbaccad2666fbf6a2b6ba0947938d4077000c4aff01",
+              "eb57f7d0d9da6917fa92ee228a508890ab6adac154b414bbc096780314d41c20",
+              "f50ef5936fb617e5e0310de4c087bf3d7da26929a9bd198c9248257df24cb7c8"
+            ],
+            "visiblePixels": [
+              11671,
+              10722,
+              11478,
+              12124
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6639f44eb3be472dac56a19d3776682b69d2432fd9d92f77bcd9781bf94af260",
+              "ba3323eb0bdd9977922d3a9b6ec2104d3aa7ada2f989dbc15622b650593f7227",
+              "0c06dd67e53e0023d9dc262309852b8ffca9fe74bc474cc28ca741dbad90d6c8",
+              "e06fb1392c4d7ca5ef1d13c5d5a106e18ecd6b787ac98c20e9f1ddfd30395a78"
+            ],
+            "visiblePixels": [
+              12226,
+              11853,
+              12137,
+              12355
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "a542b0ab2508cc50b00f0370e3001306223fa296a852c6589741b097eaad998e",
+              "4bfdbc4fe6e9de7dcf1cc635d8b1023e2218ccc7aaf1fcd02df893126988d007",
+              "cecfc2fc310307830f32db04075528793e9205ce57292d1af50087f8c8ad3be4",
+              "f6de910f5d7efcaa156953ca175364fb7860c1537972467e5d2364d9e0731bbd"
+            ],
+            "visiblePixels": [
+              12595,
+              12091,
+              11971,
+              11961
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e05325c15df56b3930b34338732ee153cb0c948f880afebbf368b2732e0838df",
+              "baecc135bdd907cc07255d5106c08a729a956ddd120e0628f482311b04a6748c",
+              "7e3d17127b3e8c9d9318ebf91d08ce000e0ad52842de4f8e87a4368695d3948e",
+              "15d255d6693b280e422400595e74d36ee5c6eb14fa9ffd6588c7e9f462848c90"
+            ],
+            "visiblePixels": [
+              11887,
+              11834,
+              10379,
+              11403
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    }
+  ],
+  "source1to1Verified": false
+}

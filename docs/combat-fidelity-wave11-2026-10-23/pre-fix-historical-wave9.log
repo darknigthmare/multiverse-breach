@@ -1,0 +1,29 @@
+✖ all twenty effective kits keep real equipment, support targets and exact source identities (7851.22325ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8750.7157
+
+✖ failing tests:
+
+test at scripts/combatFidelityWave9.test.mjs:530:1
+✖ all twenty effective kits keep real equipment, support targets and exact source identities (7851.22325ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1474 !== 1458
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatFidelityWave9.test.mjs:532:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1474,
+    expected: 1458,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

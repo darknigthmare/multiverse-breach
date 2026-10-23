@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "sourceWork": "Gears of War 2 (2008)",
+  "canonical1to1Verified": false,
+  "networkVisualVerified": false,
+  "sources": [
+    {
+      "url": "https://www.gamesdatabase.org/Media/SYSTEM/Microsoft_Xbox_360/Manual/formated/Gears_of_War_2_-_2008_-_Microsoft.pdf",
+      "access": "search-index text plus successful PDF-open metadata; full-page image not available in returned tool content",
+      "quote": "HAMMER OF DAWN• IMULSION-ENERGIZED SATELLITE PARTICLE BEAM",
+      "supports": "External orbital particle-beam weapon, not an energy beam emitted by the character's body.",
+      "limitations": "The tool reports a19-page PDF with zero returned text lines. Two screenshot requests returned image markers without an actual image content block available to this agent. No manual page image is claimed as inspected or used as a native input."
+    },
+    {
+      "url": "https://strategywiki.org/wiki/Gears_of_War_2/Weapons",
+      "access": "search-index excerpt only",
+      "quotes": [
+        "The Hammer of Dawn is an Imulsion-energized satellite particle-beam weapon capable of leveling buildings.",
+        "The Hammer requires a ground-based observer to acquire a target with a targeting laser."
+      ],
+      "supports": "Separate orbital weapon and ground targeting device. Range, cast time and one-impact adaptation are authored game balancing, not source claims."
+    },
+    {
+      "url": "https://store.necaonline.com/blogs/news/174261959-gears-of-war-arrives-this-spring",
+      "access": "page opened; returned window is navigation; relevant2008 article paragraph read as a search-index excerpt",
+      "quote": "the first assortment includes main character Marcus Fenix, Augustus Cole, and the villainous Locust Drone.",
+      "supports": "2008 Gears merchandise context only; not proof that all five selected models or outfits reproduce GoW2.",
+      "limitations": "No external official character or weapon image from this page was visually inspected."
+    },
+    {
+      "url": "https://gearsofwar.neoseeker.com/wiki/Augustus_Cole",
+      "access": "search-index excerpt only",
+      "quote": "He has short black hair with brown eyes and a very muscular build",
+      "supports": "Cole's selected short-haired, muscular identity; indexed description also states exposed arms. No Thrashball sports costume or ball projectile is introduced."
+    },
+    {
+      "url": "https://gearsofwar.neoseeker.com/wiki/Damon_Baird",
+      "access": "search-index excerpt only",
+      "facts": [
+        "Indexed hair description: Blonde.",
+        "Indexed game description places Baird with Cole in GoW2."
+      ],
+      "supports": "Young blond Baird and selected2008 continuity; no later bald engineer/Fabricator/DB-robot costume."
+    }
+  ],
+  "localReferences": {
+    "allOldSheetsInspected": true,
+    "allNativeSourcesInspected": true,
+    "allNormalizedRetainedCellsInspected": true,
+    "files": [
+      "public/sprites/generated/heroes/gears-of-war/marcus.png",
+      "public/sprites/generated/heroes/gears-of-war/dom.png",
+      "public/sprites/generated/heroes/gears-of-war/cole.png",
+      "public/sprites/generated/heroes/gears-of-war/baird.png",
+      "public/sprites/generated/heroes/gears-of-war/hoffman-cog.png"
+    ],
+    "notes": "Exact native input crops, approved native design crops, prompts, arguments and real hashes are in the two provenance source ledgers. All external visual access limits are distinct from local visual review."
+  },
+  "sourceAdaptations": {
+    "marcus": "Actual handheld targeting designator and external Hammer of Dawn orbital strike; red optical cue is local only.",
+    "dom": "Physical Gnasher volley replaces Maria Memory Charge. No apparition or memory damage.",
+    "cole": "Physical Lancer assault and Gnasher secondary replace slogans/sports dialogue as attacks.",
+    "baird": "GoW2 equipment maintenance is role-based allied guard with zero damage and no biological healing or later-era machinery.",
+    "hoffman_cog": "Military command adapted as zero-damage allied guard."
+  },
+  "technicalCorrections": [
+    {
+      "heroId": "cole",
+      "kind": "native-pose packing order only",
+      "phases": [
+        "fatality",
+        "super"
+      ],
+      "frameSourceColumns": [
+        0,
+        2,
+        1,
+        3
+      ],
+      "reason": "Original native source put local muzzle flash in column1. Reorder the same four genuine poses so aim precedes flash at authoritative impact column2; no pose is painted, interpolated or synthesized."
+    },
+    {
+      "heroId": "hoffman_cog",
+      "kind": "complete native base16 correction",
+      "reason": "Original run/column3 muzzle touched the source right edge: seven visible edge pixels, including alpha241 at x1253/y477–483. A native redraw retains the complete barrel; original source remains archived and technically rejected. The accepted replacement has no visible source-border pixel."
+    }
+  ],
+  "limitations": [
+    "These are generated adapted sequences, not official animation captures or certified1:1 reproductions.",
+    "One author-selected native standing-body reference is calibrated to190px per character; independent source densities and real crouches remain explicit ROI metadata.",
+    "All unknown image model, generation ID and job ID fields remain null. Original file-name UUIDs are not promoted into fake generation identifiers.",
+    "No unavailable host, proxy refusal or output refusal was bypassed."
+  ]
+}

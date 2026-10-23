@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "command": "node --test scripts/combatFidelityWave11.test.mjs",
+  "exitCode": 0,
+  "tests": 28,
+  "passed": 28,
+  "failed": 0,
+  "skipped": 0,
+  "method": "Real PNG SHA/RGBA decoding, frozen independent baseline comparison, ViteSSR game engines and actual recorded drawImage rectangles. No browser result is inferred by this Node report.",
+  "baseline": {
+    "baseline": "e01a284de619f69710a4d87aaa841b203af91f210dc969cd5ec1b65f4c012b4b",
+    "runtime": "51bd0c86ea4ece733aa204ac21085f5bd992912dabddaccac952d7f31f8646fb",
+    "stages": "b950b641d8ae75f0978a4854baf60735ce103b4c26bcf5a2f03c0633e594a12d"
+  },
+  "coverage": {
+    "preservedPngs": 372,
+    "preservedBodyRegistries": 80,
+    "preservedCharacterRecords": 157,
+    "preservedMeleeManifests": 10,
+    "preservedRecipes": 164,
+    "preservedSummonBodies": 23,
+    "preservedStageProfiles": 321,
+    "newNative32": 37,
+    "newBase16": 37,
+    "newFullMelee45": 2,
+    "newSummon16": 7,
+    "newPublicPngs": 93,
+    "newDistinctNativeRgbaPoses": 2248,
+    "totalPublicPngs": 465,
+    "totalCharacterRecords": 194,
+    "totalFull32": 192,
+    "totalPartialRecords": 2,
+    "totalPartialPoses": 32,
+    "totalBases16": 140,
+    "totalFullMelee45": 12,
+    "totalSummon16": 30,
+    "totalStageMechanisms": 401,
+    "sourceDefinitions": 40,
+    "damageSupers": 23,
+    "supportSupers": 17,
+    "authoredKits": 1491,
+    "authoredBasicSlots": 4369,
+    "fullBasicKits": 1418,
+    "partialBasicKits": 73,
+    "refusedNativeHeroIds": [
+      "harry_potter",
+      "hermione_granger",
+      "snape"
+    ],
+    "source1to1Verified": false
+  },
+  "regressions": [
+    "Legacy source-ID P2 clone routes to exact accepted old HP sheet after strict-universe root fix.",
+    "RPG beneficial Dumbledore simple/secondary and guard use calm row0 on both sides with zero enemy damage; offensive native super stays available.",
+    "Buffy and Arthur keep45 genuine distinct source rows,180RGBA poses each, real palm/wrist pixels, opposite-side hand pinning, clocks, pause and moving landing.",
+    "Actual emitTargetedProjectile spy remains at zero for Dumbledore simple/secondary/guard on both RPG camps after the production support-projectile fix. Enemy HP remains unchanged and the native offensive firestorm is still separately available."
+  ],
+  "inputs": [
+    {
+      "path": "scripts/combatFidelityWave11.test.mjs",
+      "sha256": "2c1d003f64863e519f1b40273661d199547503c78e20cdd4f8130f24e1701167"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "02088b4e379b55a9c76d4d09c839d55647064e71d7a96518bb3dcf2b2a19daf3"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "sha256": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277"
+    },
+    {
+      "path": "src/game/engineFighter.js",
+      "sha256": "8ce3014b9c518f846cb9e6563f7fd9710dca92983e385804d3b8ac5ab72d71f7"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "sha256": "b3c387896717c3ce88bf969110bbecaef5dcec11b89c1309a033e9162759ee0f"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "sha256": "ea8134258b27da2c3bd01c5e01738a8084c9e720d79220e33e06eadcafdf9ee6"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave11.js",
+      "sha256": "8c665915aea0dac98bdc961e3261e5a2568488d8268b134b0e500f84f44aefc8"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "sha256": "7e71bdbf832b542ead68ed9ced345cbfcbb3f21d2147e71e945344fe5389e4dc"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartA.generated.json",
+      "sha256": "f5248c55f7d4883ed764fa29fe2bd22b4ca2ab829df2e9847cc65113b350c00d"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave11PartA.generated.json",
+      "sha256": "68211ae522750537bfa3ac9ea46fb6a03465de80325a58fc27cda7774937f0b3"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave11PartA.generated.json",
+      "sha256": "3886163e9b8da447972665ef5bbb464d21ead082049c34c4fc2c5654fd9d04a1"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartB.generated.json",
+      "sha256": "22122f2e47348dcf7aa82ee7f9e54a3f32b8cd9f63105e88921dbe43b190a4bc"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave11PartB.generated.json",
+      "sha256": "291382fe91f497dc25817732258ec0e14a7b0e49edb2195f1d65ccd23d9ca19e"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave11PartB.generated.json",
+      "sha256": "4a890a5519357b694e49daa5c7cf7866b37f2a95aa7611bdf17802a9a0e2f311"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartC.generated.json",
+      "sha256": "64f881d7a95cdf7823cdccfc2c0ae25c888d218f5f40ce86a2815d9b47374852"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave11PartC.generated.json",
+      "sha256": "40025270ffe6f2cb9eaf58fef8bc1d97ba643d010697e62e67714924704c9b77"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave11PartC.generated.json",
+      "sha256": "68fd0d324afd5014552452afc0298ce06a62be2299ae2d6648fe45a6ff841065"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartD.generated.json",
+      "sha256": "d8ed64c753412b0b29c188e62ec4e48a4a51c20173a81a9dd978d499dbb06215"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave11PartD.generated.json",
+      "sha256": "acd75ebf981b092a612a9f16749e8860c062602ae69abf556044e3e37e63d34e"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave11PartD.generated.json",
+      "sha256": "28c078fec7bbd3444a6cec728ec527a69648bfd1f51cd69d08b0fd215b001f24"
+    },
+    {
+      "path": "src/game/combat/summonAnimationsWave11.generated.json",
+      "sha256": "501c54380df888e6a17e4edc7bbdde12cb9b9218c576e1bf46dbae0c3607b895"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave11/lilith_borderlands.png",
+      "sha256": "b53698259049e4b0a1bcd6255af62d3069170b11d5cab83977efc83e1fd98c0b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/lilith_borderlands.png",
+      "sha256": "0e82e3fd3b5a6f4a1465b8a7ffccb16dd093b20cf352175ba1cc9f5e93f95228"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/part-c-lilith-laterality-review.json",
+      "sha256": "752f3d1fa18f9cfed97b713e91998bb5609394359be711c13474fac2c1ffdc52"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/part-c-left-arm-final-preservation.json",
+      "sha256": "409e18b6cc5bf7f1a616e73b5146b9ff27df61dc944cc8da05f2e1d3fb98e0f0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/part-c-source-edge-audit.json",
+      "sha256": "12b099954ef39a3f1466a5575dda22800e9af9a2e0207644c967d89498663e70"
+    }
+  ],
+  "log": {
+    "path": "docs/combat-fidelity-wave11-2026-10-23/qa-combat-fidelity-node.log",
+    "sha256": "ddced8c3ce18abc05142cd2fa6cb8823933a2fe7d1e61f92943b16a1f64a0f6f"
+  },
+  "scriptSha256": "2c1d003f64863e519f1b40273661d199547503c78e20cdd4f8130f24e1701167",
+  "limitations": "Native illustrations and bounded authored choreography remain adaptations; no official-frame or source1:1 certification. Source refusals are retained as missing native images, and legacy reused gestures are not counted as new art.",
+  "previousPassingRun": {
+    "path": "docs/combat-fidelity-wave11-2026-10-23/qa-combat-fidelity-before-left-arm-correction.json",
+    "sha256": "5fa20f9ce98c174f59e91ae9a340e55bf03aa6534f710ade882510747a2ce6d2",
+    "scope": "The earlier28-pass run is preserved as technical evidence before the anatomical laterality defect was corrected. It is not a validation of the old right-arm artwork."
+  },
+  "generatedAt": "2026-10-23T05:19:18.446119+00:00",
+  "durationMs": 52905.035378,
+  "targetedArtCorrection": {
+    "heroId": "lilith_borderlands",
+    "changedPublicPngs": 2,
+    "unchangedOtherPartCRecords": 18,
+    "unchangedOtherPartCPngs": 18,
+    "nativeCorrectionCalls": 6,
+    "nativeDrawingsObserved": 72,
+    "newRetainedDrawings": 48,
+    "intermediateDrawingsExcluded": 24,
+    "oldRetainedDrawingsRetired": 48,
+    "anatomicalLateralityReview": "All32 presentation and16 base source poses visually reviewed by primary plus independent agent before production;16 calm+4rear+12frontal presentations,16base. This semantic visual review is separate from the28Node tests.",
+    "source1to1Verified": false
+  }
+}

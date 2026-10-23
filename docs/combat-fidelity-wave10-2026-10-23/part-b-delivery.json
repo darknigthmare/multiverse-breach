@@ -1,0 +1,732 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "part": "B",
+  "status": "frozen-art-builders-anchors-and-abilities",
+  "heroes": 10,
+  "presentationAtlases": 10,
+  "presentationPoses": 320,
+  "basicAtlases": 10,
+  "basicPoses": 160,
+  "totalPngs": 20,
+  "actualDistinctRgbaPoses": 480,
+  "actualNativeToolInvocations": 26,
+  "returnedNativeImages": 21,
+  "nativeCorrections": 1,
+  "replacedIncompleteNativeCells": 4,
+  "retainedOriginalKleinerBasicPoses": 12,
+  "technicalUnobservedOrFailedCalls": 5,
+  "refusals": 0,
+  "proceduralPoseCount": 0,
+  "bodyRoiCount": 120,
+  "bipedStandingBodyCalibration": 190,
+  "dogmeat": {
+    "anatomy": "quadruped",
+    "earToPawCalibration": 110,
+    "nominalWithersHeight": 80,
+    "independentOfHumanoidScale": true,
+    "uniformScaleOnly": true,
+    "holdsNoWeapon": true,
+    "sourceNativeForeshorteningRetained": true
+  },
+  "baseline": 244,
+  "margin": 10,
+  "activeNativeAnchors": 33,
+  "registries": [
+    {
+      "path": "src/game/combat/characterAnimationsWave10PartB.generated.json",
+      "sha256": "3735da3ce3d87713ccf0fee6e6e2717d6d6fe8dbbc63c102566dd76e9ef854c3",
+      "entries": 10
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave10PartB.generated.json",
+      "sha256": "e7f53699ff0e7500156b984495018f6f055eb63a0d6b0e4b4ef82a206dac95e0",
+      "entries": 10
+    }
+  ],
+  "anchors": "src/game/combat/nativeSuperAnchorsWave10PartB.generated.json",
+  "anchorsSha256": "2be69e115c8dfd490a4f6933e8588c2b8a3d841a6f9ef581a595bae18f8271fa",
+  "abilitiesModule": "src/game/combat/abilities/abilitiesWave10PartB.js",
+  "abilitiesModuleSha256": "60baba337302168d258d0bd787b6b91e752b6a6c977a430661cd7f350d48e1da",
+  "sourceFacts": "docs/combat-fidelity-wave10-2026-10-23/part-b-source-facts.json",
+  "attempts": "docs/combat-fidelity-wave10-2026-10-23/part-b-attempts.json",
+  "bodyReview": "docs/combat-fidelity-wave10-2026-10-23/part-b-body-roi-review.json",
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "source1to1Verified": false,
+  "canon1to1Verified": false,
+  "globalFidelity1to1": false,
+  "files": [
+    {
+      "heroId": "freeman",
+      "sheet": "/sprites/generated/combat-character-animations-wave10/freeman.png",
+      "sha256": "8df67085ad828cf3b54151a9d510335162ba61730c9e30ed74b1825b05d6b2af",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          64,
+          19,
+          147,
+          222
+        ],
+        "referenceNormalizedBodyHeight": 222,
+        "referencePackingScale": 0.9626556016597511,
+        "nativeReferenceBodyHeight": 230.61206896551724,
+        "sourceWideRenderPixelsPerNativePixel": 0.82389443385294,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "barney",
+      "sheet": "/sprites/generated/combat-character-animations-wave10/barney.png",
+      "sha256": "0cc907848d9e5abebc57f5ee9fa5f287a65c45ee0c57f22c76a0d96815df2b96",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          72,
+          21,
+          149,
+          221
+        ],
+        "referenceNormalizedBodyHeight": 221,
+        "referencePackingScale": 1.0175438596491229,
+        "nativeReferenceBodyHeight": 217.18965517241378,
+        "sourceWideRenderPixelsPerNativePixel": 0.8748114630467572,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "alyx_vance",
+      "sheet": "/sprites/generated/combat-character-animations-wave10/alyx_vance.png",
+      "sha256": "097300fca6a25bfb32bf87e9c0987f59149949ff0e09452b505c96b8b52647c1",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          73,
+          21,
+          122,
+          219
+        ],
+        "referenceNormalizedBodyHeight": 219,
+        "referencePackingScale": 1.0043290043290043,
+        "nativeReferenceBodyHeight": 218.05603448275863,
+        "sourceWideRenderPixelsPerNativePixel": 0.8713356658562138,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "eli_vance",
+      "sheet": "/sprites/generated/combat-character-animations-wave10/eli_vance.png",
+      "sha256": "a0f41f6703a34ba92907cea1287abdaded71eb53ace00ba50aa7ce4f7de4462e",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          65,
+          21,
+          139,
+          219
+        ],
+        "referenceNormalizedBodyHeight": 219,
+        "referencePackingScale": 1.0403587443946187,
+        "nativeReferenceBodyHeight": 210.50431034482762,
+        "sourceWideRenderPixelsPerNativePixel": 0.9025943444519523,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "kleiner",
+      "sheet": "/sprites/generated/combat-character-animations-wave10/kleiner.png",
+      "sha256": "2e2f7bb7a1b8bda6ab635aa7bc03ca72555d6872d8b6777440de13927b3baf74",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          67,
+          23,
+          129,
+          211
+        ],
+        "referenceNormalizedBodyHeight": 211,
+        "referencePackingScale": 0.9747899159663865,
+        "nativeReferenceBodyHeight": 216.45689655172416,
+        "sourceWideRenderPixelsPerNativePixel": 0.8777729101119119,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "paladin",
+      "sheet": "/sprites/generated/combat-character-animations-wave10/paladin.png",
+      "sha256": "cbbf1a41410be6e06c1b3b3ea89444a07045a3dc73459dee06da7e3a01a260f6",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          52,
+          37,
+          178,
+          203
+        ],
+        "referenceNormalizedBodyHeight": 203,
+        "referencePackingScale": 0.9354838709677419,
+        "nativeReferenceBodyHeight": 217,
+        "sourceWideRenderPixelsPerNativePixel": 0.8755760368663594,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "nick_v",
+      "sheet": "/sprites/generated/combat-character-animations-wave10/nick_v.png",
+      "sha256": "bee2ab5509ae9ef6c56a3a96e6ddf3e46a66d3440fdd89de7218f89a1e1b98be",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          78,
+          26,
+          143,
+          215
+        ],
+        "referenceNormalizedBodyHeight": 215,
+        "referencePackingScale": 1.045045045045045,
+        "nativeReferenceBodyHeight": 205.73275862068965,
+        "sourceWideRenderPixelsPerNativePixel": 0.9235281793421328,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "dogmeat",
+      "sheet": "/sprites/generated/combat-character-animations-wave10/dogmeat.png",
+      "sha256": "1710fa0c8d43194ed72265f193e2dc587cd244ab3f861de6ae197e447c3b003c",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "quadruped",
+        "calibrationTargetBodyHeight": 110,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          36,
+          80,
+          204,
+          157
+        ],
+        "referenceNormalizedBodyHeight": 157,
+        "referencePackingScale": 0.9243027888446215,
+        "nativeReferenceBodyHeight": 169.85775862068965,
+        "sourceWideRenderPixelsPerNativePixel": 0.6476006800822189,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "quadrupedCalibration": {
+          "measurement": "ear-tip-to-paw vertical height in natural standing reference",
+          "earTipHeight": 110,
+          "nominalWithersHeight": 80,
+          "actualProjectedReferenceWidth": 142.9299363057325,
+          "nativeForeshorteningPreserved": true,
+          "neverForcedToHumanoid190": true,
+          "uniformScaleOnly": true,
+          "note": "Projected horizontal width follows native anatomy and three-quarter posture; no stretching enforces the prompt’s nominal body-length goal. Raised tails are excluded from ear-height measurement."
+        }
+      }
+    },
+    {
+      "heroId": "piper_wright",
+      "sheet": "/sprites/generated/combat-character-animations-wave10/piper_wright.png",
+      "sha256": "7a5cb87e3a0eb365c60ef591b112d84c5c5f4831d5ef8c1ad4bd0b8d1a7b0b3c",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          54,
+          17,
+          154,
+          224
+        ],
+        "referenceNormalizedBodyHeight": 224,
+        "referencePackingScale": 1.031111111111111,
+        "nativeReferenceBodyHeight": 217.24137931034483,
+        "sourceWideRenderPixelsPerNativePixel": 0.8746031746031746,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "preston_garvey",
+      "sheet": "/sprites/generated/combat-character-animations-wave10/preston_garvey.png",
+      "sha256": "2ca26901b61481152fedb24fcb69f4a356fbdf401da2f721ef292995063bdb0b",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          59,
+          85,
+          141,
+          157
+        ],
+        "referenceNormalizedBodyHeight": 157,
+        "referencePackingScale": 0.7682119205298014,
+        "nativeReferenceBodyHeight": 204.3706896551724,
+        "sourceWideRenderPixelsPerNativePixel": 0.929683215927785,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "freeman",
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/freeman.png",
+      "sha256": "f60ffe51362337694fce06bcc9d123c7a704309addabef4fe56c72df49f51ae0",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          65,
+          19,
+          130,
+          220
+        ],
+        "referenceNormalizedBodyHeight": 220,
+        "referencePackingScale": 0.6884272997032641,
+        "nativeReferenceBodyHeight": 319.5689655172414,
+        "sourceWideRenderPixelsPerNativePixel": 0.5945508497437281,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "barney",
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/barney.png",
+      "sha256": "857dc3e22c97be8d05538edc87685daaefd4fd33b1df749572adcebc86bb3d04",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          73,
+          14,
+          127,
+          228
+        ],
+        "referenceNormalizedBodyHeight": 228,
+        "referencePackingScale": 0.6946107784431138,
+        "nativeReferenceBodyHeight": 328.2413793103448,
+        "sourceWideRenderPixelsPerNativePixel": 0.5788423153692615,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "alyx_vance",
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/alyx_vance.png",
+      "sha256": "bc5204264b950a9e4264dad4f7c54182196430111ab4e7794044a712406fbfc4",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          78,
+          16,
+          119,
+          226
+        ],
+        "referenceNormalizedBodyHeight": 226,
+        "referencePackingScale": 0.6863905325443787,
+        "nativeReferenceBodyHeight": 329.2586206896552,
+        "sourceWideRenderPixelsPerNativePixel": 0.5770539875373095,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "eli_vance",
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/eli_vance.png",
+      "sha256": "0bc1fba827d690284a37702ece428426146fa8b152b152dd497fe721c802cabf",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          89,
+          14,
+          103,
+          228
+        ],
+        "referenceNormalizedBodyHeight": 228,
+        "referencePackingScale": 0.672463768115942,
+        "nativeReferenceBodyHeight": 339.05172413793105,
+        "sourceWideRenderPixelsPerNativePixel": 0.5603864734299516,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "kleiner",
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/kleiner.png",
+      "sha256": "29e33c1cdaffe107b3b034fa97b9752e5a0c24b6321bf1454b64405f45bdc425",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          73,
+          14,
+          122,
+          222
+        ],
+        "referenceNormalizedBodyHeight": 222,
+        "referencePackingScale": 0.672463768115942,
+        "nativeReferenceBodyHeight": 330.1293103448276,
+        "sourceWideRenderPixelsPerNativePixel": 0.5755320537929233,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "paladin",
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/paladin.png",
+      "sha256": "bd9981780db90c946995fb47da980e0379292dc2e4d3049dce1488183660113f",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          50,
+          16,
+          174,
+          225
+        ],
+        "referenceNormalizedBodyHeight": 225,
+        "referencePackingScale": 0.6803519061583577,
+        "nativeReferenceBodyHeight": 330.71120689655174,
+        "sourceWideRenderPixelsPerNativePixel": 0.5745193874226132,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "nick_v",
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/nick_v.png",
+      "sha256": "83722271c5d94d7e320a2e787e8607bbbedfe6b0f4f06497b2a10e5e174a1ec3",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          66,
+          14,
+          134,
+          226
+        ],
+        "referenceNormalizedBodyHeight": 226,
+        "referencePackingScale": 0.709480122324159,
+        "nativeReferenceBodyHeight": 318.5431034482759,
+        "sourceWideRenderPixelsPerNativePixel": 0.5964655895645584,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "dogmeat",
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/dogmeat.png",
+      "sha256": "387f8c2933d6e9a43e27f77284a928d4f07d96c61acb6ff91d975b65c9511973",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "quadruped",
+        "calibrationTargetBodyHeight": 110,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          38,
+          90,
+          183,
+          150
+        ],
+        "referenceNormalizedBodyHeight": 150,
+        "referencePackingScale": 0.6321525885558583,
+        "nativeReferenceBodyHeight": 237.2844827586207,
+        "sourceWideRenderPixelsPerNativePixel": 0.4635785649409627,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "quadrupedCalibration": {
+          "measurement": "ear-tip-to-paw vertical height in natural standing reference",
+          "earTipHeight": 110,
+          "nominalWithersHeight": 80,
+          "actualProjectedReferenceWidth": 134.2,
+          "nativeForeshorteningPreserved": true,
+          "neverForcedToHumanoid190": true,
+          "uniformScaleOnly": true,
+          "note": "Projected horizontal width follows native anatomy and three-quarter posture; no stretching enforces the prompt’s nominal body-length goal. Raised tails are excluded from ear-height measurement."
+        },
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "piper_wright",
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/piper_wright.png",
+      "sha256": "042f709176b1ef86cb04aa92cf6f952fe07b213d4530fe6c2d2e2dcc0277a2a4",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          85,
+          15,
+          133,
+          220
+        ],
+        "referenceNormalizedBodyHeight": 220,
+        "referencePackingScale": 0.6966966966966966,
+        "nativeReferenceBodyHeight": 315.7758620689655,
+        "sourceWideRenderPixelsPerNativePixel": 0.6016926016926016,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "preston_garvey",
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/preston_garvey.png",
+      "sha256": "603cb04066bdbd310bad0eac795b77b69ff6b328bc0bcbf8dd3230394026bb78",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          48,
+          15,
+          184,
+          216
+        ],
+        "referenceNormalizedBodyHeight": 216,
+        "referencePackingScale": 0.709480122324159,
+        "nativeReferenceBodyHeight": 304.44827586206895,
+        "sourceWideRenderPixelsPerNativePixel": 0.6240797372295843,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      }
+    }
+  ]
+}

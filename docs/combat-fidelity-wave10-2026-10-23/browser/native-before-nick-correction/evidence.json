@@ -1,0 +1,643 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "passed": true,
+  "frozen": true,
+  "source1to1Verified": false,
+  "nativeHeroEntries": 157,
+  "full32Count": 155,
+  "partialCount": 2,
+  "partialPoses": 32,
+  "partialDetails": [
+    {
+      "heroId": "beast_boy_tt",
+      "poses": 8,
+      "phases": [
+        "fatality",
+        "super"
+      ]
+    },
+    {
+      "heroId": "janine_gb",
+      "poses": 24,
+      "phases": [
+        "intro",
+        "outro",
+        "roundVictory",
+        "roundDefeat",
+        "victory",
+        "defeat"
+      ]
+    }
+  ],
+  "nativePhases": 1248,
+  "nativeDrawImageCalls": 9984,
+  "gorillaFallbackDraws": 48,
+  "janineReusedPresentationDraws": 16,
+  "nativeCallsIncludingFallback": 10048,
+  "baseHeroes": 103,
+  "newBaseHeroes": 39,
+  "baseDrawImageCalls": 3296,
+  "janineReusedOrdinaryDraws": 64,
+  "baseCallsIncludingReuse": 3360,
+  "historical": {
+    "nativeAssetRecordsAndPngHashes": 117,
+    "nativeDrawGeometry": 7440,
+    "baseRecords": 64,
+    "basePngHashes": 64,
+    "baseDrawGeometry": 2048,
+    "fullMeleeManifests": 8,
+    "summonAssetsAndHashes": 15,
+    "reportsOverwritten": false,
+    "evidence": [
+      {
+        "path": "docs/combat-fidelity-wave9-2026-10-22/browser/native-presentations.json",
+        "sha256": "566a479fa54c6936e0fdb50e8272a8bfd54df4731a02a93d0c4a9667c5ee987b",
+        "access": "read-only; never an output",
+        "mtime": "2026-10-22T20:18:06.680Z"
+      },
+      {
+        "path": "docs/combat-fidelity-wave9-2026-10-22/browser/native-presentations-trace.json",
+        "sha256": "3e383e8d6cb39778158ee11d4d2569b0fbee090f78e296bd31b22b2dfcb0960d",
+        "access": "read-only; never an output",
+        "mtime": "2026-10-22T20:18:06.677Z"
+      },
+      {
+        "path": "docs/combat-fidelity-wave9-2026-10-22/browser/base-corrections.json",
+        "sha256": "bf4a4fbd242d6655b289d0508491c76dcfe48c6e2b758450f5b502a6ad1c7389",
+        "access": "read-only; never an output",
+        "mtime": "2026-10-22T20:17:20.602Z"
+      },
+      {
+        "path": "docs/combat-fidelity-wave9-2026-10-22/browser/base-corrections-trace.json",
+        "sha256": "b96916042100f4615b3bf859ae9c94cc5b55f702cfa2da7978565c47c0d7b297",
+        "access": "read-only; never an output",
+        "mtime": "2026-10-22T20:17:20.595Z"
+      }
+    ],
+    "reportHashesVerifiedAgainstPreviousEvidence": true,
+    "previousEvidenceSha256": "e29be57f92dccc04abc7ca6ba7ca87f8bc0e8db8bc101b6bc7bb20821bda0835",
+    "completeBaseRegistryFileHashes": 18
+  },
+  "geometry": {
+    "complete256pxSourceCells": true,
+    "calibratedBaseline244": true,
+    "preWave6LegacyBaseline232": true,
+    "mirroredP2": true,
+    "actorMutation": false,
+    "assetRegistryMutation": false,
+    "baseLayoutMutation": false,
+    "authoritativeProgressChecks": 9984,
+    "crossedIdentityRejections": 314
+  },
+  "frozenPartAInputs": {
+    "passed": true,
+    "files": 26,
+    "manifest": "docs/combat-fidelity-wave10-2026-10-23/part-a-delivery.json",
+    "manifestSha256": "2cec0e69165da23a67a54aebf86639f703f198de32ddef5f81cc01a76a45e735"
+  },
+  "visualReview": {
+    "newPresentationCaptures": 40,
+    "newDedicatedBaseCaptures": 39,
+    "reusedJanineCapture": "docs/combat-fidelity-wave10-2026-10-23/browser/janine-base-reuse.png",
+    "montageFiles": [
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-a-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-a-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-a-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-a-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-b-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-b-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-b-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-b-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-c-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-c-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-c-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-c-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-d-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-d-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-d-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-d-2-both-sides.png"
+    ],
+    "reviewed": [
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-a-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-a-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-a-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-a-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-b-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-b-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-b-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-b-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-c-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-c-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-c-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-c-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-d-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-d-1-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/native-d-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/bases-d-2-both-sides.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/janine-base-reuse.png"
+    ],
+    "notes": "Sixteen whole-width P1/P2 montage views and the explicit Janine reused-state view were inspected. Each selected identity remains readable, full bodies/held equipment are preserved, P2 mirrors use the correct source, and human/animal/vehicle postures stay distinct. Individual40 native captures and39 dedicated base captures are retained uncropped. Montage crops are diagnostic selection views, not additional native art or certification of film/game exactness."
+  },
+  "missingNativeHeroIds": [
+    "robin_tt",
+    "raven_tt",
+    "starfire_tt"
+  ],
+  "errors": [],
+  "externalRequestLimitations": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations.mjs",
+      "sha256": "1335a8131a2b6f953e520673df946e7691d5414309733cb38df1dd58f5c4d4f8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections.mjs",
+      "sha256": "a0c285a8bbd4fe6a2a405580500c89395258320a415e7c55a716668150f9c1c6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/build-evidence.mjs",
+      "sha256": "4fb19d3ddcf2d92ae9683ec0e69e73355c60b4ed6d023fd8b610c2e7f5b985a7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations.json",
+      "sha256": "441e939b2ed601172bd65b70eca17a7ce569d33ff08d5af7070b3c54e127af12"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections.json",
+      "sha256": "79b560bce830b2a654ebc655c0d09a77be03ff6ac48cb74272b98534752a8de7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-trace.json",
+      "sha256": "df5f4e15598282e2f50ae7ecc31a412ba70c71d7644e016c8d95d0cb0bb251cf"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-trace.json",
+      "sha256": "d5d10846bfbc5c75446efaddbbb537d6ca1005abc808cdef0d409725ec88c254"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/beast-boy-fallback-trace.json",
+      "sha256": "2bd845442f1e3a510bc1d2971ec62074d287abf9c5f3203665cb679087941919"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/janine-presentation-fallback-trace.json",
+      "sha256": "82518def8bcc863e2c8426cd817bb5d15b52891c5cb3c3ef1185d61ac542df76"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/janine-base-reuse-trace.json",
+      "sha256": "c03fed6137e7889514fa14fdfb94272b851395a35c66d6720865c1ffcbf48554"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/janine-base-reuse.png",
+      "sha256": "948685b0536b05070b94775917d779a1630c83229848e5ab304cd28c8ef4385f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-venkman_gb.png",
+      "sha256": "378789f90436ba6dd84b4e969e908ae11e7e656850951b2fd1eeff5db9fe34b5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-stantz_gb.png",
+      "sha256": "9a752bc49c053817161ef02d9d27560302dde73797358420ee710634cf4395f1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-zeddemore_gb.png",
+      "sha256": "1b2466673aeedf664889f4e71179b2685345d4c4b0265f9a6a5b849459985cb5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-spengler_gb.png",
+      "sha256": "3ab9b550ac6519a8319d7e3fd034666df10286761737da0dbb97521f818f14c7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-janine_gb.png",
+      "sha256": "7e87c7895d8fa42300dac0643a592df67fd52f87ac273aa75ecd56daf0684500"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-bill_l4d.png",
+      "sha256": "f6f2a6a93da3f650d12b28fcda63beff30dfe47ce260fcb0d82a672bec83d005"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-ellis_l4d.png",
+      "sha256": "5d98d755ac85b19b1b2abd40b307de0dae1e5a606b80effbc59f4106f798a9e4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-coach_l4d.png",
+      "sha256": "0bbcd48343bafdcf5981722a536ace59b19c26eff22ceac416bc54348d00a4b1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-rochelle_l4d.png",
+      "sha256": "bbfc4127728ecc5ca7ff72481ac33e6c9fd0445164bd24c64a333f142cb39255"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-nick_l4d.png",
+      "sha256": "bdcd3309f599109900c444ac216219d0d17814cdcaa1da5959390790fc31b185"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-hicks_aliens.png",
+      "sha256": "72b67564af792be92fbddf1e7486e86addaa5c9508fb36b39579413da1c47be7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-vasquez_aliens.png",
+      "sha256": "3cb951d86fcacb3f28f7396df3d74fcad6992e8f9152d5c11b2f78cdfeec9cff"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-bishop_aliens.png",
+      "sha256": "7659f3ec7a8b97c3faa2c3e676f90ae1bb5a72995d5e62e6f98a41b8da97219a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-ripley_aliens.png",
+      "sha256": "948a84a80873cb2eb12542206cabeb65c4da5d7ba3c35e8474eca70f72875509"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-hudson_aliens.png",
+      "sha256": "7aeb049bdbf9bce05bc3fb50016572bd111b618bed98217e70185b5772140141"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-dallas.png",
+      "sha256": "51d78e24f39159676d9b86938409bd2c013762cd6cf59302f9d91c90473bc9e5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-wolf_pd.png",
+      "sha256": "c94924566bb531e6d858c100d4138038fb731f12d3dbd00c12380bb0b735ea09"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-hoxton.png",
+      "sha256": "4807b5f88ffc84c0d86ef624d9a79d81b5ba697fdb99dd2b1009a2e668563ad7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-chains_pd.png",
+      "sha256": "7311166fb03532e7f356a6634492f9c16cdac04383ea077d70bb13e3e15fa7fb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-clover_pd.png",
+      "sha256": "394acbf76397b144ea1a854b4379dbbfa65abf543884e0dc27f6798218e371b6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-freeman.png",
+      "sha256": "ae6472f7a84df64211bcd362e24f2fa3a13ebdaf3429e6125b06e30b053cd8cf"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-barney.png",
+      "sha256": "2cfd080abea6a0476c0a405aec9b13d7241b6c880b82c098833456dc12d52102"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-alyx_vance.png",
+      "sha256": "ed8bde32d9c04991762ca2fcf24920a837254f6eff4911cb72304253c86576fd"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-eli_vance.png",
+      "sha256": "eba689b17a66dd1bcc9a115223a9194484109d370ebd0275349356b15369b72c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-kleiner.png",
+      "sha256": "da9638a537e22d893d57ee200e5d44941468c6543fbbfe4e5566f3168838e49c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-paladin.png",
+      "sha256": "2e77bc0e7f9b44797e875966d23298a85a7d0165b2a7eea26bc6c5915cadb373"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-nick_v.png",
+      "sha256": "0f10d0c960e326d6dbfa1046b62be54ee068c6bc1a9beb2da0662e29021e65de"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-dogmeat.png",
+      "sha256": "d330e3f2e91a2cb388563532ffa72f597ea02fc1ce28bb11dd336f938659198e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-piper_wright.png",
+      "sha256": "93eb6b983ed13361daf3ec454e808f05ae5169f0946140417959cd48430401fe"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-preston_garvey.png",
+      "sha256": "4ca39487973e75e1c50578ab1cdaf9d47faef4fc2b0566e461ec37dd3d857663"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-neo.png",
+      "sha256": "cae0b27ffbf7f09b77a33821af7db4fcfee5972b9e47a5759528e3f67576e574"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-trinity.png",
+      "sha256": "faf70bef8577e9a736d0a706a5945111877058c97461002876374b33d6a65bd4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-morpheus.png",
+      "sha256": "aeee07375660fee5d77c2ba41474974ef262c7cedcc14c004e7fdbe4537acec5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-agent_smith.png",
+      "sha256": "a958ade15d3522df35d9a00efaa352e9b4389c0f59ba4a42f8a69cb4572e6e9b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-seraph.png",
+      "sha256": "81c7f36e7790f27c8755ce29684c43cd4c04a4db26ce3d0668f78ded2e160886"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-oneill.png",
+      "sha256": "b84b544bb18bfa5864e5ec50b648ff473a3a8f353f51fd2ad27db063d25f6864"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-tealc.png",
+      "sha256": "b7f25dda2b6ae05e73d525f67230a5fdefc05cd6ea7becdd187f56c9efe1245d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-sam_carter.png",
+      "sha256": "70e5ddaff204ebf2bd26e53736b457b96411af55e9fc3b9aed168b8868ce654a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-daniel_jackson.png",
+      "sha256": "aee2e6ad32516fdca470b229abff712d7a9812d181f4f015d1365a39d55171f0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations-hammond_sgc.png",
+      "sha256": "abfca97c96687610ef3cabe79fdf857ebf300e19f18a483aee44d90e61ca0210"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-neo.png",
+      "sha256": "c33bca22e4df428ab3d5cbe9c719e3ec7c9087e1a1dd55bff7b4c707bf9acdbe"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-trinity.png",
+      "sha256": "f057be817094b7a1c716a0d422af1a0803193bf0ce22658275faa2c347222ef3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-morpheus.png",
+      "sha256": "3d82d3ef841ca3137ee89757b0816a0f526ffdcf1f624ce234dc50357e1d642c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-agent_smith.png",
+      "sha256": "b88a400a000576aab74c4c9c9fd38c8450b10578b9a9cfcfc49e2aa4c7c9818e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-seraph.png",
+      "sha256": "b1283ded678165f0eb1a06d888e501ab266fbbb8b6e2595d80314944a5b7ba45"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-oneill.png",
+      "sha256": "dc44631c8223fcfce0bfce550c19313ef063781e82952f47f1ad378a63f8e665"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-tealc.png",
+      "sha256": "21a44eece54f57204cf8c45f801c62af62a8ef5c480026d27fa95fe9c6f1a316"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-sam_carter.png",
+      "sha256": "d0e49dc001c3f74e77515a0b5f030bea8d3cc4ff3549687d23ec37e4f0f34364"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-daniel_jackson.png",
+      "sha256": "ceff39987d077fd4f013b161b1580112d66127128037bbec5c2ab1ea5e7b834a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-hammond_sgc.png",
+      "sha256": "9d551972296fb7b3f7d069b2d71d7b71155513433da3ae282aa4541e9e0354f9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-freeman.png",
+      "sha256": "ffe2dae534dbe14efe3a67ee8c073f8ec91c3d9b7fbae91a348e9195cb65a9bb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-barney.png",
+      "sha256": "04fa842de8cb4ecdc542b32d31b896e236596a8035c2c51c86d5426afb90c5e7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-alyx_vance.png",
+      "sha256": "a0ba02ac5a10895c13b9b535f621e7f23beef0d6033bd007e82cfd76feb11694"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-eli_vance.png",
+      "sha256": "1b3d52649018429ecde85f41e05fd8b99440225030e1889f222252cacc496b66"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-kleiner.png",
+      "sha256": "bac8e43304488d82f65f97071070fe6248887f94874fcd0d2ffd5cb18bc0355d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-paladin.png",
+      "sha256": "0a7bdc49da36b5bdedbfc5dc4c5fa67fe78abcf0e5ad72619923cac26dab2d98"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-nick_v.png",
+      "sha256": "5b58931e900893853345c697115c67b674bb1eec615d3a7ab27e1bdc22a19377"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-dogmeat.png",
+      "sha256": "742e2601f3989f3260b8c83d68410f97f59eb1441c380b60da88e8f691f3c0c6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-piper_wright.png",
+      "sha256": "a3ca82061e2d2a7f0f5ee11cf46a2a254bda502f0d0b37487f0e85cab00a7299"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-preston_garvey.png",
+      "sha256": "1f219c5066b927668db0af36b3c7198b9670c0619d6d1b034f3b918aef25175a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-hicks_aliens.png",
+      "sha256": "894f2382e643e46628d563d2870816cdb0b5f6caa9dc7393371b85af596d6f2b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-vasquez_aliens.png",
+      "sha256": "c0301ac860d2e05b5e9210b19871dc77a1a153127148802384787de1adaa75f2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-bishop_aliens.png",
+      "sha256": "edb4bff6fe4406154d5f57c774c0bfa37849b6b77a47b33512239ce466681bd6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-ripley_aliens.png",
+      "sha256": "9de67e6361a923fee3e4e7af78d89aecb3c2bb85ac52e9b10d610985698f4521"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-hudson_aliens.png",
+      "sha256": "b777582d0cd3d1c1e858d7d8a4d94cdb19615afaac63ef2173ff3aa7bea1845a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-dallas.png",
+      "sha256": "aa7521135220743c5325efc22381e662faf304b6933ef11896d1c8c7481ba2a1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-wolf_pd.png",
+      "sha256": "fcb45ff6e95713e75f448a327b41e25077130f2f3457996b9d1554ae70eb916e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-hoxton.png",
+      "sha256": "868c0b3c18af9dc6275616a71db889f5c06dea9f242c58fc997a6dd6f36be179"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-chains_pd.png",
+      "sha256": "1bcfc6960efad280cb673fe60ecfc35192113204fdf55c84bbe3991e067621c5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-clover_pd.png",
+      "sha256": "706df98c0931dfff2ee6c099fa4a6016d48f553c5584c76e4e626b0c789496da"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-venkman_gb.png",
+      "sha256": "79ab106629c0f7cefecb80dbf00443da1258757df55c6c574c1ebf0c8c49ce7d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-stantz_gb.png",
+      "sha256": "3b99855577711c4c501f428ef6b72c2585595516823c599c64789748fde27e3b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-zeddemore_gb.png",
+      "sha256": "6e4e3126bc08779544ba805803103f58120e7300b5b543610849a28e83ff132d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-spengler_gb.png",
+      "sha256": "0ef789a00a611a56c7411b7b379987e256b8849f47225839e4d40929925c104c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-bill_l4d.png",
+      "sha256": "a6b75d28f330bd3163969dcfae18e87b050a9a2814c35a404a2955a1b1d4aa8a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-ellis_l4d.png",
+      "sha256": "5236ce0b20af93b57fa4619f709c55ab1658aadb0561405b7c92e0d7318f099f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-coach_l4d.png",
+      "sha256": "9da2cb39f61cfa7b8a8baa47b345fdc3379966884259db582403003fe2c61884"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-rochelle_l4d.png",
+      "sha256": "6430c7d872e40f2f7e6212543e5e00477d050db274d06702e549fa8a60600e0f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections-nick_l4d.png",
+      "sha256": "32ab2a671581e9724c0c4fbc40ac0ed342c0de2923fbff2d8918464303ec828d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-a-1-both-sides.png",
+      "sha256": "faa14454375b8225c277b6c0689433fd29a1051c3bc8a31d47ef662527c7271f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/bases-a-1-both-sides.png",
+      "sha256": "c620a4b4e4599a0ea729ca380422086d3a97fe2c0f223e1515d124ebbb3789d5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-a-2-both-sides.png",
+      "sha256": "1f23c363444d30b809b804d6189068fc1ca886f5be7105c85b35402c77c8c504"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/bases-a-2-both-sides.png",
+      "sha256": "e955fabc3ad067b7935400ec5a9dd0eee1fbe633d9ccb171ff18d5d8fedf4932"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-b-1-both-sides.png",
+      "sha256": "b25d517366296bc6b50bfb778ff8aece5cee2cb27a665d14026c458661c32fb1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/bases-b-1-both-sides.png",
+      "sha256": "10e2cb3c1cd54cbfac152a27da55c917d83338bc39feb94cb7407dfeec8aecaf"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-b-2-both-sides.png",
+      "sha256": "f111ccab95c31e3152d75e88218e1ddf8f48741c4ae249fcae9cd8205a4ca30f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/bases-b-2-both-sides.png",
+      "sha256": "2ac809840e3d77840de3c1440fef954b4917ddd5088efcfa45f766be3f8a3c80"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-c-1-both-sides.png",
+      "sha256": "d96f9c3966dfde1e861a45ffea66c785da39ecb64428f28f687ae8e7f95ad4ea"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/bases-c-1-both-sides.png",
+      "sha256": "7634204d77a0076034e58a64187597ff1363720ec17b6e13f1e477668dde7970"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-c-2-both-sides.png",
+      "sha256": "a2006befac44052d5440657e0af18f1498f47aa62cae7d88c78ac9e29e0d7f37"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/bases-c-2-both-sides.png",
+      "sha256": "b08dd8e6571fb3dd31bdeaed4fcb21c4864e3e63d1880090c3f270fab4ec5c36"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-d-1-both-sides.png",
+      "sha256": "320396f3f4d48282ad46f782375f1b5cad0aa8b3195f8e9cbbe0b40ab844b4c2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/bases-d-1-both-sides.png",
+      "sha256": "02f5485ebb24598f225d499cde88bd17393dd3d8deb0aef77acb26a02ae54823"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/native-d-2-both-sides.png",
+      "sha256": "aa25fa5e8607c019fd4b4618dbbf4eebad4036d473cc9b1e47c9208d8e0c98b3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/bases-d-2-both-sides.png",
+      "sha256": "0960f592a4bbdcc81b3ae04fe3a20de7d9b537e33db27a6fbb71adeb143f4c8e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/review.md",
+      "sha256": "c5f73af85b6538a58c8ee7894aa0e220ce94689c3c9a1a0997ab5e233371bfaf"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/part-a-delivery.json",
+      "sha256": "2cec0e69165da23a67a54aebf86639f703f198de32ddef5f81cc01a76a45e735"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/part-a-review.md",
+      "sha256": "5cf3efe1c1b43394e14c922498c97b19d6e04a317faa2d782f2fe664f351ed08"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/part-a-native-super-anchor-correction-proposal.json",
+      "sha256": "ab1fff232888df0792f934fb8ca602abc9b3c70980d01e9988e2017ad1b9a105"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/part-a-native-super-anchor-correction-result.json",
+      "sha256": "efaecc440b87438bf189e79a075ebfbee05801635a3a1929773d19544ddb90c2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/part-a-native-super-anchor-review-before-correction.json",
+      "sha256": "59c8487f030a04f4bcc42a490b45c9940b285f2a0c20640050cccbc3653ade91"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/part-a-native-super-anchors-before-correction.json",
+      "sha256": "7948fea49f5727ff45d7b6d4ca4f24fa6568424d8f1cd9abe9745ba29591b7ed"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-attempt-1/explanation.json",
+      "sha256": "c5a665a139f085ab06c6e8464e6e05406d2c2e08c95d13f3e2f7537ccee0406c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/base-attempt-1/base-corrections-failure.json",
+      "sha256": "943861f5417a9486b1ae215cd2071b87c0ded0653450084f29e18867331cb7c2"
+    }
+  ],
+  "anchorMetadataCorrection": {
+    "appliedAfterBodyDrawCapture": true,
+    "correctedPoints": 7,
+    "nativeBodiesAndBasePngsChanged": false,
+    "bodyRegistriesChanged": false,
+    "tableSha256": "c04112d2ff6149593f76f51fe2c1da9de1306819644c9574cb55a9d79a19f083",
+    "pixelProof": "docs/combat-fidelity-wave10-2026-10-23/part-a-native-super-anchor-correction-result.json",
+    "activePoints": 22,
+    "nullPoints": 10,
+    "allCentersAlphaGreaterThan24": true,
+    "all9x9AtLeast8Pixels": true,
+    "builderCheckPassed": true
+  },
+  "scopeLimitations": [
+    "These are real renderer drawImage/source rectangles, baselines, rowScale, P2 mirrors, authoritative-progress selections and actor/registry/layout mutation checks; they do not replace the separate combat-engine collision, damage, party-support or full45 landing tests.",
+    "The body draws were captured before the coordinated anchor-only metadata correction. All character/base PNGs and their body registries remain identical; the updated anchor/delivery SHA is recorded here. No new browser run was started during the correction window.",
+    "Janine has24 accepted presentation poses and no dedicated base16/super/finale. The64 ordinary-state draws and16 super/finale draws reuse declared accepted presentation cells and are excluded from dedicated art counts.",
+    "Beast Boy retains only8 native T-Rex poses. Its24 unretained human drawings remain inaccessible, with48 real gorilla fallback draws. Robin/Raven/Starfire still have no accepted native presentation.",
+    "Base16 supplies four general states, not a dedicated animation for every ability. O’Neill’s P90-to-zat secondary switch has no dedicated native animation here. Only Neo and Freeman receive new45-state manifests in this wave.",
+    "Generated adaptations, no certified official animation or visual1:1 source fidelity. The external Google Fonts stylesheet is the only failed browser request."
+  ],
+  "lint": {
+    "passed": true,
+    "command": "npm run lint -- docs/combat-fidelity-wave10-2026-10-23/browser/native-presentations.mjs docs/combat-fidelity-wave10-2026-10-23/browser/base-corrections.mjs docs/combat-fidelity-wave10-2026-10-23/browser/build-evidence.mjs",
+    "errors": 0,
+    "warnings": 0
+  }
+}

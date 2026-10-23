@@ -1,0 +1,3733 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "buffy-spike",
+      "key": "Buffy the Vampire Slayer::Spike::Enchaînement vampirique de Spike",
+      "universe": "Buffy the Vampire Slayer",
+      "entityName": "Spike",
+      "actionName": "Enchaînement vampirique de Spike",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "spike_buffy",
+      "sheet": "/sprites/generated/summon-animations-wave11/spike.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "0a4e5bd5861ed78683c79d3b8c43e6c022d9ab1ce7458894898fff06f20217a2",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/spike-original.png",
+      "sourceImageSha256": "fe72308bfea5f4ea5e8f2601f64fc808f98924adb8406164b9761d91c2c4b236",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "referenceImage": "public/sprites/generated/heroes/buffy-the-vampire-slayer/spike-buffy.png",
+      "referenceImageSha256": "35d0a899bc311a6c9549d24b14e8d74b5178629a7931577ff2143de39423ad61",
+      "sourceWork": "Buffy saison7, après retrait de la puce de Spike et avant la faux/amulette finale",
+      "sourceReference": "Buffy saison7, après retrait de la puce de Spike et avant la faux/amulette finale. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. Spike season7, black coat and bleach-blond hair, no amulet/fire/gun. Physical fists only. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "effectAnchors": null,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.5263157894736842,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 0,
+          "targetBodyHeight": 190,
+          "method": "standing-head-to-sole-arrival-silhouette",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 361,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/spike-original.png",
+            "sourceImageSha256": "fe72308bfea5f4ea5e8f2601f64fc808f98924adb8406164b9761d91c2c4b236",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 407
+            },
+            "scale": 0.5263157894736842,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 24,
+                  "top": 34,
+                  "width": 230,
+                  "height": 361,
+                  "pixels": 38678
+                },
+                "output": {
+                  "left": 201,
+                  "top": 53,
+                  "width": 121,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 263,
+                  "top": 34,
+                  "width": 250,
+                  "height": 359,
+                  "pixels": 40219
+                },
+                "output": {
+                  "left": 192,
+                  "top": 53,
+                  "width": 132,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 532,
+                  "top": 34,
+                  "width": 244,
+                  "height": 362,
+                  "pixels": 40281
+                },
+                "output": {
+                  "left": 199,
+                  "top": 53,
+                  "width": 128,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 786,
+                  "top": 34,
+                  "width": 231,
+                  "height": 361,
+                  "pixels": 37597
+                },
+                "output": {
+                  "left": 198,
+                  "top": 53,
+                  "width": 122,
+                  "height": 190
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/spike-original.png",
+            "sourceImageSha256": "fe72308bfea5f4ea5e8f2601f64fc808f98924adb8406164b9761d91c2c4b236",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 406,
+              "bottom": 791
+            },
+            "scale": 0.5263157894736842,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 13,
+                  "top": 12,
+                  "width": 245,
+                  "height": 361,
+                  "pixels": 45214
+                },
+                "output": {
+                  "left": 195,
+                  "top": 53,
+                  "width": 129,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 264,
+                  "top": 19,
+                  "width": 253,
+                  "height": 353,
+                  "pixels": 42568
+                },
+                "output": {
+                  "left": 193,
+                  "top": 57,
+                  "width": 133,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 524,
+                  "top": 19,
+                  "width": 253,
+                  "height": 354,
+                  "pixels": 43349
+                },
+                "output": {
+                  "left": 195,
+                  "top": 57,
+                  "width": 133,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 790,
+                  "top": 20,
+                  "width": 229,
+                  "height": 354,
+                  "pixels": 41890
+                },
+                "output": {
+                  "left": 200,
+                  "top": 58,
+                  "width": 121,
+                  "height": 186
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/spike-original.png",
+            "sourceImageSha256": "fe72308bfea5f4ea5e8f2601f64fc808f98924adb8406164b9761d91c2c4b236",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 790,
+              "bottom": 1140
+            },
+            "scale": 0.5263157894736842,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 15,
+                  "top": 18,
+                  "width": 290,
+                  "height": 327,
+                  "pixels": 42396
+                },
+                "output": {
+                  "left": 197,
+                  "top": 72,
+                  "width": 153,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 281,
+                  "top": 20,
+                  "width": 288,
+                  "height": 321,
+                  "pixels": 40292
+                },
+                "output": {
+                  "left": 202,
+                  "top": 73,
+                  "width": 152,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 541,
+                  "top": 25,
+                  "width": 257,
+                  "height": 318,
+                  "pixels": 40586
+                },
+                "output": {
+                  "left": 204,
+                  "top": 76,
+                  "width": 135,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 791,
+                  "top": 11,
+                  "width": 230,
+                  "height": 334,
+                  "pixels": 36553
+                },
+                "output": {
+                  "left": 201,
+                  "top": 68,
+                  "width": 121,
+                  "height": 176
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/spike-original.png",
+            "sourceImageSha256": "fe72308bfea5f4ea5e8f2601f64fc808f98924adb8406164b9761d91c2c4b236",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 1132,
+              "bottom": 1536
+            },
+            "scale": 0.5263157894736842,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 24,
+                  "top": 5,
+                  "width": 233,
+                  "height": 363,
+                  "pixels": 41807
+                },
+                "output": {
+                  "left": 201,
+                  "top": 51,
+                  "width": 123,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 273,
+                  "top": 7,
+                  "width": 244,
+                  "height": 355,
+                  "pixels": 40188
+                },
+                "output": {
+                  "left": 198,
+                  "top": 52,
+                  "width": 128,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 539,
+                  "top": 15,
+                  "width": 231,
+                  "height": 346,
+                  "pixels": 41163
+                },
+                "output": {
+                  "left": 203,
+                  "top": 56,
+                  "width": 122,
+                  "height": 182
+                }
+              },
+              {
+                "source": {
+                  "left": 801,
+                  "top": 20,
+                  "width": 189,
+                  "height": 352,
+                  "pixels": 35956
+                },
+                "output": {
+                  "left": 206,
+                  "top": 59,
+                  "width": 99,
+                  "height": 185
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f15a0a7afa493491f86b224d2f8145cb179acb34ed8c13fb78534afed87ca817",
+              "e06a494fab7ee62bb5c56c6361dbc8fc41892b25ea084cdf4870999399980a49",
+              "70e44ac65b8f75c3d535ff23d60a1d979674d48b7c1690cbbc29b5776e6677d5",
+              "a631d50a51f1d30b449d9e9816f9b2783e9c60fc718b60b0c433ada264f647e5"
+            ],
+            "visiblePixels": [
+              10683,
+              11215,
+              11228,
+              10460
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "969635b092b4d56fcbfcb79774dff8e510011a80ad10d15f3e13aa7356775b95",
+              "624796aa48dbdc4d36ffb908675cd432eb7b357d0363e92b0a49a5a0b57dfa90",
+              "c8e7454dd43a206c3f0258b65b1da2e10c9864aba55e9af276f592f54318ff1f",
+              "fc598b5218efe8fcd941a9563bf46a2b0be732e26045debf7eb0afea35460d96"
+            ],
+            "visiblePixels": [
+              12554,
+              11807,
+              11955,
+              11702
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "441bdd47798fe004e6f9c8fc6e5910138293e1e9079668840c0b747e17cee407",
+              "b5192aab2ff13e52fb9b1ea837329b86f311259955fa9a60071e2efd58da15a8",
+              "0186a4aa27c5f2697fe8ce2d886c6e3b836f0657650871299dbd633d68d8f0cd",
+              "69e2e0acf0290f6c2e02c5e8ef086dfe82771bda4a5580013cd097e70b644006"
+            ],
+            "visiblePixels": [
+              11789,
+              11237,
+              11174,
+              10161
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "193f2535a8b124bd8ffbdcf19e396bec4fd2256a46b643e54865862a4384d79d",
+              "e6ad796fe24fd1643a4b8075c61dff99ff74930798bb6f3667e22107b193e2d5",
+              "6233c63edd7b1fb4b00c41864acb59c1cdc7d2a55ad9cd5db1331cd3d2e46d73",
+              "4e00adcba8567f301290c12dca6d6918dcd04fa35362ff7022aa292e364d452e"
+            ],
+            "visiblePixels": [
+              11620,
+              11137,
+              11494,
+              9955
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "atlantis-ronon",
+      "key": "Stargate Atlantis::Ronon Dex::Tir du pistolet satedan de Ronon",
+      "universe": "Stargate Atlantis",
+      "entityName": "Ronon Dex",
+      "actionName": "Tir du pistolet satedan de Ronon",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "ronon_dex",
+      "sheet": "/sprites/generated/summon-animations-wave11/ronon.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "7c13baf1e130644c837c40d97256458aed32c34dcf65f2940719d0ce8f22247e",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/ronon-original.png",
+      "sourceImageSha256": "65e4164698908c01ee89cb6d1ff5504cb5601648d2b75264146cba10d4b20d7f",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "referenceImage": "public/sprites/generated/heroes/stargate-atlantis/ronon-dex.png",
+      "referenceImageSha256": "c0a9c59db06c8731ba14af57fdeb24084a8771e977595c1c546bd92facfa9aba",
+      "sourceWork": "Stargate Atlantis saison3 (2006–2007), avant les nanites et la fin de Weir",
+      "sourceReference": "Stargate Atlantis saison3 (2006–2007), avant les nanites et la fin de Weir. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. Atlantis season3, dreadlocks and compact Satedan energy sidearm. Native muzzle flashes remain attached to barrel. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          {
+            "x": 314,
+            "y": 105,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 77,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 311,
+            "y": 96,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 66,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "attack": [
+          {
+            "x": 296,
+            "y": 99,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 317,
+            "y": 97,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 252,
+            "neighborhoodVisiblePixelsAboveAlpha24": 75,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 305,
+            "y": 99,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 311,
+            "y": 96,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 72,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.5234159779614325,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 0,
+          "targetBodyHeight": 190,
+          "method": "standing-head-to-sole-arrival-silhouette",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 363,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/ronon-original.png",
+            "sourceImageSha256": "65e4164698908c01ee89cb6d1ff5504cb5601648d2b75264146cba10d4b20d7f",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 415
+            },
+            "scale": 0.5234159779614325,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 33,
+                  "width": 186,
+                  "height": 363,
+                  "pixels": 41600
+                },
+                "output": {
+                  "left": 213,
+                  "top": 53,
+                  "width": 97,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 298,
+                  "top": 38,
+                  "width": 189,
+                  "height": 359,
+                  "pixels": 38966
+                },
+                "output": {
+                  "left": 211,
+                  "top": 56,
+                  "width": 99,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 555,
+                  "top": 38,
+                  "width": 183,
+                  "height": 360,
+                  "pixels": 39578
+                },
+                "output": {
+                  "left": 212,
+                  "top": 56,
+                  "width": 96,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 788,
+                  "top": 35,
+                  "width": 225,
+                  "height": 361,
+                  "pixels": 38722
+                },
+                "output": {
+                  "left": 199,
+                  "top": 54,
+                  "width": 118,
+                  "height": 189
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/ronon-original.png",
+            "sourceImageSha256": "65e4164698908c01ee89cb6d1ff5504cb5601648d2b75264146cba10d4b20d7f",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 414,
+              "bottom": 791
+            },
+            "scale": 0.5234159779614325,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 17,
+                  "top": 19,
+                  "width": 228,
+                  "height": 332,
+                  "pixels": 40861
+                },
+                "output": {
+                  "left": 198,
+                  "top": 69,
+                  "width": 119,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 276,
+                  "top": 28,
+                  "width": 225,
+                  "height": 323,
+                  "pixels": 39335
+                },
+                "output": {
+                  "left": 199,
+                  "top": 73,
+                  "width": 118,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 522,
+                  "top": 26,
+                  "width": 240,
+                  "height": 328,
+                  "pixels": 39432
+                },
+                "output": {
+                  "left": 194,
+                  "top": 72,
+                  "width": 126,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 784,
+                  "top": 20,
+                  "width": 226,
+                  "height": 333,
+                  "pixels": 39755
+                },
+                "output": {
+                  "left": 197,
+                  "top": 69,
+                  "width": 118,
+                  "height": 174
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/ronon-original.png",
+            "sourceImageSha256": "65e4164698908c01ee89cb6d1ff5504cb5601648d2b75264146cba10d4b20d7f",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 790,
+              "bottom": 1157
+            },
+            "scale": 0.5234159779614325,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 21,
+                  "width": 276,
+                  "height": 332,
+                  "pixels": 43319
+                },
+                "output": {
+                  "left": 195,
+                  "top": 69,
+                  "width": 144,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 270,
+                  "top": 25,
+                  "width": 241,
+                  "height": 324,
+                  "pixels": 41897
+                },
+                "output": {
+                  "left": 196,
+                  "top": 71,
+                  "width": 126,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 522,
+                  "top": 25,
+                  "width": 286,
+                  "height": 330,
+                  "pixels": 44033
+                },
+                "output": {
+                  "left": 194,
+                  "top": 71,
+                  "width": 150,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 778,
+                  "top": 29,
+                  "width": 233,
+                  "height": 321,
+                  "pixels": 40493
+                },
+                "output": {
+                  "left": 194,
+                  "top": 73,
+                  "width": 122,
+                  "height": 168
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/ronon-original.png",
+            "sourceImageSha256": "65e4164698908c01ee89cb6d1ff5504cb5601648d2b75264146cba10d4b20d7f",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 1156,
+              "bottom": 1536
+            },
+            "scale": 0.5234159779614325,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 17,
+                  "top": 14,
+                  "width": 249,
+                  "height": 335,
+                  "pixels": 40319
+                },
+                "output": {
+                  "left": 198,
+                  "top": 68,
+                  "width": 130,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 266,
+                  "top": 15,
+                  "width": 238,
+                  "height": 335,
+                  "pixels": 40701
+                },
+                "output": {
+                  "left": 194,
+                  "top": 69,
+                  "width": 125,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 556,
+                  "top": 24,
+                  "width": 213,
+                  "height": 322,
+                  "pixels": 39885
+                },
+                "output": {
+                  "left": 212,
+                  "top": 73,
+                  "width": 111,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 783,
+                  "top": 12,
+                  "width": 198,
+                  "height": 333,
+                  "pixels": 37230
+                },
+                "output": {
+                  "left": 197,
+                  "top": 67,
+                  "width": 104,
+                  "height": 174
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8cdb1c9f8f36c23a56c6a6b52c21421fe266536100e7af92314a67ad36a438ad",
+              "fb4ed5fb1eb6d52a47302dd84d81c121c1846f5a1ae720fd4d9a30795c005258",
+              "dd1f269d6302e120148a439ac219898a0cbb29edc726f8809463ec7f36879eeb",
+              "eecc830a8349525516accf3ebd687bcbbdb2ef87dc25eda0b43235b15ba275e9"
+            ],
+            "visiblePixels": [
+              11405,
+              10670,
+              10887,
+              10648
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "0fc171cb5068f9691cc1887065e7402461df87049c3ac4581a81048241a68d78",
+              "029529ba6391fdf38bae9fdeaca427f6d394c5ea8b7700372681483fa3fd803e",
+              "dee6265024d0cd32fec677a0e66cc81af9deeaec231e530babb7cd8c95642ac2",
+              "1ae3a585462daf6435507b75a404eee81f180aee33b3b343aa7e19f00dce133d"
+            ],
+            "visiblePixels": [
+              11211,
+              10817,
+              10855,
+              10827
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d0014781c0d38d8233fdb85b14b354cfb70444d7d2bb86392adfd2c8d3bb05d1",
+              "25ded0ac4f30f2749c3a620ff2425cc21e5dbcacb7b064498c7ecef4ec8a583d",
+              "90801a261c1cab0c28f90e2467c8fcf2967ae79d3cd634889c2bf451a6090b2d",
+              "3ec5ae86389a94b1dba393cef47072d653d00831feee22d8550b71929d119ef8"
+            ],
+            "visiblePixels": [
+              11872,
+              11526,
+              12121,
+              11102
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "66d05e2c33b8ed579f8fc7b8dd5e33c00ede7724ba599399aa04a6f6b1a1e6be",
+              "55748a74d99de687f640c91a827f35eee89700835f10cdd8d8651ccd2e6b997c",
+              "2883780414dddfa5d8bf0065b3d5d8f480db35b5a562514718b3399cd35d175e",
+              "ee44d72e3da98713ee8d60223bc08cad8aead09352796aa1f31ec7b87aa6ab7e"
+            ],
+            "visiblePixels": [
+              10997,
+              11237,
+              10962,
+              10252
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "sgu-greer",
+      "key": "Stargate Universe::Ronald Greer::Rafale de couverture de Greer",
+      "universe": "Stargate Universe",
+      "entityName": "Ronald Greer",
+      "actionName": "Rafale de couverture de Greer",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "greer_sgu",
+      "sheet": "/sprites/generated/summon-animations-wave11/greer.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "fe5258b9799797a15fb41915c2f84837ad16a043366dd97b3089e1c22e7b345b",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/greer-original.png",
+      "sourceImageSha256": "409bb1e9152235986f79cad254471b11967cb93c9c1c7f3680fb57a69c58f562",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "referenceImage": "public/sprites/generated/heroes/stargate-universe/greer-sgu.png",
+      "referenceImageSha256": "f1fd15d4e8ae087935f401fd601ec9f9bdc5c1750b8465bb8ab5d5acf1786002",
+      "sourceWork": "Stargate Universe saison1 (2009–2010), pas de pouvoirs extraterrestres transférés à Chloe",
+      "sourceReference": "Stargate Universe saison1 (2009–2010), pas de pouvoirs extraterrestres transférés à Chloe. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. Universe season1, Black soldier with dark brown skin and M4A1; original pale generic reference corrected. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          {
+            "x": 334,
+            "y": 108,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 244,
+            "neighborhoodVisiblePixelsAboveAlpha24": 40,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 324,
+            "y": 109,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 248,
+            "neighborhoodVisiblePixelsAboveAlpha24": 38,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "attack": [
+          {
+            "x": 330,
+            "y": 103,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 242,
+            "neighborhoodVisiblePixelsAboveAlpha24": 45,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 327,
+            "y": 102,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 247,
+            "neighborhoodVisiblePixelsAboveAlpha24": 52,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 334,
+            "y": 110,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 248,
+            "neighborhoodVisiblePixelsAboveAlpha24": 47,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 323,
+            "y": 109,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 246,
+            "neighborhoodVisiblePixelsAboveAlpha24": 35,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.5757575757575758,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 0,
+          "targetBodyHeight": 190,
+          "method": "standing-head-to-sole-arrival-silhouette",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 330,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/greer-original.png",
+            "sourceImageSha256": "409bb1e9152235986f79cad254471b11967cb93c9c1c7f3680fb57a69c58f562",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 423
+            },
+            "scale": 0.5757575757575758,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 66,
+                  "width": 183,
+                  "height": 330,
+                  "pixels": 29635
+                },
+                "output": {
+                  "left": 202,
+                  "top": 54,
+                  "width": 105,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 307,
+                  "top": 67,
+                  "width": 171,
+                  "height": 327,
+                  "pixels": 28761
+                },
+                "output": {
+                  "left": 212,
+                  "top": 55,
+                  "width": 98,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 553,
+                  "top": 73,
+                  "width": 180,
+                  "height": 322,
+                  "pixels": 28304
+                },
+                "output": {
+                  "left": 206,
+                  "top": 58,
+                  "width": 104,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 807,
+                  "top": 75,
+                  "width": 185,
+                  "height": 319,
+                  "pixels": 27454
+                },
+                "output": {
+                  "left": 205,
+                  "top": 59,
+                  "width": 107,
+                  "height": 184
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/greer-original.png",
+            "sourceImageSha256": "409bb1e9152235986f79cad254471b11967cb93c9c1c7f3680fb57a69c58f562",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 422,
+              "bottom": 798
+            },
+            "scale": 0.5757575757575758,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 25,
+                  "top": 28,
+                  "width": 231,
+                  "height": 317,
+                  "pixels": 31246
+                },
+                "output": {
+                  "left": 197,
+                  "top": 61,
+                  "width": 133,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 274,
+                  "top": 41,
+                  "width": 246,
+                  "height": 305,
+                  "pixels": 31167
+                },
+                "output": {
+                  "left": 193,
+                  "top": 68,
+                  "width": 142,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 519,
+                  "top": 45,
+                  "width": 265,
+                  "height": 300,
+                  "pixels": 31793
+                },
+                "output": {
+                  "left": 186,
+                  "top": 71,
+                  "width": 153,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 774,
+                  "top": 49,
+                  "width": 247,
+                  "height": 297,
+                  "pixels": 30580
+                },
+                "output": {
+                  "left": 186,
+                  "top": 73,
+                  "width": 142,
+                  "height": 171
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/greer-original.png",
+            "sourceImageSha256": "409bb1e9152235986f79cad254471b11967cb93c9c1c7f3680fb57a69c58f562",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 797,
+              "bottom": 1150
+            },
+            "scale": 0.5757575757575758,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 28,
+                  "width": 237,
+                  "height": 309,
+                  "pixels": 31995
+                },
+                "output": {
+                  "left": 202,
+                  "top": 64,
+                  "width": 136,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 303,
+                  "top": 31,
+                  "width": 217,
+                  "height": 306,
+                  "pixels": 31546
+                },
+                "output": {
+                  "left": 209,
+                  "top": 66,
+                  "width": 125,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 530,
+                  "top": 43,
+                  "width": 254,
+                  "height": 297,
+                  "pixels": 31888
+                },
+                "output": {
+                  "left": 193,
+                  "top": 73,
+                  "width": 146,
+                  "height": 171
+                }
+              },
+              {
+                "source": {
+                  "left": 785,
+                  "top": 37,
+                  "width": 237,
+                  "height": 303,
+                  "pixels": 30629
+                },
+                "output": {
+                  "left": 192,
+                  "top": 70,
+                  "width": 136,
+                  "height": 174
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/greer-original.png",
+            "sourceImageSha256": "409bb1e9152235986f79cad254471b11967cb93c9c1c7f3680fb57a69c58f562",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 1149,
+              "bottom": 1536
+            },
+            "scale": 0.5757575757575758,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 49,
+                  "top": 13,
+                  "width": 213,
+                  "height": 342,
+                  "pixels": 33238
+                },
+                "output": {
+                  "left": 211,
+                  "top": 47,
+                  "width": 123,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 306,
+                  "top": 19,
+                  "width": 194,
+                  "height": 333,
+                  "pixels": 31728
+                },
+                "output": {
+                  "left": 211,
+                  "top": 51,
+                  "width": 112,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 563,
+                  "top": 21,
+                  "width": 198,
+                  "height": 334,
+                  "pixels": 32261
+                },
+                "output": {
+                  "left": 212,
+                  "top": 52,
+                  "width": 114,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 804,
+                  "top": 24,
+                  "width": 194,
+                  "height": 328,
+                  "pixels": 29991
+                },
+                "output": {
+                  "left": 203,
+                  "top": 53,
+                  "width": 112,
+                  "height": 189
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d4b89159db1f742fc7baded7bf9fadc8c9fc3039d5ea9a75aac36f8e737f0a5e",
+              "12535a605a6cab0c5318131022e93bb28b5b17ba38eb4513e9b301b797825b18",
+              "411c1b71028f3234315a2768ed07f8d69d2c4b08347f1f6a3cddf11b59b110bd",
+              "096ad1542c764116e97ef0a2d8619534d887450a90363c57868d5b0bcf2b2fe9"
+            ],
+            "visiblePixels": [
+              9816,
+              9517,
+              9421,
+              9191
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9ef6569e8267026e378212133140f7f822132f3eda68979322012508a1cde62d",
+              "a7d5a20f8d4e9efcf7c36f1df7f22945e537711d4917817bbfc5d5d30ddb56ed",
+              "2a1d02826cb838d63c1d75c303ede8227654c6f38eed373bb57c0709ab7d47d8",
+              "c719102280763213f0e280900e27967b60f61d47b25096c29cfc921a78f9fe81"
+            ],
+            "visiblePixels": [
+              10412,
+              10372,
+              10595,
+              10113
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1f1459041c480b03250cd218e291fcbf63220e0fee19c407642d951eb4e41949",
+              "2c62dcf18802d69d1b1331c7d364255f2a6ce46c6d11af907ced2b04315cd21a",
+              "e224759f0d0fb41ba416eb1d8134a9e5093dc4ce94d0cbf4667126fb13e128b5",
+              "ee930d5853c119efcd6a4148c9babfff25ce5b5132d16a622836936705607468"
+            ],
+            "visiblePixels": [
+              10619,
+              10471,
+              10580,
+              10098
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d23142a5dc56442c53aecf44bb37421efd1079beb4b6c87f21821079319fa123",
+              "245f2431ffddfafc11f9f37a2951e22a9a0913e7a61630aa514b4fb82367c16e",
+              "134f04e6b532bc44277b053479e7faf67d99e1be02bddbed86cdc7d4b9c07843",
+              "ba06098b574f8ffba0c44f2003ba9680e78a7a98468667f5daf75d0f594d4b8f"
+            ],
+            "visiblePixels": [
+              11085,
+              10587,
+              10694,
+              9990
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "borderlands-roland",
+      "key": "Borderlands::Roland::Rafale du fusil de Roland",
+      "universe": "Borderlands",
+      "entityName": "Roland",
+      "actionName": "Rafale du fusil de Roland",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "roland_bl",
+      "sheet": "/sprites/generated/summon-animations-wave11/roland.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "674dd95f214bfce99f53dddc42b8d5ca6a829ea2fd7922f0995316749310aa81",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/roland-returned.png",
+      "sourceImageSha256": "79443bba838e0dcb1828c26c73dc907224bf5b1a190c7f4368b05440f959a8f6",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "referenceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/roland_bl-original.png",
+      "referenceImageSha256": "ee0bfd73c53869067022a70d0ca35178a6d0a80f3b2daf84ee38b3a4847fae77",
+      "sourceWork": "Borderlands (2009), quatre chasseurs originaux et CL4P-TP ; pas de compétences du Pré-Sequel/BL2 transférées",
+      "sourceReference": "Borderlands (2009), quatre chasseurs originaux et CL4P-TP ; pas de compétences du Pré-Sequel/BL2 transférées. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. Borderlands2009 olive cap/goggles and original Soldier armour. Two faint alpha>24 orange muzzle-halo pixels reach source right edge; complete body/barrel retained and no pixels erased. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          {
+            "x": 327,
+            "y": 112,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 245,
+            "neighborhoodVisiblePixelsAboveAlpha24": 61,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 322,
+            "y": 106,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 242,
+            "neighborhoodVisiblePixelsAboveAlpha24": 42,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "attack": [
+          {
+            "x": 307,
+            "y": 94,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 309,
+            "y": 96,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 307,
+            "y": 113,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 245,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 296,
+            "y": 103,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 248,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.5555555555555556,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 0,
+          "targetBodyHeight": 190,
+          "method": "standing-head-to-sole-arrival-silhouette",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 342,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/roland-returned.png",
+            "sourceImageSha256": "79443bba838e0dcb1828c26c73dc907224bf5b1a190c7f4368b05440f959a8f6",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 424
+            },
+            "scale": 0.5555555555555556,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 58,
+                  "width": 201,
+                  "height": 342,
+                  "pixels": 34474
+                },
+                "output": {
+                  "left": 197,
+                  "top": 54,
+                  "width": 112,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 279,
+                  "top": 64,
+                  "width": 208,
+                  "height": 336,
+                  "pixels": 35113
+                },
+                "output": {
+                  "left": 198,
+                  "top": 57,
+                  "width": 116,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 554,
+                  "top": 68,
+                  "width": 190,
+                  "height": 332,
+                  "pixels": 34140
+                },
+                "output": {
+                  "left": 208,
+                  "top": 60,
+                  "width": 106,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 790,
+                  "top": 70,
+                  "width": 214,
+                  "height": 329,
+                  "pixels": 32452
+                },
+                "output": {
+                  "left": 197,
+                  "top": 61,
+                  "width": 119,
+                  "height": 183
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/roland-returned.png",
+            "sourceImageSha256": "79443bba838e0dcb1828c26c73dc907224bf5b1a190c7f4368b05440f959a8f6",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 423,
+              "bottom": 801
+            },
+            "scale": 0.5555555555555556,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 18,
+                  "top": 22,
+                  "width": 215,
+                  "height": 325,
+                  "pixels": 37270
+                },
+                "output": {
+                  "left": 195,
+                  "top": 62,
+                  "width": 119,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 275,
+                  "top": 27,
+                  "width": 243,
+                  "height": 322,
+                  "pixels": 36742
+                },
+                "output": {
+                  "left": 195,
+                  "top": 65,
+                  "width": 135,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 515,
+                  "top": 38,
+                  "width": 262,
+                  "height": 311,
+                  "pixels": 36392
+                },
+                "output": {
+                  "left": 187,
+                  "top": 71,
+                  "width": 146,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 764,
+                  "top": 34,
+                  "width": 257,
+                  "height": 315,
+                  "pixels": 36662
+                },
+                "output": {
+                  "left": 183,
+                  "top": 69,
+                  "width": 143,
+                  "height": 175
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/roland-returned.png",
+            "sourceImageSha256": "79443bba838e0dcb1828c26c73dc907224bf5b1a190c7f4368b05440f959a8f6",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 800,
+              "bottom": 1166
+            },
+            "scale": 0.5555555555555556,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 14,
+                  "top": 29,
+                  "width": 272,
+                  "height": 320,
+                  "pixels": 40374
+                },
+                "output": {
+                  "left": 193,
+                  "top": 66,
+                  "width": 151,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 266,
+                  "top": 31,
+                  "width": 283,
+                  "height": 317,
+                  "pixels": 39398
+                },
+                "output": {
+                  "left": 190,
+                  "top": 67,
+                  "width": 157,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 517,
+                  "top": 56,
+                  "width": 271,
+                  "height": 293,
+                  "pixels": 36852
+                },
+                "output": {
+                  "left": 188,
+                  "top": 81,
+                  "width": 151,
+                  "height": 163
+                }
+              },
+              {
+                "source": {
+                  "left": 778,
+                  "top": 38,
+                  "width": 246,
+                  "height": 310,
+                  "pixels": 36190
+                },
+                "output": {
+                  "left": 190,
+                  "top": 71,
+                  "width": 137,
+                  "height": 172
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/roland-returned.png",
+            "sourceImageSha256": "79443bba838e0dcb1828c26c73dc907224bf5b1a190c7f4368b05440f959a8f6",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 1165,
+              "bottom": 1536
+            },
+            "scale": 0.5555555555555556,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 28,
+                  "top": 24,
+                  "width": 231,
+                  "height": 316,
+                  "pixels": 36197
+                },
+                "output": {
+                  "left": 200,
+                  "top": 66,
+                  "width": 128,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 286,
+                  "top": 25,
+                  "width": 205,
+                  "height": 316,
+                  "pixels": 34852
+                },
+                "output": {
+                  "left": 202,
+                  "top": 66,
+                  "width": 114,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 532,
+                  "top": 29,
+                  "width": 225,
+                  "height": 315,
+                  "pixels": 34557
+                },
+                "output": {
+                  "left": 196,
+                  "top": 68,
+                  "width": 125,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 799,
+                  "top": 18,
+                  "width": 203,
+                  "height": 327,
+                  "pixels": 35250
+                },
+                "output": {
+                  "left": 202,
+                  "top": 62,
+                  "width": 113,
+                  "height": 182
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "a8c09d7544659f6885a0877f4416647f0ad015aff1df196209c61ac038c62d15",
+              "e13d2b9b1d7f02b75fc163af18f120c0da84ab0afa20126a2f7511f76d7eb433",
+              "8367671b3f997fae9ac6ba3de7e3e0ec3d17d88b2a8fa96009c568b43d82987e",
+              "96c009c466acb3f928520810dbb445611795d1726a6f46196a61ee38072cd1bf"
+            ],
+            "visiblePixels": [
+              10702,
+              10931,
+              10626,
+              10025
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "884c1dc29cb78d5b26de23355c793bf6ed3029eb877a3d854d261e0a494365c1",
+              "c4d0971c314b7306f7362251586aae1af5569bc5fa032957d69ca779a2ddbe00",
+              "d032437635184a9027d71a18d6e87916f00580f7b6e05f727e7090c0965ef30e",
+              "d559870f74829e240bec4d0c29fedf284efb7672c5c710b29f5571ffbaa48460"
+            ],
+            "visiblePixels": [
+              11549,
+              11347,
+              11311,
+              11342
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8392404cd301660343881286ff83ad9cd6acb27beb78a499956157ad103e1766",
+              "a278d94ac7e937ebe252f5563a10ecf47f6a394bb91ac6328c364599da544001",
+              "14cf5c65e334f317bae9b100a833f0aa25db4cdaf320ee3c7567f942d1b58878",
+              "7a8954fde7fc82e987e2e9d07d75b3563f8bf83be2f56e268c2735242aba96f0"
+            ],
+            "visiblePixels": [
+              12487,
+              12149,
+              11431,
+              11227
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2b45651057314942e5e4b8d30f843ffce6c9fbe8913ef4c594a77a5af80e7b34",
+              "8b52ddd053f71620f01dea32167cbf77581724be5390d9a03a5ab40871e512e5",
+              "94a4ae81318ee026b908e0ca50e9be992c8286b2368f1fe0b4deff2f4adb0dca",
+              "601a046eaa37313d3676056a9d94ce0dc3c5f065956ae2c4a8c2ba94caab5ac4"
+            ],
+            "visiblePixels": [
+              11217,
+              10800,
+              10648,
+              10933
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "madmax-furiosa",
+      "key": "Mad Max::Furiosa::Tir de précision de Furiosa",
+      "universe": "Mad Max",
+      "entityName": "Furiosa",
+      "actionName": "Tir de précision de Furiosa",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "furiosa",
+      "sheet": "/sprites/generated/summon-animations-wave11/furiosa.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "f79bdc0cd9ee21251c8409d095108564a23288bf508ac3bd605e3f1b61c08f94",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/furiosa-scope-correction-returned.png",
+      "sourceImageSha256": "acf7086c57c2986698b35fc9b0f41512eeccc84ed14d8a4c52c85a641865ae6d",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "referenceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/furiosa-original.png",
+      "referenceImageSha256": "184a111b21d8ecd6b38c4917068f918448f16353865e0f51693e86f31826f7c0",
+      "sourceWork": "Mad Max: Fury Road (2015), équipements portatifs ; aucun véhicule créé par Canvas",
+      "sourceReference": "Mad Max: Fury Road (2015), équipements portatifs ; aucun véhicule créé par Canvas. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. FuryRoad2015 short hair/black grease, actual left mechanical forearm and wooden Type56 SKS with long telescopic sight; equipment corrected natively. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          {
+            "x": 350,
+            "y": 93,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 242,
+            "neighborhoodVisiblePixelsAboveAlpha24": 57,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 326,
+            "y": 93,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 238,
+            "neighborhoodVisiblePixelsAboveAlpha24": 40,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "attack": [
+          {
+            "x": 341,
+            "y": 94,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 245,
+            "neighborhoodVisiblePixelsAboveAlpha24": 64,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 331,
+            "y": 95,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 62,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 331,
+            "y": 95,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 244,
+            "neighborhoodVisiblePixelsAboveAlpha24": 51,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 318,
+            "y": 95,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 247,
+            "neighborhoodVisiblePixelsAboveAlpha24": 48,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.5864197530864198,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 0,
+          "targetBodyHeight": 190,
+          "method": "standing-head-to-sole-arrival-silhouette",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 324,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/furiosa-scope-correction-returned.png",
+            "sourceImageSha256": "acf7086c57c2986698b35fc9b0f41512eeccc84ed14d8a4c52c85a641865ae6d",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 400
+            },
+            "scale": 0.5864197530864198,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 34,
+                  "top": 48,
+                  "width": 230,
+                  "height": 324,
+                  "pixels": 30309
+                },
+                "output": {
+                  "left": 201,
+                  "top": 53,
+                  "width": 135,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 305,
+                  "top": 48,
+                  "width": 215,
+                  "height": 324,
+                  "pixels": 29246
+                },
+                "output": {
+                  "left": 210,
+                  "top": 53,
+                  "width": 126,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 559,
+                  "top": 50,
+                  "width": 231,
+                  "height": 324,
+                  "pixels": 29764
+                },
+                "output": {
+                  "left": 209,
+                  "top": 54,
+                  "width": 135,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 816,
+                  "top": 49,
+                  "width": 203,
+                  "height": 325,
+                  "pixels": 29273
+                },
+                "output": {
+                  "left": 209,
+                  "top": 53,
+                  "width": 119,
+                  "height": 191
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/furiosa-scope-correction-returned.png",
+            "sourceImageSha256": "acf7086c57c2986698b35fc9b0f41512eeccc84ed14d8a4c52c85a641865ae6d",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 399,
+              "bottom": 784
+            },
+            "scale": 0.5864197530864198,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 13,
+                  "top": 26,
+                  "width": 244,
+                  "height": 326,
+                  "pixels": 32586
+                },
+                "output": {
+                  "left": 189,
+                  "top": 52,
+                  "width": 143,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 268,
+                  "top": 34,
+                  "width": 282,
+                  "height": 318,
+                  "pixels": 32965
+                },
+                "output": {
+                  "left": 188,
+                  "top": 57,
+                  "width": 165,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 520,
+                  "top": 39,
+                  "width": 289,
+                  "height": 314,
+                  "pixels": 33181
+                },
+                "output": {
+                  "left": 186,
+                  "top": 60,
+                  "width": 169,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 776,
+                  "top": 39,
+                  "width": 247,
+                  "height": 313,
+                  "pixels": 32072
+                },
+                "output": {
+                  "left": 186,
+                  "top": 60,
+                  "width": 145,
+                  "height": 184
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/furiosa-scope-correction-returned.png",
+            "sourceImageSha256": "acf7086c57c2986698b35fc9b0f41512eeccc84ed14d8a4c52c85a641865ae6d",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 783,
+              "bottom": 1149
+            },
+            "scale": 0.5864197530864198,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 32,
+                  "width": 273,
+                  "height": 314,
+                  "pixels": 33631
+                },
+                "output": {
+                  "left": 188,
+                  "top": 59,
+                  "width": 160,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 278,
+                  "top": 36,
+                  "width": 249,
+                  "height": 308,
+                  "pixels": 34785
+                },
+                "output": {
+                  "left": 194,
+                  "top": 61,
+                  "width": 146,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 546,
+                  "top": 35,
+                  "width": 236,
+                  "height": 309,
+                  "pixels": 33326
+                },
+                "output": {
+                  "left": 201,
+                  "top": 60,
+                  "width": 138,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 772,
+                  "top": 37,
+                  "width": 248,
+                  "height": 311,
+                  "pixels": 34016
+                },
+                "output": {
+                  "left": 183,
+                  "top": 62,
+                  "width": 145,
+                  "height": 182
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/furiosa-scope-correction-returned.png",
+            "sourceImageSha256": "acf7086c57c2986698b35fc9b0f41512eeccc84ed14d8a4c52c85a641865ae6d",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 1148,
+              "bottom": 1536
+            },
+            "scale": 0.5864197530864198,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 20,
+                  "width": 229,
+                  "height": 341,
+                  "pixels": 34841
+                },
+                "output": {
+                  "left": 194,
+                  "top": 42,
+                  "width": 134,
+                  "height": 200
+                }
+              },
+              {
+                "source": {
+                  "left": 290,
+                  "top": 22,
+                  "width": 236,
+                  "height": 339,
+                  "pixels": 34482
+                },
+                "output": {
+                  "left": 201,
+                  "top": 43,
+                  "width": 138,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 546,
+                  "top": 21,
+                  "width": 242,
+                  "height": 340,
+                  "pixels": 34268
+                },
+                "output": {
+                  "left": 201,
+                  "top": 43,
+                  "width": 142,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 810,
+                  "top": 22,
+                  "width": 213,
+                  "height": 342,
+                  "pixels": 33340
+                },
+                "output": {
+                  "left": 206,
+                  "top": 43,
+                  "width": 125,
+                  "height": 201
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "68c8acf6bbb619edaf9b214967a1e2559cf5fde316de492ab85dbd726fcdba74",
+              "0c7077e3e7fb7325a738486f360424fa77cbd58960968c98f4f87bd80a7cd15e",
+              "71ff511a5e18ed4b0ca1944c7121c68347b33e5d11c9d947809581478495249f",
+              "157c52e4b5d8a76d48174218768b65454feea7af645e8906ad3870e28cb73ece"
+            ],
+            "visiblePixels": [
+              10439,
+              10042,
+              10247,
+              10093
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c84461b91ba0644c7119dcecdfb92dfb995a5dc1faa651aa00aa9c8d58937d93",
+              "a80b89332783e1490d4d5a52f3bfa47e570d1d070fd654d14512bf05d995c36f",
+              "fdd591f39f501f4cf584b17cf553476994ca85468989c249e03e67c8c8d529f2",
+              "24da04c2f964aae5e50cf9bc59da4652134204fa4cc82a3bcfe7f05ec20838b2"
+            ],
+            "visiblePixels": [
+              11179,
+              11261,
+              11384,
+              11074
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "04b76b88b68483900d19f3b36091b976d978fae9769d5a57d6f0c41a2669a1cc",
+              "cde3f04f2ecac9f80163efd34dcd2b4c298413573c8be6389eec3f5aac5afad3",
+              "2b16fe8c049a3133140288704bc20dfc84ada53a7baaef5adc74eaeb72b402a5",
+              "8d8c5254ce81b3b65edd61b98db64dc5271d7315591ce31b1636be9f3cb7ecd2"
+            ],
+            "visiblePixels": [
+              11542,
+              12013,
+              11422,
+              11619
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "46fcace4bf6e36a9fa69b8cd5c5338023435bcd3f12a80ace0fc4af6a8cd34f0",
+              "5270d9454381a04f57083d8a9a55cce9b44b225131bae5bc68306ae72940c0d0",
+              "9735b5feae368cfbe8cae37b7342ef0a754acc2a3bcd91fef18d226760237251",
+              "b934039bac05542be16f4c76736817a71f8e7657563d1a4cff43701366fb158b"
+            ],
+            "visiblePixels": [
+              11948,
+              11879,
+              11800,
+              11506
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "fifth-korben",
+      "key": "Le Cinquième Element::Korben Dallas::Rafale du pistolet de Korben",
+      "universe": "Le Cinquième Element",
+      "entityName": "Korben Dallas",
+      "actionName": "Rafale du pistolet de Korben",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "korben",
+      "sheet": "/sprites/generated/summon-animations-wave11/korben.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "0d2a0d255230760db8581c9d053ab538f50bc98cfb2383350e8795f48ccf3267",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/korben-original.png",
+      "sourceImageSha256": "d259fde7ee04b261692ca2497a4a7b130bf106c9430b8ca09e02fef2d46a7ee2",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "referenceImage": "public/sprites/generated/heroes/le-cinquieme-element/korben.png",
+      "referenceImageSha256": "1fb4c5f798b133b67747176161cbd4904d6e67a2f339c84673b41d64c3471b9b",
+      "sourceWork": "Le Cinquième Élément (1997) ; ZF-1 attribué à Zorg, pistolet ordinaire à Korben",
+      "sourceReference": "Le Cinquième Élément (1997) ; ZF-1 attribué à Zorg, pistolet ordinaire à Korben. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. FifthElement1997 orange top and ordinary pistol; no ZF1 substitution. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          {
+            "x": 310,
+            "y": 93,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 249,
+            "neighborhoodVisiblePixelsAboveAlpha24": 76,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 316,
+            "y": 92,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 59,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "attack": [
+          {
+            "x": 310,
+            "y": 92,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 312,
+            "y": 95,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 249,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 303,
+            "y": 96,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 248,
+            "neighborhoodVisiblePixelsAboveAlpha24": 79,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 309,
+            "y": 94,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 69,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.572289156626506,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 0,
+          "targetBodyHeight": 190,
+          "method": "standing-head-to-sole-arrival-silhouette",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 332,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/korben-original.png",
+            "sourceImageSha256": "d259fde7ee04b261692ca2497a4a7b130bf106c9430b8ca09e02fef2d46a7ee2",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 406
+            },
+            "scale": 0.572289156626506,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 50,
+                  "width": 171,
+                  "height": 332,
+                  "pixels": 29304
+                },
+                "output": {
+                  "left": 209,
+                  "top": 54,
+                  "width": 98,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 292,
+                  "top": 50,
+                  "width": 188,
+                  "height": 331,
+                  "pixels": 27845
+                },
+                "output": {
+                  "left": 203,
+                  "top": 54,
+                  "width": 108,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 550,
+                  "top": 50,
+                  "width": 188,
+                  "height": 331,
+                  "pixels": 27359
+                },
+                "output": {
+                  "left": 204,
+                  "top": 54,
+                  "width": 108,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 800,
+                  "top": 50,
+                  "width": 208,
+                  "height": 330,
+                  "pixels": 27187
+                },
+                "output": {
+                  "left": 201,
+                  "top": 54,
+                  "width": 119,
+                  "height": 189
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/korben-original.png",
+            "sourceImageSha256": "d259fde7ee04b261692ca2497a4a7b130bf106c9430b8ca09e02fef2d46a7ee2",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 405,
+              "bottom": 779
+            },
+            "scale": 0.572289156626506,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 30,
+                  "top": 22,
+                  "width": 197,
+                  "height": 327,
+                  "pixels": 28641
+                },
+                "output": {
+                  "left": 200,
+                  "top": 56,
+                  "width": 113,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 283,
+                  "top": 26,
+                  "width": 210,
+                  "height": 322,
+                  "pixels": 30062
+                },
+                "output": {
+                  "left": 198,
+                  "top": 59,
+                  "width": 120,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 533,
+                  "top": 26,
+                  "width": 214,
+                  "height": 324,
+                  "pixels": 30681
+                },
+                "output": {
+                  "left": 195,
+                  "top": 59,
+                  "width": 122,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 787,
+                  "top": 25,
+                  "width": 220,
+                  "height": 325,
+                  "pixels": 30944
+                },
+                "output": {
+                  "left": 194,
+                  "top": 58,
+                  "width": 126,
+                  "height": 186
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/korben-original.png",
+            "sourceImageSha256": "d259fde7ee04b261692ca2497a4a7b130bf106c9430b8ca09e02fef2d46a7ee2",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 778,
+              "bottom": 1141
+            },
+            "scale": 0.572289156626506,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 20,
+                  "top": 24,
+                  "width": 282,
+                  "height": 317,
+                  "pixels": 34714
+                },
+                "output": {
+                  "left": 194,
+                  "top": 63,
+                  "width": 161,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 280,
+                  "top": 26,
+                  "width": 276,
+                  "height": 315,
+                  "pixels": 35418
+                },
+                "output": {
+                  "left": 196,
+                  "top": 64,
+                  "width": 158,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 529,
+                  "top": 38,
+                  "width": 265,
+                  "height": 303,
+                  "pixels": 34322
+                },
+                "output": {
+                  "left": 192,
+                  "top": 71,
+                  "width": 152,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 786,
+                  "top": 28,
+                  "width": 222,
+                  "height": 313,
+                  "pixels": 30972
+                },
+                "output": {
+                  "left": 193,
+                  "top": 65,
+                  "width": 127,
+                  "height": 179
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/korben-original.png",
+            "sourceImageSha256": "d259fde7ee04b261692ca2497a4a7b130bf106c9430b8ca09e02fef2d46a7ee2",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 1140,
+              "bottom": 1536
+            },
+            "scale": 0.572289156626506,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 32,
+                  "top": 22,
+                  "width": 207,
+                  "height": 332,
+                  "pixels": 31438
+                },
+                "output": {
+                  "left": 201,
+                  "top": 53,
+                  "width": 118,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 301,
+                  "top": 22,
+                  "width": 202,
+                  "height": 334,
+                  "pixels": 31144
+                },
+                "output": {
+                  "left": 209,
+                  "top": 53,
+                  "width": 116,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 542,
+                  "top": 23,
+                  "width": 208,
+                  "height": 333,
+                  "pixels": 32408
+                },
+                "output": {
+                  "left": 200,
+                  "top": 53,
+                  "width": 119,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 816,
+                  "top": 20,
+                  "width": 178,
+                  "height": 335,
+                  "pixels": 32599
+                },
+                "output": {
+                  "left": 210,
+                  "top": 52,
+                  "width": 102,
+                  "height": 192
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1a83b24c037d91f447d4fb54a09d74e49ddc56c15c4a65a59afd0f0a64349941",
+              "aaeb32c406606fa7026a22b0cceedeb5ef252c20b3a0b63f3fe60218d3f0f346",
+              "4d1c384d3b886b795a6d145b74504a71a8c676d7268097fd65f17935a0e3a3ab",
+              "dbdaea99dd2862c24e033ee63b318d488dc61a7ea7e993f2daaf8b82852bccaf"
+            ],
+            "visiblePixels": [
+              9609,
+              9193,
+              9021,
+              8911
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4ce564654147ef41006e8ba33a1d482d881e6cd57c2665936f12eec1962019b4",
+              "a46b2d99e24df668e9ccade62848f491a6ca4bf8d3208e94653e7af53e747266",
+              "f7eabf77ccafd0b8a34ac32275b0dfd33f54ce9bb9db41e58ebb330d07936242",
+              "bb9fafd4c2418ecd6ac752224a8b064e5ee3fb105cc3cb86579a274d27b81609"
+            ],
+            "visiblePixels": [
+              9405,
+              9802,
+              9987,
+              10135
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9ee6702f89ca875a4c1a76612479fbfa939bd51705e7e22a6c7773c8e1fd147d",
+              "eec1d85868c2dcd296cd38f3d40ff325a0bfbaabf8742867817443a6eea3bf18",
+              "d85be9934de097605da1a509a2e05933bc03b82af81f593a00d74ce361f9eb36",
+              "7541fa5cd24cfd9f86161dfc820f5fc40ca6cbbc2beb0782102cc1e04b307e2b"
+            ],
+            "visiblePixels": [
+              11313,
+              11622,
+              11297,
+              10154
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d7961b9cbcb489deb5005c53ee05ec3520a9c44538193bdbb390429d8c0a92ad",
+              "9efd049a4f06aeb42b373883de80d9a0af3b32bf4ab4e33d2b839b8871905739",
+              "5b35389ebeef6e617483077ecec329adf4f7227fb1f4d28ab00541d535e3a837",
+              "351c73a825fa58ce1a00f37e985a654ab66dc9e1e205844eddf38611d36de273"
+            ],
+            "visiblePixels": [
+              10288,
+              10272,
+              10659,
+              10693
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "kaamelott-lancelot",
+      "key": "Kaamelott::Lancelot::Passe d’armes de Lancelot",
+      "universe": "Kaamelott",
+      "entityName": "Lancelot",
+      "actionName": "Passe d’armes de Lancelot",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "lancelot_kaamelott",
+      "sheet": "/sprites/generated/summon-animations-wave11/lancelot.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "c41c10c1957186a0afce9cc4da05ea4f797d38d4ebbc2f392c529516c0773916",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/lancelot-original.png",
+      "sourceImageSha256": "b5389dad16a640755ca9508a7db4d86d6a48599a3792f106d523fe17dd218f99",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "referenceImage": "public/sprites/generated/heroes/kaamelott/lancelot-kaamelott.png",
+      "referenceImageSha256": "c5adc9cbd074097d67c40eceef41eb4a1d28447c2ca1c37b89498bd485e184df",
+      "sourceWork": "Kaamelott LivreIII (2005), chevaliers humains ; paroles et rations ne blessent pas par magie",
+      "sourceReference": "Kaamelott LivreIII (2005), chevaliers humains ; paroles et rations ne blessent pas par magie. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. KaamelottLivreIII fair-haired man, cream padded tunic and brown crossed harness, plain steel sword; no fantasy magic. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "effectAnchors": null,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.6148867313915858,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 0,
+          "targetBodyHeight": 190,
+          "method": "standing-head-to-sole-arrival-silhouette",
+          "excludesRaisedArmsAndWeapons": true,
+          "sourceBodyHeight": 309,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/lancelot-original.png",
+            "sourceImageSha256": "b5389dad16a640755ca9508a7db4d86d6a48599a3792f106d523fe17dd218f99",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 390
+            },
+            "scale": 0.6148867313915858,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 42,
+                  "top": 59,
+                  "width": 203,
+                  "height": 309,
+                  "pixels": 28127
+                },
+                "output": {
+                  "left": 203,
+                  "top": 54,
+                  "width": 125,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 307,
+                  "top": 58,
+                  "width": 194,
+                  "height": 308,
+                  "pixels": 27372
+                },
+                "output": {
+                  "left": 209,
+                  "top": 53,
+                  "width": 119,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 560,
+                  "top": 59,
+                  "width": 189,
+                  "height": 308,
+                  "pixels": 27222
+                },
+                "output": {
+                  "left": 207,
+                  "top": 54,
+                  "width": 116,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 850,
+                  "top": 58,
+                  "width": 149,
+                  "height": 310,
+                  "pixels": 25923
+                },
+                "output": {
+                  "left": 228,
+                  "top": 53,
+                  "width": 92,
+                  "height": 191
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/lancelot-original.png",
+            "sourceImageSha256": "b5389dad16a640755ca9508a7db4d86d6a48599a3792f106d523fe17dd218f99",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 389,
+              "bottom": 769
+            },
+            "scale": 0.6148867313915858,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 26,
+                  "top": 58,
+                  "width": 240,
+                  "height": 301,
+                  "pixels": 29687
+                },
+                "output": {
+                  "left": 193,
+                  "top": 59,
+                  "width": 148,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 300,
+                  "top": 65,
+                  "width": 237,
+                  "height": 289,
+                  "pixels": 28177
+                },
+                "output": {
+                  "left": 204,
+                  "top": 63,
+                  "width": 146,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 523,
+                  "top": 38,
+                  "width": 238,
+                  "height": 320,
+                  "pixels": 29139
+                },
+                "output": {
+                  "left": 184,
+                  "top": 47,
+                  "width": 146,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 813,
+                  "top": 22,
+                  "width": 206,
+                  "height": 332,
+                  "pixels": 27427
+                },
+                "output": {
+                  "left": 205,
+                  "top": 37,
+                  "width": 127,
+                  "height": 204
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/lancelot-original.png",
+            "sourceImageSha256": "b5389dad16a640755ca9508a7db4d86d6a48599a3792f106d523fe17dd218f99",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 768,
+              "bottom": 1140
+            },
+            "scale": 0.6148867313915858,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 18,
+                  "top": 19,
+                  "width": 259,
+                  "height": 322,
+                  "pixels": 34315
+                },
+                "output": {
+                  "left": 188,
+                  "top": 46,
+                  "width": 159,
+                  "height": 198
+                }
+              },
+              {
+                "source": {
+                  "left": 264,
+                  "top": 66,
+                  "width": 278,
+                  "height": 269,
+                  "pixels": 28440
+                },
+                "output": {
+                  "left": 182,
+                  "top": 75,
+                  "width": 171,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 508,
+                  "top": 97,
+                  "width": 345,
+                  "height": 239,
+                  "pixels": 26471
+                },
+                "output": {
+                  "left": 175,
+                  "top": 94,
+                  "width": 212,
+                  "height": 147
+                }
+              },
+              {
+                "source": {
+                  "left": 808,
+                  "top": 64,
+                  "width": 213,
+                  "height": 277,
+                  "pixels": 27941
+                },
+                "output": {
+                  "left": 202,
+                  "top": 74,
+                  "width": 131,
+                  "height": 170
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/lancelot-original.png",
+            "sourceImageSha256": "b5389dad16a640755ca9508a7db4d86d6a48599a3792f106d523fe17dd218f99",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 1139,
+              "bottom": 1536
+            },
+            "scale": 0.6148867313915858,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 26,
+                  "top": 48,
+                  "width": 228,
+                  "height": 306,
+                  "pixels": 30195
+                },
+                "output": {
+                  "left": 193,
+                  "top": 56,
+                  "width": 140,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 320,
+                  "top": 30,
+                  "width": 157,
+                  "height": 320,
+                  "pixels": 28049
+                },
+                "output": {
+                  "left": 217,
+                  "top": 45,
+                  "width": 97,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 562,
+                  "top": 45,
+                  "width": 234,
+                  "height": 307,
+                  "pixels": 26662
+                },
+                "output": {
+                  "left": 208,
+                  "top": 54,
+                  "width": 144,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 796,
+                  "top": 49,
+                  "width": 220,
+                  "height": 301,
+                  "pixels": 24620
+                },
+                "output": {
+                  "left": 195,
+                  "top": 56,
+                  "width": 135,
+                  "height": 185
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b0e977c6ddf2f6d2a6b15f45b7394158eb9f49f0a0ab58a38636073779c92917",
+              "ff7c93fbaa8319c38b02a3a0789ba0b9255939e6a8558213db58171313bd52dc",
+              "37f0dc0a699d04e937403f238c62aacdd018a080379fa6b568d1fe918e0a023c",
+              "e3702ecf96c1f32c7c6008753c507d9428edf96d59d12909adce2d9f82e9ab86"
+            ],
+            "visiblePixels": [
+              10690,
+              10283,
+              10255,
+              9878
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "023cb4ad1d50f7a864bb71df2ddf5fb33bc08c80034c578e781e75d0462b9548",
+              "74c6d1791bee8573e1efffb99a254f4521cc6301e1f8a198e66037830feed72f",
+              "bd65c78adc5569f51d529a8e5a6506cba3c556533194169a5cf65c558b4688fc",
+              "9546bcbde47a0cf80838c63cd504f35716fb6049ef724147f76f1728b43e6853"
+            ],
+            "visiblePixels": [
+              11279,
+              10689,
+              11066,
+              10430
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "42523c91926c7d9407e21e8bbe421d5b745c8803139e54280b026853ddc7b31c",
+              "551c3d0b0077cf6f77f1c7515fe3adf637c16176fcb6727cc4b77bceff8a08ba",
+              "b7c6277797654980eb887374eb7363bfb73f438cb02d836a8bb0d25c5a99815e",
+              "61df98ea7160d75a718307ac4e7c4bfc1aa9a602f07c1bb1cd49ecbc72dea917"
+            ],
+            "visiblePixels": [
+              12964,
+              10751,
+              10008,
+              10591
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8cea175e31a7ad1eb422053f5465b1fe99402c2d3792b797b343023c0753066f",
+              "6e3929840dd24bbf960633f3600a201c7eecc1837040df5f447ddb6dbc691690",
+              "88992c273bffa1017a20495808ab6ab40b71a2965e077f2372cdbd9b4503b65a",
+              "b62f5804e6069558aab463eaf0db8d5e63a3c3d6c927f0d9b1845603d04daa1d"
+            ],
+            "visiblePixels": [
+              11376,
+              10713,
+              10105,
+              9296
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    }
+  ]
+}

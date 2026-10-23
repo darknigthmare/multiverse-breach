@@ -1,0 +1,4618 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "may_gg",
+      "heroId": "may_gg",
+      "universe": "Guilty Gear",
+      "name": "May",
+      "sheet": "/sprites/generated/combat-character-animations-wave7/may_gg.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "79b2971e3c236ab8a3d686cb04b3459f9ff3af513456af9223a03843d1af1e01",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-call-correction.png",
+      "sourceImageSha256": "3ee0fff834e0d0717b0e5490d30af22cb1dc0c22d8b96b34117a7f6c98895331",
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/may-gg.png",
+      "referenceAssetSha256": "c39ba2b3a73cda55a77726ec4f8db54b3ca2dbf3b9276c2318f4b8685ffd1140",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-references/may_gg.png",
+      "sourceWork": "Guilty Gear Xrd REV2 (2017)",
+      "sourceReference": "https://guiltygear.fandom.com/wiki/Great_Yamada_Attack and https://guiltygear.fandom.com/wiki/May/Commands indexed search2026-10-20: XrdREV2 Overdrive, giant pink whale. Direct article refused; exact indexed text archived part-c-source-access/search-initial.txt. No official-frame certification.",
+      "abilityName": "Great Yamada Attack",
+      "characterVersion": "May in GuiltyGearXrdREV2: brown hair/orange skull pirate cap/orange sleeveless tunic and boots, steel ship anchor; GreatYamadaAttack calls pink whale, base attacks use anchor. Super row only calls/water because separate runtimeYamada body is authoritative.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": true,
+      "originalSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+      "originalSourceImageSha256": "af57ac0db341a4d958c8ba112c10c073d899b3b36b3146bdd9c1323a3c1a5f44",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+            "sourceImageSha256": "af57ac0db341a4d958c8ba112c10c073d899b3b36b3146bdd9c1323a3c1a5f44",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 234
+            },
+            "scale": 1.0691244239631337,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 38,
+                  "top": 11,
+                  "width": 155,
+                  "height": 215,
+                  "pixels": 16806
+                },
+                "output": {
+                  "left": 50,
+                  "top": 12,
+                  "width": 166,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 266,
+                  "top": 11,
+                  "width": 151,
+                  "height": 216,
+                  "pixels": 23540
+                },
+                "output": {
+                  "left": 57,
+                  "top": 12,
+                  "width": 161,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 472,
+                  "top": 11,
+                  "width": 167,
+                  "height": 217,
+                  "pixels": 21439
+                },
+                "output": {
+                  "left": 40,
+                  "top": 12,
+                  "width": 179,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 11,
+                  "width": 171,
+                  "height": 217,
+                  "pixels": 21457
+                },
+                "output": {
+                  "left": 41,
+                  "top": 12,
+                  "width": 183,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+            "sourceImageSha256": "af57ac0db341a4d958c8ba112c10c073d899b3b36b3146bdd9c1323a3c1a5f44",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 225,
+              "bottom": 460
+            },
+            "scale": 1,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 19,
+                  "top": 1,
+                  "width": 177,
+                  "height": 228,
+                  "pixels": 21257
+                },
+                "output": {
+                  "left": 36,
+                  "top": 12,
+                  "width": 177,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 256,
+                  "top": 7,
+                  "width": 168,
+                  "height": 222,
+                  "pixels": 21165
+                },
+                "output": {
+                  "left": 51,
+                  "top": 18,
+                  "width": 168,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 461,
+                  "top": 19,
+                  "width": 166,
+                  "height": 214,
+                  "pixels": 20307
+                },
+                "output": {
+                  "left": 35,
+                  "top": 30,
+                  "width": 166,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 713,
+                  "top": 2,
+                  "width": 157,
+                  "height": 231,
+                  "pixels": 15454
+                },
+                "output": {
+                  "left": 65,
+                  "top": 13,
+                  "width": 157,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+            "sourceImageSha256": "af57ac0db341a4d958c8ba112c10c073d899b3b36b3146bdd9c1323a3c1a5f44",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 450,
+              "bottom": 707
+            },
+            "scale": 0.9317269076305221,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 30,
+                  "top": 16,
+                  "width": 148,
+                  "height": 233,
+                  "pixels": 17830
+                },
+                "output": {
+                  "left": 53,
+                  "top": 26,
+                  "width": 138,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 238,
+                  "top": 1,
+                  "width": 172,
+                  "height": 246,
+                  "pixels": 22808
+                },
+                "output": {
+                  "left": 40,
+                  "top": 12,
+                  "width": 160,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 473,
+                  "top": 19,
+                  "width": 162,
+                  "height": 231,
+                  "pixels": 22362
+                },
+                "output": {
+                  "left": 52,
+                  "top": 29,
+                  "width": 151,
+                  "height": 215
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 20,
+                  "width": 172,
+                  "height": 230,
+                  "pixels": 23118
+                },
+                "output": {
+                  "left": 54,
+                  "top": 30,
+                  "width": 160,
+                  "height": 214
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+            "sourceImageSha256": "af57ac0db341a4d958c8ba112c10c073d899b3b36b3146bdd9c1323a3c1a5f44",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 698,
+              "bottom": 914
+            },
+            "scale": 1.0841121495327102,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 15,
+                  "top": 1,
+                  "width": 201,
+                  "height": 211,
+                  "pixels": 22397
+                },
+                "output": {
+                  "left": 24,
+                  "top": 12,
+                  "width": 218,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 261,
+                  "top": 11,
+                  "width": 172,
+                  "height": 204,
+                  "pixels": 20898
+                },
+                "output": {
+                  "left": 50,
+                  "top": 23,
+                  "width": 186,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 471,
+                  "top": 52,
+                  "width": 176,
+                  "height": 152,
+                  "pixels": 20148
+                },
+                "output": {
+                  "left": 38,
+                  "top": 67,
+                  "width": 191,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 706,
+                  "top": 36,
+                  "width": 169,
+                  "height": 173,
+                  "pixels": 19888
+                },
+                "output": {
+                  "left": 52,
+                  "top": 50,
+                  "width": 183,
+                  "height": 188
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-pink-correction.png",
+            "sourceImageSha256": "cf828f3b1646d9652552460410870acb80767fb17b33f43ffdef59b4628e77e9",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 474
+            },
+            "scale": 0.3574730354391371,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 84,
+                  "width": 325,
+                  "height": 372,
+                  "pixels": 65509
+                },
+                "output": {
+                  "left": 58,
+                  "top": 109,
+                  "width": 116,
+                  "height": 133
+                }
+              },
+              {
+                "source": {
+                  "left": 453,
+                  "top": 102,
+                  "width": 432,
+                  "height": 354,
+                  "pixels": 116108
+                },
+                "output": {
+                  "left": 52,
+                  "top": 115,
+                  "width": 154,
+                  "height": 127
+                }
+              },
+              {
+                "source": {
+                  "left": 875,
+                  "top": 49,
+                  "width": 558,
+                  "height": 414,
+                  "pixels": 123297
+                },
+                "output": {
+                  "left": 44,
+                  "top": 96,
+                  "width": 199,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 1331,
+                  "top": 82,
+                  "width": 397,
+                  "height": 373,
+                  "pixels": 63680
+                },
+                "output": {
+                  "left": 49,
+                  "top": 108,
+                  "width": 142,
+                  "height": 133
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.811602173482632,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 225,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 131,
+              "bodyBounds": [
+                70,
+                110,
+                103,
+                131
+              ],
+              "referenceBodyBounds": [
+                54,
+                17,
+                160,
+                225
+              ],
+              "nativeComparableBodyHeight": 366,
+              "nativeReferenceBodyHeight": 347,
+              "nativeBodyBounds": [
+                61,
+                87,
+                289,
+                366
+              ],
+              "nativeReferenceBodyBounds": [
+                1474,
+                105,
+                253,
+                347
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-pink-correction.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-pink-correction.png",
+              "nativeComparableSourceSha256": "cf828f3b1646d9652552460410870acb80767fb17b33f43ffdef59b4628e77e9",
+              "nativeReferenceSourceSha256": "cf828f3b1646d9652552460410870acb80767fb17b33f43ffdef59b4628e77e9",
+              "nativeComparableSourceRow": 0,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 3,
+              "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+              "displayReferenceSourceDiffers": true,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in column3 of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+              "poseBridge": {
+                "nativeReferenceLabel": "fatality",
+                "nativeReferenceColumn": 3,
+                "displayReferenceLabel": "intro",
+                "displayReferenceColumn": 0,
+                "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+                "nativeReferenceNormalizedBodyBounds": [
+                  100,
+                  116,
+                  91,
+                  124
+                ]
+              }
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+            "sourceImageSha256": "af57ac0db341a4d958c8ba112c10c073d899b3b36b3146bdd9c1323a3c1a5f44",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1135,
+              "bottom": 1382
+            },
+            "scale": 0.8467153284671532,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 12,
+                  "width": 195,
+                  "height": 226,
+                  "pixels": 18166
+                },
+                "output": {
+                  "left": 57,
+                  "top": 48,
+                  "width": 165,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 196,
+                  "top": 1,
+                  "width": 226,
+                  "height": 239,
+                  "pixels": 30945
+                },
+                "output": {
+                  "left": 12,
+                  "top": 38,
+                  "width": 191,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 489,
+                  "top": 13,
+                  "width": 167,
+                  "height": 230,
+                  "pixels": 23995
+                },
+                "output": {
+                  "left": 73,
+                  "top": 48,
+                  "width": 141,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 713,
+                  "top": 15,
+                  "width": 133,
+                  "height": 229,
+                  "pixels": 16847
+                },
+                "output": {
+                  "left": 75,
+                  "top": 50,
+                  "width": 113,
+                  "height": 194
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+            "sourceImageSha256": "af57ac0db341a4d958c8ba112c10c073d899b3b36b3146bdd9c1323a3c1a5f44",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1374,
+              "bottom": 1572
+            },
+            "scale": 1.183673469387755,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 53,
+                  "top": 14,
+                  "width": 122,
+                  "height": 183,
+                  "pixels": 12715
+                },
+                "output": {
+                  "left": 59,
+                  "top": 27,
+                  "width": 144,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 240,
+                  "top": 15,
+                  "width": 176,
+                  "height": 171,
+                  "pixels": 19403
+                },
+                "output": {
+                  "left": 18,
+                  "top": 29,
+                  "width": 208,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 494,
+                  "top": 42,
+                  "width": 134,
+                  "height": 144,
+                  "pixels": 16073
+                },
+                "output": {
+                  "left": 57,
+                  "top": 61,
+                  "width": 159,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 711,
+                  "top": 1,
+                  "width": 158,
+                  "height": 184,
+                  "pixels": 18428
+                },
+                "output": {
+                  "left": 51,
+                  "top": 12,
+                  "width": 187,
+                  "height": 218
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-call-correction.png",
+            "sourceImageSha256": "3ee0fff834e0d0717b0e5490d30af22cb1dc0c22d8b96b34117a7f6c98895331",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 724
+            },
+            "scale": 0.3860232945091514,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 32,
+                  "top": 119,
+                  "width": 470,
+                  "height": 575,
+                  "pixels": 143382
+                },
+                "output": {
+                  "left": 36,
+                  "top": 22,
+                  "width": 181,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 573,
+                  "top": 171,
+                  "width": 457,
+                  "height": 523,
+                  "pixels": 136672
+                },
+                "output": {
+                  "left": 35,
+                  "top": 42,
+                  "width": 176,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 1132,
+                  "top": 188,
+                  "width": 526,
+                  "height": 506,
+                  "pixels": 133914
+                },
+                "output": {
+                  "left": 41,
+                  "top": 49,
+                  "width": 203,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 1651,
+                  "top": 151,
+                  "width": 508,
+                  "height": 543,
+                  "pixels": 134464
+                },
+                "output": {
+                  "left": 32,
+                  "top": 34,
+                  "width": 196,
+                  "height": 210
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.2124525055559539,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 225,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 174,
+              "bodyBounds": [
+                50,
+                69,
+                165,
+                174
+              ],
+              "referenceBodyBounds": [
+                54,
+                17,
+                160,
+                225
+              ],
+              "nativeComparableBodyHeight": 451,
+              "nativeReferenceBodyHeight": 481,
+              "nativeBodyBounds": [
+                68,
+                241,
+                428,
+                451
+              ],
+              "nativeReferenceBodyBounds": [
+                1755,
+                210,
+                363,
+                481
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-call-correction.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-call-correction.png",
+              "nativeComparableSourceSha256": "3ee0fff834e0d0717b0e5490d30af22cb1dc0c22d8b96b34117a7f6c98895331",
+              "nativeReferenceSourceSha256": "3ee0fff834e0d0717b0e5490d30af22cb1dc0c22d8b96b34117a7f6c98895331",
+              "nativeComparableSourceRow": 0,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 3,
+              "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+              "displayReferenceSourceDiffers": true,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in column3 of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+              "poseBridge": {
+                "nativeReferenceLabel": "super",
+                "nativeReferenceColumn": 3,
+                "displayReferenceLabel": "intro",
+                "displayReferenceColumn": 0,
+                "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+                "nativeReferenceNormalizedBodyBounds": [
+                  72,
+                  57,
+                  140,
+                  186
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "880880f2a4609fb6cdee4dbc2f503f16fdbb32b47eae259c0979180241d5e661",
+              "c4a45d05e8fee75f0cd6e4b7395c1c32839fa84791836edc7af917cb39e2c00b",
+              "f8180469f95172bf91d5c010dae8bf333d06e189dc4a8a0696253dd24b43bab8",
+              "ab5f55a44964ffd542c1fcb30dc80173830fed8750b1bc1f90f2297a1f7fe418"
+            ]
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "607d9b2826925abf745fce78496b325bdd62a3e2d6044fc632e0103179d727db",
+              "adc583ce872379fa92c9573d31bd6ce3aee7a154303fcd912287f9a246210dd8",
+              "0ef134931947bd99be381c8a1fbf41b751c4d838be635e2dde0cc13172b7cb1f",
+              "de8b5005178524438779574b3d85ba6602bf055ac9647bf190d7d9f64e2eb6d9"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "01c39c603208b53b3141f142e841938753fd906c04d064d2b17b18f21cf799e4",
+              "3322351e5dd6e83543bc0030152d6faea9a21d7c96d721ce296c162238a9736d",
+              "b95fd39a0fc1e3639e5fb3bd9bb824d54b3271ba53ba20163c4e11e5395e8f49",
+              "338eabbf5c211b973069958a7ad94ddd6f3f4b6f0e45cf345b1ffc561235df8b"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "dfa41463af50128da71a1e3848a62789ce77ac114970af737812fba02f6e3c58",
+              "53ba67ae350b38a12fd153b2be48237d0bcdfe1ae12b71817690a70e7741de81",
+              "653aa4d2426c76c590ef5f2105940aac2dd26f0584758b15e882e0beb04c4e19",
+              "84f2f023285c09523b7b1ea859d27b616df4786a3d0e8a3d0f2139a5cbc78282"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "deccac7bd890eca0bede911b6ed2ce5a08566e7851765f67e64e89d92071d6c4",
+              "5203a067a9f8683112321563e91ef34ee92119c06d9334befd291029faa9e065",
+              "d20a01d0a5371df51207da5cb15423c406eb6198900be66aa0a41e986ddad82b",
+              "119a46cfba1fedc8a59e9294646fbf5a6bb80df3d3102b1c23664ef5b495f9a2"
+            ]
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "0f0844ace0b34b4ba026808dc5297319b71dfa157549c1067dad11c0417e76e9",
+              "19e9a2a867507aa3563e93b9dac2ed817db4bc55684609df3119fabad7df44a2",
+              "ac3b7af78b4e6947f1fd7cf03035643efd774cc140c38bc2174af89ec673a661",
+              "66e0ba2adeb56765febd938ecee7db38f2d9580807c20dcdf27f67d4b770807c"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f3fcb6dbec0d1396c2af8744e2042f73b81f6bcd728ebc488b09b8db5b96e603",
+              "a33efd5e9f7a6cb190d243ad8a3c4e56c15dd743d501f91530f58f121a2bee1a",
+              "68911dbf9524f6d458f391d1f3ebe608868bd587395c1ef4f5f5677fe745e05f",
+              "956e6c3f41c62b24390ebc12f6781fdf38ddcd3263541e5edddce8515f3b1d18"
+            ]
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f9a6f93f323a94cd4bad2d2d4bd8485d6d6f15eea91d73bd87134742aa7df7c5",
+              "a9d69f6c33d23f07bc51be0e6647cbddd02f131860eed0a467a17ae299e95c9d",
+              "d7a1463d34329e61ccf35372d9aafc85afa0f73379a9458ea0cd70c3f6571b4b",
+              "a64d19af0acf10f46316bdb589a43a38dcd9e2060d1ad9035a3d793c3eb81d23"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "May in GuiltyGearXrdREV2: brown hair/orange skull pirate cap/orange sleeveless tunic and boots, steel ship anchor; GreatYamadaAttack calls pink whale, base attacks use anchor. Super row only calls/water because separate runtimeYamada body is authoritative. New native pixel art and compact authored sequence; not official game frames or certified1:1 animation."
+      }
+    },
+    {
+      "id": "dizzy_gg",
+      "heroId": "dizzy_gg",
+      "universe": "Guilty Gear",
+      "name": "Dizzy",
+      "sheet": "/sprites/generated/combat-character-animations-wave7/dizzy_gg.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "2c6fa3891ff7086952b8bc432402c991dd573235224d81ea63a357c55d8ef18f",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-beam-correction.png",
+      "sourceImageSha256": "e3251f304e1996d952197a8ceaacc847829e0e59b3d3a6bb8085e52f20f3d670",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/dizzy-gg.png",
+      "referenceAssetSha256": "de2e6356c97711ecd20bbe44f2cd8e43cbc58d18458141af5affaed90a2c210d",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-references/dizzy_gg.png",
+      "sourceWork": "Guilty Gear Xrd REV2 (2017)",
+      "sourceReference": "https://guiltygear.fandom.com/wiki/Gamma_Ray and https://guiltygear.wiki.gg/wiki/Dizzy indexed2026-10-20: Xrd guardians red/blue individual beams then joint blue-purple ray, separate EmotionalGammaRayIK. Indexed summaries archived, direct pages refused. Guardian/body illustrations adapted, not verified1:1.",
+      "abilityName": "Gamma Ray de Dizzy",
+      "characterVersion": "Dizzy in GuiltyGearXrdREV2: blue hair/yellow ribbons, long white shirt and navy outfit, blue tail; Necro dark reaper/right wing and Undine pale water-spirit/left wing are sentient characters attached to her back, not Strive minimalist teeth-only guardians.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": true,
+      "originalSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png",
+      "originalSourceImageSha256": "21672aa7159f00f04a7f9d2c22355309ee1beb0f3c98b6eb90ca99c72e9e57fb",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png",
+            "sourceImageSha256": "21672aa7159f00f04a7f9d2c22355309ee1beb0f3c98b6eb90ca99c72e9e57fb",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 231
+            },
+            "scale": 1.0131004366812226,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 4,
+                  "top": 9,
+                  "width": 216,
+                  "height": 215,
+                  "pixels": 29873
+                },
+                "output": {
+                  "left": 19,
+                  "top": 22,
+                  "width": 219,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 219,
+                  "top": 10,
+                  "width": 218,
+                  "height": 214,
+                  "pixels": 28640
+                },
+                "output": {
+                  "left": 12,
+                  "top": 23,
+                  "width": 221,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 451,
+                  "top": 18,
+                  "width": 212,
+                  "height": 210,
+                  "pixels": 30104
+                },
+                "output": {
+                  "left": 22,
+                  "top": 31,
+                  "width": 215,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 674,
+                  "top": 7,
+                  "width": 215,
+                  "height": 220,
+                  "pixels": 30525
+                },
+                "output": {
+                  "left": 23,
+                  "top": 20,
+                  "width": 218,
+                  "height": 223
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png",
+            "sourceImageSha256": "21672aa7159f00f04a7f9d2c22355309ee1beb0f3c98b6eb90ca99c72e9e57fb",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 228,
+              "bottom": 450
+            },
+            "scale": 0.9747899159663865,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 21,
+                  "top": 3,
+                  "width": 182,
+                  "height": 214,
+                  "pixels": 25825
+                },
+                "output": {
+                  "left": 40,
+                  "top": 34,
+                  "width": 177,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 232,
+                  "top": 9,
+                  "width": 220,
+                  "height": 209,
+                  "pixels": 29440
+                },
+                "output": {
+                  "left": 29,
+                  "top": 40,
+                  "width": 214,
+                  "height": 204
+                }
+              },
+              {
+                "source": {
+                  "left": 453,
+                  "top": 18,
+                  "width": 216,
+                  "height": 193,
+                  "pixels": 23007
+                },
+                "output": {
+                  "left": 28,
+                  "top": 49,
+                  "width": 211,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 668,
+                  "top": 11,
+                  "width": 206,
+                  "height": 199,
+                  "pixels": 23730
+                },
+                "output": {
+                  "left": 21,
+                  "top": 42,
+                  "width": 201,
+                  "height": 194
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png",
+            "sourceImageSha256": "21672aa7159f00f04a7f9d2c22355309ee1beb0f3c98b6eb90ca99c72e9e57fb",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 446,
+              "bottom": 678
+            },
+            "scale": 0.9747899159663865,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 6,
+                  "top": 7,
+                  "width": 224,
+                  "height": 214,
+                  "pixels": 30507
+                },
+                "output": {
+                  "left": 26,
+                  "top": 31,
+                  "width": 218,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 227,
+                  "top": 3,
+                  "width": 219,
+                  "height": 222,
+                  "pixels": 31070
+                },
+                "output": {
+                  "left": 24,
+                  "top": 27,
+                  "width": 213,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 440,
+                  "top": 15,
+                  "width": 225,
+                  "height": 207,
+                  "pixels": 31734
+                },
+                "output": {
+                  "left": 15,
+                  "top": 38,
+                  "width": 219,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 682,
+                  "top": 3,
+                  "width": 207,
+                  "height": 223,
+                  "pixels": 30743
+                },
+                "output": {
+                  "left": 35,
+                  "top": 27,
+                  "width": 202,
+                  "height": 217
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png",
+            "sourceImageSha256": "21672aa7159f00f04a7f9d2c22355309ee1beb0f3c98b6eb90ca99c72e9e57fb",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 669,
+              "bottom": 885
+            },
+            "scale": 0.9354838709677419,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 10,
+                  "top": 5,
+                  "width": 223,
+                  "height": 205,
+                  "pixels": 30852
+                },
+                "output": {
+                  "left": 33,
+                  "top": 51,
+                  "width": 209,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 217,
+                  "top": 7,
+                  "width": 240,
+                  "height": 202,
+                  "pixels": 34684
+                },
+                "output": {
+                  "left": 19,
+                  "top": 53,
+                  "width": 225,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 452,
+                  "top": 20,
+                  "width": 223,
+                  "height": 191,
+                  "pixels": 31917
+                },
+                "output": {
+                  "left": 31,
+                  "top": 65,
+                  "width": 209,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 667,
+                  "top": 20,
+                  "width": 222,
+                  "height": 186,
+                  "pixels": 29918
+                },
+                "output": {
+                  "left": 24,
+                  "top": 65,
+                  "width": 208,
+                  "height": 174
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-beam-correction.png",
+            "sourceImageSha256": "e3251f304e1996d952197a8ceaacc847829e0e59b3d3a6bb8085e52f20f3d670",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 455
+            },
+            "scale": 0.47443762781186094,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 10,
+                  "top": 20,
+                  "width": 398,
+                  "height": 421,
+                  "pixels": 108146
+                },
+                "output": {
+                  "left": 28,
+                  "top": 42,
+                  "width": 189,
+                  "height": 200
+                }
+              },
+              {
+                "source": {
+                  "left": 449,
+                  "top": 9,
+                  "width": 423,
+                  "height": 433,
+                  "pixels": 122927
+                },
+                "output": {
+                  "left": 25,
+                  "top": 37,
+                  "width": 201,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 894,
+                  "top": 22,
+                  "width": 459,
+                  "height": 419,
+                  "pixels": 122444
+                },
+                "output": {
+                  "left": 26,
+                  "top": 43,
+                  "width": 218,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 1360,
+                  "top": 24,
+                  "width": 403,
+                  "height": 421,
+                  "pixels": 108336
+                },
+                "output": {
+                  "left": 37,
+                  "top": 44,
+                  "width": 191,
+                  "height": 200
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0743243243243243,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 159,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 148,
+              "bodyBounds": [
+                108,
+                93,
+                57,
+                148
+              ],
+              "referenceBodyBounds": [
+                105,
+                80,
+                59,
+                159
+              ],
+              "nativeComparableBodyHeight": 312,
+              "nativeReferenceBodyHeight": 312,
+              "nativeBodyBounds": [
+                178,
+                127,
+                120,
+                312
+              ],
+              "nativeReferenceBodyBounds": [
+                1518,
+                131,
+                139,
+                312
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-beam-correction.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-beam-correction.png",
+              "nativeComparableSourceSha256": "e3251f304e1996d952197a8ceaacc847829e0e59b3d3a6bb8085e52f20f3d670",
+              "nativeReferenceSourceSha256": "e3251f304e1996d952197a8ceaacc847829e0e59b3d3a6bb8085e52f20f3d670",
+              "nativeComparableSourceRow": 0,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 3,
+              "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png",
+              "displayReferenceSourceDiffers": true,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in column3 of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+              "poseBridge": {
+                "nativeReferenceLabel": "fatality",
+                "nativeReferenceColumn": 3,
+                "displayReferenceLabel": "intro",
+                "displayReferenceColumn": 0,
+                "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+                "nativeReferenceNormalizedBodyBounds": [
+                  112,
+                  95,
+                  66,
+                  148
+                ]
+              }
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png",
+            "sourceImageSha256": "21672aa7159f00f04a7f9d2c22355309ee1beb0f3c98b6eb90ca99c72e9e57fb",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1101,
+              "bottom": 1338
+            },
+            "scale": 0.9957081545064378,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 6,
+                  "top": 1,
+                  "width": 203,
+                  "height": 231,
+                  "pixels": 29578
+                },
+                "output": {
+                  "left": 23,
+                  "top": 14,
+                  "width": 202,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 228,
+                  "top": 11,
+                  "width": 194,
+                  "height": 220,
+                  "pixels": 29199
+                },
+                "output": {
+                  "left": 23,
+                  "top": 24,
+                  "width": 193,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 455,
+                  "top": 9,
+                  "width": 217,
+                  "height": 222,
+                  "pixels": 29581
+                },
+                "output": {
+                  "left": 28,
+                  "top": 22,
+                  "width": 216,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 672,
+                  "top": 13,
+                  "width": 212,
+                  "height": 217,
+                  "pixels": 30258
+                },
+                "output": {
+                  "left": 23,
+                  "top": 26,
+                  "width": 211,
+                  "height": 216
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png",
+            "sourceImageSha256": "21672aa7159f00f04a7f9d2c22355309ee1beb0f3c98b6eb90ca99c72e9e57fb",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1337,
+              "bottom": 1544
+            },
+            "scale": 1.0220264317180616,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 14,
+                  "top": 6,
+                  "width": 199,
+                  "height": 196,
+                  "pixels": 27037
+                },
+                "output": {
+                  "left": 29,
+                  "top": 44,
+                  "width": 203,
+                  "height": 200
+                }
+              },
+              {
+                "source": {
+                  "left": 229,
+                  "top": 17,
+                  "width": 205,
+                  "height": 178,
+                  "pixels": 27189
+                },
+                "output": {
+                  "left": 21,
+                  "top": 55,
+                  "width": 210,
+                  "height": 182
+                }
+              },
+              {
+                "source": {
+                  "left": 450,
+                  "top": 20,
+                  "width": 219,
+                  "height": 180,
+                  "pixels": 29933
+                },
+                "output": {
+                  "left": 20,
+                  "top": 58,
+                  "width": 224,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 665,
+                  "top": 16,
+                  "width": 224,
+                  "height": 185,
+                  "pixels": 29460
+                },
+                "output": {
+                  "left": 13,
+                  "top": 54,
+                  "width": 229,
+                  "height": 189
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-beam-correction.png",
+            "sourceImageSha256": "e3251f304e1996d952197a8ceaacc847829e0e59b3d3a6bb8085e52f20f3d670",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 454,
+              "bottom": 887
+            },
+            "scale": 0.4594059405940594,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 10,
+                  "width": 420,
+                  "height": 403,
+                  "pixels": 113164
+                },
+                "output": {
+                  "left": 32,
+                  "top": 57,
+                  "width": 193,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 452,
+                  "top": 17,
+                  "width": 449,
+                  "height": 398,
+                  "pixels": 113424
+                },
+                "output": {
+                  "left": 30,
+                  "top": 61,
+                  "width": 206,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 896,
+                  "top": 34,
+                  "width": 465,
+                  "height": 374,
+                  "pixels": 115670
+                },
+                "output": {
+                  "left": 30,
+                  "top": 69,
+                  "width": 214,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 1367,
+                  "top": 11,
+                  "width": 391,
+                  "height": 405,
+                  "pixels": 107030
+                },
+                "output": {
+                  "left": 43,
+                  "top": 58,
+                  "width": 180,
+                  "height": 186
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.1060430970022432,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 159,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 141,
+              "bodyBounds": [
+                108,
+                100,
+                67,
+                141
+              ],
+              "referenceBodyBounds": [
+                105,
+                80,
+                59,
+                159
+              ],
+              "nativeComparableBodyHeight": 307,
+              "nativeReferenceBodyHeight": 313,
+              "nativeBodyBounds": [
+                177,
+                558,
+                146,
+                307
+              ],
+              "nativeReferenceBodyBounds": [
+                1517,
+                556,
+                143,
+                313
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-beam-correction.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-beam-correction.png",
+              "nativeComparableSourceSha256": "e3251f304e1996d952197a8ceaacc847829e0e59b3d3a6bb8085e52f20f3d670",
+              "nativeReferenceSourceSha256": "e3251f304e1996d952197a8ceaacc847829e0e59b3d3a6bb8085e52f20f3d670",
+              "nativeComparableSourceRow": 1,
+              "nativeReferenceSourceRow": 1,
+              "nativeReferenceColumn": 3,
+              "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png",
+              "displayReferenceSourceDiffers": true,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in column3 of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+              "poseBridge": {
+                "nativeReferenceLabel": "super",
+                "nativeReferenceColumn": 3,
+                "displayReferenceLabel": "intro",
+                "displayReferenceColumn": 0,
+                "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+                "nativeReferenceNormalizedBodyBounds": [
+                  112,
+                  100,
+                  66,
+                  144
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "709746e91cdc3d3a589a5d5780d16748882a20d4645b869acbb49cc97e299ad1",
+              "e5088afa631edadd6efa954dadd56035cbc0d26fcba345d92d99d0fbbba51a2c",
+              "db8a4c1bebb12c4f3c54700c18ce8e44e70740049b289835dac3b300cb9fcc5b",
+              "32ac223af927dc451a83f255d69522877d0b95f9dabf0bc0f07a81803caba199"
+            ]
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "cebdc13d863cb04c43f442ab4f861f25263d6d61da8e5740c369e855b217cae1",
+              "2cf453fe702bdc8006b71b1be070bfb0c95b9ca606cda32d8fc36d0417f2bd1f",
+              "f43c8954123a805b3d97a35c399a65062346b8639c617190e8ddd1ccbbae0f57",
+              "3592226c062010a9e57cf5bb33e9540f241999d61439f706edecc4f700670a12"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "3d173e9ae26aeef1d79b5ae88627774fbbabc4ad5d3eea06f7953f2f45ff962b",
+              "2e7f8d9479942d29a81dfa870c729be7114c2ad669534581751b4e6ab8258380",
+              "57c2e95946f32e314e05ab93b5e1e0b4981241807f05d0639267c1fb91027cb7",
+              "cd410eb5564ee01d27e1744c74ce6449afc12e9599c64c81efd92d5e6cc82026"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "388a3fe01d32f636637a14ca3de3763aef80f14b1270d4cb63eb0cd64766d619",
+              "3b16090854b19091f5151bf0110d7ea243284b6ddf0a774d822ae2b50dd1934c",
+              "3cc0904eec0cbe6a5e72cc5f596c9b41a5d12bb5c2cdf81622181efc7471e7f6",
+              "808e68781b1287b3ece464d1da5adcec72233c2356d0eda1ab2612ed330e8360"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "04b7dde4b9b5e0da600013a04818b89e2fdeea15aef701ec6b425776a0a9a5cd",
+              "1aecf4c05907c57adc7eb684f8c3b4c3a8dcfdfc90f149c9481bfe613de1cf73",
+              "622b049eafbf61d40edd5cfc955f2cadce1f4e356acebc58555f2e1625d0d45c",
+              "fea701c113f21a628c8dbeec0ce867caf3be823043be45c992d80ad261ce0b06"
+            ]
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "db53a4f97515d0a093a9d0c1551178e62457abfa8d160074df0ab1fe3ca1b5ee",
+              "1ed88017c5a45167c05205acc137899edc1252747bca0d9a3cadbb1a9dcd9d73",
+              "cb3da7250877a457d185f89297e9bd564018a8f8f159342f6d648110e3a2c0eb",
+              "7be82a02e1b96e6242b7d64f6cea17fba511e365ede55391a4563b39c37719c6"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "125c9588b48d3b35140945021d27604f14b1de066932a6e4d105d9140f5c3815",
+              "099cd5983e3c715384e8d15c34679c42d4a9f9cbb0aafb00521aa83f7eb4363b",
+              "7bded126e4a07e88b48c3b463f78592193ead5db6ee4f4210335acbaeb958508",
+              "c96eb5c3788838fe155f47726ed949c250d6da83f55a1abfd9b44cb7e8bf3991"
+            ]
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b6237528e812c26bd95d6be2c12fbbdf68c04c8e188eb845f7988e2e1af7fc19",
+              "a0f9d480c09227b0bef0b0367a7462813811b4fbe666db1ab3c9c8514bcd58f8",
+              "7eaa530a9034d5551079e5d7285428123edd487c76de6b719e7a6aff290d084a",
+              "af2a16ef63cb606f1d9afa9495a8954ef381e76272d099ead19802db8f6de627"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Dizzy in GuiltyGearXrdREV2: blue hair/yellow ribbons, long white shirt and navy outfit, blue tail; Necro dark reaper/right wing and Undine pale water-spirit/left wing are sentient characters attached to her back, not Strive minimalist teeth-only guardians. New native pixel art and compact authored sequence; not official game frames or certified1:1 animation."
+      }
+    },
+    {
+      "id": "millia_gg",
+      "heroId": "millia_gg",
+      "universe": "Guilty Gear",
+      "name": "Millia Rage",
+      "sheet": "/sprites/generated/combat-character-animations-wave7/millia_gg.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "74c703dd8a368791572e1b26c6a6149cd2c943f2f0ebad7fed0b03f35e11a2cc",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+      "sourceImageSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/millia-gg.png",
+      "referenceAssetSha256": "4c8106d6a662c959bcf8c04454508b83c56e87db612949f7c5016dbc843b61ff",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-references/millia_gg.png",
+      "sourceWork": "Guilty Gear Xrd REV2 (2017)",
+      "sourceReference": "https://guiltygear.wiki.gg/wiki/Millia_Rage and https://guiltygear.fandom.com/wiki/Winger indexed2026-10-20 distinguish Xrd yellow blouse/pillbox/leggings/peach shoes from Strive trenchcoat and describe hair-wings rising/spinning/nosedive. Search versions/details archived; no source-game frames.",
+      "abilityName": "Winger",
+      "characterVersion": "MilliaRage in GuiltyGearXrdREV2: yellow blouse and pillbox hat, black leggings, pale peach shoes, golden prehensile weapon hair; Winger forms hair-wings and a rising/descending attack. No Strive trenchcoat/shawl/furhat version.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "sourceImageSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 232
+            },
+            "scale": 1.0043290043290043,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 18,
+                  "top": 0,
+                  "width": 190,
+                  "height": 231,
+                  "pixels": 20707
+                },
+                "output": {
+                  "left": 35,
+                  "top": 12,
+                  "width": 191,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 263,
+                  "top": 0,
+                  "width": 164,
+                  "height": 228,
+                  "pixels": 19122
+                },
+                "output": {
+                  "left": 58,
+                  "top": 12,
+                  "width": 165,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 502,
+                  "top": 12,
+                  "width": 150,
+                  "height": 216,
+                  "pixels": 20433
+                },
+                "output": {
+                  "left": 75,
+                  "top": 24,
+                  "width": 151,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 711,
+                  "top": 6,
+                  "width": 156,
+                  "height": 222,
+                  "pixels": 19414
+                },
+                "output": {
+                  "left": 63,
+                  "top": 18,
+                  "width": 157,
+                  "height": 223
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "sourceImageSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 222,
+              "bottom": 456
+            },
+            "scale": 1.0131004366812226,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 43,
+                  "top": 8,
+                  "width": 177,
+                  "height": 225,
+                  "pixels": 18898
+                },
+                "output": {
+                  "left": 59,
+                  "top": 16,
+                  "width": 179,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 258,
+                  "top": 4,
+                  "width": 184,
+                  "height": 226,
+                  "pixels": 17948
+                },
+                "output": {
+                  "left": 52,
+                  "top": 12,
+                  "width": 186,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 475,
+                  "top": 5,
+                  "width": 155,
+                  "height": 224,
+                  "pixels": 18836
+                },
+                "output": {
+                  "left": 48,
+                  "top": 13,
+                  "width": 157,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 692,
+                  "top": 5,
+                  "width": 164,
+                  "height": 222,
+                  "pixels": 19770
+                },
+                "output": {
+                  "left": 43,
+                  "top": 13,
+                  "width": 166,
+                  "height": 225
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "sourceImageSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 443,
+              "bottom": 680
+            },
+            "scale": 0.9243027888446215,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 19,
+                  "top": 3,
+                  "width": 181,
+                  "height": 229,
+                  "pixels": 19091
+                },
+                "output": {
+                  "left": 43,
+                  "top": 31,
+                  "width": 167,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 254,
+                  "top": 3,
+                  "width": 204,
+                  "height": 229,
+                  "pixels": 20626
+                },
+                "output": {
+                  "left": 55,
+                  "top": 31,
+                  "width": 189,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 490,
+                  "top": 3,
+                  "width": 153,
+                  "height": 229,
+                  "pixels": 18100
+                },
+                "output": {
+                  "left": 68,
+                  "top": 31,
+                  "width": 141,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 683,
+                  "top": 1,
+                  "width": 157,
+                  "height": 232,
+                  "pixels": 19616
+                },
+                "output": {
+                  "left": 42,
+                  "top": 30,
+                  "width": 145,
+                  "height": 214
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "sourceImageSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 674,
+              "bottom": 880
+            },
+            "scale": 0.8957528957528957,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 18,
+                  "top": 2,
+                  "width": 210,
+                  "height": 194,
+                  "pixels": 20639
+                },
+                "output": {
+                  "left": 45,
+                  "top": 62,
+                  "width": 188,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 228,
+                  "top": 37,
+                  "width": 213,
+                  "height": 163,
+                  "pixels": 20810
+                },
+                "output": {
+                  "left": 34,
+                  "top": 94,
+                  "width": 191,
+                  "height": 146
+                }
+              },
+              {
+                "source": {
+                  "left": 473,
+                  "top": 63,
+                  "width": 175,
+                  "height": 142,
+                  "pixels": 13810
+                },
+                "output": {
+                  "left": 55,
+                  "top": 117,
+                  "width": 157,
+                  "height": 127
+                }
+              },
+              {
+                "source": {
+                  "left": 647,
+                  "top": 54,
+                  "width": 225,
+                  "height": 141,
+                  "pixels": 16467
+                },
+                "output": {
+                  "left": 12,
+                  "top": 109,
+                  "width": 202,
+                  "height": 126
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "sourceImageSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 865,
+              "bottom": 1114
+            },
+            "scale": 0.7272727272727273,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 14,
+                  "top": 23,
+                  "width": 205,
+                  "height": 216,
+                  "pixels": 23031
+                },
+                "output": {
+                  "left": 58,
+                  "top": 82,
+                  "width": 149,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 205,
+                  "top": 6,
+                  "width": 287,
+                  "height": 240,
+                  "pixels": 32516
+                },
+                "output": {
+                  "left": 35,
+                  "top": 69,
+                  "width": 209,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 469,
+                  "top": 4,
+                  "width": 212,
+                  "height": 242,
+                  "pixels": 22264
+                },
+                "output": {
+                  "left": 66,
+                  "top": 68,
+                  "width": 154,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 28,
+                  "width": 200,
+                  "height": 209,
+                  "pixels": 21530
+                },
+                "output": {
+                  "left": 51,
+                  "top": 85,
+                  "width": 145,
+                  "height": 152
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 18,
+            "renderScale": 1.3912005028284098,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 217,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 74,
+              "bodyBounds": [
+                75,
+                163,
+                103,
+                74
+              ],
+              "referenceBodyBounds": [
+                70,
+                21,
+                150,
+                217
+              ],
+              "nativeComparableBodyHeight": 102,
+              "nativeReferenceBodyHeight": 215,
+              "nativeBodyBounds": [
+                37,
+                999,
+                142,
+                102
+              ],
+              "nativeReferenceBodyBounds": [
+                53,
+                9,
+                149,
+                215
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+              "nativeComparableSourceSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+              "nativeReferenceSourceSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+              "nativeComparableSourceRow": 4,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height."
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "sourceImageSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1107,
+              "bottom": 1350
+            },
+            "scale": 0.9872340425531915,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 24,
+                  "top": 7,
+                  "width": 144,
+                  "height": 230,
+                  "pixels": 19323
+                },
+                "output": {
+                  "left": 42,
+                  "top": 16,
+                  "width": 142,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 252,
+                  "top": 8,
+                  "width": 171,
+                  "height": 229,
+                  "pixels": 20647
+                },
+                "output": {
+                  "left": 48,
+                  "top": 17,
+                  "width": 169,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 454,
+                  "top": 3,
+                  "width": 204,
+                  "height": 235,
+                  "pixels": 25400
+                },
+                "output": {
+                  "left": 29,
+                  "top": 12,
+                  "width": 201,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 689,
+                  "top": 6,
+                  "width": 167,
+                  "height": 232,
+                  "pixels": 21650
+                },
+                "output": {
+                  "left": 42,
+                  "top": 15,
+                  "width": 165,
+                  "height": 229
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "sourceImageSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1335,
+              "bottom": 1553
+            },
+            "scale": 1.0220264317180616,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 4,
+                  "width": 138,
+                  "height": 206,
+                  "pixels": 16360
+                },
+                "output": {
+                  "left": 48,
+                  "top": 26,
+                  "width": 141,
+                  "height": 211
+                }
+              },
+              {
+                "source": {
+                  "left": 253,
+                  "top": 23,
+                  "width": 141,
+                  "height": 194,
+                  "pixels": 17045
+                },
+                "output": {
+                  "left": 47,
+                  "top": 46,
+                  "width": 144,
+                  "height": 198
+                }
+              },
+              {
+                "source": {
+                  "left": 446,
+                  "top": 63,
+                  "width": 197,
+                  "height": 152,
+                  "pixels": 15400
+                },
+                "output": {
+                  "left": 17,
+                  "top": 87,
+                  "width": 201,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 663,
+                  "top": 70,
+                  "width": 205,
+                  "height": 140,
+                  "pixels": 15712
+                },
+                "output": {
+                  "left": 12,
+                  "top": 94,
+                  "width": 210,
+                  "height": 143
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "sourceImageSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1537,
+              "bottom": 1774
+            },
+            "scale": 0.7009063444108762,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 17,
+                  "top": 88,
+                  "width": 184,
+                  "height": 138,
+                  "pixels": 17353
+                },
+                "output": {
+                  "left": 62,
+                  "top": 144,
+                  "width": 129,
+                  "height": 97
+                }
+              },
+              {
+                "source": {
+                  "left": 225,
+                  "top": 6,
+                  "width": 273,
+                  "height": 220,
+                  "pixels": 26105
+                },
+                "output": {
+                  "left": 53,
+                  "top": 86,
+                  "width": 191,
+                  "height": 154
+                }
+              },
+              {
+                "source": {
+                  "left": 453,
+                  "top": 3,
+                  "width": 194,
+                  "height": 228,
+                  "pixels": 21034
+                },
+                "output": {
+                  "left": 57,
+                  "top": 84,
+                  "width": 136,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 669,
+                  "top": 66,
+                  "width": 204,
+                  "height": 160,
+                  "pixels": 18194
+                },
+                "output": {
+                  "left": 53,
+                  "top": 128,
+                  "width": 143,
+                  "height": 112
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.428752642706131,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 217,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 77,
+              "bodyBounds": [
+                80,
+                163,
+                110,
+                77
+              ],
+              "referenceBodyBounds": [
+                70,
+                21,
+                150,
+                217
+              ],
+              "nativeComparableBodyHeight": 109,
+              "nativeReferenceBodyHeight": 215,
+              "nativeBodyBounds": [
+                43,
+                1652,
+                156,
+                109
+              ],
+              "nativeReferenceBodyBounds": [
+                53,
+                9,
+                149,
+                215
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+              "nativeComparableSourceSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+              "nativeReferenceSourceSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+              "nativeComparableSourceRow": 7,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "030c042c7a7ce887b8db1228c8f862f428234d2c062a5894331cbe442d4e8a76",
+              "deea8a2b2a35f8428b142fa73a08926233ef70b458a0bf478240292a26a290a0",
+              "cd381fca5260eca0b6a9e1f691f99687af801c7a28455cf24851cc0b09275c38",
+              "481850b5c09d4c6f7f9665e5929db226ea6f25092d028627db8a5b3c1887e23b"
+            ]
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7ad3c69530110f9fda9910c83b1f66d9c9e406d35fc939fd8551ea4000b2f294",
+              "6a77e2f1c24eb0c2a7a02c42182ef093aea18a54a5b3bbf4d12925ae76bc2b8e",
+              "d0dadc92dfbebb8f79916fc21502c7d8f484861e02c069a994666818f07246ce",
+              "2b94b70ad60b50e8d5c403d6ac0b3ed5a3e2adf02d2c314f6c775d65e4e468d0"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "909763a71e62321342e2e9acceee197b9a29aa961cd0f1874026b32ffbe43c14",
+              "ee8c28aa400e8571e25078a7c70318a3ddf414cd32d9ab86399bbd8d71296a27",
+              "5a1c30d77f011e7e50f73bdb3794fd6a75cf1472e577817429e0f8c0fc829789",
+              "1280880805f0aff83a5731990c4e551fa29ac7c018055ad373687a03c2ea28ac"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d4816dd3cf83449aad3d049bb0914cb1dc3133faf422885320a28b2265f45a35",
+              "70de3cf8c2e5225b8396f741645f906a770971afa2d3d4a11ebcfbc974b17499",
+              "c11f91daa6e34779ef1de98a3f5391baf433ff4f8913341510a5d1e40238cd08",
+              "55975892ad11c2305e89df5a385d68b6472da9110d342abbdbcc6db833e599b4"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e475a4fb73050dcb825f8cb8136f70a80e3a3e838e7152e1ebfcdd6c13c71c70",
+              "869f338ee019a831c4d60b06399af9405eae9ef5427dd9dc18bbae7cd7dfde2a",
+              "70ac93fa9f108c4eae6eda07f15d358f177e2055fe3f7b6c4626c0ae78f9f881",
+              "39a2144a085b342295d797eb9392f78f155b57913db73e87732416581bca8e8d"
+            ]
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6f01fccfa658da22708df133f56f1e6c343c540290225713421ac22c3926ec66",
+              "712a7135e043cb055188f3cbdd7feb27828798d8e50031f4d0a13f668337bfcb",
+              "ae2cf1452cf05a4f04a9d2c9ee2a06ebc070fe2aea8c889e50011fd8dd9b1912",
+              "10a35fe0b1720a0b2e4a3775a74a3515f5771264249acdaf8a87e46463a05ae2"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "cb4764c0845cb1a6b4b37999020c04c053c88fb9c7b5331d5a17c9fe5af0646e",
+              "59781d1ee6f230df641d06dd9c16a23f70f667599b32ffe9af848db8911df157",
+              "30438ddc74f0b4b38cc0049a7e3a46219e6527a6eeacf62b20342bff7d16e388",
+              "6d202431d7801c6144cd0b66751539290be949c12b00976c3ba59dba0b9c5125"
+            ]
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f2122e9209a160eb2e115dfebd5518977b21e5c8f1dd5c4bb0ba4e4bc95e991c",
+              "f6e90280206f13836443c477d84c125e7538c8e1186fe9ec4d3042982e1d3b3b",
+              "0cbab2a082890057f0044daa5595325436694e19160ea0afc6e4dc6761990855",
+              "f10b1174eca08752e77e55ef604eb2b8fd8a1232bf8a2bf5b75d924ede269a04"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "MilliaRage in GuiltyGearXrdREV2: yellow blouse and pillbox hat, black leggings, pale peach shoes, golden prehensile weapon hair; Winger forms hair-wings and a rising/descending attack. No Strive trenchcoat/shawl/furhat version. New native pixel art and compact authored sequence; not official game frames or certified1:1 animation."
+      }
+    },
+    {
+      "id": "axl_gg",
+      "heroId": "axl_gg",
+      "universe": "Guilty Gear",
+      "name": "Axl Low",
+      "sheet": "/sprites/generated/combat-character-animations-wave7/axl_gg.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "4ac5bb4e0349042f3bca1f994ad9c6fa945922bd78cc26cf3725ac121640a6a2",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+      "sourceImageSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/axl-gg.png",
+      "referenceAssetSha256": "12c556050d53d968e96e66b07579a46caff091bb3c9f1189dd650c2586d3e5d4",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-references/axl_gg.png",
+      "sourceWork": "Guilty Gear Xrd REV2 (2017)",
+      "sourceReference": "https://guiltygear.fandom.com/wiki/Axl_Low/Commands and https://strategywiki.org/wiki/Guilty_Gear_Xrd_Rev_2/Moves indexed2026-10-20 confirm SickleStorm as Overdrive and AxlBomber ordinary special. Flame chain choreography is adapted from known move descriptions, no exact timing claim.",
+      "abilityName": "Sickle Storm",
+      "characterVersion": "AxlLow in GuiltyGearXrdREV2: long blond hair, red saltire BANDANA, sleeveless blue longcoat/dark trousers, two curved sickles linked by actual chain; SickleStorm Overdrive physical flame-edged chain/sickle choreography, no firearm or time-stop mechanic.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "sourceImageSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 241
+            },
+            "scale": 1.0131004366812226,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 20,
+                  "top": 10,
+                  "width": 201,
+                  "height": 221,
+                  "pixels": 18865
+                },
+                "output": {
+                  "left": 36,
+                  "top": 15,
+                  "width": 204,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 260,
+                  "top": 7,
+                  "width": 175,
+                  "height": 226,
+                  "pixels": 17064
+                },
+                "output": {
+                  "left": 54,
+                  "top": 12,
+                  "width": 177,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 451,
+                  "top": 25,
+                  "width": 175,
+                  "height": 211,
+                  "pixels": 18046
+                },
+                "output": {
+                  "left": 23,
+                  "top": 30,
+                  "width": 177,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 35,
+                  "width": 205,
+                  "height": 198,
+                  "pixels": 19196
+                },
+                "output": {
+                  "left": 20,
+                  "top": 40,
+                  "width": 208,
+                  "height": 201
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "sourceImageSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 238,
+              "bottom": 469
+            },
+            "scale": 1.0642201834862386,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 17,
+                  "top": 5,
+                  "width": 191,
+                  "height": 218,
+                  "pixels": 18344
+                },
+                "output": {
+                  "left": 28,
+                  "top": 12,
+                  "width": 203,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 283,
+                  "top": 10,
+                  "width": 132,
+                  "height": 212,
+                  "pixels": 14871
+                },
+                "output": {
+                  "left": 75,
+                  "top": 17,
+                  "width": 140,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 464,
+                  "top": 11,
+                  "width": 164,
+                  "height": 209,
+                  "pixels": 17422
+                },
+                "output": {
+                  "left": 32,
+                  "top": 18,
+                  "width": 175,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 692,
+                  "top": 16,
+                  "width": 162,
+                  "height": 204,
+                  "pixels": 16928
+                },
+                "output": {
+                  "left": 38,
+                  "top": 24,
+                  "width": 172,
+                  "height": 217
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "sourceImageSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 457,
+              "bottom": 701
+            },
+            "scale": 1.0265486725663717,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 5,
+                  "width": 184,
+                  "height": 220,
+                  "pixels": 19798
+                },
+                "output": {
+                  "left": 38,
+                  "top": 12,
+                  "width": 189,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 237,
+                  "top": 12,
+                  "width": 166,
+                  "height": 215,
+                  "pixels": 18477
+                },
+                "output": {
+                  "left": 30,
+                  "top": 19,
+                  "width": 170,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 455,
+                  "top": 13,
+                  "width": 159,
+                  "height": 218,
+                  "pixels": 18279
+                },
+                "output": {
+                  "left": 26,
+                  "top": 20,
+                  "width": 163,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 692,
+                  "top": 13,
+                  "width": 177,
+                  "height": 217,
+                  "pixels": 17656
+                },
+                "output": {
+                  "left": 42,
+                  "top": 20,
+                  "width": 182,
+                  "height": 223
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "sourceImageSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 700,
+              "bottom": 914
+            },
+            "scale": 1.0497737556561086,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 19,
+                  "top": 13,
+                  "width": 186,
+                  "height": 179,
+                  "pixels": 18083
+                },
+                "output": {
+                  "left": 32,
+                  "top": 34,
+                  "width": 195,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 230,
+                  "top": 43,
+                  "width": 213,
+                  "height": 150,
+                  "pixels": 16768
+                },
+                "output": {
+                  "left": 20,
+                  "top": 66,
+                  "width": 224,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 452,
+                  "top": 49,
+                  "width": 207,
+                  "height": 164,
+                  "pixels": 17002
+                },
+                "output": {
+                  "left": 21,
+                  "top": 72,
+                  "width": 217,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 17,
+                  "width": 164,
+                  "height": 177,
+                  "pixels": 15584
+                },
+                "output": {
+                  "left": 45,
+                  "top": 38,
+                  "width": 172,
+                  "height": 186
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "sourceImageSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 885,
+              "bottom": 1134
+            },
+            "scale": 0.9169960474308301,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 5,
+                  "width": 205,
+                  "height": 235,
+                  "pixels": 24066
+                },
+                "output": {
+                  "left": 37,
+                  "top": 26,
+                  "width": 188,
+                  "height": 215
+                }
+              },
+              {
+                "source": {
+                  "left": 227,
+                  "top": 22,
+                  "width": 223,
+                  "height": 221,
+                  "pixels": 27974
+                },
+                "output": {
+                  "left": 31,
+                  "top": 41,
+                  "width": 204,
+                  "height": 203
+                }
+              },
+              {
+                "source": {
+                  "left": 440,
+                  "top": 19,
+                  "width": 236,
+                  "height": 222,
+                  "pixels": 30858
+                },
+                "output": {
+                  "left": 23,
+                  "top": 39,
+                  "width": 216,
+                  "height": 204
+                }
+              },
+              {
+                "source": {
+                  "left": 650,
+                  "top": 53,
+                  "width": 229,
+                  "height": 187,
+                  "pixels": 20549
+                },
+                "output": {
+                  "left": 12,
+                  "top": 70,
+                  "width": 210,
+                  "height": 171
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.1164529914529915,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 220,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 156,
+              "bodyBounds": [
+                50,
+                82,
+                173,
+                156
+              ],
+              "referenceBodyBounds": [
+                58,
+                18,
+                147,
+                220
+              ],
+              "nativeComparableBodyHeight": 171,
+              "nativeReferenceBodyHeight": 216,
+              "nativeBodyBounds": [
+                26,
+                951,
+                189,
+                171
+              ],
+              "nativeReferenceBodyBounds": [
+                42,
+                13,
+                145,
+                216
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+              "nativeComparableSourceSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+              "nativeReferenceSourceSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+              "nativeComparableSourceRow": 4,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height."
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "sourceImageSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1125,
+              "bottom": 1360
+            },
+            "scale": 1.031111111111111,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 6,
+                  "width": 168,
+                  "height": 225,
+                  "pixels": 21225
+                },
+                "output": {
+                  "left": 36,
+                  "top": 12,
+                  "width": 173,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 253,
+                  "top": 18,
+                  "width": 177,
+                  "height": 212,
+                  "pixels": 17840
+                },
+                "output": {
+                  "left": 46,
+                  "top": 24,
+                  "width": 183,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 506,
+                  "top": 20,
+                  "width": 108,
+                  "height": 211,
+                  "pixels": 14981
+                },
+                "output": {
+                  "left": 78,
+                  "top": 26,
+                  "width": 111,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 667,
+                  "top": 10,
+                  "width": 200,
+                  "height": 221,
+                  "pixels": 20150
+                },
+                "output": {
+                  "left": 15,
+                  "top": 16,
+                  "width": 206,
+                  "height": 228
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "sourceImageSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1357,
+              "bottom": 1573
+            },
+            "scale": 1.0220264317180616,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 6,
+                  "width": 130,
+                  "height": 201,
+                  "pixels": 15909
+                },
+                "output": {
+                  "left": 68,
+                  "top": 34,
+                  "width": 133,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 260,
+                  "top": 9,
+                  "width": 182,
+                  "height": 197,
+                  "pixels": 15686
+                },
+                "output": {
+                  "left": 54,
+                  "top": 38,
+                  "width": 186,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 441,
+                  "top": 66,
+                  "width": 222,
+                  "height": 145,
+                  "pixels": 15686
+                },
+                "output": {
+                  "left": 12,
+                  "top": 96,
+                  "width": 227,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 664,
+                  "top": 63,
+                  "width": 213,
+                  "height": 142,
+                  "pixels": 16094
+                },
+                "output": {
+                  "left": 13,
+                  "top": 93,
+                  "width": 218,
+                  "height": 145
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "sourceImageSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1562,
+              "bottom": 1774
+            },
+            "scale": 0.8529411764705882,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 10,
+                  "top": 24,
+                  "width": 232,
+                  "height": 177,
+                  "pixels": 20680
+                },
+                "output": {
+                  "left": 42,
+                  "top": 91,
+                  "width": 198,
+                  "height": 151
+                }
+              },
+              {
+                "source": {
+                  "left": 237,
+                  "top": 18,
+                  "width": 207,
+                  "height": 185,
+                  "pixels": 22584
+                },
+                "output": {
+                  "left": 46,
+                  "top": 86,
+                  "width": 177,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 440,
+                  "top": 10,
+                  "width": 250,
+                  "height": 190,
+                  "pixels": 29810
+                },
+                "output": {
+                  "left": 30,
+                  "top": 79,
+                  "width": 213,
+                  "height": 162
+                }
+              },
+              {
+                "source": {
+                  "left": 666,
+                  "top": 32,
+                  "width": 213,
+                  "height": 170,
+                  "pixels": 19122
+                },
+                "output": {
+                  "left": 34,
+                  "top": 98,
+                  "width": 182,
+                  "height": 145
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.1898580823814469,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 220,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 107,
+              "bodyBounds": [
+                45,
+                134,
+                180,
+                107
+              ],
+              "referenceBodyBounds": [
+                58,
+                18,
+                147,
+                220
+              ],
+              "nativeComparableBodyHeight": 125,
+              "nativeReferenceBodyHeight": 216,
+              "nativeBodyBounds": [
+                14,
+                1636,
+                211,
+                125
+              ],
+              "nativeReferenceBodyBounds": [
+                42,
+                13,
+                145,
+                216
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+              "nativeComparableSourceSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+              "nativeReferenceSourceSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+              "nativeComparableSourceRow": 7,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4c427510aea240981bc054994b8fad1482ae979ef77c8b2ed1301fd076cec2c7",
+              "6b7a03c0586b5b62320ab4907c8c5f4e7f9020c44ec503f929561ebb1669d23b",
+              "90344624c0f2adb7cfd40d33d7546915d9baf90cd91c1213137368befaf6c268",
+              "2a50b461621f479acee30fb1c032f50cb486ff8c198cf35396bd714482cf5b6b"
+            ]
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b1b70c97b3546faaf3f10dd79ed0deac39f7f0cb3da8a8064ebda536cf4397a6",
+              "e8cb764c8c9c2f2550dd9cdf7f65713597288d4b26c29f8e32f309f6ea91daee",
+              "bb8b5727375d2386af9494cdb55132f9f457af907452bea87ed33c8fcb41238d",
+              "5d0fc2af0914a62270b252e4f83b3c2c669f75876177afc0a4feeb852e0fed47"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f3296637af7c80d44254a1cf0875b4c4acc225b63a9b9b7d6a2dad9eb25ede36",
+              "382f0584a1aa7f9ac57fabc775a32c0abff9e8bb94bbaac2e236a50b62b88d2d",
+              "985994fcb6fc8e837ba52b67740e2eacd118b0794377da60cf6002b6790865b5",
+              "438a9bf3d3bc6d991f6d81768f5d05a922a4bb6aaf4ad81d40580c7e18d9610f"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d08f5f2a46ebcc4d3901bb3f6f2b122d5e136cf210b9b6491f3f9da635beec52",
+              "fe92de64f569980a36dbacfbbe1e16baf96cc7b1ca060d0e6bbe8824b8061ed3",
+              "c93064699d7de2ba1f22ca2de735c748e3c77c3b6750cb41b905d793a38ca1af",
+              "25415649b6db1f5c94864848368e4d557705ab2a2a9d9d3b8523c660eef3eb39"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "224f1ac3afa2676084d35c41b353e8bee923c389ebeb89ed87f06694df724d98",
+              "138bb76b069a865dce2ec40e931bad3952973713e5c329ff0837c85f35944c2a",
+              "59d06bf976d6d71ea8d256b055728ce70bcecb89714cfba4eb74715dc4ef2f88",
+              "abdd1726be15c50357780230198e1e4dfe9b2f5da6bd8d3933cc1b6cbf080a03"
+            ]
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1d494987ce20676563396dacaa96a110dc0ed2f03819d8005115a64d395332d8",
+              "1752a67254f70f9607cae5aed14ab8d638f1dd0405e4297e63c0f6aa140e74d6",
+              "45f2e7b4a85e1b6b475b7036a2fb9c0368ba511dcc6c3a1d43c6085a95b4de02",
+              "957ce4a170ba04035560b64c8ff33a642c64b270597e9c0941c03d030c7562be"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "95a8fc7643db41173ce0679b46893e353f3b924203e157387de927153419e8e7",
+              "4acab19d32e022ce2ffafd1a82a084b53487809e1008ee21d9acb014c8b0788b",
+              "fcf4a2cccce50ac0b9a5c79b100f4c754df0334ea40b69ce90a1b9606c31de1c",
+              "2ac5367ac9673e4510d55ff22bf020d78cfa4491046fa0b416bc8e37cac49fde"
+            ]
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7c21cbbdb811cbe8625479666d95f28f20bfd31be7f1c27a602d93e30b1e0128",
+              "9b9973d07797c3db60cc24dde01a026a462d74d0ef4eca1ec1da251c25204e3e",
+              "6938c477eedace93c6a0f072b82c10e4d4e65a51a63e0ea273bbe63912411ecc",
+              "79ec1741d0a5ddbe42df0321682263b526b8cb77748ba84a20ea0ed30797f9d8"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "AxlLow in GuiltyGearXrdREV2: long blond hair, red saltire BANDANA, sleeveless blue longcoat/dark trousers, two curved sickles linked by actual chain; SickleStorm Overdrive physical flame-edged chain/sickle choreography, no firearm or time-stop mechanic. New native pixel art and compact authored sequence; not official game frames or certified1:1 animation."
+      }
+    },
+    {
+      "id": "baiken_gg",
+      "heroId": "baiken_gg",
+      "universe": "Guilty Gear",
+      "name": "Baiken",
+      "sheet": "/sprites/generated/combat-character-animations-wave7/baiken_gg.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "8c9790da7a859fe758974f56ce03a331ed1c51bc19387307870716933b89f15e",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+      "sourceImageSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/baiken-gg.png",
+      "referenceAssetSha256": "88de1dbff0e2c719bda2f0e8265bc9f1db1a50d301c35da65a8af715694fb366",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-references/baiken_gg.png",
+      "sourceWork": "Guilty Gear Xrd REV2 (2017)",
+      "sourceReference": "https://guiltygear.fandom.com/wiki/Baiken and https://guiltygear.fandom.com/wiki/Baiken/Commands indexed2026-10-20: right arm absent, blind left eye, Xrd goggle eyepatch/cape, TsuraneSanzuWatashi triple katana slashes with circular moon cue. Azami belongs Xrd; Hiiragi belongs Strive. Source index extracts archived, no official-frame or every-eye-pixel certification.",
+      "abilityName": "Tsurane Sanzu-watashi",
+      "characterVersion": "Baiken in GuiltyGearXrdREV2: pink ponytail, white/red kimono and draped black gakuran, left blind eye covered/obscured at sprite resolution, right sleeve empty and anatomical right arm absent; sole LEFT hand uses katana. Eye-side detail is not pixel-certified in all small frames.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": true,
+      "originalSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-rejected-two-hands.png",
+      "originalSourceImageSha256": "4dd27cad017ede66c09d7726f2288bf7c269c5fb0a4d2a3b9328576c73c17a86",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "sourceImageSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 229
+            },
+            "scale": 0.8992248062015504,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 8,
+                  "width": 176,
+                  "height": 214,
+                  "pixels": 23762
+                },
+                "output": {
+                  "left": 53,
+                  "top": 51,
+                  "width": 158,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 245,
+                  "top": 0,
+                  "width": 158,
+                  "height": 222,
+                  "pixels": 24584
+                },
+                "output": {
+                  "left": 49,
+                  "top": 43,
+                  "width": 142,
+                  "height": 200
+                }
+              },
+              {
+                "source": {
+                  "left": 449,
+                  "top": 4,
+                  "width": 234,
+                  "height": 218,
+                  "pixels": 22894
+                },
+                "output": {
+                  "left": 33,
+                  "top": 47,
+                  "width": 210,
+                  "height": 196
+                }
+              },
+              {
+                "source": {
+                  "left": 680,
+                  "top": 6,
+                  "width": 182,
+                  "height": 217,
+                  "pixels": 24324
+                },
+                "output": {
+                  "left": 42,
+                  "top": 49,
+                  "width": 164,
+                  "height": 195
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "sourceImageSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 218,
+              "bottom": 453
+            },
+            "scale": 0.9243027888446215,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 16,
+                  "top": 1,
+                  "width": 220,
+                  "height": 232,
+                  "pixels": 24490
+                },
+                "output": {
+                  "left": 40,
+                  "top": 30,
+                  "width": 203,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 246,
+                  "top": 12,
+                  "width": 170,
+                  "height": 220,
+                  "pixels": 23787
+                },
+                "output": {
+                  "left": 48,
+                  "top": 40,
+                  "width": 157,
+                  "height": 203
+                }
+              },
+              {
+                "source": {
+                  "left": 457,
+                  "top": 12,
+                  "width": 155,
+                  "height": 220,
+                  "pixels": 21050
+                },
+                "output": {
+                  "left": 38,
+                  "top": 40,
+                  "width": 143,
+                  "height": 203
+                }
+              },
+              {
+                "source": {
+                  "left": 699,
+                  "top": 14,
+                  "width": 168,
+                  "height": 210,
+                  "pixels": 21215
+                },
+                "output": {
+                  "left": 57,
+                  "top": 42,
+                  "width": 155,
+                  "height": 194
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "sourceImageSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 446,
+              "bottom": 680
+            },
+            "scale": 0.7412140575079872,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 16,
+                  "top": 4,
+                  "width": 251,
+                  "height": 225,
+                  "pixels": 26347
+                },
+                "output": {
+                  "left": 58,
+                  "top": 77,
+                  "width": 186,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 253,
+                  "top": 8,
+                  "width": 180,
+                  "height": 216,
+                  "pixels": 23742
+                },
+                "output": {
+                  "left": 69,
+                  "top": 80,
+                  "width": 133,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 460,
+                  "top": 5,
+                  "width": 179,
+                  "height": 224,
+                  "pixels": 23721
+                },
+                "output": {
+                  "left": 58,
+                  "top": 78,
+                  "width": 133,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 689,
+                  "top": 6,
+                  "width": 166,
+                  "height": 221,
+                  "pixels": 21349
+                },
+                "output": {
+                  "left": 63,
+                  "top": 79,
+                  "width": 123,
+                  "height": 164
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "sourceImageSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 669,
+              "bottom": 898
+            },
+            "scale": 0.8345323741007195,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 29,
+                  "top": 2,
+                  "width": 213,
+                  "height": 213,
+                  "pixels": 23726
+                },
+                "output": {
+                  "left": 60,
+                  "top": 56,
+                  "width": 178,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 243,
+                  "top": 27,
+                  "width": 189,
+                  "height": 195,
+                  "pixels": 22414
+                },
+                "output": {
+                  "left": 53,
+                  "top": 77,
+                  "width": 158,
+                  "height": 163
+                }
+              },
+              {
+                "source": {
+                  "left": 446,
+                  "top": 46,
+                  "width": 247,
+                  "height": 181,
+                  "pixels": 18767
+                },
+                "output": {
+                  "left": 38,
+                  "top": 93,
+                  "width": 206,
+                  "height": 151
+                }
+              },
+              {
+                "source": {
+                  "left": 687,
+                  "top": 4,
+                  "width": 174,
+                  "height": 211,
+                  "pixels": 23929
+                },
+                "output": {
+                  "left": 54,
+                  "top": 58,
+                  "width": 145,
+                  "height": 176
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "sourceImageSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 881,
+              "bottom": 1102
+            },
+            "scale": 0.7532467532467533,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 7,
+                  "top": 31,
+                  "width": 197,
+                  "height": 181,
+                  "pixels": 19881
+                },
+                "output": {
+                  "left": 50,
+                  "top": 105,
+                  "width": 148,
+                  "height": 136
+                }
+              },
+              {
+                "source": {
+                  "left": 183,
+                  "top": 5,
+                  "width": 276,
+                  "height": 208,
+                  "pixels": 34156
+                },
+                "output": {
+                  "left": 15,
+                  "top": 85,
+                  "width": 208,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 427,
+                  "top": 8,
+                  "width": 281,
+                  "height": 208,
+                  "pixels": 29726
+                },
+                "output": {
+                  "left": 32,
+                  "top": 87,
+                  "width": 212,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 647,
+                  "top": 33,
+                  "width": 240,
+                  "height": 183,
+                  "pixels": 25649
+                },
+                "output": {
+                  "left": 31,
+                  "top": 106,
+                  "width": 181,
+                  "height": 138
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.191206217395933,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 167,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 101,
+              "bodyBounds": [
+                95,
+                137,
+                85,
+                101
+              ],
+              "referenceBodyBounds": [
+                95,
+                75,
+                110,
+                167
+              ],
+              "nativeComparableBodyHeight": 134,
+              "nativeReferenceBodyHeight": 186,
+              "nativeBodyBounds": [
+                67,
+                955,
+                113,
+                134
+              ],
+              "nativeReferenceBodyBounds": [
+                74,
+                35,
+                123,
+                186
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+              "nativeComparableSourceSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+              "nativeReferenceSourceSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+              "nativeComparableSourceRow": 4,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height."
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "sourceImageSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1095,
+              "bottom": 1330
+            },
+            "scale": 1.0175438596491229,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 21,
+                  "top": 6,
+                  "width": 187,
+                  "height": 228,
+                  "pixels": 22835
+                },
+                "output": {
+                  "left": 37,
+                  "top": 12,
+                  "width": 190,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 226,
+                  "top": 12,
+                  "width": 193,
+                  "height": 219,
+                  "pixels": 25392
+                },
+                "output": {
+                  "left": 20,
+                  "top": 18,
+                  "width": 196,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 469,
+                  "top": 8,
+                  "width": 159,
+                  "height": 219,
+                  "pixels": 23797
+                },
+                "output": {
+                  "left": 41,
+                  "top": 14,
+                  "width": 162,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 10,
+                  "width": 157,
+                  "height": 221,
+                  "pixels": 22465
+                },
+                "output": {
+                  "left": 46,
+                  "top": 16,
+                  "width": 160,
+                  "height": 225
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "sourceImageSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1325,
+              "bottom": 1549
+            },
+            "scale": 1.0593607305936072,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 4,
+                  "width": 147,
+                  "height": 215,
+                  "pixels": 22031
+                },
+                "output": {
+                  "left": 39,
+                  "top": 14,
+                  "width": 156,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 235,
+                  "top": 41,
+                  "width": 185,
+                  "height": 167,
+                  "pixels": 18064
+                },
+                "output": {
+                  "left": 25,
+                  "top": 53,
+                  "width": 196,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 445,
+                  "top": 57,
+                  "width": 215,
+                  "height": 164,
+                  "pixels": 17422
+                },
+                "output": {
+                  "left": 12,
+                  "top": 70,
+                  "width": 228,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 671,
+                  "top": 59,
+                  "width": 205,
+                  "height": 153,
+                  "pixels": 16907
+                },
+                "output": {
+                  "left": 17,
+                  "top": 72,
+                  "width": 217,
+                  "height": 162
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "sourceImageSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1542,
+              "bottom": 1774
+            },
+            "scale": 0.8111888111888111,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 6,
+                  "top": 27,
+                  "width": 215,
+                  "height": 193,
+                  "pixels": 19683
+                },
+                "output": {
+                  "left": 43,
+                  "top": 83,
+                  "width": 174,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 229,
+                  "top": 6,
+                  "width": 238,
+                  "height": 216,
+                  "pixels": 25431
+                },
+                "output": {
+                  "left": 44,
+                  "top": 66,
+                  "width": 193,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 434,
+                  "top": 3,
+                  "width": 263,
+                  "height": 222,
+                  "pixels": 32130
+                },
+                "output": {
+                  "left": 30,
+                  "top": 64,
+                  "width": 213,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 680,
+                  "top": 7,
+                  "width": 207,
+                  "height": 218,
+                  "pixels": 22827
+                },
+                "output": {
+                  "left": 50,
+                  "top": 67,
+                  "width": 168,
+                  "height": 177
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0992362576625465,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 167,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 107,
+              "bodyBounds": [
+                95,
+                117,
+                110,
+                107
+              ],
+              "referenceBodyBounds": [
+                95,
+                75,
+                110,
+                167
+              ],
+              "nativeComparableBodyHeight": 131,
+              "nativeReferenceBodyHeight": 186,
+              "nativeBodyBounds": [
+                70,
+                1611,
+                136,
+                131
+              ],
+              "nativeReferenceBodyBounds": [
+                74,
+                35,
+                123,
+                186
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+              "nativeComparableSourceSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+              "nativeReferenceSourceSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+              "nativeComparableSourceRow": 7,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c9127eb04d55a0a2a2cb6b304cc18b014a5b07581d3dfe44d52513b5e3241102",
+              "5a27a058d2828e67ff32fcdf8084168894cd760a0ddb987b7602af684f6806ec",
+              "d264938cb72e2f8f9c7de9b2eda17fef411ae2efc304cd9c6b0a6a44b09f7a26",
+              "d358c5bfba54aaad6e110c702a81da8b9cc7898d77da721540b84eea1751d4d8"
+            ]
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "132e739c5997a5d014ec4406bb49b002a20ee9f6d2bed59ef27ddf3916e7c671",
+              "999f4575a80ac2efbc190f773104cb10a2f27a96c0258cd35d4af5cfc5c5cdce",
+              "4f4633e4f4adc3a4417570c2c3880b1903883c9a2387ed75d96f249d9ced051a",
+              "d76c8b8601655b7a6bdb249030845bc3d065b1dcd423c662008f9090d4769354"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7b6d5f6c981a6ee11e0e998a19460a64903c80438ddbd9c312a872c67adbdf73",
+              "48a4e89d67f97dce1856648e4e000020dccbfc364239b62a6f71ef5c26f12e41",
+              "4c027a0c4daaf888650ae18ad8777ccf5dfdf6cab93a00b9e45e1f0a2444588d",
+              "c681a90bf412638445c930c283a235b2477a51d801cc443fe0501a90eab52607"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "eeb54d34e992fd8a16f5e7d0480ee0386f689f4a56765ce3bcbc7e3b158ace57",
+              "60639347b5ed721a0054d16e85a1ab7017bb804e3d47c648c2752fa282b04545",
+              "c98693df48eaf86e6bfa65261f86c208305d9bdf456ca33e8ba56e91179d71f6",
+              "cc49cd48724bc6502227907771c370e759fe3132276a78d96d8880ec863f8c8e"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6e91e9e73b4e3aafa4884664ae1d61f6bdf81a48ebf68ba6414a5abe6ed33483",
+              "a947464aaa1584232385e90372629120eb18736a79672caf169693b1adc79311",
+              "6f0c952bbe800e9f9b7e1ccd7db6b6fdeecb38d517f0bded29b91c046fa5cca0",
+              "89e1b22f1b20522db2b936d85a6bd98fa6fb3c1c4252650dc6eb66b2a6fa3a19"
+            ]
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "3888e9c162ea2a9744fbd02230bbec3aa31385a848211a52b0640fa66cf8c408",
+              "5967fe56af5c33b17c65426a7632edb42b685ab958795bd80094c42c69aa290b",
+              "8dcce5616794e179c669bc056bdd7495f9a92b9e08d28c19c5e3e20b8fbc455f",
+              "3a15d824ef87435b2b784c8f0e7044489f844bad57e0bc1eb1313bb6f87aa09b"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f5a81b2f158f166b818baa007bc673fb1a4e3826233b0fb28fe5d1b7c23c8b76",
+              "58b18a36e9aed9931a48fbab4aa179c6db4a578d964f2a91d967ffa8f254f549",
+              "cb97a8ff00ac8cbadf9e373c7f476568bcb5054e413216ff3c6a2b455aa722ed",
+              "505ffb76d935ad3b03cc14dcdf9e5edc1e6db2f2648fd8729601f15a394ac8ce"
+            ]
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "41349d0b8a0c631d96cec247d9b612ed91b33f920d656e45e97ce29be1b63609",
+              "7c272e85a36733a84c6c2bd6fda5c5cf61b9558220943ef00ed75e0f8b1f2c1e",
+              "eab98e2bdd29eaed2c190b547bcf83e699592bb1368cb70c123dbd1d3e922b3f",
+              "7c9c42e3d6e9399eaf8d24506013fc439423c7a0cb02416d7d4b1c75c923c09d"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Baiken in GuiltyGearXrdREV2: pink ponytail, white/red kimono and draped black gakuran, left blind eye covered/obscured at sprite resolution, right sleeve empty and anatomical right arm absent; sole LEFT hand uses katana. Eye-side detail is not pixel-certified in all small frames. New native pixel art and compact authored sequence; not official game frames or certified1:1 animation."
+      }
+    }
+  ]
+}

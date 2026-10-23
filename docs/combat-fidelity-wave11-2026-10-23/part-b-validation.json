@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "part": "B",
+  "checks": [
+    {
+      "command": "node scripts/buildCombatCharacterAnimationsWave11PartB.mjs --check",
+      "exitCode": 0,
+      "sessionId": 79239,
+      "result": {
+        "checked": true,
+        "atlases": 10,
+        "phases": 80,
+        "nativeDistinctPoses": 320,
+        "activeNativeAnchors": 16,
+        "width": 1024,
+        "height": 2048,
+        "baseline": 244,
+        "transparentMarginPixels": 10,
+        "canon1to1Verified": false
+      }
+    },
+    {
+      "command": "node scripts/buildCombatCharacterSpriteCorrectionsWave11PartB.mjs --check",
+      "exitCode": 0,
+      "sessionId": 40152,
+      "result": {
+        "heroes": 10,
+        "states": 40,
+        "poses": 160,
+        "nativeSources": 15,
+        "newlyDrawnMissingStateRows": 0,
+        "correctedStateRows": 5,
+        "distinctRgbaPoses": 160,
+        "alphaAndMargins": true,
+        "sourceAndReferenceHashes": true,
+        "nativeRowReconstructionMatches": true,
+        "visualReviewComplete": true,
+        "canon1to1Verified": false,
+        "networkVerified": false
+      }
+    },
+    {
+      "command": "npm run lint -- scripts/buildCombatCharacterAnimationsWave11PartB.mjs scripts/buildCombatCharacterSpriteCorrectionsWave11PartB.mjs src/game/combat/abilities/abilitiesWave11PartB.js",
+      "exitCode": 0
+    },
+    {
+      "command": "node --check scripts/buildCombatCharacterAnimationsWave11PartB.mjs and node --check scripts/buildCombatCharacterSpriteCorrectionsWave11PartB.mjs",
+      "exitCode": 0
+    }
+  ],
+  "finalPngs": 20,
+  "globalDistinctFinalPoses": 480,
+  "rgba": true,
+  "transparentMarginPixels": 10,
+  "baseline": 244,
+  "bodyRois": 120,
+  "nativeAnchorPoints": 16,
+  "visuallyReviewedAllNativeSources": true,
+  "visuallyReviewedPackedContacts": true,
+  "sourceReconstructionMatches": true,
+  "all28SourceOuterEdgesAlphaAbove24": 0,
+  "frozen": true,
+  "canon1to1Verified": false,
+  "deliverySha256": "b85012063f66dc6b6939fc28ad751d577c54e6454f631974d9a8ae7365d21e28"
+}

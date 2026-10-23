@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "review": "independent native source review before production",
+  "acceptedAsCompleteLateralityCorrection": false,
+  "reviewedSources": [
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/lilith_borderlands-left-arm-correction.png",
+      "sha256": "e35de87537c356040fa85033c4cf43eaca574a6b437cb84ff6926b2dd103ad99",
+      "width": 887,
+      "height": 1774,
+      "edgeAlpha": {
+        "top": {
+          "max": 4,
+          "above24": 0,
+          "above220": 0
+        },
+        "bottom": {
+          "max": 12,
+          "above24": 0,
+          "above220": 0
+        },
+        "left": {
+          "max": 1,
+          "above24": 0,
+          "above220": 0
+        },
+        "right": {
+          "max": 17,
+          "above24": 0,
+          "above220": 0
+        }
+      }
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/lilith_borderlands-left-arm-correction.png",
+      "sha256": "0b0894902d84397a061f62bdf153131dcc7bd5d2bd8aaa74da006fe8df6a755d",
+      "width": 1419,
+      "height": 1109,
+      "edgeAlpha": {
+        "top": {
+          "max": 0,
+          "above24": 0,
+          "above220": 0
+        },
+        "bottom": {
+          "max": 0,
+          "above24": 0,
+          "above220": 0
+        },
+        "left": {
+          "max": 0,
+          "above24": 0,
+          "above220": 0
+        },
+        "right": {
+          "max": 0,
+          "above24": 0,
+          "above220": 0
+        }
+      }
+    }
+  ],
+  "observations": [
+    {
+      "source": "native32",
+      "row": 0,
+      "column": 0,
+      "observation": "Frontal view: near anatomical right arm is now bare; far left arm marked. Initial inversion corrected in this cell."
+    },
+    {
+      "source": "native32",
+      "row": 1,
+      "column": 1,
+      "observation": "Rear three-quarter view: near screen-right arm remains heavily marked; orientation suggests right anatomical arm, inconsistent with corrected frontal poses."
+    },
+    {
+      "source": "base16",
+      "row": 0,
+      "column": 0,
+      "observation": "Frontal view: near anatomical right arm is bare and left arm marked. Correction retained."
+    },
+    {
+      "source": "base16",
+      "row": 3,
+      "column": 3,
+      "observation": "Frontal recoil: near screen-left arm is heavily marked and far extended arm bare. Right-arm tattoo inversion remains visible."
+    }
+  ],
+  "cropLimitations": "Diagnostic crops were uniformly extracted for arm inspection only. Irregular row spacing means these crops cannot establish source foot clipping. Full sources were also viewed.",
+  "source1to1Verified": false,
+  "productionModified": false,
+  "targetedStripReview": {
+    "reviewedSources": [
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/lilith_borderlands-outro-arm-correction.png",
+        "sha256": "038d5c2d27cec63199f1cbf88c93b5f7632d02eb1ea2b473ed7c5b2f07a87655",
+        "width": 2172,
+        "height": 724,
+        "borderMaxAlpha": 1,
+        "borderPixelsAbove24": 0
+      },
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/lilith_borderlands-hit-arm-correction.png",
+        "sha256": "9590f9f1d12a1b54206c1ef37c9c234c75184dd17e048be6c3bb362185fe1034",
+        "width": 2172,
+        "height": 724,
+        "borderMaxAlpha": 0,
+        "borderPixelsAbove24": 0
+      }
+    ],
+    "baseHitAccepted": true,
+    "nativeOutroAcceptedColumns": [
+      1,
+      2,
+      3
+    ],
+    "nativeOutroRejectedColumns": [
+      0
+    ],
+    "reason": "OUTRO column0 visibly retains markings on both upper arms. Columns1–3 show left marked/right bare in rear view. All four frontal HIT poses show right bare/left marked.",
+    "fullNative32Frozen": false,
+    "source1to1Verified": false
+  },
+  "finalOutroStripReview": {
+    "path": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/lilith_borderlands-outro-c0-arm-correction.png",
+    "sha256": "b28f4c1ff6739c6a18ab2de3f412d16ae2fd869f46ea58ca7a54a256e2b4c54c",
+    "width": 2172,
+    "height": 724,
+    "acceptedColumns": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "observation": "Four rear views show anatomical right arm bare and left arm marked. Footwear, hair and gun ends visually complete.",
+    "source1to1Verified": false
+  },
+  "additionalWholeCellReview": [
+    {
+      "row": 3,
+      "column": 2,
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/lilith-handedness-second-review/source-r3-c2.png",
+      "sha256": "98bb21037d20b3336a9b571438f5768b0bbe7bbfcd47d74beabc892a97a47af6",
+      "observation": "Near anatomical right arm marked in bent forward kneel.",
+      "accepted": false,
+      "method": "Adaptive alpha segmentation and whole-cell technical crop for visual inspection; no body pixels painted or mirrored."
+    },
+    {
+      "row": 4,
+      "column": 0,
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/lilith-handedness-second-review/source-r4-c0.png",
+      "sha256": "11f9ffddce81be925840fc267bc01edfa9ba0408e1eae6d905009626caa7b61d",
+      "observation": "Both arms visibly marked in frontal lunge.",
+      "accepted": false,
+      "method": "Adaptive alpha segmentation and whole-cell technical crop for visual inspection; no body pixels painted or mirrored."
+    },
+    {
+      "row": 4,
+      "column": 2,
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/lilith-handedness-second-review/source-r4-c2.png",
+      "sha256": "44941dbbcb947b2a32907bcc02f35874dc3ee2d56c4166ac236ee1dec97de0d1",
+      "observation": "Near anatomical right arm marked in forward lunge.",
+      "accepted": false,
+      "method": "Adaptive alpha segmentation and whole-cell technical crop for visual inspection; no body pixels painted or mirrored."
+    },
+    {
+      "row": 7,
+      "column": 2,
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/lilith-handedness-second-review/source-r7-c2.png",
+      "sha256": "da850aa88518cff1cd01d88be7665d7a02d89fff8552578e49ae443893de90c0",
+      "observation": "Near anatomical right arm marked in forward lunge.",
+      "accepted": false,
+      "method": "Adaptive alpha segmentation and whole-cell technical crop for visual inspection; no body pixels painted or mirrored."
+    }
+  ]
+}

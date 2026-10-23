@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "command": "node --test scripts/combatFidelityWave11.test.mjs",
+  "exitCode": 0,
+  "tests": 28,
+  "passed": 28,
+  "failed": 0,
+  "skipped": 0,
+  "method": "Real PNG SHA/RGBA decoding, frozen independent baseline comparison, ViteSSR game engines and actual recorded drawImage rectangles. No browser result is inferred by this Node report.",
+  "baseline": {
+    "baseline": "e01a284de619f69710a4d87aaa841b203af91f210dc969cd5ec1b65f4c012b4b",
+    "runtime": "51bd0c86ea4ece733aa204ac21085f5bd992912dabddaccac952d7f31f8646fb",
+    "stages": "b950b641d8ae75f0978a4854baf60735ce103b4c26bcf5a2f03c0633e594a12d"
+  },
+  "coverage": {
+    "preservedPngs": 372,
+    "preservedBodyRegistries": 80,
+    "preservedCharacterRecords": 157,
+    "preservedMeleeManifests": 10,
+    "preservedRecipes": 164,
+    "preservedSummonBodies": 23,
+    "preservedStageProfiles": 321,
+    "newNative32": 37,
+    "newBase16": 37,
+    "newFullMelee45": 2,
+    "newSummon16": 7,
+    "newPublicPngs": 93,
+    "newDistinctNativeRgbaPoses": 2248,
+    "totalPublicPngs": 465,
+    "totalCharacterRecords": 194,
+    "totalFull32": 192,
+    "totalPartialRecords": 2,
+    "totalPartialPoses": 32,
+    "totalBases16": 140,
+    "totalFullMelee45": 12,
+    "totalSummon16": 30,
+    "totalStageMechanisms": 401,
+    "sourceDefinitions": 40,
+    "damageSupers": 23,
+    "supportSupers": 17,
+    "authoredKits": 1491,
+    "authoredBasicSlots": 4369,
+    "fullBasicKits": 1418,
+    "partialBasicKits": 73,
+    "refusedNativeHeroIds": [
+      "harry_potter",
+      "hermione_granger",
+      "snape"
+    ],
+    "source1to1Verified": false
+  },
+  "regressions": [
+    "Legacy source-ID P2 clone routes to exact accepted old HP sheet after strict-universe root fix.",
+    "RPG beneficial Dumbledore simple/secondary and guard use calm row0 on both sides with zero enemy damage; offensive native super stays available.",
+    "Buffy and Arthur keep45 genuine distinct source rows,180RGBA poses each, real palm/wrist pixels, opposite-side hand pinning, clocks, pause and moving landing."
+  ],
+  "inputs": [
+    {
+      "path": "scripts/combatFidelityWave11.test.mjs",
+      "sha256": "3be7a38478ec2c5e79201e34786d81313517d2e241aa6f4e2967b66a7b2b97fe"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "1496fb07e4cfd8375ed9ee0b460024ef6bce2ea4f0fb73130baa125e93696799"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "sha256": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277"
+    },
+    {
+      "path": "src/game/engineFighter.js",
+      "sha256": "8ce3014b9c518f846cb9e6563f7fd9710dca92983e385804d3b8ac5ab72d71f7"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "sha256": "b3c387896717c3ce88bf969110bbecaef5dcec11b89c1309a033e9162759ee0f"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "sha256": "ea8134258b27da2c3bd01c5e01738a8084c9e720d79220e33e06eadcafdf9ee6"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave11.js",
+      "sha256": "8c665915aea0dac98bdc961e3261e5a2568488d8268b134b0e500f84f44aefc8"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "sha256": "7e71bdbf832b542ead68ed9ced345cbfcbb3f21d2147e71e945344fe5389e4dc"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartA.generated.json",
+      "sha256": "f5248c55f7d4883ed764fa29fe2bd22b4ca2ab829df2e9847cc65113b350c00d"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave11PartA.generated.json",
+      "sha256": "68211ae522750537bfa3ac9ea46fb6a03465de80325a58fc27cda7774937f0b3"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave11PartA.generated.json",
+      "sha256": "3886163e9b8da447972665ef5bbb464d21ead082049c34c4fc2c5654fd9d04a1"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartB.generated.json",
+      "sha256": "22122f2e47348dcf7aa82ee7f9e54a3f32b8cd9f63105e88921dbe43b190a4bc"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave11PartB.generated.json",
+      "sha256": "291382fe91f497dc25817732258ec0e14a7b0e49edb2195f1d65ccd23d9ca19e"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave11PartB.generated.json",
+      "sha256": "4a890a5519357b694e49daa5c7cf7866b37f2a95aa7611bdf17802a9a0e2f311"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartC.generated.json",
+      "sha256": "d95dc0963af7ae7c3ebc5d516b1740a94c3a63478d8d684eeb014fa7123d4e00"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave11PartC.generated.json",
+      "sha256": "e58ef1e72484c77b38c1adec819273dff3974de0b33aa2b90879f5c0902fe538"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave11PartC.generated.json",
+      "sha256": "68fd0d324afd5014552452afc0298ce06a62be2299ae2d6648fe45a6ff841065"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartD.generated.json",
+      "sha256": "d8ed64c753412b0b29c188e62ec4e48a4a51c20173a81a9dd978d499dbb06215"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave11PartD.generated.json",
+      "sha256": "acd75ebf981b092a612a9f16749e8860c062602ae69abf556044e3e37e63d34e"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave11PartD.generated.json",
+      "sha256": "28c078fec7bbd3444a6cec728ec527a69648bfd1f51cd69d08b0fd215b001f24"
+    },
+    {
+      "path": "src/game/combat/summonAnimationsWave11.generated.json",
+      "sha256": "501c54380df888e6a17e4edc7bbdde12cb9b9218c576e1bf46dbae0c3607b895"
+    }
+  ],
+  "log": {
+    "path": "docs/combat-fidelity-wave11-2026-10-23/qa-combat-fidelity-node.log",
+    "sha256": "8f87c83ce5d6df918db432de52b25691a2f822fa5a4e8d6f46c80e0ddda8f121"
+  },
+  "scriptSha256": "3be7a38478ec2c5e79201e34786d81313517d2e241aa6f4e2967b66a7b2b97fe",
+  "limitations": "Native illustrations and bounded authored choreography remain adaptations; no official-frame or source1:1 certification. Source refusals are retained as missing native images, and legacy reused gestures are not counted as new art."
+}

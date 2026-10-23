@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-22",
+  "status": "passed-and-frozen",
+  "afterParentFinalProductionImportFreeze": true,
+  "ssr": {
+    "command": "node --test scripts/summonAnimationWave9.test.mjs",
+    "exitCode": 0,
+    "tests": 11,
+    "passed": 11,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 9824.332745
+  },
+  "browser": {
+    "command": "node docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-browser.mjs",
+    "exitCode": 0,
+    "actualGameCanvasFlows": 8,
+    "nativeCellsJ1": 64,
+    "nativeCellsJ2": 64,
+    "nativePixelMirrorChecks": 128,
+    "oneImpactEach": true,
+    "allImpactsAtTick99AndAttackCol2": true,
+    "cancelWithoutCost": true,
+    "charge100AndAtb100SpentOnce": true,
+    "pausedStateUnchanged": true,
+    "commandDisabledAfterUse": true,
+    "pageErrors": [],
+    "resultPath": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-result.json",
+    "resultSha256": "bcd7a4e8c2c8419d42a521451c2a0b983f5311222d9b2704831d931760e01462",
+    "screenshots": [
+      {
+        "caller": "marcus",
+        "partner": "dom",
+        "side": "player",
+        "path": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-dom-player-impact.png",
+        "sha256": "059691f63132273932787db6c9d062d6715a1d15aa6411eeb5a8ea32ae1572cc",
+        "visuallyReviewed": true
+      },
+      {
+        "caller": "marcus",
+        "partner": "dom",
+        "side": "enemy",
+        "path": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-dom-enemy-impact.png",
+        "sha256": "31f7da79875b7c39bd5620325ff95c37d0928020bc70f2a1cfb3c619067653fd",
+        "visuallyReviewed": true
+      },
+      {
+        "caller": "shepard",
+        "partner": "garrus",
+        "side": "player",
+        "path": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-garrus-player-impact.png",
+        "sha256": "f7a98b964bd1d22c0bdf7a1f98c78182201e6063f02e9e719197dd6937489d62",
+        "visuallyReviewed": true
+      },
+      {
+        "caller": "shepard",
+        "partner": "garrus",
+        "side": "enemy",
+        "path": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-garrus-enemy-impact.png",
+        "sha256": "9bcb27a28f119bc8d0fe01d481707c68bc8aa23bb0cf14416a80ceda010a26fb",
+        "visuallyReviewed": true
+      },
+      {
+        "caller": "motoko",
+        "partner": "batou",
+        "side": "player",
+        "path": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-batou-player-impact.png",
+        "sha256": "05a8f2bbb672b556a525b28807f18331b2c0ba5afe90e8f6d4a42b2e806c6baf",
+        "visuallyReviewed": true
+      },
+      {
+        "caller": "motoko",
+        "partner": "batou",
+        "side": "enemy",
+        "path": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-batou-enemy-impact.png",
+        "sha256": "303635cefa6ece8b66747cc40413642408b33ba5c6daf56ad7513e5349b5e11a",
+        "visuallyReviewed": true
+      },
+      {
+        "caller": "chris_redfield",
+        "partner": "leon",
+        "side": "player",
+        "path": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-leon-player-impact.png",
+        "sha256": "7a238a91c3a55047fc7d31dff026ec73290563dd1a28432543e1c2a11ae7f20d",
+        "visuallyReviewed": true
+      },
+      {
+        "caller": "chris_redfield",
+        "partner": "leon",
+        "side": "enemy",
+        "path": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-leon-enemy-impact.png",
+        "sha256": "a13ed789f7931a0648c68ead65e307cd2caca4838d6084d78deae5de11340bad",
+        "visuallyReviewed": true
+      }
+    ]
+  },
+  "historicalConservation": {
+    "previousNative16Entities": 11,
+    "previousLegacy4FrameEntities": 28,
+    "legacyGeometrySamples": 280,
+    "checkedBy": "scripts/summonAnimationWave9.test.mjs"
+  },
+  "fixtureLimits": [
+    "The real GameCanvas is mounted in a review host with exact compiled React and EngineRpg singleton URLs.",
+    "Training HP/ATB/charge and automatic battle are set by the harness; the production damage, targeting, action costs, update and draw implementations are retained.",
+    "Commit pauses the real engine at tick0 to avoid missed arrival frames; progression then invokes synchronous production updates and draw. A real sessionPaused prop control verifies freeze.",
+    "This is a development-server integration proof, not a final production build/HTTP distribution proof."
+  ],
+  "interruptedAttempt": {
+    "path": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-attempt-1/cause.json",
+    "sha256": "d7b0a801e1666c8c7acfb0a3d6d35e1b753b6f0ab0d68cbb5f36429c357ef20c",
+    "outcome": "Vite HMR during root integration invalidated the fixture; preserved as a diagnostic, not an engine defect or final proof."
+  },
+  "inputHashes": [
+    {
+      "path": "scripts/summonAnimationWave9.test.mjs",
+      "sha256": "c5eac7abc4a8f2cf958c9f44e78d9a7950b7abb10f0d05f09fddec74bf9b96be"
+    },
+    {
+      "path": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-browser.mjs",
+      "sha256": "1afc61c52287be1a3ecb7fb76d036811594d061a1bbf480633f05f3964597f43"
+    },
+    {
+      "path": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-result.json",
+      "sha256": "bcd7a4e8c2c8419d42a521451c2a0b983f5311222d9b2704831d931760e01462"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "e9ff9f5b044e042f4a2cc9cb0bfdb2a1707c0ea33cf37f56e108e157ca3f62bd"
+    },
+    {
+      "path": "src/game/combat/rosterSummonChoreographyWave9.js",
+      "sha256": "65595ade29b3f6ae5d6995d9e181162dbbc3df275c961432d13954126a9b7cb1"
+    },
+    {
+      "path": "src/game/combat/summonAnimationsWave9.generated.json",
+      "sha256": "4cf12b795087beb1df35d5961ce158b3c7687a98ae083f3c31aac83703d21e7f"
+    }
+  ],
+  "productionFilesChangedByHarness": false,
+  "source1to1Verified": false,
+  "canon1to1Verified": false,
+  "globalFidelity1to1": false
+}

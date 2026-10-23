@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { CHARGED_ATTACK_DATA } from '../src/game/melee/meleeStateMachine.js';
+import { CHARGED_ATTACK_DATA, MELEE_TRANSITION_DATA } from '../src/game/melee/meleeStateMachine.js';
 import {
   MELEE_RUNTIME_DEFAULTS,
   absorbMeleeGuardHit,
@@ -162,6 +162,23 @@ test('crouched charge keeps a low hurtbox until release restores standing hurtbo
     height: 58
   });
   assert.ok(standingHurtbox.height > crouchedHurtbox.height);
+});
+
+test('guard entry keeps its full simulation interval before the hold pose', () => {
+  const actor = makeActor();
+  assert.equal(beginMeleeShield(actor), true);
+  const duration = MELEE_TRANSITION_DATA.shieldEnter.duration;
+  tickMeleeCombatActor(actor, duration / 2);
+  assert.equal(actor.state, 'shieldEnter', 'the first guard tick skipped its entry animation');
+  assert.equal(actor.stateElapsed, duration / 2);
+  assert.equal(actor.guarding, true);
+  assert.ok(actor.perfectShieldWindow > 0);
+  tickMeleeCombatActor(actor, duration / 2);
+  assert.equal(actor.state, 'shieldHold');
+  assert.equal(actor.guarding, true);
+  assert.equal(releaseMeleeShield(actor), true);
+  tickMeleeCombatActor(actor, MELEE_TRANSITION_DATA.shieldExit.duration);
+  assert.equal(actor.state, 'idle');
 });
 
 test('perfect guard, regular reduction, finite break and delayed regeneration are deterministic', () => {

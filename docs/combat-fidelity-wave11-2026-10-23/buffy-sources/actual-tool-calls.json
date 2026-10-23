@@ -1,0 +1,401 @@
+[
+  {
+    "id": "buffy-motion-a",
+    "heroId": "buffy_summers",
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-motion-a.prompt.txt",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT BUFFY SUMMERS, Buffy the Vampire Slayer season7, the interval after Spike's chip removal and BEFORE the final Scythe/amulet events. Approved shared appearance: mid-length loose GOLDEN BLONDE hair, adult angular face, modest fitted BLACK SLEEVELESS TANK TOP, full-length BURGUNDY trousers/jeans and BLACK SHOES. Bare arms and bare hands, natural athletic adult proportions, same face and outfit in all cells. The reference is identity/clothes only, not a grid to duplicate. Buffy physically fights using a short sharpened NATURAL WOOD STAKE in her anatomical RIGHT hand; never a sword, crossbow, gun, red Scythe, magic amulet, glowing weapon or super transformation. When hands must be free, stake sits securely in a small belt sheath. No vampire victim or impalement scene: opponent is NOT drawn. Simple/light/crouch/aerial/ledgeAttack follow the actual wooden-stake technique. Ordinary secondary is Coup de pied de la Tueuse: a real physical kick; chargeStart/Loop/Release/Recovery and special must show that kick preparation/extension/recoil, NOT the separate super Enchaînement au pieu de Buffy. Guard is a personal martial parry, no magical round shield. No gore, nudity, sexualized posing, exposed cleavage or torn clothing.\n\nCRITICAL: TRANSPARENT RGBA background, original native pixel clusters and shading, not an extracted official sprite or certified source1:1 animation. NO text/labels/grid/borders/floor/platform/scenery/drop shadows or decorative VFX. EXACTLY FOUR COLUMNS. Each numbered state is its own row of FOUR COMPLETE and anatomically DISTINCT hand-drawn bodies, chronological LEFT→RIGHT. Do NOT omit a row. Do not duplicate a pose with different effects. Full shoes/fingers/coat/cape/weapon tips stay inside their cell and never touch neighboring drawings or canvas edges. Body anatomy: exactly two connected arms/two legs, hands connect through actual wrists/elbows to shoulders. Default facing RIGHT. Keep one consistent upright crown-to-sole anatomical size throughout the whole native source; genuinely crouched, tucked, hanging or prone bodies retain their shorter projection. NEVER enlarge a crouch to fill a row. Draw every row at the SAME source pixel scale. Generous transparent gutter around EVERY body, at least20px between neighboring silhouettes, especially last two rows. Long weapons must fit completely: shrink ALL bodies uniformly rather than clip blade tips. Four real distinct joint/foot/torso configurations per row; natural breathing shifts for idle. Last row requires the same complete space as first. No cropped boot sole, detached fingertip, floating weapon or adjacent-row overlap.\n\nEXACTLY EIGHT ROWS×FOUR COLUMNS=32NATIVE COMPLETE BODIES, TALL PORTRAIT1:2 canvas, all8rows equally spaced. Never a cramped2:3canvas. Keep native standing body about170px on a1774px tall source, leaving transparent row gutters.\nROW1 idle: four subtle real breathing/weight-shift bodies, hands relaxed/ready, both feet planted. Weapon safely sheathed.\nROW2 walk: four real rightward walking stride phases, alternating legs and arms, weapon sheathed.\nROW3 run: four genuine rightward running strides, opposite knees/arms, weapon sheathed.\nROW4 turn: start facing LEFT, then left-rear three-quarter, right-rear three-quarter, END FACING RIGHT; four distinct physical turn drawings, never just mirrored duplicates.\nROW5 jumpStart: upright preparation -> knees bend -> heels rise -> actual takeoff, weapon sheathed.\nROW6 jumpRise: four distinct airborne rising configurations with moving hips/knees/arms, no floor, weapon sheathed.\nROW7 jumpApex: four true midair balance/tuck changes at apex, weapon sheathed.\nROW8 fall: four real descending body configurations gradually preparing boots for ground, complete feet, weapon sheathed.\n\nCHECK FINAL ROW: full feet, complete hands and sword/stake tips; at least20transparent pixels between every row. All numbered rows must actually be drawn. No skeleton placeholders or repeated frames.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png"
+      ],
+      "transparent_background": true
+    },
+    "expectedRows": 8,
+    "startedAt": {
+      "current_time": "2026-10-23 03:58:39 UTC"
+    },
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-f3175c92-7fb4-425a-af0d-fd0038c019db.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourcePath": "/workspace/generated_images/exec-f3175c92-7fb4-425a-af0d-fd0038c019db.png",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "canonicalVerified": false,
+    "source1to1Verified": false,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-motion-a.native.png",
+    "sourceSha256": "9fbb8d29e30ced88b2a262f975f180c26e8df455f8e27c6085ef5af1f481e3d6",
+    "dimensions": {
+      "width": 1024,
+      "height": 1536
+    },
+    "promptFileSha256": "028a34c634b912f948b6c35c4831dec66ed6dea3bdfe97910bc4d83b5525dace",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png",
+        "sha256": "500406b3837b3085228b22a11d92507cc1c501264bf7876988e43f11bd07c098"
+      }
+    ],
+    "observedRows": 7,
+    "observedNativePoses": 28,
+    "review": {
+      "observedRows": 7,
+      "nativeStateOrder": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "fall"
+      ],
+      "missingStates": [
+        "jumpApex"
+      ],
+      "reason": "Seven complete rows: rising tuck row followed directly by descending/landing preparation row."
+    },
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  },
+  {
+    "id": "buffy-motion-b",
+    "heroId": "buffy_summers",
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-motion-b.prompt.txt",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT BUFFY SUMMERS, Buffy the Vampire Slayer season7, the interval after Spike's chip removal and BEFORE the final Scythe/amulet events. Approved shared appearance: mid-length loose GOLDEN BLONDE hair, adult angular face, modest fitted BLACK SLEEVELESS TANK TOP, full-length BURGUNDY trousers/jeans and BLACK SHOES. Bare arms and bare hands, natural athletic adult proportions, same face and outfit in all cells. The reference is identity/clothes only, not a grid to duplicate. Buffy physically fights using a short sharpened NATURAL WOOD STAKE in her anatomical RIGHT hand; never a sword, crossbow, gun, red Scythe, magic amulet, glowing weapon or super transformation. When hands must be free, stake sits securely in a small belt sheath. No vampire victim or impalement scene: opponent is NOT drawn. Simple/light/crouch/aerial/ledgeAttack follow the actual wooden-stake technique. Ordinary secondary is Coup de pied de la Tueuse: a real physical kick; chargeStart/Loop/Release/Recovery and special must show that kick preparation/extension/recoil, NOT the separate super Enchaînement au pieu de Buffy. Guard is a personal martial parry, no magical round shield. No gore, nudity, sexualized posing, exposed cleavage or torn clothing.\n\nCRITICAL: TRANSPARENT RGBA background, original native pixel clusters and shading, not an extracted official sprite or certified source1:1 animation. NO text/labels/grid/borders/floor/platform/scenery/drop shadows or decorative VFX. EXACTLY FOUR COLUMNS. Each numbered state is its own row of FOUR COMPLETE and anatomically DISTINCT hand-drawn bodies, chronological LEFT→RIGHT. Do NOT omit a row. Do not duplicate a pose with different effects. Full shoes/fingers/coat/cape/weapon tips stay inside their cell and never touch neighboring drawings or canvas edges. Body anatomy: exactly two connected arms/two legs, hands connect through actual wrists/elbows to shoulders. Default facing RIGHT. Keep one consistent upright crown-to-sole anatomical size throughout the whole native source; genuinely crouched, tucked, hanging or prone bodies retain their shorter projection. NEVER enlarge a crouch to fill a row. Draw every row at the SAME source pixel scale. Generous transparent gutter around EVERY body, at least20px between neighboring silhouettes, especially last two rows. Long weapons must fit completely: shrink ALL bodies uniformly rather than clip blade tips. Four real distinct joint/foot/torso configurations per row; natural breathing shifts for idle. Last row requires the same complete space as first. No cropped boot sole, detached fingertip, floating weapon or adjacent-row overlap.\n\nEXACTLY EIGHT ROWS×FOUR COLUMNS=32NATIVE COMPLETE BODIES, TALL PORTRAIT1:2 canvas, all8rows equally spaced. Never a cramped2:3canvas. Keep native standing body about170px on a1774px tall source, leaving transparent row gutters.\nROW1 fastFall: four compact but physically different descending tucks/leg extensions, weapon sheathed, no floor.\nROW2 land: four complete chronological landing bodies: boots make contact -> knees compress -> hips rise -> UPRIGHT recovered standing. Weapon sheathed; keep original lower crouch height.\nROW3 crouchEnter: upright -> knees bend -> hips lower -> established crouch. Four different real bodies.\nROW4 crouchIdle: four different low balanced crouched stances/breathing shifts. Weapon sheathed; no size inflation.\nROW5 crouchExit: low crouch -> one knee straightens -> hips rise -> UPRIGHT standing. Four real transitions.\nROW6 crouchCharge: four low martial weight transfers preparing to rise/kick (Buffy) or step/thrust(Arthur), no release or magic. Weapon may stay sheathed.\nROW7 taunt1: four restrained character-appropriate gestures then return to upright. Buffy: wry empty-hand challenge/weightshift. Arthur: dry exasperated empty-hand shrug then composed kingly readiness. No new props.\nROW8 hitStun: four non-graphic struck/recoil/rebalance bodies with connected limbs. Weapon secured, no blood.\n\nCHECK FINAL ROW: full feet, complete hands and sword/stake tips; at least20transparent pixels between every row. All numbered rows must actually be drawn. No skeleton placeholders or repeated frames.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png"
+      ],
+      "transparent_background": true
+    },
+    "expectedRows": 8,
+    "startedAt": {
+      "current_time": "2026-10-23 03:58:39 UTC"
+    },
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-0404d8d1-1dea-4203-a166-b358e478dad0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourcePath": "/workspace/generated_images/exec-0404d8d1-1dea-4203-a166-b358e478dad0.png",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "canonicalVerified": false,
+    "source1to1Verified": false,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-motion-b.native.png",
+    "sourceSha256": "5d37d83f29161498dcde46e34293963579ddcae6a922f844e0f22e8d46302cc6",
+    "dimensions": {
+      "width": 1024,
+      "height": 1536
+    },
+    "promptFileSha256": "df81a25c3d82930900093f1f7c409f825c3d8ea018fa64c732062f0c942d22a3",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png",
+        "sha256": "500406b3837b3085228b22a11d92507cc1c501264bf7876988e43f11bd07c098"
+      }
+    ],
+    "observedRows": 7,
+    "observedNativePoses": 28,
+    "review": {
+      "observedRows": 7,
+      "nativeStateOrder": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "missingStates": [
+        "crouchIdle"
+      ],
+      "reason": "Seven actual rows; low-to-upright row is crouchExit. No four-frame crouchIdle row was drawn."
+    },
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  },
+  {
+    "id": "buffy-defense",
+    "heroId": "buffy_summers",
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-defense.prompt.txt",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT BUFFY SUMMERS, Buffy the Vampire Slayer season7, the interval after Spike's chip removal and BEFORE the final Scythe/amulet events. Approved shared appearance: mid-length loose GOLDEN BLONDE hair, adult angular face, modest fitted BLACK SLEEVELESS TANK TOP, full-length BURGUNDY trousers/jeans and BLACK SHOES. Bare arms and bare hands, natural athletic adult proportions, same face and outfit in all cells. The reference is identity/clothes only, not a grid to duplicate. Buffy physically fights using a short sharpened NATURAL WOOD STAKE in her anatomical RIGHT hand; never a sword, crossbow, gun, red Scythe, magic amulet, glowing weapon or super transformation. When hands must be free, stake sits securely in a small belt sheath. No vampire victim or impalement scene: opponent is NOT drawn. Simple/light/crouch/aerial/ledgeAttack follow the actual wooden-stake technique. Ordinary secondary is Coup de pied de la Tueuse: a real physical kick; chargeStart/Loop/Release/Recovery and special must show that kick preparation/extension/recoil, NOT the separate super Enchaînement au pieu de Buffy. Guard is a personal martial parry, no magical round shield. No gore, nudity, sexualized posing, exposed cleavage or torn clothing.\n\nCRITICAL: TRANSPARENT RGBA background, original native pixel clusters and shading, not an extracted official sprite or certified source1:1 animation. NO text/labels/grid/borders/floor/platform/scenery/drop shadows or decorative VFX. EXACTLY FOUR COLUMNS. Each numbered state is its own row of FOUR COMPLETE and anatomically DISTINCT hand-drawn bodies, chronological LEFT→RIGHT. Do NOT omit a row. Do not duplicate a pose with different effects. Full shoes/fingers/coat/cape/weapon tips stay inside their cell and never touch neighboring drawings or canvas edges. Body anatomy: exactly two connected arms/two legs, hands connect through actual wrists/elbows to shoulders. Default facing RIGHT. Keep one consistent upright crown-to-sole anatomical size throughout the whole native source; genuinely crouched, tucked, hanging or prone bodies retain their shorter projection. NEVER enlarge a crouch to fill a row. Draw every row at the SAME source pixel scale. Generous transparent gutter around EVERY body, at least20px between neighboring silhouettes, especially last two rows. Long weapons must fit completely: shrink ALL bodies uniformly rather than clip blade tips. Four real distinct joint/foot/torso configurations per row; natural breathing shifts for idle. Last row requires the same complete space as first. No cropped boot sole, detached fingertip, floating weapon or adjacent-row overlap.\n\nEXACTLY EIGHT ROWS×FOUR COLUMNS=32NATIVE COMPLETE BODIES, TALL PORTRAIT1:2 canvas, all8rows equally spaced. Never a cramped2:3canvas. Keep native standing body about170px on a1774px tall source, leaving transparent row gutters.\nROW1 shieldEnter: relaxed standing -> defensive arms/blade rises -> elbows brace -> composed parry stance.\nROW2 shieldHold: four distinct sustained defensive weight/arm configurations. Buffy bare-forearm martial parry, stake safely sheathed; Arthur uses actual Excalibur hilt grip and blade parry.\nROW3 shieldHit: four real parry impact/recoil bodies, joints and feet move, no invented round shield.\nROW4 perfectShield: four precise parry/deflection bodies with firm wrist/foot shifts, NO glow replacing anatomy.\nROW5 shieldBreak: EXACT DEDICATED FIFTH ROW REQUIRED: upright braced guard -> torso recoils -> knees buckle -> low stagger recovery. FOUR REAL FULL BODIES. This is not shieldExit and must not be omitted.\nROW6 shieldExit: defensive hands/blade lowers -> elbows relax -> feet reset -> UPRIGHT recovered standing. Four real transitions.\nROW7 dead: non-graphic knockdown sequence: shocked stance -> knees sink -> body rolls down -> lies still. Complete head/shoes, no gore.\nROW8 defeat: four non-graphic conscious exhausted/sitting/kneeling defeated body configurations. Complete body, no gravestone/new props.\n\nCHECK FINAL ROW: full feet, complete hands and sword/stake tips; at least20transparent pixels between every row. All numbered rows must actually be drawn. No skeleton placeholders or repeated frames.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png"
+      ],
+      "transparent_background": true
+    },
+    "expectedRows": 8,
+    "startedAt": {
+      "current_time": "2026-10-23 03:58:39 UTC"
+    },
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-14fbf4d3-430b-4284-bdb2-47d6ffab0b6a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourcePath": "/workspace/generated_images/exec-14fbf4d3-430b-4284-bdb2-47d6ffab0b6a.png",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "canonicalVerified": false,
+    "source1to1Verified": false,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-defense.native.png",
+    "sourceSha256": "f66e94b8a3d77cf5833ce7855fe2fe6166647e77f24a3e7d6dbd58dc14580bbb",
+    "dimensions": {
+      "width": 1024,
+      "height": 1536
+    },
+    "promptFileSha256": "8f4df466fa12adc847a740416b38ddcb6801e1f3c9520c67edcf3f71e701b9ea",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png",
+        "sha256": "500406b3837b3085228b22a11d92507cc1c501264bf7876988e43f11bd07c098"
+      }
+    ],
+    "observedRows": 7,
+    "observedNativePoses": 28,
+    "review": {
+      "observedRows": 7,
+      "nativeStateOrder": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "missingStates": [
+        "perfectShield"
+      ],
+      "reason": "Visual seven real rows; precise parry state needs a distinct native corrective row."
+    },
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  },
+  {
+    "id": "buffy-combat-a",
+    "heroId": "buffy_summers",
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-combat-a.prompt.txt",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT BUFFY SUMMERS, Buffy the Vampire Slayer season7, the interval after Spike's chip removal and BEFORE the final Scythe/amulet events. Approved shared appearance: mid-length loose GOLDEN BLONDE hair, adult angular face, modest fitted BLACK SLEEVELESS TANK TOP, full-length BURGUNDY trousers/jeans and BLACK SHOES. Bare arms and bare hands, natural athletic adult proportions, same face and outfit in all cells. The reference is identity/clothes only, not a grid to duplicate. Buffy physically fights using a short sharpened NATURAL WOOD STAKE in her anatomical RIGHT hand; never a sword, crossbow, gun, red Scythe, magic amulet, glowing weapon or super transformation. When hands must be free, stake sits securely in a small belt sheath. No vampire victim or impalement scene: opponent is NOT drawn. Simple/light/crouch/aerial/ledgeAttack follow the actual wooden-stake technique. Ordinary secondary is Coup de pied de la Tueuse: a real physical kick; chargeStart/Loop/Release/Recovery and special must show that kick preparation/extension/recoil, NOT the separate super Enchaînement au pieu de Buffy. Guard is a personal martial parry, no magical round shield. No gore, nudity, sexualized posing, exposed cleavage or torn clothing.\n\nCRITICAL: TRANSPARENT RGBA background, original native pixel clusters and shading, not an extracted official sprite or certified source1:1 animation. NO text/labels/grid/borders/floor/platform/scenery/drop shadows or decorative VFX. EXACTLY FOUR COLUMNS. Each numbered state is its own row of FOUR COMPLETE and anatomically DISTINCT hand-drawn bodies, chronological LEFT→RIGHT. Do NOT omit a row. Do not duplicate a pose with different effects. Full shoes/fingers/coat/cape/weapon tips stay inside their cell and never touch neighboring drawings or canvas edges. Body anatomy: exactly two connected arms/two legs, hands connect through actual wrists/elbows to shoulders. Default facing RIGHT. Keep one consistent upright crown-to-sole anatomical size throughout the whole native source; genuinely crouched, tucked, hanging or prone bodies retain their shorter projection. NEVER enlarge a crouch to fill a row. Draw every row at the SAME source pixel scale. Generous transparent gutter around EVERY body, at least20px between neighboring silhouettes, especially last two rows. Long weapons must fit completely: shrink ALL bodies uniformly rather than clip blade tips. Four real distinct joint/foot/torso configurations per row; natural breathing shifts for idle. Last row requires the same complete space as first. No cropped boot sole, detached fingertip, floating weapon or adjacent-row overlap.\n\nEXACTLY EIGHT ROWS×FOUR COLUMNS=32NATIVE COMPLETE BODIES, TALL PORTRAIT1:2 canvas, all8rows equally spaced. Never a cramped2:3canvas. Keep native standing body about170px on a1774px tall source, leaving transparent row gutters.\nROW1 attackLight1: wooden-stake light1, ready right hand loads -> right elbow advances -> actual right-hand forward stake thrust -> elbow retracts. Natural left guard hand; no enemy drawn.\nROW2 attackLight2: wooden-stake light2, low hip load -> different diagonal/right-hand stake strike -> hips/feet rotate -> recovery. Four distinct connected bodies.\nROW3 attackLight3: wooden-stake light3 committed sequence, low brace -> step/hip windup -> decisive physical stake strike -> balanced recoil. Not a kick-only row.\nROW4 crouchLight: EXACT FOURTH ROW: low crouch stake jab, low load -> forward right-arm jab -> committed stake extension -> retract under low guard. Four real low bodies.\nROW5 chargeStart: ordinary kick preparation, stake SHEATHED: standing guard -> weight on rear leg -> knee bends -> hips turn ready for a kick. No magic charge or stake super.\nROW6 chargeLoop: EXACT SIXTH ROW: four different balanced loaded-kick preparation bodies, stake SHEATHED, knee/hips/arms change; do not replace with aura-only variations.\nROW7 chargeRelease: ordinary SECONDARY Coup de pied de la Tueuse: knee lifts -> hip rotates -> real extended boot kick -> knee recoils. Stake SHEATHED, complete boot and supporting leg, no target/gore.\nROW8 chargeRecovery: extended-kick recoil -> boot returns -> stance widens -> UPRIGHT ready, stake SHEATHED. Four genuine body configurations.\n\nCHECK FINAL ROW: full feet, complete hands and sword/stake tips; at least20transparent pixels between every row. All numbered rows must actually be drawn. No skeleton placeholders or repeated frames.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png"
+      ],
+      "transparent_background": true
+    },
+    "expectedRows": 8,
+    "startedAt": {
+      "current_time": "2026-10-23 03:58:39 UTC"
+    },
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-43b8e951-967d-4296-b402-8e36c00ea2ac.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourcePath": "/workspace/generated_images/exec-43b8e951-967d-4296-b402-8e36c00ea2ac.png",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "canonicalVerified": false,
+    "source1to1Verified": false,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-combat-a.native.png",
+    "sourceSha256": "f1aff2dfbf64c054065ebf65d4a217c181c1d70d737f2e64767c9ff9e0cb36cf",
+    "dimensions": {
+      "width": 1024,
+      "height": 1536
+    },
+    "promptFileSha256": "1ab7108cc06352163534a6d03747cc8792abde6cdd8a971c668c7bc3d29cb96f",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png",
+        "sha256": "500406b3837b3085228b22a11d92507cc1c501264bf7876988e43f11bd07c098"
+      }
+    ],
+    "observedRows": 8,
+    "observedNativePoses": 32,
+    "review": {
+      "observedRows": 8,
+      "nativeStateOrder": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "missingStates": []
+    },
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  },
+  {
+    "id": "buffy-combat-b",
+    "heroId": "buffy_summers",
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-combat-b.prompt.txt",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT BUFFY SUMMERS, Buffy the Vampire Slayer season7, the interval after Spike's chip removal and BEFORE the final Scythe/amulet events. Approved shared appearance: mid-length loose GOLDEN BLONDE hair, adult angular face, modest fitted BLACK SLEEVELESS TANK TOP, full-length BURGUNDY trousers/jeans and BLACK SHOES. Bare arms and bare hands, natural athletic adult proportions, same face and outfit in all cells. The reference is identity/clothes only, not a grid to duplicate. Buffy physically fights using a short sharpened NATURAL WOOD STAKE in her anatomical RIGHT hand; never a sword, crossbow, gun, red Scythe, magic amulet, glowing weapon or super transformation. When hands must be free, stake sits securely in a small belt sheath. No vampire victim or impalement scene: opponent is NOT drawn. Simple/light/crouch/aerial/ledgeAttack follow the actual wooden-stake technique. Ordinary secondary is Coup de pied de la Tueuse: a real physical kick; chargeStart/Loop/Release/Recovery and special must show that kick preparation/extension/recoil, NOT the separate super Enchaînement au pieu de Buffy. Guard is a personal martial parry, no magical round shield. No gore, nudity, sexualized posing, exposed cleavage or torn clothing.\n\nCRITICAL: TRANSPARENT RGBA background, original native pixel clusters and shading, not an extracted official sprite or certified source1:1 animation. NO text/labels/grid/borders/floor/platform/scenery/drop shadows or decorative VFX. EXACTLY FOUR COLUMNS. Each numbered state is its own row of FOUR COMPLETE and anatomically DISTINCT hand-drawn bodies, chronological LEFT→RIGHT. Do NOT omit a row. Do not duplicate a pose with different effects. Full shoes/fingers/coat/cape/weapon tips stay inside their cell and never touch neighboring drawings or canvas edges. Body anatomy: exactly two connected arms/two legs, hands connect through actual wrists/elbows to shoulders. Default facing RIGHT. Keep one consistent upright crown-to-sole anatomical size throughout the whole native source; genuinely crouched, tucked, hanging or prone bodies retain their shorter projection. NEVER enlarge a crouch to fill a row. Draw every row at the SAME source pixel scale. Generous transparent gutter around EVERY body, at least20px between neighboring silhouettes, especially last two rows. Long weapons must fit completely: shrink ALL bodies uniformly rather than clip blade tips. Four real distinct joint/foot/torso configurations per row; natural breathing shifts for idle. Last row requires the same complete space as first. No cropped boot sole, detached fingertip, floating weapon or adjacent-row overlap.\n\nEXACTLY EIGHT ROWS×FOUR COLUMNS=32NATIVE COMPLETE BODIES, TALL PORTRAIT1:2 canvas, all8rows equally spaced. Never a cramped2:3canvas. Keep native standing body about170px on a1774px tall source, leaving transparent row gutters.\nROW1 attackRecovery: wooden-stake arm extended -> right elbow retracts -> boots reset -> full ready stance. Actual stake in right hand, no aura.\nROW2 special: ordinary SECONDARY kick, NOT separate super: physical knee load -> hip twist -> committed boot kick -> balanced recovery. Stake SHEATHED, no ranged attack.\nROW3 aerialNeutral: airborne wooden-stake simple: tucked knees -> right arm loads -> physical stake jab -> right elbow retracts, all four distinct bodies.\nROW4 aerialForward: rightward airborne wooden-stake attack: loaded tuck -> right elbow drives -> stake thrusts forward -> airborne guard. Boots balance the strike, not a kick-only action.\nROW5 aerialDown: downward wooden-stake attack: tuck -> right arm raises -> actual stake points/drives DOWN with connected forearm -> retract for landing. NOT a downward-boot-only attack.\nROW6 intro: UPRIGHT calm entry -> hand checks stake sheath -> draws short wooden stake -> restrained martial guard. Complete upright c0 for calibration.\nROW7 victory: lower stake -> relax shoulder/feet -> restrained smile/one free-hand gesture -> composed upright recovery. No amulet, Scythe or vampire trophy.\nROW8 ledgeAttack: c0 low top-out support with empty bare palm, stake SHEATHED -> c1 rising body releases support -> c2 both hands now FREE from edge, draws right-hand stake and strikes -> c3 stable low right-hand stake guard. No attack while hand is required to grip the edge.\n\nCHECK FINAL ROW: full feet, complete hands and sword/stake tips; at least20transparent pixels between every row. All numbered rows must actually be drawn. No skeleton placeholders or repeated frames.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png"
+      ],
+      "transparent_background": true
+    },
+    "expectedRows": 8,
+    "startedAt": {
+      "current_time": "2026-10-23 03:58:39 UTC"
+    },
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-28fc244e-4f0e-4daa-ae72-020f633a2718.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourcePath": "/workspace/generated_images/exec-28fc244e-4f0e-4daa-ae72-020f633a2718.png",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "canonicalVerified": false,
+    "source1to1Verified": false,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-combat-b.native.png",
+    "sourceSha256": "3f039ea78a5442d44194f674493db26bb3b5057dde2902786fb9895ab5307440",
+    "dimensions": {
+      "width": 1024,
+      "height": 1536
+    },
+    "promptFileSha256": "8045ae2df29933c1e5849a24ac2af20a0656c15a44e3977e555983b03d912f5b",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png",
+        "sha256": "500406b3837b3085228b22a11d92507cc1c501264bf7876988e43f11bd07c098"
+      }
+    ],
+    "observedRows": 7,
+    "observedNativePoses": 28,
+    "review": {
+      "observedRows": 7,
+      "nativeStateOrder": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "missingStates": [
+        "aerialForward"
+      ],
+      "reason": "Native downward stake row follows neutral row; dedicated forward airborne cut was omitted."
+    },
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  },
+  {
+    "id": "buffy-ledge",
+    "heroId": "buffy_summers",
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-ledge.prompt.txt",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT BUFFY SUMMERS, Buffy the Vampire Slayer season7, the interval after Spike's chip removal and BEFORE the final Scythe/amulet events. Approved shared appearance: mid-length loose GOLDEN BLONDE hair, adult angular face, modest fitted BLACK SLEEVELESS TANK TOP, full-length BURGUNDY trousers/jeans and BLACK SHOES. Bare arms and bare hands, natural athletic adult proportions, same face and outfit in all cells. The reference is identity/clothes only, not a grid to duplicate. Buffy physically fights using a short sharpened NATURAL WOOD STAKE in her anatomical RIGHT hand; never a sword, crossbow, gun, red Scythe, magic amulet, glowing weapon or super transformation. When hands must be free, stake sits securely in a small belt sheath. No vampire victim or impalement scene: opponent is NOT drawn. Simple/light/crouch/aerial/ledgeAttack follow the actual wooden-stake technique. Ordinary secondary is Coup de pied de la Tueuse: a real physical kick; chargeStart/Loop/Release/Recovery and special must show that kick preparation/extension/recoil, NOT the separate super Enchaînement au pieu de Buffy. Guard is a personal martial parry, no magical round shield. No gore, nudity, sexualized posing, exposed cleavage or torn clothing.\n\nCRITICAL: TRANSPARENT RGBA background, original native pixel clusters and shading, not an extracted official sprite or certified source1:1 animation. NO text/labels/grid/borders/floor/platform/scenery/drop shadows or decorative VFX. EXACTLY FOUR COLUMNS. Each numbered state is its own row of FOUR COMPLETE and anatomically DISTINCT hand-drawn bodies, chronological LEFT→RIGHT. Do NOT omit a row. Do not duplicate a pose with different effects. Full shoes/fingers/coat/cape/weapon tips stay inside their cell and never touch neighboring drawings or canvas edges. Body anatomy: exactly two connected arms/two legs, hands connect through actual wrists/elbows to shoulders. Default facing RIGHT. Keep one consistent upright crown-to-sole anatomical size throughout the whole native source; genuinely crouched, tucked, hanging or prone bodies retain their shorter projection. NEVER enlarge a crouch to fill a row. Draw every row at the SAME source pixel scale. Generous transparent gutter around EVERY body, at least20px between neighboring silhouettes, especially last two rows. Long weapons must fit completely: shrink ALL bodies uniformly rather than clip blade tips. Four real distinct joint/foot/torso configurations per row; natural breathing shifts for idle. Last row requires the same complete space as first. No cropped boot sole, detached fingertip, floating weapon or adjacent-row overlap.\n\nEXACTLY FIVE ROWS×FOUR COLUMNS=20NATIVE COMPLETE BODIES, portrait4:5 canvas, equal row allocations.\nROW1 ledgeCatch: c0 airborne right hand reaching OPEN toward invisible ledge, NOT yet attached; c1 actual right fingers curl to GRIP overhead edge, other hand reaching lower; c2 BOTH connected hands grip overhead; c3 elbows pull/body tucks while BOTH real palms keep edge contact. Weapons stay SHEATHED. Entire fingers ABOVE crown with generous margin.\nROW2 ledgeHang: four genuinely distinct hanging bodies, two clenched gripping hands on the SAME invisible horizontal edge, arms connected to shoulders, shifting knees/hips/feet. Hands unobscured, no weapon in either hand. Preserve crown-to-sole projection, raised hands excluded from body calibration.\nROW3 ledgeClimb: c0 two real hands holding above crown; c1 elbows pull and one knee rises; c2 BOTH palms press DOWN on invisible top surface as hips rise; c3 low top-out crouch with both palms visibly planted and wrists connected. Four different real contact positions. No drawn ledge/platform, no held weapon.\nROW4 ledgeDrop: c0 two-hand hang -> c1 one hand releases -> c2 both hands free dropping -> c3 descending airborne recovery. Weapon safely SHEATHED.\nROW5 ledgeJump: c0 low top-out crouch with two real palms supporting -> c1 legs push and palms release -> c2 airborne outward tuck -> c3 extended airborne escape/recovery. Weapon stays SHEATHED. No magic flight.\n\nCHECK FINAL ROW: full feet, complete hands and sword/stake tips; at least20transparent pixels between every row. All numbered rows must actually be drawn. No skeleton placeholders or repeated frames.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png"
+      ],
+      "transparent_background": true
+    },
+    "expectedRows": 5,
+    "startedAt": {
+      "current_time": "2026-10-23 03:58:39 UTC"
+    },
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-fd8a8ba3-c9db-4b19-aacb-a1409cf9c877.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourcePath": "/workspace/generated_images/exec-fd8a8ba3-c9db-4b19-aacb-a1409cf9c877.png",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "canonicalVerified": false,
+    "source1to1Verified": false,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-ledge.native.png",
+    "sourceSha256": "1bfddcaed9cdd2f333d837be6361c6d1540d04381360bcaa26e499c456e43d80",
+    "dimensions": {
+      "width": 1122,
+      "height": 1402
+    },
+    "promptFileSha256": "7e7828dd2fab92f1d23eaca4c16d6fcf3eec8371b87c3a9a091f40d9956b0fd6",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png",
+        "sha256": "500406b3837b3085228b22a11d92507cc1c501264bf7876988e43f11bd07c098"
+      }
+    ],
+    "observedRows": 5,
+    "observedNativePoses": 20,
+    "review": {
+      "observedRows": 5,
+      "nativeStateOrder": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "missingStates": []
+    },
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  },
+  {
+    "id": "buffy-corrective-states",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT BUFFY SUMMERS, Buffy the Vampire Slayer season7, the interval after Spike's chip removal and BEFORE the final Scythe/amulet events. Approved shared appearance: mid-length loose GOLDEN BLONDE hair, adult angular face, modest fitted BLACK SLEEVELESS TANK TOP, full-length BURGUNDY trousers/jeans and BLACK SHOES. Bare arms and bare hands, natural athletic adult proportions, same face and outfit in all cells. The reference is identity/clothes only, not a grid to duplicate. Buffy physically fights using a short sharpened NATURAL WOOD STAKE in her anatomical RIGHT hand; never a sword, crossbow, gun, red Scythe, magic amulet, glowing weapon or super transformation. When hands must be free, stake sits securely in a small belt sheath. No vampire victim or impalement scene: opponent is NOT drawn. Simple/light/crouch/aerial/ledgeAttack follow the actual wooden-stake technique. Ordinary secondary is Coup de pied de la Tueuse: a real physical kick; chargeStart/Loop/Release/Recovery and special must show that kick preparation/extension/recoil, NOT the separate super Enchaînement au pieu de Buffy. Guard is a personal martial parry, no magical round shield. No gore, nudity, sexualized posing, exposed cleavage or torn clothing.\n\n\nNATIVE CORRECTIVE STRIP. Transparent RGBA, exactly FOUR COLUMNS and 4 ROWS. Every cell is a NEW complete anatomically distinct hand-drawn body. Reference is outfit/face only; do not copy its poses. All cells and sword/stake tips have generous transparent gutters, no floor/platform/grid/text. Keep one consistent upright anatomical source pixel scale across all rows; crouched/airborne poses keep natural smaller projection. Final feet and blade tips MUST be complete and away from canvas edge. No procedural rotations, duplication or effects-only variation. Default facing RIGHT.\nROW1 perfectShield: four real complete standing martial deflections, torso/forearms and feet actually change; short wooden stake right hand parries, no shield. Column0 fully upright with both hands below crown, crown-to-sole calibration. ROW2 jumpApex: four distinct compact airborne apex poses with different real knee/hip/arm joints, stake sheathed. ROW3 aerialForward: four physical airborne forward stake thrusts in right hand, with different complete leg/torso configurations, no projectile, no victim. ROW4 crouchIdle: four truly LOW stable crouched breathing/body-balance configurations, hands in guard, stake sheathed; do not rise to standing.\nNo omitted rows. Exactly 16 complete distinct drawings. Four chronological configurations per row, anatomically connected two arms/two legs. Adult modest character, no opponent, no gore.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-combat-a.native.png"
+      ],
+      "transparent_background": true
+    },
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-corrective-states.prompt.txt",
+    "expectedRows": 4,
+    "startedAt": {
+      "current_time": "2026-10-23 04:15:49 UTC"
+    },
+    "sourcePath": "/workspace/generated_images/exec-0519bfc2-4926-46ba-8bf2-68f0e3fd57f5.png",
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-0519bfc2-4926-46ba-8bf2-68f0e3fd57f5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-corrective-states.native.png",
+    "sourceSha256": "404367f5a1dbff4c0bb9f410a135bf0b1ca3f96fa5a283a82b5fc1300f6b685b",
+    "dimensions": {
+      "width": 1222,
+      "height": 1287
+    },
+    "promptFileSha256": "7512b0556302d48565cc46a44d577c81d1ad080de6e70301ddcddd1800aca376",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-combat-a.native.png",
+        "sha256": "f1aff2dfbf64c054065ebf65d4a217c181c1d70d737f2e64767c9ff9e0cb36cf"
+      }
+    ],
+    "observedRows": 4,
+    "observedNativePoses": 16,
+    "review": {
+      "observedRows": 4,
+      "nativeStateOrder": [
+        "perfectShield",
+        "jumpApex",
+        "aerialForward",
+        "crouchIdle"
+      ],
+      "missingStates": [],
+      "reason": "All explicitly requested corrective rows drawn; anatomy/edge review pending."
+    },
+    "canonicalVerified": false,
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  }
+]

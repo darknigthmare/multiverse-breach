@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "coordinateSpace": "original native PNG pixels",
+  "method": "Read-only independent inspection of selected native cells and crown-to-sole BODY boundaries; segmentation rectangles used to locate cells, not as a substitute for excluding raised arms/weapon reach. Ledge crown additionally checked with nearby native hair-colour pixels.",
+  "manualPrecisionPixels": 2,
+  "notSourceGameFrameCertification": true,
+  "noPngOrRuntimeModified": true,
+  "records": [
+    {
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-motion-a.native.png",
+      "sourceSha256": "566603affc3e18695cff6a25357dace5b1f6daa8c516afe6e4ec50427b2e4df1",
+      "state": "idle0",
+      "row": 0,
+      "column": 0,
+      "bodyBounds": {
+        "x": 87,
+        "y": 18,
+        "width": 111,
+        "height": 224
+      },
+      "reason": "Crown to both boot soles in a straight standing idle, no raised limb, weapon or effect changes vertical extent.",
+      "independentlyVisuallyReviewed": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-motion-b.native.png",
+      "sourceSha256": "e56b52e4e79e2fb25ba5dc7f54e42c3218f22bb4271e9b092eecd4c98a8788c6",
+      "state": "taunt1",
+      "row": 6,
+      "column": 0,
+      "bodyBounds": {
+        "x": 58,
+        "y": 1340,
+        "width": 113,
+        "height": 233
+      },
+      "reason": "Inspected upright taunt reset; crown to boot soles. Both hands stay below crown; no weapon/effect determines height.",
+      "independentlyVisuallyReviewed": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-defense.native.png",
+      "sourceSha256": "8b380b14d5d744718b28ab7d5f0b24b6d2677e8fe4b6c2560bef99f81a9a0962",
+      "state": "shieldExit",
+      "row": 4,
+      "column": 0,
+      "bodyBounds": {
+        "x": 71,
+        "y": 862,
+        "width": 163,
+        "height": 217
+      },
+      "reason": "Feet planted in a wide standing stance. Height is crown to soles, excluding the extended fists from horizontal BODY bounds; no shield VFX included.",
+      "independentlyVisuallyReviewed": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-combat-a-retry.native.png",
+      "sourceSha256": "afbbdcfc77fffac514de991c62ac732ad75cdbb8aaa0ff7c7c61b151effdcd7b",
+      "state": "chargeRecovery",
+      "row": 6,
+      "column": 3,
+      "bodyBounds": {
+        "x": 834,
+        "y": 1248,
+        "width": 120,
+        "height": 246
+      },
+      "reason": "Final upright recovery selected rather than the bent first column. Crown to boot soles; orange Gravity Gun prongs extending right are excluded from BODY width and do not determine height.",
+      "independentlyVisuallyReviewed": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-combat-b.native.png",
+      "sourceSha256": "9916530f52d2ad1bdba44dddb7c6b0665716427f7569033c50c88ae4c75235b7",
+      "state": "intro",
+      "row": 5,
+      "column": 0,
+      "bodyBounds": {
+        "x": 72,
+        "y": 1016,
+        "width": 117,
+        "height": 200
+      },
+      "reason": "Upright introduction reference; crown to soles. The lowered crowbar is not used as an anatomical bound.",
+      "independentlyVisuallyReviewed": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+      "sourceSha256": "6d9697b4154d18d2bbb5f2a98520bba7e1b5591596b2bd41f16ffb119901d9da",
+      "state": "ledgeHang",
+      "row": 1,
+      "column": 0,
+      "bodyBounds": {
+        "x": 124,
+        "y": 344,
+        "width": 88,
+        "height": 242
+      },
+      "reason": "The overhead fists/forearms begin aroundy297 and are excluded. Crown begins near344 (brown hair pixels347 onward), soles end585; bent knees and the native hanging posture are retained. This is a crown-to-sole hanging reference, not an assertion of an anatomically upright standing pose.",
+      "independentlyVisuallyReviewed": true
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-corrective-states.native.png",
+      "sourceSha256": "124dcec058cea21179b5c40a0fb6396b6c773e4df47979470502390399ceff67",
+      "state": "shieldBreak",
+      "row": 0,
+      "column": 0,
+      "bodyBounds": {
+        "x": 89,
+        "y": 40,
+        "width": 281,
+        "height": 401
+      },
+      "reason": "Actual braced full-body guard-break drawing with planted boots, hands below crown and no weapon or VFX above head/below feet. The large source density is retained as measured, not mistaken for a packed256cell.",
+      "independentlyVisuallyReviewed": true
+    }
+  ]
+}

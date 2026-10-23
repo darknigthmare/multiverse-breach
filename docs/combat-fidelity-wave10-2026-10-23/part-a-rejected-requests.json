@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "failures": [],
+  "technicalInterruptions": [
+    {
+      "context": "Concurrent native32 calls during exec-server outage around00:58UTC",
+      "heroId": "daniel_jackson",
+      "outcome": "No returned image/result or jobID retained; Promise ended without usable result. Concurrent local view_image reported exec-server transport closed. Exact request text already archived; identical single retry produced the accepted source. Original request outcome remains unverified."
+    },
+    {
+      "context": "Same outage",
+      "heroId": "hammond_sgc",
+      "outcome": "Native tool returned image_url but no output_hint. Original returned PNG bytes were decoded losslessly into an archived original; no generated filename or generation/jobID was invented."
+    },
+    {
+      "context": "Environment restart while first three base16 requests were running",
+      "heroIds": [
+        "neo",
+        "trinity",
+        "morpheus"
+      ],
+      "outcome": "Neo native PNG recovered by visual inspection and file timestamp; two other requests had no result or matching image after20minutes, then resumed individually. Job IDs unavailable. No live job was intentionally relaunched."
+    }
+  ],
+  "policyRefusals": [],
+  "generationId": null,
+  "jobId": null
+}

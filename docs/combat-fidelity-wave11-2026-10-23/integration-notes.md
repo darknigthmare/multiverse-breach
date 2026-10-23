@@ -1,0 +1,14 @@
+# Intégration du lot 11
+
+Les40 identités de source sélectionnées ont un kit explicite, une présentation et un partenaire du même univers. Les37 nouvelles présentations32 et37 bases16 sont des dessins natifs générés ; Harry, Hermione et Rogue gardent des replis anciens après refus explicites de génération. Ces replis n’ajoutent aucune pose dédiée. La sélection d’Hermione comme renfort Protego reste défensive, sans nouveau natif16.
+
+Deux défauts de rendu ont été reproduits puis corrigés :
+
+- Les simples/secondaires bénéfiques des40 héros W11 utilisent désormais `support` dans le moteur RPG. Pour les23 personnages dont le corps de base illustre une attaque offensive, `support` et `defense` réutilisent explicitement l’idle. Cela évite notamment la flamme de Dumbledore lors d’une analyse, le tir de Giles lors d’une information et le sort offensif de Ron lors d’un soutien. Les17 corps de soutien conservent leur gestuelle de soutien. Aucune nouvelle image, aucun dégât ni coût n’est ajouté. Ces soutiens W11 ne déclenchent plus non plus l’ancien projectile générique `laser_line` vers un allié ; les autres héros gardent leur comportement antérieur.
+- Les clones de Harry, Hermione et Rogue conservent leur vraie feuille historique grâce à leur identité de source et à un univers exact. Le nom de l’instance du second camp ne devient plus un chemin de fichier inexistant. Le mélange d’univers reste rejeté.
+
+Les effets de zone de Dumbledore et de Lilith utilisent leurs poses et le contact accepté par le moteur ; aucun trajet balistique ne leur est ajouté. Les12 tireurs possédant un nouvel atlas utilisent leurs vrais points d’arme ; Harry garde son origine physique historique, sans fausse mesure native. Les anciens helpers et les anciens fichiers d’images sont préservés.
+
+Les essais intermédiaires et les échecs de fixtures historiques restent archivés. Les références finales sont les rapports de validation, les parcours et le journal de build de ce lot. Les variations de proportion générées, les poses réutilisées et les refus sont documentés : aucune fidélité source1:1 ni frame officielle n’est certifiée.
+
+La double relecture a aussi trouvé une inversion anatomique des tatouages de Lilith sur ses deux premières planches W11. Cette erreur a été corrigée par six appels image_gen natifs, avec revue cellule par cellule :16poses conservées du premier correctif32,4nouveaux outro et12gestes frontaux ;12poses du correctif16 et4nouvelles récupérations. Les48poses finales remplacent les48premières poses, archivées ;72dessins correctifs ont été reçus, dont24intermédiaires exclus. Aucun tatouage, membre ou vêtement n’a été repeint, déplacé ou effacé par code ; la préparation technique se limite à la segmentation, à l’échelle uniforme et à l’atlas. Les neuf autres héros du sous-lot C gardent leurs PNG et métadonnées exacts. Le miroir du rendu2D et les zones anatomiques occultées restent des limites de représentation, sans certification1:1.

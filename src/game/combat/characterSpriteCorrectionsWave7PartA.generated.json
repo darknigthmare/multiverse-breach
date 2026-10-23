@@ -1,0 +1,3416 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "ragna",
+      "heroId": "ragna",
+      "universe": "BlazBlue",
+      "name": "Ragna the Bloodedge",
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/ragna.png",
+      "width": 1024,
+      "height": 1024,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "f9ecdef781f4e84f7cdd4bced2e4d82091eb06acef89634007b99761d758cce7",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+      "sourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "referenceAsset": "/sprites/generated/heroes/blazblue/ragna.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna-previous-reference.png",
+      "referenceAssetSha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna-generation-1-reference-1.png",
+          "sha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9"
+        }
+      ],
+      "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+      "sourceReference": "The previous local base omits Blood-Scythe and uses fists for attacks. Restore Ragna’s actual sword; preserve CSE red/black outfit and white hair. Standing body calibrated to190px after extraction, shared with new45state Ragna manifest. Named super attested in the Donald_Duck_Fan CSE GameFAQs move list, updated2012-04-20; all cinematic timing, condensed poses and finisher staging are project adaptations.",
+      "identityCorrection": "The previous local base omits Blood-Scythe and uses fists for attacks. Restore Ragna’s actual sword; preserve CSE red/black outfit and white hair. Standing body calibrated to190px after extraction, shared with new45state Ragna manifest.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+            "sourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 270
+            },
+            "scale": 0.9206349206349206,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 95,
+                  "top": 19,
+                  "width": 195,
+                  "height": 238,
+                  "pixels": 24188
+                },
+                "output": {
+                  "left": 39,
+                  "top": 25,
+                  "width": 180,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 471,
+                  "top": 21,
+                  "width": 202,
+                  "height": 236,
+                  "pixels": 25238
+                },
+                "output": {
+                  "left": 31,
+                  "top": 27,
+                  "width": 186,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 859,
+                  "top": 21,
+                  "width": 227,
+                  "height": 236,
+                  "pixels": 26293
+                },
+                "output": {
+                  "left": 35,
+                  "top": 27,
+                  "width": 209,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 1240,
+                  "top": 21,
+                  "width": 199,
+                  "height": 236,
+                  "pixels": 24240
+                },
+                "output": {
+                  "left": 32,
+                  "top": 27,
+                  "width": 183,
+                  "height": 217
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.86758,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 219,
+              "normalizedBodyHeight": 219,
+              "nativeReferenceBodyHeight": 238,
+              "nativeComparableBodyHeight": 238,
+              "referenceRenderScale": 0.867579908675799,
+              "referenceRenderedBodyHeight": 190,
+              "calibrationTargetBodyHeight": 190,
+              "bodyBounds": [
+                39,
+                25,
+                180,
+                219
+              ],
+              "referenceBodyBounds": [
+                39,
+                25,
+                180,
+                219
+              ],
+              "nativeBodyBounds": [
+                95,
+                19,
+                195,
+                238
+              ],
+              "nativeReferenceBodyBounds": [
+                95,
+                19,
+                195,
+                238
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+              "nativeSourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+              "nativeReferenceSourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 190,
+              "correctedBodyHeight": 190.00002,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 190,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "run",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+            "sourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 269,
+              "bottom": 508
+            },
+            "scale": 0.651685393258427,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 42,
+                  "top": 13,
+                  "width": 281,
+                  "height": 211,
+                  "pixels": 31300
+                },
+                "output": {
+                  "left": 30,
+                  "top": 105,
+                  "width": 183,
+                  "height": 138
+                }
+              },
+              {
+                "source": {
+                  "left": 409,
+                  "top": 16,
+                  "width": 288,
+                  "height": 208,
+                  "pixels": 28590
+                },
+                "output": {
+                  "left": 19,
+                  "top": 107,
+                  "width": 188,
+                  "height": 136
+                }
+              },
+              {
+                "source": {
+                  "left": 782,
+                  "top": 15,
+                  "width": 318,
+                  "height": 210,
+                  "pixels": 29635
+                },
+                "output": {
+                  "left": 12,
+                  "top": 106,
+                  "width": 207,
+                  "height": 137
+                }
+              },
+              {
+                "source": {
+                  "left": 1192,
+                  "top": 11,
+                  "width": 266,
+                  "height": 215,
+                  "pixels": 28830
+                },
+                "output": {
+                  "left": 29,
+                  "top": 104,
+                  "width": 173,
+                  "height": 140
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.220619,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 219,
+              "normalizedBodyHeight": 138,
+              "nativeReferenceBodyHeight": 238,
+              "nativeComparableBodyHeight": 211,
+              "referenceRenderScale": 0.867579908675799,
+              "referenceRenderedBodyHeight": 190,
+              "calibrationTargetBodyHeight": 190,
+              "bodyBounds": [
+                30,
+                105,
+                183,
+                138
+              ],
+              "referenceBodyBounds": [
+                39,
+                25,
+                180,
+                219
+              ],
+              "nativeBodyBounds": [
+                42,
+                282,
+                281,
+                211
+              ],
+              "nativeReferenceBodyBounds": [
+                95,
+                19,
+                195,
+                238
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+              "nativeSourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+              "nativeReferenceSourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 168.445378,
+              "correctedBodyHeight": 168.445422,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 190,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "attack",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+            "sourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 507,
+              "bottom": 768
+            },
+            "scale": 0.5631067961165048,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 40,
+                  "top": 10,
+                  "width": 272,
+                  "height": 239,
+                  "pixels": 31686
+                },
+                "output": {
+                  "left": 42,
+                  "top": 107,
+                  "width": 153,
+                  "height": 135
+                }
+              },
+              {
+                "source": {
+                  "left": 403,
+                  "top": 13,
+                  "width": 377,
+                  "height": 238,
+                  "pixels": 43210
+                },
+                "output": {
+                  "left": 31,
+                  "top": 109,
+                  "width": 212,
+                  "height": 134
+                }
+              },
+              {
+                "source": {
+                  "left": 768,
+                  "top": 12,
+                  "width": 398,
+                  "height": 241,
+                  "pixels": 41836
+                },
+                "output": {
+                  "left": 20,
+                  "top": 108,
+                  "width": 224,
+                  "height": 136
+                }
+              },
+              {
+                "source": {
+                  "left": 1155,
+                  "top": 32,
+                  "width": 346,
+                  "height": 221,
+                  "pixels": 28352
+                },
+                "output": {
+                  "left": 22,
+                  "top": 120,
+                  "width": 195,
+                  "height": 124
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.422811,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 3,
+              "referenceBodyHeight": 219,
+              "normalizedBodyHeight": 124,
+              "nativeReferenceBodyHeight": 238,
+              "nativeComparableBodyHeight": 221,
+              "referenceRenderScale": 0.867579908675799,
+              "referenceRenderedBodyHeight": 190,
+              "calibrationTargetBodyHeight": 190,
+              "bodyBounds": [
+                22,
+                120,
+                195,
+                124
+              ],
+              "referenceBodyBounds": [
+                39,
+                25,
+                180,
+                219
+              ],
+              "nativeBodyBounds": [
+                1155,
+                539,
+                346,
+                221
+              ],
+              "nativeReferenceBodyBounds": [
+                95,
+                19,
+                195,
+                238
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+              "nativeSourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+              "nativeReferenceSourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 176.428571,
+              "correctedBodyHeight": 176.428564,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 190,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "hit",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+            "sourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 766,
+              "bottom": 1024
+            },
+            "scale": 0.8285714285714286,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 76,
+                  "top": 14,
+                  "width": 241,
+                  "height": 229,
+                  "pixels": 32390
+                },
+                "output": {
+                  "left": 32,
+                  "top": 54,
+                  "width": 200,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 463,
+                  "top": 30,
+                  "width": 224,
+                  "height": 208,
+                  "pixels": 24139
+                },
+                "output": {
+                  "left": 34,
+                  "top": 68,
+                  "width": 186,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 836,
+                  "top": 61,
+                  "width": 264,
+                  "height": 179,
+                  "pixels": 25776
+                },
+                "output": {
+                  "left": 25,
+                  "top": 93,
+                  "width": 219,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 1241,
+                  "top": 8,
+                  "width": 201,
+                  "height": 233,
+                  "pixels": 25025
+                },
+                "output": {
+                  "left": 43,
+                  "top": 49,
+                  "width": 167,
+                  "height": 193
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.962185,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 219,
+              "normalizedBodyHeight": 190,
+              "nativeReferenceBodyHeight": 238,
+              "nativeComparableBodyHeight": 229,
+              "referenceRenderScale": 0.867579908675799,
+              "referenceRenderedBodyHeight": 190,
+              "calibrationTargetBodyHeight": 190,
+              "bodyBounds": [
+                32,
+                54,
+                200,
+                190
+              ],
+              "referenceBodyBounds": [
+                39,
+                25,
+                180,
+                219
+              ],
+              "nativeBodyBounds": [
+                76,
+                780,
+                241,
+                229
+              ],
+              "nativeReferenceBodyBounds": [
+                95,
+                19,
+                195,
+                238
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+              "nativeSourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/ragna.png",
+              "nativeReferenceSourceImageSha256": "9823681516dd7faac5a82e12a702085f149450ddd12f22f0acf5cdd1d056f6bf",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 182.815126,
+              "correctedBodyHeight": 182.81515,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 190,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          }
+        ],
+        "renderScaleMethod": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+        "renderScaleDoesNotModifyBitmap": true
+      },
+      "visualValidation": {
+        "allFramesReviewed": true,
+        "identityReviewed": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "3df81b7a4e31d2d4186e70d6e870c2dcedf616c1d362039f33f3b4a95904935b",
+              "7718dffd56a049f56b10c4d70e645bd30d9224246cf05e106b580f51fb796f3c",
+              "8681cd823c7b153c44a1218d2f5ea54210b6edab2aa38f40abedc9eaf08cd843",
+              "48d8dc10ab98a6e1c212db809a27d4d719980c0881fd751f8af74f740a837c4f"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "693a7aa5cbb63ca9ba6850cc0b8218abd30ba16146c63f201719b6dd481f04cb",
+              "abcdae2c2f43350226db63f9ecd4156675a5d69ab35eb662883fe43923d0c811",
+              "e351006fa60d14c507de4a8a0d95310152260b0370c01b3bf1846ee50887592c",
+              "5c6dfdaf6b6ae21e987e6c4e5f2c1109da6b1372ee431dd41b3e8e36c3de3b5b"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "26659d670c3edb26ee5ad4b9d602158bb32167a48963782d246d173191959c3c",
+              "8f62f073f735cb216d6b75546b28a9e3922f6b173987ed9a1a7b495b9e549eff",
+              "431ec387a9a92176f9345736c7599246b35e79205cc43a1404dca4939476981d",
+              "73d99f2354b0e14a7b860f1f03434c25ceb3075078efde09c6d5807d68f094a5"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "eb13d3114bb58d25aca29279a50a15006ffd05cc95d8efd64acebd645a08872d",
+              "ab6e4bc20ddf89eb0df83673378c8bd0a4133d05a8c7decf628a73457bbedca5",
+              "e5648ba650e7404f5b4047df3ee108d559b43abd2b77194fbd8549ca3b8dbaab",
+              "7a0bd51eb001b5947e256282a4cbb52bccef79e8ecbb3bd9628cf7103d1face6"
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "weaponReviewed": true,
+        "versionReviewed": true,
+        "allBodiesPresent": true,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "notes": "The previous local base omits Blood-Scythe and uses fists for attacks. Restore Ragna’s actual sword; preserve CSE red/black outfit and white hair. Standing body calibrated to190px after extraction, shared with new45state Ragna manifest. Named super attested in the Donald_Duck_Fan CSE GameFAQs move list, updated2012-04-20; all cinematic timing, condensed poses and finisher staging are project adaptations. The previous local base omits Blood-Scythe and uses fists for attacks. Restore Ragna’s actual sword; preserve CSE red/black outfit and white hair. Standing body calibrated to190px after extraction, shared with new45state Ragna manifest. No official source-game frames or certified1:1 appearance is claimed.",
+        "statureScaleReviewed": true
+      }
+    },
+    {
+      "id": "jin",
+      "heroId": "jin",
+      "universe": "BlazBlue",
+      "name": "Jin Kisaragi",
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/jin.png",
+      "width": 1024,
+      "height": 1024,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "2e67a7a593577d72bb086d23c1445a0ce3aecad33bcf61812acf1ef9437696d4",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+      "sourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "originalSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin.png",
+      "originalSourceImageSha256": "373b0a392592d5e4d986c8cf77022ecac3016ff556947ebd88ef1c019a654c6c",
+      "nativeCorrection": true,
+      "referenceAsset": "/sprites/generated/heroes/blazblue/jin.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-previous-reference.png",
+      "referenceAssetSha256": "b5258b92a698bc546d3b4f43ae8114b3b261abb3eb5b4d2cc0dbce4f18929d18",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-generation-2-reference-1.png",
+          "sha256": "b84bcb25d070f588929f93a20eb70b508bbcb87b4b5de0401dd622f9ac63c395"
+        }
+      ],
+      "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+      "sourceReference": "The previous local sheet is another Ragna redcoat/white-hair body. Replace that incorrect identity with blond Jin in CSE blue-white NOL uniform and Yukianesa. It is a counterexample, not an outfit to preserve. Named super attested in the Donald_Duck_Fan CSE GameFAQs move list, updated2012-04-20; all cinematic timing, condensed poses and finisher staging are project adaptations.",
+      "identityCorrection": "The previous local sheet is another Ragna redcoat/white-hair body. Replace that incorrect identity with blond Jin in CSE blue-white NOL uniform and Yukianesa. It is a counterexample, not an outfit to preserve.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+            "sourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 269
+            },
+            "scale": 0.6904761904761905,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 79,
+                  "top": 29,
+                  "width": 281,
+                  "height": 222,
+                  "pixels": 23206
+                },
+                "output": {
+                  "left": 50,
+                  "top": 91,
+                  "width": 194,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 450,
+                  "top": 26,
+                  "width": 286,
+                  "height": 222,
+                  "pixels": 23908
+                },
+                "output": {
+                  "left": 41,
+                  "top": 89,
+                  "width": 197,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 821,
+                  "top": 26,
+                  "width": 288,
+                  "height": 221,
+                  "pixels": 24046
+                },
+                "output": {
+                  "left": 32,
+                  "top": 89,
+                  "width": 199,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 1198,
+                  "top": 28,
+                  "width": 288,
+                  "height": 220,
+                  "pixels": 23792
+                },
+                "output": {
+                  "left": 27,
+                  "top": 90,
+                  "width": 199,
+                  "height": 152
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.202614,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 153,
+              "normalizedBodyHeight": 153,
+              "nativeReferenceBodyHeight": 222,
+              "nativeComparableBodyHeight": 222,
+              "referenceRenderScale": 1.2026143790849673,
+              "referenceRenderedBodyHeight": 184,
+              "calibrationTargetBodyHeight": 184,
+              "bodyBounds": [
+                50,
+                91,
+                194,
+                153
+              ],
+              "referenceBodyBounds": [
+                50,
+                91,
+                194,
+                153
+              ],
+              "nativeBodyBounds": [
+                79,
+                29,
+                281,
+                222
+              ],
+              "nativeReferenceBodyBounds": [
+                79,
+                29,
+                281,
+                222
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+              "nativeSourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+              "nativeReferenceSourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 184,
+              "correctedBodyHeight": 183.999942,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 184,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "run",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+            "sourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 268,
+              "bottom": 509
+            },
+            "scale": 0.5420560747663551,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 77,
+                  "top": 23,
+                  "width": 329,
+                  "height": 197,
+                  "pixels": 22865
+                },
+                "output": {
+                  "left": 66,
+                  "top": 129,
+                  "width": 178,
+                  "height": 107
+                }
+              },
+              {
+                "source": {
+                  "left": 447,
+                  "top": 27,
+                  "width": 281,
+                  "height": 209,
+                  "pixels": 22028
+                },
+                "output": {
+                  "left": 58,
+                  "top": 131,
+                  "width": 152,
+                  "height": 113
+                }
+              },
+              {
+                "source": {
+                  "left": 800,
+                  "top": 19,
+                  "width": 305,
+                  "height": 216,
+                  "pixels": 25157
+                },
+                "output": {
+                  "left": 41,
+                  "top": 126,
+                  "width": 165,
+                  "height": 117
+                }
+              },
+              {
+                "source": {
+                  "left": 1187,
+                  "top": 33,
+                  "width": 336,
+                  "height": 195,
+                  "pixels": 23530
+                },
+                "output": {
+                  "left": 43,
+                  "top": 134,
+                  "width": 182,
+                  "height": 106
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.525975,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 153,
+              "normalizedBodyHeight": 107,
+              "nativeReferenceBodyHeight": 222,
+              "nativeComparableBodyHeight": 197,
+              "referenceRenderScale": 1.2026143790849673,
+              "referenceRenderedBodyHeight": 184,
+              "calibrationTargetBodyHeight": 184,
+              "bodyBounds": [
+                66,
+                129,
+                178,
+                107
+              ],
+              "referenceBodyBounds": [
+                50,
+                91,
+                194,
+                153
+              ],
+              "nativeBodyBounds": [
+                77,
+                291,
+                329,
+                197
+              ],
+              "nativeReferenceBodyBounds": [
+                79,
+                29,
+                281,
+                222
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+              "nativeSourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+              "nativeReferenceSourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 163.279279,
+              "correctedBodyHeight": 163.279325,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 184,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "attack",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+            "sourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 502,
+              "bottom": 770
+            },
+            "scale": 0.40418118466898956,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 51,
+                  "top": 5,
+                  "width": 235,
+                  "height": 241,
+                  "pixels": 27450
+                },
+                "output": {
+                  "left": 71,
+                  "top": 146,
+                  "width": 95,
+                  "height": 97
+                }
+              },
+              {
+                "source": {
+                  "left": 406,
+                  "top": 26,
+                  "width": 399,
+                  "height": 220,
+                  "pixels": 36626
+                },
+                "output": {
+                  "left": 59,
+                  "top": 154,
+                  "width": 161,
+                  "height": 89
+                }
+              },
+              {
+                "source": {
+                  "left": 789,
+                  "top": 30,
+                  "width": 458,
+                  "height": 214,
+                  "pixels": 34569
+                },
+                "output": {
+                  "left": 59,
+                  "top": 156,
+                  "width": 185,
+                  "height": 86
+                }
+              },
+              {
+                "source": {
+                  "left": 1194,
+                  "top": 44,
+                  "width": 310,
+                  "height": 204,
+                  "pixels": 21430
+                },
+                "output": {
+                  "left": 67,
+                  "top": 162,
+                  "width": 125,
+                  "height": 82
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 2.061964,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 3,
+              "referenceBodyHeight": 153,
+              "normalizedBodyHeight": 82,
+              "nativeReferenceBodyHeight": 222,
+              "nativeComparableBodyHeight": 204,
+              "referenceRenderScale": 1.2026143790849673,
+              "referenceRenderedBodyHeight": 184,
+              "calibrationTargetBodyHeight": 184,
+              "bodyBounds": [
+                67,
+                162,
+                125,
+                82
+              ],
+              "referenceBodyBounds": [
+                50,
+                91,
+                194,
+                153
+              ],
+              "nativeBodyBounds": [
+                1194,
+                546,
+                310,
+                204
+              ],
+              "nativeReferenceBodyBounds": [
+                79,
+                29,
+                281,
+                222
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+              "nativeSourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+              "nativeReferenceSourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 169.081081,
+              "correctedBodyHeight": 169.081048,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 184,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "hit",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+            "sourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 769,
+              "bottom": 1024
+            },
+            "scale": 0.7116564417177914,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 78,
+                  "top": 23,
+                  "width": 277,
+                  "height": 210,
+                  "pixels": 26739
+                },
+                "output": {
+                  "left": 47,
+                  "top": 95,
+                  "width": 197,
+                  "height": 149
+                }
+              },
+              {
+                "source": {
+                  "left": 454,
+                  "top": 49,
+                  "width": 272,
+                  "height": 171,
+                  "pixels": 21308
+                },
+                "output": {
+                  "left": 41,
+                  "top": 113,
+                  "width": 194,
+                  "height": 122
+                }
+              },
+              {
+                "source": {
+                  "left": 827,
+                  "top": 66,
+                  "width": 295,
+                  "height": 155,
+                  "pixels": 18893
+                },
+                "output": {
+                  "left": 33,
+                  "top": 125,
+                  "width": 210,
+                  "height": 110
+                }
+              },
+              {
+                "source": {
+                  "left": 1211,
+                  "top": 20,
+                  "width": 279,
+                  "height": 209,
+                  "pixels": 23009
+                },
+                "output": {
+                  "left": 33,
+                  "top": 92,
+                  "width": 199,
+                  "height": 149
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.168148,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 153,
+              "normalizedBodyHeight": 149,
+              "nativeReferenceBodyHeight": 222,
+              "nativeComparableBodyHeight": 210,
+              "referenceRenderScale": 1.2026143790849673,
+              "referenceRenderedBodyHeight": 184,
+              "calibrationTargetBodyHeight": 184,
+              "bodyBounds": [
+                47,
+                95,
+                197,
+                149
+              ],
+              "referenceBodyBounds": [
+                50,
+                91,
+                194,
+                153
+              ],
+              "nativeBodyBounds": [
+                78,
+                792,
+                277,
+                210
+              ],
+              "nativeReferenceBodyBounds": [
+                79,
+                29,
+                281,
+                222
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+              "nativeSourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/jin-corrected.png",
+              "nativeReferenceSourceImageSha256": "58386a7d7ca768780fb648e01b63b7b3f633562fa08d4f4a98e99dc66aece78e",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 174.054054,
+              "correctedBodyHeight": 174.054052,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 184,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          }
+        ],
+        "renderScaleMethod": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+        "renderScaleDoesNotModifyBitmap": true
+      },
+      "visualValidation": {
+        "allFramesReviewed": true,
+        "identityReviewed": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ae99c745751ec2b479cf990150b53006831e35ba241a3c5474829d928d85cf26",
+              "f15bdd5891ab38ceca71d40cd8c53638eb4d9d56ce245536e96bcce0e69764ad",
+              "24a88f181419391f085ef81f34e3c8dc0df5bea53af272068f7b06bf98267e07",
+              "1b3f6b2dc54150803d38d0836feda37937991e6d1ce140c0a4fd3eea7f808806"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "40f6c8ec9c8c8f7818e197d7fb37700427a9503b214b8ffd4fb234c7947ae01e",
+              "676462917ba46f7fb837e430ad5426bf5f28275b59568956ece2c365a6b00808",
+              "adaef7b7ff501e75151743395da3faf2b6a619a08ceaf6e024328af24decf6c3",
+              "18472aa2e51cfe8002f4ff1eb0b3646e3b1d5bb197b309344bf9ab256e4b4939"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1b6c6a219a56842824a7c83b177806a6c8bdefc5e12e3accde5146ddd488e63a",
+              "b9ec4380e11cdb1d854cfe704e7eba30c8c04a7555d4f1d5f3e8d392afb5b216",
+              "17ca2e50abace3918fba10980a2790c60f4d213965da2d1c1715dc42e13496b0",
+              "8245549546846ea1b6f1f8176e7e25cc809a5f134a17c4aadfffbc22442eb969"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7ffc6d6bd59277be4540070cc105eb988aad223011e4e8165eddb7bd1baffbea",
+              "ea8f0e2f5bf9b23eaf81b29a500afec305a0ff9e01acbc23c8b83fca5751556e",
+              "bcd6efc6b867ffc0083c20a96ffdc4c31b7f8a6baff01794dc0690f6cce2548e",
+              "d7d6bb6ceed29dad70c46eb32abf993af77ae5342a3f06381ab0442faff7f478"
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "weaponReviewed": true,
+        "versionReviewed": true,
+        "allBodiesPresent": true,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "notes": "The previous local sheet is another Ragna redcoat/white-hair body. Replace that incorrect identity with blond Jin in CSE blue-white NOL uniform and Yukianesa. It is a counterexample, not an outfit to preserve. Named super attested in the Donald_Duck_Fan CSE GameFAQs move list, updated2012-04-20; all cinematic timing, condensed poses and finisher staging are project adaptations. The previous local sheet is another Ragna redcoat/white-hair body. Replace that incorrect identity with blond Jin in CSE blue-white NOL uniform and Yukianesa. It is a counterexample, not an outfit to preserve. No official source-game frames or certified1:1 appearance is claimed.",
+        "statureScaleReviewed": true
+      }
+    },
+    {
+      "id": "noel",
+      "heroId": "noel",
+      "universe": "BlazBlue",
+      "name": "Noel Vermillion",
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/noel.png",
+      "width": 1024,
+      "height": 1024,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "30136fafac3f6713a30dd9d1ebf3b08db12e9d7289a6440815a1d7ee4bc0d170",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+      "sourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "referenceAsset": "/sprites/generated/heroes/blazblue/noel.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel-previous-reference.png",
+      "referenceAssetSha256": "80fe9a12ea94526df2610964645d10d75fff5f04b72cef5e508afe6f5ae47eed",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel-generation-1-reference-1.png",
+          "sha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093"
+        }
+      ],
+      "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+      "sourceReference": "Use the CSE2011 blue beret and sleeveless blue NOL tunic/dress with Bolverk dual pistols; old local bareheaded white-blouse cape sprite is not preserved as a canonical costume. Named super attested in the Donald_Duck_Fan CSE GameFAQs move list, updated2012-04-20; all cinematic timing, condensed poses and finisher staging are project adaptations.",
+      "identityCorrection": "Use the CSE2011 blue beret and sleeveless blue NOL tunic/dress with Bolverk dual pistols; old local bareheaded white-blouse cape sprite is not preserved as a canonical costume.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+            "sourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 299
+            },
+            "scale": 0.8055555555555556,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 72,
+                  "top": 36,
+                  "width": 214,
+                  "height": 252,
+                  "pixels": 26722
+                },
+                "output": {
+                  "left": 31,
+                  "top": 41,
+                  "width": 172,
+                  "height": 203
+                }
+              },
+              {
+                "source": {
+                  "left": 451,
+                  "top": 40,
+                  "width": 201,
+                  "height": 248,
+                  "pixels": 26402
+                },
+                "output": {
+                  "left": 27,
+                  "top": 44,
+                  "width": 162,
+                  "height": 200
+                }
+              },
+              {
+                "source": {
+                  "left": 825,
+                  "top": 34,
+                  "width": 227,
+                  "height": 254,
+                  "pixels": 27826
+                },
+                "output": {
+                  "left": 19,
+                  "top": 39,
+                  "width": 183,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 1200,
+                  "top": 30,
+                  "width": 220,
+                  "height": 258,
+                  "pixels": 28385
+                },
+                "output": {
+                  "left": 12,
+                  "top": 36,
+                  "width": 177,
+                  "height": 208
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.108374,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 203,
+              "normalizedBodyHeight": 203,
+              "nativeReferenceBodyHeight": 252,
+              "nativeComparableBodyHeight": 252,
+              "referenceRenderScale": 1.1083743842364533,
+              "referenceRenderedBodyHeight": 225,
+              "calibrationTargetBodyHeight": 225,
+              "bodyBounds": [
+                31,
+                41,
+                172,
+                203
+              ],
+              "referenceBodyBounds": [
+                31,
+                41,
+                172,
+                203
+              ],
+              "nativeBodyBounds": [
+                72,
+                36,
+                214,
+                252
+              ],
+              "nativeReferenceBodyBounds": [
+                72,
+                36,
+                214,
+                252
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+              "nativeSourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+              "nativeReferenceSourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 225,
+              "correctedBodyHeight": 224.999922,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 225,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "run",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+            "sourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 297,
+              "bottom": 552
+            },
+            "scale": 0.6705202312138728,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 54,
+                  "top": 9,
+                  "width": 260,
+                  "height": 236,
+                  "pixels": 29906
+                },
+                "output": {
+                  "left": 35,
+                  "top": 84,
+                  "width": 174,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 436,
+                  "top": 9,
+                  "width": 242,
+                  "height": 238,
+                  "pixels": 29802
+                },
+                "output": {
+                  "left": 34,
+                  "top": 84,
+                  "width": 162,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 843,
+                  "top": 10,
+                  "width": 290,
+                  "height": 238,
+                  "pixels": 28617
+                },
+                "output": {
+                  "left": 50,
+                  "top": 84,
+                  "width": 194,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 1218,
+                  "top": 13,
+                  "width": 260,
+                  "height": 234,
+                  "pixels": 29691
+                },
+                "output": {
+                  "left": 44,
+                  "top": 86,
+                  "width": 174,
+                  "height": 157
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.333635,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 203,
+              "normalizedBodyHeight": 158,
+              "nativeReferenceBodyHeight": 252,
+              "nativeComparableBodyHeight": 236,
+              "referenceRenderScale": 1.1083743842364533,
+              "referenceRenderedBodyHeight": 225,
+              "calibrationTargetBodyHeight": 225,
+              "bodyBounds": [
+                35,
+                84,
+                174,
+                158
+              ],
+              "referenceBodyBounds": [
+                31,
+                41,
+                172,
+                203
+              ],
+              "nativeBodyBounds": [
+                54,
+                306,
+                260,
+                236
+              ],
+              "nativeReferenceBodyBounds": [
+                72,
+                36,
+                214,
+                252
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+              "nativeSourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+              "nativeReferenceSourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 210.714286,
+              "correctedBodyHeight": 210.71433,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 225,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "attack",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+            "sourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 544,
+              "bottom": 791
+            },
+            "scale": 0.6408839779005525,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 6,
+                  "width": 289,
+                  "height": 237,
+                  "pixels": 30271
+                },
+                "output": {
+                  "left": 38,
+                  "top": 92,
+                  "width": 185,
+                  "height": 152
+                }
+              },
+              {
+                "source": {
+                  "left": 413,
+                  "top": 9,
+                  "width": 344,
+                  "height": 234,
+                  "pixels": 30246
+                },
+                "output": {
+                  "left": 24,
+                  "top": 94,
+                  "width": 220,
+                  "height": 150
+                }
+              },
+              {
+                "source": {
+                  "left": 810,
+                  "top": 9,
+                  "width": 322,
+                  "height": 232,
+                  "pixels": 29486
+                },
+                "output": {
+                  "left": 32,
+                  "top": 94,
+                  "width": 206,
+                  "height": 149
+                }
+              },
+              {
+                "source": {
+                  "left": 1210,
+                  "top": 9,
+                  "width": 260,
+                  "height": 234,
+                  "pixels": 28219
+                },
+                "output": {
+                  "left": 42,
+                  "top": 94,
+                  "width": 167,
+                  "height": 150
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.392152,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 203,
+              "normalizedBodyHeight": 152,
+              "nativeReferenceBodyHeight": 252,
+              "nativeComparableBodyHeight": 237,
+              "referenceRenderScale": 1.1083743842364533,
+              "referenceRenderedBodyHeight": 225,
+              "calibrationTargetBodyHeight": 225,
+              "bodyBounds": [
+                38,
+                92,
+                185,
+                152
+              ],
+              "referenceBodyBounds": [
+                31,
+                41,
+                172,
+                203
+              ],
+              "nativeBodyBounds": [
+                52,
+                550,
+                289,
+                237
+              ],
+              "nativeReferenceBodyBounds": [
+                72,
+                36,
+                214,
+                252
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+              "nativeSourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+              "nativeReferenceSourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 211.607143,
+              "correctedBodyHeight": 211.607104,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 225,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "hit",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+            "sourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 779,
+              "bottom": 1024
+            },
+            "scale": 0.8111888111888111,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 76,
+                  "top": 21,
+                  "width": 223,
+                  "height": 206,
+                  "pixels": 27001
+                },
+                "output": {
+                  "left": 34,
+                  "top": 70,
+                  "width": 181,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 467,
+                  "top": 33,
+                  "width": 220,
+                  "height": 194,
+                  "pixels": 25389
+                },
+                "output": {
+                  "left": 40,
+                  "top": 79,
+                  "width": 178,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 862,
+                  "top": 22,
+                  "width": 241,
+                  "height": 206,
+                  "pixels": 26592
+                },
+                "output": {
+                  "left": 49,
+                  "top": 70,
+                  "width": 195,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 1217,
+                  "top": 1,
+                  "width": 215,
+                  "height": 235,
+                  "pixels": 26943
+                },
+                "output": {
+                  "left": 25,
+                  "top": 53,
+                  "width": 174,
+                  "height": 191
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.101369,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 203,
+              "normalizedBodyHeight": 167,
+              "nativeReferenceBodyHeight": 252,
+              "nativeComparableBodyHeight": 206,
+              "referenceRenderScale": 1.1083743842364533,
+              "referenceRenderedBodyHeight": 225,
+              "calibrationTargetBodyHeight": 225,
+              "bodyBounds": [
+                34,
+                70,
+                181,
+                167
+              ],
+              "referenceBodyBounds": [
+                31,
+                41,
+                172,
+                203
+              ],
+              "nativeBodyBounds": [
+                76,
+                800,
+                223,
+                206
+              ],
+              "nativeReferenceBodyBounds": [
+                72,
+                36,
+                214,
+                252
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+              "nativeSourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/noel.png",
+              "nativeReferenceSourceImageSha256": "167d47e1cd16a77724dd81f5dbebc370fe0662dcfc74ef413d3a313df7117d24",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 183.928571,
+              "correctedBodyHeight": 183.928623,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 225,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          }
+        ],
+        "renderScaleMethod": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+        "renderScaleDoesNotModifyBitmap": true
+      },
+      "visualValidation": {
+        "allFramesReviewed": true,
+        "identityReviewed": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "142e02ec6228d1d79ed3cec78b4f3da6945b62b3f871879971dc4c436e99d78e",
+              "8b6c826a39b0a5c4b946d7778eb99a1603b234038df50b9fe14a5359e7d224a4",
+              "3ce17f1e655684f79260c2d2232d1de3ca2ec069b8cfb0647304f48804e6a151",
+              "ed22396d6287290461d6589ab16c399bdecf0a3b4735fa11551a1098bf3c5d40"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "26bb63234b6d7b13ab41a6c170f234c891cc81acbe853923f999d4dd3ed9e100",
+              "75fd3ccee2d225442ef73e84a2fd362e21017fe67c5bfb33f47770be82214f8d",
+              "f53535297cecfe6ccaf0d5c17709f078e2a915268e265bf255e2b4f6a60c0cca",
+              "7f5336fe244d8a0bcff273e61c34de521466a515ade9eb986afa3a55640c16c2"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6fd1c44f192facf0c0bb381013ce2318b44a1af24f940ac7391ab43adc5422b3",
+              "e02047024fb2795c29437e3aef47cf2fb333b32ba0e55cf3687adbc8946fdb88",
+              "bd7e12e75de2f0248e3a3f31f3c3590f1a2990fad5ec23ebff1c743797c7d27b",
+              "fde9838b11bf8d70f594dcad117bd4224d437a60a6b1c163fba3bb428c54ed10"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "07009b0ce336c43e9783a6b33f7835869f706b4b1833d086d91bcabef8011160",
+              "7c46e651cd51cce20cf28d9f55d2347e6781fa255d06231b80a996c8a2fd8922",
+              "e87b7af768be97d87fd9ce91c98b6bd4fc8220729e59277cb6fb6eee837c7672",
+              "25a8e6d48bae52473234542527b5a53e8637df5a831225facd830f0633ca9d47"
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "weaponReviewed": true,
+        "versionReviewed": true,
+        "allBodiesPresent": true,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "notes": "Use the CSE2011 blue beret and sleeveless blue NOL tunic/dress with Bolverk dual pistols; old local bareheaded white-blouse cape sprite is not preserved as a canonical costume. Named super attested in the Donald_Duck_Fan CSE GameFAQs move list, updated2012-04-20; all cinematic timing, condensed poses and finisher staging are project adaptations. Use the CSE2011 blue beret and sleeveless blue NOL tunic/dress with Bolverk dual pistols; old local bareheaded white-blouse cape sprite is not preserved as a canonical costume. No official source-game frames or certified1:1 appearance is claimed.",
+        "statureScaleReviewed": true
+      }
+    },
+    {
+      "id": "rachel_bb",
+      "heroId": "rachel_bb",
+      "universe": "BlazBlue",
+      "name": "Rachel Alucard",
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/rachel_bb.png",
+      "width": 1024,
+      "height": 1024,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "530760fb791d3ab0c90dcee655202508055c0e4addb9d216164c583d5b8824bd",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+      "sourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "referenceAsset": "/sprites/generated/heroes/blazblue/rachel-bb.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb-previous-reference.png",
+      "referenceAssetSha256": "90ef5ecd8ba54fb8f82a8084f8ca083dd8187ebcf4dea28b7aba49c1f56cd38a",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb-generation-1-reference-1.png",
+          "sha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9"
+        }
+      ],
+      "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+      "sourceReference": "Preserve CSE Rachel’s long blond twin tails, gothic black-white frills/red lining and Nago umbrella. Correct Gii to a stout red bat; super uses lightning around planted rods, no pink laser ring. Named super attested in the Donald_Duck_Fan CSE GameFAQs move list, updated2012-04-20; all cinematic timing, condensed poses and finisher staging are project adaptations.",
+      "identityCorrection": "Preserve CSE Rachel’s long blond twin tails, gothic black-white frills/red lining and Nago umbrella. Correct Gii to a stout red bat; super uses lightning around planted rods, no pink laser ring.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+            "sourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 293
+            },
+            "scale": 0.8169014084507042,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 82,
+                  "top": 18,
+                  "width": 248,
+                  "height": 266,
+                  "pixels": 35695
+                },
+                "output": {
+                  "left": 38,
+                  "top": 27,
+                  "width": 203,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 443,
+                  "top": 15,
+                  "width": 258,
+                  "height": 269,
+                  "pixels": 36804
+                },
+                "output": {
+                  "left": 19,
+                  "top": 24,
+                  "width": 211,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 827,
+                  "top": 15,
+                  "width": 255,
+                  "height": 269,
+                  "pixels": 37194
+                },
+                "output": {
+                  "left": 19,
+                  "top": 24,
+                  "width": 208,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 1218,
+                  "top": 15,
+                  "width": 268,
+                  "height": 269,
+                  "pixels": 37555
+                },
+                "output": {
+                  "left": 25,
+                  "top": 24,
+                  "width": 219,
+                  "height": 220
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.032895,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 152,
+              "normalizedBodyHeight": 152,
+              "nativeReferenceBodyHeight": 186,
+              "nativeComparableBodyHeight": 186,
+              "referenceRenderScale": 1.0328947368421053,
+              "referenceRenderedBodyHeight": 157,
+              "calibrationTargetBodyHeight": 157,
+              "bodyBounds": [
+                38,
+                92,
+                203,
+                152
+              ],
+              "referenceBodyBounds": [
+                38,
+                92,
+                203,
+                152
+              ],
+              "nativeBodyBounds": [
+                82,
+                98,
+                248,
+                186
+              ],
+              "nativeReferenceBodyBounds": [
+                82,
+                98,
+                248,
+                186
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+              "nativeSourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+              "nativeReferenceSourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 157,
+              "correctedBodyHeight": 157.00004,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 157,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "run",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+            "sourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 288,
+              "bottom": 545
+            },
+            "scale": 0.7435897435897436,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 57,
+                  "top": 7,
+                  "width": 291,
+                  "height": 243,
+                  "pixels": 36167
+                },
+                "output": {
+                  "left": 28,
+                  "top": 62,
+                  "width": 216,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 452,
+                  "top": 8,
+                  "width": 279,
+                  "height": 241,
+                  "pixels": 34127
+                },
+                "output": {
+                  "left": 36,
+                  "top": 63,
+                  "width": 207,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 819,
+                  "top": 10,
+                  "width": 289,
+                  "height": 242,
+                  "pixels": 35517
+                },
+                "output": {
+                  "left": 23,
+                  "top": 64,
+                  "width": 215,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 1206,
+                  "top": 8,
+                  "width": 282,
+                  "height": 232,
+                  "pixels": 33894
+                },
+                "output": {
+                  "left": 25,
+                  "top": 63,
+                  "width": 210,
+                  "height": 173
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.134039,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 152,
+              "normalizedBodyHeight": 131,
+              "nativeReferenceBodyHeight": 186,
+              "nativeComparableBodyHeight": 176,
+              "referenceRenderScale": 1.0328947368421053,
+              "referenceRenderedBodyHeight": 157,
+              "calibrationTargetBodyHeight": 157,
+              "bodyBounds": [
+                28,
+                112,
+                216,
+                131
+              ],
+              "referenceBodyBounds": [
+                38,
+                92,
+                203,
+                152
+              ],
+              "nativeBodyBounds": [
+                57,
+                362,
+                291,
+                176
+              ],
+              "nativeReferenceBodyBounds": [
+                82,
+                98,
+                248,
+                186
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+              "nativeSourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+              "nativeReferenceSourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 148.55914,
+              "correctedBodyHeight": 148.559109,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 157,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "attack",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+            "sourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 526,
+              "bottom": 789
+            },
+            "scale": 0.5178571428571429,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 37,
+                  "width": 341,
+                  "height": 220,
+                  "pixels": 35101
+                },
+                "output": {
+                  "left": 52,
+                  "top": 127,
+                  "width": 177,
+                  "height": 114
+                }
+              },
+              {
+                "source": {
+                  "left": 424,
+                  "top": 52,
+                  "width": 374,
+                  "height": 205,
+                  "pixels": 42402
+                },
+                "output": {
+                  "left": 49,
+                  "top": 135,
+                  "width": 194,
+                  "height": 106
+                }
+              },
+              {
+                "source": {
+                  "left": 787,
+                  "top": 55,
+                  "width": 397,
+                  "height": 201,
+                  "pixels": 32749
+                },
+                "output": {
+                  "left": 38,
+                  "top": 137,
+                  "width": 206,
+                  "height": 104
+                }
+              },
+              {
+                "source": {
+                  "left": 1179,
+                  "top": 0,
+                  "width": 309,
+                  "height": 262,
+                  "pixels": 36393
+                },
+                "output": {
+                  "left": 43,
+                  "top": 108,
+                  "width": 160,
+                  "height": 136
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.626624,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 3,
+              "referenceBodyHeight": 152,
+              "normalizedBodyHeight": 96,
+              "nativeReferenceBodyHeight": 186,
+              "nativeComparableBodyHeight": 185,
+              "referenceRenderScale": 1.0328947368421053,
+              "referenceRenderedBodyHeight": 157,
+              "calibrationTargetBodyHeight": 157,
+              "bodyBounds": [
+                43,
+                148,
+                160,
+                96
+              ],
+              "referenceBodyBounds": [
+                38,
+                92,
+                203,
+                152
+              ],
+              "nativeBodyBounds": [
+                1179,
+                603,
+                309,
+                185
+              ],
+              "nativeReferenceBodyBounds": [
+                82,
+                98,
+                248,
+                186
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+              "nativeSourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+              "nativeReferenceSourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 156.155914,
+              "correctedBodyHeight": 156.155904,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 157,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "hit",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+            "sourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 780,
+              "bottom": 1024
+            },
+            "scale": 0.7682119205298014,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 66,
+                  "top": 8,
+                  "width": 251,
+                  "height": 218,
+                  "pixels": 31435
+                },
+                "output": {
+                  "left": 31,
+                  "top": 77,
+                  "width": 193,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 427,
+                  "top": 66,
+                  "width": 289,
+                  "height": 158,
+                  "pixels": 25820
+                },
+                "output": {
+                  "left": 14,
+                  "top": 121,
+                  "width": 222,
+                  "height": 121
+                }
+              },
+              {
+                "source": {
+                  "left": 824,
+                  "top": 45,
+                  "width": 272,
+                  "height": 179,
+                  "pixels": 27494
+                },
+                "output": {
+                  "left": 24,
+                  "top": 105,
+                  "width": 209,
+                  "height": 138
+                }
+              },
+              {
+                "source": {
+                  "left": 1242,
+                  "top": 1,
+                  "width": 253,
+                  "height": 224,
+                  "pixels": 32187
+                },
+                "output": {
+                  "left": 50,
+                  "top": 71,
+                  "width": 194,
+                  "height": 172
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.104412,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 152,
+              "normalizedBodyHeight": 107,
+              "nativeReferenceBodyHeight": 186,
+              "nativeComparableBodyHeight": 140,
+              "referenceRenderScale": 1.0328947368421053,
+              "referenceRenderedBodyHeight": 157,
+              "calibrationTargetBodyHeight": 157,
+              "bodyBounds": [
+                31,
+                137,
+                193,
+                107
+              ],
+              "referenceBodyBounds": [
+                38,
+                92,
+                203,
+                152
+              ],
+              "nativeBodyBounds": [
+                66,
+                866,
+                251,
+                140
+              ],
+              "nativeReferenceBodyBounds": [
+                82,
+                98,
+                248,
+                186
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+              "nativeSourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/rachel_bb.png",
+              "nativeReferenceSourceImageSha256": "633e33521b6dde488a43b78a9a8ccead555e1fca2b0ed6936432113883f3ce97",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 118.172043,
+              "correctedBodyHeight": 118.172084,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 157,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          }
+        ],
+        "renderScaleMethod": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+        "renderScaleDoesNotModifyBitmap": true
+      },
+      "visualValidation": {
+        "allFramesReviewed": true,
+        "identityReviewed": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6c1d0d1aed5b72681111522b963cf8e40b86d048ae6d94881904fd09f46e020e",
+              "e34932d5774f7f572aea7044f0993319392dae15449579ec48930b6a17e521d8",
+              "166ad16eceef862267ead0acaa4eb16e2f80b8e291e997c489daa7baaff6447a",
+              "347dc740207d6d88c44e3419cea7b1f42e30b93330d33b0fcaa5e1245eda15fa"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fd2d39a0729bdc1b1ee387a02b8d8dddf38ebf9386bf587be2887ff6d99f1a31",
+              "aeab92c2d5b138ed65d8df5c47f137dc52916ad8c411c12436ce1b876adb88a5",
+              "b282e6ed2769640664aecacce1fe0db9703dd814b63a1208ccd0f42b42bfbf1b",
+              "a29cfc42c740c99af8c28034a2e3022ed92a2eb9f3ec0451624345cd314fb4c5"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "74742c5ecc805790358036830d8f8b617f5eb0733f4efc82e8203b714ed22b53",
+              "a1e32369c43da5c4754544fb0f3afda4eb139440ec17d9e5d15fc8fc32478ece",
+              "d6bde3ea6a8f25158001701f67a8151a00fc2c839421517cb5643e865d311669",
+              "9e93166eee02b3ad42a2894007dafbf3432d17f7b56d1ae6654ea77116bc629a"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d6aa19d4396f8af79cbf386070191db42e4d61019e1a414dd1e851d8873d8119",
+              "db2bfeb7653bb9b22e1d583d5ae60c0875caf10bd697db54d6f9dbc756af06e4",
+              "5e0573fd28b41ebdffd2684435ef29c4f81b5cbd1f170b14da7c8dadaa045afc",
+              "178b7e427fece4d3997858ed53fbfd491e3543b336ad37b685413b7e0ca8c8e4"
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "weaponReviewed": true,
+        "versionReviewed": true,
+        "allBodiesPresent": true,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "notes": "Preserve CSE Rachel’s long blond twin tails, gothic black-white frills/red lining and Nago umbrella. Correct Gii to a stout red bat; super uses lightning around planted rods, no pink laser ring. Named super attested in the Donald_Duck_Fan CSE GameFAQs move list, updated2012-04-20; all cinematic timing, condensed poses and finisher staging are project adaptations. Preserve CSE Rachel’s long blond twin tails, gothic black-white frills/red lining and Nago umbrella. Correct Gii to a stout red bat; super uses lightning around planted rods, no pink laser ring. No official source-game frames or certified1:1 appearance is claimed.",
+        "statureScaleReviewed": true
+      }
+    },
+    {
+      "id": "hazama_bb",
+      "heroId": "hazama_bb",
+      "universe": "BlazBlue",
+      "name": "Hazama",
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/hazama_bb.png",
+      "width": 1024,
+      "height": 1024,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "282c4d58cac1c24ae7dda1cc15603ff93ca4f6dfa29ef28c55a17d88200c8dcd",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+      "sourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "referenceAsset": "/sprites/generated/heroes/blazblue/hazama-bb.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb-previous-reference.png",
+      "referenceAssetSha256": "e49fc21bb8f638a001d794677c897e80ce4b57f4abdc9944c4c3aca04cc5def4",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb-generation-1-reference-1.png",
+          "sha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c"
+        }
+      ],
+      "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+      "sourceReference": "CSE Hazama keeps green bowl-cut hair, black fedora/dress suit/long black coat and Ouroboros snake-headed green-black chains. Avoid firearms, later Terumi hooded design, demon replacement body and false new drain mechanics. Named super attested in the Donald_Duck_Fan CSE GameFAQs move list, updated2012-04-20; all cinematic timing, condensed poses and finisher staging are project adaptations.",
+      "identityCorrection": "CSE Hazama keeps green bowl-cut hair, black fedora/dress suit/long black coat and Ouroboros snake-headed green-black chains. Avoid firearms, later Terumi hooded design, demon replacement body and false new drain mechanics.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+            "sourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 310
+            },
+            "scale": 0.8169014084507042,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 114,
+                  "top": 34,
+                  "width": 161,
+                  "height": 267,
+                  "pixels": 25703
+                },
+                "output": {
+                  "left": 64,
+                  "top": 26,
+                  "width": 132,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 496,
+                  "top": 34,
+                  "width": 177,
+                  "height": 265,
+                  "pixels": 27544
+                },
+                "output": {
+                  "left": 63,
+                  "top": 26,
+                  "width": 145,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 861,
+                  "top": 39,
+                  "width": 181,
+                  "height": 260,
+                  "pixels": 25564
+                },
+                "output": {
+                  "left": 47,
+                  "top": 30,
+                  "width": 148,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 1263,
+                  "top": 34,
+                  "width": 223,
+                  "height": 265,
+                  "pixels": 28138
+                },
+                "output": {
+                  "left": 62,
+                  "top": 26,
+                  "width": 182,
+                  "height": 216
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.059633,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 218,
+              "normalizedBodyHeight": 218,
+              "nativeReferenceBodyHeight": 267,
+              "nativeComparableBodyHeight": 267,
+              "referenceRenderScale": 1.0596330275229358,
+              "referenceRenderedBodyHeight": 231,
+              "calibrationTargetBodyHeight": 231,
+              "bodyBounds": [
+                64,
+                26,
+                132,
+                218
+              ],
+              "referenceBodyBounds": [
+                64,
+                26,
+                132,
+                218
+              ],
+              "nativeBodyBounds": [
+                114,
+                34,
+                161,
+                267
+              ],
+              "nativeReferenceBodyBounds": [
+                114,
+                34,
+                161,
+                267
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+              "nativeSourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+              "nativeReferenceSourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 231,
+              "correctedBodyHeight": 230.999994,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 231,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "run",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+            "sourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 309,
+              "bottom": 552
+            },
+            "scale": 0.9133858267716536,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 84,
+                  "top": 9,
+                  "width": 227,
+                  "height": 230,
+                  "pixels": 25412
+                },
+                "output": {
+                  "left": 29,
+                  "top": 34,
+                  "width": 207,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 455,
+                  "top": 14,
+                  "width": 238,
+                  "height": 221,
+                  "pixels": 25004
+                },
+                "output": {
+                  "left": 17,
+                  "top": 38,
+                  "width": 217,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 835,
+                  "top": 12,
+                  "width": 231,
+                  "height": 223,
+                  "pixels": 24808
+                },
+                "output": {
+                  "left": 14,
+                  "top": 37,
+                  "width": 211,
+                  "height": 204
+                }
+              },
+              {
+                "source": {
+                  "left": 1220,
+                  "top": 15,
+                  "width": 251,
+                  "height": 221,
+                  "pixels": 25247
+                },
+                "output": {
+                  "left": 15,
+                  "top": 39,
+                  "width": 229,
+                  "height": 202
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.947566,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 218,
+              "normalizedBodyHeight": 210,
+              "nativeReferenceBodyHeight": 267,
+              "nativeComparableBodyHeight": 230,
+              "referenceRenderScale": 1.0596330275229358,
+              "referenceRenderedBodyHeight": 231,
+              "calibrationTargetBodyHeight": 231,
+              "bodyBounds": [
+                29,
+                34,
+                207,
+                210
+              ],
+              "referenceBodyBounds": [
+                64,
+                26,
+                132,
+                218
+              ],
+              "nativeBodyBounds": [
+                84,
+                318,
+                227,
+                230
+              ],
+              "nativeReferenceBodyBounds": [
+                114,
+                34,
+                161,
+                267
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+              "nativeSourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+              "nativeReferenceSourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 198.988764,
+              "correctedBodyHeight": 198.98886,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 231,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "attack",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+            "sourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 550,
+              "bottom": 785
+            },
+            "scale": 0.4280442804428044,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 55,
+                  "top": 10,
+                  "width": 312,
+                  "height": 209,
+                  "pixels": 28900
+                },
+                "output": {
+                  "left": 69,
+                  "top": 151,
+                  "width": 134,
+                  "height": 89
+                }
+              },
+              {
+                "source": {
+                  "left": 365,
+                  "top": 24,
+                  "width": 482,
+                  "height": 193,
+                  "pixels": 31346
+                },
+                "output": {
+                  "left": 38,
+                  "top": 157,
+                  "width": 206,
+                  "height": 83
+                }
+              },
+              {
+                "source": {
+                  "left": 817,
+                  "top": 18,
+                  "width": 364,
+                  "height": 210,
+                  "pixels": 34128
+                },
+                "output": {
+                  "left": 67,
+                  "top": 154,
+                  "width": 156,
+                  "height": 90
+                }
+              },
+              {
+                "source": {
+                  "left": 1258,
+                  "top": 6,
+                  "width": 218,
+                  "height": 220,
+                  "pixels": 26711
+                },
+                "output": {
+                  "left": 91,
+                  "top": 149,
+                  "width": 93,
+                  "height": 94
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 2.024863,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 3,
+              "referenceBodyHeight": 218,
+              "normalizedBodyHeight": 94,
+              "nativeReferenceBodyHeight": 267,
+              "nativeComparableBodyHeight": 220,
+              "referenceRenderScale": 1.0596330275229358,
+              "referenceRenderedBodyHeight": 231,
+              "calibrationTargetBodyHeight": 231,
+              "bodyBounds": [
+                91,
+                149,
+                93,
+                94
+              ],
+              "referenceBodyBounds": [
+                64,
+                26,
+                132,
+                218
+              ],
+              "nativeBodyBounds": [
+                1258,
+                556,
+                218,
+                220
+              ],
+              "nativeReferenceBodyBounds": [
+                114,
+                34,
+                161,
+                267
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+              "nativeSourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+              "nativeReferenceSourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 190.337079,
+              "correctedBodyHeight": 190.337122,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 231,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          },
+          {
+            "state": "hit",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+            "sourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 781,
+              "bottom": 1024
+            },
+            "scale": 0.8721804511278195,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 108,
+                  "top": 5,
+                  "width": 209,
+                  "height": 217,
+                  "pixels": 27032
+                },
+                "output": {
+                  "left": 55,
+                  "top": 55,
+                  "width": 182,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 461,
+                  "top": 24,
+                  "width": 210,
+                  "height": 193,
+                  "pixels": 22914
+                },
+                "output": {
+                  "left": 28,
+                  "top": 71,
+                  "width": 183,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 827,
+                  "top": 57,
+                  "width": 242,
+                  "height": 161,
+                  "pixels": 22445
+                },
+                "output": {
+                  "left": 12,
+                  "top": 100,
+                  "width": 211,
+                  "height": 140
+                }
+              },
+              {
+                "source": {
+                  "left": 1248,
+                  "top": 21,
+                  "width": 194,
+                  "height": 201,
+                  "pixels": 23756
+                },
+                "output": {
+                  "left": 44,
+                  "top": 69,
+                  "width": 169,
+                  "height": 175
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.993342,
+            "statureReview": {
+              "referencePhase": "idle",
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 218,
+              "normalizedBodyHeight": 189,
+              "nativeReferenceBodyHeight": 267,
+              "nativeComparableBodyHeight": 217,
+              "referenceRenderScale": 1.0596330275229358,
+              "referenceRenderedBodyHeight": 231,
+              "calibrationTargetBodyHeight": 231,
+              "bodyBounds": [
+                55,
+                55,
+                182,
+                189
+              ],
+              "referenceBodyBounds": [
+                64,
+                26,
+                132,
+                218
+              ],
+              "nativeBodyBounds": [
+                108,
+                786,
+                209,
+                217
+              ],
+              "nativeReferenceBodyBounds": [
+                114,
+                34,
+                161,
+                267
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+              "nativeSourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-a-sources/hazama_bb.png",
+              "nativeReferenceSourceImageSha256": "bf9477303e5004e039a95a30685c56e0228b5b6f5286f16d4cf7843975afb8b6",
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "visualRoiApproximation": true,
+              "expectedBodyHeight": 187.741573,
+              "correctedBodyHeight": 187.741638,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "sourceDensityCalibration": {
+                "kind": "independent-native-source-standing-body",
+                "targetPresentationBodyHeight": 231,
+                "note": "Base16 and presentation32 use separate native source pixel densities. Calibrate the standing base reference to the reviewed presentation body height, then preserve native stance-height ratios inside this source."
+              },
+              "posturePreserved": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false,
+              "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios. This independent base16 source is calibrated to the reviewed rendered intro body of presentation32, not to its raw source pixel density."
+            }
+          }
+        ],
+        "renderScaleMethod": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+        "renderScaleDoesNotModifyBitmap": true
+      },
+      "visualValidation": {
+        "allFramesReviewed": true,
+        "identityReviewed": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "dcd39ec145c6051f8319d848ea0b96417dc88e9bf82266a958d88e2257b22ec2",
+              "63f1e10d69a188cd77f324a81e64479326d89ad909fb8357285e9a4f311b5b9a",
+              "8438b7fd16618a1546ef3c6d56abf97de791e417db1fd56438bd5d2efc2b2f9e",
+              "df71fe3b0bca86c6f80ff2ace30dfce7732901ebb2ab7f8e3e81b8590d7b0cc8"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "dc1dc0f65c3c1a0847f93a6e21e517b5e58d81f1d38618e0c8343d7c83912a3d",
+              "2fb826159c11301985ed563d6cbf5f9177402084c499d1fbb26077e8a97e974a",
+              "fb39e1a191686141d8f11567afc47e86773cce478c333ab45ba71bfbf04c6890",
+              "7134f0c8fec32e6059d3775c00f86c68899a0baa2b8a290a795b5c39915d5284"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "dc2838a5e2b5e392179ede5a1aab4af984dddc990d0f0233cc6f35e685146eaf",
+              "499564277fdcc3fa5d9d24d3cc4cae0765c5a9b0d0a82cf7b4e29e33064e42cd",
+              "71c4d6b564d1a627e19c381acfd1d902df423ba63f241facd50cebfbca08d5b4",
+              "c4f9d2119b30c00ba133eab285fff06269f3c32f59119d6978e76964ab532a5b"
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "59b0b6dfc4eaf1468a65b191c70dd62eef2490d2308866d10d1b7f0ebef51084",
+              "5ad669b0c7c9574092b9c010f75fe76e2a2b2042835cadd14c3de222262748de",
+              "674920439cc01c72198c5f67f32501d7f12e0858c1ca68138a36295a01726f93",
+              "d3c449ed133011800119b271a6b2c7fc894a37d9ee204684c184dd89b91b8c74"
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "weaponReviewed": true,
+        "versionReviewed": true,
+        "allBodiesPresent": true,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "notes": "CSE Hazama keeps green bowl-cut hair, black fedora/dress suit/long black coat and Ouroboros snake-headed green-black chains. Avoid firearms, later Terumi hooded design, demon replacement body and false new drain mechanics. Named super attested in the Donald_Duck_Fan CSE GameFAQs move list, updated2012-04-20; all cinematic timing, condensed poses and finisher staging are project adaptations. CSE Hazama keeps green bowl-cut hair, black fedora/dress suit/long black coat and Ouroboros snake-headed green-black chains. Avoid firearms, later Terumi hooded design, demon replacement body and false new drain mechanics. No official source-game frames or certified1:1 appearance is claimed.",
+        "statureScaleReviewed": true
+      }
+    }
+  ]
+}

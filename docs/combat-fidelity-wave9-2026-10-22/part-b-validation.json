@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-22",
+  "checks": [
+    {
+      "command": "node --test scripts/summonAnimationWave9.test.mjs",
+      "exitCode": 0,
+      "output": "✔ four roster partners require exact performer/source identities, universe, action and reinforcement role (7202.804222ms)\n✔ 64 actual wide RGBA cells have distinct pixels, clear margins, baseline244 and common entity scale (245.465313ms)\n✔ the eleven previous native entities and all28 legacy four-frame sheets retain their captured bytes and complete metadata (46.140838ms)\n✔ player four native roster partners render all16 cells, spend once, pause and impact only on attack col2 (23.395104ms)\n✔ enemy four native roster partners render all16 cells, spend once, pause and impact only on attack col2 (14.982298ms)\n✔ player the four roster partners retain target identities through death and cannot cause late interrupted impacts (11.278419ms)\n✔ enemy the four roster partners retain target identities through death and cannot cause late interrupted impacts (8.44931ms)\n✔ all four new native weapon apertures track each phase/column and facing with no travel from lowered or empty weapons (10.579785ms)\n✔ a pending native sheet falls back to the exact roster partner instead of an entity surrogate (3.388343ms)\n✔ all 28 historical entity path labels, source references and 280 sampled geometries remain identical (2.376235ms)\n✔ all four other Mass Effect callers summon Soldier Shepard Concussive Shot without shared class buffs, P1 and P2 (6.174447ms)\nℹ tests 11\nℹ suites 0\nℹ pass 11\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 7960.998303\n"
+    },
+    {
+      "command": "node scripts/buildCombatCharacterAnimationsWave9PartB.mjs --check",
+      "exitCode": 0,
+      "output": "{\"checked\":true,\"atlases\":5,\"phases\":40,\"nativeDistinctPoses\":160,\"width\":1024,\"height\":2048,\"baseline\":244,\"transparentMarginPixels\":10,\"canon1to1Verified\":false}\n"
+    },
+    {
+      "command": "node scripts/buildCombatCharacterSpriteCorrectionsWave9PartB.mjs --check",
+      "exitCode": 0,
+      "output": "{\"heroes\":5,\"states\":20,\"poses\":80,\"nativeSources\":5,\"newlyDrawnMissingStateRows\":0,\"correctedStateRows\":0,\"distinctRgbaPoses\":80,\"alphaAndMargins\":true,\"sourceAndReferenceHashes\":true,\"nativeRowReconstructionMatches\":true,\"visualReviewComplete\":true,\"canon1to1Verified\":false,\"networkVerified\":false}\n"
+    }
+  ],
+  "canon1to1Verified": false,
+  "finalPostFreeze": {
+    "ssr": {
+      "command": "node --test scripts/summonAnimationWave9.test.mjs",
+      "exitCode": 0,
+      "tests": 11,
+      "passed": 11,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "durationMs": 9824.332745
+    },
+    "browserSummary": "docs/combat-fidelity-wave9-2026-10-22/browser/summon-wave9-validation.json",
+    "browserSummarySha256": "4c6c546882dd81d2a835e019e12769679ea2a6018b287c2fb995f2fd1491c5ff",
+    "allEightImpactCapturesVisuallyReviewed": true,
+    "artAndAbilityRegistryHashesUnchanged": true
+  }
+}

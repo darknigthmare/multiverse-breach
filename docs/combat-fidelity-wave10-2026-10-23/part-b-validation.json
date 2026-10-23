@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "part": "B",
+  "checks": [
+    {
+      "command": "node scripts/buildCombatCharacterAnimationsWave10PartB.mjs --check",
+      "chunk_id": "043ce7",
+      "wall_time_seconds": 2.1512e-05,
+      "exit_code": 0,
+      "original_token_count": 42,
+      "output": "{\"checked\":true,\"atlases\":10,\"phases\":80,\"nativeDistinctPoses\":320,\"width\":1024,\"height\":2048,\"baseline\":244,\"transparentMarginPixels\":10,\"canon1to1Verified\":false}\n"
+    },
+    {
+      "command": "node scripts/buildCombatCharacterSpriteCorrectionsWave10PartB.mjs --check",
+      "chunk_id": "b243f4",
+      "wall_time_seconds": 2.5699e-05,
+      "exit_code": 0,
+      "original_token_count": 77,
+      "output": "{\"heroes\":10,\"states\":40,\"poses\":160,\"nativeSources\":11,\"newlyDrawnMissingStateRows\":0,\"correctedStateRows\":1,\"distinctRgbaPoses\":160,\"alphaAndMargins\":true,\"sourceAndReferenceHashes\":true,\"nativeRowReconstructionMatches\":true,\"visualReviewComplete\":true,\"canon1to1Verified\":false,\"networkVerified\":false}\n"
+    },
+    {
+      "command": "npm run lint -- scripts/buildCombatCharacterAnimationsWave10PartB.mjs scripts/buildCombatCharacterSpriteCorrectionsWave10PartB.mjs src/game/combat/abilities/abilitiesWave10PartB.js",
+      "exitCode": 0
+    }
+  ],
+  "finalPngs": 20,
+  "globalDistinctFinalPoses": 480,
+  "rgba": true,
+  "transparentMarginPixels": 10,
+  "baseline": 244,
+  "bodyRois": 120,
+  "nativeAnchorPoints": 33,
+  "visuallyReviewedAllNativeSources": true,
+  "visuallyReviewedPackedContacts": true,
+  "sourceReconstructionMatches": true,
+  "frozen": true,
+  "canon1to1Verified": false,
+  "firstFreezeReinforcementChecks": {
+    "summary": "browser/summon-wave10-first-freeze-validation.json",
+    "sha256": "db3e6c0643df088c46c5a02cc3b7896447362876c7af7e5161087071984de7d9",
+    "nodeTests": 16,
+    "browserFlows": 16,
+    "exitCodes": [
+      0,
+      0
+    ],
+    "finalRerunRequiredAfterRootChanges": true
+  },
+  "finalFreezeReinforcementChecks": {
+    "summary": "browser/summon-wave10-validation.json",
+    "sha256": "a3c37a5703c21b67b27d1b3d21709c7ab151854acc1a2a7a9f0659fb330a0bd6",
+    "nodeTests": 16,
+    "browserFlows": 16,
+    "exitCodes": [
+      0,
+      0
+    ],
+    "sourceFilesStableDuringRun": 262,
+    "capturesReviewed": 16,
+    "frozen": true,
+    "artAndAbilitiesUnchanged": true
+  }
+}

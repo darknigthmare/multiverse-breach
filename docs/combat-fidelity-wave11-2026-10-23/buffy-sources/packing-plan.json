@@ -1,0 +1,546 @@
+{
+  "heroId": "buffy_summers",
+  "registryStem": "buffy",
+  "universe": "Buffy the Vampire Slayer",
+  "sourceWork": "Buffy the Vampire Slayer — saison 7 (après le retrait de la puce de Spike, avant la Faux et l’amulette)",
+  "date": "2026-10-23",
+  "archiveDir": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources",
+  "outputDir": "public/sprites/generated/melee-buffy-wave11",
+  "reference": {
+    "asset": "public/sprites/generated/heroes/buffy-the-vampire-slayer/buffy-summers.png",
+    "savedImage": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-reference-original.png"
+  },
+  "correctionId": "buffy-corrective-states",
+  "sourceReference": "Authored crossover movement and choreography based on the stated version and equipment; not copied official animation and not certified frame-for-frame canon. Simple/air/ledge actions follow the actual simple profile; charge/special use the secondary profile.",
+  "sources": [
+    {
+      "id": "buffy-defense",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-defense.native.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 4,
+        "column": 3,
+        "state": "shieldExit",
+        "bodyBounds": {
+          "x": 853,
+          "y": 898,
+          "width": 104,
+          "height": 229
+        },
+        "raisedArmsExcluded": true,
+        "reason": "Approximate crown and lower shoe-sole landmarks, excluding one-pixel weak fringe; hands/wooden stake are not stature markers. Independent approximate visual ROI; one source-wide scale preserves all anatomical projections."
+      }
+    },
+    {
+      "id": "buffy-combat-a",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-combat-a.native.png",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 4,
+        "column": 0,
+        "state": "chargeStart",
+        "bodyBounds": {
+          "x": 66,
+          "y": 795,
+          "width": 140,
+          "height": 206
+        },
+        "raisedArmsExcluded": true,
+        "reason": "Source native chargeStart0 is substantially more upright than chargeRecovery3. Its wide guarded stance retains mild natural knee flexion; use this206px projection rather than stretching the deeply crouched recovery164px to the standing target. Independent approximate visual ROI; one source-wide scale preserves all anatomical projections."
+      },
+      "segmentationSeedAlpha": 64
+    },
+    {
+      "id": "buffy-motion-a",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-motion-a.native.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "fall"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 0,
+        "column": 0,
+        "state": "idle",
+        "bodyBounds": {
+          "x": 121,
+          "y": 13,
+          "width": 91,
+          "height": 191
+        },
+        "raisedArmsExcluded": true,
+        "reason": "Approximate crown and lower shoe-sole landmarks, excluding one-pixel weak fringe; hands/wooden stake are not stature markers. Independent approximate visual ROI; one source-wide scale preserves all anatomical projections."
+      }
+    },
+    {
+      "id": "buffy-combat-b",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-combat-b.native.png",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 4,
+        "column": 0,
+        "state": "intro",
+        "bodyBounds": {
+          "x": 81,
+          "y": 839,
+          "width": 111,
+          "height": 245
+        },
+        "raisedArmsExcluded": true,
+        "reason": "Approximate crown and lower shoe-sole landmarks, excluding one-pixel weak fringe; hands/wooden stake are not stature markers. Independent approximate visual ROI; one source-wide scale preserves all anatomical projections."
+      }
+    },
+    {
+      "id": "buffy-ledge",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-ledge.native.png",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 1,
+        "column": 0,
+        "state": "ledgeHang",
+        "bodyBounds": {
+          "x": 92,
+          "y": 383,
+          "width": 112,
+          "height": 241
+        },
+        "raisedArmsExcluded": true,
+        "reason": "Arms overhead excluded: crown begins about46px below source frame top. Knees are visibly bent; height241 is projected crown→soles, not a standing equivalent. Independent approximate visual ROI; one source-wide scale preserves all anatomical projections. Raised hands excluded. Less-folded leg path gives approximate standing equivalent258 rather than inflating projected241 to190.",
+        "nativeStandingBodyHeight": 258,
+        "standingEquivalentMethod": "approximate-native-crown-hip-knee-ankle-sole-path; projected body ROI retained separately",
+        "anatomicalPath": {
+          "coordinateSpace": "native-source-pixels",
+          "points": [
+            [
+              145,
+              385
+            ],
+            [
+              155,
+              492
+            ],
+            [
+              193,
+              545
+            ],
+            [
+              168,
+              592
+            ],
+            [
+              181,
+              623
+            ]
+          ],
+          "projectedCrownToSole": 238,
+          "pathLengthApprox": 260,
+          "uprightEquivalentApprox": 258,
+          "landmarkUncertaintyPx": 5
+        }
+      }
+    },
+    {
+      "id": "buffy-motion-b",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-motion-b.native.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 5,
+        "column": 0,
+        "state": "taunt1",
+        "bodyBounds": {
+          "x": 65,
+          "y": 1059,
+          "width": 155,
+          "height": 248
+        },
+        "raisedArmsExcluded": true,
+        "reason": "Approximate crown and lower shoe-sole landmarks, excluding one-pixel weak fringe; hands/wooden stake are not stature markers. Independent approximate visual ROI; one source-wide scale preserves all anatomical projections."
+      }
+    },
+    {
+      "id": "buffy-corrective-states",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-corrective-states.native.png",
+      "states": [
+        "perfectShield",
+        "jumpApex",
+        "aerialForward",
+        "crouchIdle"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 0,
+        "column": 0,
+        "state": "perfectShield",
+        "bodyBounds": {
+          "x": 56,
+          "y": 50,
+          "width": 231,
+          "height": 356
+        },
+        "raisedArmsExcluded": true,
+        "reason": "Wide standing guard with legs largely straight, hands and stake do not extend above crown. Suitable source standing calibration; do not use the distinctly flexed alternative columns1/2 as a replacement. Lateral leg spread can shorten crown→sole projection slightly even without a deep crouch; small posture uncertainty is explicit, so this is an approximate guarded-standing reference, not certified upright anatomy. Independent approximate visual ROI; one source-wide scale preserves all anatomical projections."
+      }
+    }
+  ],
+  "atlases": [
+    {
+      "id": "buffy-motion-a",
+      "batch": "Motion",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "selection": {
+        "idle": {
+          "sourceId": "buffy-motion-a",
+          "row": 0
+        },
+        "walk": {
+          "sourceId": "buffy-motion-a",
+          "row": 1
+        },
+        "run": {
+          "sourceId": "buffy-motion-a",
+          "row": 2
+        },
+        "turn": {
+          "sourceId": "buffy-motion-a",
+          "row": 3
+        },
+        "jumpStart": {
+          "sourceId": "buffy-motion-a",
+          "row": 4
+        },
+        "jumpRise": {
+          "sourceId": "buffy-motion-a",
+          "row": 5
+        },
+        "jumpApex": {
+          "sourceId": "buffy-corrective-states",
+          "row": 1
+        },
+        "fall": {
+          "sourceId": "buffy-motion-a",
+          "row": 6
+        }
+      }
+    },
+    {
+      "id": "buffy-motion-b",
+      "batch": "Motion",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "selection": {
+        "fastFall": {
+          "sourceId": "buffy-motion-b",
+          "row": 0
+        },
+        "land": {
+          "sourceId": "buffy-motion-b",
+          "row": 1
+        },
+        "crouchEnter": {
+          "sourceId": "buffy-motion-b",
+          "row": 2
+        },
+        "crouchIdle": {
+          "sourceId": "buffy-corrective-states",
+          "row": 3
+        },
+        "crouchExit": {
+          "sourceId": "buffy-motion-b",
+          "row": 3
+        },
+        "crouchCharge": {
+          "sourceId": "buffy-motion-b",
+          "row": 4
+        },
+        "taunt1": {
+          "sourceId": "buffy-motion-b",
+          "row": 5
+        },
+        "hitStun": {
+          "sourceId": "buffy-motion-b",
+          "row": 6
+        }
+      }
+    },
+    {
+      "id": "buffy-defense",
+      "batch": "Motion",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "selection": {
+        "shieldEnter": {
+          "sourceId": "buffy-defense",
+          "row": 0
+        },
+        "shieldHold": {
+          "sourceId": "buffy-defense",
+          "row": 1
+        },
+        "shieldHit": {
+          "sourceId": "buffy-defense",
+          "row": 2
+        },
+        "perfectShield": {
+          "sourceId": "buffy-corrective-states",
+          "row": 0
+        },
+        "shieldBreak": {
+          "sourceId": "buffy-defense",
+          "row": 3
+        },
+        "shieldExit": {
+          "sourceId": "buffy-defense",
+          "row": 4
+        },
+        "dead": {
+          "sourceId": "buffy-defense",
+          "row": 5
+        },
+        "defeat": {
+          "sourceId": "buffy-defense",
+          "row": 6
+        }
+      }
+    },
+    {
+      "id": "buffy-combat-a",
+      "batch": "Combat",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "selection": {
+        "attackLight1": {
+          "sourceId": "buffy-combat-a",
+          "row": 0
+        },
+        "attackLight2": {
+          "sourceId": "buffy-combat-a",
+          "row": 1
+        },
+        "attackLight3": {
+          "sourceId": "buffy-combat-a",
+          "row": 2
+        },
+        "crouchLight": {
+          "sourceId": "buffy-combat-a",
+          "row": 3
+        },
+        "chargeStart": {
+          "sourceId": "buffy-combat-a",
+          "row": 4
+        },
+        "chargeLoop": {
+          "sourceId": "buffy-combat-a",
+          "row": 5
+        },
+        "chargeRelease": {
+          "sourceId": "buffy-combat-a",
+          "row": 6
+        },
+        "chargeRecovery": {
+          "sourceId": "buffy-combat-a",
+          "row": 7
+        }
+      }
+    },
+    {
+      "id": "buffy-combat-b",
+      "batch": "Combat",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "selection": {
+        "attackRecovery": {
+          "sourceId": "buffy-combat-b",
+          "row": 0
+        },
+        "special": {
+          "sourceId": "buffy-combat-b",
+          "row": 1
+        },
+        "aerialNeutral": {
+          "sourceId": "buffy-combat-b",
+          "row": 2
+        },
+        "aerialForward": {
+          "sourceId": "buffy-corrective-states",
+          "row": 2
+        },
+        "aerialDown": {
+          "sourceId": "buffy-combat-b",
+          "row": 3
+        },
+        "intro": {
+          "sourceId": "buffy-combat-b",
+          "row": 4
+        },
+        "victory": {
+          "sourceId": "buffy-combat-b",
+          "row": 5
+        },
+        "ledgeAttack": {
+          "sourceId": "buffy-combat-b",
+          "row": 6
+        }
+      }
+    },
+    {
+      "id": "buffy-ledge",
+      "batch": "Combat",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "selection": {
+        "ledgeCatch": {
+          "sourceId": "buffy-ledge",
+          "row": 0
+        },
+        "ledgeHang": {
+          "sourceId": "buffy-ledge",
+          "row": 1
+        },
+        "ledgeClimb": {
+          "sourceId": "buffy-ledge",
+          "row": 2
+        },
+        "ledgeDrop": {
+          "sourceId": "buffy-ledge",
+          "row": 3
+        },
+        "ledgeJump": {
+          "sourceId": "buffy-ledge",
+          "row": 4
+        }
+      }
+    }
+  ],
+  "incompleteInitialSources": [
+    {
+      "id": "buffy-defense",
+      "observedRows": 7,
+      "expectedRows": 8,
+      "missingState": "perfectShield"
+    },
+    {
+      "id": "buffy-motion-a",
+      "observedRows": 7,
+      "expectedRows": 8,
+      "missingState": "jumpApex"
+    },
+    {
+      "id": "buffy-combat-b",
+      "observedRows": 7,
+      "expectedRows": 8,
+      "missingState": "aerialForward"
+    },
+    {
+      "id": "buffy-motion-b",
+      "observedRows": 7,
+      "expectedRows": 8,
+      "missingState": "crouchIdle"
+    }
+  ],
+  "visualReview": {
+    "complete": true,
+    "outfit": "Blonde mid-length hair, black sleeveless modest tank, burgundy trousers, black shoes.",
+    "weapons": "Physical natural wood stake in right hand for simple and airborne attacks; secondary is a real physical kick. Hands free on ledge; stake sheathed.",
+    "limitations": [
+      "Original adapted crossover choreography, not exported official animation or certified frame-for-frame canon.",
+      "Runtime facing mirrors the native artwork, including anatomical or costume asymmetry.",
+      "Ledge source uses its own crown-to-sole hanging calibration, raised hands excluded; actual lower-body flexion is documented.",
+      "Source stature uses approximate anatomical landmarks; Buffy ledge standing-equivalent258px derived from real native joint path, not a claim of exact human anatomy."
+    ]
+  }
+}

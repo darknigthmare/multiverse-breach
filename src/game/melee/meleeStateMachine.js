@@ -42,6 +42,7 @@ export const MELEE_CANCEL_WINDOWS = Object.freeze({
 
 export const MELEE_TRANSITION_DATA = Object.freeze({
   intro: { duration: 0.4, completeInto: 'idle' },
+  turn: { duration: 0.1, completeInto: 'idle' },
   crouchEnter: { duration: 0.1, completeInto: 'crouchIdle' },
   crouchExit: { duration: 0.1, completeInto: 'idle' },
   shieldEnter: { duration: 0.08, completeInto: 'shieldHold' },
@@ -115,7 +116,10 @@ export const tickMeleeState = (fighter, dt) => {
   if (!fighter) return null;
   fighter.stateElapsed = Math.max(0, Number(fighter.stateElapsed) || 0) + Math.max(0, Number(dt) || 0);
   const transition = MELEE_TRANSITION_DATA[fighter.state];
-  if (transition && fighter.stateElapsed >= transition.duration && !fighter.action) {
+  const presentationDuration = fighter.state === 'intro' && fighter.meleePresentation?.phase === 'intro'
+    ? Number(fighter.meleePresentation.duration) : 0;
+  const duration = Number.isFinite(presentationDuration) && presentationDuration > 0 ? presentationDuration : transition?.duration;
+  if (transition && fighter.stateElapsed >= duration && !fighter.action) {
     transitionMeleeState(fighter, transition.completeInto, { force: true });
     return transition.completeInto;
   }

@@ -1,0 +1,1808 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "plannedHeroIds": [
+    "robin_tt",
+    "cyborg_tt",
+    "raven_tt",
+    "starfire_tt",
+    "beast_boy_tt"
+  ],
+  "missingVisualHeroIds": [
+    "robin_tt",
+    "raven_tt",
+    "starfire_tt"
+  ],
+  "full32Count": 1,
+  "partialCount": 1,
+  "partialPoses": 8,
+  "entries": [
+    {
+      "id": "cyborg_tt",
+      "heroId": "cyborg_tt",
+      "universe": "Teen Titans",
+      "name": "Cyborg",
+      "sheet": "/sprites/generated/combat-character-animations-wave8/cyborg_tt.png",
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 8,
+      "frames": 32,
+      "partial": false,
+      "completePhases": true,
+      "missingPhases": [],
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "f93ba0f8c7d8b9766dfb5daaec65116cbb356aa0e2b51f7feb6e01db656d6501",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "sourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "sourceDimensions": [
+        1293,
+        1217
+      ],
+      "segmentedDimensions": [
+        950,
+        1217
+      ],
+      "transparentMarginExtraction": {
+        "sourceCrop": {
+          "left": 185,
+          "top": 0,
+          "width": 950,
+          "height": 1217
+        },
+        "maxDiscardedAlpha": 1,
+        "discardedNonzeroPixels": 84,
+        "originalUnchanged": true,
+        "reason": "Remove asymmetric empty outer margins before adaptive four-column extraction; no body or visible effect is removed."
+      },
+      "referenceAsset": "/sprites/generated/heroes/teen-titans/cyborg-tt.png",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-reference.png",
+      "referenceAssetSha256": "cc7101532430fb782d4dfe255186dcc91c77f9ee31e97d4c3136de6a5a0a5ce9",
+      "additionalReferences": [],
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": true,
+      "retainedSourceRows": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "rejectedSourceRows": [
+        5
+      ],
+      "sourceWork": "Teen Titans (2003 animated series)",
+      "sourceReference": "Teen Titans (2003), Cyborg: clean silver/white-blue cybernetic body and integrated arm cannon. DC series page confirms the continuity and roster; Final Exam transcript explicitly describes his sonic cannon. Exact movement, timing and poses here are authored adaptations, not official episode frames.",
+      "abilityName": "Sonic Cannon de Cyborg",
+      "identityCorrection": "Replace the overly realistic dense armored chassis with Cyborg2003 clean white/silver-blue cybernetics, brown exposed face, left red cyber-eye and integrated arm cannon; no separate gun.",
+      "bodyFormsByPhase": null,
+      "sourceAbility": {
+        "id": "cyborg_tt:super",
+        "name": "Sonic Cannon de Cyborg",
+        "effect": "damage",
+        "delivery": "beam",
+        "duration": 1.25,
+        "hitAt": 0.5
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "sourceCrop": {
+              "left": 185,
+              "top": 0,
+              "width": 950,
+              "height": 1217
+            },
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+            "sourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 175
+            },
+            "scale": 1.3727810650887573,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 10,
+                  "width": 143,
+                  "height": 159,
+                  "pixels": 12843
+                },
+                "output": {
+                  "left": 36,
+                  "top": 26,
+                  "width": 196,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 303,
+                  "top": 10,
+                  "width": 130,
+                  "height": 159,
+                  "pixels": 12238
+                },
+                "output": {
+                  "left": 55,
+                  "top": 26,
+                  "width": 178,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 520,
+                  "top": 13,
+                  "width": 133,
+                  "height": 154,
+                  "pixels": 11615
+                },
+                "output": {
+                  "left": 27,
+                  "top": 30,
+                  "width": 183,
+                  "height": 211
+                }
+              },
+              {
+                "source": {
+                  "left": 747,
+                  "top": 17,
+                  "width": 151,
+                  "height": 150,
+                  "pixels": 12799
+                },
+                "output": {
+                  "left": 12,
+                  "top": 35,
+                  "width": 207,
+                  "height": 206
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.009174,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 218,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 218,
+              "nativeComparableBodyHeight": 159,
+              "nativeReferenceBodyHeight": 159,
+              "referenceRenderScale": 1.0091743119266054,
+              "referenceRenderedBodyHeight": 220,
+              "calibrationTargetBodyHeight": 220,
+              "bodyForm": "cyborg-2003",
+              "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                36,
+                26,
+                196,
+                218
+              ],
+              "referenceBodyBounds": [
+                36,
+                26,
+                196,
+                218
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                237,
+                10,
+                143,
+                159
+              ],
+              "nativeReferenceBodyBounds": [
+                237,
+                10,
+                143,
+                159
+              ],
+              "nativeReferenceColumn": 0,
+              "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+              "nativeSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+              "nativeReferenceSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 220,
+              "correctedBodyHeight": 219.999932,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "outro",
+            "sourceCrop": {
+              "left": 185,
+              "top": 0,
+              "width": 950,
+              "height": 1217
+            },
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+            "sourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 166,
+              "bottom": 345
+            },
+            "scale": 1.3488372093023255,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 8,
+                  "width": 125,
+                  "height": 160,
+                  "pixels": 11706
+                },
+                "output": {
+                  "left": 38,
+                  "top": 15,
+                  "width": 169,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 292,
+                  "top": 10,
+                  "width": 96,
+                  "height": 168,
+                  "pixels": 10768
+                },
+                "output": {
+                  "left": 41,
+                  "top": 17,
+                  "width": 129,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 528,
+                  "top": 7,
+                  "width": 96,
+                  "height": 162,
+                  "pixels": 10752
+                },
+                "output": {
+                  "left": 39,
+                  "top": 13,
+                  "width": 129,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 771,
+                  "top": 6,
+                  "width": 113,
+                  "height": 163,
+                  "pixels": 10094
+                },
+                "output": {
+                  "left": 47,
+                  "top": 12,
+                  "width": 152,
+                  "height": 220
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.024924,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 218,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 216,
+              "nativeComparableBodyHeight": 160,
+              "nativeReferenceBodyHeight": 159,
+              "referenceRenderScale": 1.0091743119266054,
+              "referenceRenderedBodyHeight": 220,
+              "calibrationTargetBodyHeight": 220,
+              "bodyForm": "cyborg-2003",
+              "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                38,
+                15,
+                169,
+                216
+              ],
+              "referenceBodyBounds": [
+                36,
+                26,
+                196,
+                218
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                237,
+                174,
+                125,
+                160
+              ],
+              "nativeReferenceBodyBounds": [
+                237,
+                10,
+                143,
+                159
+              ],
+              "nativeReferenceColumn": 0,
+              "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+              "nativeSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+              "nativeReferenceSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 221.383648,
+              "correctedBodyHeight": 221.383584,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "roundVictory",
+            "sourceCrop": {
+              "left": 185,
+              "top": 0,
+              "width": 950,
+              "height": 1217
+            },
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+            "sourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 331,
+              "bottom": 515
+            },
+            "scale": 1.3567251461988303,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 43,
+                  "top": 8,
+                  "width": 125,
+                  "height": 171,
+                  "pixels": 13233
+                },
+                "output": {
+                  "left": 25,
+                  "top": 12,
+                  "width": 170,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 286,
+                  "top": 10,
+                  "width": 127,
+                  "height": 168,
+                  "pixels": 13148
+                },
+                "output": {
+                  "left": 33,
+                  "top": 15,
+                  "width": 172,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 522,
+                  "top": 12,
+                  "width": 123,
+                  "height": 167,
+                  "pixels": 12379
+                },
+                "output": {
+                  "left": 31,
+                  "top": 17,
+                  "width": 167,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 754,
+                  "top": 15,
+                  "width": 128,
+                  "height": 163,
+                  "pixels": 11927
+                },
+                "output": {
+                  "left": 23,
+                  "top": 21,
+                  "width": 174,
+                  "height": 221
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.020519,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 218,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 221,
+              "nativeComparableBodyHeight": 163,
+              "nativeReferenceBodyHeight": 159,
+              "referenceRenderScale": 1.0091743119266054,
+              "referenceRenderedBodyHeight": 220,
+              "calibrationTargetBodyHeight": 220,
+              "bodyForm": "cyborg-2003",
+              "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                23,
+                21,
+                174,
+                221
+              ],
+              "referenceBodyBounds": [
+                36,
+                26,
+                196,
+                218
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                939,
+                346,
+                128,
+                163
+              ],
+              "nativeReferenceBodyBounds": [
+                237,
+                10,
+                143,
+                159
+              ],
+              "nativeReferenceColumn": 0,
+              "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+              "nativeSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+              "nativeReferenceSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 225.534591,
+              "correctedBodyHeight": 225.534699,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "roundDefeat",
+            "sourceCrop": {
+              "left": 185,
+              "top": 0,
+              "width": 950,
+              "height": 1217
+            },
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+            "sourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 504,
+              "bottom": 676
+            },
+            "scale": 1.3647058823529412,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 34,
+                  "top": 2,
+                  "width": 132,
+                  "height": 158,
+                  "pixels": 10969
+                },
+                "output": {
+                  "left": 12,
+                  "top": 24,
+                  "width": 180,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 282,
+                  "top": 2,
+                  "width": 137,
+                  "height": 156,
+                  "pixels": 10467
+                },
+                "output": {
+                  "left": 27,
+                  "top": 24,
+                  "width": 187,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 515,
+                  "top": 3,
+                  "width": 130,
+                  "height": 157,
+                  "pixels": 10882
+                },
+                "output": {
+                  "left": 21,
+                  "top": 26,
+                  "width": 177,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 774,
+                  "top": 4,
+                  "width": 101,
+                  "height": 159,
+                  "pixels": 10680
+                },
+                "output": {
+                  "left": 50,
+                  "top": 27,
+                  "width": 138,
+                  "height": 217
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.013376,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 218,
+              "sourceComparableColumn": 1,
+              "normalizedBodyHeight": 213,
+              "nativeComparableBodyHeight": 156,
+              "nativeReferenceBodyHeight": 159,
+              "referenceRenderScale": 1.0091743119266054,
+              "referenceRenderedBodyHeight": 220,
+              "calibrationTargetBodyHeight": 220,
+              "bodyForm": "cyborg-2003",
+              "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                27,
+                24,
+                187,
+                213
+              ],
+              "referenceBodyBounds": [
+                36,
+                26,
+                196,
+                218
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                467,
+                506,
+                137,
+                156
+              ],
+              "nativeReferenceBodyBounds": [
+                237,
+                10,
+                143,
+                159
+              ],
+              "nativeReferenceColumn": 0,
+              "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+              "nativeSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+              "nativeReferenceSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 215.849057,
+              "correctedBodyHeight": 215.849088,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "fatality",
+            "sourceCrop": {
+              "left": 185,
+              "top": 0,
+              "width": 950,
+              "height": 1217
+            },
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+            "sourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 663,
+              "bottom": 823
+            },
+            "scale": 1.1658291457286432,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 36,
+                  "top": 1,
+                  "width": 149,
+                  "height": 153,
+                  "pixels": 11677
+                },
+                "output": {
+                  "left": 32,
+                  "top": 64,
+                  "width": 174,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 257,
+                  "top": 7,
+                  "width": 159,
+                  "height": 146,
+                  "pixels": 12154
+                },
+                "output": {
+                  "left": 12,
+                  "top": 71,
+                  "width": 185,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 505,
+                  "top": 7,
+                  "width": 158,
+                  "height": 148,
+                  "pixels": 12566
+                },
+                "output": {
+                  "left": 25,
+                  "top": 71,
+                  "width": 184,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 762,
+                  "top": 1,
+                  "width": 135,
+                  "height": 153,
+                  "pixels": 11593
+                },
+                "output": {
+                  "left": 47,
+                  "top": 64,
+                  "width": 157,
+                  "height": 178
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.189315,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 218,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 178,
+              "nativeComparableBodyHeight": 153,
+              "nativeReferenceBodyHeight": 159,
+              "referenceRenderScale": 1.0091743119266054,
+              "referenceRenderedBodyHeight": 220,
+              "calibrationTargetBodyHeight": 220,
+              "bodyForm": "cyborg-2003",
+              "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                47,
+                64,
+                157,
+                178
+              ],
+              "referenceBodyBounds": [
+                36,
+                26,
+                196,
+                218
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                947,
+                664,
+                135,
+                153
+              ],
+              "nativeReferenceBodyBounds": [
+                237,
+                10,
+                143,
+                159
+              ],
+              "nativeReferenceColumn": 0,
+              "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+              "nativeSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+              "nativeReferenceSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 211.698113,
+              "correctedBodyHeight": 211.69807,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "victory",
+            "sourceCrop": null,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-technique-rows-corrected.png",
+            "sourceImageSha256": "a4b3d93e84d9cdb388e48b71a66dd0c5b85b9dff178d936c3ea1dcaa7dd3e367",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 470
+            },
+            "scale": 0.5603864734299517,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 67,
+                  "top": 27,
+                  "width": 333,
+                  "height": 413,
+                  "pixels": 81773
+                },
+                "output": {
+                  "left": 41,
+                  "top": 13,
+                  "width": 187,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 516,
+                  "top": 31,
+                  "width": 355,
+                  "height": 409,
+                  "pixels": 78458
+                },
+                "output": {
+                  "left": 44,
+                  "top": 15,
+                  "width": 199,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 958,
+                  "top": 27,
+                  "width": 304,
+                  "height": 413,
+                  "pixels": 76038
+                },
+                "output": {
+                  "left": 44,
+                  "top": 13,
+                  "width": 170,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 1410,
+                  "top": 26,
+                  "width": 283,
+                  "height": 414,
+                  "pixels": 78563
+                },
+                "output": {
+                  "left": 48,
+                  "top": 12,
+                  "width": 159,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.952381,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 218,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 231,
+              "nativeComparableBodyHeight": 413,
+              "nativeReferenceBodyHeight": 413,
+              "referenceRenderScale": 1.0091743119266054,
+              "referenceRenderedBodyHeight": 220,
+              "calibrationTargetBodyHeight": 220,
+              "bodyForm": "cyborg-2003",
+              "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                41,
+                13,
+                187,
+                231
+              ],
+              "referenceBodyBounds": [
+                36,
+                26,
+                196,
+                218
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                67,
+                27,
+                333,
+                413
+              ],
+              "nativeReferenceBodyBounds": [
+                67,
+                27,
+                333,
+                413
+              ],
+              "nativeReferenceColumn": 0,
+              "sourceDensityCalibration": {
+                "kind": "independent-native-correction-source",
+                "referenceSourcePhase": "victory",
+                "referenceColumn": 0,
+                "note": "The two-row native correction has a different pixel density from the seven-row original. Its own 413px standing reference maps to the same reviewed 220px Cyborg stature; the 304px kneel remains shorter."
+              },
+              "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-technique-rows-corrected.png",
+              "nativeSourceImageSha256": "a4b3d93e84d9cdb388e48b71a66dd0c5b85b9dff178d936c3ea1dcaa7dd3e367",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-technique-rows-corrected.png",
+              "nativeReferenceSourceImageSha256": "a4b3d93e84d9cdb388e48b71a66dd0c5b85b9dff178d936c3ea1dcaa7dd3e367",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 220,
+              "correctedBodyHeight": 220.000011,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "defeat",
+            "sourceCrop": null,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-technique-rows-corrected.png",
+            "sourceImageSha256": "a4b3d93e84d9cdb388e48b71a66dd0c5b85b9dff178d936c3ea1dcaa7dd3e367",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 469,
+              "bottom": 887
+            },
+            "scale": 0.6356164383561644,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 84,
+                  "top": 35,
+                  "width": 281,
+                  "height": 341,
+                  "pixels": 61693
+                },
+                "output": {
+                  "left": 40,
+                  "top": 27,
+                  "width": 179,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 528,
+                  "top": 31,
+                  "width": 286,
+                  "height": 345,
+                  "pixels": 63583
+                },
+                "output": {
+                  "left": 41,
+                  "top": 25,
+                  "width": 182,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 956,
+                  "top": 34,
+                  "width": 335,
+                  "height": 341,
+                  "pixels": 76439
+                },
+                "output": {
+                  "left": 31,
+                  "top": 27,
+                  "width": 213,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 1405,
+                  "top": 69,
+                  "width": 318,
+                  "height": 304,
+                  "pixels": 65913
+                },
+                "output": {
+                  "left": 34,
+                  "top": 49,
+                  "width": 202,
+                  "height": 193
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.839052,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 218,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 193,
+              "nativeComparableBodyHeight": 304,
+              "nativeReferenceBodyHeight": 413,
+              "referenceRenderScale": 1.0091743119266054,
+              "referenceRenderedBodyHeight": 220,
+              "calibrationTargetBodyHeight": 220,
+              "bodyForm": "cyborg-2003",
+              "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                34,
+                49,
+                202,
+                193
+              ],
+              "referenceBodyBounds": [
+                36,
+                26,
+                196,
+                218
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                1405,
+                538,
+                318,
+                304
+              ],
+              "nativeReferenceBodyBounds": [
+                67,
+                27,
+                333,
+                413
+              ],
+              "nativeReferenceColumn": 0,
+              "sourceDensityCalibration": {
+                "kind": "independent-native-correction-source",
+                "referenceSourcePhase": "victory",
+                "referenceColumn": 0,
+                "note": "The two-row native correction has a different pixel density from the seven-row original. Its own 413px standing reference maps to the same reviewed 220px Cyborg stature; the 304px kneel remains shorter."
+              },
+              "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-technique-rows-corrected.png",
+              "nativeSourceImageSha256": "a4b3d93e84d9cdb388e48b71a66dd0c5b85b9dff178d936c3ea1dcaa7dd3e367",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-technique-rows-corrected.png",
+              "nativeReferenceSourceImageSha256": "a4b3d93e84d9cdb388e48b71a66dd0c5b85b9dff178d936c3ea1dcaa7dd3e367",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 161.937046,
+              "correctedBodyHeight": 161.937036,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "super",
+            "sourceCrop": {
+              "left": 185,
+              "top": 0,
+              "width": 950,
+              "height": 1217
+            },
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+            "sourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 998,
+              "bottom": 1217
+            },
+            "scale": 0.9789029535864979,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 8,
+                  "width": 182,
+                  "height": 178,
+                  "pixels": 15900
+                },
+                "output": {
+                  "left": 33,
+                  "top": 69,
+                  "width": 178,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 238,
+                  "top": 10,
+                  "width": 207,
+                  "height": 176,
+                  "pixels": 18584
+                },
+                "output": {
+                  "left": 12,
+                  "top": 71,
+                  "width": 203,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 483,
+                  "top": 13,
+                  "width": 204,
+                  "height": 173,
+                  "pixels": 18434
+                },
+                "output": {
+                  "left": 20,
+                  "top": 74,
+                  "width": 200,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 738,
+                  "top": 10,
+                  "width": 176,
+                  "height": 177,
+                  "pixels": 16753
+                },
+                "output": {
+                  "left": 37,
+                  "top": 71,
+                  "width": 172,
+                  "height": 173
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.223689,
+            "statureReview": {
+              "referencePhase": "super",
+              "referenceColumn": 3,
+              "referenceBodyHeight": 173,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 173,
+              "nativeComparableBodyHeight": 177,
+              "nativeReferenceBodyHeight": 177,
+              "referenceRenderScale": 1.2236885156505617,
+              "referenceRenderedBodyHeight": 211.698113,
+              "calibrationTargetBodyHeight": 211.698113,
+              "bodyForm": "cyborg-2003",
+              "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                37,
+                71,
+                172,
+                173
+              ],
+              "referenceBodyBounds": [
+                37,
+                71,
+                172,
+                173
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                923,
+                1008,
+                176,
+                177
+              ],
+              "nativeReferenceBodyBounds": [
+                923,
+                1008,
+                176,
+                177
+              ],
+              "nativeReferenceColumn": 3,
+              "sourceDensityCalibration": {
+                "kind": "nonuniform-source-row-density",
+                "referenceRecoveryPhase": "fatality",
+                "referenceRecoveryColumn": 3,
+                "referenceRecoveryNativeBodyHeight": 153,
+                "standingPhase": "intro",
+                "standingColumn": 0,
+                "standingNativeBodyHeight": 159,
+                "sourceRecoveryNativeBodyHeight": 177,
+                "note": "The original final row is denser than its earlier corresponding relaxed recovery stance. Its real same-row177px recovery ROI maps to the reviewed fatality recovery stature (220×153/159), rather than enlarging it into a taller character."
+              },
+              "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+              "nativeSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+              "nativeReferenceSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 211.698113,
+              "correctedBodyHeight": 211.698197,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          }
+        ],
+        "renderScaleMethod": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+        "renderScaleDoesNotModifyBitmap": true
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2a38b19d558eaac9ac28bf4e6f39044a358f7bb8d19f6026654e99da06dd700b",
+              "64d89b7b1a2da71bf145f16909624bdf49d19c87f9bb1540704ad4de4abcb654",
+              "3517457e5d4dece895f5f4810511b20790ada8211d440a9c1395ab302eb01897",
+              "577f2c1b1fa9d2568befc632c53937bcb7b78b4ac80cb745e384d8876da0e98b"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b4d24ebcaeb1acacf2a2a1dc73e2f54a41e247c4d2a0121b03f3feef3895da53",
+              "c20afc6217a4bc547cc4828aa01cd96782a0ffb9463fc3e74e546e014d381f8c",
+              "4f46d776cbb0786f3db0ecc1540b992dff17cd2fe5be67dd3f8710d92eb3242b",
+              "18b0874dd937bba029d4e0ff7d1894c2e0ef8db1fcc55e8eabb9a83d4296912b"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4f0d534d36a9b6ab4caf6d262993bed915afd9a7e6a57dbd676d6b8821c51ee0",
+              "10ad024b5410522b9fa61486f2bdd96e8cb2af2ff933e925104207a52b8db7c3",
+              "e7e77c26aa050ca508b543bd9d861b679a6f1a3b248e06177592dffeae146b26",
+              "236586aea943ddb64582c12f48ab0e81bc3308ecdc761f8c0293a6178195e870"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d7b6c537797d0919a9ee81548e0849c828a0c431e6a2efec94f60945f9566215",
+              "8b8b6333b2b097e588c09ae711aec4552263920ed3506b556a49136f25197475",
+              "ac40bd38d6486af069ae7ab81367518c59b69a7185865c7a4053610f64b049a8",
+              "616101e162b8f55a8176552092b13fa6a058145264c8f5ddffa193fcf03767eb"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "779758ff9943e8dfc47a7aaff63fe146965855dc06f5bbf9662300701a94f33a",
+              "4537d0f35e8a2e7bf2e4f6b970e362b82228e6379765df201c7691b30f44f26e",
+              "bdcf2832fa227f66b0a87e1a02f031e3d913f146ad17ab7fb1798e1cad106d8b",
+              "467d97d6c196de9b8f9be1580664ae67a7342ff718dccaea0f31f9314e48cbd0"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "56314e4747eade62d68cccf37bc3a0d6d32072e1afc6592b8244678203cf3f20",
+              "f63947b872bcf9f5e0de0f420e6896a8616becb78d29249dcb49aabde09e5a60",
+              "99b47712e818d78b48d8ee165240762b527a2024fde3319265e7901cb7647eac",
+              "755c1345cbefafc5e6df3f6b9bad66d205cad0923c496dfbae183be016107d7d"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "20575143c3312d5e30d34b0f427753a840fbdf494f070ffd809c6c83fdee92cb",
+              "6c2bf85e15c9ea8d8c67c2deb455787bd616dadedb0cb88e18a364af2e51957c",
+              "72c6f88713b88a34320e7c613a3a2c773f86dbe4416ae1c9f010c05a51822dc1",
+              "3874d08cbdc869dd54a28919ed7ec80380ccb081e8360986cbc4cfc341135055"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1de7172ad4f33c056f23ae4749872e2c3bfd582ccfb86d8bfcf40b94186d5076",
+              "730b28375d6a7f7c754411bd15dc27f8451ec39eeb8227a7c6fe7ff806e141a7",
+              "c951e4dd7f448df1f92b04d0be78881c5c887443a49eb4cd9f16e42bb9deed2d",
+              "ca5673be5e67db7ca6b6a86f91ea7203d43d953dd9e093610946f11f4a4bb55f"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "eidolonPresent": false,
+        "defaultFacing": "right",
+        "weaponReviewed": true,
+        "versionReviewed": true,
+        "allBodiesPresent": true,
+        "notes": "Teen Titans (2003), Cyborg: clean silver/white-blue cybernetic body and integrated arm cannon. DC series page confirms the continuity and roster; Final Exam transcript explicitly describes his sonic cannon. Exact movement, timing and poses here are authored adaptations, not official episode frames. Replace the overly realistic dense armored chassis with Cyborg2003 clean white/silver-blue cybernetics, brown exposed face, left red cyber-eye and integrated arm cannon; no separate gun. This is original generated choreography; official pixels and source-game cinematic fidelity are not certified.",
+        "statureScaleReviewed": true,
+        "statureNotes": "Canvas-only whole-cell scaling around baseline244; human, complete gorilla and complete T-Rex bodies have explicit separate body-form references. Native bends and source density differences are preserved, never replaced by synthetic anatomy."
+      }
+    },
+    {
+      "id": "beast_boy_tt",
+      "heroId": "beast_boy_tt",
+      "universe": "Teen Titans",
+      "name": "Beast Boy",
+      "sheet": "/sprites/generated/combat-character-animations-wave8/beast_boy_tt.png",
+      "width": 1024,
+      "height": 512,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 2,
+      "frames": 8,
+      "partial": true,
+      "completePhases": false,
+      "missingPhases": [
+        "intro",
+        "outro",
+        "roundVictory",
+        "roundDefeat",
+        "victory",
+        "defeat"
+      ],
+      "phases": {
+        "fatality": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "super": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "1893a789e44721282189ab35f5d5cd99c39cc6de5e46e4b104a6e21a2fe5af9a",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/beast_boy_tt-original.png",
+      "sourceImageSha256": "9d5327f5afda58b64bedc34222bf819593dacdd0873dd9a397416ba4770ba35e",
+      "sourceDimensions": [
+        1402,
+        1122
+      ],
+      "segmentedDimensions": [
+        1402,
+        1122
+      ],
+      "transparentMarginExtraction": null,
+      "referenceAsset": "/sprites/generated/heroes/teen-titans/beast-boy-tt.png",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/beast_boy_tt-reference.png",
+      "referenceAssetSha256": "aae51f306e37db7b343a8a44651138403988f1fd5d498cd9a465011cd75459f8",
+      "additionalReferences": [],
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "retainedSourceRows": [
+        4,
+        7
+      ],
+      "rejectedSourceRows": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "sourceWork": "Teen Titans (2003 animated series)",
+      "sourceReference": "Teen Titans (2003), Beast Boy: Final Exam transcript/indexed excerpt explicitly describes Beast Boy as a T-rex. Only eight complete green Tyrannosaurus poses are retained for fatality/super; all six human rows in the original source are rejected and are not exposed as phases. These are adapted generated poses, not official episode frames.",
+      "abilityName": "Charge du T-Rex vert",
+      "identityCorrection": "Only the eight complete green T-Rex poses are retained. All six humanoid rows were rejected because their head/body proportions do not match the requested 2003 series; a native correction was refused. No humanoid row is exposed by this partial atlas.",
+      "bodyFormsByPhase": {
+        "fatality": "green-tyrannosaurus",
+        "super": "green-tyrannosaurus"
+      },
+      "sourceAbility": {
+        "id": "beast_boy_tt:super",
+        "name": "Charge du T-Rex vert",
+        "effect": "damage",
+        "delivery": "melee",
+        "duration": 1.1,
+        "hitAt": 0.451
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "fatality",
+            "sourceCrop": null,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/beast_boy_tt-original.png",
+            "sourceImageSha256": "9d5327f5afda58b64bedc34222bf819593dacdd0873dd9a397416ba4770ba35e",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 579,
+              "bottom": 740
+            },
+            "scale": 0.5843828715365239,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 20,
+                  "top": 22,
+                  "width": 351,
+                  "height": 122,
+                  "pixels": 20729
+                },
+                "output": {
+                  "left": 37,
+                  "top": 165,
+                  "width": 205,
+                  "height": 71
+                }
+              },
+              {
+                "source": {
+                  "left": 369,
+                  "top": 10,
+                  "width": 355,
+                  "height": 136,
+                  "pixels": 19113
+                },
+                "output": {
+                  "left": 36,
+                  "top": 158,
+                  "width": 207,
+                  "height": 79
+                }
+              },
+              {
+                "source": {
+                  "left": 771,
+                  "top": 6,
+                  "width": 292,
+                  "height": 145,
+                  "pixels": 20734
+                },
+                "output": {
+                  "left": 66,
+                  "top": 155,
+                  "width": 171,
+                  "height": 85
+                }
+              },
+              {
+                "source": {
+                  "left": 1063,
+                  "top": 4,
+                  "width": 320,
+                  "height": 154,
+                  "pixels": 16066
+                },
+                "output": {
+                  "left": 32,
+                  "top": 154,
+                  "width": 187,
+                  "height": 90
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 2.444444,
+            "statureReview": {
+              "referencePhase": "fatality",
+              "referenceColumn": 3,
+              "referenceBodyHeight": 90,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 90,
+              "nativeComparableBodyHeight": 154,
+              "nativeReferenceBodyHeight": 154,
+              "referenceRenderScale": 2.4444444444444446,
+              "referenceRenderedBodyHeight": 220,
+              "calibrationTargetBodyHeight": 220,
+              "bodyForm": "green-tyrannosaurus",
+              "reason": "Separate complete green T-Rex reference, not a human proportion comparison. The largest upright native T-Rex reference maps to an authored220px head-to-foot canvas scale; tail/body remain whole and all other native animal crouches retain their source height ratios. This does not certify canonical world size.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                32,
+                154,
+                187,
+                90
+              ],
+              "referenceBodyBounds": [
+                32,
+                154,
+                187,
+                90
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                1063,
+                583,
+                320,
+                154
+              ],
+              "nativeReferenceBodyBounds": [
+                1063,
+                583,
+                320,
+                154
+              ],
+              "nativeReferenceColumn": 3,
+              "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/beast_boy_tt-original.png",
+              "nativeSourceImageSha256": "9d5327f5afda58b64bedc34222bf819593dacdd0873dd9a397416ba4770ba35e",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/beast_boy_tt-original.png",
+              "nativeReferenceSourceImageSha256": "9d5327f5afda58b64bedc34222bf819593dacdd0873dd9a397416ba4770ba35e",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 220,
+              "correctedBodyHeight": 219.99996,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "super",
+            "sourceCrop": null,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/beast_boy_tt-original.png",
+            "sourceImageSha256": "9d5327f5afda58b64bedc34222bf819593dacdd0873dd9a397416ba4770ba35e",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 970,
+              "bottom": 1122
+            },
+            "scale": 0.6073298429319371,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 97,
+                  "top": 16,
+                  "width": 241,
+                  "height": 136,
+                  "pixels": 16728
+                },
+                "output": {
+                  "left": 80,
+                  "top": 161,
+                  "width": 146,
+                  "height": 83
+                }
+              },
+              {
+                "source": {
+                  "left": 400,
+                  "top": 12,
+                  "width": 316,
+                  "height": 131,
+                  "pixels": 17921
+                },
+                "output": {
+                  "left": 52,
+                  "top": 159,
+                  "width": 192,
+                  "height": 80
+                }
+              },
+              {
+                "source": {
+                  "left": 704,
+                  "top": 10,
+                  "width": 363,
+                  "height": 134,
+                  "pixels": 18520
+                },
+                "output": {
+                  "left": 23,
+                  "top": 158,
+                  "width": 220,
+                  "height": 81
+                }
+              },
+              {
+                "source": {
+                  "left": 1065,
+                  "top": 1,
+                  "width": 319,
+                  "height": 141,
+                  "pixels": 14633
+                },
+                "output": {
+                  "left": 30,
+                  "top": 152,
+                  "width": 194,
+                  "height": 86
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 2.342193,
+            "statureReview": {
+              "referencePhase": "fatality",
+              "referenceColumn": 3,
+              "referenceBodyHeight": 90,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 86,
+              "nativeComparableBodyHeight": 141,
+              "nativeReferenceBodyHeight": 154,
+              "referenceRenderScale": 2.4444444444444446,
+              "referenceRenderedBodyHeight": 220,
+              "calibrationTargetBodyHeight": 220,
+              "bodyForm": "green-tyrannosaurus",
+              "reason": "Separate complete green T-Rex reference, not a human proportion comparison. The largest upright native T-Rex reference maps to an authored220px head-to-foot canvas scale; tail/body remain whole and all other native animal crouches retain their source height ratios. This does not certify canonical world size.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                30,
+                152,
+                194,
+                86
+              ],
+              "referenceBodyBounds": [
+                32,
+                154,
+                187,
+                90
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                1065,
+                971,
+                319,
+                141
+              ],
+              "nativeReferenceBodyBounds": [
+                1063,
+                583,
+                320,
+                154
+              ],
+              "nativeReferenceColumn": 3,
+              "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/beast_boy_tt-original.png",
+              "nativeSourceImageSha256": "9d5327f5afda58b64bedc34222bf819593dacdd0873dd9a397416ba4770ba35e",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/beast_boy_tt-original.png",
+              "nativeReferenceSourceImageSha256": "9d5327f5afda58b64bedc34222bf819593dacdd0873dd9a397416ba4770ba35e",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 201.428571,
+              "correctedBodyHeight": 201.428598,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          }
+        ],
+        "renderScaleMethod": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+        "renderScaleDoesNotModifyBitmap": true
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 8,
+        "phaseReviews": [
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1768afee427bd26f4f27b1dd7b371c4f39c2b3cdd0c89414786e36f2c92f67ac",
+              "6b773094b4471b801751d8c22f0634af7602452b91fc12a442ee3fdb6e81c012",
+              "112349a6f1e87a5afed195050be75e25e1103341b0dde247ad54b87ef5d2f6a7",
+              "ca5136382a483801f1fe6afd5f2c995b4bb456cb9e44cd05b54c6608e7c9ea93"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fef0df0b270ef5e9196d016b5ea3d5073d5fefedd65378cd7362a85aa42619a8",
+              "2ad493212531d6a3291db4e7d0d25f01cd8ab24969559a22b8e803557a9a416e",
+              "8818876a93c21abcb0843dd97cfcb68420f6acd63c71ee2e483eba39e7ca130e",
+              "9a2f3bb8d3e070e2114294885736bf242cb15dbbff7f0e5d44341293cb19339b"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "eidolonPresent": false,
+        "defaultFacing": "right",
+        "weaponReviewed": true,
+        "versionReviewed": true,
+        "allBodiesPresent": true,
+        "notes": "Teen Titans (2003), Beast Boy: Final Exam transcript/indexed excerpt explicitly describes Beast Boy as a T-rex. Only eight complete green Tyrannosaurus poses are retained for fatality/super; all six human rows in the original source are rejected and are not exposed as phases. These are adapted generated poses, not official episode frames. Only the eight complete green T-Rex poses are retained. All six humanoid rows were rejected because their head/body proportions do not match the requested 2003 series; a native correction was refused. No humanoid row is exposed by this partial atlas. This is original generated choreography; official pixels and source-game cinematic fidelity are not certified.",
+        "statureScaleReviewed": true,
+        "statureNotes": "Canvas-only whole-cell scaling around baseline244; human, complete gorilla and complete T-Rex bodies have explicit separate body-form references. Native bends and source density differences are preserved, never replaced by synthetic anatomy."
+      }
+    }
+  ]
+}

@@ -1,0 +1,505 @@
+{
+  "date": "2026-10-23",
+  "heroId": "neo",
+  "completeNativeStates": 45,
+  "retainedNativePoses": 180,
+  "atlasCount": 6,
+  "originalObservedNativeDrawings": 216,
+  "discardedNativeDrawings": 36,
+  "successfulNativeCalls": 8,
+  "actualAttemptsIncludingTransportFailure": 8,
+  "source1to1Verified": false,
+  "canonicalAnimationVerified": false,
+  "measuredPalms": 12,
+  "measuredWrists": 12,
+  "contacts": 11,
+  "precontactFrames": [
+    "ledgeCatch:0"
+  ],
+  "nativeAndNormalizedHandNeighborhood": "48 sampled9x9 regions with strict alpha>24; all81/81.",
+  "bodyCalibration": "One native pixel scale and renderer factor per source; effective190px body reference and true crouch ratios preserved.",
+  "limitations": [
+    "Original adapted crossover choreography; no certified official1:1 animation or exported game frames.",
+    "Runtime facing mirrors the native source, including costume asymmetry."
+  ],
+  "browserExecuted": true,
+  "browserEvidence": "../browser/neo-evidence.json",
+  "sha256": [
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/melee-tooling/build-native-melee-atlases.mjs",
+      "bytes": 16165,
+      "sha256": "184d08e28b611e806afcde935200a7edadd39005fa840d6d5dc85029cbbdc7f5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/melee-tooling/inspect-native-sources.mjs",
+      "bytes": 5315,
+      "sha256": "e7ffff2dc75204df5598b5d04b0a30a5846b43738c64f0edcdc6ff1b1913ee3a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/melee-tooling/inspect-problem-source.mjs",
+      "bytes": 4667,
+      "sha256": "4b378529bf527545f7d066f1f4af6e1899d7c0254ab092f390a0ea375a61af91"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/melee-tooling/previous-eight-manifests-before.json",
+      "bytes": 148382,
+      "sha256": "bd001ce0e369fe69a1bbd5e174ce8ae161017f557be6c7537ce261cd3e367c96"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/melee-tooling/verify-native-melee-atlases.mjs",
+      "bytes": 6716,
+      "sha256": "74111776bb5f5fb4395a7eec61ba96c4b9ce9576761910e984c67264097a08ec"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/actual-tool-calls.json",
+      "bytes": 49024,
+      "sha256": "d8e65f7c8a1c841d9bfb91b879bbec647a9630fe9d598df71c871ebd68018b51"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/build-check-result.json",
+      "bytes": 6987,
+      "sha256": "9136ca6e1a0e68f43dbc9223b35f6757a8d90870659b199f13c8005a3a31195b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/build-result.json",
+      "bytes": 6988,
+      "sha256": "bccf0d6910c038d4fe4e9eb77c87677e0c93f9e8528d3cd879b32e426f0c35c8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/corrective-tool-arguments.json",
+      "bytes": 4621,
+      "sha256": "b9d05bde87c39795b445bf2c96e74c42dbf6d6a7e31f2d518915213cfa0a289b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/hand-measurements.json",
+      "bytes": 18711,
+      "sha256": "2615b14682487932798e71d87c5fe9f6d19f7df54473e80f8fdfbfb9a8884386"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/hands-native-review.png",
+      "bytes": 299712,
+      "sha256": "ab5bf95f74dcb5964b2ab9b43c1828d5297d3658d804e11eec4dd4d71cb857ef"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/measure-hand-contacts.py",
+      "bytes": 4095,
+      "sha256": "ee4a5f5f7e80d9daf9477748125dd3632119aba79384e447e7523e6b08a80f0b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeCatch-0-palm.png",
+      "bytes": 1736,
+      "sha256": "0ce350302493ea01eed8a1dc709a7a6fd98b16ecac416776ac5ffb8f6da16ff0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeCatch-0-wrist.png",
+      "bytes": 1622,
+      "sha256": "0a07f31ec7c250728867c4d77e548736e0c875f55d46c1b876ad23c8880c2f92"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeCatch-1-palm.png",
+      "bytes": 1680,
+      "sha256": "bf9d8346bfd7aec3da623570be88088421230c620a71333300d96ce2a001412c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeCatch-1-wrist.png",
+      "bytes": 1436,
+      "sha256": "8379752e74da52407439b4bc6e1622c557d92cfbc35d31f4e73f28096310ce24"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeCatch-2-palm.png",
+      "bytes": 1697,
+      "sha256": "88a1dc94d7aae6b6a6bd393969e031d3779a18894f158af8977b8194ed305f1e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeCatch-2-wrist.png",
+      "bytes": 1422,
+      "sha256": "f724ae2e7796cc3d30131ab9b4684ae6af1635fddff7ed7055ae85456c765bb1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeCatch-3-palm.png",
+      "bytes": 1681,
+      "sha256": "599769d40ea4ef7e749a3d81f3472e835059fea9ab17fc2a5b8fe1882ac1aedf"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeCatch-3-wrist.png",
+      "bytes": 1434,
+      "sha256": "4cf439738aa345dcdcf1b4e68eea5f07b2f7f47f16c236b505ec803eaac6cee5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeClimb-0-palm.png",
+      "bytes": 1847,
+      "sha256": "c85c7cacb8fa25d0cdca79c3fad1845e6e8c6d34d4a07b2e416325b50c4fe58a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeClimb-0-wrist.png",
+      "bytes": 1665,
+      "sha256": "54090b0f8a0613315bd68ef2188d3e6ebd5271fb76f7216bfb9983328460c7e7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeClimb-1-palm.png",
+      "bytes": 1868,
+      "sha256": "e71202184084fd2ff6a55efe31f7d2f95b02bb74d87ff97d9ab82c218305ddc5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeClimb-1-wrist.png",
+      "bytes": 1621,
+      "sha256": "0a479540d7391b88aae465111f5368d12eeaff2f9992539f6ce9da679a83bbb2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeClimb-2-palm.png",
+      "bytes": 1680,
+      "sha256": "df97953d859d1adcc399a81eb6de2482dafe7670eb40ffe4bd1a86bb750d142c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeClimb-2-wrist.png",
+      "bytes": 1534,
+      "sha256": "fade28f13980794fc5b742ede1a8d7aecb955005efeb4cf927ee599d9aae76af"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeClimb-3-palm.png",
+      "bytes": 1797,
+      "sha256": "447319be40ac1a2848d47ff9d25f343797f552fb12f27ec59b4bc2804a1fb4ba"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeClimb-3-wrist.png",
+      "bytes": 1447,
+      "sha256": "8c38367d514b8991781bc0fc291f16c44943f2e68e91a6583b6cbed27aa8c543"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeHang-0-palm.png",
+      "bytes": 1862,
+      "sha256": "b549ed25d0739cf6f7498fee8846f044c05d4bbd087326a0b6311a12789b5fac"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeHang-0-wrist.png",
+      "bytes": 1675,
+      "sha256": "3095286ed55ff434084cd60f936844eec588b5f23c1b2979e202efad2a0b1926"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeHang-1-palm.png",
+      "bytes": 1881,
+      "sha256": "4b6166b1c633cbbdc460938d7309546ad37b4c03135e3fe571d78ca3aad52d20"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeHang-1-wrist.png",
+      "bytes": 1665,
+      "sha256": "0965fd8a62907fdbbc419f6509d264cd72ace425b400ac9cb7bf688d2884d0a4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeHang-2-palm.png",
+      "bytes": 1850,
+      "sha256": "7e8ba49941415288d202855152c8305857029bb888c7e308ea207c307bdfd28e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeHang-2-wrist.png",
+      "bytes": 1762,
+      "sha256": "fdebf3b6dbf10ba2c9c02230c0934fd826b4572928e33d00120bd02617560ac3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeHang-3-palm.png",
+      "bytes": 1878,
+      "sha256": "ab6a589ff89db2d26d2d898badaec31a10be6e52310a0a47df222347718f3a3e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/native-roi-ledgeHang-3-wrist.png",
+      "bytes": 1744,
+      "sha256": "31e0d586a9bea03056f2b614e63046a5127a7cb14eedfce2c293184bcc0f606f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-combat-a.native.png",
+      "bytes": 2159258,
+      "sha256": "5a664a0fb0d7cf76bcdc700575949c0c8902158cfe8d39a629c295c379e84c7b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-combat-a.prompt.txt",
+      "bytes": 4108,
+      "sha256": "020c091a4cd0e366176fe39deb6d76b78f2751e6ba55678f11f02e0af500d980"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-combat-b-replacement.native.png",
+      "bytes": 1424673,
+      "sha256": "cefb6dd8f18712657c67b69c64dd295cef7deaa889a985dcd5190d5f15db187b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-combat-b-replacement.prompt.txt",
+      "bytes": 4878,
+      "sha256": "12caefc0eb81e407a77ba1e7515ee95c88559dc26a69dcf64c44bb69d7a39d2e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-combat-b.native.png",
+      "bytes": 2125899,
+      "sha256": "d4b7a0154a78789ebb7113c69b3f68e011ea2068d6eab9f13d83a8e7fbc93805"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-combat-b.prompt.txt",
+      "bytes": 4233,
+      "sha256": "31495a133995a920624d16d3bd758822babe10bab98d12e1fed87df311990dc6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-corrective-states.native.png",
+      "bytes": 1110680,
+      "sha256": "f3b3a023e52a4bea89101310b96af0c552c10e1df953695c6684de5cb7636f72"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-corrective-states.prompt.txt",
+      "bytes": 4401,
+      "sha256": "67d875375107dde594684872242f39df9a724d7a001240afddb4791216fce628"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-defense.native.png",
+      "bytes": 1345549,
+      "sha256": "232cf276f7104e370f39a2e8a42786f98873b3a21fe32dea91eeed6675c1a0df"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-defense.prompt.txt",
+      "bytes": 4146,
+      "sha256": "a41f35d4849d474e15b22b52ce0da60fa69acdfae62c66cff328ce14b7f5eaba"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-ledge.native.png",
+      "bytes": 1359174,
+      "sha256": "4b5fd9b64f7730babe2750519b1fe4926bc4c6e78cf55a1f11a113253062c808"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-ledge.prompt.txt",
+      "bytes": 4649,
+      "sha256": "7b43d1a6751614789c4c4d977a658782b3a7ebaa46ca957f372a4ec6de532238"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-motion-a.native.png",
+      "bytes": 1320473,
+      "sha256": "39e84e7ef59ae6bc4da390f27095aeca839cc33a2c942d70dc5b3f0f2a66fece"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-motion-a.prompt.txt",
+      "bytes": 4227,
+      "sha256": "f985992e3bda113238c4c0cfaf44b0788ee97931983f492f398392c406899564"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-motion-b.native.png",
+      "bytes": 1286966,
+      "sha256": "941c900e6098b11fa213a69c64872b3f377b241cfed0fa7803b47dc9d0b2b7c3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-motion-b.prompt.txt",
+      "bytes": 3978,
+      "sha256": "5912691584e0e136233fdd1988075d1d35e45d71438473687bbca64122218ddb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/neo-reference-original.png",
+      "bytes": 722160,
+      "sha256": "b122e8f4f3a5220a2049ad557d00df728817c6ddc99a2b9c05542572ad7f2e2f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/normalize-neo-atlases.mjs",
+      "bytes": 335,
+      "sha256": "82ae38e93353700f695d6a4e5c400ad3d5705efbbe735208c58fd99757555114"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/packing-plan.json",
+      "bytes": 13747,
+      "sha256": "3b402f283dc2cca844fa12ec742461a08a9bbe3effe47b90f138d314f341c9f4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/planned-tool-arguments.json",
+      "bytes": 27149,
+      "sha256": "987322886e6522083beb905b99b5d90bea16cfb2ea8d741d6ce6f0193076035f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/provenance-combat.json",
+      "bytes": 213752,
+      "sha256": "4f2889398eaa108107b1137c6b9711116176c9febdbae8b17821a428edc2ad4e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/provenance-motion.json",
+      "bytes": 210712,
+      "sha256": "351482c77c59b60dbc850e5c678aa62885967b82714b3deeaa4b00f0a4c669d1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/replacement-tool-arguments.json",
+      "bytes": 5110,
+      "sha256": "8c54ec445e8b02ead3e9a92eaa20ac00df84b10476836def018554e6ce35e566"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeCatch-0-palm.png",
+      "bytes": 1902,
+      "sha256": "cc1ae7e45da90e9fa93e22bc2ee38c15390d25447dee204fb51a93b439123db9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeCatch-0-wrist.png",
+      "bytes": 1721,
+      "sha256": "7071fc25311c37d24ffddf918830abc018d4615a36d4828993ece90f17c16a24"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeCatch-1-palm.png",
+      "bytes": 1801,
+      "sha256": "c6c149b0f6c5d328bd0a9a77111a24a37f5a9bccd87798e32cbb56419b8ea04c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeCatch-1-wrist.png",
+      "bytes": 1524,
+      "sha256": "f3b885f147061d22489ecc913172804691c7cd9e537ad1f7dcb499d5856816a8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeCatch-2-palm.png",
+      "bytes": 1813,
+      "sha256": "f8c4041a7458858534c3b735937397299faf4325d2dcd77a42d5bb1da757bae8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeCatch-2-wrist.png",
+      "bytes": 1622,
+      "sha256": "aee4fccb9b7cef36cda02048c8f0d2509a6ad92041481f2f82225fdb624c948f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeCatch-3-palm.png",
+      "bytes": 1858,
+      "sha256": "1b3ccd3e8cb37da36972b49fa00c326cdce2c489b5b70149239511a10a18cdfb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeCatch-3-wrist.png",
+      "bytes": 1574,
+      "sha256": "0d70bf1c28b29f20e1a0756c1e9fb90e15ef4d76e0cd1e3ec9f2a7276e5cd3a4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeClimb-0-palm.png",
+      "bytes": 1855,
+      "sha256": "42bb145c3d0f7e73f1aa927476ec36f966869f3f865fe927401c503928f0d1b4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeClimb-0-wrist.png",
+      "bytes": 1518,
+      "sha256": "ad0c26c41818e5321a1f41fe1c56d7b1b9da906f0fbd642b256666b6ed65070a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeClimb-1-palm.png",
+      "bytes": 1870,
+      "sha256": "0a4948d903935e18f72451e83b7721aac5df677b9cf4365de671cf25bac650d9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeClimb-1-wrist.png",
+      "bytes": 1625,
+      "sha256": "95f54055a057a2da88000d6412a25844acc2e7c6bc805c4222abf7f5a3f1e4d3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeClimb-2-palm.png",
+      "bytes": 1485,
+      "sha256": "217bae0dc2baa4969e1638325f29986cac034f68ca8f9b00a36a442afe2fe737"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeClimb-2-wrist.png",
+      "bytes": 1706,
+      "sha256": "2d993845f19b6739adec1dfbcb10d7538fa9d4f12fef1fcb8b85e3281ce0ecb3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeClimb-3-palm.png",
+      "bytes": 1690,
+      "sha256": "ce48042523533df2514d8e1cff69c604589b247423aa577c0fa6588a289319f6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeClimb-3-wrist.png",
+      "bytes": 1496,
+      "sha256": "4d27b3f119e463d28362a2d257601a1d1a9d3816bdb7292574b72c9e709bfd8d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeHang-0-palm.png",
+      "bytes": 1820,
+      "sha256": "33826abb9e13074fa57d573e6e1b8319a0140d834c69157a6d314f12bbc594ea"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeHang-0-wrist.png",
+      "bytes": 1682,
+      "sha256": "abe99135ba6321b718bac611ca97d24b41ba417ec26f6d3bfb6ff212069693ed"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeHang-1-palm.png",
+      "bytes": 1677,
+      "sha256": "5db608a61c3c62f2dc0d95eba85bbb21dd0a16a41553242da4227ff41ddf40b4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeHang-1-wrist.png",
+      "bytes": 1645,
+      "sha256": "ec0e504c813306d5f16c92bb2b5686060f58f01ce36f7e94a053b5b485a99797"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeHang-2-palm.png",
+      "bytes": 1841,
+      "sha256": "4372b1507244a77ab15dabb75b0859c5961a504034b34461a1fd8f9e8320c247"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeHang-2-wrist.png",
+      "bytes": 1663,
+      "sha256": "c6dd40f3d4d9448e0f492652e392c8df7459cc3664b8cfd516a91167b1be7376"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeHang-3-palm.png",
+      "bytes": 1870,
+      "sha256": "4664b7db5f8c0d84d26b7f2b7156681ab105c5e4ac65fe6f263dd0ce2335e65d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/roi-ledgeHang-3-wrist.png",
+      "bytes": 1645,
+      "sha256": "61d76321bd97dc993e46c32b4ee6250b7e84e2f7bb998209b95a6928e39ee9ff"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/verify-all-result.json",
+      "bytes": 1437,
+      "sha256": "d20d377ace60626bea655ffe62e875b63b99716f663bdd7cab92cf2d2afcc13f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/neo-sources/verify-neo-atlases.mjs",
+      "bytes": 249,
+      "sha256": "09ee0dae68c8cac52781ae93d3c3eb120cb8f034f5f9906cf06db1643bee97a7"
+    },
+    {
+      "path": "public/sprites/generated/melee-neo-wave10/neo-combat-a.png",
+      "bytes": 1102770,
+      "sha256": "dd91ff04bf086470979f06ae17f1308b078f120855d4bac8e21711c2eb708217"
+    },
+    {
+      "path": "public/sprites/generated/melee-neo-wave10/neo-combat-b.png",
+      "bytes": 951255,
+      "sha256": "5a2d58b9569bef65a19c340a505630c4dfbecfb9c47dd6f48b861c74075db928"
+    },
+    {
+      "path": "public/sprites/generated/melee-neo-wave10/neo-defense.png",
+      "bytes": 984095,
+      "sha256": "c4e336774b182dee24b694847973d396fdc48c6a0e7ad944411f101d9ab15882"
+    },
+    {
+      "path": "public/sprites/generated/melee-neo-wave10/neo-ledge.png",
+      "bytes": 685784,
+      "sha256": "266eb1ff2423d8be2c74ff4e0d770013de02404f6f1edac161e774df48c8cee5"
+    },
+    {
+      "path": "public/sprites/generated/melee-neo-wave10/neo-motion-a.png",
+      "bytes": 1054754,
+      "sha256": "438cf20e7729757752b3bb48f54398148a4d905eb62f582d8896e3f715881ea5"
+    },
+    {
+      "path": "public/sprites/generated/melee-neo-wave10/neo-motion-b.png",
+      "bytes": 869052,
+      "sha256": "9f1f8ce3a7543ea1d9afa61fcc0089fa76393a91b89a6acffdd2187fbb78d98f"
+    },
+    {
+      "path": "src/game/combat/neoMeleeCombat.generated.json",
+      "bytes": 213752,
+      "sha256": "4f2889398eaa108107b1137c6b9711116176c9febdbae8b17821a428edc2ad4e"
+    },
+    {
+      "path": "src/game/combat/neoMeleeMotion.generated.json",
+      "bytes": 210712,
+      "sha256": "351482c77c59b60dbc850e5c678aa62885967b82714b3deeaa4b00f0a4c669d1"
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "bytes": 14862,
+      "sha256": "c334996786d4578d47b784f26f75c8bce42fb76068bbb275830df6c721f772c6"
+    },
+    {
+      "path": "src/game/melee/neoMeleeManifest.js",
+      "bytes": 494,
+      "sha256": "03f4edc4360a2b9f33a755850c529656f4e1f46c0e228e45933b13e451bd7cfb"
+    }
+  ],
+  "browserEvidenceSha256": "04fddc64c322d5976ddf550c1a7f7b90b582bb9caa91fe91d9a2e0165132c46c"
+}

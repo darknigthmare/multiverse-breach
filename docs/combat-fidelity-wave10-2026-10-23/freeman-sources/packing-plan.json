@@ -1,0 +1,507 @@
+{
+  "heroId": "freeman",
+  "registryStem": "freeman",
+  "universe": "Half-Life",
+  "sourceWork": "Half-Life 2 (2004)",
+  "date": "2026-10-23",
+  "archiveDir": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources",
+  "outputDir": "public/sprites/generated/melee-freeman-wave10",
+  "reference": {
+    "asset": "public/sprites/generated/heroes/half-life/freeman.png",
+    "savedImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-reference-original.png"
+  },
+  "correctionId": "freeman-corrective-states",
+  "sources": [
+    {
+      "id": "freeman-motion-a",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-motion-a.native.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 0,
+        "column": 0,
+        "state": "idle",
+        "bodyBounds": {
+          "x": 87,
+          "y": 18,
+          "width": 111,
+          "height": 224
+        },
+        "raisedArmsExcluded": false,
+        "reason": "Crown to both boot soles in a straight standing idle, no raised limb, weapon or effect changes vertical extent.",
+        "independentReview": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/body-roi-independent.json"
+      }
+    },
+    {
+      "id": "freeman-motion-b",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-motion-b.native.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 6,
+        "column": 0,
+        "state": "taunt1",
+        "bodyBounds": {
+          "x": 58,
+          "y": 1340,
+          "width": 113,
+          "height": 233
+        },
+        "raisedArmsExcluded": false,
+        "reason": "Inspected upright taunt reset; crown to boot soles. Both hands stay below crown; no weapon/effect determines height.",
+        "independentReview": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/body-roi-independent.json"
+      }
+    },
+    {
+      "id": "freeman-defense",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-defense.native.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 4,
+        "column": 0,
+        "state": "shieldExit",
+        "bodyBounds": {
+          "x": 71,
+          "y": 862,
+          "width": 163,
+          "height": 217
+        },
+        "raisedArmsExcluded": false,
+        "reason": "Feet planted in a wide standing stance. Height is crown to soles, excluding the extended fists from horizontal BODY bounds; no shield VFX included.",
+        "independentReview": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/body-roi-independent.json"
+      }
+    },
+    {
+      "id": "freeman-combat-a",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-combat-a-retry.native.png",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 6,
+        "column": 3,
+        "state": "chargeRecovery",
+        "bodyBounds": {
+          "x": 834,
+          "y": 1248,
+          "width": 120,
+          "height": 246
+        },
+        "raisedArmsExcluded": false,
+        "reason": "Final upright recovery selected rather than the bent first column. Crown to boot soles; orange Gravity Gun prongs extending right are excluded from BODY width and do not determine height.",
+        "independentReview": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/body-roi-independent.json"
+      }
+    },
+    {
+      "id": "freeman-combat-b",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-combat-b.native.png",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 5,
+        "column": 0,
+        "state": "intro",
+        "bodyBounds": {
+          "x": 72,
+          "y": 1016,
+          "width": 117,
+          "height": 200
+        },
+        "raisedArmsExcluded": false,
+        "reason": "Upright introduction reference; crown to soles. The lowered crowbar is not used as an anatomical bound.",
+        "independentReview": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/body-roi-independent.json"
+      }
+    },
+    {
+      "id": "freeman-ledge",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 1,
+        "column": 0,
+        "state": "ledgeHang",
+        "bodyBounds": {
+          "x": 124,
+          "y": 344,
+          "width": 88,
+          "height": 242
+        },
+        "raisedArmsExcluded": true,
+        "reason": "The overhead fists/forearms begin aroundy297 and are excluded. Crown begins near344 (brown hair pixels347 onward), soles end585; bent knees and the native hanging posture are retained. This is a crown-to-sole hanging reference, not an assertion of an anatomically upright standing pose.",
+        "independentReview": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/body-roi-independent.json"
+      }
+    },
+    {
+      "id": "freeman-corrective-states",
+      "image": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-corrective-states.native.png",
+      "states": [
+        "shieldBreak",
+        "chargeLoop"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 0,
+        "column": 0,
+        "state": "shieldBreak",
+        "bodyBounds": {
+          "x": 89,
+          "y": 40,
+          "width": 281,
+          "height": 401
+        },
+        "reason": "Actual braced full-body guard-break drawing with planted boots, hands below crown and no weapon or VFX above head/below feet. The large source density is retained as measured, not mistaken for a packed256cell.",
+        "independentReview": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/body-roi-independent.json"
+      }
+    }
+  ],
+  "atlases": [
+    {
+      "id": "freeman-motion-a",
+      "batch": "Motion",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "selection": {
+        "idle": {
+          "sourceId": "freeman-motion-a",
+          "row": 0
+        },
+        "walk": {
+          "sourceId": "freeman-motion-a",
+          "row": 1
+        },
+        "run": {
+          "sourceId": "freeman-motion-a",
+          "row": 2
+        },
+        "turn": {
+          "sourceId": "freeman-motion-a",
+          "row": 3
+        },
+        "jumpStart": {
+          "sourceId": "freeman-motion-a",
+          "row": 4
+        },
+        "jumpRise": {
+          "sourceId": "freeman-motion-a",
+          "row": 5
+        },
+        "jumpApex": {
+          "sourceId": "freeman-motion-a",
+          "row": 6
+        },
+        "fall": {
+          "sourceId": "freeman-motion-a",
+          "row": 7
+        }
+      }
+    },
+    {
+      "id": "freeman-motion-b",
+      "batch": "Motion",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "selection": {
+        "fastFall": {
+          "sourceId": "freeman-motion-b",
+          "row": 0
+        },
+        "land": {
+          "sourceId": "freeman-motion-b",
+          "row": 1
+        },
+        "crouchEnter": {
+          "sourceId": "freeman-motion-b",
+          "row": 2
+        },
+        "crouchIdle": {
+          "sourceId": "freeman-motion-b",
+          "row": 3
+        },
+        "crouchExit": {
+          "sourceId": "freeman-motion-b",
+          "row": 4
+        },
+        "crouchCharge": {
+          "sourceId": "freeman-motion-b",
+          "row": 5
+        },
+        "taunt1": {
+          "sourceId": "freeman-motion-b",
+          "row": 6
+        },
+        "hitStun": {
+          "sourceId": "freeman-motion-b",
+          "row": 7
+        }
+      }
+    },
+    {
+      "id": "freeman-defense",
+      "batch": "Motion",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "selection": {
+        "shieldEnter": {
+          "sourceId": "freeman-defense",
+          "row": 0
+        },
+        "shieldHold": {
+          "sourceId": "freeman-defense",
+          "row": 1
+        },
+        "shieldHit": {
+          "sourceId": "freeman-defense",
+          "row": 2
+        },
+        "perfectShield": {
+          "sourceId": "freeman-defense",
+          "row": 3
+        },
+        "shieldExit": {
+          "sourceId": "freeman-defense",
+          "row": 4
+        },
+        "dead": {
+          "sourceId": "freeman-defense",
+          "row": 5
+        },
+        "defeat": {
+          "sourceId": "freeman-defense",
+          "row": 6
+        },
+        "shieldBreak": {
+          "sourceId": "freeman-corrective-states",
+          "row": 0
+        }
+      }
+    },
+    {
+      "id": "freeman-combat-a",
+      "batch": "Combat",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "selection": {
+        "attackLight1": {
+          "sourceId": "freeman-combat-a",
+          "row": 0
+        },
+        "attackLight2": {
+          "sourceId": "freeman-combat-a",
+          "row": 1
+        },
+        "attackLight3": {
+          "sourceId": "freeman-combat-a",
+          "row": 2
+        },
+        "crouchLight": {
+          "sourceId": "freeman-combat-a",
+          "row": 3
+        },
+        "chargeStart": {
+          "sourceId": "freeman-combat-a",
+          "row": 4
+        },
+        "chargeRelease": {
+          "sourceId": "freeman-combat-a",
+          "row": 5
+        },
+        "chargeRecovery": {
+          "sourceId": "freeman-combat-a",
+          "row": 6
+        },
+        "chargeLoop": {
+          "sourceId": "freeman-corrective-states",
+          "row": 1
+        }
+      }
+    },
+    {
+      "id": "freeman-combat-b",
+      "batch": "Combat",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "selection": {
+        "attackRecovery": {
+          "sourceId": "freeman-combat-b",
+          "row": 0
+        },
+        "special": {
+          "sourceId": "freeman-combat-b",
+          "row": 1
+        },
+        "aerialNeutral": {
+          "sourceId": "freeman-combat-b",
+          "row": 2
+        },
+        "aerialForward": {
+          "sourceId": "freeman-combat-b",
+          "row": 3
+        },
+        "aerialDown": {
+          "sourceId": "freeman-combat-b",
+          "row": 4
+        },
+        "intro": {
+          "sourceId": "freeman-combat-b",
+          "row": 5
+        },
+        "victory": {
+          "sourceId": "freeman-combat-b",
+          "row": 6
+        },
+        "ledgeAttack": {
+          "sourceId": "freeman-combat-b",
+          "row": 7
+        }
+      }
+    },
+    {
+      "id": "freeman-ledge",
+      "batch": "Combat",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "selection": {
+        "ledgeCatch": {
+          "sourceId": "freeman-ledge",
+          "row": 0
+        },
+        "ledgeHang": {
+          "sourceId": "freeman-ledge",
+          "row": 1
+        },
+        "ledgeClimb": {
+          "sourceId": "freeman-ledge",
+          "row": 2
+        },
+        "ledgeDrop": {
+          "sourceId": "freeman-ledge",
+          "row": 3
+        },
+        "ledgeJump": {
+          "sourceId": "freeman-ledge",
+          "row": 4
+        }
+      }
+    }
+  ],
+  "sourceReference": "Authored crossover movement and choreography based on the stated version and equipment; not copied official animation and not certified frame-for-frame canon. Simple/air/ledge actions follow the actual simple profile; charge/special use the secondary profile.",
+  "visualReview": {
+    "complete": true,
+    "outfit": "HL2 orange/charcoal HEV MkV, brown hair/goatee, black glasses and full gloves.",
+    "weapons": "Simple and aerial/ledge get-up use crowbar. Secondary charge/special uses orange Gravity Gun with native captive metal prop only before release; separate32 super uses blue Citadel gun. Movement/defense/hanging hands free.",
+    "limitations": [
+      "Original adapted crossover choreography; no certified official1:1 animation or exported game frames.",
+      "Runtime facing mirrors the native source, including costume asymmetry.",
+      "Ledge-only source uses a head-to-sole hanging reference with raised hands excluded; this is not certified as an upright standing anatomy reference."
+    ]
+  },
+  "incompleteInitialSources": [
+    {
+      "id": "freeman-defense",
+      "observedRows": 7,
+      "expectedRows": 8,
+      "missingState": "shieldBreak"
+    },
+    {
+      "id": "freeman-combat-a",
+      "observedRows": 7,
+      "expectedRows": 8,
+      "missingState": "chargeLoop"
+    }
+  ]
+}

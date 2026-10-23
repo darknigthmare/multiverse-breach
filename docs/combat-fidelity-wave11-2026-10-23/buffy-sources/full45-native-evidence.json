@@ -1,0 +1,185 @@
+{
+  "passed": true,
+  "heroId": "buffy_summers",
+  "atlases": 6,
+  "states": 45,
+  "nativePoses": 180,
+  "distinctNativeRgbaFrames": 180,
+  "sourceWideCalibrations": 7,
+  "palms": 12,
+  "wrists": 12,
+  "contacts": 11,
+  "historicalManifestsPreserved": 10,
+  "actualToolAttempts": 7,
+  "successfulNativeCalls": 7,
+  "observedNativePoses": 180,
+  "discardedNativePoses": 0,
+  "canonical1to1Verified": false,
+  "proofs": [
+    {
+      "atlas": "buffy-motion-a",
+      "states": 8,
+      "nativePoses": 32,
+      "sha256": "4225fecad03c3489835b3c33d9848702a7a7c2311210bf3679e88105842860d1"
+    },
+    {
+      "atlas": "buffy-motion-b",
+      "states": 8,
+      "nativePoses": 32,
+      "sha256": "7bebc77cdd2e635a65e1b9efc1a060c686202e31fd3931c28477cd43fae98ede"
+    },
+    {
+      "atlas": "buffy-defense",
+      "states": 8,
+      "nativePoses": 32,
+      "sha256": "3fb62019b4a374c3aecd316cd90477d03f02174df7e891ac5a5d6010a653c504"
+    },
+    {
+      "atlas": "buffy-combat-a",
+      "states": 8,
+      "nativePoses": 32,
+      "sha256": "f56bf371d9b57319a96683a4e3a8352a9aaf9750dae1abe276ad4ebcf7439778"
+    },
+    {
+      "atlas": "buffy-combat-b",
+      "states": 8,
+      "nativePoses": 32,
+      "sha256": "e10ed17ceef3196ec720471fc782a8fe7449711b2aa0de258a9cfccc99d737be"
+    },
+    {
+      "atlas": "buffy-ledge",
+      "states": 5,
+      "nativePoses": 20,
+      "sha256": "91c4f72076e2d28e13a49fb4a13249374dfade0ac3624269aa706af0622d55f1"
+    }
+  ],
+  "status": "native-art-and-metadata-frozen; all-three-real-browser-flows-passed",
+  "checks": [
+    {
+      "command": "node docs/combat-fidelity-wave11-2026-10-23/buffy-sources/normalize-buffy-atlases.mjs --check",
+      "exitCode": 0,
+      "log": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/normalize-check.log"
+    },
+    {
+      "command": "node docs/combat-fidelity-wave11-2026-10-23/buffy-sources/verify-buffy-atlases.mjs --check",
+      "exitCode": 0,
+      "log": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/verify-check.log"
+    }
+  ],
+  "nativeCanvasEdgesVisible": 0,
+  "effectiveStandingBodyTarget": 190,
+  "calibration": "One common nearest-pixel packing and renderScale per source, direct upright ROI where available. Ledge uses independently inspected anatomical path; actual projected ROI is separate and keeps flexion. Approximate landmarks are documented, not certified human/source anatomy.",
+  "files": [
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/actual-tool-calls.json",
+      "sha256": "2df1386667a63626ee3ed2876b0a3fccfaf108b561fbb805dc5e9a04a6102c40"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/packing-plan.json",
+      "sha256": "cb3b842fca7a062be19bc813ba7591cd45b85b0e79d204817fe2861f9ac5216d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/hand-measurements.json",
+      "sha256": "a9daf7e39c9b7f22b3ebc99e59422b011d041d629f95f006218270679432448a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/native-hand-points.json",
+      "sha256": "5a74088a1961d12645d1fa4160543b0263f1b14a5c2f8114d6de74e4f59dbe1d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/body-roi-independent.json",
+      "sha256": "7f16c70596bf29727d573aa84576dbdbb59b84064b640a62f4f90634f63b5638"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/grip-pixel-checks.json",
+      "sha256": "a38f8736b297df13299613925933ffbdd9999edc9b0aba494f99cda23f1add7f"
+    },
+    {
+      "path": "src/game/melee/buffyMeleeManifest.js",
+      "sha256": "d8ac3005ee35467516a7b1c42f1fef6ddd723bb13ce30b77179126c963a63251"
+    },
+    {
+      "path": "src/game/combat/buffyMeleeMotion.generated.json",
+      "sha256": "39070a68fcb68e3e1c0452f92607550caf7829cdb6c8e0f41e6bc8de57b63926"
+    },
+    {
+      "path": "src/game/combat/buffyMeleeCombat.generated.json",
+      "sha256": "adba10a3090af80a8cfdb2eb67d71da7f63093a013a8ef714d709a1b4c4a5422"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/melee-tooling/build-native-melee-atlases.mjs",
+      "sha256": "1c42baebc994a4b9586bcc7d4e1525a7992d4fb761676c0695542930c9bbdc8b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/melee-tooling/verify-native-melee-atlases.mjs",
+      "sha256": "a560632d08ad40f0b5e574f9f244627ebfd3d982fb535e5374f9d426d37ac63b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/melee-tooling/measure-packed-hands.py",
+      "sha256": "fb6a1f050cb5a261cd27aa28fbf893c9cb4fbe77ea361d85ced94bb5f6206d91"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/melee-tooling/localize-native-hands.py",
+      "sha256": "7d1dfea15d6757c80fd49b606dce32f2b69c3822066712f8c90b3ef0f268fb1e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-defense.native.png",
+      "sha256": "f66e94b8a3d77cf5833ce7855fe2fe6166647e77f24a3e7d6dbd58dc14580bbb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-combat-a.native.png",
+      "sha256": "f1aff2dfbf64c054065ebf65d4a217c181c1d70d737f2e64767c9ff9e0cb36cf"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-motion-a.native.png",
+      "sha256": "9fbb8d29e30ced88b2a262f975f180c26e8df455f8e27c6085ef5af1f481e3d6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-combat-b.native.png",
+      "sha256": "3f039ea78a5442d44194f674493db26bb3b5057dde2902786fb9895ab5307440"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-ledge.native.png",
+      "sha256": "1bfddcaed9cdd2f333d837be6361c6d1540d04381360bcaa26e499c456e43d80"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-motion-b.native.png",
+      "sha256": "5d37d83f29161498dcde46e34293963579ddcae6a922f844e0f22e8d46302cc6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/buffy-corrective-states.native.png",
+      "sha256": "404367f5a1dbff4c0bb9f410a135bf0b1ca3f96fa5a283a82b5fc1300f6b685b"
+    },
+    {
+      "path": "public/sprites/generated/melee-buffy-wave11/buffy-motion-a.png",
+      "sha256": "4225fecad03c3489835b3c33d9848702a7a7c2311210bf3679e88105842860d1"
+    },
+    {
+      "path": "public/sprites/generated/melee-buffy-wave11/buffy-motion-b.png",
+      "sha256": "7bebc77cdd2e635a65e1b9efc1a060c686202e31fd3931c28477cd43fae98ede"
+    },
+    {
+      "path": "public/sprites/generated/melee-buffy-wave11/buffy-defense.png",
+      "sha256": "3fb62019b4a374c3aecd316cd90477d03f02174df7e891ac5a5d6010a653c504"
+    },
+    {
+      "path": "public/sprites/generated/melee-buffy-wave11/buffy-combat-a.png",
+      "sha256": "f56bf371d9b57319a96683a4e3a8352a9aaf9750dae1abe276ad4ebcf7439778"
+    },
+    {
+      "path": "public/sprites/generated/melee-buffy-wave11/buffy-combat-b.png",
+      "sha256": "e10ed17ceef3196ec720471fc782a8fe7449711b2aa0de258a9cfccc99d737be"
+    },
+    {
+      "path": "public/sprites/generated/melee-buffy-wave11/buffy-ledge.png",
+      "sha256": "91c4f72076e2d28e13a49fb4a13249374dfade0ac3624269aa706af0622d55f1"
+    }
+  ],
+  "limitations": [
+    "Original adapted crossover choreography, not exported official animation or certified frame-for-frame canon.",
+    "Runtime facing mirrors the native artwork, including anatomical or costume asymmetry.",
+    "Ledge source uses its own crown-to-sole hanging calibration, raised hands excluded; actual lower-body flexion is documented.",
+    "Source stature uses approximate anatomical landmarks; Buffy ledge standing-equivalent258px derived from real native joint path, not a claim of exact human anatomy."
+  ],
+  "browserEvidence": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-evidence.json"
+}

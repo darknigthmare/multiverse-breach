@@ -1,0 +1,248 @@
+{
+  "date": "2026-10-22",
+  "browser": "local Chromium",
+  "status": "retained-browser-checks-frozen",
+  "passed": true,
+  "officialSourceFramesImported": 0,
+  "source1to1Verified": false,
+  "countsAreSeparate": "Native poses, source rectangles, draw calls, pixel mirrors, engine fixtures and UI journeys are distinct measurements.",
+  "observedInternalRuntimeErrors": 0,
+  "externalFailure": "Some runs record Google Fonts blocked by the session proxy. Internal asset failures and browser page errors are rejected.",
+  "validationScope": "Browser evidence and independent runtime review. Full build and production HTTP distribution are recorded separately in validation.json.",
+  "checks": [
+    {
+      "path": "browser/native-presentations.json",
+      "sha256": "566a479fa54c6936e0fdb50e8272a8bfd54df4731a02a93d0c4a9667c5ee987b",
+      "domain": "native-presentations",
+      "observedPassed": true,
+      "metrics": {
+        "registeredCharacters": 117,
+        "complete32": 116,
+        "partialCharacters": 1,
+        "partialPoses": 8,
+        "phases": 930,
+        "nativeFrameDraws": 7440,
+        "geometryChecks": 7440,
+        "preservedHistoricalRecords": 97,
+        "preservedHistoricalGeometry": 6160,
+        "preservedFullManifests": 7,
+        "preservedSummons": 11,
+        "rejectedHumanPoses": 24,
+        "gorillaFallbackDraws": 48
+      },
+      "scope": "All actual phases, four native columns and both facings. Partial Beast Boy remains eight T-Rex poses; rejected human drawings remain excluded.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 1,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/base-corrections.json",
+      "sha256": "bf4a4fbd242d6655b289d0508491c76dcfe48c6e2b758450f5b502a6ad1c7389",
+      "domain": "base-corrections",
+      "observedPassed": true,
+      "metrics": {
+        "newCharacters": 20,
+        "newFrameDraws": 640,
+        "previousCharacters": 44,
+        "previousFrameDraws": 1408,
+        "totalFrameDraws": 2048,
+        "immutableActors": 2048
+      },
+      "legacyGeometryUnchanged": true,
+      "scope": "Native cells through the real renderer, common baseline and authored row stature. All44 previous bases retain their PNG bytes and geometry.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 1,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/chris-evidence.json",
+      "sha256": "f00ff18329ff02266d394f98fd46ff90e1dd9e6b11fbd0fc3417c0c6d9867c75",
+      "domain": "chris45-state-gamecanvas",
+      "observedPassed": true,
+      "metrics": {
+        "frameDraws": 360,
+        "distinctNativeRectangles": 180,
+        "measuredGrips": 8,
+        "nativeSuperDraws": 71,
+        "superImpacts": 1,
+        "pauseMs": 300
+      },
+      "movementStatesFourColumns": [
+        "jumpRise",
+        "fall",
+        "land",
+        "turn"
+      ],
+      "scope": "Three real GameCanvas runs:45-state core renderer, measured ledges and keyboard movement/pause, then a cold-boot L super using its native32 sheet and external orbital strike.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/native-super-runtime.json",
+      "sha256": "0dc57ed6e394f593d7601d56b1a903dc9db1f349293370dff4e1e95f6dcf3e7b",
+      "domain": "twenty-character-super-runtime",
+      "observedPassed": true,
+      "method": "Chromium actual engines imported from exact compiled component URLs, controlled authoritative stepping and real native/base PNG drawing. No keyboard UI flow claim.",
+      "metrics": {
+        "characters": [
+          "marcus",
+          "dom",
+          "cole",
+          "baird",
+          "hoffman_cog",
+          "shepard",
+          "garrus",
+          "liara",
+          "tali",
+          "wrex",
+          "motoko",
+          "batou",
+          "togusa",
+          "aramaki",
+          "saito_gits",
+          "chris_redfield",
+          "claire_redfield",
+          "ada_wong",
+          "barry_burton",
+          "carlos_oliveira"
+        ],
+        "engineCases": 120,
+        "physicalProjectileCases": 24,
+        "modes": [
+          "rpg",
+          "melee",
+          "fighter"
+        ],
+        "sides": [
+          "player",
+          "opponent"
+        ]
+      },
+      "scope": "Twenty identities in three actual engines and both camps, plus24 physical Fighter projectile flows. These isolated engine fixtures do not claim120 keyboard UI journeys.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 1,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/summon-wave9-result.json",
+      "sha256": "bcd7a4e8c2c8419d42a521451c2a0b983f5311222d9b2704831d931760e01462",
+      "domain": "rpg-native-roster-reinforcements-gamecanvas",
+      "observedPassed": true,
+      "metrics": {
+        "flows": 8,
+        "nativePlayerCells": 64,
+        "nativeOpponentCells": 64,
+        "mirrorChecks": 128
+      },
+      "scope": "Marcus/Dom, Shepard/Garrus, Motoko/Batou and Chris/Leon, both camps. Actual command controls, cancellation, pause, one cost and one accepted impact. The earlier interrupted HMR attempt is archived separately.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "source1to1Verified": false
+    },
+    {
+      "path": "stage-browser.json",
+      "sha256": "c5d9b21de966063e8bb3be06e9cf3c34734408c8b50b0a86f8da8b3cc52c3061",
+      "domain": "stage-mechanisms",
+      "observedPassed": true,
+      "metrics": {
+        "mechanisms": 40,
+        "universes": 20,
+        "fourModeDraws": 160,
+        "additionalViewportChecks": 120,
+        "worstMirrorAlphaErrorRatio": 0.010988527976792228
+      },
+      "scope": "Forty mechanisms in20 previously unconfigured worlds:four modes, extra formats, pause/reduced motion, mirror and combat-lane clipping. No new gameplay events or official source frames.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "source1to1Verified": false
+    }
+  ],
+  "independentReview": {
+    "path": "independent-review.json",
+    "sha256": "7ab94b5b574a2e924eb1f04c4a5f19a5d06410c057a663cb23fcb3425ddb1dfe",
+    "domain": "independent-runtime-and-projection-review",
+    "observedPassed": true,
+    "metrics": {
+      "domains": 12,
+      "pending": 0
+    },
+    "checks": [
+      {
+        "name": "20 exact identities, confirmed target projection, denial and render purity",
+        "status": "passed",
+        "fixtures": 80
+      },
+      {
+        "name": "available native column anchors match packed dimensions, per-row renderScale and P2 reflection",
+        "status": "passed",
+        "projections": 312,
+        "pendingIdentities": []
+      },
+      {
+        "name": "external orbital columns never originate from the carried designator",
+        "status": "passed",
+        "columns": 4
+      },
+      {
+        "name": "ordinary RPG flight stops at the impact and cannot restart after confirmed or denied contact",
+        "status": "passed",
+        "postImpactProjections": 156,
+        "preImpactAnchorUnavailable": []
+      },
+      {
+        "name": "real RPG Wrex guards only himself, and Tali Attack Drone damages one selected enemy",
+        "status": "passed",
+        "realActions": 4
+      },
+      {
+        "name": "real RPG special acceptance: shields and dead selections cannot confirm, accepted points remain fixed after move/KO",
+        "status": "passed",
+        "realActions": 96
+      },
+      {
+        "name": "real Fighter launches from native muzzles, preserves direction after crossing, suppresses recovery and denied-hit flashes",
+        "status": "passed",
+        "realProjectiles": 24,
+        "nativeMuzzleChecks": 24
+      },
+      {
+        "name": "four real RPG reinforcements: protected targets produce no accepted contact rings",
+        "status": "passed",
+        "realActions": 8
+      },
+      {
+        "name": "four real RPG reinforcements: accepted contacts freeze before target movement/KO",
+        "status": "passed",
+        "realActions": 8
+      },
+      {
+        "name": "four reinforcements only acknowledge actual mixed-target HP drops, without replacing dead or removed identities",
+        "status": "passed",
+        "realActions": 24
+      },
+      {
+        "name": "eleven historical native summons retain full metadata, PNG bytes and the original live-target scene contract",
+        "status": "passed",
+        "historicalAssets": 11,
+        "realSceneContracts": 22
+      },
+      {
+        "name": "four reinforcement travels use the packed muzzle, end at impact and remain pure under P2 rotation",
+        "status": "passed",
+        "projections": 32
+      }
+    ],
+    "scope": "Real supers, native barrel projection, accepted contact, shields/dead/removed targets, KO/move stability, no post-impact travel, physical Fighter launches and preservation of the11 older summons. Reproduced failures remain in independent-review-before-fix.json.",
+    "freezeStatus": "frozen-observation",
+    "errors": [],
+    "externalFontRequestFailures": 0,
+    "source1to1Verified": false
+  }
+}

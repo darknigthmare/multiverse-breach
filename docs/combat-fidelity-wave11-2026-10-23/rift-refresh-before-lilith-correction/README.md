@@ -1,0 +1,3 @@
+Préparation seulement. Les cinq commandes historiques sont inchangées. Le runner exige authorization.json de la racine après gel des bases. Il attend allow-final-writes.json avant les étapes3/4 et conserve les journaux, codes de retour, durées et SHA. Aucun script de qualité ni seuil ne sera modifié.
+
+Le résumé dérivera le nombre réellement changé (attendu37 nouveaux chemins si confirmé par authorization.json) et les trois références historiques conservées. Aucune assertion all40approved ni comparaison héritée du correctif Python W10 ne sera réutilisée. Les variations pending/available du registre seront mesurées sans restaurer artificiellement des dossiers aux prompts désormais différents.

@@ -1,0 +1,13 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "command": "npm run build",
+      "exitCode": 1,
+      "log": "build-attempt-1.log",
+      "completedTestGroups": [494, 92],
+      "failedBoundary": "Derived combat completion coverage was stale after the source-role revisions.",
+      "correction": "Preserve the prior mutable coverage report in coverage-before/completion-coverage.json, then regenerate it with the unchanged combatCompletionAudit.mjs. Historical baselines remain unchanged."
+    }
+  ]
+}

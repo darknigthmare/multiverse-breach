@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "commandsExecuted": false,
+  "checks": [
+    {
+      "path": "scripts/buildRiftDossierCatalog.mjs",
+      "sha256": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+      "matchesFirstRun": true
+    },
+    {
+      "path": "scripts/auditCharacterReferenceQuality.py",
+      "sha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+      "matchesFirstRun": true
+    },
+    {
+      "path": "scripts/buildRiftDossierAssetRegistry.mjs",
+      "sha256": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+      "matchesFirstRun": true
+    },
+    {
+      "path": "package.json",
+      "sha256": "6a05357925267fa717680fc32fce2bbda502774975195961c5124c4324f26fe4",
+      "matchesFirstRun": true
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/catalog-before.json",
+      "sha256": "432409585c4aafb1ad66ba580026b99f57e8aecb16e22297cf3b48bc419c15f7",
+      "matchesOriginalBeforeSnapshot": true
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/quality-before.json",
+      "sha256": "7dce3436fc4d7dee3ea5ebae47fab7c72fd20c58ad5a95dd54161ea8dee5f0c6",
+      "matchesOriginalBeforeSnapshot": true
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/registry-before.json",
+      "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a",
+      "matchesOriginalBeforeSnapshot": true
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/auditCharacterReferenceQuality-before.py",
+      "sha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+      "matchesOriginalBeforeSnapshot": true
+    }
+  ]
+}

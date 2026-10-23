@@ -1,0 +1,5904 @@
+{
+  "date": "2026-10-23",
+  "method": "Real Vite SSR engines, accepted gameplay changes and recorded canvas commands. Native decoding and real browser drawing are verified separately.",
+  "coverage": {
+    "identities": 40,
+    "modes": [
+      "rpg",
+      "melee",
+      "fighter"
+    ],
+    "sides": [
+      "player",
+      "opponent"
+    ],
+    "supports": [
+      "daniel_jackson",
+      "hammond_sgc",
+      "eli_vance",
+      "kleiner",
+      "piper_wright",
+      "bishop_aliens",
+      "hudson_aliens",
+      "clover_pd",
+      "stantz_gb",
+      "spengler_gb",
+      "janine_gb",
+      "bill_l4d",
+      "ellis_l4d",
+      "coach_l4d",
+      "rochelle_l4d"
+    ],
+    "contactSupers": [
+      "neo",
+      "trinity",
+      "morpheus",
+      "agent_smith",
+      "seraph",
+      "oneill",
+      "tealc",
+      "sam_carter",
+      "freeman",
+      "barney",
+      "alyx_vance",
+      "paladin",
+      "nick_v",
+      "dogmeat",
+      "preston_garvey",
+      "hicks_aliens",
+      "vasquez_aliens",
+      "ripley_aliens",
+      "dallas",
+      "wolf_pd",
+      "hoxton",
+      "chains_pd",
+      "venkman_gb",
+      "zeddemore_gb",
+      "nick_l4d"
+    ],
+    "trackedFighter": [
+      "trinity",
+      "oneill",
+      "tealc",
+      "sam_carter",
+      "freeman",
+      "barney",
+      "alyx_vance",
+      "paladin",
+      "nick_v",
+      "preston_garvey",
+      "hicks_aliens",
+      "vasquez_aliens",
+      "dallas",
+      "wolf_pd",
+      "hoxton",
+      "chains_pd",
+      "nick_l4d"
+    ]
+  },
+  "sources": [
+    {
+      "path": "scripts/nativeSuperRuntimeWave10.test.mjs",
+      "sha256": "4b466da83efbb09919343cc94a626b991235a96be4b1cd15a4940aabcf78d5d8"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "150ebd9a6302c9ead2e44b128933dd8cc1df284efd4117a92d54942884976265"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "sha256": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277"
+    },
+    {
+      "path": "src/game/engineFighter.js",
+      "sha256": "10e9033a2cfeb2209c7cac2193c47cab57ae49854b5e2454ae18d5ad21b5bb84"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave10.js",
+      "sha256": "0c96457b67a4cd96669b69cb8b4abddcfa7368275e40aeb46909b6ee2c72522b"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "sha256": "d364a82a0c074d445cefc3cb1a17aebf6d98604c5c335d0718f7d0f77d72392f"
+    }
+  ],
+  "observations": [
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "neo",
+      "name": "Enchaînement de l’Élu",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -86,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "trinity",
+      "name": "Salve aux deux Beretta",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -54,
+        -64,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "morpheus",
+      "name": "Taille au katana de Morpheus",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "agent_smith",
+      "name": "Enchaînement physique de Smith",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -59,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "seraph",
+      "name": "Enchaînement du gardien de l’Oracle",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "oneill",
+      "name": "Rafale de couverture au P90",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -68,
+        -59,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "tealc",
+      "name": "Tir de lance Jaffa",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -67,
+        -61,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "sam_carter",
+      "name": "Couverture au P90 de Carter",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -54,
+        -54,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "daniel_jackson",
+      "name": "Repérage de terrain de Daniel",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "hammond_sgc",
+      "name": "Autorisation d’extraction du SGC",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "freeman",
+      "name": "Pistolet antigravité surchargé",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "barney",
+      "name": "Tir de couverture à l’AR2",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "alyx_vance",
+      "name": "Tir de précision d’Alyx",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -55,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "eli_vance",
+      "name": "Coordination de Black Mesa East",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "kleiner",
+      "name": "Calibration du téléporteur",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "paladin",
+      "name": "Salve du fusil laser de Danse",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "nick_v",
+      "name": "Tir précis du revolver artisanal de Nick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -52,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "dogmeat",
+      "name": "Prise de Dogmeat",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "piper_wright",
+      "name": "Publick Occurrences — vérité publiée",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "preston_garvey",
+      "name": "Mousquet laser des Minutemen",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "hicks_aliens",
+      "name": "Rafale M41A de Hicks",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "vasquez_aliens",
+      "name": "M56 Smartgun de Vasquez",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -57,
+        -68,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "bishop_aliens",
+      "name": "Extraction par la seconde navette",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "ripley_aliens",
+      "name": "P-5000 Power Loader",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "hudson_aliens",
+      "name": "Contact au détecteur de mouvement",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "dallas",
+      "name": "Rafale d’AMCAR de Dallas",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -65,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "wolf_pd",
+      "name": "Rafale d’AK de Wolf",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -57,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "hoxton",
+      "name": "Double tir de Hoxton",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "chains_pd",
+      "name": "Couverture lourde de Chains",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -36,
+        -39,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "clover_pd",
+      "name": "Approche discrète de Clover",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "venkman_gb",
+      "name": "Effluve protonique de Venkman",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -53,
+        -46,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "stantz_gb",
+      "name": "Mise en place du piège à fantôme",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "zeddemore_gb",
+      "name": "Effluve de couverture de Winston",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        -39,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "spengler_gb",
+      "name": "Lecture du PKE Meter",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "janine_gb",
+      "name": "Coordination de la caserne par Janine",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "bill_l4d",
+      "name": "Couverture du vétéran Bill",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "ellis_l4d",
+      "name": "Remise en route par Ellis",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "coach_l4d",
+      "name": "Consignes de Coach",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "rochelle_l4d",
+      "name": "Repérage du trajet d’extraction",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "nick_l4d",
+      "name": "Double pistolet de Nick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "neo",
+      "name": "Enchaînement de l’Élu",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -87,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "trinity",
+      "name": "Salve aux deux Beretta",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -63,
+        -55,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "morpheus",
+      "name": "Taille au katana de Morpheus",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "agent_smith",
+      "name": "Enchaînement physique de Smith",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -57,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "seraph",
+      "name": "Enchaînement du gardien de l’Oracle",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "oneill",
+      "name": "Rafale de couverture au P90",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61,
+        -57,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "tealc",
+      "name": "Tir de lance Jaffa",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -65,
+        -68,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "sam_carter",
+      "name": "Couverture au P90 de Carter",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        -52,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "daniel_jackson",
+      "name": "Repérage de terrain de Daniel",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "hammond_sgc",
+      "name": "Autorisation d’extraction du SGC",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "freeman",
+      "name": "Pistolet antigravité surchargé",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -70,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "barney",
+      "name": "Tir de couverture à l’AR2",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "alyx_vance",
+      "name": "Tir de précision d’Alyx",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -53,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "eli_vance",
+      "name": "Coordination de Black Mesa East",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "kleiner",
+      "name": "Calibration du téléporteur",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "paladin",
+      "name": "Salve du fusil laser de Danse",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "nick_v",
+      "name": "Tir précis du revolver artisanal de Nick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "dogmeat",
+      "name": "Prise de Dogmeat",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "piper_wright",
+      "name": "Publick Occurrences — vérité publiée",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "preston_garvey",
+      "name": "Mousquet laser des Minutemen",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "hicks_aliens",
+      "name": "Rafale M41A de Hicks",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "vasquez_aliens",
+      "name": "M56 Smartgun de Vasquez",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        -68,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "bishop_aliens",
+      "name": "Extraction par la seconde navette",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "ripley_aliens",
+      "name": "P-5000 Power Loader",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "hudson_aliens",
+      "name": "Contact au détecteur de mouvement",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "dallas",
+      "name": "Rafale d’AMCAR de Dallas",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -59,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "wolf_pd",
+      "name": "Rafale d’AK de Wolf",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -57,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "hoxton",
+      "name": "Double tir de Hoxton",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "chains_pd",
+      "name": "Couverture lourde de Chains",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -38,
+        -37,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "clover_pd",
+      "name": "Approche discrète de Clover",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "venkman_gb",
+      "name": "Effluve protonique de Venkman",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -53,
+        -51,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "stantz_gb",
+      "name": "Mise en place du piège à fantôme",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "zeddemore_gb",
+      "name": "Effluve de couverture de Winston",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        -39,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "spengler_gb",
+      "name": "Lecture du PKE Meter",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "janine_gb",
+      "name": "Coordination de la caserne par Janine",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "bill_l4d",
+      "name": "Couverture du vétéran Bill",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "ellis_l4d",
+      "name": "Remise en route par Ellis",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "coach_l4d",
+      "name": "Consignes de Coach",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "rochelle_l4d",
+      "name": "Repérage du trajet d’extraction",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "nick_l4d",
+      "name": "Double pistolet de Nick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "neo",
+      "name": "Enchaînement de l’Élu",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "trinity",
+      "name": "Salve aux deux Beretta",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61,
+        -53,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "morpheus",
+      "name": "Taille au katana de Morpheus",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -52,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "agent_smith",
+      "name": "Enchaînement physique de Smith",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -56,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "seraph",
+      "name": "Enchaînement du gardien de l’Oracle",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "oneill",
+      "name": "Rafale de couverture au P90",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -59,
+        -58,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "tealc",
+      "name": "Tir de lance Jaffa",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61,
+        -62,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "sam_carter",
+      "name": "Couverture au P90 de Carter",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -53,
+        -51,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "daniel_jackson",
+      "name": "Repérage de terrain de Daniel",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "hammond_sgc",
+      "name": "Autorisation d’extraction du SGC",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "freeman",
+      "name": "Pistolet antigravité surchargé",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "barney",
+      "name": "Tir de couverture à l’AR2",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "alyx_vance",
+      "name": "Tir de précision d’Alyx",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "eli_vance",
+      "name": "Coordination de Black Mesa East",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "kleiner",
+      "name": "Calibration du téléporteur",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "paladin",
+      "name": "Salve du fusil laser de Danse",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "nick_v",
+      "name": "Tir précis du revolver artisanal de Nick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -51,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "dogmeat",
+      "name": "Prise de Dogmeat",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "piper_wright",
+      "name": "Publick Occurrences — vérité publiée",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "preston_garvey",
+      "name": "Mousquet laser des Minutemen",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -36,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "hicks_aliens",
+      "name": "Rafale M41A de Hicks",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "vasquez_aliens",
+      "name": "M56 Smartgun de Vasquez",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -60,
+        -64,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "bishop_aliens",
+      "name": "Extraction par la seconde navette",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "ripley_aliens",
+      "name": "P-5000 Power Loader",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "hudson_aliens",
+      "name": "Contact au détecteur de mouvement",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "dallas",
+      "name": "Rafale d’AMCAR de Dallas",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -58,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "wolf_pd",
+      "name": "Rafale d’AK de Wolf",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "hoxton",
+      "name": "Double tir de Hoxton",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "chains_pd",
+      "name": "Couverture lourde de Chains",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -37,
+        -40,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "clover_pd",
+      "name": "Approche discrète de Clover",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "venkman_gb",
+      "name": "Effluve protonique de Venkman",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        -51,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "stantz_gb",
+      "name": "Mise en place du piège à fantôme",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "zeddemore_gb",
+      "name": "Effluve de couverture de Winston",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -38,
+        -40,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "spengler_gb",
+      "name": "Lecture du PKE Meter",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "janine_gb",
+      "name": "Coordination de la caserne par Janine",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "bill_l4d",
+      "name": "Couverture du vétéran Bill",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "ellis_l4d",
+      "name": "Remise en route par Ellis",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "coach_l4d",
+      "name": "Consignes de Coach",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "rochelle_l4d",
+      "name": "Repérage du trajet d’extraction",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "nick_l4d",
+      "name": "Double pistolet de Nick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "neo",
+      "name": "Enchaînement de l’Élu",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -75,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "trinity",
+      "name": "Salve aux deux Beretta",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        -62,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "morpheus",
+      "name": "Taille au katana de Morpheus",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "agent_smith",
+      "name": "Enchaînement physique de Smith",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -54,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "seraph",
+      "name": "Enchaînement du gardien de l’Oracle",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -65,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "oneill",
+      "name": "Rafale de couverture au P90",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        -65,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "tealc",
+      "name": "Tir de lance Jaffa",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        -60,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "sam_carter",
+      "name": "Couverture au P90 de Carter",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        -53,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "daniel_jackson",
+      "name": "Repérage de terrain de Daniel",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "hammond_sgc",
+      "name": "Autorisation d’extraction du SGC",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "freeman",
+      "name": "Pistolet antigravité surchargé",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -68,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "barney",
+      "name": "Tir de couverture à l’AR2",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "alyx_vance",
+      "name": "Tir de précision d’Alyx",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "eli_vance",
+      "name": "Coordination de Black Mesa East",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "kleiner",
+      "name": "Calibration du téléporteur",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "paladin",
+      "name": "Salve du fusil laser de Danse",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "nick_v",
+      "name": "Tir précis du revolver artisanal de Nick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "dogmeat",
+      "name": "Prise de Dogmeat",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "piper_wright",
+      "name": "Publick Occurrences — vérité publiée",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "preston_garvey",
+      "name": "Mousquet laser des Minutemen",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "hicks_aliens",
+      "name": "Rafale M41A de Hicks",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "vasquez_aliens",
+      "name": "M56 Smartgun de Vasquez",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -57,
+        -65,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "bishop_aliens",
+      "name": "Extraction par la seconde navette",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "ripley_aliens",
+      "name": "P-5000 Power Loader",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "hudson_aliens",
+      "name": "Contact au détecteur de mouvement",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "dallas",
+      "name": "Rafale d’AMCAR de Dallas",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -62,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "wolf_pd",
+      "name": "Rafale d’AK de Wolf",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "hoxton",
+      "name": "Double tir de Hoxton",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "chains_pd",
+      "name": "Couverture lourde de Chains",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -35,
+        -40,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "clover_pd",
+      "name": "Approche discrète de Clover",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "venkman_gb",
+      "name": "Effluve protonique de Venkman",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        -46,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "stantz_gb",
+      "name": "Mise en place du piège à fantôme",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "zeddemore_gb",
+      "name": "Effluve de couverture de Winston",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        -44,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "spengler_gb",
+      "name": "Lecture du PKE Meter",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "janine_gb",
+      "name": "Coordination de la caserne par Janine",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "bill_l4d",
+      "name": "Couverture du vétéran Bill",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "ellis_l4d",
+      "name": "Remise en route par Ellis",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "coach_l4d",
+      "name": "Consignes de Coach",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "rochelle_l4d",
+      "name": "Repérage du trajet d’extraction",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "nick_l4d",
+      "name": "Double pistolet de Nick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "neo",
+      "name": "Enchaînement de l’Élu",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -127.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "trinity",
+      "name": "Salve aux deux Beretta",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -100.5,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "morpheus",
+      "name": "Taille au katana de Morpheus",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -93.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "agent_smith",
+      "name": "Enchaînement physique de Smith",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -100.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "seraph",
+      "name": "Enchaînement du gardien de l’Oracle",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -107,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "oneill",
+      "name": "Rafale de couverture au P90",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.89999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "tealc",
+      "name": "Tir de lance Jaffa",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -109.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "sam_carter",
+      "name": "Couverture au P90 de Carter",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -92.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "daniel_jackson",
+      "name": "Repérage de terrain de Daniel",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "hammond_sgc",
+      "name": "Autorisation d’extraction du SGC",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "freeman",
+      "name": "Pistolet antigravité surchargé",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -109.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "barney",
+      "name": "Tir de couverture à l’AR2",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -78.5,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "alyx_vance",
+      "name": "Tir de précision d’Alyx",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "eli_vance",
+      "name": "Coordination de Black Mesa East",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "kleiner",
+      "name": "Calibration du téléporteur",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "paladin",
+      "name": "Salve du fusil laser de Danse",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "nick_v",
+      "name": "Tir précis du revolver artisanal de Nick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -92.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "dogmeat",
+      "name": "Prise de Dogmeat",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -78.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "piper_wright",
+      "name": "Publick Occurrences — vérité publiée",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "preston_garvey",
+      "name": "Mousquet laser des Minutemen",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -73,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "hicks_aliens",
+      "name": "Rafale M41A de Hicks",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -80.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "vasquez_aliens",
+      "name": "M56 Smartgun de Vasquez",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.89999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "bishop_aliens",
+      "name": "Extraction par la seconde navette",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "ripley_aliens",
+      "name": "P-5000 Power Loader",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -91.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "hudson_aliens",
+      "name": "Contact au détecteur de mouvement",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "dallas",
+      "name": "Rafale d’AMCAR de Dallas",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "wolf_pd",
+      "name": "Rafale d’AK de Wolf",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -102.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "hoxton",
+      "name": "Double tir de Hoxton",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "chains_pd",
+      "name": "Couverture lourde de Chains",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -76.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "clover_pd",
+      "name": "Approche discrète de Clover",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "venkman_gb",
+      "name": "Effluve protonique de Venkman",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "stantz_gb",
+      "name": "Mise en place du piège à fantôme",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "zeddemore_gb",
+      "name": "Effluve de couverture de Winston",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "spengler_gb",
+      "name": "Lecture du PKE Meter",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "janine_gb",
+      "name": "Coordination de la caserne par Janine",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "bill_l4d",
+      "name": "Couverture du vétéran Bill",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "ellis_l4d",
+      "name": "Remise en route par Ellis",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "coach_l4d",
+      "name": "Consignes de Coach",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "rochelle_l4d",
+      "name": "Repérage du trajet d’extraction",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "nick_l4d",
+      "name": "Double pistolet de Nick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -86.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "neo",
+      "name": "Enchaînement de l’Élu",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -127.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "trinity",
+      "name": "Salve aux deux Beretta",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -100.5,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "morpheus",
+      "name": "Taille au katana de Morpheus",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -93.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "agent_smith",
+      "name": "Enchaînement physique de Smith",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -100.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "seraph",
+      "name": "Enchaînement du gardien de l’Oracle",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -107,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "oneill",
+      "name": "Rafale de couverture au P90",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.89999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "tealc",
+      "name": "Tir de lance Jaffa",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -109.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "sam_carter",
+      "name": "Couverture au P90 de Carter",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -92.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "daniel_jackson",
+      "name": "Repérage de terrain de Daniel",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "hammond_sgc",
+      "name": "Autorisation d’extraction du SGC",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "freeman",
+      "name": "Pistolet antigravité surchargé",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -109.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "barney",
+      "name": "Tir de couverture à l’AR2",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -78.5,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "alyx_vance",
+      "name": "Tir de précision d’Alyx",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "eli_vance",
+      "name": "Coordination de Black Mesa East",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "kleiner",
+      "name": "Calibration du téléporteur",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "paladin",
+      "name": "Salve du fusil laser de Danse",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "nick_v",
+      "name": "Tir précis du revolver artisanal de Nick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -92.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "dogmeat",
+      "name": "Prise de Dogmeat",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -78.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "piper_wright",
+      "name": "Publick Occurrences — vérité publiée",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "preston_garvey",
+      "name": "Mousquet laser des Minutemen",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -73,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "hicks_aliens",
+      "name": "Rafale M41A de Hicks",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -80.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "vasquez_aliens",
+      "name": "M56 Smartgun de Vasquez",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.89999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "bishop_aliens",
+      "name": "Extraction par la seconde navette",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "ripley_aliens",
+      "name": "P-5000 Power Loader",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -91.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "hudson_aliens",
+      "name": "Contact au détecteur de mouvement",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "dallas",
+      "name": "Rafale d’AMCAR de Dallas",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "wolf_pd",
+      "name": "Rafale d’AK de Wolf",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -102.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "hoxton",
+      "name": "Double tir de Hoxton",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "chains_pd",
+      "name": "Couverture lourde de Chains",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -76.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "clover_pd",
+      "name": "Approche discrète de Clover",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "venkman_gb",
+      "name": "Effluve protonique de Venkman",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "stantz_gb",
+      "name": "Mise en place du piège à fantôme",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "zeddemore_gb",
+      "name": "Effluve de couverture de Winston",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "spengler_gb",
+      "name": "Lecture du PKE Meter",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "janine_gb",
+      "name": "Coordination de la caserne par Janine",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "bill_l4d",
+      "name": "Couverture du vétéran Bill",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "ellis_l4d",
+      "name": "Remise en route par Ellis",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "coach_l4d",
+      "name": "Consignes de Coach",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "rochelle_l4d",
+      "name": "Repérage du trajet d’extraction",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "nick_l4d",
+      "name": "Double pistolet de Nick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -86.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "trinity",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 20.100000000000023,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "oneill",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 21,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "tealc",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 21.899999999999977,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "sam_carter",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 18.399999999999977,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "freeman",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 21.799999999999955,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "barney",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 15.700000000000045,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "alyx_vance",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 18,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "paladin",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 16.799999999999955,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "nick_v",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 18.399999999999977,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "preston_garvey",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 14.600000000000023,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "hicks_aliens",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 16.100000000000023,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "vasquez_aliens",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 21,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "dallas",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 20.899999999999977,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "wolf_pd",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 20.5,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "hoxton",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 18,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "chains_pd",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 15.299999999999955,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "nick_l4d",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 17.200000000000045,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "trinity",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 20.100000000000023,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "oneill",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 21,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "tealc",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 21.899999999999977,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "sam_carter",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 18.399999999999977,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "freeman",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 21.799999999999955,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "barney",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 15.700000000000045,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "alyx_vance",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 18,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "paladin",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 16.799999999999955,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "nick_v",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 18.399999999999977,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "preston_garvey",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 14.600000000000023,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "hicks_aliens",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 16.100000000000023,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "vasquez_aliens",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 21,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "dallas",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 20.899999999999977,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "wolf_pd",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 20.5,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "hoxton",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 18,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "chains_pd",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 15.299999999999955,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "nick_l4d",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 17.200000000000045,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Native aperture RGBA/projection",
+      "projectedActivePoints": 412,
+      "inactivePoints": 836,
+      "frameDimensions": [
+        256,
+        256
+      ],
+      "baseline": 244
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "trinity",
+      "side": "player",
+      "nativePoint": {
+        "x": 191,
+        "y": 105
+      },
+      "origin": {
+        "x": 235.6432053359375,
+        "y": 331.3586421953125
+      },
+      "range": 640,
+      "lifetime": 1.162224605123197,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "oneill",
+      "side": "player",
+      "nativePoint": {
+        "x": 185,
+        "y": 78
+      },
+      "origin": {
+        "x": 227.80794875,
+        "y": 329.0154475
+      },
+      "range": 640,
+      "lifetime": 1.1772924062499999,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "tealc",
+      "side": "player",
+      "nativePoint": {
+        "x": 190,
+        "y": 125
+      },
+      "origin": {
+        "x": 238.50078615625,
+        "y": 336.103329796875
+      },
+      "range": 640,
+      "lifetime": 1.1567292573918269,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "sam_carter",
+      "side": "player",
+      "nativePoint": {
+        "x": 187,
+        "y": 83
+      },
+      "origin": {
+        "x": 224.2674333515625,
+        "y": 343.7786988203125
+      },
+      "range": 640,
+      "lifetime": 1.1841010897085338,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "freeman",
+      "side": "player",
+      "nativePoint": {
+        "x": 172,
+        "y": 176
+      },
+      "origin": {
+        "x": 224.61517793727336,
+        "y": 371.9583613696684
+      },
+      "range": 640,
+      "lifetime": 1.1834323501206283,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "barney",
+      "side": "player",
+      "nativePoint": {
+        "x": 206,
+        "y": 125
+      },
+      "origin": {
+        "x": 245.35386029411765,
+        "y": 340.80629006410254
+      },
+      "range": 640,
+      "lifetime": 1.1435502686651584,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "alyx_vance",
+      "side": "player",
+      "nativePoint": {
+        "x": 205,
+        "y": 119
+      },
+      "origin": {
+        "x": 250.04851598173514,
+        "y": 328.75240912055983
+      },
+      "range": 600,
+      "lifetime": 1.0575990077274324,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "paladin",
+      "side": "player",
+      "nativePoint": {
+        "x": 179,
+        "y": 116
+      },
+      "origin": {
+        "x": 230.96153153801842,
+        "y": 332.2926267281106
+      },
+      "range": 640,
+      "lifetime": 1.171227823965349,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "nick_v",
+      "side": "player",
+      "nativePoint": {
+        "x": 199,
+        "y": 127
+      },
+      "origin": {
+        "x": 253.30252854598785,
+        "y": 322.16343887492144
+      },
+      "range": 560,
+      "lifetime": 0.9744182143346387,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "preston_garvey",
+      "side": "player",
+      "nativePoint": {
+        "x": 185,
+        "y": 135
+      },
+      "origin": {
+        "x": 242.82397142721558,
+        "y": 328.1085458672544
+      },
+      "range": 760,
+      "lifetime": 1.3791846703322777,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "hicks_aliens",
+      "side": "player",
+      "nativePoint": {
+        "x": 204,
+        "y": 98
+      },
+      "origin": {
+        "x": 243.43371212121212,
+        "y": 326.561553030303
+      },
+      "range": 640,
+      "lifetime": 1.1472428613053613,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "vasquez_aliens",
+      "side": "player",
+      "nativePoint": {
+        "x": 207,
+        "y": 103
+      },
+      "origin": {
+        "x": 249.7030044226849,
+        "y": 321.2895743848282
+      },
+      "range": 650,
+      "lifetime": 1.1544172991871444,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "dallas",
+      "side": "player",
+      "nativePoint": {
+        "x": 204,
+        "y": 133
+      },
+      "origin": {
+        "x": 259.33101851851853,
+        "y": 323.3454861111111
+      },
+      "range": 640,
+      "lifetime": 1.1166711182336184,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "wolf_pd",
+      "side": "player",
+      "nativePoint": {
+        "x": 207,
+        "y": 112
+      },
+      "origin": {
+        "x": 253.4082776497696,
+        "y": 320.7608525345622
+      },
+      "range": 640,
+      "lifetime": 1.1280610045196737,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "hoxton",
+      "side": "player",
+      "nativePoint": {
+        "x": 219,
+        "y": 94
+      },
+      "origin": {
+        "x": 258.1337016574586,
+        "y": 314.1752170481452
+      },
+      "range": 620,
+      "lifetime": 1.080512112197195,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "chains_pd",
+      "side": "player",
+      "nativePoint": {
+        "x": 209,
+        "y": 111
+      },
+      "origin": {
+        "x": 248.11870118693736,
+        "y": 330.9902807671275
+      },
+      "range": 720,
+      "lifetime": 1.2920794207943511,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "nick_l4d",
+      "side": "player",
+      "nativePoint": {
+        "x": 192,
+        "y": 102
+      },
+      "origin": {
+        "x": 235.5,
+        "y": 331.234375
+      },
+      "range": 720,
+      "lifetime": 1.3163461538461538,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "trinity",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 191,
+        "y": 105
+      },
+      "origin": {
+        "x": 1464.3567946640626,
+        "y": 331.3586421953125
+      },
+      "range": 640,
+      "lifetime": 1.1622246051231973,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "oneill",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 185,
+        "y": 78
+      },
+      "origin": {
+        "x": 1472.19205125,
+        "y": 329.0154475
+      },
+      "range": 640,
+      "lifetime": 1.17729240625,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "tealc",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 190,
+        "y": 125
+      },
+      "origin": {
+        "x": 1461.49921384375,
+        "y": 336.103329796875
+      },
+      "range": 640,
+      "lifetime": 1.156729257391827,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "sam_carter",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 187,
+        "y": 83
+      },
+      "origin": {
+        "x": 1475.7325666484376,
+        "y": 343.7786988203125
+      },
+      "range": 640,
+      "lifetime": 1.1841010897085338,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "freeman",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 172,
+        "y": 176
+      },
+      "origin": {
+        "x": 1475.3848220627267,
+        "y": 371.9583613696684
+      },
+      "range": 640,
+      "lifetime": 1.1834323501206283,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "barney",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 206,
+        "y": 125
+      },
+      "origin": {
+        "x": 1454.6461397058824,
+        "y": 340.80629006410254
+      },
+      "range": 640,
+      "lifetime": 1.1435502686651586,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "alyx_vance",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 205,
+        "y": 119
+      },
+      "origin": {
+        "x": 1449.9514840182649,
+        "y": 328.75240912055983
+      },
+      "range": 600,
+      "lifetime": 1.0575990077274324,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "paladin",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 179,
+        "y": 116
+      },
+      "origin": {
+        "x": 1469.0384684619817,
+        "y": 332.2926267281106
+      },
+      "range": 640,
+      "lifetime": 1.1712278239653493,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "nick_v",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 199,
+        "y": 127
+      },
+      "origin": {
+        "x": 1446.6974714540122,
+        "y": 322.16343887492144
+      },
+      "range": 560,
+      "lifetime": 0.9744182143346388,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "preston_garvey",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 185,
+        "y": 135
+      },
+      "origin": {
+        "x": 1457.1760285727844,
+        "y": 328.1085458672544
+      },
+      "range": 760,
+      "lifetime": 1.3791846703322777,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "hicks_aliens",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 204,
+        "y": 98
+      },
+      "origin": {
+        "x": 1456.566287878788,
+        "y": 326.561553030303
+      },
+      "range": 640,
+      "lifetime": 1.1472428613053616,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "vasquez_aliens",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 207,
+        "y": 103
+      },
+      "origin": {
+        "x": 1450.296995577315,
+        "y": 321.2895743848282
+      },
+      "range": 650,
+      "lifetime": 1.1544172991871444,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "dallas",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 204,
+        "y": 133
+      },
+      "origin": {
+        "x": 1440.6689814814815,
+        "y": 323.3454861111111
+      },
+      "range": 640,
+      "lifetime": 1.1166711182336184,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "wolf_pd",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 207,
+        "y": 112
+      },
+      "origin": {
+        "x": 1446.5917223502304,
+        "y": 320.7608525345622
+      },
+      "range": 640,
+      "lifetime": 1.1280610045196737,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "hoxton",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 219,
+        "y": 94
+      },
+      "origin": {
+        "x": 1441.8662983425415,
+        "y": 314.1752170481452
+      },
+      "range": 620,
+      "lifetime": 1.0805121121971952,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "chains_pd",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 209,
+        "y": 111
+      },
+      "origin": {
+        "x": 1451.8812988130626,
+        "y": 330.9902807671275
+      },
+      "range": 720,
+      "lifetime": 1.2920794207943511,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "nick_l4d",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 192,
+        "y": 102
+      },
+      "origin": {
+        "x": 1464.5,
+        "y": 331.234375
+      },
+      "range": 720,
+      "lifetime": 1.3163461538461538,
+      "pauseStable": true
+    }
+  ],
+  "source1to1Verified": false
+}

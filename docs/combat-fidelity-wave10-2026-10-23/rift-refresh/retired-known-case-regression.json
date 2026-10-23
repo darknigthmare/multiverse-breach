@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-23",
+  "changedScript": "scripts/auditCharacterReferenceQuality.py",
+  "beforeSnapshot": "docs/combat-fidelity-wave10-2026-10-23/rift-refresh/auditCharacterReferenceQuality-before-retired-cases.py",
+  "sourceSha256Before": "421b20d86cc2c3d4388e36d209b03b01b480dee08bebe2b8c6a43b4f23ad2912",
+  "sourceSha256After": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+  "reason": "A historical known-reference image was replaced in the current catalogue; it is now measured as a separate retired calibration case, with the same expected classification and policy.",
+  "tests": {
+    "command": "python docs/combat-fidelity-wave10-2026-10-23/rift-refresh/test-retired-known-cases.py",
+    "exitCode": 0,
+    "passed": 5,
+    "log": "retired-known-case-tests.log",
+    "logSha256": "391827b6997cf89404edf1f4ec90de40dcc42a2a73f2a35f98de916e9695cfa3"
+  },
+  "constantsUnchanged": true,
+  "constantNames": [
+    "ALPHA_OCCUPIED_THRESHOLD",
+    "EXPECTED_CHARACTER_ARC_ENTRY_COUNT",
+    "EXPECTED_UNIQUE_REFERENCE_PATH_COUNT",
+    "KNOWN_EXPECTATIONS",
+    "MANUAL_APPROVED_REFERENCE_SHA256",
+    "STRONG_NEIGHBOR_DIFFERENCE",
+    "THRESHOLDS"
+  ],
+  "constantsSha256Before": "bea66891d9cadb480ba88cf4396c3d345f2042aa33495211f0ccd197d1d1d11a",
+  "constantsSha256After": "bea66891d9cadb480ba88cf4396c3d345f2042aa33495211f0ccd197d1d1d11a",
+  "analyzeAndClassifyFunctionsUnchanged": true,
+  "classifierFunctionsSha256Before": "c5a1fabc7e4585ee5340f02ba80b4c9be903332e2c7dbbcec42925743a29e66b",
+  "classifierFunctionsSha256After": "c5a1fabc7e4585ee5340f02ba80b4c9be903332e2c7dbbcec42925743a29e66b",
+  "currentReferenceCountUnchanged": 1912,
+  "retiredCasesDoNotApproveCurrentEntries": true,
+  "missingDegradedDuplicateOrOverlappingHistoricalCasesRejected": true,
+  "manualApprovalsAdded": 0,
+  "source1to1Verified": false
+}

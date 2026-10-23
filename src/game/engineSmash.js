@@ -1,8 +1,12 @@
 // Super Smash Bros Mêlée Mode Engine with Synergies & Status Effects
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
+import { combatBuffSource } from './combat/characterFormState';
 import { absorbBattleItemDamage } from './battleItemShield';
+import { drawCharacterSuperVisuals, getCharacterSuperVisualState } from './combat/characterSuperVisuals';
+import { supportsConfirmedCharacterSuperContact } from './combat/characterSuperVisuals.js';
 import { SYNERGIES_DB } from './heroes';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
+import { resolveCombatAbility, resolveCombatHeroSpriteActor, resolveCombatPresentation, resolveMeleeSuper } from './combatIdentity';
 import { createSmashArena, getSmashObjectiveLabel, getSmashObjectiveText } from './smashArenas';
 import { getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { getRecentUniverseTexturePattern } from './recentUniverseTextureAssets';
@@ -12,6 +16,7 @@ import {
   beginMeleeCharge,
   beginMeleeLightCombo,
   beginMeleeShield,
+  beginMeleeSuper,
   cancelMeleeHeldInputs,
   getMeleeHurtbox,
   initializeMeleeActorRuntime,
@@ -23,7 +28,7 @@ import {
   tickMeleeCombatActor,
   tryCatchMeleeLedge
 } from './melee/meleeCombatRuntime';
-import { transitionMeleeState } from './melee/meleeStateMachine';
+import { MELEE_TRANSITION_DATA, transitionMeleeState } from './melee/meleeStateMachine';
 import { MELEE_ACTIONS } from './melee/meleeInputMap';
 import {
   createCanonicalTopologyPlatforms,
@@ -268,6 +273,9 @@ export class EngineSmash {
     } else {
       this.spawnEnemy();
     }
+    [...this.heroes, ...this.enemies].forEach(actor => {
+      if (actor.state === 'intro') actor.meleePresentation = resolveCombatPresentation(actor, 'intro');
+    });
     if (!this.isPreMatchLocked()) this.completeMeleeIntros();
   }
 
@@ -349,6 +357,7 @@ export class EngineSmash {
         spd,
         stats: { hp, atk, def, spd },
         defense: {
+          ...template.defense,
           reduce: Number(template.defense?.reduce) || 0.45,
           dur: Number(template.defense?.dur) || 0.6
         },
@@ -489,6 +498,9 @@ export class EngineSmash {
     }
     if (actionName === MELEE_ACTIONS.chargedAttack) return beginMeleeCharge(actor);
     if (actionName === MELEE_ACTIONS.special) {
+      const superProfile = resolveMeleeSuper(actor);
+      if (!superProfile) return false;
+      if (superProfile && actor.specialCharge >= superProfile.meterCost) return this.triggerMeleeSuper(actor, superProfile);
       if (actor.specialCharge < 30) return false;
       const started = beginMeleeAction(actor, 'special');
       if (started) actor.specialCharge = Math.max(0, actor.specialCharge - 30);
@@ -520,6 +532,13 @@ export class EngineSmash {
   }
 
   resolveMeleeActionHit(attacker, action) {
+    if (this.gameOver || attacker.currentHp <= 0) return 0;
+    if (action.id === 'super') return this.resolveMeleeSuperHit(attacker, action);
+    if (action.abilityProfile) {
+      const hits = this.resolveMeleeSuperHit(attacker, action);
+      if (hits > 0) attacker.specialCharge = Math.min(100, (attacker.specialCharge || 0) + (action.id === 'charged' ? 16 : 8));
+      return hits;
+    }
     const attackerIsHero = this.heroes.includes(attacker);
     const targets = (attackerIsHero ? this.enemies : this.heroes)
       .filter(target => target.currentHp > 0);
@@ -554,6 +573,141 @@ export class EngineSmash {
     return hitCount;
   }
 
+  getMeleeSuper(actor = this.getActiveHero()) {
+    return resolveMeleeSuper(actor);
+  }
+
+  triggerMeleeSuper(actor, profile = resolveMeleeSuper(actor)) {
+    if (this.gameOver || this.isMatchInputLocked() || !beginMeleeSuper(actor, profile)) return false;
+    this.playSfx('special');
+    this.particles.add(actor.x, actor.y - 72, 0, -0.35, profile.color, 12, 70, 'text', profile.name);
+    return true;
+  }
+
+  getMeleeSuperTargets(attacker, profile, facing = attacker.facing) {
+    const allies = this.heroes.includes(attacker) ? this.heroes : this.enemies;
+    const opponents = this.heroes.includes(attacker) ? this.enemies : this.heroes;
+    const candidates = profile.targetSide === 'self' ? [attacker]
+      : profile.targetSide === 'enemy' || (!profile.targetSide && profile.effect === 'damage') ? opponents : allies;
+    const eligible = candidates.filter(target => {
+      if (profile.excludeSelf && target === attacker) return false;
+      if (profile.effect === 'revive') return target.currentHp <= 0;
+      if (target.currentHp <= 0) return false;
+      if (profile.effect === 'heal') {
+        const maxHp = Number(target.maxHp ?? target.stats?.hp ?? target.hp) || 1;
+        return target.currentHp < (target.statusEffects?.radiated > 0 ? maxHp * 0.5 : maxHp);
+      }
+      return true;
+    });
+    const distanceFrom = (source, target) => Math.hypot(target.x - source.x, target.y - source.y);
+    let targets = eligible.filter(target => {
+      if (profile.effect === 'revive' ? target.currentHp > 0 : target.currentHp <= 0) return false;
+      const dx = target.x - attacker.x;
+      const dy = target.y - attacker.y;
+      if (profile.shape === 'cone') {
+        return distanceFrom(attacker, target) <= profile.range
+          && Math.abs(Math.atan2(dy, dx * facing)) <= (profile.coneAngle || 55) * Math.PI / 360;
+      }
+      if (profile.delivery === 'area' || profile.delivery === 'support' || profile.effect !== 'damage'
+        || (profile.delivery === 'melee' && profile.shape === 'area')) {
+        const radius = profile.delivery === 'melee' && profile.shape === 'area'
+          ? Math.min(profile.range, profile.areaRadius || profile.range) : profile.range;
+        return Math.hypot(dx, dy) <= radius;
+      }
+      if (dx * facing < 0 || Math.abs(dx) > profile.range) return false;
+      const hurtbox = getMeleeHurtbox(target);
+      const centerY = attacker.y - 30;
+      const halfHeight = profile.delivery === 'melee' ? 32 : profile.delivery === 'beam' ? 14 : 20;
+      return centerY + halfHeight >= hurtbox.top && centerY - halfHeight <= hurtbox.bottom;
+    });
+    targets.sort((left, right) => profile.effect === 'heal'
+      ? left.currentHp / left.maxHp - right.currentHp / right.maxHp
+      : Math.abs(left.x - attacker.x) - Math.abs(right.x - attacker.x));
+    if (profile.effect === 'damage' && profile.shape === 'area' && ['projectile', 'beam', 'area'].includes(profile.delivery)) {
+      const impactTarget = targets[0];
+      targets = impactTarget ? eligible.filter(target => distanceFrom(impactTarget, target) <= (profile.areaRadius || 135)
+        && distanceFrom(attacker, target) <= profile.range) : [];
+      if (impactTarget) targets.sort((left, right) => distanceFrom(impactTarget, left) - distanceFrom(impactTarget, right));
+    }
+    const targetLimit = profile.shape === 'single' ? 1 : Math.max(1, Number(profile.maxTargets) || candidates.length);
+    return targets.slice(0, targetLimit);
+  }
+
+  resolveMeleeSuperHit(attacker, action) {
+    const profile = action.superProfile || action.abilityProfile;
+    if (!profile || action.impactResolved || this.gameOver || attacker.currentHp <= 0 || attacker.action !== action) return 0;
+    action.impactResolved = true;
+    const targets = this.getMeleeSuperTargets(attacker, profile, action.facing);
+    if (targets[0]) action.impactPoint = { x: targets[0].x, y: targets[0].y - 30 };
+    const attack = Math.max(1, Number(attacker.stats?.atk ?? attacker.atk) || 1);
+    const confirmNativeContact = supportsConfirmedCharacterSuperContact(profile);
+    targets.forEach(target => {
+      if (profile.effect === 'damage') {
+        const comboScale = action.abilityProfile && /^light[123]$/.test(action.id) ? action.base / 9.5 : 1;
+        const powerScale = action.abilityProfile ? Math.max(0.1, Number(action.powerScale) || 1) : 1;
+        const contact = confirmNativeContact ? { hp: target.currentHp, x: target.x, y: target.y } : null;
+        this.applyDamage(attacker, target, attack * profile.multiplier * comboScale * powerScale, action.knockback / 10, profile.statusEffect || null, action.guardDamage);
+        if (contact && target.currentHp < contact.hp && !action.visualConfirmedContact) {
+          action.visualConfirmedContact = { confirmed: true, x: contact.x, y: contact.y };
+        }
+      } else if (profile.effect === 'heal') {
+        const maxHp = Math.max(1, Number(target.maxHp ?? target.stats?.hp ?? target.hp) || 1);
+        const cap = target.statusEffects?.radiated > 0 ? maxHp * 0.5 : maxHp;
+        const requested = maxHp * Math.max(0, Math.min(1, profile.healRatio || profile.multiplier * 0.1));
+        const restored = Math.max(0, Math.min(cap - target.currentHp, requested));
+        target.currentHp += restored;
+        this.particles.add(target.x, target.y - 42, 0, -1, profile.color, 12, 50, 'text', `+${Math.round(restored)}`);
+      } else if (profile.effect === 'revive') {
+        const maxHp = Math.max(1, Number(target.maxHp ?? target.stats?.hp ?? target.hp) || 1);
+        target.currentHp = Math.max(1, Math.round(maxHp * Math.max(0.01, Math.min(1, profile.reviveRatio || 0.3))));
+        target.action = null;
+        target.queuedMeleeAction = null;
+        target.stateTimer = 0;
+        target.vx = 0;
+        target.vy = 0;
+        target.x = attacker.x - action.facing * 28;
+        target.y = attacker.y;
+        target.recoveryLock = 18;
+        target.wasCountedDefeated = false;
+        transitionMeleeState(target, 'idle', { force: true, restart: true });
+      } else if (profile.effect === 'cleanse') {
+        const statuses = Array.isArray(profile.cleanses) ? profile.cleanses
+          : typeof profile.cleanses === 'string' ? [profile.cleanses] : Object.keys(target.statusEffects || {});
+        statuses.forEach(status => {
+          if (target.statusEffects && status in target.statusEffects) target.statusEffects[status] = 0;
+        });
+      } else if (profile.effect === 'guard' || profile.effect === 'buff') {
+        target.meleeSuperSupport = {
+          source: combatBuffSource(attacker, profile),
+          effect: profile.effect,
+          color: profile.color,
+          remaining: Math.max(0.2, Math.min(30, Number(profile.effectDuration ?? profile.sourceAbility?.dur ?? profile.sourceAbility?.duration) || 5)),
+          guardReduce: Math.max(0, Math.min(1, Number.isFinite(Number(profile.guardReduce)) ? Number(profile.guardReduce) : 0.4)),
+          buffMultiplier: Math.max(1, Math.min(5, Number(profile.buffMultiplier) || 1.2))
+        };
+        if (profile.effect === 'guard') target.guardMeter = target.guardMeterMax;
+      }
+      this.particles.add(target.x, target.y - 24, 0, -0.5, profile.color, profile.delivery === 'area' ? 18 : 8, 30, profile.effect === 'damage' ? 'spark' : 'portal');
+    });
+    return targets.length;
+  }
+
+  tryCpuMeleeSuper(actor) {
+    const profile = resolveMeleeSuper(actor);
+    if (!profile || actor.specialCharge < profile.meterCost) return false;
+    const targets = this.getMeleeSuperTargets(actor, profile);
+    const usefulTargets = targets.filter(target => {
+      if (profile.effect === 'heal') {
+        const cap = target.maxHp * (target.statusEffects?.radiated > 0 ? 0.5 : 1);
+        return target.currentHp < cap * 0.75;
+      }
+      if (profile.effect === 'cleanse') return Object.values(target.statusEffects || {}).some(value => value > 0);
+      if (profile.effect === 'buff' || profile.effect === 'guard') return !target.meleeSuperSupport;
+      return true;
+    });
+    return usefulTargets.length > 0 && this.triggerMeleeSuper(actor, profile);
+  }
+
   triggerOpponentAbility(abilityType) {
     if (!this.isLocalP2 || this.gameOver || this.isMatchInputLocked()) return false;
     const opponent = this.getActiveOpponent();
@@ -563,6 +717,10 @@ export class EngineSmash {
       || opponent.state === 'dead'
       || opponent.state === 'hit'
     ) return false;
+
+    if (['simple', 'secondary', 'defense'].includes(abilityType) && resolveCombatAbility(opponent, abilityType)?.provenance.identityAuthored) {
+      return this.triggerAuthoredMeleeAbility(opponent, abilityType);
+    }
 
     const attack = opponent.stats?.atk || opponent.atk || 1;
     const targets = this.heroes.filter(hero => hero.currentHp > 0);
@@ -632,25 +790,7 @@ export class EngineSmash {
     }
 
     if (abilityType === 'special') {
-      if (opponent.specialCharge < 100) return false;
-      opponent.specialCharge = 0;
-      opponent.state = 'attack';
-      opponent.stateTimer = 40;
-      this.playSfx('special');
-      this.particles.add(this.width / 2, this.height / 2, 0, 0, opponent.primaryColor, 300, 30, 'glitch');
-      this.particles.add(
-        opponent.x - 30,
-        opponent.y - 50,
-        0,
-        -0.5,
-        '#f1c40f',
-        16,
-        80,
-        'text',
-        `!!! ${String(opponent.versusSpecialName).toUpperCase()} !!!`
-      );
-      targets.forEach(target => this.applyDamage(opponent, target, attack * 2.5, 45));
-      return true;
+      return this.triggerMeleeSuper(opponent);
     }
 
     return false;
@@ -740,6 +880,9 @@ export class EngineSmash {
 
   triggerAbility(hero, abilityType) {
     if (hero.currentHp <= 0 || hero.state === 'dead' || this.gameOver || this.isMatchInputLocked()) return;
+    if (['simple', 'secondary', 'defense'].includes(abilityType) && resolveCombatAbility(hero, abilityType)?.provenance.identityAuthored) {
+      return this.triggerAuthoredMeleeAbility(hero, abilityType);
+    }
 
     if (abilityType === 'simple') {
       hero.state = 'attack';
@@ -751,9 +894,7 @@ export class EngineSmash {
       
       this.enemies.forEach(e => {
         if (e.currentHp > 0 && Math.abs(e.y - hero.y) < 30 && ((hero.facing === 1 && e.x > hero.x && e.x < reachX) || (hero.facing === -1 && e.x < hero.x && e.x > reachX))) {
-          let status = null;
-          if (hero.id === 'leon') status = 'infected';
-          this.applyDamage(hero, e, hero.stats.atk * hero.simple.dmg, 10, status);
+          this.applyDamage(hero, e, hero.stats.atk * hero.simple.dmg, 10, null);
         }
       });
       hero.specialCharge = Math.min(100, hero.specialCharge + 10);
@@ -790,23 +931,28 @@ export class EngineSmash {
       this.particles.add(hero.x, hero.y - 6, 0, 0, hero.secondaryColor || '#00ffff', 4, 15, 'spark');
 
     } else if (abilityType === 'special') {
-      if (hero.specialCharge < 100) return;
-      hero.specialCharge = 0;
-      hero.state = 'attack';
-      hero.stateTimer = 40;
-      this.playSfx('special');
-
-      this.particles.add(this.width/2, this.height/2, 0, 0, hero.primaryColor, 300, 30, 'glitch');
-      this.particles.add(hero.x - 30, hero.y - 50, 0, -0.5, '#f1c40f', 16, 80, 'text', `!!! ${hero.special.name.toUpperCase()} !!!`);
-
-      this.enemies.forEach(e => {
-        if (e.currentHp > 0) {
-          let status = null;
-          if (hero.id === 'neo') status = 'glitched';
-          this.applyDamage(hero, e, hero.stats.atk * hero.special.dmg, 45, status);
-        }
-      });
+      return this.triggerMeleeSuper(hero);
     }
+  }
+
+  triggerAuthoredMeleeAbility(actor, slot) {
+    const profile = resolveCombatAbility(actor, slot);
+    if (!profile?.provenance.identityAuthored || actor.action || actor.meleeRecoveryTimer > 0 || actor.shieldBreakTimer > 0) return false;
+    if (slot === 'secondary' && actor.cooldown > 0) return false;
+    if (slot === 'defense') {
+      if (actor.guarding || actor.ledge || actor.charging) return false;
+      actor.state = 'defense';
+      actor.stateTimer = Math.max(1, Math.round((Number(profile.sourceAbility.dur) || profile.effectDuration) * 60));
+      actor.vx = 0;
+      this.playSfx('shield');
+      return true;
+    }
+    const started = slot === 'simple' ? beginMeleeLightCombo(actor) : beginMeleeAction(actor, 'special');
+    if (started) {
+      if (slot === 'secondary') actor.cooldown = Math.round((Number(profile.sourceAbility.cd) || 4) * 60);
+      this.playSfx(profile.effect !== 'damage' ? 'shield' : profile.delivery === 'melee' ? 'slash' : 'shoot');
+    }
+    return started;
   }
 
   triggerCombatEvent(effect) {
@@ -946,6 +1092,9 @@ export class EngineSmash {
 
 
   applyDamage(attacker, defender, baseDmg, knockbackForce = 10, statusEffect = null, guardDamage = 8) {
+    if (this.gameOver || defender.currentHp <= 0) return 0;
+    if (attacker.meleeSuperSupport?.effect === 'buff') baseDmg *= attacker.meleeSuperSupport.buffMultiplier;
+    if (defender.meleeSuperSupport?.effect === 'guard') baseDmg *= 1 - defender.meleeSuperSupport.guardReduce;
     const guardResult = absorbMeleeGuardHit(defender, {
       damage: baseDmg,
       guardDamage
@@ -970,7 +1119,8 @@ export class EngineSmash {
       }
     }
     if (defender.state === 'defense') {
-      baseDmg *= (1 - defender.defense.reduce);
+      const defense = resolveCombatAbility(defender, 'defense');
+      baseDmg *= 1 - (defense?.provenance.identityAuthored ? defense.guardReduce : defender.defense.reduce);
     }
     const variance = (Math.random() * 0.2) + 0.9;
     const defenseFactor = Math.max(0.72, 1 - getEffectiveCombatDefense(defender, attacker) * 0.01);
@@ -992,6 +1142,11 @@ export class EngineSmash {
     defender.recoveryLock = defender.isBoss ? 28 : 18;
     
     if (defender.state !== 'defense' && !guardResult.guarded) {
+      defender.action = null;
+      defender.queuedMeleeAction = null;
+      defender.charging = false;
+      defender.chargeHoldSeconds = 0;
+      defender.meleeRecoveryTimer = 0;
       const hitState = defender.id === 'player_anchor' ? 'hitStun' : 'hit';
       if (!transitionMeleeState(defender, hitState, { force: true, restart: true })) {
         defender.state = hitState;
@@ -1023,6 +1178,7 @@ export class EngineSmash {
     } else {
       this.playSfx('hit');
     }
+    return finalDmg;
   }
 
   ensureLocalVersusLeaders() {
@@ -1057,8 +1213,11 @@ export class EngineSmash {
 
     const crouchPressed = isInputPressed(keys, ['down', 'crouch', 'Crouch']);
     const groundedNow = Boolean(this.isOnGround(actor));
-    actor.fastFallHeld = crouchPressed && !groundedNow;
-    setMeleeCrouch(actor, crouchPressed && groundedNow);
+    // The platform tolerance also covers the last descending frame. Preserve
+    // that air state until applyPhysics emits the actual landing transition.
+    const groundedForLocomotion = groundedNow && !['jumpStart', 'jumpRise', 'jumpApex', 'fall', 'fastFall', 'ledgeJump', 'ledgeDrop'].includes(actor.state);
+    actor.fastFallHeld = crouchPressed && !groundedForLocomotion;
+    setMeleeCrouch(actor, crouchPressed && groundedForLocomotion);
 
     const blocked = ['attack', 'defense', 'hit', 'hitStun', 'dead'].includes(actor.state)
       || isMeleeMovementLocked(actor);
@@ -1082,16 +1241,21 @@ export class EngineSmash {
     const stageSpeedScale = actor.stageSpeedBoostMs > 0 ? 1.15 : actor.stageSlowMs > 0 ? 0.72 : 1;
     const speed = (actor.statusEffects?.glitched > 0 ? speedBase * 0.5 : speedBase) * stageSpeedScale;
     const direction = (rightPressed ? 1 : 0) - (leftPressed ? 1 : 0);
+    const activeGroundTransition = groundedForLocomotion && ['land', 'turn', 'crouchExit'].includes(actor.state)
+      && actor.stateElapsed < (MELEE_TRANSITION_DATA[actor.state]?.duration || 0);
 
     actor.vx = actor.crouching ? 0 : direction * speed;
     if (direction && !actor.crouching) {
+      const changedDirection = actor.facing !== direction;
       actor.facing = direction;
-      transitionMeleeState(actor, Math.abs(direction) > 0.8 ? 'run' : 'walk', { force: true });
+      if (groundedForLocomotion && !activeGroundTransition) {
+        transitionMeleeState(actor, changedDirection ? 'turn' : Math.abs(direction) > 0.8 ? 'run' : 'walk', { force: true, restart: changedDirection });
+      }
     } else {
       actor.vx = 0;
       if (actor.crouching) {
         if (actor.state === 'idle') transitionMeleeState(actor, 'crouchEnter', { force: true });
-      } else if (['run', 'walk', 'turn', 'crouchExit'].includes(actor.state)) {
+      } else if (['run', 'walk', 'turn', 'crouchExit'].includes(actor.state) && !activeGroundTransition) {
         transitionMeleeState(actor, 'idle', { force: true });
       }
       if (target && ['idle', 'crouchIdle'].includes(actor.state)) actor.facing = target.x >= actor.x ? 1 : -1;
@@ -1181,11 +1345,11 @@ export class EngineSmash {
   }
 
   /**
-   * The Player Anchor owns a short authored intro. While it plays, the whole
-   * match waits so neither the CPU nor local P2 can take a free first hit.
+   * While any fighter enters, the whole match waits so neither side can take
+   * a free first hit. Every fighter retains its own presentation identity.
    */
   advanceMeleeIntro() {
-    const introActors = this.heroes.filter(hero => hero.id === 'player_anchor' && hero.state === 'intro');
+    const introActors = [...this.heroes, ...this.enemies].filter(actor => actor.state === 'intro');
     if (!introActors.length) return false;
     introActors.forEach(actor => tickMeleeCombatActor(actor, 1 / 60));
     return true;
@@ -1325,11 +1489,11 @@ export class EngineSmash {
   }
 
   isMeleeIntroActive() {
-    return this.heroes.some(hero => hero.id === 'player_anchor' && hero.state === 'intro');
+    return [...this.heroes, ...this.enemies].some(actor => actor.state === 'intro');
   }
 
   tickMeleeOutcomeStates() {
-    this.heroes
+    [...this.heroes, ...this.enemies]
       .filter(hero => ['victory', 'defeat'].includes(hero.state))
       .forEach(hero => tickMeleeCombatActor(hero, 1 / 60));
   }
@@ -1337,8 +1501,7 @@ export class EngineSmash {
   /** Keep the authored result pose stable after the combat simulation stops. */
   setMeleeOutcomeStates(result) {
     this.meleeOutcomeResult = result;
-    this.heroes.forEach(hero => {
-      if (hero.id !== 'player_anchor') return;
+    [...this.heroes, ...this.enemies].forEach(hero => {
       hero.action = null;
       hero.queuedMeleeAction = null;
       hero.charging = false;
@@ -1351,7 +1514,9 @@ export class EngineSmash {
       hero.ledge = null;
       hero.vx = 0;
       hero.vy = 0;
-      const nextState = result === 'victory' && hero.currentHp > 0 ? 'victory' : 'defeat';
+      const sideWon = this.heroes.includes(hero) ? result === 'victory' : result === 'defeat';
+      const nextState = sideWon && hero.currentHp > 0 ? 'victory' : 'defeat';
+      hero.meleePresentation = resolveCombatPresentation(hero, nextState);
       transitionMeleeState(hero, nextState, { force: true, restart: true });
     });
   }
@@ -1525,6 +1690,11 @@ export class EngineSmash {
       }
 
       if (!h.isLeader && !['hit', 'hitStun', 'defense', 'attack'].includes(h.state) && !isMeleeMovementLocked(h) && !this.gameOver) {
+        if (this.tryCpuMeleeSuper(h)) {
+          h.vy += this.gravity;
+          this.applyPhysics(h);
+          return;
+        }
         const distToLeader = activeHero.x - h.x;
         if (Math.abs(distToLeader) > 80) {
           h.vx = Math.sign(distToLeader) * 2.5;
@@ -1601,6 +1771,12 @@ export class EngineSmash {
         const dy = target.y - e.y;
         if (dx !== 0) e.facing = Math.sign(dx);
 
+        if (this.tryCpuMeleeSuper(e)) {
+          e.vy += this.gravity;
+          this.applyPhysics(e);
+          return;
+        }
+
         const ground = this.isOnGround(e);
         const behavior = e.behavior || this.getEnemyBehavior(e, e.isBoss);
         if (ground && dy < -34 && Math.abs(dx) < behavior.verticalAggro) {
@@ -1621,20 +1797,28 @@ export class EngineSmash {
           
           e.cooldown--;
           if (e.cooldown <= 0) {
-            e.state = 'attack';
-            e.stateTimer = 20;
-            e.cooldown = behavior.cooldown;
+            const authoredSimple = this.isFixedCustomRoster ? resolveCombatAbility(e, 'simple') : null;
+            if (authoredSimple?.provenance.identityAuthored && authoredSimple.effect !== 'damage') {
+              // A custom support actor commits its real timed ally action. If
+              // startup is blocked, it must never fall through to a damage hit.
+              if (this.triggerAuthoredMeleeAbility(e, 'simple')) e.cooldown = behavior.cooldown;
+            } else {
+              e.state = 'attack';
+              e.stateTimer = 20;
+              e.cooldown = behavior.cooldown;
 
-            this.playSfx(e.weapon === 'gun' || e.weapon === 'laser' ? 'shoot' : 'slash');
+              this.playSfx((e.weaponType || e.weapon) === 'gun' || (e.weaponType || e.weapon) === 'laser' ? 'shoot' : 'slash');
 
-            if (Math.abs(target.x - e.x) < behavior.attackRange && Math.abs(target.y - e.y) < 36) {
-              // Boss special status effects
-              let status = null;
-              if (e.name.includes('Nemesis')) status = 'infected';
-              if (e.name.includes('Smith')) status = 'glitched';
-              if (e.name.includes('Deathclaw') || e.name.includes('Cyberdemon')) status = 'radiated';
+              if (Math.abs(target.x - e.x) < behavior.attackRange && Math.abs(target.y - e.y) < 36) {
+                // Boss special status effects
+                let status = null;
+                if (e.name.includes('Nemesis')) status = 'infected';
+                if (e.name.includes('Smith')) status = 'glitched';
+                if (e.name.includes('Deathclaw') || e.name.includes('Cyberdemon')) status = 'radiated';
 
-              this.applyDamage(e, target, e.atk, 12, status);
+                this.applyDamage(e, target, e.atk, 12, status);
+                e.specialCharge = Math.min(100, (e.specialCharge || 0) + 10);
+              }
             }
           }
         }
@@ -2048,6 +2232,17 @@ export class EngineSmash {
     return closest;
   }
 
+  getMeleeVisualActor(actor) {
+    const action = actor.action;
+    const profile = action?.superProfile;
+    if (profile?.sourceHeroId !== 'barret_ff7' || profile.name !== 'Catastrophe') return actor;
+    const riseEnd = Math.max(0.01, action.hitAt * 0.7);
+    const returnStart = Math.max(action.hitAt, action.duration * 0.8);
+    const rise = Math.min(1, action.elapsed / riseEnd);
+    const landing = action.elapsed <= returnStart ? 1 : Math.max(0, (action.duration - action.elapsed) / Math.max(0.01, action.duration - returnStart));
+    return { ...actor, y: actor.y - Math.sin(rise * Math.PI / 2) * landing * 64, facing: action.facing };
+  }
+
   draw(ctx, animTime, lang = 'fr') {
     this.drawArena(ctx, animTime);
 
@@ -2061,7 +2256,11 @@ export class EngineSmash {
     if (!this.isFixedCustomRoster) this.drawObjectiveNodes(ctx, animTime);
 
     this.enemies.forEach(e => {
-      if (e.isBoss) {
+      const heroSpriteActor = resolveCombatHeroSpriteActor(e);
+      if (heroSpriteActor) {
+        const visualActor = this.getMeleeVisualActor(heroSpriteActor);
+        drawPixelSprite(ctx, visualActor.x, visualActor.y, visualActor, animTime, visualActor.facing, 72, 'melee');
+      } else if (e.isBoss) {
         drawBoss(ctx, e.x, e.y, e, animTime, e.facing);
       } else {
         drawPixelEnemy(ctx, e.x, e.y, e, animTime, e.facing);
@@ -2093,7 +2292,8 @@ export class EngineSmash {
     });
 
     this.heroes.forEach(h => {
-      drawPixelSprite(ctx, h.x, h.y, h, animTime, h.facing, 72, 'melee');
+      const visualActor = this.getMeleeVisualActor(h);
+      drawPixelSprite(ctx, visualActor.x, visualActor.y, visualActor, animTime, visualActor.facing, 72, 'melee');
 
       if (h.id === this.activeHeroId && h.currentHp > 0) {
         ctx.fillStyle = '#39c5bb';
@@ -2115,6 +2315,11 @@ export class EngineSmash {
       }
     });
 
+    [...this.heroes, ...this.enemies].forEach(actor => {
+      this.drawMeleeSuper(ctx, actor);
+      this.drawMeleePresentation(ctx, actor);
+    });
+
     ctx.fillStyle = '#ffffff';
     ctx.font = '12px "Press Start 2P"';
     if (this.isLocalP2) {
@@ -2132,6 +2337,141 @@ export class EngineSmash {
     ctx.fillText(this.arena.label[lang] || this.arena.label.fr || this.arena.id, 20, 48);
     if (!this.isFixedCustomRoster) this.drawObjectiveHud(ctx, lang);
     this.drawPreMatchOverlay(ctx, lang);
+  }
+
+  drawMeleeSuper(ctx, actor) {
+    const action = actor.action?.superProfile || actor.action?.abilityProfile ? actor.action : null;
+    const profile = action?.superProfile || action?.abilityProfile;
+    if (actor.currentHp <= 0 || (!profile && !actor.meleeSuperSupport)) return;
+    const x = actor.x;
+    const y = actor.y - 30;
+    ctx.save();
+    ctx.strokeStyle = profile?.color || actor.meleeSuperSupport.color;
+    ctx.fillStyle = ctx.strokeStyle;
+    ctx.shadowColor = ctx.strokeStyle;
+    ctx.shadowBlur = 12;
+    ctx.lineWidth = 3;
+
+    if (!profile) {
+      ctx.globalAlpha = 0.5;
+      ctx.beginPath();
+      ctx.ellipse(x, y, 25, 36, 0, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+      return;
+    }
+
+    const windup = Math.min(1, action.elapsed / action.hitAt);
+    const release = action.elapsed >= action.hitAt;
+    const fade = release ? Math.max(0, (action.duration - action.elapsed) / Math.max(0.01, action.duration - action.hitAt)) : 0.35 + windup * 0.55;
+    const facing = action.facing;
+    const range = profile.range;
+    ctx.globalAlpha = fade;
+    const characterTarget = action.impactPoint ? { x: action.impactPoint.x, y: action.impactPoint.y + 30 }
+      : this.getMeleeSuperTargets(actor, profile, facing)[0];
+    const contactVisual = supportsConfirmedCharacterSuperContact(profile) ? action.visualConfirmedContact || { confirmed: false } : null;
+    if (drawCharacterSuperVisuals(ctx, getCharacterSuperVisualState({ actor, profile, action, target: characterTarget, contactVisual }))) {
+      ctx.restore();
+      return;
+    }
+    if (profile.delivery === 'support' || profile.effect !== 'damage') {
+      const radius = Math.min(range, 30 + windup * 48);
+      ctx.beginPath();
+      ctx.ellipse(x, actor.y - 3, radius, radius * 0.3, 0, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(x, y, 24 + Math.sin(windup * Math.PI) * 10, -Math.PI / 2, Math.PI * 2 * windup - Math.PI / 2);
+      ctx.stroke();
+      if (profile.effect === 'heal' || profile.effect === 'revive') {
+        ctx.fillRect(x - 3, y - 12, 6, 24);
+        ctx.fillRect(x - 12, y - 3, 24, 6);
+      } else if (profile.effect === 'guard') {
+        ctx.beginPath();
+        ctx.moveTo(x - 16, y - 18);
+        ctx.lineTo(x + 16, y - 18);
+        ctx.lineTo(x + 14, y + 8);
+        ctx.lineTo(x, y + 22);
+        ctx.lineTo(x - 14, y + 8);
+        ctx.closePath();
+        ctx.stroke();
+      } else {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(action.elapsed * (profile.effect === 'cleanse' ? -5 : 5));
+        ctx.strokeRect(-13, -13, 26, 26);
+        ctx.restore();
+      }
+    } else if (profile.delivery === 'area') {
+      const target = action.impactPoint || this.getMeleeSuperTargets(actor, profile, facing)[0];
+      const areaX = profile.shape === 'area' && target ? target.x : x;
+      const areaY = profile.shape === 'area' && target ? (action.impactPoint ? target.y : target.y - 30) : y;
+      const radius = profile.shape === 'area' ? Math.min(range, profile.areaRadius || 135) : range;
+      ctx.lineWidth = release ? 7 : 2;
+      ctx.beginPath();
+      ctx.ellipse(areaX, areaY, Math.max(4, radius * windup), Math.max(4, radius * windup * 0.6), 0, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.globalAlpha *= 0.12;
+      ctx.fill();
+    } else if (profile.delivery === 'melee') {
+      ctx.lineWidth = release ? 12 : 4;
+      const angle = facing === -1 ? Math.PI : 0;
+      ctx.beginPath();
+      ctx.arc(x, y, Math.max(14, range * 0.7), angle - 1.1 + windup * 0.35, angle + 0.4 + windup * 0.7);
+      ctx.stroke();
+    } else if (profile.delivery === 'beam') {
+      const catastrophe = profile.sourceHeroId === 'barret_ff7' && profile.name === 'Catastrophe';
+      const visualActor = catastrophe ? this.getMeleeVisualActor(actor) : actor;
+      const originX = catastrophe ? visualActor.x + facing * 12 : x;
+      const originY = catastrophe ? visualActor.y - 30 : y;
+      const impact = catastrophe ? action.impactPoint || this.getMeleeSuperTargets(actor, profile, facing)[0] : null;
+      const endX = catastrophe ? impact?.x ?? x + facing * Math.min(range, 180) : x + facing * range;
+      const endY = catastrophe ? action.impactPoint ? impact.y : impact ? impact.y - 20 : actor.y - 12 : y;
+      const beamVisible = release && (!catastrophe || action.elapsed < Math.max(action.hitAt, action.duration * 0.8));
+      if (beamVisible) {
+        ctx.lineWidth = 20;
+        ctx.beginPath();
+        ctx.moveTo(originX, originY);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+      } else if (!release) {
+        ctx.beginPath();
+        ctx.arc(originX + facing * 22, originY, 4 + windup * 16, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    } else if (profile.delivery === 'projectile') {
+      const target = this.getMeleeSuperTargets(actor, profile, facing)[0];
+      const distance = target ? Math.abs(target.x - x) : range;
+      const projectileX = x + facing * distance * windup;
+      ctx.beginPath();
+      ctx.arc(projectileX, y, release ? 16 : 5 + windup * 6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(projectileX - facing * 26, y);
+      ctx.lineTo(projectileX, y);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  drawMeleePresentation(ctx, actor) {
+    const presentation = actor.meleePresentation;
+    if (!presentation || !['intro', 'victory', 'defeat'].includes(actor.state)
+      || actor.stateElapsed > presentation.duration) return;
+    ctx.save();
+    ctx.textAlign = 'center';
+    ctx.font = '10px "Share Tech Mono", monospace';
+    ctx.fillStyle = 'rgba(0,0,0,0.78)';
+    ctx.fillRect(actor.x - 104, actor.y - 112, 208, 36);
+    ctx.fillStyle = presentation.color;
+    ctx.fillText(presentation.name, actor.x, actor.y - 98, 196);
+    ctx.font = '8px "Share Tech Mono", monospace';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(presentation.description, actor.x, actor.y - 84, 196);
+    ctx.restore();
   }
 
   drawObjectiveHud(ctx, lang = 'fr') {

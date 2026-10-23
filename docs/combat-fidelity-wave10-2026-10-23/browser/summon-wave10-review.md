@@ -1,0 +1,9 @@
+# Renforts W10 — contrôle final
+
+Après le gel final de production confirmé par root, les 16 tests Node et les 16 parcours réels GameCanvas terminent au code 0. Les huit partenaires utilisent leur vraie identité et leur univers. Les 128 cellules natives distinctes sont rendues dans chaque camp, avec 256 vérifications de miroir de pixels. Chaque scène applique un seul effet à tick99, sur la colonne d’attaque2 : douze impacts offensifs et quatre soutiens. Egon et Coach renforcent leurs deux véritables alliés, sans soin ni dégât adverse.
+
+Les parcours vérifient sélection, annulation gratuite, touches U/PavNum5, confirmation des cibles, pause et commande déjà utilisée. Chaque invocation consomme une seule fois100 ATB et100 de charge. Aucun effet tardif après interruption n’apparaît dans les contrôles Node. Les seize captures finales ont été inspectées dans les deux montages `summon-wave10-final-captures-*`. Aucune erreur de page n’a été observée.
+
+Le harness vérifie l’identité des SHA avant et après pour262 fichiers : imports relatifs JS/JSX/JSON accessibles depuis GameCanvas et les huit nouveaux PNG de renforts. Les vingt PNG du lot B, ses deux registres, ses ancres et ses capacités restent identiques à leur livraison figée. Les quinze anciens assets natifs, les28 feuilles historiques et leurs métadonnées sont préservés selon les tests. La première preuve, ses captures et ses erreurs initiales restent archivées séparément.
+
+Les fixtures fixent PV, jauges et mode automatique afin d’isoler l’action ; les moteurs, les composants UI et les appels de rendu sont réels. Ce contrôle sur serveur de développement ne constitue pas une validation de distribution HTTP du build final, ni une certification image par image des œuvres originales. Les identifiants de génération inconnus restent nuls et les certificats globaux1:1 restent faux.

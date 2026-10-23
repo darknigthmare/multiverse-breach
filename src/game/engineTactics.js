@@ -1521,7 +1521,7 @@ export class EngineTactics {
             this.playSfx(weapon === 'gun' || weapon === 'laser' ? 'shoot' : 'slash');
             
             let status = null;
-            if (attacker.id === 'leon' || attacker.name?.includes('Nemesis')) status = 'infected';
+            if (attacker.name?.includes('Nemesis')) status = 'infected';
             if (attacker.id === 'neo' || attacker.name?.includes('Smith')) status = 'glitched';
             if (attacker.name?.includes('Deathclaw') || attacker.name?.includes('Cyberdemon')) status = 'radiated';
 
@@ -2293,7 +2293,6 @@ export class EngineTactics {
         hero.stateTimer = 25;
 
         let status = null;
-        if (hero.id === 'leon') status = 'infected';
         if (hero.id === 'neo') status = 'glitched';
 
         if (chosenAction === 'simple') {

@@ -1,0 +1,360 @@
+{
+  "date": "2026-10-22",
+  "part": "B",
+  "status": "frozen-art-builders-anchors-and-abilities",
+  "heroes": 5,
+  "presentationAtlases": 5,
+  "basicAtlases": 5,
+  "presentationPoses": 160,
+  "basicPoses": 80,
+  "totalPngs": 10,
+  "actualDistinctRgbaPoses": 240,
+  "actualNativeToolInvocations": 10,
+  "returnedNativeImages": 10,
+  "nativeCorrections": 0,
+  "refusals": 0,
+  "proceduralPoseCount": 0,
+  "sourceRowsPresentation": 8,
+  "sourceRowsBasic": 4,
+  "margin": 10,
+  "baseline": 244,
+  "bodyRoiCount": 60,
+  "standingBodyCalibration": 190,
+  "registries": [
+    {
+      "path": "src/game/combat/characterAnimationsWave9PartB.generated.json",
+      "sha256": "0f4eee09e722199e180f9f8c718f37cfa037feb7eefbf4b09788e1a6596a852c",
+      "entries": 5
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave9PartB.generated.json",
+      "sha256": "8443b8bec08c6e4dbea94aad18366c9e7915a09c50f616349b303c3c2de29a8d",
+      "entries": 5
+    }
+  ],
+  "abilitiesModule": "src/game/combat/abilities/abilitiesWave9PartB.js",
+  "abilitiesModuleSha256": "7763ae35e51caca9631d3ac56768189cc49711458ab3df347020bb9d2154553c",
+  "anchors": "src/game/combat/nativeSuperAnchorsWave9PartB.generated.json",
+  "anchorsSha256": "41627b85bb96250aceea35607682e7d6190f43a28c4fcda98647f6f5114eff8c",
+  "anchorMeasurements": "docs/combat-fidelity-wave9-2026-10-22/part-b-native-anchor-measurements.json",
+  "sourceFacts": "docs/combat-fidelity-wave9-2026-10-22/part-b-source-facts.json",
+  "attempts": "docs/combat-fidelity-wave9-2026-10-22/part-b-attempts.json",
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "source1to1Verified": false,
+  "canon1to1Verified": false,
+  "globalFidelity1to1": false,
+  "files": [
+    {
+      "heroId": "shepard",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/shepard.png",
+      "sha256": "d23f840cbafcbd365896e90f433511832b7aaa591e93946d19608d5ad90f0ed2",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "bodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          46,
+          16,
+          155,
+          222
+        ],
+        "referenceNormalizedBodyHeight": 222,
+        "referencePackingScale": 1.0740740740740742,
+        "nativeReferenceBodyHeight": 206.68965517241378,
+        "sourceWideRenderPixelsPerNativePixel": 0.9192525859192526,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "garrus",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/garrus.png",
+      "sha256": "d277069c5206870cb2757e86179353c4eea5e7f6cd2a7f0875066d6ae5743042",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "bodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          67,
+          54,
+          145,
+          186
+        ],
+        "referenceNormalizedBodyHeight": 186,
+        "referencePackingScale": 0.9354838709677419,
+        "nativeReferenceBodyHeight": 198.82758620689657,
+        "sourceWideRenderPixelsPerNativePixel": 0.9556018036767255,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "liara",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/liara.png",
+      "sha256": "f6ec455eb1482eb45c398110f812b74c0a5c85434475588067bb7d469e23a86a",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "bodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          116,
+          20,
+          120,
+          218
+        ],
+        "referenceNormalizedBodyHeight": 218,
+        "referencePackingScale": 1.0357142857142858,
+        "nativeReferenceBodyHeight": 210.48275862068962,
+        "sourceWideRenderPixelsPerNativePixel": 0.902686762778506,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "tali",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/tali.png",
+      "sha256": "8a6332a16eeb184029b02984453f42f23e270373dc55e14bdb1cedfe23c51e90",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "bodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          67,
+          16,
+          153,
+          226
+        ],
+        "referenceNormalizedBodyHeight": 226,
+        "referencePackingScale": 1.1100478468899522,
+        "nativeReferenceBodyHeight": 203.5948275862069,
+        "sourceWideRenderPixelsPerNativePixel": 0.9332260659694288,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "wrex",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/wrex.png",
+      "sha256": "762219fcd9e397847de76fd13c7c10571098fbf215a3967beaafe0ad7e54893c",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "bodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          62,
+          19,
+          157,
+          217
+        ],
+        "referenceNormalizedBodyHeight": 217,
+        "referencePackingScale": 1.0691244239631337,
+        "nativeReferenceBodyHeight": 202.9698275862069,
+        "sourceWideRenderPixelsPerNativePixel": 0.93609972605067,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "shepard",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/shepard.png",
+      "sha256": "90f7e39c957e58146786b0550bb8dd156689401eeffd3ebae9d63ad064bc88ba",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "bodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          64,
+          14,
+          137,
+          228
+        ],
+        "referenceNormalizedBodyHeight": 228,
+        "referencePackingScale": 0.7116564417177914,
+        "nativeReferenceBodyHeight": 320.37931034482756,
+        "sourceWideRenderPixelsPerNativePixel": 0.5930470347648262,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster width ratio explicitly retained; one independent standing-body calibration per native source, never per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "garrus",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/garrus.png",
+      "sha256": "a088ac9a27421c0ace756122bcb414216b9f77a379258f9c402248cfde579607",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "bodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          51,
+          15,
+          168,
+          225
+        ],
+        "referenceNormalizedBodyHeight": 225,
+        "referencePackingScale": 0.7138461538461538,
+        "nativeReferenceBodyHeight": 315.1939655172414,
+        "sourceWideRenderPixelsPerNativePixel": 0.6028034188034188,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster width ratio explicitly retained; one independent standing-body calibration per native source, never per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "liara",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/liara.png",
+      "sha256": "af004a9ad729bef072cfde3e0dafe55964165781fa8d7faabd578a94dacb6ed7",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "bodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          110,
+          18,
+          100,
+          219
+        ],
+        "referenceNormalizedBodyHeight": 219,
+        "referencePackingScale": 0.6705202312138728,
+        "nativeReferenceBodyHeight": 326.61206896551727,
+        "sourceWideRenderPixelsPerNativePixel": 0.5817298809618074,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster width ratio explicitly retained; one independent standing-body calibration per native source, never per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "tali",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/tali.png",
+      "sha256": "f7f3f558ed73695388efb300da33e63dde51c93f782a54a2d6944fbd16daaf66",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "bodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          85,
+          13,
+          139,
+          227
+        ],
+        "referenceNormalizedBodyHeight": 227,
+        "referencePackingScale": 0.7116564417177914,
+        "nativeReferenceBodyHeight": 318.9741379310345,
+        "sourceWideRenderPixelsPerNativePixel": 0.5956595767681955,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster width ratio explicitly retained; one independent standing-body calibration per native source, never per-row anatomical equalization."
+        }
+      }
+    },
+    {
+      "heroId": "wrex",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/wrex.png",
+      "sha256": "d45e32a21aeada37fb49e3fc672a3273c52e4a2c6575a7b44a3dfe0b7cea0e79",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "bodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          55,
+          18,
+          160,
+          216
+        ],
+        "referenceNormalizedBodyHeight": 216,
+        "referencePackingScale": 0.703030303030303,
+        "nativeReferenceBodyHeight": 307.2413793103448,
+        "sourceWideRenderPixelsPerNativePixel": 0.6184062850729517,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster width ratio explicitly retained; one independent standing-body calibration per native source, never per-row anatomical equalization."
+        }
+      }
+    }
+  ]
+}

@@ -89,7 +89,9 @@ KNOWN_EXPECTATIONS = {
         "/sprites/generated/heroes/halo/master-chief-complete/"
         "master-chief-universal.png"
     ): "approved",
-    "/sprites/generated/heroes/resident-evil/leon.png": "approved",
+    "/sprites/generated/combat-character-corrections-wave5/leon.png": "approved",
+    "/sprites/generated/combat-character-corrections-wave5/solbadguy.png": "approved",
+    "/sprites/generated/combat-character-corrections-wave5/ky.png": "approved",
     (
         "/sprites/generated/heroes/bit-trip/"
         "bit-trip-commander-video.png"
@@ -454,6 +456,40 @@ def load_character_entries() -> list[dict[str, Any]]:
     return sorted(entries, key=lambda entry: int(entry["id"]))
 
 
+def audit_reference_file(catalog_path: str) -> dict[str, Any]:
+    """Apply the same bitmap measurements and policy to any reference."""
+    absolute_path = resolve_public_path(catalog_path)
+    metrics = None
+    error = None
+    if not absolute_path.is_file():
+        error = "missing-local-reference"
+    else:
+        try:
+            metrics = analyze_bitmap(absolute_path)
+        except Exception as analysis_error:
+            error = (
+                "bitmap-analysis-error:"
+                f"{analysis_error.__class__.__name__}:"
+                f"{analysis_error}"
+            )
+
+    manual_sha256 = MANUAL_APPROVED_REFERENCE_SHA256.get(catalog_path)
+    if manual_sha256 and metrics and metrics.get("fileSha256") == manual_sha256:
+        classification = "approved"
+        reasons = [
+            "manual-approval:canon-minimalist-16-pose-sheet",
+            "manual-approval:sha256-pinned",
+        ]
+    else:
+        classification, reasons = classify_metrics(metrics, error)
+    return {
+        "path": catalog_path,
+        "classification": classification,
+        "reasons": reasons,
+        "metrics": metrics,
+    }
+
+
 def build_report() -> dict[str, Any]:
     entries = load_character_entries()
     path_usage: dict[str, list[dict[str, Any]]] = {}
@@ -472,41 +508,15 @@ def build_report() -> dict[str, Any]:
     reference_files: list[dict[str, Any]] = []
     classification_by_path: dict[str, str] = {}
     for catalog_path in sorted(path_usage):
-        absolute_path = resolve_public_path(catalog_path)
-        metrics = None
-        error = None
-        if not absolute_path.is_file():
-            error = "missing-local-reference"
-        else:
-            try:
-                metrics = analyze_bitmap(absolute_path)
-            except Exception as analysis_error:  # Keep audit comprehensive.
-                error = (
-                    "bitmap-analysis-error:"
-                    f"{analysis_error.__class__.__name__}:"
-                    f"{analysis_error}"
-                )
-
-        manual_sha256 = MANUAL_APPROVED_REFERENCE_SHA256.get(catalog_path)
-        if (
-            manual_sha256
-            and metrics
-            and metrics.get("fileSha256") == manual_sha256
-        ):
-            classification = "approved"
-            reasons = [
-                "manual-approval:canon-minimalist-16-pose-sheet",
-                "manual-approval:sha256-pinned",
-            ]
-        else:
-            classification, reasons = classify_metrics(metrics, error)
+        measured = audit_reference_file(catalog_path)
+        classification = measured["classification"]
         classification_by_path[catalog_path] = classification
         used_by = path_usage[catalog_path]
         reference_files.append(
             {
                 "path": catalog_path,
                 "classification": classification,
-                "reasons": reasons,
+                "reasons": measured["reasons"],
                 "usedByEntryCount": len(used_by),
                 "entryIds": sorted(int(entry["id"]) for entry in used_by),
                 "characters": sorted(
@@ -523,7 +533,7 @@ def build_report() -> dict[str, Any]:
                         for universe in entry.get("univers") or []
                     }
                 ),
-                "metrics": metrics,
+                "metrics": measured["metrics"],
             }
         )
 
@@ -574,6 +584,14 @@ def build_report() -> dict[str, Any]:
         for row in reference_files
         if "missing-local-reference" in row["reasons"]
     )
+
+    # A known calibration image may stop being a current character reference
+    # after new artwork is installed. Keep measuring it with the same policy,
+    # without adding it to the current catalogue's counts or approved entries.
+    historical_known_cases = [
+        audit_reference_file(path)
+        for path in sorted(KNOWN_EXPECTATIONS.keys() - path_usage.keys())
+    ]
 
     return {
         "schemaVersion": 1,
@@ -658,6 +676,7 @@ def build_report() -> dict[str, Any]:
             },
         },
         "knownCaseExpectations": KNOWN_EXPECTATIONS,
+        "historicalKnownCaseReferences": historical_known_cases,
         "referenceFiles": reference_files,
         "entries": entry_rows,
     }
@@ -697,6 +716,12 @@ def assert_report_invariants(report: dict[str, Any]) -> None:
         row["path"]: row["classification"]
         for row in report["referenceFiles"]
     }
+    historical = report.get("historicalKnownCaseReferences", [])
+    expected_retired = KNOWN_EXPECTATIONS.keys() - actual.keys()
+    retired_paths = [row["path"] for row in historical]
+    if len(retired_paths) != len(set(retired_paths)) or set(retired_paths) != expected_retired:
+        raise ValueError("Historical known cases must match exactly the retired calibration references.")
+    actual.update({row["path"]: row["classification"] for row in historical})
     mismatches = {
         path: {
             "expected": expected,

@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/workspace/multiverse-breach/scripts/auditCharacterReferenceQuality.py", line 782, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/multiverse-breach/scripts/auditCharacterReferenceQuality.py", line 740, in main
+    assert_report_invariants(report)
+  File "/workspace/multiverse-breach/scripts/auditCharacterReferenceQuality.py", line 711, in assert_report_invariants
+    raise ValueError(
+ValueError: Known-case classification mismatch: {"/sprites/generated/heroes/half-life/freeman.png": {"actual": null, "expected": "approved"}}

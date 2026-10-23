@@ -1,0 +1,511 @@
+{
+  "date": "2026-10-23",
+  "heroId": "freeman",
+  "completeNativeStates": 45,
+  "retainedNativePoses": 180,
+  "atlasCount": 6,
+  "originalObservedNativeDrawings": 180,
+  "discardedNativeDrawings": 0,
+  "successfulNativeCalls": 7,
+  "actualAttemptsIncludingTransportFailure": 8,
+  "source1to1Verified": false,
+  "canonicalAnimationVerified": false,
+  "measuredPalms": 12,
+  "measuredWrists": 12,
+  "contacts": 11,
+  "precontactFrames": [
+    "ledgeCatch:0"
+  ],
+  "nativeAndNormalizedHandNeighborhood": "48 sampled9x9 regions with strict alpha>24;47regions81/81 and ledgeClimb0 normalized wrist80/81. All native ROIs81/81.",
+  "bodyCalibration": "One native pixel scale and renderer factor per source; effective190px body reference and true crouch ratios preserved.",
+  "limitations": [
+    "Original adapted crossover choreography; no certified official1:1 animation or exported game frames.",
+    "Runtime facing mirrors the native source, including costume asymmetry.",
+    "Ledge-only source uses a head-to-sole hanging reference with raised hands excluded; this is not certified as an upright standing anatomy reference."
+  ],
+  "browserExecuted": true,
+  "browserEvidence": "../browser/freeman-evidence.json",
+  "sha256": [
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/actual-tool-calls.json",
+      "bytes": 50007,
+      "sha256": "3ed305df1d85b5b47ad666bc532194a16e9e36581b7443262b1afa3eacd7644e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/body-roi-independent.json",
+      "bytes": 4810,
+      "sha256": "c512c44f70e917a820b2385ec4a680983efd95f7f4c372a9a15a99b957181ea8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/build-check-result.json",
+      "bytes": 7115,
+      "sha256": "58c4318088f730c28369ed376d4cc61d2596823c5cdf9f88c2c9c76e7a453728"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/build-result.json",
+      "bytes": 7116,
+      "sha256": "cc352df1090ec0dae37cce8a498cbdbc73a1190d787c045accd8ca4a35bd3bce"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/contact-count-correction.json",
+      "bytes": 618,
+      "sha256": "bd800d28eb5d87ff5b504858258b92d2b0f04e2514466941688951c27b0a15a3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/corrective-tool-arguments.json",
+      "bytes": 4378,
+      "sha256": "ae3dfc2e5f3bcc2c0a6c3cb2960ddab947d48005e0111786a811fe4f2b2f2a7d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-combat-a-retry.native.png",
+      "bytes": 2339780,
+      "sha256": "afbbdcfc77fffac514de991c62ac732ad75cdbb8aaa0ff7c7c61b151effdcd7b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-combat-a.prompt.txt",
+      "bytes": 4841,
+      "sha256": "0183443be2dada1ba65a91edce178ff96b08cdcebfe88f596410d5bfaf9000b8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-combat-b.native.png",
+      "bytes": 2313446,
+      "sha256": "9916530f52d2ad1bdba44dddb7c6b0665716427f7569033c50c88ae4c75235b7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-combat-b.prompt.txt",
+      "bytes": 4798,
+      "sha256": "e535d2e389fe06fe053eb3e925c7c2c2e0ef4ca556c75e3276c7760af4e3e0e4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-corrective-states.native.png",
+      "bytes": 1322240,
+      "sha256": "124dcec058cea21179b5c40a0fb6396b6c773e4df47979470502390399ceff67"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-corrective-states.prompt.txt",
+      "bytes": 4156,
+      "sha256": "5908ae49c0454ac04fb0b4ad429318974f693142fd51af68b5f8fcda10a867bb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-defense.native.png",
+      "bytes": 2237991,
+      "sha256": "8b380b14d5d744718b28ab7d5f0b24b6d2677e8fe4b6c2560bef99f81a9a0962"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-defense.prompt.txt",
+      "bytes": 4222,
+      "sha256": "923ed5c345814c378f94212fc25ba350323990c34d562c425788272694d6b8b4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+      "bytes": 1263809,
+      "sha256": "6d9697b4154d18d2bbb5f2a98520bba7e1b5591596b2bd41f16ffb119901d9da"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.prompt.txt",
+      "bytes": 4792,
+      "sha256": "e4af2b487342154239131e3f18b8853831fe5903924948a1e3ceb0b393795073"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-motion-a.native.png",
+      "bytes": 1557931,
+      "sha256": "566603affc3e18695cff6a25357dace5b1f6daa8c516afe6e4ec50427b2e4df1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-motion-a.prompt.txt",
+      "bytes": 4370,
+      "sha256": "1018ed10acd7bd6dafc2da3a4436c1a9b32b29a7b3b452ff9c878aca1dc6ec46"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-motion-b.native.png",
+      "bytes": 1660358,
+      "sha256": "e56b52e4e79e2fb25ba5dc7f54e42c3218f22bb4271e9b092eecd4c98a8788c6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-motion-b.prompt.txt",
+      "bytes": 4121,
+      "sha256": "8eaf3a0c94a10c0819ff41fc692fc842c7f0f06e0f57f75d4e06eb9c9ab260f8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-reference-original.png",
+      "bytes": 788816,
+      "sha256": "88f9e1269f442c9eb805f78bfd776ebd5cdbe6aba85fbc57db390464d443fd28"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/hand-measurements.json",
+      "bytes": 18601,
+      "sha256": "68a85dd54ce8cecab11960ee9d2c2dabf74d30b0b393146d7e7e6122c315c1b5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/hands-native-review.png",
+      "bytes": 341803,
+      "sha256": "5a5331ff850c2656a4c0151f1fcd360c198d68bf39cada65df1340f19b11b198"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/measure-hand-contacts.py",
+      "bytes": 4097,
+      "sha256": "f960bdd5879debe04ab66e932da4f35a3eea891d1ddb85b407b13f79ed1efd74"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeCatch-0-palm.png",
+      "bytes": 1665,
+      "sha256": "f758339aa473243976e9633f76f857da3898b2bb7039658ff2c5273827da7513"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeCatch-0-wrist.png",
+      "bytes": 1747,
+      "sha256": "5988c7f8de41996482a95777109cec128f7b114dd1cc5c0ab7c644c471038270"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeCatch-1-palm.png",
+      "bytes": 1613,
+      "sha256": "d9abde093563f5299c0ab2c41c2e020860f56d091515542a4a81fe4161f0b04f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeCatch-1-wrist.png",
+      "bytes": 1741,
+      "sha256": "64569700af1b20a9f21cc49f60051b9ba288ad8e48897432ee14d027760bda5f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeCatch-2-palm.png",
+      "bytes": 1578,
+      "sha256": "953f34c4a957bf04cdace2b5358910bae5185fd9f2fe0f60517ee6431190ca3c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeCatch-2-wrist.png",
+      "bytes": 1680,
+      "sha256": "3814aab733244b7e404b4092f5188879b18d52a8be0b9fb4ce05329f56126b8c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeCatch-3-palm.png",
+      "bytes": 1613,
+      "sha256": "30dfb45862004add08afcdcaee70c328d0c481a92cda9ba60216265ab6a354d5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeCatch-3-wrist.png",
+      "bytes": 1726,
+      "sha256": "e05e6cc61b03befe964abf113f4dbcdd2434ab90215989187db532245a6db4f8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeClimb-0-palm.png",
+      "bytes": 1656,
+      "sha256": "79fd2a52cdc2d12c039d1c10b1d31b480091651fd4d1351317ff8ab7718b38d3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeClimb-0-wrist.png",
+      "bytes": 1758,
+      "sha256": "09109f8be24d64fcf17da2dfcfc287ce97b5000c68d3c48abbe77243b9637d04"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeClimb-1-palm.png",
+      "bytes": 1728,
+      "sha256": "c599e6862cb93f0ee4a8d56f4a87f711891b4051752238a33b2ea12ad86169e0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeClimb-1-wrist.png",
+      "bytes": 1665,
+      "sha256": "40473337a0ed57f583b92eb1ae04fe757833c8a02ca42c7efc9b1d40bf368181"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeClimb-2-palm.png",
+      "bytes": 1679,
+      "sha256": "596a584040969f4f434c2cf0eeb94b094be15e07bca07dbc04542e622382b0fd"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeClimb-2-wrist.png",
+      "bytes": 1647,
+      "sha256": "261f761856ee30b23dfe7c472ee2cd2c47abd29974a02f2db9df800808dbaa93"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeClimb-3-palm.png",
+      "bytes": 1616,
+      "sha256": "27d6047dd135ecbb1949076586d45e6fc27dcf89d0aea48665181ddb38e5a7bc"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeClimb-3-wrist.png",
+      "bytes": 1785,
+      "sha256": "9b9ae08827103b13f3166de7514272eff5b756225d8d0439b279d12c84e3b74b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeHang-0-palm.png",
+      "bytes": 1648,
+      "sha256": "f680cb211442ce6cfed1f2fb3400106b0028d3347a670950c251e6ca4c2c4a84"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeHang-0-wrist.png",
+      "bytes": 1686,
+      "sha256": "d9540a3c679bc3d7000313573b31cc74f849f2f5b0cb00b35b25e1cfa91a7b1b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeHang-1-palm.png",
+      "bytes": 1613,
+      "sha256": "bddd0293eaae76178b647a0d38b017718d0f000e18ee4e33e6d075eb20f91bb0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeHang-1-wrist.png",
+      "bytes": 1689,
+      "sha256": "2ae43ca18dab6e90182a3fa1556607774434851c57af2d3cf379c60ec4e1cdd1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeHang-2-palm.png",
+      "bytes": 1632,
+      "sha256": "96575b2e298941de6d0b77ba2b7d17bd369c17cbb767626d0dc048606fe6bab5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeHang-2-wrist.png",
+      "bytes": 1733,
+      "sha256": "86d94a8a7c7974435d9ca10f61c35677cfa1434963ac72c8b4e5d99da4012f5d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeHang-3-palm.png",
+      "bytes": 1617,
+      "sha256": "87ac05608b51f258736f7eee40242671ceb729ca5acc3f61529ce518eb4ab8ab"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/native-roi-ledgeHang-3-wrist.png",
+      "bytes": 1663,
+      "sha256": "84461c9fd24f7748086b174725a9b3e2b5c0d7f84f68ece43c567c4b51d5b9b3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/normalize-freeman-atlases.mjs",
+      "bytes": 339,
+      "sha256": "71d21ac8b62d80f6d170c1ca136d1394282ddafc8f5d9913986ce15d0c7a4f09"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/packing-plan.json",
+      "bytes": 14083,
+      "sha256": "6237f2302fd48b8f8341f2286821ef261d3653e4e8f33d9286b044b8315d505b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/planned-tool-arguments.json",
+      "bytes": 28960,
+      "sha256": "4ba49e715258c17e5797a3aa14fa0c9c34623df1ed9d3900432a0d8ba0975d7b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/provenance-combat.json",
+      "bytes": 211549,
+      "sha256": "b5a53648db94112c7406bd6d9e667ccbf055726876b07fed63fce5e1668c57ae"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/provenance-motion.json",
+      "bytes": 211829,
+      "sha256": "67b4ea127d4e6503badfe5949804769397f751d8b86747760890ce20d4cb9c00"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeCatch-0-palm.png",
+      "bytes": 1731,
+      "sha256": "e80cd1b8a923b3716fc490b70f65b25ed91fdbbd1e3db28bf2c71b0e44f99218"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeCatch-0-wrist.png",
+      "bytes": 1698,
+      "sha256": "55c8ae80b8aec5ac15938868513cbf76e2c1720e5b352273a7fc1798689c9ade"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeCatch-1-palm.png",
+      "bytes": 1676,
+      "sha256": "41c88d7db94921766cc71c25a9d9c8820a3b7e1e01828dcb9bcacd56b8464960"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeCatch-1-wrist.png",
+      "bytes": 1643,
+      "sha256": "9c45f505b00dc9e337950783a859e0adbd3b03811e2fee9b8a11024436c0227e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeCatch-2-palm.png",
+      "bytes": 1690,
+      "sha256": "f0444f4f72fc77ff347f0f9ca01974563ff3d5ad920f0f72c840eb6bfc226a4d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeCatch-2-wrist.png",
+      "bytes": 1626,
+      "sha256": "b3e5fc3177a20b7fde02e3c1ed565843db422d0195cebcd7e5897f0cc0dc2efd"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeCatch-3-palm.png",
+      "bytes": 1707,
+      "sha256": "d94ec35c3b5cce9733b77b695cc3774344c41c1199e2dd85bef49bc41fd6df4b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeCatch-3-wrist.png",
+      "bytes": 1603,
+      "sha256": "a3d155c4c2fd16941022b95a2ed8f3fd18a0c4770c8013f923c04665f3c9c746"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeClimb-0-palm.png",
+      "bytes": 1351,
+      "sha256": "32e5f095216511efee4af2ffacaeec10ab87653ed2c9f0a5ac379f4f82a50640"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeClimb-0-wrist.png",
+      "bytes": 1613,
+      "sha256": "1e6d79d6d08b2b8d597e47f07ef011bdbff46a4c175365a1a1f5c8cdf98ee114"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeClimb-1-palm.png",
+      "bytes": 1546,
+      "sha256": "96e797463edef6bd41a8bdf689adc793cc8841b8de620b27d0e9eb90cfee37ac"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeClimb-1-wrist.png",
+      "bytes": 1723,
+      "sha256": "b949aec3a779be04f856a6220d9809a3f6f8ccebc5b141bc9e272b94f3284e4e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeClimb-2-palm.png",
+      "bytes": 1624,
+      "sha256": "b4f66a63d4ee9aa557e2959b470ad1b4449f3d52fce5e75d1786004927788632"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeClimb-2-wrist.png",
+      "bytes": 1723,
+      "sha256": "6727bb8ecacae7dcb8954d6d2377504bc9a46194d630e99f758c247dd7959e2c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeClimb-3-palm.png",
+      "bytes": 1499,
+      "sha256": "85151c4b8ff396e254687b52fdb76080912d9099d35bbd13315ded1ec8fac0db"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeClimb-3-wrist.png",
+      "bytes": 1722,
+      "sha256": "f94d6e22f5892bdc6a39c46d0b9331dc8b06e48ce9de1ec635064411d821244c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeHang-0-palm.png",
+      "bytes": 1737,
+      "sha256": "4e16f128fb6c5a5883c3336c74e6c7bafdceb2ccc6cbb4d27e114c7a863548d1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeHang-0-wrist.png",
+      "bytes": 1681,
+      "sha256": "8a43e3abbc6b0f568d00081ce0984866b1d81f509ac99fe5fb1241ebe02c6f55"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeHang-1-palm.png",
+      "bytes": 1716,
+      "sha256": "670ff1cb08699cdb5b0336994a6e1eb7f41d70521edacdc27f8bc5198aaa8833"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeHang-1-wrist.png",
+      "bytes": 1709,
+      "sha256": "565d52131f7fc0b10783dfb480d2c5dc39462af6c52db2db00958f4bbc221aa8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeHang-2-palm.png",
+      "bytes": 1722,
+      "sha256": "40090c44952b457c9c2bbd704ea2e94c0a43288f28aa0dcf2350d3f3b5e34d09"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeHang-2-wrist.png",
+      "bytes": 1680,
+      "sha256": "cef53aa1385c5049073843abc607fa193f7a5353953884984da3454f2bf6906b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeHang-3-palm.png",
+      "bytes": 1748,
+      "sha256": "a805608e6922986d8d17beef627f668369985b882a36e57d1b17daa67233855c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/roi-ledgeHang-3-wrist.png",
+      "bytes": 1696,
+      "sha256": "98c25b2a0197c08d7902b92cd04a68b6f0cfed1378e8745735a36c20c5e1b0d7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/special-c3-native-weapon-review.png",
+      "bytes": 57621,
+      "sha256": "962e44a238ba3e60811945e4a51c39c93e0da312bd39b80f353d68dbd9e5e5e0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/special-c3-weapon-review.json",
+      "bytes": 907,
+      "sha256": "c6012f2c5cd8765be12dbc90c9a742426dd7295f1b7bea6d5a513bf710015c4c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/verify-all-result.json",
+      "bytes": 1464,
+      "sha256": "a9b79499af777bd91afee33d7513f349a01236bff395b9c133dcfb115c46c4cb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/verify-freeman-atlases.mjs",
+      "bytes": 253,
+      "sha256": "1b9fad9bcb7e5c931b388fd6cb22c8f57770c90adedae5218e1a917b2530de88"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/melee-tooling/build-native-melee-atlases.mjs",
+      "bytes": 16165,
+      "sha256": "184d08e28b611e806afcde935200a7edadd39005fa840d6d5dc85029cbbdc7f5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/melee-tooling/inspect-native-sources.mjs",
+      "bytes": 5315,
+      "sha256": "e7ffff2dc75204df5598b5d04b0a30a5846b43738c64f0edcdc6ff1b1913ee3a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/melee-tooling/inspect-problem-source.mjs",
+      "bytes": 4667,
+      "sha256": "4b378529bf527545f7d066f1f4af6e1899d7c0254ab092f390a0ea375a61af91"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/melee-tooling/previous-eight-manifests-before.json",
+      "bytes": 148382,
+      "sha256": "bd001ce0e369fe69a1bbd5e174ce8ae161017f557be6c7537ce261cd3e367c96"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/melee-tooling/verify-native-melee-atlases.mjs",
+      "bytes": 6716,
+      "sha256": "74111776bb5f5fb4395a7eec61ba96c4b9ce9576761910e984c67264097a08ec"
+    },
+    {
+      "path": "public/sprites/generated/melee-freeman-wave10/freeman-combat-a.png",
+      "bytes": 1087031,
+      "sha256": "03bc8b8a6b12bff81b4dff413a7092fbccbe94932c859075353f89a721b4d9e1"
+    },
+    {
+      "path": "public/sprites/generated/melee-freeman-wave10/freeman-combat-b.png",
+      "bytes": 1178747,
+      "sha256": "f744dac3a7d09988ef31c22ded80c669d894460d2c9535462e2f6f8323217c4a"
+    },
+    {
+      "path": "public/sprites/generated/melee-freeman-wave10/freeman-defense.png",
+      "bytes": 1293355,
+      "sha256": "a5a132c75e93c98a8b908e8532c7576b98c4eb93fb2d41f54e8397207f2df454"
+    },
+    {
+      "path": "public/sprites/generated/melee-freeman-wave10/freeman-ledge.png",
+      "bytes": 782489,
+      "sha256": "b0056f7bca478993aeee5b6c4d12fa23a80e3e7ca382ba33af2ec618f120e2bc"
+    },
+    {
+      "path": "public/sprites/generated/melee-freeman-wave10/freeman-motion-a.png",
+      "bytes": 1131558,
+      "sha256": "61196877decde3710305833dfb0030e2d497d83eda4fec43f42ecee789b3bfaf"
+    },
+    {
+      "path": "public/sprites/generated/melee-freeman-wave10/freeman-motion-b.png",
+      "bytes": 1111735,
+      "sha256": "0cefb0b1acbf780e3fb160105352bae01262629916970095c5b6c40d1f029b61"
+    },
+    {
+      "path": "src/game/combat/freemanMeleeCombat.generated.json",
+      "bytes": 211549,
+      "sha256": "b5a53648db94112c7406bd6d9e667ccbf055726876b07fed63fce5e1668c57ae"
+    },
+    {
+      "path": "src/game/combat/freemanMeleeMotion.generated.json",
+      "bytes": 211829,
+      "sha256": "67b4ea127d4e6503badfe5949804769397f751d8b86747760890ce20d4cb9c00"
+    },
+    {
+      "path": "src/game/melee/freemanMeleeManifest.js",
+      "bytes": 512,
+      "sha256": "2497a8eef99fab09ac164e5bd2c289b2756ec7ff331bb13359f4b9cc44fd3482"
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "bytes": 14862,
+      "sha256": "c334996786d4578d47b784f26f75c8bce42fb76068bbb275830df6c721f772c6"
+    }
+  ],
+  "browserEvidenceSha256": "b37153a802a02c7814fa3c20e626a13552515679385e73c07eeaad1adc3ebd27"
+}

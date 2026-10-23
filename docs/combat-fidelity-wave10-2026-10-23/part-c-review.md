@@ -1,0 +1,13 @@
+# W10 Part C — Aliens et PAYDAY2
+
+Dix présentations natives de32poses et dix bases natives de16poses sont retenues :480cellules RGBA distinctes, vingtPNG. Toutes les sources reçues et toutes les poses sélectionnées ont été inspectées ; les deux builders vérifient SHA256, quatre vraies cellules par rangée, alpha/marges10px et reconstruction exacte depuis les sources.
+
+Versions : Aliens(1986) ; PAYDAY2(2013), avec le Hoxton britannique revenu en2014 et Clover2014. Les anciens Bishop/Hudson représentant des Marines erronés et les masques Dallas/Wolf/Hoxton échangés restent intacts comme contre-exemples. Les références locales et faits textuels consultés sont séparés des entrées réellement fournies àimage_gen.
+
+Bishop utilise terminal/radio, Hudson son détecteur et Clover sa coordination discrète ; aucune bouche de canon ni attaque magique ne leur est attribuée. Ripley reste humaine dans ses six scènes ordinaires et ses16poses de base ; son P5000 entier avec pilote est dessiné nativement dans les seules scènes super/finale. Aucune pince ne devient un projectile. Trente-six origines réelles sont mesurées sur les six tireurs, avec preuves9×9 ; chaque récupération finale est nulle.
+
+La silhouette entière de chaque cellule est mise à l’échelle autour de baseline244. Les calibrations de corps proviennent de ROI visuelles explicites ; les vrais agenouillements restent bas. Les deux rangées P5000 ont une densité différente et utilisent un pont de calibration du pilote visible, crown-to-foot-pedal approximatif, vers la cible de projet190px ; l’exosquelette entier est agrandi uniformément. Les proportions ainsi adaptées ne sont pas des mesures anatomiques officielles. Les huit rangées humaines/loader ont des hauteurs différentes ; des guides dans les vallées alpha empêchent le segmentateur de sélectionner deux fois le même espace. Aucun dessin ou membre n’est produit parSharp.
+
+Deux résultats initiaux sont indisponibles, sans hash ni identifiant inventé : Wolf32 avait renvoyé un PNG inline perdu au redémarrage avant archivage ; sa reprise au même prompt est conservée. Wolf16 avait rejeté sa promesse avec un diagnostic non conservé par l’orchestration ; la cause reste indéterminée, sans la qualifier de refus ni de panne réseau certaine. Une unique reprise aux arguments strictement identiques a livré les16poses. Les vingt sources réellement conservées et ces deux tentatives non comptées sont documentées dans les provenances.
+
+Artwork OpenAI et chorégraphies adaptées : aucun modèle/job/generationID n’a été fourni par l’outil ; champs correspondantsnull. Aucune certification de fidélité1:1, ni provenance de frames officielles.

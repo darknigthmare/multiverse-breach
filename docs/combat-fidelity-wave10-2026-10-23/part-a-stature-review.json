@@ -1,0 +1,4810 @@
+{
+  "method": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+  "date": "2026-10-23",
+  "source1to1Verified": false,
+  "modifiesBitmap": false,
+  "rendererAnchorBaseline": 244,
+  "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+  "measuredRows": [
+    {
+      "heroId": "neo",
+      "phase": "intro",
+      "renderScale": 0.840708,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 226,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 226,
+      "nativeComparableBodyHeight": 217,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8407079646017699,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        83,
+        18,
+        112,
+        226
+      ],
+      "referenceBodyBounds": [
+        83,
+        18,
+        112,
+        226
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        68,
+        6,
+        108,
+        217
+      ],
+      "nativeReferenceBodyBounds": [
+        68,
+        6,
+        108,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeReferenceSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.000008,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "neo",
+      "phase": "outro",
+      "renderScale": 0.864055,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 226,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 225,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8407079646017699,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        74,
+        16,
+        105,
+        228
+      ],
+      "referenceBodyBounds": [
+        83,
+        18,
+        112,
+        226
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        58,
+        225,
+        104,
+        225
+      ],
+      "nativeReferenceBodyBounds": [
+        68,
+        6,
+        108,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeReferenceSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 197.004608,
+      "correctedBodyHeight": 197.00454,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "neo",
+      "phase": "roundVictory",
+      "renderScale": 0.845121,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 226,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 230,
+      "nativeComparableBodyHeight": 222,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8407079646017699,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        76,
+        14,
+        105,
+        230
+      ],
+      "referenceBodyBounds": [
+        83,
+        18,
+        112,
+        226
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        61,
+        444,
+        101,
+        222
+      ],
+      "nativeReferenceBodyBounds": [
+        68,
+        6,
+        108,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeReferenceSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 194.37788,
+      "correctedBodyHeight": 194.37783,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "neo",
+      "phase": "roundDefeat",
+      "renderScale": 0.755804,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 226,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 212,
+      "nativeComparableBodyHeight": 183,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8407079646017699,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        41,
+        32,
+        164,
+        212
+      ],
+      "referenceBodyBounds": [
+        83,
+        18,
+        112,
+        226
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        36,
+        697,
+        141,
+        183
+      ],
+      "nativeReferenceBodyBounds": [
+        68,
+        6,
+        108,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeReferenceSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 160.230415,
+      "correctedBodyHeight": 160.230448,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "neo",
+      "phase": "fatality",
+      "renderScale": 0.892578,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 226,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 206,
+      "nativeComparableBodyHeight": 210,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8407079646017699,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        47,
+        38,
+        159,
+        206
+      ],
+      "referenceBodyBounds": [
+        83,
+        18,
+        112,
+        226
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        28,
+        898,
+        162,
+        210
+      ],
+      "nativeReferenceBodyBounds": [
+        68,
+        6,
+        108,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeReferenceSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 183.870968,
+      "correctedBodyHeight": 183.871068,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "neo",
+      "phase": "victory",
+      "renderScale": 0.845384,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 226,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 224,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8407079646017699,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        69,
+        12,
+        115,
+        232
+      ],
+      "referenceBodyBounds": [
+        83,
+        18,
+        112,
+        226
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        54,
+        1113,
+        111,
+        224
+      ],
+      "nativeReferenceBodyBounds": [
+        68,
+        6,
+        108,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeReferenceSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 196.129032,
+      "correctedBodyHeight": 196.129088,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "neo",
+      "phase": "defeat",
+      "renderScale": 0.825653,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 226,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 215,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8407079646017699,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        72,
+        16,
+        105,
+        228
+      ],
+      "referenceBodyBounds": [
+        83,
+        18,
+        112,
+        226
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        58,
+        1337,
+        99,
+        215
+      ],
+      "nativeReferenceBodyBounds": [
+        68,
+        6,
+        108,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeReferenceSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 188.248848,
+      "correctedBodyHeight": 188.248884,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "neo",
+      "phase": "super",
+      "renderScale": 1.043351,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 226,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 167,
+      "nativeComparableBodyHeight": 199,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8407079646017699,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        59,
+        77,
+        149,
+        167
+      ],
+      "referenceBodyBounds": [
+        83,
+        18,
+        112,
+        226
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        29,
+        1568,
+        177,
+        199
+      ],
+      "nativeReferenceBodyBounds": [
+        68,
+        6,
+        108,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/neo-original.png",
+      "nativeReferenceSourceImageSha256": "47441a0284dc9d3dbf92c49eeef101d0f234d11cd2fce9e35c54fa123f266210",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 174.239631,
+      "correctedBodyHeight": 174.239617,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "trinity",
+      "phase": "intro",
+      "renderScale": 0.833333,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 214,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        107,
+        13,
+        102,
+        228
+      ],
+      "referenceBodyBounds": [
+        107,
+        13,
+        102,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        91,
+        12,
+        96,
+        214
+      ],
+      "nativeReferenceBodyBounds": [
+        91,
+        12,
+        96,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeReferenceSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 189.999924,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "trinity",
+      "phase": "outro",
+      "renderScale": 0.871853,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 222,
+      "nativeComparableBodyHeight": 218,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        97,
+        13,
+        97,
+        222
+      ],
+      "referenceBodyBounds": [
+        107,
+        13,
+        102,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        80,
+        229,
+        95,
+        218
+      ],
+      "nativeReferenceBodyBounds": [
+        91,
+        12,
+        96,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeReferenceSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 193.551402,
+      "correctedBodyHeight": 193.551366,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "trinity",
+      "phase": "roundVictory",
+      "renderScale": 0.861062,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 225,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        93,
+        12,
+        106,
+        232
+      ],
+      "referenceBodyBounds": [
+        107,
+        13,
+        102,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        77,
+        453,
+        103,
+        225
+      ],
+      "nativeReferenceBodyBounds": [
+        91,
+        12,
+        96,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeReferenceSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 199.766355,
+      "correctedBodyHeight": 199.766384,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "trinity",
+      "phase": "roundDefeat",
+      "renderScale": 0.755276,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 221,
+      "nativeComparableBodyHeight": 188,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        52,
+        23,
+        171,
+        221
+      ],
+      "referenceBodyBounds": [
+        107,
+        13,
+        102,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        46,
+        697,
+        145,
+        188
+      ],
+      "nativeReferenceBodyBounds": [
+        91,
+        12,
+        96,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeReferenceSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 166.915888,
+      "correctedBodyHeight": 166.915996,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "trinity",
+      "phase": "fatality",
+      "renderScale": 1.009536,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 197,
+      "nativeComparableBodyHeight": 224,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        67,
+        47,
+        149,
+        197
+      ],
+      "referenceBodyBounds": [
+        107,
+        13,
+        102,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        41,
+        887,
+        169,
+        224
+      ],
+      "nativeReferenceBodyBounds": [
+        91,
+        12,
+        96,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeReferenceSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 198.878505,
+      "correctedBodyHeight": 198.878592,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "trinity",
+      "phase": "victory",
+      "renderScale": 0.939378,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 224,
+      "nativeComparableBodyHeight": 237,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        90,
+        20,
+        98,
+        224
+      ],
+      "referenceBodyBounds": [
+        107,
+        13,
+        102,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        71,
+        1115,
+        104,
+        237
+      ],
+      "nativeReferenceBodyBounds": [
+        91,
+        12,
+        96,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeReferenceSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 210.420561,
+      "correctedBodyHeight": 210.420672,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "trinity",
+      "phase": "defeat",
+      "renderScale": 0.86812,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 225,
+      "nativeComparableBodyHeight": 220,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        92,
+        13,
+        111,
+        225
+      ],
+      "referenceBodyBounds": [
+        107,
+        13,
+        102,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        76,
+        1347,
+        109,
+        220
+      ],
+      "nativeReferenceBodyBounds": [
+        91,
+        12,
+        96,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeReferenceSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 195.327103,
+      "correctedBodyHeight": 195.327,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "trinity",
+      "phase": "super",
+      "renderScale": 1.019971,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 168,
+      "nativeComparableBodyHeight": 193,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        66,
+        75,
+        162,
+        168
+      ],
+      "referenceBodyBounds": [
+        107,
+        13,
+        102,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        40,
+        1571,
+        186,
+        193
+      ],
+      "nativeReferenceBodyBounds": [
+        91,
+        12,
+        96,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/trinity-original.png",
+      "nativeReferenceSourceImageSha256": "fcdc0eab974e9fb250773035154afd959c1fd0e93a252e9622daedac6e51cf4f",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 171.35514,
+      "correctedBodyHeight": 171.355128,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "morpheus",
+      "phase": "intro",
+      "renderScale": 0.862483,
+      "referencePhase": "outro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 214,
+      "nativeComparableBodyHeight": 204,
+      "nativeReferenceBodyHeight": 210,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        37,
+        30,
+        176,
+        214
+      ],
+      "referenceBodyBounds": [
+        49,
+        12,
+        176,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        24,
+        22,
+        168,
+        204
+      ],
+      "nativeReferenceBodyBounds": [
+        38,
+        233,
+        162,
+        210
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeReferenceSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 184.571429,
+      "correctedBodyHeight": 184.571362,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "morpheus",
+      "phase": "outro",
+      "renderScale": 0.829694,
+      "referencePhase": "outro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 229,
+      "nativeComparableBodyHeight": 210,
+      "nativeReferenceBodyHeight": 210,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        49,
+        12,
+        176,
+        229
+      ],
+      "referenceBodyBounds": [
+        49,
+        12,
+        176,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        38,
+        233,
+        162,
+        210
+      ],
+      "nativeReferenceBodyBounds": [
+        38,
+        233,
+        162,
+        210
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeReferenceSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 189.999926,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "morpheus",
+      "phase": "roundVictory",
+      "renderScale": 0.883423,
+      "referencePhase": "outro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 212,
+      "nativeComparableBodyHeight": 207,
+      "nativeReferenceBodyHeight": 210,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        40,
+        31,
+        203,
+        212
+      ],
+      "referenceBodyBounds": [
+        49,
+        12,
+        176,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        25,
+        456,
+        199,
+        207
+      ],
+      "nativeReferenceBodyBounds": [
+        38,
+        233,
+        162,
+        210
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeReferenceSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 187.285714,
+      "correctedBodyHeight": 187.285676,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "morpheus",
+      "phase": "roundDefeat",
+      "renderScale": 1.03088,
+      "referencePhase": "outro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 165,
+      "nativeComparableBodyHeight": 188,
+      "nativeReferenceBodyHeight": 210,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        47,
+        77,
+        138,
+        165
+      ],
+      "referenceBodyBounds": [
+        49,
+        12,
+        176,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        19,
+        668,
+        157,
+        188
+      ],
+      "nativeReferenceBodyBounds": [
+        38,
+        233,
+        162,
+        210
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeReferenceSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 170.095238,
+      "correctedBodyHeight": 170.0952,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "morpheus",
+      "phase": "fatality",
+      "renderScale": 1.175614,
+      "referencePhase": "outro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 157,
+      "nativeComparableBodyHeight": 204,
+      "nativeReferenceBodyHeight": 210,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn. The high katana/staff above the head is excluded explicitly from this row ROI.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        71,
+        87,
+        116,
+        157
+      ],
+      "referenceBodyBounds": [
+        49,
+        12,
+        176,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        36,
+        912,
+        151,
+        204
+      ],
+      "nativeReferenceBodyBounds": [
+        38,
+        233,
+        162,
+        210
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeReferenceSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 184.571429,
+      "correctedBodyHeight": 184.571398,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "morpheus",
+      "phase": "victory",
+      "renderScale": 0.849689,
+      "referencePhase": "outro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 230,
+      "nativeComparableBodyHeight": 216,
+      "nativeReferenceBodyHeight": 210,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        58,
+        14,
+        128,
+        230
+      ],
+      "referenceBodyBounds": [
+        49,
+        12,
+        176,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        45,
+        1124,
+        120,
+        216
+      ],
+      "nativeReferenceBodyBounds": [
+        38,
+        233,
+        162,
+        210
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeReferenceSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 195.428571,
+      "correctedBodyHeight": 195.42847,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "morpheus",
+      "phase": "defeat",
+      "renderScale": 0.945476,
+      "referencePhase": "outro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 200,
+      "nativeComparableBodyHeight": 209,
+      "nativeReferenceBodyHeight": 210,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        59,
+        38,
+        124,
+        200
+      ],
+      "referenceBodyBounds": [
+        49,
+        12,
+        176,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        39,
+        1333,
+        130,
+        209
+      ],
+      "nativeReferenceBodyBounds": [
+        38,
+        233,
+        162,
+        210
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeReferenceSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 189.095238,
+      "correctedBodyHeight": 189.0952,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "morpheus",
+      "phase": "super",
+      "renderScale": 1.183627,
+      "referencePhase": "outro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 146,
+      "nativeComparableBodyHeight": 191,
+      "nativeReferenceBodyHeight": 210,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn. The high katana/staff above the head is excluded explicitly from this row ROI.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        69,
+        92,
+        120,
+        146
+      ],
+      "referenceBodyBounds": [
+        49,
+        12,
+        176,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        34,
+        1575,
+        157,
+        191
+      ],
+      "nativeReferenceBodyBounds": [
+        38,
+        233,
+        162,
+        210
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/morpheus-original.png",
+      "nativeReferenceSourceImageSha256": "e8923bae30129a08b2ef676537c41fecdde2cb7b7e3ba6c365a535c33b469fc0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 172.809524,
+      "correctedBodyHeight": 172.809542,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "agent_smith",
+      "phase": "intro",
+      "renderScale": 0.818966,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 225,
+      "nativeReferenceBodyHeight": 225,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        82,
+        12,
+        112,
+        232
+      ],
+      "referenceBodyBounds": [
+        82,
+        12,
+        112,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        66,
+        6,
+        109,
+        225
+      ],
+      "nativeReferenceBodyBounds": [
+        66,
+        6,
+        109,
+        225
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeReferenceSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.000112,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "agent_smith",
+      "phase": "outro",
+      "renderScale": 0.829365,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 224,
+      "nativeComparableBodyHeight": 220,
+      "nativeReferenceBodyHeight": 225,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        84,
+        17,
+        101,
+        224
+      ],
+      "referenceBodyBounds": [
+        82,
+        12,
+        112,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        68,
+        233,
+        99,
+        220
+      ],
+      "nativeReferenceBodyBounds": [
+        66,
+        6,
+        109,
+        225
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeReferenceSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 185.777778,
+      "correctedBodyHeight": 185.77776,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "agent_smith",
+      "phase": "roundVictory",
+      "renderScale": 0.8152,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 223,
+      "nativeReferenceBodyHeight": 225,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        87,
+        13,
+        100,
+        231
+      ],
+      "referenceBodyBounds": [
+        82,
+        12,
+        112,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        71,
+        452,
+        97,
+        223
+      ],
+      "nativeReferenceBodyBounds": [
+        66,
+        6,
+        109,
+        225
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeReferenceSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 188.311111,
+      "correctedBodyHeight": 188.3112,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "agent_smith",
+      "phase": "roundDefeat",
+      "renderScale": 0.756162,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 220,
+      "nativeComparableBodyHeight": 197,
+      "nativeReferenceBodyHeight": 225,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        56,
+        24,
+        146,
+        220
+      ],
+      "referenceBodyBounds": [
+        82,
+        12,
+        112,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        46,
+        683,
+        131,
+        197
+      ],
+      "nativeReferenceBodyBounds": [
+        66,
+        6,
+        109,
+        225
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeReferenceSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 166.355556,
+      "correctedBodyHeight": 166.35564,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "agent_smith",
+      "phase": "fatality",
+      "renderScale": 0.840724,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 227,
+      "nativeComparableBodyHeight": 226,
+      "nativeReferenceBodyHeight": 225,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        60,
+        17,
+        147,
+        227
+      ],
+      "referenceBodyBounds": [
+        82,
+        12,
+        112,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        43,
+        889,
+        146,
+        226
+      ],
+      "nativeReferenceBodyBounds": [
+        66,
+        6,
+        109,
+        225
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeReferenceSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190.844444,
+      "correctedBodyHeight": 190.844348,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "agent_smith",
+      "phase": "victory",
+      "renderScale": 0.826245,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 227,
+      "nativeReferenceBodyHeight": 225,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        82,
+        12,
+        101,
+        232
+      ],
+      "referenceBodyBounds": [
+        82,
+        12,
+        112,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        66,
+        1115,
+        99,
+        227
+      ],
+      "nativeReferenceBodyBounds": [
+        66,
+        6,
+        109,
+        225
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeReferenceSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 191.688889,
+      "correctedBodyHeight": 191.68884,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "agent_smith",
+      "phase": "defeat",
+      "renderScale": 0.793487,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 218,
+      "nativeReferenceBodyHeight": 225,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        74,
+        12,
+        107,
+        232
+      ],
+      "referenceBodyBounds": [
+        82,
+        12,
+        112,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        60,
+        1342,
+        101,
+        218
+      ],
+      "nativeReferenceBodyBounds": [
+        66,
+        6,
+        109,
+        225
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeReferenceSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 184.088889,
+      "correctedBodyHeight": 184.088984,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "agent_smith",
+      "phase": "super",
+      "renderScale": 0.823438,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 201,
+      "nativeComparableBodyHeight": 196,
+      "nativeReferenceBodyHeight": 225,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        44,
+        43,
+        175,
+        201
+      ],
+      "referenceBodyBounds": [
+        82,
+        12,
+        112,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        29,
+        1568,
+        170,
+        196
+      ],
+      "nativeReferenceBodyBounds": [
+        66,
+        6,
+        109,
+        225
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/agent_smith-original.png",
+      "nativeReferenceSourceImageSha256": "9aa4e7b92a32b5b0b3cd2810800c4de57d43a1a5104ab53ae6e2ae3893a5d2de",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 165.511111,
+      "correctedBodyHeight": 165.511038,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "seraph",
+      "phase": "intro",
+      "renderScale": 0.833333,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 221,
+      "nativeReferenceBodyHeight": 221,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        96,
+        16,
+        103,
+        228
+      ],
+      "referenceBodyBounds": [
+        96,
+        16,
+        103,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        80,
+        4,
+        100,
+        221
+      ],
+      "nativeReferenceBodyBounds": [
+        80,
+        4,
+        100,
+        221
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeReferenceSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 189.999924,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "seraph",
+      "phase": "outro",
+      "renderScale": 0.829825,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 230,
+      "nativeComparableBodyHeight": 222,
+      "nativeReferenceBodyHeight": 221,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        90,
+        14,
+        108,
+        230
+      ],
+      "referenceBodyBounds": [
+        96,
+        16,
+        103,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        74,
+        228,
+        104,
+        222
+      ],
+      "nativeReferenceBodyBounds": [
+        80,
+        4,
+        100,
+        221
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeReferenceSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190.859729,
+      "correctedBodyHeight": 190.85975,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "seraph",
+      "phase": "roundVictory",
+      "renderScale": 0.829954,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 223,
+      "nativeReferenceBodyHeight": 221,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        91,
+        13,
+        96,
+        231
+      ],
+      "referenceBodyBounds": [
+        96,
+        16,
+        103,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        75,
+        444,
+        93,
+        223
+      ],
+      "nativeReferenceBodyBounds": [
+        80,
+        4,
+        100,
+        221
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeReferenceSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 191.719457,
+      "correctedBodyHeight": 191.719374,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "seraph",
+      "phase": "roundDefeat",
+      "renderScale": 0.78387,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 204,
+      "nativeComparableBodyHeight": 186,
+      "nativeReferenceBodyHeight": 221,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        66,
+        39,
+        148,
+        204
+      ],
+      "referenceBodyBounds": [
+        96,
+        16,
+        103,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        54,
+        691,
+        135,
+        186
+      ],
+      "nativeReferenceBodyBounds": [
+        80,
+        4,
+        100,
+        221
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeReferenceSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 159.909502,
+      "correctedBodyHeight": 159.90948,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "seraph",
+      "phase": "fatality",
+      "renderScale": 1.035372,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 186,
+      "nativeComparableBodyHeight": 224,
+      "nativeReferenceBodyHeight": 221,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        57,
+        58,
+        147,
+        186
+      ],
+      "referenceBodyBounds": [
+        96,
+        16,
+        103,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        25,
+        886,
+        178,
+        224
+      ],
+      "nativeReferenceBodyBounds": [
+        80,
+        4,
+        100,
+        221
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeReferenceSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 192.579186,
+      "correctedBodyHeight": 192.579192,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "seraph",
+      "phase": "victory",
+      "renderScale": 0.848611,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 229,
+      "nativeReferenceBodyHeight": 221,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        47,
+        12,
+        133,
+        232
+      ],
+      "referenceBodyBounds": [
+        96,
+        16,
+        103,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        31,
+        1108,
+        131,
+        229
+      ],
+      "nativeReferenceBodyBounds": [
+        80,
+        4,
+        100,
+        221
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeReferenceSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 196.877828,
+      "correctedBodyHeight": 196.877752,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "seraph",
+      "phase": "defeat",
+      "renderScale": 0.803902,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 216,
+      "nativeReferenceBodyHeight": 221,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        75,
+        12,
+        107,
+        231
+      ],
+      "referenceBodyBounds": [
+        96,
+        16,
+        103,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        61,
+        1334,
+        100,
+        216
+      ],
+      "nativeReferenceBodyBounds": [
+        80,
+        4,
+        100,
+        221
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeReferenceSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 185.701357,
+      "correctedBodyHeight": 185.701362,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "seraph",
+      "phase": "super",
+      "renderScale": 1.142745,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 161,
+      "nativeComparableBodyHeight": 214,
+      "nativeReferenceBodyHeight": 221,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        59,
+        80,
+        146,
+        161
+      ],
+      "referenceBodyBounds": [
+        96,
+        16,
+        103,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        19,
+        1556,
+        194,
+        214
+      ],
+      "nativeReferenceBodyBounds": [
+        80,
+        4,
+        100,
+        221
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/seraph-original.png",
+      "nativeReferenceSourceImageSha256": "ba61c6ad52f01bab432ca8c1b853ddcf3bc747a1d6d6b54add4d55eeb2754753",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 183.9819,
+      "correctedBodyHeight": 183.981945,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "oneill",
+      "phase": "intro",
+      "renderScale": 0.88785,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 214,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 214,
+      "nativeComparableBodyHeight": 217,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8878504672897196,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        123,
+        30,
+        120,
+        214
+      ],
+      "referenceBodyBounds": [
+        123,
+        30,
+        120,
+        214
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        106,
+        10,
+        122,
+        217
+      ],
+      "nativeReferenceBodyBounds": [
+        106,
+        10,
+        122,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeReferenceSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 189.9999,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "oneill",
+      "phase": "outro",
+      "renderScale": 0.859729,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 214,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 221,
+      "nativeComparableBodyHeight": 217,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8878504672897196,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        102,
+        20,
+        122,
+        221
+      ],
+      "referenceBodyBounds": [
+        123,
+        30,
+        120,
+        214
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        85,
+        230,
+        120,
+        217
+      ],
+      "nativeReferenceBodyBounds": [
+        106,
+        10,
+        122,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeReferenceSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.000109,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "oneill",
+      "phase": "roundVictory",
+      "renderScale": 0.863953,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 214,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 226,
+      "nativeComparableBodyHeight": 223,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8878504672897196,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        103,
+        12,
+        109,
+        226
+      ],
+      "referenceBodyBounds": [
+        123,
+        30,
+        120,
+        214
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        86,
+        443,
+        108,
+        223
+      ],
+      "nativeReferenceBodyBounds": [
+        106,
+        10,
+        122,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeReferenceSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 195.253456,
+      "correctedBodyHeight": 195.253378,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "oneill",
+      "phase": "roundDefeat",
+      "renderScale": 0.765655,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 214,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 202,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8878504672897196,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        87,
+        13,
+        155,
+        231
+      ],
+      "referenceBodyBounds": [
+        123,
+        30,
+        120,
+        214
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        75,
+        666,
+        136,
+        202
+      ],
+      "nativeReferenceBodyBounds": [
+        106,
+        10,
+        122,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeReferenceSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 176.866359,
+      "correctedBodyHeight": 176.866305,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "oneill",
+      "phase": "fatality",
+      "renderScale": 0.892254,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 214,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 210,
+      "nativeComparableBodyHeight": 214,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8878504672897196,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        89,
+        33,
+        148,
+        210
+      ],
+      "referenceBodyBounds": [
+        123,
+        30,
+        120,
+        214
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        71,
+        881,
+        151,
+        214
+      ],
+      "nativeReferenceBodyBounds": [
+        106,
+        10,
+        122,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeReferenceSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 187.373272,
+      "correctedBodyHeight": 187.37334,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "oneill",
+      "phase": "victory",
+      "renderScale": 0.894528,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 214,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 236,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8878504672897196,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        97,
+        13,
+        121,
+        231
+      ],
+      "referenceBodyBounds": [
+        123,
+        30,
+        120,
+        214
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        79,
+        1111,
+        124,
+        236
+      ],
+      "nativeReferenceBodyBounds": [
+        106,
+        10,
+        122,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeReferenceSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 206.635945,
+      "correctedBodyHeight": 206.635968,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "oneill",
+      "phase": "defeat",
+      "renderScale": 0.810025,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 214,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 187,
+      "nativeComparableBodyHeight": 173,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8878504672897196,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        74,
+        55,
+        169,
+        187
+      ],
+      "referenceBodyBounds": [
+        123,
+        30,
+        120,
+        214
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        61,
+        1347,
+        157,
+        173
+      ],
+      "nativeReferenceBodyBounds": [
+        106,
+        10,
+        122,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeReferenceSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 151.474654,
+      "correctedBodyHeight": 151.474675,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "oneill",
+      "phase": "super",
+      "renderScale": 0.87952,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 214,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 222,
+      "nativeComparableBodyHeight": 223,
+      "nativeReferenceBodyHeight": 217,
+      "referenceRenderScale": 0.8878504672897196,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        71,
+        22,
+        172,
+        222
+      ],
+      "referenceBodyBounds": [
+        123,
+        30,
+        120,
+        214
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        54,
+        1529,
+        173,
+        223
+      ],
+      "nativeReferenceBodyBounds": [
+        106,
+        10,
+        122,
+        217
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/oneill-original.png",
+      "nativeReferenceSourceImageSha256": "33e808b0e13ab2d9a85e039ee7495d87eaaa4af589e9a7acc0aac0a66ff1d301",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 195.253456,
+      "correctedBodyHeight": 195.25344,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "tealc",
+      "phase": "intro",
+      "renderScale": 0.904762,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 210,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 210,
+      "nativeComparableBodyHeight": 213,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 0.9047619047619048,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        33,
+        34,
+        196,
+        210
+      ],
+      "referenceBodyBounds": [
+        33,
+        34,
+        196,
+        210
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        15,
+        12,
+        199,
+        213
+      ],
+      "nativeReferenceBodyBounds": [
+        15,
+        12,
+        199,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeReferenceSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.00002,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "tealc",
+      "phase": "outro",
+      "renderScale": 0.826655,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 210,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 215,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 0.9047619047619048,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        57,
+        12,
+        108,
+        232
+      ],
+      "referenceBodyBounds": [
+        33,
+        34,
+        196,
+        210
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        45,
+        230,
+        100,
+        215
+      ],
+      "nativeReferenceBodyBounds": [
+        15,
+        12,
+        199,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeReferenceSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 191.784038,
+      "correctedBodyHeight": 191.78396,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "tealc",
+      "phase": "roundVictory",
+      "renderScale": 0.943481,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 210,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 208,
+      "nativeComparableBodyHeight": 220,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 0.9047619047619048,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        36,
+        29,
+        207,
+        208
+      ],
+      "referenceBodyBounds": [
+        33,
+        34,
+        196,
+        210
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        14,
+        442,
+        219,
+        220
+      ],
+      "nativeReferenceBodyBounds": [
+        15,
+        12,
+        199,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeReferenceSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 196.244131,
+      "correctedBodyHeight": 196.244048,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "tealc",
+      "phase": "roundDefeat",
+      "renderScale": 0.855423,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 210,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 195,
+      "nativeComparableBodyHeight": 187,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 0.9047619047619048,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        57,
+        39,
+        145,
+        195
+      ],
+      "referenceBodyBounds": [
+        33,
+        34,
+        196,
+        210
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        43,
+        689,
+        139,
+        187
+      ],
+      "nativeReferenceBodyBounds": [
+        15,
+        12,
+        199,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeReferenceSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 166.807512,
+      "correctedBodyHeight": 166.807485,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "tealc",
+      "phase": "fatality",
+      "renderScale": 0.992731,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 210,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 186,
+      "nativeComparableBodyHeight": 207,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 0.9047619047619048,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        44,
+        52,
+        195,
+        186
+      ],
+      "referenceBodyBounds": [
+        33,
+        34,
+        196,
+        210
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        18,
+        893,
+        217,
+        207
+      ],
+      "nativeReferenceBodyBounds": [
+        15,
+        12,
+        199,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeReferenceSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 184.647887,
+      "correctedBodyHeight": 184.647966,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "tealc",
+      "phase": "victory",
+      "renderScale": 0.872794,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 210,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 227,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 0.9047619047619048,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        58,
+        12,
+        110,
+        232
+      ],
+      "referenceBodyBounds": [
+        33,
+        34,
+        196,
+        210
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        42,
+        1116,
+        108,
+        227
+      ],
+      "nativeReferenceBodyBounds": [
+        15,
+        12,
+        199,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeReferenceSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 202.488263,
+      "correctedBodyHeight": 202.488208,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "tealc",
+      "phase": "defeat",
+      "renderScale": 0.852018,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 210,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 223,
+      "nativeComparableBodyHeight": 213,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 0.9047619047619048,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        48,
+        21,
+        163,
+        223
+      ],
+      "referenceBodyBounds": [
+        33,
+        34,
+        196,
+        210
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        34,
+        1340,
+        156,
+        213
+      ],
+      "nativeReferenceBodyBounds": [
+        15,
+        12,
+        199,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeReferenceSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.000014,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "tealc",
+      "phase": "super",
+      "renderScale": 1.119514,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 210,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 149,
+      "nativeComparableBodyHeight": 187,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 0.9047619047619048,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn. The high katana/staff above the head is excluded explicitly from this row ROI.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        68,
+        95,
+        122,
+        149
+      ],
+      "referenceBodyBounds": [
+        33,
+        34,
+        196,
+        210
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        36,
+        1578,
+        154,
+        187
+      ],
+      "nativeReferenceBodyBounds": [
+        15,
+        12,
+        199,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/tealc-original.png",
+      "nativeReferenceSourceImageSha256": "fdd0d0872ef76d8f05ad3deb4ee349eafa865cb4716e5d0c36af682cfe52b19e",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 166.807512,
+      "correctedBodyHeight": 166.807586,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sam_carter",
+      "phase": "intro",
+      "renderScale": 0.822511,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 234,
+      "nativeReferenceBodyHeight": 234,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        90,
+        12,
+        123,
+        231
+      ],
+      "referenceBodyBounds": [
+        90,
+        12,
+        123,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        72,
+        8,
+        125,
+        234
+      ],
+      "nativeReferenceBodyBounds": [
+        72,
+        8,
+        125,
+        234
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeReferenceSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.000041,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sam_carter",
+      "phase": "outro",
+      "renderScale": 0.833618,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 225,
+      "nativeComparableBodyHeight": 231,
+      "nativeReferenceBodyHeight": 234,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        81,
+        18,
+        111,
+        225
+      ],
+      "referenceBodyBounds": [
+        90,
+        12,
+        123,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        63,
+        245,
+        114,
+        231
+      ],
+      "nativeReferenceBodyBounds": [
+        72,
+        8,
+        125,
+        234
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeReferenceSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 187.564103,
+      "correctedBodyHeight": 187.56405,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sam_carter",
+      "phase": "roundVictory",
+      "renderScale": 0.866339,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 224,
+      "nativeComparableBodyHeight": 239,
+      "nativeReferenceBodyHeight": 234,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        91,
+        16,
+        108,
+        224
+      ],
+      "referenceBodyBounds": [
+        90,
+        12,
+        123,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        71,
+        478,
+        115,
+        239
+      ],
+      "nativeReferenceBodyBounds": [
+        72,
+        8,
+        125,
+        234
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeReferenceSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 194.059829,
+      "correctedBodyHeight": 194.059936,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sam_carter",
+      "phase": "roundDefeat",
+      "renderScale": 0.748968,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 214,
+      "nativeReferenceBodyHeight": 234,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        60,
+        12,
+        134,
+        232
+      ],
+      "referenceBodyBounds": [
+        90,
+        12,
+        123,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        48,
+        713,
+        124,
+        214
+      ],
+      "nativeReferenceBodyBounds": [
+        72,
+        8,
+        125,
+        234
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeReferenceSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 173.760684,
+      "correctedBodyHeight": 173.760576,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sam_carter",
+      "phase": "fatality",
+      "renderScale": 0.772792,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 217,
+      "nativeReferenceBodyHeight": 234,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        54,
+        14,
+        162,
+        228
+      ],
+      "referenceBodyBounds": [
+        90,
+        12,
+        123,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        40,
+        926,
+        154,
+        217
+      ],
+      "nativeReferenceBodyBounds": [
+        72,
+        8,
+        125,
+        234
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeReferenceSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 176.196581,
+      "correctedBodyHeight": 176.196576,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sam_carter",
+      "phase": "victory",
+      "renderScale": 0.840581,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 227,
+      "nativeComparableBodyHeight": 235,
+      "nativeReferenceBodyHeight": 234,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        92,
+        12,
+        110,
+        227
+      ],
+      "referenceBodyBounds": [
+        90,
+        12,
+        123,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        74,
+        1146,
+        114,
+        235
+      ],
+      "nativeReferenceBodyBounds": [
+        72,
+        8,
+        125,
+        234
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeReferenceSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190.811966,
+      "correctedBodyHeight": 190.811887,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sam_carter",
+      "phase": "defeat",
+      "renderScale": 0.672981,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 222,
+      "nativeComparableBodyHeight": 184,
+      "nativeReferenceBodyHeight": 234,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        68,
+        12,
+        151,
+        222
+      ],
+      "referenceBodyBounds": [
+        90,
+        12,
+        123,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        61,
+        1387,
+        125,
+        184
+      ],
+      "nativeReferenceBodyBounds": [
+        72,
+        8,
+        125,
+        234
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeReferenceSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 149.401709,
+      "correctedBodyHeight": 149.401782,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sam_carter",
+      "phase": "super",
+      "renderScale": 0.741521,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 219,
+      "nativeComparableBodyHeight": 200,
+      "nativeReferenceBodyHeight": 234,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        45,
+        24,
+        175,
+        219
+      ],
+      "referenceBodyBounds": [
+        90,
+        12,
+        123,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        35,
+        1573,
+        160,
+        200
+      ],
+      "nativeReferenceBodyBounds": [
+        72,
+        8,
+        125,
+        234
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/sam_carter-original.png",
+      "nativeReferenceSourceImageSha256": "1f119bf943e9911333cb22cbbbd4796879b5e2b0c8951cee03c085104e168a15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 162.393162,
+      "correctedBodyHeight": 162.393099,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "daniel_jackson",
+      "phase": "intro",
+      "renderScale": 0.822511,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 218,
+      "nativeReferenceBodyHeight": 218,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        100,
+        13,
+        133,
+        231
+      ],
+      "referenceBodyBounds": [
+        100,
+        13,
+        133,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        84,
+        9,
+        126,
+        218
+      ],
+      "nativeReferenceBodyBounds": [
+        84,
+        9,
+        126,
+        218
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeReferenceSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.000041,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "daniel_jackson",
+      "phase": "outro",
+      "renderScale": 0.837749,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 223,
+      "nativeReferenceBodyHeight": 218,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        95,
+        12,
+        112,
+        232
+      ],
+      "referenceBodyBounds": [
+        100,
+        13,
+        133,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        79,
+        224,
+        108,
+        223
+      ],
+      "nativeReferenceBodyBounds": [
+        84,
+        9,
+        126,
+        218
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeReferenceSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 194.357798,
+      "correctedBodyHeight": 194.357768,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "daniel_jackson",
+      "phase": "roundVictory",
+      "renderScale": 0.87156,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 230,
+      "nativeComparableBodyHeight": 230,
+      "nativeReferenceBodyHeight": 218,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        100,
+        13,
+        115,
+        230
+      ],
+      "referenceBodyBounds": [
+        100,
+        13,
+        133,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        83,
+        443,
+        115,
+        230
+      ],
+      "nativeReferenceBodyBounds": [
+        84,
+        9,
+        126,
+        218
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeReferenceSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 200.458716,
+      "correctedBodyHeight": 200.4588,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "daniel_jackson",
+      "phase": "roundDefeat",
+      "renderScale": 0.745413,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 195,
+      "nativeReferenceBodyHeight": 218,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        72,
+        16,
+        151,
+        228
+      ],
+      "referenceBodyBounds": [
+        100,
+        13,
+        133,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        63,
+        669,
+        129,
+        195
+      ],
+      "nativeReferenceBodyBounds": [
+        84,
+        9,
+        126,
+        218
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeReferenceSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 169.954128,
+      "correctedBodyHeight": 169.954164,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "daniel_jackson",
+      "phase": "fatality",
+      "renderScale": 0.9357,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 248,
+      "nativeReferenceBodyHeight": 218,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        104,
+        12,
+        134,
+        231
+      ],
+      "referenceBodyBounds": [
+        100,
+        13,
+        133,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        85,
+        861,
+        144,
+        248
+      ],
+      "nativeReferenceBodyBounds": [
+        84,
+        9,
+        126,
+        218
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeReferenceSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 216.146789,
+      "correctedBodyHeight": 216.1467,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "daniel_jackson",
+      "phase": "victory",
+      "renderScale": 0.875333,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 232,
+      "nativeReferenceBodyHeight": 218,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        101,
+        12,
+        108,
+        231
+      ],
+      "referenceBodyBounds": [
+        100,
+        13,
+        133,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        84,
+        1104,
+        108,
+        232
+      ],
+      "nativeReferenceBodyBounds": [
+        84,
+        9,
+        126,
+        218
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeReferenceSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 202.201835,
+      "correctedBodyHeight": 202.201923,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "daniel_jackson",
+      "phase": "defeat",
+      "renderScale": 0.859729,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 221,
+      "nativeComparableBodyHeight": 218,
+      "nativeReferenceBodyHeight": 218,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        100,
+        12,
+        107,
+        221
+      ],
+      "referenceBodyBounds": [
+        100,
+        13,
+        133,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        83,
+        1332,
+        106,
+        218
+      ],
+      "nativeReferenceBodyBounds": [
+        84,
+        9,
+        126,
+        218
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeReferenceSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.000109,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "daniel_jackson",
+      "phase": "super",
+      "renderScale": 1.084608,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 180,
+      "nativeComparableBodyHeight": 224,
+      "nativeReferenceBodyHeight": 218,
+      "referenceRenderScale": 0.8225108225108225,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        98,
+        64,
+        145,
+        180
+      ],
+      "referenceBodyBounds": [
+        100,
+        13,
+        133,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        74,
+        1550,
+        181,
+        224
+      ],
+      "nativeReferenceBodyBounds": [
+        84,
+        9,
+        126,
+        218
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/daniel_jackson-original.png",
+      "nativeReferenceSourceImageSha256": "66dbe428bfae54f42c8705c09bfca09b42167546102786f50fb6ec110ceba6c5",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 195.229358,
+      "correctedBodyHeight": 195.22944,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hammond_sgc",
+      "phase": "intro",
+      "renderScale": 0.826087,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 230,
+      "nativeComparableBodyHeight": 222,
+      "nativeReferenceBodyHeight": 222,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        116,
+        14,
+        117,
+        230
+      ],
+      "referenceBodyBounds": [
+        116,
+        14,
+        117,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        99,
+        8,
+        113,
+        222
+      ],
+      "nativeReferenceBodyBounds": [
+        99,
+        8,
+        113,
+        222
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeReferenceSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.00001,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hammond_sgc",
+      "phase": "outro",
+      "renderScale": 0.818966,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 222,
+      "nativeReferenceBodyHeight": 222,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        100,
+        12,
+        102,
+        232
+      ],
+      "referenceBodyBounds": [
+        116,
+        14,
+        117,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        84,
+        228,
+        98,
+        222
+      ],
+      "nativeReferenceBodyBounds": [
+        99,
+        8,
+        113,
+        222
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeReferenceSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.000112,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hammond_sgc",
+      "phase": "roundVictory",
+      "renderScale": 0.844595,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 225,
+      "nativeReferenceBodyHeight": 222,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        103,
+        12,
+        98,
+        228
+      ],
+      "referenceBodyBounds": [
+        116,
+        14,
+        117,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        86,
+        442,
+        97,
+        225
+      ],
+      "nativeReferenceBodyBounds": [
+        99,
+        8,
+        113,
+        222
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeReferenceSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 192.567568,
+      "correctedBodyHeight": 192.56766,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hammond_sgc",
+      "phase": "roundDefeat",
+      "renderScale": 0.768685,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 216,
+      "nativeComparableBodyHeight": 194,
+      "nativeReferenceBodyHeight": 222,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        73,
+        25,
+        135,
+        216
+      ],
+      "referenceBodyBounds": [
+        116,
+        14,
+        117,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        62,
+        681,
+        121,
+        194
+      ],
+      "nativeReferenceBodyBounds": [
+        99,
+        8,
+        113,
+        222
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeReferenceSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 166.036036,
+      "correctedBodyHeight": 166.03596,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hammond_sgc",
+      "phase": "fatality",
+      "renderScale": 0.848446,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 229,
+      "nativeReferenceBodyHeight": 222,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        85,
+        13,
+        110,
+        231
+      ],
+      "referenceBodyBounds": [
+        116,
+        14,
+        117,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        68,
+        886,
+        109,
+        229
+      ],
+      "nativeReferenceBodyBounds": [
+        99,
+        8,
+        113,
+        222
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeReferenceSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 195.990991,
+      "correctedBodyHeight": 195.991026,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hammond_sgc",
+      "phase": "victory",
+      "renderScale": 0.848478,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 230,
+      "nativeReferenceBodyHeight": 222,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        101,
+        12,
+        96,
+        232
+      ],
+      "referenceBodyBounds": [
+        116,
+        14,
+        117,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        84,
+        1105,
+        95,
+        230
+      ],
+      "nativeReferenceBodyBounds": [
+        99,
+        8,
+        113,
+        222
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeReferenceSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 196.846847,
+      "correctedBodyHeight": 196.846896,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hammond_sgc",
+      "phase": "defeat",
+      "renderScale": 0.804209,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 218,
+      "nativeReferenceBodyHeight": 222,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        99,
+        12,
+        102,
+        232
+      ],
+      "referenceBodyBounds": [
+        116,
+        14,
+        117,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        84,
+        1332,
+        96,
+        218
+      ],
+      "nativeReferenceBodyBounds": [
+        99,
+        8,
+        113,
+        222
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeReferenceSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 186.576577,
+      "correctedBodyHeight": 186.576488,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hammond_sgc",
+      "phase": "super",
+      "renderScale": 0.940177,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 203,
+      "nativeComparableBodyHeight": 223,
+      "nativeReferenceBodyHeight": 222,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate visual head-to-soles ROI from the inspected native source and normalized cell. Source pixel density is calibrated independently per character to a190px upright body. The same native body density is retained across rows, so genuine bends/kneels stay shorter. Weapon/flare extents do not define body height; no artwork is redrawn.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        95,
+        41,
+        98,
+        203
+      ],
+      "referenceBodyBounds": [
+        116,
+        14,
+        117,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        75,
+        1544,
+        108,
+        223
+      ],
+      "nativeReferenceBodyBounds": [
+        99,
+        8,
+        113,
+        222
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave10-2026-10-23/part-a-sources/hammond_sgc-original.png",
+      "nativeReferenceSourceImageSha256": "4b412b50af2d791bf45dcdac2f9af73de030755e387574f6784ba33cfbe75b99",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190.855856,
+      "correctedBodyHeight": 190.855931,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    }
+  ]
+}

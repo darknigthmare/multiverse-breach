@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "checkedRecords": 12,
+  "records": [
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/rift-refresh/01-catalog-refresh.log",
+      "sha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/rift-refresh/02-character-reference-audit.log",
+      "sha256": "cc4213f4000b1d22e61d187bf3fafd97589f45d967562cafeaf3fc85d9055485"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/rift-refresh/03-catalog-build.log",
+      "sha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/rift-refresh/04-asset-registry-build.log",
+      "sha256": "0ae6d3724a446f09f64e6b22d192d46ca63237ce1f541acce4e94aae3905c82c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/rift-refresh/05-rift-audit.log",
+      "sha256": "c2329e6e7f1c2a09d9c3031556456fc58c9efe6ca1b348a83f5bcefa25ced44d"
+    },
+    {
+      "path": "docs/rift-dossiers/catalog.json",
+      "sha256": "432409585c4aafb1ad66ba580026b99f57e8aecb16e22297cf3b48bc419c15f7"
+    },
+    {
+      "path": "docs/rift-dossiers/character-reference-quality.json",
+      "sha256": "7dce3436fc4d7dee3ea5ebae47fab7c72fd20c58ad5a95dd54161ea8dee5f0c6"
+    },
+    {
+      "path": "src/game/riftDossierAssets.json",
+      "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a"
+    },
+    {
+      "path": "scripts/buildRiftDossierCatalog.mjs",
+      "sha256": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143"
+    },
+    {
+      "path": "scripts/auditCharacterReferenceQuality.py",
+      "sha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb"
+    },
+    {
+      "path": "scripts/buildRiftDossierAssetRegistry.mjs",
+      "sha256": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d"
+    },
+    {
+      "path": "package.json",
+      "sha256": "bd00a7560454f62c83d2396d045bc2af89f3dfc1518f15b9985dd7be38ad95e9"
+    }
+  ],
+  "commandsPassed": 5,
+  "newReferencesApproved": 40,
+  "historicalKnownCases": 1,
+  "sourceChanges": "Only root-approved historical-retired-reference handling changed the Python audit; two builders and package stayed identical.",
+  "gateConditions": "All seven browser domains complete and no UI harness active before final writes; parent capacity interruption documented honestly in allow-final-writes.json.",
+  "refreshCommandsGenerateArtwork": false
+}

@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "source1to1Verified": false,
+  "entries": [
+    {
+      "heroId": "marcus",
+      "universe": "Gears of War",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/marcus.png",
+      "sheetSha256": "1a65d0b5ccd14b1d2275d19bb68577dcf36633dc64dfb272717f4ddbd0356b7f",
+      "anchors": {
+        "super": [
+          {
+            "x": 228,
+            "y": 86
+          },
+          {
+            "x": 210,
+            "y": 63
+          },
+          {
+            "x": 222,
+            "y": 50
+          },
+          null
+        ],
+        "fatality": [
+          {
+            "x": 225,
+            "y": 85
+          },
+          {
+            "x": 218,
+            "y": 67
+          },
+          {
+            "x": 218,
+            "y": 49
+          },
+          null
+        ]
+      },
+      "reviewImage": "docs/combat-fidelity-wave9-2026-10-22/part-a-marcus-anchor-review.png",
+      "reviewImageSha256": "6f04502867534c1bb663eb7a74971dd77da0fb514871141ab190043a12c98d55",
+      "coordinateSpace": "local256px normalized cell, BEFORE canvas renderScale; not image dimensions1536px of the enlarged technical contact",
+      "method": "Visually located barrel/optical exits in every retained pose, checked against opaque edge pixels. Flash frame2 origins sit just before the connected yellow flash, never at the distant flame tip. Marcus frame2 uses the red optical lens center; this is a designator emission, not a destructive body beam.",
+      "frameOrder": null,
+      "loweredWeaponColumn3": null,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dom",
+      "universe": "Gears of War",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/dom.png",
+      "sheetSha256": "d42ac19ce3b4f971420607e4c894122484f50e0ba1020c060a93c85082e4bb2a",
+      "anchors": {
+        "super": [
+          {
+            "x": 201,
+            "y": 161
+          },
+          {
+            "x": 211,
+            "y": 112
+          },
+          {
+            "x": 199,
+            "y": 110
+          },
+          null
+        ],
+        "fatality": [
+          {
+            "x": 210,
+            "y": 135
+          },
+          {
+            "x": 215,
+            "y": 104
+          },
+          {
+            "x": 199,
+            "y": 101
+          },
+          null
+        ]
+      },
+      "reviewImage": "docs/combat-fidelity-wave9-2026-10-22/part-a-dom-anchor-review.png",
+      "reviewImageSha256": "a37b254b947157afc3c9659c0836e6e86903fa22902cd724a3f86989fc522dd1",
+      "coordinateSpace": "local256px normalized cell, BEFORE canvas renderScale; not image dimensions1536px of the enlarged technical contact",
+      "method": "Visually located barrel/optical exits in every retained pose, checked against opaque edge pixels. Flash frame2 origins sit just before the connected yellow flash, never at the distant flame tip. Marcus frame2 uses the red optical lens center; this is a designator emission, not a destructive body beam.",
+      "frameOrder": null,
+      "loweredWeaponColumn3": null,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "cole",
+      "universe": "Gears of War",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/cole.png",
+      "sheetSha256": "58b3cf46d03951a6be94850fbce304209ad602639bbb218908188ed7892e7ce5",
+      "anchors": {
+        "super": [
+          {
+            "x": 225,
+            "y": 138
+          },
+          {
+            "x": 215,
+            "y": 123
+          },
+          {
+            "x": 201,
+            "y": 117
+          },
+          null
+        ],
+        "fatality": [
+          {
+            "x": 219,
+            "y": 114
+          },
+          {
+            "x": 229,
+            "y": 110
+          },
+          {
+            "x": 199,
+            "y": 102
+          },
+          null
+        ]
+      },
+      "reviewImage": "docs/combat-fidelity-wave9-2026-10-22/part-a-cole-anchor-review.png",
+      "reviewImageSha256": "41ad93a8af34a9507d83bfd19467de442d48a95a2a374f0b638c5b785fe22964",
+      "coordinateSpace": "local256px normalized cell, BEFORE canvas renderScale; not image dimensions1536px of the enlarged technical contact",
+      "method": "Visually located barrel/optical exits in every retained pose, checked against opaque edge pixels. Flash frame2 origins sit just before the connected yellow flash, never at the distant flame tip. Marcus frame2 uses the red optical lens center; this is a designator emission, not a destructive body beam.",
+      "frameOrder": {
+        "fatality": [
+          0,
+          2,
+          1,
+          3
+        ],
+        "super": [
+          0,
+          2,
+          1,
+          3
+        ]
+      },
+      "loweredWeaponColumn3": null,
+      "source1to1Verified": false
+    }
+  ],
+  "notes": "Only the three actual physical/targeting supers have anchors. Baird and Hoffman are support and have no offensive muzzle. Rendering must still honor impact/contact authority; anchor existence does not create an extra projectile or damage event.",
+  "runtimeContract": "Per-phase four-element array of {x,y} objects or null. Points are local normalized256px coordinates, before renderScale. Do not pass [x,y] tuples to nativeMuzzleActive."
+}

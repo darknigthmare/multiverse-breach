@@ -1,0 +1,1 @@
+État observé avant correction native du bras tatoué de Lilith. Ces résultats ont passé sur ce gel antérieur et ne valent pas validation des PNG ou ancres qui le remplaceront. Les observations finales seront rejouées après le nouveau gel.

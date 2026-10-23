@@ -1,0 +1,426 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "crypt_necrodancer_aria",
+      "heroId": "crypt_necrodancer_aria",
+      "universe": "Crypt of the NecroDancer",
+      "name": "Aria",
+      "sheet": "/sprites/generated/combat-character-corrections/crypt_necrodancer_aria.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 1024,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "c5c9f4f1459b263074855ce06d746f0d4941d51f8a869acee2e7c1be9e0bc4a5",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-2026-10-18/character-sprite-correction-sources/crypt_necrodancer_aria.png",
+      "sourceImageSha256": "48f00e2ae4a085fc638ed28b7fc47264d908532e579a40dc1f59d7079a76d118",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/crypt-of-the-necrodancer/crypt-necrodancer-aria.png",
+      "referenceImage": "docs/combat-fidelity-2026-10-18/character-sprite-correction-sources/crypt_necrodancer_aria-reference.png",
+      "referenceAssetSha256": "f85087f7e2dc614cd01b0c02cffe817807b06363e1da8c19b7529c1adc3d5375",
+      "sourceWork": "Crypt of the NecroDancer (2015), base-game Aria character",
+      "sourceReference": "Aria is Cadence’s grandmother and Melody’s mother. Her base-game weapon is the basic dagger; she is not the Golden Lute user Melody.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "operation": "native-imagegen-canonical-role-correction",
+      "networkVerified": false,
+      "canon1to1Verified": false,
+      "canonicalVerified": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 334
+            },
+            "scale": 0.8405797101449275,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 66,
+                  "top": 49,
+                  "width": 176,
+                  "height": 267,
+                  "pixels": 32655
+                },
+                "output": {
+                  "left": 52,
+                  "top": 16,
+                  "width": 148,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 382,
+                  "top": 44,
+                  "width": 198,
+                  "height": 275,
+                  "pixels": 34539
+                },
+                "output": {
+                  "left": 54,
+                  "top": 12,
+                  "width": 166,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 660,
+                  "top": 52,
+                  "width": 232,
+                  "height": 264,
+                  "pixels": 35646
+                },
+                "output": {
+                  "left": 24,
+                  "top": 19,
+                  "width": 195,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 979,
+                  "top": 74,
+                  "width": 252,
+                  "height": 246,
+                  "pixels": 35334
+                },
+                "output": {
+                  "left": 29,
+                  "top": 37,
+                  "width": 212,
+                  "height": 207
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "run",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 333,
+              "bottom": 637
+            },
+            "scale": 0.8467153284671532,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 47,
+                  "top": 19,
+                  "width": 228,
+                  "height": 271,
+                  "pixels": 37753
+                },
+                "output": {
+                  "left": 35,
+                  "top": 15,
+                  "width": 193,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 352,
+                  "top": 16,
+                  "width": 234,
+                  "height": 274,
+                  "pixels": 37671
+                },
+                "output": {
+                  "left": 28,
+                  "top": 12,
+                  "width": 198,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 656,
+                  "top": 22,
+                  "width": 252,
+                  "height": 268,
+                  "pixels": 39015
+                },
+                "output": {
+                  "left": 20,
+                  "top": 17,
+                  "width": 213,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 979,
+                  "top": 19,
+                  "width": 245,
+                  "height": 271,
+                  "pixels": 37133
+                },
+                "output": {
+                  "left": 28,
+                  "top": 15,
+                  "width": 207,
+                  "height": 229
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "attack",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 635,
+              "bottom": 937
+            },
+            "scale": 0.6041666666666666,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 41,
+                  "top": 14,
+                  "width": 233,
+                  "height": 269,
+                  "pixels": 39128
+                },
+                "output": {
+                  "left": 58,
+                  "top": 81,
+                  "width": 141,
+                  "height": 163
+                }
+              },
+              {
+                "source": {
+                  "left": 330,
+                  "top": 44,
+                  "width": 332,
+                  "height": 237,
+                  "pixels": 38821
+                },
+                "output": {
+                  "left": 43,
+                  "top": 100,
+                  "width": 201,
+                  "height": 143
+                }
+              },
+              {
+                "source": {
+                  "left": 667,
+                  "top": 42,
+                  "width": 271,
+                  "height": 236,
+                  "pixels": 37616
+                },
+                "output": {
+                  "left": 57,
+                  "top": 98,
+                  "width": 164,
+                  "height": 143
+                }
+              },
+              {
+                "source": {
+                  "left": 998,
+                  "top": 33,
+                  "width": 227,
+                  "height": 248,
+                  "pixels": 34286
+                },
+                "output": {
+                  "left": 68,
+                  "top": 93,
+                  "width": 137,
+                  "height": 150
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "hit",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 936,
+              "bottom": 1254
+            },
+            "scale": 0.8656716417910447,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 60,
+                  "top": 28,
+                  "width": 224,
+                  "height": 253,
+                  "pixels": 36811
+                },
+                "output": {
+                  "left": 44,
+                  "top": 21,
+                  "width": 194,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 386,
+                  "top": 31,
+                  "width": 210,
+                  "height": 249,
+                  "pixels": 37007
+                },
+                "output": {
+                  "left": 55,
+                  "top": 23,
+                  "width": 182,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 659,
+                  "top": 64,
+                  "width": 224,
+                  "height": 222,
+                  "pixels": 34068
+                },
+                "output": {
+                  "left": 20,
+                  "top": 52,
+                  "width": 194,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 1003,
+                  "top": 18,
+                  "width": 210,
+                  "height": 263,
+                  "pixels": 39057
+                },
+                "output": {
+                  "left": 46,
+                  "top": 12,
+                  "width": 182,
+                  "height": 228
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "allFramesReviewed": true,
+        "identityReviewed": true,
+        "basicDagger": true,
+        "lutePresent": false,
+        "elderDesign": true,
+        "distinctFrames": 16,
+        "states": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e2fb682de9de13b8fe3518326a10e8ed95474aaff3a9ff6532a648b04c843241",
+              "03bcd119872754d06a9a849bb452f82b952b59732d73a5a56f4218b56d7a0976",
+              "d8d3426b78650565dcf707da2caeefd5ec60b1de5f383d9d791247368e5c6565",
+              "94fde2a262455dc57fc7ad588bf5e96bc3bcf62c56c3e5f3d2fbde1ad5675638"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f83d1f80f006f579dd9d6336f896fe1ec1ad002b78b29a779697f4250a4f59ff",
+              "77b816bbbc03bbb949574ad6892feef51b38ec5567280df91cc82324d3e4de3a",
+              "ca96a8af81697c0e95d297d0f613e4b241a1d2fecb75087bbf9b860a62205c3e",
+              "855bfdf604c904493e50be28b8c4174052da31869c8b2b410b24760f0f1018f2"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "036773615ee6723573d9d3fa9be28b7fe4a4bfcccab2d04529e881f582a0705f",
+              "4385fd6fc707de0852544f89991e1acf3884e72f823749064d6f7df5ef1692b5",
+              "dce8c36db2d10d9caab47d5d1874713b0115c85ce8a2e2e417cec37839ce19f9",
+              "419f8e9c1811669b758cc0af6c7de055c852a061c949a315281ebab388c79a92"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e51356da2cc74730e5af58992cd48a7a0712d51692c802601368bcacdc1096dc",
+              "3b8e89d4a0390f3286ed56ef1982369b0d3065c10f767c02332e6c4432442eef",
+              "a279e7e723b40ed371e11f9c84f4059228a9d00cf7a92f619fab0609d30b89e5",
+              "d4e3ca207341cc7315bac597905611d56d9363a2a34e77cef0d3d675c59826df"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "Original generated adaptation of base-game Aria as an elderly dagger user. Purple palette, dark skin and gray hair of the local reference retained; youthful armor/trousers replaced with a hood and layered dark-purple dress. The old bitmap already showed a dagger; the lute error was in its ability/weapon metadata, not a claim about pixels in that bitmap. No official sprite reproduction or certified costume fidelity is claimed."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1961 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "teen-titans-cyborg",
+      "key": "Teen Titans::Cyborg::Sonic Cannon de Cyborg",
+      "universe": "Teen Titans",
+      "entityName": "Cyborg",
+      "actionName": "Sonic Cannon de Cyborg",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "cyborg_tt",
+      "sheet": "/sprites/generated/summon-animations-wave8/cyborg.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "59f79caefd7048bf1ba207cd6ea49f833af37de6303d146c7f7d8bb411161720",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/cyborg-original.png",
+      "sourceImageSha256": "10d7789244eb8d427fec77c24e71e6c7e186d6a684311272b20ed2b380c8ef94",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/cyborg-reference.png",
+      "referenceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "sourceWork": "Teen Titans (2003 animated series), Victor Stone/Cyborg",
+      "sourceReference": "Teen Titans (2003 animated series), Victor Stone/Cyborg. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. All sixteen full subjects visually inspected. Local cyan rings only for Cyborg, free-hand physical Kiryu combo, non-graphic silver/blue-white HF blade for Raiden and physical Kensuke for Laios. All transparent source seams pass. Wide 512x256 destination cells preserve weapon reach and body height without per-pose resizing.",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          {
+            "x": 333,
+            "y": 97
+          },
+          {
+            "x": 330,
+            "y": 83
+          }
+        ],
+        "preparation": [
+          null,
+          {
+            "x": 299,
+            "y": 137
+          },
+          {
+            "x": 348,
+            "y": 120
+          },
+          {
+            "x": 340,
+            "y": 123
+          }
+        ],
+        "attack": [
+          {
+            "x": 351,
+            "y": 121
+          },
+          {
+            "x": 337,
+            "y": 125
+          },
+          {
+            "x": 333,
+            "y": 124
+          },
+          {
+            "x": 341,
+            "y": 125
+          }
+        ],
+        "recovery": [
+          {
+            "x": 350,
+            "y": 115
+          },
+          null,
+          null,
+          null
+        ]
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.7883817427385892,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 3,
+          "targetBodyHeight": 190,
+          "method": "visually-selected-standing-body-reference",
+          "sourceBodyHeight": 241,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/cyborg-original.png",
+            "sourceImageSha256": "10d7789244eb8d427fec77c24e71e6c7e186d6a684311272b20ed2b380c8ef94",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 290
+            },
+            "scale": 0.7883817427385892,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 99,
+                  "top": 51,
+                  "width": 258,
+                  "height": 224,
+                  "pixels": 29529
+                },
+                "output": {
+                  "left": 183,
+                  "top": 67,
+                  "width": 203,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 471,
+                  "top": 111,
+                  "width": 258,
+                  "height": 164,
+                  "pixels": 25251
+                },
+                "output": {
+                  "left": 173,
+                  "top": 114,
+                  "width": 203,
+                  "height": 129
+                }
+              },
+              {
+                "source": {
+                  "left": 868,
+                  "top": 67,
+                  "width": 236,
+                  "height": 209,
+                  "pixels": 28440
+                },
+                "output": {
+                  "left": 183,
+                  "top": 79,
+                  "width": 186,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 1234,
+                  "top": 35,
+                  "width": 228,
+                  "height": 241,
+                  "pixels": 31733
+                },
+                "output": {
+                  "left": 169,
+                  "top": 54,
+                  "width": 180,
+                  "height": 190
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/cyborg-original.png",
+            "sourceImageSha256": "10d7789244eb8d427fec77c24e71e6c7e186d6a684311272b20ed2b380c8ef94",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 289,
+              "bottom": 545
+            },
+            "scale": 0.7883817427385892,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 99,
+                  "top": 14,
+                  "width": 218,
+                  "height": 227,
+                  "pixels": 29525
+                },
+                "output": {
+                  "left": 183,
+                  "top": 64,
+                  "width": 172,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 476,
+                  "top": 21,
+                  "width": 238,
+                  "height": 220,
+                  "pixels": 26888
+                },
+                "output": {
+                  "left": 177,
+                  "top": 70,
+                  "width": 188,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 843,
+                  "top": 30,
+                  "width": 271,
+                  "height": 211,
+                  "pixels": 28010
+                },
+                "output": {
+                  "left": 164,
+                  "top": 77,
+                  "width": 214,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 1217,
+                  "top": 30,
+                  "width": 260,
+                  "height": 212,
+                  "pixels": 27622
+                },
+                "output": {
+                  "left": 156,
+                  "top": 77,
+                  "width": 205,
+                  "height": 167
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/cyborg-original.png",
+            "sourceImageSha256": "10d7789244eb8d427fec77c24e71e6c7e186d6a684311272b20ed2b380c8ef94",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 543,
+              "bottom": 777
+            },
+            "scale": 0.7883817427385892,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 80,
+                  "top": 14,
+                  "width": 268,
+                  "height": 213,
+                  "pixels": 29378
+                },
+                "output": {
+                  "left": 168,
+                  "top": 74,
+                  "width": 211,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 464,
+                  "top": 19,
+                  "width": 258,
+                  "height": 208,
+                  "pixels": 29903
+                },
+                "output": {
+                  "left": 168,
+                  "top": 78,
+                  "width": 203,
+                  "height": 164
+                }
+              },
+              {
+                "source": {
+                  "left": 834,
+                  "top": 16,
+                  "width": 282,
+                  "height": 213,
+                  "pixels": 31918
+                },
+                "output": {
+                  "left": 157,
+                  "top": 76,
+                  "width": 222,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 1228,
+                  "top": 12,
+                  "width": 262,
+                  "height": 217,
+                  "pixels": 32360
+                },
+                "output": {
+                  "left": 165,
+                  "top": 73,
+                  "width": 207,
+                  "height": 171
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/cyborg-original.png",
+            "sourceImageSha256": "10d7789244eb8d427fec77c24e71e6c7e186d6a684311272b20ed2b380c8ef94",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 775,
+              "bottom": 1024
+            },
+            "scale": 0.7883817427385892,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 83,
+                  "top": 10,
+                  "width": 254,
+                  "height": 223,
+                  "pixels": 28688
+                },
+                "output": {
+                  "left": 170,
+                  "top": 68,
+                  "width": 200,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 498,
+                  "top": 12,
+                  "width": 192,
+                  "height": 221,
+                  "pixels": 25546
+                },
+                "output": {
+                  "left": 195,
+                  "top": 70,
+                  "width": 151,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 882,
+                  "top": 8,
+                  "width": 172,
+                  "height": 225,
+                  "pixels": 22208
+                },
+                "output": {
+                  "left": 195,
+                  "top": 67,
+                  "width": 136,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 1232,
+                  "top": 6,
+                  "width": 192,
+                  "height": 226,
+                  "pixels": 22300
+                },
+                "output": {
+                  "left": 168,
+                  "top": 65,
+                  "width": 151,
+                  "height": 178
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d8140e618da4e1ca6c69f737bcc12f2f936da16025dc01147519709ed9bf93b6",
+              "c4e6d0076c4e3fb54d002637a617bf25bcfc4e476158a59ae6d40edc732a8826",
+              "1cf77ae99913f13e166c25dadbe8ffbcaffd26b0c4775e76cb4dab24ae982353",
+              "feb1faa1be49f412b360127ecb7c592b00cbd973ca220a85489d031bcb33c9c7"
+            ],
+            "visiblePixels": [
+              18441,
+              15603,
+              17702,
+              19796
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8fbf1274be6756e5455b4af42c8f6b0b312aaafea27ae2bb5f90018eb0a9df06",
+              "1536543e4b93f9a066fa7f19e6e133dbadb4254d4139820f06edf6f18f0470aa",
+              "14c2c6fa4ebdd8eb2d0c2f68271496e98cfc5d0975f7a1165eda6301bea86486",
+              "9d9cf9a7dfbd33dc1324ad3dd9967d73ef16dfb68211002a596abc00f8bef349"
+            ],
+            "visiblePixels": [
+              18359,
+              16766,
+              17450,
+              17112
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9e6f87df5574bab6be521f26e4a5f826eeeb62ac0fbb924a9e45338a23890d70",
+              "12d58db08bd280488febf8be26c8539b1e1554bbdc284620b585912d6c93d983",
+              "488eace73954b463ccfd86214478dd9ace4dcfd0e387269423131c453f4d8eee",
+              "68f5dae72eab630095e98670d726e1954789f1984d796e9bf2efacff517c8a13"
+            ],
+            "visiblePixels": [
+              18236,
+              18573,
+              19853,
+              20207
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "41da02992b5b3fef184fdb49943c0627ea17ae81f4523a9fb2efb5bc3881ccca",
+              "128255f46b65bda6b2a9429c0cf58d561e957092f28a1221078f0cc717b16b41",
+              "5f8ca970dafd0b23778397407bac25d1f267d9784b0385d6f344996c6f340a27",
+              "60f9cd8e3d647d309fbc34706c456764c6a71faef635a0e1b620291dd69b47d0"
+            ],
+            "visiblePixels": [
+              17887,
+              15827,
+              13862,
+              13838
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "mgr-raiden-zandatsu",
+      "key": "Metal Gear Rising::Raiden::Mode lame — Zandatsu",
+      "universe": "Metal Gear Rising",
+      "entityName": "Raiden",
+      "actionName": "Mode lame — Zandatsu",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "raiden_mgr",
+      "sheet": "/sprites/generated/summon-animations-wave8/raiden.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "1c2ef75d5d5e845659a949ae17ba4b09e04943e693f745c56bd7cc93253c4265",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/raiden-original.png",
+      "sourceImageSha256": "9ae32995cc6ddad8f989654a54c9bb4bba82f3b5095b7347a4f6897b6f4d959f",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "referenceImage": null,
+      "referenceImageSha256": null,
+      "sourceWork": "Metal Gear Rising: Revengeance (2013), upgraded Raiden body after prologue",
+      "sourceReference": "Metal Gear Rising: Revengeance (2013), upgraded Raiden body after prologue. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. All sixteen full subjects visually inspected. Local cyan rings only for Cyborg, free-hand physical Kiryu combo, non-graphic silver/blue-white HF blade for Raiden and physical Kensuke for Laios. All transparent source seams pass. Wide 512x256 destination cells preserve weapon reach and body height without per-pose resizing.",
+      "effectAnchors": null,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.7755102040816326,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 1,
+          "column": 0,
+          "targetBodyHeight": 190,
+          "method": "visually-selected-standing-body-reference",
+          "sourceBodyHeight": 245,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/raiden-original.png",
+            "sourceImageSha256": "9ae32995cc6ddad8f989654a54c9bb4bba82f3b5095b7347a4f6897b6f4d959f",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 249
+            },
+            "scale": 0.7755102040816326,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 65,
+                  "top": 58,
+                  "width": 263,
+                  "height": 178,
+                  "pixels": 18051
+                },
+                "output": {
+                  "left": 158,
+                  "top": 106,
+                  "width": 204,
+                  "height": 138
+                }
+              },
+              {
+                "source": {
+                  "left": 413,
+                  "top": 34,
+                  "width": 273,
+                  "height": 200,
+                  "pixels": 18260
+                },
+                "output": {
+                  "left": 130,
+                  "top": 87,
+                  "width": 212,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 782,
+                  "top": 19,
+                  "width": 288,
+                  "height": 212,
+                  "pixels": 16265
+                },
+                "output": {
+                  "left": 118,
+                  "top": 76,
+                  "width": 223,
+                  "height": 164
+                }
+              },
+              {
+                "source": {
+                  "left": 1161,
+                  "top": 95,
+                  "width": 323,
+                  "height": 137,
+                  "pixels": 17874
+                },
+                "output": {
+                  "left": 114,
+                  "top": 135,
+                  "width": 250,
+                  "height": 106
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/raiden-original.png",
+            "sourceImageSha256": "9ae32995cc6ddad8f989654a54c9bb4bba82f3b5095b7347a4f6897b6f4d959f",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 246,
+              "bottom": 514
+            },
+            "scale": 0.7755102040816326,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 119,
+                  "top": 12,
+                  "width": 178,
+                  "height": 245,
+                  "pixels": 17113
+                },
+                "output": {
+                  "left": 199,
+                  "top": 51,
+                  "width": 138,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 483,
+                  "top": 33,
+                  "width": 245,
+                  "height": 225,
+                  "pixels": 16253
+                },
+                "output": {
+                  "left": 184,
+                  "top": 67,
+                  "width": 190,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 812,
+                  "top": 18,
+                  "width": 243,
+                  "height": 243,
+                  "pixels": 17050
+                },
+                "output": {
+                  "left": 141,
+                  "top": 56,
+                  "width": 188,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 1201,
+                  "top": 49,
+                  "width": 311,
+                  "height": 211,
+                  "pixels": 15676
+                },
+                "output": {
+                  "left": 145,
+                  "top": 80,
+                  "width": 241,
+                  "height": 164
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/raiden-original.png",
+            "sourceImageSha256": "9ae32995cc6ddad8f989654a54c9bb4bba82f3b5095b7347a4f6897b6f4d959f",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 506,
+              "bottom": 771
+            },
+            "scale": 0.7755102040816326,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 40,
+                  "top": 41,
+                  "width": 352,
+                  "height": 211,
+                  "pixels": 21822
+                },
+                "output": {
+                  "left": 138,
+                  "top": 76,
+                  "width": 273,
+                  "height": 164
+                }
+              },
+              {
+                "source": {
+                  "left": 443,
+                  "top": 3,
+                  "width": 296,
+                  "height": 254,
+                  "pixels": 21010
+                },
+                "output": {
+                  "left": 153,
+                  "top": 47,
+                  "width": 230,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 800,
+                  "top": 57,
+                  "width": 427,
+                  "height": 198,
+                  "pixels": 17910
+                },
+                "output": {
+                  "left": 132,
+                  "top": 89,
+                  "width": 331,
+                  "height": 154
+                }
+              },
+              {
+                "source": {
+                  "left": 1218,
+                  "top": 63,
+                  "width": 292,
+                  "height": 193,
+                  "pixels": 18325
+                },
+                "output": {
+                  "left": 158,
+                  "top": 94,
+                  "width": 226,
+                  "height": 150
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/raiden-original.png",
+            "sourceImageSha256": "9ae32995cc6ddad8f989654a54c9bb4bba82f3b5095b7347a4f6897b6f4d959f",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 764,
+              "bottom": 1024
+            },
+            "scale": 0.7755102040816326,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 20,
+                  "top": 15,
+                  "width": 304,
+                  "height": 225,
+                  "pixels": 18131
+                },
+                "output": {
+                  "left": 123,
+                  "top": 69,
+                  "width": 236,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 478,
+                  "top": 28,
+                  "width": 305,
+                  "height": 212,
+                  "pixels": 15135
+                },
+                "output": {
+                  "left": 180,
+                  "top": 79,
+                  "width": 237,
+                  "height": 164
+                }
+              },
+              {
+                "source": {
+                  "left": 898,
+                  "top": 13,
+                  "width": 186,
+                  "height": 228,
+                  "pixels": 15321
+                },
+                "output": {
+                  "left": 208,
+                  "top": 67,
+                  "width": 144,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 1268,
+                  "top": 4,
+                  "width": 174,
+                  "height": 236,
+                  "pixels": 16354
+                },
+                "output": {
+                  "left": 197,
+                  "top": 60,
+                  "width": 135,
+                  "height": 183
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fd92777ed0c3dff54ea6104416b9feb3d332988c156fa95f7e203655825c20c4",
+              "20f5872a529cc7296170ea77540e7d9a871cb627a6c52c294d38305f18f41e8a",
+              "0294923b122e6b666233c03c23d831bfd5c079766c3ef0da6ec94d94b202cae4",
+              "1c3d492ff0c7333e16c1589d81a61c918cfd9ca24e81f797b92df39daf7002d9"
+            ],
+            "visiblePixels": [
+              10843,
+              11005,
+              9769,
+              10727
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "27f5e48de352356fe0b140662d9da5d77810f58f9a54c9659bd734983f3c018d",
+              "64cdb32396f637cfcd9f5c6f8494270f3602a4c3049d022f9d6ac8979b14a280",
+              "b7b22fe2ee50913eccde270af600f62e78c084b5cdd23bca00ec8af50187c73d",
+              "8d924ffe08ec16da00abaf9883ba26937dffa69e4a575e8aa6849ffc38ebac6d"
+            ],
+            "visiblePixels": [
+              10275,
+              9774,
+              10181,
+              9467
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "735647de734882ff7d68428b1d7db41749fb299412395e2710ebf7118f35db27",
+              "14ad90a25e0ba9cb20f2a2313109c007eaec03e0c2bafde6cbb58a2f5c27609c",
+              "d13ce04fe79512d2bd970bcf54cf9f4f48fb828801092369cd8622b15aead37f",
+              "7697a5c0ac0c701d83c9b4c370b3e4b0cf4f47eb1ec89b12b91278b48b448d88"
+            ],
+            "visiblePixels": [
+              13140,
+              12684,
+              10815,
+              11064
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "efb7455300db157c3cf7ad12e57820f1e638b95e4dfe1e0f8d6332b414bdd3aa",
+              "9c49ae4b184655a1c6244144781e6d56f932373cb62884de7acb39ac85b7c770",
+              "be7298821f33565da1d8e82b1db71a2a8d102f77c0b3d2140b2903628be860e8",
+              "9292abf56a59c3d475d481eaf98fb1ef6bb3d09083c32cdd8a719dd7560c9768"
+            ],
+            "visiblePixels": [
+              10908,
+              9113,
+              9232,
+              9825
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "yakuza-kiryu-dragon",
+      "key": "Yakuza::Kazuma Kiryu::Coup du Dragon de Dojima",
+      "universe": "Yakuza",
+      "entityName": "Kazuma Kiryu",
+      "actionName": "Coup du Dragon de Dojima",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "kiryu_yakuza",
+      "sheet": "/sprites/generated/summon-animations-wave8/kiryu.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "912f778ac9820435da068b8e17c231f3b72fb583f7b6bee37e67edbf04c8c4b3",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/kiryu-original.png",
+      "sourceImageSha256": "1388661524f0b161355a6a3c4e8b4147d48731a0d63790e90f29daeaa6f2cee8",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/kiryu-reference.png",
+      "referenceImageSha256": "62886e62129fe0c955924e0a9940d0175009abe3f99660c49b3ed3551a073d02",
+      "sourceWork": "Yakuza Kiwami (2016), unarmed Dragon of Dojima style",
+      "sourceReference": "Yakuza Kiwami (2016), unarmed Dragon of Dojima style. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. All sixteen full subjects visually inspected. Local cyan rings only for Cyborg, free-hand physical Kiryu combo, non-graphic silver/blue-white HF blade for Raiden and physical Kensuke for Laios. All transparent source seams pass. Wide 512x256 destination cells preserve weapon reach and body height without per-pose resizing.",
+      "effectAnchors": null,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.7011070110701108,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 0,
+          "column": 3,
+          "targetBodyHeight": 190,
+          "method": "visually-selected-standing-body-reference",
+          "sourceBodyHeight": 271,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/kiryu-original.png",
+            "sourceImageSha256": "1388661524f0b161355a6a3c4e8b4147d48731a0d63790e90f29daeaa6f2cee8",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 281
+            },
+            "scale": 0.7011070110701108,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 144,
+                  "top": 1,
+                  "width": 181,
+                  "height": 273,
+                  "pixels": 24887
+                },
+                "output": {
+                  "left": 222,
+                  "top": 53,
+                  "width": 127,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 522,
+                  "top": 0,
+                  "width": 197,
+                  "height": 272,
+                  "pixels": 23041
+                },
+                "output": {
+                  "left": 218,
+                  "top": 52,
+                  "width": 138,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 903,
+                  "top": 8,
+                  "width": 208,
+                  "height": 265,
+                  "pixels": 22377
+                },
+                "output": {
+                  "left": 216,
+                  "top": 58,
+                  "width": 146,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 1288,
+                  "top": 1,
+                  "width": 166,
+                  "height": 271,
+                  "pixels": 26343
+                },
+                "output": {
+                  "left": 217,
+                  "top": 53,
+                  "width": 116,
+                  "height": 190
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/kiryu-original.png",
+            "sourceImageSha256": "1388661524f0b161355a6a3c4e8b4147d48731a0d63790e90f29daeaa6f2cee8",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 280,
+              "bottom": 559
+            },
+            "scale": 0.7011070110701108,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 99,
+                  "top": 9,
+                  "width": 207,
+                  "height": 264,
+                  "pixels": 26719
+                },
+                "output": {
+                  "left": 191,
+                  "top": 58,
+                  "width": 145,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 510,
+                  "top": 10,
+                  "width": 193,
+                  "height": 265,
+                  "pixels": 24101
+                },
+                "output": {
+                  "left": 210,
+                  "top": 58,
+                  "width": 135,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 889,
+                  "top": 11,
+                  "width": 223,
+                  "height": 263,
+                  "pixels": 27578
+                },
+                "output": {
+                  "left": 206,
+                  "top": 59,
+                  "width": 156,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 1272,
+                  "top": 9,
+                  "width": 205,
+                  "height": 265,
+                  "pixels": 27171
+                },
+                "output": {
+                  "left": 206,
+                  "top": 58,
+                  "width": 144,
+                  "height": 186
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/kiryu-original.png",
+            "sourceImageSha256": "1388661524f0b161355a6a3c4e8b4147d48731a0d63790e90f29daeaa6f2cee8",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 548,
+              "bottom": 799
+            },
+            "scale": 0.7011070110701108,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 60,
+                  "top": 11,
+                  "width": 337,
+                  "height": 233,
+                  "pixels": 32319
+                },
+                "output": {
+                  "left": 163,
+                  "top": 79,
+                  "width": 236,
+                  "height": 163
+                }
+              },
+              {
+                "source": {
+                  "left": 487,
+                  "top": 0,
+                  "width": 295,
+                  "height": 247,
+                  "pixels": 31295
+                },
+                "output": {
+                  "left": 194,
+                  "top": 71,
+                  "width": 207,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 881,
+                  "top": 19,
+                  "width": 235,
+                  "height": 227,
+                  "pixels": 26702
+                },
+                "output": {
+                  "left": 201,
+                  "top": 84,
+                  "width": 165,
+                  "height": 159
+                }
+              },
+              {
+                "source": {
+                  "left": 1274,
+                  "top": 12,
+                  "width": 203,
+                  "height": 232,
+                  "pixels": 26779
+                },
+                "output": {
+                  "left": 207,
+                  "top": 79,
+                  "width": 142,
+                  "height": 163
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/kiryu-original.png",
+            "sourceImageSha256": "1388661524f0b161355a6a3c4e8b4147d48731a0d63790e90f29daeaa6f2cee8",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 783,
+              "bottom": 1024
+            },
+            "scale": 0.7011070110701108,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 100,
+                  "top": 3,
+                  "width": 199,
+                  "height": 238,
+                  "pixels": 22728
+                },
+                "output": {
+                  "left": 191,
+                  "top": 77,
+                  "width": 140,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 520,
+                  "top": 3,
+                  "width": 175,
+                  "height": 238,
+                  "pixels": 23416
+                },
+                "output": {
+                  "left": 217,
+                  "top": 77,
+                  "width": 123,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 891,
+                  "top": 3,
+                  "width": 188,
+                  "height": 237,
+                  "pixels": 19964
+                },
+                "output": {
+                  "left": 208,
+                  "top": 77,
+                  "width": 132,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 1289,
+                  "top": 2,
+                  "width": 162,
+                  "height": 239,
+                  "pixels": 23079
+                },
+                "output": {
+                  "left": 217,
+                  "top": 76,
+                  "width": 114,
+                  "height": 168
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4bc6084dba06f38c1a95a202489b2b6d2d2d5f86fde5d6c41a8e503ccaf67cd1",
+              "8478fe3cb9e984bbcf9d68c1215f05aa8a190c662b74875c00ff269a330edc47",
+              "8787ef20fe5116059eb5402c66084a888b2daedace2ffd2888a482b014a8c03d",
+              "71b4b8f36364052e519914e4c382d3e3e0d7a6bed2a740f7ae1f672668f5c3fe"
+            ],
+            "visiblePixels": [
+              12227,
+              11354,
+              11031,
+              12913
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e61c7dceac897c2790d86e0a5ce3ad9298c60437ff97db2a5082b48b3d1f45e5",
+              "a363001e599632eafda225b9268a3150a99b7bf931ace122ffe53e1a9ae1c9b3",
+              "645c9e6394e1a8771b0900078f61cc5c60f76c89fa0888225b917ca3d92d6eb0",
+              "52d423f899c77bcc282f9f516024d0309860c9a5d2560e1195f1ee336ee4b35c"
+            ],
+            "visiblePixels": [
+              13124,
+              11863,
+              13513,
+              13410
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2bd94e6db7de61ee76f82d28e4c46db06f7aee937deefb7ffb9f598d1273953e",
+              "e408453766bd1ac4f0308eb23d47b2f6500adf692c55cab7bfb1b2ab899e6dd2",
+              "322fd16e0bd3cae0d37c87c951efc75aa0592f0d98a220d846f0e5738dbb373f",
+              "f847db2cfdfbb4b0295637508c3c31ea63e4c03b143f875c162f6eb9755a8c6a"
+            ],
+            "visiblePixels": [
+              15823,
+              15398,
+              13166,
+              13214
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "53b10879f8dc7c0056e02567e0d596444ec38a7f83479342020fce45d2879931",
+              "89aebb54fad21c11408419b3d029ad9429e41c8854efca4b0c68950e991cfc6b",
+              "0de195789d791fb20add473a240f3912d7f4ac876c2d7f7c8d0402da719add5f",
+              "db3557e03c05f48f655c71d7b4aeb2047c45df6708b20cb348c2352c2f73d3d1"
+            ],
+            "visiblePixels": [
+              11251,
+              11529,
+              9829,
+              11389
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    },
+    {
+      "id": "dungeon-meshi-laios-kensuke",
+      "key": "Dungeon Meshi::Laios Touden::Coupe de Kensuke",
+      "universe": "Dungeon Meshi",
+      "entityName": "Laios Touden",
+      "actionName": "Coupe de Kensuke",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "performerHeroId": "laios_meshi",
+      "sheet": "/sprites/generated/summon-animations-wave8/laios.png",
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "width": 2048,
+      "height": 1024,
+      "frameWidth": 512,
+      "frameHeight": 256,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "a244c8e65d3b72344d4947327f64398c7ec2c082b39a7d957f73fe89bf44f66c",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/laios-original.png",
+      "sourceImageSha256": "0e39281e641ebed7f5278f14d0d53e7e9b0887c661baa29a6ffba701f5dfd8b2",
+      "sourceDimensions": [
+        1402,
+        1122
+      ],
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/laios-reference.png",
+      "referenceImageSha256": "6d36a57e850d080d5dafe2a9a829c50ed207111f131c32ebc4f45ad0fcbc8be0",
+      "sourceWork": "Dungeon Meshi (2024 animated series), human exploration party, Kensuke sword",
+      "sourceReference": "Dungeon Meshi (2024 animated series), human exploration party, Kensuke sword. Genuine roster performer with sixteen newly generated poses; adaptation, not verified source frames. All sixteen full subjects visually inspected. Local cyan rings only for Cyborg, free-hand physical Kiryu combo, non-graphic silver/blue-white HF blade for Raiden and physical Kensuke for Laios. All transparent source seams pass. Wide 512x256 destination cells preserve weapon reach and body height without per-pose resizing.",
+      "effectAnchors": null,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-seams-wide-cell-common-body-scale-v1",
+        "sharedScaleAcrossAllPhases": true,
+        "scale": 0.7224334600760456,
+        "baseline": 244,
+        "bodyCalibration": {
+          "row": 3,
+          "column": 2,
+          "targetBodyHeight": 190,
+          "method": "visually-selected-standing-body-reference",
+          "sourceBodyHeight": 263,
+          "outputBodyHeight": 190,
+          "constrainedByEnvelope": false
+        },
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/laios-original.png",
+            "sourceImageSha256": "0e39281e641ebed7f5278f14d0d53e7e9b0887c661baa29a6ffba701f5dfd8b2",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 293
+            },
+            "scale": 0.7224334600760456,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 71,
+                  "top": 17,
+                  "width": 197,
+                  "height": 268,
+                  "pixels": 25934
+                },
+                "output": {
+                  "left": 181,
+                  "top": 50,
+                  "width": 142,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 430,
+                  "top": 25,
+                  "width": 187,
+                  "height": 259,
+                  "pixels": 26344
+                },
+                "output": {
+                  "left": 187,
+                  "top": 55,
+                  "width": 135,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 757,
+                  "top": 40,
+                  "width": 190,
+                  "height": 246,
+                  "pixels": 24112
+                },
+                "output": {
+                  "left": 170,
+                  "top": 66,
+                  "width": 137,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 1117,
+                  "top": 79,
+                  "width": 236,
+                  "height": 207,
+                  "pixels": 25196
+                },
+                "output": {
+                  "left": 177,
+                  "top": 94,
+                  "width": 170,
+                  "height": 150
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/laios-original.png",
+            "sourceImageSha256": "0e39281e641ebed7f5278f14d0d53e7e9b0887c661baa29a6ffba701f5dfd8b2",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 281,
+              "bottom": 599
+            },
+            "scale": 0.7224334600760456,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 58,
+                  "top": 19,
+                  "width": 243,
+                  "height": 290,
+                  "pixels": 26441
+                },
+                "output": {
+                  "left": 171,
+                  "top": 34,
+                  "width": 176,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 425,
+                  "top": 1,
+                  "width": 209,
+                  "height": 309,
+                  "pixels": 29047
+                },
+                "output": {
+                  "left": 183,
+                  "top": 21,
+                  "width": 151,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 759,
+                  "top": 10,
+                  "width": 189,
+                  "height": 300,
+                  "pixels": 26891
+                },
+                "output": {
+                  "left": 171,
+                  "top": 27,
+                  "width": 137,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 1083,
+                  "top": 82,
+                  "width": 281,
+                  "height": 228,
+                  "pixels": 24884
+                },
+                "output": {
+                  "left": 152,
+                  "top": 79,
+                  "width": 203,
+                  "height": 165
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/laios-original.png",
+            "sourceImageSha256": "0e39281e641ebed7f5278f14d0d53e7e9b0887c661baa29a6ffba701f5dfd8b2",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 593,
+              "bottom": 857
+            },
+            "scale": 0.7224334600760456,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 18,
+                  "top": 34,
+                  "width": 379,
+                  "height": 227,
+                  "pixels": 29485
+                },
+                "output": {
+                  "left": 142,
+                  "top": 80,
+                  "width": 274,
+                  "height": 164
+                }
+              },
+              {
+                "source": {
+                  "left": 378,
+                  "top": 7,
+                  "width": 301,
+                  "height": 254,
+                  "pixels": 26793
+                },
+                "output": {
+                  "left": 149,
+                  "top": 61,
+                  "width": 217,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 714,
+                  "top": 13,
+                  "width": 317,
+                  "height": 248,
+                  "pixels": 28650
+                },
+                "output": {
+                  "left": 139,
+                  "top": 65,
+                  "width": 229,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 1001,
+                  "top": 55,
+                  "width": 392,
+                  "height": 206,
+                  "pixels": 25256
+                },
+                "output": {
+                  "left": 93,
+                  "top": 95,
+                  "width": 283,
+                  "height": 149
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/laios-original.png",
+            "sourceImageSha256": "0e39281e641ebed7f5278f14d0d53e7e9b0887c661baa29a6ffba701f5dfd8b2",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 845,
+              "bottom": 1122
+            },
+            "scale": 0.7224334600760456,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 5,
+                  "width": 183,
+                  "height": 261,
+                  "pixels": 24824
+                },
+                "output": {
+                  "left": 162,
+                  "top": 55,
+                  "width": 132,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 398,
+                  "top": 28,
+                  "width": 225,
+                  "height": 236,
+                  "pixels": 22837
+                },
+                "output": {
+                  "left": 164,
+                  "top": 72,
+                  "width": 163,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 721,
+                  "top": 2,
+                  "width": 191,
+                  "height": 263,
+                  "pixels": 21571
+                },
+                "output": {
+                  "left": 144,
+                  "top": 53,
+                  "width": 138,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 1095,
+                  "top": 17,
+                  "width": 219,
+                  "height": 249,
+                  "pixels": 23472
+                },
+                "output": {
+                  "left": 161,
+                  "top": 64,
+                  "width": 158,
+                  "height": 180
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullSubjectContained": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6eb96d6e3915c0e6fb58ce7875c92d11d4c71978ee8c957e421f7f26602f0642",
+              "0fbcf3ab4c3397e92d322102215205294d442169cab5ef5c3059822676dfd47e",
+              "3bc49b3454bfabca7b627a45e6aff16625fca55c6574f4ff8b55d889877512fe",
+              "c965380a69645d70b0a4c267e89aa9d191e6126d081d794ed24b9e163e77afb8"
+            ],
+            "visiblePixels": [
+              13605,
+              13749,
+              12650,
+              13232
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "044bb2ea4d0976f71e19cdc43edf69d69af0cf84b016d5a475071c6d8ccbeae0",
+              "27a6903031b070cc3e872fc9977f8313c69b304b8430c4fffadb6f2b086ee3d1",
+              "bdd51d7fbabdff075cb1221db6e9280fdc54ab2fd580d71c819831a27e8e8373",
+              "8ddc04e644aa0844678f85330bac31d41c43379c4a6a1454a62d6739917890fd"
+            ],
+            "visiblePixels": [
+              13866,
+              15146,
+              14167,
+              13039
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "de3fa00bf254245d1e6a9b618d86cb7ca46d7060fea5117b7f5682b1f81e044e",
+              "4b2b43c9ef19724c34a38a9aefdaa36ffc6e2aff47f4bff2229037ca96dc9d91",
+              "2cf0422dbe3415f72f12197511c286287d6ea1b7760449ac8e12beb99fd5c42f",
+              "e974b12c786db8ee9076a683dcddc59be3c4ab0d5fbc56bc8838edaa229d326c"
+            ],
+            "visiblePixels": [
+              15413,
+              13937,
+              14945,
+              13229
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "a5e2a6588a3685be36e5c85cd2778a9730382b6c9c0671c38d2cf5d810f042ab",
+              "32102e1227aab7570c5050415975bf602f4ff1fe69d4d81d3276756f8fe20f60",
+              "e55278822ab84a2aa9e0defc139b5550538514331843188039d6b94b176f73e1",
+              "3959c55b2c84b1011f51949e888bf02a07d1d40c8bd5eb07bdc5cf7c6793c152"
+            ],
+            "visiblePixels": [
+              13008,
+              11969,
+              11269,
+              12261
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "noNewGameplayEvents": true
+      }
+    }
+  ]
+}

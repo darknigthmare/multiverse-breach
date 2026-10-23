@@ -1,0 +1,2979 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "heroId": "ragna",
+  "universe": "BlazBlue",
+  "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+  "canonicalVerified": false,
+  "networkVerified": false,
+  "canon1to1Verified": false,
+  "entries": [
+    {
+      "id": "ragna-motion-a",
+      "heroId": "ragna",
+      "universe": "BlazBlue",
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-motion-a.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "stateOrder": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "bb18707e0dfb64b4b42cf07762a14992d8de20f002e6d522afbcee60873b00cd",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+      "sourceHash": "20dfe19c2c68f208cc39ed9a4865adcc3a83f570b663547e64e681fdbf60899d",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+          "sha256": "20dfe19c2c68f208cc39ed9a4865adcc3a83f570b663547e64e681fdbf60899d",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          },
+          "nominalColumns": 4,
+          "observedRowCounts": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "rows": 8
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/blazblue/ragna.png",
+      "referenceHash": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/blazblue/ragna.png",
+          "savedImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-reference-original.png",
+          "sha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec"
+        }
+      ],
+      "frameOrderByState": {
+        "idle": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "run": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "turn": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "jumpStart": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "jumpRise": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "jumpApex": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "fall": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "normalization": {
+        "method": "Alpha-connected whole-pose segmentation; order complete bodies into8 rows of4, source-wide body-only calibration, nearest-neighbor scale and transparent packing.",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive complete pose alpha-bounds anchor in each256px cell; upright boot soles meet this anchor",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Exclude near-transparent background noise below24; archived originals are untouched.",
+        "rowFit": false,
+        "commonStandingBodyHeight": 190,
+        "sourceStatureCalibration": [
+          {
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "state": "idle",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceBodyBounds": {
+              "x": 86,
+              "y": 11,
+              "width": 128,
+              "height": 196
+            },
+            "sourceStandingBodyHeight": 196,
+            "normalizedStandingBodyHeight": 190,
+            "scale": 0.9693877551020408,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "sameScaleForEveryPoseInSource": true,
+            "reason": "Measure white-hair crown through boot soles on a complete upright pose; lateral Blood-Scythe blade excluded. A single source-wide scale preserves real crouch and fallen-body projections."
+          }
+        ],
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png": 0.9693877551020408
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "idle",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 11,
+              "y": 11,
+              "width": 203,
+              "height": 196
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 29,
+              "y": 54,
+              "width": 197,
+              "height": 190
+            },
+            "sha256": "476732c8ab7d870611a8752fd90654157469d7c28715445b020b4277aada1a0d"
+          },
+          {
+            "state": "idle",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 234,
+              "y": 12,
+              "width": 188,
+              "height": 195
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 37,
+              "y": 55,
+              "width": 182,
+              "height": 189
+            },
+            "sha256": "652482c7a03505d0fa1c894a1a929e82a27f5e0efe03692a8287e241d8dea92a"
+          },
+          {
+            "state": "idle",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 456,
+              "y": 12,
+              "width": 193,
+              "height": 195
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 34,
+              "y": 55,
+              "width": 187,
+              "height": 189
+            },
+            "sha256": "a62d0d3ff6ecf14ea43821f339d92351e86a35f73b3dc9a673f41a78f0c5bae2"
+          },
+          {
+            "state": "idle",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 678,
+              "y": 11,
+              "width": 199,
+              "height": 196
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 31,
+              "y": 54,
+              "width": 193,
+              "height": 190
+            },
+            "sha256": "d79026f7965b0cf77c95688cbbfc003d2955e78536e5b7f79635ef4a80f5b698"
+          },
+          {
+            "state": "walk",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 13,
+              "y": 223,
+              "width": 200,
+              "height": 201
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 31,
+              "y": 49,
+              "width": 194,
+              "height": 195
+            },
+            "sha256": "0cb87adca9f231f6495f85defab22f1d5f186ccad0239260735e4bceea12b8f8"
+          },
+          {
+            "state": "walk",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 234,
+              "y": 223,
+              "width": 200,
+              "height": 198
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 31,
+              "y": 52,
+              "width": 194,
+              "height": 192
+            },
+            "sha256": "271bba7d77d6a72d81dbaae0819f1d69dfbe7e26bb34491cba2db444af487508"
+          },
+          {
+            "state": "walk",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 462,
+              "y": 223,
+              "width": 179,
+              "height": 196
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 41,
+              "y": 54,
+              "width": 174,
+              "height": 190
+            },
+            "sha256": "82c02e33e8970f3e6bcf8ed26ee7d7e0d807f0a820473c7e8e0fe7694131a0d3"
+          },
+          {
+            "state": "walk",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 684,
+              "y": 224,
+              "width": 183,
+              "height": 200
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 39,
+              "y": 50,
+              "width": 177,
+              "height": 194
+            },
+            "sha256": "88458659580a194f72738fd1721459bd77df02cb6e198bd4c2a0ed26b578926d"
+          },
+          {
+            "state": "run",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 18,
+              "y": 449,
+              "width": 214,
+              "height": 175
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 24,
+              "y": 74,
+              "width": 207,
+              "height": 170
+            },
+            "sha256": "642d516d82325699780e5801ca1ace78354a1a52ab281b80135ac4aec809e069"
+          },
+          {
+            "state": "run",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 250,
+              "y": 450,
+              "width": 201,
+              "height": 180
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 30,
+              "y": 70,
+              "width": 195,
+              "height": 174
+            },
+            "sha256": "ec0028df1341c9dc8e60f680b7bd2e6d477d9ee8e684b20f3b21fb46153f1b48"
+          },
+          {
+            "state": "run",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 458,
+              "y": 452,
+              "width": 195,
+              "height": 182
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 33,
+              "y": 68,
+              "width": 189,
+              "height": 176
+            },
+            "sha256": "dbe6aee902093f37a4ce7979d33695f3cab262f306ae9c705bd23d6384a3f2fc"
+          },
+          {
+            "state": "run",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 665,
+              "y": 452,
+              "width": 215,
+              "height": 181
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 24,
+              "y": 69,
+              "width": 208,
+              "height": 175
+            },
+            "sha256": "a304b0a917a9ffdeacc3a1d8cb90d8a3b20f8d44c32807542b1f2669ac8e0706"
+          },
+          {
+            "state": "turn",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 31,
+              "y": 654,
+              "width": 210,
+              "height": 200
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 26,
+              "y": 50,
+              "width": 204,
+              "height": 194
+            },
+            "sha256": "3cf179a93f1565d086343d347878cf29696748132d3a0eaff835eec53f915d37"
+          },
+          {
+            "state": "turn",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 283,
+              "y": 655,
+              "width": 183,
+              "height": 198
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 39,
+              "y": 52,
+              "width": 177,
+              "height": 192
+            },
+            "sha256": "7c0397154abaa03c0951c50f037a6066f68d2fa9981315c9a74885afd42793cc"
+          },
+          {
+            "state": "turn",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 490,
+              "y": 654,
+              "width": 193,
+              "height": 200
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 34,
+              "y": 50,
+              "width": 187,
+              "height": 194
+            },
+            "sha256": "6f59e4d24c2f31ad45b0cea681560a8234f88ce8b5232afd8d1ef6678259d990"
+          },
+          {
+            "state": "turn",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 712,
+              "y": 655,
+              "width": 152,
+              "height": 201
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 54,
+              "y": 49,
+              "width": 147,
+              "height": 195
+            },
+            "sha256": "5d60e0ad666ace4a4c190f4bc83d2d73f15948ffcb2ca13880f819ee84d4718f"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 14,
+              "y": 878,
+              "width": 186,
+              "height": 190
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 38,
+              "y": 60,
+              "width": 180,
+              "height": 184
+            },
+            "sha256": "cd190f1fecb01c012a6b079a8e5884bc9769019c1de867973c451c21c8a88cbe"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 226,
+              "y": 904,
+              "width": 214,
+              "height": 161
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 24,
+              "y": 88,
+              "width": 207,
+              "height": 156
+            },
+            "sha256": "9c55798e0d228ca032b4ce7780284a09fbb2e96afc1ff99afd5670ddcebbc233"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 457,
+              "y": 874,
+              "width": 195,
+              "height": 195
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 33,
+              "y": 55,
+              "width": 189,
+              "height": 189
+            },
+            "sha256": "87a1e55a156d0721b21690d66b81d895ae400add08ccf46909b12bb216e47315"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 679,
+              "y": 871,
+              "width": 182,
+              "height": 198
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 40,
+              "y": 52,
+              "width": 176,
+              "height": 192
+            },
+            "sha256": "3b5ecaab49ae1b7eea523eab946ed5c448f39eda24afa15bf9957225962f897c"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 11,
+              "y": 1089,
+              "width": 201,
+              "height": 197
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 30,
+              "y": 53,
+              "width": 195,
+              "height": 191
+            },
+            "sha256": "81a3dfd77a296fd9c55073aaebc846ecfe6c74de547e213ad98810cd21dd7e04"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 243,
+              "y": 1081,
+              "width": 198,
+              "height": 203
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 32,
+              "y": 47,
+              "width": 192,
+              "height": 197
+            },
+            "sha256": "82508efaf0d5fa0722aff798de6f4df850206d73f8345030a643aa306c96b03f"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 461,
+              "y": 1084,
+              "width": 193,
+              "height": 193
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 34,
+              "y": 57,
+              "width": 187,
+              "height": 187
+            },
+            "sha256": "78bf7c90740501e1049c41a19e44e8cc71668733fd4aa30ec42261eb07a11cc4"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 676,
+              "y": 1084,
+              "width": 202,
+              "height": 194
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 30,
+              "y": 56,
+              "width": 196,
+              "height": 188
+            },
+            "sha256": "12b1f8f7dd89e99a858b212d1f595ac6415fddaa6a910d7a903459676998594e"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 18,
+              "y": 1294,
+              "width": 192,
+              "height": 202
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 35,
+              "y": 48,
+              "width": 186,
+              "height": 196
+            },
+            "sha256": "5a5bab4445c2c7dcd9b36212016abc61079fa34c7a2bde5263a783662c9d2054"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 229,
+              "y": 1294,
+              "width": 207,
+              "height": 206
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 27,
+              "y": 44,
+              "width": 201,
+              "height": 200
+            },
+            "sha256": "e20e1f8e86f9f690298a067d6954ac1ceae0fe2ae8e389ec56d9001c4577e300"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 455,
+              "y": 1291,
+              "width": 196,
+              "height": 212
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 33,
+              "y": 38,
+              "width": 190,
+              "height": 206
+            },
+            "sha256": "2d5f152b770cb80e5fb77ee9c42429d9998e0303d75d72837193612749355fee"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 665,
+              "y": 1311,
+              "width": 195,
+              "height": 192
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 33,
+              "y": 58,
+              "width": 189,
+              "height": 186
+            },
+            "sha256": "1c2e3cdbdf979901729ee0af8254b4d7a8cc1de73492b3f6af6821dc9dfbc764"
+          },
+          {
+            "state": "fall",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 20,
+              "y": 1533,
+              "width": 181,
+              "height": 214
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 40,
+              "y": 37,
+              "width": 175,
+              "height": 207
+            },
+            "sha256": "9ec4f92dc7c934651f2feb15b8a92aeb3443d524b57eda076aab1e6b29231c24"
+          },
+          {
+            "state": "fall",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 229,
+              "y": 1531,
+              "width": 202,
+              "height": 199
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 30,
+              "y": 51,
+              "width": 196,
+              "height": 193
+            },
+            "sha256": "66821eaacf8bc2d3d7d970efd46eb4494073e594115afa6baeb94302c6ea3199"
+          },
+          {
+            "state": "fall",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 443,
+              "y": 1545,
+              "width": 202,
+              "height": 202
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 30,
+              "y": 48,
+              "width": 196,
+              "height": 196
+            },
+            "sha256": "ad6db0a6dabd7b531742cea01b7d727d7ae19007ee58a79b588ebba000b53f62"
+          },
+          {
+            "state": "fall",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 660,
+              "y": 1580,
+              "width": 206,
+              "height": 170
+            },
+            "scale": 0.9693877551020408,
+            "destinationRect": {
+              "x": 28,
+              "y": 79,
+              "width": 200,
+              "height": 165
+            },
+            "sha256": "ab4d76165f9f6554b640f2de706845f2b7e63cb001d1de9dda8698b8e7f604d9"
+          }
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0,
+        "sourceCanvasEdgePixels": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "nativeSourceStateOrder": [
+          "idle",
+          "walk",
+          "run",
+          "turn",
+          "jumpStart",
+          "jumpRise",
+          "jumpApex",
+          "fall"
+        ],
+        "correctionRowsByState": {},
+        "discardedNativeRows": [],
+        "sourceStandingVsCompactBody": [
+          {
+            "state": "idle",
+            "frame": 0,
+            "sourceHeight": 196,
+            "packedHeight": 190,
+            "ratioToCalibratedStanding": 1
+          },
+          {
+            "state": "idle",
+            "frame": 1,
+            "sourceHeight": 195,
+            "packedHeight": 189,
+            "ratioToCalibratedStanding": 0.9947368421052631
+          },
+          {
+            "state": "idle",
+            "frame": 2,
+            "sourceHeight": 195,
+            "packedHeight": 189,
+            "ratioToCalibratedStanding": 0.9947368421052631
+          },
+          {
+            "state": "idle",
+            "frame": 3,
+            "sourceHeight": 196,
+            "packedHeight": 190,
+            "ratioToCalibratedStanding": 1
+          }
+        ]
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "completeRows": 8,
+        "distinctNativePoses": 32,
+        "wholeCharacterContained": true,
+        "facing": "Right by default; turn native row3 begins left, passes through back three-quarter orientations, and ends right, chronological0123.",
+        "outfit": "Ragna CSE2011: white spiky hair, red long coat/black straps/silver buckles, black underclothes/trousers, red-black boots, black gloves/silver details.",
+        "weapons": "Blood-Scythe drawn as a thick gray mechanical broad sword, dark spine and red grip; one physical weapon per character, carried and physically braced.",
+        "handedness": "Prompt fixes anatomical right Azure Grimoire and red right/green left eye; left-hand or two-hand sword carry selected for coherent choreography, not asserted exclusive canon. Small profile eyes/occluded grips cannot verify every anatomical side. Runtime P2 mirroring is an adaptation.",
+        "transformations": "No Black Beast, monster arm, new transformation, beam or procedural body.",
+        "stature": "190px upright body calibration excluding lateral weapon; one source-wide scale. Actual knee flexion, leaps, low crouches, kneeling and lying KOs remain lower.",
+        "limitations": [
+          "Original image-generated pixel art and adapted movement/guard choreography, not official extracted frames.",
+          "Pixel-level anatomy, sword silhouette, hand contacts, costume and heterochromia are interpreted and cannot certify1:1 canon.",
+          "Shield states use physical sword defense; source-game Barrier mechanics and exact frame timings are not reproduced."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-10-20",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.prompt.txt",
+            "sha256": "7d25604bfbb96479756e7b005e304781e3e0a64cffa1e6ff80828c0823256401"
+          }
+        ],
+        "actualToolCalls": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/actual-tool-calls-motion.json",
+        "actualToolCallsSha256": "5f47a5b35d3becae440a9033257a3093d7efcc70f5af526ba09de3ab702ce6a5",
+        "normalizationScript": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/normalize-ragna-motion-atlases.mjs"
+      }
+    },
+    {
+      "id": "ragna-motion-b",
+      "heroId": "ragna",
+      "universe": "BlazBlue",
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-motion-b.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "stateOrder": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "51b20d4ddbcf556637a45fb69a9168f9671f2b96a48b720e2209ac6d3529d888",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+      "sourceHash": "360bbaf6fde0638906e5b000f3e31aba27bb6a7cdd2c6854f0b014b670943f4e",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+          "sha256": "360bbaf6fde0638906e5b000f3e31aba27bb6a7cdd2c6854f0b014b670943f4e",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          },
+          "nominalColumns": 4,
+          "observedRowCounts": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "rows": 8
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/blazblue/ragna.png",
+      "referenceHash": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/blazblue/ragna.png",
+          "savedImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-reference-original.png",
+          "sha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec"
+        }
+      ],
+      "frameOrderByState": {
+        "fastFall": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "land": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchEnter": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchIdle": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchExit": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchCharge": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "taunt1": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "hitStun": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "normalization": {
+        "method": "Alpha-connected whole-pose segmentation; order complete bodies into8 rows of4, source-wide body-only calibration, nearest-neighbor scale and transparent packing.",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive complete pose alpha-bounds anchor in each256px cell; upright boot soles meet this anchor",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Exclude near-transparent background noise below24; archived originals are untouched.",
+        "rowFit": false,
+        "commonStandingBodyHeight": 190,
+        "sourceStatureCalibration": [
+          {
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "state": "taunt1",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceBodyBounds": {
+              "x": 69,
+              "y": 1304,
+              "width": 119,
+              "height": 219
+            },
+            "sourceStandingBodyHeight": 219,
+            "normalizedStandingBodyHeight": 190,
+            "scale": 0.867579908675799,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "sameScaleForEveryPoseInSource": true,
+            "reason": "Measure white-hair crown through boot soles on a complete upright pose; lateral Blood-Scythe blade excluded. A single source-wide scale preserves real crouch and fallen-body projections."
+          }
+        ],
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png": 0.867579908675799
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "fastFall",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 28,
+              "y": 19,
+              "width": 172,
+              "height": 167
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 53,
+              "y": 99,
+              "width": 149,
+              "height": 145
+            },
+            "sha256": "b2bda027564c6c075a92d30ba4e36cd4304cdb8149e464282f2f4d97973edd09"
+          },
+          {
+            "state": "fastFall",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 251,
+              "y": 12,
+              "width": 161,
+              "height": 190
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 58,
+              "y": 79,
+              "width": 140,
+              "height": 165
+            },
+            "sha256": "5ae003d92e8a93cf9569462fbac2f49baedaf9ae2ab0474767c767769e07f0c2"
+          },
+          {
+            "state": "fastFall",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 469,
+              "y": 16,
+              "width": 185,
+              "height": 230
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 47,
+              "y": 44,
+              "width": 161,
+              "height": 200
+            },
+            "sha256": "35b804a4229d015c909eda945d91b370a192ae961be2eb95452f1ab4ebf64fa4"
+          },
+          {
+            "state": "fastFall",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 698,
+              "y": 32,
+              "width": 174,
+              "height": 199
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 52,
+              "y": 71,
+              "width": 151,
+              "height": 173
+            },
+            "sha256": "5264598eeca25e77175f4f5e97804eb03e2efc7ccdd139998f76696e6fbe983a"
+          },
+          {
+            "state": "land",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 14,
+              "y": 290,
+              "width": 179,
+              "height": 148
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 50,
+              "y": 116,
+              "width": 155,
+              "height": 128
+            },
+            "sha256": "7076f3d4b513f19a4d3e8439bf0e6bb02f23b9f4d15c0ef6d7156e7631d97010"
+          },
+          {
+            "state": "land",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 219,
+              "y": 311,
+              "width": 215,
+              "height": 132
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 34,
+              "y": 129,
+              "width": 187,
+              "height": 115
+            },
+            "sha256": "708741d8e8447d23543179e5432f57eb290cf0563e29b30d6a616e786399b7a1"
+          },
+          {
+            "state": "land",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 465,
+              "y": 295,
+              "width": 189,
+              "height": 155
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 46,
+              "y": 110,
+              "width": 164,
+              "height": 134
+            },
+            "sha256": "b209a8dc4aa4e53940c04ba62a33a188cbc747c445605a1484499e9b1950e52f"
+          },
+          {
+            "state": "land",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 686,
+              "y": 237,
+              "width": 188,
+              "height": 209
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 46,
+              "y": 63,
+              "width": 163,
+              "height": 181
+            },
+            "sha256": "e664e95505b435dc18459e102fd82aa3481e4900b899692d1d4811f695cdd70f"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 17,
+              "y": 452,
+              "width": 175,
+              "height": 214
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 52,
+              "y": 58,
+              "width": 152,
+              "height": 186
+            },
+            "sha256": "d134d24ee9c8f02d345720d7473110ccaa18790aac52fa7a99e81eea0303d410"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 234,
+              "y": 494,
+              "width": 180,
+              "height": 177
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 50,
+              "y": 90,
+              "width": 156,
+              "height": 154
+            },
+            "sha256": "5e514a18c32a4355515f280b076d873f8901aa7d482aa99ec36086dcd912e662"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 451,
+              "y": 528,
+              "width": 188,
+              "height": 142
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 46,
+              "y": 121,
+              "width": 163,
+              "height": 123
+            },
+            "sha256": "c0efaea16363ca2497bd0921ae652a9e39c27d8cccf9668c0efe1f12a6c23a1c"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 680,
+              "y": 535,
+              "width": 185,
+              "height": 136
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 47,
+              "y": 126,
+              "width": 161,
+              "height": 118
+            },
+            "sha256": "487d5a3e707cc73cb011516d8aa5a533343048c2b736962308c798f8d8c63c24"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 14,
+              "y": 721,
+              "width": 201,
+              "height": 139
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 41,
+              "y": 123,
+              "width": 174,
+              "height": 121
+            },
+            "sha256": "e0a9b66f775a3d7d0db42232de8728f234c767398b42df4904b3d882b129c0e2"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 236,
+              "y": 720,
+              "width": 197,
+              "height": 145
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 42,
+              "y": 118,
+              "width": 171,
+              "height": 126
+            },
+            "sha256": "c27ebab62dfbbe1ca8db5c6478b772041bb3c51b47908cedb1e33c1aa28a7985"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 456,
+              "y": 720,
+              "width": 193,
+              "height": 144
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 44,
+              "y": 119,
+              "width": 167,
+              "height": 125
+            },
+            "sha256": "d362ff68c7ebc3e9f9581b7bb0f47da42acccb21414a959d9c4c6423c34198ca"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 666,
+              "y": 722,
+              "width": 206,
+              "height": 142
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 38,
+              "y": 121,
+              "width": 179,
+              "height": 123
+            },
+            "sha256": "1ed10030898159eafbd3724b32dec4e3e55a3954d02036c0a34d6efbf4e0740a"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 13,
+              "y": 968,
+              "width": 191,
+              "height": 132
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 45,
+              "y": 129,
+              "width": 166,
+              "height": 115
+            },
+            "sha256": "6782a26399547e8e21b60e8c800691285e78664b26f71c574c6dc48bdede7695"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 242,
+              "y": 944,
+              "width": 185,
+              "height": 157
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 47,
+              "y": 108,
+              "width": 161,
+              "height": 136
+            },
+            "sha256": "9c5a915300e9694638b27842b806d48356db4812c584eaaf2814d7de29993f03"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 456,
+              "y": 897,
+              "width": 196,
+              "height": 201
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 43,
+              "y": 70,
+              "width": 170,
+              "height": 174
+            },
+            "sha256": "23801266674189f9cec2052c8392f4d000556a27901e88094b097f9d87dbd952"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 686,
+              "y": 875,
+              "width": 177,
+              "height": 225
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 51,
+              "y": 49,
+              "width": 154,
+              "height": 195
+            },
+            "sha256": "e33ca1d1b2f84773325f96c604cf8bcb8423b92af94bccd3c9e7a2942a8bcd1a"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 11,
+              "y": 1144,
+              "width": 217,
+              "height": 146
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 34,
+              "y": 117,
+              "width": 188,
+              "height": 127
+            },
+            "sha256": "28d666d63b161a2c6a9a50371f08bee63fa9be98ee7cb17bf7c1d73675b4a495"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 246,
+              "y": 1152,
+              "width": 206,
+              "height": 141
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 38,
+              "y": 122,
+              "width": 179,
+              "height": 122
+            },
+            "sha256": "913d7847fe2ad7b9fdde44f6290415d327a3579eebb55bb08558fab5a45da191"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 475,
+              "y": 1154,
+              "width": 188,
+              "height": 147
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 46,
+              "y": 116,
+              "width": 163,
+              "height": 128
+            },
+            "sha256": "f594d3202cc41187fa0c1509c40b7feec153f02b9ba9220822e2bd9412bb5281"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 695,
+              "y": 1132,
+              "width": 181,
+              "height": 167
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 49,
+              "y": 99,
+              "width": 157,
+              "height": 145
+            },
+            "sha256": "6dca20e537aed4b51da06b9552544eea8bb845fd55339b3a8848a34b8ad9b637"
+          },
+          {
+            "state": "taunt1",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 25,
+              "y": 1304,
+              "width": 163,
+              "height": 219
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 57,
+              "y": 54,
+              "width": 141,
+              "height": 190
+            },
+            "sha256": "a0c0887aa898fc8184ea6cefc0e7ab815711bb72ab847b9a98691d6b1db50574"
+          },
+          {
+            "state": "taunt1",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 243,
+              "y": 1307,
+              "width": 173,
+              "height": 218
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 53,
+              "y": 55,
+              "width": 150,
+              "height": 189
+            },
+            "sha256": "fc94dba05ca7d8eb18f887558a1cebed4c7c979de65e539263939bd15a8cc512"
+          },
+          {
+            "state": "taunt1",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 469,
+              "y": 1309,
+              "width": 164,
+              "height": 214
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 57,
+              "y": 58,
+              "width": 142,
+              "height": 186
+            },
+            "sha256": "7aed11603e670b37efda7713bf47c39fd5819f177f64c591535cddc6ef8dc704"
+          },
+          {
+            "state": "taunt1",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 688,
+              "y": 1309,
+              "width": 170,
+              "height": 217
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 54,
+              "y": 56,
+              "width": 147,
+              "height": 188
+            },
+            "sha256": "06cc678bfb76689557d6d40220fd0ba3caf315d6e7128fcbe4a036ab0f5edf2e"
+          },
+          {
+            "state": "hitStun",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 18,
+              "y": 1547,
+              "width": 178,
+              "height": 209
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 51,
+              "y": 63,
+              "width": 154,
+              "height": 181
+            },
+            "sha256": "c9f5a7590bd1ea1c80f57e59faec0c6772db5a75bc2048f2b30bfa3a06e9899a"
+          },
+          {
+            "state": "hitStun",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 244,
+              "y": 1566,
+              "width": 183,
+              "height": 190
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 48,
+              "y": 79,
+              "width": 159,
+              "height": 165
+            },
+            "sha256": "238c3cfaf0a89eca65fcab604641e922bb04fc52e614110145a99d2325cd8201"
+          },
+          {
+            "state": "hitStun",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 468,
+              "y": 1567,
+              "width": 180,
+              "height": 189
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 50,
+              "y": 80,
+              "width": 156,
+              "height": 164
+            },
+            "sha256": "ead8252209833cdf20b8422dd907976760d6a638fb3fcf073a7a88b9b9541081"
+          },
+          {
+            "state": "hitStun",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 687,
+              "y": 1566,
+              "width": 182,
+              "height": 190
+            },
+            "scale": 0.867579908675799,
+            "destinationRect": {
+              "x": 49,
+              "y": 79,
+              "width": 158,
+              "height": 165
+            },
+            "sha256": "8762ac1a49077679c340865acf6e02634583fc6016ed02571a2eb85be7ae395d"
+          }
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0,
+        "sourceCanvasEdgePixels": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "nativeSourceStateOrder": [
+          "fastFall",
+          "land",
+          "crouchEnter",
+          "crouchIdle",
+          "crouchExit",
+          "crouchCharge",
+          "taunt1",
+          "hitStun"
+        ],
+        "correctionRowsByState": {},
+        "discardedNativeRows": [],
+        "sourceStandingVsCompactBody": [
+          {
+            "state": "crouchEnter",
+            "frame": 0,
+            "sourceHeight": 214,
+            "packedHeight": 186,
+            "ratioToCalibratedStanding": 0.9789473684210527
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 1,
+            "sourceHeight": 177,
+            "packedHeight": 154,
+            "ratioToCalibratedStanding": 0.8105263157894737
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 2,
+            "sourceHeight": 142,
+            "packedHeight": 123,
+            "ratioToCalibratedStanding": 0.6473684210526316
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 3,
+            "sourceHeight": 136,
+            "packedHeight": 118,
+            "ratioToCalibratedStanding": 0.6210526315789474
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 0,
+            "sourceHeight": 139,
+            "packedHeight": 121,
+            "ratioToCalibratedStanding": 0.6368421052631579
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 1,
+            "sourceHeight": 145,
+            "packedHeight": 126,
+            "ratioToCalibratedStanding": 0.6631578947368421
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 2,
+            "sourceHeight": 144,
+            "packedHeight": 125,
+            "ratioToCalibratedStanding": 0.6578947368421053
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 3,
+            "sourceHeight": 142,
+            "packedHeight": 123,
+            "ratioToCalibratedStanding": 0.6473684210526316
+          },
+          {
+            "state": "crouchExit",
+            "frame": 0,
+            "sourceHeight": 132,
+            "packedHeight": 115,
+            "ratioToCalibratedStanding": 0.6052631578947368
+          },
+          {
+            "state": "crouchExit",
+            "frame": 1,
+            "sourceHeight": 157,
+            "packedHeight": 136,
+            "ratioToCalibratedStanding": 0.7157894736842105
+          },
+          {
+            "state": "crouchExit",
+            "frame": 2,
+            "sourceHeight": 201,
+            "packedHeight": 174,
+            "ratioToCalibratedStanding": 0.9157894736842105
+          },
+          {
+            "state": "crouchExit",
+            "frame": 3,
+            "sourceHeight": 225,
+            "packedHeight": 195,
+            "ratioToCalibratedStanding": 1.0263157894736843
+          },
+          {
+            "state": "taunt1",
+            "frame": 0,
+            "sourceHeight": 219,
+            "packedHeight": 190,
+            "ratioToCalibratedStanding": 1
+          },
+          {
+            "state": "taunt1",
+            "frame": 1,
+            "sourceHeight": 218,
+            "packedHeight": 189,
+            "ratioToCalibratedStanding": 0.9947368421052631
+          },
+          {
+            "state": "taunt1",
+            "frame": 2,
+            "sourceHeight": 214,
+            "packedHeight": 186,
+            "ratioToCalibratedStanding": 0.9789473684210527
+          },
+          {
+            "state": "taunt1",
+            "frame": 3,
+            "sourceHeight": 217,
+            "packedHeight": 188,
+            "ratioToCalibratedStanding": 0.9894736842105263
+          }
+        ]
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "completeRows": 8,
+        "distinctNativePoses": 32,
+        "wholeCharacterContained": true,
+        "facing": "Right by default; falling and defeat poses retain their drawn projection.",
+        "outfit": "Ragna CSE2011: white spiky hair, red long coat/black straps/silver buckles, black underclothes/trousers, red-black boots, black gloves/silver details.",
+        "weapons": "Blood-Scythe drawn as a thick gray mechanical broad sword, dark spine and red grip; one physical weapon per character, carried and physically braced.",
+        "handedness": "Prompt fixes anatomical right Azure Grimoire and red right/green left eye; left-hand or two-hand sword carry selected for coherent choreography, not asserted exclusive canon. Small profile eyes/occluded grips cannot verify every anatomical side. Runtime P2 mirroring is an adaptation.",
+        "transformations": "No Black Beast, monster arm, new transformation, beam or procedural body.",
+        "stature": "190px upright body calibration excluding lateral weapon; one source-wide scale. Actual knee flexion, leaps, low crouches, kneeling and lying KOs remain lower.",
+        "limitations": [
+          "Original image-generated pixel art and adapted movement/guard choreography, not official extracted frames.",
+          "Pixel-level anatomy, sword silhouette, hand contacts, costume and heterochromia are interpreted and cannot certify1:1 canon.",
+          "Shield states use physical sword defense; source-game Barrier mechanics and exact frame timings are not reproduced."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-10-20",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.prompt.txt",
+            "sha256": "aec469386e4977f4026a5445424529c4916460edfa24ba8c71c4c964043585fc"
+          }
+        ],
+        "actualToolCalls": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/actual-tool-calls-motion.json",
+        "actualToolCallsSha256": "5f47a5b35d3becae440a9033257a3093d7efcc70f5af526ba09de3ab702ce6a5",
+        "normalizationScript": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/normalize-ragna-motion-atlases.mjs"
+      }
+    },
+    {
+      "id": "ragna-defense",
+      "heroId": "ragna",
+      "universe": "BlazBlue",
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-defense.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "stateOrder": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "d3db1bd2b454d7a91a003dfd91b4ca9d4286317eef581a0116b42e98251e8ec9",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+      "sourceHash": "5714cd7649244ead2ce7cebb14a28e100e8724054fc2ae83200a65fb2e3a37ab",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+          "sha256": "5714cd7649244ead2ce7cebb14a28e100e8724054fc2ae83200a65fb2e3a37ab",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          },
+          "nominalColumns": 4,
+          "observedRowCounts": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "rows": 8
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/blazblue/ragna.png",
+      "referenceHash": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/blazblue/ragna.png",
+          "savedImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-reference-original.png",
+          "sha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec"
+        }
+      ],
+      "frameOrderByState": {
+        "shieldEnter": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldHold": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldHit": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "perfectShield": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldBreak": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldExit": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "dead": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "defeat": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "normalization": {
+        "method": "Alpha-connected whole-pose segmentation; order complete bodies into8 rows of4, source-wide body-only calibration, nearest-neighbor scale and transparent packing.",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive complete pose alpha-bounds anchor in each256px cell; upright boot soles meet this anchor",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Exclude near-transparent background noise below24; archived originals are untouched.",
+        "rowFit": false,
+        "commonStandingBodyHeight": 190,
+        "sourceStatureCalibration": [
+          {
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "state": "shieldExit",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceBodyBounds": {
+              "x": 721,
+              "y": 1188,
+              "width": 137,
+              "height": 216
+            },
+            "sourceStandingBodyHeight": 216,
+            "normalizedStandingBodyHeight": 190,
+            "scale": 0.8796296296296297,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "sameScaleForEveryPoseInSource": true,
+            "reason": "Measure white-hair crown through boot soles on a complete upright pose; lateral Blood-Scythe blade excluded. A single source-wide scale preserves real crouch and fallen-body projections."
+          }
+        ],
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png": 0.8796296296296297
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "shieldEnter",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 6,
+              "y": 35,
+              "width": 195,
+              "height": 209
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 42,
+              "y": 60,
+              "width": 172,
+              "height": 184
+            },
+            "sha256": "03f10fae31167cb1c9096dfe68621765e671d87d853a2992953db81c350ea0d9"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 243,
+              "y": 59,
+              "width": 214,
+              "height": 184
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 34,
+              "y": 82,
+              "width": 188,
+              "height": 162
+            },
+            "sha256": "a13c0116e171462aecbea92504dfbd0b3f9475d14ab38e4040bae42c2ada5429"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 473,
+              "y": 11,
+              "width": 200,
+              "height": 233
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 40,
+              "y": 39,
+              "width": 176,
+              "height": 205
+            },
+            "sha256": "b63bcfbfbfd5e689937298d8acbcd1f261408dd74a1282453b833fa53e482e6d"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 675,
+              "y": 8,
+              "width": 209,
+              "height": 236
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 36,
+              "y": 36,
+              "width": 184,
+              "height": 208
+            },
+            "sha256": "1414585f8f63ab351b5b74041713d13d27c1d07ef8dac68974cdd4e754a47155"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 27,
+              "y": 250,
+              "width": 176,
+              "height": 230
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 50,
+              "y": 42,
+              "width": 155,
+              "height": 202
+            },
+            "sha256": "b110951f7dd22fa3d28b1b2c1076ccda60b773642623a36baac95655d8ec34e4"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 237,
+              "y": 250,
+              "width": 199,
+              "height": 230
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 40,
+              "y": 42,
+              "width": 175,
+              "height": 202
+            },
+            "sha256": "f28844ae73a8ce7650e78746e06f9ab827eb57abc2b4c322cec9fe059df630c0"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 456,
+              "y": 257,
+              "width": 194,
+              "height": 223
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 42,
+              "y": 48,
+              "width": 171,
+              "height": 196
+            },
+            "sha256": "88d7366ef7c79c4123a12c5a554cf02ee96b7c1d21585d5bd83e9f20a85cb929"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 673,
+              "y": 272,
+              "width": 212,
+              "height": 208
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 35,
+              "y": 61,
+              "width": 186,
+              "height": 183
+            },
+            "sha256": "485c82e299b5d46dc8223e42a176c2989fc1127b1356e22c0c748949216b9807"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 24,
+              "y": 492,
+              "width": 180,
+              "height": 218
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 49,
+              "y": 52,
+              "width": 158,
+              "height": 192
+            },
+            "sha256": "6d5d8021d69a70b1fc923707b1f3a15cbc717774770adf5817d163d8652df0f1"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 232,
+              "y": 508,
+              "width": 186,
+              "height": 202
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 46,
+              "y": 66,
+              "width": 164,
+              "height": 178
+            },
+            "sha256": "7fcc81c7339afae6693a370ba672db5a8c050f2109ec0de54732f7ef926f555d"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 459,
+              "y": 540,
+              "width": 193,
+              "height": 169
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 43,
+              "y": 95,
+              "width": 170,
+              "height": 149
+            },
+            "sha256": "9a725d1be8806d9ffffe7d29174cb1e7946c0769bd77d41fdb43094aee4d1259"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 674,
+              "y": 492,
+              "width": 187,
+              "height": 218
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 46,
+              "y": 52,
+              "width": 164,
+              "height": 192
+            },
+            "sha256": "d1e12addc0e05b96d0a631a2b2b348ca83eae0b45fb4469b8c97df7c637275d4"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 24,
+              "y": 719,
+              "width": 187,
+              "height": 223
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 46,
+              "y": 48,
+              "width": 164,
+              "height": 196
+            },
+            "sha256": "e368be736013a9a7638ff3064315be2dc47226aa7c6f75ae1c2f30587f5430d3"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 233,
+              "y": 720,
+              "width": 220,
+              "height": 222
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 31,
+              "y": 49,
+              "width": 194,
+              "height": 195
+            },
+            "sha256": "aed522d5dd11f18f5c610c4d1eada41b174ee07d093267fe93d3c43ee1be6199"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 465,
+              "y": 745,
+              "width": 223,
+              "height": 197
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 30,
+              "y": 71,
+              "width": 196,
+              "height": 173
+            },
+            "sha256": "0869656b6a20800f1f8b1b5e8084813011f0b9b61a90529c58408d4fbd6dbc07"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 682,
+              "y": 717,
+              "width": 188,
+              "height": 226
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 45,
+              "y": 45,
+              "width": 165,
+              "height": 199
+            },
+            "sha256": "8c977e529851be4f4cdff32c136d7ef2c0d91234330593137deaa0ad58aeb9f4"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 18,
+              "y": 948,
+              "width": 184,
+              "height": 226
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 47,
+              "y": 45,
+              "width": 162,
+              "height": 199
+            },
+            "sha256": "c02e8bdb17f710b3446ab252b5379bf6efb899a9ce1e89d226e7842d471d048d"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 233,
+              "y": 980,
+              "width": 230,
+              "height": 194
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 27,
+              "y": 73,
+              "width": 202,
+              "height": 171
+            },
+            "sha256": "ad4a374ab7543b5af8f7bf1b9febd6d1e7a1859e4209587fb7a6724e60324754"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 470,
+              "y": 990,
+              "width": 220,
+              "height": 184
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 31,
+              "y": 82,
+              "width": 194,
+              "height": 162
+            },
+            "sha256": "ac68e84a7473912cbfaf74b86ea7e4c0255b2d7bba5790d5a03d35c06296c67e"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 714,
+              "y": 971,
+              "width": 149,
+              "height": 203
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 62,
+              "y": 65,
+              "width": 131,
+              "height": 179
+            },
+            "sha256": "8308150264c5a1f840656d41cfe68defff49fa7680d0868c20d3ffbc05c63f65"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 24,
+              "y": 1243,
+              "width": 192,
+              "height": 161
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 43,
+              "y": 102,
+              "width": 169,
+              "height": 142
+            },
+            "sha256": "2624b02ebafdad4ff72140b8df1b787c77e2257609795a40d35ecfec782885ff"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 229,
+              "y": 1237,
+              "width": 222,
+              "height": 168
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 30,
+              "y": 96,
+              "width": 195,
+              "height": 148
+            },
+            "sha256": "b52a4af4326599ac51342e908a0a30418d5b5e3039d8685a19d7924adb9b6e97"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 446,
+              "y": 1216,
+              "width": 201,
+              "height": 189
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 39,
+              "y": 78,
+              "width": 177,
+              "height": 166
+            },
+            "sha256": "bb2fa4cae0ac28e1dcf18543509f94dda2f2cd81de477d80920ca9c6d6d79ea4"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 671,
+              "y": 1188,
+              "width": 187,
+              "height": 216
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 46,
+              "y": 54,
+              "width": 164,
+              "height": 190
+            },
+            "sha256": "5f90cee88be6f837bd3560d196f57c170ef489348790c7cc49bae24a02b0f8c4"
+          },
+          {
+            "state": "dead",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 16,
+              "y": 1436,
+              "width": 164,
+              "height": 162
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 56,
+              "y": 101,
+              "width": 144,
+              "height": 143
+            },
+            "sha256": "07887319d04d8f27632f16e497e99cd3adee7596fdcfdb4c35aeadc8d4e66788"
+          },
+          {
+            "state": "dead",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 228,
+              "y": 1449,
+              "width": 233,
+              "height": 148
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 25,
+              "y": 114,
+              "width": 205,
+              "height": 130
+            },
+            "sha256": "8f0a9be29ee2bcf1ac7831ce679c408fabc3a6b846ef608eb78fce9320350bfa"
+          },
+          {
+            "state": "dead",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 461,
+              "y": 1493,
+              "width": 204,
+              "height": 98
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 38,
+              "y": 158,
+              "width": 179,
+              "height": 86
+            },
+            "sha256": "a7234437a8b884d57a2b5dd01e0ab3b6946a17339232341cd0998c836c629c34"
+          },
+          {
+            "state": "dead",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 674,
+              "y": 1512,
+              "width": 202,
+              "height": 83
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 39,
+              "y": 171,
+              "width": 178,
+              "height": 73
+            },
+            "sha256": "0f309bb66dfbc86c5bb070daaf9b513dac4013d77fa9cea9b2c39dd324641019"
+          },
+          {
+            "state": "defeat",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 16,
+              "y": 1624,
+              "width": 188,
+              "height": 142
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 45,
+              "y": 119,
+              "width": 165,
+              "height": 125
+            },
+            "sha256": "063c34e44aeaf2d5f8f3f8267bd05cab814762ab4133cefd1039f2ce63a9b9b0"
+          },
+          {
+            "state": "defeat",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 226,
+              "y": 1637,
+              "width": 195,
+              "height": 127
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 42,
+              "y": 132,
+              "width": 172,
+              "height": 112
+            },
+            "sha256": "601119e8ef00a7ba4b77c31cc7706fd815530942a97ffa2d671cdd2117e0b086"
+          },
+          {
+            "state": "defeat",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 437,
+              "y": 1629,
+              "width": 235,
+              "height": 137
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 24,
+              "y": 123,
+              "width": 207,
+              "height": 121
+            },
+            "sha256": "79a59d2e5529ab6456d23724b5ca5302c1b9477c377cb50ab4d8cb41207be590"
+          },
+          {
+            "state": "defeat",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 679,
+              "y": 1646,
+              "width": 195,
+              "height": 123
+            },
+            "scale": 0.8796296296296297,
+            "destinationRect": {
+              "x": 42,
+              "y": 136,
+              "width": 172,
+              "height": 108
+            },
+            "sha256": "9a4a690b506cbbd5f638c6c65f01878b11a847e1d65560128e8d08138315146e"
+          }
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0,
+        "sourceCanvasEdgePixels": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "nativeSourceStateOrder": [
+          "shieldEnter",
+          "shieldHold",
+          "shieldHit",
+          "perfectShield",
+          "shieldBreak",
+          "shieldExit",
+          "dead",
+          "defeat"
+        ],
+        "correctionRowsByState": {},
+        "discardedNativeRows": [],
+        "sourceStandingVsCompactBody": [
+          {
+            "state": "shieldExit",
+            "frame": 0,
+            "sourceHeight": 161,
+            "packedHeight": 142,
+            "ratioToCalibratedStanding": 0.7473684210526316
+          },
+          {
+            "state": "shieldExit",
+            "frame": 1,
+            "sourceHeight": 168,
+            "packedHeight": 148,
+            "ratioToCalibratedStanding": 0.7789473684210526
+          },
+          {
+            "state": "shieldExit",
+            "frame": 2,
+            "sourceHeight": 189,
+            "packedHeight": 166,
+            "ratioToCalibratedStanding": 0.8736842105263158
+          },
+          {
+            "state": "shieldExit",
+            "frame": 3,
+            "sourceHeight": 216,
+            "packedHeight": 190,
+            "ratioToCalibratedStanding": 1
+          },
+          {
+            "state": "dead",
+            "frame": 0,
+            "sourceHeight": 162,
+            "packedHeight": 143,
+            "ratioToCalibratedStanding": 0.7526315789473684
+          },
+          {
+            "state": "dead",
+            "frame": 1,
+            "sourceHeight": 148,
+            "packedHeight": 130,
+            "ratioToCalibratedStanding": 0.6842105263157895
+          },
+          {
+            "state": "dead",
+            "frame": 2,
+            "sourceHeight": 98,
+            "packedHeight": 86,
+            "ratioToCalibratedStanding": 0.45263157894736844
+          },
+          {
+            "state": "dead",
+            "frame": 3,
+            "sourceHeight": 83,
+            "packedHeight": 73,
+            "ratioToCalibratedStanding": 0.38421052631578945
+          },
+          {
+            "state": "defeat",
+            "frame": 0,
+            "sourceHeight": 142,
+            "packedHeight": 125,
+            "ratioToCalibratedStanding": 0.6578947368421053
+          },
+          {
+            "state": "defeat",
+            "frame": 1,
+            "sourceHeight": 127,
+            "packedHeight": 112,
+            "ratioToCalibratedStanding": 0.5894736842105263
+          },
+          {
+            "state": "defeat",
+            "frame": 2,
+            "sourceHeight": 137,
+            "packedHeight": 121,
+            "ratioToCalibratedStanding": 0.6368421052631579
+          },
+          {
+            "state": "defeat",
+            "frame": 3,
+            "sourceHeight": 123,
+            "packedHeight": 108,
+            "ratioToCalibratedStanding": 0.5684210526315789
+          }
+        ]
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "completeRows": 8,
+        "distinctNativePoses": 32,
+        "wholeCharacterContained": true,
+        "facing": "Right by default; falling and defeat poses retain their drawn projection.",
+        "outfit": "Ragna CSE2011: white spiky hair, red long coat/black straps/silver buckles, black underclothes/trousers, red-black boots, black gloves/silver details.",
+        "weapons": "Blood-Scythe drawn as a thick gray mechanical broad sword, dark spine and red grip; one physical weapon per character, carried and physically braced.",
+        "handedness": "Prompt fixes anatomical right Azure Grimoire and red right/green left eye; left-hand or two-hand sword carry selected for coherent choreography, not asserted exclusive canon. Small profile eyes/occluded grips cannot verify every anatomical side. Runtime P2 mirroring is an adaptation.",
+        "transformations": "No Black Beast, monster arm, new transformation, beam or procedural body.",
+        "stature": "190px upright body calibration excluding lateral weapon; one source-wide scale. Actual knee flexion, leaps, low crouches, kneeling and lying KOs remain lower.",
+        "limitations": [
+          "Original image-generated pixel art and adapted movement/guard choreography, not official extracted frames.",
+          "Pixel-level anatomy, sword silhouette, hand contacts, costume and heterochromia are interpreted and cannot certify1:1 canon.",
+          "Shield states use physical sword defense; source-game Barrier mechanics and exact frame timings are not reproduced."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-10-20",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.prompt.txt",
+            "sha256": "a97ea8317a3172b4380bd0f2f62563d4bf0848613d56b081d6200264700d0d63"
+          }
+        ],
+        "actualToolCalls": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/actual-tool-calls-motion.json",
+        "actualToolCallsSha256": "5f47a5b35d3becae440a9033257a3093d7efcc70f5af526ba09de3ab702ce6a5",
+        "normalizationScript": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/normalize-ragna-motion-atlases.mjs"
+      }
+    }
+  ],
+  "generations": [
+    {
+      "id": "ragna-motion-a",
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+      "sha256": "20dfe19c2c68f208cc39ed9a4865adcc3a83f570b663547e64e681fdbf60899d",
+      "prompt": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.prompt.txt",
+      "promptSha256": "7d25604bfbb96479756e7b005e304781e3e0a64cffa1e6ff80828c0823256401",
+      "visiblePoseAttempts": 32,
+      "retainedPoses": 32,
+      "discardedPoseAttempts": 0,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "rejected": false
+    },
+    {
+      "id": "ragna-motion-b",
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+      "sha256": "360bbaf6fde0638906e5b000f3e31aba27bb6a7cdd2c6854f0b014b670943f4e",
+      "prompt": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.prompt.txt",
+      "promptSha256": "aec469386e4977f4026a5445424529c4916460edfa24ba8c71c4c964043585fc",
+      "visiblePoseAttempts": 32,
+      "retainedPoses": 32,
+      "discardedPoseAttempts": 0,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "rejected": false
+    },
+    {
+      "id": "ragna-defense",
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+      "sha256": "5714cd7649244ead2ce7cebb14a28e100e8724054fc2ae83200a65fb2e3a37ab",
+      "prompt": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.prompt.txt",
+      "promptSha256": "a97ea8317a3172b4380bd0f2f62563d4bf0848613d56b081d6200264700d0d63",
+      "visiblePoseAttempts": 32,
+      "retainedPoses": 32,
+      "discardedPoseAttempts": 0,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "rejected": false
+    }
+  ],
+  "nativeGenerationCalls": 3,
+  "deliveredNativePoses": 96,
+  "incompleteInitialSources": [],
+  "discardedFrames": [],
+  "rejectedSources": []
+}

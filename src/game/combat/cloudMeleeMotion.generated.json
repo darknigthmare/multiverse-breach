@@ -1,0 +1,2545 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "heroId": "cloud_ff7",
+  "universe": "Final Fantasy VII",
+  "canonicalVerified": false,
+  "networkVerified": false,
+  "canon1to1Verified": false,
+  "entries": [
+    {
+      "id": "cloud-motion-a",
+      "heroId": "cloud_ff7",
+      "universe": "Final Fantasy VII",
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-motion-a.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "bdbdb9bb7927792205f4fdbc8d7f7d728a1c2511d87db04c046c0d9d9beaca81",
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+      "sourceHash": "fa97ac6d7618776e72179222549ab8a21d7271d1597f9dcd8a4dfd087b8d442e",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+          "sha256": "fa97ac6d7618776e72179222549ab8a21d7271d1597f9dcd8a4dfd087b8d442e",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          }
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/final-fantasy-vii/cloud-ff7.png",
+      "referenceHash": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/final-fantasy-vii/cloud-ff7.png",
+          "sha256": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc",
+          "savedImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-original-hero.png"
+        },
+        {
+          "asset": "public/sprites/generated/combat-character-animations/cloud_ff7.png",
+          "sha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd",
+          "savedImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-native-presentation.png"
+        }
+      ],
+      "normalization": {
+        "method": "alpha-connected component segmentation of genuine native artwork; nearest-neighbor uniform source scale and transparent packing",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive alpha-bounds anchor in each 256px cell",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Sub-threshold near-transparent background noise excluded; original PNG sources are preserved unchanged.",
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png": 1.0636363636363637
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "idle",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 14,
+              "y": 31,
+              "width": 166,
+              "height": 191
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 39,
+              "y": 41,
+              "width": 177,
+              "height": 203
+            },
+            "sha256": "5d566833cca227e6b7337243adb998db77ed555f55a720101dc5be840888294c"
+          },
+          {
+            "state": "idle",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 283,
+              "y": 28,
+              "width": 163,
+              "height": 192
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 41,
+              "y": 40,
+              "width": 173,
+              "height": 204
+            },
+            "sha256": "837311cf8c5ea0012cfbc5beb72e8fc059a2e307c782917ab8e29379a7795b11"
+          },
+          {
+            "state": "idle",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 503,
+              "y": 31,
+              "width": 172,
+              "height": 190
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 36,
+              "y": 42,
+              "width": 183,
+              "height": 202
+            },
+            "sha256": "c743b58d3724a7aa95987d94f9f693cec9783d7f76548cb500418d4939cf35cf"
+          },
+          {
+            "state": "idle",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 723,
+              "y": 31,
+              "width": 152,
+              "height": 191
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 47,
+              "y": 41,
+              "width": 162,
+              "height": 203
+            },
+            "sha256": "11595412008011b3f4337ba452fe4b3e71cfa04465e1d06967be3f543edcdea6"
+          },
+          {
+            "state": "walk",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 18,
+              "y": 248,
+              "width": 182,
+              "height": 191
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 31,
+              "y": 41,
+              "width": 194,
+              "height": 203
+            },
+            "sha256": "9a4d126153efa0a444db941a7e334b1e1d71fc5d3dc929e287db8e4928040b07"
+          },
+          {
+            "state": "walk",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 228,
+              "y": 248,
+              "width": 192,
+              "height": 191
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 26,
+              "y": 41,
+              "width": 204,
+              "height": 203
+            },
+            "sha256": "9f7a9ac163df87b27bb44fd8e82804f22cd2c0f0441b3cad6046048f01f2008b"
+          },
+          {
+            "state": "walk",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 455,
+              "y": 248,
+              "width": 187,
+              "height": 192
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 28,
+              "y": 40,
+              "width": 199,
+              "height": 204
+            },
+            "sha256": "7bb8d3b6adf6eed54c47cb5fa7b1fbaee489326f4ea3314e383cfeecb7fc210c"
+          },
+          {
+            "state": "walk",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 679,
+              "y": 248,
+              "width": 181,
+              "height": 192
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 31,
+              "y": 40,
+              "width": 193,
+              "height": 204
+            },
+            "sha256": "9c61488e9e195d0e51701fec14d5f730f64dc51ceaa83e230957ca7ab136f731"
+          },
+          {
+            "state": "run",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 18,
+              "y": 478,
+              "width": 184,
+              "height": 181
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 30,
+              "y": 51,
+              "width": 196,
+              "height": 193
+            },
+            "sha256": "9ade0bd6b811aebdf068b1c45c58f4333a4c814ea58b904f66a0cf0a6aaabb33"
+          },
+          {
+            "state": "run",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 236,
+              "y": 479,
+              "width": 187,
+              "height": 166
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 28,
+              "y": 67,
+              "width": 199,
+              "height": 177
+            },
+            "sha256": "a9f4f5686a79408a8b6cc3ac7a369aa447a9ca620b5010f3e43c23cfce47ea33"
+          },
+          {
+            "state": "run",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 463,
+              "y": 478,
+              "width": 190,
+              "height": 181
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 27,
+              "y": 51,
+              "width": 202,
+              "height": 193
+            },
+            "sha256": "0eca71000f59749e1555660bfce7ddc8ac6cbf4994ff842efc7db107bffebae9"
+          },
+          {
+            "state": "run",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 683,
+              "y": 476,
+              "width": 187,
+              "height": 183
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 28,
+              "y": 49,
+              "width": 199,
+              "height": 195
+            },
+            "sha256": "73b0c467329a8f905a03abbb6906b7149f14ddfe9171d33c31ba949960c70ce4"
+          },
+          {
+            "state": "turn",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 9,
+              "y": 689,
+              "width": 207,
+              "height": 187
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 18,
+              "y": 45,
+              "width": 220,
+              "height": 199
+            },
+            "sha256": "e2539e04a2093584c2c035be8a6c0474e0f65b39414033a5553ddb4c1ff68cac"
+          },
+          {
+            "state": "turn",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 247,
+              "y": 686,
+              "width": 159,
+              "height": 190
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 43,
+              "y": 42,
+              "width": 169,
+              "height": 202
+            },
+            "sha256": "c2d0f848071a8b5c08bbdfc980263c52bcf23eb950670e61fa66baa3f47752e5"
+          },
+          {
+            "state": "turn",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 443,
+              "y": 688,
+              "width": 173,
+              "height": 184
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 36,
+              "y": 48,
+              "width": 184,
+              "height": 196
+            },
+            "sha256": "40024a6904f06727b36de9ca9e3a41e6b3493aeeb8fab092e5d4bfdc306b9590"
+          },
+          {
+            "state": "turn",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 683,
+              "y": 686,
+              "width": 201,
+              "height": 191
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 21,
+              "y": 41,
+              "width": 214,
+              "height": 203
+            },
+            "sha256": "01182066145cf77f1c1c0a8eeea1c566def3acaa914c514e2dd01e5b70161b41"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 10,
+              "y": 917,
+              "width": 171,
+              "height": 154
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 37,
+              "y": 80,
+              "width": 182,
+              "height": 164
+            },
+            "sha256": "9a4e7570c014f83ba266e71246c0bd07f611dbd2eb3c9f304681316b2b828bc9"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 214,
+              "y": 952,
+              "width": 205,
+              "height": 113
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 19,
+              "y": 124,
+              "width": 218,
+              "height": 120
+            },
+            "sha256": "218d609970d90888cefb067262ac3f1e8f8757607fc893201aa563ee1eaa32f9"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 486,
+              "y": 914,
+              "width": 135,
+              "height": 156
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 56,
+              "y": 78,
+              "width": 144,
+              "height": 166
+            },
+            "sha256": "87cd522df1d88fe2a1b93760130a3ab956d227d9a783716ab2ee54f1a58a6b82"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 670,
+              "y": 909,
+              "width": 202,
+              "height": 170
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 20,
+              "y": 63,
+              "width": 215,
+              "height": 181
+            },
+            "sha256": "2ed3ef3e57ada54087c2e750da2b4fa10adbb1728f0e1972f436d93b883cd375"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 61,
+              "y": 1117,
+              "width": 137,
+              "height": 177
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 55,
+              "y": 56,
+              "width": 146,
+              "height": 188
+            },
+            "sha256": "e40a5a8ac226cea8e215d0b4f47dfb1fedbaae3e960abb8c362c3abbde6bbf0e"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 270,
+              "y": 1105,
+              "width": 148,
+              "height": 191
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 49,
+              "y": 41,
+              "width": 157,
+              "height": 203
+            },
+            "sha256": "344e190048db299d71e578257236b2526093af87f7778d37fd113ebc882cf0b7"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 454,
+              "y": 1111,
+              "width": 191,
+              "height": 196
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 26,
+              "y": 36,
+              "width": 203,
+              "height": 208
+            },
+            "sha256": "fc803d5eabf564c0b0631a7465adc4835b98cf81fd194f4ea5f3a5b2bca2e353"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 733,
+              "y": 1081,
+              "width": 128,
+              "height": 220
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 60,
+              "y": 10,
+              "width": 136,
+              "height": 234
+            },
+            "sha256": "e5971b4f5befa74d3ff48399b8476a0e3a6c6e1fe6ba0bf3c96826eca323ec5e"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 44,
+              "y": 1323,
+              "width": 126,
+              "height": 150
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 61,
+              "y": 84,
+              "width": 134,
+              "height": 160
+            },
+            "sha256": "46b272ca04ebce1bb1fbcf495c99465cdddf26f41741865609301063f0371cc2"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 232,
+              "y": 1323,
+              "width": 193,
+              "height": 180
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 25,
+              "y": 53,
+              "width": 205,
+              "height": 191
+            },
+            "sha256": "f21e3e4a4358fc8245c9e89bb4f1a961cc00f771c0212be37cf8641fa76cfcbc"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 445,
+              "y": 1345,
+              "width": 199,
+              "height": 162
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 22,
+              "y": 72,
+              "width": 212,
+              "height": 172
+            },
+            "sha256": "da638526e3cfbb012c6f473690788d956a1882d78b26e7e1b1f2fc9c6dddbc94"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 724,
+              "y": 1354,
+              "width": 125,
+              "height": 152
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 61,
+              "y": 82,
+              "width": 133,
+              "height": 162
+            },
+            "sha256": "391537e2840fd4f57b64cbb90e8d768fd0a0b161aabcf081cd427e44c676cf77"
+          },
+          {
+            "state": "fall",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 27,
+              "y": 1540,
+              "width": 173,
+              "height": 185
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 36,
+              "y": 47,
+              "width": 184,
+              "height": 197
+            },
+            "sha256": "9a5ae1f38068f5ca6ae81edb70787afa65a169ab79e638f65eade7717d41f514"
+          },
+          {
+            "state": "fall",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 228,
+              "y": 1541,
+              "width": 175,
+              "height": 186
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 35,
+              "y": 46,
+              "width": 186,
+              "height": 198
+            },
+            "sha256": "91b54bc44b77e4c19c72962da96035c8f82b618efe9a2928dd14d70354fa9d09"
+          },
+          {
+            "state": "fall",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 439,
+              "y": 1563,
+              "width": 175,
+              "height": 157
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 35,
+              "y": 77,
+              "width": 186,
+              "height": 167
+            },
+            "sha256": "a1c53df41c79db4c1a6ac6645f784f26c09834fdf3a77ec07b659727f3d24f5c"
+          },
+          {
+            "state": "fall",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 658,
+              "y": 1558,
+              "width": 207,
+              "height": 168
+            },
+            "scale": 1.0636363636363637,
+            "destinationRect": {
+              "x": 18,
+              "y": 65,
+              "width": 220,
+              "height": 179
+            },
+            "sha256": "9970a9cc71f7e57d55077a876268301b677e4a07c3dc5bec3cfc36a4e073dfa4"
+          }
+        ],
+        "transformations": [
+          "segmentation",
+          "uniform nearest-neighbor scaling",
+          "transparent atlas packing"
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "distinctNativePoses": 32,
+        "completeRows": 8,
+        "wholeCharacterAndWeaponContained": true,
+        "facing": "right except turn starts left and finishes right",
+        "outfit": "FF7 1997 purple SOLDIER clothing, blond spiked hair, single left pauldron, brown boots and Buster Sword",
+        "guardEffect": "physical sword guard and parry; small metal-contact sparks only; no magical barrier",
+        "limitations": [
+          "Original generated fan art with adapted choreography, not official animation frames.",
+          "Timing, anatomy and pixel identity are not certified 1:1 to the 1997 game.",
+          "Minor changes in sword perspective, facial features and apparent body size remain between native source drawings."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.prompt.txt",
+            "sha256": "5c73ba0de8d7ead086fff1a868b484566b8dd9571494d158f82349842dd90fcf"
+          }
+        ],
+        "normalizationScript": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/normalize-motion-atlases.mjs"
+      }
+    },
+    {
+      "id": "cloud-motion-b",
+      "heroId": "cloud_ff7",
+      "universe": "Final Fantasy VII",
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-motion-b.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "9a8c387db60ce5ccd6a9cc0b49d72e8677857058d353d8ecb17488f72d5fe1fb",
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+      "sourceHash": "e33c21a25cea15046d7f92a2feb53720260ae41eb8d3dc8c52cb4ff66356bb42",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+          "sha256": "e33c21a25cea15046d7f92a2feb53720260ae41eb8d3dc8c52cb4ff66356bb42",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          }
+        },
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.png",
+          "sha256": "02244149aa73603a4675437b1642deebf59f4ffe5d797a07114ded6c61308cc5",
+          "dimensions": {
+            "width": 1774,
+            "height": 887
+          }
+        },
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png",
+          "sha256": "cf51f38343be4facfdfdf2cbebb9e374d0cc77f31de5464e0f15ebaa4cebd800",
+          "dimensions": {
+            "width": 1774,
+            "height": 887
+          }
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/final-fantasy-vii/cloud-ff7.png",
+      "referenceHash": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/final-fantasy-vii/cloud-ff7.png",
+          "sha256": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc",
+          "savedImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-original-hero.png"
+        },
+        {
+          "asset": "public/sprites/generated/combat-character-animations/cloud_ff7.png",
+          "sha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd",
+          "savedImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-native-presentation.png"
+        }
+      ],
+      "normalization": {
+        "method": "alpha-connected component segmentation of genuine native artwork; nearest-neighbor uniform source scale and transparent packing",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive alpha-bounds anchor in each 256px cell",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Sub-threshold near-transparent background noise excluded; original PNG sources are preserved unchanged.",
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png": 1.0128755364806867,
+          "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.png": 0.6446280991735537,
+          "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png": 0.557919621749409
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "fastFall",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 69,
+              "y": 11,
+              "width": 134,
+              "height": 176
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 60,
+              "y": 66,
+              "width": 136,
+              "height": 178
+            },
+            "sha256": "de17eb8d2e002703dffa21294b609fd0f0c4df5f5dfa36868dc248150267a939"
+          },
+          {
+            "state": "fastFall",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 298,
+              "y": 10,
+              "width": 120,
+              "height": 191
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 67,
+              "y": 51,
+              "width": 122,
+              "height": 193
+            },
+            "sha256": "146da0f358e512a34ba6b8cb4b6f33096c7801cd9b4c4a4688b1df0418a72570"
+          },
+          {
+            "state": "fastFall",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 521,
+              "y": 19,
+              "width": 136,
+              "height": 190
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 59,
+              "y": 52,
+              "width": 138,
+              "height": 192
+            },
+            "sha256": "99466c9e232817665c311bb2fb2451c8757f016c815f2c930bde33aa553d8cde"
+          },
+          {
+            "state": "fastFall",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 724,
+              "y": 22,
+              "width": 145,
+              "height": 194
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 54,
+              "y": 48,
+              "width": 147,
+              "height": 196
+            },
+            "sha256": "7b61019fbe80eb7a787d21ddee19d14403f82c7adf7610d27665dadfb975c1d2"
+          },
+          {
+            "state": "land",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 65,
+              "y": 95,
+              "width": 306,
+              "height": 352
+            },
+            "scale": 0.6446280991735537,
+            "destinationRect": {
+              "x": 29,
+              "y": 17,
+              "width": 197,
+              "height": 227
+            },
+            "sha256": "dce0bff0a6d2413c5bf070392f3a2457cf84bd1c9a10998bf6d7e495fbd28920"
+          },
+          {
+            "state": "land",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 495,
+              "y": 183,
+              "width": 360,
+              "height": 319
+            },
+            "scale": 0.6446280991735537,
+            "destinationRect": {
+              "x": 12,
+              "y": 38,
+              "width": 232,
+              "height": 206
+            },
+            "sha256": "d8c30af399e37e67b50b637e2a6ffe12bab7264f64db09a0646c553e66435802"
+          },
+          {
+            "state": "land",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 938,
+              "y": 227,
+              "width": 348,
+              "height": 273
+            },
+            "scale": 0.6446280991735537,
+            "destinationRect": {
+              "x": 16,
+              "y": 68,
+              "width": 224,
+              "height": 176
+            },
+            "sha256": "6a38ea0a807d22670bfc0230c7f67d8ce8eaef42cfc3dc88ffbb231770a91f21"
+          },
+          {
+            "state": "land",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 1414,
+              "y": 136,
+              "width": 336,
+              "height": 363
+            },
+            "scale": 0.6446280991735537,
+            "destinationRect": {
+              "x": 19,
+              "y": 10,
+              "width": 217,
+              "height": 234
+            },
+            "sha256": "60454a0947b1c6061c7b2b5d7c40913bd9b0ec7b38246e2959e8d169007e7fbc"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 27,
+              "y": 449,
+              "width": 185,
+              "height": 208
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 34,
+              "y": 33,
+              "width": 187,
+              "height": 211
+            },
+            "sha256": "0a03940105cbcaa56304ed6c83b44a052a6b5313c953ca49c56fce7526c8b7e0"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 257,
+              "y": 477,
+              "width": 199,
+              "height": 180
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 27,
+              "y": 62,
+              "width": 202,
+              "height": 182
+            },
+            "sha256": "135e9d6a7b8e216b9154b2cbc4edb0527c4d0b459b59d58073fc18808d3c8dfd"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 481,
+              "y": 507,
+              "width": 201,
+              "height": 150
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 26,
+              "y": 92,
+              "width": 204,
+              "height": 152
+            },
+            "sha256": "c354184638c8114f9e96e81e7fd95d081716387ac7af10938e87c6b34cf97974"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 698,
+              "y": 525,
+              "width": 185,
+              "height": 129
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 34,
+              "y": 113,
+              "width": 187,
+              "height": 131
+            },
+            "sha256": "51f2e00e4a97f65373c71cdfa38a55b9b477134e6c70d394e108683937ec47f0"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 70,
+              "y": 554,
+              "width": 342,
+              "height": 273
+            },
+            "scale": 0.6446280991735537,
+            "destinationRect": {
+              "x": 18,
+              "y": 68,
+              "width": 220,
+              "height": 176
+            },
+            "sha256": "0707dfa452910366aa3570930d0293065eda72154b197445fd44609d79417563"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 530,
+              "y": 577,
+              "width": 356,
+              "height": 250
+            },
+            "scale": 0.6446280991735537,
+            "destinationRect": {
+              "x": 13,
+              "y": 83,
+              "width": 229,
+              "height": 161
+            },
+            "sha256": "e81b6418e58dd1202a8ecf588b8df32b205b7b6a030576b8d41b55a804540856"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 964,
+              "y": 573,
+              "width": 341,
+              "height": 254
+            },
+            "scale": 0.6446280991735537,
+            "destinationRect": {
+              "x": 18,
+              "y": 80,
+              "width": 220,
+              "height": 164
+            },
+            "sha256": "7d2302788ccfd7ac7cb72bfbfc4f02e869418b6d94c221dac173c1ab61c570f5"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 1412,
+              "y": 570,
+              "width": 329,
+              "height": 268
+            },
+            "scale": 0.6446280991735537,
+            "destinationRect": {
+              "x": 22,
+              "y": 71,
+              "width": 212,
+              "height": 173
+            },
+            "sha256": "86abf563c9741461ba24d528d5130306bde7b30589270a02acbe9c9d772961a6"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 17,
+              "y": 948,
+              "width": 224,
+              "height": 148
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 14,
+              "y": 94,
+              "width": 227,
+              "height": 150
+            },
+            "sha256": "1c729c260e4f3f08811f9f2c2db26de98cca5f2a1222d687ab0c25ad1d77d38c"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 259,
+              "y": 927,
+              "width": 195,
+              "height": 170
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 29,
+              "y": 72,
+              "width": 198,
+              "height": 172
+            },
+            "sha256": "8e5acfdffb4dd70c469a8fa6e2b0102be4d324e646e6598c1a11d28a070216aa"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 476,
+              "y": 913,
+              "width": 216,
+              "height": 187
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 18,
+              "y": 55,
+              "width": 219,
+              "height": 189
+            },
+            "sha256": "a3d53e7baa7ce05b233067585a1314e6687d76c474e3de0572da6bbf2ef0cf2d"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 691,
+              "y": 881,
+              "width": 171,
+              "height": 219
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 41,
+              "y": 22,
+              "width": 173,
+              "height": 222
+            },
+            "sha256": "730bcefcd3cb13c4a8c88f62cdf67e8473df2ca01dbaa3ea3c579e38f38346c8"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 44,
+              "y": 128,
+              "width": 388,
+              "height": 305
+            },
+            "scale": 0.557919621749409,
+            "destinationRect": {
+              "x": 20,
+              "y": 74,
+              "width": 216,
+              "height": 170
+            },
+            "sha256": "2a7f57cc3f641691303dc843d398c516aefb48f115c8e3e43df306286c53512d"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 518,
+              "y": 153,
+              "width": 367,
+              "height": 283
+            },
+            "scale": 0.557919621749409,
+            "destinationRect": {
+              "x": 25,
+              "y": 86,
+              "width": 205,
+              "height": 158
+            },
+            "sha256": "218e176e398ee10841d041b6c17911f78bd62058b80e3078ed4bf95f1dac85aa"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 949,
+              "y": 69,
+              "width": 335,
+              "height": 365
+            },
+            "scale": 0.557919621749409,
+            "destinationRect": {
+              "x": 34,
+              "y": 40,
+              "width": 187,
+              "height": 204
+            },
+            "sha256": "1d5894dd0f2ad817a1cea2fffa87b9420d7d5d74c4bc3f799ea080e52c7ffdd5"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 1372,
+              "y": 56,
+              "width": 325,
+              "height": 378
+            },
+            "scale": 0.557919621749409,
+            "destinationRect": {
+              "x": 37,
+              "y": 33,
+              "width": 181,
+              "height": 211
+            },
+            "sha256": "fad0c0d59f170bb040e571de5b5ca76017ad46bb66f1febcf197b7a891c792da"
+          },
+          {
+            "state": "taunt1",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 28,
+              "y": 1334,
+              "width": 190,
+              "height": 219
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 32,
+              "y": 22,
+              "width": 192,
+              "height": 222
+            },
+            "sha256": "a038360185c6bd4e870a819a50d44124aa41c0714bdab8447ec9c6f43da12160"
+          },
+          {
+            "state": "taunt1",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 265,
+              "y": 1338,
+              "width": 191,
+              "height": 218
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 31,
+              "y": 23,
+              "width": 193,
+              "height": 221
+            },
+            "sha256": "b12683f068e1ab4ce55bc250ab6e3db55d3b41b5d01d194267769c5d0e0410e2"
+          },
+          {
+            "state": "taunt1",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 493,
+              "y": 1337,
+              "width": 177,
+              "height": 217
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 38,
+              "y": 24,
+              "width": 179,
+              "height": 220
+            },
+            "sha256": "40e5bd4c876d6ab82c5334ef62b84297bd34595109e0958b18d1c0214356f4e7"
+          },
+          {
+            "state": "taunt1",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 729,
+              "y": 1336,
+              "width": 156,
+              "height": 220
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 49,
+              "y": 21,
+              "width": 158,
+              "height": 223
+            },
+            "sha256": "7b8ea4d1c37bfd60eb12955171a904c9036ff8d0b55445340163e7bf0635ec6d"
+          },
+          {
+            "state": "hitStun",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 7,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 51,
+              "y": 1571,
+              "width": 164,
+              "height": 194
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 45,
+              "y": 48,
+              "width": 166,
+              "height": 196
+            },
+            "sha256": "17aa40765e0a371a69eb04b91d658f740e3f5e1fd4c78c509ca69d309d1a1da7"
+          },
+          {
+            "state": "hitStun",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 7,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 245,
+              "y": 1577,
+              "width": 193,
+              "height": 188
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 30,
+              "y": 54,
+              "width": 195,
+              "height": 190
+            },
+            "sha256": "6066bd752507724a373f8bb50d01bc7e34fbbdc981d9c97647b122ffbbf07154"
+          },
+          {
+            "state": "hitStun",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 7,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 465,
+              "y": 1598,
+              "width": 178,
+              "height": 164
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 38,
+              "y": 78,
+              "width": 180,
+              "height": 166
+            },
+            "sha256": "a0f146c7c21ebf3d96846b60df44300e68479035d9d3e5f7e1c1e4b2754ad894"
+          },
+          {
+            "state": "hitStun",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+            "nativeRow": 7,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 695,
+              "y": 1596,
+              "width": 190,
+              "height": 164
+            },
+            "scale": 1.0128755364806867,
+            "destinationRect": {
+              "x": 32,
+              "y": 78,
+              "width": 192,
+              "height": 166
+            },
+            "sha256": "8d606dd981dc33e1f85ea662ccd555e37f5ed29dc1d077e926ee1402984ea156"
+          }
+        ],
+        "transformations": [
+          "segmentation",
+          "uniform nearest-neighbor scaling",
+          "transparent atlas packing"
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "distinctNativePoses": 32,
+        "completeRows": 8,
+        "wholeCharacterAndWeaponContained": true,
+        "facing": "right; dead ends in side-lying knockout",
+        "outfit": "FF7 1997 purple SOLDIER clothing, blond spiked hair, single left pauldron, brown boots and Buster Sword",
+        "guardEffect": "physical sword guard and parry; small metal-contact sparks only; no magical barrier",
+        "limitations": [
+          "Original generated fan art with adapted choreography, not official animation frames.",
+          "Timing, anatomy and pixel identity are not certified 1:1 to the 1997 game.",
+          "Minor changes in sword perspective, facial features and apparent body size remain between native source drawings."
+        ],
+        "correction": "The original attempt omitted crouchCharge. The corrected 32-pose source supplies 20 retained poses; eight newly drawn poses replace land/crouchIdle and four replace crouchCharge for sword retention and containment."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.prompt.txt",
+            "sha256": "a4d702ee98e5707dfa70f6c91d2b9a6d95d9fa958405ea4d0ece21c231549750"
+          },
+          {
+            "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.correction.prompt.txt",
+            "sha256": "5ec7ecdd54b74a4da914c3c1532c7384d710c217bc2b6ce74211a422c6a7ff93"
+          },
+          {
+            "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.prompt.txt",
+            "sha256": "63e117d18457d996f804ce8cb4f7b8502e797ea9393d1eac2cb5b08de91962a5"
+          },
+          {
+            "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.prompt.txt",
+            "sha256": "ecb5315e96e06596d6da6aa3a55285ed0e57ec1414ef5aacb84947e514ebb988"
+          }
+        ],
+        "normalizationScript": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/normalize-motion-atlases.mjs"
+      }
+    },
+    {
+      "id": "cloud-defense",
+      "heroId": "cloud_ff7",
+      "universe": "Final Fantasy VII",
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-defense.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "f25fafe187b8d99fc81a7d22c14c3850c2592f4a7932d1d104dcef65a8af2897",
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+      "sourceHash": "fb15ac9e7936852fc1ed7ccf39f5386c5c3b931b9f92a23a86af5e226edb0400",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+          "sha256": "fb15ac9e7936852fc1ed7ccf39f5386c5c3b931b9f92a23a86af5e226edb0400",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          }
+        },
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png",
+          "sha256": "cf51f38343be4facfdfdf2cbebb9e374d0cc77f31de5464e0f15ebaa4cebd800",
+          "dimensions": {
+            "width": 1774,
+            "height": 887
+          }
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/final-fantasy-vii/cloud-ff7.png",
+      "referenceHash": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/final-fantasy-vii/cloud-ff7.png",
+          "sha256": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc",
+          "savedImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-original-hero.png"
+        },
+        {
+          "asset": "public/sprites/generated/combat-character-animations/cloud_ff7.png",
+          "sha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd",
+          "savedImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-native-presentation.png"
+        }
+      ],
+      "normalization": {
+        "method": "alpha-connected component segmentation of genuine native artwork; nearest-neighbor uniform source scale and transparent packing",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive alpha-bounds anchor in each 256px cell",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Sub-threshold near-transparent background noise excluded; original PNG sources are preserved unchanged.",
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png": 1.1196172248803828,
+          "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png": 0.557919621749409
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "shieldEnter",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 26,
+              "y": 57,
+              "width": 203,
+              "height": 163
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 14,
+              "y": 62,
+              "width": 227,
+              "height": 182
+            },
+            "sha256": "0cb6b7682596f67a3d1058338c7c9e86f86d624b3820a56ccdb7092ac8b8f1c2"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 253,
+              "y": 21,
+              "width": 187,
+              "height": 200
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 23,
+              "y": 20,
+              "width": 209,
+              "height": 224
+            },
+            "sha256": "17ae5198bf54a08b7e450d9a65ed55f0cac7a5ecb22abb53bb2b76f3d30a1ecd"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 458,
+              "y": 15,
+              "width": 177,
+              "height": 206
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 29,
+              "y": 13,
+              "width": 198,
+              "height": 231
+            },
+            "sha256": "bd680efd9a11e7794a08a7bcac7f7cca7f4715d74bd51373c6ed58ed0dde66c8"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 677,
+              "y": 32,
+              "width": 178,
+              "height": 189
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 28,
+              "y": 32,
+              "width": 199,
+              "height": 212
+            },
+            "sha256": "6b723d34c5453486fc884b659650dd2c291e8cfec54fc737efa34ecbb8e15733"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 27,
+              "y": 230,
+              "width": 162,
+              "height": 209
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 37,
+              "y": 10,
+              "width": 181,
+              "height": 234
+            },
+            "sha256": "a80b568cf64559a94e09115cd5c34ddcf85a1eb57aa1428e347c05d8ab4e15b7"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 252,
+              "y": 234,
+              "width": 161,
+              "height": 205
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 38,
+              "y": 14,
+              "width": 180,
+              "height": 230
+            },
+            "sha256": "aa386147afdaab89dfd71586d6fcd500e36d6b633caaaa9a41cb563f43d19524"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 468,
+              "y": 269,
+              "width": 178,
+              "height": 170
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 28,
+              "y": 54,
+              "width": 199,
+              "height": 190
+            },
+            "sha256": "87d407177f45a86867ecc70ed8de35df7cff5e8b60f4098dc1fbd2df36739236"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 686,
+              "y": 250,
+              "width": 151,
+              "height": 189
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 43,
+              "y": 32,
+              "width": 169,
+              "height": 212
+            },
+            "sha256": "6b7f3945cde9fd3ab2fb3080110d6e33b2b8b1d44a2b5c41b27d0e05e58002fc"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 32,
+              "y": 472,
+              "width": 181,
+              "height": 185
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 26,
+              "y": 37,
+              "width": 203,
+              "height": 207
+            },
+            "sha256": "7ac3e880ba2c3274effb31d5f009d4d93618e033a54309b7372fc882102bc236"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 269,
+              "y": 472,
+              "width": 147,
+              "height": 190
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 45,
+              "y": 31,
+              "width": 165,
+              "height": 213
+            },
+            "sha256": "dc053f1167bf622f8a28b5a955e41b1f4657be49827299873e7a2b22dfa186ec"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 473,
+              "y": 503,
+              "width": 173,
+              "height": 159
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 31,
+              "y": 66,
+              "width": 194,
+              "height": 178
+            },
+            "sha256": "53ca4c28f2bd227b54219d9419bb843df9139e84dc2e5af5e403cedf61f15cd5"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 675,
+              "y": 468,
+              "width": 191,
+              "height": 193
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 21,
+              "y": 28,
+              "width": 214,
+              "height": 216
+            },
+            "sha256": "fe39d5a24a9e6679b619289990a24df3bd7f413de1a5e94915a19fe16ca6cec1"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 26,
+              "y": 703,
+              "width": 183,
+              "height": 179
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 25,
+              "y": 44,
+              "width": 205,
+              "height": 200
+            },
+            "sha256": "4183b482f3999d95b2aa26eee546e66d06a30d4db9cb9971b2f7e2ff19b9ebcf"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 241,
+              "y": 700,
+              "width": 195,
+              "height": 182
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 19,
+              "y": 40,
+              "width": 218,
+              "height": 204
+            },
+            "sha256": "b665397ea4c130de1c68496fc2f9fc3b3284a0888280d01b63234f3cc8a42777"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 485,
+              "y": 697,
+              "width": 185,
+              "height": 189
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 24,
+              "y": 32,
+              "width": 207,
+              "height": 212
+            },
+            "sha256": "01501c5368f0fae9d922c2e909cf5471046c9ffabc3b649db72b8cff45b4ffad"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 690,
+              "y": 684,
+              "width": 163,
+              "height": 198
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 37,
+              "y": 22,
+              "width": 182,
+              "height": 222
+            },
+            "sha256": "1e43a432caf3945aad8ea2a60b4a18622aed9e343867b4ddd400eb13bb3287ca"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 61,
+              "y": 461,
+              "width": 334,
+              "height": 380
+            },
+            "scale": 0.557919621749409,
+            "destinationRect": {
+              "x": 35,
+              "y": 32,
+              "width": 186,
+              "height": 212
+            },
+            "sha256": "d69000d125f63f8642fcd886a032c534d990bd6e515357f201f15356fdeaf890"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 457,
+              "y": 525,
+              "width": 423,
+              "height": 317
+            },
+            "scale": 0.557919621749409,
+            "destinationRect": {
+              "x": 10,
+              "y": 67,
+              "width": 236,
+              "height": 177
+            },
+            "sha256": "7cdbe51ddd54bae0b66421c556b6a77c011047bfecb894bbe67acb833c41e702"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 962,
+              "y": 560,
+              "width": 375,
+              "height": 274
+            },
+            "scale": 0.557919621749409,
+            "destinationRect": {
+              "x": 23,
+              "y": 91,
+              "width": 209,
+              "height": 153
+            },
+            "sha256": "c15f2e0278f4378e32566d96bcfe253a1689f76312e9a5694bb34141d8952a62"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 1381,
+              "y": 513,
+              "width": 319,
+              "height": 344
+            },
+            "scale": 0.557919621749409,
+            "destinationRect": {
+              "x": 39,
+              "y": 52,
+              "width": 178,
+              "height": 192
+            },
+            "sha256": "e5e72dcfaa0a4882b1b5cfa76450a7581ed31cfbfe7ef71e81dff8f977c3b308"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 30,
+              "y": 1153,
+              "width": 201,
+              "height": 167
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 15,
+              "y": 57,
+              "width": 225,
+              "height": 187
+            },
+            "sha256": "1e2394a9ae34d7a3fbb67b14fa4b348c81f7e09fa6bfe39e357b523244390ce3"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 260,
+              "y": 1158,
+              "width": 193,
+              "height": 162
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 20,
+              "y": 63,
+              "width": 216,
+              "height": 181
+            },
+            "sha256": "5d0978979800bb04fa61ec73876b0309703a6aa57b3fa0e3454ab88aeedc49ab"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 492,
+              "y": 1162,
+              "width": 123,
+              "height": 163
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 59,
+              "y": 62,
+              "width": 138,
+              "height": 182
+            },
+            "sha256": "0cdd915cf93c433c4aa6f04d2e367825973e864d794ea4e4628f71ca0575f038"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 695,
+              "y": 1180,
+              "width": 188,
+              "height": 143
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 23,
+              "y": 84,
+              "width": 210,
+              "height": 160
+            },
+            "sha256": "d01738ecba9ca067ffef07cdafd00f507ab445a245b86c15e507bb162e7d83da"
+          },
+          {
+            "state": "dead",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 30,
+              "y": 1385,
+              "width": 187,
+              "height": 143
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 23,
+              "y": 84,
+              "width": 209,
+              "height": 160
+            },
+            "sha256": "beb45720bd749cd1a96bb35a534ac41983f3b435ea4aaeb5478ef317dbbf8c69"
+          },
+          {
+            "state": "dead",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 244,
+              "y": 1415,
+              "width": 199,
+              "height": 102
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 16,
+              "y": 130,
+              "width": 223,
+              "height": 114
+            },
+            "sha256": "f616fe1343114b8897575ee593071f841092f5986f0a54ce2fde8fe2d62e98aa"
+          },
+          {
+            "state": "dead",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 451,
+              "y": 1444,
+              "width": 200,
+              "height": 74
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 16,
+              "y": 161,
+              "width": 224,
+              "height": 83
+            },
+            "sha256": "59915352a37b49128f7774d417bae819f0610a8d37b4364308d5910273318552"
+          },
+          {
+            "state": "dead",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 668,
+              "y": 1451,
+              "width": 205,
+              "height": 70
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 13,
+              "y": 166,
+              "width": 230,
+              "height": 78
+            },
+            "sha256": "e942cb85538b827751096f0c072b94c325a6faf90b0c2294c827526ef21e79ec"
+          },
+          {
+            "state": "defeat",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 36,
+              "y": 1595,
+              "width": 155,
+              "height": 157
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 41,
+              "y": 68,
+              "width": 174,
+              "height": 176
+            },
+            "sha256": "4dc79190e19eee049c649e3bfc66147736c8cdc5ccee1fb042f0e1c2453a559b"
+          },
+          {
+            "state": "defeat",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 260,
+              "y": 1620,
+              "width": 189,
+              "height": 124
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 22,
+              "y": 105,
+              "width": 212,
+              "height": 139
+            },
+            "sha256": "0d7293a896b07231b5cdbff128a409403bfa7ceed2e83f8a91f9e8ca9a63a136"
+          },
+          {
+            "state": "defeat",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 482,
+              "y": 1623,
+              "width": 175,
+              "height": 119
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 30,
+              "y": 111,
+              "width": 196,
+              "height": 133
+            },
+            "sha256": "832ad1133adad4d0a6f2abb24738ad9f160c7db3faf18da5a922f28e2ea2ed36"
+          },
+          {
+            "state": "defeat",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 680,
+              "y": 1621,
+              "width": 182,
+              "height": 126
+            },
+            "scale": 1.1196172248803828,
+            "destinationRect": {
+              "x": 26,
+              "y": 103,
+              "width": 204,
+              "height": 141
+            },
+            "sha256": "a112a462d335265ae8aa5e456d045c6ea1904e485c4a937b6e71bb1f41e5e5e5"
+          }
+        ],
+        "transformations": [
+          "segmentation",
+          "uniform nearest-neighbor scaling",
+          "transparent atlas packing"
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "distinctNativePoses": 32,
+        "completeRows": 8,
+        "wholeCharacterAndWeaponContained": true,
+        "facing": "right; dead ends in side-lying knockout",
+        "outfit": "FF7 1997 purple SOLDIER clothing, blond spiked hair, single left pauldron, brown boots and Buster Sword",
+        "guardEffect": "physical sword guard and parry; small metal-contact sparks only; no magical barrier",
+        "limitations": [
+          "Original generated fan art with adapted choreography, not official animation frames.",
+          "Timing, anatomy and pixel identity are not certified 1:1 to the 1997 game.",
+          "Minor changes in sword perspective, facial features and apparent body size remain between native source drawings."
+        ],
+        "correction": "Four newly drawn native guard-break poses replace the original guard-break row to keep the sword visible in the open stagger."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.prompt.txt",
+            "sha256": "a71edff406a16cb6a465eaaed08f3999a968a96e75f178ab2a2a2e168d6c65e5"
+          },
+          {
+            "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.prompt.txt",
+            "sha256": "ecb5315e96e06596d6da6aa3a55285ed0e57ec1414ef5aacb84947e514ebb988"
+          }
+        ],
+        "normalizationScript": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/normalize-motion-atlases.mjs"
+      }
+    }
+  ],
+  "generations": [
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.native.png",
+      "sha256": "fa97ac6d7618776e72179222549ab8a21d7271d1597f9dcd8a4dfd087b8d442e",
+      "prompt": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-a.prompt.txt",
+      "promptSha256": "5c73ba0de8d7ead086fff1a868b484566b8dd9571494d158f82349842dd90fcf",
+      "retainedPoses": 32,
+      "rejected": false,
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-original-hero.png",
+          "sha256": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc"
+        },
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-native-presentation.png",
+          "sha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd"
+        }
+      ]
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.initial-rejected.png",
+      "sha256": "6d4d3292739a6a5d856ef1bcab1ae538875ae97792b9f3e2a2e077e789850706",
+      "prompt": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.prompt.txt",
+      "promptSha256": "a4d702ee98e5707dfa70f6c91d2b9a6d95d9fa958405ea4d0ece21c231549750",
+      "retainedPoses": 0,
+      "rejected": true,
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-original-hero.png",
+          "sha256": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc"
+        },
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-native-presentation.png",
+          "sha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd"
+        }
+      ]
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.native.png",
+      "sha256": "fb15ac9e7936852fc1ed7ccf39f5386c5c3b931b9f92a23a86af5e226edb0400",
+      "prompt": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.prompt.txt",
+      "promptSha256": "a71edff406a16cb6a465eaaed08f3999a968a96e75f178ab2a2a2e168d6c65e5",
+      "retainedPoses": 28,
+      "rejected": false,
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-original-hero.png",
+          "sha256": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc"
+        },
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-native-presentation.png",
+          "sha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd"
+        }
+      ]
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+      "sha256": "e33c21a25cea15046d7f92a2feb53720260ae41eb8d3dc8c52cb4ff66356bb42",
+      "prompt": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.correction.prompt.txt",
+      "promptSha256": "5ec7ecdd54b74a4da914c3c1532c7384d710c217bc2b6ce74211a422c6a7ff93",
+      "retainedPoses": 20,
+      "rejected": false,
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.initial-rejected.png",
+          "sha256": "6d4d3292739a6a5d856ef1bcab1ae538875ae97792b9f3e2a2e077e789850706"
+        },
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-original-hero.png",
+          "sha256": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc"
+        }
+      ]
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.png",
+      "sha256": "02244149aa73603a4675437b1642deebf59f4ffe5d797a07114ded6c61308cc5",
+      "prompt": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.patch-rows.prompt.txt",
+      "promptSha256": "63e117d18457d996f804ce8cb4f7b8502e797ea9393d1eac2cb5b08de91962a5",
+      "retainedPoses": 8,
+      "rejected": false,
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.corrected.png",
+          "sha256": "e33c21a25cea15046d7f92a2feb53720260ae41eb8d3dc8c52cb4ff66356bb42"
+        },
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference-original-hero.png",
+          "sha256": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc"
+        }
+      ]
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.png",
+      "sha256": "cf51f38343be4facfdfdf2cbebb9e374d0cc77f31de5464e0f15ebaa4cebd800",
+      "prompt": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-weapon-retention.patch.prompt.txt",
+      "promptSha256": "ecb5315e96e06596d6da6aa3a55285ed0e57ec1414ef5aacb84947e514ebb988",
+      "retainedPoses": 8,
+      "rejected": false,
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.weapon-patch-reference.png",
+          "sha256": "34db289db88e36c73ded55e240709388ec19d94d7442e2a13f9a0adc00238567"
+        },
+        {
+          "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-defense.weapon-patch-reference.png",
+          "sha256": "ab9e00cfa5fd27f3de1258a12d855f4effc9eb38f278d1e72bb081a8ebc0b541"
+        }
+      ]
+    }
+  ],
+  "rejectedSources": [
+    {
+      "path": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-motion-b.initial-rejected.png",
+      "sha256": "6d4d3292739a6a5d856ef1bcab1ae538875ae97792b9f3e2a2e077e789850706",
+      "reason": "Only 28 native poses; crouchCharge row was omitted. Never used to fill the delivered atlas."
+    }
+  ],
+  "nativeGenerationCalls": 6,
+  "deliveredNativePoses": 96
+}

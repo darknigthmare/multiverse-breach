@@ -1,7 +1,13 @@
 import { drawCosmeticAtlasFrame, drawPixelSprite } from './renderer';
+import { combatBuffSource } from './combat/characterFormState';
+import { drawCharacterSuperVisuals, getCharacterSuperVisualState } from './combat/characterSuperVisuals';
+import { supportsTrackedCharacterSuperVisual } from './combat/characterSuperVisuals';
+import { supportsConfirmedCharacterSuperContact } from './combat/characterSuperVisuals.js';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 import { resolveFighterTagEntry } from './fighterTagPlacement.js';
+import { resolveMeleeSuper, resolveCombatAbility, resolveCombatPresentation } from './combatIdentity.js';
+import { resolvePresentationScript, samplePresentationScript, sampleCatastropheMotion, getCatastropheBeamGeometry } from './combat/presentationCatalog.js';
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const lerp = (from, to, amount) => from + (to - from) * amount;
@@ -99,6 +105,12 @@ const createFighter = (hero, side, index, width, groundY) => {
     comboWindow: 0,
     lastHitAt: -10,
     koDelay: 0,
+    superBuffSeconds: 0,
+    superBuffMultiplier: 1,
+    superGuardSeconds: 0,
+    superGuardReduce: 0,
+    abilityCooldowns: { simple: 0, secondary: 0, defense: 0 },
+    guardReduction: 0.8,
     ranged: isRangedHero(hero),
     moveSpeed: clamp(180 + stats.spd * 7, 205, 290),
     attackPower: clamp(8 + stats.atk * 0.78, 15, 36),
@@ -137,9 +149,19 @@ export class EngineFighter {
     this.inputs = { player: {}, cpu: {} };
     this.playerInput = this.inputs.player;
     this.projectiles = [];
+    this.projectileVisualImpacts = [];
     this.elapsed = 0;
     this.timer = 99;
     this.countdown = 3.2;
+    this.roundNumber = 1;
+    this.roundsToWin = clamp(Math.floor(finiteOr(options.roundsToWin, 2)), 1, 3);
+    this.roundWins = { player: 0, cpu: 0 };
+    this.roundHistory = [];
+    this.roundTransition = null;
+    this.presentationQueue = [];
+    this.presentation = null;
+    this.combatDuration = 0;
+    this.disposed = false;
     this.finished = false;
     this.completionReported = false;
     this.completionDelay = 0;
@@ -182,6 +204,13 @@ export class EngineFighter {
       ? clamp(introDurationMs / 1000, 1, 2.8)
       : 0;
     this.introPoseTimer = this.introPoseDuration;
+    this.characterIntros = ['player', 'cpu'].map(side => {
+      const fighter = this.getActive(side);
+      const identity = resolveCombatPresentation(fighter, 'intro');
+      return { side, identity, script: identity.presentationScript || resolvePresentationScript(fighter, 'intro') };
+    });
+    this.characterIntroDuration = Math.max(...this.characterIntros.map(entry => entry.identity.duration), this.introPoseDuration, 0.8);
+    this.countdown += this.characterIntroDuration;
     this.assistEvent = null;
     this.koEffectEvent = null;
     this.victoryPoseEvent = null;
@@ -420,6 +449,9 @@ export class EngineFighter {
       && fighter.hitstun <= 0
       && fighter.guardBreak <= 0
       && !this.finished
+      && !this.disposed
+      && !this.roundTransition
+      && !this.presentation
       && this.countdown <= 0
     );
   }
@@ -432,15 +464,15 @@ export class EngineFighter {
       light: { duration: 0.28, hitAt: 0.11, base: 9.5, range: 78, guardDamage: 9, knockback: 105 },
       heavy: { duration: 0.5, hitAt: 0.23, base: 17, range: 96, guardDamage: 19, knockback: 205 },
       special: { duration: 0.64, hitAt: 0.28, base: 23, range: fighter.ranged ? 430 : 132, guardDamage: 24, knockback: 245, meterCost: 30 },
-      super: { duration: 0.92, hitAt: 0.45, base: 43, range: this.width, guardDamage: 42, knockback: 330, meterCost: 100 }
+      super: this.getPersonalSuperSpec(fighter)
     };
-    const spec = specs[type];
-    if (!spec || fighter.meter < (spec.meterCost || 0)) return false;
+    const spec = this.getAuthoredActionSpec(fighter, type, specs[type]) || specs[type];
+    if (!spec || fighter.meter < (spec.meterCost || 0) || (spec.cooldownSlot && fighter.abilityCooldowns[spec.cooldownSlot] > 0)) return false;
     // Input may arrive between physics frames after the fighters crossed.
     // Aim once on commitment; an ongoing swing never turns to track a dodge.
     faceOpponent(fighter, this.getOpponent(side));
 
-    if (type === 'light') {
+    if (type === 'light' && (!spec.effect || spec.effect === 'damage')) {
       fighter.comboStep = fighter.comboWindow > 0 ? (fighter.comboStep % 3) + 1 : 1;
       fighter.comboWindow = 0.68;
       spec.base += (fighter.comboStep - 1) * 2.2;
@@ -451,16 +483,108 @@ export class EngineFighter {
     }
 
     fighter.meter = Math.max(0, fighter.meter - (spec.meterCost || 0));
+    if (spec.cooldownSlot) fighter.abilityCooldowns[spec.cooldownSlot] = spec.cooldown;
     fighter.guarding = false;
-    fighter.state = 'attack';
+    fighter.state = spec.effect && spec.effect !== 'damage' ? 'support' : 'attack';
     fighter.action = { ...spec, type, facing: fighter.facing, elapsed: 0, resolved: false };
-    this.playSfx(type === 'light' ? 'slash' : type === 'heavy' ? 'hit' : 'special');
+    if (type === 'super' && ['lunafreya_ff15', 'rebecca_chambers'].includes(spec.identity?.sourceHeroId)) {
+      const allies = this.getSupportSuperTargets(fighter, fighter.action);
+      const target = [...allies].sort((a, b) => a.currentHp / a.maxHp - b.currentHp / b.maxHp)[0];
+      fighter.action.visualSupportTargetId = target?.id || fighter.id;
+    }
+    if (type === 'super' && spec.delivery === 'projectile'
+      && ['sazh_ff13', 'prompto_ff15', 'irvine_ff8'].includes(spec.identity?.sourceHeroId)) {
+      const opponent = this.getOpponent(side);
+      fighter.action.visualAimDistance = Math.min(spec.range,
+        Math.max(58, ((opponent?.x ?? fighter.x + fighter.facing * spec.range) - fighter.x) * fighter.facing));
+    }
+    this.playSfx(spec.effect && spec.effect !== 'damage' ? 'signal' : type === 'light' ? 'slash' : type === 'heavy' ? 'hit' : 'special');
+    if (spec.authoredAbility) {
+      this.announcement = spec.identity.name;
+      this.announcementTimer = 0.8;
+    }
     if (type === 'super') {
-      this.announcement = fighter.special?.name || 'RUPTURE ULTIME';
+      this.announcement = spec.identity.name;
       this.announcementTimer = 1.1;
       this.spawnBurst(fighter.x, fighter.y - 60, fighter.secondaryColor || fighter.primaryColor || '#ffea00', 28);
     }
     return true;
+  }
+
+  getAuthoredActionSpec(fighter, type, fallback) {
+    const slot = type === 'light' ? 'simple' : type === 'heavy' || type === 'special' ? 'secondary' : type === 'defense' ? 'defense' : null;
+    if (!slot) return null;
+    const identity = resolveCombatAbility(fighter, slot);
+    if (!identity?.provenance.identityAuthored) return null;
+    const cooldown = Math.max(0, finiteOr(identity.sourceAbility.cd, identity.effect === 'damage' ? 0 : Math.max(0.8, identity.effectDuration)));
+    return {
+      ...(fallback || { guardDamage: 0, knockback: 0, meterCost: 0 }),
+      identity,
+      authoredAbility: true,
+      duration: identity.duration,
+      hitAt: identity.hitAt,
+      base: identity.effect === 'damage' ? (fallback?.base || 9.5) * identity.multiplier : 0,
+      range: identity.range,
+      delivery: identity.delivery,
+      effect: identity.effect,
+      color: identity.color,
+      healRatio: identity.healRatio,
+      guardReduce: identity.guardReduce,
+      buffMultiplier: identity.buffMultiplier,
+      reviveRatio: identity.reviveRatio,
+      cleanses: identity.cleanses,
+      effectDuration: identity.effectDuration,
+      targetSide: identity.targetSide,
+      excludeSelf: identity.excludeSelf,
+      shape: identity.shape,
+      maxTargets: identity.maxTargets,
+      cooldownSlot: slot,
+      cooldown
+    };
+  }
+
+  updateGuarding(side, requested, grounded) {
+    const fighter = this.getActive(side);
+    if (!fighter) return false;
+    const profile = resolveCombatAbility(fighter, 'defense');
+    const authored = profile?.provenance.identityAuthored;
+    fighter.guardReduction = authored ? clamp(profile.guardReduce, 0, 0.95) : 0.8;
+    const canGuard = requested && grounded && this.canAct(fighter);
+    if (authored && !(profile.effect === 'guard' && profile.targetSide === 'self')) {
+      fighter.guarding = false;
+      if (canGuard && profile.effect !== 'damage') this.tryAction(side, 'defense');
+      return false;
+    }
+    fighter.guarding = Boolean(canGuard);
+    return fighter.guarding;
+  }
+
+  getPersonalSuperSpec(fighter) {
+    const identity = resolveMeleeSuper(fighter);
+    if (!identity) return null;
+    return {
+      identity,
+      duration: identity.duration,
+      hitAt: identity.hitAt,
+      base: 23 * identity.multiplier,
+      range: identity.range,
+      guardDamage: 42,
+      knockback: 330,
+      meterCost: identity.meterCost,
+      delivery: identity.delivery,
+      effect: identity.effect,
+      color: identity.color,
+      healRatio: identity.healRatio,
+      guardReduce: identity.guardReduce,
+      buffMultiplier: identity.buffMultiplier,
+      reviveRatio: identity.reviveRatio,
+      cleanses: identity.cleanses,
+      effectDuration: identity.effectDuration,
+      targetSide: identity.targetSide,
+      excludeSelf: identity.excludeSelf,
+      shape: identity.shape,
+      maxTargets: identity.maxTargets
+    };
   }
 
   requestTag(side, index, forced = false) {
@@ -515,11 +639,15 @@ export class EngineFighter {
 
   update(dt) {
     const step = clamp(dt || 0, 0, 0.034);
-    if (this.completionReported) return;
+    if (this.completionReported || this.disposed) return;
     this.elapsed += step;
     this.updateCosmeticTimers(step);
 
     if (this.finished) {
+      if (this.presentation) {
+        this.updatePresentation(step);
+        return;
+      }
       this.completionDelay -= step;
       if (this.completionDelay <= 0 && !this.completionReported) {
         this.completionReported = true;
@@ -528,16 +656,23 @@ export class EngineFighter {
       return;
     }
 
+    if (this.roundTransition) {
+      this.updatePresentation(step);
+      if (!this.presentation) this.resetForNextRound();
+      return;
+    }
+
     if (this.countdown > 0) {
+      const wasIntro = this.countdown > 3.2;
       const before = Math.ceil(this.countdown);
       this.countdown = Math.max(0, this.countdown - step);
       const after = Math.ceil(this.countdown);
-      if (after !== before) this.playSfx(after > 0 ? 'click' : 'special');
+      if (!wasIntro && after !== before) this.playSfx(after > 0 ? 'click' : 'special');
       if (this.countdown === 0) {
         this.announcement = 'IMPACT';
         this.announcementTimer = 0.9;
       }
-      this.updatePassive(step);
+      if (!wasIntro) this.updatePassive(step);
       return;
     }
 
@@ -547,6 +682,7 @@ export class EngineFighter {
     }
 
     this.timer = Math.max(0, this.timer - step);
+    this.combatDuration += step;
     if (this.timer <= 0) {
       this.finishByTime();
       return;
@@ -598,6 +734,12 @@ export class EngineFighter {
         fighter.guardBreak = Math.max(0, fighter.guardBreak - dt);
         fighter.invulnerable = Math.max(0, fighter.invulnerable - dt);
         fighter.comboWindow = Math.max(0, fighter.comboWindow - dt);
+        fighter.superBuffSeconds = Math.max(0, (fighter.superBuffSeconds || 0) - dt);
+        if (fighter.superBuffSource && fighter.superBuffSeconds === 0) fighter.superBuffSource = null;
+        fighter.superGuardSeconds = Math.max(0, (fighter.superGuardSeconds || 0) - dt);
+        Object.keys(fighter.abilityCooldowns).forEach(slot => {
+          fighter.abilityCooldowns[slot] = Math.max(0, fighter.abilityCooldowns[slot] - dt);
+        });
         if (fighter.currentHp > 0 && index !== team.activeIndex) {
           fighter.currentHp = Math.min(fighter.maxHp, fighter.currentHp + fighter.maxHp * 0.0045 * dt);
           fighter.guard = Math.min(100, fighter.guard + 18 * dt);
@@ -631,9 +773,8 @@ export class EngineFighter {
     const grounded = fighter.y >= this.groundY - 2;
     const canInput = this.canAct(fighter);
     if (canInput) faceOpponent(fighter, target);
-    const guard = Boolean(input.guard) && canInput && grounded;
+    const guard = this.updateGuarding(side, Boolean(input.guard), grounded);
     const crouch = Boolean(input.down) && canInput && grounded && !guard;
-    fighter.guarding = guard;
     fighter.crouching = crouch;
     if (guard) {
       fighter.state = 'defense';
@@ -662,7 +803,7 @@ export class EngineFighter {
     if (this.canAct(fighter) && target.action && distance < 118 && Math.random() < this.difficulty.guardChance * dt * 8) {
       this.aiGuardTimer = 0.24 + Math.random() * 0.24;
     }
-    fighter.guarding = this.aiGuardTimer > 0 && this.canAct(fighter) && fighter.y >= this.groundY - 2;
+    this.updateGuarding('cpu', this.aiGuardTimer > 0, fighter.y >= this.groundY - 2);
     fighter.crouching = false;
 
     if (this.aiThink <= 0 && this.canAct(fighter)) {
@@ -725,8 +866,12 @@ export class EngineFighter {
       const action = fighter.action;
       if (!action.resolved && action.elapsed >= action.hitAt) {
         action.resolved = true;
-        if (action.type === 'special' && fighter.ranged) {
+        if (action.effect && action.effect !== 'damage') {
+          this.resolveSupportSuper(fighter, action);
+        } else if ((action.authoredAbility || action.type === 'super') ? action.delivery === 'projectile' : action.type === 'special' && fighter.ranged) {
           this.spawnProjectile(fighter, action);
+        } else if ((action.authoredAbility || action.type === 'super') && action.delivery === 'area') {
+          if (target && Math.abs(target.x - fighter.x) <= action.range && Math.abs(target.y - fighter.y) < 150) this.applyHit(fighter, target, action);
         } else {
           this.attemptHit(fighter, target, action);
         }
@@ -738,27 +883,86 @@ export class EngineFighter {
     });
   }
 
+  getSupportSuperTargets(fighter, action) {
+    const effect = action.effect;
+    const targetSide = action.targetSide === 'enemy' ? (fighter.side === 'player' ? 'cpu' : 'player') : fighter.side;
+    const candidates = action.targetSide === 'self' ? [fighter] : this.getTeam(targetSide).fighters;
+    const eligible = candidates.filter(member => !(action.excludeSelf && member === fighter) && (effect === 'revive' ? member.currentHp <= 0 : member.currentHp > 0));
+    return ['group', 'multi', 'area'].includes(action.shape)
+      ? eligible.slice(0, action.maxTargets || eligible.length)
+      : eligible.sort((a, b) => a.currentHp / a.maxHp - b.currentHp / b.maxHp).slice(0, 1);
+  }
+
+  resolveSupportSuper(fighter, action) {
+    const effect = action.effect;
+    const targets = this.getSupportSuperTargets(fighter, action);
+    targets.forEach(target => {
+      if (effect === 'heal') target.currentHp = Math.min(target.maxHp, target.currentHp + target.maxHp * clamp(finiteOr(action.healRatio, 0.3), 0, 0.6));
+      if (effect === 'guard') {
+        target.guard = 100;
+        target.guardBreak = 0;
+        target.superGuardSeconds = action.effectDuration;
+        target.superGuardReduce = clamp(finiteOr(action.guardReduce, 0.35), 0, 0.7);
+      }
+      if (effect === 'buff') {
+        target.superBuffSource = combatBuffSource(fighter, action.identity);
+        target.superBuffSeconds = action.effectDuration;
+        target.superBuffMultiplier = clamp(finiteOr(action.buffMultiplier, 1.3), 1, 1.7);
+      }
+      if (effect === 'cleanse' || action.cleanses) {
+        target.hitstun = 0;
+        target.guardBreak = 0;
+        target.guard = 100;
+        target.invulnerable = Math.max(target.invulnerable, 0.65);
+      }
+      if (effect === 'revive') {
+        target.currentHp = target.maxHp * clamp(finiteOr(action.reviveRatio, 0.35), 0.1, 0.6);
+        target.koDelay = 0;
+        target.state = 'idle';
+      }
+    });
+    this.spawnBurst(fighter.x, fighter.y - 60, action.color, 24);
+  }
+
   spawnProjectile(fighter, action) {
-    const color = fighter.secondaryColor || fighter.weaponColor || '#39c5bb';
+    const color = action.color || fighter.secondaryColor || fighter.weaponColor || '#39c5bb';
     const direction = action.facing ?? fighter.facing;
+    const nativeVisual = action.type === 'super' && supportsTrackedCharacterSuperVisual(action.identity);
+    const radius = action.type === 'super' ? 22 : 13;
+    const target = nativeVisual ? this.getOpponent(fighter.side) : null;
+    const visual = nativeVisual ? getCharacterSuperVisualState({ actor: fighter, profile: action.identity, action, target, height: 142 }) : null;
+    // W9/W10 weapons launch from their measured native barrel; earlier
+    // projectile families retain their existing origin and lifetime.
+    const nativeMuzzle = ['native-wave9', 'native-wave10', 'native-wave11'].includes(visual?.family) && visual.nativeMuzzleActive ? visual.origin : null;
+    const origin = nativeMuzzle || { x: fighter.x + direction * 58, y: fighter.y - 64 };
+    const originDistance = (origin.x - fighter.x) * direction;
     this.projectiles.push({
       side: fighter.side,
       owner: fighter,
-      x: fighter.x + direction * 58,
-      y: fighter.y - 64,
+      originX: fighter.x,
+      maxRange: action.type === 'super' || action.authoredAbility ? action.range : null,
+      x: origin.x,
+      y: origin.y,
       vx: direction * 520,
-      radius: action.type === 'super' ? 22 : 13,
-      life: 1.25,
+      radius,
+      ...(nativeVisual ? { visualElapsed: 0, visualOriginX: origin.x,
+        visualFlightDistance: Math.max(1, Math.min(action.range, ((target?.x ?? fighter.x + direction * action.range) - fighter.x) * direction) - originDistance - radius - 32) } : {}),
+      life: action.type === 'super' || action.authoredAbility ? Math.max(0, action.range - originDistance) / 520 : 1.25,
       action: { ...action, range: 34 },
       color
     });
-    this.particles.add(fighter.x, fighter.y - 62, direction * 5, 0, color, 6, 34, 'laser_line');
+    this.particles.add(nativeMuzzle ? origin.x : fighter.x, nativeMuzzle ? origin.y : fighter.y - 62, direction * 5, 0, color, 6, 34, 'laser_line');
   }
 
   updateProjectiles(dt) {
+    this.projectileVisualImpacts = this.projectileVisualImpacts.filter(impact => {
+      impact.elapsed += Math.max(0, dt);
+      return impact.elapsed < impact.duration;
+    });
     for (let index = this.projectiles.length - 1; index >= 0; index--) {
       const projectile = this.projectiles[index];
-      projectile.x += projectile.vx * dt;
+      if (projectile.visualElapsed != null) projectile.visualElapsed += Math.max(0, Math.min(dt, projectile.life));
+      projectile.x += projectile.vx * Math.min(dt, Math.max(0, projectile.life));
       projectile.life -= dt;
       const target = this.getOpponent(projectile.side);
       const targetCenterY = target?.y - (target?.crouching ? 32 : 56);
@@ -766,10 +970,17 @@ export class EngineFighter {
       if (
         target
         && target.currentHp > 0
+        && (!projectile.maxRange || Math.abs(target.x - projectile.originX) <= projectile.maxRange)
         && Math.abs(projectile.x - target.x) < projectile.radius + 32
         && Math.abs(projectile.y - targetCenterY) < targetHalfHeight
       ) {
+        const beforeHp = target.currentHp;
+        const impactX = target.x;
         this.applyHit(projectile.owner, target, projectile.action, true, Math.sign(projectile.vx));
+        if (projectile.visualElapsed != null && target.currentHp < beforeHp) this.projectileVisualImpacts.push({
+          owner: projectile.owner, action: projectile.action, x: impactX, y: targetCenterY,
+          elapsed: 0, duration: 0.24
+        });
         this.projectiles.splice(index, 1);
       } else if (projectile.life <= 0 || projectile.x < -40 || projectile.x > this.width + 40) {
         this.projectiles.splice(index, 1);
@@ -788,7 +999,7 @@ export class EngineFighter {
   }
 
   applyHit(attacker, target, action, projectile = false, impactDirection = null) {
-    if (target.invulnerable > 0 || target.currentHp <= 0) return;
+    if (this.finished || this.roundTransition || this.disposed || target.invulnerable > 0 || target.currentHp <= 0) return;
     // A travelling projectile keeps its own incoming direction even after its
     // owner turns, jumps across the target, or tags out before impact.
     const hitDirection = impactDirection || Math.sign(target.x - attacker.x) || action.facing || attacker.facing;
@@ -803,10 +1014,12 @@ export class EngineFighter {
     )
       ? this.difficulty.damage
       : 1;
-    let damage = Math.max(3, action.base * attackScale * defenseScale * cpuScale);
+    const buffScale = attacker.superBuffSeconds > 0 ? attacker.superBuffMultiplier : 1;
+    const guardScale = target.superGuardSeconds > 0 ? 1 - target.superGuardReduce : 1;
+    let damage = Math.max(3, action.base * attackScale * defenseScale * cpuScale * buffScale * guardScale);
 
     if (blocked) {
-      damage *= 0.2;
+      damage *= 1 - clamp(finiteOr(target.guardReduction, 0.8), 0, 0.95);
       target.guard = Math.max(0, target.guard - action.guardDamage);
       target.vx = hitDirection * action.knockback * 0.26;
       this.playSfx('shield');
@@ -840,6 +1053,12 @@ export class EngineFighter {
 
     damage = Math.round(damage * 10) / 10;
     target.currentHp = Math.max(0, target.currentHp - damage);
+    if (!projectile && damage > 0 && action.type === 'super' && supportsConfirmedCharacterSuperContact(action.identity)
+      && !action.visualConfirmedContact) {
+      // Cosmetic contact follows this accepted hit, including its original
+      // location after a KO or knockback. Drawing never selects another victim.
+      action.visualConfirmedContact = { confirmed: true, x: target.x, y: target.y };
+    }
     attacker.meter = clamp(attacker.meter + damage * (blocked ? 0.42 : 0.82), 0, 100);
     target.meter = clamp(target.meter + damage * 0.55, 0, 100);
     this.stats[attacker.side].damage += damage;
@@ -917,8 +1136,8 @@ export class EngineFighter {
       const next = team.fighters.find(candidate => candidate.currentHp > 0);
       if (next) {
         this.requestTag(side, next.index, true);
-      } else if (!this.finished) {
-        this.finish(side === 'cpu' ? 'victory' : 'defeat');
+      } else if (!this.finished && !this.roundTransition) {
+        this.endRound(side === 'cpu' ? 'victory' : 'defeat');
       }
     });
   }
@@ -932,16 +1151,121 @@ export class EngineFighter {
   finishByTime() {
     const playerRatio = this.getTeamHealthRatio('player');
     const cpuRatio = this.getTeamHealthRatio('cpu');
-    this.finish(playerRatio >= cpuRatio ? 'victory' : 'defeat', true);
+    this.endRound(playerRatio >= cpuRatio ? 'victory' : 'defeat', true);
+  }
+
+  freezeCombat() {
+    this.projectiles = [];
+    this.projectileVisualImpacts = [];
+    this.hitStop = 0;
+    this.aiMove = 0;
+    this.aiThink = 0;
+    this.aiGuardTimer = 0;
+    this.inputs = { player: {}, cpu: {} };
+    this.playerInput = this.inputs.player;
+    Object.values(this.teams).forEach(team => team.fighters.forEach(fighter => {
+      fighter.action = null;
+      fighter.vx = 0;
+      fighter.vy = 0;
+      fighter.guarding = false;
+      fighter.crouching = false;
+      fighter.y = this.groundY;
+    }));
+  }
+
+  queuePresentation(phase, winnerSide = null) {
+    const sides = phase === 'fatality' ? [winnerSide] : ['player', 'cpu'];
+    const entries = sides.map(side => {
+      const actorPhase = phase === 'roundResult'
+        ? (side === winnerSide ? 'roundVictory' : 'roundDefeat')
+        : phase === 'victory'
+          ? (side === winnerSide ? 'victory' : 'defeat')
+          : phase;
+      const fighter = this.getActive(side);
+      const identity = resolveCombatPresentation(fighter, actorPhase);
+      return { side, actorPhase, identity, script: identity.presentationScript || resolvePresentationScript(fighter, actorPhase) };
+    });
+    const duration = Math.max(0.6, ...entries.map(entry => entry.identity.duration));
+    this.presentationQueue.push({ phase, entries, duration, remaining: duration });
+  }
+
+  updatePresentation(dt) {
+    if (!this.presentation) return;
+    this.presentation.remaining = Math.max(0, this.presentation.remaining - dt);
+    if (this.presentation.remaining <= 0) this.presentation = this.presentationQueue.shift() || null;
+  }
+
+  endRound(result, timeout = false) {
+    if (this.finished || this.roundTransition || this.disposed) return false;
+    const winnerSide = result === 'victory' ? 'player' : 'cpu';
+    this.roundWins[winnerSide] += 1;
+    this.roundHistory.push({
+      round: this.roundNumber,
+      winnerSide,
+      timeout,
+      remainingTime: this.timer,
+      fieldSuperUsed: this.fieldSuperUsed,
+      opponentFieldSuperUsed: this.opponentFieldSuperUsed,
+      assistUsed: this.assists.player.used,
+      opponentAssistUsed: this.assists.cpu.used
+    });
+    this.freezeCombat();
+    if (this.roundWins[winnerSide] >= this.roundsToWin) {
+      this.finish(result, timeout);
+    } else {
+      this.roundTransition = { winnerSide, result, timeout };
+      this.announcement = `MANCHE ${this.roundNumber} — ${winnerSide === 'player' ? 'J1' : 'J2'} GAGNE`;
+      this.announcementTimer = 6;
+      this.queuePresentation('roundResult', winnerSide);
+      this.presentation = this.presentationQueue.shift();
+      this.playSfx('victory');
+    }
+    return true;
+  }
+
+  resetForNextRound() {
+    // Every round starts with full life/guard and empty personal meter.
+    // Field supers and assists receive their initial charge and one use again.
+    this.roundNumber += 1;
+    this.projectileVisualImpacts = [];
+    Object.entries(this.teams).forEach(([side, team]) => {
+      team.fighters = team.fighters.map((fighter, index) => createFighter(fighter, side, index, this.width, this.groundY));
+      team.activeIndex = 0;
+      team.tagCooldown = 0;
+      this.stats[side].currentCombo = 0;
+      this.stats[side].comboTimer = 0;
+      const field = this.getFieldSuperState(side);
+      this.setFieldSuperState(side, { charge: field.super ? 20 : 0, used: false });
+      const assist = this.getAssistState(side);
+      assist.charge = assist.assist ? 40 : 0;
+      assist.used = false;
+    });
+    this.roundTransition = null;
+    this.presentation = null;
+    this.timer = 99;
+    this.countdown = 3.2;
+    this.introPoseTimer = 0;
+    this.assistEvent = null;
+    this.koEffectEvent = null;
+    this.fieldSuperFlash = 0;
+    this.announcement = `MANCHE ${this.roundNumber}`;
+    this.announcementTimer = 3.2;
   }
 
   finish(result, timeout = false) {
+    if (this.finished || this.disposed) return false;
+    this.freezeCombat();
     this.finished = true;
     this.result = result;
     this.winnerSide = result === 'victory' ? 'player' : 'cpu';
-    this.completionDelay = 1.05;
+    this.completionDelay = 0.2;
     this.announcement = timeout ? (result === 'victory' ? 'TEMPS - AVANTAGE' : 'TEMPS - REPLI') : result === 'victory' ? 'VICTOIRE' : 'DEFAITE';
     this.announcementTimer = 4;
+    this.presentationQueue = [];
+    if (!timeout) this.queuePresentation('fatality', this.winnerSide);
+    this.queuePresentation('victory', this.winnerSide);
+    this.queuePresentation('outro', this.winnerSide);
+    this.presentation = this.presentationQueue.shift();
     const victoryPose = this.getCosmetics(this.winnerSide).victoryPose;
     if (victoryPose) {
       const duration = clamp(
@@ -959,6 +1283,15 @@ export class EngineFighter {
       };
     }
     this.playSfx(result === 'victory' ? 'victory' : 'defeat');
+    return true;
+  }
+
+  dispose() {
+    this.disposed = true;
+    this.freezeCombat();
+    this.presentation = null;
+    this.presentationQueue = [];
+    this.onComplete = () => {};
   }
 
   getSummary() {
@@ -979,30 +1312,39 @@ export class EngineFighter {
       result: this.result,
       grade,
       score,
-      duration: Math.round((99 - this.timer) * 10) / 10,
+      duration: Math.round(this.combatDuration * 10) / 10,
+      roundNumber: this.roundNumber,
+      roundsToWin: this.roundsToWin,
+      roundWins: { ...this.roundWins },
+      rounds: this.roundHistory.map(round => ({ ...round })),
+      resourcePolicy: 'Chaque manche : PV et garde restaurés ; jauge personnelle à 0 ; super de terrain à 20 %, assist à 40 %, un nouvel usage par manche.',
+      presentationFidelity: 'Adaptation en sprites et effets procéduraux des capacités du personnage ; cinématiques non certifiées 1:1.',
       remainingTime: Math.ceil(this.timer),
       damageDealt: Math.round(playerStats.damage),
       damageTaken: Math.round(playerStats.taken),
       knockouts: playerStats.kos,
       tags: playerStats.tags,
       maxCombo: playerStats.maxCombo,
-      fieldSuperUsed: this.fieldSuperUsed,
-      opponentFieldSuperUsed: this.opponentFieldSuperUsed,
-      assistUsed: this.assists.player.used,
-      opponentAssistUsed: this.assists.cpu.used,
+      fieldSuperUsed: this.fieldSuperUsed || this.roundHistory.some(round => round.fieldSuperUsed),
+      opponentFieldSuperUsed: this.opponentFieldSuperUsed || this.roundHistory.some(round => round.opponentFieldSuperUsed),
+      assistUsed: this.assists.player.used || this.roundHistory.some(round => round.assistUsed),
+      opponentAssistUsed: this.assists.cpu.used || this.roundHistory.some(round => round.opponentAssistUsed),
       opponentControl: this.opponentControl,
-      winnerSide: this.winnerSide || (this.result === 'victory' ? 'player' : 'cpu'),
+      winnerSide: this.winnerSide,
       victoryPose: this.getCosmetics(
         this.winnerSide || (this.result === 'victory' ? 'player' : 'cpu')
       ).victoryPose,
       survivingFighters: this.getTeam('player').fighters.filter(fighter => fighter.currentHp > 0).length,
-      rewards: this.result === 'victory'
+      rewards: !this.finished
+        ? { gold: 0, shards: 0, seasonXp: 0 }
+        : this.result === 'victory'
         ? { gold: 45 + playerStats.kos * 12, shards: 15 + ({ S: 12, A: 8, B: 5, C: 2 }[grade] || 0), seasonXp: 28 + playerStats.kos * 5 }
         : { gold: 0, shards: 0, seasonXp: 8 }
     };
   }
 
   getSnapshot() {
+    const presentation = this.getCurrentPresentation();
     const serializeTeam = side => {
       const team = this.getTeam(side);
       return {
@@ -1015,6 +1357,9 @@ export class EngineFighter {
           maxHp: fighter.maxHp,
           meter: fighter.meter,
           guard: fighter.guard,
+          personalSuper: resolveMeleeSuper(fighter),
+          abilityCooldowns: { ...fighter.abilityCooldowns },
+          activeAbility: fighter.action?.identity || null,
           active: fighter.index === team.activeIndex,
           ko: fighter.currentHp <= 0
         }))
@@ -1030,7 +1375,34 @@ export class EngineFighter {
       };
     };
     return {
-      phase: this.finished ? this.result : this.countdown > 0 ? 'countdown' : 'running',
+      phase: presentation?.phase || (this.finished ? this.result : this.countdown > 0 ? 'countdown' : 'running'),
+      matchResult: this.result,
+      roundNumber: this.roundNumber,
+      roundsToWin: this.roundsToWin,
+      roundWins: { ...this.roundWins },
+      roundResult: this.roundTransition ? { ...this.roundTransition } : null,
+      presentation: presentation ? {
+        phase: presentation.phase,
+        duration: presentation.duration,
+        remaining: presentation.remaining,
+        entries: presentation.entries.map(entry => ({
+          side: entry.side,
+          actorPhase: entry.actorPhase,
+          identity: entry.identity,
+          script: entry.script ? {
+            id: entry.script.id,
+            name: entry.script.name,
+            sourceAction: entry.script.sourceAction,
+            sourceReference: entry.script.sourceReference,
+            missingAssets: [...entry.script.missingAssets],
+            provenance: { ...entry.script.provenance },
+            sample: samplePresentationScript(entry.script, presentation.duration - presentation.remaining)
+          } : null,
+          fighterId: this.getActive(entry.side)?.id,
+          fighterName: this.getActive(entry.side)?.name,
+          universe: this.getActive(entry.side)?.universe
+        }))
+      } : null,
       timer: Math.ceil(this.timer),
       countdown: Math.ceil(this.countdown),
       announcement: this.announcementTimer > 0 ? this.announcement : '',
@@ -1081,16 +1453,39 @@ export class EngineFighter {
     };
   }
 
+  getCurrentPresentation() {
+    if (this.presentation) return this.presentation;
+    if (!this.finished && !this.roundTransition && this.countdown > 3.2) {
+      return {
+        phase: 'intro',
+        entries: this.characterIntros.map(entry => ({ ...entry, actorPhase: 'intro' })),
+        duration: this.characterIntroDuration,
+        remaining: this.countdown - 3.2
+      };
+    }
+    return null;
+  }
+
   draw(ctx, animTime) {
     this.drawArena(ctx, animTime);
+    if (this.getCurrentPresentation()) {
+      this.drawHud(ctx);
+      this.drawCharacterPresentation(ctx, animTime);
+      if (this.introPoseTimer > 0) this.drawIntroPoses(ctx);
+      if (this.victoryPoseEvent && this.presentation?.phase === 'victory') this.drawVictoryPose(ctx);
+      return;
+    }
     this.projectiles.forEach(projectile => this.drawProjectile(ctx, projectile));
+    this.projectileVisualImpacts.forEach(impact => this.drawProjectileImpact(ctx, impact));
     const player = this.getActive('player');
     const cpu = this.getActive('cpu');
     [player, cpu].filter(Boolean).forEach(fighter => {
       this.drawShadow(ctx, fighter);
       ctx.save();
       if (fighter.invulnerable > 0 && Math.floor(this.elapsed * 20) % 2 === 0) ctx.globalAlpha = 0.45;
-      drawPixelSprite(ctx, fighter.x, fighter.y, fighter, animTime, fighter.facing, 142, 'melee');
+      const catastrophe = this.getCatastropheSuperVisual(fighter);
+      const sprite = catastrophe ? { ...fighter, presentationPhase: 'super', presentationProgress: catastrophe.actionProgress } : fighter;
+      drawPixelSprite(ctx, catastrophe?.x ?? fighter.x, catastrophe?.feetY ?? fighter.y, sprite, animTime, catastrophe ? (fighter.action.facing ?? fighter.facing) : fighter.facing, 142, 'melee');
       ctx.restore();
     });
     if (this.fieldSuperFlash > 0) {
@@ -1105,7 +1500,395 @@ export class EngineFighter {
     this.drawHud(ctx);
     if (this.introPoseTimer > 0) this.drawIntroPoses(ctx);
     if (this.announcementTimer > 0) this.drawAnnouncement(ctx);
-    if (this.victoryPoseEvent) this.drawVictoryPose(ctx);
+    if (this.victoryPoseEvent && this.presentation?.phase === 'victory') this.drawVictoryPose(ctx);
+    ['player', 'cpu'].forEach(side => {
+      const fighter = this.getActive(side);
+      if (fighter?.action && (fighter.action.type === 'super' || fighter.action.authoredAbility)) this.drawPersonalSuper(ctx, fighter);
+    });
+  }
+
+  getCatastropheSuperVisual(fighter) {
+    const action = fighter?.action;
+    const identity = action?.identity;
+    if (action?.type !== 'super' || identity?.sourceHeroId !== 'barret_ff7' || identity.universe !== 'Final Fantasy VII') return null;
+    const impactProgress = action.hitAt / action.duration;
+    const landingProgress = Math.min(0.95, impactProgress + (1 - impactProgress) * 0.65);
+    const motion = sampleCatastropheMotion(action.elapsed / action.duration, impactProgress, landingProgress);
+    const facing = action.facing ?? fighter.facing;
+    const scale = 142 / 208;
+    const x = fighter.x + motion.x * facing * scale;
+    const feetY = fighter.y + motion.y * scale;
+    return {
+      x, feetY, actionProgress: motion.actionProgress,
+      geometry: getCatastropheBeamGeometry({ x, feetY, groundY: fighter.y, facing, reach: Math.min(action.range, this.width * 0.4), progress: motion.progress, scale })
+    };
+  }
+
+  drawCatastropheEffect(ctx, geometry, color) {
+    if (!geometry.charging && !geometry.firing) return;
+    const { muzzle, target, scale } = geometry;
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.fillStyle = rgba(color, 0.4);
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 24;
+    ctx.lineWidth = 3 * scale;
+    ctx.beginPath();
+    ctx.arc(muzzle.x, muzzle.y, (8 + geometry.charge * 16) * scale, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    if (geometry.firing) {
+      // Stroke the full diagonal to the ground, rather than rotating a
+      // horizontal rectangle. Its endpoint stays below the airborne muzzle.
+      ctx.globalAlpha *= 0.7 + Math.sin(geometry.fireProgress * Math.PI) * 0.3;
+      ctx.lineWidth = 32 * scale;
+      ctx.beginPath();
+      ctx.moveTo(muzzle.x, muzzle.y);
+      ctx.lineTo(target.x, target.y);
+      ctx.stroke();
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 8 * scale;
+      ctx.beginPath();
+      ctx.moveTo(muzzle.x, muzzle.y);
+      ctx.lineTo(target.x, target.y);
+      ctx.stroke();
+      ctx.strokeStyle = color;
+      ctx.fillStyle = rgba(color, 0.3);
+      ctx.lineWidth = 3 * scale;
+      ctx.beginPath();
+      ctx.ellipse(target.x, target.y, (30 + geometry.fireProgress * 36) * scale, (8 + geometry.fireProgress * 8) * scale, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  drawPersonalSuper(ctx, fighter) {
+    const action = fighter.action;
+    const catastrophe = this.getCatastropheSuperVisual(fighter);
+    if (catastrophe) {
+      this.drawCatastropheEffect(ctx, catastrophe.geometry, action.color);
+      return;
+    }
+    let visualTarget = this.getOpponent(fighter.side);
+    if (action.visualSupportTargetId) visualTarget = this.getTeam(fighter.side).fighters.find(member => member.id === action.visualSupportTargetId) || fighter;
+    else if (Number.isFinite(action.visualAimDistance)) visualTarget = {
+      x: fighter.x + (action.facing < 0 ? -1 : 1) * action.visualAimDistance, y: fighter.y
+    };
+    const projectileVisual = action.type === 'super' && supportsTrackedCharacterSuperVisual(action.identity) ? { phase: 'launch' } : null;
+    const contactVisual = supportsConfirmedCharacterSuperContact(action.identity) ? action.visualConfirmedContact || { confirmed: false } : null;
+    if (drawCharacterSuperVisuals(ctx, getCharacterSuperVisualState({ actor: fighter, profile: action.identity, action, target: visualTarget, height: 142, projectileVisual, contactVisual }))) return;
+    const progress = clamp(action.elapsed / action.duration, 0, 1);
+    const color = action.color;
+    const direction = action.facing ?? fighter.facing;
+    ctx.save();
+    ctx.globalAlpha = Math.sin(progress * Math.PI) * 0.75;
+    ctx.strokeStyle = color;
+    ctx.fillStyle = rgba(color, 0.18);
+    ctx.lineWidth = 4;
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 24;
+    const y = fighter.y - 62;
+    if (action.delivery === 'beam') {
+      const reach = Math.min(action.range, this.width);
+      ctx.fillRect(fighter.x, y - 14, direction * reach * progress, 28);
+      ctx.beginPath();
+      ctx.moveTo(fighter.x, y);
+      ctx.lineTo(fighter.x + direction * reach * progress, y);
+      ctx.stroke();
+    } else if (action.delivery === 'melee') {
+      const radius = Math.min(action.range, 170);
+      ctx.beginPath();
+      ctx.arc(fighter.x, y, radius, direction > 0 ? -1.2 : Math.PI - 1.2, direction > 0 ? 1.2 : Math.PI + 1.2);
+      ctx.stroke();
+    } else {
+      const radius = action.delivery === 'area' ? Math.min(action.range, 330) * progress : 38 + 42 * progress;
+      ctx.beginPath();
+      ctx.ellipse(fighter.x, y, radius, radius * 0.65, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  drawCharacterPresentation(ctx, animTime) {
+    const presentation = this.getCurrentPresentation();
+    const progress = clamp(1 - presentation.remaining / presentation.duration, 0, 1);
+    const finalScene = presentation.phase === 'fatality';
+    const phases = { intro: 'INTRO', roundResult: `MANCHE ${this.roundNumber}`, fatality: 'FINALE', victory: 'RÉSULTAT DU MATCH', outro: 'OUTRO' };
+    ctx.save();
+    ctx.fillStyle = finalScene ? 'rgba(0,0,8,0.82)' : 'rgba(0,0,8,0.72)';
+    ctx.fillRect(0, this.height * 0.28, this.width, this.height * 0.61);
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 18px "Share Tech Mono", monospace';
+    ctx.fillText(`${phases[presentation.phase]} · ${this.roundWins.player} – ${this.roundWins.cpu}`, this.width / 2, this.height * 0.34);
+    presentation.entries.forEach(({ side, actorPhase, identity, script }) => {
+      const fighter = this.getActive(side);
+      if (!fighter) return;
+      const anchorX = finalScene ? this.width / 2 : side === 'player' ? this.width * 0.25 : this.width * 0.75;
+      const sample = script ? samplePresentationScript(script, presentation.duration - presentation.remaining) : null;
+      const facing = side === 'player' ? 1 : -1;
+      const entranceOffset = actorPhase === 'intro' ? (side === 'player' ? -1 : 1) * 60 * (1 - progress) : 0;
+      const exitOffset = actorPhase === 'outro' ? (side === 'player' ? -1 : 1) * 100 * progress : 0;
+      const x = anchorX + (sample ? sample.x * facing : entranceOffset + exitOffset);
+      const losing = actorPhase === 'roundDefeat' || actorPhase === 'defeat';
+      const state = finalScene ? 'special' : losing ? 'hit' : actorPhase === 'intro' || actorPhase === 'outro' ? 'run' : 'idle';
+      const lift = losing ? 0 : Math.sin(progress * Math.PI) * (finalScene ? 18 : 5);
+      const feetY = this.height * 0.66 + (sample ? sample.y : -lift);
+      ctx.shadowColor = identity.color;
+      ctx.shadowBlur = 18;
+      ctx.fillStyle = rgba(identity.color, 0.2);
+      ctx.beginPath();
+      ctx.ellipse(x, this.height * 0.66, 100 + progress * 25, 19, 0, 0, Math.PI * 2);
+      ctx.fill();
+      const presentationFighter = {
+        ...fighter,
+        id: sample?.asset.actorId || fighter.id,
+        state: sample?.poseState || state,
+        stateElapsed: sample?.stateElapsed ?? presentation.duration - presentation.remaining,
+        presentationPhase: actorPhase,
+        presentationProgress: sample?.progress ?? progress,
+        presentationFrame: sample ? { row: sample.asset.row, col: sample.asset.col } : null
+      };
+      ctx.save();
+      ctx.globalAlpha *= sample?.opacity ?? 1;
+      if (sample) this.drawScriptedPresentationEffect(ctx, sample, identity, x, feetY, facing, actorPhase);
+      drawPixelSprite(ctx, x, feetY, presentationFighter, animTime, facing * (sample?.facing || 1), (finalScene ? 208 : 176) * (sample?.scale || 1), 'melee');
+      ctx.restore();
+      if (finalScene && !sample) {
+        const spec = this.getPersonalSuperSpec(fighter);
+        if (spec) this.drawPersonalSuper(ctx, {
+          ...fighter,
+          x,
+          y: feetY,
+          action: { ...spec, facing: side === 'player' ? 1 : -1, elapsed: progress * spec.duration }
+        });
+      }
+      ctx.fillStyle = identity.color;
+      ctx.font = 'bold 15px "Share Tech Mono", monospace';
+      ctx.fillText(String(fighter.name || fighter.id), anchorX, this.height * 0.7, this.width * 0.45);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '13px "Share Tech Mono", monospace';
+      ctx.fillText(script?.name || identity.name, anchorX, this.height * 0.75, this.width * 0.44);
+      ctx.fillStyle = '#b8c9d0';
+      ctx.font = '11px "Share Tech Mono", monospace';
+      ctx.fillText(`${fighter.universe} · ${identity.sourceAbility?.name || ''}`, anchorX, this.height * 0.8, this.width * 0.44);
+    });
+    ctx.restore();
+  }
+
+  drawScriptedPresentationEffect(ctx, sample, identity, x, feetY, facing, phase = 'fatality') {
+    if (!sample.effect.active || sample.effect.kind === 'none') return;
+    const kind = sample.effect.kind;
+    const characterVisual = getCharacterSuperVisualState({
+        actor: { x, y: feetY, sourceHeroId: identity.sourceHeroId, universe: identity.provenance?.sourceUniverse,
+          presentationPhase: phase, presentationProgress: sample.progress, presentationFrame: { row: sample.asset.row, col: sample.asset.col } },
+        profile: { sourceHeroId: identity.sourceHeroId, universe: identity.provenance?.sourceUniverse, name: identity.sourceAbility?.name, color: identity.color },
+        action: { duration: 1, hitAt: 0.5, elapsed: sample.progress, facing },
+        target: { x: x + facing * this.width * 0.3, y: feetY - sample.y },
+        height: 208, applyMotion: false
+      });
+    if (drawCharacterSuperVisuals(ctx, characterVisual)) return;
+    if (kind === 'catastrophe') {
+      this.drawCatastropheEffect(ctx, getCatastropheBeamGeometry({
+        x, feetY, groundY: feetY - sample.y, facing, reach: this.width * 0.4, progress: sample.progress
+      }), identity.color);
+      return;
+    }
+    const p = sample.effect.progress;
+    const color = identity.color;
+    const y = feetY - 82;
+    const pulse = Math.sin(Math.PI * p);
+    const handX = x + facing * 52;
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.fillStyle = rgba(color, 0.22);
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 18;
+    ctx.lineWidth = 3;
+    ctx.globalAlpha *= clamp(pulse * 1.5, 0, 1);
+    const circle = (cx, cy, radius) => {
+      ctx.beginPath();
+      ctx.arc(cx, cy, Math.max(0.1, radius), 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+    };
+    const beamKinds = ['kamehameha', 'final-flash', 'special-beam-cannon', 'all-creation', 'spartan-laser', 'railgun'];
+    if (beamKinds.includes(kind)) {
+      const narrow = kind === 'spartan-laser' || kind === 'railgun' || kind === 'special-beam-cannon';
+      const charge = clamp(p / 0.45, 0, 1);
+      circle(handX, y, 8 + charge * (narrow ? 12 : 25));
+      if (p > 0.45) {
+        const length = this.width * 0.4 * clamp((p - 0.45) * 6, 0, 1);
+        const thickness = narrow ? 10 : kind === 'final-flash' ? 42 : 30;
+        ctx.fillStyle = rgba(color, 0.5);
+        ctx.fillRect(handX, y - thickness / 2, facing * length, thickness);
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = narrow ? 2 : 6;
+        ctx.beginPath();
+        ctx.moveTo(handX, y);
+        ctx.lineTo(handX + facing * length, y);
+        ctx.stroke();
+        if (kind === 'special-beam-cannon') {
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          for (let t = 0; t <= 1; t += 0.025) {
+            const px = handX + facing * length * t;
+            const py = y + Math.sin(t * 30 - p * 12) * 17;
+            if (t === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+          }
+          ctx.stroke();
+        }
+      }
+    } else if (['rasengan', 'vanishing-rasengan', 'rasenshuriken'].includes(kind)) {
+      const thrown = kind === 'rasenshuriken';
+      const orbX = handX + (thrown ? facing * Math.max(0, p - 0.5) * 470 : 0);
+      if (kind === 'vanishing-rasengan' && p > 0.65) ctx.globalAlpha *= Math.max(0, 1 - (p - 0.65) * 5);
+      const radius = thrown ? 27 : 23;
+      circle(orbX, y, radius);
+      for (let index = 0; index < 4; index += 1) {
+        ctx.beginPath();
+        ctx.ellipse(orbX, y, radius * 0.95, radius * 0.3, p * 9 + index * 0.8, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      if (thrown) {
+        for (let index = 0; index < 4; index += 1) {
+          const angle = p * 12 + index * Math.PI / 2;
+          ctx.beginPath();
+          ctx.moveTo(orbX + Math.cos(angle) * 15, y + Math.sin(angle) * 15);
+          ctx.lineTo(orbX + Math.cos(angle) * 63, y + Math.sin(angle) * 63);
+          ctx.stroke();
+        }
+      }
+    } else if (['chidori', 'ride-lightning', 'snake-lightning', 'indra-arrow'].includes(kind)) {
+      const length = kind === 'snake-lightning' || kind === 'indra-arrow' ? this.width * 0.35 * p : 85;
+      ctx.beginPath();
+      for (let index = 0; index <= 16; index += 1) {
+        const px = handX + facing * length * index / 16;
+        const py = y + (kind === 'snake-lightning' ? Math.sin(index * 0.7 + p * 8) * 23 : ((index % 2) * 2 - 1) * (8 + Math.sin(index + p * 12) * 9));
+        if (index === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+      if (kind === 'indra-arrow') {
+        const end = handX + facing * length;
+        ctx.beginPath();
+        ctx.moveTo(end - facing * 22, y - 15);
+        ctx.lineTo(end, y);
+        ctx.lineTo(end - facing * 22, y + 15);
+        ctx.stroke();
+      }
+    } else if (['multi-slash', 'gunblade-slash', 'energy-sword', 'dagger-cross', 'heavy-blade', 'spear-dive'].includes(kind)) {
+      const count = kind === 'multi-slash' || kind === 'gunblade-slash' ? 7 : kind === 'dagger-cross' ? 2 : 1;
+      for (let index = 0; index < count; index += 1) {
+        const local = clamp(p * count - index, 0, 1);
+        if (local <= 0 || local >= 1) continue;
+        ctx.globalAlpha = Math.sin(local * Math.PI);
+        const cx = x + facing * (75 + (index % 3) * 35);
+        const cy = y - (index % 2) * 30;
+        const direction = index % 2 ? -1 : 1;
+        ctx.lineWidth = kind === 'heavy-blade' ? 10 : kind === 'energy-sword' ? 7 : 4;
+        ctx.beginPath();
+        ctx.moveTo(cx - facing * 55, cy - direction * 65);
+        ctx.lineTo(cx + facing * 55, cy + direction * 65);
+        ctx.stroke();
+      }
+    } else if (['gospel', 'oracle-light', 'dark-petals', 'first-aid', 'suture-threads'].includes(kind)) {
+      if (kind === 'first-aid') {
+        // A medical cross and a quiet pulse, without an attacking beam.
+        ctx.fillStyle = rgba(color, 0.75);
+        ctx.fillRect(x - 5, y - 30, 10, 45);
+        ctx.fillRect(x - 22, y - 13, 44, 10);
+      } else if (kind === 'suture-threads') {
+        for (let index = 0; index < 6; index += 1) {
+          ctx.beginPath();
+          ctx.moveTo(x - 80, y - 40 + index * 16);
+          ctx.quadraticCurveTo(x, y - 60 + Math.sin(p * 5 + index) * 45, x + 80, y - 40 + index * 16);
+          ctx.stroke();
+        }
+      } else {
+        for (let index = 0; index < 10; index += 1) {
+          const angle = index * Math.PI * 0.2 + p * 1.7;
+          const radius = 50 + 30 * p;
+          const px = x + Math.cos(angle) * radius;
+          const py = y + Math.sin(angle) * 40 - p * 30;
+          ctx.beginPath();
+          ctx.ellipse(px, py, 4, 11, angle, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.fillStyle = rgba(color, kind === 'dark-petals' ? 0.09 : 0.16);
+        ctx.fillRect(x - 60, feetY - 190, 120, 190);
+      }
+    } else if (kind === 'bfg-orb' || kind === 'rocket-launcher') {
+      const projectileX = handX + facing * Math.max(0, p - 0.3) * 430;
+      if (kind === 'bfg-orb') {
+        circle(projectileX, y, 22 + 10 * p);
+        for (let index = 0; index < 5; index += 1) {
+          const angle = index * Math.PI * 0.4 + p;
+          ctx.beginPath();
+          ctx.moveTo(projectileX, y);
+          ctx.lineTo(projectileX + Math.cos(angle) * 90, y + Math.sin(angle) * 70);
+          ctx.stroke();
+        }
+      } else {
+        ctx.fillStyle = '#d8d6c9';
+        ctx.fillRect(projectileX - 16, y - 5, 32, 10);
+        ctx.strokeStyle = '#ff9e43';
+        ctx.beginPath();
+        ctx.moveTo(projectileX - facing * 18, y);
+        ctx.lineTo(projectileX - facing * 75, y);
+        ctx.stroke();
+      }
+    } else if (kind === 'kamui') {
+      for (let index = 0; index < 4; index += 1) {
+        ctx.beginPath();
+        ctx.ellipse(handX + facing * 70, y, 12 + index * 14, 18 + index * 17, p * 5 + index * 0.2, 0, Math.PI * 1.6);
+        ctx.stroke();
+      }
+    } else if (kind === 'armiger') {
+      for (let index = 0; index < 7; index += 1) {
+        const angle = index * Math.PI * 2 / 7 + p * 2;
+        const cx = x + Math.cos(angle) * 100;
+        const cy = y + Math.sin(angle) * 75;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy + 25);
+        ctx.lineTo(cx + Math.cos(angle) * 16, cy - 25);
+        ctx.stroke();
+      }
+    } else if (kind === 'cosmo-stars' || kind === 'pulsar' || kind === 'wishing-star') {
+      for (let index = 0; index < 9; index += 1) {
+        const angle = index * Math.PI * 2 / 9;
+        const radius = 35 + p * 115;
+        circle(x + Math.cos(angle) * radius, y + Math.sin(angle) * radius * 0.6, kind === 'pulsar' ? 7 : 3);
+      }
+    } else if (kind === 'nexus-grid' || kind === 'convergence-lock') {
+      for (let index = 0; index < 4; index += 1) {
+        const size = 35 + index * 22 + p * 12;
+        ctx.strokeRect(x - size / 2, y - size / 2, size, size);
+      }
+    } else if (kind === 'fist-impact' || kind === 'tyrant-flame') {
+      const impact = clamp((p - 0.35) / 0.65, 0, 1);
+      if (kind === 'tyrant-flame') {
+        for (let index = 0; index < 8; index += 1) {
+          ctx.beginPath();
+          ctx.moveTo(handX + facing * index * 9, y + 25);
+          ctx.quadraticCurveTo(handX + facing * index * 12, y - 80 * pulse, handX + facing * (index * 9 + 7), y + 25);
+          ctx.stroke();
+        }
+      } else {
+        ctx.beginPath();
+        ctx.ellipse(handX + facing * 35, feetY - 4, 15 + impact * 95, 8 + impact * 25, 0, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    } else {
+      // Explicit non-attacking auras: ki preparation, limit preparation and
+      // a basic clone smoke cue while the missing form remains declared.
+      ctx.beginPath();
+      ctx.ellipse(x, y, 55 + pulse * 15, 95 + pulse * 8, 0, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    ctx.restore();
   }
 
   drawAssistEffect(ctx) {
@@ -1417,6 +2200,11 @@ export class EngineFighter {
   }
 
   drawProjectile(ctx, projectile) {
+    if (projectile.visualElapsed != null && drawCharacterSuperVisuals(ctx, getCharacterSuperVisualState({
+      actor: projectile.owner, profile: projectile.action.identity, action: projectile.action, height: 142,
+      projectileVisual: { phase: 'flight', x: projectile.x, y: projectile.y, elapsed: projectile.visualElapsed,
+        travelProgress: Math.abs(projectile.x - projectile.visualOriginX) / projectile.visualFlightDistance }
+    }))) return;
     ctx.save();
     ctx.fillStyle = projectile.color;
     ctx.shadowColor = projectile.color;
@@ -1427,6 +2215,13 @@ export class EngineFighter {
     ctx.globalAlpha = 0.35;
     ctx.fillRect(projectile.x - Math.sign(projectile.vx) * 70, projectile.y - 4, Math.sign(projectile.vx) * 70, 8);
     ctx.restore();
+  }
+
+  drawProjectileImpact(ctx, impact) {
+    drawCharacterSuperVisuals(ctx, getCharacterSuperVisualState({
+      actor: impact.owner, profile: impact.action.identity, action: impact.action, height: 142,
+      projectileVisual: { phase: 'impact', x: impact.x, y: impact.y, elapsed: impact.elapsed, duration: impact.duration }
+    }));
   }
 
   drawHud(ctx) {
@@ -1446,6 +2241,8 @@ export class EngineFighter {
     ctx.textAlign = 'center';
     ctx.font = 'bold 24px "Share Tech Mono", monospace';
     ctx.fillText(String(Math.ceil(this.timer)).padStart(2, '0'), this.width / 2, 49);
+    ctx.font = 'bold 11px "Share Tech Mono", monospace';
+    ctx.fillText(`M${this.roundNumber} · ${this.roundWins.player}–${this.roundWins.cpu}`, this.width / 2, 91);
     this.drawTeamPips(ctx, 'player', 28, 105, false);
     this.drawTeamPips(ctx, 'cpu', this.width - 28, 105, true);
     this.drawAssistIndicator(ctx, 'player', 28, 137, false);
@@ -1538,7 +2335,7 @@ export class EngineFighter {
     ctx.fillStyle = '#ffffff';
     ctx.shadowColor = '#ff4500';
     ctx.shadowBlur = 18;
-    ctx.fillText(this.countdown > 0 ? String(Math.ceil(this.countdown)) : this.announcement, this.width / 2, this.height * 0.38);
+    ctx.fillText(this.countdown > 0 ? String(Math.ceil(this.countdown)) : this.announcement, this.width / 2, this.height * 0.38, this.width * 0.92);
     ctx.restore();
   }
 }

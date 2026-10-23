@@ -1,0 +1,4759 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "chris_redfield",
+      "heroId": "chris_redfield",
+      "universe": "Resident Evil",
+      "name": "Chris Redfield",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/chris_redfield.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "d98641feb1105249604c1157ca8755bde39fea548bee62c12c19ea438d44eb87",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-original.png",
+      "sourceImageSha256": "7d4e98652c44ce05f3b6c7c8931355c39974fd785ba0d529debbe290498f07da",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/chris-redfield.png",
+      "referenceAssetSha256": "69c395511c288b9950af06a81c58728aab7d7aecdef23058b8cfaec513c2417a",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-references/chris_redfield-old-base.png",
+      "referenceUse": "Pinned old appearance image supplied to image_gen",
+      "nativeReferences": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-references/chris_redfield-old-base.png",
+          "sha256": "69c395511c288b9950af06a81c58728aab7d7aecdef23058b8cfaec513c2417a"
+        },
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-original.png",
+          "sha256": "7d4e98652c44ce05f3b6c7c8931355c39974fd785ba0d529debbe290498f07da"
+        }
+      ],
+      "sourceWork": "Resident Evil 5 (2009)",
+      "sourceReference": "Chris participe au ciblage du satellite contre Uroboros Aheri ; le dispositif est une arme scenarisee.",
+      "abilityName": "Satellite Laser",
+      "abilityEffect": "damage",
+      "characterVersion": "Chris Redfield, default BSAA field outfit in Resident Evil5(2009): muscular adult man, short brown hair, light stubble, olive tactical vest/webbing over a LIGHT TAN short-sleeved collared shirt, small BSAA shoulder patch, exposed muscular forearms, dark charcoal cargo trousers, brown-black tactical boots, black fingerless gloves, utility belt and visible M92F thigh holster. No later black turtleneck, winter coat, bionic armor or transformed form.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": true,
+      "originalSourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-original.png",
+      "originalSourceImageSha256": "7d4e98652c44ce05f3b6c7c8931355c39974fd785ba0d529debbe290498f07da",
+      "normalization": {
+        "method": "alpha-segmentation-one-body-calibration-per-native-source",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-original.png",
+            "sourceImageSha256": "7d4e98652c44ce05f3b6c7c8931355c39974fd785ba0d529debbe290498f07da",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 243
+            },
+            "scale": 0.8878504672897196,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 95,
+                  "top": 16,
+                  "width": 116,
+                  "height": 217,
+                  "pixels": 15005
+                },
+                "output": {
+                  "left": 114,
+                  "top": 51,
+                  "width": 103,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 296,
+                  "top": 24,
+                  "width": 123,
+                  "height": 209,
+                  "pixels": 14689
+                },
+                "output": {
+                  "left": 95,
+                  "top": 58,
+                  "width": 109,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 496,
+                  "top": 24,
+                  "width": 132,
+                  "height": 211,
+                  "pixels": 16104
+                },
+                "output": {
+                  "left": 76,
+                  "top": 57,
+                  "width": 117,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 708,
+                  "top": 23,
+                  "width": 125,
+                  "height": 211,
+                  "pixels": 13687
+                },
+                "output": {
+                  "left": 68,
+                  "top": 57,
+                  "width": 111,
+                  "height": 187
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 214,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 95,
+                "top": 17,
+                "width": 114,
+                "height": 214
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-original.png",
+            "sourceImageSha256": "7d4e98652c44ce05f3b6c7c8931355c39974fd785ba0d529debbe290498f07da",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 240,
+              "bottom": 473
+            },
+            "scale": 0.8878504672897196,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 84,
+                  "top": 248,
+                  "width": 124,
+                  "height": 220,
+                  "pixels": 15725
+                },
+                "output": {
+                  "left": 104,
+                  "top": 49,
+                  "width": 110,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 294,
+                  "top": 246,
+                  "width": 123,
+                  "height": 221,
+                  "pixels": 14907
+                },
+                "output": {
+                  "left": 94,
+                  "top": 48,
+                  "width": 109,
+                  "height": 196
+                }
+              },
+              {
+                "source": {
+                  "left": 494,
+                  "top": 258,
+                  "width": 134,
+                  "height": 209,
+                  "pixels": 15563
+                },
+                "output": {
+                  "left": 74,
+                  "top": 58,
+                  "width": 119,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 246,
+                  "width": 148,
+                  "height": 220,
+                  "pixels": 15115
+                },
+                "output": {
+                  "left": 71,
+                  "top": 49,
+                  "width": 131,
+                  "height": 195
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 214,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 95,
+                "top": 17,
+                "width": 114,
+                "height": 214
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-original.png",
+            "sourceImageSha256": "7d4e98652c44ce05f3b6c7c8931355c39974fd785ba0d529debbe290498f07da",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 472,
+              "bottom": 713
+            },
+            "scale": 0.8878504672897196,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 81,
+                  "top": 478,
+                  "width": 136,
+                  "height": 227,
+                  "pixels": 16740
+                },
+                "output": {
+                  "left": 101,
+                  "top": 42,
+                  "width": 121,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 280,
+                  "top": 483,
+                  "width": 130,
+                  "height": 222,
+                  "pixels": 15098
+                },
+                "output": {
+                  "left": 81,
+                  "top": 47,
+                  "width": 115,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 498,
+                  "top": 485,
+                  "width": 130,
+                  "height": 219,
+                  "pixels": 17335
+                },
+                "output": {
+                  "left": 78,
+                  "top": 50,
+                  "width": 115,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 679,
+                  "top": 494,
+                  "width": 176,
+                  "height": 207,
+                  "pixels": 15349
+                },
+                "output": {
+                  "left": 42,
+                  "top": 60,
+                  "width": 156,
+                  "height": 184
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 214,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 95,
+                "top": 17,
+                "width": 114,
+                "height": 214
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-original.png",
+            "sourceImageSha256": "7d4e98652c44ce05f3b6c7c8931355c39974fd785ba0d529debbe290498f07da",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 705,
+              "bottom": 911
+            },
+            "scale": 0.8878504672897196,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 72,
+                  "top": 714,
+                  "width": 145,
+                  "height": 190,
+                  "pixels": 14400
+                },
+                "output": {
+                  "left": 93,
+                  "top": 75,
+                  "width": 129,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 290,
+                  "top": 738,
+                  "width": 129,
+                  "height": 163,
+                  "pixels": 13019
+                },
+                "output": {
+                  "left": 90,
+                  "top": 99,
+                  "width": 115,
+                  "height": 145
+                }
+              },
+              {
+                "source": {
+                  "left": 467,
+                  "top": 743,
+                  "width": 178,
+                  "height": 158,
+                  "pixels": 16014
+                },
+                "output": {
+                  "left": 50,
+                  "top": 104,
+                  "width": 158,
+                  "height": 140
+                }
+              },
+              {
+                "source": {
+                  "left": 690,
+                  "top": 715,
+                  "width": 144,
+                  "height": 189,
+                  "pixels": 14370
+                },
+                "output": {
+                  "left": 52,
+                  "top": 76,
+                  "width": 128,
+                  "height": 168
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 214,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 95,
+                "top": 17,
+                "width": 114,
+                "height": 214
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-original.png",
+            "sourceImageSha256": "7d4e98652c44ce05f3b6c7c8931355c39974fd785ba0d529debbe290498f07da",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 909,
+              "bottom": 1148
+            },
+            "scale": 0.8878504672897196,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 70,
+                  "top": 915,
+                  "width": 126,
+                  "height": 227,
+                  "pixels": 16739
+                },
+                "output": {
+                  "left": 92,
+                  "top": 42,
+                  "width": 112,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 275,
+                  "top": 917,
+                  "width": 132,
+                  "height": 224,
+                  "pixels": 16706
+                },
+                "output": {
+                  "left": 77,
+                  "top": 45,
+                  "width": 117,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 462,
+                  "top": 922,
+                  "width": 186,
+                  "height": 218,
+                  "pixels": 17821
+                },
+                "output": {
+                  "left": 46,
+                  "top": 50,
+                  "width": 165,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 719,
+                  "top": 924,
+                  "width": 130,
+                  "height": 219,
+                  "pixels": 15406
+                },
+                "output": {
+                  "left": 77,
+                  "top": 50,
+                  "width": 115,
+                  "height": 194
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 214,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 95,
+                "top": 17,
+                "width": 114,
+                "height": 214
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-original.png",
+            "sourceImageSha256": "7d4e98652c44ce05f3b6c7c8931355c39974fd785ba0d529debbe290498f07da",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1145,
+              "bottom": 1382
+            },
+            "scale": 0.8878504672897196,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 72,
+                  "top": 1150,
+                  "width": 118,
+                  "height": 226,
+                  "pixels": 16162
+                },
+                "output": {
+                  "left": 93,
+                  "top": 43,
+                  "width": 105,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 295,
+                  "top": 1151,
+                  "width": 122,
+                  "height": 225,
+                  "pixels": 16295
+                },
+                "output": {
+                  "left": 95,
+                  "top": 44,
+                  "width": 108,
+                  "height": 200
+                }
+              },
+              {
+                "source": {
+                  "left": 510,
+                  "top": 1149,
+                  "width": 116,
+                  "height": 227,
+                  "pixels": 16356
+                },
+                "output": {
+                  "left": 89,
+                  "top": 42,
+                  "width": 103,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 725,
+                  "top": 1151,
+                  "width": 109,
+                  "height": 225,
+                  "pixels": 15819
+                },
+                "output": {
+                  "left": 83,
+                  "top": 44,
+                  "width": 97,
+                  "height": 200
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 214,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 95,
+                "top": 17,
+                "width": 114,
+                "height": 214
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-original.png",
+            "sourceImageSha256": "7d4e98652c44ce05f3b6c7c8931355c39974fd785ba0d529debbe290498f07da",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1377,
+              "bottom": 1585
+            },
+            "scale": 0.8878504672897196,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 73,
+                  "top": 1383,
+                  "width": 118,
+                  "height": 200,
+                  "pixels": 14219
+                },
+                "output": {
+                  "left": 94,
+                  "top": 66,
+                  "width": 105,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 278,
+                  "top": 1412,
+                  "width": 133,
+                  "height": 162,
+                  "pixels": 13579
+                },
+                "output": {
+                  "left": 80,
+                  "top": 100,
+                  "width": 118,
+                  "height": 144
+                }
+              },
+              {
+                "source": {
+                  "left": 503,
+                  "top": 1441,
+                  "width": 133,
+                  "height": 136,
+                  "pixels": 11811
+                },
+                "output": {
+                  "left": 82,
+                  "top": 123,
+                  "width": 118,
+                  "height": 121
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 1397,
+                  "width": 146,
+                  "height": 181,
+                  "pixels": 14589
+                },
+                "output": {
+                  "left": 57,
+                  "top": 83,
+                  "width": 130,
+                  "height": 161
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 214,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 95,
+                "top": 17,
+                "width": 114,
+                "height": 214
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/chris_redfield-super-correction.png",
+            "sourceImageSha256": "3363c1b0b2718d2a55988a999a1a4904d903db6f52ba045a72a666d94f594e16",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 724
+            },
+            "scale": 0.3225806451612903,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 151,
+                  "top": 85,
+                  "width": 310,
+                  "height": 592,
+                  "pixels": 107577
+                },
+                "output": {
+                  "left": 89,
+                  "top": 53,
+                  "width": 100,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 657,
+                  "top": 104,
+                  "width": 359,
+                  "height": 573,
+                  "pixels": 109062
+                },
+                "output": {
+                  "left": 77,
+                  "top": 59,
+                  "width": 116,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 1109,
+                  "top": 151,
+                  "width": 464,
+                  "height": 523,
+                  "pixels": 110848
+                },
+                "output": {
+                  "left": 48,
+                  "top": 75,
+                  "width": 150,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 1706,
+                  "top": 85,
+                  "width": 325,
+                  "height": 592,
+                  "pixels": 105316
+                },
+                "output": {
+                  "left": 65,
+                  "top": 53,
+                  "width": 105,
+                  "height": 191
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 589,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 151,
+                "top": 86,
+                "width": 308,
+                "height": 589
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "fourStatesDistinct": false,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e58dae867a0f20a53db6f0f59b05a9240ee64b34b4cabdd18dbfd70a9c2e22b9",
+              "1439e5586d88c8dd7e1ba98d42f3b289537948b652d1707c985fdcd0f4a4af04",
+              "753e0cd2fc2f90d42bd43af69297bac7ef0d699bd55c444d883c96ab26ba47a0",
+              "4c80da7f26afb364622b638b21ff458f3e8ee08a6864e49807c92cd66787779a"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "a54cc2feb728d2610aa18047eb17ced172a97fc1372c6453115b370e1d8edf96",
+              "d39dada2dbe5e66607a34fb76f9244a2afaa6dd706a7451092e07e06ac158106",
+              "55714c0525ac2cb0fc597069404ab55bba3afd8819d7386aefeef7ac52de29d0",
+              "7859cb1140d7d4f3d0a507f6909f30928619331f1fb388db32059f7e4effa6d2"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ea50a697f8508b5e67be081b086a112c8786772ab48dc62f2f75c6cce37308dd",
+              "ef6d1e114ed2b225a20f28bc60acb1614e38c1ad8674ce35b96677fd12f56bd6",
+              "993b114103c33e1858b0d145c4839e305b64e2ccc12af1b5cc5a561df49d81f2",
+              "1fed9ed3724b9ce0d80ed792fafa3a8782adfd7f8df7b10850f28534db3d5efc"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ffdbe6db7aca8a14afb7069c70ae3a6c1f06b7505edd0229232122c2dcd6b21a",
+              "07ff7d9f05cc4b8f3ba295137d38440a3846f77b7a470753ae5244a1686570d2",
+              "226550a61bf0b99fd58f9d32fcb04324b4c6a5b34efd9dec869a29f32503bbf0",
+              "54d230355b1beb28ed2c38bbc2fa7c66ac1e51f8a81f82fecf33dfda53a28485"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9a94f5f6abfa22f0bdff565d77de6671510cc082606b229ba4831721ee23757c",
+              "4bdb0ae24fada1d21527d04bca89dde485f17fbeeab5adafae434c4bfcc5fe5c",
+              "260b686f554722d56107c954a5dca974f9ecfd293d44274b7d470058ee00643d",
+              "24f4704a965d6414fe5f9433a4c8e8f57d6d0ae45659dc255d1d0a7c4fb209c5"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "18b5cd1ee859bc55d7d2837f646f62825cba6ad76ace4900a6b7a6ca3819c218",
+              "4bbe1da0ca2090ecd6bf5d6bb965e7349b7ea56ffc8e3df8cb71a290210a68ca",
+              "3d224adfff2503aacf32b873e3d9a14ab553b20804a449a3a3d2611dad45faeb",
+              "87a93f0fa9117f4ef17fef40226646251390d26976d67d378128dfcddca7b1b3"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ac7bc0259ce0c6aa1158e16686913112c600cd43eb77893519c1a7d3e7591a6b",
+              "b670518809ce21cabc5391e180b21594abdebb2c6bc91f097499c097edd88691",
+              "21d1f34632ec149627bab34bbf54ad28eb47c3c45aa9923ac53f8dc6b11c6cd6",
+              "00478e06a02d273dc8459304fd8d2f6c6feff523ae56ed34c68db3eece57af77"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "893c1f1ec2bed2ad2914f16edb11ee839acdcf7adb6e6fa1cb18ac95917c77b5",
+              "99d2301284a1671b6a8cba18cc9781b12c05d8a6921a04d884e80de3754d8dce",
+              "c6d49232dd83a299b6a72786d9b34b20f3974a0fda885ffe6e7ce0d51a1817d3",
+              "3ecb0faf595f4b31bcdb948492a958907e460b4136cf9557acfef6befb2d8413"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "Purpose-drawn Resident Evil version-specific adaptation. Finales display the named equipment without a victim or execution. Satellite Laser is a handheld designator plus an external orbital strike. No official animation-frame, exact source timing or1:1 certification."
+      }
+    },
+    {
+      "id": "claire_redfield",
+      "heroId": "claire_redfield",
+      "universe": "Resident Evil",
+      "name": "Claire Redfield",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/claire_redfield.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "8ef689c2c3d5b9dcd324339111920d1d71e221a9a7887355aab40af9702823a0",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-original.png",
+      "sourceImageSha256": "370864fa5aa4200b3a925abd0e554ecd241b2b2764e8a4b535ed875f7a2ef856",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/claire-redfield.png",
+      "referenceAssetSha256": "17127ecfc80bc1b866f0b23cfc14335494373e531137159c49c0bfc5691d8ecb",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-references/claire_redfield-old-base.png",
+      "referenceUse": "Pinned old appearance image supplied to image_gen",
+      "nativeReferences": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-references/claire_redfield-old-base.png",
+          "sha256": "17127ecfc80bc1b866f0b23cfc14335494373e531137159c49c0bfc5691d8ecb"
+        },
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-original.png",
+          "sha256": "370864fa5aa4200b3a925abd0e554ecd241b2b2764e8a4b535ed875f7a2ef856"
+        }
+      ],
+      "sourceWork": "Resident Evil 2 remake (2019)",
+      "sourceReference": "Le lance-grenades GM 79 de Claire peut tirer des munitions incendiaires.",
+      "abilityName": "GM 79 Flame Round",
+      "abilityEffect": "damage",
+      "characterVersion": "Claire Redfield, default Resident Evil2 remake2019: adult woman with auburn hair in a high practical ponytail, red leather motorcycle jacket with sleeves pushed up, dark charcoal scoop-neck top, fitted dark blue denim jeans, brown leather belt/hip holster and brown lace boots, dark fingerless gloves. No1998 biker shorts, no Revelations outfit, no superhuman armor.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": true,
+      "originalSourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-original.png",
+      "originalSourceImageSha256": "370864fa5aa4200b3a925abd0e554ecd241b2b2764e8a4b535ed875f7a2ef856",
+      "normalization": {
+        "method": "alpha-segmentation-one-body-calibration-per-native-source",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-original.png",
+            "sourceImageSha256": "370864fa5aa4200b3a925abd0e554ecd241b2b2764e8a4b535ed875f7a2ef856",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 255
+            },
+            "scale": 0.8154506437768241,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 82,
+                  "top": 12,
+                  "width": 100,
+                  "height": 235,
+                  "pixels": 14581
+                },
+                "output": {
+                  "left": 104,
+                  "top": 52,
+                  "width": 82,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 291,
+                  "top": 12,
+                  "width": 114,
+                  "height": 235,
+                  "pixels": 14367
+                },
+                "output": {
+                  "left": 94,
+                  "top": 52,
+                  "width": 93,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 493,
+                  "top": 23,
+                  "width": 122,
+                  "height": 225,
+                  "pixels": 15192
+                },
+                "output": {
+                  "left": 78,
+                  "top": 61,
+                  "width": 99,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 30,
+                  "width": 157,
+                  "height": 217,
+                  "pixels": 14379
+                },
+                "output": {
+                  "left": 76,
+                  "top": 67,
+                  "width": 128,
+                  "height": 177
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 233,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 82,
+                "top": 13,
+                "width": 100,
+                "height": 233
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-original.png",
+            "sourceImageSha256": "370864fa5aa4200b3a925abd0e554ecd241b2b2764e8a4b535ed875f7a2ef856",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 253,
+              "bottom": 503
+            },
+            "scale": 0.8154506437768241,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 73,
+                  "top": 259,
+                  "width": 108,
+                  "height": 238,
+                  "pixels": 15379
+                },
+                "output": {
+                  "left": 97,
+                  "top": 50,
+                  "width": 88,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 296,
+                  "top": 262,
+                  "width": 104,
+                  "height": 235,
+                  "pixels": 13979
+                },
+                "output": {
+                  "left": 98,
+                  "top": 52,
+                  "width": 85,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 504,
+                  "top": 260,
+                  "width": 116,
+                  "height": 237,
+                  "pixels": 14317
+                },
+                "output": {
+                  "left": 87,
+                  "top": 51,
+                  "width": 95,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 716,
+                  "top": 265,
+                  "width": 151,
+                  "height": 232,
+                  "pixels": 15556
+                },
+                "output": {
+                  "left": 79,
+                  "top": 55,
+                  "width": 123,
+                  "height": 189
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 233,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 82,
+                "top": 13,
+                "width": 100,
+                "height": 233
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-original.png",
+            "sourceImageSha256": "370864fa5aa4200b3a925abd0e554ecd241b2b2764e8a4b535ed875f7a2ef856",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 501,
+              "bottom": 746
+            },
+            "scale": 0.8154506437768241,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 66,
+                  "top": 508,
+                  "width": 117,
+                  "height": 237,
+                  "pixels": 14832
+                },
+                "output": {
+                  "left": 91,
+                  "top": 51,
+                  "width": 95,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 286,
+                  "top": 512,
+                  "width": 110,
+                  "height": 232,
+                  "pixels": 16019
+                },
+                "output": {
+                  "left": 90,
+                  "top": 55,
+                  "width": 90,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 502,
+                  "top": 516,
+                  "width": 117,
+                  "height": 228,
+                  "pixels": 14663
+                },
+                "output": {
+                  "left": 85,
+                  "top": 58,
+                  "width": 95,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 522,
+                  "width": 132,
+                  "height": 221,
+                  "pixels": 13891
+                },
+                "output": {
+                  "left": 76,
+                  "top": 64,
+                  "width": 108,
+                  "height": 180
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 233,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 82,
+                "top": 13,
+                "width": 100,
+                "height": 233
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-round-defeat-correction.png",
+            "sourceImageSha256": "53a315d1d74aa6c8b1c2c696eec920329653faab04200006d580aae600b632c2",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 724
+            },
+            "scale": 0.2923076923076923,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 127,
+                  "top": 35,
+                  "width": 338,
+                  "height": 654,
+                  "pixels": 120892
+                },
+                "output": {
+                  "left": 86,
+                  "top": 53,
+                  "width": 99,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 633,
+                  "top": 128,
+                  "width": 362,
+                  "height": 554,
+                  "pixels": 102604
+                },
+                "output": {
+                  "left": 75,
+                  "top": 82,
+                  "width": 106,
+                  "height": 162
+                }
+              },
+              {
+                "source": {
+                  "left": 1164,
+                  "top": 218,
+                  "width": 392,
+                  "height": 464,
+                  "pixels": 111222
+                },
+                "output": {
+                  "left": 71,
+                  "top": 108,
+                  "width": 115,
+                  "height": 136
+                }
+              },
+              {
+                "source": {
+                  "left": 1705,
+                  "top": 115,
+                  "width": 379,
+                  "height": 567,
+                  "pixels": 110164
+                },
+                "output": {
+                  "left": 71,
+                  "top": 78,
+                  "width": 111,
+                  "height": 166
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 650,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 127,
+                "top": 37,
+                "width": 337,
+                "height": 650
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-original.png",
+            "sourceImageSha256": "370864fa5aa4200b3a925abd0e554ecd241b2b2764e8a4b535ed875f7a2ef856",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 741,
+              "bottom": 983
+            },
+            "scale": 0.8154506437768241,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 58,
+                  "top": 789,
+                  "width": 135,
+                  "height": 182,
+                  "pixels": 14888
+                },
+                "output": {
+                  "left": 85,
+                  "top": 96,
+                  "width": 110,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 256,
+                  "top": 752,
+                  "width": 188,
+                  "height": 225,
+                  "pixels": 17030
+                },
+                "output": {
+                  "left": 66,
+                  "top": 61,
+                  "width": 153,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 476,
+                  "top": 776,
+                  "width": 191,
+                  "height": 196,
+                  "pixels": 17307
+                },
+                "output": {
+                  "left": 64,
+                  "top": 84,
+                  "width": 156,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 724,
+                  "top": 743,
+                  "width": 124,
+                  "height": 234,
+                  "pixels": 15706
+                },
+                "output": {
+                  "left": 85,
+                  "top": 53,
+                  "width": 101,
+                  "height": 191
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 233,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 82,
+                "top": 13,
+                "width": 100,
+                "height": 233
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-original.png",
+            "sourceImageSha256": "370864fa5aa4200b3a925abd0e554ecd241b2b2764e8a4b535ed875f7a2ef856",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 979,
+              "bottom": 1244
+            },
+            "scale": 0.8154506437768241,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 59,
+                  "top": 984,
+                  "width": 142,
+                  "height": 205,
+                  "pixels": 17252
+                },
+                "output": {
+                  "left": 86,
+                  "top": 77,
+                  "width": 116,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 282,
+                  "top": 986,
+                  "width": 133,
+                  "height": 253,
+                  "pixels": 17740
+                },
+                "output": {
+                  "left": 87,
+                  "top": 38,
+                  "width": 108,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 504,
+                  "top": 986,
+                  "width": 130,
+                  "height": 253,
+                  "pixels": 16524
+                },
+                "output": {
+                  "left": 87,
+                  "top": 38,
+                  "width": 106,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 720,
+                  "top": 994,
+                  "width": 139,
+                  "height": 245,
+                  "pixels": 16762
+                },
+                "output": {
+                  "left": 82,
+                  "top": 44,
+                  "width": 113,
+                  "height": 200
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 233,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 82,
+                "top": 13,
+                "width": 100,
+                "height": 233
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-original.png",
+            "sourceImageSha256": "370864fa5aa4200b3a925abd0e554ecd241b2b2764e8a4b535ed875f7a2ef856",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1233,
+              "bottom": 1488
+            },
+            "scale": 0.8154506437768241,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 64,
+                  "top": 1234,
+                  "width": 121,
+                  "height": 246,
+                  "pixels": 16201
+                },
+                "output": {
+                  "left": 90,
+                  "top": 43,
+                  "width": 99,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 272,
+                  "top": 1287,
+                  "width": 141,
+                  "height": 190,
+                  "pixels": 16264
+                },
+                "output": {
+                  "left": 79,
+                  "top": 89,
+                  "width": 115,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 503,
+                  "top": 1304,
+                  "width": 125,
+                  "height": 173,
+                  "pixels": 15099
+                },
+                "output": {
+                  "left": 86,
+                  "top": 103,
+                  "width": 102,
+                  "height": 141
+                }
+              },
+              {
+                "source": {
+                  "left": 719,
+                  "top": 1243,
+                  "width": 124,
+                  "height": 238,
+                  "pixels": 15449
+                },
+                "output": {
+                  "left": 81,
+                  "top": 50,
+                  "width": 101,
+                  "height": 194
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 233,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 82,
+                "top": 13,
+                "width": 100,
+                "height": 233
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/claire_redfield-original.png",
+            "sourceImageSha256": "370864fa5aa4200b3a925abd0e554ecd241b2b2764e8a4b535ed875f7a2ef856",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1487,
+              "bottom": 1774
+            },
+            "scale": 0.8154506437768241,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 1519,
+                  "width": 147,
+                  "height": 222,
+                  "pixels": 18738
+                },
+                "output": {
+                  "left": 80,
+                  "top": 63,
+                  "width": 120,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 262,
+                  "top": 1495,
+                  "width": 185,
+                  "height": 247,
+                  "pixels": 18799
+                },
+                "output": {
+                  "left": 70,
+                  "top": 43,
+                  "width": 151,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 488,
+                  "top": 1501,
+                  "width": 182,
+                  "height": 242,
+                  "pixels": 18625
+                },
+                "output": {
+                  "left": 74,
+                  "top": 47,
+                  "width": 148,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 708,
+                  "top": 1495,
+                  "width": 155,
+                  "height": 249,
+                  "pixels": 18247
+                },
+                "output": {
+                  "left": 72,
+                  "top": 41,
+                  "width": 126,
+                  "height": 203
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 233,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 82,
+                "top": 13,
+                "width": 100,
+                "height": 233
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "fourStatesDistinct": false,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ec1840a9567341c80e9d66a42db9c0ec39c420545b463218e2e8f938e1fb8440",
+              "04726f26e8ef4420c91e24cecde3d1b8849c80da55d7527a2d231b8a9cf136ee",
+              "3aef7cc486075a1b3317caae405851a39a6248eb54f67d14300b90a7f9b8269b",
+              "96754f226119ab1e35841d50b3d95de02fd3c9b7a462fbd55c9034ebba8b4281"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "52f010fd31764cce2c0cfead9e9fe1d26b667d93b3cf4eb42de5e7cdb2ce1060",
+              "ba38dc93324e0308e09fb8211e2988d11d7fc5fc26fba813d33be0777ee5692c",
+              "2c6a1b31b9591b8477e9438b86c9733c9ed379e300d6b40abe22dfc86f4188fa",
+              "f071968c05d50be054baf3996383d4d0751b2b5fa998dd65abd960244db0fdb4"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "baab4480b71b016567161940b359b71e7ed6473dda6df85f4e531b317426958d",
+              "277cabced5928859b669a1beae93c2ae85bc71ba51977df81f374e7dc3ce3bff",
+              "86be2984cf2a220f1f398aa66d33b913126caf81b09acd9acba51a7390cae3ac",
+              "de857e9d499b7a8689e356d979cba5a1a7f301bf89646f07788662a1f0083e4d"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9980ec9e2c6b0339a6335f7c6be06260d44b326777e9913b6714d9981892315e",
+              "71eedb9a040495540ae04e3af3d2b448488341c3b7dd36db84fb35941cd7df48",
+              "7f794b78a96cf8fe0d5943b370aac4023dfeeddb75b5c99698e24bd90cceeeaa",
+              "aa08ac5f966d1efb615a22650c61aa792d5196a878bc11212e3036c8c511f07c"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2f541e997130e34e577c652590c475b4f8cef5ba9978f9113a81f0cebeae6d8c",
+              "46b647a83cf92f48a4308600d3ac4fd3896884eb418c1582b654994dede2970b",
+              "ea61ec982dec2d35eeed80753f175fb19a79a95c832adc9aeb6ae984a271e308",
+              "4bae8dbf3a8a7b812d028ad5f7e371604e296152196e25b8d221ff2375ad6f06"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5bee64d6f4e50415c0ca4535178bbf21569e8ca6772d319eac58bb9d05f6da24",
+              "4047462a8648a3905b66c657ebc89a8cac7edae79288a7ab746cab8c3c7497b5",
+              "bca5aff5018e606c328ebe90667e44cc3dca91af3faf5002338d4017566c2af2",
+              "eb8d44709512fefb77b9ec4fafb01e1e838a479bdaabfafdd1e08fa0c2115886"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b35e1dd3d425cdc9145dd45d09cef8e71053a52cb645c11ab4733792b2559fdb",
+              "3f782dfee0d5864c35a09342957cca2e8755df9a5a59048a784d0b180be5e119",
+              "54949090cfd3a7cc292ce61fbb543db49d7c60a45c17475e26e7417c801ef690",
+              "1abfe5aae29f49a34054b36ae4bedfdb371c13c2d4a007f7a65063c1ec887028"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4cca1aa2dabaf83fe598f069682513f97f99a167289e85ce8e391cc6c1cd87de",
+              "eedf3422daff55056c795d213e904c19797de89e24c29b4d056eff4dc5c83159",
+              "c62f9edc509b232491c2a4ac34f9e62f9a61d8c1e7a90789d6e0916886d9ada7",
+              "fe2c46da41a4e8c79dabc007172086fbd0cdd159083e7c02420c07384efa079d"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "Purpose-drawn Resident Evil version-specific adaptation. Finales display the named equipment without a victim or execution. Satellite Laser is a handheld designator plus an external orbital strike. No official animation-frame, exact source timing or1:1 certification."
+      }
+    },
+    {
+      "id": "ada_wong",
+      "heroId": "ada_wong",
+      "universe": "Resident Evil",
+      "name": "Ada Wong",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/ada_wong.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "4e7b1aef30128740168b7c409606e65aa4b2bce0a9d887b9a0ca7a7d1d040093",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/ada_wong-original.png",
+      "sourceImageSha256": "943efd30d91ad77aa3382abc71f1b121286fbc6eea1cd0d3c20bebc0d04da917",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/ada-wong.png",
+      "referenceAssetSha256": "a8924494038863555230cddda6412a4d9e530905219dd9a56e368da965896b89",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-references/ada_wong-old-base.png",
+      "referenceUse": "Old defective reference inspected and rejected, not supplied to image_gen",
+      "nativeReferences": [],
+      "sourceWork": "Resident Evil 4: Separate Ways (2005)",
+      "sourceReference": "Ada utilise une arbalete avec carreaux explosifs ; le tir reste une attaque de projectile.",
+      "abilityName": "Explosive Crossbow",
+      "abilityEffect": "damage",
+      "characterVersion": "Ada Wong, an ADULT woman in Resident Evil4 Separate Ways ORIGINAL2005: short sleek black bob, elegant red HALTER-NECK full-length Chinese-style dress with bare shoulders and BARE ARMS, subtle gold butterfly embroidery, high side slit with a practical black thigh holster/strap, black high-heeled shoes and black choker. Fully clothed, neutral tactical presentation, no sexualized camera. No long sleeves, red sweater, black tights, boots,2023 grapple equipment or costume mixing.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-segmentation-one-body-calibration-per-native-source",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/ada_wong-original.png",
+            "sourceImageSha256": "943efd30d91ad77aa3382abc71f1b121286fbc6eea1cd0d3c20bebc0d04da917",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 225
+            },
+            "scale": 0.8755760368663594,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 74,
+                  "top": 1,
+                  "width": 88,
+                  "height": 222,
+                  "pixels": 11551
+                },
+                "output": {
+                  "left": 96,
+                  "top": 50,
+                  "width": 77,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 285,
+                  "top": 3,
+                  "width": 88,
+                  "height": 220,
+                  "pixels": 10970
+                },
+                "output": {
+                  "left": 86,
+                  "top": 51,
+                  "width": 77,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 486,
+                  "top": 18,
+                  "width": 122,
+                  "height": 191,
+                  "pixels": 11619
+                },
+                "output": {
+                  "left": 68,
+                  "top": 77,
+                  "width": 107,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 39,
+                  "width": 148,
+                  "height": 169,
+                  "pixels": 12535
+                },
+                "output": {
+                  "left": 72,
+                  "top": 96,
+                  "width": 130,
+                  "height": 148
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 217,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 76,
+                "top": 4,
+                "width": 86,
+                "height": 217
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/ada_wong-original.png",
+            "sourceImageSha256": "943efd30d91ad77aa3382abc71f1b121286fbc6eea1cd0d3c20bebc0d04da917",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 221,
+              "bottom": 451
+            },
+            "scale": 0.8755760368663594,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 75,
+                  "top": 227,
+                  "width": 88,
+                  "height": 220,
+                  "pixels": 11306
+                },
+                "output": {
+                  "left": 97,
+                  "top": 51,
+                  "width": 77,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 295,
+                  "top": 233,
+                  "width": 90,
+                  "height": 214,
+                  "pixels": 11175
+                },
+                "output": {
+                  "left": 95,
+                  "top": 57,
+                  "width": 79,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 496,
+                  "top": 229,
+                  "width": 101,
+                  "height": 218,
+                  "pixels": 12084
+                },
+                "output": {
+                  "left": 77,
+                  "top": 53,
+                  "width": 88,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 733,
+                  "top": 224,
+                  "width": 110,
+                  "height": 221,
+                  "pixels": 11312
+                },
+                "output": {
+                  "left": 90,
+                  "top": 50,
+                  "width": 96,
+                  "height": 194
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 217,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 76,
+                "top": 4,
+                "width": 86,
+                "height": 217
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/ada_wong-original.png",
+            "sourceImageSha256": "943efd30d91ad77aa3382abc71f1b121286fbc6eea1cd0d3c20bebc0d04da917",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 445,
+              "bottom": 670
+            },
+            "scale": 0.8755760368663594,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 68,
+                  "top": 446,
+                  "width": 93,
+                  "height": 221,
+                  "pixels": 12510
+                },
+                "output": {
+                  "left": 90,
+                  "top": 50,
+                  "width": 81,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 286,
+                  "top": 454,
+                  "width": 93,
+                  "height": 212,
+                  "pixels": 11630
+                },
+                "output": {
+                  "left": 87,
+                  "top": 58,
+                  "width": 81,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 497,
+                  "top": 447,
+                  "width": 113,
+                  "height": 221,
+                  "pixels": 12953
+                },
+                "output": {
+                  "left": 78,
+                  "top": 50,
+                  "width": 99,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 714,
+                  "top": 467,
+                  "width": 150,
+                  "height": 201,
+                  "pixels": 12643
+                },
+                "output": {
+                  "left": 74,
+                  "top": 68,
+                  "width": 131,
+                  "height": 176
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 217,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 76,
+                "top": 4,
+                "width": 86,
+                "height": 217
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/ada_wong-original.png",
+            "sourceImageSha256": "943efd30d91ad77aa3382abc71f1b121286fbc6eea1cd0d3c20bebc0d04da917",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 664,
+              "bottom": 876
+            },
+            "scale": 0.8755760368663594,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 64,
+                  "top": 681,
+                  "width": 114,
+                  "height": 189,
+                  "pixels": 12248
+                },
+                "output": {
+                  "left": 87,
+                  "top": 79,
+                  "width": 100,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 281,
+                  "top": 712,
+                  "width": 111,
+                  "height": 154,
+                  "pixels": 10296
+                },
+                "output": {
+                  "left": 83,
+                  "top": 109,
+                  "width": 97,
+                  "height": 135
+                }
+              },
+              {
+                "source": {
+                  "left": 489,
+                  "top": 669,
+                  "width": 138,
+                  "height": 197,
+                  "pixels": 12379
+                },
+                "output": {
+                  "left": 71,
+                  "top": 72,
+                  "width": 121,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 721,
+                  "top": 667,
+                  "width": 115,
+                  "height": 198,
+                  "pixels": 11976
+                },
+                "output": {
+                  "left": 80,
+                  "top": 71,
+                  "width": 101,
+                  "height": 173
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 217,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 76,
+                "top": 4,
+                "width": 86,
+                "height": 217
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/ada_wong-original.png",
+            "sourceImageSha256": "943efd30d91ad77aa3382abc71f1b121286fbc6eea1cd0d3c20bebc0d04da917",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 875,
+              "bottom": 1112
+            },
+            "scale": 0.8755760368663594,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 66,
+                  "top": 882,
+                  "width": 127,
+                  "height": 226,
+                  "pixels": 14433
+                },
+                "output": {
+                  "left": 89,
+                  "top": 46,
+                  "width": 111,
+                  "height": 198
+                }
+              },
+              {
+                "source": {
+                  "left": 262,
+                  "top": 887,
+                  "width": 177,
+                  "height": 216,
+                  "pixels": 14992
+                },
+                "output": {
+                  "left": 66,
+                  "top": 55,
+                  "width": 155,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 479,
+                  "top": 891,
+                  "width": 203,
+                  "height": 212,
+                  "pixels": 16182
+                },
+                "output": {
+                  "left": 62,
+                  "top": 58,
+                  "width": 178,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 735,
+                  "top": 882,
+                  "width": 111,
+                  "height": 227,
+                  "pixels": 13418
+                },
+                "output": {
+                  "left": 92,
+                  "top": 45,
+                  "width": 97,
+                  "height": 199
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 217,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 76,
+                "top": 4,
+                "width": 86,
+                "height": 217
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/ada_wong-original.png",
+            "sourceImageSha256": "943efd30d91ad77aa3382abc71f1b121286fbc6eea1cd0d3c20bebc0d04da917",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1110,
+              "bottom": 1338
+            },
+            "scale": 0.8755760368663594,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 70,
+                  "top": 1118,
+                  "width": 106,
+                  "height": 216,
+                  "pixels": 12474
+                },
+                "output": {
+                  "left": 92,
+                  "top": 55,
+                  "width": 93,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 285,
+                  "top": 1120,
+                  "width": 87,
+                  "height": 213,
+                  "pixels": 12828
+                },
+                "output": {
+                  "left": 86,
+                  "top": 58,
+                  "width": 76,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 499,
+                  "top": 1113,
+                  "width": 107,
+                  "height": 221,
+                  "pixels": 13450
+                },
+                "output": {
+                  "left": 80,
+                  "top": 50,
+                  "width": 94,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 729,
+                  "top": 1113,
+                  "width": 121,
+                  "height": 221,
+                  "pixels": 12266
+                },
+                "output": {
+                  "left": 87,
+                  "top": 50,
+                  "width": 106,
+                  "height": 194
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 217,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 76,
+                "top": 4,
+                "width": 86,
+                "height": 217
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/ada_wong-original.png",
+            "sourceImageSha256": "943efd30d91ad77aa3382abc71f1b121286fbc6eea1cd0d3c20bebc0d04da917",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1335,
+              "bottom": 1548
+            },
+            "scale": 0.8755760368663594,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 67,
+                  "top": 1337,
+                  "width": 94,
+                  "height": 210,
+                  "pixels": 11882
+                },
+                "output": {
+                  "left": 90,
+                  "top": 60,
+                  "width": 82,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 269,
+                  "top": 1397,
+                  "width": 131,
+                  "height": 141,
+                  "pixels": 10820
+                },
+                "output": {
+                  "left": 72,
+                  "top": 121,
+                  "width": 115,
+                  "height": 123
+                }
+              },
+              {
+                "source": {
+                  "left": 498,
+                  "top": 1367,
+                  "width": 106,
+                  "height": 169,
+                  "pixels": 10559
+                },
+                "output": {
+                  "left": 79,
+                  "top": 96,
+                  "width": 93,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 726,
+                  "top": 1356,
+                  "width": 110,
+                  "height": 179,
+                  "pixels": 12118
+                },
+                "output": {
+                  "left": 84,
+                  "top": 87,
+                  "width": 96,
+                  "height": 157
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 217,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 76,
+                "top": 4,
+                "width": 86,
+                "height": 217
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/ada_wong-original.png",
+            "sourceImageSha256": "943efd30d91ad77aa3382abc71f1b121286fbc6eea1cd0d3c20bebc0d04da917",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1541,
+              "bottom": 1774
+            },
+            "scale": 0.8755760368663594,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 69,
+                  "top": 1543,
+                  "width": 125,
+                  "height": 225,
+                  "pixels": 14190
+                },
+                "output": {
+                  "left": 91,
+                  "top": 47,
+                  "width": 109,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 268,
+                  "top": 1552,
+                  "width": 173,
+                  "height": 212,
+                  "pixels": 14691
+                },
+                "output": {
+                  "left": 71,
+                  "top": 58,
+                  "width": 151,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 472,
+                  "top": 1553,
+                  "width": 211,
+                  "height": 213,
+                  "pixels": 16337
+                },
+                "output": {
+                  "left": 56,
+                  "top": 58,
+                  "width": 185,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 736,
+                  "top": 1543,
+                  "width": 113,
+                  "height": 225,
+                  "pixels": 13343
+                },
+                "output": {
+                  "left": 93,
+                  "top": 47,
+                  "width": 99,
+                  "height": 197
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 217,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 76,
+                "top": 4,
+                "width": 86,
+                "height": 217
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "fourStatesDistinct": false,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "3ca61f7e58197c03203af33b347a7daf02dd27120b8959ead80b9d982e997e89",
+              "e2186b58ff9db20396ca973afa781cc3944ed4e6c95fa3798352035067dcaee5",
+              "da6002e7165b58b830f65fafa0ee38d728299e7bf303062ce5d602c2e7fa5a24",
+              "b005184c249cc381f51eac2b0673b16fd86e89e09d875389e98f035558651f6d"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "838f3d81229333ce3346ff2c48ee6eaac1bb72f7b9dcaf17330775a3d95b3538",
+              "e02e5ccd4c3b3ecc6174a0fe92a93eddb1ee340d355d9a98701b69f8d8e5c164",
+              "4c714d533b714e60aa426648b9c2d9720a07e429ba065acecdcca062b3e1c59d",
+              "fc2d23abce4327e98cb081725d96accca16a33d9903146ab595fdff9ec0870d3"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5499a07f20fdb485738ab2667f0b7412ac2a13c427128ef85bf12add18212599",
+              "2f6f74c92467f57946192563d4254b349939da04c9e4d3be08a0246945c6fae5",
+              "221bc88bb63b9cb600610daf12439515fe2ba21b56f8d28d4fed6cb7fc606ef8",
+              "3f50dc0352870125d120be0e2b6a7fdb9daec80ce87da1a2bab38043cc49d812"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c13c14d016a46ae48456dc279b55dc7210f288d0ee404e36fd6851a2e003bfd9",
+              "63597718d2b739b3111d8fec7e476f3433b7cd4f30f7dae6bf5434803d5c96fa",
+              "ae37ec66260dd22b92466138d3e662bd9294f4f41a5dcc7b8038458471fdb6b4",
+              "37026afd436936aa5a74644b3c95a123d68e4180aa02556cb5ceb41f48a6087f"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "06cfcf25023706cedf31083433690c6cd8f7ffac403bcb00f7334eee24ebfcae",
+              "eb82212faac1fd5ef24244b503cc5c3c8c2a24240f7c8648cbc2cb5c7eb2b84b",
+              "04fa9e2a48b7c0e8d495a1bfd4c05ad9a277b1b42f2e5f4e19b68b1828d5d652",
+              "7725d900aa5dedac7addc6abedc14a5f248457089762dbcee3c14ab89bb71f80"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "27e8b3673c1ef8331d7043e59b75bec9da3ee6eb75a427d5b374db54c4f45145",
+              "efb176bb88a3de36413acffbfa87a8ef833b5ea1276b171793477cebe6fb8f2c",
+              "54c8489b6033d93eb950c8d94ad7b329029e9bb14e86a725c2055a4b324c172e",
+              "45b119e2a2297a7fdc042ab0e88762fefd26f6027868c888ee222eb7a64ac4de"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "0726e95b78210325e3d7bbe8d9701dbad11410afb735d99c9b45ea8fbc942596",
+              "7efaf084da3702c020882cc049098d5457def290e322f9131e7f5239cb166811",
+              "c05226b061e9515a5adaf05f9f962ed0f72a727d256b5d22eec0964d5a984f66",
+              "ac37a24a3622dfd8ffa42b10e958f74dae3bfea26a6ccb9b70e97534c505a33f"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d940e633ef132304e63acb988144e72286f2880f4a6008e259568628d168693e",
+              "a6b9c26193735cdfc5d86807c1682b6a01fb3daf518a6d232fa113673ad0cea1",
+              "4107c983d8cb6438d40b391155b6fe95b01cee1c4804bc60f5b253098a46e1aa",
+              "002907790150de421ec97bd39efba10ece2b9d3d270c9a6b8c2358d310160abd"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "Purpose-drawn Resident Evil version-specific adaptation. Finales display the named equipment without a victim or execution. Satellite Laser is a handheld designator plus an external orbital strike. No official animation-frame, exact source timing or1:1 certification."
+      }
+    },
+    {
+      "id": "barry_burton",
+      "heroId": "barry_burton",
+      "universe": "Resident Evil",
+      "name": "Barry Burton",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/barry_burton.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "c1df75f7dfc905f0f9517585dae370838a1b8e43392c636d88e43c6d3d41e5f9",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/barry_burton-original.png",
+      "sourceImageSha256": "55933367656698bf75b73e2db740809076117f8b3dcd87759d3b99c42429c3b8",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/barry-burton.png",
+      "referenceAssetSha256": "6d305c9acb68c253f3f45616808bf7c0e7318e474d026812479206864af35cfb",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-references/barry_burton-old-base.png",
+      "referenceUse": "Old defective reference inspected and rejected, not supplied to image_gen",
+      "nativeReferences": [],
+      "sourceWork": "Resident Evil remake (2002)",
+      "sourceReference": "Le magnum de Barry est son arme personnelle ; aucune capacite surnaturelle n est attribuee au tir.",
+      "abilityName": "Barry Magnum",
+      "abilityEffect": "damage",
+      "characterVersion": "Barry Burton in Resident Evil REMAKE2002: stocky broad-shouldered middle-aged adult man with short brown hair, full brown beard, RED short-sleeved shirt UNDER a LIGHT TAN/cream S.T.A.R.S.tactical utility vest, S.T.A.R.S.shoulder patch, dark charcoal cargo trousers, brown leather belt and holsters, brown tactical boots, dark fingerless gloves. No red vest over beige shirt, no old grey-haired Revelations2 outfit, no cyber armor.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-segmentation-one-body-calibration-per-native-source",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/barry_burton-original.png",
+            "sourceImageSha256": "55933367656698bf75b73e2db740809076117f8b3dcd87759d3b99c42429c3b8",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 215
+            },
+            "scale": 0.8746465598491989,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 71,
+                  "top": 0,
+                  "width": 106,
+                  "height": 210,
+                  "pixels": 13836
+                },
+                "output": {
+                  "left": 93,
+                  "top": 60,
+                  "width": 93,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 285,
+                  "top": 5,
+                  "width": 109,
+                  "height": 204,
+                  "pixels": 13002
+                },
+                "output": {
+                  "left": 86,
+                  "top": 66,
+                  "width": 95,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 498,
+                  "top": 6,
+                  "width": 119,
+                  "height": 203,
+                  "pixels": 13415
+                },
+                "output": {
+                  "left": 79,
+                  "top": 66,
+                  "width": 104,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 9,
+                  "width": 152,
+                  "height": 200,
+                  "pixels": 13121
+                },
+                "output": {
+                  "left": 57,
+                  "top": 69,
+                  "width": 133,
+                  "height": 175
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0701014948190928,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 203,
+              "normalizedBodyHeight": 177.5532516493874,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 6,
+                "width": 103,
+                "height": 203
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/barry_burton-original.png",
+            "sourceImageSha256": "55933367656698bf75b73e2db740809076117f8b3dcd87759d3b99c42429c3b8",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 214,
+              "bottom": 438
+            },
+            "scale": 0.8746465598491989,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 63,
+                  "top": 219,
+                  "width": 114,
+                  "height": 214,
+                  "pixels": 15146
+                },
+                "output": {
+                  "left": 86,
+                  "top": 57,
+                  "width": 100,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 292,
+                  "top": 220,
+                  "width": 109,
+                  "height": 212,
+                  "pixels": 13357
+                },
+                "output": {
+                  "left": 92,
+                  "top": 59,
+                  "width": 95,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 501,
+                  "top": 224,
+                  "width": 105,
+                  "height": 208,
+                  "pixels": 13725
+                },
+                "output": {
+                  "left": 81,
+                  "top": 62,
+                  "width": 92,
+                  "height": 182
+                }
+              },
+              {
+                "source": {
+                  "left": 713,
+                  "top": 220,
+                  "width": 146,
+                  "height": 211,
+                  "pixels": 14312
+                },
+                "output": {
+                  "left": 73,
+                  "top": 59,
+                  "width": 128,
+                  "height": 185
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0701014948190928,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 203,
+              "normalizedBodyHeight": 177.5532516493874,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 6,
+                "width": 103,
+                "height": 203
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/barry_burton-original.png",
+            "sourceImageSha256": "55933367656698bf75b73e2db740809076117f8b3dcd87759d3b99c42429c3b8",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 433,
+              "bottom": 664
+            },
+            "scale": 0.8746465598491989,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 65,
+                  "top": 439,
+                  "width": 113,
+                  "height": 215,
+                  "pixels": 15459
+                },
+                "output": {
+                  "left": 88,
+                  "top": 56,
+                  "width": 99,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 283,
+                  "top": 440,
+                  "width": 117,
+                  "height": 214,
+                  "pixels": 15353
+                },
+                "output": {
+                  "left": 85,
+                  "top": 57,
+                  "width": 102,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 499,
+                  "top": 440,
+                  "width": 140,
+                  "height": 214,
+                  "pixels": 15459
+                },
+                "output": {
+                  "left": 80,
+                  "top": 57,
+                  "width": 122,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 440,
+                  "width": 111,
+                  "height": 214,
+                  "pixels": 15001
+                },
+                "output": {
+                  "left": 72,
+                  "top": 57,
+                  "width": 97,
+                  "height": 187
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0701014948190928,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 203,
+              "normalizedBodyHeight": 177.5532516493874,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 6,
+                "width": 103,
+                "height": 203
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/barry_burton-original.png",
+            "sourceImageSha256": "55933367656698bf75b73e2db740809076117f8b3dcd87759d3b99c42429c3b8",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 659,
+              "bottom": 859
+            },
+            "scale": 0.8746465598491989,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 62,
+                  "top": 665,
+                  "width": 115,
+                  "height": 187,
+                  "pixels": 13973
+                },
+                "output": {
+                  "left": 85,
+                  "top": 80,
+                  "width": 101,
+                  "height": 164
+                }
+              },
+              {
+                "source": {
+                  "left": 267,
+                  "top": 691,
+                  "width": 141,
+                  "height": 161,
+                  "pixels": 12921
+                },
+                "output": {
+                  "left": 71,
+                  "top": 103,
+                  "width": 123,
+                  "height": 141
+                }
+              },
+              {
+                "source": {
+                  "left": 477,
+                  "top": 716,
+                  "width": 152,
+                  "height": 131,
+                  "pixels": 12952
+                },
+                "output": {
+                  "left": 60,
+                  "top": 129,
+                  "width": 133,
+                  "height": 115
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 665,
+                  "width": 139,
+                  "height": 185,
+                  "pixels": 14214
+                },
+                "output": {
+                  "left": 58,
+                  "top": 82,
+                  "width": 122,
+                  "height": 162
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0701014948190928,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 203,
+              "normalizedBodyHeight": 177.5532516493874,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 6,
+                "width": 103,
+                "height": 203
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/barry_burton-original.png",
+            "sourceImageSha256": "55933367656698bf75b73e2db740809076117f8b3dcd87759d3b99c42429c3b8",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 855,
+              "bottom": 1087
+            },
+            "scale": 0.8746465598491989,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 58,
+                  "top": 864,
+                  "width": 122,
+                  "height": 217,
+                  "pixels": 14624
+                },
+                "output": {
+                  "left": 82,
+                  "top": 54,
+                  "width": 107,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 264,
+                  "top": 865,
+                  "width": 192,
+                  "height": 216,
+                  "pixels": 16441
+                },
+                "output": {
+                  "left": 68,
+                  "top": 55,
+                  "width": 168,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 456,
+                  "top": 880,
+                  "width": 231,
+                  "height": 203,
+                  "pixels": 16174
+                },
+                "output": {
+                  "left": 42,
+                  "top": 66,
+                  "width": 202,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 727,
+                  "top": 864,
+                  "width": 106,
+                  "height": 219,
+                  "pixels": 14553
+                },
+                "output": {
+                  "left": 85,
+                  "top": 52,
+                  "width": 93,
+                  "height": 192
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0701014948190928,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 203,
+              "normalizedBodyHeight": 177.5532516493874,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 6,
+                "width": 103,
+                "height": 203
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/barry_burton-original.png",
+            "sourceImageSha256": "55933367656698bf75b73e2db740809076117f8b3dcd87759d3b99c42429c3b8",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1085,
+              "bottom": 1319
+            },
+            "scale": 0.8746465598491989,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 67,
+                  "top": 1090,
+                  "width": 110,
+                  "height": 224,
+                  "pixels": 15501
+                },
+                "output": {
+                  "left": 90,
+                  "top": 48,
+                  "width": 96,
+                  "height": 196
+                }
+              },
+              {
+                "source": {
+                  "left": 278,
+                  "top": 1097,
+                  "width": 139,
+                  "height": 217,
+                  "pixels": 14964
+                },
+                "output": {
+                  "left": 80,
+                  "top": 54,
+                  "width": 122,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 501,
+                  "top": 1098,
+                  "width": 112,
+                  "height": 218,
+                  "pixels": 15282
+                },
+                "output": {
+                  "left": 81,
+                  "top": 53,
+                  "width": 98,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 709,
+                  "top": 1090,
+                  "width": 117,
+                  "height": 224,
+                  "pixels": 15185
+                },
+                "output": {
+                  "left": 69,
+                  "top": 48,
+                  "width": 102,
+                  "height": 196
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0701014948190928,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 203,
+              "normalizedBodyHeight": 177.5532516493874,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 6,
+                "width": 103,
+                "height": 203
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/barry_burton-original.png",
+            "sourceImageSha256": "55933367656698bf75b73e2db740809076117f8b3dcd87759d3b99c42429c3b8",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1314,
+              "bottom": 1535
+            },
+            "scale": 0.8746465598491989,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 71,
+                  "top": 1315,
+                  "width": 112,
+                  "height": 214,
+                  "pixels": 14998
+                },
+                "output": {
+                  "left": 93,
+                  "top": 57,
+                  "width": 98,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 258,
+                  "top": 1315,
+                  "width": 149,
+                  "height": 207,
+                  "pixels": 13960
+                },
+                "output": {
+                  "left": 63,
+                  "top": 63,
+                  "width": 130,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 480,
+                  "top": 1368,
+                  "width": 149,
+                  "height": 154,
+                  "pixels": 15166
+                },
+                "output": {
+                  "left": 63,
+                  "top": 109,
+                  "width": 130,
+                  "height": 135
+                }
+              },
+              {
+                "source": {
+                  "left": 718,
+                  "top": 1315,
+                  "width": 123,
+                  "height": 216,
+                  "pixels": 15602
+                },
+                "output": {
+                  "left": 77,
+                  "top": 55,
+                  "width": 108,
+                  "height": 189
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0701014948190928,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 203,
+              "normalizedBodyHeight": 177.5532516493874,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 6,
+                "width": 103,
+                "height": 203
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/barry_burton-original.png",
+            "sourceImageSha256": "55933367656698bf75b73e2db740809076117f8b3dcd87759d3b99c42429c3b8",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1530,
+              "bottom": 1774
+            },
+            "scale": 0.8746465598491989,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 53,
+                  "top": 1533,
+                  "width": 151,
+                  "height": 227,
+                  "pixels": 15886
+                },
+                "output": {
+                  "left": 77,
+                  "top": 45,
+                  "width": 132,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 258,
+                  "top": 1538,
+                  "width": 202,
+                  "height": 224,
+                  "pixels": 16433
+                },
+                "output": {
+                  "left": 63,
+                  "top": 48,
+                  "width": 177,
+                  "height": 196
+                }
+              },
+              {
+                "source": {
+                  "left": 456,
+                  "top": 1544,
+                  "width": 231,
+                  "height": 218,
+                  "pixels": 16352
+                },
+                "output": {
+                  "left": 42,
+                  "top": 53,
+                  "width": 202,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 725,
+                  "top": 1534,
+                  "width": 114,
+                  "height": 228,
+                  "pixels": 15219
+                },
+                "output": {
+                  "left": 83,
+                  "top": 45,
+                  "width": 100,
+                  "height": 199
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0701014948190928,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 203,
+              "normalizedBodyHeight": 177.5532516493874,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 6,
+                "width": 103,
+                "height": 203
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "fourStatesDistinct": false,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6e9c07959552bf144b1163205ac0832f1080d5e3da5b2745f600d58a0cdbde34",
+              "bf17985d2e416795005ba19d9c9b2f539698b9a2d4842e2b70c752dead8119fa",
+              "25ff9848d0f5c046aa3aae4907b2e14e88e9c97f6d53cc5b58a8e5b539d3e527",
+              "8ab6e6f2e4610ee414f0feac92c2e12d1230d139f75a9b14dbfc26eaae4d2a9f"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "68c646e371e8f20847d8151be8e10a6333b5fc9087ae02d49170168429a8571a",
+              "399bd1d7715cc50174f7d404fc8371ef8cd426b309e2ad53cee201c9fbafe7dc",
+              "648e2a5e3b5ea96cbf0b8e5ed3e0d90312e38b5b9a67b579eeb0d7a447cdfacf",
+              "1a845c5ea56515f818690fa6ada8174aae62de9eab6a23f17b2def6b6eafd251"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6c80f50fce86d4d8ed0eefe82a07e52f0cd72485d273e829f3163c6deb00e7ed",
+              "7df16567edbd5abd9d5a1d0da1e141e7a11b2feeed4820b5e2226b44b2af5e1f",
+              "d35908c63c0968929fec87368080d2979845a59bb516a6b4ede57cf0af5489bc",
+              "3f9793ba178d040b7c1cd63e427c8d1245617dfc0a6368382d24121fd1845c50"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d2791159174bb7d603c9870a5506b1fde591e49e03963307367d110cdb204578",
+              "2fb936dc20459ffca0ac16819501231ccbee86d5d57b9a30f3f2fdb038f68269",
+              "48ea487dfd69ffcaba78389e454737d3cba22935de1b5e27ee6c4ec7cf8c5beb",
+              "9ac7aa8f2865917f46383239b59ea65969b7a68e121ea4f822220ce13d0396d2"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "af0c47f0faf9ccbf2dcd0b0a4bb9aaca5cf1086b77573de086830d09e9cd70a6",
+              "48ed158bf18d02a553187b867abbbf6b2f231b1e93a15340b043cd8d351b0ad3",
+              "c5c323f015c559e91642303186371cd07d99cd92410042100b803194ba0b4502",
+              "2bed62f3e8c313b7f1490bae9a616dc1edb90c51aedf2bfa40a215333d0f9897"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d5380b3881d7e1423d2fb587413607bafaa11a8469105453bf8a31c16a10288f",
+              "ca392f3c5d9ce9fbc47d0a0218c93b482161652bf5e4fdde43aa5da9fdb497e2",
+              "67b16ccb65595825c2b6f7a32e368d5941e12f9dd31481d6f16fc043be8f7ac2",
+              "d14eee3955ee485b54ab32c0ac837059e8225f7deb61590ad0bb1f102817300e"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d0119d0526be04c02874bf4c3319e81b5815e7eaed2e0b26201f2efa30bb8df1",
+              "22bd7f8759c4e9f3d06ce7e85d838504ec79677ed5c299bc9022c76a63a33913",
+              "4144b1f1b141a6e009281004c680298cd20b6c6fb2adf75ed90a8cb9ab536beb",
+              "6c07df74ff2e7171c8e082e7258999d60887b37ecb71437ab6a3d84478e0442f"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4802ebbc242248589e48d4a5b32cffebd303fcdbf0397ed9cf34757e8286305b",
+              "ad0e3e1fde24b3eda0bf0fe276580f41499ad76de55631b06b64c7afdf79ab1f",
+              "5ff902feecb35e3d0f73be4dc0bb154501d4f1aa6194fddbbf0b425854eda355",
+              "2b7ed43884d900c6e35a85187d7ff126c7f82e75584cb44dbfdfb0d5de8aad32"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "Purpose-drawn Resident Evil version-specific adaptation. Finales display the named equipment without a victim or execution. Satellite Laser is a handheld designator plus an external orbital strike. No official animation-frame, exact source timing or1:1 certification."
+      }
+    },
+    {
+      "id": "carlos_oliveira",
+      "heroId": "carlos_oliveira",
+      "universe": "Resident Evil",
+      "name": "Carlos Oliveira",
+      "sheet": "/sprites/generated/combat-character-animations-wave9/carlos_oliveira.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "9d340037446a3ad8f83fb853e27e6e0659a8403973fecad4743ef953e1761e02",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/carlos_oliveira-original.png",
+      "sourceImageSha256": "c6802f75b19c86b1ba74628c13b58614ec04a559e5ab5ee3d35ba3c8efda2d4e",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/carlos-oliveira.png",
+      "referenceAssetSha256": "6f545d79f031a43c4ffe93ce55b6fea8a6604198428ae7257f3241273fcc2415",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-references/carlos_oliveira-old-base.png",
+      "referenceUse": "Pinned old appearance image supplied to image_gen",
+      "nativeReferences": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave9-2026-10-22/part-d-references/carlos_oliveira-old-base.png",
+          "sha256": "6f545d79f031a43c4ffe93ce55b6fea8a6604198428ae7257f3241273fcc2415"
+        }
+      ],
+      "sourceWork": "Resident Evil 3 remake (2020)",
+      "sourceReference": "Resident Evil 3, remake de 2020 : Carlos Oliveira porte le fusil d'assaut CQBR durant les séquences du commissariat et de l'hôpital.",
+      "abilityName": "Rafale du CQBR de Carlos",
+      "abilityEffect": "damage",
+      "characterVersion": "Carlos Oliveira, Resident Evil3 REMAKE2020: adult muscular Latin American man with thick medium-short CURLY dark hair and short stubble, black short-sleeved tactical T-shirt, olive U.B.C.S.plate carrier/utility vest, UBCS shoulder insignia, grey-green/dark cargo trousers with knee pads, dark tactical boots, black fingerless gloves and radio earpiece. No1999 smooth short haircut, no futuristic armor or zombie form.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-segmentation-one-body-calibration-per-native-source",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/carlos_oliveira-original.png",
+            "sourceImageSha256": "c6802f75b19c86b1ba74628c13b58614ec04a559e5ab5ee3d35ba3c8efda2d4e",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 230
+            },
+            "scale": 0.8558558558558559,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 71,
+                  "top": 3,
+                  "width": 106,
+                  "height": 226,
+                  "pixels": 15490
+                },
+                "output": {
+                  "left": 94,
+                  "top": 51,
+                  "width": 91,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 281,
+                  "top": 0,
+                  "width": 121,
+                  "height": 229,
+                  "pixels": 15804
+                },
+                "output": {
+                  "left": 84,
+                  "top": 48,
+                  "width": 104,
+                  "height": 196
+                }
+              },
+              {
+                "source": {
+                  "left": 489,
+                  "top": 36,
+                  "width": 144,
+                  "height": 193,
+                  "pixels": 14996
+                },
+                "output": {
+                  "left": 72,
+                  "top": 79,
+                  "width": 123,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 728,
+                  "top": 5,
+                  "width": 126,
+                  "height": 224,
+                  "pixels": 15434
+                },
+                "output": {
+                  "left": 87,
+                  "top": 52,
+                  "width": 108,
+                  "height": 192
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 222,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 5,
+                "width": 104,
+                "height": 222
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/carlos_oliveira-original.png",
+            "sourceImageSha256": "c6802f75b19c86b1ba74628c13b58614ec04a559e5ab5ee3d35ba3c8efda2d4e",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 226,
+              "bottom": 455
+            },
+            "scale": 0.8558558558558559,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 53,
+                  "top": 231,
+                  "width": 114,
+                  "height": 218,
+                  "pixels": 15067
+                },
+                "output": {
+                  "left": 78,
+                  "top": 57,
+                  "width": 98,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 278,
+                  "top": 238,
+                  "width": 125,
+                  "height": 212,
+                  "pixels": 15034
+                },
+                "output": {
+                  "left": 81,
+                  "top": 63,
+                  "width": 107,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 494,
+                  "top": 235,
+                  "width": 124,
+                  "height": 216,
+                  "pixels": 14945
+                },
+                "output": {
+                  "left": 76,
+                  "top": 59,
+                  "width": 106,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 718,
+                  "top": 236,
+                  "width": 156,
+                  "height": 215,
+                  "pixels": 15424
+                },
+                "output": {
+                  "left": 78,
+                  "top": 60,
+                  "width": 134,
+                  "height": 184
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 222,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 5,
+                "width": 104,
+                "height": 222
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/carlos_oliveira-original.png",
+            "sourceImageSha256": "c6802f75b19c86b1ba74628c13b58614ec04a559e5ab5ee3d35ba3c8efda2d4e",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 446,
+              "bottom": 687
+            },
+            "scale": 0.8558558558558559,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 62,
+                  "top": 453,
+                  "width": 114,
+                  "height": 232,
+                  "pixels": 16314
+                },
+                "output": {
+                  "left": 86,
+                  "top": 45,
+                  "width": 98,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 272,
+                  "top": 460,
+                  "width": 132,
+                  "height": 225,
+                  "pixels": 16168
+                },
+                "output": {
+                  "left": 76,
+                  "top": 51,
+                  "width": 113,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 497,
+                  "top": 457,
+                  "width": 145,
+                  "height": 226,
+                  "pixels": 16855
+                },
+                "output": {
+                  "left": 79,
+                  "top": 51,
+                  "width": 124,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 721,
+                  "top": 447,
+                  "width": 133,
+                  "height": 238,
+                  "pixels": 15899
+                },
+                "output": {
+                  "left": 81,
+                  "top": 40,
+                  "width": 114,
+                  "height": 204
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 222,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 5,
+                "width": 104,
+                "height": 222
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/carlos_oliveira-original.png",
+            "sourceImageSha256": "c6802f75b19c86b1ba74628c13b58614ec04a559e5ab5ee3d35ba3c8efda2d4e",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 679,
+              "bottom": 894
+            },
+            "scale": 0.8558558558558559,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 681,
+                  "width": 151,
+                  "height": 206,
+                  "pixels": 15690
+                },
+                "output": {
+                  "left": 61,
+                  "top": 68,
+                  "width": 129,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 265,
+                  "top": 684,
+                  "width": 153,
+                  "height": 203,
+                  "pixels": 15719
+                },
+                "output": {
+                  "left": 70,
+                  "top": 70,
+                  "width": 131,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 486,
+                  "top": 684,
+                  "width": 168,
+                  "height": 209,
+                  "pixels": 16999
+                },
+                "output": {
+                  "left": 69,
+                  "top": 65,
+                  "width": 144,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 709,
+                  "top": 681,
+                  "width": 149,
+                  "height": 204,
+                  "pixels": 14868
+                },
+                "output": {
+                  "left": 71,
+                  "top": 69,
+                  "width": 128,
+                  "height": 175
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 222,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 5,
+                "width": 104,
+                "height": 222
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/carlos_oliveira-original.png",
+            "sourceImageSha256": "c6802f75b19c86b1ba74628c13b58614ec04a559e5ab5ee3d35ba3c8efda2d4e",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 887,
+              "bottom": 1116
+            },
+            "scale": 0.8558558558558559,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 44,
+                  "top": 889,
+                  "width": 131,
+                  "height": 225,
+                  "pixels": 16190
+                },
+                "output": {
+                  "left": 71,
+                  "top": 51,
+                  "width": 112,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 262,
+                  "top": 892,
+                  "width": 167,
+                  "height": 222,
+                  "pixels": 17321
+                },
+                "output": {
+                  "left": 68,
+                  "top": 54,
+                  "width": 143,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 469,
+                  "top": 891,
+                  "width": 218,
+                  "height": 223,
+                  "pixels": 18158
+                },
+                "output": {
+                  "left": 55,
+                  "top": 53,
+                  "width": 187,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 720,
+                  "top": 891,
+                  "width": 135,
+                  "height": 223,
+                  "pixels": 15980
+                },
+                "output": {
+                  "left": 80,
+                  "top": 53,
+                  "width": 116,
+                  "height": 191
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 222,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 5,
+                "width": 104,
+                "height": 222
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/carlos_oliveira-original.png",
+            "sourceImageSha256": "c6802f75b19c86b1ba74628c13b58614ec04a559e5ab5ee3d35ba3c8efda2d4e",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1108,
+              "bottom": 1353
+            },
+            "scale": 0.8558558558558559,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 1117,
+                  "width": 117,
+                  "height": 235,
+                  "pixels": 16142
+                },
+                "output": {
+                  "left": 72,
+                  "top": 43,
+                  "width": 100,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 275,
+                  "top": 1117,
+                  "width": 121,
+                  "height": 231,
+                  "pixels": 16044
+                },
+                "output": {
+                  "left": 79,
+                  "top": 46,
+                  "width": 104,
+                  "height": 198
+                }
+              },
+              {
+                "source": {
+                  "left": 499,
+                  "top": 1109,
+                  "width": 123,
+                  "height": 239,
+                  "pixels": 16776
+                },
+                "output": {
+                  "left": 81,
+                  "top": 39,
+                  "width": 105,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 725,
+                  "top": 1115,
+                  "width": 124,
+                  "height": 232,
+                  "pixels": 15904
+                },
+                "output": {
+                  "left": 84,
+                  "top": 45,
+                  "width": 106,
+                  "height": 199
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 222,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 5,
+                "width": 104,
+                "height": 222
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/carlos_oliveira-original.png",
+            "sourceImageSha256": "c6802f75b19c86b1ba74628c13b58614ec04a559e5ab5ee3d35ba3c8efda2d4e",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1346,
+              "bottom": 1558
+            },
+            "scale": 0.8558558558558559,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 49,
+                  "top": 1351,
+                  "width": 129,
+                  "height": 202,
+                  "pixels": 15266
+                },
+                "output": {
+                  "left": 75,
+                  "top": 71,
+                  "width": 110,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 261,
+                  "top": 1347,
+                  "width": 156,
+                  "height": 206,
+                  "pixels": 18029
+                },
+                "output": {
+                  "left": 67,
+                  "top": 68,
+                  "width": 134,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 494,
+                  "top": 1374,
+                  "width": 129,
+                  "height": 182,
+                  "pixels": 15572
+                },
+                "output": {
+                  "left": 76,
+                  "top": 88,
+                  "width": 110,
+                  "height": 156
+                }
+              },
+              {
+                "source": {
+                  "left": 719,
+                  "top": 1350,
+                  "width": 135,
+                  "height": 201,
+                  "pixels": 15056
+                },
+                "output": {
+                  "left": 79,
+                  "top": 72,
+                  "width": 116,
+                  "height": 172
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 222,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 5,
+                "width": 104,
+                "height": 222
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/part-d-sources/carlos_oliveira-original.png",
+            "sourceImageSha256": "c6802f75b19c86b1ba74628c13b58614ec04a559e5ab5ee3d35ba3c8efda2d4e",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1552,
+              "bottom": 1774
+            },
+            "scale": 0.8558558558558559,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 41,
+                  "top": 1556,
+                  "width": 137,
+                  "height": 217,
+                  "pixels": 15612
+                },
+                "output": {
+                  "left": 68,
+                  "top": 58,
+                  "width": 117,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 255,
+                  "top": 1554,
+                  "width": 182,
+                  "height": 220,
+                  "pixels": 17223
+                },
+                "output": {
+                  "left": 62,
+                  "top": 56,
+                  "width": 156,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 466,
+                  "top": 1554,
+                  "width": 214,
+                  "height": 215,
+                  "pixels": 17970
+                },
+                "output": {
+                  "left": 52,
+                  "top": 60,
+                  "width": 183,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 721,
+                  "top": 1556,
+                  "width": 131,
+                  "height": 214,
+                  "pixels": 15300
+                },
+                "output": {
+                  "left": 81,
+                  "top": 61,
+                  "width": 112,
+                  "height": 183
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 222,
+              "normalizedBodyHeight": 190,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 73,
+                "top": 5,
+                "width": 104,
+                "height": 222
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "fourStatesDistinct": false,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "0d717c762f1fdef27f92b415dcd3abb7daddb56a1448fbd363526caa3ebc1674",
+              "086f5ebae7a4627784a1b730bdeb99617a418300f1ac4f78b0d1f2c2e5103cc1",
+              "416b0b73d89fe0a7064ab8022b812592d7bbf6dd4932712e052178db97d23a71",
+              "d863fe541d766995f1c181523c5ab90f4cb014fd7a08ddc21c701bb6c2402fe2"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "958ec766e1d77350453d1e54e7eff103f3be5643c4137adefcc5270043260b50",
+              "31c45bfae15e16600c8105ddeb2ed39cfa4668300fb5d262b1f17399cccb62ea",
+              "fb863152a0e9b64a38ea5db7bed9f64aaab72bf4b503cfc4768fd18cc35a834a",
+              "d5ec4645c51c4fb652d03fa0e527dd300a97eb8732bd0f6afb04b4b98c0a0356"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "dee997229ee3997179b381368affd8c8d4028033ef892e5ebb2d5295daa5269c",
+              "9a477182217bc59ade57b85908fd10aaa6aba484d813de1600a195d69e5fee3a",
+              "9ea5da0e69d961c1f1534d0cf49d358f3fbb9d9303a13b9bccba92af3d305275",
+              "769072e66ae8f31a6c3ec68304966fc78c110e623b84222cbb5c9de39e2500e3"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1a76aa4937f3b691b7353458ef83d3e246945464e7019eb57c55125c0f8adba3",
+              "85ae61ae03e6ec835d6e8f20a8ebe407f8a51f85ab1990f6e610d38a5c63b5b3",
+              "c945750d847b9324f75ad50318d97a8816f09dc8eded54bab2ac663e9980dcea",
+              "85b21c3d3a4dc0e5bfa4f47203ead374321e70dbac63c130410db16d4094d5a0"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "74ae0bb08e7bcdf77e5bc5cd1b7db278c87696f8a1d09540a9d93b212fdad269",
+              "38a246187add13489ae0e57131e550280a9499759c2a7a0afde2d2c94a7b7940",
+              "a6e2840a31a3e4f1cf1dd897ea53bdfbfa16ee0cc51a2ba275b48f6f850a3195",
+              "7dfa026cb1592dd14cd61561dc04a248091f38a90e84be6e353ed1587f24156d"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7651325a003b43b400561e9d7ac8fca5562fbcf717ec504cbb92a1ea229dc266",
+              "d16f556428b60b7a5c556d2069095b7ca08a75186a0a0187be534f3165ce2205",
+              "6e25fb055e5a975d21b8bd14a58e6c8549dd5b33ba9079d01ec795b4da843b1c",
+              "c2c34106345e9a27d2dff71490f0ecfbb87f1fb705bea7510693bd780d25ea0a"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8fcbbcb01a2eb52c5eda48e622d1fee0d0219a315f90d71f6afa7f132c0e7bb8",
+              "194dd967f1f977cc913faef857d8ab9b7fe2b32c42b1eb64dfac783e4fb8e2aa",
+              "23017b1204db2b06ecf9a1e811df3d419fe1d8dc34ee8f70d942f01c9c1b7aac",
+              "960e20e24b7008bbdb8e6e20af1088d7a6a0a25fa31ba9360af076905dcd39d2"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "403ef170945f7e7484354c3fa66b8e56844036fa95169ce75a2d714038344263",
+              "1203ab706d8adfda7b5944a636cefaef5a273261a46ee1bc180eb53108fc77ca",
+              "cc90af2100be77c181570ea0b6363b8cf661eca14afb4fa498386f9ca75ed1eb",
+              "36c8ac045dd3c4be2dc39046029d754b9bad91369560fb3a0154fd30e0867092"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "Purpose-drawn Resident Evil version-specific adaptation. Finales display the named equipment without a victim or execution. Satellite Laser is a handheld designator plus an external orbital strike. No official animation-frame, exact source timing or1:1 certification."
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-23",
+  "command": "node --test scripts/summonAnimationWave10.test.mjs",
+  "exitCode": 1,
+  "outcome": "SSR setup hook could not load an integration dependency still pending from PartD",
+  "cause": "Failed to load url ./nativeSuperAnchorsWave10PartD.generated.json in src/game/combat/nativeSuperVisualsWave10.js",
+  "assertionsExecuted": false,
+  "engineDefectInferred": false,
+  "productionFilesChanged": false,
+  "nextStep": "Rerun after the actual PartD anchor file is delivered. No synthetic placeholder or weakened import is used."
+}

@@ -1,0 +1,5474 @@
+{
+  "passed": true,
+  "method": "Chromium actual engines imported from exact compiled component URLs, controlled authoritative stepping and real native/base PNG drawing. No keyboard UI flow claim.",
+  "urls": {
+    "rpg": "/src/game/engineRpg.js?t=1792699955704",
+    "melee": "/src/game/engineSmash.js?t=1792699955704",
+    "fighter": "/src/game/engineFighter.js",
+    "renderer": "/src/game/renderer.js?t=1792699955704",
+    "meleeRuntime": "/src/game/melee/meleeCombatRuntime.js?t=1792699731891",
+    "visual": "/src/game/combat/characterSuperVisuals.js?t=1792699955704",
+    "identity": "/src/game/combatIdentity.js?t=1792699731891",
+    "catalog": "/src/game/combat/characterAnimationCatalog.js?t=1792699723169"
+  },
+  "sources": [
+    "/sprites/generated/combat-character-animations-wave9/marcus.png",
+    "/sprites/generated/combat-character-corrections-wave9-part-a/marcus.png",
+    "/sprites/generated/combat-character-animations-wave9/dom.png",
+    "/sprites/generated/combat-character-corrections-wave9-part-a/dom.png",
+    "/sprites/generated/combat-character-animations-wave9/cole.png",
+    "/sprites/generated/combat-character-corrections-wave9-part-a/cole.png",
+    "/sprites/generated/combat-character-animations-wave9/baird.png",
+    "/sprites/generated/combat-character-corrections-wave9-part-a/baird.png",
+    "/sprites/generated/combat-character-animations-wave9/hoffman_cog.png",
+    "/sprites/generated/combat-character-corrections-wave9-part-a/hoffman_cog.png",
+    "/sprites/generated/combat-character-animations-wave9/shepard.png",
+    "/sprites/generated/combat-character-corrections-wave9/shepard.png",
+    "/sprites/generated/combat-character-animations-wave9/garrus.png",
+    "/sprites/generated/combat-character-corrections-wave9/garrus.png",
+    "/sprites/generated/combat-character-animations-wave9/liara.png",
+    "/sprites/generated/combat-character-corrections-wave9/liara.png",
+    "/sprites/generated/combat-character-animations-wave9/tali.png",
+    "/sprites/generated/combat-character-corrections-wave9/tali.png",
+    "/sprites/generated/combat-character-animations-wave9/wrex.png",
+    "/sprites/generated/combat-character-corrections-wave9/wrex.png",
+    "/sprites/generated/combat-character-animations-wave9/motoko.png",
+    "/sprites/generated/combat-character-corrections-wave9/motoko.png",
+    "/sprites/generated/combat-character-animations-wave9/batou.png",
+    "/sprites/generated/combat-character-corrections-wave9/batou.png",
+    "/sprites/generated/combat-character-animations-wave9/togusa.png",
+    "/sprites/generated/combat-character-corrections-wave9/togusa.png",
+    "/sprites/generated/combat-character-animations-wave9/aramaki.png",
+    "/sprites/generated/combat-character-corrections-wave9/aramaki.png",
+    "/sprites/generated/combat-character-animations-wave9/saito_gits.png",
+    "/sprites/generated/combat-character-corrections-wave9/saito_gits.png",
+    "/sprites/generated/combat-character-animations-wave9/chris_redfield.png",
+    "/sprites/generated/melee-chris-wave9/chris-motion-a.png",
+    "/sprites/generated/combat-character-animations-wave9/claire_redfield.png",
+    "/sprites/generated/combat-character-corrections-wave9/claire_redfield.png",
+    "/sprites/generated/combat-character-animations-wave9/ada_wong.png",
+    "/sprites/generated/combat-character-corrections-wave9/ada_wong.png",
+    "/sprites/generated/combat-character-animations-wave9/barry_burton.png",
+    "/sprites/generated/combat-character-corrections-wave9/barry_burton.png",
+    "/sprites/generated/combat-character-animations-wave9/carlos_oliveira.png",
+    "/sprites/generated/combat-character-corrections-wave9/carlos_oliveira.png"
+  ],
+  "results": [
+    {
+      "id": "marcus",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Hammer of Dawn",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/marcus.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -70,
+        -64,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "marcus",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Hammer of Dawn",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/marcus.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -68,
+        -67,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "marcus",
+      "mode": "melee",
+      "side": "player",
+      "name": "Hammer of Dawn",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/marcus.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72,
+        -74,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "marcus",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Hammer of Dawn",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/marcus.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -71,
+        -67,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "marcus",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Hammer of Dawn",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/marcus.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -113.79999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "marcus",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Hammer of Dawn",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/marcus.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -113.79999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "dom",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Salve de Gnasher de Dom",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/dom.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        -43,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "dom",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Salve de Gnasher de Dom",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/dom.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        -39,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "dom",
+      "mode": "melee",
+      "side": "player",
+      "name": "Salve de Gnasher de Dom",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/dom.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        -39,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "dom",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Salve de Gnasher de Dom",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/dom.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        -42,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "dom",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Salve de Gnasher de Dom",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/dom.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "dom",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Salve de Gnasher de Dom",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/dom.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "cole",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Assaut au Lancer de Cole",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/cole.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -67,
+        -62,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "cole",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Assaut au Lancer de Cole",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/cole.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -57,
+        -58,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "cole",
+      "mode": "melee",
+      "side": "player",
+      "name": "Assaut au Lancer de Cole",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/cole.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -67,
+        -59,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "cole",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Assaut au Lancer de Cole",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/cole.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -58,
+        -61,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "cole",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Assaut au Lancer de Cole",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/cole.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.89999999999998,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "cole",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Assaut au Lancer de Cole",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/cole.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.89999999999998,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "baird",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Maintenance du matériel COG",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/baird.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        299,
+        299
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "baird",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Maintenance du matériel COG",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/baird.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        299,
+        299
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "baird",
+      "mode": "melee",
+      "side": "player",
+      "name": "Maintenance du matériel COG",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/baird.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        4.995666666666667,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "baird",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Maintenance du matériel COG",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/baird.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        4.995666666666667,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "baird",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Maintenance du matériel COG",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/baird.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        5,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "baird",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Maintenance du matériel COG",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/baird.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        5,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "hoffman_cog",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Ordre de mise en défense de Hoffman",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/hoffman_cog.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        298,
+        298
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "hoffman_cog",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Ordre de mise en défense de Hoffman",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/hoffman_cog.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        298,
+        298
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "hoffman_cog",
+      "mode": "melee",
+      "side": "player",
+      "name": "Ordre de mise en défense de Hoffman",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/hoffman_cog.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        4.996666666666667,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "hoffman_cog",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Ordre de mise en défense de Hoffman",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/hoffman_cog.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        4.996666666666667,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "hoffman_cog",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Ordre de mise en défense de Hoffman",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/hoffman_cog.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        5,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "hoffman_cog",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Ordre de mise en défense de Hoffman",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/hoffman_cog.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        5,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "shepard",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/shepard.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -78,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "shepard",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/shepard.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -77,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "shepard",
+      "mode": "melee",
+      "side": "player",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/shepard.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "shepard",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/shepard.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -73,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "shepard",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/shepard.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -120.60000000000002,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "shepard",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/shepard.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -120.60000000000002,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "garrus",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/garrus.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -51,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "garrus",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/garrus.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "garrus",
+      "mode": "melee",
+      "side": "player",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/garrus.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "garrus",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/garrus.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "garrus",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/garrus.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -88.10000000000002,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "garrus",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/garrus.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -88.10000000000002,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "liara",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Singularity",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/liara.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        -49,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "liara",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Singularity",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/liara.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        -49,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "liara",
+      "mode": "melee",
+      "side": "player",
+      "name": "Singularity",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/liara.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -52,
+        -48,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "liara",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Singularity",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/liara.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        -51,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "liara",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Singularity",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/liara.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -92.20000000000005,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "liara",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Singularity",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/liara.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -92.20000000000005,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "tali",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Drone de combat de Tali",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/tali.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "tali",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Drone de combat de Tali",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/tali.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -51,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "tali",
+      "mode": "melee",
+      "side": "player",
+      "name": "Drone de combat de Tali",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/tali.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "tali",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Drone de combat de Tali",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/tali.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -54,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "tali",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Drone de combat de Tali",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/tali.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90.20000000000005,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "tali",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Drone de combat de Tali",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/tali.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90.20000000000005,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "wrex",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Barrière biotique de Wrex",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/wrex.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        239,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "wrex",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Barrière biotique de Wrex",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/wrex.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        239,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "wrex",
+      "mode": "melee",
+      "side": "player",
+      "name": "Barrière biotique de Wrex",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/wrex.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        3.9956666666666667,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "wrex",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Barrière biotique de Wrex",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/wrex.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        3.9956666666666667,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "wrex",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Barrière biotique de Wrex",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/wrex.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        4,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "wrex",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Barrière biotique de Wrex",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/wrex.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        4,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "motoko",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Salve au pistolet-mitrailleur de Motoko",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/motoko.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -63,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "motoko",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Salve au pistolet-mitrailleur de Motoko",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/motoko.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -69,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "motoko",
+      "mode": "melee",
+      "side": "player",
+      "name": "Salve au pistolet-mitrailleur de Motoko",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/motoko.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -71,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "motoko",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Salve au pistolet-mitrailleur de Motoko",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/motoko.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -69,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "motoko",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Salve au pistolet-mitrailleur de Motoko",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/motoko.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -108.79999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "motoko",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Salve au pistolet-mitrailleur de Motoko",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/motoko.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -108.79999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "batou",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Rafale d’appui de Batou",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/batou.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "batou",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Rafale d’appui de Batou",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/batou.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "batou",
+      "mode": "melee",
+      "side": "player",
+      "name": "Rafale d’appui de Batou",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/batou.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "batou",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Rafale d’appui de Batou",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/batou.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "batou",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Rafale d’appui de Batou",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/batou.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -87.60000000000002,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "batou",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Rafale d’appui de Batou",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/batou.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -87.60000000000002,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "togusa",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Tir de précision au Mateba",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/togusa.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "togusa",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Tir de précision au Mateba",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/togusa.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "togusa",
+      "mode": "melee",
+      "side": "player",
+      "name": "Tir de précision au Mateba",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/togusa.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "togusa",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Tir de précision au Mateba",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/togusa.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "togusa",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Tir de précision au Mateba",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/togusa.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82.39999999999998,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "togusa",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Tir de précision au Mateba",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/togusa.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82.39999999999998,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "aramaki",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Autorisation d'opération de la Section 9",
+      "effect": "buff",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/aramaki.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "aramaki",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Autorisation d'opération de la Section 9",
+      "effect": "buff",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/aramaki.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "aramaki",
+      "mode": "melee",
+      "side": "player",
+      "name": "Autorisation d'opération de la Section 9",
+      "effect": "buff",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/aramaki.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "aramaki",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Autorisation d'opération de la Section 9",
+      "effect": "buff",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/aramaki.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "aramaki",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Autorisation d'opération de la Section 9",
+      "effect": "buff",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/aramaki.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "aramaki",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Autorisation d'opération de la Section 9",
+      "effect": "buff",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/aramaki.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "saito_gits",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Œil de faucon — tir de précision",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/saito_gits.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -35,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "saito_gits",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Œil de faucon — tir de précision",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/saito_gits.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -33,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "saito_gits",
+      "mode": "melee",
+      "side": "player",
+      "name": "Œil de faucon — tir de précision",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/saito_gits.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -32,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "saito_gits",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Œil de faucon — tir de précision",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/saito_gits.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -29,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "saito_gits",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Œil de faucon — tir de précision",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/saito_gits.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -59.39999999999998,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "saito_gits",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Œil de faucon — tir de précision",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/saito_gits.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -59.39999999999998,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "chris_redfield",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Satellite Laser",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/chris_redfield.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        -44,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "chris_redfield",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Satellite Laser",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/chris_redfield.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        -50,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "chris_redfield",
+      "mode": "melee",
+      "side": "player",
+      "name": "Satellite Laser",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/chris_redfield.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        -47,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "chris_redfield",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Satellite Laser",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/chris_redfield.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        -50,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "chris_redfield",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Satellite Laser",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/chris_redfield.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -91.29999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "chris_redfield",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Satellite Laser",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/chris_redfield.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -91.29999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "claire_redfield",
+      "mode": "rpg",
+      "side": "player",
+      "name": "GM 79 Flame Round",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/claire_redfield.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        -44,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "claire_redfield",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "GM 79 Flame Round",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/claire_redfield.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        -44,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "claire_redfield",
+      "mode": "melee",
+      "side": "player",
+      "name": "GM 79 Flame Round",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/claire_redfield.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        -41,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "claire_redfield",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "GM 79 Flame Round",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/claire_redfield.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        -49,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "claire_redfield",
+      "mode": "fighter",
+      "side": "player",
+      "name": "GM 79 Flame Round",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/claire_redfield.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84.29999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "claire_redfield",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "GM 79 Flame Round",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/claire_redfield.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84.29999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "ada_wong",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Explosive Crossbow",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/ada_wong.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        -49,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "ada_wong",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Explosive Crossbow",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/ada_wong.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        -52,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "ada_wong",
+      "mode": "melee",
+      "side": "player",
+      "name": "Explosive Crossbow",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/ada_wong.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        -46,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "ada_wong",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Explosive Crossbow",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/ada_wong.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        -46,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "ada_wong",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Explosive Crossbow",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/ada_wong.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -86.20000000000005,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "ada_wong",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Explosive Crossbow",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/ada_wong.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -86.20000000000005,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "barry_burton",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Barry Magnum",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/barry_burton.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "barry_burton",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Barry Magnum",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/barry_burton.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "barry_burton",
+      "mode": "melee",
+      "side": "player",
+      "name": "Barry Magnum",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/barry_burton.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "barry_burton",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Barry Magnum",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/barry_burton.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "barry_burton",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Barry Magnum",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/barry_burton.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "barry_burton",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Barry Magnum",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/barry_burton.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "carlos_oliveira",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Rafale du CQBR de Carlos",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/carlos_oliveira.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -34,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "carlos_oliveira",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Rafale du CQBR de Carlos",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/carlos_oliveira.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -32,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "carlos_oliveira",
+      "mode": "melee",
+      "side": "player",
+      "name": "Rafale du CQBR de Carlos",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/carlos_oliveira.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -33,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "carlos_oliveira",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Rafale du CQBR de Carlos",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/carlos_oliveira.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -34,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "carlos_oliveira",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Rafale du CQBR de Carlos",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/carlos_oliveira.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -62.10000000000002,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "carlos_oliveira",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Rafale du CQBR de Carlos",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave9/carlos_oliveira.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -62.10000000000002,
+        0,
+        0
+      ],
+      "impactUnique": true
+    }
+  ],
+  "projectileCases": [
+    {
+      "id": "dom",
+      "side": "player",
+      "nativeSpawn": {
+        "x": 236.9009470390625,
+        "y": 340.355959109375,
+        "point": {
+          "x": 199,
+          "y": 110
+        },
+        "col": 2,
+        "renderScale": 0.936981
+      },
+      "committedFacing": 1,
+      "acceptedDamage": 16.799999999999955,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 470,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "dom",
+      "side": "opponent",
+      "nativeSpawn": {
+        "x": 1463.0990529609376,
+        "y": 340.355959109375,
+        "point": {
+          "x": 199,
+          "y": 110
+        },
+        "col": 2,
+        "renderScale": 0.936981
+      },
+      "committedFacing": -1,
+      "acceptedDamage": 16.799999999999955,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 1230,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "cole",
+      "side": "player",
+      "nativeSpawn": {
+        "x": 245.4487551875,
+        "y": 330.9316176875,
+        "point": {
+          "x": 201,
+          "y": 117
+        },
+        "col": 2,
+        "renderScale": 1.122408
+      },
+      "committedFacing": 1,
+      "acceptedDamage": 21,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "cole",
+      "side": "opponent",
+      "nativeSpawn": {
+        "x": 1454.5512448125,
+        "y": 330.9316176875,
+        "point": {
+          "x": 201,
+          "y": 117
+        },
+        "col": 2,
+        "renderScale": 1.122408
+      },
+      "committedFacing": -1,
+      "acceptedDamage": 21,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "shepard",
+      "side": "player",
+      "nativeSpawn": {
+        "x": 227.65756642058727,
+        "y": 334.5702733983984,
+        "point": {
+          "x": 172,
+          "y": 124
+        },
+        "col": 2,
+        "renderScale": 1.1332165498832167
+      },
+      "committedFacing": 1,
+      "acceptedDamage": 24.100000000000023,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "shepard",
+      "side": "opponent",
+      "nativeSpawn": {
+        "x": 1472.3424335794127,
+        "y": 334.5702733983984,
+        "point": {
+          "x": 172,
+          "y": 124
+        },
+        "col": 2,
+        "renderScale": 1.1332165498832167
+      },
+      "committedFacing": -1,
+      "acceptedDamage": 24.100000000000023,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "garrus",
+      "side": "player",
+      "nativeSpawn": {
+        "x": 258.8549796219216,
+        "y": 337.69245360735346,
+        "point": {
+          "x": 198,
+          "y": 158
+        },
+        "col": 2,
+        "renderScale": 1.5157821713492887
+      },
+      "committedFacing": 1,
+      "acceptedDamage": 17.600000000000023,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "garrus",
+      "side": "opponent",
+      "nativeSpawn": {
+        "x": 1441.1450203780785,
+        "y": 337.69245360735346,
+        "point": {
+          "x": 198,
+          "y": 158
+        },
+        "col": 2,
+        "renderScale": 1.5157821713492887
+      },
+      "committedFacing": -1,
+      "acceptedDamage": 17.600000000000023,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "tali",
+      "side": "player",
+      "nativeSpawn": {
+        "x": 231.67475362027352,
+        "y": 325.53399034593724,
+        "point": {
+          "x": 167,
+          "y": 140
+        },
+        "col": 2,
+        "renderScale": 1.4641995172968625
+      },
+      "committedFacing": 1,
+      "acceptedDamage": 18,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "tali",
+      "side": "opponent",
+      "nativeSpawn": {
+        "x": 1468.3252463797264,
+        "y": 325.53399034593724,
+        "point": {
+          "x": 167,
+          "y": 140
+        },
+        "col": 2,
+        "renderScale": 1.4641995172968625
+      },
+      "committedFacing": -1,
+      "acceptedDamage": 18,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "motoko",
+      "side": "player",
+      "nativeSpawn": {
+        "x": 238.04720960555403,
+        "y": 341.8557439900525,
+        "point": {
+          "x": 195,
+          "y": 124
+        },
+        "col": 2,
+        "renderScale": 1.0237634705719814
+      },
+      "committedFacing": 1,
+      "acceptedDamage": 21.799999999999955,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "motoko",
+      "side": "opponent",
+      "nativeSpawn": {
+        "x": 1461.952790394446,
+        "y": 341.8557439900525,
+        "point": {
+          "x": 195,
+          "y": 124
+        },
+        "col": 2,
+        "renderScale": 1.0237634705719814
+      },
+      "committedFacing": -1,
+      "acceptedDamage": 21.799999999999955,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "batou",
+      "side": "player",
+      "nativeSpawn": {
+        "x": 242.38576242536004,
+        "y": 324.57638649658213,
+        "point": {
+          "x": 193,
+          "y": 113
+        },
+        "col": 2,
+        "renderScale": 1.175596444300343
+      },
+      "committedFacing": 1,
+      "acceptedDamage": 17.5,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "batou",
+      "side": "opponent",
+      "nativeSpawn": {
+        "x": 1457.61423757464,
+        "y": 324.57638649658213,
+        "point": {
+          "x": 193,
+          "y": 113
+        },
+        "col": 2,
+        "renderScale": 1.175596444300343
+      },
+      "committedFacing": -1,
+      "acceptedDamage": 17.5,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "togusa",
+      "side": "player",
+      "nativeSpawn": {
+        "x": 250.47582693309548,
+        "y": 328.71425273111896,
+        "point": {
+          "x": 205,
+          "y": 120
+        },
+        "col": 2,
+        "renderScale": 1.181800959838343
+      },
+      "committedFacing": 1,
+      "acceptedDamage": 16.5,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "togusa",
+      "side": "opponent",
+      "nativeSpawn": {
+        "x": 1449.5241730669045,
+        "y": 328.71425273111896,
+        "point": {
+          "x": 205,
+          "y": 120
+        },
+        "col": 2,
+        "renderScale": 1.181800959838343
+      },
+      "committedFacing": -1,
+      "acceptedDamage": 16.5,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "saito_gits",
+      "side": "player",
+      "nativeSpawn": {
+        "x": 249.87705607926125,
+        "y": 334.5761590996537,
+        "point": {
+          "x": 210,
+          "y": 120
+        },
+        "col": 2,
+        "renderScale": 1.0965756060023086
+      },
+      "committedFacing": 1,
+      "acceptedDamage": 11.899999999999977,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "saito_gits",
+      "side": "opponent",
+      "nativeSpawn": {
+        "x": 1450.1229439207386,
+        "y": 334.5761590996537,
+        "point": {
+          "x": 210,
+          "y": 120
+        },
+        "col": 2,
+        "renderScale": 1.0965756060023086
+      },
+      "committedFacing": -1,
+      "acceptedDamage": 11.899999999999977,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "ada_wong",
+      "side": "player",
+      "nativeSpawn": {
+        "x": 247.703125,
+        "y": 324.0234375,
+        "point": {
+          "x": 214,
+          "y": 89
+        },
+        "col": 2,
+        "renderScale": 1
+      },
+      "committedFacing": 1,
+      "acceptedDamage": 17.200000000000045,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "ada_wong",
+      "side": "opponent",
+      "nativeSpawn": {
+        "x": 1452.296875,
+        "y": 324.0234375,
+        "point": {
+          "x": 214,
+          "y": 89
+        },
+        "col": 2,
+        "renderScale": 1
+      },
+      "committedFacing": -1,
+      "acceptedDamage": 17.200000000000045,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "barry_burton",
+      "side": "player",
+      "nativeSpawn": {
+        "x": 251.04718537004203,
+        "y": 309.68634502863836,
+        "point": {
+          "x": 214,
+          "y": 75
+        },
+        "col": 2,
+        "renderScale": 1.0701014948190928
+      },
+      "committedFacing": 1,
+      "acceptedDamage": 16.799999999999955,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "barry_burton",
+      "side": "opponent",
+      "nativeSpawn": {
+        "x": 1448.9528146299579,
+        "y": 309.68634502863836,
+        "point": {
+          "x": 214,
+          "y": 75
+        },
+        "col": 2,
+        "renderScale": 1.0701014948190928
+      },
+      "committedFacing": -1,
+      "acceptedDamage": 16.799999999999955,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "carlos_oliveira",
+      "side": "player",
+      "nativeSpawn": {
+        "x": 241.046875,
+        "y": 327.90625,
+        "point": {
+          "x": 202,
+          "y": 96
+        },
+        "col": 2,
+        "renderScale": 1
+      },
+      "committedFacing": 1,
+      "acceptedDamage": 12.399999999999977,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    },
+    {
+      "id": "carlos_oliveira",
+      "side": "opponent",
+      "nativeSpawn": {
+        "x": 1458.953125,
+        "y": 327.90625,
+        "point": {
+          "x": 202,
+          "y": 96
+        },
+        "col": 2,
+        "renderScale": 1
+      },
+      "committedFacing": -1,
+      "acceptedDamage": 12.399999999999977,
+      "acceptedDamageEvents": 1,
+      "guarded": true,
+      "pauseStable": true,
+      "realFlightCoordinates": true,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "movedDeadTargetPreservesContact": true
+    }
+  ],
+  "bodyKinds": {
+    "native32": 120
+  },
+  "errors": [],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "source1to1Verified": false
+}

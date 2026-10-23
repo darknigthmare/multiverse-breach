@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "engineUrl": "/src/game/engineSmash.js?t=1792721825120",
+  "sourceDraws": {
+    "count": 75,
+    "sheets": [
+      "/sprites/generated/combat-character-animations-wave10/freeman.png"
+    ],
+    "rows": [
+      7
+    ],
+    "columns": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "coldBoot": "Fresh Chromium process and page; no test preload; only production GameCanvas boot prepares sprites.",
+  "flow": "GameCanvas Smash → Freeman HL2 2004 → panneau Pistolet antigravité surchargé 100 % → clavier L → startup sans dégât → impact après hitAt → charge 0 % → aucun second impact",
+  "impact": {
+    "start": {
+      "name": "Pistolet antigravité surchargé",
+      "charge": 0,
+      "hp": 100000,
+      "elapsed": 0.016666666666666666,
+      "hitAt": 0.451
+    },
+    "hit": {
+      "name": "Pistolet antigravité surchargé",
+      "charge": 0,
+      "hp": 99931,
+      "elapsed": 0.4666666666666666,
+      "hitAt": 0.451
+    },
+    "gameOver": false
+  },
+  "sameInput": {
+    "before": 99931,
+    "retriggered": false,
+    "charge": 0
+  },
+  "final": {
+    "hitCount": 1,
+    "hp": 99931,
+    "charge": 0,
+    "action": null,
+    "profile": "Pistolet antigravité surchargé"
+  },
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "screenshot": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-super.png"
+}

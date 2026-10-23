@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-22",
+  "stageProductionFrozen": true,
+  "source1to1Validated": false,
+  "definitions": 241,
+  "addedMechanisms": 40,
+  "coveredRosterUniverses": 124,
+  "fourModeUniverses": 120,
+  "baseOnly": 401,
+  "oldDefinitionsPreserved": 201,
+  "oldCommandHashesPreserved": 402,
+  "baselineSha256": "65bbd0d26eadc53c83cad41503c3ed2dbc994b62ccdfcc0eda7f58c511a3a526",
+  "tests": [
+    {
+      "command": "node --test scripts/stageAnimationWave9.test.mjs",
+      "exitCode": 0,
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "command": "npm run test:stages",
+      "exitCode": 0,
+      "passed": 62,
+      "failed": 0
+    },
+    {
+      "command": "node --test scripts/stageAtmosphere.test.mjs",
+      "exitCode": 0,
+      "passed": 9,
+      "failed": 0
+    }
+  ],
+  "lintExitCode": 0,
+  "browser": {
+    "mechanisms": 40,
+    "modeRenderChecks": 160,
+    "additionalViewportChecks": 120,
+    "pageErrors": [],
+    "worstMirrorAlphaErrorRatio": 0.010988527976792228
+  },
+  "sources": {
+    "primaryUniqueUrls": 31,
+    "profilesOpenedTargetedText": 27,
+    "profilesIndexedOnly": 13
+  },
+  "globalBuild": "owned-by-root-not-asserted"
+}

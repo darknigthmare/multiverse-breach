@@ -1,0 +1,322 @@
+{
+  "passed": true,
+  "success": true,
+  "fiveCommandExitCodes": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "historicalScriptsAndPackageUnchanged": true,
+  "historicalScriptsAlsoMatchFirstSuccessfulRun": true,
+  "originalBeforeSnapshotsRetained": true,
+  "previousSuccessfulRunArchive": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh-before-lilith-correction",
+  "correctedReferenceHashChanges": [
+    "lilith_borderlands"
+  ],
+  "correctedLilithBaseSha256": "0e82e3fd3b5a6f4a1465b8a7ffccb16dd093b20cf352175ba1cc9f5e93f95228",
+  "qualityBindsCurrentReferenceHashes": true,
+  "referencesChecked": 40,
+  "changedReferences": 37,
+  "retainedHistoricalReferences": 3,
+  "allChangedReferencesApproved": true,
+  "qualityThresholdsAndKnownExpectationsUnchanged": true,
+  "qualityReferenceCounts": {
+    "characterArcEntryCount": 1912,
+    "entriesWithLocalReferences": 1912,
+    "entriesWithoutLocalReferences": 0,
+    "uniqueReferencePathCount": 1912,
+    "missingReferenceFileCount": 0,
+    "referenceClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    },
+    "entryClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    }
+  },
+  "registryStatuses": {
+    "available": 1030,
+    "pending": 2169
+  },
+  "revisedCharacterPromptsMeasured": 32,
+  "availabilityStatusChanges": 0,
+  "hashChecks": 67,
+  "files": [
+    {
+      "path": "scripts/buildRiftDossierCatalog.mjs",
+      "sha256": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143"
+    },
+    {
+      "path": "scripts/auditCharacterReferenceQuality.py",
+      "sha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb"
+    },
+    {
+      "path": "scripts/buildRiftDossierAssetRegistry.mjs",
+      "sha256": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d"
+    },
+    {
+      "path": "package.json",
+      "sha256": "6a05357925267fa717680fc32fce2bbda502774975195961c5124c4324f26fe4"
+    },
+    {
+      "path": "docs/rift-dossiers/catalog.json",
+      "sha256": "26c40dca4d24579345ed6723bf0bd46c71216adf58b40461d770a9ef494ad413"
+    },
+    {
+      "path": "docs/rift-dossiers/character-reference-quality.json",
+      "sha256": "a5e2426b86bf7f0bf2b0a01e5e070fb97e84bbc6da4afa6ae7cb9534e1ea5f1e"
+    },
+    {
+      "path": "src/game/riftDossierAssets.json",
+      "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/01-catalog-refresh.log",
+      "sha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/02-character-reference-audit.log",
+      "sha256": "cc4213f4000b1d22e61d187bf3fafd97589f45d967562cafeaf3fc85d9055485"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/03-catalog-build.log",
+      "sha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/04-asset-registry-build.log",
+      "sha256": "0ae6d3724a446f09f64e6b22d192d46ca63237ce1f541acce4e94aae3905c82c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/05-rift-audit.log",
+      "sha256": "c2329e6e7f1c2a09d9c3031556456fc58c9efe6ca1b348a83f5bcefa25ced44d"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11-part-a/buffy_summers.png",
+      "sha256": "8a35a36e32b20cd519dc3b5b9a5f3f6c906b7af35b9c1f25852eca7d55a8175d"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11-part-a/willow_rosenberg.png",
+      "sha256": "63ac3830c64362c82d7ce4baa55a579f7b66c646253ed18523efe2b0173fb312"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11-part-a/giles_buffy.png",
+      "sha256": "5991ee0fe512c743a564f68adaae8fccda73b303a09ed52656a2ccf26045ce19"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11-part-a/xander_buffy.png",
+      "sha256": "e59918efa3d618b182c3f74378f2b420d8d7afe0f6b48e93a9e5afba24403181"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11-part-a/spike_buffy.png",
+      "sha256": "637da73904fc55c389714553b8d1e9e951e31ed3239c35fa2817151bc5e8e0c0"
+    },
+    {
+      "path": "public/sprites/generated/heroes/harry-potter/harry-potter.png",
+      "sha256": "ba527d7e410aefd8d5621548f199d38724a23d07d127a0377481511838f45d31"
+    },
+    {
+      "path": "public/sprites/generated/heroes/harry-potter/hermione-granger.png",
+      "sha256": "4b6a449757c7db6c2cde2a1f858f9e6b11586783f41a5b56110f9acc4e423837"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11-part-a/ron_weasley.png",
+      "sha256": "83796a5253b8d63164b356f556b363c5174225da1a5cf7055ef7dc336e600ce5"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11-part-a/dumbledore.png",
+      "sha256": "87e9b55de2325c4ba502068d1b6abc610d53ec8ca5cca454a67184d7a78c1d1a"
+    },
+    {
+      "path": "public/sprites/generated/heroes/harry-potter/snape.png",
+      "sha256": "1e76d163c8f9b042c5fdf7a366d75709d705bea7832954b1749cc2acf0124703"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/sheppard_sga.png",
+      "sha256": "207075b8d3df7de1d073610c5cc0aedea61075b402623fdfa94774356c2a3538"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/mckay_sga.png",
+      "sha256": "e357d6e567b4f6ee4695e560dc2d8c343b0e39a121ae1a033bb6220548fb288d"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/teyla_sga.png",
+      "sha256": "34f0c8589ea5df97b47e680011e2ede1e32cdb46995e4a75f94d9153043ce415"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/ronon_dex.png",
+      "sha256": "34231223628ecc97fac63357b2bf13155e45d2acc0ad3ae88f42ba5df7748297"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/elizabeth_weir.png",
+      "sha256": "f40218aed59c542e8b115690362de768770f11ef4a87e1073da0c640bb2f1e40"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/rush_sgu.png",
+      "sha256": "2273e87c5633a43d3d6e3fad0f6d51fadcfce14e09d3c08531d98abeff184dfc"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/young_sgu.png",
+      "sha256": "4c5e80372465a16214957e187af3b0196075fec9bc59991f6e4d4d5fb206c097"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/greer_sgu.png",
+      "sha256": "4c199c675bb1517c9acf255c26534499fbe6e594427950079154b917f177678a"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/chloe_sgu.png",
+      "sha256": "072f54c52c2bf1f8e61aa0194b4f503354d20220f1c052faf37bc432a096ff8b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/matt_scott_sgu.png",
+      "sha256": "f33b974014105789a3d7e3139f2da612ad9fc3a0dc07508fe91c7b45da80c055"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/lilith_borderlands.png",
+      "sha256": "0e82e3fd3b5a6f4a1465b8a7ffccb16dd093b20cf352175ba1cc9f5e93f95228"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/mordecai_borderlands.png",
+      "sha256": "e03408764ea459707365a72f53d9bc33b0b7c727341d2d9660f17be226828f65"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/roland_bl.png",
+      "sha256": "8d4839c6934791b15d3ad901a4047ad5bc134bcc288022751c4b7043921b3c9e"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/brick_bl.png",
+      "sha256": "e64abf0ef928e30c06702d63e525e52bea32f842622cbd110ff84231707ec6f8"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/claptrap_borderlands.png",
+      "sha256": "f130333f66795072c92327735bb54df69a2a452f7f9948aacfc1ff81fa7450b2"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/max.png",
+      "sha256": "7ac9130cfbe16770d4d3ed89978fe6e524ad91d7aefb17f803f041831312c04d"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/furiosa.png",
+      "sha256": "f5b58d42b87eb66ab1fa95509fdb129c69e110f2fe2026031949f7923f987c4f"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/nux.png",
+      "sha256": "b8c6599dad9652e6b7b14a3d60844db1e487fea8c4e317534cf5092085d6e774"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/toast_mm.png",
+      "sha256": "0121623066306d09c58c7d83cb37d66e3888d75f233f1e5a2266b3ee330a41d2"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/capable_mm.png",
+      "sha256": "6d6e879f1d7aad93154426684a084e33b9732778304e621f8d19e48e7bdaca22"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/korben.png",
+      "sha256": "cf78965997d88e3b80b9a63e2534883acc7d86a9b4660f4655ac907e23009d66"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/leeloo.png",
+      "sha256": "79a1da177dd7d846aaa4ecf0dbe9e40736b51e39a95510f388604c8b4a0d85dd"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/ruby_rhod.png",
+      "sha256": "bd9390c551481bcb6b76cc1597904dbb1a5bcc9ff94c5b4a16c7ea7e754dd1ee"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/zorg.png",
+      "sha256": "8e4e89b706c04a9a2f837421f590149c30dd58bf55652a481fe6c618c7e32b2e"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/cornelius.png",
+      "sha256": "de1c8b9836d3fef29acb0f8280bb5ec37377c2e1ae6bffa5681bdd6df51a0de0"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/arthur_kaamelott.png",
+      "sha256": "86664f055b073dde376bed9ba4aa146cd76b83d4ac83275519c0212daa7079b6"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/perceval_kaamelott.png",
+      "sha256": "d92b6b2919dea33e79b712a123fd992eeebc659c8985056e43f87aac52ba93fd"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/karadoc_kaamelott.png",
+      "sha256": "49d8ae18f25290c145df23158310e11353cfdc1ddc1778513f194ab2cb04aa63"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/leodagan_kaamelott.png",
+      "sha256": "00ddc27dd47df7099d4eb7dcc486ca23d166d2f8c77b3332f31bf8d077927af4"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave11/lancelot_kaamelott.png",
+      "sha256": "fab235766637b2dbdd2479ceb04165e10a96f1dce59d70d0d60914f754eba473"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/authorization.json",
+      "sha256": "c51d8d94c4f5e2c78a2d23de89599ecb348c7a41acb87cbfb82518d7a66af01e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/allow-final-writes.json",
+      "sha256": "8a1c17426cae6353d0b2f28260c543c780dcdf2f90b28c37707a41e25e493b4f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/result.json",
+      "sha256": "60428cfd6ebabff796f4d68b491b34fb56b3b3b36ae80b00137aa59be6e02253"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/summary.json",
+      "sha256": "b994b069a44a8bf590cb3f94cf746a8a17d658b443de4f49530a5daf3b68c78e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/registry-availability-delta.json",
+      "sha256": "4bc8ce94436742c513fc81f39ed7b9fa41c3c55c0eedc6fb3461854cdbd9f5c2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/catalog-before.json",
+      "sha256": "432409585c4aafb1ad66ba580026b99f57e8aecb16e22297cf3b48bc419c15f7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/quality-before.json",
+      "sha256": "7dce3436fc4d7dee3ea5ebae47fab7c72fd20c58ad5a95dd54161ea8dee5f0c6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/registry-before.json",
+      "sha256": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/auditCharacterReferenceQuality-before.py",
+      "sha256": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/run-sequential-refresh.py",
+      "sha256": "2a8c8c524bd6e22bf60c1370f730c2eaf46d284ba9f879b4764adaf71999a413"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/summarize-refresh.py",
+      "sha256": "0863dab09d357c2d7ee4901c12917cbe3925c42cb3f14fe1a05410bd221337cd"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/refresh-authorization-for-lilith.mjs",
+      "sha256": "5564bbaf1f61bd6da081da3de4de1e91a3c7a5b194e20005e47aec8a094ae3f0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/verify-refresh-integrity.py",
+      "sha256": "40f1ab24676cdb805e024f55e5dc587d60b5804c38f412dc5fefb93ca2b10afe"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/second-run-preparation.json",
+      "sha256": "e2a20b87bd72645d45b4d9cb9ebd98e6c2f6df9226e6e97eb13972a6c4dca01e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/rift-refresh/before-second-run-integrity.json",
+      "sha256": "202248812ca67696152f7d2aff86f8bf04c966a2e2c0d6a50cf486367190c7e2"
+    }
+  ],
+  "barrierReleasedByRoot": true,
+  "browserWindowsClosedBeforeFinalWrites": true,
+  "source1to1Verified": false
+}

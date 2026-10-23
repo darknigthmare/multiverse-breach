@@ -1,0 +1,1634 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "piccolo_dbz",
+      "heroId": "piccolo_dbz",
+      "universe": "Dragon Ball Z",
+      "name": "Piccolo",
+      "sheet": "/sprites/generated/combat-character-animations-wave4/piccolo_dbz.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "94c6a68f6862aa8490cda63637935863012299aab7faabb5074c72cf399a0bec",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-correction.png",
+      "sourceImageSha256": "7e89a4d084e127d9fa1296873466926abc1f5a63e289d9562743d1977b5efa93",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "referenceAsset": "/sprites/generated/heroes/dragon-ball-z/piccolo-dbz.png",
+      "referenceAssetSha256": "3e2d27222a243d8dc18956fe2be63939a458b61c142b1e382905b70946a20cc0",
+      "referenceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-references/piccolo_dbz.png",
+      "sourceWork": "Dragon Ball Z, Piccolo / Makankosappo",
+      "sourceReference": "Dragon Ball Z, Piccolo charges Makankosappo / Special Beam Cannon with index and middle fingertips at his forehead, then releases a narrow spiral-wrapped ki beam from those two extended fingers. Purple gi corrects the near-black local reference palette. Compact effects and timings are authored adaptation, not official frames.",
+      "abilityName": "Special Beam Cannon",
+      "characterVersion": "Dragon Ball Z Piccolo, green Namekian with two antennae, pointed ears and pink segmented arm pads; purple gi, blue sash, brown-orange pointed boots, no cape/turban or Orange transformation.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+      "originalSourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+      "nativeCorrection": true,
+      "nativeCorrectionReason": "Initial Special Beam Cannon rows have an overlong beam that forces the normalized body much smaller than other phases. Replace only those two action rows with native paired-finger poses and a compact coiled muzzle beam; engine VFX retain combat reach.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+            "sourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 237
+            },
+            "scale": 1.0642201834862386,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 57,
+                  "top": 15,
+                  "width": 113,
+                  "height": 216,
+                  "pixels": 15188
+                },
+                "output": {
+                  "left": 71,
+                  "top": 12,
+                  "width": 120,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 276,
+                  "top": 15,
+                  "width": 107,
+                  "height": 218,
+                  "pixels": 14033
+                },
+                "output": {
+                  "left": 68,
+                  "top": 12,
+                  "width": 114,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 457,
+                  "top": 31,
+                  "width": 188,
+                  "height": 200,
+                  "pixels": 17310
+                },
+                "output": {
+                  "left": 24,
+                  "top": 29,
+                  "width": 200,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 676,
+                  "top": 58,
+                  "width": 199,
+                  "height": 169,
+                  "pixels": 15831
+                },
+                "output": {
+                  "left": 21,
+                  "top": 58,
+                  "width": 212,
+                  "height": 180
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+            "sourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 236,
+              "bottom": 456
+            },
+            "scale": 1.0892018779342723,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 48,
+                  "top": 5,
+                  "width": 147,
+                  "height": 211,
+                  "pixels": 14552
+                },
+                "output": {
+                  "left": 60,
+                  "top": 13,
+                  "width": 160,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 277,
+                  "top": 9,
+                  "width": 123,
+                  "height": 207,
+                  "pixels": 15820
+                },
+                "output": {
+                  "left": 67,
+                  "top": 17,
+                  "width": 134,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 510,
+                  "top": 8,
+                  "width": 95,
+                  "height": 209,
+                  "pixels": 12552
+                },
+                "output": {
+                  "left": 80,
+                  "top": 16,
+                  "width": 103,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 720,
+                  "top": 4,
+                  "width": 106,
+                  "height": 208,
+                  "pixels": 11222
+                },
+                "output": {
+                  "left": 67,
+                  "top": 12,
+                  "width": 115,
+                  "height": 227
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+            "sourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 454,
+              "bottom": 696
+            },
+            "scale": 0.9872340425531915,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 18,
+                  "top": 13,
+                  "width": 181,
+                  "height": 213,
+                  "pixels": 18837
+                },
+                "output": {
+                  "left": 36,
+                  "top": 21,
+                  "width": 179,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 258,
+                  "top": 4,
+                  "width": 153,
+                  "height": 230,
+                  "pixels": 18464
+                },
+                "output": {
+                  "left": 54,
+                  "top": 12,
+                  "width": 151,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 502,
+                  "top": 12,
+                  "width": 106,
+                  "height": 227,
+                  "pixels": 14631
+                },
+                "output": {
+                  "left": 76,
+                  "top": 20,
+                  "width": 105,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 702,
+                  "top": 10,
+                  "width": 153,
+                  "height": 229,
+                  "pixels": 15366
+                },
+                "output": {
+                  "left": 55,
+                  "top": 18,
+                  "width": 151,
+                  "height": 226
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+            "sourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 692,
+              "bottom": 896
+            },
+            "scale": 1.0790697674418606,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 3,
+                  "width": 191,
+                  "height": 194,
+                  "pixels": 16512
+                },
+                "output": {
+                  "left": 21,
+                  "top": 33,
+                  "width": 206,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 246,
+                  "top": 36,
+                  "width": 168,
+                  "height": 163,
+                  "pixels": 16946
+                },
+                "output": {
+                  "left": 35,
+                  "top": 68,
+                  "width": 181,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 470,
+                  "top": 17,
+                  "width": 148,
+                  "height": 180,
+                  "pixels": 17548
+                },
+                "output": {
+                  "left": 37,
+                  "top": 48,
+                  "width": 160,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 669,
+                  "top": 33,
+                  "width": 204,
+                  "height": 163,
+                  "pixels": 17177
+                },
+                "output": {
+                  "left": 12,
+                  "top": 65,
+                  "width": 220,
+                  "height": 176
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-correction.png",
+            "sourceImageSha256": "7e89a4d084e127d9fa1296873466926abc1f5a63e289d9562743d1977b5efa93",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 462
+            },
+            "scale": 0.42568807339449544,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 82,
+                  "width": 390,
+                  "height": 368,
+                  "pixels": 62222
+                },
+                "output": {
+                  "left": 48,
+                  "top": 85,
+                  "width": 166,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 474,
+                  "top": 83,
+                  "width": 362,
+                  "height": 368,
+                  "pixels": 63916
+                },
+                "output": {
+                  "left": 47,
+                  "top": 86,
+                  "width": 154,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 902,
+                  "top": 91,
+                  "width": 479,
+                  "height": 359,
+                  "pixels": 66429
+                },
+                "output": {
+                  "left": 40,
+                  "top": 89,
+                  "width": 204,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 1353,
+                  "top": 50,
+                  "width": 316,
+                  "height": 405,
+                  "pixels": 60376
+                },
+                "output": {
+                  "left": 43,
+                  "top": 72,
+                  "width": 135,
+                  "height": 172
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+            "sourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1109,
+              "bottom": 1351
+            },
+            "scale": 0.9392712550607287,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 3,
+                  "width": 126,
+                  "height": 229,
+                  "pixels": 18131
+                },
+                "output": {
+                  "left": 66,
+                  "top": 25,
+                  "width": 118,
+                  "height": 215
+                }
+              },
+              {
+                "source": {
+                  "left": 262,
+                  "top": 6,
+                  "width": 174,
+                  "height": 228,
+                  "pixels": 17126
+                },
+                "output": {
+                  "left": 62,
+                  "top": 28,
+                  "width": 163,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 431,
+                  "top": 15,
+                  "width": 231,
+                  "height": 218,
+                  "pixels": 19249
+                },
+                "output": {
+                  "left": 12,
+                  "top": 36,
+                  "width": 217,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 733,
+                  "top": 7,
+                  "width": 97,
+                  "height": 229,
+                  "pixels": 14489
+                },
+                "output": {
+                  "left": 87,
+                  "top": 29,
+                  "width": 91,
+                  "height": 215
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+            "sourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1350,
+              "bottom": 1555
+            },
+            "scale": 1.0131004366812226,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 28,
+                  "top": 7,
+                  "width": 164,
+                  "height": 188,
+                  "pixels": 16476
+                },
+                "output": {
+                  "left": 44,
+                  "top": 54,
+                  "width": 166,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 266,
+                  "top": 42,
+                  "width": 175,
+                  "height": 146,
+                  "pixels": 13821
+                },
+                "output": {
+                  "left": 61,
+                  "top": 89,
+                  "width": 177,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 440,
+                  "top": 59,
+                  "width": 207,
+                  "height": 125,
+                  "pixels": 14265
+                },
+                "output": {
+                  "left": 12,
+                  "top": 106,
+                  "width": 210,
+                  "height": 127
+                }
+              },
+              {
+                "source": {
+                  "left": 690,
+                  "top": 45,
+                  "width": 186,
+                  "height": 140,
+                  "pixels": 16551
+                },
+                "output": {
+                  "left": 41,
+                  "top": 92,
+                  "width": 188,
+                  "height": 142
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-correction.png",
+            "sourceImageSha256": "7e89a4d084e127d9fa1296873466926abc1f5a63e289d9562743d1977b5efa93",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 461,
+              "bottom": 887
+            },
+            "scale": 0.38731218697829717,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 43,
+                  "top": 89,
+                  "width": 335,
+                  "height": 315,
+                  "pixels": 58051
+                },
+                "output": {
+                  "left": 59,
+                  "top": 120,
+                  "width": 130,
+                  "height": 122
+                }
+              },
+              {
+                "source": {
+                  "left": 470,
+                  "top": 9,
+                  "width": 371,
+                  "height": 400,
+                  "pixels": 72467
+                },
+                "output": {
+                  "left": 52,
+                  "top": 89,
+                  "width": 144,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 875,
+                  "top": 75,
+                  "width": 533,
+                  "height": 324,
+                  "pixels": 68319
+                },
+                "output": {
+                  "left": 37,
+                  "top": 115,
+                  "width": 206,
+                  "height": 125
+                }
+              },
+              {
+                "source": {
+                  "left": 1363,
+                  "top": 110,
+                  "width": 355,
+                  "height": 291,
+                  "pixels": 49344
+                },
+                "output": {
+                  "left": 55,
+                  "top": 128,
+                  "width": 137,
+                  "height": 113
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9af58ccb77ddc14363d52856c0cf67ea87ce8a46b4a572cef7f3edb0ea088b5a",
+              "b73792bfae1103a444561a98d59f79fd14f4d983cb18adb269242be81dcd793f",
+              "79f682c417e080b8a137a4ff7d9e0b0b80a8f040b67c5f919a1c091f75d06acc",
+              "1df531c40ff4f27a0fa92b64eb44c33a3aa58b86b78662378c356a3ac849a9c9"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4b36eb1e8af9f990c958899b789467cc7bf3398fd9fe1b658048439e5b6d8112",
+              "3eac347c157824f6a7adb7329aa6cd83cf803c392fc4741014eadc675d1a765a",
+              "4883a84dc3512a76df5c577e3959a227ac8ae21b9188d45e004f2815e5441bd1",
+              "df46ea2fd2633be4ed6f086b650e4f37705a6104ec4750886a0a032850cd6baa"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "86656e26f043d9bdad279bece890a474c5c6cc0ee9ad986b9cbe45e91450ca3a",
+              "d10bbc26261199a97a5ad8a354ae7642994624d8a2d0fc0cef17cab53de24f42",
+              "0b0f19fa56faad73e76cdba2a9601ea765b0093086930d10d3164ed7414808a0",
+              "4d8f718d4da2ad911dd93fb034dd5e53ef1ce8781d9cd47340822c6be9fa3bb9"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8412ca5ac99aaac65dfb0160d8c19a9274ee4595582a8aadcfdd9476c910016a",
+              "867dc3fe1ab002f37c00619334c5e487532c479835dc701e8d4601ea6d5ae593",
+              "c48fa11c77a019558bbf13b7dc60cbc40aa905bd561149f03490039cf4d19214",
+              "985611f3e97adf1f45b75e41b4d5ec13814b9175b7f5f51aaf2d0a1495c7632f"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7b43ca59b481d8dab6c9ab45fa01b7cca6f55ece4c4826da33bc4f5751b0337d",
+              "0cf601bf1a82e357d46cd9f49b58351574e8c696315c856ab246d22bc480f0b2",
+              "c96729adc5d4667d6f3dc18b9a156fe107d8729c855f8128411f6f600621b426",
+              "f9e86a3ff6413453ebf5e746b81f778b4f852b3a157a97a43fe1f87e9b501613"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "129ddfdbb6071f8f34d1a8326794fbdc4d30eee05d71c92053503466cd5efb32",
+              "934460a99762ec365314bf9fd0964136ea3a30c18805c0d6006a3f1049def96f",
+              "da96feba53613debaf68b8b81e8986aff0031fb949d39c880b51eb8a94dcb182",
+              "0a257d59cd8cc62a06bedb4a1922bd9ff0feb8c2c22f7fec3611534351bd154e"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9aa994a4609dc3e7594290eb1da24c454e53f4bddc406de02ecc0d92c119a969",
+              "d91d2bf392795dc2e8c312a41e978312a2436dc52c3ad3f5f6c5c6e3ca43e5a1",
+              "865851ce5f3ecf0ad6e5c75998997f0912426be267352083f5cb65d2deb186d3",
+              "5d367c5ecbc660d51b50ad2551c2c610612939b8a42b57f19d8212c4a0f13f75"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "be5120993d18bdb08d2ae295f9c4ec134b90beff26e7a07235f86e0a94b559c9",
+              "b0c45b08d46032f45ddb90a0a0b6b33fe42575ea34eb7d6ba8e4e5680cdcaf37",
+              "25b14ea82a426de010c0295f96036b27f0f669ad59cbdee5f090dc88c3df1b85",
+              "04744be080dc1365e6901f36acd2fc718919007acc57a56036d651f2448190e3"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Dragon Ball Z Piccolo, green Namekian with two antennae, pointed ears and pink segmented arm pads; purple gi, blue sash, brown-orange pointed boots, no cape/turban or Orange transformation. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "kakashi_war",
+      "heroId": "kakashi_war",
+      "universe": "Naruto Shippuden",
+      "name": "Kakashi Hatake",
+      "sheet": "/sprites/generated/combat-character-animations-wave4/kakashi_war.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "b248d7d2868139f601ad7d29e11ae013d094ef229e5f9a7fb39d8ba77c37f34f",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-correction.png",
+      "sourceImageSha256": "882f4e0a3b7f65380e7e6d3e3dc664606e3a971dc2a42c7772cb25f2798b9fae",
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "referenceAsset": "/sprites/generated/heroes/naruto-shippuden/kakashi-war.png",
+      "referenceAssetSha256": "ffdbc77d110cae335aae8f594b1ca0c2d3cf7eb77a002895e1dd9d1e6140d6fb",
+      "referenceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-references/kakashi_war.png",
+      "sourceWork": "Naruto Shippuden, Fourth Shinobi World War Kakashi before double Mangekyo",
+      "sourceReference": "Naruto Shippuden, war-era Kakashi uses his single left Mangekyo Sharingan for Kamui space-time distortion. This is the pre-double-Mangekyo version, without Susanoo. The atlas depicts eye concentration and a compact grey space warp, not the electrical hand attack Raikiri. Gameplay area, timings and visual glyphs remain authored adaptation.",
+      "abilityName": "Kamui",
+      "characterVersion": "War-era Kakashi before dual Mangekyo: silver spiky hair, green flak vest over navy shinobi clothes, forehead protector, black lower-face mask, gloves, white leg wraps and open-toe sandals. One left Sharingan revealed for Kamui; no Susanoo or second Sharingan.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+      "originalSourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+      "nativeCorrection": true,
+      "nativeCorrectionReason": "The initial native atlas contains only seven actual rows, omitting the requested fatality row. A separate four-pose native Kamui finale fills that missing phase; no existing row is duplicated.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 229
+            },
+            "scale": 1.0841121495327102,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 59,
+                  "top": 11,
+                  "width": 108,
+                  "height": 214,
+                  "pixels": 12585
+                },
+                "output": {
+                  "left": 72,
+                  "top": 12,
+                  "width": 117,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 250,
+                  "top": 11,
+                  "width": 150,
+                  "height": 212,
+                  "pixels": 13945
+                },
+                "output": {
+                  "left": 38,
+                  "top": 12,
+                  "width": 163,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 460,
+                  "top": 16,
+                  "width": 195,
+                  "height": 209,
+                  "pixels": 17093
+                },
+                "output": {
+                  "left": 26,
+                  "top": 17,
+                  "width": 211,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 699,
+                  "top": 11,
+                  "width": 141,
+                  "height": 213,
+                  "pixels": 15829
+                },
+                "output": {
+                  "left": 44,
+                  "top": 12,
+                  "width": 153,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 218,
+              "bottom": 462
+            },
+            "scale": 0.9586776859504132,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 62,
+                  "top": 16,
+                  "width": 102,
+                  "height": 227,
+                  "pixels": 14727
+                },
+                "output": {
+                  "left": 81,
+                  "top": 26,
+                  "width": 98,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 272,
+                  "top": 16,
+                  "width": 115,
+                  "height": 223,
+                  "pixels": 14817
+                },
+                "output": {
+                  "left": 70,
+                  "top": 26,
+                  "width": 110,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 496,
+                  "top": 15,
+                  "width": 121,
+                  "height": 225,
+                  "pixels": 15751
+                },
+                "output": {
+                  "left": 72,
+                  "top": 25,
+                  "width": 116,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 737,
+                  "top": 1,
+                  "width": 119,
+                  "height": 235,
+                  "pixels": 13119
+                },
+                "output": {
+                  "left": 90,
+                  "top": 12,
+                  "width": 114,
+                  "height": 225
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 455,
+              "bottom": 708
+            },
+            "scale": 0.9469387755102041,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 36,
+                  "top": 5,
+                  "width": 153,
+                  "height": 241,
+                  "pixels": 16892
+                },
+                "output": {
+                  "left": 57,
+                  "top": 16,
+                  "width": 145,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 279,
+                  "top": 5,
+                  "width": 128,
+                  "height": 240,
+                  "pixels": 18063
+                },
+                "output": {
+                  "left": 77,
+                  "top": 16,
+                  "width": 121,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 495,
+                  "top": 1,
+                  "width": 120,
+                  "height": 245,
+                  "pixels": 15877
+                },
+                "output": {
+                  "left": 72,
+                  "top": 12,
+                  "width": 114,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 745,
+                  "top": 5,
+                  "width": 89,
+                  "height": 241,
+                  "pixels": 14015
+                },
+                "output": {
+                  "left": 99,
+                  "top": 16,
+                  "width": 84,
+                  "height": 228
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 704,
+              "bottom": 925
+            },
+            "scale": 1.008695652173913,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 17,
+                  "top": 5,
+                  "width": 187,
+                  "height": 211,
+                  "pixels": 16545
+                },
+                "output": {
+                  "left": 33,
+                  "top": 31,
+                  "width": 189,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 248,
+                  "top": 51,
+                  "width": 170,
+                  "height": 144,
+                  "pixels": 14397
+                },
+                "output": {
+                  "left": 43,
+                  "top": 78,
+                  "width": 171,
+                  "height": 145
+                }
+              },
+              {
+                "source": {
+                  "left": 466,
+                  "top": 16,
+                  "width": 203,
+                  "height": 195,
+                  "pixels": 18541
+                },
+                "output": {
+                  "left": 39,
+                  "top": 42,
+                  "width": 205,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 667,
+                  "top": 13,
+                  "width": 200,
+                  "height": 199,
+                  "pixels": 15930
+                },
+                "output": {
+                  "left": 18,
+                  "top": 39,
+                  "width": 202,
+                  "height": 201
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-correction.png",
+            "sourceImageSha256": "882f4e0a3b7f65380e7e6d3e3dc664606e3a971dc2a42c7772cb25f2798b9fae",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 724
+            },
+            "scale": 0.38666666666666666,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 81,
+                  "width": 476,
+                  "height": 594,
+                  "pixels": 113711
+                },
+                "output": {
+                  "left": 43,
+                  "top": 12,
+                  "width": 184,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 603,
+                  "top": 178,
+                  "width": 428,
+                  "height": 485,
+                  "pixels": 104792
+                },
+                "output": {
+                  "left": 46,
+                  "top": 50,
+                  "width": 165,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 1091,
+                  "top": 94,
+                  "width": 545,
+                  "height": 574,
+                  "pixels": 119172
+                },
+                "output": {
+                  "left": 25,
+                  "top": 17,
+                  "width": 211,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 1687,
+                  "top": 259,
+                  "width": 431,
+                  "height": 422,
+                  "pixels": 93681
+                },
+                "output": {
+                  "left": 45,
+                  "top": 81,
+                  "width": 167,
+                  "height": 163
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 923,
+              "bottom": 1188
+            },
+            "scale": 0.9133858267716536,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 53,
+                  "top": 7,
+                  "width": 110,
+                  "height": 248,
+                  "pixels": 18093
+                },
+                "output": {
+                  "left": 75,
+                  "top": 13,
+                  "width": 100,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 271,
+                  "top": 7,
+                  "width": 118,
+                  "height": 251,
+                  "pixels": 17449
+                },
+                "output": {
+                  "left": 72,
+                  "top": 13,
+                  "width": 108,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 486,
+                  "top": 6,
+                  "width": 139,
+                  "height": 254,
+                  "pixels": 18463
+                },
+                "output": {
+                  "left": 66,
+                  "top": 12,
+                  "width": 127,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 725,
+                  "top": 7,
+                  "width": 144,
+                  "height": 248,
+                  "pixels": 16302
+                },
+                "output": {
+                  "left": 81,
+                  "top": 13,
+                  "width": 132,
+                  "height": 227
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1186,
+              "bottom": 1454
+            },
+            "scale": 0.8923076923076924,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 40,
+                  "top": 5,
+                  "width": 126,
+                  "height": 260,
+                  "pixels": 18186
+                },
+                "output": {
+                  "left": 65,
+                  "top": 12,
+                  "width": 112,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 242,
+                  "top": 57,
+                  "width": 145,
+                  "height": 196,
+                  "pixels": 17786
+                },
+                "output": {
+                  "left": 47,
+                  "top": 58,
+                  "width": 129,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 453,
+                  "top": 92,
+                  "width": 181,
+                  "height": 171,
+                  "pixels": 16890
+                },
+                "output": {
+                  "left": 38,
+                  "top": 90,
+                  "width": 162,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 707,
+                  "top": 88,
+                  "width": 170,
+                  "height": 175,
+                  "pixels": 17837
+                },
+                "output": {
+                  "left": 66,
+                  "top": 86,
+                  "width": 152,
+                  "height": 156
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1451,
+              "bottom": 1774
+            },
+            "scale": 0.8197879858657244,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 58,
+                  "width": 204,
+                  "height": 220,
+                  "pixels": 22425
+                },
+                "output": {
+                  "left": 47,
+                  "top": 57,
+                  "width": 167,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 238,
+                  "top": 3,
+                  "width": 205,
+                  "height": 283,
+                  "pixels": 24675
+                },
+                "output": {
+                  "left": 50,
+                  "top": 12,
+                  "width": 168,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 442,
+                  "top": 50,
+                  "width": 217,
+                  "height": 227,
+                  "pixels": 21963
+                },
+                "output": {
+                  "left": 36,
+                  "top": 51,
+                  "width": 178,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 644,
+                  "top": 47,
+                  "width": 237,
+                  "height": 226,
+                  "pixels": 26396
+                },
+                "output": {
+                  "left": 20,
+                  "top": 48,
+                  "width": 194,
+                  "height": 185
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "43310a191225feae50242bd10e3a7a4e59936afcff4936725337d4c80ddbf69d",
+              "e28f447fe2927e861df8c7ae272855b2d0025975308fc252ac8e6052b3d45e94",
+              "e19cf54138c3213011dad92665d0fdd91ff0dd53fb8d872946507b468723e2b3",
+              "a5978f64a50ac6f54ccb7d4e1334b5595b000fb387e938e9a9d5b53a7907ca40"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7b6dfa3623bade6b65a8931a356160b96cbb9bd8db836da1782144990f5771be",
+              "1c3903bedbe82d08617d9a9ac56acf5987db616c1378f0d5e90a3c0a0e67e1a2",
+              "f8fcc9a6bfd5c6ba2a772c5a61d5f3525e901ec1c02bc1305888e1f95618a78d",
+              "058ff0f3ae87ed24d5b9a90886858e86a26c77b6249df1f5541c7e4e9903b95e"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "817b92787cca1ae5d4028d1a5d1d0d1a0e921753ef5ef9be51ef02731307ecfd",
+              "956fb25760f7a98eae20ee55a35631d0b4cf2ea6d8621ab1ca3236488b0bb42b",
+              "72b0cca4473203a72dfa55e7f5ae667cc52e96554fa7b956fffb11145493732c",
+              "2791ec8621459efa4166118ee6604ac9afbeb1ac297b41cd607bb54f0a40b8ec"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "bf757851f8756537e8ca7caf922d87061f76cfb2598a8ce906e8fd5b7bbc94a8",
+              "bc867d7fc694aa6e62cabe242aec297295182702d4f3d6964f346ff00090fc3c",
+              "e34f84bc9cfb4a93801cd739c8c4abb501454b4b954e80b7e60f60cc3aeed382",
+              "6edea38efc610d2888f20a6e2a0b1c8b340d6961bd802259708927e54277dae7"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b2c1465ca8a5dbb0730628a9a95bab0666cacf92282326f11ce747a3cfe5aa5c",
+              "a659e802616c41237016f18566e8cb744cd0ef56fbb894c30ac5dc006c087c4f",
+              "ea6b118642ce57a982ffc9fb19b92dcbd2b9856bf1b6a548d908297179a5d1c5",
+              "c6eef5e263374c88b301247a795a0b81378cb1111954a077128460d2bcba0c2d"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "231ed58aed69902647e739806ca878faf7c99c056fe0131f73c5adb54ecb875d",
+              "a61f6f4a42accca22bdeea4aeba81314ca2183b5719d42e6dc55f638e8c7b1d9",
+              "fdf740cfeba1e3828214e21a1c92ec0c7748326a75ba59fd54fe221f3f43b5b2",
+              "b4ce3a63beea1b3fe5b4f47d91652cb2152a460ad73e46f15baffa4a18920797"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "62485e0794a821eb47dfddba0bb18ec88844f27df72c6ea962eb1516ae0fae72",
+              "fb387d77b93b39419a1fb687d64c4f898cf6ccd65d6f489cbf2ebf8d5b3a977f",
+              "32124c62fbd4eb4c7bc3b33704dfc8e9a996f45a2c081cb7914de63d045e7160",
+              "b4874e9c225bc73d9d7f9b901079762275919a9e65f6eeea8713e69cc44d1eef"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "97e284cf24da473d80f428e69ef187c09507fc6cea1e2c38e486e31a57a526e2",
+              "9ac8b60accfa8a314733d6b642f67d5b703d7a08bc9e67513dcf44f8c2c9be99",
+              "bfbbacddb4cf2e1cbc669f1e65a2f17081b2b68666d35e1d64e3bd4b30a9e077",
+              "502f04d9d5797935889fae57d586e86841a25eae4bc9515985a1e5621abd14b2"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "War-era Kakashi before dual Mangekyo: silver spiky hair, green flak vest over navy shinobi clothes, forehead protector, black lower-face mask, gloves, white leg wraps and open-toe sandals. One left Sharingan revealed for Kamui; no Susanoo or second Sharingan. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    }
+  ]
+}

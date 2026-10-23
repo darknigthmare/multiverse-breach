@@ -1,0 +1,2736 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "heroId": "tifa_ff7",
+  "universe": "Final Fantasy VII",
+  "canonicalVerified": false,
+  "networkVerified": false,
+  "canon1to1Verified": false,
+  "entries": [
+    {
+      "id": "tifa-motion-a",
+      "heroId": "tifa_ff7",
+      "universe": "Final Fantasy VII",
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-motion-a.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "stateOrder": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "80fb30a7b74db4c6ac2ae70bfcab580a216880bcb8b1a27c80a6edd674f09e82",
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+      "sourceHash": "27df7673cc90ea7d0539fe1cfa94b977f58ed1db6017ef750d80dd71c59d9f9a",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+          "sha256": "27df7673cc90ea7d0539fe1cfa94b977f58ed1db6017ef750d80dd71c59d9f9a",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          },
+          "columns": 4,
+          "rows": 7
+        },
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+          "sha256": "4c824a76862276e94f09e0f083fb8c8dad5045ec95b2a8519f91484dc2c158d6",
+          "dimensions": {
+            "width": 1448,
+            "height": 1086
+          },
+          "columns": 4,
+          "rows": 3
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/final-fantasy-vii/tifa-ff7.png",
+      "referenceHash": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/final-fantasy-vii/tifa-ff7.png",
+          "sha256": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab",
+          "savedImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-original.png"
+        },
+        {
+          "asset": "public/sprites/generated/combat-character-animations/tifa_ff7.png",
+          "sha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+          "savedImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-presentation.png"
+        }
+      ],
+      "frameOrderByState": {
+        "idle": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "run": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "turn": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "jumpStart": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "jumpRise": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "jumpApex": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "fall": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "normalization": {
+        "method": "Alpha-connected segmentation of genuine native drawings; uniform per-source nearest-neighbor scaling and transparent packing.",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive alpha-bounds anchor in each 256px cell",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Near-transparent background noise below threshold excluded; all original PNG sources remain unchanged.",
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png": 0.970954356846473,
+          "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png": 0.6046511627906976
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "idle",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 51,
+              "y": 14,
+              "width": 150,
+              "height": 234
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 55,
+              "y": 17,
+              "width": 146,
+              "height": 227
+            },
+            "sha256": "c6219de48c0372f413f76afcc0e6334bc4767a1d423afe1c7fa9143f0ec62d83"
+          },
+          {
+            "state": "idle",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 286,
+              "y": 14,
+              "width": 142,
+              "height": 234
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 59,
+              "y": 17,
+              "width": 138,
+              "height": 227
+            },
+            "sha256": "6ee8687262cf90c5a562bd2401f962574b23856754befe008b44d24cc06059bb"
+          },
+          {
+            "state": "idle",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 500,
+              "y": 14,
+              "width": 149,
+              "height": 234
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 55,
+              "y": 17,
+              "width": 145,
+              "height": 227
+            },
+            "sha256": "a44691f31b30236d5531ed341a0c708b19ea767533bf3ed49305c566553584d8"
+          },
+          {
+            "state": "idle",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 725,
+              "y": 14,
+              "width": 141,
+              "height": 234
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 59,
+              "y": 17,
+              "width": 137,
+              "height": 227
+            },
+            "sha256": "9f43d5604509c74ad5eebfa74d0843de9b1aa51a43a3701b8b6fe00651596c1e"
+          },
+          {
+            "state": "walk",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 48,
+              "y": 257,
+              "width": 157,
+              "height": 218
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 52,
+              "y": 32,
+              "width": 152,
+              "height": 212
+            },
+            "sha256": "dbeda16848eefca241b22c2f700d9592529eb91c9d5c2a947bf3a3f526cef71a"
+          },
+          {
+            "state": "walk",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 278,
+              "y": 258,
+              "width": 151,
+              "height": 217
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 54,
+              "y": 33,
+              "width": 147,
+              "height": 211
+            },
+            "sha256": "70e5f041123a56ad6c7a723b5828b7109e3c204e20b9c9d7a14b79a4998ad705"
+          },
+          {
+            "state": "walk",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 489,
+              "y": 261,
+              "width": 158,
+              "height": 213
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 51,
+              "y": 37,
+              "width": 153,
+              "height": 207
+            },
+            "sha256": "cecdb31e13267a2272b505aaeb41b1f195b4c90e453b521d57939a1f385772bc"
+          },
+          {
+            "state": "walk",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 718,
+              "y": 258,
+              "width": 134,
+              "height": 217
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 63,
+              "y": 33,
+              "width": 130,
+              "height": 211
+            },
+            "sha256": "b547f538966fb6b55d8728e0496eacb466140e67b999d5e7deff829a0124ecaf"
+          },
+          {
+            "state": "run",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 23,
+              "y": 486,
+              "width": 188,
+              "height": 203
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 36,
+              "y": 47,
+              "width": 183,
+              "height": 197
+            },
+            "sha256": "a226b714b09e162944fd3d1a8a871772d1868bda4151f10f9d8c6e635fa5cb0d"
+          },
+          {
+            "state": "run",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 253,
+              "y": 483,
+              "width": 187,
+              "height": 194
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 37,
+              "y": 56,
+              "width": 182,
+              "height": 188
+            },
+            "sha256": "0c336fcfe21e632fce83269ffa683bdad9408a005494b81e1ce6ce84c32c01e7"
+          },
+          {
+            "state": "run",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 477,
+              "y": 488,
+              "width": 184,
+              "height": 198
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 38,
+              "y": 52,
+              "width": 179,
+              "height": 192
+            },
+            "sha256": "39d327422571e963e20c4c4a08c5e6311088bc5b9284d81128c0a8ec2593a208"
+          },
+          {
+            "state": "run",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 705,
+              "y": 483,
+              "width": 165,
+              "height": 201
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 48,
+              "y": 49,
+              "width": 160,
+              "height": 195
+            },
+            "sha256": "3e604701eda07bcc321d1c6c853e6d4ffe44125a5507ed8d2f6b8dc066a9bba7"
+          },
+          {
+            "state": "turn",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 42,
+              "y": 691,
+              "width": 145,
+              "height": 231
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 57,
+              "y": 20,
+              "width": 141,
+              "height": 224
+            },
+            "sha256": "6b17f32661ca12b0440e07943cd9badae33bfc084a8096eef5c3f5084e3fd41d"
+          },
+          {
+            "state": "turn",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 276,
+              "y": 691,
+              "width": 159,
+              "height": 225
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 51,
+              "y": 26,
+              "width": 154,
+              "height": 218
+            },
+            "sha256": "80e75bef6c58a5731a39f4dd899f1ad574244d9c167264e9dc8bded7204d3ce3"
+          },
+          {
+            "state": "turn",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 489,
+              "y": 691,
+              "width": 144,
+              "height": 231
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 58,
+              "y": 20,
+              "width": 140,
+              "height": 224
+            },
+            "sha256": "3aa0d1029f6e127df56bb18dd216162473bd000b701523bea2ad98e24e5858b7"
+          },
+          {
+            "state": "turn",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 705,
+              "y": 693,
+              "width": 150,
+              "height": 226
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 55,
+              "y": 25,
+              "width": 146,
+              "height": 219
+            },
+            "sha256": "423f84df8e253e29b3aac22e794d0b576a7bda8b3e102e9d3d14f83de79cd389"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 39,
+              "y": 938,
+              "width": 161,
+              "height": 195
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 50,
+              "y": 55,
+              "width": 156,
+              "height": 189
+            },
+            "sha256": "94858954ac152c70c48d82be71b66c0b08549e34f89e3ed8c111e3a627254f9e"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 244,
+              "y": 945,
+              "width": 173,
+              "height": 215
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 44,
+              "y": 35,
+              "width": 168,
+              "height": 209
+            },
+            "sha256": "b3d44d1e4a113408c0188328efb000fe3f228724a294f511f9ef05cce9eee5b3"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 471,
+              "y": 926,
+              "width": 159,
+              "height": 191
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 51,
+              "y": 59,
+              "width": 154,
+              "height": 185
+            },
+            "sha256": "c56b4b6b815c9a1b0cfa5a0831a136084b687b4a4e0922be23055302e20cebc4"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 696,
+              "y": 926,
+              "width": 178,
+              "height": 223
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 41,
+              "y": 27,
+              "width": 173,
+              "height": 217
+            },
+            "sha256": "fd75b538c8e513f3818b8410566778b5c5368487c3271ed8e1332c25814026c6"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 37,
+              "y": 1155,
+              "width": 163,
+              "height": 198
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 49,
+              "y": 52,
+              "width": 158,
+              "height": 192
+            },
+            "sha256": "c634abc3595287449d580d0278a4e7d4ce2fc38cbfd6d0a5cf3f78dba289da68"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 257,
+              "y": 1162,
+              "width": 193,
+              "height": 227
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 34,
+              "y": 24,
+              "width": 187,
+              "height": 220
+            },
+            "sha256": "d15f8d0f77a78ac914866f9c9f5c7058e28adefec5cba5185143396b54d8b50f"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 476,
+              "y": 1174,
+              "width": 175,
+              "height": 230
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 43,
+              "y": 21,
+              "width": 170,
+              "height": 223
+            },
+            "sha256": "87afa8de1fac136d4603bec6459242dbccac8dc7cf7ca38675755dd6c0c7b267"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 690,
+              "y": 1171,
+              "width": 178,
+              "height": 233
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 41,
+              "y": 18,
+              "width": 173,
+              "height": 226
+            },
+            "sha256": "5fa31a0ecdcfc48be27c213c13b942393126a7004cb20388c9e119e784598d22"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 44,
+              "y": 24,
+              "width": 261,
+              "height": 315
+            },
+            "scale": 0.6046511627906976,
+            "destinationRect": {
+              "x": 49,
+              "y": 54,
+              "width": 158,
+              "height": 190
+            },
+            "sha256": "bc9bb1fcff9589770a3bc9a56a5987cdab46b3ada3b78afbecbd2e144a41709e"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 389,
+              "y": 21,
+              "width": 284,
+              "height": 387
+            },
+            "scale": 0.6046511627906976,
+            "destinationRect": {
+              "x": 42,
+              "y": 10,
+              "width": 172,
+              "height": 234
+            },
+            "sha256": "44bae588b1efd46eaf37e7b08fa63b6cf9ba58c4b118b073d36ff5e79b70353a"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 756,
+              "y": 49,
+              "width": 286,
+              "height": 322
+            },
+            "scale": 0.6046511627906976,
+            "destinationRect": {
+              "x": 41,
+              "y": 49,
+              "width": 173,
+              "height": 195
+            },
+            "sha256": "5516a44de7f46bf7a0f90be1be4e48da213c27ebe83443dc6c427056628cd816"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 1139,
+              "y": 36,
+              "width": 246,
+              "height": 372
+            },
+            "scale": 0.6046511627906976,
+            "destinationRect": {
+              "x": 53,
+              "y": 19,
+              "width": 149,
+              "height": 225
+            },
+            "sha256": "3e0965ee4d413cfa46ab809ede59fe6e682ea8e0d6f26726fc8ccad198d63e19"
+          },
+          {
+            "state": "fall",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 42,
+              "y": 1396,
+              "width": 164,
+              "height": 213
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 48,
+              "y": 37,
+              "width": 159,
+              "height": 207
+            },
+            "sha256": "532f1a3637026d060cc48faa7b21cfd75d521ca61adaee12fc735a9a10dc88e4"
+          },
+          {
+            "state": "fall",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 272,
+              "y": 1418,
+              "width": 145,
+              "height": 241
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 57,
+              "y": 10,
+              "width": 141,
+              "height": 234
+            },
+            "sha256": "0a3c6cd28d809f4cb718ae9efb9eca8f89c0117f86d28b1192151e822d026a38"
+          },
+          {
+            "state": "fall",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 487,
+              "y": 1431,
+              "width": 158,
+              "height": 231
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 51,
+              "y": 20,
+              "width": 153,
+              "height": 224
+            },
+            "sha256": "0279bd926643149b0a28680be97accf1e0b70ffd3202878774ab617278a4ca5c"
+          },
+          {
+            "state": "fall",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 702,
+              "y": 1439,
+              "width": 150,
+              "height": 234
+            },
+            "scale": 0.970954356846473,
+            "destinationRect": {
+              "x": 55,
+              "y": 17,
+              "width": 146,
+              "height": 227
+            },
+            "sha256": "aaa171677a01223751b8635448018cefd6d69c715ddb141d448af251b7741bcc"
+          }
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0,
+        "nativeSourceStateOrder": [
+          "idle",
+          "walk",
+          "run",
+          "turn",
+          "jumpStart",
+          "jumpRise",
+          "fall"
+        ],
+        "correctionState": "jumpApex",
+        "correctionNativeRow": 0
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "completeRows": 8,
+        "distinctNativePoses": 32,
+        "wholeCharacterContained": true,
+        "facing": "right; turn includes back/three-quarter body rotation and ends facing right",
+        "outfit": "FF7 1997 Tifa: white sleeveless top, black skirt, two suspenders, red gloves and wrist/forearm bands, red boots, long tied dark-brown hair.",
+        "weapons": "none; unarmed physical martial movements and forearm/glove guards",
+        "correction": "Initial source has 28 real poses and omits jumpApex; the final atlas adds four new native drawings from correction row 0.",
+        "limitations": [
+          "Original generated fan art and adapted movement, not official frames.",
+          "Minor perspective, hair, anatomy and apparent scale variations remain between the native sources.",
+          "Timing and pixel identity are not certified 1:1 with the 1997 game."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.prompt.txt",
+            "sha256": "09bbb75659cb38a3bd0b74d6619220c0c79064c45d151f1e719e2304237534e4"
+          },
+          {
+            "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.prompt.txt",
+            "sha256": "015a61207cec7c59806a382d1ae207b7a3ab2340de7df32aef3ecc96f49c7290"
+          }
+        ],
+        "normalizationScript": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/normalize-tifa-motion-atlases.mjs"
+      }
+    },
+    {
+      "id": "tifa-motion-b",
+      "heroId": "tifa_ff7",
+      "universe": "Final Fantasy VII",
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-motion-b.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "stateOrder": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "2a3583ba3c45f905f533b2a5d917e37c1dd63d5735c1c789168f2c4d8737c42e",
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+      "sourceHash": "fe5f6125fd0457a91b98e8e2b9cd7681648a8e6acc9081b1e7973dd4db1d6386",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+          "sha256": "fe5f6125fd0457a91b98e8e2b9cd7681648a8e6acc9081b1e7973dd4db1d6386",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          },
+          "columns": 4,
+          "rows": 7
+        },
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+          "sha256": "4c824a76862276e94f09e0f083fb8c8dad5045ec95b2a8519f91484dc2c158d6",
+          "dimensions": {
+            "width": 1448,
+            "height": 1086
+          },
+          "columns": 4,
+          "rows": 3
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/final-fantasy-vii/tifa-ff7.png",
+      "referenceHash": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/final-fantasy-vii/tifa-ff7.png",
+          "sha256": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab",
+          "savedImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-original.png"
+        },
+        {
+          "asset": "public/sprites/generated/combat-character-animations/tifa_ff7.png",
+          "sha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+          "savedImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-presentation.png"
+        }
+      ],
+      "frameOrderByState": {
+        "fastFall": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "land": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchEnter": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchIdle": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchExit": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchCharge": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "taunt1": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "hitStun": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "normalization": {
+        "method": "Alpha-connected segmentation of genuine native drawings; uniform per-source nearest-neighbor scaling and transparent packing.",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive alpha-bounds anchor in each 256px cell",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Near-transparent background noise below threshold excluded; all original PNG sources remain unchanged.",
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png": 0.9435483870967742,
+          "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png": 0.6046511627906976
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "fastFall",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 80,
+              "y": 6,
+              "width": 133,
+              "height": 216
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 65,
+              "y": 40,
+              "width": 125,
+              "height": 204
+            },
+            "sha256": "1fa9c0489d4bbf3e523ea89c41c65c9533cb230fcc901de0ffe6a6b1bcccc92f"
+          },
+          {
+            "state": "fastFall",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 286,
+              "y": 17,
+              "width": 124,
+              "height": 196
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 69,
+              "y": 59,
+              "width": 117,
+              "height": 185
+            },
+            "sha256": "fac776d3b372c37cbc8317078ea3dd513a3321f3149d63dbbd468459ff066063"
+          },
+          {
+            "state": "fastFall",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 519,
+              "y": 6,
+              "width": 116,
+              "height": 238
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 73,
+              "y": 19,
+              "width": 109,
+              "height": 225
+            },
+            "sha256": "ffa951c46fae74eb45abcc9036d9c31cbd8b3c17376a573bccc1588b737c2b0b"
+          },
+          {
+            "state": "fastFall",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 722,
+              "y": 28,
+              "width": 131,
+              "height": 227
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 66,
+              "y": 30,
+              "width": 124,
+              "height": 214
+            },
+            "sha256": "4be25d4d5b2f80ac3242879ef5f25d6159aeda350564118fd3375a84fb4d9271"
+          },
+          {
+            "state": "land",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 39,
+              "y": 271,
+              "width": 186,
+              "height": 203
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 40,
+              "y": 52,
+              "width": 176,
+              "height": 192
+            },
+            "sha256": "7626a5c947f3f916ba8b26636bc680584d6e32d88aa9147865b1c6d8fccf7eda"
+          },
+          {
+            "state": "land",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 259,
+              "y": 320,
+              "width": 157,
+              "height": 155
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 54,
+              "y": 98,
+              "width": 148,
+              "height": 146
+            },
+            "sha256": "c0604dfdf7b8a2caccbeb39863d163dd115d876a6cc249d88e82cbaeb1c80e46"
+          },
+          {
+            "state": "land",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 482,
+              "y": 292,
+              "width": 158,
+              "height": 181
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 53,
+              "y": 73,
+              "width": 149,
+              "height": 171
+            },
+            "sha256": "664ff15a12de73d252ced37283815ef6e60d4c32fa119e601484bc6ff317db35"
+          },
+          {
+            "state": "land",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 711,
+              "y": 264,
+              "width": 142,
+              "height": 210
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 61,
+              "y": 46,
+              "width": 134,
+              "height": 198
+            },
+            "sha256": "4fa0e7804d527a96262ae1e35261b5f198ebc47e779d30a7bd99dab4a8b66d62"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 35,
+              "y": 475,
+              "width": 156,
+              "height": 222
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 54,
+              "y": 35,
+              "width": 147,
+              "height": 209
+            },
+            "sha256": "685d3cb0f5de3cfcd84146aa5eb24c113af96f415480b404c569f79cd29fbe2b"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 242,
+              "y": 506,
+              "width": 191,
+              "height": 191
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 38,
+              "y": 64,
+              "width": 180,
+              "height": 180
+            },
+            "sha256": "00d3a7bf3c31ac4086c1c6ce077c15860cfa519223af531ca279400fc90775f4"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 467,
+              "y": 538,
+              "width": 157,
+              "height": 163
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 54,
+              "y": 90,
+              "width": 148,
+              "height": 154
+            },
+            "sha256": "d94557e74de8cc073794ec2b6c244a03760485b364aa6394a113a8e366f6d951"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 696,
+              "y": 544,
+              "width": 152,
+              "height": 160
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 56,
+              "y": 93,
+              "width": 143,
+              "height": 151
+            },
+            "sha256": "9f1b93769ea52aae7567c3a0f4ffa9b8ef7975ca4ede5a7cd2b31b5847eb869d"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 43,
+              "y": 453,
+              "width": 251,
+              "height": 276
+            },
+            "scale": 0.6046511627906976,
+            "destinationRect": {
+              "x": 52,
+              "y": 77,
+              "width": 152,
+              "height": 167
+            },
+            "sha256": "f485e108b5c77af5e74601712f89b1a8a6a262a86418ea74f429806ae79918a7"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 410,
+              "y": 471,
+              "width": 247,
+              "height": 259
+            },
+            "scale": 0.6046511627906976,
+            "destinationRect": {
+              "x": 53,
+              "y": 87,
+              "width": 149,
+              "height": 157
+            },
+            "sha256": "8fa70621540a9b2b6e22a172a94cd81e05fa312c9eed085c717b42868ab798fc"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 766,
+              "y": 452,
+              "width": 296,
+              "height": 283
+            },
+            "scale": 0.6046511627906976,
+            "destinationRect": {
+              "x": 38,
+              "y": 73,
+              "width": 179,
+              "height": 171
+            },
+            "sha256": "38e37b8705eba8764d22cc80ac46670ef5a4139b1753a6fe337be0baba3df1db"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 1140,
+              "y": 466,
+              "width": 276,
+              "height": 267
+            },
+            "scale": 0.6046511627906976,
+            "destinationRect": {
+              "x": 44,
+              "y": 83,
+              "width": 167,
+              "height": 161
+            },
+            "sha256": "dda805138241bc7c5fe5cc8ca93a41f40a531a08de59cdfa004b1fbf59e00b8c"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 33,
+              "y": 741,
+              "width": 147,
+              "height": 179
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 58,
+              "y": 75,
+              "width": 139,
+              "height": 169
+            },
+            "sha256": "6f196ba95666c4adeffaa7c08007f45113eb7a9b52bb133b9bd41d0cea73c0f2"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 249,
+              "y": 741,
+              "width": 177,
+              "height": 193
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 44,
+              "y": 62,
+              "width": 167,
+              "height": 182
+            },
+            "sha256": "981f53ef73a109be7ff2fb3a889912656d8158c2536f483a55e8e901d56b0d76"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 484,
+              "y": 736,
+              "width": 154,
+              "height": 194
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 55,
+              "y": 61,
+              "width": 145,
+              "height": 183
+            },
+            "sha256": "c69441d1c9a49500ac4eefc5019435487fbc131a42a3fe48c100db65739fe728"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 705,
+              "y": 735,
+              "width": 158,
+              "height": 212
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 53,
+              "y": 44,
+              "width": 149,
+              "height": 200
+            },
+            "sha256": "31d7e1615dace2dfa7e1fc543ba09c34256c0d7df64139945f469f795a92b7e5"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 27,
+              "y": 996,
+              "width": 177,
+              "height": 176
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 44,
+              "y": 78,
+              "width": 167,
+              "height": 166
+            },
+            "sha256": "12f3f18e0e7d69cfd1121783d28f9d3a2ff130c45c68c2e75a2230cfd7b1097b"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 249,
+              "y": 1008,
+              "width": 180,
+              "height": 164
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 43,
+              "y": 89,
+              "width": 170,
+              "height": 155
+            },
+            "sha256": "568927b5adc66a2ccb42fdb19161c47d8b04bb554a024b7532527b4c6a9213e3"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 461,
+              "y": 990,
+              "width": 180,
+              "height": 186
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 43,
+              "y": 68,
+              "width": 170,
+              "height": 176
+            },
+            "sha256": "6b36b20d19bf54034df2ead775a794eacb5897a23fc98e4c69df9f408751df2f"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 680,
+              "y": 974,
+              "width": 182,
+              "height": 200
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 42,
+              "y": 55,
+              "width": 172,
+              "height": 189
+            },
+            "sha256": "062f8723251e0cac4d49883cff9f9a3ded4f442f653b9d019a03ae275ecac4c7"
+          },
+          {
+            "state": "taunt1",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 35,
+              "y": 1200,
+              "width": 152,
+              "height": 248
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 56,
+              "y": 10,
+              "width": 143,
+              "height": 234
+            },
+            "sha256": "1afbb47d14699dcd8db3f29ee5a346ec1b6c270beeee7f4e48a5b8a2c79340c7"
+          },
+          {
+            "state": "taunt1",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 264,
+              "y": 1207,
+              "width": 145,
+              "height": 241
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 59,
+              "y": 17,
+              "width": 137,
+              "height": 227
+            },
+            "sha256": "64239ded7c3f9d63542b510a2560d202f739a7bbf6c5c1c162033db8695c5c12"
+          },
+          {
+            "state": "taunt1",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 474,
+              "y": 1211,
+              "width": 150,
+              "height": 241
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 57,
+              "y": 17,
+              "width": 142,
+              "height": 227
+            },
+            "sha256": "b052c3466ab89890bfd6f6318fb47fd36fe8c85835bb3267c22410c416c5e0e1"
+          },
+          {
+            "state": "taunt1",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 695,
+              "y": 1212,
+              "width": 153,
+              "height": 240
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 56,
+              "y": 18,
+              "width": 144,
+              "height": 226
+            },
+            "sha256": "9e78445c9b22fc8127b4803e61937eadb18a2d80c9bf091c57cd0b3cea072888"
+          },
+          {
+            "state": "hitStun",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 26,
+              "y": 1486,
+              "width": 185,
+              "height": 244
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 40,
+              "y": 14,
+              "width": 175,
+              "height": 230
+            },
+            "sha256": "d301bd5601dac300c29e12d1bb43449dd36e395eaea8a7c033a04df0636b2cad"
+          },
+          {
+            "state": "hitStun",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 246,
+              "y": 1493,
+              "width": 204,
+              "height": 232
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 32,
+              "y": 25,
+              "width": 192,
+              "height": 219
+            },
+            "sha256": "4d15160846f92ebbc35efcd77ae1b8baf618ae1caaa42a745a8fc4f02c094fb7"
+          },
+          {
+            "state": "hitStun",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 480,
+              "y": 1501,
+              "width": 183,
+              "height": 222
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 41,
+              "y": 35,
+              "width": 173,
+              "height": 209
+            },
+            "sha256": "5f8ded4ab8eec3ca63e49341930f157d206335056dafcbfe0de4827e32b45086"
+          },
+          {
+            "state": "hitStun",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 707,
+              "y": 1501,
+              "width": 162,
+              "height": 224
+            },
+            "scale": 0.9435483870967742,
+            "destinationRect": {
+              "x": 51,
+              "y": 33,
+              "width": 153,
+              "height": 211
+            },
+            "sha256": "a521d2ccacee19054b84a30dd74520a7c02d0e0f2f047844c47e039a68104615"
+          }
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0,
+        "nativeSourceStateOrder": [
+          "fastFall",
+          "land",
+          "crouchEnter",
+          "crouchExit",
+          "crouchCharge",
+          "taunt1",
+          "hitStun"
+        ],
+        "correctionState": "crouchIdle",
+        "correctionNativeRow": 1
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "completeRows": 8,
+        "distinctNativePoses": 32,
+        "wholeCharacterContained": true,
+        "facing": "right; dead ends in side-lying KO",
+        "outfit": "FF7 1997 Tifa: white sleeveless top, black skirt, two suspenders, red gloves and wrist/forearm bands, red boots, long tied dark-brown hair.",
+        "weapons": "none; unarmed physical martial movements and forearm/glove guards",
+        "correction": "Initial source has 28 real poses and omits crouchIdle; the final atlas adds four new native drawings from correction row 1.",
+        "limitations": [
+          "Original generated fan art and adapted movement, not official frames.",
+          "Minor perspective, hair, anatomy and apparent scale variations remain between the native sources.",
+          "Timing and pixel identity are not certified 1:1 with the 1997 game."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.prompt.txt",
+            "sha256": "c6f7715ff25320facb437dea1a93e6f71a4669c5b9d2b2988de87a597d38a350"
+          },
+          {
+            "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.prompt.txt",
+            "sha256": "015a61207cec7c59806a382d1ae207b7a3ab2340de7df32aef3ecc96f49c7290"
+          }
+        ],
+        "normalizationScript": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/normalize-tifa-motion-atlases.mjs"
+      }
+    },
+    {
+      "id": "tifa-defense",
+      "heroId": "tifa_ff7",
+      "universe": "Final Fantasy VII",
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-defense.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "stateOrder": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "0e17fbe82ea8b925083f222e3a47b0b63f541cc2a8f43627ed6ab73eb9d9a6e1",
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+      "sourceHash": "3252b08f0278f23ba24df727df60bd5d36adc1afdfa5f74bb34f7fc603cbf4db",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+          "sha256": "3252b08f0278f23ba24df727df60bd5d36adc1afdfa5f74bb34f7fc603cbf4db",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          },
+          "columns": 4,
+          "rows": 7
+        },
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+          "sha256": "4c824a76862276e94f09e0f083fb8c8dad5045ec95b2a8519f91484dc2c158d6",
+          "dimensions": {
+            "width": 1448,
+            "height": 1086
+          },
+          "columns": 4,
+          "rows": 3
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/final-fantasy-vii/tifa-ff7.png",
+      "referenceHash": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/final-fantasy-vii/tifa-ff7.png",
+          "sha256": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab",
+          "savedImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-original.png"
+        },
+        {
+          "asset": "public/sprites/generated/combat-character-animations/tifa_ff7.png",
+          "sha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+          "savedImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-presentation.png"
+        }
+      ],
+      "frameOrderByState": {
+        "shieldEnter": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldHold": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldHit": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "perfectShield": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldBreak": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldExit": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "dead": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "defeat": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "normalization": {
+        "method": "Alpha-connected segmentation of genuine native drawings; uniform per-source nearest-neighbor scaling and transparent packing.",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive alpha-bounds anchor in each 256px cell",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Near-transparent background noise below threshold excluded; all original PNG sources remain unchanged.",
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png": 0.9831932773109243,
+          "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png": 0.6046511627906976
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "shieldEnter",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 46,
+              "y": 14,
+              "width": 159,
+              "height": 222
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 50,
+              "y": 26,
+              "width": 156,
+              "height": 218
+            },
+            "sha256": "49c2dc472746a2dedd9cb5feaae017f7e81b6344d2ccff3822481245c0c7ad04"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 275,
+              "y": 13,
+              "width": 151,
+              "height": 223
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 54,
+              "y": 25,
+              "width": 148,
+              "height": 219
+            },
+            "sha256": "d7de52848e8c665a3e9dd04edd9a9b4e07edae5605c0463573f0fdeb5cf20d28"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 499,
+              "y": 13,
+              "width": 146,
+              "height": 223
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 56,
+              "y": 25,
+              "width": 144,
+              "height": 219
+            },
+            "sha256": "5efb6ed3d62340432d8969473c102605c7e39a51f6d68d77ea910f156da8f124"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 711,
+              "y": 12,
+              "width": 140,
+              "height": 224
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 59,
+              "y": 24,
+              "width": 138,
+              "height": 220
+            },
+            "sha256": "c907caa9ccf5ba76aa5a3153c37a29ae27f7290db3363d255f940815a0c613e8"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 41,
+              "y": 246,
+              "width": 177,
+              "height": 220
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 41,
+              "y": 28,
+              "width": 174,
+              "height": 216
+            },
+            "sha256": "555ff8fc61a9dfc83f92bfbaa527cf0fe6f04ccd0d7c4a8cc5727f7759695a39"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 269,
+              "y": 246,
+              "width": 158,
+              "height": 220
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 50,
+              "y": 28,
+              "width": 155,
+              "height": 216
+            },
+            "sha256": "8b9db1c38048c39eb0960587752036f20cbdfafaefca2681d10d1442f59b77d7"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 494,
+              "y": 246,
+              "width": 153,
+              "height": 220
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 53,
+              "y": 28,
+              "width": 150,
+              "height": 216
+            },
+            "sha256": "540ee27264cea99eb3a5ed530c33b3ffaefc9e13c25815e3c401547817aeb256"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 701,
+              "y": 246,
+              "width": 154,
+              "height": 222
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 52,
+              "y": 26,
+              "width": 151,
+              "height": 218
+            },
+            "sha256": "447a4b86258ae3de3fe8dc402be97c3c8be3252dcb7a895c598618ce45509071"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 40,
+              "y": 483,
+              "width": 156,
+              "height": 219
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 51,
+              "y": 29,
+              "width": 153,
+              "height": 215
+            },
+            "sha256": "f993f3850071b0053d64be7938cd080b097f47b880f4b6fea8e03b604a3a840c"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 243,
+              "y": 487,
+              "width": 201,
+              "height": 212
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 29,
+              "y": 36,
+              "width": 198,
+              "height": 208
+            },
+            "sha256": "7dadc8932aaf1dcad751c19bc8a49487817c8e7daecd14fe9b3360f85347e479"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 481,
+              "y": 503,
+              "width": 165,
+              "height": 196
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 47,
+              "y": 51,
+              "width": 162,
+              "height": 193
+            },
+            "sha256": "338e263403aafa6dd5fea756c02daa09e36f9a1a2345553c8d1421bb5a014076"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 711,
+              "y": 485,
+              "width": 143,
+              "height": 217
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 57,
+              "y": 31,
+              "width": 141,
+              "height": 213
+            },
+            "sha256": "e1add337d9292cb7e4224d25d0162d5b6fb4960eaf93eee07d40cd3951d0274e"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 47,
+              "y": 718,
+              "width": 158,
+              "height": 225
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 50,
+              "y": 23,
+              "width": 155,
+              "height": 221
+            },
+            "sha256": "dbaa8cc07b26abb4c813d70a117832fb3e514d8655becb9285ea2ecaaf0bcf07"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 257,
+              "y": 722,
+              "width": 191,
+              "height": 222
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 34,
+              "y": 26,
+              "width": 188,
+              "height": 218
+            },
+            "sha256": "b926f592344a01dcb1f32a802d9abe9b8a2dec50470feac0e17b70af27f664db"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 479,
+              "y": 721,
+              "width": 191,
+              "height": 223
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 34,
+              "y": 25,
+              "width": 188,
+              "height": 219
+            },
+            "sha256": "29dc6c8fc17178cb33a939b22e3c71cc56c068624ace7890ccd7c28538461620"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 709,
+              "y": 716,
+              "width": 148,
+              "height": 227
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 55,
+              "y": 21,
+              "width": 146,
+              "height": 223
+            },
+            "sha256": "5d567606f08f9915426c03d9b830618e4dcedeb0731a56d615ac8d4e03047bf5"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 46,
+              "y": 745,
+              "width": 292,
+              "height": 319
+            },
+            "scale": 0.6046511627906976,
+            "destinationRect": {
+              "x": 39,
+              "y": 51,
+              "width": 177,
+              "height": 193
+            },
+            "sha256": "9862e668e58acba698875189594268a76e532a10f830317e6bde25f3ad09874a"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 438,
+              "y": 747,
+              "width": 297,
+              "height": 314
+            },
+            "scale": 0.6046511627906976,
+            "destinationRect": {
+              "x": 38,
+              "y": 54,
+              "width": 180,
+              "height": 190
+            },
+            "sha256": "ab7749cc7e489cb275ea09fd8aadd745974ac214ed03eada392e9550445e2caf"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 782,
+              "y": 765,
+              "width": 294,
+              "height": 298
+            },
+            "scale": 0.6046511627906976,
+            "destinationRect": {
+              "x": 39,
+              "y": 64,
+              "width": 178,
+              "height": 180
+            },
+            "sha256": "07d34bb11fa0334679a50ba31dd687f3504fbb9d7c898e6be65bfaa3687dafe5"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 1172,
+              "y": 757,
+              "width": 242,
+              "height": 308
+            },
+            "scale": 0.6046511627906976,
+            "destinationRect": {
+              "x": 55,
+              "y": 58,
+              "width": 146,
+              "height": 186
+            },
+            "sha256": "38cbebd2abadda4b77d0e6d60fa8e89bcc36573131d8e97579fe55b7b459a9e8"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 41,
+              "y": 955,
+              "width": 156,
+              "height": 233
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 51,
+              "y": 15,
+              "width": 153,
+              "height": 229
+            },
+            "sha256": "47db33c277a292f3384b8447972f6cd49acfc49d02e0465be869ce505d0d0e2a"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 253,
+              "y": 958,
+              "width": 172,
+              "height": 233
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 43,
+              "y": 15,
+              "width": 169,
+              "height": 229
+            },
+            "sha256": "fdc8166e6c2b9e40550e344152c8aa6bfa0be958d103f654b64d0d424d5f85e7"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 498,
+              "y": 960,
+              "width": 140,
+              "height": 236
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 59,
+              "y": 12,
+              "width": 138,
+              "height": 232
+            },
+            "sha256": "8fb41e79a1551e8b616360bd085ca8d3585d5b1af87b0b1e702d5c3c4487a89b"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 703,
+              "y": 960,
+              "width": 154,
+              "height": 238
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 52,
+              "y": 10,
+              "width": 151,
+              "height": 234
+            },
+            "sha256": "3a892a85324da0434ac4c09605fe423f997f49b614d15e74418b0025fd0c9ca7"
+          },
+          {
+            "state": "dead",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 22,
+              "y": 1237,
+              "width": 219,
+              "height": 188
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 20,
+              "y": 59,
+              "width": 215,
+              "height": 185
+            },
+            "sha256": "fa6179306ec764ce139bf9d987282c19dc4d3ca511cb1f1328bcc2a5fcd1b256"
+          },
+          {
+            "state": "dead",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 253,
+              "y": 1259,
+              "width": 178,
+              "height": 171
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 40,
+              "y": 76,
+              "width": 175,
+              "height": 168
+            },
+            "sha256": "d3ab833ea9bda1a29f8b2541b27452b9185af7c3ac09cfd15b4c3a3b2e226f63"
+          },
+          {
+            "state": "dead",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 438,
+              "y": 1319,
+              "width": 205,
+              "height": 109
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 27,
+              "y": 137,
+              "width": 202,
+              "height": 107
+            },
+            "sha256": "76b2d0d8953db4989075814f3e4b65fdda36ab5a3bbb3a5cce87f203207a3221"
+          },
+          {
+            "state": "dead",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 655,
+              "y": 1339,
+              "width": 220,
+              "height": 80
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 20,
+              "y": 165,
+              "width": 216,
+              "height": 79
+            },
+            "sha256": "92a394922601450826828876580fe9dd2ece3b0e12a40743d842faf84ccab5c0"
+          },
+          {
+            "state": "defeat",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 29,
+              "y": 1484,
+              "width": 172,
+              "height": 231
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 43,
+              "y": 17,
+              "width": 169,
+              "height": 227
+            },
+            "sha256": "f2d1b3eaa71b7f92a254d645b9a76e6606bc22d11a8d709d5f9009b711654931"
+          },
+          {
+            "state": "defeat",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 250,
+              "y": 1493,
+              "width": 171,
+              "height": 218
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 44,
+              "y": 30,
+              "width": 168,
+              "height": 214
+            },
+            "sha256": "cf6aef6bfea5c3e3b9383197566fd5db2c121cde8169fbf2c617dd35ac9e57bc"
+          },
+          {
+            "state": "defeat",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 470,
+              "y": 1522,
+              "width": 161,
+              "height": 181
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 49,
+              "y": 66,
+              "width": 158,
+              "height": 178
+            },
+            "sha256": "14e1bfec12c5ca6ed533d6a4163b12058e53d94e559f0e200d894b1c418c537a"
+          },
+          {
+            "state": "defeat",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 708,
+              "y": 1499,
+              "width": 136,
+              "height": 201
+            },
+            "scale": 0.9831932773109243,
+            "destinationRect": {
+              "x": 61,
+              "y": 46,
+              "width": 134,
+              "height": 198
+            },
+            "sha256": "5104629ee58e0d028f14521c3820429d51627d86848dfcb9fb9850eb3101fd60"
+          }
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0,
+        "nativeSourceStateOrder": [
+          "shieldEnter",
+          "shieldHold",
+          "shieldHit",
+          "perfectShield",
+          "shieldExit",
+          "dead",
+          "defeat"
+        ],
+        "correctionState": "shieldBreak",
+        "correctionNativeRow": 2
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "completeRows": 8,
+        "distinctNativePoses": 32,
+        "wholeCharacterContained": true,
+        "facing": "right; dead ends in side-lying KO",
+        "outfit": "FF7 1997 Tifa: white sleeveless top, black skirt, two suspenders, red gloves and wrist/forearm bands, red boots, long tied dark-brown hair.",
+        "weapons": "none; unarmed physical martial movements and forearm/glove guards",
+        "correction": "Initial source has 28 real poses and omits shieldBreak; the final atlas adds four new native drawings from correction row 2.",
+        "limitations": [
+          "Original generated fan art and adapted movement, not official frames.",
+          "Minor perspective, hair, anatomy and apparent scale variations remain between the native sources.",
+          "Timing and pixel identity are not certified 1:1 with the 1997 game."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.prompt.txt",
+            "sha256": "1133362e7aea032547448c87f2d875c0788dcc2d29d9cb16a8cc768f42a91c10"
+          },
+          {
+            "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.prompt.txt",
+            "sha256": "015a61207cec7c59806a382d1ae207b7a3ab2340de7df32aef3ecc96f49c7290"
+          }
+        ],
+        "normalizationScript": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/normalize-tifa-motion-atlases.mjs"
+      }
+    }
+  ],
+  "generations": [
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+      "sha256": "27df7673cc90ea7d0539fe1cfa94b977f58ed1db6017ef750d80dd71c59d9f9a",
+      "prompt": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.prompt.txt",
+      "promptSha256": "09bbb75659cb38a3bd0b74d6619220c0c79064c45d151f1e719e2304237534e4",
+      "retainedPoses": 28,
+      "missingState": "jumpApex",
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-original.png",
+          "sha256": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab"
+        },
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-presentation.png",
+          "sha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c"
+        }
+      ],
+      "rejected": false
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+      "sha256": "fe5f6125fd0457a91b98e8e2b9cd7681648a8e6acc9081b1e7973dd4db1d6386",
+      "prompt": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.prompt.txt",
+      "promptSha256": "c6f7715ff25320facb437dea1a93e6f71a4669c5b9d2b2988de87a597d38a350",
+      "retainedPoses": 28,
+      "missingState": "crouchIdle",
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-original.png",
+          "sha256": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab"
+        },
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-presentation.png",
+          "sha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c"
+        }
+      ],
+      "rejected": false
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+      "sha256": "3252b08f0278f23ba24df727df60bd5d36adc1afdfa5f74bb34f7fc603cbf4db",
+      "prompt": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.prompt.txt",
+      "promptSha256": "1133362e7aea032547448c87f2d875c0788dcc2d29d9cb16a8cc768f42a91c10",
+      "retainedPoses": 28,
+      "missingState": "shieldBreak",
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-original.png",
+          "sha256": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab"
+        },
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-presentation.png",
+          "sha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c"
+        }
+      ],
+      "rejected": false
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.native.png",
+      "sha256": "4c824a76862276e94f09e0f083fb8c8dad5045ec95b2a8519f91484dc2c158d6",
+      "prompt": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-missing-rows.prompt.txt",
+      "promptSha256": "015a61207cec7c59806a382d1ae207b7a3ab2340de7df32aef3ecc96f49c7290",
+      "retainedPoses": 12,
+      "missingState": null,
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-original.png",
+          "sha256": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab"
+        },
+        {
+          "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-reference-presentation.png",
+          "sha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c"
+        }
+      ],
+      "rejected": false
+    }
+  ],
+  "nativeGenerationCalls": 4,
+  "deliveredNativePoses": 96,
+  "incompleteInitialSources": [
+    {
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-a.native.png",
+      "expectedPoses": 32,
+      "actualPoses": 28,
+      "missingState": "jumpApex",
+      "resolution": "All 28 native poses retained; four genuinely new drawings fill the missing state."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-motion-b.native.png",
+      "expectedPoses": 32,
+      "actualPoses": 28,
+      "missingState": "crouchIdle",
+      "resolution": "All 28 native poses retained; four genuinely new drawings fill the missing state."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-defense.native.png",
+      "expectedPoses": 32,
+      "actualPoses": 28,
+      "missingState": "shieldBreak",
+      "resolution": "All 28 native poses retained; four genuinely new drawings fill the missing state."
+    }
+  ],
+  "rejectedSources": []
+}

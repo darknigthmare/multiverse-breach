@@ -1,9 +1,71 @@
+import { COMBAT_SOURCE_DEFINITIONS_WAVE11 } from './combat/combatSourceDefinitionsWave11.js';
+import characterSpriteCorrectionsWave11A from './combat/characterSpriteCorrectionsWave11PartA.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave11B from './combat/characterSpriteCorrectionsWave11PartB.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave11C from './combat/characterSpriteCorrectionsWave11PartC.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave11D from './combat/characterSpriteCorrectionsWave11PartD.generated.json' with { type: 'json' };
+import { LEGACY_POSE_FALLBACKS_WAVE11 } from './combat/characterLegacyFallbacksWave11.js';
+import characterPresentationWave10D from './combat/characterAnimationsWave10PartD.generated.json' with { type: 'json' };
+import { buildPresentationFallbacksWave10 } from './combat/characterPresentationFallbacksWave10.js';
 import {
   getMeleeAnimationFrame,
   getMeleeAnimationManifest,
   getMeleeAnimationSheetSources,
   getMeleeSheetLayout
 } from './melee/meleeAnimationManifest.js';
+import characterSpriteCorrections from './combat/characterSpriteCorrections.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave2 from './combat/characterSpriteCorrectionsWave2.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave4 from './combat/characterSpriteCorrectionsWave4.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave5 from './combat/characterSpriteCorrectionsWave5.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave6A from './combat/characterSpriteCorrectionsWave6PartA.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave6B from './combat/characterSpriteCorrectionsWave6PartB.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave6C from './combat/characterSpriteCorrectionsWave6PartC.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave7A from './combat/characterSpriteCorrectionsWave7PartA.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave7B from './combat/characterSpriteCorrectionsWave7PartB.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave7C from './combat/characterSpriteCorrectionsWave7PartC.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave8B from './combat/characterSpriteCorrectionsWave8PartB.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave8A from './combat/characterSpriteCorrectionsWave8PartA.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave8C from './combat/characterSpriteCorrectionsWave8PartC.generated.json' with { type: 'json' };
+import characterSpriteCorrectionsWave8D from './combat/characterSpriteCorrectionsWave8PartD.generated.json' with { type: 'json' };
+
+import characterSpriteCorrectionsWave9B from './combat/characterSpriteCorrectionsWave9PartB.generated.json' with { type: 'json' };
+
+import characterSpriteCorrectionsWave9C from './combat/characterSpriteCorrectionsWave9PartC.generated.json' with { type: 'json' };
+
+import characterSpriteCorrectionsWave9A from './combat/characterSpriteCorrectionsWave9PartA.generated.json' with { type: 'json' };
+
+import characterSpriteCorrectionsWave9D from './combat/characterSpriteCorrectionsWave9PartD.generated.json' with { type: 'json' };
+
+import characterSpriteCorrectionsWave10A from './combat/characterSpriteCorrectionsWave10PartA.generated.json' with { type: 'json' };
+
+import characterSpriteCorrectionsWave10B from './combat/characterSpriteCorrectionsWave10PartB.generated.json' with { type: 'json' };
+
+import characterSpriteCorrectionsWave10C from './combat/characterSpriteCorrectionsWave10PartC.generated.json' with { type: 'json' };
+
+import characterSpriteCorrectionsWave10D from './combat/characterSpriteCorrectionsWave10PartD.generated.json' with { type: 'json' };
+
+const wave6BaseEntries = [...characterSpriteCorrectionsWave6A.entries, ...characterSpriteCorrectionsWave6B.entries, ...characterSpriteCorrectionsWave6C.entries];
+const calibratedBaseEntries = [...wave6BaseEntries, ...characterSpriteCorrectionsWave7A.entries, ...characterSpriteCorrectionsWave7B.entries, ...characterSpriteCorrectionsWave7C.entries, ...characterSpriteCorrectionsWave8A.entries, ...characterSpriteCorrectionsWave8B.entries, ...characterSpriteCorrectionsWave8C.entries, ...characterSpriteCorrectionsWave8D.entries, ...characterSpriteCorrectionsWave9A.entries, ...characterSpriteCorrectionsWave9B.entries, ...characterSpriteCorrectionsWave9C.entries, ...characterSpriteCorrectionsWave9D.entries, ...characterSpriteCorrectionsWave10D.entries, ...characterSpriteCorrectionsWave10C.entries, ...characterSpriteCorrectionsWave10B.entries, ...characterSpriteCorrectionsWave10A.entries, ...characterSpriteCorrectionsWave11A.entries, ...characterSpriteCorrectionsWave11B.entries, ...characterSpriteCorrectionsWave11C.entries, ...characterSpriteCorrectionsWave11D.entries];
+const correctedCharacterSprites = new Map([...characterSpriteCorrections.entries, ...characterSpriteCorrectionsWave2.entries, ...characterSpriteCorrectionsWave4.entries, ...characterSpriteCorrectionsWave5.entries, ...calibratedBaseEntries].map(entry => [entry.heroId, entry]));
+const calmSupportSheetsWave11 = new Set(Object.entries(COMBAT_SOURCE_DEFINITIONS_WAVE11)
+  .filter(([, source]) => source.effect === 'damage')
+  .map(([id]) => correctedCharacterSprites.get(id)?.sheet || (id === 'harry_potter' ? '/sprites/generated/heroes/harry-potter/harry-potter.png' : null)).filter(Boolean));
+
+const calibratedBaseLayouts = Object.fromEntries(calibratedBaseEntries.map(entry => [entry.sheet, {
+  columns: entry.columns, rows: entry.rows,
+  rowByState: Object.fromEntries(Object.entries(entry.states).map(([state, spec]) => [state, spec.row])),
+  baseline: entry.normalization.baseline,
+  renderScaleByRow: Object.fromEntries(entry.normalization.rows.map((row, index) => [index, row.renderScale ?? 1]))
+}]));
+
+const adaptedPresentationEntriesWave10 = buildPresentationFallbacksWave10(characterPresentationWave10D.entries);
+const adaptedPresentationSpritesWave10 = new Map(adaptedPresentationEntriesWave10.map(entry => [entry.heroId, entry]));
+const adaptedPresentationLayoutsWave10 = Object.fromEntries(adaptedPresentationEntriesWave10.map(entry => [entry.sheet, entry.layout]));
+
+const blockedLegacySourcesWave11 = new Map([...LEGACY_POSE_FALLBACKS_WAVE11,
+  { heroId: 'harry_potter', universe: 'Harry Potter', sheet: '/sprites/generated/heroes/harry-potter/harry-potter.png' }
+].map(entry => [entry.heroId, entry]));
+
+const legacyPoseFallbackLayoutsWave11 = Object.fromEntries(LEGACY_POSE_FALLBACKS_WAVE11.map(entry => [entry.sheet, entry.layout]));
 
 export const SPRITE_SHEET_META = {
   frameWidth: 256,
@@ -509,10 +571,12 @@ const normalizeHeroMeleeState = state => (
 );
 
 export const getHeroMeleeAnimationFrame = (hero, elapsedMs = 0) => {
-  const manifest = getMeleeAnimationManifest(hero?.id);
+  const manifest = getMeleeAnimationManifest(hero?.sourceHeroId || hero?.sourceId || hero?.id);
   if (!manifest) return null;
-  const state = normalizeHeroMeleeState(hero?.state);
-  const frame = getMeleeAnimationFrame(manifest, state, elapsedMs);
+  if (manifest.universe && manifest.universe !== hero?.universe) return null;
+  const state = hero?.state === 'attack' && ['heavy', 'special'].includes(hero.action?.type)
+    ? 'chargeRelease' : normalizeHeroMeleeState(hero?.state);
+  const frame = getMeleeAnimationFrame(manifest, state, elapsedMs, { action: hero?.action });
   return frame ? { manifest, state, ...frame } : null;
 };
 
@@ -526,6 +590,12 @@ export const getHeroSpriteSheetSrc = (hero, context = 'auto') => {
     const meleeFrame = getHeroMeleeAnimationFrame(hero);
     if (meleeFrame?.animation?.sheet) return meleeFrame.animation.sheet;
   }
+  const correctedSprite = correctedCharacterSprites.get(hero.sourceHeroId || hero.sourceId || hero.id);
+  if (correctedSprite?.universe === hero.universe) return correctedSprite.sheet;
+  const adaptedPresentation = adaptedPresentationSpritesWave10.get(hero.sourceHeroId || hero.sourceId || hero.id);
+  if (adaptedPresentation?.universe === hero.universe) return adaptedPresentation.sheet;
+  const blockedLegacySource = blockedLegacySourcesWave11.get(hero.sourceHeroId || hero.sourceId || hero.id);
+  if (blockedLegacySource?.universe === hero.universe) return blockedLegacySource.sheet;
   const completeSprite = getMirelleSpriteForContext(hero, context);
   if (completeSprite) return completeSprite;
   const bastionSprite = getBastionSpriteForContext(hero);
@@ -566,10 +636,27 @@ export const getItemSpriteSrc = (item) => {
   return `/sprites/generated/items/${slugifyAsset(universe)}/${slugifyAsset(itemId)}.png`;
 };
 
+// Explicit coarse bindings make movement/attacks readable on the legacy 4-row
+// sheets. They are adaptations of existing poses, never dedicated new artwork.
+export const COARSE_SPRITE_STATE_ALIASES = Object.freeze({
+  walk: 'run', turn: 'idle',
+  crouchEnter: 'defense', crouchIdle: 'defense', crouchExit: 'idle', crouchCharge: 'support',
+  jumpStart: 'run', jumpRise: 'run', jumpApex: 'idle', fall: 'run', fastFall: 'run', land: 'idle', jump: 'run',
+  attackLight1: 'attack', attackLight2: 'attack', attackLight3: 'attack', crouchLight: 'attack',
+  chargeStart: 'support', chargeLoop: 'support', chargeRelease: 'special', chargeRecovery: 'idle', attackRecovery: 'idle',
+  aerialNeutral: 'attack', aerialForward: 'attack', aerialDown: 'attack',
+  shieldEnter: 'defense', shieldHold: 'defense', shieldHit: 'defense', perfectShield: 'defense', shieldBreak: 'hit', shieldExit: 'idle',
+  ledgeCatch: 'hit', ledgeHang: 'idle', ledgeClimb: 'run', ledgeDrop: 'run', ledgeAttack: 'attack', ledgeJump: 'run',
+  intro: 'idle', victory: 'idle', defeat: 'hit', roundVictory: 'idle', roundDefeat: 'hit', outro: 'run',
+  taunt1: 'support', hitStun: 'hit', support: 'attack', special: 'attack'
+});
+
 const animationRowForState = (state) => {
-  if (state === 'run') return 1;
-  if (state === 'attack') return 2;
-  if (state === 'hit' || state === 'dead') return 3;
+  const coarse = COARSE_SPRITE_STATE_ALIASES[state] || state;
+  const source = COARSE_SPRITE_STATE_ALIASES[coarse] || coarse;
+  if (source === 'run') return 1;
+  if (source === 'attack') return 2;
+  if (source === 'hit' || source === 'dead') return 3;
   return 0;
 };
 
@@ -585,15 +672,25 @@ const normalizeSpriteSrc = (src) => {
   }
 };
 
-export const getSpriteSheetLayout = (src) => (
+export const getSpriteSheetLayout = (src) => {
+  const layout = (
   getMeleeSheetLayout(src)
+  || legacyPoseFallbackLayoutsWave11[normalizeSpriteSrc(src)]
+  || adaptedPresentationLayoutsWave10[normalizeSpriteSrc(src)]
+  || calibratedBaseLayouts[normalizeSpriteSrc(src)]
   || SPRITE_SHEET_LAYOUTS[normalizeSpriteSrc(src)]
   || {
     columns: SPRITE_SHEET_META.columns,
     rows: SPRITE_SHEET_META.rows.length,
     rowByState: null
   }
-);
+  );
+  if (!calmSupportSheetsWave11.has(normalizeSpriteSrc(src))) return layout;
+  // Existing idle poses replace an offensive base row only for support/guard.
+  // They remain reused poses, never separately generated support artwork.
+  return { ...layout, rowByState: { idle: 0, run: 1, attack: 2, hit: 3, dead: 3, ...layout.rowByState, support: layout.rowByState?.idle ?? 0, defense: layout.rowByState?.idle ?? 0 },
+    adaptedSupportStates: ['support', 'defense'] };
+};
 
 const animationRowForLayout = (state, layout) => {
   if (layout?.rowByState && Object.prototype.hasOwnProperty.call(layout.rowByState, state)) {
@@ -602,15 +699,38 @@ const animationRowForLayout = (state, layout) => {
   if (layout?.rowByState && state === 'dead' && Object.prototype.hasOwnProperty.call(layout.rowByState, 'hit')) {
     return layout.rowByState.hit;
   }
+  const alias = COARSE_SPRITE_STATE_ALIASES[state];
+  if (alias && layout?.rowByState && Object.prototype.hasOwnProperty.call(layout.rowByState, alias)) return layout.rowByState[alias];
   return animationRowForState(state);
+};
+
+export const getSpriteStateResolution = (state, layout) => {
+  const requestedState = state || 'idle';
+  const reusedSupportPose = layout?.adaptedSupportStates?.includes(requestedState) === true;
+  const explicit = !!layout?.rowByState && Object.prototype.hasOwnProperty.call(layout.rowByState, requestedState);
+  const alias = COARSE_SPRITE_STATE_ALIASES[requestedState] || requestedState;
+  const row = Math.max(0, Math.min((layout?.rows || SPRITE_SHEET_META.rows.length) - 1, animationRowForLayout(requestedState, layout)));
+  const sourceState = explicit ? requestedState : layout?.rowByState && Object.prototype.hasOwnProperty.call(layout.rowByState, alias)
+    ? alias : ['idle', 'run', 'attack', 'hit'][Math.min(row, 3)];
+  return {
+    requestedState, sourceState,
+    row,
+    explicit,
+    dedicated: !reusedSupportPose && !(layout?.adaptedPresentationFallback || layout?.adaptedLegacyFallback) && explicit && Object.entries(layout.rowByState).every(([key, row]) => key === requestedState || row !== layout.rowByState[requestedState]),
+    binding: (reusedSupportPose || layout?.adaptedPresentationFallback || layout?.adaptedLegacyFallback) ? 'adapted-existing-pose' : explicit ? 'explicit-sheet-row' : ['idle', 'run', 'attack', 'hit', 'dead'].includes(requestedState) ? 'legacy-coarse-row' : 'adapted-existing-pose',
+    canonicalAnimationVerified: false,
+    ...(reusedSupportPose ? { sourcePhase: 'idle', reusedSupportPoses: true } : {}),
+    ...(layout?.adaptedPresentationFallback ? { sourcePhase: layout.sourcePhaseByState[requestedState] || layout.sourcePhaseByState[alias] || 'intro', reusedPresentationPoses: true } : {}),
+    ...(layout?.adaptedLegacyFallback ? { sourcePhase: layout.sourcePhaseByState[requestedState] || layout.sourcePhaseByState[alias] || 'legacy-idle', reusedLegacyPoses: true } : {})
+  };
 };
 
 export const getSpriteFrameForLayout = (state, animTime, layout) => {
   const row = Math.max(0, Math.min((layout?.rows || SPRITE_SHEET_META.rows.length) - 1, animationRowForLayout(state, layout)));
   return {
     row,
-    col: Math.floor(animTime / 10) % (layout?.columns || SPRITE_SHEET_META.columns),
-    trim: layout?.trimByState?.[state] || layout?.trimByRow?.[row] || layout?.trim || null
+    col: Number.isInteger(layout?.fixedColumn) ? Math.max(0, Math.min((layout?.columns || 4) - 1, layout.fixedColumn)) : Math.floor(Math.max(0, Number(animTime) || 0) / 10) % (layout?.columns || SPRITE_SHEET_META.columns),
+    trim: layout?.trimByState?.[state] || layout?.trimByState?.[COARSE_SPRITE_STATE_ALIASES[state]] || layout?.trimByRow?.[row] || layout?.trim || null
   };
 };
 

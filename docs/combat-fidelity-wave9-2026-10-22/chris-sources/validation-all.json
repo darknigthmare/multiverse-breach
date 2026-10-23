@@ -1,0 +1,3327 @@
+{
+  "date": "2026-10-22",
+  "heroId": "chris_redfield",
+  "sourceWork": "Resident Evil 5 (2009)",
+  "nativeGenerationCalls": 8,
+  "nativeSourceDrawings": 200,
+  "discardedNativePoses": 20,
+  "selectedNativePoses": 180,
+  "states": 45,
+  "atlases": 6,
+  "standingBodyHeight": 190,
+  "sourceWideScaleOnly": true,
+  "calibratedSources": [
+    {
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-motion-a.native.png",
+      "state": "idle",
+      "nativeRow": 0,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 107,
+        "y": 12,
+        "width": 117,
+        "height": 200
+      },
+      "sourceBodyHeight": 200,
+      "sourceStandingBodyHeight": 200,
+      "sourceRoi": {
+        "x": 107,
+        "y": 12,
+        "width": 117,
+        "height": 200
+      },
+      "targetBodyHeight": 190,
+      "normalizedBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.95,
+      "renderScale": 1,
+      "requestedScale": 0.95,
+      "safetyScale": 1.054054054054054,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete upright crown-to-boot native body, hands and holstered pistol do not extend beyond the body height. One source-wide scale preserves all genuine lower body projections."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-corrective-states.native.png",
+      "state": "jumpStart",
+      "nativeRow": 4,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 72,
+        "y": 1095,
+        "width": 144,
+        "height": 277
+      },
+      "sourceBodyHeight": 277,
+      "sourceStandingBodyHeight": 277,
+      "sourceRoi": {
+        "x": 72,
+        "y": 1095,
+        "width": 144,
+        "height": 277
+      },
+      "targetBodyHeight": 190,
+      "normalizedBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.6859205776173285,
+      "renderScale": 1,
+      "requestedScale": 0.6859205776173285,
+      "safetyScale": 0.8447653429602888,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete upright crown-to-boot native body, hands and holstered pistol do not extend beyond the body height. One source-wide scale preserves all genuine lower body projections."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-motion-b.native.png",
+      "state": "taunt1",
+      "nativeRow": 6,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 60,
+        "y": 1337,
+        "width": 116,
+        "height": 225
+      },
+      "sourceBodyHeight": 225,
+      "sourceStandingBodyHeight": 225,
+      "sourceRoi": {
+        "x": 60,
+        "y": 1337,
+        "width": 116,
+        "height": 225
+      },
+      "targetBodyHeight": 190,
+      "normalizedBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.8444444444444444,
+      "renderScale": 1,
+      "requestedScale": 0.8444444444444444,
+      "safetyScale": 1.0086206896551724,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete upright crown-to-boot native body, hands and holstered pistol do not extend beyond the body height. One source-wide scale preserves all genuine lower body projections."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-defense.native.png",
+      "state": "shieldExit",
+      "nativeRow": 4,
+      "nativeColumn": 3,
+      "sourceBodyBounds": {
+        "x": 735,
+        "y": 1012,
+        "width": 121,
+        "height": 263
+      },
+      "sourceBodyHeight": 263,
+      "sourceStandingBodyHeight": 263,
+      "sourceRoi": {
+        "x": 735,
+        "y": 1012,
+        "width": 121,
+        "height": 263
+      },
+      "targetBodyHeight": 190,
+      "normalizedBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.7224334600760456,
+      "renderScale": 1,
+      "requestedScale": 0.7224334600760456,
+      "safetyScale": 0.8897338403041825,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete upright crown-to-boot native body, hands and holstered pistol do not extend beyond the body height. One source-wide scale preserves all genuine lower body projections."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-combat-a.native.png",
+      "state": "chargeRecovery",
+      "nativeRow": 6,
+      "nativeColumn": 3,
+      "sourceBodyBounds": {
+        "x": 839,
+        "y": 1323,
+        "width": 112,
+        "height": 209
+      },
+      "sourceBodyHeight": 209,
+      "sourceStandingBodyHeight": 209,
+      "sourceRoi": {
+        "x": 839,
+        "y": 1323,
+        "width": 112,
+        "height": 209
+      },
+      "targetBodyHeight": 190,
+      "normalizedBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.9090909090909091,
+      "renderScale": 1,
+      "requestedScale": 0.9090909090909091,
+      "safetyScale": 0.9473684210526315,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete upright crown-to-boot native body, hands and holstered pistol do not extend beyond the body height. One source-wide scale preserves all genuine lower body projections."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-combat-b.native.png",
+      "state": "intro",
+      "nativeRow": 4,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 81,
+        "y": 841,
+        "width": 108,
+        "height": 220
+      },
+      "sourceBodyHeight": 220,
+      "sourceStandingBodyHeight": 220,
+      "sourceRoi": {
+        "x": 81,
+        "y": 841,
+        "width": 108,
+        "height": 220
+      },
+      "targetBodyHeight": 190,
+      "normalizedBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.8636363636363636,
+      "renderScale": 1,
+      "requestedScale": 0.8636363636363636,
+      "safetyScale": 0.9790794979079498,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete upright crown-to-boot native body, hands and holstered pistol do not extend beyond the body height. One source-wide scale preserves all genuine lower body projections."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-gun-actions-corrective.native.png",
+      "state": "ledgeAttack",
+      "nativeRow": 3,
+      "nativeColumn": 3,
+      "sourceBodyBounds": {
+        "x": 1034,
+        "y": 913,
+        "width": 176,
+        "height": 308
+      },
+      "sourceBodyHeight": 308,
+      "sourceStandingBodyHeight": 308,
+      "sourceRoi": {
+        "x": 1034,
+        "y": 913,
+        "width": 176,
+        "height": 308
+      },
+      "targetBodyHeight": 190,
+      "normalizedBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.6168831168831169,
+      "renderScale": 1,
+      "requestedScale": 0.6168831168831169,
+      "safetyScale": 0.6276595744680851,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete upright crown-to-boot native body, hands and holstered pistol do not extend beyond the body height. One source-wide scale preserves all genuine lower body projections."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+      "state": "ledgeHang",
+      "nativeRow": 1,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 95,
+        "y": 371,
+        "width": 142,
+        "height": 240
+      },
+      "sourceBodyHeight": 240,
+      "sourceStandingBodyHeight": 240,
+      "sourceRoi": {
+        "x": 95,
+        "y": 371,
+        "width": 142,
+        "height": 240
+      },
+      "targetBodyHeight": 190,
+      "normalizedBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.7916666666666666,
+      "renderScale": 1,
+      "requestedScale": 0.7916666666666666,
+      "safetyScale": 0.7986348122866894,
+      "raisedArmsExcluded": true,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Native ledgeHang/0 crown-to-boot interval excludes raised arms. One source-wide scale preserves the hanging body and crouched climb projections."
+    }
+  ],
+  "uniqueRawCells": 180,
+  "transparentMargins10": true,
+  "reservedEmptyCells": 12,
+  "source1to1Verified": false,
+  "handMeasurements": {
+    "requiredPalms": 12,
+    "requiredWrists": 12,
+    "rgbaRois": 24,
+    "acceptedContacts": 11,
+    "precontact": "ledgeCatch/0",
+    "allVisible81of81": true,
+    "contacts": [
+      {
+        "state": "ledgeCatch",
+        "frame": 0,
+        "x": 205,
+        "y": 30,
+        "contact": false,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeCatch-0-wrist.png",
+          "sha256": "799c89add4443981b5e61f66006fd14ba62ae29cdfc42fe9e7b7d52ccfc77d6d",
+          "rgbaSha256": "4c83079c9d92a94ecd5e9eb91f66404ab6069791bc759ec77849f74904aac2b2",
+          "visiblePixels": 81,
+          "skinPixels": 8,
+          "darkGlovePixels": 71
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeCatch-0-palm.png",
+          "sha256": "b2bea24f7f63e3a8dd8f69dda70d9a1f4bc2a38957e2ffa88379cbda13f58a29",
+          "rgbaSha256": "f698f0d72fc8d07f7189cee1ea9632480fdea0b62391f9cbf987283cffb0d0f3",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "darkGlovePixels": 81
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 1,
+        "x": 180,
+        "y": 30,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeCatch-1-wrist.png",
+          "sha256": "17abd638dc835f4fefafa5858f8936db11a3719e3786c877442f263d1e2ce938",
+          "rgbaSha256": "3e17eac7bd0356644d8480cfd9d13241776ebc1216eb6aa22fb0bd647e2a6c11",
+          "visiblePixels": 81,
+          "skinPixels": 1,
+          "darkGlovePixels": 80
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeCatch-1-palm.png",
+          "sha256": "a759c46a7c4139bdf1bd482ca3bd0a7ed84cf83b0cf518ecc6eddfd0db7a00e4",
+          "rgbaSha256": "13d764883815fc353ccba2fd88c4e6aba5b2ce89984bba3f10374bce38fa590d",
+          "visiblePixels": 81,
+          "skinPixels": 9,
+          "darkGlovePixels": 73
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 2,
+        "x": 99,
+        "y": 35,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeCatch-2-wrist.png",
+          "sha256": "ce864499a2e7afbd781f3cb101ec53f0382250a702dd6be5377fbd198560d23f",
+          "rgbaSha256": "8b1d34244fc64377f1d4187d13e6674ddb5a0aef1ba182fa89241ed5b5996852",
+          "visiblePixels": 81,
+          "skinPixels": 7,
+          "darkGlovePixels": 70
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeCatch-2-palm.png",
+          "sha256": "5d680c4376c6728d43cca7dfa8d4d723d88a339f0077330b19cc5a04acf02262",
+          "rgbaSha256": "57153af4be208d8ad4a7582e9a16622c019f911be1d63257ce9a12e0edfd80a3",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "darkGlovePixels": 80
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 3,
+        "x": 91,
+        "y": 53,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeCatch-3-wrist.png",
+          "sha256": "2731754de060311ebdc22e7fefdde1dd319a279d29a9936bbc6c175f8b1a5886",
+          "rgbaSha256": "219de169f6261e2029df68b1e1183c135fcee58299ac5b822d5040f4f2a21005",
+          "visiblePixels": 81,
+          "skinPixels": 10,
+          "darkGlovePixels": 71
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeCatch-3-palm.png",
+          "sha256": "93ba78cd185815e2b191bcf278a64404f6b4a45f77345d10ce291e7762e7eba3",
+          "rgbaSha256": "23025e65a388b43464e5299d7b870de880a6f962f26d8ef5b8d178868b80aae7",
+          "visiblePixels": 81,
+          "skinPixels": 2,
+          "darkGlovePixels": 78
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 0,
+        "x": 84,
+        "y": 25,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeHang-0-wrist.png",
+          "sha256": "1c6ec392afcac399bf13ded95b16d1026f2efade431c3c5add11cc6ba2487149",
+          "rgbaSha256": "4174fe8a195d433f509847ade45cca943e470155e26de9f196fbd2544b0d7f1d",
+          "visiblePixels": 81,
+          "skinPixels": 24,
+          "darkGlovePixels": 61
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeHang-0-palm.png",
+          "sha256": "6c7dfa8910241747667afadd553e4e796d94ae08bfc61b2818eecaaeeddc9831",
+          "rgbaSha256": "6b6898aef13f047e4b7f2ee74d59be37eb9aa8517c1c43fad4ee15fb6feae625",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "darkGlovePixels": 79
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 1,
+        "x": 81,
+        "y": 41,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeHang-1-wrist.png",
+          "sha256": "3b60039aa518aa7ad91be45ec3e35dd925325ee0e1cc8b5f93b916b47ef88046",
+          "rgbaSha256": "2ec4036689c03b52e8a9e3681f93d7238814a2ab79c3bfdab3cdba46d3c2adac",
+          "visiblePixels": 81,
+          "skinPixels": 30,
+          "darkGlovePixels": 50
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeHang-1-palm.png",
+          "sha256": "75deecfa1c6ea0e98f1f7dc59cac20195694b9d7125339f32af8a140c56f9eac",
+          "rgbaSha256": "868f0b2596c1c18f97a45e4e0ed8647974d876982f3b4ede858875284f91cc8b",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "darkGlovePixels": 81
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 2,
+        "x": 126,
+        "y": 26,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeHang-2-wrist.png",
+          "sha256": "fa50d282306b9a63f04dda519c71a5b932dc4e6f37c3f6d7643c7ccaebeff697",
+          "rgbaSha256": "886a34f6de89910871cd0533771a52fe54da946ab008801af7bb4595143142b7",
+          "visiblePixels": 81,
+          "skinPixels": 18,
+          "darkGlovePixels": 66
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeHang-2-palm.png",
+          "sha256": "65349333059e31c7d201df7471df24cf2e6f43fbca70ab136b83090b3aea252b",
+          "rgbaSha256": "9f0a9ab249d35d9058fb90b60cf665e2adb4b6f3adeae9703624d16d402ebc43",
+          "visiblePixels": 81,
+          "skinPixels": 2,
+          "darkGlovePixels": 79
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 3,
+        "x": 97,
+        "y": 40,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeHang-3-wrist.png",
+          "sha256": "6b7059812b4263b64fe82c1bc395e356a8cde03188c33eef936d399695a85e05",
+          "rgbaSha256": "8907c41b955731230224d8b661b32355155e08904951c9c90d043c554f840dc1",
+          "visiblePixels": 81,
+          "skinPixels": 30,
+          "darkGlovePixels": 50
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeHang-3-palm.png",
+          "sha256": "e2c626411850fec6c07dd7dafe601cccb22d113020ba98d41b4dc94decfcb728",
+          "rgbaSha256": "2f6ba7f96eb2098e0aefa9d7332954343edca8b63790737a59fa1f0204167a34",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "darkGlovePixels": 81
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 0,
+        "x": 87,
+        "y": 80,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeClimb-0-wrist.png",
+          "sha256": "a5eb76e3f74c528dfcec66052e337efb4cbb433e70b2ceb120bda3dc9496eabc",
+          "rgbaSha256": "68cdd4c8eea62d98b50c07abd30bb29482b810761b7b4c6cb7607eaed4c31c53",
+          "visiblePixels": 81,
+          "skinPixels": 2,
+          "darkGlovePixels": 77
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeClimb-0-palm.png",
+          "sha256": "04879794e097a10599a3307a13d1ab37b663a158c4f03076ae34adbada23a0e1",
+          "rgbaSha256": "2d9f0617986136eefee0cae91c91efcfb162c9f024f52fbb8564d8d08103e8b7",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "darkGlovePixels": 81
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 1,
+        "x": 113,
+        "y": 133,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeClimb-1-wrist.png",
+          "sha256": "220a9c9637403f2cc7e3f07a3933224bd0dbe0c58f50be997888c58451bdef76",
+          "rgbaSha256": "f3fc4c3a91940eaa61648d0aff054e98954bb0b04e54ee783066fc8767e0c9ff",
+          "visiblePixels": 81,
+          "skinPixels": 4,
+          "darkGlovePixels": 77
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeClimb-1-palm.png",
+          "sha256": "e7214684256a46f4d53c63b68ab11c8390d39d452dea85755c90dc71c9805591",
+          "rgbaSha256": "f94aa69388f11b181ebcd8094e95319a335034948c0a3071556e97052d3c63a4",
+          "visiblePixels": 81,
+          "skinPixels": 11,
+          "darkGlovePixels": 69
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 2,
+        "x": 73,
+        "y": 127,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeClimb-2-wrist.png",
+          "sha256": "6f87b6e531ded3b4d3b8a9867eea075fcba34db7d06a57991d43e9abb1c9336a",
+          "rgbaSha256": "6a4591ea3c67394158fec8560855bbc4cd9133f2e0be4df08e56ebfb2754c038",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "darkGlovePixels": 79
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeClimb-2-palm.png",
+          "sha256": "73b101e38e43d28e633e73b3f54b46845b88ca3354bc43b6bafdf0cab92a514a",
+          "rgbaSha256": "2579addf57ebb95da4628219a820b0035e5858c9c23bcaf5060257fe8eb21e65",
+          "visiblePixels": 81,
+          "skinPixels": 7,
+          "darkGlovePixels": 74
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 3,
+        "x": 110,
+        "y": 233,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeClimb-3-wrist.png",
+          "sha256": "43d583a19047e0361e54146343ea63f281f546ff485a07a02af405bb4fb34321",
+          "rgbaSha256": "fd42acde20d76a5f69a865916f7bf56d0c5cd3b4faf16d7ada63620662c5f6b8",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "darkGlovePixels": 81
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/roi-ledgeClimb-3-palm.png",
+          "sha256": "1937f349fd0239a279b9c96e76ee0d49bbc6a5d367cdf17fafc6a8e655509aec",
+          "rgbaSha256": "2121b0762f5a497c5f256bd07a92c3ed67e74ad6214ae9768001d1d9cd800376",
+          "visiblePixels": 81,
+          "skinPixels": 20,
+          "darkGlovePixels": 61
+        },
+        "passed": true
+      }
+    ],
+    "nativeHandChecks": [
+      {
+        "state": "ledgeCatch",
+        "frame": 0,
+        "kind": "palm",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 261,
+          "y": 33
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 0,
+        "kind": "wrist",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 254,
+          "y": 50
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 1,
+        "kind": "palm",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 523,
+          "y": 33
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 1,
+        "kind": "wrist",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 518,
+          "y": 47
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 2,
+        "kind": "palm",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 717,
+          "y": 37
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 2,
+        "kind": "wrist",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 715,
+          "y": 49
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 3,
+        "kind": "palm",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 961,
+          "y": 35
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 3,
+        "kind": "wrist",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 961,
+          "y": 49
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 0,
+        "kind": "palm",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 110,
+          "y": 335
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 0,
+        "kind": "wrist",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 109,
+          "y": 347
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 1,
+        "kind": "palm",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 396,
+          "y": 336
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 1,
+        "kind": "wrist",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 395,
+          "y": 348
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 2,
+        "kind": "palm",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 676,
+          "y": 333
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 2,
+        "kind": "wrist",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 675,
+          "y": 346
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 3,
+        "kind": "palm",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 951,
+          "y": 335
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 3,
+        "kind": "wrist",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 950,
+          "y": 348
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 0,
+        "kind": "palm",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 111,
+          "y": 651
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 0,
+        "kind": "wrist",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 110,
+          "y": 663
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 1,
+        "kind": "palm",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 416,
+          "y": 720
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 1,
+        "kind": "wrist",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 399,
+          "y": 718
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 2,
+        "kind": "palm",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 645,
+          "y": 720
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 2,
+        "kind": "wrist",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 647,
+          "y": 713
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 3,
+        "kind": "palm",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 970,
+          "y": 821
+        },
+        "visiblePixels": 81
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 3,
+        "kind": "wrist",
+        "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/chris-sources/chris-ledge.native.png",
+        "nativePoint": {
+          "x": 965,
+          "y": 807
+        },
+        "visiblePixels": 81
+      }
+    ]
+  },
+  "projections": [
+    {
+      "state": "crouchIdle",
+      "column": 0,
+      "nativeHeight": 129,
+      "normalizedHeight": 109,
+      "effectiveHeight": 108.93333333333334,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchIdle",
+      "column": 1,
+      "nativeHeight": 133,
+      "normalizedHeight": 112,
+      "effectiveHeight": 112.31111111111112,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchIdle",
+      "column": 2,
+      "nativeHeight": 142,
+      "normalizedHeight": 120,
+      "effectiveHeight": 119.91111111111111,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchIdle",
+      "column": 3,
+      "nativeHeight": 130,
+      "normalizedHeight": 110,
+      "effectiveHeight": 109.77777777777777,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchCharge",
+      "column": 0,
+      "nativeHeight": 192,
+      "normalizedHeight": 162,
+      "effectiveHeight": 162.13333333333333,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchCharge",
+      "column": 1,
+      "nativeHeight": 195,
+      "normalizedHeight": 165,
+      "effectiveHeight": 164.66666666666666,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchCharge",
+      "column": 2,
+      "nativeHeight": 196,
+      "normalizedHeight": 166,
+      "effectiveHeight": 165.51111111111112,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchCharge",
+      "column": 3,
+      "nativeHeight": 200,
+      "normalizedHeight": 169,
+      "effectiveHeight": 168.88888888888889,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchLight",
+      "column": 0,
+      "nativeHeight": 184,
+      "normalizedHeight": 126,
+      "effectiveHeight": 126.20938628158845,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchLight",
+      "column": 1,
+      "nativeHeight": 200,
+      "normalizedHeight": 137,
+      "effectiveHeight": 137.1841155234657,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchLight",
+      "column": 2,
+      "nativeHeight": 201,
+      "normalizedHeight": 138,
+      "effectiveHeight": 137.87003610108303,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchLight",
+      "column": 3,
+      "nativeHeight": 192,
+      "normalizedHeight": 132,
+      "effectiveHeight": 131.69675090252707,
+      "standingHeight": 190
+    },
+    {
+      "state": "chargeLoop",
+      "column": 0,
+      "nativeHeight": 191,
+      "normalizedHeight": 174,
+      "effectiveHeight": 173.63636363636363,
+      "standingHeight": 190
+    },
+    {
+      "state": "chargeLoop",
+      "column": 1,
+      "nativeHeight": 189,
+      "normalizedHeight": 172,
+      "effectiveHeight": 171.8181818181818,
+      "standingHeight": 190
+    },
+    {
+      "state": "chargeLoop",
+      "column": 2,
+      "nativeHeight": 178,
+      "normalizedHeight": 162,
+      "effectiveHeight": 161.8181818181818,
+      "standingHeight": 190
+    },
+    {
+      "state": "chargeLoop",
+      "column": 3,
+      "nativeHeight": 185,
+      "normalizedHeight": 168,
+      "effectiveHeight": 168.1818181818182,
+      "standingHeight": 190
+    }
+  ],
+  "cells": [
+    {
+      "atlas": "chris-motion-a",
+      "state": "idle",
+      "column": 0,
+      "visiblePixels": 11344,
+      "alphaBounds": {
+        "x": 72,
+        "y": 54,
+        "width": 111,
+        "height": 190
+      },
+      "sha256": "023594a40df9776ee47824098bbae128bd38da4b8efa9512d2310ac4912a998b"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "idle",
+      "column": 1,
+      "visiblePixels": 11294,
+      "alphaBounds": {
+        "x": 73,
+        "y": 52,
+        "width": 110,
+        "height": 192
+      },
+      "sha256": "6dd9f7c0e79638dae5ba5b386ee558cb724511796dc3dbf7a0433483f8cfa337"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "idle",
+      "column": 2,
+      "visiblePixels": 11281,
+      "alphaBounds": {
+        "x": 74,
+        "y": 51,
+        "width": 108,
+        "height": 193
+      },
+      "sha256": "e0af7083fd0065f18b8eb64c93717b4d8f8eb3a6da8490e5aa50cbc0052c97bd"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "idle",
+      "column": 3,
+      "visiblePixels": 11066,
+      "alphaBounds": {
+        "x": 75,
+        "y": 51,
+        "width": 106,
+        "height": 193
+      },
+      "sha256": "fd482a61640bc043f006b9e5bbc06354293b4bbdd11d66500f576cc50051b63f"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "walk",
+      "column": 0,
+      "visiblePixels": 11169,
+      "alphaBounds": {
+        "x": 60,
+        "y": 50,
+        "width": 135,
+        "height": 194
+      },
+      "sha256": "b09504ea5d91a4d96b27259991e389b79a0185439cf683e2cddff675d9f5ff96"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "walk",
+      "column": 1,
+      "visiblePixels": 11198,
+      "alphaBounds": {
+        "x": 60,
+        "y": 50,
+        "width": 135,
+        "height": 194
+      },
+      "sha256": "c8095133ca92909e8c1625421b544b066695cf1fdfb97f12c4f0ed08967d1a52"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "walk",
+      "column": 2,
+      "visiblePixels": 11268,
+      "alphaBounds": {
+        "x": 57,
+        "y": 50,
+        "width": 142,
+        "height": 194
+      },
+      "sha256": "c2949316a72714c24a190fad27c0053d8420c1c3fe010717413117e1b5fd38f8"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "walk",
+      "column": 3,
+      "visiblePixels": 11522,
+      "alphaBounds": {
+        "x": 53,
+        "y": 50,
+        "width": 149,
+        "height": 194
+      },
+      "sha256": "9eb5e06bd1881e478364307369a5c0b29f4d9833658e679830af6252b686f1aa"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "run",
+      "column": 0,
+      "visiblePixels": 14247,
+      "alphaBounds": {
+        "x": 44,
+        "y": 50,
+        "width": 167,
+        "height": 194
+      },
+      "sha256": "3b7fa82efc7d34d603a40d847fa7f8eec221d1ab6d50d06766b04cef7feb86ac"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "run",
+      "column": 1,
+      "visiblePixels": 12907,
+      "alphaBounds": {
+        "x": 46,
+        "y": 54,
+        "width": 164,
+        "height": 190
+      },
+      "sha256": "9a2280253b63d45240c008ebe3584c451f23c7dee4387c0a35c5876e332da557"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "run",
+      "column": 2,
+      "visiblePixels": 13635,
+      "alphaBounds": {
+        "x": 45,
+        "y": 47,
+        "width": 165,
+        "height": 197
+      },
+      "sha256": "143b35f43d1706601c9ba06539ddb5b585d5c0bae5c3eff1952a149be88af373"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "run",
+      "column": 3,
+      "visiblePixels": 13044,
+      "alphaBounds": {
+        "x": 46,
+        "y": 46,
+        "width": 163,
+        "height": 198
+      },
+      "sha256": "8302c01b856080fd67e124d4b734295f1ff7c6a01c1091797de56192e702cc50"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "turn",
+      "column": 0,
+      "visiblePixels": 12863,
+      "alphaBounds": {
+        "x": 54,
+        "y": 53,
+        "width": 147,
+        "height": 191
+      },
+      "sha256": "cee5ae8ad1ff49f5ffb7585554fbc16106a3a779a753296fad7d463a1546721b"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "turn",
+      "column": 1,
+      "visiblePixels": 12856,
+      "alphaBounds": {
+        "x": 63,
+        "y": 50,
+        "width": 129,
+        "height": 194
+      },
+      "sha256": "34832c5212d30c09ad21b93da548f27b227ca0a76d3aa302445530a2fa6a0453"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "turn",
+      "column": 2,
+      "visiblePixels": 12852,
+      "alphaBounds": {
+        "x": 61,
+        "y": 52,
+        "width": 133,
+        "height": 192
+      },
+      "sha256": "f38b64ef6a3706a67c723d6efd5ef0531b0e60179d93348c2cbd2e543366e7fe"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "turn",
+      "column": 3,
+      "visiblePixels": 12343,
+      "alphaBounds": {
+        "x": 64,
+        "y": 49,
+        "width": 128,
+        "height": 195
+      },
+      "sha256": "afe233b415d1c08f7d799eccb7377e53b8a225a70e58caaa053248992347c03a"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "jumpStart",
+      "column": 0,
+      "visiblePixels": 10720,
+      "alphaBounds": {
+        "x": 78,
+        "y": 54,
+        "width": 99,
+        "height": 190
+      },
+      "sha256": "7eec31837f384453e760a2962375bf87dd4aacc2b5994a0808396615acf106c1"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "jumpStart",
+      "column": 1,
+      "visiblePixels": 8526,
+      "alphaBounds": {
+        "x": 73,
+        "y": 120,
+        "width": 109,
+        "height": 124
+      },
+      "sha256": "e741e2c2b7145254571b27522f89d9c927f5dc4c332375547c7fbc17a03c4a87"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "jumpStart",
+      "column": 2,
+      "visiblePixels": 11106,
+      "alphaBounds": {
+        "x": 50,
+        "y": 76,
+        "width": 156,
+        "height": 168
+      },
+      "sha256": "afed4832e668bad1f0a3272e0d801f7f592032131725c9128d5ddcb99a35acb0"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "jumpStart",
+      "column": 3,
+      "visiblePixels": 8749,
+      "alphaBounds": {
+        "x": 64,
+        "y": 105,
+        "width": 127,
+        "height": 139
+      },
+      "sha256": "dc73b74ed3d5b8fbcfc15aa533cf29262174ae8b2667c1e05fe0252d4d0649c4"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "jumpRise",
+      "column": 0,
+      "visiblePixels": 10744,
+      "alphaBounds": {
+        "x": 68,
+        "y": 75,
+        "width": 120,
+        "height": 169
+      },
+      "sha256": "be1e590e0b116308ad7c0a5f9e3c0552d59b542e1f09dce3019a70f74760d90d"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "jumpRise",
+      "column": 1,
+      "visiblePixels": 12940,
+      "alphaBounds": {
+        "x": 52,
+        "y": 53,
+        "width": 152,
+        "height": 191
+      },
+      "sha256": "aea8cb7790c2949bfc8adb64bccc95c0e62f1bdbd8462c3624543c2f05067876"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "jumpRise",
+      "column": 2,
+      "visiblePixels": 13062,
+      "alphaBounds": {
+        "x": 41,
+        "y": 76,
+        "width": 173,
+        "height": 168
+      },
+      "sha256": "26dc549aa0b9d0f085b209fbc1247623c02fde31bb3e82c568d2cd9a2577e093"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "jumpRise",
+      "column": 3,
+      "visiblePixels": 13269,
+      "alphaBounds": {
+        "x": 42,
+        "y": 67,
+        "width": 171,
+        "height": 177
+      },
+      "sha256": "a82074b2deffa4c6fa3090c307fe5e90506f22f33a5c8146d91205bee3fa2bf7"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "jumpApex",
+      "column": 0,
+      "visiblePixels": 9080,
+      "alphaBounds": {
+        "x": 56,
+        "y": 103,
+        "width": 144,
+        "height": 141
+      },
+      "sha256": "0357fdef39d04098825cf4828ea6f924ba2849d7963924141dbcc2af43c10678"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "jumpApex",
+      "column": 1,
+      "visiblePixels": 10473,
+      "alphaBounds": {
+        "x": 47,
+        "y": 86,
+        "width": 161,
+        "height": 158
+      },
+      "sha256": "446797c7eec924a5e9334a00ec578c70a16712930501300d19830c1064aaf5db"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "jumpApex",
+      "column": 2,
+      "visiblePixels": 10217,
+      "alphaBounds": {
+        "x": 67,
+        "y": 68,
+        "width": 121,
+        "height": 176
+      },
+      "sha256": "8a3263c5536a68196617e62e77c850a0924f18108dc8545a81cae29165f1693f"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "jumpApex",
+      "column": 3,
+      "visiblePixels": 9224,
+      "alphaBounds": {
+        "x": 60,
+        "y": 76,
+        "width": 136,
+        "height": 168
+      },
+      "sha256": "a9399a5d0d817bf875836a553200c5c32ea47c7c488997bbe754de3c78abcef3"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "fall",
+      "column": 0,
+      "visiblePixels": 12809,
+      "alphaBounds": {
+        "x": 61,
+        "y": 33,
+        "width": 134,
+        "height": 211
+      },
+      "sha256": "e37a4d797150eb5eea97c159dfc8b20098ec90a09fa4e6f96e105ee6e7fad45a"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "fall",
+      "column": 1,
+      "visiblePixels": 13839,
+      "alphaBounds": {
+        "x": 49,
+        "y": 44,
+        "width": 157,
+        "height": 200
+      },
+      "sha256": "b5357a777ebd82fe7dd2f540204333b06494504e530150bb40a59df7c3fbd107"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "fall",
+      "column": 2,
+      "visiblePixels": 13833,
+      "alphaBounds": {
+        "x": 52,
+        "y": 66,
+        "width": 151,
+        "height": 178
+      },
+      "sha256": "892d95c6255f4ded3c6270f830496483ea67a2a0ead52fad7f630903a9a2d6ed"
+    },
+    {
+      "atlas": "chris-motion-a",
+      "state": "fall",
+      "column": 3,
+      "visiblePixels": 13840,
+      "alphaBounds": {
+        "x": 40,
+        "y": 82,
+        "width": 176,
+        "height": 162
+      },
+      "sha256": "1f40407e51a35ab8c89740ca3c18a7b981b9c884c6aea2e5be31da3471c1d82b"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "fastFall",
+      "column": 0,
+      "visiblePixels": 8853,
+      "alphaBounds": {
+        "x": 60,
+        "y": 97,
+        "width": 135,
+        "height": 147
+      },
+      "sha256": "d902563c9d8ac6d64dc6991fb5fa5333b511c2075bea2bc8e9372af23bff8768"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "fastFall",
+      "column": 1,
+      "visiblePixels": 9577,
+      "alphaBounds": {
+        "x": 62,
+        "y": 79,
+        "width": 131,
+        "height": 165
+      },
+      "sha256": "3f74a4c71e635c10ae3cac2aa2baf3c9c1e4231eceeaa76056b008240a7e28f9"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "fastFall",
+      "column": 2,
+      "visiblePixels": 8790,
+      "alphaBounds": {
+        "x": 64,
+        "y": 84,
+        "width": 128,
+        "height": 160
+      },
+      "sha256": "6ffa4a6287ca79390742c979d465fb71f39bbc7f6dd503fae430026f2760157e"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "fastFall",
+      "column": 3,
+      "visiblePixels": 8431,
+      "alphaBounds": {
+        "x": 70,
+        "y": 87,
+        "width": 115,
+        "height": 157
+      },
+      "sha256": "f9e3fa009b4fbfac253b7a63375cec927bd38ca74d05d6f144aebc60b6dc99b1"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "land",
+      "column": 0,
+      "visiblePixels": 9329,
+      "alphaBounds": {
+        "x": 67,
+        "y": 128,
+        "width": 122,
+        "height": 116
+      },
+      "sha256": "a310bca62b601ad19ad37faeea1e8deab5e6022beef3cdca23c462ffc952a908"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "land",
+      "column": 1,
+      "visiblePixels": 7837,
+      "alphaBounds": {
+        "x": 74,
+        "y": 132,
+        "width": 107,
+        "height": 112
+      },
+      "sha256": "585a67d1f1212850a3a1b5bb13ef1670a01a34f1b3773f960a387f18f4a1f7f9"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "land",
+      "column": 2,
+      "visiblePixels": 9513,
+      "alphaBounds": {
+        "x": 74,
+        "y": 104,
+        "width": 108,
+        "height": 140
+      },
+      "sha256": "aea40e6158891ea8edece4dc3728f1d44042f94b6a1050b10afe3ea636d5ff8f"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "land",
+      "column": 3,
+      "visiblePixels": 9706,
+      "alphaBounds": {
+        "x": 77,
+        "y": 70,
+        "width": 102,
+        "height": 174
+      },
+      "sha256": "ca64a1bd8081ef8f52e284d5736b6f0bec0387bbbddcd444a00bb49abbc7db28"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchEnter",
+      "column": 0,
+      "visiblePixels": 10086,
+      "alphaBounds": {
+        "x": 72,
+        "y": 65,
+        "width": 111,
+        "height": 179
+      },
+      "sha256": "215d188a51f4128b582c251b3fea81642df39c496e79d7c610f9f73140b15ea8"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchEnter",
+      "column": 1,
+      "visiblePixels": 9236,
+      "alphaBounds": {
+        "x": 78,
+        "y": 89,
+        "width": 100,
+        "height": 155
+      },
+      "sha256": "d9327c375c3dc6382a7545784e75078b80ad86a313d68e5fcaedab48cebc4ad4"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchEnter",
+      "column": 2,
+      "visiblePixels": 8408,
+      "alphaBounds": {
+        "x": 75,
+        "y": 121,
+        "width": 106,
+        "height": 123
+      },
+      "sha256": "33ac7a9dbae3bdf7a35350e58839f2e70c28e9d0a3292948481417ad54429137"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchEnter",
+      "column": 3,
+      "visiblePixels": 7737,
+      "alphaBounds": {
+        "x": 76,
+        "y": 129,
+        "width": 104,
+        "height": 115
+      },
+      "sha256": "f6ca12b522871dadce7c79e323d501c0dcef2e1a0d639feae274bd292ce53d21"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchIdle",
+      "column": 0,
+      "visiblePixels": 7884,
+      "alphaBounds": {
+        "x": 68,
+        "y": 135,
+        "width": 120,
+        "height": 109
+      },
+      "sha256": "b38dfee0fdc690bfb8bd01b83dc2c4bddf5b11a9188aed3067e901d32a6316e4"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchIdle",
+      "column": 1,
+      "visiblePixels": 7475,
+      "alphaBounds": {
+        "x": 76,
+        "y": 132,
+        "width": 105,
+        "height": 112
+      },
+      "sha256": "96dc1aeb83271167ff5e235264b9a7f3bd1aba8a550f1bfb1ed4940f8d95f765"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchIdle",
+      "column": 2,
+      "visiblePixels": 8690,
+      "alphaBounds": {
+        "x": 73,
+        "y": 124,
+        "width": 110,
+        "height": 120
+      },
+      "sha256": "abc8c5aec984ca29010f6bd4d0e320f41a072605d8bb5cb6e1b20973e8359bfa"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchIdle",
+      "column": 3,
+      "visiblePixels": 7155,
+      "alphaBounds": {
+        "x": 78,
+        "y": 134,
+        "width": 100,
+        "height": 110
+      },
+      "sha256": "b479b076273a4f5792b114e4bfb11bf53746126fc0b7ad10250cb489ff5d7e68"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchExit",
+      "column": 0,
+      "visiblePixels": 9149,
+      "alphaBounds": {
+        "x": 69,
+        "y": 118,
+        "width": 117,
+        "height": 126
+      },
+      "sha256": "424be137a5d9329fa098cfebc23e7d804511bd1ead93bba8431cc909bfbf8cd8"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchExit",
+      "column": 1,
+      "visiblePixels": 9286,
+      "alphaBounds": {
+        "x": 67,
+        "y": 106,
+        "width": 122,
+        "height": 138
+      },
+      "sha256": "256b5775f7672eddc01578d310352941f4c7879ca6bb276b872d1042917abf88"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchExit",
+      "column": 2,
+      "visiblePixels": 10188,
+      "alphaBounds": {
+        "x": 70,
+        "y": 76,
+        "width": 115,
+        "height": 168
+      },
+      "sha256": "93b1b6878bc614c813dd19f281c1349af0b0deb080f33a114b2ef42ce68420ff"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchExit",
+      "column": 3,
+      "visiblePixels": 11247,
+      "alphaBounds": {
+        "x": 71,
+        "y": 48,
+        "width": 114,
+        "height": 196
+      },
+      "sha256": "0403a88500ec3da01e908409b9c250daef2ffe96614542a5da383f01f860fb9d"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchCharge",
+      "column": 0,
+      "visiblePixels": 10612,
+      "alphaBounds": {
+        "x": 61,
+        "y": 82,
+        "width": 133,
+        "height": 162
+      },
+      "sha256": "7eb39d70f3ed205c8ca9c10122498d31f3496df1cbe20dad9cd217df7785e695"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchCharge",
+      "column": 1,
+      "visiblePixels": 10712,
+      "alphaBounds": {
+        "x": 62,
+        "y": 79,
+        "width": 132,
+        "height": 165
+      },
+      "sha256": "7111b25e409b0563ad5db1cecf876b39b5663c06e04b389303cc38e5ec5aefd8"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchCharge",
+      "column": 2,
+      "visiblePixels": 11099,
+      "alphaBounds": {
+        "x": 50,
+        "y": 78,
+        "width": 156,
+        "height": 166
+      },
+      "sha256": "a890c04cc202427a87577f2da382d04d30183c086c96c92efef654e85b6f1fcc"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "crouchCharge",
+      "column": 3,
+      "visiblePixels": 11317,
+      "alphaBounds": {
+        "x": 60,
+        "y": 75,
+        "width": 136,
+        "height": 169
+      },
+      "sha256": "78d8a706352c79baf2eaa85be74fc1a6c60d239ed83dd2c303f71fdc70a4fa94"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "taunt1",
+      "column": 0,
+      "visiblePixels": 10839,
+      "alphaBounds": {
+        "x": 79,
+        "y": 54,
+        "width": 98,
+        "height": 190
+      },
+      "sha256": "d36b8406014599141383fa75c61db99dc2e616d58485dcf8ef6964a5b7bd3136"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "taunt1",
+      "column": 1,
+      "visiblePixels": 10298,
+      "alphaBounds": {
+        "x": 80,
+        "y": 54,
+        "width": 95,
+        "height": 190
+      },
+      "sha256": "fb0bd839c4353aae94ad200947afe467639e05bfe23dc38347486cf01c3874cb"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "taunt1",
+      "column": 2,
+      "visiblePixels": 11678,
+      "alphaBounds": {
+        "x": 59,
+        "y": 53,
+        "width": 138,
+        "height": 191
+      },
+      "sha256": "24add19459fc9e1b190d3a49caca63a4e2970fdd5a70ec9bdeb3ac523c53a37b"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "taunt1",
+      "column": 3,
+      "visiblePixels": 10781,
+      "alphaBounds": {
+        "x": 79,
+        "y": 58,
+        "width": 98,
+        "height": 186
+      },
+      "sha256": "582412eb747060e1b384b086b87d5187cf39a2861c553264b94636bb0a258d16"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "hitStun",
+      "column": 0,
+      "visiblePixels": 10721,
+      "alphaBounds": {
+        "x": 59,
+        "y": 83,
+        "width": 138,
+        "height": 161
+      },
+      "sha256": "2ef88b44dc027d17ea20428ba069af80e826f50786b3d6b74169272709bf3fcb"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "hitStun",
+      "column": 1,
+      "visiblePixels": 10199,
+      "alphaBounds": {
+        "x": 62,
+        "y": 92,
+        "width": 131,
+        "height": 152
+      },
+      "sha256": "d85af516fe1eea9c412a70b9d2b828eeae09317f9fb4963dab37bfd42257d55b"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "hitStun",
+      "column": 2,
+      "visiblePixels": 9255,
+      "alphaBounds": {
+        "x": 64,
+        "y": 103,
+        "width": 128,
+        "height": 141
+      },
+      "sha256": "67c403376915dc8767001a616f33a384550f3408e1a865b8a167416520ec150f"
+    },
+    {
+      "atlas": "chris-motion-b",
+      "state": "hitStun",
+      "column": 3,
+      "visiblePixels": 8836,
+      "alphaBounds": {
+        "x": 69,
+        "y": 103,
+        "width": 118,
+        "height": 141
+      },
+      "sha256": "5a03b8b5e369bb970dd7878210df42169cf1fbe978fa95348598e0b5c32fb86e"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldEnter",
+      "column": 0,
+      "visiblePixels": 8497,
+      "alphaBounds": {
+        "x": 83,
+        "y": 80,
+        "width": 90,
+        "height": 164
+      },
+      "sha256": "3de169cd93d20f28dea529702e3c8a7c816203a0b7aa3d6fb5690e4966170e55"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldEnter",
+      "column": 1,
+      "visiblePixels": 8025,
+      "alphaBounds": {
+        "x": 78,
+        "y": 80,
+        "width": 99,
+        "height": 164
+      },
+      "sha256": "13468ed39ed41e46dd75aeb06630989d9eb9676a8d9b5bad921e98b9edcadb6b"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldEnter",
+      "column": 2,
+      "visiblePixels": 8234,
+      "alphaBounds": {
+        "x": 76,
+        "y": 82,
+        "width": 103,
+        "height": 162
+      },
+      "sha256": "597ea412480030d27c228dede6f8361ea96c00776e44a2cc366d12dc649ea03d"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldEnter",
+      "column": 3,
+      "visiblePixels": 8331,
+      "alphaBounds": {
+        "x": 75,
+        "y": 83,
+        "width": 105,
+        "height": 161
+      },
+      "sha256": "cd0fa136fb7b1ed01989e84b7782e5771e0fd9255316cbcaa033306f07ac6ca9"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldHold",
+      "column": 0,
+      "visiblePixels": 8377,
+      "alphaBounds": {
+        "x": 75,
+        "y": 84,
+        "width": 105,
+        "height": 160
+      },
+      "sha256": "dd1379f481acfc049eca60a9e3c8d747a766ae2d2de72efcf4b9d6332c70546b"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldHold",
+      "column": 1,
+      "visiblePixels": 8189,
+      "alphaBounds": {
+        "x": 75,
+        "y": 87,
+        "width": 105,
+        "height": 157
+      },
+      "sha256": "851c6f849ee22ea3ddafb45a9167962f5e55a010e785ef2b32c8a109cac6f504"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldHold",
+      "column": 2,
+      "visiblePixels": 8389,
+      "alphaBounds": {
+        "x": 67,
+        "y": 84,
+        "width": 122,
+        "height": 160
+      },
+      "sha256": "8962d94525d01f993fe0ce655fc2f855529402d9b9cde323b9c022488a9df49c"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldHold",
+      "column": 3,
+      "visiblePixels": 8456,
+      "alphaBounds": {
+        "x": 67,
+        "y": 88,
+        "width": 121,
+        "height": 156
+      },
+      "sha256": "c47a908de2bb266c884611883137c380c0cb1aa6a6156458353d62ee103672a8"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldHit",
+      "column": 0,
+      "visiblePixels": 8838,
+      "alphaBounds": {
+        "x": 72,
+        "y": 77,
+        "width": 112,
+        "height": 167
+      },
+      "sha256": "8b2572a7ca5f58c9e1000712f42af63b40375256202bab778d3160eb96595a20"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldHit",
+      "column": 1,
+      "visiblePixels": 8667,
+      "alphaBounds": {
+        "x": 73,
+        "y": 79,
+        "width": 110,
+        "height": 165
+      },
+      "sha256": "49afb1f4378f777e5103907db63384f1f901889e000e1a9c38bf940fa6359c09"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldHit",
+      "column": 2,
+      "visiblePixels": 8845,
+      "alphaBounds": {
+        "x": 64,
+        "y": 87,
+        "width": 127,
+        "height": 157
+      },
+      "sha256": "b73f438db19b0dee3955df9b8ddf6f8f29de957ac76f728cb4a2d91f909720e2"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldHit",
+      "column": 3,
+      "visiblePixels": 9080,
+      "alphaBounds": {
+        "x": 70,
+        "y": 78,
+        "width": 116,
+        "height": 166
+      },
+      "sha256": "171729547dbd8f6ee4be66d183aef433a18127b26c16513482477d506dba5740"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "perfectShield",
+      "column": 0,
+      "visiblePixels": 11426,
+      "alphaBounds": {
+        "x": 52,
+        "y": 70,
+        "width": 152,
+        "height": 174
+      },
+      "sha256": "409cad87e15a9c9e9b3c0f9da0f8de88b4ecc1a6bab2d66d0be709631a1ceffd"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "perfectShield",
+      "column": 1,
+      "visiblePixels": 10951,
+      "alphaBounds": {
+        "x": 58,
+        "y": 68,
+        "width": 139,
+        "height": 176
+      },
+      "sha256": "a50bd5c041a466c37a0e9c4441dda4b018b7da0512267de01223d2721734cde1"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "perfectShield",
+      "column": 2,
+      "visiblePixels": 11686,
+      "alphaBounds": {
+        "x": 45,
+        "y": 69,
+        "width": 165,
+        "height": 175
+      },
+      "sha256": "cfbfdc5c44f4ea143c3fbcf9db7ce1702b6c11063b51ca780c865a301c5b5418"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "perfectShield",
+      "column": 3,
+      "visiblePixels": 10813,
+      "alphaBounds": {
+        "x": 62,
+        "y": 68,
+        "width": 131,
+        "height": 176
+      },
+      "sha256": "c5a59cc489bb462cc5ce248a6b88d9478052b36589c228e4fa8c207835a16e48"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldBreak",
+      "column": 0,
+      "visiblePixels": 10283,
+      "alphaBounds": {
+        "x": 68,
+        "y": 69,
+        "width": 119,
+        "height": 175
+      },
+      "sha256": "196e57cad27c24c8230775818626fc349ee73a9d5f4e006bfeeab9c17c529f17"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldBreak",
+      "column": 1,
+      "visiblePixels": 10285,
+      "alphaBounds": {
+        "x": 62,
+        "y": 72,
+        "width": 131,
+        "height": 172
+      },
+      "sha256": "868b82d5eed42b57f6abed3c4f8aeabb994de2ee3a94aaa22394a41277ed904e"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldBreak",
+      "column": 2,
+      "visiblePixels": 11329,
+      "alphaBounds": {
+        "x": 55,
+        "y": 69,
+        "width": 146,
+        "height": 175
+      },
+      "sha256": "2d058b4f471f9603a2939b214ef04b80a5d7e18ed6a14cc3a7a3112694677f4a"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldBreak",
+      "column": 3,
+      "visiblePixels": 9456,
+      "alphaBounds": {
+        "x": 63,
+        "y": 120,
+        "width": 130,
+        "height": 124
+      },
+      "sha256": "be3e7542acdf0ec69fc1fa4f9cc94ee20dfe03a7acb0d86ad77afc2eb8f4454e"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldExit",
+      "column": 0,
+      "visiblePixels": 9890,
+      "alphaBounds": {
+        "x": 72,
+        "y": 64,
+        "width": 111,
+        "height": 180
+      },
+      "sha256": "32e531bae4582096a9a85b3ebcdbf5d9e8f99490b3c971d4a046244546433d72"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldExit",
+      "column": 1,
+      "visiblePixels": 9831,
+      "alphaBounds": {
+        "x": 72,
+        "y": 68,
+        "width": 111,
+        "height": 176
+      },
+      "sha256": "379310f780cf6f821abfb59f531b8a5a52fb90821bb03f5a4e41e4e967f69f05"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldExit",
+      "column": 2,
+      "visiblePixels": 9665,
+      "alphaBounds": {
+        "x": 76,
+        "y": 66,
+        "width": 103,
+        "height": 178
+      },
+      "sha256": "1dca2182a3aa2c62c006d1dc95fa01f6e769714c3e35c852e8fc6e6608c8048a"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "shieldExit",
+      "column": 3,
+      "visiblePixels": 10286,
+      "alphaBounds": {
+        "x": 84,
+        "y": 54,
+        "width": 87,
+        "height": 190
+      },
+      "sha256": "c9a1d43b7d81e40e1f0bd61aba507b186fdf82ee053dc1436c655de4478a696c"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "dead",
+      "column": 0,
+      "visiblePixels": 9335,
+      "alphaBounds": {
+        "x": 72,
+        "y": 101,
+        "width": 111,
+        "height": 143
+      },
+      "sha256": "ea66060d1ab5bdb5cbcf9ef1ba97d4beec23ad0c25cbff98928d0d4a062b73be"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "dead",
+      "column": 1,
+      "visiblePixels": 8690,
+      "alphaBounds": {
+        "x": 59,
+        "y": 144,
+        "width": 137,
+        "height": 100
+      },
+      "sha256": "af4f863d0b6f3635802263091394e738195dcca82dd3cbb4c6d7cea7a52753db"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "dead",
+      "column": 2,
+      "visiblePixels": 7110,
+      "alphaBounds": {
+        "x": 47,
+        "y": 180,
+        "width": 161,
+        "height": 64
+      },
+      "sha256": "f692dff874599c17d79de4627da59be10f611fd23be216652a051dcc1b0a47f6"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "dead",
+      "column": 3,
+      "visiblePixels": 6193,
+      "alphaBounds": {
+        "x": 51,
+        "y": 192,
+        "width": 154,
+        "height": 52
+      },
+      "sha256": "69df7b32b4acddd45510a4c707993ee50f4d67679bad5f2892ee7d600c644d78"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "defeat",
+      "column": 0,
+      "visiblePixels": 9511,
+      "alphaBounds": {
+        "x": 71,
+        "y": 110,
+        "width": 113,
+        "height": 134
+      },
+      "sha256": "2cf777aa284686bbfa27ae34535967a177313a73798d562d3e0c9c2c521bddbc"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "defeat",
+      "column": 1,
+      "visiblePixels": 8344,
+      "alphaBounds": {
+        "x": 78,
+        "y": 127,
+        "width": 99,
+        "height": 117
+      },
+      "sha256": "8ec9c7224114c54bc0a7e8e2dc00f7090328fb038dc7dfa29e215f25b08e2c7b"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "defeat",
+      "column": 2,
+      "visiblePixels": 9016,
+      "alphaBounds": {
+        "x": 62,
+        "y": 131,
+        "width": 131,
+        "height": 113
+      },
+      "sha256": "a0a39bb1eab31fe11377ef796b565f7d26d5b73d99efd1e288ec33f829716442"
+    },
+    {
+      "atlas": "chris-defense",
+      "state": "defeat",
+      "column": 3,
+      "visiblePixels": 8783,
+      "alphaBounds": {
+        "x": 57,
+        "y": 131,
+        "width": 142,
+        "height": 113
+      },
+      "sha256": "4f3e22c3d443a100e7fcef249d6b4d4d4c1b20111e1b79509118542925f100db"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "attackLight1",
+      "column": 0,
+      "visiblePixels": 14470,
+      "alphaBounds": {
+        "x": 57,
+        "y": 38,
+        "width": 142,
+        "height": 206
+      },
+      "sha256": "9df9818b7a35adff53f5a3f64ed3d6e841a7f820bf0044c1b2201bc49e2b2e1b"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "attackLight1",
+      "column": 1,
+      "visiblePixels": 14496,
+      "alphaBounds": {
+        "x": 44,
+        "y": 40,
+        "width": 167,
+        "height": 204
+      },
+      "sha256": "e3c62877b7c67cc7d42d3848cf136315f6e88367035f50bf841c16d26805ea87"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "attackLight1",
+      "column": 2,
+      "visiblePixels": 14528,
+      "alphaBounds": {
+        "x": 45,
+        "y": 39,
+        "width": 166,
+        "height": 205
+      },
+      "sha256": "28d3dbceb0d64438c357462077caeeeb99f9a7366a3fc32f34c0f695bba08597"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "attackLight1",
+      "column": 3,
+      "visiblePixels": 13220,
+      "alphaBounds": {
+        "x": 64,
+        "y": 39,
+        "width": 127,
+        "height": 205
+      },
+      "sha256": "659595b468f8b35ebc1f87102fac50deb8b06e39a614f21eb918a2a566d3bd6b"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "attackLight2",
+      "column": 0,
+      "visiblePixels": 13716,
+      "alphaBounds": {
+        "x": 53,
+        "y": 45,
+        "width": 149,
+        "height": 199
+      },
+      "sha256": "6c8684168cd09fdd6b934cb76541cd912cee78058478d894bcc6993d5adc2823"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "attackLight2",
+      "column": 1,
+      "visiblePixels": 14735,
+      "alphaBounds": {
+        "x": 32,
+        "y": 45,
+        "width": 192,
+        "height": 199
+      },
+      "sha256": "03b58fedd3ddb228b2f0bdd75b9f54324795440bdbd736e6d66b44d4a624a46d"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "attackLight2",
+      "column": 2,
+      "visiblePixels": 14621,
+      "alphaBounds": {
+        "x": 41,
+        "y": 44,
+        "width": 174,
+        "height": 200
+      },
+      "sha256": "b9b70d7220da46088aa3c257d858b83c0fb44403a9314efa723004c0c7a73817"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "attackLight2",
+      "column": 3,
+      "visiblePixels": 13608,
+      "alphaBounds": {
+        "x": 50,
+        "y": 45,
+        "width": 155,
+        "height": 199
+      },
+      "sha256": "37bb826c278f4a24f52473bdc0d274d5b1fcc67e93540a08419b3ee29957eccf"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "attackLight3",
+      "column": 0,
+      "visiblePixels": 13891,
+      "alphaBounds": {
+        "x": 47,
+        "y": 56,
+        "width": 162,
+        "height": 188
+      },
+      "sha256": "96fba4e49050071430d22702527da8042028f55e623ee99a97078b39986911e1"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "attackLight3",
+      "column": 1,
+      "visiblePixels": 15314,
+      "alphaBounds": {
+        "x": 22,
+        "y": 56,
+        "width": 212,
+        "height": 188
+      },
+      "sha256": "afc336347f59e651dfc37bb062fa1943ea68dcb4e667e7d0bc5467ea349effd5"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "attackLight3",
+      "column": 2,
+      "visiblePixels": 14560,
+      "alphaBounds": {
+        "x": 35,
+        "y": 57,
+        "width": 185,
+        "height": 187
+      },
+      "sha256": "c36208e077071819a869408bd243d8698f32db069de3ae723d632a26d9b280d3"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "attackLight3",
+      "column": 3,
+      "visiblePixels": 13992,
+      "alphaBounds": {
+        "x": 41,
+        "y": 57,
+        "width": 174,
+        "height": 187
+      },
+      "sha256": "84aa0c8cceded7d273557eb33679e50a09368bcb990b2557ccd1f217cf7f22f8"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "crouchLight",
+      "column": 0,
+      "visiblePixels": 9986,
+      "alphaBounds": {
+        "x": 66,
+        "y": 118,
+        "width": 123,
+        "height": 126
+      },
+      "sha256": "033350150c2cc5d01c6ac6bc20293b8cb819c90f54e1a197552d745d5e8e841a"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "crouchLight",
+      "column": 1,
+      "visiblePixels": 11197,
+      "alphaBounds": {
+        "x": 45,
+        "y": 107,
+        "width": 165,
+        "height": 137
+      },
+      "sha256": "6281dcf4548f5979b1b99d4c1ab18b31a7713334d0b5f1c51b9cdfc933361d4e"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "crouchLight",
+      "column": 2,
+      "visiblePixels": 11080,
+      "alphaBounds": {
+        "x": 54,
+        "y": 106,
+        "width": 147,
+        "height": 138
+      },
+      "sha256": "2b022f296807ef222526230b761659d4c518f3df352a61555acc1cf52747f783"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "crouchLight",
+      "column": 3,
+      "visiblePixels": 10281,
+      "alphaBounds": {
+        "x": 63,
+        "y": 112,
+        "width": 129,
+        "height": 132
+      },
+      "sha256": "9522da606f271e4d3e04960eafda6cc52833c53117868882e5cccfdef810ab80"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeStart",
+      "column": 0,
+      "visiblePixels": 15598,
+      "alphaBounds": {
+        "x": 65,
+        "y": 19,
+        "width": 125,
+        "height": 225
+      },
+      "sha256": "d3ac56df5546fd3db22df3c49b0cc4fbd72fb604b75c90feda57ed7c22fdcb1f"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeStart",
+      "column": 1,
+      "visiblePixels": 16051,
+      "alphaBounds": {
+        "x": 47,
+        "y": 38,
+        "width": 161,
+        "height": 206
+      },
+      "sha256": "00c621a6da0202cf7fe040241bf6c92a07b62eb734c590eec83b76ba875acb6d"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeStart",
+      "column": 2,
+      "visiblePixels": 16567,
+      "alphaBounds": {
+        "x": 50,
+        "y": 55,
+        "width": 155,
+        "height": 189
+      },
+      "sha256": "bfdb37e2f1ce3d926904db0ceef875e091c4eafa80ce7284bc1d9ac2d6324f3f"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeStart",
+      "column": 3,
+      "visiblePixels": 15865,
+      "alphaBounds": {
+        "x": 45,
+        "y": 46,
+        "width": 165,
+        "height": 198
+      },
+      "sha256": "20554662f83507f5503f29a68331847c9436c045a47340c4692409177ba18c15"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeLoop",
+      "column": 0,
+      "visiblePixels": 14082,
+      "alphaBounds": {
+        "x": 47,
+        "y": 70,
+        "width": 162,
+        "height": 174
+      },
+      "sha256": "805a6758ab3d7dd6b03fb91c9fb47c5c971c59b2edca46e5e2a6ef1f82020fcd"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeLoop",
+      "column": 1,
+      "visiblePixels": 13709,
+      "alphaBounds": {
+        "x": 50,
+        "y": 72,
+        "width": 156,
+        "height": 172
+      },
+      "sha256": "32d0bc385301730e5f5002c8b90bab1a1c3c48651ff571601744668836eff866"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeLoop",
+      "column": 2,
+      "visiblePixels": 14162,
+      "alphaBounds": {
+        "x": 40,
+        "y": 82,
+        "width": 176,
+        "height": 162
+      },
+      "sha256": "3420082b799e51df036b7887387ffcde8e279fa2c5293f79c55a1b8a9bf24549"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeLoop",
+      "column": 3,
+      "visiblePixels": 13672,
+      "alphaBounds": {
+        "x": 41,
+        "y": 76,
+        "width": 173,
+        "height": 168
+      },
+      "sha256": "a2db3dbaecdf7fe6ded67c9cb214dc1d07da8acc219135bbc1a8be2542838804"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeRelease",
+      "column": 0,
+      "visiblePixels": 14938,
+      "alphaBounds": {
+        "x": 49,
+        "y": 52,
+        "width": 157,
+        "height": 192
+      },
+      "sha256": "19e157b13b9efd3730a66e5ba9fad37c8f992b987c7d566b4f94a1bb588f8970"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeRelease",
+      "column": 1,
+      "visiblePixels": 15391,
+      "alphaBounds": {
+        "x": 18,
+        "y": 55,
+        "width": 219,
+        "height": 189
+      },
+      "sha256": "fdcc23f7c57e689bb65a14e746d3e3a567305d1b7535697eb9d876bbf2c27368"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeRelease",
+      "column": 2,
+      "visiblePixels": 15061,
+      "alphaBounds": {
+        "x": 23,
+        "y": 56,
+        "width": 209,
+        "height": 188
+      },
+      "sha256": "3782f2278e35c03aa8712080db386a33ded6d3143d2eb1bbbc851c7b185e3a64"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeRelease",
+      "column": 3,
+      "visiblePixels": 13983,
+      "alphaBounds": {
+        "x": 52,
+        "y": 53,
+        "width": 152,
+        "height": 191
+      },
+      "sha256": "e15a12bae721cc5e04f813a8c75fde63193cd312fbccfa612e1d81d5adc91b02"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeRecovery",
+      "column": 0,
+      "visiblePixels": 13907,
+      "alphaBounds": {
+        "x": 27,
+        "y": 68,
+        "width": 201,
+        "height": 176
+      },
+      "sha256": "a1e87a77d50e3c10deb50ff508a7064d40ee336de05a17e0d16d9e48199b6f1a"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeRecovery",
+      "column": 1,
+      "visiblePixels": 12775,
+      "alphaBounds": {
+        "x": 48,
+        "y": 69,
+        "width": 159,
+        "height": 175
+      },
+      "sha256": "d678a8e79ee07d8bed840a160857a7f785ea2d223d95036c5bbbbf0ea8b76e52"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeRecovery",
+      "column": 2,
+      "visiblePixels": 12067,
+      "alphaBounds": {
+        "x": 58,
+        "y": 65,
+        "width": 139,
+        "height": 179
+      },
+      "sha256": "47db7d8edcee5e65485111b32e236ff6007bee4c2914fc764622642c1ea379f9"
+    },
+    {
+      "atlas": "chris-combat-a",
+      "state": "chargeRecovery",
+      "column": 3,
+      "visiblePixels": 12030,
+      "alphaBounds": {
+        "x": 77,
+        "y": 54,
+        "width": 102,
+        "height": 190
+      },
+      "sha256": "9f2b650930b015ee06dbb4f6056da053df3244229e46e6858543143195a2ae38"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "attackRecovery",
+      "column": 0,
+      "visiblePixels": 10629,
+      "alphaBounds": {
+        "x": 45,
+        "y": 82,
+        "width": 165,
+        "height": 162
+      },
+      "sha256": "630d42a54e67f2f5cb80c6dd1c6cdae75be377dd6a35f0f40cddccd05dcf04c7"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "attackRecovery",
+      "column": 1,
+      "visiblePixels": 8947,
+      "alphaBounds": {
+        "x": 73,
+        "y": 82,
+        "width": 110,
+        "height": 162
+      },
+      "sha256": "4dfdf4738f989a0b4b6c55a53437daf08f87f23e58bc29bd58ba1299e1f2ca47"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "attackRecovery",
+      "column": 2,
+      "visiblePixels": 10121,
+      "alphaBounds": {
+        "x": 70,
+        "y": 80,
+        "width": 115,
+        "height": 164
+      },
+      "sha256": "e3fae41fc2b951eca7f96dca3f64933daa7e0d15c9272d8474056fd08fb0c3b7"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "attackRecovery",
+      "column": 3,
+      "visiblePixels": 9403,
+      "alphaBounds": {
+        "x": 84,
+        "y": 71,
+        "width": 87,
+        "height": 173
+      },
+      "sha256": "31fd00643dd03fb817eb664d0ff372c57a186c41179efcd6ae68448db75b4eaf"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "special",
+      "column": 0,
+      "visiblePixels": 10109,
+      "alphaBounds": {
+        "x": 66,
+        "y": 75,
+        "width": 124,
+        "height": 169
+      },
+      "sha256": "f3c03bf10776acb3ad43400a59613da9e973d041cd275268d0e910e8e217ba64"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "special",
+      "column": 1,
+      "visiblePixels": 10740,
+      "alphaBounds": {
+        "x": 32,
+        "y": 78,
+        "width": 192,
+        "height": 166
+      },
+      "sha256": "274c3c055ad47eb6e057c027d0c95a42a50d7b7ecf893db41faeb08b643ccd5a"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "special",
+      "column": 2,
+      "visiblePixels": 11185,
+      "alphaBounds": {
+        "x": 34,
+        "y": 76,
+        "width": 187,
+        "height": 168
+      },
+      "sha256": "f173644878a4d1fae3dfebeb6405ca5499a4fa6dad8859bd64cdec9f6d16c292"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "special",
+      "column": 3,
+      "visiblePixels": 9650,
+      "alphaBounds": {
+        "x": 71,
+        "y": 76,
+        "width": 114,
+        "height": 168
+      },
+      "sha256": "7c21b986f39661df1c0d8270a22fba8913426cbb12dd39a563354a42df163dc7"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "aerialNeutral",
+      "column": 0,
+      "visiblePixels": 9297,
+      "alphaBounds": {
+        "x": 80,
+        "y": 98,
+        "width": 96,
+        "height": 145
+      },
+      "sha256": "902d86d19aabd5b3c6f1aae678b44ff254ab8752b63ae5c61231409c38da9620"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "aerialNeutral",
+      "column": 1,
+      "visiblePixels": 10014,
+      "alphaBounds": {
+        "x": 61,
+        "y": 102,
+        "width": 133,
+        "height": 142
+      },
+      "sha256": "2fb7b5af8f9a2f1afe8481955bbe431d443e23b993d82a2a34bb70ed2988973a"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "aerialNeutral",
+      "column": 2,
+      "visiblePixels": 10692,
+      "alphaBounds": {
+        "x": 60,
+        "y": 92,
+        "width": 136,
+        "height": 152
+      },
+      "sha256": "f3553929ff9ac9d7f33dc2bc40434f2fc8882073becfcac39dcbc25088cdd49f"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "aerialNeutral",
+      "column": 3,
+      "visiblePixels": 9007,
+      "alphaBounds": {
+        "x": 80,
+        "y": 97,
+        "width": 95,
+        "height": 147
+      },
+      "sha256": "de06990af6f2cdee8ef7ed5d947f28144fdb721953c2eceee14cc9ea0ff01645"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "aerialForward",
+      "column": 0,
+      "visiblePixels": 9967,
+      "alphaBounds": {
+        "x": 67,
+        "y": 89,
+        "width": 122,
+        "height": 155
+      },
+      "sha256": "28cbb9bad731326847a2b44934d782d6f6b94a5dad76d6ddd9eacd6e5332df85"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "aerialForward",
+      "column": 1,
+      "visiblePixels": 11529,
+      "alphaBounds": {
+        "x": 12,
+        "y": 95,
+        "width": 232,
+        "height": 149
+      },
+      "sha256": "9b3cffc5887e9d02ed2291c164954ef5bf2b1d5691eb2264481d871e59a65371"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "aerialForward",
+      "column": 2,
+      "visiblePixels": 11556,
+      "alphaBounds": {
+        "x": 32,
+        "y": 97,
+        "width": 192,
+        "height": 147
+      },
+      "sha256": "7f9924ca898d990875a8ce9395a12f3be0204970e7eb597457ed378e2b824714"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "aerialForward",
+      "column": 3,
+      "visiblePixels": 9048,
+      "alphaBounds": {
+        "x": 80,
+        "y": 90,
+        "width": 96,
+        "height": 154
+      },
+      "sha256": "dcac363ec92a38ede75590bccec215bc0cde9e78f1eed836e8ec501a2a3ca77c"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "aerialDown",
+      "column": 0,
+      "visiblePixels": 8456,
+      "alphaBounds": {
+        "x": 80,
+        "y": 112,
+        "width": 96,
+        "height": 132
+      },
+      "sha256": "26a75bf3dcad9e1f2fcd7c122f50e174c2a21b408ff613f1251e96def67765c2"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "aerialDown",
+      "column": 1,
+      "visiblePixels": 9930,
+      "alphaBounds": {
+        "x": 65,
+        "y": 87,
+        "width": 126,
+        "height": 157
+      },
+      "sha256": "e39048819a7a047405f03342e9ba1014a3294933f7ca0e7044dae82ea7de3a60"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "aerialDown",
+      "column": 2,
+      "visiblePixels": 10945,
+      "alphaBounds": {
+        "x": 52,
+        "y": 90,
+        "width": 152,
+        "height": 154
+      },
+      "sha256": "c46afa1273d0bc04a6bc0883cf795764aab18b7a6056f133af205c6d92f9cae7"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "aerialDown",
+      "column": 3,
+      "visiblePixels": 8768,
+      "alphaBounds": {
+        "x": 77,
+        "y": 105,
+        "width": 101,
+        "height": 139
+      },
+      "sha256": "abc7d574edb9218fbdef449de05c628bfdc416a6f579c3a8aa8e9ed8293f063a"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "intro",
+      "column": 0,
+      "visiblePixels": 11074,
+      "alphaBounds": {
+        "x": 81,
+        "y": 54,
+        "width": 93,
+        "height": 190
+      },
+      "sha256": "96a7833102853bad563d068bfb0111406ab188db188b6d356ede6c5d7263c888"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "intro",
+      "column": 1,
+      "visiblePixels": 11440,
+      "alphaBounds": {
+        "x": 81,
+        "y": 54,
+        "width": 93,
+        "height": 190
+      },
+      "sha256": "d31504e0d0339c1ea0b533bb510381a59e5b836cd19a98517d236e27bd2094bf"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "intro",
+      "column": 2,
+      "visiblePixels": 11289,
+      "alphaBounds": {
+        "x": 65,
+        "y": 57,
+        "width": 125,
+        "height": 187
+      },
+      "sha256": "d9ba28bacfd64c35043d00c0e0348f81b2221985f17445c339cb70715c5e9a3c"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "intro",
+      "column": 3,
+      "visiblePixels": 11334,
+      "alphaBounds": {
+        "x": 76,
+        "y": 52,
+        "width": 103,
+        "height": 192
+      },
+      "sha256": "c9a88071e2bd9f859e013d03a4616c69dc61182f9bc0815755b9dd00826b752c"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "victory",
+      "column": 0,
+      "visiblePixels": 12234,
+      "alphaBounds": {
+        "x": 78,
+        "y": 38,
+        "width": 100,
+        "height": 206
+      },
+      "sha256": "e270c5c35bf75bd7ed76fe24f3f8652fae23b2332cc520ed72ddb76daef96cc3"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "victory",
+      "column": 1,
+      "visiblePixels": 12140,
+      "alphaBounds": {
+        "x": 82,
+        "y": 46,
+        "width": 92,
+        "height": 198
+      },
+      "sha256": "9b5582fddcd620fda3f740b658a159729346b97b1258ebbc62644e82f258ce6c"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "victory",
+      "column": 2,
+      "visiblePixels": 12536,
+      "alphaBounds": {
+        "x": 75,
+        "y": 40,
+        "width": 105,
+        "height": 204
+      },
+      "sha256": "314d3818c2f443ad79bbc9f67d49fc4b7499caf5092617c8d4dd3ff8df2e566d"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "victory",
+      "column": 3,
+      "visiblePixels": 12085,
+      "alphaBounds": {
+        "x": 81,
+        "y": 39,
+        "width": 94,
+        "height": 205
+      },
+      "sha256": "d8df8ee28409107359ef842888519558496f8b6be1e822a8b6b1073728fb1e31"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "ledgeAttack",
+      "column": 0,
+      "visiblePixels": 11368,
+      "alphaBounds": {
+        "x": 57,
+        "y": 117,
+        "width": 142,
+        "height": 127
+      },
+      "sha256": "7ab734e446c3baba01f4e78a7be5a7fc8fa98e9ee525e43cf20d28e356b15efe"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "ledgeAttack",
+      "column": 1,
+      "visiblePixels": 10855,
+      "alphaBounds": {
+        "x": 57,
+        "y": 76,
+        "width": 142,
+        "height": 168
+      },
+      "sha256": "f0f88586e8bc3ecaf39c873b0f73b0c305333b602cbbdbd5de09483afa17a83f"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "ledgeAttack",
+      "column": 2,
+      "visiblePixels": 11320,
+      "alphaBounds": {
+        "x": 44,
+        "y": 81,
+        "width": 168,
+        "height": 163
+      },
+      "sha256": "aa26fa50cebb335fe78f22817d4f3675d8d98029e5135ca117d95721803e5387"
+    },
+    {
+      "atlas": "chris-combat-b",
+      "state": "ledgeAttack",
+      "column": 3,
+      "visiblePixels": 11028,
+      "alphaBounds": {
+        "x": 73,
+        "y": 54,
+        "width": 109,
+        "height": 190
+      },
+      "sha256": "11921624a7602d27cb0f7d91c8ec3f6e349e19516d1eefc5adfe8f53245502c8"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeCatch",
+      "column": 0,
+      "visiblePixels": 14247,
+      "alphaBounds": {
+        "x": 32,
+        "y": 14,
+        "width": 191,
+        "height": 230
+      },
+      "sha256": "776687caf34cd0b046ca4c7cfae28fd1571f70ad8440687db3aa10a3b9e0b8e6"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeCatch",
+      "column": 1,
+      "visiblePixels": 12289,
+      "alphaBounds": {
+        "x": 62,
+        "y": 14,
+        "width": 132,
+        "height": 230
+      },
+      "sha256": "ecaf3a4c9b18cba6239a181de73c3d12f3f0ce714fd520d8fceaa5c1227816d6"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeCatch",
+      "column": 2,
+      "visiblePixels": 12901,
+      "alphaBounds": {
+        "x": 78,
+        "y": 22,
+        "width": 100,
+        "height": 222
+      },
+      "sha256": "64b706fe26e226738da0e195880b17a70a35d0804a7fa65f24ac9801ff1e99cf"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeCatch",
+      "column": 3,
+      "visiblePixels": 12600,
+      "alphaBounds": {
+        "x": 76,
+        "y": 41,
+        "width": 103,
+        "height": 203
+      },
+      "sha256": "405687850dd392c21267bc4004dda42d498fa16aa9efc35398990e9e3606bf9e"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeHang",
+      "column": 0,
+      "visiblePixels": 13152,
+      "alphaBounds": {
+        "x": 72,
+        "y": 12,
+        "width": 112,
+        "height": 232
+      },
+      "sha256": "9ffccb40be1a2678993a697cdd23eed0df46575a12e34ea48033ca6fcca0af17"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeHang",
+      "column": 1,
+      "visiblePixels": 13047,
+      "alphaBounds": {
+        "x": 69,
+        "y": 27,
+        "width": 118,
+        "height": 217
+      },
+      "sha256": "fa4784e7acd50f1508b1dd88421fef2c2dd0c5aa7485eebb705ced73d81f6566"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeHang",
+      "column": 2,
+      "visiblePixels": 13455,
+      "alphaBounds": {
+        "x": 61,
+        "y": 14,
+        "width": 133,
+        "height": 230
+      },
+      "sha256": "02729d2d8f59796e80fae967425c501bf88b224655eebdd841893464a8396322"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeHang",
+      "column": 3,
+      "visiblePixels": 12950,
+      "alphaBounds": {
+        "x": 60,
+        "y": 27,
+        "width": 136,
+        "height": 217
+      },
+      "sha256": "6f7907b3b9cd2014cb7c4b3489f175a3e375066fd08e593f3090b4d7e6d6f0c3"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeClimb",
+      "column": 0,
+      "visiblePixels": 12342,
+      "alphaBounds": {
+        "x": 68,
+        "y": 67,
+        "width": 120,
+        "height": 177
+      },
+      "sha256": "ad100935ba9bc04581370a41484f5a0c9077328f98f2a3b906e83851aa900ffe"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeClimb",
+      "column": 1,
+      "visiblePixels": 12242,
+      "alphaBounds": {
+        "x": 68,
+        "y": 60,
+        "width": 120,
+        "height": 184
+      },
+      "sha256": "fe7da0253be5760db529c754c8353be1c87fa1b1621cc321bcf4031f095f42b0"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeClimb",
+      "column": 2,
+      "visiblePixels": 13258,
+      "alphaBounds": {
+        "x": 59,
+        "y": 48,
+        "width": 138,
+        "height": 196
+      },
+      "sha256": "8896665b8927915658efe55c3cdc53addf3246abe7c8e0c3fe9a7b913bcde463"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeClimb",
+      "column": 3,
+      "visiblePixels": 11053,
+      "alphaBounds": {
+        "x": 61,
+        "y": 116,
+        "width": 133,
+        "height": 128
+      },
+      "sha256": "8c05e17b7665d3e142531f0ddde711f6a3787b896497ece9d74a9a8d0653031a"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeDrop",
+      "column": 0,
+      "visiblePixels": 11203,
+      "alphaBounds": {
+        "x": 86,
+        "y": 53,
+        "width": 84,
+        "height": 191
+      },
+      "sha256": "55e2f360d485457ed71dca92cbf9db2e5fae89880a4ae50ea5829815a95133b4"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeDrop",
+      "column": 1,
+      "visiblePixels": 11715,
+      "alphaBounds": {
+        "x": 54,
+        "y": 49,
+        "width": 147,
+        "height": 195
+      },
+      "sha256": "91705d84172305db6b490356a0545479020edcd8180c4dbc9d00dca1c8d9222b"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeDrop",
+      "column": 2,
+      "visiblePixels": 11206,
+      "alphaBounds": {
+        "x": 55,
+        "y": 79,
+        "width": 146,
+        "height": 165
+      },
+      "sha256": "f50d97b5bc43b69e629f34fee15486fddef1b3728e9b0d8231a6cde718197da7"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeDrop",
+      "column": 3,
+      "visiblePixels": 12211,
+      "alphaBounds": {
+        "x": 36,
+        "y": 82,
+        "width": 184,
+        "height": 162
+      },
+      "sha256": "772e0e646eb2ff7eb7d0f52b580e0a345b9f1ddbd53b6eb82c397b6d46e97f2b"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeJump",
+      "column": 0,
+      "visiblePixels": 11278,
+      "alphaBounds": {
+        "x": 79,
+        "y": 57,
+        "width": 97,
+        "height": 187
+      },
+      "sha256": "1aa3383617bbae05d105e8e32d0e017e462e603605c0f0175c9d7dca01cec4b1"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeJump",
+      "column": 1,
+      "visiblePixels": 11858,
+      "alphaBounds": {
+        "x": 56,
+        "y": 60,
+        "width": 143,
+        "height": 184
+      },
+      "sha256": "fd01566446e3bc2f645aa2442b7b1807e65aff2b8c6335e85eff04284a89d861"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeJump",
+      "column": 2,
+      "visiblePixels": 11184,
+      "alphaBounds": {
+        "x": 52,
+        "y": 82,
+        "width": 152,
+        "height": 162
+      },
+      "sha256": "db2b3cefccfb54f96495c774d46e6ee20f79e2a8fdf24c9a31df0cf217ca56ff"
+    },
+    {
+      "atlas": "chris-ledge",
+      "state": "ledgeJump",
+      "column": 3,
+      "visiblePixels": 12528,
+      "alphaBounds": {
+        "x": 37,
+        "y": 71,
+        "width": 181,
+        "height": 173
+      },
+      "sha256": "29017d2806cce1151e641df0879cd6e6ed79bb0cb93e61c180462aa05584f721"
+    }
+  ]
+}

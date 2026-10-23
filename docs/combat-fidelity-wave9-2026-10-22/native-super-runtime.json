@@ -1,0 +1,3189 @@
+{
+  "date": "2026-10-22",
+  "method": "Real Vite SSR engines, accepted gameplay changes and recorded canvas commands. Native decoding and real browser drawing are verified separately.",
+  "coverage": {
+    "identities": 20,
+    "modes": [
+      "rpg",
+      "melee",
+      "fighter"
+    ],
+    "sides": [
+      "player",
+      "opponent"
+    ],
+    "supports": [
+      "baird",
+      "hoffman_cog",
+      "wrex",
+      "aramaki"
+    ],
+    "contactSupers": [
+      "marcus",
+      "dom",
+      "cole",
+      "shepard",
+      "garrus",
+      "liara",
+      "tali",
+      "motoko",
+      "batou",
+      "togusa",
+      "saito_gits",
+      "chris_redfield",
+      "claire_redfield",
+      "ada_wong",
+      "barry_burton",
+      "carlos_oliveira"
+    ],
+    "trackedFighter": [
+      "dom",
+      "cole",
+      "shepard",
+      "garrus",
+      "tali",
+      "motoko",
+      "batou",
+      "togusa",
+      "saito_gits",
+      "ada_wong",
+      "barry_burton",
+      "carlos_oliveira"
+    ]
+  },
+  "sources": [
+    {
+      "path": "scripts/nativeSuperRuntimeWave9.test.mjs",
+      "sha256": "303cc7e98b7e40acbf64fb2a1ba7891bcae270522b907d007eb2f1a4aab68b5f"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "e9ff9f5b044e042f4a2cc9cb0bfdb2a1707c0ea33cf37f56e108e157ca3f62bd"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "sha256": "f98d96ee1b01e0c9c5670b9899b12e04f2c5f6b28afc1dd66505e99043c434ea"
+    },
+    {
+      "path": "src/game/engineFighter.js",
+      "sha256": "bb4db0463884b4d6f356fef6dccfc6c5851d916b0cec200a75eb81f6a48c8016"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave9.js",
+      "sha256": "440ededbd47d47b7879d2dc4590fed9e540ae6bba990c05c07c51566cc94e174"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "sha256": "874c34cd24328a515920868514aa4aa68382f982dcfb9987178cfcdefa728c58"
+    }
+  ],
+  "observations": [
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "marcus",
+      "name": "Hammer of Dawn",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -70,
+        -73,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "dom",
+      "name": "Salve de Gnasher de Dom",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        -42,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "cole",
+      "name": "Assaut au Lancer de Cole",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61,
+        -62,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "baird",
+      "name": "Maintenance du matériel COG",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "hoffman_cog",
+      "name": "Ordre de mise en défense de Hoffman",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "shepard",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -71,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "garrus",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "liara",
+      "name": "Singularity",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        -52,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "tali",
+      "name": "Drone de combat de Tali",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "wrex",
+      "name": "Barrière biotique de Wrex",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "motoko",
+      "name": "Salve au pistolet-mitrailleur de Motoko",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "batou",
+      "name": "Rafale d’appui de Batou",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "togusa",
+      "name": "Tir de précision au Mateba",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "aramaki",
+      "name": "Autorisation d'opération de la Section 9",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "saito_gits",
+      "name": "Œil de faucon — tir de précision",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -30,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "chris_redfield",
+      "name": "Satellite Laser",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        -44,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "claire_redfield",
+      "name": "GM 79 Flame Round",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        -45,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "ada_wong",
+      "name": "Explosive Crossbow",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        -52,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "barry_burton",
+      "name": "Barry Magnum",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "carlos_oliveira",
+      "name": "Rafale du CQBR de Carlos",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -34,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "marcus",
+      "name": "Hammer of Dawn",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72,
+        -63,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "dom",
+      "name": "Salve de Gnasher de Dom",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        -46,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "cole",
+      "name": "Assaut au Lancer de Cole",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -60,
+        -66,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "baird",
+      "name": "Maintenance du matériel COG",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "hoffman_cog",
+      "name": "Ordre de mise en défense de Hoffman",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "shepard",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -70,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "garrus",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "liara",
+      "name": "Singularity",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -52,
+        -46,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "tali",
+      "name": "Drone de combat de Tali",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "wrex",
+      "name": "Barrière biotique de Wrex",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "motoko",
+      "name": "Salve au pistolet-mitrailleur de Motoko",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -73,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "batou",
+      "name": "Rafale d’appui de Batou",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "togusa",
+      "name": "Tir de précision au Mateba",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "aramaki",
+      "name": "Autorisation d'opération de la Section 9",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "saito_gits",
+      "name": "Œil de faucon — tir de précision",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -34,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "chris_redfield",
+      "name": "Satellite Laser",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        -46,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "claire_redfield",
+      "name": "GM 79 Flame Round",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        -45,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "ada_wong",
+      "name": "Explosive Crossbow",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -51,
+        -47,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "barry_burton",
+      "name": "Barry Magnum",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "carlos_oliveira",
+      "name": "Rafale du CQBR de Carlos",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -33,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "marcus",
+      "name": "Hammer of Dawn",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -73,
+        -74,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "dom",
+      "name": "Salve de Gnasher de Dom",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        -40,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "cole",
+      "name": "Assaut au Lancer de Cole",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -65,
+        -67,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "baird",
+      "name": "Maintenance du matériel COG",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "hoffman_cog",
+      "name": "Ordre de mise en défense de Hoffman",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "shepard",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -68,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "garrus",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "liara",
+      "name": "Singularity",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -54,
+        -49,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "tali",
+      "name": "Drone de combat de Tali",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -53,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "wrex",
+      "name": "Barrière biotique de Wrex",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "motoko",
+      "name": "Salve au pistolet-mitrailleur de Motoko",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "batou",
+      "name": "Rafale d’appui de Batou",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "togusa",
+      "name": "Tir de précision au Mateba",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "aramaki",
+      "name": "Autorisation d'opération de la Section 9",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "saito_gits",
+      "name": "Œil de faucon — tir de précision",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -29,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "chris_redfield",
+      "name": "Satellite Laser",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        -44,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "claire_redfield",
+      "name": "GM 79 Flame Round",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        -42,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "ada_wong",
+      "name": "Explosive Crossbow",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        -45,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "barry_burton",
+      "name": "Barry Magnum",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "carlos_oliveira",
+      "name": "Rafale du CQBR de Carlos",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -34,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "marcus",
+      "name": "Hammer of Dawn",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72,
+        -72,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "dom",
+      "name": "Salve de Gnasher de Dom",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        -41,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "cole",
+      "name": "Assaut au Lancer de Cole",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -58,
+        -65,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "baird",
+      "name": "Maintenance du matériel COG",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "hoffman_cog",
+      "name": "Ordre de mise en défense de Hoffman",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "shepard",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -78,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "garrus",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "liara",
+      "name": "Singularity",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        -48,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "tali",
+      "name": "Drone de combat de Tali",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -51,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "wrex",
+      "name": "Barrière biotique de Wrex",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "motoko",
+      "name": "Salve au pistolet-mitrailleur de Motoko",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "batou",
+      "name": "Rafale d’appui de Batou",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "togusa",
+      "name": "Tir de précision au Mateba",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "aramaki",
+      "name": "Autorisation d'opération de la Section 9",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "saito_gits",
+      "name": "Œil de faucon — tir de précision",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -29,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "chris_redfield",
+      "name": "Satellite Laser",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        -48,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "claire_redfield",
+      "name": "GM 79 Flame Round",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        -42,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "ada_wong",
+      "name": "Explosive Crossbow",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        -48,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "barry_burton",
+      "name": "Barry Magnum",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "carlos_oliveira",
+      "name": "Rafale du CQBR de Carlos",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -33,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "marcus",
+      "name": "Hammer of Dawn",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -113.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "dom",
+      "name": "Salve de Gnasher de Dom",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "cole",
+      "name": "Assaut au Lancer de Cole",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.89999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "baird",
+      "name": "Maintenance du matériel COG",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "hoffman_cog",
+      "name": "Ordre de mise en défense de Hoffman",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "shepard",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -120.60000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "garrus",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -88.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "liara",
+      "name": "Singularity",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -92.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "tali",
+      "name": "Drone de combat de Tali",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "wrex",
+      "name": "Barrière biotique de Wrex",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "motoko",
+      "name": "Salve au pistolet-mitrailleur de Motoko",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -108.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "batou",
+      "name": "Rafale d’appui de Batou",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -87.60000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "togusa",
+      "name": "Tir de précision au Mateba",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82.39999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "aramaki",
+      "name": "Autorisation d'opération de la Section 9",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "saito_gits",
+      "name": "Œil de faucon — tir de précision",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -59.39999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "chris_redfield",
+      "name": "Satellite Laser",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -91.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "claire_redfield",
+      "name": "GM 79 Flame Round",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "ada_wong",
+      "name": "Explosive Crossbow",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -86.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "barry_burton",
+      "name": "Barry Magnum",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "carlos_oliveira",
+      "name": "Rafale du CQBR de Carlos",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -62.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "marcus",
+      "name": "Hammer of Dawn",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -113.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "dom",
+      "name": "Salve de Gnasher de Dom",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "cole",
+      "name": "Assaut au Lancer de Cole",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.89999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "baird",
+      "name": "Maintenance du matériel COG",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "hoffman_cog",
+      "name": "Ordre de mise en défense de Hoffman",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "shepard",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -120.60000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "garrus",
+      "name": "Concussive Shot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -88.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "liara",
+      "name": "Singularity",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -92.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "tali",
+      "name": "Drone de combat de Tali",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "wrex",
+      "name": "Barrière biotique de Wrex",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "motoko",
+      "name": "Salve au pistolet-mitrailleur de Motoko",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -108.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "batou",
+      "name": "Rafale d’appui de Batou",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -87.60000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "togusa",
+      "name": "Tir de précision au Mateba",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82.39999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "aramaki",
+      "name": "Autorisation d'opération de la Section 9",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "saito_gits",
+      "name": "Œil de faucon — tir de précision",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -59.39999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "chris_redfield",
+      "name": "Satellite Laser",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -91.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "claire_redfield",
+      "name": "GM 79 Flame Round",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "ada_wong",
+      "name": "Explosive Crossbow",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -86.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "barry_burton",
+      "name": "Barry Magnum",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "carlos_oliveira",
+      "name": "Rafale du CQBR de Carlos",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -62.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "dom",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 16.799999999999955,
+      "impact": {
+        "x": 470,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "cole",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 21,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "shepard",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 24.100000000000023,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "garrus",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 17.600000000000023,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "tali",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 18,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "motoko",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 21.799999999999955,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "batou",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 17.5,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "togusa",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 16.5,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "saito_gits",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 11.899999999999977,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "ada_wong",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 17.200000000000045,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "barry_burton",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 16.799999999999955,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "carlos_oliveira",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 12.399999999999977,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "dom",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 16.799999999999955,
+      "impact": {
+        "x": 1230,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "cole",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 21,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "shepard",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 24.100000000000023,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "garrus",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 17.600000000000023,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "tali",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 18,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "motoko",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 21.799999999999955,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "batou",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 17.5,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "togusa",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 16.5,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "saito_gits",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 11.899999999999977,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "ada_wong",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 17.200000000000045,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "barry_burton",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 16.799999999999955,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "carlos_oliveira",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 12.399999999999977,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Native aperture RGBA/projection",
+      "projectedActivePoints": 312,
+      "inactivePoints": 328,
+      "frameDimensions": [
+        256,
+        256
+      ],
+      "baseline": 244
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "dom",
+      "side": "player",
+      "nativePoint": {
+        "x": 199,
+        "y": 110
+      },
+      "origin": {
+        "x": 236.9009470390625,
+        "y": 340.355959109375
+      },
+      "range": 330,
+      "lifetime": 0.5636520249248799,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "cole",
+      "side": "player",
+      "nativePoint": {
+        "x": 201,
+        "y": 117
+      },
+      "origin": {
+        "x": 245.4487551875,
+        "y": 330.9316176875
+      },
+      "range": 640,
+      "lifetime": 1.143367778485577,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "shepard",
+      "side": "player",
+      "nativePoint": {
+        "x": 172,
+        "y": 124
+      },
+      "origin": {
+        "x": 227.65756642058727,
+        "y": 334.5702733983984
+      },
+      "range": 640,
+      "lifetime": 1.177581603037332,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "garrus",
+      "side": "player",
+      "nativePoint": {
+        "x": 198,
+        "y": 158
+      },
+      "origin": {
+        "x": 258.8549796219216,
+        "y": 337.69245360735346
+      },
+      "range": 640,
+      "lifetime": 1.117586577650151,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "tali",
+      "side": "player",
+      "nativePoint": {
+        "x": 167,
+        "y": 140
+      },
+      "origin": {
+        "x": 231.67475362027352,
+        "y": 325.53399034593724
+      },
+      "range": 570,
+      "lifetime": 1.0352408584225508,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "motoko",
+      "side": "player",
+      "nativePoint": {
+        "x": 195,
+        "y": 124
+      },
+      "origin": {
+        "x": 238.04720960555403,
+        "y": 341.8557439900525
+      },
+      "range": 640,
+      "lifetime": 1.1576015199893193,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "batou",
+      "side": "player",
+      "nativePoint": {
+        "x": 193,
+        "y": 113
+      },
+      "origin": {
+        "x": 242.38576242536004,
+        "y": 324.57638649658213
+      },
+      "range": 650,
+      "lifetime": 1.1684889184127691,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "togusa",
+      "side": "player",
+      "nativePoint": {
+        "x": 205,
+        "y": 120
+      },
+      "origin": {
+        "x": 250.47582693309548,
+        "y": 328.71425273111896
+      },
+      "range": 620,
+      "lifetime": 1.0952387943594317,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "saito_gits",
+      "side": "player",
+      "nativePoint": {
+        "x": 210,
+        "y": 120
+      },
+      "origin": {
+        "x": 249.87705607926125,
+        "y": 334.5761590996537
+      },
+      "range": 640,
+      "lifetime": 1.1348518152321898,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "ada_wong",
+      "side": "player",
+      "nativePoint": {
+        "x": 214,
+        "y": 89
+      },
+      "origin": {
+        "x": 247.703125,
+        "y": 324.0234375
+      },
+      "range": 640,
+      "lifetime": 1.139032451923077,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "barry_burton",
+      "side": "player",
+      "nativePoint": {
+        "x": 214,
+        "y": 75
+      },
+      "origin": {
+        "x": 251.04718537004203,
+        "y": 309.68634502863836
+      },
+      "range": 640,
+      "lifetime": 1.132601566596073,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "carlos_oliveira",
+      "side": "player",
+      "nativePoint": {
+        "x": 202,
+        "y": 96
+      },
+      "origin": {
+        "x": 241.046875,
+        "y": 327.90625
+      },
+      "range": 640,
+      "lifetime": 1.1518329326923078,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "dom",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 199,
+        "y": 110
+      },
+      "origin": {
+        "x": 1463.0990529609376,
+        "y": 340.355959109375
+      },
+      "range": 330,
+      "lifetime": 0.56365202492488,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "cole",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 201,
+        "y": 117
+      },
+      "origin": {
+        "x": 1454.5512448125,
+        "y": 330.9316176875
+      },
+      "range": 640,
+      "lifetime": 1.143367778485577,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "shepard",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 172,
+        "y": 124
+      },
+      "origin": {
+        "x": 1472.3424335794127,
+        "y": 334.5702733983984
+      },
+      "range": 640,
+      "lifetime": 1.177581603037332,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "garrus",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 198,
+        "y": 158
+      },
+      "origin": {
+        "x": 1441.1450203780785,
+        "y": 337.69245360735346
+      },
+      "range": 640,
+      "lifetime": 1.117586577650151,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "tali",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 167,
+        "y": 140
+      },
+      "origin": {
+        "x": 1468.3252463797264,
+        "y": 325.53399034593724
+      },
+      "range": 570,
+      "lifetime": 1.0352408584225508,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "motoko",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 195,
+        "y": 124
+      },
+      "origin": {
+        "x": 1461.952790394446,
+        "y": 341.8557439900525
+      },
+      "range": 640,
+      "lifetime": 1.1576015199893195,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "batou",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 193,
+        "y": 113
+      },
+      "origin": {
+        "x": 1457.61423757464,
+        "y": 324.57638649658213
+      },
+      "range": 650,
+      "lifetime": 1.1684889184127691,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "togusa",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 205,
+        "y": 120
+      },
+      "origin": {
+        "x": 1449.5241730669045,
+        "y": 328.71425273111896
+      },
+      "range": 620,
+      "lifetime": 1.0952387943594317,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "saito_gits",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 210,
+        "y": 120
+      },
+      "origin": {
+        "x": 1450.1229439207386,
+        "y": 334.5761590996537
+      },
+      "range": 640,
+      "lifetime": 1.1348518152321896,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "ada_wong",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 214,
+        "y": 89
+      },
+      "origin": {
+        "x": 1452.296875,
+        "y": 324.0234375
+      },
+      "range": 640,
+      "lifetime": 1.139032451923077,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "barry_burton",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 214,
+        "y": 75
+      },
+      "origin": {
+        "x": 1448.9528146299579,
+        "y": 309.68634502863836
+      },
+      "range": 640,
+      "lifetime": 1.1326015665960727,
+      "pauseStable": true
+    },
+    {
+      "case": "Native physical muzzle spawn",
+      "id": "carlos_oliveira",
+      "side": "opponent",
+      "nativePoint": {
+        "x": 202,
+        "y": 96
+      },
+      "origin": {
+        "x": 1458.953125,
+        "y": 327.90625
+      },
+      "range": 640,
+      "lifetime": 1.1518329326923078,
+      "pauseStable": true
+    }
+  ],
+  "source1to1Verified": false
+}

@@ -1,0 +1,1250 @@
+{
+  "schemaVersion": 1,
+  "alphaThreshold": 24,
+  "source1to1Verified": false,
+  "method": "Actual immutable SOURCE RGBA outer-edge and adaptive-segmentation selected-row scan. Excluded clipped rows remain archived; transparent padding of the output does not count as proof of a whole native subject.",
+  "nativeSources": 29,
+  "availableNativePoses": 596,
+  "retainedNativePoses": 480,
+  "selectedSourceClipping": 0,
+  "sources": [
+    {
+      "heroId": "lilith_borderlands",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/lilith_borderlands-original.png",
+      "sha256": "590476810d3065a535ccdee27b0961db5eee534c9848316238912db4cc8a9cb5",
+      "accepted": false,
+      "availableNativeRows": 8,
+      "sourceRowsUsed": [],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [],
+      "reason": "Original32 rejected after independent source face/back inspection: tattoos placed on anatomical RIGHT instead of LEFT. Immutable original and earlier passing proofs retained, no original row selected."
+    },
+    {
+      "heroId": "lilith_borderlands",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/lilith_borderlands-left-arm-correction.png",
+      "sha256": "e35de87537c356040fa85033c4cf43eaca574a6b437cb84ff6926b2dd103ad99",
+      "accepted": true,
+      "availableNativeRows": 8,
+      "sourceRowsUsed": [
+        0,
+        2,
+        5,
+        6
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 5,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 6,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Accepted16 calm native poses: intro, roundVictory, victory and defeat independently inspected systematically. Outro/roundDefeat/fatality/super rows excluded for remaining inverted or bilateral tattoos."
+    },
+    {
+      "heroId": "lilith_borderlands",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/lilith_borderlands-outro-arm-correction.png",
+      "sha256": "038d5c2d27cec63199f1cbf88c93b5f7632d02eb1ea2b473ed7c5b2f07a87655",
+      "accepted": false,
+      "availableNativeRows": 1,
+      "sourceRowsUsed": [],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [],
+      "reason": "First rear-view strip rejected as a selected row: column0 still tattooed BOTH arms. Other3 poses were anatomically acceptable but are not duplicated or selected; later native strip provides all4 distinct accepted poses."
+    },
+    {
+      "heroId": "lilith_borderlands",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/lilith_borderlands-outro-c0-arm-correction.png",
+      "sha256": "b28f4c1ff6739c6a18ab2de3f412d16ae2fd869f46ea58ca7a54a256e2b4c54c",
+      "accepted": true,
+      "availableNativeRows": 1,
+      "sourceRowsUsed": [
+        0
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Four native rear poses independently accepted by agents A and root: anatomical left screen-left tattooed, anatomical right screen-right bare. Whole soles/hands and source edges intact."
+    },
+    {
+      "heroId": "lilith_borderlands",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/lilith_borderlands-frontal-phases-arm-correction.png",
+      "sha256": "a9a95d6b9d5fa740b99f1e550ab80e582485ed01fb9e7e3623ce3929c9ee6ccb",
+      "accepted": true,
+      "availableNativeRows": 3,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "All12 native frontal poses independently accepted by A and root: both arm roots visible; anatomical right screen-left bare, anatomical left screen-right tattooed. Distinct roundDefeat/fatality/super gestures, compact local Phasewalk only, non-gory. Actual source edges alpha>24 zero and selected seams0."
+    },
+    {
+      "heroId": "mordecai_borderlands",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/mordecai_borderlands-original.png",
+      "sha256": "030ee3fc30e6866f963e94e2181f987926924338582bc9bea9dddd8164fc40c0",
+      "accepted": true,
+      "availableNativeRows": 8,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 4,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 5,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 6,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 7,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Initial native32 complete sheet, pending source/pose inspection."
+    },
+    {
+      "heroId": "roland_bl",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/roland_bl-original.png",
+      "sha256": "ee0bfd73c53869067022a70d0ca35178a6d0a80f3b2daf84ee38b3a4847fae77",
+      "accepted": true,
+      "availableNativeRows": 8,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 4,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 5,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 6,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 7,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Initial native32 complete sheet, pending source/pose inspection."
+    },
+    {
+      "heroId": "brick_bl",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/brick_bl-original.png",
+      "sha256": "9cfaeb1f9ab42b66a89b369196f4eebea4d3d1150cd10983f727c19b7040ecf8",
+      "accepted": true,
+      "availableNativeRows": 8,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 4,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 5,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 6,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 7,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Initial native32 complete sheet, pending source/pose inspection."
+    },
+    {
+      "heroId": "claptrap_borderlands",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/claptrap_borderlands-original.png",
+      "sha256": "10ec1bfd26c68a3f3e85081b771aef6c78aa27c7c5afdf5fe02ee3c012aef53b",
+      "accepted": true,
+      "availableNativeRows": 8,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 4,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 5,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 6,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 7,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Initial native32 complete sheet, pending source/pose inspection."
+    },
+    {
+      "heroId": "max",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/max-original.png",
+      "sha256": "c93aa99e6131792cac3743af52b14497aa29ed27755807c0f797998e9c871681",
+      "accepted": true,
+      "availableNativeRows": 8,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 4,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 5,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 6,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 7,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Initial native32 complete sheet, pending source/pose inspection."
+    },
+    {
+      "heroId": "furiosa",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/furiosa-original.png",
+      "sha256": "ae80c78ec9488b85651d43b14fcb33f4c3f70c50e7cb1304cfe9a68272e74497",
+      "accepted": false,
+      "availableNativeRows": 8,
+      "sourceRowsUsed": [],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [],
+      "reason": "Rejected equipment: requested SKS was rendered too close to a black modern assault rifle. Correct native body/version retained only as correction context, not selected final rows."
+    },
+    {
+      "heroId": "furiosa",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/furiosa-complete-intro-round-victory.png",
+      "sha256": "1c7917b3452b7c918d53464a791b0e3ff787df686137b95d99234367b8f330ef",
+      "accepted": true,
+      "availableNativeRows": 2,
+      "sourceRowsUsed": [
+        0,
+        1
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Complete native correction, source and all retained poses inspected before acceptance."
+    },
+    {
+      "heroId": "furiosa",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/furiosa-sks-equipment-correction.png",
+      "sha256": "741f4618c93d3be9832786d59991ac037183d8a1c6b294294ef4d9a0064d3e97",
+      "accepted": true,
+      "availableNativeRows": 8,
+      "sourceRowsUsed": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "visibleOuterCanvasPixels": 20,
+      "selectedRows": [
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 4,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 5,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 6,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 7,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Correct SKS and left prosthesis. Intro and roundVictory excluded because their long rifle tips meet the source edge; six other complete rows retained."
+    },
+    {
+      "heroId": "nux",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/nux-original.png",
+      "sha256": "85d1b039304e87b322c7bf476f34df5cdd904bbc3fa0f186aa32e657ca0deecf",
+      "accepted": true,
+      "availableNativeRows": 8,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 4,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 5,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 6,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 7,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Initial native32 complete sheet, pending source/pose inspection."
+    },
+    {
+      "heroId": "toast_mm",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/toast_mm-original.png",
+      "sha256": "2763e14ea97248b7a3dd7229a659b073e4105b314ccdfc77a3d4486e9c45ed82",
+      "accepted": true,
+      "availableNativeRows": 8,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "visibleOuterCanvasPixels": 45,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 4,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 5,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 6,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Seven complete native rows retained. Initial super row excluded because standing recovery toes touched the bottom source edge; separately corrected natively."
+    },
+    {
+      "heroId": "toast_mm",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/toast_mm-complete-super.png",
+      "sha256": "96eaef54b81866bc6290f59d40eacb1e81ca93651f554686d56daeeccc2662c3",
+      "accepted": true,
+      "availableNativeRows": 1,
+      "sourceRowsUsed": [
+        0
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Complete native correction, source and all retained poses inspected before acceptance."
+    },
+    {
+      "heroId": "capable_mm",
+      "kind": "presentation",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/capable_mm-original.png",
+      "sha256": "e9547ac4a7b2db3d2086840af1be119e27b9e6c8958137cad79419b8927e3f5c",
+      "accepted": true,
+      "availableNativeRows": 8,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 4,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 5,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 6,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 7,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Initial native32 complete sheet, pending source/pose inspection."
+    },
+    {
+      "heroId": "lilith_borderlands",
+      "kind": "base",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/lilith_borderlands-original.png",
+      "sha256": "637bf20306a85f20d0e1430f800f2c706d6f4ab9f127eed27f11fbe333a91fd2",
+      "accepted": false,
+      "availableNativeRows": 4,
+      "sourceRowsUsed": [],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [],
+      "reason": "Original native base rejected after independent face/back laterality review: strong Siren marks on anatomical RIGHT arm instead of LEFT. Retained immutable as evidence; no selected row uses it."
+    },
+    {
+      "heroId": "lilith_borderlands",
+      "kind": "base",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/lilith_borderlands-left-arm-correction.png",
+      "sha256": "0b0894902d84397a061f62bdf153131dcc7bd5d2bd8aaa74da006fe8df6a755d",
+      "accepted": true,
+      "availableNativeRows": 4,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "First native correction accepted only idle/run/SMG-attack rows: right arm bare and left arm tattooed. HIT row3 still inverted and excluded."
+    },
+    {
+      "heroId": "lilith_borderlands",
+      "kind": "base",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/lilith_borderlands-hit-arm-correction.png",
+      "sha256": "9590f9f1d12a1b54206c1ef37c9c234c75184dd17e048be6c3bb362185fe1034",
+      "accepted": true,
+      "availableNativeRows": 1,
+      "sourceRowsUsed": [
+        0
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "Four genuinely distinct native HIT corrections independently reviewed by agent A: frontal near screen-left anatomical RIGHT bare, far screen-right anatomical LEFT tattooed; complete subject and source borders intact."
+    },
+    {
+      "heroId": "mordecai_borderlands",
+      "kind": "base",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/mordecai_borderlands-original.png",
+      "sha256": "4c3a9d3744d134f3761c846b120853e9f42f9b6081d8d3c0dc60096082b7150f",
+      "accepted": true,
+      "availableNativeRows": 4,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "New native idle/run/simple-action/hit poses, whole subject and source edges inspected, no transformed prior intro or mirrored duplicate."
+    },
+    {
+      "heroId": "roland_bl",
+      "kind": "base",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/roland_bl-original.png",
+      "sha256": "badb37082926ed1491dbba2e107e5cb6d775b61564db3828c86e3648c3acfc04",
+      "accepted": true,
+      "availableNativeRows": 4,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "New native idle/run/simple-action/hit poses, whole subject and source edges inspected, no transformed prior intro or mirrored duplicate."
+    },
+    {
+      "heroId": "brick_bl",
+      "kind": "base",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/brick_bl-original.png",
+      "sha256": "f638ef4087f25ce515779b04b0e19ab681374c427bd80f3cec63dc1a91bb79af",
+      "accepted": true,
+      "availableNativeRows": 4,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "New native idle/run/simple-action/hit poses, whole subject and source edges inspected, no transformed prior intro or mirrored duplicate."
+    },
+    {
+      "heroId": "claptrap_borderlands",
+      "kind": "base",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/claptrap_borderlands-original.png",
+      "sha256": "b5a88b60891c80854fccb59badd4ef45e6af1e3ba46411b4980b3849f09b6035",
+      "accepted": true,
+      "availableNativeRows": 4,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "New native idle/run/simple-action/hit poses, whole subject and source edges inspected, no transformed prior intro or mirrored duplicate."
+    },
+    {
+      "heroId": "max",
+      "kind": "base",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/max-original.png",
+      "sha256": "7d96ea62a3011bb4e2086a246589e550b1ccdbabeb6253fbacbcc578992a2689",
+      "accepted": true,
+      "availableNativeRows": 4,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "New native idle/run/simple-action/hit poses, whole subject and source edges inspected, no transformed prior intro or mirrored duplicate."
+    },
+    {
+      "heroId": "furiosa",
+      "kind": "base",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/furiosa-original.png",
+      "sha256": "fad0274d09081f55b1ba3219643241658ce25844e1077ddae106b3546d34ff90",
+      "accepted": true,
+      "availableNativeRows": 4,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "New native idle/run/simple-action/hit poses, whole subject and source edges inspected, no transformed prior intro or mirrored duplicate."
+    },
+    {
+      "heroId": "nux",
+      "kind": "base",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/nux-original.png",
+      "sha256": "7a767bd5c7c291f030ef5448a3306e3941de9e0e5aeb60d7db7f9d141d905672",
+      "accepted": true,
+      "availableNativeRows": 4,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "New native idle/run/simple-action/hit poses, whole subject and source edges inspected, no transformed prior intro or mirrored duplicate."
+    },
+    {
+      "heroId": "toast_mm",
+      "kind": "base",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/toast_mm-original.png",
+      "sha256": "9751b32e36949d631854c49b06b4dfc5be6e3495fd0013fcb965190771cda82a",
+      "accepted": true,
+      "availableNativeRows": 4,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "New native idle/run/simple-action/hit poses, whole subject and source edges inspected, no transformed prior intro or mirrored duplicate."
+    },
+    {
+      "heroId": "capable_mm",
+      "kind": "base",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/capable_mm-original.png",
+      "sha256": "4b9139aefb1ca68a7532839df2b25dbe2fab8b467b43d6078856d34c8d50c07e",
+      "accepted": true,
+      "availableNativeRows": 4,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "visibleOuterCanvasPixels": 0,
+      "selectedRows": [
+        {
+          "sourceRow": 0,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 1,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 2,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        },
+        {
+          "sourceRow": 3,
+          "outerVisiblePixels": 0,
+          "crossedOpaquePixels": 0,
+          "crossedVisiblePixels": 0
+        }
+      ],
+      "reason": "New native idle/run/simple-action/hit poses, whole subject and source edges inspected, no transformed prior intro or mirrored duplicate."
+    }
+  ]
+}

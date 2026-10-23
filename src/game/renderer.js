@@ -5,6 +5,11 @@ import { FEATURED_BACKDROPS } from './featuredUniversePacks';
 import { getGeneratedStageBackdropSrc } from './generatedStageAssets';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
+import { renderStageAtmosphere } from './melee/stageAtmosphere';
+import { getCharacterAnimationFrame, resolveCharacterAnimationAsset } from './combat/characterAnimationCatalog';
+import { sampleCharacterSuperMotion } from './combat/characterSuperVisuals';
+import { getCharacterFormFrame } from './combat/characterFormState';
+import { resolveCharacterFormAsset } from './combat/characterFormCatalog';
 import {
   getEnemySpriteSheetSrc,
   getHeroMeleeAnimationFrame,
@@ -84,14 +89,15 @@ export const drawCosmeticAtlasFrame = (
     alpha = 1,
     facing = 1,
     glowColor = '#39c5bb',
-    glowBlur = 18
+    glowBlur = 18,
+    redrawWhenReady = true
   } = {}
 ) => {
   const src = atlas?.sheet || atlas?.image;
   const entry = getCachedSpriteSheet(src);
   if (!entry || entry.status === 'error') return false;
   if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
-    queueSpriteSheetRedraw(entry, ctx, () => {
+    if (redrawWhenReady) queueSpriteSheetRedraw(entry, ctx, () => {
       drawCosmeticAtlasFrame(
         ctx,
         atlas,
@@ -100,7 +106,7 @@ export const drawCosmeticAtlasFrame = (
         y,
         width,
         height,
-        { alpha, facing, glowColor, glowBlur }
+        { alpha, facing, glowColor, glowBlur, redrawWhenReady }
       );
     });
     return false;
@@ -245,10 +251,13 @@ const getMeleeElapsedMs = (entity, animTime) => {
 
   const timelineFrame = Math.max(0, Number(animTime) || 0);
   if (!entity || typeof entity !== 'object') return timelineFrame * (1000 / 60);
+  // RPG opponents and super views are fresh cosmetic projections. Their
+  // animation clock belongs to the stable combat actor, not to each new view.
+  const clockSource = entity.animationClockSource && typeof entity.animationClockSource === 'object' ? entity.animationClockSource : entity;
   const stateToken = `${entity.state || 'idle'}:${entity.stateNonce || 0}`;
-  const clock = meleeAnimationClocks.get(entity);
+  const clock = meleeAnimationClocks.get(clockSource);
   if (!clock || clock.stateToken !== stateToken || timelineFrame < clock.startedAt) {
-    meleeAnimationClocks.set(entity, { stateToken, startedAt: timelineFrame });
+    meleeAnimationClocks.set(clockSource, { stateToken, startedAt: timelineFrame });
     return 0;
   }
   return (timelineFrame - clock.startedAt) * (1000 / 60);
@@ -297,15 +306,21 @@ const drawMeleeManifestSpriteSheet = (
   const sourceY = frame.row * cellHeight + trimTop;
   const sourceW = Math.max(1, cellWidth - trimLeft - trimRight);
   const sourceH = Math.max(1, cellHeight - trimTop - trimBottom);
-  const scale = targetHeight / cellHeight;
+  const renderScale = Math.max(0.5, Math.min(3, Number(frame.animation.renderScale) || 1));
+  const scale = targetHeight / cellHeight * renderScale;
   const drawW = sourceW * scale;
   const drawH = sourceH * scale;
   const anchorX = getAnchorValue(frame.anchor?.x, 0.5) * cellWidth - trimLeft;
   const anchorY = getAnchorValue(frame.anchor?.y, frame.anchor?.baseline === 'ledgeGrip' ? 0.72 : 0.94) * cellHeight - trimTop;
-  const flipX = manifest.facingMode === 'flip' && facing < 0 ? -1 : 1;
+  const visualLedge = entity.ledge || (entity.state === 'ledgeClimb' ? entity.meleeLedgeVisual : null);
+  const gripping = frame.anchor?.attachToLedge && visualLedge?.platform;
+  const effectiveFacing = gripping ? visualLedge.side === 'left' ? 1 : -1 : facing;
+  const flipX = manifest.facingMode === 'flip' && effectiveFacing < 0 ? -1 : 1;
+  const originX = gripping ? visualLedge.side === 'left' ? visualLedge.platform.x1 : visualLedge.platform.x2 : x;
+  const originY = gripping ? visualLedge.platform.y : y;
 
   ctx.save();
-  ctx.translate(x, y);
+  ctx.translate(originX, originY);
   ctx.scale(flipX, 1);
   ctx.filter = entity?.spriteFilter || 'none';
   ctx.imageSmoothingEnabled = false;
@@ -337,15 +352,24 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
   const layout = getSpriteSheetLayout(entry.image.currentSrc || entry.image.src);
   const frameWidth = entry.image.naturalWidth / layout.columns;
   const frameHeight = entry.image.naturalHeight / layout.rows;
-  const frame = getSpriteFrameForLayout(entity.state, animTime, layout);
+  const frame = getSpriteFrameForLayout(entity.state, context === 'melee' ? getMeleeElapsedMs(entity, animTime) * 60 / 1000 : animTime, layout);
+  if (entity.presentationFrame && Number.isFinite(entity.presentationFrame.row) && Number.isFinite(entity.presentationFrame.col)) {
+    // Blocked native artwork may explicitly reuse an older harmless pose.
+    // Preserve that declared row/column instead of exposing an unrelated prop.
+    if (!layout.adaptedLegacyFallback) frame.row = Math.max(0, Math.min(layout.rows - 1, Math.floor(entity.presentationFrame.row)));
+    if (!Number.isInteger(layout.fixedColumn)) frame.col = Math.max(0, Math.min(layout.columns - 1, Math.floor(entity.presentationFrame.col)));
+    frame.trim = layout?.trimByState?.[entity.state] || layout?.trimByRow?.[frame.row] || layout?.trim || null;
+  }
   const trim = frame.trim || {};
   const sourceX = frame.col * frameWidth + (trim.left || 0);
   const sourceY = frame.row * frameHeight + (trim.top || 0);
   const sourceW = Math.max(1, frameWidth - (trim.left || 0) - (trim.right || 0));
   const sourceH = Math.max(1, frameHeight - (trim.top || 0) - (trim.bottom || 0));
-  const scale = targetHeight / sourceH;
+  const statureScale = Math.max(0.5, Math.min(3, Number(layout.renderScaleByRow?.[frame.row]) || 1));
+  const scale = targetHeight / sourceH * statureScale;
   const drawW = sourceW * scale;
-  const drawH = targetHeight;
+  const drawH = sourceH * scale;
+  const baseline = Number.isFinite(layout.baseline) ? layout.baseline - (trim.top || 0) : sourceH - 24;
 
   ctx.save();
   ctx.translate(x, y);
@@ -359,7 +383,7 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
     sourceW,
     sourceH,
     -drawW / 2,
-    -drawH + 24 * scale,
+    -baseline * scale,
     drawW,
     drawH
   );
@@ -437,7 +461,58 @@ export class ParticleSystem {
   }
 }
 
+const drawDedicatedCharacterAnimation = (ctx, x, y, character, animTime, facing, targetHeight) => {
+  const asset = resolveCharacterAnimationAsset(character);
+  if (!asset) return false;
+  const formAsset = resolveCharacterFormAsset(character);
+  if (formAsset) getCachedSpriteSheet(formAsset.sheet);
+  const frame = getCharacterAnimationFrame(character, { elapsedSeconds: getMeleeElapsedMs(character, animTime) / 1000 });
+  const entry = getCachedSpriteSheet(asset.sheet);
+  if (!frame || entry?.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth <= 0) return false;
+  const sourceWidth = entry.image.naturalWidth / asset.columns;
+  const sourceHeight = entry.image.naturalHeight / asset.rows;
+  // Large weapons and effects may require smaller source normalization.
+  // Restore measured body stature around the feet while drawing the full cell.
+  const statureScale = Math.max(0.5, Math.min(3, Number(asset.normalization?.rows?.[frame.row]?.renderScale) || 1));
+  const scale = targetHeight / sourceHeight * statureScale;
+  const baseline = Number(asset.normalization?.baseline) || sourceHeight * 0.953125;
+  const motion = sampleCharacterSuperMotion({ heroId: asset.heroId, universe: asset.universe, phase: frame.phase, progress: frame.progress, impactProgress: frame.impactProgress, height: targetHeight });
+  ctx.save();
+  ctx.translate(x + motion.x * facing, y + motion.y);
+  ctx.scale(facing < 0 ? -1 : 1, 1);
+  ctx.filter = character.spriteFilter || 'none';
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(entry.image, frame.col * sourceWidth, frame.row * sourceHeight, sourceWidth, sourceHeight,
+    -sourceWidth * scale / 2, -baseline * scale, sourceWidth * scale, sourceHeight * scale);
+  ctx.restore();
+  return true;
+};
+
+const drawCharacterForm = (ctx, x, y, character, animTime, facing, targetHeight, redraw) => {
+  const frame = getCharacterFormFrame(character, { elapsedSeconds: getMeleeElapsedMs(character, animTime) / 1000 });
+  if (!frame) return 'missing';
+  const asset = resolveCharacterFormAsset(character, frame.id);
+  const entry = asset && getCachedSpriteSheet(asset.sheet);
+  if (!entry || entry.status === 'error') return 'missing';
+  if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth <= 0) {
+    queueSpriteSheetRedraw(entry, ctx, redraw);
+    return 'loading';
+  }
+  const width = entry.image.naturalWidth / asset.columns, height = entry.image.naturalHeight / asset.rows;
+  const scale = targetHeight / height, baseline = Number(asset.normalization?.baseline) || height * 0.953125;
+  ctx.save(); ctx.translate(x, y); ctx.scale(facing < 0 ? -1 : 1, 1);
+  ctx.filter = character.spriteFilter || 'none'; ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(entry.image, frame.col * width, frame.row * height, width, height, -width * scale / 2, -baseline * scale, width * scale, height * scale);
+  ctx.restore();
+  return 'drawn';
+};
+
 export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targetHeight = 72, context = 'auto') => {
+  if (drawCharacterForm(ctx, x, y, character, animTime, facing, targetHeight,
+    () => drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context)) !== 'missing') return;
+  const explicitPresentation = character.presentationPhase || character.action?.superProfile || character.action?.type === 'super';
+  const hasCoreMeleeAnimation = context === 'melee' && getHeroMeleeAnimationFrame(character, getMeleeElapsedMs(character, animTime));
+  if ((!hasCoreMeleeAnimation || explicitPresentation) && drawDedicatedCharacterAnimation(ctx, x, y, character, animTime, facing, targetHeight)) return;
   if (context === 'melee') {
     const meleeManifestStatus = drawMeleeManifestSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, () => {
       drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);
@@ -1242,71 +1317,6 @@ function drawOpenAiBackdrop(ctx, universe, width, height, mode) {
   return true;
 }
 
-function drawBackdropAnomalyOverlay(ctx, universe, width, height, mode, time) {
-  const theme = getTheme(universe);
-  const accent = theme.accent;
-
-  ctx.save();
-  ctx.globalCompositeOperation = 'screen';
-
-  if (mode === 'RPG') {
-    ctx.strokeStyle = withAlpha(accent, 0.32);
-    ctx.lineWidth = 2;
-    for (let i = 0; i < 5; i++) {
-      const y = height * 0.62 + Math.sin(time * 0.04 + i) * 6 + i * 10;
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(width, y + width * 0.18);
-      ctx.stroke();
-    }
-  }
-
-  if (mode === 'Tactics') {
-    ctx.strokeStyle = withAlpha(accent, 0.26);
-    ctx.lineWidth = 1;
-    for (let x = 70; x < width - 70; x += 55) {
-      ctx.beginPath();
-      ctx.moveTo(x, 48);
-      ctx.lineTo(x + Math.sin(time * 0.03 + x) * 5, height - 55);
-      ctx.stroke();
-    }
-  }
-
-  if (mode === 'Smash' || mode === 'Combat' || mode === 'Fighter') {
-    ctx.fillStyle = withAlpha(accent, 0.22);
-    for (let i = 0; i < 12; i++) {
-      const x = (i * 67 + time * 1.7) % width;
-      const y = 36 + ((i * 29) % Math.max(1, height - 90));
-      ctx.fillRect(x, y, 3 + (i % 3), 2);
-    }
-  }
-
-  if (universe === 'Stargate') {
-    ctx.strokeStyle = 'rgba(80, 200, 255, 0.34)';
-    ctx.lineWidth = 4;
-    ctx.beginPath();
-    ctx.arc(width * 0.5, height * 0.42, 54 + Math.sin(time * 0.05) * 3, 0, Math.PI * 2);
-    ctx.stroke();
-  }
-
-  if (universe === 'The Matrix' || universe === 'Matrix' || universe === 'Ghost in the Shell') {
-    ctx.fillStyle = 'rgba(80,255,120,0.22)';
-    ctx.font = '10px monospace';
-    for (let x = 16; x < width; x += 64) {
-      ctx.fillText('0101', x, (time * 2 + x * 3) % height);
-    }
-  }
-
-  if (universe === 'Silent Hill' || universe === 'Dead Space') {
-    ctx.fillStyle = 'rgba(220,220,210,0.08)';
-    for (let y = 28; y < height; y += 44) {
-      ctx.fillRect(0, y + Math.sin(time * 0.02 + y) * 8, width, 10);
-    }
-  }
-
-  ctx.restore();
-}
-
 function drawStageFloor(ctx, width, height, mode, theme, levelProfile = null) {
   const material = levelProfile?.material || null;
   const universe = levelProfile?.universe || null;
@@ -1662,18 +1672,25 @@ function drawMotif(ctx, theme, width, height, time) {
   ctx.restore();
 }
 
-export function drawUniverseBackground(ctx, universe, width, height, mode) {
+export function drawUniverseBackground(ctx, universe, width, height, mode, options = {}) {
   const levelProfile = getRecentUniverseLevelProfile(universe);
+  // The battle shell supplies simulation time: pausing or hiding a tab also
+  // freezes the scenery, and re-entering cannot jump a wall-clock animation.
+  const elapsedSeconds = Math.max(0, Number(options.elapsedSeconds) || 0);
+  const time = options.reducedMotion ? 0 : elapsedSeconds * 30;
+  const atmosphere = {
+    stage: { ...options.stage, universe, mode }, width, height, elapsedSeconds,
+    reducedMotion: Boolean(options.reducedMotion)
+  };
   if (drawOpenAiBackdrop(ctx, universe, width, height, mode)) {
-    drawBackdropAnomalyOverlay(ctx, universe, width, height, mode, Date.now() / 33);
     if (levelProfile && ['RPG', 'Tactics', 'Combat', 'Fighter'].includes(mode)) {
       drawStageFloor(ctx, width, height, mode, getTheme(universe), levelProfile);
     }
+    renderStageAtmosphere(ctx, atmosphere);
     return true;
   }
 
   const theme = getTheme(universe);
-  const time = Date.now() / 33;
 
   ctx.save();
 
@@ -1686,12 +1703,8 @@ export function drawUniverseBackground(ctx, universe, width, height, mode) {
   drawMotif(ctx, theme, width, height, time);
   drawStageFloor(ctx, width, height, mode, theme, levelProfile);
 
-  ctx.fillStyle = withAlpha(theme.accent, 0.12);
-  for (let i = 0; i < 8; i++) {
-    ctx.fillRect(48 + i * 92, 34 + Math.sin(time * 0.08 + i) * 13, 4, 4);
-  }
-
   ctx.restore();
+  renderStageAtmosphere(ctx, atmosphere);
   return false;
 }
 

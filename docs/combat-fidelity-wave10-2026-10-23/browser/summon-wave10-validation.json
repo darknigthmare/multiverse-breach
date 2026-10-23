@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "status": "final-production-freeze-passed-and-evidence-frozen",
+  "productionGate": "Root final production freeze, including native Nick L4D corrections, A/C anchors, Freeman80, Mei Zhen authored buff fallback and land fix. Both runs started only after that signal.",
+  "node": {
+    "command": "node --test scripts/summonAnimationWave10.test.mjs",
+    "exitCode": 0,
+    "execSession": 76182,
+    "tests": 16,
+    "passed": 16,
+    "failed": 0,
+    "durationMs": 16278.062843,
+    "log": "../summon-node-final.log",
+    "checks": [
+      "8 exact source identities, same-universe partners, roles and rejection of mismatches",
+      "128 actual wide RGBA cells,16 distinct each and clear margins",
+      "15 earlier native entities and28 four-pose sheets: bytes and complete metadata unchanged",
+      "Both camps: all16 real draw cells, cost100 ATB+100 charge once, free cancellation, pause, return and used command",
+      "Both camps: accepted gun contact only, fixed impact position after target death, interruption and dispose without late effects",
+      "All40 callers:32 native bindings and8 genuine alternate partners; explicit outside-batch Dog action preserved",
+      "Both camps: Egon and Coach buff actual allied targets once, no heal/enemy damage and no invented muzzle"
+    ]
+  },
+  "browser": {
+    "command": "node docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-browser.mjs --after-production-freeze",
+    "exitCode": 0,
+    "execSession": 58127,
+    "actualGameCanvasFlows": 16,
+    "distinctSourceCells": 128,
+    "nativeCells": 128,
+    "opposingNativeCells": 128,
+    "nativePixelMirrorChecks": 256,
+    "allEffectsOnce": true,
+    "offensiveFlows": 12,
+    "offensiveHpImpacts": 12,
+    "supportFlows": 4,
+    "supportEffectEvents": 4,
+    "supportDamageImpacts": 0,
+    "supportAlliedHpUnchanged": true,
+    "pageErrors": [],
+    "productionInputsStableDuringRun": true,
+    "sourceSnapshotScope": "Recursively resolved literal relative JS/JSX/JSON imports reachable from GameCanvas, plus the eight new native reinforcement PNGs. This does not snapshot remote dependencies or claim every dynamically constructed import.",
+    "sourceFiles": 262,
+    "sourceHashesRetainedIn": "summon-wave10-result.json",
+    "effectTicks": [
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99
+    ],
+    "sourceAttackColumnAtImpact": 2,
+    "captureCount": 16,
+    "captureReview": "All16 final captures visually reviewed using the two final contact montages. Weapons remain with the matching physical partner; Egon uses his instrument and Coach gestures, without a gun muzzle.",
+    "actualUiControls": "Real GameCanvas command button, cancel without cost, U/Numpad5, target confirmation, real sessionPaused host prop, resume and disabled already-used button.",
+    "fixtures": [
+      "Training HP100000, ATB/charge100 and autoBattle off isolate the actor; allied support fixtures retain HP40000/60000.",
+      "Commit pauses at tick0 before browser latency; progression uses actual production update/draw calls, not replacement damage or frame code.",
+      "128 unique native source cells are each drawn in both camps, not256 different source poses.",
+      "Development-server GameCanvas integration proof. Distribution of a final production build is outside this evidence."
+    ]
+  },
+  "frozenPartB": {
+    "pngs": 20,
+    "registries": 2,
+    "anchorsAndAbilities": true,
+    "hashesMatchDeliveryBeforeAndAfter": true
+  },
+  "initialProofPreserved": {
+    "directory": "summon-wave10-first-freeze/",
+    "manifest": "summon-wave10-first-freeze-validation.json",
+    "sha256": "db3e6c0643df088c46c5a02cc3b7896447362876c7af7e5161087071984de7d9",
+    "archivedFiles": 20,
+    "allArchivedHashesStillMatch": true,
+    "earlierNodeAttempts": [
+      "../summon-node-attempt-1.json",
+      "../summon-node-attempt-2.json"
+    ]
+  },
+  "productionFilesChangedByHarness": false,
+  "evidenceFiles": [
+    {
+      "path": "scripts/summonAnimationWave10.test.mjs",
+      "sha256": "9386b3a18d3d25996b2d7c5920ca5c32c09e773bfb5b490cd3436539f0c4d948"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/summon-node-final.log",
+      "sha256": "a588f4c44d5eb562e7c47239f27bbfd07a1867565b55206ad8d045007258a741"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-browser.mjs",
+      "sha256": "6edc6ffdc875d6b1c851cfb0520929f0a6054b3d43476d280b286d6526d6a5af"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-result.json",
+      "sha256": "9b9e6c7c30fc1bcbb44427f7ebe587e6cc30b405cc986f669c6c4df4beb85b35"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-final-captures-1.png",
+      "sha256": "98c288e25730c4372c5ebbf0aa895de1d4671efeb5df8d5369202a59da29bb9c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-final-captures-2.png",
+      "sha256": "1f73bcc280758b96ab66f4f9633dfec17281313f02b16383daa5847840987119"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-alyx-enemy-impact.png",
+      "sha256": "944b56f90f3aead30ca1b56a913d24908ead7551f94a641f07f9a1701ce1816e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-alyx-player-impact.png",
+      "sha256": "d307a4337110aa9012cc2dbddef14d3521353367b8610055f04541d593f2ed19"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-chains-enemy-impact.png",
+      "sha256": "7a3cb01824f701e48aa776257eec879f85a41a6f44b7b0ab6e4e2e2b58c1d924"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-chains-player-impact.png",
+      "sha256": "0e5bda9007f556a11f46c1470ef8079e620df10496da7e27ce440b8c078dc6ab"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-coach-enemy-impact.png",
+      "sha256": "446f578b808245ea62f3e8824d2328c908e1d7b18e3fb7fafa73a54b04465f01"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-coach-player-impact.png",
+      "sha256": "bd75118a428a79e0d936d9f0d496bc21a66bf9f3046e10ca352c06e2ac9990b0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-egon-enemy-impact.png",
+      "sha256": "24541923324e3e6248d8ccadc4f8d6b113d3c62b0e98e8d6e97200dfc6fef17c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-egon-player-impact.png",
+      "sha256": "c25441c61d28312a8af375bacea9233d9b22c200afb048a76615cef1d0b55ced"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-hicks-enemy-impact.png",
+      "sha256": "71d0f47d221c6c068a2b334613464070f5162eaa6a667e28faad171f2f1b7b62"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-hicks-player-impact.png",
+      "sha256": "e24c46ef309b18eaa40ab7d42699a4fc3b8bb128bbee5f3193107905d8b1e660"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-nick-enemy-impact.png",
+      "sha256": "63b4c8c5feceb937b3fdd10f7903e1fa02ce9e297f87b5f03d6c53f77565f943"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-nick-player-impact.png",
+      "sha256": "ebf56ff12e02ddacfa77ade2a9ff4ba7838f269b24db72f274a8569e9714f9d7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-tealc-enemy-impact.png",
+      "sha256": "f628163df28a37e039d469b90f7df07b0fe2fc4f3885c7a06e089768d303bf1d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-tealc-player-impact.png",
+      "sha256": "5c1cceb1fcf0f7e50b074f6a87b7a95163189342e0607d87d32f9b7f9355ff03"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-trinity-enemy-impact.png",
+      "sha256": "2c2d854b2ba2e9970fd220ef404201c9089e038c0697e7b35e3adb0f07797706"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/summon-wave10-trinity-player-impact.png",
+      "sha256": "691b1b5f26d2d365f3a1ccfb4f17214f315e63f9bca35d76ae9ab0594ea2fe95"
+    }
+  ],
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "source1to1Verified": false,
+  "global1to1Verified": false
+}

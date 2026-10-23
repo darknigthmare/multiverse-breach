@@ -1,0 +1,5030 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "sonic_hedgehog",
+      "heroId": "sonic_hedgehog",
+      "universe": "Sonic",
+      "name": "Sonic",
+      "sheet": "/sprites/generated/combat-character-animations-wave6/sonic_hedgehog.png",
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 8,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "9dad280e47782fbea27d8f06209b656b892297c4e3f99d5c8d97c27c04ad76c1",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "sourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/sonic/sonic-hedgehog.png",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-reference.png",
+      "referenceAssetSha256": "b0632fbff4b8a7d9868aa40793079df88155c40b621ac7f003b33b8d14048108",
+      "additionalReferences": [],
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "sourceWork": "Sonic Adventure (1998/1999)",
+      "sourceReference": "Sonic Adventure — Sonic with Ancient Light / Light Speed Attack, normal blue Adventure form, no Super Sonic or Shadow powers.",
+      "abilityName": "Light Speed Attack",
+      "identityCorrection": "Green-eyed blue Adventure Sonic, red shoes with broad white straps and gold buckles; no golden transformation, SOAP shoes or physical weapon.",
+      "sourceAbility": {
+        "id": "sonic_hedgehog:super",
+        "name": "Light Speed Attack",
+        "effect": "damage",
+        "delivery": "melee",
+        "duration": 1.1,
+        "hitAt": 0.451
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+            "sourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 245
+            },
+            "scale": 1.16,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 41,
+                  "top": 34,
+                  "width": 169,
+                  "height": 200,
+                  "pixels": 18757
+                },
+                "output": {
+                  "left": 47,
+                  "top": 12,
+                  "width": 196,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 262,
+                  "top": 34,
+                  "width": 138,
+                  "height": 200,
+                  "pixels": 16556
+                },
+                "output": {
+                  "left": 46,
+                  "top": 12,
+                  "width": 160,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 484,
+                  "top": 36,
+                  "width": 157,
+                  "height": 197,
+                  "pixels": 18576
+                },
+                "output": {
+                  "left": 46,
+                  "top": 14,
+                  "width": 182,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 708,
+                  "top": 34,
+                  "width": 150,
+                  "height": 200,
+                  "pixels": 19998
+                },
+                "output": {
+                  "left": 49,
+                  "top": 12,
+                  "width": 174,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.818966,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 232,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 232,
+              "nativeComparableBodyHeight": 200,
+              "nativeReferenceBodyHeight": 200,
+              "referenceRenderScale": 0.8189655172413793,
+              "referenceRenderedBodyHeight": 190,
+              "calibrationTargetBodyHeight": 190,
+              "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                47,
+                12,
+                181,
+                232
+              ],
+              "referenceBodyBounds": [
+                47,
+                12,
+                181,
+                232
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                41,
+                34,
+                156,
+                200
+              ],
+              "nativeReferenceBodyBounds": [
+                41,
+                34,
+                156,
+                200
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 190,
+              "correctedBodyHeight": 190.000112,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "outro",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+            "sourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 242,
+              "bottom": 461
+            },
+            "scale": 1.154228855721393,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 10,
+                  "width": 145,
+                  "height": 197,
+                  "pixels": 19058
+                },
+                "output": {
+                  "left": 52,
+                  "top": 17,
+                  "width": 167,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 261,
+                  "top": 13,
+                  "width": 172,
+                  "height": 194,
+                  "pixels": 19662
+                },
+                "output": {
+                  "left": 45,
+                  "top": 20,
+                  "width": 199,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 483,
+                  "top": 9,
+                  "width": 141,
+                  "height": 198,
+                  "pixels": 16885
+                },
+                "output": {
+                  "left": 46,
+                  "top": 15,
+                  "width": 163,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 683,
+                  "top": 26,
+                  "width": 184,
+                  "height": 181,
+                  "pixels": 20161
+                },
+                "output": {
+                  "left": 21,
+                  "top": 35,
+                  "width": 212,
+                  "height": 209
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.822727,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 232,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 209,
+              "nativeComparableBodyHeight": 181,
+              "nativeReferenceBodyHeight": 200,
+              "referenceRenderScale": 0.8189655172413793,
+              "referenceRenderedBodyHeight": 190,
+              "calibrationTargetBodyHeight": 190,
+              "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                21,
+                35,
+                212,
+                209
+              ],
+              "referenceBodyBounds": [
+                47,
+                12,
+                181,
+                232
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                683,
+                268,
+                184,
+                181
+              ],
+              "nativeReferenceBodyBounds": [
+                41,
+                34,
+                156,
+                200
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 171.95,
+              "correctedBodyHeight": 171.949943,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "roundVictory",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+            "sourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 460,
+              "bottom": 695
+            },
+            "scale": 1.1047619047619048,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 12,
+                  "width": 147,
+                  "height": 204,
+                  "pixels": 18697
+                },
+                "output": {
+                  "left": 56,
+                  "top": 12,
+                  "width": 162,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 261,
+                  "top": 19,
+                  "width": 145,
+                  "height": 197,
+                  "pixels": 19155
+                },
+                "output": {
+                  "left": 49,
+                  "top": 20,
+                  "width": 160,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 482,
+                  "top": 22,
+                  "width": 161,
+                  "height": 200,
+                  "pixels": 20111
+                },
+                "output": {
+                  "left": 48,
+                  "top": 23,
+                  "width": 178,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 22,
+                  "width": 159,
+                  "height": 196,
+                  "pixels": 19611
+                },
+                "output": {
+                  "left": 39,
+                  "top": 23,
+                  "width": 176,
+                  "height": 217
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.858065,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 232,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 217,
+              "nativeComparableBodyHeight": 196,
+              "nativeReferenceBodyHeight": 200,
+              "referenceRenderScale": 0.8189655172413793,
+              "referenceRenderedBodyHeight": 190,
+              "calibrationTargetBodyHeight": 190,
+              "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                39,
+                23,
+                176,
+                217
+              ],
+              "referenceBodyBounds": [
+                47,
+                12,
+                181,
+                232
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                696,
+                482,
+                159,
+                196
+              ],
+              "nativeReferenceBodyBounds": [
+                41,
+                34,
+                156,
+                200
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 186.2,
+              "correctedBodyHeight": 186.200105,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "roundDefeat",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+            "sourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 692,
+              "bottom": 910
+            },
+            "scale": 0.9789029535864979,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 41,
+                  "top": 10,
+                  "width": 188,
+                  "height": 187,
+                  "pixels": 20170
+                },
+                "output": {
+                  "left": 60,
+                  "top": 49,
+                  "width": 184,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 230,
+                  "top": 51,
+                  "width": 192,
+                  "height": 150,
+                  "pixels": 15663
+                },
+                "output": {
+                  "left": 28,
+                  "top": 89,
+                  "width": 188,
+                  "height": 147
+                }
+              },
+              {
+                "source": {
+                  "left": 486,
+                  "top": 19,
+                  "width": 157,
+                  "height": 190,
+                  "pixels": 20329
+                },
+                "output": {
+                  "left": 61,
+                  "top": 58,
+                  "width": 154,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 690,
+                  "top": 18,
+                  "width": 177,
+                  "height": 188,
+                  "pixels": 19794
+                },
+                "output": {
+                  "left": 44,
+                  "top": 57,
+                  "width": 173,
+                  "height": 184
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.970652,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 232,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 184,
+              "nativeComparableBodyHeight": 188,
+              "nativeReferenceBodyHeight": 200,
+              "referenceRenderScale": 0.8189655172413793,
+              "referenceRenderedBodyHeight": 190,
+              "calibrationTargetBodyHeight": 190,
+              "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                44,
+                57,
+                173,
+                184
+              ],
+              "referenceBodyBounds": [
+                47,
+                12,
+                181,
+                232
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                690,
+                710,
+                177,
+                188
+              ],
+              "nativeReferenceBodyBounds": [
+                41,
+                34,
+                156,
+                200
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 178.6,
+              "correctedBodyHeight": 178.599968,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "fatality",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+            "sourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 908,
+              "bottom": 1118
+            },
+            "scale": 1.008695652173913,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 31,
+                  "top": 10,
+                  "width": 187,
+                  "height": 187,
+                  "pixels": 29383
+                },
+                "output": {
+                  "left": 47,
+                  "top": 55,
+                  "width": 189,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 256,
+                  "top": 27,
+                  "width": 163,
+                  "height": 161,
+                  "pixels": 21058
+                },
+                "output": {
+                  "left": 51,
+                  "top": 73,
+                  "width": 164,
+                  "height": 162
+                }
+              },
+              {
+                "source": {
+                  "left": 440,
+                  "top": 28,
+                  "width": 229,
+                  "height": 160,
+                  "pixels": 26130
+                },
+                "output": {
+                  "left": 13,
+                  "top": 74,
+                  "width": 231,
+                  "height": 161
+                }
+              },
+              {
+                "source": {
+                  "left": 683,
+                  "top": 29,
+                  "width": 183,
+                  "height": 167,
+                  "pixels": 18575
+                },
+                "output": {
+                  "left": 34,
+                  "top": 75,
+                  "width": 185,
+                  "height": 168
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.944345,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 232,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 168,
+              "nativeComparableBodyHeight": 167,
+              "nativeReferenceBodyHeight": 200,
+              "referenceRenderScale": 0.8189655172413793,
+              "referenceRenderedBodyHeight": 190,
+              "calibrationTargetBodyHeight": 190,
+              "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                34,
+                75,
+                185,
+                168
+              ],
+              "referenceBodyBounds": [
+                47,
+                12,
+                181,
+                232
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                683,
+                937,
+                183,
+                167
+              ],
+              "nativeReferenceBodyBounds": [
+                41,
+                34,
+                156,
+                200
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 158.65,
+              "correctedBodyHeight": 158.64996,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "victory",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+            "sourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1117,
+              "bottom": 1356
+            },
+            "scale": 1.1047619047619048,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 43,
+                  "top": 15,
+                  "width": 168,
+                  "height": 207,
+                  "pixels": 19700
+                },
+                "output": {
+                  "left": 53,
+                  "top": 14,
+                  "width": 186,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 263,
+                  "top": 15,
+                  "width": 157,
+                  "height": 208,
+                  "pixels": 19967
+                },
+                "output": {
+                  "left": 51,
+                  "top": 14,
+                  "width": 173,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 486,
+                  "top": 14,
+                  "width": 171,
+                  "height": 209,
+                  "pixels": 21061
+                },
+                "output": {
+                  "left": 52,
+                  "top": 13,
+                  "width": 189,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 705,
+                  "top": 13,
+                  "width": 140,
+                  "height": 209,
+                  "pixels": 18404
+                },
+                "output": {
+                  "left": 49,
+                  "top": 12,
+                  "width": 155,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.859524,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 232,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 231,
+              "nativeComparableBodyHeight": 209,
+              "nativeReferenceBodyHeight": 200,
+              "referenceRenderScale": 0.8189655172413793,
+              "referenceRenderedBodyHeight": 190,
+              "calibrationTargetBodyHeight": 190,
+              "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                49,
+                12,
+                155,
+                231
+              ],
+              "referenceBodyBounds": [
+                47,
+                12,
+                181,
+                232
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                705,
+                1130,
+                140,
+                209
+              ],
+              "nativeReferenceBodyBounds": [
+                41,
+                34,
+                156,
+                200
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 198.55,
+              "correctedBodyHeight": 198.550044,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "defeat",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+            "sourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1355,
+              "bottom": 1550
+            },
+            "scale": 1.0593607305936072,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 43,
+                  "top": 18,
+                  "width": 177,
+                  "height": 167,
+                  "pixels": 19086
+                },
+                "output": {
+                  "left": 56,
+                  "top": 66,
+                  "width": 188,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 275,
+                  "top": 30,
+                  "width": 156,
+                  "height": 154,
+                  "pixels": 16905
+                },
+                "output": {
+                  "left": 67,
+                  "top": 79,
+                  "width": 165,
+                  "height": 163
+                }
+              },
+              {
+                "source": {
+                  "left": 485,
+                  "top": 22,
+                  "width": 164,
+                  "height": 163,
+                  "pixels": 17360
+                },
+                "output": {
+                  "left": 55,
+                  "top": 70,
+                  "width": 174,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 693,
+                  "top": 17,
+                  "width": 170,
+                  "height": 169,
+                  "pixels": 19248
+                },
+                "output": {
+                  "left": 40,
+                  "top": 65,
+                  "width": 180,
+                  "height": 179
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.896927,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 232,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 179,
+              "nativeComparableBodyHeight": 169,
+              "nativeReferenceBodyHeight": 200,
+              "referenceRenderScale": 0.8189655172413793,
+              "referenceRenderedBodyHeight": 190,
+              "calibrationTargetBodyHeight": 190,
+              "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                40,
+                65,
+                180,
+                179
+              ],
+              "referenceBodyBounds": [
+                47,
+                12,
+                181,
+                232
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                693,
+                1372,
+                170,
+                169
+              ],
+              "nativeReferenceBodyBounds": [
+                41,
+                34,
+                156,
+                200
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 160.55,
+              "correctedBodyHeight": 160.549933,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "super",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+            "sourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1541,
+              "bottom": 1774
+            },
+            "scale": 1.0043290043290043,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 37,
+                  "top": 6,
+                  "width": 181,
+                  "height": 213,
+                  "pixels": 31448
+                },
+                "output": {
+                  "left": 54,
+                  "top": 30,
+                  "width": 182,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 249,
+                  "top": 40,
+                  "width": 170,
+                  "height": 159,
+                  "pixels": 19975
+                },
+                "output": {
+                  "left": 44,
+                  "top": 64,
+                  "width": 171,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 439,
+                  "top": 42,
+                  "width": 223,
+                  "height": 156,
+                  "pixels": 25769
+                },
+                "output": {
+                  "left": 12,
+                  "top": 66,
+                  "width": 224,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 698,
+                  "top": 19,
+                  "width": 158,
+                  "height": 200,
+                  "pixels": 20619
+                },
+                "output": {
+                  "left": 50,
+                  "top": 43,
+                  "width": 159,
+                  "height": 201
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.945274,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 232,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 201,
+              "nativeComparableBodyHeight": 200,
+              "nativeReferenceBodyHeight": 200,
+              "referenceRenderScale": 0.8189655172413793,
+              "referenceRenderedBodyHeight": 190,
+              "calibrationTargetBodyHeight": 190,
+              "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                50,
+                43,
+                159,
+                201
+              ],
+              "referenceBodyBounds": [
+                47,
+                12,
+                181,
+                232
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                698,
+                1560,
+                158,
+                200
+              ],
+              "nativeReferenceBodyBounds": [
+                41,
+                34,
+                156,
+                200
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+              "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 190,
+              "correctedBodyHeight": 190.000074,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          }
+        ],
+        "renderScaleMethod": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+        "renderScaleDoesNotModifyBitmap": true
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c7280c0eccf08d8ff082a934c5affd813eb3b54aed9b0bca284075ddbf4e15e2",
+              "c2dd7e36409e72cc4281264fc20993ee0aa5028f2dcfe1a88c004c866a95b4ba",
+              "7b6738772106438de20fc5c8931632fcedae764796b23f0d10696908d8a61b23",
+              "3311f69f7f88ccee971dab26f56cf5d1c98118676a5f19971a6d098f2a361723"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e59131a1543fb5e1a1e2cae855104f39a547570b50c1df6637abe8fc2913b378",
+              "c0f9023e3901a1172e5cd078d0b945337e2fe77b9b5663db13749ca4266cb4d0",
+              "c0aa8365748d9b7dae1022cbebfa43be5e04a1697f2fa71079df3e2b148be3c5",
+              "8a0af45e288705ece85fece9a16395bd2bc94a15e8ae11a808b650e123b6a530"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "3b7569c0519aea5027716e052bf1120e610db793005daaaf333d05feca17145e",
+              "3a8dfd7d492803df55025ac14688a4a7ba5ce38c2cb5ea8b5b6e9a24ba3fa2f7",
+              "d26cc71aec786624a5ab3c379a4144ec1022f581a4cb5a78b586bfbb889c49e2",
+              "91c149c6b4f8d1aa56c67d95e8b0767aa3505bce7634b86988c56f91c2289a74"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d2284dfa34f7d110b237a0806ef43bacfa7e53162bf4e09a15f6c9295a58b02d",
+              "8f0a69c2640df7d4fc3be75677471b8f9036ffff5d180ef43b075556234c02b6",
+              "95a0396e7f71f45b8af232c6fb6e382be0d92538731384223431550332bc34b8",
+              "61db463900578615e9f972b969d29d4279db2b9089e845c27f88c17159b1c9b2"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "dc4ea5d62b0909e7587b5d7344e5573d12e8ae51500c16a095237f3a317e6868",
+              "4827cf61da6d593b35d32041ff3f5920907934b1652541c4656c509c359634f4",
+              "91acf8abd52c70a695e2d2a1c4f9b9fe789b2174214a21e449d9e453caf4864b",
+              "2352432a5a475673814245bf80313270eb6a606b94c64dc2be2762555fa56945"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9f1af79ca3a8d3dcb79f95dc018a35d07645d20730953e753776256fbdd8c8d5",
+              "039a3977f392fc1d2ecb3e3c88957a36eb4e74faed0e9618206ff0c9e39689b7",
+              "5eb8e18ac063a16c90d115ff32182d98bfc12cd55ab7cf1d05e674078a4c45b2",
+              "3adb75323fe9115d7c2b89a9d53ac283d5814cc0caa37d9081b0fed72fc67285"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "eb8eda450f30233ff0b1949661d84b555463fad3bdc326ad07da6e065ae09584",
+              "100b21be02006cd893a7b70465e11153d716ebbacf74be3a937dad36fb8ff403",
+              "f9c6df43e1cb91bfd9f1c468aa2ad2341d6016df763e945c9276103a98afb421",
+              "c4ec6b882f653503889774992378af560350043ba4e3f2438425920621736961"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "331a7e96fd4c1ca28f136b4be3bb05d57e8e635200de68540599da8d5ae63040",
+              "dde60605a91a9c4f8b69dd6031d9586a1a8b1974e821c2278eb8244150450f9b",
+              "19a196db08a9ac0d8e695568f81e6c14828c11ae58e1632cdbfb8c702d71e124",
+              "99463d0a185fa1b21026bddc2f8564fcddafceb36d76ecbb00ca280ae1f77c83"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "eidolonPresent": false,
+        "defaultFacing": "right",
+        "weaponReviewed": true,
+        "versionReviewed": true,
+        "allBodiesPresent": true,
+        "notes": "Sonic Adventure — Sonic with Ancient Light / Light Speed Attack, normal blue Adventure form, no Super Sonic or Shadow powers. Green-eyed blue Adventure Sonic, red shoes with broad white straps and gold buckles; no golden transformation, SOAP shoes or physical weapon. This is original generated choreography; official pixels and source-game cinematic fidelity are not certified.",
+        "statureScaleReviewed": true,
+        "statureNotes": "Canvas-only whole-cell scaling around baseline244 reverses the weapon/effect-driven packing reduction. Approximate reviewed body ROIs and retained native stance-height ratios determine the factors; no PNG, source rectangle, anatomy or animation pose is modified."
+      }
+    },
+    {
+      "id": "miles_tails_prower",
+      "heroId": "miles_tails_prower",
+      "universe": "Sonic",
+      "name": "Miles Tails Prower",
+      "sheet": "/sprites/generated/combat-character-animations-wave6/miles_tails_prower.png",
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 8,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "1850f52435f9f782d08fcb1dfb9535737498489066b9c9c6f1abbc3ab66bc47e",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+      "sourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/sonic/miles-tails-prower.png",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-reference.png",
+      "referenceAssetSha256": "815dfc47c4422c5273739bfbd45be30f03100e1d088cca79704e80c2dd829825",
+      "additionalReferences": [],
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "sourceWork": "Sonic Adventure 2 (2001), multiplayer Power Laser",
+      "sourceReference": "Sonic Adventure2 — Tails pilots the Cyclone in walker mode. VulcanCannon, Lock-OnMissile and PowerLaser are machine actions; no handheld laser or Tornado-plane substitution.",
+      "abilityName": "Cyclone Power Laser",
+      "identityCorrection": "Old base is on foot. New presentation shows Tails visibly piloting the actual blue/yellow two-legged Cyclone walker throughout combat and named super rows.",
+      "sourceAbility": {
+        "id": "miles_tails_prower:super",
+        "name": "Cyclone Power Laser",
+        "effect": "damage",
+        "delivery": "beam",
+        "duration": 1.1,
+        "hitAt": 0.451
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+            "sourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 217
+            },
+            "scale": 1.1658291457286432,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 21,
+                  "top": 12,
+                  "width": 187,
+                  "height": 197,
+                  "pixels": 21667
+                },
+                "output": {
+                  "left": 23,
+                  "top": 14,
+                  "width": 218,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 245,
+                  "top": 12,
+                  "width": 187,
+                  "height": 196,
+                  "pixels": 21507
+                },
+                "output": {
+                  "left": 26,
+                  "top": 14,
+                  "width": 218,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 468,
+                  "top": 12,
+                  "width": 185,
+                  "height": 196,
+                  "pixels": 21717
+                },
+                "output": {
+                  "left": 27,
+                  "top": 14,
+                  "width": 216,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 700,
+                  "top": 12,
+                  "width": 172,
+                  "height": 197,
+                  "pixels": 21016
+                },
+                "output": {
+                  "left": 39,
+                  "top": 14,
+                  "width": 201,
+                  "height": 230
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "outro",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+            "sourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 216,
+              "bottom": 440
+            },
+            "scale": 1.1485148514851484,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 13,
+                  "width": 186,
+                  "height": 199,
+                  "pixels": 21604
+                },
+                "output": {
+                  "left": 27,
+                  "top": 15,
+                  "width": 214,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 261,
+                  "top": 12,
+                  "width": 172,
+                  "height": 200,
+                  "pixels": 21351
+                },
+                "output": {
+                  "left": 46,
+                  "top": 14,
+                  "width": 198,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 469,
+                  "top": 13,
+                  "width": 172,
+                  "height": 199,
+                  "pixels": 21204
+                },
+                "output": {
+                  "left": 30,
+                  "top": 15,
+                  "width": 198,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 10,
+                  "width": 179,
+                  "height": 200,
+                  "pixels": 21081
+                },
+                "output": {
+                  "left": 35,
+                  "top": 12,
+                  "width": 206,
+                  "height": 230
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "roundVictory",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+            "sourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 435,
+              "bottom": 658
+            },
+            "scale": 1.1428571428571428,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 8,
+                  "width": 185,
+                  "height": 203,
+                  "pixels": 23041
+                },
+                "output": {
+                  "left": 26,
+                  "top": 12,
+                  "width": 211,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 248,
+                  "top": 14,
+                  "width": 183,
+                  "height": 197,
+                  "pixels": 22094
+                },
+                "output": {
+                  "left": 31,
+                  "top": 19,
+                  "width": 209,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 470,
+                  "top": 23,
+                  "width": 183,
+                  "height": 188,
+                  "pixels": 21286
+                },
+                "output": {
+                  "left": 32,
+                  "top": 29,
+                  "width": 209,
+                  "height": 215
+                }
+              },
+              {
+                "source": {
+                  "left": 700,
+                  "top": 18,
+                  "width": 174,
+                  "height": 193,
+                  "pixels": 21176
+                },
+                "output": {
+                  "left": 41,
+                  "top": 23,
+                  "width": 199,
+                  "height": 221
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "roundDefeat",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+            "sourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 656,
+              "bottom": 876
+            },
+            "scale": 1.1428571428571428,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 40,
+                  "top": 11,
+                  "width": 169,
+                  "height": 198,
+                  "pixels": 20656
+                },
+                "output": {
+                  "left": 47,
+                  "top": 14,
+                  "width": 193,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 248,
+                  "top": 43,
+                  "width": 185,
+                  "height": 169,
+                  "pixels": 21921
+                },
+                "output": {
+                  "left": 31,
+                  "top": 51,
+                  "width": 211,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 471,
+                  "top": 50,
+                  "width": 183,
+                  "height": 158,
+                  "pixels": 20085
+                },
+                "output": {
+                  "left": 33,
+                  "top": 59,
+                  "width": 209,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 694,
+                  "top": 9,
+                  "width": 179,
+                  "height": 201,
+                  "pixels": 21814
+                },
+                "output": {
+                  "left": 34,
+                  "top": 12,
+                  "width": 205,
+                  "height": 230
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "fatality",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+            "sourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 875,
+              "bottom": 1098
+            },
+            "scale": 0.6987951807228916,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 12,
+                  "width": 183,
+                  "height": 195,
+                  "pixels": 21808
+                },
+                "output": {
+                  "left": 66,
+                  "top": 106,
+                  "width": 128,
+                  "height": 136
+                }
+              },
+              {
+                "source": {
+                  "left": 229,
+                  "top": 18,
+                  "width": 207,
+                  "height": 191,
+                  "pixels": 24388
+                },
+                "output": {
+                  "left": 56,
+                  "top": 111,
+                  "width": 145,
+                  "height": 133
+                }
+              },
+              {
+                "source": {
+                  "left": 433,
+                  "top": 22,
+                  "width": 287,
+                  "height": 187,
+                  "pixels": 35649
+                },
+                "output": {
+                  "left": 43,
+                  "top": 113,
+                  "width": 201,
+                  "height": 131
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 20,
+                  "width": 177,
+                  "height": 189,
+                  "pixels": 20744
+                },
+                "output": {
+                  "left": 73,
+                  "top": 112,
+                  "width": 124,
+                  "height": 132
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 27,
+            "renderScale": 1.674007,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 230,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 136,
+              "nativeComparableBodyHeight": 195,
+              "nativeReferenceBodyHeight": 197,
+              "referenceRenderScale": 1,
+              "referenceRenderedBodyHeight": 230,
+              "reason": "The full piloted Cyclone is the actor body, measured from Tails ear/tuft top to mechanical foot soles, with tails and cockpit included. Compare the initial braced pose without laser charge. Exclude the third-column laser beam; retain mechanical knee compression and the seated pilot rather than comparing the fox alone with the whole machine.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                66,
+                106,
+                128,
+                136
+              ],
+              "referenceBodyBounds": [
+                23,
+                14,
+                218,
+                230
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                22,
+                887,
+                183,
+                195
+              ],
+              "nativeReferenceBodyBounds": [
+                21,
+                12,
+                187,
+                197
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+              "nativeSourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+              "nativeReferenceSourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 227.664975,
+              "correctedBodyHeight": 227.664952,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "victory",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+            "sourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1097,
+              "bottom": 1328
+            },
+            "scale": 1.1207729468599035,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 15,
+                  "width": 186,
+                  "height": 204,
+                  "pixels": 23347
+                },
+                "output": {
+                  "left": 30,
+                  "top": 12,
+                  "width": 208,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 253,
+                  "top": 18,
+                  "width": 179,
+                  "height": 204,
+                  "pixels": 23305
+                },
+                "output": {
+                  "left": 39,
+                  "top": 15,
+                  "width": 201,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 466,
+                  "top": 23,
+                  "width": 186,
+                  "height": 196,
+                  "pixels": 22294
+                },
+                "output": {
+                  "left": 29,
+                  "top": 21,
+                  "width": 208,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 689,
+                  "top": 19,
+                  "width": 183,
+                  "height": 200,
+                  "pixels": 21692
+                },
+                "output": {
+                  "left": 30,
+                  "top": 16,
+                  "width": 205,
+                  "height": 224
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "defeat",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+            "sourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1327,
+              "bottom": 1542
+            },
+            "scale": 1.1428571428571428,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 29,
+                  "top": 30,
+                  "width": 178,
+                  "height": 171,
+                  "pixels": 20085
+                },
+                "output": {
+                  "left": 34,
+                  "top": 47,
+                  "width": 203,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 251,
+                  "top": 32,
+                  "width": 183,
+                  "height": 170,
+                  "pixels": 20796
+                },
+                "output": {
+                  "left": 35,
+                  "top": 50,
+                  "width": 209,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 471,
+                  "top": 12,
+                  "width": 177,
+                  "height": 189,
+                  "pixels": 20657
+                },
+                "output": {
+                  "left": 33,
+                  "top": 27,
+                  "width": 202,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 689,
+                  "top": 13,
+                  "width": 179,
+                  "height": 188,
+                  "pixels": 20632
+                },
+                "output": {
+                  "left": 28,
+                  "top": 28,
+                  "width": 205,
+                  "height": 215
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "super",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+            "sourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1541,
+              "bottom": 1774
+            },
+            "scale": 0.7073170731707317,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 14,
+                  "width": 181,
+                  "height": 194,
+                  "pixels": 21562
+                },
+                "output": {
+                  "left": 69,
+                  "top": 107,
+                  "width": 128,
+                  "height": 137
+                }
+              },
+              {
+                "source": {
+                  "left": 229,
+                  "top": 17,
+                  "width": 212,
+                  "height": 191,
+                  "pixels": 26072
+                },
+                "output": {
+                  "left": 55,
+                  "top": 109,
+                  "width": 150,
+                  "height": 135
+                }
+              },
+              {
+                "source": {
+                  "left": 432,
+                  "top": 14,
+                  "width": 286,
+                  "height": 194,
+                  "pixels": 32543
+                },
+                "output": {
+                  "left": 41,
+                  "top": 107,
+                  "width": 202,
+                  "height": 137
+                }
+              },
+              {
+                "source": {
+                  "left": 687,
+                  "top": 13,
+                  "width": 184,
+                  "height": 195,
+                  "pixels": 21363
+                },
+                "output": {
+                  "left": 65,
+                  "top": 106,
+                  "width": 130,
+                  "height": 138
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 52,
+            "renderScale": 1.653266,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 230,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 137,
+              "nativeComparableBodyHeight": 194,
+              "nativeReferenceBodyHeight": 197,
+              "referenceRenderScale": 1,
+              "referenceRenderedBodyHeight": 230,
+              "reason": "The full piloted Cyclone is the actor body, measured from Tails ear/tuft top to mechanical foot soles, with tails and cockpit included. Compare the initial braced pose without laser charge. Exclude the third-column laser beam; retain mechanical knee compression and the seated pilot rather than comparing the fox alone with the whole machine.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                69,
+                107,
+                128,
+                137
+              ],
+              "referenceBodyBounds": [
+                23,
+                14,
+                218,
+                230
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                27,
+                1555,
+                181,
+                194
+              ],
+              "nativeReferenceBodyBounds": [
+                21,
+                12,
+                187,
+                197
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+              "nativeSourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+              "nativeReferenceSourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 226.497462,
+              "correctedBodyHeight": 226.497442,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          }
+        ],
+        "renderScaleMethod": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+        "renderScaleDoesNotModifyBitmap": true
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "82fe63105cb58d7fded72e9ba5bcdc9b7b1ba2162e5ae9d8c04087417f662fed",
+              "de7ba2d1926a707bbfcc9d263548167b781452b3e4ab3574d7e1bb3a167fe225",
+              "8402afae0a6779605a0e448ec2694ffd713e9a0ab061617b4fe49bc5411e2829",
+              "dc76e7fd7be2f2281626e3421f054d3b2fe95579629980e77d6e890a0597891e"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "26317f262e1340f9c506bd7fc1e2053e31199b206c0726e576f990502b018b6b",
+              "ca37900d6896aa63b454fae5478c06e818977198199afa7e055780a18f430f1e",
+              "55798823490be779e30080996cf80da3b11b0f4a6da85b4228b859b475b49532",
+              "fb59172df01412140131268222eec3a8c28f8fb26d7863d80d8c081bc0f1ae11"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1a9bb6beebde64455dc341f248038ff08a0706ac424e35670b90726d79208287",
+              "151951b9d7ba7a2b26ade193f4f57960a601cd6e424fa4010261c82a469a96ad",
+              "92577c7565ce57425ed38321e5e5140eceb5f67638d57fc95142be46fe032fa4",
+              "858432bf3edc8fdcf855173c15d99c97fddc3c99ed8b1851a9bac3b860d9eb5c"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "cf1c49a903469d341d1111fe76d42b5a1bad000d133fd788c9d020c7263ffa59",
+              "34a1112d777c1e3df0b21827bf1a2ce3b16747f25f26b2e164019e9c967a88d8",
+              "20505b81d0c4d8168087434d66a4137f2077d54536273a29cb32e7ddea90fb4b",
+              "e75536de6e0fde9df2a67ec9b6743a1b3edffbb868a40c867263540fef42562a"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f35d102c345bfc9d7da104f0f2003f380eb561e67946d084c2a3320a95a2bd91",
+              "77d6855dd1d0de5da93ceb089d5126b3b8ecc5f80f6c9137e34e2fb11defc97c",
+              "df266d6f0fdeed59ffd7178cec2958e580b1419441ecb23a1120a2842b52b1c5",
+              "4347d4505b74fc733faea0851fccf80e185b1239417e688f873699bcaf72fb8c"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9d6c8490f1533d29f111999dc04551162618b2974217aae25421b8261b3a1b75",
+              "7fa6ee90cd5b0a50696f035701b09d8d3f3b8b9bc9c7beb0d7f9cef23288474a",
+              "ff0e14ad2498fc7d476ddc336a0e86c180c8fb60e6839073f582f5288cb90197",
+              "ed956bfdf88ea3ee74f36341e2024dcce71ec1f40b18a9edc8056fb58b1500ed"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "90e8f8927aa650e2a1f5c98b80b1a8e8b5dc3e66f6baf0b9624ce96dfd19cbc1",
+              "16e009ee7d663cc5452ed61c7371d81eb79875f43362075cc111d473d70730b2",
+              "0be4a9957f39f6bb2f5a3949589137617b3024a0733df4f4f1b5c6c2032003f7",
+              "81de4bf12a52ffd92a6675beee3b84ba68f3f70200c6d358d605f626562ecbf1"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "3355c150a9d8228b138c6b9daf51dceb6a3f32e3e9e68b63857f6af9d11316f7",
+              "08430c443196fca4b00fb3ad300e3e3301ebaf178d33fa6015cad22c82dd90d3",
+              "b1a9c4aa9d8d4f769a16bad5c740f759526c27cab72212f80189ee2b7511ff2c",
+              "73c6dbad4b4da58cfecb55c14dfe91178dc503eda099fd20bd55bf8f8ba9fc4c"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "eidolonPresent": false,
+        "defaultFacing": "right",
+        "weaponReviewed": true,
+        "versionReviewed": true,
+        "allBodiesPresent": true,
+        "notes": "Sonic Adventure2 — Tails pilots the Cyclone in walker mode. VulcanCannon, Lock-OnMissile and PowerLaser are machine actions; no handheld laser or Tornado-plane substitution. Old base is on foot. New presentation shows Tails visibly piloting the actual blue/yellow two-legged Cyclone walker throughout combat and named super rows. This is original generated choreography; official pixels and source-game cinematic fidelity are not certified.",
+        "statureScaleReviewed": true,
+        "statureNotes": "Canvas-only whole-cell scaling around baseline244 reverses the weapon/effect-driven packing reduction. Approximate reviewed body ROIs and retained native stance-height ratios determine the factors; no PNG, source rectangle, anatomy or animation pose is modified."
+      }
+    },
+    {
+      "id": "knuckles_echidna",
+      "heroId": "knuckles_echidna",
+      "universe": "Sonic",
+      "name": "Knuckles",
+      "sheet": "/sprites/generated/combat-character-animations-wave6/knuckles_echidna.png",
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 8,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "07597a67f2fa87db21d13e69805740b6fdc229e237f2e215271d47c41cb0c742",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+      "sourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/sonic/knuckles-echidna.png",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-reference.png",
+      "referenceAssetSha256": "0a366b23a67415c364caed6e08b2aeebad2f350759148fd6e206291259191fda",
+      "additionalReferences": [],
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "sourceWork": "Sonic Adventure 2 (2001)",
+      "sourceReference": "Sonic Adventure2 / Battle — Knuckles fights with fists and Drill Claw; Thunder Arrow calls thin lightning above the opponent. Hammer Gloves are the project’s explicitly selected upgrade.",
+      "abilityName": "Thunder Arrow",
+      "identityCorrection": "No gun despite obsolete raw weapon metadata. Red echidna, white crescent chest, white spiked gloves with compact HammerGlove metal trim, red/yellow shoes and green cuffs.",
+      "sourceAbility": {
+        "id": "knuckles_echidna:super",
+        "name": "Thunder Arrow",
+        "effect": "damage",
+        "delivery": "area",
+        "duration": 1.1,
+        "hitAt": 0.451
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+            "sourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 229
+            },
+            "scale": 1.1776649746192893,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 31,
+                  "width": 163,
+                  "height": 187,
+                  "pixels": 18900
+                },
+                "output": {
+                  "left": 52,
+                  "top": 23,
+                  "width": 192,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 259,
+                  "top": 31,
+                  "width": 170,
+                  "height": 188,
+                  "pixels": 20987
+                },
+                "output": {
+                  "left": 41,
+                  "top": 23,
+                  "width": 200,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 477,
+                  "top": 48,
+                  "width": 158,
+                  "height": 170,
+                  "pixels": 17277
+                },
+                "output": {
+                  "left": 37,
+                  "top": 43,
+                  "width": 186,
+                  "height": 200
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 34,
+                  "width": 154,
+                  "height": 185,
+                  "pixels": 18722
+                },
+                "output": {
+                  "left": 34,
+                  "top": 26,
+                  "width": 181,
+                  "height": 218
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "outro",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+            "sourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 227,
+              "bottom": 439
+            },
+            "scale": 1.099526066350711,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 30,
+                  "top": 12,
+                  "width": 186,
+                  "height": 194,
+                  "pixels": 19400
+                },
+                "output": {
+                  "left": 39,
+                  "top": 31,
+                  "width": 205,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 270,
+                  "top": 13,
+                  "width": 134,
+                  "height": 193,
+                  "pixels": 19408
+                },
+                "output": {
+                  "left": 59,
+                  "top": 32,
+                  "width": 147,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 487,
+                  "top": 10,
+                  "width": 147,
+                  "height": 193,
+                  "pixels": 19422
+                },
+                "output": {
+                  "left": 54,
+                  "top": 28,
+                  "width": 162,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 21,
+                  "width": 160,
+                  "height": 184,
+                  "pixels": 19345
+                },
+                "output": {
+                  "left": 41,
+                  "top": 41,
+                  "width": 176,
+                  "height": 202
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "roundVictory",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+            "sourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 435,
+              "bottom": 665
+            },
+            "scale": 1.1372549019607843,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 42,
+                  "top": 9,
+                  "width": 166,
+                  "height": 204,
+                  "pixels": 21408
+                },
+                "output": {
+                  "left": 50,
+                  "top": 12,
+                  "width": 189,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 268,
+                  "top": 33,
+                  "width": 136,
+                  "height": 180,
+                  "pixels": 17897
+                },
+                "output": {
+                  "left": 55,
+                  "top": 39,
+                  "width": 155,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 487,
+                  "top": 27,
+                  "width": 131,
+                  "height": 185,
+                  "pixels": 17781
+                },
+                "output": {
+                  "left": 51,
+                  "top": 32,
+                  "width": 149,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 691,
+                  "top": 27,
+                  "width": 162,
+                  "height": 186,
+                  "pixels": 19152
+                },
+                "output": {
+                  "left": 31,
+                  "top": 32,
+                  "width": 184,
+                  "height": 212
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "roundDefeat",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+            "sourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 664,
+              "bottom": 880
+            },
+            "scale": 1.0131004366812226,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 30,
+                  "top": 15,
+                  "width": 195,
+                  "height": 191,
+                  "pixels": 20827
+                },
+                "output": {
+                  "left": 46,
+                  "top": 50,
+                  "width": 198,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 260,
+                  "top": 48,
+                  "width": 156,
+                  "height": 154,
+                  "pixels": 16405
+                },
+                "output": {
+                  "left": 54,
+                  "top": 84,
+                  "width": 158,
+                  "height": 156
+                }
+              },
+              {
+                "source": {
+                  "left": 469,
+                  "top": 53,
+                  "width": 170,
+                  "height": 152,
+                  "pixels": 17352
+                },
+                "output": {
+                  "left": 42,
+                  "top": 89,
+                  "width": 172,
+                  "height": 154
+                }
+              },
+              {
+                "source": {
+                  "left": 681,
+                  "top": 28,
+                  "width": 176,
+                  "height": 176,
+                  "pixels": 19428
+                },
+                "output": {
+                  "left": 32,
+                  "top": 64,
+                  "width": 178,
+                  "height": 178
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "fatality",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+            "sourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 879,
+              "bottom": 1126
+            },
+            "scale": 0.943089430894309,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 42,
+                  "top": 31,
+                  "width": 143,
+                  "height": 201,
+                  "pixels": 18896
+                },
+                "output": {
+                  "left": 63,
+                  "top": 51,
+                  "width": 135,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 268,
+                  "top": 10,
+                  "width": 176,
+                  "height": 222,
+                  "pixels": 20341
+                },
+                "output": {
+                  "left": 67,
+                  "top": 31,
+                  "width": 166,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 443,
+                  "top": 9,
+                  "width": 234,
+                  "height": 227,
+                  "pixels": 37369
+                },
+                "output": {
+                  "left": 23,
+                  "top": 30,
+                  "width": 221,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 706,
+                  "top": 35,
+                  "width": 149,
+                  "height": 197,
+                  "pixels": 19841
+                },
+                "output": {
+                  "left": 62,
+                  "top": 54,
+                  "width": 141,
+                  "height": 186
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.248067,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 3,
+              "referenceBodyHeight": 218,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 186,
+              "nativeComparableBodyHeight": 197,
+              "nativeReferenceBodyHeight": 185,
+              "referenceRenderScale": 1,
+              "referenceRenderedBodyHeight": 218,
+              "reason": "Use head-quill-to-shoe body bounds in the ready/recovery guards, excluding lightning shafts and the raised glove above the head in the charge pose. Retain the real low crouch at super column0 and the compact body when knees bend; no weapon or beam sets body stature.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                62,
+                54,
+                141,
+                186
+              ],
+              "referenceBodyBounds": [
+                34,
+                26,
+                181,
+                218
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                706,
+                914,
+                149,
+                197
+              ],
+              "nativeReferenceBodyBounds": [
+                696,
+                34,
+                154,
+                185
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+              "nativeSourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+              "nativeReferenceSourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 232.140541,
+              "correctedBodyHeight": 232.140462,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "victory",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+            "sourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1124,
+              "bottom": 1345
+            },
+            "scale": 1.154228855721393,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 48,
+                  "top": 12,
+                  "width": 146,
+                  "height": 200,
+                  "pixels": 18324
+                },
+                "output": {
+                  "left": 55,
+                  "top": 13,
+                  "width": 169,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 267,
+                  "top": 15,
+                  "width": 139,
+                  "height": 197,
+                  "pixels": 19369
+                },
+                "output": {
+                  "left": 52,
+                  "top": 17,
+                  "width": 160,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 477,
+                  "top": 14,
+                  "width": 171,
+                  "height": 197,
+                  "pixels": 21265
+                },
+                "output": {
+                  "left": 39,
+                  "top": 15,
+                  "width": 197,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 692,
+                  "top": 11,
+                  "width": 150,
+                  "height": 200,
+                  "pixels": 20628
+                },
+                "output": {
+                  "left": 31,
+                  "top": 12,
+                  "width": 173,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "defeat",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+            "sourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1344,
+              "bottom": 1537
+            },
+            "scale": 1.0790697674418606,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 38,
+                  "top": 33,
+                  "width": 180,
+                  "height": 150,
+                  "pixels": 17850
+                },
+                "output": {
+                  "left": 49,
+                  "top": 80,
+                  "width": 194,
+                  "height": 162
+                }
+              },
+              {
+                "source": {
+                  "left": 258,
+                  "top": 16,
+                  "width": 172,
+                  "height": 169,
+                  "pixels": 18666
+                },
+                "output": {
+                  "left": 47,
+                  "top": 62,
+                  "width": 186,
+                  "height": 182
+                }
+              },
+              {
+                "source": {
+                  "left": 473,
+                  "top": 30,
+                  "width": 168,
+                  "height": 153,
+                  "pixels": 16410
+                },
+                "output": {
+                  "left": 40,
+                  "top": 77,
+                  "width": 181,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 10,
+                  "width": 158,
+                  "height": 173,
+                  "pixels": 18290
+                },
+                "output": {
+                  "left": 40,
+                  "top": 55,
+                  "width": 170,
+                  "height": 187
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "super",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+            "sourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1536,
+              "bottom": 1774
+            },
+            "scale": 0.8560885608856088,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 24,
+                  "top": 38,
+                  "width": 222,
+                  "height": 166,
+                  "pixels": 26923
+                },
+                "output": {
+                  "left": 54,
+                  "top": 87,
+                  "width": 190,
+                  "height": 142
+                }
+              },
+              {
+                "source": {
+                  "left": 277,
+                  "top": 18,
+                  "width": 156,
+                  "height": 192,
+                  "pixels": 18954
+                },
+                "output": {
+                  "left": 80,
+                  "top": 70,
+                  "width": 134,
+                  "height": 164
+                }
+              },
+              {
+                "source": {
+                  "left": 464,
+                  "top": 10,
+                  "width": 209,
+                  "height": 211,
+                  "pixels": 33255
+                },
+                "output": {
+                  "left": 51,
+                  "top": 63,
+                  "width": 179,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 711,
+                  "top": 26,
+                  "width": 146,
+                  "height": 185,
+                  "pixels": 18324
+                },
+                "output": {
+                  "left": 72,
+                  "top": 77,
+                  "width": 125,
+                  "height": 158
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.379747,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 3,
+              "referenceBodyHeight": 218,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 158,
+              "nativeComparableBodyHeight": 185,
+              "nativeReferenceBodyHeight": 185,
+              "referenceRenderScale": 1,
+              "referenceRenderedBodyHeight": 218,
+              "reason": "Use head-quill-to-shoe body bounds in the ready/recovery guards, excluding lightning shafts and the raised glove above the head in the charge pose. Retain the real low crouch at super column0 and the compact body when knees bend; no weapon or beam sets body stature.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                72,
+                77,
+                125,
+                158
+              ],
+              "referenceBodyBounds": [
+                34,
+                26,
+                181,
+                218
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                711,
+                1562,
+                146,
+                185
+              ],
+              "nativeReferenceBodyBounds": [
+                696,
+                34,
+                154,
+                185
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+              "nativeSourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+              "nativeReferenceSourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 218,
+              "correctedBodyHeight": 218.000026,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          }
+        ],
+        "renderScaleMethod": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+        "renderScaleDoesNotModifyBitmap": true
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "0f531e99e8b70962d9329ba95c79fa94bf3107b98c803ffe0b3cea10929051a6",
+              "05ea4f8d6a0171ad84370df00a11574734a159c74bb5bfaba0efa3854545ab09",
+              "f9e6f8236b682e4bdaf416da6fc9d4576816c8b75b61397736fa56a5d7c484a8",
+              "9cf8da2e67fe327ecab33006d1e10ce38fc2f5126a44dedb5424f90d71a2b96d"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "734e4709bbbae2f62737f3416dca948a2e124711ba5154eb6b044a71c8677061",
+              "f283545ab78d3c5751555f79419b3863cc69ef87ecf547895af81e3203967789",
+              "4d3a3be13f8e81a649f5a7ce8ea13323fdf29b9c680555df91c5dc850e8c0e34",
+              "c74723702b3215adcca3930fa3e9ce11275c105419f71912ef3ee5f60a78ac72"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b516f15d00eabf52f081ca18e37a3fb085067108473adddadc05dcfda06bcb91",
+              "afff88e45926bfe9989bd7bac37d654231b5be65f0e3b6f69a2eb67c18dd45e2",
+              "ca2f2d3d4333b1a4979d5fa60c05d4e2c2a48f5f7ae343250c89c6d574ecf64c",
+              "911ab78b0c46a7ca55bac6a31ecb639c5330dd3d1f620c5ceac903b4a725ad1f"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "094ccc59e2d29262832817030669b1f76694dac68ceb82e347cbc1012458c1e9",
+              "6bf3993f6b9052ef0de4d673f3d4a15fd981411a61cf6f197fe75094bf19ba06",
+              "37d84fd8473236a5beb3667b86d941eccea761d6b240cb832124ffb67db95268",
+              "02496647a5e19bfd926566895c93d83eb7cfc83b58293fe9681e9734a9afdac2"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "edefba89bf55e91b545ddf3bf1552e40b3a2719a3658558a26445f91a76bf1ef",
+              "877bb4e4f7e87031bd306cac990ad91ba83eb5f0f96a53c7809a1f1f6d5802d7",
+              "50a22e4ad9733be356a336063f13bb3d3b7503640944faa3bb14a8e9dbcdf9e2",
+              "44dd4b7b3cd2b572f631c75c6ffce96ac9990cf30e1df6fc72b4cc284097a338"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c88c9e58619f64869cfdac7e5653405d45edbac73455faae2300d6a300a90012",
+              "c50316b1e0507d6dc8d18714828d5608380ef828d20363dca9593c0a851d8bde",
+              "952a6c214d201e60de6e2db267b672799f8e6e5fe43b7a8103807220bf618440",
+              "f729194384de2d03d36872025975dbe19a4a24f374ef0bfe9f6fbdc780c9f5e4"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "a7f591432b453c9bbaeb45753f9b400eb94510a3a4d86e079f510bf0c0cbaa34",
+              "8ef6badc72aed8effea35df4771cf6caa0843d1f6a764fadf9e295cf96087fdd",
+              "e2e052163af1064a9eeda30636e89b37317230ce35053d68ccc38ecd2689f482",
+              "fa8d633987d15a7388b937ee8a1b2c0609d97623c38602108336737391443ab3"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7ddb6a090c706607e651ed24d30918852b27d7a64b30700175bc59b63802965b",
+              "52a75133f3856bf338ed804ab4d937a29c6e89528c2c427b3c64cb80c4b161f0",
+              "95c91b9a9fd5ca0cecdcee54286b4b52c7273d953ee44255884acc9d509d5d5a",
+              "cf0cf476508a063a1c417ba16e90a253b7e45345d9fcdc43da1413e021788fd0"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "eidolonPresent": false,
+        "defaultFacing": "right",
+        "weaponReviewed": true,
+        "versionReviewed": true,
+        "allBodiesPresent": true,
+        "notes": "Sonic Adventure2 / Battle — Knuckles fights with fists and Drill Claw; Thunder Arrow calls thin lightning above the opponent. Hammer Gloves are the project’s explicitly selected upgrade. No gun despite obsolete raw weapon metadata. Red echidna, white crescent chest, white spiked gloves with compact HammerGlove metal trim, red/yellow shoes and green cuffs. This is original generated choreography; official pixels and source-game cinematic fidelity are not certified.",
+        "statureScaleReviewed": true,
+        "statureNotes": "Canvas-only whole-cell scaling around baseline244 reverses the weapon/effect-driven packing reduction. Approximate reviewed body ROIs and retained native stance-height ratios determine the factors; no PNG, source rectangle, anatomy or animation pose is modified."
+      }
+    },
+    {
+      "id": "jotaro_kujo",
+      "heroId": "jotaro_kujo",
+      "universe": "JoJo's Bizarre Adventure",
+      "name": "Jotaro Kujo",
+      "sheet": "/sprites/generated/combat-character-animations-wave6/jotaro_kujo.png",
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 8,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "6df167646f1844177e43712604f66f1159bea2e5d53dee8f351bf46c9dc5cb73",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+      "sourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/jojo-s-bizarre-adventure/jotaro-kujo.png",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-reference.png",
+      "referenceAssetSha256": "36ee1cb6c2ed3bc3b986688594538cc1240bb72fa1f3215bfc4f2aa51dfffa84",
+      "additionalReferences": [
+        {
+          "referenceAsset": "/sprites/generated/combat-entities/jojo-star-platinum.png",
+          "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-additional-reference-1.png",
+          "sha256": "c5f7897fd2f18b12d948ffab5f309f2c6ba1624e3d95cbec8968c21ac0d9143f"
+        }
+      ],
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": true,
+      "sourceWork": "JoJo’s Bizarre Adventure — Stardust Crusaders (Part3)",
+      "sourceReference": "Stardust Crusaders — Jotaro’s black school uniform and Star Platinum punch barrage; no extra time-stop rules or gameplay hits.",
+      "abilityName": "Star Platinum — Ora Ora",
+      "identityCorrection": "Part3 Jotaro black long coat/cap and gold chain; Part3 StarPlatinum purple muscular body, dark hair and gold headband/shoulder plates. No Part4 white costume or other Stand.",
+      "sourceAbility": {
+        "id": "jotaro_kujo:super",
+        "name": "Star Platinum — Ora Ora",
+        "effect": "damage",
+        "delivery": "melee",
+        "duration": 1.1,
+        "hitAt": 0.451
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+            "sourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 247
+            },
+            "scale": 1.0403587443946187,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 17,
+                  "width": 167,
+                  "height": 221,
+                  "pixels": 20041
+                },
+                "output": {
+                  "left": 67,
+                  "top": 12,
+                  "width": 174,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 269,
+                  "top": 22,
+                  "width": 167,
+                  "height": 217,
+                  "pixels": 19299
+                },
+                "output": {
+                  "left": 62,
+                  "top": 17,
+                  "width": 174,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 483,
+                  "top": 23,
+                  "width": 150,
+                  "height": 216,
+                  "pixels": 18854
+                },
+                "output": {
+                  "left": 54,
+                  "top": 18,
+                  "width": 156,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 708,
+                  "top": 21,
+                  "width": 134,
+                  "height": 219,
+                  "pixels": 17521
+                },
+                "output": {
+                  "left": 57,
+                  "top": 16,
+                  "width": 139,
+                  "height": 228
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "outro",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+            "sourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 245,
+              "bottom": 480
+            },
+            "scale": 1.0357142857142858,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 21,
+                  "top": 6,
+                  "width": 164,
+                  "height": 221,
+                  "pixels": 20071
+                },
+                "output": {
+                  "left": 35,
+                  "top": 12,
+                  "width": 170,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 227,
+                  "top": 9,
+                  "width": 197,
+                  "height": 217,
+                  "pixels": 21784
+                },
+                "output": {
+                  "left": 19,
+                  "top": 15,
+                  "width": 204,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 454,
+                  "top": 12,
+                  "width": 156,
+                  "height": 217,
+                  "pixels": 17990
+                },
+                "output": {
+                  "left": 24,
+                  "top": 18,
+                  "width": 162,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 694,
+                  "top": 7,
+                  "width": 174,
+                  "height": 223,
+                  "pixels": 17745
+                },
+                "output": {
+                  "left": 43,
+                  "top": 13,
+                  "width": 180,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "roundVictory",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+            "sourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 479,
+              "bottom": 733
+            },
+            "scale": 0.9789029535864979,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 43,
+                  "top": 5,
+                  "width": 157,
+                  "height": 235,
+                  "pixels": 22339
+                },
+                "output": {
+                  "left": 62,
+                  "top": 12,
+                  "width": 154,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 275,
+                  "top": 6,
+                  "width": 152,
+                  "height": 235,
+                  "pixels": 21677
+                },
+                "output": {
+                  "left": 72,
+                  "top": 13,
+                  "width": 149,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 470,
+                  "top": 8,
+                  "width": 148,
+                  "height": 234,
+                  "pixels": 19555
+                },
+                "output": {
+                  "left": 45,
+                  "top": 15,
+                  "width": 145,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 665,
+                  "top": 25,
+                  "width": 197,
+                  "height": 216,
+                  "pixels": 20927
+                },
+                "output": {
+                  "left": 19,
+                  "top": 32,
+                  "width": 193,
+                  "height": 211
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "roundDefeat",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-missing-roundDefeat-row.png",
+            "sourceImageSha256": "4b1613b0a614cad50576106004cfa3ad704228f209e5de54f0db715ebd607eb8",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 724
+            },
+            "scale": 0.4352720450281426,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 112,
+                  "top": 189,
+                  "width": 426,
+                  "height": 457,
+                  "pixels": 100811
+                },
+                "output": {
+                  "left": 59,
+                  "top": 43,
+                  "width": 185,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 617,
+                  "top": 314,
+                  "width": 441,
+                  "height": 337,
+                  "pixels": 89237
+                },
+                "output": {
+                  "left": 42,
+                  "top": 97,
+                  "width": 192,
+                  "height": 147
+                }
+              },
+              {
+                "source": {
+                  "left": 1133,
+                  "top": 261,
+                  "width": 411,
+                  "height": 385,
+                  "pixels": 98090
+                },
+                "output": {
+                  "left": 30,
+                  "top": 74,
+                  "width": 179,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 1668,
+                  "top": 152,
+                  "width": 443,
+                  "height": 496,
+                  "pixels": 109566
+                },
+                "output": {
+                  "left": 27,
+                  "top": 27,
+                  "width": 193,
+                  "height": 216
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "fatality",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+            "sourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 732,
+              "bottom": 1015
+            },
+            "scale": 0.8226950354609929,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 16,
+                  "top": 16,
+                  "width": 207,
+                  "height": 259,
+                  "pixels": 35261
+                },
+                "output": {
+                  "left": 50,
+                  "top": 31,
+                  "width": 170,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 239,
+                  "top": 13,
+                  "width": 201,
+                  "height": 260,
+                  "pixels": 33641
+                },
+                "output": {
+                  "left": 51,
+                  "top": 28,
+                  "width": 165,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 445,
+                  "top": 13,
+                  "width": 250,
+                  "height": 260,
+                  "pixels": 40178
+                },
+                "output": {
+                  "left": 38,
+                  "top": 28,
+                  "width": 206,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 673,
+                  "top": 19,
+                  "width": 194,
+                  "height": 254,
+                  "pixels": 30395
+                },
+                "output": {
+                  "left": 43,
+                  "top": 33,
+                  "width": 160,
+                  "height": 209
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.26166,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 230,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 179,
+              "nativeComparableBodyHeight": 217,
+              "nativeReferenceBodyHeight": 221,
+              "referenceRenderScale": 1,
+              "referenceRenderedBodyHeight": 230,
+              "reason": "Measure Jotaro alone, cap/hair top to black shoe soles, excluding the taller StarPlatinum head, purple Stand limbs, scarf and fist trails. The Stand stays complete and scales together with Jotaro; its larger silhouette does not shrink the human. Native human stance differences217/221/227px remain intact.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                43,
+                63,
+                111,
+                179
+              ],
+              "referenceBodyBounds": [
+                67,
+                12,
+                174,
+                230
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                673,
+                788,
+                135,
+                217
+              ],
+              "nativeReferenceBodyBounds": [
+                52,
+                17,
+                167,
+                221
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+              "nativeSourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+              "nativeReferenceSourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 225.837104,
+              "correctedBodyHeight": 225.83714,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "victory",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+            "sourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 1013,
+              "bottom": 1274
+            },
+            "scale": 0.9747899159663865,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 41,
+                  "top": 15,
+                  "width": 147,
+                  "height": 232,
+                  "pixels": 20341
+                },
+                "output": {
+                  "left": 60,
+                  "top": 17,
+                  "width": 143,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 262,
+                  "top": 11,
+                  "width": 159,
+                  "height": 236,
+                  "pixels": 21587
+                },
+                "output": {
+                  "left": 59,
+                  "top": 13,
+                  "width": 155,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 477,
+                  "top": 10,
+                  "width": 151,
+                  "height": 237,
+                  "pixels": 20564
+                },
+                "output": {
+                  "left": 53,
+                  "top": 12,
+                  "width": 147,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 11,
+                  "width": 145,
+                  "height": 237,
+                  "pixels": 19596
+                },
+                "output": {
+                  "left": 49,
+                  "top": 13,
+                  "width": 141,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "defeat",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+            "sourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1273,
+              "bottom": 1474
+            },
+            "scale": 1.1428571428571428,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 14,
+                  "width": 170,
+                  "height": 175,
+                  "pixels": 17833
+                },
+                "output": {
+                  "left": 41,
+                  "top": 39,
+                  "width": 194,
+                  "height": 200
+                }
+              },
+              {
+                "source": {
+                  "left": 241,
+                  "top": 49,
+                  "width": 181,
+                  "height": 144,
+                  "pixels": 15374
+                },
+                "output": {
+                  "left": 23,
+                  "top": 79,
+                  "width": 207,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 454,
+                  "top": 33,
+                  "width": 189,
+                  "height": 158,
+                  "pixels": 18142
+                },
+                "output": {
+                  "left": 13,
+                  "top": 61,
+                  "width": 216,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 675,
+                  "top": 19,
+                  "width": 181,
+                  "height": 169,
+                  "pixels": 18942
+                },
+                "output": {
+                  "left": 12,
+                  "top": 45,
+                  "width": 207,
+                  "height": 193
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "super",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+            "sourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1471,
+              "bottom": 1774
+            },
+            "scale": 0.8529411764705882,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 15,
+                  "top": 11,
+                  "width": 209,
+                  "height": 257,
+                  "pixels": 35779
+                },
+                "output": {
+                  "left": 46,
+                  "top": 22,
+                  "width": 178,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 212,
+                  "top": 11,
+                  "width": 237,
+                  "height": 258,
+                  "pixels": 37671
+                },
+                "output": {
+                  "left": 25,
+                  "top": 22,
+                  "width": 202,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 421,
+                  "top": 9,
+                  "width": 269,
+                  "height": 260,
+                  "pixels": 42337
+                },
+                "output": {
+                  "left": 14,
+                  "top": 21,
+                  "width": 229,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 679,
+                  "top": 12,
+                  "width": 187,
+                  "height": 259,
+                  "pixels": 31333
+                },
+                "output": {
+                  "left": 45,
+                  "top": 23,
+                  "width": 160,
+                  "height": 221
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.217754,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 230,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 194,
+              "nativeComparableBodyHeight": 227,
+              "nativeReferenceBodyHeight": 221,
+              "referenceRenderScale": 1,
+              "referenceRenderedBodyHeight": 230,
+              "reason": "Measure Jotaro alone, cap/hair top to black shoe soles, excluding the taller StarPlatinum head, purple Stand limbs, scarf and fist trails. The Stand stays complete and scales together with Jotaro; its larger silhouette does not shrink the human. Native human stance differences217/221/227px remain intact.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                45,
+                50,
+                119,
+                194
+              ],
+              "referenceBodyBounds": [
+                67,
+                12,
+                174,
+                230
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                679,
+                1515,
+                139,
+                227
+              ],
+              "nativeReferenceBodyBounds": [
+                52,
+                17,
+                167,
+                221
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+              "nativeSourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+              "nativeReferenceSourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 236.244344,
+              "correctedBodyHeight": 236.244276,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          }
+        ],
+        "renderScaleMethod": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+        "renderScaleDoesNotModifyBitmap": true
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "44ce2f230f88916273d14983d0e7e19898ce82e1cdf32aa66fc145268ae9ebcb",
+              "90c6591e2a86f4e67cbac1cf2e2032e367ce63cfff18b98bcb514799fcf37b66",
+              "e927f7c2336fdc1d44357bbc384c945178a1373a42a76b34c8ed955db9136a37",
+              "25820b1707b74544e728693a6223ff120836fc50513f52170d777fe7461e37d8"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f9c2f3d04e85611314c3ba6a736b0f9e2d5c273aac4ee108547b06a7db53f9f4",
+              "15a238295cc9c9a35417401820eba0754653776520e0c4a72eaae99d573b6408",
+              "1ad3a3280499c670eb0f96e5e9623ac95ab144d57041571aeff982e98502aa0c",
+              "b46ff1b5114cdbda3c223ec588485302437ecb7fc428fab4f1c4462608fd65cf"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d0799e5da60ab86a30190b6016df0ee99ba46e9087dc89e44c574127dcfff4f8",
+              "cd7ccf964dd4dcf028d4995310c3d4792c02c5bd9068c71c0ba3ef9ef6ad294d",
+              "dbf583436bcf97d63325546a2718208fc0d9d010b3a68a6513ad7f214546e0a8",
+              "4ade06845eea6a0d97389570aa83832303c03c1548d59e8272d51e791858d754"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b42ba87299853c6862a68d268b6b32106c2e09637d5546e94eee39df7df89b3d",
+              "eef22d0d54d002c22fc7ac75529ec3a1e8c0f599ab0bab6bd15ff3c59e09c760",
+              "3158d94d956c26df0766683d1d531c4dd2836ef1d535efa474116722eeb9c2a0",
+              "16d1072348339e94ec9256d0254dd5a5b521e3d8da1052063c68268616732463"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7c4cb358f6712c5b86ee1c9315c5d3b9a6c0f605558311eca1b0a7006b8e911d",
+              "c54da62a6db5af04a18f9d51b7ccd95f1afbb466970c616395ea621bfde1f940",
+              "36e5e9d3a92189a403e9d22ad29689d31eaa921b3a5afc6ba0a5539a86afec8a",
+              "ef5c37ad678a28c7853305b63ffe2b9db941145105e9b6394e8f2beed5c30b5b"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "882173b6ecea4698a1b55e72b56cb60ff36331e7502de4687b2b7a85966c1d08",
+              "f42fd90d3ddeb8781ca46928162846bb3f6c7b9c3b00f8ff94ea8211dcb70679",
+              "a863d1f741ca950eba1df99f0d303ccda1e0cfb4631c65e71c460ee16fb78275",
+              "a79799341af4076ce28d04335757c88a46a18ac42265a5257dac6e5801caf676"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d6317211b8fe757f3b9b010d7d1fe72a3f7146ea560381960f88738a0b4a5aae",
+              "bfa05ca6d8c664d1a545bf9a0f967ab4a83ccaf96ec703a011d50dcfd475889d",
+              "6b53e553e0227e5ab0bb6b3bb11cf216d41949debc0a1ed42cf1c1c753ad27e6",
+              "ef2932066c5009965fd1229d24c10fd4799bff2526a27178c7e744d51b8a2708"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7e31dddb5f1177fe493811d46a906220db1dfb2055b835db43e24a802b9f4844",
+              "67c9121e3f7eff2b65a88ac060a577c873d39a56bc0472f14c0ab66ec3bf007c",
+              "8f0692f09b2bfe611f8b67f87e93d580b950a4662678fffc8b750ca8b2b27ee9",
+              "01387c8acb7c50e6f5cba3d65ad54f0f213b537349689c2a85580319663c2b6b"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "eidolonPresent": false,
+        "defaultFacing": "right",
+        "weaponReviewed": true,
+        "versionReviewed": true,
+        "allBodiesPresent": true,
+        "notes": "Stardust Crusaders — Jotaro’s black school uniform and Star Platinum punch barrage; no extra time-stop rules or gameplay hits. Part3 Jotaro black long coat/cap and gold chain; Part3 StarPlatinum purple muscular body, dark hair and gold headband/shoulder plates. No Part4 white costume or other Stand. This is original generated choreography; official pixels and source-game cinematic fidelity are not certified.",
+        "statureScaleReviewed": true,
+        "statureNotes": "Canvas-only whole-cell scaling around baseline244 reverses the weapon/effect-driven packing reduction. Approximate reviewed body ROIs and retained native stance-height ratios determine the factors; no PNG, source rectangle, anatomy or animation pose is modified."
+      }
+    },
+    {
+      "id": "giorno_giovanna",
+      "heroId": "giorno_giovanna",
+      "universe": "JoJo's Bizarre Adventure",
+      "name": "Giorno Giovanna",
+      "sheet": "/sprites/generated/combat-character-animations-wave6/giorno_giovanna.png",
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 8,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "b69805c29123c73d8ea814e2f9924ba19376632ec774df9b6fbcd0e03b95efb2",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+      "sourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/jojo-s-bizarre-adventure/giorno-giovanna.png",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-reference.png",
+      "referenceAssetSha256": "55fcd365ec9bdd3cb133d71dc501b562b48427590c48066fe57605fb19c37d4e",
+      "additionalReferences": [
+        {
+          "referenceAsset": "/sprites/generated/combat-entities/jojo-gold-experience.png",
+          "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-additional-reference-1.png",
+          "sha256": "2794007bd0de1dd30de70eafdb4b41d654c58e2ef4f88cc67ffdda2f0773dd28"
+        }
+      ],
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "sourceWork": "JoJo’s Bizarre Adventure — Golden Wind (Part5)",
+      "sourceReference": "Golden Wind — blond Giorno in purple suit with heart chest opening; ordinary Gold Experience punch barrage, not Requiem or causal reset.",
+      "abilityName": "Gold Experience — Muda Muda",
+      "identityCorrection": "Preserve the local purple suit and three blond forehead rolls; show ordinary golden GoldExperience with purple ladybug/chest details, no Requiem arrow or other Stand.",
+      "sourceAbility": {
+        "id": "giorno_giovanna:super",
+        "name": "Gold Experience — Muda Muda",
+        "effect": "damage",
+        "delivery": "melee",
+        "duration": 1.1,
+        "hitAt": 0.451
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+            "sourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 233
+            },
+            "scale": 1.1262135922330097,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 64,
+                  "top": 23,
+                  "width": 115,
+                  "height": 203,
+                  "pixels": 12716
+                },
+                "output": {
+                  "left": 75,
+                  "top": 15,
+                  "width": 130,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 278,
+                  "top": 20,
+                  "width": 114,
+                  "height": 206,
+                  "pixels": 12317
+                },
+                "output": {
+                  "left": 66,
+                  "top": 12,
+                  "width": 128,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 495,
+                  "top": 20,
+                  "width": 149,
+                  "height": 206,
+                  "pixels": 13063
+                },
+                "output": {
+                  "left": 61,
+                  "top": 12,
+                  "width": 168,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 714,
+                  "top": 21,
+                  "width": 147,
+                  "height": 205,
+                  "pixels": 12879
+                },
+                "output": {
+                  "left": 58,
+                  "top": 13,
+                  "width": 166,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "outro",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+            "sourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 232,
+              "bottom": 461
+            },
+            "scale": 1.0497737556561086,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 61,
+                  "top": 7,
+                  "width": 112,
+                  "height": 211,
+                  "pixels": 12632
+                },
+                "output": {
+                  "left": 76,
+                  "top": 12,
+                  "width": 118,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 275,
+                  "top": 7,
+                  "width": 102,
+                  "height": 211,
+                  "pixels": 12008
+                },
+                "output": {
+                  "left": 68,
+                  "top": 12,
+                  "width": 107,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 514,
+                  "top": 7,
+                  "width": 98,
+                  "height": 221,
+                  "pixels": 12434
+                },
+                "output": {
+                  "left": 86,
+                  "top": 12,
+                  "width": 103,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 711,
+                  "top": 13,
+                  "width": 147,
+                  "height": 204,
+                  "pixels": 11841
+                },
+                "output": {
+                  "left": 60,
+                  "top": 18,
+                  "width": 154,
+                  "height": 214
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "roundVictory",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+            "sourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 443,
+              "bottom": 686
+            },
+            "scale": 0.9872340425531915,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 61,
+                  "top": 18,
+                  "width": 125,
+                  "height": 217,
+                  "pixels": 15035
+                },
+                "output": {
+                  "left": 79,
+                  "top": 29,
+                  "width": 123,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 271,
+                  "top": 1,
+                  "width": 133,
+                  "height": 235,
+                  "pixels": 14460
+                },
+                "output": {
+                  "left": 67,
+                  "top": 12,
+                  "width": 131,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 503,
+                  "top": 17,
+                  "width": 161,
+                  "height": 219,
+                  "pixels": 14792
+                },
+                "output": {
+                  "left": 77,
+                  "top": 28,
+                  "width": 159,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 716,
+                  "top": 20,
+                  "width": 135,
+                  "height": 216,
+                  "pixels": 12975
+                },
+                "output": {
+                  "left": 69,
+                  "top": 31,
+                  "width": 133,
+                  "height": 213
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "roundDefeat",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+            "sourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 683,
+              "bottom": 878
+            },
+            "scale": 1.2540540540540541,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 13,
+                  "width": 145,
+                  "height": 177,
+                  "pixels": 13513
+                },
+                "output": {
+                  "left": 45,
+                  "top": 22,
+                  "width": 182,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 246,
+                  "top": 42,
+                  "width": 162,
+                  "height": 143,
+                  "pixels": 12425
+                },
+                "output": {
+                  "left": 19,
+                  "top": 58,
+                  "width": 203,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 479,
+                  "top": 30,
+                  "width": 159,
+                  "height": 155,
+                  "pixels": 12513
+                },
+                "output": {
+                  "left": 33,
+                  "top": 43,
+                  "width": 199,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 5,
+                  "width": 139,
+                  "height": 185,
+                  "pixels": 11907
+                },
+                "output": {
+                  "left": 29,
+                  "top": 12,
+                  "width": 174,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "fatality",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+            "sourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 875,
+              "bottom": 1123
+            },
+            "scale": 0.928,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 7,
+                  "width": 200,
+                  "height": 239,
+                  "pixels": 25029
+                },
+                "output": {
+                  "left": 46,
+                  "top": 22,
+                  "width": 186,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 243,
+                  "top": 7,
+                  "width": 193,
+                  "height": 237,
+                  "pixels": 26956
+                },
+                "output": {
+                  "left": 45,
+                  "top": 22,
+                  "width": 179,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 445,
+                  "top": 9,
+                  "width": 234,
+                  "height": 227,
+                  "pixels": 34816
+                },
+                "output": {
+                  "left": 27,
+                  "top": 24,
+                  "width": 217,
+                  "height": 211
+                }
+              },
+              {
+                "source": {
+                  "left": 691,
+                  "top": 14,
+                  "width": 180,
+                  "height": 229,
+                  "pixels": 24885
+                },
+                "output": {
+                  "left": 49,
+                  "top": 29,
+                  "width": 167,
+                  "height": 213
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.217609,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 229,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 189,
+              "nativeComparableBodyHeight": 204,
+              "nativeReferenceBodyHeight": 203,
+              "referenceRenderScale": 1,
+              "referenceRenderedBodyHeight": 229,
+              "reason": "Measure Giorno alone from blond forehead curls to purple shoe soles, excluding GoldExperience helmet, golden limbs and fist echoes. Both full bodies remain visible and are drawn together; no Requiem or causal effect is inferred. Preserve the small native human pose-height differences203/204/208px.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                49,
+                50,
+                117,
+                189
+              ],
+              "referenceBodyBounds": [
+                75,
+                15,
+                130,
+                229
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                691,
+                912,
+                126,
+                204
+              ],
+              "nativeReferenceBodyBounds": [
+                64,
+                23,
+                115,
+                203
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+              "nativeSourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+              "nativeReferenceSourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 230.128079,
+              "correctedBodyHeight": 230.128101,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          },
+          {
+            "phase": "victory",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+            "sourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1105,
+              "bottom": 1344
+            },
+            "scale": 1,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 57,
+                  "top": 1,
+                  "width": 120,
+                  "height": 232,
+                  "pixels": 14091
+                },
+                "output": {
+                  "left": 74,
+                  "top": 12,
+                  "width": 120,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 281,
+                  "top": 12,
+                  "width": 107,
+                  "height": 221,
+                  "pixels": 13232
+                },
+                "output": {
+                  "left": 76,
+                  "top": 23,
+                  "width": 107,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 507,
+                  "top": 1,
+                  "width": 117,
+                  "height": 232,
+                  "pixels": 14079
+                },
+                "output": {
+                  "left": 81,
+                  "top": 12,
+                  "width": 117,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 732,
+                  "top": 14,
+                  "width": 105,
+                  "height": 219,
+                  "pixels": 12810
+                },
+                "output": {
+                  "left": 84,
+                  "top": 25,
+                  "width": 105,
+                  "height": 219
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "defeat",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+            "sourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1341,
+              "bottom": 1525
+            },
+            "scale": 1.3727810650887573,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 29,
+                  "top": 40,
+                  "width": 164,
+                  "height": 134,
+                  "pixels": 12649
+                },
+                "output": {
+                  "left": 16,
+                  "top": 59,
+                  "width": 225,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 250,
+                  "top": 18,
+                  "width": 158,
+                  "height": 157,
+                  "pixels": 13186
+                },
+                "output": {
+                  "left": 15,
+                  "top": 28,
+                  "width": 217,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 475,
+                  "top": 40,
+                  "width": 150,
+                  "height": 135,
+                  "pixels": 11866
+                },
+                "output": {
+                  "left": 19,
+                  "top": 59,
+                  "width": 206,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 6,
+                  "width": 149,
+                  "height": 168,
+                  "pixels": 12835
+                },
+                "output": {
+                  "left": 18,
+                  "top": 12,
+                  "width": 205,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1
+          },
+          {
+            "phase": "super",
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+            "sourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1523,
+              "bottom": 1774
+            },
+            "scale": 0.9586776859504132,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 13,
+                  "width": 180,
+                  "height": 227,
+                  "pixels": 23572
+                },
+                "output": {
+                  "left": 48,
+                  "top": 26,
+                  "width": 173,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 226,
+                  "top": 11,
+                  "width": 219,
+                  "height": 229,
+                  "pixels": 24583
+                },
+                "output": {
+                  "left": 26,
+                  "top": 24,
+                  "width": 210,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 439,
+                  "top": 10,
+                  "width": 236,
+                  "height": 230,
+                  "pixels": 33887
+                },
+                "output": {
+                  "left": 17,
+                  "top": 24,
+                  "width": 226,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 693,
+                  "top": 9,
+                  "width": 169,
+                  "height": 231,
+                  "pixels": 25011
+                },
+                "output": {
+                  "left": 48,
+                  "top": 23,
+                  "width": 162,
+                  "height": 221
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.179097,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 229,
+              "sourceComparableColumn": 3,
+              "normalizedBodyHeight": 199,
+              "nativeComparableBodyHeight": 208,
+              "nativeReferenceBodyHeight": 203,
+              "referenceRenderScale": 1,
+              "referenceRenderedBodyHeight": 229,
+              "reason": "Measure Giorno alone from blond forehead curls to purple shoe soles, excluding GoldExperience helmet, golden limbs and fist echoes. Both full bodies remain visible and are drawn together; no Requiem or causal effect is inferred. Preserve the small native human pose-height differences203/204/208px.",
+              "measurementKind": "visual-body-roi",
+              "bodyBounds": [
+                48,
+                45,
+                111,
+                199
+              ],
+              "referenceBodyBounds": [
+                75,
+                15,
+                130,
+                229
+              ],
+              "excludesWeaponEffects": true,
+              "nativeBodyBounds": [
+                693,
+                1555,
+                116,
+                208
+              ],
+              "nativeReferenceBodyBounds": [
+                64,
+                23,
+                115,
+                203
+              ],
+              "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+              "nativeSourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+              "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+              "nativeReferenceSourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+              "coordinateSpaces": {
+                "bodyBounds": "local normalized256px cell",
+                "nativeBodyBounds": "absolute archived native atlas pixels"
+              },
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+              "expectedBodyHeight": 234.640394,
+              "correctedBodyHeight": 234.640303,
+              "posturePreserved": true,
+              "visualRoiApproximation": true,
+              "scaleAroundBaseline": 244,
+              "changesBitmap": false,
+              "source1to1Verified": false
+            }
+          }
+        ],
+        "renderScaleMethod": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+        "renderScaleDoesNotModifyBitmap": true
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8fb3515b0f9d28a7eaef8f98dacb4ec162ca2f1e3f332ca6d2e1ce7eb8a928b3",
+              "514f747021ef4b9412574e5f47f433930c0a9cf02248c1799b2e140680ebc579",
+              "f4f0305a14181783ac72af53285ff2dc4d73a9d68b1ae9346a23ddb443934e64",
+              "0c83c828525d3d8774cd67aabbd93de6e4721e5433d7e5379118bc7eba74a943"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fe32d80baaf983eb9d84957d2b291c55563157c1ed381c704098a038b0435f92",
+              "b4144f8d24594358fb1c11f2aac264e081ce6cc5a4b970d48897fe6846833173",
+              "eea1c3bbf717b4e39557086f0a3aefad5c02a678777d8162bf71ca9d1f91bfbc",
+              "ad118486234e2a9ca9de2d3831ad49eb45245c6b345967c45904b4c48aa0c5ae"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7b83dbf8ed1b6aa34e38a77eb8b844c9e2af5565e2587f1305b9ebd1f5102fc6",
+              "b65d6afe99b533ed2eca9635e8e3b4042fa21948a9f7ad471b85137407c3be8c",
+              "ed917d9609df4ba103f7ab6d8ca7d2e09821bf9d8a6f69898497437162396688",
+              "7c65af135548287c8401896073099ecc6131ce0a398267b5fb4e91403ddb248c"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4736b1bc1c847611ab7e4c36ff792bb6e17dd220b41ca378209062a785d57533",
+              "9ff7ca7df47c76164a6b633140423095b49e5aa8731f1131c2186e3809badf49",
+              "a24c1395dd09b4c0872bd8734e5021ff244964a386c9d7d8d0795765fcf3e3a0",
+              "989af8c6b00ca2f657da30da16e341802488734cc70d37f4825a6e2fe4f4ed31"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9e3950231a4bb8a880874029ed8277e37385166160139c36053ca8220d0c1a1f",
+              "dd5c3b6f74b942b6ce952c94ddb0547c4cb06ddf766b8d9794f09a653e9027d1",
+              "612fcf862c2ee2192d20ad965f68acf794f816e0ad5927fa5d56e135ded3e34f",
+              "76814404481dcf0264ae862cb37794e257175a83ef0fae2012421e1a6140062d"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "85b624c4e673a15888fe9f05f0566857ea112782c58333460b381d8a16816ee4",
+              "8f3895c1bd62597bce24dbcc5b57595043ebf3ed46cf9aaa9f520c1dc133aa43",
+              "c5e049a42e925bee4d6286e05adf97d354087c5106423220bff21367867fa19a",
+              "acb9f66b1e499c62b238b867db53001edcaf3363de2aceaaa0bfe21048fc6156"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4afa710b30d94601ce09136e2337e54082e742b5269d0a73d1ce5f99bb1da83b",
+              "409c5f00d1b41c03b3e9062e48553c1d61be1b8c4ed0f0f40ffa2c164ddff470",
+              "4211108534fefd73f63f394f95f05389d17f573f906f29d6b09f7da5138a587f",
+              "6e887d02a15b2f7d5e71414fbc3a39654f4249d014a35eab358119a78e34c568"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "092985fa621f3aed6b9b4c45a401cdd80da596df54ba830b3bc421828786bfcc",
+              "b2f78304eb48343b3d56bcebcc50d4235a8883fd322c46d58d29196d5ddfc842",
+              "047f98d0dcc4ee95460bafca8e9e9da82fa7ddb762f311125184bc88649eee7b",
+              "a17506daa4ed913867e3c91bb1d6f80110ef89f49fcb92c685a2827c6a19b614"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "eidolonPresent": false,
+        "defaultFacing": "right",
+        "weaponReviewed": true,
+        "versionReviewed": true,
+        "allBodiesPresent": true,
+        "notes": "Golden Wind — blond Giorno in purple suit with heart chest opening; ordinary Gold Experience punch barrage, not Requiem or causal reset. Preserve the local purple suit and three blond forehead rolls; show ordinary golden GoldExperience with purple ladybug/chest details, no Requiem arrow or other Stand. This is original generated choreography; official pixels and source-game cinematic fidelity are not certified.",
+        "statureScaleReviewed": true,
+        "statureNotes": "Canvas-only whole-cell scaling around baseline244 reverses the weapon/effect-driven packing reduction. Approximate reviewed body ROIs and retained native stance-height ratios determine the factors; no PNG, source rectangle, anatomy or animation pose is modified."
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "failures": [
+    {
+      "heroId": "harry_potter",
+      "operation": "native32",
+      "request": "docs/combat-fidelity-wave11-2026-10-23/part-a-requests/harry_potter.json",
+      "result": "Promise rejected, no accepted file",
+      "diagnosticLimitation": "Initial handler serialized reason.message only, which was absent on this error value. Exact rejection details were not retained and cannot be reconstructed honestly.",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "requestId": null,
+      "retried": true,
+      "blockedPendingRootCoordination": false,
+      "finalResult": "Explicit moderation_blocked on the single strictly-identical authorized retry; no further requests or base16."
+    }
+  ],
+  "externalRefusalBlocks": [
+    {
+      "heroId": "hermione_granger",
+      "source": "Parent reported explicit image_gen moderation_blocked for native reinforcement16, request ID1ae437b2-a95d-4b1c-881a-72548b5912bf",
+      "proof": "docs/combat-fidelity-wave11-2026-10-23/summon-hermione-initial-result.json",
+      "ourNative32RequestIssued": false,
+      "ourBase16RequestIssued": false,
+      "ourNative32Accepted": false,
+      "ourBase16Accepted": false,
+      "noFurtherRequests": true
+    }
+  ]
+}

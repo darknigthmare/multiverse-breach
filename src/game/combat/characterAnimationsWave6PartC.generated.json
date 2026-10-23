@@ -1,0 +1,4353 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "snake",
+      "heroId": "snake",
+      "universe": "Metal Gear",
+      "name": "Solid Snake",
+      "sheet": "/sprites/generated/combat-character-animations-wave6/snake.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "9b0b69c12a6a3bd3c3890edaca01987884997f7085c6297bdf3eb187ef81c76a",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+      "sourceImageSha256": "eb167c97a5331710cd31253f48015aec7d1d562fc464356cd03292c8a61ad93e",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/snake.png",
+      "referenceAssetSha256": "df0cc1d2bb693554f86fca6bb9a58b5c790055d3fa59fc121fa2e21ceb4ff41c",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-references/snake.png",
+      "sourceWork": "Metal Gear Solid (1998)",
+      "sourceReference": "src/game/heroes.js#snake and parent-corrected effective kit: MetalGearSolid1998 punch-punch-kick sequence, ordinary grab-free physical strikes. Legacy Chaff&CQC name superseded; chaff is not a damaging attack and no advanced BigBoss/OldSnake mechanics are depicted.",
+      "abilityName": "Combo de coups de Snake",
+      "characterVersion": "Adult Solid Snake from MetalGearSolid1998, dark blue-gray sneaking suit/bandana/SOCOM, barehand punch-punch-kick adaptation; no advanced BigBoss CQC or damaging chaff.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+            "sourceImageSha256": "eb167c97a5331710cd31253f48015aec7d1d562fc464356cd03292c8a61ad93e",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 231
+            },
+            "scale": 1.1153846153846154,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 41,
+                  "top": 22,
+                  "width": 173,
+                  "height": 204,
+                  "pixels": 15827
+                },
+                "output": {
+                  "left": 50,
+                  "top": 16,
+                  "width": 193,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 282,
+                  "top": 18,
+                  "width": 126,
+                  "height": 207,
+                  "pixels": 15160
+                },
+                "output": {
+                  "left": 72,
+                  "top": 12,
+                  "width": 141,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 504,
+                  "top": 18,
+                  "width": 100,
+                  "height": 207,
+                  "pixels": 14706
+                },
+                "output": {
+                  "left": 72,
+                  "top": 12,
+                  "width": 112,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 708,
+                  "top": 23,
+                  "width": 146,
+                  "height": 203,
+                  "pixels": 15654
+                },
+                "output": {
+                  "left": 52,
+                  "top": 18,
+                  "width": 163,
+                  "height": 226
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+            "sourceImageSha256": "eb167c97a5331710cd31253f48015aec7d1d562fc464356cd03292c8a61ad93e",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 229,
+              "bottom": 451
+            },
+            "scale": 1.0790697674418606,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 65,
+                  "top": 6,
+                  "width": 111,
+                  "height": 215,
+                  "pixels": 14481
+                },
+                "output": {
+                  "left": 78,
+                  "top": 12,
+                  "width": 120,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 271,
+                  "top": 8,
+                  "width": 120,
+                  "height": 206,
+                  "pixels": 15607
+                },
+                "output": {
+                  "left": 62,
+                  "top": 14,
+                  "width": 129,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 504,
+                  "top": 7,
+                  "width": 104,
+                  "height": 206,
+                  "pixels": 14616
+                },
+                "output": {
+                  "left": 74,
+                  "top": 13,
+                  "width": 112,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 685,
+                  "top": 23,
+                  "width": 172,
+                  "height": 190,
+                  "pixels": 14265
+                },
+                "output": {
+                  "left": 30,
+                  "top": 30,
+                  "width": 186,
+                  "height": 205
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+            "sourceImageSha256": "eb167c97a5331710cd31253f48015aec7d1d562fc464356cd03292c8a61ad93e",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 445,
+              "bottom": 679
+            },
+            "scale": 1.0593607305936072,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 56,
+                  "top": 2,
+                  "width": 125,
+                  "height": 219,
+                  "pixels": 17000
+                },
+                "output": {
+                  "left": 70,
+                  "top": 12,
+                  "width": 132,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 292,
+                  "top": 5,
+                  "width": 116,
+                  "height": 216,
+                  "pixels": 17071
+                },
+                "output": {
+                  "left": 85,
+                  "top": 15,
+                  "width": 123,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 495,
+                  "top": 9,
+                  "width": 129,
+                  "height": 212,
+                  "pixels": 16909
+                },
+                "output": {
+                  "left": 65,
+                  "top": 19,
+                  "width": 137,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 703,
+                  "top": 5,
+                  "width": 120,
+                  "height": 216,
+                  "pixels": 16643
+                },
+                "output": {
+                  "left": 51,
+                  "top": 15,
+                  "width": 127,
+                  "height": 229
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+            "sourceImageSha256": "eb167c97a5331710cd31253f48015aec7d1d562fc464356cd03292c8a61ad93e",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 678,
+              "bottom": 890
+            },
+            "scale": 1.1262135922330097,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 11,
+                  "width": 162,
+                  "height": 194,
+                  "pixels": 15236
+                },
+                "output": {
+                  "left": 55,
+                  "top": 26,
+                  "width": 182,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 255,
+                  "top": 47,
+                  "width": 166,
+                  "height": 158,
+                  "pixels": 16189
+                },
+                "output": {
+                  "left": 41,
+                  "top": 66,
+                  "width": 187,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 465,
+                  "top": 63,
+                  "width": 192,
+                  "height": 137,
+                  "pixels": 15474
+                },
+                "output": {
+                  "left": 27,
+                  "top": 84,
+                  "width": 216,
+                  "height": 154
+                }
+              },
+              {
+                "source": {
+                  "left": 704,
+                  "top": 32,
+                  "width": 143,
+                  "height": 168,
+                  "pixels": 15583
+                },
+                "output": {
+                  "left": 47,
+                  "top": 49,
+                  "width": 161,
+                  "height": 189
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+            "sourceImageSha256": "eb167c97a5331710cd31253f48015aec7d1d562fc464356cd03292c8a61ad93e",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 889,
+              "bottom": 1117
+            },
+            "scale": 0.8754716981132076,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 37,
+                  "top": 16,
+                  "width": 140,
+                  "height": 206,
+                  "pixels": 15788
+                },
+                "output": {
+                  "left": 63,
+                  "top": 63,
+                  "width": 123,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 245,
+                  "top": 16,
+                  "width": 220,
+                  "height": 206,
+                  "pixels": 17833
+                },
+                "output": {
+                  "left": 51,
+                  "top": 63,
+                  "width": 193,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 459,
+                  "top": 15,
+                  "width": 211,
+                  "height": 207,
+                  "pixels": 16741
+                },
+                "output": {
+                  "left": 45,
+                  "top": 62,
+                  "width": 185,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 685,
+                  "top": 9,
+                  "width": 185,
+                  "height": 214,
+                  "pixels": 14691
+                },
+                "output": {
+                  "left": 48,
+                  "top": 57,
+                  "width": 162,
+                  "height": 187
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.2790849673202613,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 228,
+              "normalizedBodyHeight": 180,
+              "nativeReferenceBodyHeight": 204,
+              "nativeComparableBodyHeight": 206,
+              "referenceBodyBounds": [
+                50,
+                16,
+                193,
+                228
+              ],
+              "bodyBounds": [
+                63,
+                63,
+                123,
+                180
+              ],
+              "nativeReferenceBodyBounds": [
+                41,
+                22,
+                173,
+                204
+              ],
+              "nativeComparableBodyBounds": [
+                37,
+                905,
+                140,
+                206
+              ],
+              "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+              "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+              "formulaRenderScale": 1.2790849673202613,
+              "recommendCompensation": true,
+              "compensatedBodyHeightApprox": 230.23529411764704,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": false,
+              "reason": "Comparable ready body stays upright; the extended kick changes row bounds and reduces whole-row scale. Reference204px source, fatality206px and super203px source have almost identical projection.",
+              "recommendation": "Apply normalization compensation while preserving the native body projection.",
+              "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+            "sourceImageSha256": "eb167c97a5331710cd31253f48015aec7d1d562fc464356cd03292c8a61ad93e",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1113,
+              "bottom": 1345
+            },
+            "scale": 1.0790697674418606,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 48,
+                  "top": 11,
+                  "width": 113,
+                  "height": 212,
+                  "pixels": 15229
+                },
+                "output": {
+                  "left": 60,
+                  "top": 15,
+                  "width": 122,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 276,
+                  "top": 8,
+                  "width": 105,
+                  "height": 215,
+                  "pixels": 14413
+                },
+                "output": {
+                  "left": 67,
+                  "top": 12,
+                  "width": 113,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 500,
+                  "top": 9,
+                  "width": 110,
+                  "height": 214,
+                  "pixels": 15658
+                },
+                "output": {
+                  "left": 69,
+                  "top": 13,
+                  "width": 119,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 722,
+                  "top": 8,
+                  "width": 105,
+                  "height": 215,
+                  "pixels": 15277
+                },
+                "output": {
+                  "left": 70,
+                  "top": 12,
+                  "width": 113,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+            "sourceImageSha256": "eb167c97a5331710cd31253f48015aec7d1d562fc464356cd03292c8a61ad93e",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1344,
+              "bottom": 1546
+            },
+            "scale": 1.1428571428571428,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 25,
+                  "top": 10,
+                  "width": 186,
+                  "height": 177,
+                  "pixels": 14390
+                },
+                "output": {
+                  "left": 30,
+                  "top": 39,
+                  "width": 213,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 261,
+                  "top": 32,
+                  "width": 143,
+                  "height": 155,
+                  "pixels": 13976
+                },
+                "output": {
+                  "left": 46,
+                  "top": 65,
+                  "width": 163,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 466,
+                  "top": 55,
+                  "width": 189,
+                  "height": 134,
+                  "pixels": 14349
+                },
+                "output": {
+                  "left": 27,
+                  "top": 91,
+                  "width": 216,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 675,
+                  "top": 50,
+                  "width": 199,
+                  "height": 130,
+                  "pixels": 13545
+                },
+                "output": {
+                  "left": 12,
+                  "top": 85,
+                  "width": 227,
+                  "height": 149
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+            "sourceImageSha256": "eb167c97a5331710cd31253f48015aec7d1d562fc464356cd03292c8a61ad93e",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1545,
+              "bottom": 1774
+            },
+            "scale": 1.0265486725663717,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 28,
+                  "top": 11,
+                  "width": 157,
+                  "height": 203,
+                  "pixels": 16431
+                },
+                "output": {
+                  "left": 43,
+                  "top": 35,
+                  "width": 161,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 220,
+                  "top": 11,
+                  "width": 223,
+                  "height": 204,
+                  "pixels": 16171
+                },
+                "output": {
+                  "left": 12,
+                  "top": 35,
+                  "width": 229,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 443,
+                  "top": 12,
+                  "width": 203,
+                  "height": 203,
+                  "pixels": 16119
+                },
+                "output": {
+                  "left": 14,
+                  "top": 36,
+                  "width": 208,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 671,
+                  "top": 12,
+                  "width": 197,
+                  "height": 203,
+                  "pixels": 14591
+                },
+                "output": {
+                  "left": 20,
+                  "top": 36,
+                  "width": 202,
+                  "height": 208
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0907805429864255,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 228,
+              "normalizedBodyHeight": 208,
+              "nativeReferenceBodyHeight": 204,
+              "nativeComparableBodyHeight": 203,
+              "referenceBodyBounds": [
+                50,
+                16,
+                193,
+                228
+              ],
+              "bodyBounds": [
+                43,
+                35,
+                161,
+                208
+              ],
+              "nativeReferenceBodyBounds": [
+                41,
+                22,
+                173,
+                204
+              ],
+              "nativeComparableBodyBounds": [
+                28,
+                1556,
+                157,
+                203
+              ],
+              "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+              "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+              "formulaRenderScale": 1.0907805429864255,
+              "recommendCompensation": true,
+              "compensatedBodyHeightApprox": 226.8823529411765,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": false,
+              "reason": "Comparable ready body stays upright; the extended kick changes row bounds and reduces whole-row scale. Reference204px source, fatality206px and super203px source have almost identical projection.",
+              "recommendation": "Apply normalization compensation while preserving the native body projection.",
+              "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "0213c21e2a257e446e672501f4c07b2a2435bd5cba020a04ffaf2386e7f56110",
+              "4d96012a930f250f1a32d82ebec1de1883c4dcfbd53378be99e6f4187709f403",
+              "062604e6086922da9212ee40a01a457e15024f2136fe2ad5abb8743b0a60cab1",
+              "b302b1308bd7d8acaebfbebf158cc134bf394d5af1bf85bd8b4ba5e8b33b7500"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "51deca30893da03c38890c1a1010308334a6e2b92233aa23c16e7a9bb0634ca3",
+              "6d54197e4816c4706b44277f4bf017b7d4f83ad31a9971b383ce8bc9adcb2e8a",
+              "1fcb2b9969c8984b498ea7e86c9ad053c718f49d16000066602087c140286cb4",
+              "72f777b858ed9df11bcfb9b944451db08f250000e71eb8835927ef39b6a7f536"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e76b21202a5a4543456cdb923afefc5e431d831858c2f3b1c8878c9bf0493622",
+              "6f5bcb7f566129fde9ac560b31c19fa2a31993a44b687959329b75d12d8f9d8a",
+              "5360e6b2cb7721c9d34b84767fea2e9b4c419387a3918597b20afa3a588b3ba4",
+              "aaf7455aa857573b4db581864c1fdd6a5f0ec421c29217c83e41d22dc09dae68"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "783afb3130581ca8962cb3a68826e34a74fc84770edae8d5babce4c035a759c9",
+              "e63cc62d991f7934053a78afec80191b99c54dc19778d6fa8e2b1627d4629f60",
+              "a559ca1e3704e8375c5ac8ec96d737eb2e053e2ae5e6cefdd5034196928f00f0",
+              "8cbe70f2dc6254aaa7a67203eb30cc1d76166d0526e53282d7f6ee5312f8af37"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "06f7d9fa57eb5ec0bb53cdf7e61f94a80b9effaacf75c7f04a60692850fa5c41",
+              "c2d7ba8ace5ddf56003a4af0f61cf3c30384572a4de727ab6c6771987f53f7ae",
+              "59ef9d619eafa98356b7a67bd757f463f2298be90bb1aee8dc042740fb93c7b4",
+              "9205b2c9b4bb3f2ed574f276a5a39777dad4a2e4ab34c5a28ab2d89e8ee5c300"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ed3dca85f596aa09358e7fd30a09ce1654b83cb908b109ddc5e98efe2084d559",
+              "f862c551b6e92671615d4fedc77fd12e0db35ceb926bb775cbbfeb60ea436f93",
+              "4906cbd735fa0453a1206d57dc377c0dab11e30fd786cf23bb6edf24a8f69f29",
+              "d1d050c25a7747a61d94436a8d0b1842c59e4068a0031b55989ee4879e6f4d57"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b916d2d60cb0a88d43663d6ad3689fa748bdc78cc023e6e03dd79953bbdeab4e",
+              "d9db6b476a40ab47de0aea1b3c2e7019b945da643b3e89e241aa8d1a543175aa",
+              "1c9c96f83a024afaa811edb3a9da2450514e35858acf9fc7dec8740d472c9ae8",
+              "4cae09a1b9778212ce983abac15270f236a319418fe930453ff7e38ef306ea9d"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "39d4028705e6d509b8efea579198c8c0921060b4ad144441decd4cceb8c8d2c5",
+              "f5b66faf3ea80706f5e3134f29ace7088de20e400bf4f898e02495ade1c810cd",
+              "efae353db642a7f15f23142760a9575f295f0f69dc94fd24c55f143f4ad84975",
+              "50ac3a969cb017157b9944a99ed8f6e3028245af6ae372d3429b57065fc25d02"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Adult Solid Snake from MetalGearSolid1998, dark blue-gray sneaking suit/bandana/SOCOM, barehand punch-punch-kick adaptation; no advanced BigBoss CQC or damaging chaff. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "raiden",
+      "heroId": "raiden",
+      "universe": "Metal Gear",
+      "name": "Raiden",
+      "sheet": "/sprites/generated/combat-character-animations-wave6/raiden.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "dc9d3c5118397dd0f497e32e32e4ba1cdb3c0b54a953573f06ad2e2a11cee797",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+      "sourceImageSha256": "447dce3ed8b391253bdbc5a95d84abb3101aa6a428b9619ea9e975fcc2d3f15a",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/raiden.png",
+      "referenceAssetSha256": "333d133921c94506e94f81c667fc312ff56f99e484446a4aa929f413a06cfedc",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-references/raiden.png",
+      "sourceWork": "Metal Gear Rising: Revengeance",
+      "sourceReference": "src/game/loreAccuratePacks.js#raiden and effective HFBlade/NinjaRun/Zandatsu kit. MGR Zandatsu is blade-mode cutting and extraction of cyborg fuel cells; solo presentation omits victim anatomy and gore and does not certify an identical damage/heal mechanic.",
+      "abilityName": "Zandatsu Overdrive",
+      "characterVersion": "MGR cyborg Raiden, white spiky hair, black/gray cybernetic body and tactical visor, real HF katana/scabbard; non-graphic authored Zandatsu.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+            "sourceImageSha256": "447dce3ed8b391253bdbc5a95d84abb3101aa6a428b9619ea9e975fcc2d3f15a",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 232
+            },
+            "scale": 1.008695652173913,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 0,
+                  "width": 153,
+                  "height": 228,
+                  "pixels": 17281
+                },
+                "output": {
+                  "left": 63,
+                  "top": 12,
+                  "width": 154,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 260,
+                  "top": 5,
+                  "width": 151,
+                  "height": 225,
+                  "pixels": 16616
+                },
+                "output": {
+                  "left": 55,
+                  "top": 17,
+                  "width": 152,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 471,
+                  "top": 7,
+                  "width": 194,
+                  "height": 222,
+                  "pixels": 19055
+                },
+                "output": {
+                  "left": 44,
+                  "top": 19,
+                  "width": 196,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 665,
+                  "top": 41,
+                  "width": 222,
+                  "height": 185,
+                  "pixels": 16357
+                },
+                "output": {
+                  "left": 16,
+                  "top": 53,
+                  "width": 224,
+                  "height": 187
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+            "sourceImageSha256": "447dce3ed8b391253bdbc5a95d84abb3101aa6a428b9619ea9e975fcc2d3f15a",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 224,
+              "bottom": 458
+            },
+            "scale": 1.0131004366812226,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 4,
+                  "width": 132,
+                  "height": 223,
+                  "pixels": 16691
+                },
+                "output": {
+                  "left": 62,
+                  "top": 12,
+                  "width": 134,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 260,
+                  "top": 6,
+                  "width": 175,
+                  "height": 221,
+                  "pixels": 16720
+                },
+                "output": {
+                  "left": 54,
+                  "top": 14,
+                  "width": 177,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 494,
+                  "top": 6,
+                  "width": 139,
+                  "height": 221,
+                  "pixels": 16583
+                },
+                "output": {
+                  "left": 67,
+                  "top": 14,
+                  "width": 141,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 4,
+                  "width": 123,
+                  "height": 229,
+                  "pixels": 14782
+                },
+                "output": {
+                  "left": 63,
+                  "top": 12,
+                  "width": 125,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+            "sourceImageSha256": "447dce3ed8b391253bdbc5a95d84abb3101aa6a428b9619ea9e975fcc2d3f15a",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 446,
+              "bottom": 687
+            },
+            "scale": 0.9747899159663865,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 50,
+                  "top": 2,
+                  "width": 125,
+                  "height": 238,
+                  "pixels": 16695
+                },
+                "output": {
+                  "left": 69,
+                  "top": 12,
+                  "width": 122,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 265,
+                  "top": 11,
+                  "width": 172,
+                  "height": 220,
+                  "pixels": 18875
+                },
+                "output": {
+                  "left": 62,
+                  "top": 21,
+                  "width": 168,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 483,
+                  "top": 7,
+                  "width": 143,
+                  "height": 226,
+                  "pixels": 16067
+                },
+                "output": {
+                  "left": 58,
+                  "top": 17,
+                  "width": 139,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 715,
+                  "top": 7,
+                  "width": 113,
+                  "height": 226,
+                  "pixels": 16019
+                },
+                "output": {
+                  "left": 68,
+                  "top": 17,
+                  "width": 110,
+                  "height": 220
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+            "sourceImageSha256": "447dce3ed8b391253bdbc5a95d84abb3101aa6a428b9619ea9e975fcc2d3f15a",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 671,
+              "bottom": 892
+            },
+            "scale": 1.0790697674418606,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 32,
+                  "top": 4,
+                  "width": 181,
+                  "height": 208,
+                  "pixels": 18476
+                },
+                "output": {
+                  "left": 43,
+                  "top": 16,
+                  "width": 195,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 229,
+                  "top": 40,
+                  "width": 200,
+                  "height": 171,
+                  "pixels": 17174
+                },
+                "output": {
+                  "left": 16,
+                  "top": 55,
+                  "width": 216,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 454,
+                  "top": 68,
+                  "width": 196,
+                  "height": 147,
+                  "pixels": 15234
+                },
+                "output": {
+                  "left": 20,
+                  "top": 85,
+                  "width": 211,
+                  "height": 159
+                }
+              },
+              {
+                "source": {
+                  "left": 669,
+                  "top": 38,
+                  "width": 214,
+                  "height": 172,
+                  "pixels": 16087
+                },
+                "output": {
+                  "left": 12,
+                  "top": 53,
+                  "width": 231,
+                  "height": 186
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+            "sourceImageSha256": "447dce3ed8b391253bdbc5a95d84abb3101aa6a428b9619ea9e975fcc2d3f15a",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 878,
+              "bottom": 1118
+            },
+            "scale": 0.9914529914529915,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 39,
+                  "top": 8,
+                  "width": 184,
+                  "height": 229,
+                  "pixels": 17743
+                },
+                "output": {
+                  "left": 57,
+                  "top": 15,
+                  "width": 182,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 221,
+                  "top": 21,
+                  "width": 214,
+                  "height": 217,
+                  "pixels": 21232
+                },
+                "output": {
+                  "left": 17,
+                  "top": 28,
+                  "width": 212,
+                  "height": 215
+                }
+              },
+              {
+                "source": {
+                  "left": 448,
+                  "top": 21,
+                  "width": 211,
+                  "height": 215,
+                  "pixels": 21128
+                },
+                "output": {
+                  "left": 23,
+                  "top": 28,
+                  "width": 209,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 707,
+                  "top": 5,
+                  "width": 136,
+                  "height": 234,
+                  "pixels": 19330
+                },
+                "output": {
+                  "left": 59,
+                  "top": 12,
+                  "width": 135,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+            "sourceImageSha256": "447dce3ed8b391253bdbc5a95d84abb3101aa6a428b9619ea9e975fcc2d3f15a",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1111,
+              "bottom": 1352
+            },
+            "scale": 0.9830508474576272,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 43,
+                  "top": 5,
+                  "width": 132,
+                  "height": 233,
+                  "pixels": 16942
+                },
+                "output": {
+                  "left": 61,
+                  "top": 15,
+                  "width": 130,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 244,
+                  "top": 4,
+                  "width": 158,
+                  "height": 232,
+                  "pixels": 15852
+                },
+                "output": {
+                  "left": 41,
+                  "top": 14,
+                  "width": 155,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 494,
+                  "top": 4,
+                  "width": 124,
+                  "height": 230,
+                  "pixels": 16547
+                },
+                "output": {
+                  "left": 69,
+                  "top": 14,
+                  "width": 122,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 2,
+                  "width": 127,
+                  "height": 233,
+                  "pixels": 17441
+                },
+                "output": {
+                  "left": 65,
+                  "top": 12,
+                  "width": 125,
+                  "height": 229
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+            "sourceImageSha256": "447dce3ed8b391253bdbc5a95d84abb3101aa6a428b9619ea9e975fcc2d3f15a",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1342,
+              "bottom": 1543
+            },
+            "scale": 1.0545454545454545,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 20,
+                  "top": 3,
+                  "width": 169,
+                  "height": 195,
+                  "pixels": 15740
+                },
+                "output": {
+                  "left": 32,
+                  "top": 38,
+                  "width": 178,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 246,
+                  "top": 30,
+                  "width": 165,
+                  "height": 161,
+                  "pixels": 15265
+                },
+                "output": {
+                  "left": 37,
+                  "top": 67,
+                  "width": 174,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 447,
+                  "top": 2,
+                  "width": 210,
+                  "height": 182,
+                  "pixels": 16040
+                },
+                "output": {
+                  "left": 15,
+                  "top": 37,
+                  "width": 221,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 675,
+                  "top": 30,
+                  "width": 211,
+                  "height": 154,
+                  "pixels": 16713
+                },
+                "output": {
+                  "left": 21,
+                  "top": 67,
+                  "width": 223,
+                  "height": 162
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+            "sourceImageSha256": "447dce3ed8b391253bdbc5a95d84abb3101aa6a428b9619ea9e975fcc2d3f15a",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1520,
+              "bottom": 1774
+            },
+            "scale": 0.9666666666666667,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 13,
+                  "top": 20,
+                  "width": 194,
+                  "height": 214,
+                  "pixels": 17884
+                },
+                "output": {
+                  "left": 33,
+                  "top": 31,
+                  "width": 188,
+                  "height": 207
+                }
+              },
+              {
+                "source": {
+                  "left": 223,
+                  "top": 25,
+                  "width": 221,
+                  "height": 209,
+                  "pixels": 18757
+                },
+                "output": {
+                  "left": 22,
+                  "top": 36,
+                  "width": 214,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 443,
+                  "top": 21,
+                  "width": 222,
+                  "height": 216,
+                  "pixels": 21125
+                },
+                "output": {
+                  "left": 20,
+                  "top": 32,
+                  "width": 215,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 709,
+                  "top": 0,
+                  "width": 140,
+                  "height": 240,
+                  "pixels": 19190
+                },
+                "output": {
+                  "left": 63,
+                  "top": 12,
+                  "width": 135,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9b06b396c0039eb597175a71d22b0a3371494e7aabe983e28d6621397ebe677b",
+              "e2fbf266647ae3cfc39f76421dc1271ec779b1e1b67468e5d5b3b9b054be4c8e",
+              "b718a257e895573b76aa79e60e6c16d891f4b88380d1b010fadd419bbab327c9",
+              "e0954ca940fd4bf27aecb39f8b79914456899949c7baa2398bab4a1625aaa217"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6113005f9fd41ababb75c2e196880e0643065618e37bb82b4f7d85d8a763d53e",
+              "970448c8f6525d6d4c4f0a46c797f2ad97b2fe13baf0702a426da2be33920024",
+              "4adada2b8702f8189ccbbc3a7635c5be6209e1f93021450111acbb7c6cdd38fa",
+              "d779e7c9b1bae354762d54fd2e46f87ad957437c5d2cf40183a2c7be83bf44ad"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "57e723fdd05dc8847f182660e7e5699bf8c6db9576e12310d4dd04660c74132e",
+              "1d28f1b2bca783d075da942175cf7f017fd501bb1a77463bf3fb4a10a24c46cb",
+              "c6f9f0e9298fc8da20ee285dfe86119881d924fcac7e8657ac0884536d576fb1",
+              "18e7b534eadbf2eb76fa01a1c5c96a5a64c1ae04949f46a50c6d0958dcc00428"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e079010fa8f64f80733de4ab06955d4095d5eee304aad5ace443b212af85fdf7",
+              "976e3a86daf030020702109bfac3b221733bc10e22055746be8549d1521612f8",
+              "b7ad27b50cc47a18ade4ae1f37c0a2fccc3c66fde358889dae37c0424fe56d16",
+              "d1b994bbdbc6568d8a18c94497af4a4697dea745672d59b8d7d1d80d8568cdae"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "868ef75d8b33049c42d76d14b92bd95ae0ff44473d69adc17db7b1bc682e6c6b",
+              "2f484cad2230f6f7d8c19da4291d75b1a062692f889d1b17d470c261d1f69ce7",
+              "018eb73979b6c20e2c62791e84f5cbc9560c7a9aae47fe52cf6c6036ad3770bd",
+              "552c3c894810afd69d62511824e6f7fe53e593967d82be88c191ee9c6b687ddf"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "964dee19ed187046cd08246c939285ae124599ab56ae1f7f942e9daf3bd5e014",
+              "0eff06cfe73ac11225905793df2b29f131d95bc6b2463d069a993a1a09f7cf15",
+              "6d00e9ad26febce81461916bc4573adfeaeef591b774bbfe3fde1e797d5aeb02",
+              "75b2de219336535320824fcff86d14d4de125f64e6e002fb15c81fee513de71c"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "569b7a874e3eedbd98167edc1693448bba6ea5ae1b3e96fccb5209a1b6369c7f",
+              "0b82b05a16f99611a72b29b65fd1e02d312eabcb8e624c08a7d86d70283d665d",
+              "32dd25c2f432d46396ab447b8808ea90e6aaf760f78cce194585ca7349924d7f",
+              "e7e51374edcbca8d376fbb899982feb9bf38200eac4584b793b19d9c54c990c3"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "43a2d17e618cd65ac1979953ce32fdd0a05d76408ef250e9a2a76bca06b1cd0d",
+              "ec7c51e45b90166f440688acc05edadb8cb8765dc76a733537e29f7e8d448bdb",
+              "4b5a9e25adf208657ec7bc16aa530c547f953d48b13e1f9fb5c3ba2225f4c889",
+              "76b1df24050e27610ad0168f95068a2439aee6d4c959e1a968f492111f6c71f1"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "MGR cyborg Raiden, white spiky hair, black/gray cybernetic body and tactical visor, real HF katana/scabbard; non-graphic authored Zandatsu. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "otacon",
+      "heroId": "otacon",
+      "universe": "Metal Gear",
+      "name": "Otacon",
+      "sheet": "/sprites/generated/combat-character-animations-wave6/otacon.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "63155b329429d680734f625443ae088070eb4ae27c97a8e597522444e37e2ac4",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+      "sourceImageSha256": "a135765ec14b712757a08fad272827ef5041cb19149c2ced9bcbc7250c0759fc",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/otacon.png",
+      "referenceAssetSha256": "6208c681a245ddc2a02cd0b8a07b3163b0d7b2bcadd4bdf1c7ae409b7bcb24ca",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-references/otacon.png",
+      "sourceWork": "Metal Gear Solid support scientist / project Philanthropy command adaptation",
+      "sourceReference": "src/game/loreAccuratePacks.js#otacon; local scientist bitmap and effective parent-corrected support kit. Philanthropy Upload is a project command/terminal support adaptation, not an offensive canonical laser or a source-exact MGS1 power.",
+      "abilityName": "Philanthropy Upload",
+      "characterVersion": "Hal Otacon Emmerich, adult scientist from local lab-coat reference: brown hair, glasses, pale lab coat, dark shirt/trousers and portable terminal; support only.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+            "sourceImageSha256": "a135765ec14b712757a08fad272827ef5041cb19149c2ced9bcbc7250c0759fc",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 242
+            },
+            "scale": 1.008695652173913,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 61,
+                  "top": 11,
+                  "width": 148,
+                  "height": 222,
+                  "pixels": 19076
+                },
+                "output": {
+                  "left": 78,
+                  "top": 12,
+                  "width": 149,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 275,
+                  "top": 11,
+                  "width": 144,
+                  "height": 222,
+                  "pixels": 19251
+                },
+                "output": {
+                  "left": 70,
+                  "top": 12,
+                  "width": 145,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 493,
+                  "top": 11,
+                  "width": 119,
+                  "height": 230,
+                  "pixels": 18339
+                },
+                "output": {
+                  "left": 66,
+                  "top": 12,
+                  "width": 120,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 709,
+                  "top": 11,
+                  "width": 143,
+                  "height": 222,
+                  "pixels": 19139
+                },
+                "output": {
+                  "left": 60,
+                  "top": 12,
+                  "width": 144,
+                  "height": 224
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+            "sourceImageSha256": "a135765ec14b712757a08fad272827ef5041cb19149c2ced9bcbc7250c0759fc",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 235,
+              "bottom": 457
+            },
+            "scale": 1.0740740740740742,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 66,
+                  "top": 8,
+                  "width": 145,
+                  "height": 208,
+                  "pixels": 17990
+                },
+                "output": {
+                  "left": 80,
+                  "top": 18,
+                  "width": 156,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 274,
+                  "top": 8,
+                  "width": 114,
+                  "height": 208,
+                  "pixels": 17349
+                },
+                "output": {
+                  "left": 65,
+                  "top": 18,
+                  "width": 122,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 489,
+                  "top": 2,
+                  "width": 111,
+                  "height": 216,
+                  "pixels": 17084
+                },
+                "output": {
+                  "left": 58,
+                  "top": 12,
+                  "width": 119,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 6,
+                  "width": 150,
+                  "height": 210,
+                  "pixels": 16938
+                },
+                "output": {
+                  "left": 43,
+                  "top": 16,
+                  "width": 161,
+                  "height": 226
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+            "sourceImageSha256": "a135765ec14b712757a08fad272827ef5041cb19149c2ced9bcbc7250c0759fc",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 448,
+              "bottom": 688
+            },
+            "scale": 0.9789029535864979,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 61,
+                  "top": 1,
+                  "width": 141,
+                  "height": 226,
+                  "pixels": 19622
+                },
+                "output": {
+                  "left": 79,
+                  "top": 12,
+                  "width": 138,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 268,
+                  "top": 1,
+                  "width": 133,
+                  "height": 227,
+                  "pixels": 19744
+                },
+                "output": {
+                  "left": 65,
+                  "top": 12,
+                  "width": 130,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 483,
+                  "top": 3,
+                  "width": 138,
+                  "height": 227,
+                  "pixels": 19805
+                },
+                "output": {
+                  "left": 58,
+                  "top": 14,
+                  "width": 135,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 700,
+                  "top": 11,
+                  "width": 153,
+                  "height": 227,
+                  "pixels": 19845
+                },
+                "output": {
+                  "left": 53,
+                  "top": 22,
+                  "width": 150,
+                  "height": 222
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+            "sourceImageSha256": "a135765ec14b712757a08fad272827ef5041cb19149c2ced9bcbc7250c0759fc",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 671,
+              "bottom": 892
+            },
+            "scale": 1.0740740740740742,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 53,
+                  "top": 0,
+                  "width": 139,
+                  "height": 216,
+                  "pixels": 18993
+                },
+                "output": {
+                  "left": 66,
+                  "top": 12,
+                  "width": 149,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 248,
+                  "top": 38,
+                  "width": 165,
+                  "height": 175,
+                  "pixels": 17944
+                },
+                "output": {
+                  "left": 37,
+                  "top": 53,
+                  "width": 177,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 467,
+                  "top": 14,
+                  "width": 150,
+                  "height": 201,
+                  "pixels": 20913
+                },
+                "output": {
+                  "left": 34,
+                  "top": 27,
+                  "width": 161,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 677,
+                  "top": 15,
+                  "width": 169,
+                  "height": 199,
+                  "pixels": 20087
+                },
+                "output": {
+                  "left": 22,
+                  "top": 28,
+                  "width": 182,
+                  "height": 214
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+            "sourceImageSha256": "a135765ec14b712757a08fad272827ef5041cb19149c2ced9bcbc7250c0759fc",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 887,
+              "bottom": 1120
+            },
+            "scale": 1.045045045045045,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 60,
+                  "top": 7,
+                  "width": 158,
+                  "height": 222,
+                  "pixels": 21242
+                },
+                "output": {
+                  "left": 75,
+                  "top": 12,
+                  "width": 165,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 262,
+                  "top": 9,
+                  "width": 171,
+                  "height": 220,
+                  "pixels": 21905
+                },
+                "output": {
+                  "left": 54,
+                  "top": 14,
+                  "width": 179,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 474,
+                  "top": 8,
+                  "width": 157,
+                  "height": 221,
+                  "pixels": 20670
+                },
+                "output": {
+                  "left": 44,
+                  "top": 13,
+                  "width": 164,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 676,
+                  "top": 8,
+                  "width": 178,
+                  "height": 221,
+                  "pixels": 21218
+                },
+                "output": {
+                  "left": 23,
+                  "top": 13,
+                  "width": 186,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+            "sourceImageSha256": "a135765ec14b712757a08fad272827ef5041cb19149c2ced9bcbc7250c0759fc",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1116,
+              "bottom": 1348
+            },
+            "scale": 1.0593607305936072,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 56,
+                  "top": 8,
+                  "width": 142,
+                  "height": 218,
+                  "pixels": 19663
+                },
+                "output": {
+                  "left": 70,
+                  "top": 12,
+                  "width": 150,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 268,
+                  "top": 8,
+                  "width": 134,
+                  "height": 219,
+                  "pixels": 19567
+                },
+                "output": {
+                  "left": 60,
+                  "top": 12,
+                  "width": 142,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 476,
+                  "top": 8,
+                  "width": 134,
+                  "height": 219,
+                  "pixels": 20007
+                },
+                "output": {
+                  "left": 45,
+                  "top": 12,
+                  "width": 142,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 8,
+                  "width": 148,
+                  "height": 219,
+                  "pixels": 20648
+                },
+                "output": {
+                  "left": 43,
+                  "top": 12,
+                  "width": 157,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+            "sourceImageSha256": "a135765ec14b712757a08fad272827ef5041cb19149c2ced9bcbc7250c0759fc",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1340,
+              "bottom": 1558
+            },
+            "scale": 0.9317269076305221,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 44,
+                  "top": 1,
+                  "width": 172,
+                  "height": 207,
+                  "pixels": 19375
+                },
+                "output": {
+                  "left": 66,
+                  "top": 43,
+                  "width": 160,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 253,
+                  "top": 45,
+                  "width": 172,
+                  "height": 161,
+                  "pixels": 18768
+                },
+                "output": {
+                  "left": 54,
+                  "top": 84,
+                  "width": 160,
+                  "height": 150
+                }
+              },
+              {
+                "source": {
+                  "left": 445,
+                  "top": 48,
+                  "width": 208,
+                  "height": 163,
+                  "pixels": 18178
+                },
+                "output": {
+                  "left": 26,
+                  "top": 87,
+                  "width": 194,
+                  "height": 152
+                }
+              },
+              {
+                "source": {
+                  "left": 652,
+                  "top": 114,
+                  "width": 213,
+                  "height": 103,
+                  "pixels": 14583
+                },
+                "output": {
+                  "left": 12,
+                  "top": 148,
+                  "width": 198,
+                  "height": 96
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+            "sourceImageSha256": "a135765ec14b712757a08fad272827ef5041cb19149c2ced9bcbc7250c0759fc",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1552,
+              "bottom": 1774
+            },
+            "scale": 1.0790697674418606,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 26,
+                  "top": 6,
+                  "width": 192,
+                  "height": 199,
+                  "pixels": 23811
+                },
+                "output": {
+                  "left": 36,
+                  "top": 26,
+                  "width": 207,
+                  "height": 215
+                }
+              },
+              {
+                "source": {
+                  "left": 263,
+                  "top": 6,
+                  "width": 168,
+                  "height": 198,
+                  "pixels": 19779
+                },
+                "output": {
+                  "left": 53,
+                  "top": 26,
+                  "width": 181,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 465,
+                  "top": 9,
+                  "width": 161,
+                  "height": 196,
+                  "pixels": 20307
+                },
+                "output": {
+                  "left": 32,
+                  "top": 29,
+                  "width": 174,
+                  "height": 211
+                }
+              },
+              {
+                "source": {
+                  "left": 677,
+                  "top": 2,
+                  "width": 154,
+                  "height": 206,
+                  "pixels": 19901
+                },
+                "output": {
+                  "left": 21,
+                  "top": 22,
+                  "width": 166,
+                  "height": 222
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "0fad89d49a7082192dc8c682b5acdad78ca10e21c44693a9c7fec53adff6b5bb",
+              "b76074a62170017ee3b70969c4bd71829d6d9db0ef91ef3a619a81ba085fda3b",
+              "98d740e2f375d5cfd74c2312ebb3490fedf6e4ea435b901f6c9b0b670a778641",
+              "6cea6bf543f7986a5faa3028ca3883df136715be61bc5e6f4a89fceb2b5783b4"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "17128f8a4151759aa2835d4bd790ef2eb7d50f1b8aa02d3cd5aab095fe8772e5",
+              "02b84a3db6e2ac9a36bcebbbffba984640bab665f9e518930d05316fb45963dd",
+              "a8e77eda8545fbf0a13879790cc9dc637c1c50d7ea169249a902221f09a2ddc3",
+              "ebe44b03a158a841e587439066b232d3e40a478b1c6312b5ad2b1e51c6abe7f1"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2334f14e98eea43280ba108cae0e60234134e633d959e440fb4df2dc83b9241d",
+              "2c7a132405074d6ed78666e4d46885b86bf54280d7d567e4ef8d6976809ac1e8",
+              "49b03ef7310a66ae9b55e4f5bbe44704f54368218fb0fbae1ba23ff3034a5096",
+              "1ed25468c8c4715d9814e7a213e9156ad10f342217a2e775d8f87eb88ee94bcb"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d2cc850304223378b79870ece782f4d52542d5669a1db3f33cd689f2e0caaf7c",
+              "3fcb2c7fe799be6fe0751f246f99609ea45d109a5d6ae0132193bf7a15b9be08",
+              "3b05dc457eb1f58473547409e3cef47f89c1eb9aa8d5d24dc033f46884870439",
+              "d39d61e73a08d6d8a382e9167f70720b559d6ee1b6857985503f631aaa5a2486"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f2109bb7b83ce5bf5c6306765f73f786312a9535a44cd2432379b13820d32dd8",
+              "a9c1aef28a32a42ffd2ad24ec977b21e47316c29f6191d6a8362c48504401073",
+              "c6aad6c2913945aa30664057060318009ff6fd7838a5c649ba4a9591740490a6",
+              "0ca1b7837eb4fcf0b6e4be7db1b5d768c2a4f373c934e26c558f4dedc5f54b2c"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c1c30f9e6672c32c09b6dc5542efae2efa655ac5df46cd9679fdab843c8e0e69",
+              "9b4b23c714382e3cd62e90c494831f11645a4d3f1dca2147f17483f5538b36c8",
+              "1f7b686178495ee9fa3e9d5f85bc2ed78f5982f8b333967fbba1b72a28ddb547",
+              "b9444a562fffadcee2cae9feab907076976d3552f4425dfbfe02322ab9cf9d81"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "db227d9a9268f2f77289114fbbeb7d2755d14613defe88e55982cbfccc973bb8",
+              "4d8c78db0c362e7dfef0f4afea84aa352564d5407c8ea7b315930ebd00ed2d81",
+              "525115d50c74786e67864f26d98d7dc09b59d776f8c6d2452d5c69e27b031880",
+              "a9734697d46ee594b110cef2648c29ed8b916c973453c4d02ddaf3338a5d9908"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4f3fc136022ff6408f621a0b322a4b462f3a85c789a5fbcb85e5eeed7da13fc7",
+              "28279f0d0836cd16ef3d9c80475851eba1c53f8a65c59fc17d1fe40a10b41b43",
+              "335b160b4114665a566258011944464ca7c1452bf2c3074dc99ed659da815933",
+              "9a9fe6de5130859ac96c8e751417998f4c862b71d20429422d1d72a53e9d03b5"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Hal Otacon Emmerich, adult scientist from local lab-coat reference: brown hair, glasses, pale lab coat, dark shirt/trousers and portable terminal; support only. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "joseph_joestar",
+      "heroId": "joseph_joestar",
+      "universe": "JoJo's Bizarre Adventure",
+      "name": "Joseph Joestar",
+      "sheet": "/sprites/generated/combat-character-animations-wave6/joseph_joestar.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "9e380d793f8f542c90434a195e30506422738b119e9ec1e8b10558491c7edea6",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+      "sourceImageSha256": "e29b928ff0067b0dff1ec9455a3553a2c87c2b5b95d9adbe6f6df634c906bf2b",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/jojo-s-bizarre-adventure/joseph-joestar.png",
+      "referenceAssetSha256": "03fdc956f1a85b180aa457a09b13a5b1574d7e7c1aac7135044c37c84cd701a5",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-references/joseph_joestar.png",
+      "sourceWork": "JoJo Stardust Crusaders (Part3)",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#joseph_joestar; https://jojowiki.com/Joseph_Joestar#Stardust_Crusaders and https://jojowiki.com/Hermit_Purple read2026-10-20 for age67/costume, thorny vine manifestation and Ripple conduction. New art remains unverified1:1.",
+      "abilityName": "Hermit Purple — Hamon",
+      "characterVersion": "Joseph aged67 in Stardust Crusaders: gray hair/beard, beige fedora and light short-sleeved shirt/khaki trousers/white gloves, purple thorny vine Stand with conducted Hamon. No young Part2 scarf.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+            "sourceImageSha256": "e29b928ff0067b0dff1ec9455a3553a2c87c2b5b95d9adbe6f6df634c906bf2b",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 235
+            },
+            "scale": 0.9508196721311475,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 42,
+                  "top": 7,
+                  "width": 151,
+                  "height": 219,
+                  "pixels": 18051
+                },
+                "output": {
+                  "left": 63,
+                  "top": 32,
+                  "width": 144,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 271,
+                  "top": 7,
+                  "width": 148,
+                  "height": 220,
+                  "pixels": 16235
+                },
+                "output": {
+                  "left": 69,
+                  "top": 32,
+                  "width": 141,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 502,
+                  "top": 6,
+                  "width": 174,
+                  "height": 221,
+                  "pixels": 18564
+                },
+                "output": {
+                  "left": 78,
+                  "top": 31,
+                  "width": 165,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 7,
+                  "width": 145,
+                  "height": 223,
+                  "pixels": 19071
+                },
+                "output": {
+                  "left": 67,
+                  "top": 32,
+                  "width": 138,
+                  "height": 212
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+            "sourceImageSha256": "e29b928ff0067b0dff1ec9455a3553a2c87c2b5b95d9adbe6f6df634c906bf2b",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 224,
+              "bottom": 454
+            },
+            "scale": 0.9707112970711297,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 44,
+                  "top": 1,
+                  "width": 186,
+                  "height": 227,
+                  "pixels": 19087
+                },
+                "output": {
+                  "left": 63,
+                  "top": 24,
+                  "width": 181,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 224,
+                  "top": 7,
+                  "width": 173,
+                  "height": 217,
+                  "pixels": 16258
+                },
+                "output": {
+                  "left": 23,
+                  "top": 29,
+                  "width": 168,
+                  "height": 211
+                }
+              },
+              {
+                "source": {
+                  "left": 500,
+                  "top": 8,
+                  "width": 110,
+                  "height": 219,
+                  "pixels": 15324
+                },
+                "output": {
+                  "left": 75,
+                  "top": 30,
+                  "width": 107,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 722,
+                  "top": 6,
+                  "width": 137,
+                  "height": 219,
+                  "pixels": 16218
+                },
+                "output": {
+                  "left": 75,
+                  "top": 29,
+                  "width": 133,
+                  "height": 213
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+            "sourceImageSha256": "e29b928ff0067b0dff1ec9455a3553a2c87c2b5b95d9adbe6f6df634c906bf2b",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 442,
+              "bottom": 684
+            },
+            "scale": 0.9666666666666667,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 7,
+                  "width": 175,
+                  "height": 234,
+                  "pixels": 21259
+                },
+                "output": {
+                  "left": 55,
+                  "top": 18,
+                  "width": 169,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 268,
+                  "top": 1,
+                  "width": 137,
+                  "height": 237,
+                  "pixels": 19741
+                },
+                "output": {
+                  "left": 66,
+                  "top": 12,
+                  "width": 132,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 468,
+                  "top": 9,
+                  "width": 185,
+                  "height": 227,
+                  "pixels": 18079
+                },
+                "output": {
+                  "left": 45,
+                  "top": 20,
+                  "width": 179,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 709,
+                  "top": 4,
+                  "width": 150,
+                  "height": 232,
+                  "pixels": 19044
+                },
+                "output": {
+                  "left": 63,
+                  "top": 15,
+                  "width": 145,
+                  "height": 224
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+            "sourceImageSha256": "e29b928ff0067b0dff1ec9455a3553a2c87c2b5b95d9adbe6f6df634c906bf2b",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 679,
+              "bottom": 897
+            },
+            "scale": 1.1047619047619048,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 2,
+                  "width": 161,
+                  "height": 206,
+                  "pixels": 17725
+                },
+                "output": {
+                  "left": 56,
+                  "top": 12,
+                  "width": 178,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 254,
+                  "top": 29,
+                  "width": 157,
+                  "height": 178,
+                  "pixels": 16435
+                },
+                "output": {
+                  "left": 41,
+                  "top": 42,
+                  "width": 173,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 470,
+                  "top": 66,
+                  "width": 158,
+                  "height": 146,
+                  "pixels": 15075
+                },
+                "output": {
+                  "left": 35,
+                  "top": 83,
+                  "width": 175,
+                  "height": 161
+                }
+              },
+              {
+                "source": {
+                  "left": 693,
+                  "top": 15,
+                  "width": 176,
+                  "height": 193,
+                  "pixels": 17026
+                },
+                "output": {
+                  "left": 36,
+                  "top": 26,
+                  "width": 194,
+                  "height": 213
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+            "sourceImageSha256": "e29b928ff0067b0dff1ec9455a3553a2c87c2b5b95d9adbe6f6df634c906bf2b",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 896,
+              "bottom": 1121
+            },
+            "scale": 0.8055555555555556,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 40,
+                  "top": 4,
+                  "width": 143,
+                  "height": 219,
+                  "pixels": 16741
+                },
+                "output": {
+                  "left": 71,
+                  "top": 68,
+                  "width": 115,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 238,
+                  "top": 7,
+                  "width": 236,
+                  "height": 211,
+                  "pixels": 21776
+                },
+                "output": {
+                  "left": 52,
+                  "top": 70,
+                  "width": 190,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 467,
+                  "top": 7,
+                  "width": 231,
+                  "height": 211,
+                  "pixels": 22326
+                },
+                "output": {
+                  "left": 58,
+                  "top": 70,
+                  "width": 186,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 6,
+                  "width": 170,
+                  "height": 214,
+                  "pixels": 17933
+                },
+                "output": {
+                  "left": 64,
+                  "top": 69,
+                  "width": 137,
+                  "height": 172
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.1816926834448336,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 3,
+              "referenceBodyHeight": 208,
+              "normalizedBodyHeight": 172,
+              "nativeReferenceBodyHeight": 219,
+              "nativeComparableBodyHeight": 214,
+              "referenceBodyBounds": [
+                63,
+                32,
+                144,
+                208
+              ],
+              "bodyBounds": [
+                64,
+                69,
+                137,
+                172
+              ],
+              "nativeReferenceBodyBounds": [
+                42,
+                7,
+                151,
+                219
+              ],
+              "nativeComparableBodyBounds": [
+                697,
+                902,
+                170,
+                214
+              ],
+              "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+              "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+              "formulaRenderScale": 1.1816926834448336,
+              "recommendCompensation": true,
+              "compensatedBodyHeightApprox": 203.25114155251137,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": false,
+              "reason": "Hat and upright torso are comparable; Hermit Purple/Hamon width reduces entire-row scale. Preserve the modest native stance flexion instead of forcing equal output heights.",
+              "recommendation": "Apply normalization compensation while preserving the native body projection.",
+              "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+            "sourceImageSha256": "e29b928ff0067b0dff1ec9455a3553a2c87c2b5b95d9adbe6f6df634c906bf2b",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1108,
+              "bottom": 1346
+            },
+            "scale": 0.9830508474576272,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 50,
+                  "top": 7,
+                  "width": 127,
+                  "height": 230,
+                  "pixels": 18751
+                },
+                "output": {
+                  "left": 68,
+                  "top": 18,
+                  "width": 125,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 275,
+                  "top": 1,
+                  "width": 142,
+                  "height": 231,
+                  "pixels": 19419
+                },
+                "output": {
+                  "left": 71,
+                  "top": 12,
+                  "width": 140,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 502,
+                  "top": 10,
+                  "width": 136,
+                  "height": 224,
+                  "pixels": 17501
+                },
+                "output": {
+                  "left": 77,
+                  "top": 21,
+                  "width": 134,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 702,
+                  "top": 8,
+                  "width": 159,
+                  "height": 226,
+                  "pixels": 16874
+                },
+                "output": {
+                  "left": 55,
+                  "top": 19,
+                  "width": 156,
+                  "height": 222
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+            "sourceImageSha256": "e29b928ff0067b0dff1ec9455a3553a2c87c2b5b95d9adbe6f6df634c906bf2b",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1335,
+              "bottom": 1551
+            },
+            "scale": 0.9586776859504132,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 26,
+                  "top": 1,
+                  "width": 174,
+                  "height": 197,
+                  "pixels": 16858
+                },
+                "output": {
+                  "left": 47,
+                  "top": 47,
+                  "width": 167,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 252,
+                  "top": 40,
+                  "width": 163,
+                  "height": 160,
+                  "pixels": 16769
+                },
+                "output": {
+                  "left": 51,
+                  "top": 84,
+                  "width": 156,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 435,
+                  "top": 56,
+                  "width": 240,
+                  "height": 151,
+                  "pixels": 16267
+                },
+                "output": {
+                  "left": 14,
+                  "top": 99,
+                  "width": 230,
+                  "height": 145
+                }
+              },
+              {
+                "source": {
+                  "left": 669,
+                  "top": 71,
+                  "width": 210,
+                  "height": 135,
+                  "pixels": 14327
+                },
+                "output": {
+                  "left": 25,
+                  "top": 114,
+                  "width": 201,
+                  "height": 129
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+            "sourceImageSha256": "e29b928ff0067b0dff1ec9455a3553a2c87c2b5b95d9adbe6f6df634c906bf2b",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1548,
+              "bottom": 1774
+            },
+            "scale": 0.8467153284671532,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 7,
+                  "width": 183,
+                  "height": 200,
+                  "pixels": 17456
+                },
+                "output": {
+                  "left": 54,
+                  "top": 74,
+                  "width": 155,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 230,
+                  "top": 6,
+                  "width": 236,
+                  "height": 201,
+                  "pixels": 19590
+                },
+                "output": {
+                  "left": 41,
+                  "top": 73,
+                  "width": 200,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 456,
+                  "top": 8,
+                  "width": 235,
+                  "height": 200,
+                  "pixels": 22845
+                },
+                "output": {
+                  "left": 45,
+                  "top": 75,
+                  "width": 199,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 700,
+                  "top": 8,
+                  "width": 164,
+                  "height": 199,
+                  "pixels": 16939
+                },
+                "output": {
+                  "left": 64,
+                  "top": 75,
+                  "width": 139,
+                  "height": 168
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.1250271798217004,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 3,
+              "referenceBodyHeight": 208,
+              "normalizedBodyHeight": 168,
+              "nativeReferenceBodyHeight": 219,
+              "nativeComparableBodyHeight": 199,
+              "referenceBodyBounds": [
+                63,
+                32,
+                144,
+                208
+              ],
+              "bodyBounds": [
+                64,
+                75,
+                139,
+                168
+              ],
+              "nativeReferenceBodyBounds": [
+                42,
+                7,
+                151,
+                219
+              ],
+              "nativeComparableBodyBounds": [
+                700,
+                1556,
+                164,
+                199
+              ],
+              "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+              "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+              "formulaRenderScale": 1.1250271798217004,
+              "recommendCompensation": true,
+              "compensatedBodyHeightApprox": 189.00456621004568,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": false,
+              "reason": "Hat and upright torso are comparable; Hermit Purple/Hamon width reduces entire-row scale. Preserve the modest native stance flexion instead of forcing equal output heights.",
+              "recommendation": "Apply normalization compensation while preserving the native body projection.",
+              "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2f702675c4639c9a131ee073abb562706f7a3e6752caf84bbd61e2d2ecf19adc",
+              "353ec7e453b1c84c7f5749077c19c9162e4f242b106dbc0a390c64a9961a30fc",
+              "51f7ed67299b3a8f64e35d0d9430c53ad3b23571bddad843a088004bd8a776dc",
+              "12c7ab79dd803ea79c39333f6f0f1c7717f4b07e983ad221f8f77042c0a8d045"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e8ff6594f634ac4caad2595745d2ce0b8a0987b4e6f26fbe67bf3a07e9a087df",
+              "cd5aedf6cadbd48ed76a45d6527aa340f7d1a5675979ea98af2467eb9ffe5d73",
+              "e01a99bd5ba64fc58f86a0a330f4240ec367b9866bb06e05bd896311261cd10c",
+              "065ed2cbf91e6a2ca680169845ab18eb56276f7283637b39d965913770b22a70"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d41edd775419fd0803e5421b858ba9294207a08085249bc42b59f37b8df71a61",
+              "3e06a7204b7513bdf452fae94e84fb7bc8a6da64b6c276934bfe1e4331a8f845",
+              "d5ba27983876dae37c67e302c1382a92e04dda16f317b830f3c6e393f94c5abd",
+              "b01990ffdb12e368ddb985524d5855e6a8b7c4453a6fa692de2f77fa3250e2e9"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c86246c23f688761a7542133e6422c9654c5a65882569c01d28f8dbb70ed1f9a",
+              "b508ade1d0b8476e151c1f391db4aa806ec26a9788c614b73730f0a9c4228c5f",
+              "942762d2790f249c47d1705595fb70d37239a6d0c8843101d5025faede835d24",
+              "3b09047e3745a5dbfdf6b918bedab776c54103bae9679a0a734d7fc2e6190f0b"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "55955939eb5589092b422726c7c00c5409aad83f0d7ae4172933b9ca0ad27e8d",
+              "909a534e469e73e6e3c61e03efb34ea8e4a879a3799b00978e1b7cfaff32012b",
+              "5f306e634919b64e9979cc711abb1349513c1a44bfebaa275e5acbcf45fde37a",
+              "7685a89d3346cd24d2ecb1b62a8ca9ef46e45cd484c0068d3e965602bd3aa133"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "cfde95afd42e98a1372552cff1f442b23157c787a300985cb6b871eca0dc4224",
+              "4863f7a447ae9d00092f1d59bb8cf749fc163b70a6600d6691c0cc238b18c686",
+              "c8218446a8fd0047252c2a75220e72a68dc794bc712109dc958450e813679113",
+              "80842709bc0aa8312f4866ac9f8c594ba262ed6250acbb15f1f894c0c01fc6e9"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "91b873dd0288d8543f4055ce01078989c8613285a2c7400ab91eed8d1247b6d3",
+              "6037e5fa52c252fd4abe21dbf9a1f48bfed98f8121c497db3e32fe4c928440da",
+              "6240a5663c172ae42f1afa536ac82203d3c13d293f0d9478cb402e08ac0ec6a5",
+              "3aa5525114d2d5bb56e90631b4935b7da7716f52f9c8b8eeb0ac46fabc27a08b"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8c49a7bf463677d6f1fc67000e8ed88b5162497889fd968300c2bd31236f8db0",
+              "95a429c8abb8bf50b0cde41b90d3edc59ff8db0163249152662c90f7c200cf23",
+              "cec6e7915c9c1fb8bef4bc4051381d7f16140de03a71076559f735861ad6de9c",
+              "695b5d6aeb0eab8c4672aa7fe402fe5a53857e47f15fa707574eefcf541da914"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Joseph aged67 in Stardust Crusaders: gray hair/beard, beige fedora and light short-sleeved shirt/khaki trousers/white gloves, purple thorny vine Stand with conducted Hamon. No young Part2 scarf. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "skullgirls_beowulf",
+      "heroId": "skullgirls_beowulf",
+      "universe": "Skullgirls",
+      "name": "Beowulf",
+      "sheet": "/sprites/generated/combat-character-animations-wave6/skullgirls_beowulf.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "3b53c4368db33a73fac3aa09b4178b52dfbfd88b90d9354907e106f7572830b0",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+      "sourceImageSha256": "343aca605d29d59d2ab2f33dffca547b890e865f545d4462f4b74f0845a4d78d",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/skullgirls/skullgirls-beowulf.png",
+      "referenceAssetSha256": "7623c562b3d319ec31d0913c279cddba0a5fe521918adc33b1e3ef2bb0b6f6e3",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-references/skullgirls_beowulf.png",
+      "sourceWork": "Skullgirls2ndEncore",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#skullgirls_beowulf and src/game/combatCanonExtensions.js#skullgirls_beowulf: TheHurting/HurtingHurl, single-target ThreeWulfMoonsault. Local old hunter-like outfit is not costume authority; official/wiki pages were blocked403, so no newly network-verified costume claim or official-frame fidelity.",
+      "abilityName": "Three Wulf Moonsault",
+      "characterVersion": "Beowulf the human professional wrestler, muscular build and wolf-pelt identity, physical folding-chair TheHurting; new wrestler costume supersedes old closed green hunter-coat depiction.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+            "sourceImageSha256": "343aca605d29d59d2ab2f33dffca547b890e865f545d4462f4b74f0845a4d78d",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 231
+            },
+            "scale": 1.008695652173913,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 28,
+                  "top": 8,
+                  "width": 170,
+                  "height": 216,
+                  "pixels": 21197
+                },
+                "output": {
+                  "left": 44,
+                  "top": 24,
+                  "width": 171,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 257,
+                  "top": 4,
+                  "width": 155,
+                  "height": 221,
+                  "pixels": 23356
+                },
+                "output": {
+                  "left": 52,
+                  "top": 20,
+                  "width": 156,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 454,
+                  "top": 21,
+                  "width": 215,
+                  "height": 204,
+                  "pixels": 21844
+                },
+                "output": {
+                  "left": 27,
+                  "top": 37,
+                  "width": 217,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 681,
+                  "top": 28,
+                  "width": 173,
+                  "height": 198,
+                  "pixels": 21903
+                },
+                "output": {
+                  "left": 32,
+                  "top": 44,
+                  "width": 175,
+                  "height": 200
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+            "sourceImageSha256": "343aca605d29d59d2ab2f33dffca547b890e865f545d4462f4b74f0845a4d78d",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 221,
+              "bottom": 451
+            },
+            "scale": 1.0497737556561086,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 24,
+                  "width": 184,
+                  "height": 194,
+                  "pixels": 21080
+                },
+                "output": {
+                  "left": 46,
+                  "top": 36,
+                  "width": 193,
+                  "height": 204
+                }
+              },
+              {
+                "source": {
+                  "left": 242,
+                  "top": 39,
+                  "width": 164,
+                  "height": 179,
+                  "pixels": 19114
+                },
+                "output": {
+                  "left": 33,
+                  "top": 52,
+                  "width": 172,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 467,
+                  "top": 1,
+                  "width": 157,
+                  "height": 221,
+                  "pixels": 20787
+                },
+                "output": {
+                  "left": 36,
+                  "top": 12,
+                  "width": 165,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 691,
+                  "top": 11,
+                  "width": 164,
+                  "height": 211,
+                  "pixels": 18048
+                },
+                "output": {
+                  "left": 39,
+                  "top": 22,
+                  "width": 172,
+                  "height": 222
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+            "sourceImageSha256": "343aca605d29d59d2ab2f33dffca547b890e865f545d4462f4b74f0845a4d78d",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 443,
+              "bottom": 686
+            },
+            "scale": 0.9872340425531915,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 25,
+                  "top": 5,
+                  "width": 165,
+                  "height": 227,
+                  "pixels": 24349
+                },
+                "output": {
+                  "left": 43,
+                  "top": 18,
+                  "width": 163,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 248,
+                  "top": 19,
+                  "width": 202,
+                  "height": 213,
+                  "pixels": 25085
+                },
+                "output": {
+                  "left": 44,
+                  "top": 32,
+                  "width": 199,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 451,
+                  "top": 12,
+                  "width": 181,
+                  "height": 222,
+                  "pixels": 24137
+                },
+                "output": {
+                  "left": 26,
+                  "top": 25,
+                  "width": 179,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 691,
+                  "top": 11,
+                  "width": 158,
+                  "height": 223,
+                  "pixels": 23140
+                },
+                "output": {
+                  "left": 44,
+                  "top": 24,
+                  "width": 156,
+                  "height": 220
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+            "sourceImageSha256": "343aca605d29d59d2ab2f33dffca547b890e865f545d4462f4b74f0845a4d78d",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 685,
+              "bottom": 892
+            },
+            "scale": 1.1153846153846154,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 18,
+                  "top": 25,
+                  "width": 186,
+                  "height": 175,
+                  "pixels": 22150
+                },
+                "output": {
+                  "left": 24,
+                  "top": 49,
+                  "width": 207,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 229,
+                  "top": 29,
+                  "width": 204,
+                  "height": 163,
+                  "pixels": 20835
+                },
+                "output": {
+                  "left": 12,
+                  "top": 53,
+                  "width": 228,
+                  "height": 182
+                }
+              },
+              {
+                "source": {
+                  "left": 471,
+                  "top": 38,
+                  "width": 167,
+                  "height": 161,
+                  "pixels": 18741
+                },
+                "output": {
+                  "left": 35,
+                  "top": 63,
+                  "width": 186,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 692,
+                  "top": 10,
+                  "width": 180,
+                  "height": 190,
+                  "pixels": 21221
+                },
+                "output": {
+                  "left": 34,
+                  "top": 32,
+                  "width": 201,
+                  "height": 212
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+            "sourceImageSha256": "343aca605d29d59d2ab2f33dffca547b890e865f545d4462f4b74f0845a4d78d",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 884,
+              "bottom": 1112
+            },
+            "scale": 0.9206349206349206,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 13,
+                  "top": 60,
+                  "width": 197,
+                  "height": 157,
+                  "pixels": 18864
+                },
+                "output": {
+                  "left": 38,
+                  "top": 99,
+                  "width": 181,
+                  "height": 145
+                }
+              },
+              {
+                "source": {
+                  "left": 225,
+                  "top": 4,
+                  "width": 202,
+                  "height": 203,
+                  "pixels": 21793
+                },
+                "output": {
+                  "left": 29,
+                  "top": 47,
+                  "width": 186,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 445,
+                  "top": 38,
+                  "width": 235,
+                  "height": 130,
+                  "pixels": 16771
+                },
+                "output": {
+                  "left": 27,
+                  "top": 78,
+                  "width": 216,
+                  "height": 120
+                }
+              },
+              {
+                "source": {
+                  "left": 677,
+                  "top": 64,
+                  "width": 197,
+                  "height": 154,
+                  "pixels": 19945
+                },
+                "output": {
+                  "left": 37,
+                  "top": 102,
+                  "width": 181,
+                  "height": 142
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0929253683017646,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 215,
+              "normalizedBodyHeight": 145,
+              "nativeReferenceBodyHeight": 213,
+              "nativeComparableBodyHeight": 157,
+              "referenceBodyBounds": [
+                72,
+                24,
+                143,
+                215
+              ],
+              "bodyBounds": [
+                38,
+                99,
+                181,
+                145
+              ],
+              "nativeReferenceBodyBounds": [
+                56,
+                8,
+                142,
+                213
+              ],
+              "nativeComparableBodyBounds": [
+                13,
+                944,
+                197,
+                157
+              ],
+              "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+              "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+              "formulaRenderScale": 1.0929253683017646,
+              "recommendCompensation": true,
+              "compensatedBodyHeightApprox": 158.47417840375587,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": true,
+              "reason": "The selected column0 is a low wrestling windup, not an upright body. Preserve source height157/150 versus213px reference body; do not equalize the145/136px normalized low poses to215px standing. Chair overhang is excluded from the reference body ROI.",
+              "recommendation": "Apply normalization compensation while preserving the native body projection.",
+              "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+            "sourceImageSha256": "343aca605d29d59d2ab2f33dffca547b890e865f545d4462f4b74f0845a4d78d",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1080,
+              "bottom": 1341
+            },
+            "scale": 0.9098039215686274,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 37,
+                  "top": 32,
+                  "width": 140,
+                  "height": 219,
+                  "pixels": 21301
+                },
+                "output": {
+                  "left": 61,
+                  "top": 40,
+                  "width": 127,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 244,
+                  "top": 1,
+                  "width": 167,
+                  "height": 255,
+                  "pixels": 23341
+                },
+                "output": {
+                  "left": 47,
+                  "top": 12,
+                  "width": 152,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 451,
+                  "top": 41,
+                  "width": 200,
+                  "height": 212,
+                  "pixels": 28449
+                },
+                "output": {
+                  "left": 34,
+                  "top": 48,
+                  "width": 182,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 701,
+                  "top": 32,
+                  "width": 164,
+                  "height": 219,
+                  "pixels": 23734
+                },
+                "output": {
+                  "left": 60,
+                  "top": 40,
+                  "width": 149,
+                  "height": 199
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+            "sourceImageSha256": "343aca605d29d59d2ab2f33dffca547b890e865f545d4462f4b74f0845a4d78d",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1335,
+              "bottom": 1552
+            },
+            "scale": 0.928,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 25,
+                  "top": 3,
+                  "width": 153,
+                  "height": 206,
+                  "pixels": 20479
+                },
+                "output": {
+                  "left": 48,
+                  "top": 53,
+                  "width": 142,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 229,
+                  "top": 46,
+                  "width": 201,
+                  "height": 162,
+                  "pixels": 20972
+                },
+                "output": {
+                  "left": 32,
+                  "top": 93,
+                  "width": 187,
+                  "height": 150
+                }
+              },
+              {
+                "source": {
+                  "left": 446,
+                  "top": 74,
+                  "width": 233,
+                  "height": 133,
+                  "pixels": 16480
+                },
+                "output": {
+                  "left": 27,
+                  "top": 119,
+                  "width": 216,
+                  "height": 123
+                }
+              },
+              {
+                "source": {
+                  "left": 679,
+                  "top": 71,
+                  "width": 208,
+                  "height": 133,
+                  "pixels": 14497
+                },
+                "output": {
+                  "left": 38,
+                  "top": 116,
+                  "width": 193,
+                  "height": 123
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+            "sourceImageSha256": "343aca605d29d59d2ab2f33dffca547b890e865f545d4462f4b74f0845a4d78d",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1542,
+              "bottom": 1774
+            },
+            "scale": 0.9098039215686274,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 5,
+                  "top": 71,
+                  "width": 211,
+                  "height": 150,
+                  "pixels": 20225
+                },
+                "output": {
+                  "left": 32,
+                  "top": 108,
+                  "width": 192,
+                  "height": 136
+                }
+              },
+              {
+                "source": {
+                  "left": 242,
+                  "top": 9,
+                  "width": 193,
+                  "height": 187,
+                  "pixels": 19356
+                },
+                "output": {
+                  "left": 46,
+                  "top": 51,
+                  "width": 176,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 427,
+                  "top": 41,
+                  "width": 247,
+                  "height": 173,
+                  "pixels": 25505
+                },
+                "output": {
+                  "left": 12,
+                  "top": 80,
+                  "width": 225,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 3,
+                  "width": 202,
+                  "height": 212,
+                  "pixels": 24120
+                },
+                "output": {
+                  "left": 31,
+                  "top": 46,
+                  "width": 184,
+                  "height": 193
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.1132974316487156,
+            "statureReview": {
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "sourceComparableColumn": 0,
+              "referenceBodyHeight": 215,
+              "normalizedBodyHeight": 136,
+              "nativeReferenceBodyHeight": 213,
+              "nativeComparableBodyHeight": 150,
+              "referenceBodyBounds": [
+                72,
+                24,
+                143,
+                215
+              ],
+              "bodyBounds": [
+                32,
+                108,
+                192,
+                136
+              ],
+              "nativeReferenceBodyBounds": [
+                56,
+                8,
+                142,
+                213
+              ],
+              "nativeComparableBodyBounds": [
+                5,
+                1613,
+                211,
+                150
+              ],
+              "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+              "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+              "formulaRenderScale": 1.1132974316487156,
+              "recommendCompensation": true,
+              "compensatedBodyHeightApprox": 151.40845070422532,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": true,
+              "reason": "The selected column0 is a low wrestling windup, not an upright body. Preserve source height157/150 versus213px reference body; do not equalize the145/136px normalized low poses to215px standing. Chair overhang is excluded from the reference body ROI.",
+              "recommendation": "Apply normalization compensation while preserving the native body projection.",
+              "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "147d18852e1d2731e9e0b034cd544e891c8bac5c06898f8ebd47cda9bf98d577",
+              "ca8d9198e4f26ceb0edd5d221c6a4482f7b05fcbf8f7089fa5ae4eb3e021beef",
+              "b1e61d098db8af8c10c0ce61751e4a3c380ee731d738e09a578ce693683c1f85",
+              "ed5512fb26eaaf72d0b233df9ddb38c7d25ad3da3338b22389f91f0d3bfa157d"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2472147527c73b8444634abc9d75a221be0a2c5566d8d9900db13bb0cd275f0c",
+              "62f0f6b4b8a9805579191f073f23f599ecfb4a3be28a342a21276d855a09dc07",
+              "7717a74bc179f3d508dc80e69e4f3f1327d7a805b58744e14a7c35983f2a8f80",
+              "9ee57d803b66b370e2c2297b15840e79d31b5c368006e827df0488637648699b"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "30a309e4cf76fec7c0e21cd79ba1e4d2794154c2113af44eb5955c11337cf305",
+              "f48725c2f600c0af6b4db53ee0379e21e7433ae5fd88678cb1ad030031f8734e",
+              "acc22bfd850c725dcd57eb440f574298df73d6bef10b64efd1a4e0282c94df5b",
+              "22a823485a15aa3f652a6bf7b2fcdb5064dee012c35c4cd7aa2cfc9b5c179031"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "268b89634263999ba45d1d7bd49540ed1edcbc132b3d3df80888dc6676c68348",
+              "7cf0f2d67af95a305b86cd05a08d436e1cdef7e4abf29cbb90b5f122ec852fb1",
+              "7317fc92a020bdd9bd5a674907e4c14188420ae86d1099a3d00fa8938b081f7b",
+              "073ac96c3b062af2dfdc61c5beb1e2966393a4d2ac147849124d67406d6a025d"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8f449ebba7fa9a2df424e2bdff2c6a5fefe1ddd205d7b90030bff1567056a923",
+              "cdc3e1ce344200275ecad26f3e18aeabae3c917d5cf25db3d146eb0b0682f241",
+              "82fc1c5d38c5a8ca1297bbeea0191b6248a2ccfcfaf807051043eaa475c86412",
+              "7335ef8455afd5c2ba2847cd22131dc8a66814ff17c80ebd778cb0837f185363"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "59eedf88acd0e6984717e900e71b178f717239c1aba5c987d2dcd7df0e97bee4",
+              "d29f135f9919b9a34fcac5f5ccf88c02ec6740c9353a07ec7433ca915c5355a3",
+              "dc28b6f82eb37586d3d6bbeb111b972f71acb62eaedd3a9ed40a9629d2d1b39b",
+              "3c34f3b3082119789364f7e71f46cee41d3985b0ce8ea03232032364321fa319"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ce8a700e21b6214d2cee2ed275b912a366c182c5423039b16f5ae59c11e73d21",
+              "dba248d6f851a39184163cf7a185dae4d0dd2bfa86b5ad9a331b4d133a4dfd64",
+              "797ec7b2116dac8f31862a75f8a7f0d41e9074d2e71f26ee5c7ff86e6c1319e9",
+              "f9dd0a2508da1e3840947b28e098d989d91efb9eb6a8acb29042edafd03d660a"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4d7f2caa965a6d7945a04c2e391b03a59a9fa7c7f6491012d2f4aa5b9285c24e",
+              "09f480a3d268c92e68eeae5feca0ab3c5b4c90bcee7e287c6aa17843036c7d04",
+              "aa61a89a6dba88fc334f3b2b648af974bed4388485fd169c6a5a7939c27b2266",
+              "b39af85acfee25294ba0f74a05b9e9537012cba53ac6362ed698d8fd1d6fcb6b"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Beowulf the human professional wrestler, muscular build and wolf-pelt identity, physical folding-chair TheHurting; new wrestler costume supersedes old closed green hunter-coat depiction. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    }
+  ]
+}

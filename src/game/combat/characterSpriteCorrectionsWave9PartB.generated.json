@@ -1,0 +1,3211 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "shepard",
+      "heroId": "shepard",
+      "universe": "Mass Effect",
+      "name": "Commander Shepard",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/shepard.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "90f7e39c957e58146786b0550bb8dd156689401eeffd3ebae9d63ad064bc88ba",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/shepard-original.png",
+      "sourceImageSha256": "910f6daefacb434cb9f026f10a6c855a03ec8a0a7d4ec359256fbe29323604ec",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/mass-effect/shepard.png",
+      "referenceAssetSha256": "e155443a184d70fa252ca87811f081ea4747cb8342a5b4303a16352e684dceb6",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-references/shepard-old-base.png",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-references/shepard.png",
+          "sha256": "d1131197f8ea48f0073090fb5923513f180126c330051da510cc0546ee32b327"
+        }
+      ],
+      "sourceWork": "Mass Effect 2 (2010), default male Soldier Shepard",
+      "sourceReference": "ME2 Soldier has Adrenaline Rush and Concussive Shot and can use the M-8 Avenger assault rifle. Adrenaline Rush is adapted to a short bounded personal attack buff; the global simulation clock is unchanged. Concussive Shot is the ordinary single-target combat shot, not the optional Concussive Blast area evolution. Cover is personal physical protection. No ME3 omni-blade, Adept Singularity, Sentinel Tech Armor, Mako attack or inherited caller class power.",
+      "sourceUrl": "https://guides.gamercorner.net/me2/classes/soldier",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave9-2026-10-22/part-b-source-facts.json"
+      ],
+      "abilityName": "Tir du M-8 Avenger",
+      "characterVersion": "Mass Effect 2 (2010), default male Soldier Shepard",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "sourceWideBodyCalibration": {
+          "method": "single-source-wide-body-scale",
+          "calibrationTargetBodyHeight": 190,
+          "referenceState": "idle",
+          "referenceCell": 0,
+          "referenceBodyBounds": [
+            64,
+            14,
+            137,
+            228
+          ],
+          "referenceNormalizedBodyHeight": 228,
+          "referencePackingScale": 0.7116564417177914,
+          "nativeReferenceBodyHeight": 320.37931034482756,
+          "sourceWideRenderPixelsPerNativePixel": 0.5930470347648262,
+          "sourceDensityRatio": 1,
+          "bodyOnlyRoi": true,
+          "preservesNativePoseHeightRatio": true,
+          "normalizationNeverRedrawsBody": true,
+          "referenceAtlasDensityComparison": {
+            "presentationNativeWidth": 887,
+            "basicNativeWidth": 1254,
+            "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+            "note": "Raster width ratio explicitly retained; one independent standing-body calibration per native source, never per-row anatomical equalization."
+          }
+        },
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/shepard-original.png",
+            "sourceImageSha256": "910f6daefacb434cb9f026f10a6c855a03ec8a0a7d4ec359256fbe29323604ec",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 348
+            },
+            "scale": 0.7116564417177914,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 63,
+                  "top": 13,
+                  "width": 198,
+                  "height": 326,
+                  "pixels": 36086
+                },
+                "output": {
+                  "left": 61,
+                  "top": 12,
+                  "width": 141,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 373,
+                  "top": 34,
+                  "width": 217,
+                  "height": 305,
+                  "pixels": 36036
+                },
+                "output": {
+                  "left": 59,
+                  "top": 27,
+                  "width": 154,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 21,
+                  "width": 205,
+                  "height": 318,
+                  "pixels": 36828
+                },
+                "output": {
+                  "left": 66,
+                  "top": 18,
+                  "width": 146,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 997,
+                  "top": 37,
+                  "width": 213,
+                  "height": 302,
+                  "pixels": 35150
+                },
+                "output": {
+                  "left": 57,
+                  "top": 29,
+                  "width": 152,
+                  "height": 215
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.8333333333333334,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                64,
+                14,
+                137,
+                228
+              ],
+              "normalizedBodyHeight": 228,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                64,
+                14,
+                137,
+                228
+              ],
+              "referenceBodyHeight": 228,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8333333333333334,
+              "nativeComparableBodyHeight": 320.37931034482756,
+              "nativeReferenceBodyHeight": 320.37931034482756,
+              "nativeBodyBounds": [
+                67.21551724137932,
+                15.810344827586206,
+                192.50862068965517,
+                320.37931034482756
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                67.21551724137932,
+                15.810344827586206,
+                192.50862068965517,
+                320.37931034482756
+              ]
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/shepard-original.png",
+            "sourceImageSha256": "910f6daefacb434cb9f026f10a6c855a03ec8a0a7d4ec359256fbe29323604ec",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 347,
+              "bottom": 664
+            },
+            "scale": 0.7388535031847133,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 13,
+                  "width": 271,
+                  "height": 296,
+                  "pixels": 34837
+                },
+                "output": {
+                  "left": 29,
+                  "top": 25,
+                  "width": 200,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 355,
+                  "top": 11,
+                  "width": 272,
+                  "height": 276,
+                  "pixels": 31657
+                },
+                "output": {
+                  "left": 43,
+                  "top": 23,
+                  "width": 201,
+                  "height": 204
+                }
+              },
+              {
+                "source": {
+                  "left": 671,
+                  "top": 11,
+                  "width": 260,
+                  "height": 299,
+                  "pixels": 34923
+                },
+                "output": {
+                  "left": 45,
+                  "top": 23,
+                  "width": 192,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 991,
+                  "top": 20,
+                  "width": 246,
+                  "height": 289,
+                  "pixels": 30759
+                },
+                "output": {
+                  "left": 49,
+                  "top": 30,
+                  "width": 182,
+                  "height": 214
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.8026584867075666,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                30,
+                28,
+                197,
+                214
+              ],
+              "normalizedBodyHeight": 214,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                64,
+                14,
+                137,
+                228
+              ],
+              "referenceBodyHeight": 228,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8333333333333334,
+              "nativeComparableBodyHeight": 289.6379310344828,
+              "nativeReferenceBodyHeight": 320.37931034482756,
+              "nativeBodyBounds": [
+                24.353448275862068,
+                17.060344827586206,
+                266.6293103448276,
+                289.6379310344828
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                67.21551724137932,
+                15.810344827586206,
+                192.50862068965517,
+                320.37931034482756
+              ]
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/shepard-original.png",
+            "sourceImageSha256": "910f6daefacb434cb9f026f10a6c855a03ec8a0a7d4ec359256fbe29323604ec",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 661,
+              "bottom": 971
+            },
+            "scale": 0.5903307888040712,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 26,
+                  "top": 6,
+                  "width": 263,
+                  "height": 298,
+                  "pixels": 36984
+                },
+                "output": {
+                  "left": 51,
+                  "top": 67,
+                  "width": 155,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 348,
+                  "top": 16,
+                  "width": 268,
+                  "height": 287,
+                  "pixels": 36978
+                },
+                "output": {
+                  "left": 56,
+                  "top": 73,
+                  "width": 158,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 662,
+                  "top": 12,
+                  "width": 318,
+                  "height": 293,
+                  "pixels": 42010
+                },
+                "output": {
+                  "left": 56,
+                  "top": 71,
+                  "width": 188,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 979,
+                  "top": 17,
+                  "width": 246,
+                  "height": 288,
+                  "pixels": 34087
+                },
+                "output": {
+                  "left": 58,
+                  "top": 74,
+                  "width": 145,
+                  "height": 170
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0046012269938651,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                53,
+                69,
+                153,
+                172
+              ],
+              "normalizedBodyHeight": 172,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                64,
+                14,
+                137,
+                228
+              ],
+              "referenceBodyHeight": 228,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8333333333333334,
+              "nativeComparableBodyHeight": 291.36206896551727,
+              "nativeReferenceBodyHeight": 320.37931034482756,
+              "nativeBodyBounds": [
+                29.387931034482758,
+                9.387931034482758,
+                259.17672413793105,
+                291.36206896551727
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                67.21551724137932,
+                15.810344827586206,
+                192.50862068965517,
+                320.37931034482756
+              ]
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/shepard-original.png",
+            "sourceImageSha256": "910f6daefacb434cb9f026f10a6c855a03ec8a0a7d4ec359256fbe29323604ec",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 969,
+              "bottom": 1254
+            },
+            "scale": 0.7508090614886731,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 7,
+                  "width": 244,
+                  "height": 271,
+                  "pixels": 33981
+                },
+                "output": {
+                  "left": 37,
+                  "top": 35,
+                  "width": 183,
+                  "height": 203
+                }
+              },
+              {
+                "source": {
+                  "left": 360,
+                  "top": 10,
+                  "width": 257,
+                  "height": 268,
+                  "pixels": 34933
+                },
+                "output": {
+                  "left": 45,
+                  "top": 38,
+                  "width": 193,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 675,
+                  "top": 62,
+                  "width": 263,
+                  "height": 223,
+                  "pixels": 32664
+                },
+                "output": {
+                  "left": 46,
+                  "top": 77,
+                  "width": 197,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 987,
+                  "top": 76,
+                  "width": 252,
+                  "height": 209,
+                  "pixels": 30755
+                },
+                "output": {
+                  "left": 45,
+                  "top": 87,
+                  "width": 189,
+                  "height": 157
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.789877300613497,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                42,
+                36,
+                176,
+                200
+              ],
+              "normalizedBodyHeight": 200,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                64,
+                14,
+                137,
+                228
+              ],
+              "referenceBodyHeight": 228,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8333333333333334,
+              "nativeComparableBodyHeight": 266.3793103448276,
+              "nativeReferenceBodyHeight": 320.37931034482756,
+              "nativeBodyBounds": [
+                41.65948275862069,
+                8.331896551724139,
+                234.41379310344828,
+                266.3793103448276
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                67.21551724137932,
+                15.810344827586206,
+                192.50862068965517,
+                320.37931034482756
+              ]
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8253c58b196bce6561a92fb4b63b9646d32c7672f7586a08a331d6b89fc2012e",
+              "c262a725fccd9455dcee933734d5c9050432377771a2e70bdf80b5fc9aac4dee",
+              "f18f4fd70c62e3c3671283020dbd30683dd5661533067b73d7ec5d2bf8850d71",
+              "aa0331c82c758f559ae0b5484c7e31bc46a038d2fca73c3e0fc6c13f6f43ad28"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "3fdf7d1902c9784040345ea3510bf68e9dddc62b9bd81e99cf5dd92d34128191",
+              "53cc6d7ad35971d0c057159a4f4371ad2728e7219a623ecc037c0499de40e33a",
+              "05d40a1312d013c5007748b3cb26f9aaec30bcf392eead139dfca1c65e552619",
+              "f58acb150b7ab302f97ffbb86137fca5f576456bad18356c9cfbb9445b30ab2c"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fbb8411e9cf96b395138a9bb978ab334fabe0e76124a27b275ee039937dd1ffb",
+              "6ffb2c8aba9f2c9170702964e25fbaf356a35d74821a0e3c14a6f613e05dceb2",
+              "d4f663c9c6b5586b36ae9295bcddedebd5373823a453431b9ef3c672cfa344d0",
+              "a0ab1375abc33c68b7681e35357b890f182e8de05a703100e0fd671734086ecb"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "10f4eedf9e40e7dc9ab84dc4db89717fae0491ac00e61cb809309ac91f373d17",
+              "ff0b4ab2b2db7a315dc0b9c20964aa51078be8a5455ec22c749245c41901c0d6",
+              "14b3dd108a4e5136c8d60983e52cb9e0d7da790ee8ea13edb6e6cec35e17c94a",
+              "144d73123cb2fd030a8dc0f5eaf1afd86397bf0677739ce859f0760bc8fec564"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Mass Effect 2 (2010), default male Soldier Shepard Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "garrus",
+      "heroId": "garrus",
+      "universe": "Mass Effect",
+      "name": "Garrus Vakarian",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/garrus.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "a088ac9a27421c0ace756122bcb414216b9f77a379258f9c402248cfde579607",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/garrus-original.png",
+      "sourceImageSha256": "a2f8592dfb71fac06910323fedbaa11f7f958814fb5f8d5bcf9d54c66af99c91",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/mass-effect/garrus.png",
+      "referenceAssetSha256": "a38b33304543f340e9e94524d5c5eb5d27f914cc13d8deeb7aeb452502888cbb",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-references/garrus-old-base.png",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-references/garrus.png",
+          "sha256": "fc7279961c44a56e01e254c662c6a68bee62e09d9eb252158e39b61f50fc2e32"
+        }
+      ],
+      "sourceWork": "Mass Effect 2 (2010), scarred Garrus after Archangel recruitment",
+      "sourceReference": "ME2 Garrus uses assault and sniper rifles. His powers are Concussive Shot, Overload, Turian Rebel and loyalty Armor-Piercing Ammo. The selected super is the ordinary single-target Concussive Shot from his weapon, not an invented Killbox or a proximity mine. Overload is his real tech attack, adapted to one electrical impact without changing its identity to biotics. Personal cover does not grant an allied shield.",
+      "sourceUrl": "https://guides.gamercorner.net/me2/party-members/garrus",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave9-2026-10-22/part-b-source-facts.json"
+      ],
+      "abilityName": "Tir de précision de Garrus",
+      "characterVersion": "Mass Effect 2 (2010), scarred Garrus after Archangel recruitment",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "sourceWideBodyCalibration": {
+          "method": "single-source-wide-body-scale",
+          "calibrationTargetBodyHeight": 190,
+          "referenceState": "idle",
+          "referenceCell": 0,
+          "referenceBodyBounds": [
+            51,
+            15,
+            168,
+            225
+          ],
+          "referenceNormalizedBodyHeight": 225,
+          "referencePackingScale": 0.7138461538461538,
+          "nativeReferenceBodyHeight": 315.1939655172414,
+          "sourceWideRenderPixelsPerNativePixel": 0.6028034188034188,
+          "sourceDensityRatio": 1,
+          "bodyOnlyRoi": true,
+          "preservesNativePoseHeightRatio": true,
+          "normalizationNeverRedrawsBody": true,
+          "referenceAtlasDensityComparison": {
+            "presentationNativeWidth": 887,
+            "basicNativeWidth": 1254,
+            "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+            "note": "Raster width ratio explicitly retained; one independent standing-body calibration per native source, never per-row anatomical equalization."
+          }
+        },
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/garrus-original.png",
+            "sourceImageSha256": "a2f8592dfb71fac06910323fedbaa11f7f958814fb5f8d5bcf9d54c66af99c91",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 359
+            },
+            "scale": 0.7138461538461538,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 47,
+                  "top": 22,
+                  "width": 239,
+                  "height": 324,
+                  "pixels": 37153
+                },
+                "output": {
+                  "left": 50,
+                  "top": 12,
+                  "width": 171,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 373,
+                  "top": 29,
+                  "width": 243,
+                  "height": 318,
+                  "pixels": 37174
+                },
+                "output": {
+                  "left": 59,
+                  "top": 17,
+                  "width": 173,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 673,
+                  "top": 39,
+                  "width": 239,
+                  "height": 307,
+                  "pixels": 36842
+                },
+                "output": {
+                  "left": 49,
+                  "top": 24,
+                  "width": 171,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 997,
+                  "top": 38,
+                  "width": 252,
+                  "height": 308,
+                  "pixels": 37400
+                },
+                "output": {
+                  "left": 56,
+                  "top": 23,
+                  "width": 180,
+                  "height": 220
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.8444444444444446,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                51,
+                15,
+                168,
+                225
+              ],
+              "normalizedBodyHeight": 225,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                51,
+                15,
+                168,
+                225
+              ],
+              "referenceBodyHeight": 225,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8444444444444444,
+              "nativeComparableBodyHeight": 315.1939655172414,
+              "nativeReferenceBodyHeight": 315.1939655172414,
+              "nativeBodyBounds": [
+                48.400862068965516,
+                26.20258620689655,
+                235.34482758620692,
+                315.1939655172414
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                48.400862068965516,
+                26.20258620689655,
+                235.34482758620692,
+                315.1939655172414
+              ]
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/garrus-original.png",
+            "sourceImageSha256": "a2f8592dfb71fac06910323fedbaa11f7f958814fb5f8d5bcf9d54c66af99c91",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 358,
+              "bottom": 674
+            },
+            "scale": 0.6373626373626373,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 31,
+                  "top": 14,
+                  "width": 306,
+                  "height": 289,
+                  "pixels": 35607
+                },
+                "output": {
+                  "left": 48,
+                  "top": 60,
+                  "width": 195,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 336,
+                  "top": 14,
+                  "width": 316,
+                  "height": 273,
+                  "pixels": 31990
+                },
+                "output": {
+                  "left": 42,
+                  "top": 60,
+                  "width": 201,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 660,
+                  "top": 29,
+                  "width": 297,
+                  "height": 274,
+                  "pixels": 33485
+                },
+                "output": {
+                  "left": 49,
+                  "top": 69,
+                  "width": 189,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 950,
+                  "top": 29,
+                  "width": 304,
+                  "height": 274,
+                  "pixels": 32479
+                },
+                "output": {
+                  "left": 34,
+                  "top": 69,
+                  "width": 194,
+                  "height": 175
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.9457777777777778,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                50,
+                62,
+                192,
+                181
+              ],
+              "normalizedBodyHeight": 181,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                51,
+                15,
+                168,
+                225
+              ],
+              "referenceBodyHeight": 225,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8444444444444444,
+              "nativeComparableBodyHeight": 283.98275862068965,
+              "nativeReferenceBodyHeight": 315.1939655172414,
+              "nativeBodyBounds": [
+                34.13793103448276,
+                17.137931034482758,
+                301.2413793103448,
+                283.98275862068965
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                48.400862068965516,
+                26.20258620689655,
+                235.34482758620692,
+                315.1939655172414
+              ]
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/garrus-original.png",
+            "sourceImageSha256": "a2f8592dfb71fac06910323fedbaa11f7f958814fb5f8d5bcf9d54c66af99c91",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 671,
+              "bottom": 968
+            },
+            "scale": 0.5284738041002278,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 9,
+                  "top": 10,
+                  "width": 321,
+                  "height": 279,
+                  "pixels": 36591
+                },
+                "output": {
+                  "left": 50,
+                  "top": 96,
+                  "width": 170,
+                  "height": 147
+                }
+              },
+              {
+                "source": {
+                  "left": 325,
+                  "top": 27,
+                  "width": 296,
+                  "height": 263,
+                  "pixels": 33764
+                },
+                "output": {
+                  "left": 51,
+                  "top": 105,
+                  "width": 156,
+                  "height": 139
+                }
+              },
+              {
+                "source": {
+                  "left": 656,
+                  "top": 26,
+                  "width": 347,
+                  "height": 261,
+                  "pixels": 40894
+                },
+                "output": {
+                  "left": 60,
+                  "top": 104,
+                  "width": 183,
+                  "height": 138
+                }
+              },
+              {
+                "source": {
+                  "left": 970,
+                  "top": 30,
+                  "width": 274,
+                  "height": 257,
+                  "pixels": 33561
+                },
+                "output": {
+                  "left": 61,
+                  "top": 107,
+                  "width": 145,
+                  "height": 136
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.1406495726495727,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                52,
+                98,
+                167,
+                142
+              ],
+              "normalizedBodyHeight": 142,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                51,
+                15,
+                168,
+                225
+              ],
+              "referenceBodyHeight": 225,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8444444444444444,
+              "nativeComparableBodyHeight": 268.69827586206895,
+              "nativeReferenceBodyHeight": 315.1939655172414,
+              "nativeBodyBounds": [
+                12.78448275862069,
+                13.78448275862069,
+                316.00431034482756,
+                268.69827586206895
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                48.400862068965516,
+                26.20258620689655,
+                235.34482758620692,
+                315.1939655172414
+              ]
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/garrus-original.png",
+            "sourceImageSha256": "a2f8592dfb71fac06910323fedbaa11f7f958814fb5f8d5bcf9d54c66af99c91",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 961,
+              "bottom": 1254
+            },
+            "scale": 0.7682119205298014,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 7,
+                  "width": 265,
+                  "height": 271,
+                  "pixels": 36028
+                },
+                "output": {
+                  "left": 34,
+                  "top": 35,
+                  "width": 204,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 347,
+                  "top": 11,
+                  "width": 274,
+                  "height": 267,
+                  "pixels": 37746
+                },
+                "output": {
+                  "left": 33,
+                  "top": 38,
+                  "width": 210,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 671,
+                  "top": 56,
+                  "width": 260,
+                  "height": 220,
+                  "pixels": 33247
+                },
+                "output": {
+                  "left": 41,
+                  "top": 73,
+                  "width": 200,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 982,
+                  "top": 66,
+                  "width": 259,
+                  "height": 213,
+                  "pixels": 32821
+                },
+                "output": {
+                  "left": 39,
+                  "top": 80,
+                  "width": 199,
+                  "height": 164
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.7846837606837607,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                37,
+                39,
+                198,
+                203
+              ],
+              "normalizedBodyHeight": 203,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                51,
+                15,
+                168,
+                225
+              ],
+              "referenceBodyHeight": 225,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8444444444444444,
+              "nativeComparableBodyHeight": 264.25,
+              "nativeReferenceBodyHeight": 315.1939655172414,
+              "nativeBodyBounds": [
+                38.9051724137931,
+                12.206896551724139,
+                257.7413793103448,
+                264.25
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                48.400862068965516,
+                26.20258620689655,
+                235.34482758620692,
+                315.1939655172414
+              ]
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2fa610d25447a8997dd432f2587b0970d1ed8308b619a7fdc2e4d6ca0a8b8ae0",
+              "9f3307ce55e13de8476f42df9efa40f9f00201b0aa1fe7aeb067c40a437bb942",
+              "b0f44baaba3b2890b3708570f939493a875de04472fe2609381c3a9159e1f025",
+              "58c03633c3f95ed24eb273efb832125008f7ed88c6c040e113dbddca6e5852b5"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fc28e191ec2312b116cbaaf9d70f9eb548d64116ff347abf86eafc25fde0528f",
+              "10a557bd2e167413de200656a03bde97777a74a74f1cbf2d12f0eccc1e0db0f6",
+              "3d505215699ee77de43504038d3db6eb72986815d6e4470a0771cb0c6b9f9c75",
+              "d6ea216fac356f9c0f8c0b6406d9a3db5cca272428aecbe8c5886f3ac561a24c"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c6b5dc9d72df1f88cac8a2f086aec62fed4ad5d65a29795b4dcf6e76cfd67db9",
+              "670569d2e4a83fa3e7e12061aaa8511d80d87efe6bdc827eb2b556a68a04db05",
+              "a4ffd68c415abe0517213acb25a0c9e65c875750198a5a120e8ebf286ec2d534",
+              "339c8e8abd286176de297b9a0ab86548cf85baa0deb9ca07618b17cfb5c6dd0e"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e93ce6d2fe6a396376f5d035eee4e75acb4d829ef9a0e0425b2d97b5a13b8dc6",
+              "bf700e827a1be5227ef959c28747ca39d5bf561d4ba2977d5472589176df1329",
+              "cccd88c355c2e8380935ce3eed4c26b04b40d3751173fdd65c8d7b538f66db18",
+              "f045432734a7bd0947141c035431359b1c0cf250325e7e88112dfb3ae6e86622"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Mass Effect 2 (2010), scarred Garrus after Archangel recruitment Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "liara",
+      "heroId": "liara",
+      "universe": "Mass Effect",
+      "name": "Liara T'Soni",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/liara.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "af004a9ad729bef072cfde3e0dafe55964165781fa8d7faabd578a94dacb6ed7",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/liara-original.png",
+      "sourceImageSha256": "a16c06f6da5c4e623dc624d1bd315b277cbdf435c4cc9b6fd13826ac191cf12a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/mass-effect/liara.png",
+      "referenceAssetSha256": "2ffaa7da9248dc0144c147807638fddc199d7342ccee15b9096cba224f625056",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-references/liara-old-base.png",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-references/liara.png",
+          "sha256": "e81ddd54c15f8227f435080da043c907aad9c1c88e11cff402e4de97b8ba7693"
+        }
+      ],
+      "sourceWork": "Mass Effect 2: Lair of the Shadow Broker (2010)",
+      "sourceReference": "DLC squad Liara has Singularity, Warp, Asari Scientist and Stasis, and uses heavy pistols or submachine guns. The selected M-3 Predator supplies her basic shot, Warp her secondary biotic projectile, and Singularity her localized biotic field. The field and its duration, damage and crowd control are bounded gameplay adaptations; no Shadow Broker data storm, electronic attack, ME1 Barrier loadout or instant environmental execution is asserted.",
+      "sourceUrl": "https://guides.gamercorner.net/me2/party-members/liara",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave9-2026-10-22/part-b-source-facts.json"
+      ],
+      "abilityName": "Tir du M-3 Predator de Liara",
+      "characterVersion": "Mass Effect 2: Lair of the Shadow Broker (2010)",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "sourceWideBodyCalibration": {
+          "method": "single-source-wide-body-scale",
+          "calibrationTargetBodyHeight": 190,
+          "referenceState": "idle",
+          "referenceCell": 0,
+          "referenceBodyBounds": [
+            110,
+            18,
+            100,
+            219
+          ],
+          "referenceNormalizedBodyHeight": 219,
+          "referencePackingScale": 0.6705202312138728,
+          "nativeReferenceBodyHeight": 326.61206896551727,
+          "sourceWideRenderPixelsPerNativePixel": 0.5817298809618074,
+          "sourceDensityRatio": 1,
+          "bodyOnlyRoi": true,
+          "preservesNativePoseHeightRatio": true,
+          "normalizationNeverRedrawsBody": true,
+          "referenceAtlasDensityComparison": {
+            "presentationNativeWidth": 887,
+            "basicNativeWidth": 1254,
+            "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+            "note": "Raster width ratio explicitly retained; one independent standing-body calibration per native source, never per-row anatomical equalization."
+          }
+        },
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/liara-original.png",
+            "sourceImageSha256": "a16c06f6da5c4e623dc624d1bd315b277cbdf435c4cc9b6fd13826ac191cf12a",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 349
+            },
+            "scale": 0.6705202312138728,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 129,
+                  "top": 6,
+                  "width": 154,
+                  "height": 331,
+                  "pixels": 29752
+                },
+                "output": {
+                  "left": 109,
+                  "top": 16,
+                  "width": 103,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 425,
+                  "top": 0,
+                  "width": 144,
+                  "height": 338,
+                  "pixels": 28025
+                },
+                "output": {
+                  "left": 98,
+                  "top": 12,
+                  "width": 97,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 708,
+                  "top": 6,
+                  "width": 164,
+                  "height": 340,
+                  "pixels": 28008
+                },
+                "output": {
+                  "left": 77,
+                  "top": 16,
+                  "width": 110,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 1022,
+                  "top": 7,
+                  "width": 161,
+                  "height": 331,
+                  "pixels": 30496
+                },
+                "output": {
+                  "left": 78,
+                  "top": 17,
+                  "width": 108,
+                  "height": 222
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.867579908675799,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                110,
+                18,
+                100,
+                219
+              ],
+              "normalizedBodyHeight": 219,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                110,
+                18,
+                100,
+                219
+              ],
+              "referenceBodyHeight": 219,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.867579908675799,
+              "nativeComparableBodyHeight": 326.61206896551727,
+              "nativeReferenceBodyHeight": 326.61206896551727,
+              "nativeBodyBounds": [
+                130.49137931034483,
+                8.982758620689655,
+                149.13793103448276,
+                326.61206896551727
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                130.49137931034483,
+                8.982758620689655,
+                149.13793103448276,
+                326.61206896551727
+              ]
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/liara-original.png",
+            "sourceImageSha256": "a16c06f6da5c4e623dc624d1bd315b277cbdf435c4cc9b6fd13826ac191cf12a",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 340,
+              "bottom": 654
+            },
+            "scale": 0.7682119205298014,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 54,
+                  "top": 8,
+                  "width": 251,
+                  "height": 300,
+                  "pixels": 32452
+                },
+                "output": {
+                  "left": 49,
+                  "top": 14,
+                  "width": 193,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 369,
+                  "top": 8,
+                  "width": 211,
+                  "height": 296,
+                  "pixels": 27942
+                },
+                "output": {
+                  "left": 50,
+                  "top": 14,
+                  "width": 162,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 663,
+                  "top": 6,
+                  "width": 251,
+                  "height": 301,
+                  "pixels": 29046
+                },
+                "output": {
+                  "left": 35,
+                  "top": 12,
+                  "width": 193,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 967,
+                  "top": 17,
+                  "width": 254,
+                  "height": 287,
+                  "pixels": 29626
+                },
+                "output": {
+                  "left": 28,
+                  "top": 20,
+                  "width": 195,
+                  "height": 220
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.757251827803732,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                52,
+                14,
+                187,
+                229
+              ],
+              "normalizedBodyHeight": 229,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                110,
+                18,
+                100,
+                219
+              ],
+              "referenceBodyHeight": 219,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.867579908675799,
+              "nativeComparableBodyHeight": 298.09482758620686,
+              "nativeReferenceBodyHeight": 326.61206896551727,
+              "nativeBodyBounds": [
+                57.9051724137931,
+                8,
+                243.42241379310343,
+                298.09482758620686
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                130.49137931034483,
+                8.982758620689655,
+                149.13793103448276,
+                326.61206896551727
+              ]
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/liara-original.png",
+            "sourceImageSha256": "a16c06f6da5c4e623dc624d1bd315b277cbdf435c4cc9b6fd13826ac191cf12a",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 643,
+              "bottom": 956
+            },
+            "scale": 0.7051671732522796,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 74,
+                  "top": 7,
+                  "width": 226,
+                  "height": 300,
+                  "pixels": 32287
+                },
+                "output": {
+                  "left": 70,
+                  "top": 30,
+                  "width": 159,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 379,
+                  "top": 8,
+                  "width": 218,
+                  "height": 303,
+                  "pixels": 29648
+                },
+                "output": {
+                  "left": 64,
+                  "top": 30,
+                  "width": 154,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 678,
+                  "top": 9,
+                  "width": 270,
+                  "height": 301,
+                  "pixels": 32928
+                },
+                "output": {
+                  "left": 53,
+                  "top": 31,
+                  "width": 190,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 948,
+                  "top": 2,
+                  "width": 264,
+                  "height": 309,
+                  "pixels": 28561
+                },
+                "output": {
+                  "left": 23,
+                  "top": 26,
+                  "width": 186,
+                  "height": 218
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.824953150157046,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                71,
+                33,
+                156,
+                207
+              ],
+              "normalizedBodyHeight": 207,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                110,
+                18,
+                100,
+                219
+              ],
+              "referenceBodyHeight": 219,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.867579908675799,
+              "nativeComparableBodyHeight": 293.54741379310343,
+              "nativeReferenceBodyHeight": 326.61206896551727,
+              "nativeBodyBounds": [
+                75.41810344827586,
+                11.254310344827587,
+                221.22413793103448,
+                293.54741379310343
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                130.49137931034483,
+                8.982758620689655,
+                149.13793103448276,
+                326.61206896551727
+              ]
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/liara-original.png",
+            "sourceImageSha256": "a16c06f6da5c4e623dc624d1bd315b277cbdf435c4cc9b6fd13826ac191cf12a",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 950,
+              "bottom": 1254
+            },
+            "scale": 0.7656765676567657,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 78,
+                  "top": 6,
+                  "width": 230,
+                  "height": 292,
+                  "pixels": 29774
+                },
+                "output": {
+                  "left": 68,
+                  "top": 20,
+                  "width": 176,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 377,
+                  "top": 13,
+                  "width": 222,
+                  "height": 283,
+                  "pixels": 32718
+                },
+                "output": {
+                  "left": 57,
+                  "top": 26,
+                  "width": 170,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 678,
+                  "top": 82,
+                  "width": 237,
+                  "height": 207,
+                  "pixels": 28669
+                },
+                "output": {
+                  "left": 47,
+                  "top": 79,
+                  "width": 181,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 964,
+                  "top": 3,
+                  "width": 269,
+                  "height": 288,
+                  "pixels": 27393
+                },
+                "output": {
+                  "left": 26,
+                  "top": 18,
+                  "width": 206,
+                  "height": 221
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.7597592841871881,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                70,
+                23,
+                172,
+                219
+              ],
+              "normalizedBodyHeight": 219,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                110,
+                18,
+                100,
+                219
+              ],
+              "referenceBodyHeight": 219,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.867579908675799,
+              "nativeComparableBodyHeight": 286.0215517241379,
+              "nativeReferenceBodyHeight": 326.61206896551727,
+              "nativeBodyBounds": [
+                80.61206896551724,
+                9.918103448275861,
+                224.63793103448273,
+                286.0215517241379
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                130.49137931034483,
+                8.982758620689655,
+                149.13793103448276,
+                326.61206896551727
+              ]
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4b5fbf05ac779ab8b7967b1349bc480b93903dc4f1a53e0586673a48eeeb0694",
+              "e4a443900111e748e678f6bfa562a543b6f4727049c323a37f53cafc3036754e",
+              "7d9b5d8dafe5597bb581dbd509c34b049ee6c88e11595c196f1c122c25bf4f2c",
+              "cc74e4f90c2b414427735414d07b695b48a13cac1da5ed89669ebc7107d4ec04"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b793df1e674e9e698752df81902a9df15e48cdb0c5b36efad78b07e506403f45",
+              "07add0263cab328c790dec23a58e907fa98ef46fa17d16c5c7edd76cabc9eccf",
+              "3f9672479ea4d17550ee7f7d5bf1649f6e44bdae7232076f97c50ce135245ad8",
+              "3f74761c36b8e29be0b53b1704a628d6e3faaf50383fae49c49cfc57e1d0d66c"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "15684483607f206b1bc4926093e3aaeb0679507b45c742ca09b2a13c88e08b6d",
+              "a1f843ea12eb898326af06361d44729bee090cfbeb0235447a7c73256c25334f",
+              "541791f171e03f8842b8eb93770595fd8c9caf36a530d36a90f48f1fcc234404",
+              "30dde7a4ed469e3f1edc8436a57e0251c15c73093056c3c8aa250d8cb45f62df"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "315e1e98b743d721d158e91d4eb7192b72f30ba4d90135c2a431a9162255e510",
+              "620b30a5fc8bdd1e9a5a3568b7c0db2748a3a237040681f8964599216829ab62",
+              "9553f3489cb74aa1875cefd41b7001c29fab87a959f11effbe1f5df96d9abf19",
+              "322570dbf762d625922d160a94a5e256d6bb331f72675b8418c0ba9aac7e6ef4"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Mass Effect 2: Lair of the Shadow Broker (2010) Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "tali",
+      "heroId": "tali",
+      "universe": "Mass Effect",
+      "name": "Tali Zorah",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/tali.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "f7f3f558ed73695388efb300da33e63dde51c93f782a54a2d6944fbd16daaf66",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/tali-original.png",
+      "sourceImageSha256": "1834e1f329b741020ccaa10ce59c36a1e82b064f9952a38e7ed8ac18b0cab1af",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/mass-effect/tali.png",
+      "referenceAssetSha256": "f449a6c3a0849ccf6fc2c17af507bcd29b72b0b7235b31441d54957a67f12284",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-references/tali-old-base.png",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-references/tali.png",
+          "sha256": "95e942bc3ff474a544c7fcae5624132097fcba1f2a5fecdf4aa421f1c7a81604"
+        }
+      ],
+      "sourceWork": "Mass Effect 2 (2010), sealed enviro-suit Tali",
+      "sourceReference": "Selected ME2 sealed purple enviro-suit. Combat Drone is a genuine tech projection; its Attack Drone evolution damages the target with an electrical shock. One finite shock is condensed here. Explosive Drone is a different evolution that explodes when destroyed, so the ordinary deployment is not an instantaneous group explosion. No unsealed face, alien pet, magical summon or transferred quarian biology.",
+      "sourceUrl": "https://www.gamebanshee.com/masseffect2/powers/combatdrone.php",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave9-2026-10-22/part-b-source-facts.json"
+      ],
+      "abilityName": "Fusil à pompe de Tali",
+      "characterVersion": "Mass Effect 2 (2010), sealed enviro-suit Tali",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "sourceWideBodyCalibration": {
+          "method": "single-source-wide-body-scale",
+          "calibrationTargetBodyHeight": 190,
+          "referenceState": "idle",
+          "referenceCell": 0,
+          "referenceBodyBounds": [
+            85,
+            13,
+            139,
+            227
+          ],
+          "referenceNormalizedBodyHeight": 227,
+          "referencePackingScale": 0.7116564417177914,
+          "nativeReferenceBodyHeight": 318.9741379310345,
+          "sourceWideRenderPixelsPerNativePixel": 0.5956595767681955,
+          "sourceDensityRatio": 1,
+          "bodyOnlyRoi": true,
+          "preservesNativePoseHeightRatio": true,
+          "normalizationNeverRedrawsBody": true,
+          "referenceAtlasDensityComparison": {
+            "presentationNativeWidth": 887,
+            "basicNativeWidth": 1254,
+            "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+            "note": "Raster width ratio explicitly retained; one independent standing-body calibration per native source, never per-row anatomical equalization."
+          }
+        },
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/tali-original.png",
+            "sourceImageSha256": "1834e1f329b741020ccaa10ce59c36a1e82b064f9952a38e7ed8ac18b0cab1af",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 363
+            },
+            "scale": 0.7116564417177914,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 94,
+                  "top": 22,
+                  "width": 199,
+                  "height": 326,
+                  "pixels": 32032
+                },
+                "output": {
+                  "left": 83,
+                  "top": 12,
+                  "width": 142,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 402,
+                  "top": 31,
+                  "width": 174,
+                  "height": 316,
+                  "pixels": 29991
+                },
+                "output": {
+                  "left": 79,
+                  "top": 18,
+                  "width": 124,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 26,
+                  "width": 188,
+                  "height": 321,
+                  "pixels": 31320
+                },
+                "output": {
+                  "left": 66,
+                  "top": 15,
+                  "width": 134,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 1016,
+                  "top": 28,
+                  "width": 181,
+                  "height": 319,
+                  "pixels": 31167
+                },
+                "output": {
+                  "left": 70,
+                  "top": 16,
+                  "width": 129,
+                  "height": 227
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.8370044052863437,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                85,
+                13,
+                139,
+                227
+              ],
+              "normalizedBodyHeight": 227,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                85,
+                13,
+                139,
+                227
+              ],
+              "referenceBodyHeight": 227,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8370044052863436,
+              "nativeComparableBodyHeight": 318.9741379310345,
+              "nativeReferenceBodyHeight": 318.9741379310345,
+              "nativeBodyBounds": [
+                96.8103448275862,
+                23.405172413793103,
+                195.31896551724137,
+                318.9741379310345
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                96.8103448275862,
+                23.405172413793103,
+                195.31896551724137,
+                318.9741379310345
+              ]
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/tali-original.png",
+            "sourceImageSha256": "1834e1f329b741020ccaa10ce59c36a1e82b064f9952a38e7ed8ac18b0cab1af",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 352,
+              "bottom": 663
+            },
+            "scale": 0.7837837837837838,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 8,
+                  "width": 247,
+                  "height": 287,
+                  "pixels": 31681
+                },
+                "output": {
+                  "left": 41,
+                  "top": 13,
+                  "width": 194,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 358,
+                  "top": 9,
+                  "width": 260,
+                  "height": 282,
+                  "pixels": 29623
+                },
+                "output": {
+                  "left": 40,
+                  "top": 14,
+                  "width": 204,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 669,
+                  "top": 18,
+                  "width": 256,
+                  "height": 285,
+                  "pixels": 30188
+                },
+                "output": {
+                  "left": 38,
+                  "top": 21,
+                  "width": 201,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 990,
+                  "top": 20,
+                  "width": 240,
+                  "height": 283,
+                  "pixels": 27177
+                },
+                "output": {
+                  "left": 44,
+                  "top": 22,
+                  "width": 188,
+                  "height": 222
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.7599794600145943,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                43,
+                14,
+                190,
+                223
+              ],
+              "normalizedBodyHeight": 223,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                85,
+                13,
+                139,
+                227
+              ],
+              "referenceBodyHeight": 227,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8370044052863436,
+              "nativeComparableBodyHeight": 284.51724137931035,
+              "nativeReferenceBodyHeight": 318.9741379310345,
+              "nativeBodyBounds": [
+                48.55172413793103,
+                9.275862068965518,
+                242.41379310344828,
+                284.51724137931035
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                96.8103448275862,
+                23.405172413793103,
+                195.31896551724137,
+                318.9741379310345
+              ]
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/tali-original.png",
+            "sourceImageSha256": "1834e1f329b741020ccaa10ce59c36a1e82b064f9952a38e7ed8ac18b0cab1af",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 660,
+              "bottom": 968
+            },
+            "scale": 0.6236559139784946,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 9,
+                  "width": 249,
+                  "height": 295,
+                  "pixels": 34103
+                },
+                "output": {
+                  "left": 59,
+                  "top": 59,
+                  "width": 155,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 354,
+                  "top": 15,
+                  "width": 302,
+                  "height": 289,
+                  "pixels": 37543
+                },
+                "output": {
+                  "left": 56,
+                  "top": 63,
+                  "width": 188,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 630,
+                  "top": 22,
+                  "width": 288,
+                  "height": 283,
+                  "pixels": 33270
+                },
+                "output": {
+                  "left": 32,
+                  "top": 68,
+                  "width": 180,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 996,
+                  "top": 9,
+                  "width": 213,
+                  "height": 295,
+                  "pixels": 30373
+                },
+                "output": {
+                  "left": 65,
+                  "top": 59,
+                  "width": 133,
+                  "height": 184
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.9551093213696927,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                61,
+                61,
+                151,
+                180
+              ],
+              "normalizedBodyHeight": 180,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                85,
+                13,
+                139,
+                227
+              ],
+              "referenceBodyHeight": 227,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8370044052863436,
+              "nativeComparableBodyHeight": 288.62068965517244,
+              "nativeReferenceBodyHeight": 318.9741379310345,
+              "nativeBodyBounds": [
+                49.206896551724135,
+                12.206896551724139,
+                242.1206896551724,
+                288.62068965517244
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                96.8103448275862,
+                23.405172413793103,
+                195.31896551724137,
+                318.9741379310345
+              ]
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/tali-original.png",
+            "sourceImageSha256": "1834e1f329b741020ccaa10ce59c36a1e82b064f9952a38e7ed8ac18b0cab1af",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 964,
+              "bottom": 1254
+            },
+            "scale": 0.8405797101449275,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 69,
+                  "top": 4,
+                  "width": 213,
+                  "height": 276,
+                  "pixels": 30326
+                },
+                "output": {
+                  "left": 54,
+                  "top": 12,
+                  "width": 179,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 379,
+                  "top": 10,
+                  "width": 228,
+                  "height": 269,
+                  "pixels": 30819
+                },
+                "output": {
+                  "left": 51,
+                  "top": 17,
+                  "width": 192,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 53,
+                  "width": 200,
+                  "height": 226,
+                  "pixels": 27978
+                },
+                "output": {
+                  "left": 55,
+                  "top": 53,
+                  "width": 168,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 975,
+                  "top": 68,
+                  "width": 248,
+                  "height": 208,
+                  "pixels": 28031
+                },
+                "output": {
+                  "left": 25,
+                  "top": 66,
+                  "width": 208,
+                  "height": 175
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.7086294965000947,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                57,
+                15,
+                174,
+                226
+              ],
+              "normalizedBodyHeight": 226,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                85,
+                13,
+                139,
+                227
+              ],
+              "referenceBodyHeight": 227,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8370044052863436,
+              "nativeComparableBodyHeight": 268.86206896551727,
+              "nativeReferenceBodyHeight": 318.9741379310345,
+              "nativeBodyBounds": [
+                72.56896551724138,
+                7.568965517241379,
+                207,
+                268.86206896551727
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                96.8103448275862,
+                23.405172413793103,
+                195.31896551724137,
+                318.9741379310345
+              ]
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "88b67d65c9bd90db49ed72ffa9f4187d1ad40cb5ec9b806223b932b73ac80bed",
+              "ef8eb570609fb980051fafcd81e0cc122a4d78bd0acee40c15fc1f71f29122e4",
+              "972c3db25f18806127534a53e54a96babc7af163f02b162920c4567bfdc33976",
+              "75542700c63929f852f6ce00757daf3b7021afd116d36de546dbefff9436973f"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5574b57e7836cf418718f8bec5e01f5064de56cf36508022352a90c5908743f8",
+              "8ccfdc8c1565b0b9e8a1df68939286a7a3ae16d52fb552b64e12d0f57a51ac51",
+              "374b128fe07ee036a346a5e98e602beca346fb722e3747d4dec33031e3ee94b0",
+              "934f2bf472fff1783eb38db9125203a4e61baba6105f48f094a0e35a75a22f25"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "36a0a39884da7e64f98090098b34b3e6daa33a42c196d21204ac24977672c3cf",
+              "a1c113a14c7ef286e716fa883e4453c211c6f52093066eb2826d2ad11c3a0c11",
+              "0a5b173f989a922df1d217802d878f8a69eda718130a6a14f4b706be6d977e66",
+              "1befa31b090d099b4c4e321bf285391400e33aaa94a21c3998404ea5ccd0b695"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5f0b0fe527760dbc4957c975f756e13fca2ed9c59e4c4ffe26002cb9a8c42bde",
+              "58680101a24f20dd7e07fab2ad814f152f5def0a39bce7445ea26e92a2347be9",
+              "f904d4a357a7a715cbb624d16f4ee4a95de38adf19f89296d3b0f22777237b10",
+              "8355535cc062717286016d2b7ef1049353fde010ab239ffe72c54b437bfdae28"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Mass Effect 2 (2010), sealed enviro-suit Tali Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "wrex",
+      "heroId": "wrex",
+      "universe": "Mass Effect",
+      "name": "Urdnot Wrex",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/wrex.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "d45e32a21aeada37fb49e3fc672a3273c52e4a2c6575a7b44a3dfe0b7cea0e79",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/wrex-original.png",
+      "sourceImageSha256": "bd984e5b114b8ca0ca0a7ee27333699db5de39b5e2ef1343db7c1cc9c114c410",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/mass-effect/wrex.png",
+      "referenceAssetSha256": "c4c7454231dfd5e17ed59b21e450cce46883a36924dc40c24de726eab1897fae",
+      "referenceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-references/wrex-old-base.png",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-references/wrex.png",
+          "sha256": "1dc9e3887fae39ab04de171b3552b190e4093d9a63db359207ce456b13523682"
+        }
+      ],
+      "sourceWork": "Mass Effect (2007), heavy red-armored krogan Wrex",
+      "sourceReference": "Selected ME1 heavy red krogan armor. Barrier surrounds and strengthens its own user, Wrex; the project adapts the temporary personal shields to bounded self guard. It is not a group shield, heal or damage attack. Legendary Edition reference describes the original ME1 talent semantics, not original2007 frame equivalence.",
+      "sourceUrl": "https://www.gamerguides.com/mass-effect-1-legendary-edition/guide/talents/biotic/",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave9-2026-10-22/part-b-source-facts.json"
+      ],
+      "abilityName": "Fusil à pompe de Wrex",
+      "characterVersion": "Mass Effect (2007), heavy red-armored krogan Wrex",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "sourceWideBodyCalibration": {
+          "method": "single-source-wide-body-scale",
+          "calibrationTargetBodyHeight": 190,
+          "referenceState": "idle",
+          "referenceCell": 0,
+          "referenceBodyBounds": [
+            55,
+            18,
+            160,
+            216
+          ],
+          "referenceNormalizedBodyHeight": 216,
+          "referencePackingScale": 0.703030303030303,
+          "nativeReferenceBodyHeight": 307.2413793103448,
+          "sourceWideRenderPixelsPerNativePixel": 0.6184062850729517,
+          "sourceDensityRatio": 1,
+          "bodyOnlyRoi": true,
+          "preservesNativePoseHeightRatio": true,
+          "normalizationNeverRedrawsBody": true,
+          "referenceAtlasDensityComparison": {
+            "presentationNativeWidth": 887,
+            "basicNativeWidth": 1254,
+            "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+            "note": "Raster width ratio explicitly retained; one independent standing-body calibration per native source, never per-row anatomical equalization."
+          }
+        },
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/wrex-original.png",
+            "sourceImageSha256": "bd984e5b114b8ca0ca0a7ee27333699db5de39b5e2ef1343db7c1cc9c114c410",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 347
+            },
+            "scale": 0.703030303030303,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 50,
+                  "top": 21,
+                  "width": 235,
+                  "height": 315,
+                  "pixels": 47701
+                },
+                "output": {
+                  "left": 53,
+                  "top": 16,
+                  "width": 165,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 380,
+                  "top": 15,
+                  "width": 231,
+                  "height": 330,
+                  "pixels": 50388
+                },
+                "output": {
+                  "left": 65,
+                  "top": 12,
+                  "width": 162,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 664,
+                  "top": 43,
+                  "width": 241,
+                  "height": 293,
+                  "pixels": 44406
+                },
+                "output": {
+                  "left": 44,
+                  "top": 32,
+                  "width": 169,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 1003,
+                  "top": 43,
+                  "width": 217,
+                  "height": 293,
+                  "pixels": 43430
+                },
+                "output": {
+                  "left": 62,
+                  "top": 32,
+                  "width": 153,
+                  "height": 206
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.8796296296296297,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                55,
+                18,
+                160,
+                216
+              ],
+              "normalizedBodyHeight": 216,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                55,
+                18,
+                160,
+                216
+              ],
+              "referenceBodyHeight": 216,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8796296296296297,
+              "nativeComparableBodyHeight": 307.2413793103448,
+              "nativeReferenceBodyHeight": 307.2413793103448,
+              "nativeBodyBounds": [
+                52.8448275862069,
+                23.844827586206897,
+                227.58620689655174,
+                307.2413793103448
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                52.8448275862069,
+                23.844827586206897,
+                227.58620689655174,
+                307.2413793103448
+              ]
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/wrex-original.png",
+            "sourceImageSha256": "bd984e5b114b8ca0ca0a7ee27333699db5de39b5e2ef1343db7c1cc9c114c410",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 340,
+              "bottom": 634
+            },
+            "scale": 0.6987951807228916,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 37,
+                  "top": 8,
+                  "width": 285,
+                  "height": 278,
+                  "pixels": 45606
+                },
+                "output": {
+                  "left": 44,
+                  "top": 46,
+                  "width": 199,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 322,
+                  "top": 6,
+                  "width": 314,
+                  "height": 281,
+                  "pixels": 43777
+                },
+                "output": {
+                  "left": 24,
+                  "top": 45,
+                  "width": 219,
+                  "height": 196
+                }
+              },
+              {
+                "source": {
+                  "left": 653,
+                  "top": 16,
+                  "width": 296,
+                  "height": 275,
+                  "pixels": 45394
+                },
+                "output": {
+                  "left": 37,
+                  "top": 52,
+                  "width": 207,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 945,
+                  "top": 18,
+                  "width": 299,
+                  "height": 273,
+                  "pixels": 42655
+                },
+                "output": {
+                  "left": 22,
+                  "top": 53,
+                  "width": 209,
+                  "height": 191
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.8849607182940515,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                47,
+                47,
+                195,
+                192
+              ],
+              "normalizedBodyHeight": 192,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                55,
+                18,
+                160,
+                216
+              ],
+              "referenceBodyHeight": 216,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8796296296296297,
+              "nativeComparableBodyHeight": 274.7586206896552,
+              "nativeReferenceBodyHeight": 307.2413793103448,
+              "nativeBodyBounds": [
+                41.293103448275865,
+                9.431034482758621,
+                279.05172413793105,
+                274.7586206896552
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                52.8448275862069,
+                23.844827586206897,
+                227.58620689655174,
+                307.2413793103448
+              ]
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/wrex-original.png",
+            "sourceImageSha256": "bd984e5b114b8ca0ca0a7ee27333699db5de39b5e2ef1343db7c1cc9c114c410",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 631,
+              "bottom": 943
+            },
+            "scale": 0.5658536585365853,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 26,
+                  "top": 19,
+                  "width": 271,
+                  "height": 292,
+                  "pixels": 44222
+                },
+                "output": {
+                  "left": 54,
+                  "top": 79,
+                  "width": 153,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 340,
+                  "top": 6,
+                  "width": 335,
+                  "height": 298,
+                  "pixels": 52993
+                },
+                "output": {
+                  "left": 54,
+                  "top": 71,
+                  "width": 190,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 638,
+                  "top": 27,
+                  "width": 298,
+                  "height": 278,
+                  "pixels": 47291
+                },
+                "output": {
+                  "left": 46,
+                  "top": 83,
+                  "width": 169,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 974,
+                  "top": 17,
+                  "width": 244,
+                  "height": 287,
+                  "pixels": 44434
+                },
+                "output": {
+                  "left": 58,
+                  "top": 78,
+                  "width": 138,
+                  "height": 162
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0928731762065096,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                56,
+                81,
+                149,
+                157
+              ],
+              "normalizedBodyHeight": 157,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                55,
+                18,
+                160,
+                216
+              ],
+              "referenceBodyHeight": 216,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8796296296296297,
+              "nativeComparableBodyHeight": 277.4568965517242,
+              "nativeReferenceBodyHeight": 307.2413793103448,
+              "nativeBodyBounds": [
+                29.53448275862069,
+                22.53448275862069,
+                263.3189655172414,
+                277.4568965517242
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                52.8448275862069,
+                23.844827586206897,
+                227.58620689655174,
+                307.2413793103448
+              ]
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave9-2026-10-22/base-part-b-sources/wrex-original.png",
+            "sourceImageSha256": "bd984e5b114b8ca0ca0a7ee27333699db5de39b5e2ef1343db7c1cc9c114c410",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 938,
+              "bottom": 1254
+            },
+            "scale": 0.7272727272727273,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 3,
+                  "width": 270,
+                  "height": 285,
+                  "pixels": 44593
+                },
+                "output": {
+                  "left": 47,
+                  "top": 35,
+                  "width": 196,
+                  "height": 207
+                }
+              },
+              {
+                "source": {
+                  "left": 342,
+                  "top": 14,
+                  "width": 278,
+                  "height": 274,
+                  "pixels": 46721
+                },
+                "output": {
+                  "left": 35,
+                  "top": 43,
+                  "width": 202,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 653,
+                  "top": 63,
+                  "width": 266,
+                  "height": 227,
+                  "pixels": 39053
+                },
+                "output": {
+                  "left": 33,
+                  "top": 79,
+                  "width": 193,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 975,
+                  "top": 54,
+                  "width": 246,
+                  "height": 233,
+                  "pixels": 39377
+                },
+                "output": {
+                  "left": 39,
+                  "top": 72,
+                  "width": 179,
+                  "height": 169
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.8503086419753085,
+            "statureReview": {
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "cell": 0,
+              "bodyBounds": [
+                49,
+                36,
+                191,
+                204
+              ],
+              "normalizedBodyHeight": 204,
+              "referencePhase": "idle",
+              "referenceCell": 0,
+              "referenceBodyBounds": [
+                55,
+                18,
+                160,
+                216
+              ],
+              "referenceBodyHeight": 216,
+              "calibrationTargetBodyHeight": 190,
+              "referenceRenderScale": 0.8796296296296297,
+              "nativeComparableBodyHeight": 280.5,
+              "nativeReferenceBodyHeight": 307.2413793103448,
+              "nativeBodyBounds": [
+                48.75,
+                4.375,
+                262.625,
+                280.5
+              ],
+              "sourceDensityRatio": 1,
+              "sourceComparableColumn": 0,
+              "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+              "reason": "Manually reviewed first-column head/crest/hump-to-boots ROI; lowered/level weapon and discharges excluded from body height. One source-wide native scale to standing190 preserves recoil, digitigrade running and crouching body ratios.",
+              "nativeReferenceBodyBounds": [
+                52.8448275862069,
+                23.844827586206897,
+                227.58620689655174,
+                307.2413793103448
+              ]
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "63279da18296490b0323ce75c6a2f6c16e8ba9d79764354b14186351a7833b65",
+              "bd8f3e64d53aeaf3a81ff03699f9e369288a6a8368cd5682274ee407026a8dc1",
+              "d5e3b4564b7eb3178ece738262a56c0299794dcb59003a90b1ab7114c7125535",
+              "c38cebbeb44dcad69900a87b40d6ca562d30072bb709c083eb008253a2a4944d"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "521bdafb14f500a788eded47cd4a251eb6db546a3d3e76bf937ad67d68149325",
+              "d335040829ed19b24fd0f11c39c05699f006822685b735f9e7abc298ff2b27f4",
+              "3515ef6167ae952ab4c5dec2c3ca11e5e429ced3beb764304496b332e2b2f96d",
+              "346bd94bab634a01d4cc58fdedfb6afd78a6bd4f07b492d2aa9ac58f61b0faa6"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1cf9d109a15c221fc2f873fbd84f8ed85286ae7a02a3040dce2ce7b403cdcaa8",
+              "a6b2b8025fab528192eaf10790923def25ce774ffcc6a2b753925fa8cc04819f",
+              "b229aa47e76b3ca15d23da6e8533575656d0b628854c42dc3bb16eb8002737d0",
+              "5444aa443ea8985835cfbf6c3d1ffe1c663471d32ff2992fd73974ff4a384f8c"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "a056bcae42cf90cfd04919321ec7da71d4f48ebae53f161a7062e8c1c0f78d27",
+              "eec07134cae23dc43943dff406a01037df9e35d272e824921239b31548823afa",
+              "c6db41a1fefe94ce48d15635955f8f8612ea93a71307e61ba7e0b9ec2aaaa03a",
+              "b2331237ae958205fc5d1ab6f05324dae8efbdb233c622b028007776bc18512e"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Mass Effect (2007), heavy red-armored krogan Wrex Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    }
+  ]
+}

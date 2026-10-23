@@ -1,0 +1,3588 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "nexus-barricade",
+      "key": "Nexus de Convergence::Balise Barricade::Balise Barricade",
+      "universe": "Nexus de Convergence",
+      "entityName": "Balise Barricade",
+      "actionName": "Balise Barricade",
+      "sourceHeroId": "arca_bastion",
+      "callers": [
+        "arca_mirelle",
+        "arca_bastion",
+        "arca_nova",
+        "arca_marrow",
+        "arca_sable",
+        "arca_quillon",
+        "arca_elyra",
+        "arca_oryn"
+      ],
+      "sheet": "/sprites/generated/combat-entities/nexus-barricade.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "ec1e7ad232026018ba4dc372ee5381515ccab4b6a14f497318f7f39218a1800a",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "sourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "sourceBatch": 1,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "originalSourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "originalSourceRow": 0,
+      "sourceRow": 0,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Nexus de Convergence",
+      "sourceReference": "Existing project ability arca_bastion: Balise Barricade",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.8821292775665399,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 0,
+          "bottom": 222
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 18,
+              "top": 14,
+              "width": 211,
+              "height": 194,
+              "pixels": 19033
+            },
+            "output": {
+              "left": 39,
+              "top": 68,
+              "width": 186,
+              "height": 171
+            }
+          },
+          {
+            "source": {
+              "left": 251,
+              "top": 14,
+              "width": 204,
+              "height": 199,
+              "pixels": 19071
+            },
+            "output": {
+              "left": 36,
+              "top": 68,
+              "width": 180,
+              "height": 176
+            }
+          },
+          {
+            "source": {
+              "left": 461,
+              "top": 10,
+              "width": 250,
+              "height": 200,
+              "pixels": 26791
+            },
+            "output": {
+              "left": 12,
+              "top": 65,
+              "width": 221,
+              "height": 176
+            }
+          },
+          {
+            "source": {
+              "left": 714,
+              "top": 19,
+              "width": 234,
+              "height": 187,
+              "pixels": 22187
+            },
+            "output": {
+              "left": 26,
+              "top": 73,
+              "width": 206,
+              "height": 165
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "nexus-suture-drone",
+      "key": "Nexus de Convergence::Drone de Suture::Drone de Suture",
+      "universe": "Nexus de Convergence",
+      "entityName": "Drone de Suture",
+      "actionName": "Drone de Suture",
+      "sourceHeroId": "arca_loom",
+      "callers": [
+        "arca_loom"
+      ],
+      "sheet": "/sprites/generated/combat-entities/nexus-suture-drone.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "b9e6935592594e9db57fec3d922d7176324b0b146855206428f81ec28ada2baa",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "sourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "sourceBatch": 1,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "originalSourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "originalSourceRow": 1,
+      "sourceRow": 1,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Nexus de Convergence",
+      "sourceReference": "Existing project ability arca_loom: Drone de Suture",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.8957528957528957,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 221,
+          "bottom": 410
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 33,
+              "top": 8,
+              "width": 156,
+              "height": 145,
+              "pixels": 12781
+            },
+            "output": {
+              "left": 51,
+              "top": 88,
+              "width": 140,
+              "height": 130
+            }
+          },
+          {
+            "source": {
+              "left": 259,
+              "top": 7,
+              "width": 203,
+              "height": 163,
+              "pixels": 17486
+            },
+            "output": {
+              "left": 42,
+              "top": 87,
+              "width": 182,
+              "height": 146
+            }
+          },
+          {
+            "source": {
+              "left": 500,
+              "top": 8,
+              "width": 222,
+              "height": 174,
+              "pixels": 23294
+            },
+            "output": {
+              "left": 45,
+              "top": 88,
+              "width": 199,
+              "height": 156
+            }
+          },
+          {
+            "source": {
+              "left": 762,
+              "top": 7,
+              "width": 157,
+              "height": 162,
+              "pixels": 13896
+            },
+            "output": {
+              "left": 68,
+              "top": 87,
+              "width": 141,
+              "height": 145
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "nexus-tessera-reflection",
+      "key": "Nexus de Convergence::Reflet Non Remplace::Reflet Non Remplace",
+      "universe": "Nexus de Convergence",
+      "entityName": "Reflet Non Remplace",
+      "actionName": "Reflet Non Remplace",
+      "sourceHeroId": "arca_tessera",
+      "callers": [
+        "arca_tessera"
+      ],
+      "sheet": "/sprites/generated/combat-entities/nexus-tessera-reflection.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "0a43a6714156156b4c9daebb71be05ce61e62686ec414b8b902d48dd0b4c7042",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "sourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "sourceBatch": 1,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "originalSourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "originalSourceRow": 2,
+      "sourceRow": 2,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Nexus de Convergence",
+      "sourceReference": "Existing project ability arca_tessera: Reflet Non Remplace",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.5903307888040712,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 405,
+          "bottom": 672
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 19,
+              "top": 7,
+              "width": 202,
+              "height": 251,
+              "pixels": 32144
+            },
+            "output": {
+              "left": 69,
+              "top": 96,
+              "width": 119,
+              "height": 148
+            }
+          },
+          {
+            "source": {
+              "left": 235,
+              "top": 10,
+              "width": 231,
+              "height": 246,
+              "pixels": 36200
+            },
+            "output": {
+              "left": 57,
+              "top": 98,
+              "width": 136,
+              "height": 145
+            }
+          },
+          {
+            "source": {
+              "left": 474,
+              "top": 15,
+              "width": 315,
+              "height": 243,
+              "pixels": 47471
+            },
+            "output": {
+              "left": 58,
+              "top": 101,
+              "width": 186,
+              "height": 143
+            }
+          },
+          {
+            "source": {
+              "left": 742,
+              "top": 26,
+              "width": 204,
+              "height": 232,
+              "pixels": 28187
+            },
+            "output": {
+              "left": 76,
+              "top": 107,
+              "width": 120,
+              "height": 137
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "nexus-return-probe",
+      "key": "Nexus de Convergence::Sonde de Retour::Sonde de Retour",
+      "universe": "Nexus de Convergence",
+      "entityName": "Sonde de Retour",
+      "actionName": "Sonde de Retour",
+      "sourceHeroId": "arca_nadir",
+      "callers": [
+        "arca_nadir"
+      ],
+      "sheet": "/sprites/generated/combat-entities/nexus-return-probe.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "4e945bbcbd8531fc8056d26134d7eb95309f52c68965d0fd297c3da88e594356",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "sourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "sourceBatch": 1,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "originalSourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "originalSourceRow": 3,
+      "sourceRow": 3,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Nexus de Convergence",
+      "sourceReference": "Existing project ability arca_nadir: Sonde de Retour",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.6884272997032641,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 670,
+          "bottom": 902
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 33,
+              "top": 21,
+              "width": 159,
+              "height": 161,
+              "pixels": 11511
+            },
+            "output": {
+              "left": 69,
+              "top": 107,
+              "width": 109,
+              "height": 111
+            }
+          },
+          {
+            "source": {
+              "left": 255,
+              "top": 9,
+              "width": 193,
+              "height": 194,
+              "pixels": 15403
+            },
+            "output": {
+              "left": 59,
+              "top": 99,
+              "width": 133,
+              "height": 134
+            }
+          },
+          {
+            "source": {
+              "left": 493,
+              "top": 10,
+              "width": 268,
+              "height": 210,
+              "pixels": 28260
+            },
+            "output": {
+              "left": 60,
+              "top": 99,
+              "width": 184,
+              "height": 145
+            }
+          },
+          {
+            "source": {
+              "left": 781,
+              "top": 41,
+              "width": 146,
+              "height": 160,
+              "pixels": 10313
+            },
+            "output": {
+              "left": 95,
+              "top": 121,
+              "width": 101,
+              "height": 110
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "halo-pelican",
+      "key": "Halo::D77-TC Pelican::Tir de couverture Pelican",
+      "universe": "Halo",
+      "entityName": "D77-TC Pelican",
+      "actionName": "Tir de couverture Pelican",
+      "sourceHeroId": "masterchief",
+      "callers": [
+        "masterchief"
+      ],
+      "sheet": "/sprites/generated/combat-entities/halo-pelican.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "83512108af4aef0a689dec91c72da9c908bcc345a495ade374d198eca9baa614",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "sourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "sourceBatch": 1,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "originalSourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "originalSourceRow": 4,
+      "sourceRow": 4,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Halo 3",
+      "sourceReference": "Le Pelican transporte les forces UNSC et possede un armement de bord ; renfort ponctuel adapte au RPG.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.8436363636363636,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 901,
+          "bottom": 1094
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 12,
+              "top": 15,
+              "width": 228,
+              "height": 160,
+              "pixels": 21689
+            },
+            "output": {
+              "left": 38,
+              "top": 98,
+              "width": 192,
+              "height": 135
+            }
+          },
+          {
+            "source": {
+              "left": 243,
+              "top": 13,
+              "width": 237,
+              "height": 173,
+              "pixels": 24043
+            },
+            "output": {
+              "left": 33,
+              "top": 96,
+              "width": 200,
+              "height": 146
+            }
+          },
+          {
+            "source": {
+              "left": 455,
+              "top": 11,
+              "width": 269,
+              "height": 177,
+              "pixels": 28650
+            },
+            "output": {
+              "left": 12,
+              "top": 95,
+              "width": 227,
+              "height": 149
+            }
+          },
+          {
+            "source": {
+              "left": 708,
+              "top": 15,
+              "width": 240,
+              "height": 160,
+              "pixels": 22275
+            },
+            "output": {
+              "left": 25,
+              "top": 98,
+              "width": 202,
+              "height": 135
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "half-life-dog",
+      "key": "Half-Life::Dog Breach Assist::Dog Breach Assist",
+      "universe": "Half-Life",
+      "entityName": "Dog Breach Assist",
+      "actionName": "Dog Breach Assist",
+      "sourceHeroId": "alyx_vance",
+      "callers": [
+        "freeman",
+        "barney",
+        "shephard",
+        "alyx_vance",
+        "eli_vance",
+        "kleiner",
+        "vortigaunt_ally",
+        "dog_hl2"
+      ],
+      "sheet": "/sprites/generated/combat-entities/half-life-dog.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "ab1b4af724b84336ffc0724af23edab4769b3890830b6effeec2802ff0eab80a",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "sourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "sourceBatch": 1,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "originalSourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "originalSourceRow": 5,
+      "sourceRow": 5,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Half-Life",
+      "sourceReference": "Existing project ability alyx_vance: Dog Breach Assist",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.6535211267605634,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 1091,
+          "bottom": 1359
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 16,
+              "top": 20,
+              "width": 222,
+              "height": 234,
+              "pixels": 29468
+            },
+            "output": {
+              "left": 61,
+              "top": 84,
+              "width": 145,
+              "height": 153
+            }
+          },
+          {
+            "source": {
+              "left": 243,
+              "top": 5,
+              "width": 205,
+              "height": 260,
+              "pixels": 30498
+            },
+            "output": {
+              "left": 54,
+              "top": 74,
+              "width": 134,
+              "height": 170
+            }
+          },
+          {
+            "source": {
+              "left": 467,
+              "top": 15,
+              "width": 303,
+              "height": 245,
+              "pixels": 32202
+            },
+            "output": {
+              "left": 46,
+              "top": 81,
+              "width": 198,
+              "height": 160
+            }
+          },
+          {
+            "source": {
+              "left": 747,
+              "top": 32,
+              "width": 185,
+              "height": 226,
+              "pixels": 23972
+            },
+            "output": {
+              "left": 74,
+              "top": 92,
+              "width": 121,
+              "height": 148
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "portal-turret",
+      "key": "Portal::Turret Summon::Turret Summon",
+      "universe": "Portal",
+      "entityName": "Turret Summon",
+      "actionName": "Turret Summon",
+      "sourceHeroId": "chell",
+      "callers": [
+        "chell",
+        "atlas",
+        "pbody",
+        "glados",
+        "wheatley",
+        "cave_johnson",
+        "caroline_portal",
+        "doug_rattmann",
+        "glados_core",
+        "cave_johnson_echo"
+      ],
+      "sheet": "/sprites/generated/combat-entities/portal-turret.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "545858b675f74496cb5856ddbea240501a6aa2080493ba3a4b7bbf03250eb40b",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "sourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "sourceBatch": 1,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-1.png",
+      "originalSourceAtlasSha256": "3e0fb5f290eba11c33a002b3e6dda1c8c9ab1500238cf7b721670475f9ad73fc",
+      "originalSourceRow": 6,
+      "sourceRow": 6,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Portal",
+      "sourceReference": "Existing project ability chell: Turret Summon",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.6763848396501457,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 1355,
+          "bottom": 1659
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 23,
+              "top": 3,
+              "width": 182,
+              "height": 282,
+              "pixels": 16354
+            },
+            "output": {
+              "left": 63,
+              "top": 53,
+              "width": 123,
+              "height": 191
+            }
+          },
+          {
+            "source": {
+              "left": 260,
+              "top": 13,
+              "width": 171,
+              "height": 272,
+              "pixels": 18193
+            },
+            "output": {
+              "left": 63,
+              "top": 60,
+              "width": 116,
+              "height": 184
+            }
+          },
+          {
+            "source": {
+              "left": 477,
+              "top": 7,
+              "width": 287,
+              "height": 278,
+              "pixels": 22357
+            },
+            "output": {
+              "left": 50,
+              "top": 56,
+              "width": 194,
+              "height": 188
+            }
+          },
+          {
+            "source": {
+              "left": 762,
+              "top": 7,
+              "width": 164,
+              "height": 278,
+              "pixels": 15216
+            },
+            "output": {
+              "left": 82,
+              "top": 56,
+              "width": 111,
+              "height": 188
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "payday-sentry",
+      "key": "Payday::Sentry Deploy::Sentry Deploy",
+      "universe": "Payday",
+      "entityName": "Sentry Deploy",
+      "actionName": "Sentry Deploy",
+      "sourceHeroId": "dallas",
+      "callers": [
+        "dallas",
+        "wolf_pd",
+        "hoxton",
+        "chains_pd",
+        "houston_pd",
+        "clover_pd",
+        "bain_pd"
+      ],
+      "sheet": "/sprites/generated/combat-entities/payday-sentry.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "c6fbb7280493cdecf1e37963d1b95c12c174594ec9f8c55bdda6e83fbe97072b",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "sourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "sourceBatch": 2,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "originalSourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "originalSourceRow": 0,
+      "sourceRow": 0,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Payday",
+      "sourceReference": "Existing project ability dallas: Sentry Deploy",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.7918088737201365,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 0,
+          "bottom": 233
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 26,
+              "top": 59,
+              "width": 166,
+              "height": 154,
+              "pixels": 12991
+            },
+            "output": {
+              "left": 55,
+              "top": 122,
+              "width": 131,
+              "height": 122
+            }
+          },
+          {
+            "source": {
+              "left": 264,
+              "top": 46,
+              "width": 184,
+              "height": 167,
+              "pixels": 14206
+            },
+            "output": {
+              "left": 56,
+              "top": 112,
+              "width": 146,
+              "height": 132
+            }
+          },
+          {
+            "source": {
+              "left": 490,
+              "top": 42,
+              "width": 249,
+              "height": 171,
+              "pixels": 18532
+            },
+            "output": {
+              "left": 47,
+              "top": 109,
+              "width": 197,
+              "height": 135
+            }
+          },
+          {
+            "source": {
+              "left": 722,
+              "top": 43,
+              "width": 188,
+              "height": 170,
+              "pixels": 13942
+            },
+            "output": {
+              "left": 43,
+              "top": 109,
+              "width": 149,
+              "height": 135
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "slender-pages",
+      "key": "Slender Man::Page Trap::Page Trap",
+      "universe": "Slender Man",
+      "entityName": "Page Trap",
+      "actionName": "Page Trap",
+      "sourceHeroId": "survivor",
+      "callers": [
+        "survivor",
+        "masky",
+        "hoody",
+        "kate_slender",
+        "lauren_slender",
+        "charlie_slender",
+        "charlie_matheson"
+      ],
+      "sheet": "/sprites/generated/combat-entities/slender-pages.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "baf2d0b9871b4d01257c16640cf646fc3fd8c44f2dcd271e9f02231fa5310a38",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "sourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "sourceBatch": 2,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "originalSourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "originalSourceRow": 1,
+      "sourceRow": 1,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Slender Man",
+      "sourceReference": "Existing project ability survivor: Page Trap",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 1.0220264317180616,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 231,
+          "bottom": 471
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 40,
+              "top": 20,
+              "width": 167,
+              "height": 191,
+              "pixels": 20264
+            },
+            "output": {
+              "left": 48,
+              "top": 49,
+              "width": 171,
+              "height": 195
+            }
+          },
+          {
+            "source": {
+              "left": 267,
+              "top": 21,
+              "width": 198,
+              "height": 190,
+              "pixels": 18562
+            },
+            "output": {
+              "left": 38,
+              "top": 50,
+              "width": 202,
+              "height": 194
+            }
+          },
+          {
+            "source": {
+              "left": 488,
+              "top": 22,
+              "width": 218,
+              "height": 186,
+              "pixels": 18122
+            },
+            "output": {
+              "left": 21,
+              "top": 51,
+              "width": 223,
+              "height": 190
+            }
+          },
+          {
+            "source": {
+              "left": 752,
+              "top": 20,
+              "width": 164,
+              "height": 191,
+              "pixels": 19458
+            },
+            "output": {
+              "left": 49,
+              "top": 49,
+              "width": 168,
+              "height": 195
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "doom-bfg9000",
+      "key": "Doom::BFG-9000::BFG-9000",
+      "universe": "Doom",
+      "entityName": "BFG-9000",
+      "actionName": "BFG-9000",
+      "sourceHeroId": "doomslayer",
+      "callers": [
+        "doomslayer"
+      ],
+      "sheet": "/sprites/generated/combat-entities/doom-bfg9000.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "24257e6f9c367028e0af4fa0304c98a7f76225e4e06dd34f563030826466ef1c",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "sourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "sourceBatch": 2,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "originalSourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "originalSourceRow": 2,
+      "sourceRow": 2,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "DOOM Eternal",
+      "sourceReference": "Arme canonique, pas une creature invoquee : presentation RPG d un tir et de ses arcs d energie.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.7759197324414716,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 470,
+          "bottom": 654
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 9,
+              "top": 40,
+              "width": 236,
+              "height": 132,
+              "pixels": 22364
+            },
+            "output": {
+              "left": 43,
+              "top": 142,
+              "width": 183,
+              "height": 102
+            }
+          },
+          {
+            "source": {
+              "left": 257,
+              "top": 40,
+              "width": 210,
+              "height": 130,
+              "pixels": 20358
+            },
+            "output": {
+              "left": 52,
+              "top": 142,
+              "width": 163,
+              "height": 101
+            }
+          },
+          {
+            "source": {
+              "left": 479,
+              "top": 27,
+              "width": 263,
+              "height": 141,
+              "pixels": 29006
+            },
+            "output": {
+              "left": 40,
+              "top": 131,
+              "width": 204,
+              "height": 109
+            }
+          },
+          {
+            "source": {
+              "left": 730,
+              "top": 23,
+              "width": 207,
+              "height": 144,
+              "pixels": 18948
+            },
+            "output": {
+              "left": 51,
+              "top": 128,
+              "width": 161,
+              "height": 112
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "guilty-gear-yamada",
+      "key": "Guilty Gear::Yamada::Great Yamada Attack",
+      "universe": "Guilty Gear",
+      "entityName": "Yamada",
+      "actionName": "Great Yamada Attack",
+      "sourceHeroId": "may_gg",
+      "callers": [
+        "may_gg"
+      ],
+      "sheet": "/sprites/generated/combat-entities/guilty-gear-yamada.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "7d5dbe695ecf455243b4a0d0779eef4ee3fb5fd7c94ec1f4d0e02b9be1471d71",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "sourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "sourceBatch": 2,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "originalSourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "originalSourceRow": 3,
+      "sourceRow": 3,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Guilty Gear Xrd",
+      "sourceReference": "Yamada est la baleine presente dans cet Overdrive ; timings et impact unique adaptes.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.8375451263537906,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 652,
+          "bottom": 862
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 8,
+              "top": 32,
+              "width": 219,
+              "height": 167,
+              "pixels": 24750
+            },
+            "output": {
+              "left": 35,
+              "top": 102,
+              "width": 183,
+              "height": 140
+            }
+          },
+          {
+            "source": {
+              "left": 242,
+              "top": 14,
+              "width": 221,
+              "height": 187,
+              "pixels": 29663
+            },
+            "output": {
+              "left": 33,
+              "top": 87,
+              "width": 185,
+              "height": 157
+            }
+          },
+          {
+            "source": {
+              "left": 468,
+              "top": 10,
+              "width": 263,
+              "height": 191,
+              "pixels": 37628
+            },
+            "output": {
+              "left": 24,
+              "top": 84,
+              "width": 220,
+              "height": 160
+            }
+          },
+          {
+            "source": {
+              "left": 715,
+              "top": 26,
+              "width": 216,
+              "height": 173,
+              "pixels": 23124
+            },
+            "output": {
+              "left": 32,
+              "top": 97,
+              "width": 181,
+              "height": 145
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "ff7-ifrit",
+      "key": "Final Fantasy VII::Ifrit::Hellfire",
+      "universe": "Final Fantasy VII",
+      "entityName": "Ifrit",
+      "actionName": "Hellfire",
+      "sourceHeroId": "cloud_ff7",
+      "callers": [
+        "cloud_ff7",
+        "barret_ff7",
+        "redxiii_ff7"
+      ],
+      "sheet": "/sprites/generated/combat-entities/ff7-ifrit.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "dc25d37ea481a3caf527d20e30ebdf84a6ac1af73504aa48a49f1e7557d5bf25",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "sourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "sourceBatch": 2,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "originalSourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "originalSourceRow": 4,
+      "sourceRow": 4,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Final Fantasy VII (1997)",
+      "sourceReference": "Ifrit summon materia: Hellfire",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.8256227758007118,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 860,
+          "bottom": 1090
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 8,
+              "top": 15,
+              "width": 210,
+              "height": 213,
+              "pixels": 31762
+            },
+            "output": {
+              "left": 37,
+              "top": 68,
+              "width": 173,
+              "height": 176
+            }
+          },
+          {
+            "source": {
+              "left": 238,
+              "top": 12,
+              "width": 230,
+              "height": 211,
+              "pixels": 37394
+            },
+            "output": {
+              "left": 31,
+              "top": 66,
+              "width": 190,
+              "height": 174
+            }
+          },
+          {
+            "source": {
+              "left": 459,
+              "top": 20,
+              "width": 274,
+              "height": 208,
+              "pixels": 43637
+            },
+            "output": {
+              "left": 18,
+              "top": 72,
+              "width": 226,
+              "height": 172
+            }
+          },
+          {
+            "source": {
+              "left": 728,
+              "top": 18,
+              "width": 214,
+              "height": 208,
+              "pixels": 31100
+            },
+            "output": {
+              "left": 44,
+              "top": 71,
+              "width": 177,
+              "height": 172
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "ff7-shiva",
+      "key": "Final Fantasy VII::Shiva::Diamond Dust",
+      "universe": "Final Fantasy VII",
+      "entityName": "Shiva",
+      "actionName": "Diamond Dust",
+      "sourceHeroId": "tifa_ff7",
+      "callers": [
+        "tifa_ff7",
+        "yuffie_ff7"
+      ],
+      "sheet": "/sprites/generated/combat-entities/ff7-shiva.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "5f96a333ad2b03c42aef1b462001fb13a8eb4fae2dcdb8ff37a2249149818c01",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "sourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "sourceBatch": 2,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "originalSourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "originalSourceRow": 5,
+      "sourceRow": 5,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Final Fantasy VII (1997)",
+      "sourceReference": "Shiva summon materia: Diamond Dust",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.7972508591065293,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 1077,
+          "bottom": 1352
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 21,
+              "top": 7,
+              "width": 182,
+              "height": 261,
+              "pixels": 31847
+            },
+            "output": {
+              "left": 50,
+              "top": 36,
+              "width": 145,
+              "height": 208
+            }
+          },
+          {
+            "source": {
+              "left": 239,
+              "top": 0,
+              "width": 203,
+              "height": 268,
+              "pixels": 41751
+            },
+            "output": {
+              "left": 35,
+              "top": 30,
+              "width": 162,
+              "height": 214
+            }
+          },
+          {
+            "source": {
+              "left": 468,
+              "top": 10,
+              "width": 270,
+              "height": 258,
+              "pixels": 44442
+            },
+            "output": {
+              "left": 29,
+              "top": 38,
+              "width": 215,
+              "height": 206
+            }
+          },
+          {
+            "source": {
+              "left": 727,
+              "top": 4,
+              "width": 203,
+              "height": 264,
+              "pixels": 32372
+            },
+            "output": {
+              "left": 46,
+              "top": 34,
+              "width": 162,
+              "height": 210
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "ff7-bahamut",
+      "key": "Final Fantasy VII::Bahamut::Megaflare",
+      "universe": "Final Fantasy VII",
+      "entityName": "Bahamut",
+      "actionName": "Megaflare",
+      "sourceHeroId": "aerith_ff7",
+      "callers": [
+        "aerith_ff7",
+        "vincent_ff7"
+      ],
+      "sheet": "/sprites/generated/combat-entities/ff7-bahamut.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "ecbcd34bd73328279d14458e2f781c2e8a363ed86a093b26563a718a8e4c0ed5",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/correction-ff7-bahamut.png",
+      "sourceAtlasSha256": "bfaf77bc9fa81b04b2e270d4cb90f7f7c85de554b2609b1882214c41a55bacea",
+      "sourceBatch": 2,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-2.png",
+      "originalSourceAtlasSha256": "41fa5fff77668c938788fa999eecf0c28fe9f94ebeef77783dd364d46ec00744",
+      "originalSourceRow": 6,
+      "sourceRow": 0,
+      "nativeCorrection": true,
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceWork": "Final Fantasy VII (1997)",
+      "sourceReference": "Bahamut summon materia: Megaflare",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.31564625850340133,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 0,
+          "bottom": 724
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 30,
+              "top": 161,
+              "width": 464,
+              "height": 465,
+              "pixels": 129482
+            },
+            "output": {
+              "left": 52,
+              "top": 97,
+              "width": 146,
+              "height": 147
+            }
+          },
+          {
+            "source": {
+              "left": 556,
+              "top": 160,
+              "width": 523,
+              "height": 467,
+              "pixels": 141099
+            },
+            "output": {
+              "left": 46,
+              "top": 96,
+              "width": 165,
+              "height": 147
+            }
+          },
+          {
+            "source": {
+              "left": 1057,
+              "top": 164,
+              "width": 668,
+              "height": 464,
+              "pixels": 190935
+            },
+            "output": {
+              "left": 33,
+              "top": 98,
+              "width": 211,
+              "height": 146
+            }
+          },
+          {
+            "source": {
+              "left": 1652,
+              "top": 163,
+              "width": 502,
+              "height": 462,
+              "pixels": 119398
+            },
+            "output": {
+              "left": 50,
+              "top": 97,
+              "width": 158,
+              "height": 146
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native correction contains the entire wing silhouette; no edge-clipped source row is used."
+      }
+    },
+    {
+      "id": "sonic-tornado",
+      "key": "Sonic::Tails et le Tornado::Tornado Machine Gun",
+      "universe": "Sonic",
+      "entityName": "Tails et le Tornado",
+      "actionName": "Tornado Machine Gun",
+      "sourceHeroId": "sonic_hedgehog",
+      "callers": [
+        "sonic_hedgehog"
+      ],
+      "sheet": "/sprites/generated/combat-entities/sonic-tornado.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "4ebd9ad1eb35922051f6e97d9ea9caf0c921a085ee47c42df139bb9d489c4d5d",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "sourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "sourceBatch": 3,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "originalSourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "originalSourceRow": 0,
+      "sourceRow": 0,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Sonic Adventure",
+      "sourceReference": "Tails pilote le Tornado equipe de mitrailleuses ; appel en soutien adapte au RPG.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.8957528957528957,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 0,
+          "bottom": 214
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 12,
+              "top": 48,
+              "width": 219,
+              "height": 163,
+              "pixels": 23930
+            },
+            "output": {
+              "left": 33,
+              "top": 98,
+              "width": 196,
+              "height": 146
+            }
+          },
+          {
+            "source": {
+              "left": 242,
+              "top": 36,
+              "width": 214,
+              "height": 154,
+              "pixels": 22513
+            },
+            "output": {
+              "left": 26,
+              "top": 87,
+              "width": 192,
+              "height": 138
+            }
+          },
+          {
+            "source": {
+              "left": 476,
+              "top": 48,
+              "width": 246,
+              "height": 158,
+              "pixels": 24733
+            },
+            "output": {
+              "left": 24,
+              "top": 98,
+              "width": 220,
+              "height": 142
+            }
+          },
+          {
+            "source": {
+              "left": 729,
+              "top": 48,
+              "width": 211,
+              "height": 160,
+              "pixels": 22365
+            },
+            "output": {
+              "left": 38,
+              "top": 98,
+              "width": 189,
+              "height": 143
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "jojo-star-platinum",
+      "key": "JoJo's Bizarre Adventure::Star Platinum::Ora Ora",
+      "universe": "JoJo's Bizarre Adventure",
+      "entityName": "Star Platinum",
+      "actionName": "Ora Ora",
+      "sourceHeroId": "jotaro_kujo",
+      "callers": [
+        "jotaro_kujo"
+      ],
+      "sheet": "/sprites/generated/combat-entities/jojo-star-platinum.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "c5f7897fd2f18b12d948ffab5f309f2c6ba1624e3d95cbec8968c21ac0d9143f",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "sourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "sourceBatch": 3,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "originalSourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "originalSourceRow": 1,
+      "sourceRow": 1,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Stardust Crusaders",
+      "sourceReference": "Manifestation du Stand Star Platinum et barrage de poings ; cadence et degats adaptes.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.8027681660899654,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 204,
+          "bottom": 474
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 11,
+              "top": 11,
+              "width": 200,
+              "height": 254,
+              "pixels": 25095
+            },
+            "output": {
+              "left": 42,
+              "top": 40,
+              "width": 161,
+              "height": 204
+            }
+          },
+          {
+            "source": {
+              "left": 244,
+              "top": 11,
+              "width": 213,
+              "height": 254,
+              "pixels": 25709
+            },
+            "output": {
+              "left": 38,
+              "top": 40,
+              "width": 171,
+              "height": 204
+            }
+          },
+          {
+            "source": {
+              "left": 453,
+              "top": 23,
+              "width": 284,
+              "height": 241,
+              "pixels": 33997
+            },
+            "output": {
+              "left": 16,
+              "top": 50,
+              "width": 228,
+              "height": 193
+            }
+          },
+          {
+            "source": {
+              "left": 740,
+              "top": 3,
+              "width": 180,
+              "height": 262,
+              "pixels": 24142
+            },
+            "output": {
+              "left": 56,
+              "top": 34,
+              "width": 144,
+              "height": 210
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "jojo-hermit-purple",
+      "key": "JoJo's Bizarre Adventure::Hermit Purple::Hermit Purple — Hamon",
+      "universe": "JoJo's Bizarre Adventure",
+      "entityName": "Hermit Purple",
+      "actionName": "Hermit Purple — Hamon",
+      "sourceHeroId": "joseph_joestar",
+      "callers": [
+        "joseph_joestar"
+      ],
+      "sheet": "/sprites/generated/combat-entities/jojo-hermit-purple.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "429caf678b2eeab7ec16aa9eb2f5aacd337c6b22ad8ca333fa4bac21c388eea8",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "sourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "sourceBatch": 3,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "originalSourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "originalSourceRow": 2,
+      "sourceRow": 2,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Stardust Crusaders",
+      "sourceReference": "Hermit Purple est le Stand de Joseph age ; ses lianes peuvent conduire le Hamon.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.7864406779661017,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 465,
+          "bottom": 685
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 11,
+              "top": 14,
+              "width": 213,
+              "height": 198,
+              "pixels": 25829
+            },
+            "output": {
+              "left": 43,
+              "top": 84,
+              "width": 168,
+              "height": 156
+            }
+          },
+          {
+            "source": {
+              "left": 241,
+              "top": 8,
+              "width": 224,
+              "height": 209,
+              "pixels": 30042
+            },
+            "output": {
+              "left": 38,
+              "top": 80,
+              "width": 176,
+              "height": 164
+            }
+          },
+          {
+            "source": {
+              "left": 453,
+              "top": 31,
+              "width": 287,
+              "height": 172,
+              "pixels": 27499
+            },
+            "output": {
+              "left": 18,
+              "top": 98,
+              "width": 226,
+              "height": 135
+            }
+          },
+          {
+            "source": {
+              "left": 720,
+              "top": 16,
+              "width": 220,
+              "height": 194,
+              "pixels": 24343
+            },
+            "output": {
+              "left": 42,
+              "top": 86,
+              "width": 173,
+              "height": 153
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "jojo-gold-experience",
+      "key": "JoJo's Bizarre Adventure::Gold Experience::Muda Muda",
+      "universe": "JoJo's Bizarre Adventure",
+      "entityName": "Gold Experience",
+      "actionName": "Muda Muda",
+      "sourceHeroId": "giorno_giovanna",
+      "callers": [
+        "giorno_giovanna"
+      ],
+      "sheet": "/sprites/generated/combat-entities/jojo-gold-experience.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "2794007bd0de1dd30de70eafdb4b41d654c58e2ef4f88cc67ffdda2f0773dd28",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/correction-jojo-gold-experience.png",
+      "sourceAtlasSha256": "82d08487cec4ad19ebe79e8af57128c30232a5bc6897f2bb8d57fd557d4835b2",
+      "sourceBatch": 3,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "originalSourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "originalSourceRow": 3,
+      "sourceRow": 0,
+      "nativeCorrection": true,
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceWork": "Golden Wind",
+      "sourceReference": "Manifestation du Stand Gold Experience ; seule sa frappe est transposee ici.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.31057563587684067,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 0,
+          "bottom": 724
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 48,
+              "top": 96,
+              "width": 377,
+              "height": 573,
+              "pixels": 92234
+            },
+            "output": {
+              "left": 59,
+              "top": 66,
+              "width": 117,
+              "height": 178
+            }
+          },
+          {
+            "source": {
+              "left": 534,
+              "top": 114,
+              "width": 509,
+              "height": 555,
+              "pixels": 94350
+            },
+            "output": {
+              "left": 41,
+              "top": 72,
+              "width": 158,
+              "height": 172
+            }
+          },
+          {
+            "source": {
+              "left": 992,
+              "top": 120,
+              "width": 739,
+              "height": 549,
+              "pixels": 246558
+            },
+            "output": {
+              "left": 14,
+              "top": 73,
+              "width": 230,
+              "height": 171
+            }
+          },
+          {
+            "source": {
+              "left": 1660,
+              "top": 97,
+              "width": 485,
+              "height": 572,
+              "pixels": 91122
+            },
+            "output": {
+              "left": 53,
+              "top": 66,
+              "width": 151,
+              "height": 178
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 1
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native correction replaces leaf creation with the requested physical Muda Muda punching action."
+      }
+    },
+    {
+      "id": "neon-ghostline",
+      "key": "Neon Requiem::Soulèvement Ghostline::Soulèvement Ghostline",
+      "universe": "Neon Requiem",
+      "entityName": "Soulèvement Ghostline",
+      "actionName": "Soulèvement Ghostline",
+      "sourceHeroId": "imani_quell",
+      "callers": [
+        "nyra_vale",
+        "jax_rook",
+        "imani_quell"
+      ],
+      "sheet": "/sprites/generated/combat-entities/neon-ghostline.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "5760ca3c9771c86b8cde1b396457475f05810eb03f09dec3a4ceac65837d3de2",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "sourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "sourceBatch": 3,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "originalSourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "originalSourceRow": 4,
+      "sourceRow": 4,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Neon Requiem",
+      "sourceReference": "Existing project ability imani_quell: Soulèvement Ghostline",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.862453531598513,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 930,
+          "bottom": 1185
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 9,
+              "top": 5,
+              "width": 224,
+              "height": 248,
+              "pixels": 31534
+            },
+            "output": {
+              "left": 34,
+              "top": 30,
+              "width": 193,
+              "height": 214
+            }
+          },
+          {
+            "source": {
+              "left": 221,
+              "top": 4,
+              "width": 247,
+              "height": 247,
+              "pixels": 33101
+            },
+            "output": {
+              "left": 12,
+              "top": 29,
+              "width": 213,
+              "height": 213
+            }
+          },
+          {
+            "source": {
+              "left": 459,
+              "top": 51,
+              "width": 268,
+              "height": 192,
+              "pixels": 34101
+            },
+            "output": {
+              "left": 13,
+              "top": 70,
+              "width": 231,
+              "height": 166
+            }
+          },
+          {
+            "source": {
+              "left": 725,
+              "top": 9,
+              "width": 223,
+              "height": 237,
+              "pixels": 31081
+            },
+            "output": {
+              "left": 38,
+              "top": 34,
+              "width": 192,
+              "height": 204
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "aether-sky-mutineers",
+      "key": "The Aether Crown::Mutinerie des Cieux::Mutinerie des Cieux",
+      "universe": "The Aether Crown",
+      "entityName": "Mutinerie des Cieux",
+      "actionName": "Mutinerie des Cieux",
+      "sourceHeroId": "elara_voss",
+      "callers": [
+        "elara_voss",
+        "merek_flint"
+      ],
+      "sheet": "/sprites/generated/combat-entities/aether-sky-mutineers.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "f3d0c65a752e93b9278d5da01baba7d31d7139fd02fc5fd4fb291e911c6c24d3",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "sourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "sourceBatch": 3,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "originalSourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "originalSourceRow": 5,
+      "sourceRow": 5,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "The Aether Crown",
+      "sourceReference": "Existing project ability elara_voss: Mutinerie des Cieux",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.6685878962536023,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 1166,
+          "bottom": 1408
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 8,
+              "top": 10,
+              "width": 220,
+              "height": 228,
+              "pixels": 33655
+            },
+            "output": {
+              "left": 54,
+              "top": 91,
+              "width": 147,
+              "height": 152
+            }
+          },
+          {
+            "source": {
+              "left": 227,
+              "top": 1,
+              "width": 242,
+              "height": 238,
+              "pixels": 34050
+            },
+            "output": {
+              "left": 42,
+              "top": 85,
+              "width": 162,
+              "height": 159
+            }
+          },
+          {
+            "source": {
+              "left": 452,
+              "top": 31,
+              "width": 314,
+              "height": 203,
+              "pixels": 31992
+            },
+            "output": {
+              "left": 34,
+              "top": 105,
+              "width": 210,
+              "height": 136
+            }
+          },
+          {
+            "source": {
+              "left": 723,
+              "top": 10,
+              "width": 225,
+              "height": 228,
+              "pixels": 31716
+            },
+            "output": {
+              "left": 57,
+              "top": 91,
+              "width": 150,
+              "height": 152
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "aether-valve-drone",
+      "key": "The Aether Crown::Drone Soupape::Drone Soupape",
+      "universe": "The Aether Crown",
+      "entityName": "Drone Soupape",
+      "actionName": "Drone Soupape",
+      "sourceHeroId": "bram_quill",
+      "callers": [
+        "bram_quill"
+      ],
+      "sheet": "/sprites/generated/combat-entities/aether-valve-drone.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "ef54ef457e94603e9e15b5367aa1215df484e3437123ad9ec4ab6bdbc0a98af1",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "sourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "sourceBatch": 3,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-3.png",
+      "originalSourceAtlasSha256": "90583abdfa2cb98d958ac9bca9085b88c8a56d430eb54945bf2ec859ef0c9c7d",
+      "originalSourceRow": 6,
+      "sourceRow": 6,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "The Aether Crown",
+      "sourceReference": "Existing project ability bram_quill: Drone Soupape",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.8083623693379791,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 1395,
+          "bottom": 1659
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 12,
+              "top": 18,
+              "width": 216,
+              "height": 214,
+              "pixels": 27245
+            },
+            "output": {
+              "left": 42,
+              "top": 54,
+              "width": 175,
+              "height": 173
+            }
+          },
+          {
+            "source": {
+              "left": 246,
+              "top": 11,
+              "width": 216,
+              "height": 222,
+              "pixels": 26518
+            },
+            "output": {
+              "left": 39,
+              "top": 48,
+              "width": 175,
+              "height": 179
+            }
+          },
+          {
+            "source": {
+              "left": 449,
+              "top": 3,
+              "width": 277,
+              "height": 250,
+              "pixels": 42499
+            },
+            "output": {
+              "left": 12,
+              "top": 42,
+              "width": 224,
+              "height": 202
+            }
+          },
+          {
+            "source": {
+              "left": 739,
+              "top": 25,
+              "width": 209,
+              "height": 210,
+              "pixels": 26116
+            },
+            "output": {
+              "left": 55,
+              "top": 60,
+              "width": 169,
+              "height": 170
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "meridian-clockwork-falcon",
+      "key": "Meridian Clockwork::Faucon à Ressort::Faucon à Ressort",
+      "universe": "Meridian Clockwork",
+      "entityName": "Faucon à Ressort",
+      "actionName": "Faucon à Ressort",
+      "sourceHeroId": "lio_ferrante",
+      "callers": [
+        "seraphine_meridius",
+        "lio_ferrante",
+        "brother_ors"
+      ],
+      "sheet": "/sprites/generated/combat-entities/meridian-clockwork-falcon.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "b8deff5fdc9b6b548c702ab3806b99cfeb3cfdb5899ba5df61a6af9655ba387a",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "sourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "sourceBatch": 4,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "originalSourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "originalSourceRow": 0,
+      "sourceRow": 0,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Meridian Clockwork",
+      "sourceReference": "Existing project ability lio_ferrante: Faucon à Ressort",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.8888888888888888,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 0,
+          "bottom": 234
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 8,
+              "top": 32,
+              "width": 214,
+              "height": 194,
+              "pixels": 19063
+            },
+            "output": {
+              "left": 30,
+              "top": 71,
+              "width": 190,
+              "height": 172
+            }
+          },
+          {
+            "source": {
+              "left": 260,
+              "top": 9,
+              "width": 199,
+              "height": 217,
+              "pixels": 22159
+            },
+            "output": {
+              "left": 43,
+              "top": 50,
+              "width": 177,
+              "height": 193
+            }
+          },
+          {
+            "source": {
+              "left": 474,
+              "top": 6,
+              "width": 249,
+              "height": 218,
+              "pixels": 28480
+            },
+            "output": {
+              "left": 23,
+              "top": 48,
+              "width": 221,
+              "height": 194
+            }
+          },
+          {
+            "source": {
+              "left": 726,
+              "top": 72,
+              "width": 218,
+              "height": 155,
+              "pixels": 18318
+            },
+            "output": {
+              "left": 36,
+              "top": 106,
+              "width": 194,
+              "height": 138
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "aegea-shield-forge",
+      "key": "Aegea: War of the Moirai::Forge des Cent Boucliers::Forge des Cent Boucliers",
+      "universe": "Aegea: War of the Moirai",
+      "entityName": "Forge des Cent Boucliers",
+      "actionName": "Forge des Cent Boucliers",
+      "sourceHeroId": "doros_bronzehand",
+      "callers": [
+        "thaleia_naxos",
+        "melantho_seer",
+        "doros_bronzehand"
+      ],
+      "sheet": "/sprites/generated/combat-entities/aegea-shield-forge.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "873d20bdf4b42bea268a0bb37f25e867df3eb7d629b4e18f0df21ac65e19582e",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "sourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "sourceBatch": 4,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "originalSourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "originalSourceRow": 1,
+      "sourceRow": 1,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Aegea: War of the Moirai",
+      "sourceReference": "Existing project ability doros_bronzehand: Forge des Cent Boucliers",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.7864406779661017,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 233,
+          "bottom": 454
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 9,
+              "top": 15,
+              "width": 221,
+              "height": 199,
+              "pixels": 29491
+            },
+            "output": {
+              "left": 42,
+              "top": 86,
+              "width": 174,
+              "height": 157
+            }
+          },
+          {
+            "source": {
+              "left": 252,
+              "top": 11,
+              "width": 226,
+              "height": 204,
+              "pixels": 28871
+            },
+            "output": {
+              "left": 47,
+              "top": 83,
+              "width": 178,
+              "height": 160
+            }
+          },
+          {
+            "source": {
+              "left": 475,
+              "top": 6,
+              "width": 265,
+              "height": 209,
+              "pixels": 35632
+            },
+            "output": {
+              "left": 36,
+              "top": 79,
+              "width": 208,
+              "height": 164
+            }
+          },
+          {
+            "source": {
+              "left": 727,
+              "top": 10,
+              "width": 221,
+              "height": 206,
+              "pixels": 26873
+            },
+            "output": {
+              "left": 47,
+              "top": 82,
+              "width": 174,
+              "height": 162
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "tawantinsuyu-relay",
+      "key": "Tawantinsuyu: The Split Sun::Message des Quatre Quartiers::Message des Quatre Quartiers",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "entityName": "Message des Quatre Quartiers",
+      "actionName": "Message des Quatre Quartiers",
+      "sourceHeroId": "killa_mayu",
+      "callers": [
+        "killa_mayu",
+        "rumi_illa",
+        "sumaq_khipu"
+      ],
+      "sheet": "/sprites/generated/combat-entities/tawantinsuyu-relay.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "1822b9cad1d857ac469ffebf489bd3bea8e4807994655ad9299014d38350a80b",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/correction-tawantinsuyu-relay.png",
+      "sourceAtlasSha256": "c463eda10efe78d0cfdb32755e3920b81eea8df9b726af3e580ccb258d5ea81b",
+      "sourceBatch": 4,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "originalSourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "originalSourceRow": 2,
+      "sourceRow": 0,
+      "nativeCorrection": true,
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceWork": "Tawantinsuyu: The Split Sun",
+      "sourceReference": "Existing project ability killa_mayu: Message des Quatre Quartiers",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.44701348747591524,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 0,
+          "bottom": 724
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 49,
+              "top": 235,
+              "width": 350,
+              "height": 314,
+              "pixels": 79713
+            },
+            "output": {
+              "left": 29,
+              "top": 103,
+              "width": 156,
+              "height": 140
+            }
+          },
+          {
+            "source": {
+              "left": 555,
+              "top": 301,
+              "width": 426,
+              "height": 248,
+              "pixels": 76806
+            },
+            "output": {
+              "left": 12,
+              "top": 132,
+              "width": 190,
+              "height": 111
+            }
+          },
+          {
+            "source": {
+              "left": 1117,
+              "top": 300,
+              "width": 477,
+              "height": 251,
+              "pixels": 83802
+            },
+            "output": {
+              "left": 20,
+              "top": 132,
+              "width": 213,
+              "height": 112
+            }
+          },
+          {
+            "source": {
+              "left": 1743,
+              "top": 236,
+              "width": 375,
+              "height": 313,
+              "pixels": 78809
+            },
+            "output": {
+              "left": 58,
+              "top": 103,
+              "width": 168,
+              "height": 140
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native correction restores exactly four adult messengers in each pose and transparent margin around the last recovery figure."
+      }
+    },
+    {
+      "id": "yomi-yokai-parade",
+      "key": "Yomi no Kage::Parade Nocturne Réconciliée::Parade Nocturne Réconciliée",
+      "universe": "Yomi no Kage",
+      "entityName": "Parade Nocturne Réconciliée",
+      "actionName": "Parade Nocturne Réconciliée",
+      "sourceHeroId": "daichi_kurogane",
+      "callers": [
+        "rei_kagetsu",
+        "aoi_mikazuki",
+        "daichi_kurogane"
+      ],
+      "sheet": "/sprites/generated/combat-entities/yomi-yokai-parade.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "0041844779e7d98f21aa8cbc77a74b8bf266d916032115fc0eb3907d52965964",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "sourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "sourceBatch": 4,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "originalSourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "originalSourceRow": 3,
+      "sourceRow": 3,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Yomi no Kage",
+      "sourceReference": "Existing project ability daichi_kurogane: Parade Nocturne Réconciliée",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.7656765676567657,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 663,
+          "bottom": 913
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 7,
+              "top": 5,
+              "width": 252,
+              "height": 232,
+              "pixels": 37003
+            },
+            "output": {
+              "left": 43,
+              "top": 58,
+              "width": 193,
+              "height": 178
+            }
+          },
+          {
+            "source": {
+              "left": 243,
+              "top": 4,
+              "width": 222,
+              "height": 232,
+              "pixels": 34929
+            },
+            "output": {
+              "left": 42,
+              "top": 57,
+              "width": 170,
+              "height": 178
+            }
+          },
+          {
+            "source": {
+              "left": 468,
+              "top": 3,
+              "width": 276,
+              "height": 245,
+              "pixels": 47421
+            },
+            "output": {
+              "left": 33,
+              "top": 56,
+              "width": 211,
+              "height": 188
+            }
+          },
+          {
+            "source": {
+              "left": 727,
+              "top": 3,
+              "width": 221,
+              "height": 233,
+              "pixels": 32766
+            },
+            "output": {
+              "left": 50,
+              "top": 56,
+              "width": 169,
+              "height": 178
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "mandate-ancestor",
+      "key": "Mandate of Nine Heavens::Pas de l’Ancêtre::Pas de l’Ancêtre",
+      "universe": "Mandate of Nine Heavens",
+      "entityName": "Pas de l’Ancêtre",
+      "actionName": "Pas de l’Ancêtre",
+      "sourceHeroId": "mei_zhen",
+      "callers": [
+        "lin_yue",
+        "wei_long",
+        "mei_zhen"
+      ],
+      "sheet": "/sprites/generated/combat-entities/mandate-ancestor.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "7fac8d39f299354aa6506544bf3caeb059cb6af48e9323dda8f2fcc121a05c86",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "sourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "sourceBatch": 4,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "originalSourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "originalSourceRow": 4,
+      "sourceRow": 4,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Mandate of Nine Heavens",
+      "sourceReference": "Existing project ability mei_zhen: Pas de l’Ancêtre",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.770764119601329,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 903,
+          "bottom": 1183
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 9,
+              "top": 15,
+              "width": 224,
+              "height": 263,
+              "pixels": 33077
+            },
+            "output": {
+              "left": 44,
+              "top": 41,
+              "width": 173,
+              "height": 203
+            }
+          },
+          {
+            "source": {
+              "left": 245,
+              "top": 13,
+              "width": 237,
+              "height": 257,
+              "pixels": 36099
+            },
+            "output": {
+              "left": 43,
+              "top": 40,
+              "width": 183,
+              "height": 198
+            }
+          },
+          {
+            "source": {
+              "left": 467,
+              "top": 3,
+              "width": 276,
+              "height": 260,
+              "pixels": 45337
+            },
+            "output": {
+              "left": 31,
+              "top": 32,
+              "width": 213,
+              "height": 200
+            }
+          },
+          {
+            "source": {
+              "left": 711,
+              "top": 16,
+              "width": 227,
+              "height": 246,
+              "pixels": 30570
+            },
+            "output": {
+              "left": 37,
+              "top": 42,
+              "width": 175,
+              "height": 190
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "ilyr-nym-choir",
+      "key": "Ilyr Concordat::Chœur Nym Non Unanime::Chœur Nym Non Unanime",
+      "universe": "Ilyr Concordat",
+      "entityName": "Chœur Nym Non Unanime",
+      "actionName": "Chœur Nym Non Unanime",
+      "sourceHeroId": "ixo_9",
+      "callers": [
+        "seyra_tal",
+        "korr_venn",
+        "ixo_9"
+      ],
+      "sheet": "/sprites/generated/combat-entities/ilyr-nym-choir.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "23ca7c92a8466e449a6f94f93b077e70863f43c73c1828d341aa13ea7da3086a",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "sourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "sourceBatch": 4,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "originalSourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "originalSourceRow": 5,
+      "sourceRow": 5,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Ilyr Concordat",
+      "sourceReference": "Existing project ability ixo_9: Chœur Nym Non Unanime",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.709480122324159,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 1173,
+          "bottom": 1397
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 9,
+              "top": 3,
+              "width": 206,
+              "height": 210,
+              "pixels": 21205
+            },
+            "output": {
+              "left": 50,
+              "top": 95,
+              "width": 146,
+              "height": 149
+            }
+          },
+          {
+            "source": {
+              "left": 255,
+              "top": 7,
+              "width": 201,
+              "height": 205,
+              "pixels": 23781
+            },
+            "output": {
+              "left": 57,
+              "top": 98,
+              "width": 143,
+              "height": 145
+            }
+          },
+          {
+            "source": {
+              "left": 501,
+              "top": 4,
+              "width": 255,
+              "height": 208,
+              "pixels": 30338
+            },
+            "output": {
+              "left": 63,
+              "top": 96,
+              "width": 181,
+              "height": 148
+            }
+          },
+          {
+            "source": {
+              "left": 724,
+              "top": 15,
+              "width": 224,
+              "height": 193,
+              "pixels": 19316
+            },
+            "output": {
+              "left": 53,
+              "top": 104,
+              "width": 159,
+              "height": 137
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    },
+    {
+      "id": "skullgirls-black-egrets",
+      "key": "Skullgirls::Black Egrets::Inferno Brigade",
+      "universe": "Skullgirls",
+      "entityName": "Black Egrets",
+      "actionName": "Inferno Brigade",
+      "sourceHeroId": "skullgirls_parasoul",
+      "callers": [
+        "skullgirls_parasoul"
+      ],
+      "sheet": "/sprites/generated/combat-entities/skullgirls-black-egrets.png",
+      "frames": 4,
+      "columns": 4,
+      "rows": 1,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "width": 1024,
+      "height": 256,
+      "alpha": true,
+      "assetMissing": false,
+      "phases": [
+        "idle",
+        "preparation",
+        "impact",
+        "recovery"
+      ],
+      "sha256": "ba88f04b9f05001250765edb2cee1f3147a26696ee7fd2664377f9ac747fe5d0",
+      "sourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "sourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "sourceBatch": 4,
+      "originalSourceAtlas": "docs/combat-completion-2026-10-18/sources/native-batch-4.png",
+      "originalSourceAtlasSha256": "473ebe33d8d353ff11b099be175031d90f3c174c5b77b078936d91c6a2b35388",
+      "originalSourceRow": 6,
+      "sourceRow": 6,
+      "nativeCorrection": false,
+      "sourceDimensions": [
+        948,
+        1659
+      ],
+      "sourceWork": "Skullgirls 2nd Encore",
+      "sourceReference": "Les Black Egrets sont les soldats appeles dans le Blockbuster ; la presentation RPG est adaptee.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "padding": 12,
+        "sharedScale": 0.760655737704918,
+        "baseline": 244,
+        "sourceBounds": {
+          "top": 1396,
+          "bottom": 1659
+        },
+        "frameBounds": [
+          {
+            "source": {
+              "left": 9,
+              "top": 12,
+              "width": 249,
+              "height": 231,
+              "pixels": 33599
+            },
+            "output": {
+              "left": 45,
+              "top": 68,
+              "width": 189,
+              "height": 176
+            }
+          },
+          {
+            "source": {
+              "left": 246,
+              "top": 19,
+              "width": 227,
+              "height": 221,
+              "pixels": 23696
+            },
+            "output": {
+              "left": 45,
+              "top": 73,
+              "width": 173,
+              "height": 168
+            }
+          },
+          {
+            "source": {
+              "left": 459,
+              "top": 9,
+              "width": 286,
+              "height": 232,
+              "pixels": 35023
+            },
+            "output": {
+              "left": 26,
+              "top": 65,
+              "width": 218,
+              "height": 176
+            }
+          },
+          {
+            "source": {
+              "left": 726,
+              "top": 8,
+              "width": 222,
+              "height": 236,
+              "pixels": 32572
+            },
+            "output": {
+              "left": 49,
+              "top": 64,
+              "width": 169,
+              "height": 180
+            }
+          }
+        ],
+        "crossedOpaquePixels": 0,
+        "crossedVisiblePixels": 0
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "sourceDesign": "native-generated-adaptation",
+        "notes": "Native identity and four action phases visually inspected; source-game exactness is not certified."
+      }
+    }
+  ]
+}

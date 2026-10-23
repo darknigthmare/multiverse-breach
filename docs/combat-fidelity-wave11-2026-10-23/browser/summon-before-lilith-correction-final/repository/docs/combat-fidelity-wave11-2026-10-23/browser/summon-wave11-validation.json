@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "status": "final-production-freeze-passed-and-evidence-frozen",
+  "productionGate": "Root final freeze after legacy clone sprite-source routing, ordinary beneficial-action support states and final !wave11Support targeted-projectile condition in engineRpg. No production source or image changed by this agent during proof runs.",
+  "node": {
+    "command": "node --test scripts/summonAnimationWave11.test.mjs",
+    "exitCode": 0,
+    "execSession": 39208,
+    "tests": 16,
+    "passed": 16,
+    "failed": 0,
+    "durationMs": 10955.601736,
+    "log": "../summon-node-final.log",
+    "checks": [
+      "7 exact native identities; mismatched universe/performer/source/action/kind rejected",
+      "112 real RGBA cells; 16 distinct each, common BODY190 scale, baseline244 and clear margins",
+      "23 previous native assets and28 four-pose legacy sheets retain exact bytes/fullmetadata and280 historical geometrysamples",
+      "Both camps: actual16 source draws, cost100 ATB+100charge once, free cancellation, pause, return, single impact at attackcol2, used-command refusal",
+      "Both camps: interrupted/disposed/dead/removed callers cannot cause late impacts; target identity remains committed",
+      "Five real weapon apertures projected by phase/frame/facing; lowered weapons and two melee sources have no fictitious muzzle",
+      "40 same-universe partner bindings:28 native,12 real fallbacks; outside-batch rawDog action preserved",
+      "Hermione guard allies once with no HP changes, no newasset and actual calm legacyrow0 at impact",
+      "All7 offensives require accepted HP-lowering contact; fixed contact after target movement orKO"
+    ]
+  },
+  "browser": {
+    "command": "node docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-browser.mjs --after-production-freeze",
+    "exitCode": 0,
+    "execSession": 41067,
+    "actualGameCanvasFlows": 16,
+    "nativeFlows": 14,
+    "fallbackFlows": 2,
+    "distinctSourceCells": 112,
+    "nativeCells": 112,
+    "opposingNativeCells": 112,
+    "nativePixelMirrorChecks": 224,
+    "allEffectsOnce": true,
+    "offensiveFlows": 14,
+    "offensiveHpImpacts": 14,
+    "supportFlows": 2,
+    "supportEffectEvents": 2,
+    "supportDamageImpacts": 0,
+    "supportAlliedHpUnchanged": true,
+    "pageErrors": [],
+    "productionInputsStableDuringRun": true,
+    "sourceSnapshotScope": "Recursively resolved literal relative JS/JSX/JSON imports reachable from GameCanvas, plus the seven new native reinforcement PNGs and the twenty frozen Part B native32/base16 PNGs. This does not snapshot remote dependencies or claim every dynamically constructed import.",
+    "sourceFiles": 312,
+    "sourceHashesRetainedIn": "summon-wave11-result.json",
+    "effectTicks": [
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99,
+      99
+    ],
+    "sourceAttackColumnAtImpact": 2,
+    "captureCount": 16,
+    "captureReview": "All16 final captures visually inspected in the two final contact montages. Real physical weapons and melee approaches; Hermione old legacy-run arrival/return and calm row0 Protego, no offensive beam. No new native asset counted for Hermione.",
+    "actualUiControls": "Real GameCanvas command button, free cancellation, U/Numpad5, target confirmation, real sessionPaused hostprop, resume and already-used disabledcommand.",
+    "fixtures": [
+      "HP100000/charge100/ATB100/autoBattleoff; supportallies HP40000/60000.",
+      "Actualproduction update/draw, commit pauses at tick0 to avoid browserlatency skippingarrival.",
+      "112 unique newnative sourcecells eachrendered inbothcamps, not224differentposes.",
+      "Hermione has no newnative atlas, dedicated pose or nativepixelmirror counted.",
+      "Developmentserver integration only; finalproductionHTTPdistribution outside thisevidence."
+    ]
+  },
+  "frozenPartB": {
+    "pngs": 20,
+    "registries": 2,
+    "anchorsAndAbilities": true,
+    "hashesMatchDeliveryBeforeAndAfter": true,
+    "deliverySha256": "b85012063f66dc6b6939fc28ad751d577c54e6454f631974d9a8ae7365d21e28"
+  },
+  "preservedAttempts": {
+    "nodeFixtureImport": {
+      "log": "../summon-node-attempt-1-fixture-import.log",
+      "exitCode": 1,
+      "reason": "Copied fixture imported old uppercase ROSTER_REINFORCEMENTS_WAVE10 export from Wave11 module. Fixed test import only."
+    },
+    "browserFixtureRow": {
+      "directory": "summon-attempt-1-fixture-row/",
+      "exitCode": 1,
+      "reason": "Fixture incorrectly demanded legacyrow0 during arrival/return; renderer legitimately uses runrow1 and calmrow0 at Protego impact. No productionchange."
+    },
+    "intermediateCompleteRun": {
+      "directory": "summon-intermediate-before-support-projectile-fix/",
+      "exitCode": 0,
+      "flows": 16,
+      "reason": "Root announced final engineRpg support condition; finalfullrun repeated after signal. Both observed snapshots already have identical hashes, including corrected engineRpg.",
+      "changedProductionInputs": []
+    },
+    "tooling": "npx eslint unavailable; command/error log preserved in ../summon-eslint-unavailable.log. Repository-installed oxlint used instead, exit0."
+  },
+  "syntaxChecksExitCode": 0,
+  "lint": {
+    "tool": "repository-installed oxlint",
+    "exitCode": 0,
+    "log": "../summon-lint.log"
+  },
+  "productionFilesChangedByHarness": false,
+  "uiClosed": true,
+  "source1to1Verified": false,
+  "canon1to1Verified": false,
+  "files": [
+    {
+      "path": "scripts/summonAnimationWave11.test.mjs",
+      "sha256": "7ca875dd690d72180dca4909cf2963557ef400a49a0a34e2348e3c234e6b5a4a",
+      "bytes": 31249
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-node-final.log",
+      "sha256": "fd7d602d9f4b375750bcae56561a0d2a5cb4f697c8be090c786161ba80c5d264",
+      "bytes": 2201
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-browser.mjs",
+      "sha256": "5d3729ea2207829e68220859cde4f011f97af23fed7f041f2a9a51c5cf252dfc",
+      "bytes": 23597
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-result.json",
+      "sha256": "63e1bf35e517cc3af8c073a17b71b2ef26e15093f0e7b5db299113918f4a20dd",
+      "bytes": 2796681
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-final.log",
+      "sha256": "e57958c86468e54c063e3014dd22a6bb140f29220caaa6275ef89f0d406fec51",
+      "bytes": 1782
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-review.md",
+      "sha256": "70ce7662efbe1fe3c3edeadf3f20b04c563066e6602fa191dc4943fb5f2bba31",
+      "bytes": 3288
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-furiosa-enemy-impact.png",
+      "sha256": "09a45396f4a9ae0de3fa1ef10a66ca8ba2d83eb7eda296f97af63e8013b9dc7e",
+      "bytes": 47566
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-furiosa-player-impact.png",
+      "sha256": "9ad200c7d000b825b21175dbd380935f21471ce0aec65b7262e5efff705b8f80",
+      "bytes": 47978
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-greer-enemy-impact.png",
+      "sha256": "f20a5f35954a48366c47001fe6cecff68acdf2b885528895d9af371b331587d3",
+      "bytes": 46157
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-greer-player-impact.png",
+      "sha256": "33abfc90235a8440bb42fd4d5d4217d86f1154271b15c5c261c2b89c6e6d5724",
+      "bytes": 46509
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-hermione-enemy-impact.png",
+      "sha256": "d3fcab6b5c8a4fd67be156808a4d84faa52c78fc892a6d0d19e6f0144d7cd445",
+      "bytes": 42884
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-hermione-player-impact.png",
+      "sha256": "6566790a17a3f7021d6c2bd0238e39968127b02ca9402c612180eb2c5a46bf6e",
+      "bytes": 43117
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-korben-enemy-impact.png",
+      "sha256": "5aa34f3cb0d9f11dd5b7e98f4501af00c797e2ae119bb9896b394e496ea28e18",
+      "bytes": 43910
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-korben-player-impact.png",
+      "sha256": "c9bf6b89ddc621471fab0f3c8b67a11e62a0b0e9730e6edd16466a2588b05402",
+      "bytes": 44215
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-lancelot-enemy-impact.png",
+      "sha256": "b0ba0c2ee4ff2396d0644c66c959e4044611b7b8c1249a6efad7c7da35c7bdd5",
+      "bytes": 46648
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-lancelot-player-impact.png",
+      "sha256": "972b758e2464fe5eed38f62e8feb2c4099ec0f201833c2be6dc2f63fbed48f09",
+      "bytes": 46767
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-roland-enemy-impact.png",
+      "sha256": "5f95778d51b9b7e7f06fdcd693c3f95ace3a30d3019717afb381b2fb0c7add3d",
+      "bytes": 46790
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-roland-player-impact.png",
+      "sha256": "d8e951c768275a5dd941890a2bdfe031887b8982f175c77d2f728a7ac8ed4a94",
+      "bytes": 47012
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-ronon-enemy-impact.png",
+      "sha256": "9119cc194216ab1fea5ba4675fe16ffcbd1e5a6b66f84973baf007e9dd3718a5",
+      "bytes": 47018
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-ronon-player-impact.png",
+      "sha256": "2a160acec51ce578a8dcdb587c0cb1640734b90d80348508e37bc1b9f7b4d9ee",
+      "bytes": 47094
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-spike-enemy-impact.png",
+      "sha256": "6a174d9ccd9a81541be927d06fb5592151ee59b73cd65f166111189210a5d052",
+      "bytes": 43227
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-spike-player-impact.png",
+      "sha256": "9c6331d8119b4dba27cf9368c214e880739cde08f15e04b4e7b95cfe03e3c794",
+      "bytes": 43549
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-final-captures-1.png",
+      "sha256": "5462d75a3f7c57195ce5643548454bf173d972d2d19209e11920b182ceed02ab",
+      "bytes": 120413
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-final-captures-2.png",
+      "sha256": "016ae2b06240ff16900322eca5cc6f67ae94f45e616b8cf011633a95aee640de",
+      "bytes": 119043
+    }
+  ]
+}

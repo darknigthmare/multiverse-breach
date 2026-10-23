@@ -1,0 +1,508 @@
+{
+  "passed": true,
+  "heroId": "buffy_summers",
+  "date": "2026-10-23",
+  "coreDraws": 360,
+  "distinctSourceRectangles": 180,
+  "ledgeGrips": 8,
+  "flows": {
+    "core45": {
+      "passed": true,
+      "states": 45,
+      "physicsUnchanged": true
+    },
+    "movementPause": {
+      "passed": true,
+      "flow": "Real GameCanvas Smash: keyboard D+Space, hold D through landing, switch to Q",
+      "engineUrl": "/src/game/engineSmash.js?t=1792730554910",
+      "summary": {
+        "jumpRise": {
+          "updates": 30,
+          "draws": 30,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999,
+            0.11666666666666665,
+            0.13333333333333333,
+            0.15,
+            0.16666666666666666,
+            0.18333333333333332,
+            0.19999999999999998,
+            0.21666666666666665,
+            0.2333333333333333,
+            0.24999999999999997,
+            0.26666666666666666,
+            0.2833333333333333,
+            0.3,
+            0.31666666666666665,
+            0.3333333333333333,
+            0.35,
+            0.36666666666666664,
+            0.3833333333333333,
+            0.39999999999999997,
+            0.41666666666666663,
+            0.4333333333333333,
+            0.44999999999999996,
+            0.4666666666666666,
+            0.4833333333333333
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "fall": {
+          "updates": 32,
+          "draws": 32,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999,
+            0.11666666666666665,
+            0.13333333333333333,
+            0.15,
+            0.16666666666666666,
+            0.18333333333333332,
+            0.19999999999999998,
+            0.21666666666666665,
+            0.2333333333333333,
+            0.24999999999999997,
+            0.26666666666666666,
+            0.2833333333333333,
+            0.3,
+            0.31666666666666665,
+            0.3333333333333333,
+            0.35,
+            0.36666666666666664,
+            0.3833333333333333,
+            0.39999999999999997,
+            0.41666666666666663,
+            0.4333333333333333,
+            0.44999999999999996,
+            0.4666666666666666,
+            0.4833333333333333,
+            0.49999999999999994,
+            0.5166666666666666
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "land": {
+          "updates": 7,
+          "draws": 7,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "turn": {
+          "updates": 6,
+          "draws": 6,
+          "elapsed": [
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            -4
+          ],
+          "facings": [
+            -1
+          ]
+        }
+      },
+      "pause": {
+        "mechanism": "GameCanvas real sessionPaused prop through root.render; stable stage/team props and engine instance",
+        "before": {
+          "state": "idle",
+          "stateElapsed": 0.39999999999999997,
+          "x": 476,
+          "y": 368,
+          "vx": 0,
+          "vy": 0,
+          "hp": 105
+        },
+        "after": {
+          "state": "idle",
+          "stateElapsed": 0.39999999999999997,
+          "x": 476,
+          "y": 368,
+          "vx": 0,
+          "vy": 0,
+          "hp": 105
+        },
+        "durationMs": 300,
+        "unchanged": true
+      },
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "failedRequests": [
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+          "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "screenshot": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-movement.png"
+    },
+    "super32": {
+      "passed": true,
+      "engineUrl": "/src/game/engineSmash.js?t=1792730554910",
+      "sourceDraws": {
+        "count": 52,
+        "sheets": [
+          "/sprites/generated/combat-character-animations-wave11/buffy_summers.png"
+        ],
+        "rows": [
+          7
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "coldBoot": "Fresh Chromium process and page; no test preload; only production GameCanvas boot prepares sprites.",
+      "flow": "GameCanvas Smash → Buffy Saison 7 → panneau Enchaînement au pieu de Buffy 100 % → clavier L → startup sans dégât → impact après hitAt → charge 0 % → aucun second impact",
+      "impact": {
+        "start": {
+          "name": "Enchaînement au pieu de Buffy",
+          "charge": 0,
+          "hp": 100000,
+          "elapsed": 0.016666666666666666,
+          "hitAt": 0.451
+        },
+        "hit": {
+          "name": "Enchaînement au pieu de Buffy",
+          "charge": 0,
+          "hp": 99938,
+          "elapsed": 0.4666666666666666,
+          "hitAt": 0.451
+        },
+        "gameOver": false
+      },
+      "sameInput": {
+        "before": 99938,
+        "retriggered": false,
+        "charge": 0
+      },
+      "final": {
+        "hitCount": 1,
+        "hp": 99938,
+        "charge": 0,
+        "action": null,
+        "profile": "Enchaînement au pieu de Buffy"
+      },
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "failedRequests": [
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+          "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "screenshot": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-super.png"
+    }
+  },
+  "canonicalAnimation1to1Verified": false,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-core-browser.mjs",
+      "bytes": 7943,
+      "sha256": "36241f760573fadbf8a64436ee2ceb028b439ce38db6e3c27d000ae84baa0d76"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-core-result.json",
+      "bytes": 1137,
+      "sha256": "e5aaf6f31f3039310b98467fdeacb23ec53025de020bc8cd0e464112277e9e16"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-core-review.png",
+      "bytes": 177869,
+      "sha256": "1ebd93c9d87edd07906626a45eb24a92287e12946c3b2e523b00be29a1989a0c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-core-trace.json",
+      "bytes": 164471,
+      "sha256": "54682a38f6de9ac7c24ce3644dbfd7ba9883509c0c2224765cedd23d4320b028"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-core.log",
+      "bytes": 1011,
+      "sha256": "952e61a3bafbc2fbb073142e18b54ef9374b5a3c2285e89e2b85f1d4acf2ba1b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-core.png",
+      "bytes": 1165355,
+      "sha256": "e2417502da041c92463192d80b5c9aee5d450bc66f934035d90f3430735660db"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-grips.png",
+      "bytes": 45583,
+      "sha256": "55893b2d3d2934c982fefc271a0d89f15a8100963c53a9db2e6f1107e7af5487"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-movement-browser.mjs",
+      "bytes": 9360,
+      "sha256": "118bf53f558c9587dfa5b1d24068c628617089568177a29d47d6171ffac83ba3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-movement-result.json",
+      "bytes": 4040,
+      "sha256": "0e0e760ad3ec981b41de597e066a230a4728fbb6c61f4aae42ab5277be286428"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-movement-trace.json",
+      "bytes": 64829,
+      "sha256": "c01223ad1febeb234e7622291a25f0be16489b92e311828549051232b46ac803"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-movement.log",
+      "bytes": 2570,
+      "sha256": "9a12dbc7cd163521f4bf5adecf20650986c00ddb5fafc75f1a55456b3788899b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-movement.png",
+      "bytes": 1300862,
+      "sha256": "2c8808297b539c4276f608fcf9377905f20da80085425a65da59ad4a2eed9de2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-pause.png",
+      "bytes": 1300929,
+      "sha256": "50d87ac768552bff1d552dc6ebafce1ef3e43792a881b1559a030e742645ad88"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-super-browser.mjs",
+      "bytes": 10364,
+      "sha256": "3c79ae012d11b57ec6324a36959e5355eb311a8007cc73a52c7e2e17a7f7dca3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-super-draws.json",
+      "bytes": 19430,
+      "sha256": "c2d4a7b5aade56a5e65783c806acf8efc2c1c72a6df13fa1b20ce7a2d101f48e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-super-result.json",
+      "bytes": 1650,
+      "sha256": "aeed0eb4802212c1b0211e7b23a27f78cff5afa4c5ed890e0c215b9f8ad7c8ed"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-super-trace.json",
+      "bytes": 17852,
+      "sha256": "50971fe2f1736c11e93bab3f926835184d2bfec335da772a4f7c718ad7e374c9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-super.log",
+      "bytes": 1316,
+      "sha256": "eeff3b008f4caa746c9968a177b1a0b6e0cb7ead90f8f190940eb0a3148cf5a9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-super.png",
+      "bytes": 1324474,
+      "sha256": "69401848fe2643cdaa43c58eda0b74c8b8f41640138eccf48e59b689043ba474"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "bytes": 133689,
+      "sha256": "c45de7e475ea262fdb7b33852e9073696d3cdf10b6ddb8eb1939c61e3c8a49b4"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "bytes": 115603,
+      "sha256": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "bytes": 66075,
+      "sha256": "ea8134258b27da2c3bd01c5e01738a8084c9e720d79220e33e06eadcafdf9ee6"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "bytes": 38302,
+      "sha256": "b3c387896717c3ce88bf969110bbecaef5dcec11b89c1309a033e9162759ee0f"
+    },
+    {
+      "path": "src/game/combatIdentity.js",
+      "bytes": 20825,
+      "sha256": "e6711eb117b4713bdbce7869c45f2358f828a3ab906632305e60699474ac11b3"
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "bytes": 15189,
+      "sha256": "874f19ff275bd62590cdfdc98df8a7760bf0fd512e3c991705d94e82519182d0"
+    },
+    {
+      "path": "src/game/melee/nativeMeleeManifest.js",
+      "bytes": 4519,
+      "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+    },
+    {
+      "path": "src/game/melee/buffyMeleeManifest.js",
+      "bytes": 534,
+      "sha256": "d8ac3005ee35467516a7b1c42f1fef6ddd723bb13ce30b77179126c963a63251"
+    },
+    {
+      "path": "src/game/combat/buffyMeleeMotion.generated.json",
+      "bytes": 231128,
+      "sha256": "39070a68fcb68e3e1c0452f92607550caf7829cdb6c8e0f41e6bc8de57b63926"
+    },
+    {
+      "path": "src/game/combat/buffyMeleeCombat.generated.json",
+      "bytes": 225583,
+      "sha256": "adba10a3090af80a8cfdb2eb67d71da7f63093a013a8ef714d709a1b4c4a5422"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "bytes": 6924,
+      "sha256": "7e71bdbf832b542ead68ed9ced345cbfcbb3f21d2147e71e945344fe5389e4dc"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "bytes": 4387,
+      "sha256": "39d2c1081dc3159e66901902e507de69652caa0b61e07c324213a1efc9446081"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave11.js",
+      "bytes": 9500,
+      "sha256": "8c665915aea0dac98bdc961e3261e5a2568488d8268b134b0e500f84f44aefc8"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartA.generated.json",
+      "bytes": 358705,
+      "sha256": "f5248c55f7d4883ed764fa29fe2bd22b4ca2ab829df2e9847cc65113b350c00d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/collect-melee-evidence.mjs",
+      "bytes": 4070,
+      "sha256": "49ec087d5f2d2a6784e76212a8d7cc699f31dc14e78b3a9da76bb3603fa8a629"
+    },
+    {
+      "path": "public/sprites/generated/melee-buffy-wave11/buffy-motion-a.png",
+      "bytes": 1191524,
+      "sha256": "4225fecad03c3489835b3c33d9848702a7a7c2311210bf3679e88105842860d1"
+    },
+    {
+      "path": "public/sprites/generated/melee-buffy-wave11/buffy-motion-b.png",
+      "bytes": 929166,
+      "sha256": "7bebc77cdd2e635a65e1b9efc1a060c686202e31fd3931c28477cd43fae98ede"
+    },
+    {
+      "path": "public/sprites/generated/melee-buffy-wave11/buffy-defense.png",
+      "bytes": 1092259,
+      "sha256": "3fb62019b4a374c3aecd316cd90477d03f02174df7e891ac5a5d6010a653c504"
+    },
+    {
+      "path": "public/sprites/generated/melee-buffy-wave11/buffy-combat-a.png",
+      "bytes": 1200602,
+      "sha256": "f56bf371d9b57319a96683a4e3a8352a9aaf9750dae1abe276ad4ebcf7439778"
+    },
+    {
+      "path": "public/sprites/generated/melee-buffy-wave11/buffy-combat-b.png",
+      "bytes": 965312,
+      "sha256": "e10ed17ceef3196ec720471fc782a8fe7449711b2aa0de258a9cfccc99d737be"
+    },
+    {
+      "path": "public/sprites/generated/melee-buffy-wave11/buffy-ledge.png",
+      "bytes": 721143,
+      "sha256": "91c4f72076e2d28e13a49fb4a13249374dfade0ac3624269aa706af0622d55f1"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave11/buffy_summers.png",
+      "bytes": 1531738,
+      "sha256": "99f3c7d9cabb8afa26447b51822124ed26a012bb19877f5112169db130c7824a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/hand-measurements.json",
+      "bytes": 16979,
+      "sha256": "a9daf7e39c9b7f22b3ebc99e59422b011d041d629f95f006218270679432448a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/full45-native-evidence.json",
+      "bytes": 7817,
+      "sha256": "26e53121995da9c9ed359e47c9de602b78619860cc3b544ca752b96921f28ce4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/body-roi-independent.json",
+      "bytes": 13260,
+      "sha256": "7f16c70596bf29727d573aa84576dbdbb59b84064b640a62f4f90634f63b5638"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/buffy-sources/stature-residual-review.json",
+      "bytes": 714,
+      "sha256": "57a0ceaf54442f4beda5d2066843748b74e96677e013707ab5d7743bf2e31f64"
+    }
+  ],
+  "visualInspection": {
+    "reviewed": true,
+    "captures": [
+      "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-core-review.png",
+      "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-grips.png",
+      "docs/combat-fidelity-wave11-2026-10-23/browser/buffy-super.png"
+    ],
+    "finding": "Adult Buffy with black tank/burgundy trousers; real stake light/air attacks, physical kick secondary, hands free on actual ledges. Dedicated32 row7 physically strikes with the wooden stake.",
+    "limitations": [
+      "Original adapted crossover choreography and generated art, not official extracted frames or certified frame-for-frame animation.",
+      "Source-wide body calibration uses approximate anatomical landmarks; hanging body projection is preserved.",
+      "Native motion-a fall0 may show around10–15% stature variation versus idle beyond lifted hair. Rotated landmarks do not justify an exact correction; source pixels preserved and doubt documented in stature-residual-review.json."
+    ]
+  }
+}

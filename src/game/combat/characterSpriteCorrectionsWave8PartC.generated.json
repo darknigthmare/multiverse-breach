@@ -1,0 +1,2909 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "blade_wolf_mgr",
+      "heroId": "blade_wolf_mgr",
+      "universe": "Metal Gear Rising",
+      "name": "Blade Wolf",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/blade_wolf_mgr.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "c740ea596373a165890bc6df893ac67d71639f6322dfbe26a15f6e47d161ce44",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+      "sourceImageSha256": "cdb580e8de73eefe588be81c8895b890380bc900ab87ce8eafa71a006890ffad",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/metal-gear-rising/blade-wolf-mgr.png",
+      "referenceAssetSha256": "06b7a29ab381a2b4b9294da4f0f6fa37e7448a54fde00dfce6099bdc10bce888",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-references/blade_wolf_mgr.png",
+      "sourceWork": "Metal Gear Rising: Revengeance (2013), mainstory version",
+      "sourceReference": "https://www.konami.com/mg/archive/mgr/jp/webmanual/dlc_bladewolf.html (official manual read through native web tool: quadruped-specific dash/dodge/crouch and chainsaw combinations); https://metalgear.fandom.com/wiki/Blade_Wolf indexed tail-manipulator chainsaw equipment. Adapted representative poses, not stealth instant kills.",
+      "abilityName": "Percussion de Blade Wolf",
+      "characterVersion": "BladeWolf LQ-84i from MetalGearRisingRevengeance2013, mechanical QUADRUPED robotic wolf. Dark graphite/black segmented metalchassis, silver mechanical dorsal neck/spine plates, long angular mechanical canid muzzle, pointed sensors/ears and yellow/orange optical sensors, articulated clawed FOUR legs. Not a furry realanimal, no humanoid chest/arms or dog costume. His long jointed MANIPULATOR TAIL grips/controls one real highfrequency CHAINSAW with visible toothed cuttingchain; the chainsaw is held by the tail gripper rather than turning his whole tail into a vague glowing blade. It can rest compactly along his back while walking. All four leg limbs remain readable; no biped human stance.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+            "sourceImageSha256": "cdb580e8de73eefe588be81c8895b890380bc900ab87ce8eafa71a006890ffad",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 351
+            },
+            "scale": 0.7388535031847133,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 0,
+                  "top": 53,
+                  "width": 288,
+                  "height": 261,
+                  "pixels": 38703
+                },
+                "output": {
+                  "left": 12,
+                  "top": 51,
+                  "width": 213,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 331,
+                  "top": 88,
+                  "width": 279,
+                  "height": 225,
+                  "pixels": 38770
+                },
+                "output": {
+                  "left": 25,
+                  "top": 77,
+                  "width": 206,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 655,
+                  "top": 72,
+                  "width": 281,
+                  "height": 242,
+                  "pixels": 38779
+                },
+                "output": {
+                  "left": 33,
+                  "top": 65,
+                  "width": 208,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 965,
+                  "top": 90,
+                  "width": 272,
+                  "height": 224,
+                  "pixels": 37993
+                },
+                "output": {
+                  "left": 30,
+                  "top": 78,
+                  "width": 201,
+                  "height": 166
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+            "sourceImageSha256": "cdb580e8de73eefe588be81c8895b890380bc900ab87ce8eafa71a006890ffad",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 350,
+              "bottom": 644
+            },
+            "scale": 0.7073170731707317,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 7,
+                  "top": 37,
+                  "width": 297,
+                  "height": 232,
+                  "pixels": 36630
+                },
+                "output": {
+                  "left": 22,
+                  "top": 80,
+                  "width": 210,
+                  "height": 164
+                }
+              },
+              {
+                "source": {
+                  "left": 314,
+                  "top": 50,
+                  "width": 320,
+                  "height": 205,
+                  "pixels": 36758
+                },
+                "output": {
+                  "left": 17,
+                  "top": 89,
+                  "width": 226,
+                  "height": 145
+                }
+              },
+              {
+                "source": {
+                  "left": 633,
+                  "top": 52,
+                  "width": 306,
+                  "height": 214,
+                  "pixels": 36451
+                },
+                "output": {
+                  "left": 21,
+                  "top": 91,
+                  "width": 216,
+                  "height": 151
+                }
+              },
+              {
+                "source": {
+                  "left": 940,
+                  "top": 54,
+                  "width": 312,
+                  "height": 212,
+                  "pixels": 36117
+                },
+                "output": {
+                  "left": 17,
+                  "top": 92,
+                  "width": 221,
+                  "height": 150
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.045307443365696,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 153,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 108,
+              "bodyBounds": [
+                25,
+                135,
+                205,
+                108
+              ],
+              "referenceBodyBounds": [
+                25,
+                90,
+                199,
+                153
+              ],
+              "nativeComparableBodyHeight": 152,
+              "nativeReferenceBodyHeight": 206,
+              "nativeBodyBounds": [
+                11,
+                465,
+                290,
+                152
+              ],
+              "nativeReferenceBodyBounds": [
+                18,
+                106,
+                269,
+                206
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+              "nativeComparableSourceSha256": "cdb580e8de73eefe588be81c8895b890380bc900ab87ce8eafa71a006890ffad",
+              "nativeReferenceSourceSha256": "cdb580e8de73eefe588be81c8895b890380bc900ab87ce8eafa71a006890ffad",
+              "nativeComparableSourceRow": 1,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+            "sourceImageSha256": "cdb580e8de73eefe588be81c8895b890380bc900ab87ce8eafa71a006890ffad",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 643,
+              "bottom": 944
+            },
+            "scale": 0.6462395543175488,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 13,
+                  "top": 69,
+                  "width": 286,
+                  "height": 203,
+                  "pixels": 36412
+                },
+                "output": {
+                  "left": 35,
+                  "top": 106,
+                  "width": 185,
+                  "height": 131
+                }
+              },
+              {
+                "source": {
+                  "left": 324,
+                  "top": 31,
+                  "width": 300,
+                  "height": 220,
+                  "pixels": 36717
+                },
+                "output": {
+                  "left": 33,
+                  "top": 81,
+                  "width": 194,
+                  "height": 142
+                }
+              },
+              {
+                "source": {
+                  "left": 635,
+                  "top": 74,
+                  "width": 328,
+                  "height": 209,
+                  "pixels": 39950
+                },
+                "output": {
+                  "left": 32,
+                  "top": 109,
+                  "width": 212,
+                  "height": 135
+                }
+              },
+              {
+                "source": {
+                  "left": 949,
+                  "top": 23,
+                  "width": 296,
+                  "height": 253,
+                  "pixels": 37774
+                },
+                "output": {
+                  "left": 32,
+                  "top": 76,
+                  "width": 191,
+                  "height": 163
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.148533680312281,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 153,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 97,
+              "bodyBounds": [
+                35,
+                140,
+                184,
+                97
+              ],
+              "referenceBodyBounds": [
+                25,
+                90,
+                199,
+                153
+              ],
+              "nativeComparableBodyHeight": 150,
+              "nativeReferenceBodyHeight": 206,
+              "nativeBodyBounds": [
+                13,
+                765,
+                284,
+                150
+              ],
+              "nativeReferenceBodyBounds": [
+                18,
+                106,
+                269,
+                206
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+              "nativeComparableSourceSha256": "cdb580e8de73eefe588be81c8895b890380bc900ab87ce8eafa71a006890ffad",
+              "nativeReferenceSourceSha256": "cdb580e8de73eefe588be81c8895b890380bc900ab87ce8eafa71a006890ffad",
+              "nativeComparableSourceRow": 2,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+            "sourceImageSha256": "cdb580e8de73eefe588be81c8895b890380bc900ab87ce8eafa71a006890ffad",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 943,
+              "bottom": 1254
+            },
+            "scale": 0.7051671732522796,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 11,
+                  "top": 18,
+                  "width": 307,
+                  "height": 256,
+                  "pixels": 39255
+                },
+                "output": {
+                  "left": 25,
+                  "top": 62,
+                  "width": 216,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 317,
+                  "top": 58,
+                  "width": 312,
+                  "height": 218,
+                  "pixels": 38764
+                },
+                "output": {
+                  "left": 20,
+                  "top": 90,
+                  "width": 220,
+                  "height": 154
+                }
+              },
+              {
+                "source": {
+                  "left": 648,
+                  "top": 79,
+                  "width": 300,
+                  "height": 197,
+                  "pixels": 36481
+                },
+                "output": {
+                  "left": 32,
+                  "top": 105,
+                  "width": 212,
+                  "height": 139
+                }
+              },
+              {
+                "source": {
+                  "left": 948,
+                  "top": 35,
+                  "width": 292,
+                  "height": 241,
+                  "pixels": 38226
+                },
+                "output": {
+                  "left": 23,
+                  "top": 74,
+                  "width": 206,
+                  "height": 170
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0460823191576643,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 153,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 142,
+              "bodyBounds": [
+                40,
+                100,
+                200,
+                142
+              ],
+              "referenceBodyBounds": [
+                25,
+                90,
+                199,
+                153
+              ],
+              "nativeComparableBodyHeight": 200,
+              "nativeReferenceBodyHeight": 206,
+              "nativeBodyBounds": [
+                32,
+                1015,
+                284,
+                200
+              ],
+              "nativeReferenceBodyBounds": [
+                18,
+                106,
+                269,
+                206
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+              "nativeComparableSourceSha256": "cdb580e8de73eefe588be81c8895b890380bc900ab87ce8eafa71a006890ffad",
+              "nativeReferenceSourceSha256": "cdb580e8de73eefe588be81c8895b890380bc900ab87ce8eafa71a006890ffad",
+              "nativeComparableSourceRow": 3,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/blade_wolf_mgr-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1c0bda5828921fbb04b7fc8d0978bbb0e07b2fc1abdef347e73ecfa5345c8c15",
+              "f68308f7646a3a3104f62d392ff4ab20b68a956962277516f76cb2c193408f18",
+              "e1462ed156b1e403e30e7cfa55ffd78c7040f3fc719ea2752df8331d17d6c89b",
+              "e0f5c827528df540c70dc539424c434b5e0d7fc351a301ca6c564e524057c7f7"
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b0941cc70dc997e6e5de8f5ce4b0c0c199d425220274c43706fb002a1d75ea8f",
+              "7520972aacf07d408b42903d36f849c24a15c369d0ee7599a002831d64d5ab90",
+              "f6fb4c144b7d9fe72a5ec967767b74eb00508773f5e78650251dd3ea90a70bb8",
+              "657430c3dfde0d7bcc4c27baa64362152048b6635534a7157be60c4c13bae075"
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "64e238b7fa581fd01d357776c76cfd3858b814d865d8be84f615b673e5a343f8",
+              "9d55cb691a79bfba02fd9bd33c3e7bde7c14746c7651128958107549eb898c88",
+              "5a5ce44999de720795e25d2be27a9492c06870aa59c74a40971a1a19cbff0831",
+              "39147ff0229b3b3b9222af1d23606c08c21f657748642c35fe33411b1ff783e6"
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "81f84dddb99949c9f0f1a86cb84e89ffd2ba9cd970c15023526e3fa780ee1590",
+              "075fd45b44a8ec09471af73ad962e43608795283e7a211f684a2286a0aa72b08",
+              "6b79a32130d9ff91cab22103c51844807be28d428c2130844abe711962449fd8",
+              "e466987341cd784761174049872a1847e71c8a71c30409e7406b17f4a1049d0d"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "BladeWolf LQ-84i from MetalGearRisingRevengeance2013, mechanical QUADRUPED robotic wolf. Dark graphite/black segmented metalchassis, silver mechanical dorsal neck/spine plates, long angular mechanical canid muzzle, pointed sensors/ears and yellow/orange optical sensors, articulated clawed FOUR legs. Not a furry realanimal, no humanoid chest/arms or dog costume. His long jointed MANIPULATOR TAIL grips/controls one real highfrequency CHAINSAW with visible toothed cuttingchain; the chainsaw is held by the tail gripper rather than turning his whole tail into a vague glowing blade. It can rest compactly along his back while walking. All four leg limbs remain readable; no biped human stance. Nativegenerated pixelart, authored compact choreography, source1to1Verifiedfalse; exact game-frame timing/anatomy not certified."
+      }
+    },
+    {
+      "id": "jetstream_sam",
+      "heroId": "jetstream_sam",
+      "universe": "Metal Gear Rising",
+      "name": "Jetstream Sam",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/jetstream_sam.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "4cd3aa2ec5fd1eb37687774b0fa882aefff450bd928d39c37c14ee78e77d935a",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+      "sourceImageSha256": "e2a28789d814ea14e756238bec77979e3324c3d9a5fdf6a9a02921d9a9b3e1ef",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/metal-gear-rising/jetstream-sam.png",
+      "referenceAssetSha256": "b9bae167900a70ef5d6d6938306e13cabeaa5770363f789a0f3ae3c58f6c116e",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-references/jetstream_sam.png",
+      "sourceWork": "Metal Gear Rising: Revengeance (2013), mainstory version",
+      "sourceReference": "https://metalgear.fandom.com/wiki/Samuel_Rodrigues and https://www.imfdb.org/wiki/Metal_Gear_Rising%3A_Revengeance indexed descriptions: humanface/exoskeleton, only right arm replaced in mainstory, Murasama powered-scabbard trigger draw. No Raiden body or separate firearm attack.",
+      "abilityName": "Taille de Murasama",
+      "characterVersion": "SamuelRodrigues, JetstreamSam, MAINSTORY2013 MetalGearRisingRevengeance duel version. Adult muscular Brazilian swordsman, tan human face, darkbrown hair tied in short samurai ponytail/chonmage, facialstubble, brown eyes, confident grin. Gray/bronze powered exoskeleton with dark underlayers and red shoulder accents, anatomical RIGHT cybernetic arm, otherwise human wearing suit, not Raiden's fullymetal skull/jaw. NO whitehair or cyborgjaw, no eyepatch. One real red-bladed highfrequency katana MURASAMA, compactblack/red poweredSCABBARD on left hip with trigger/receiver mechanism that launches the draw. Left hand holds scabbard/trigger, right hand draws/cuts with katana; exactly one blade, not duplicate swords. No separate firearm in his hands: the scabbard mechanism powers the draw, not a shootinggun.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+            "sourceImageSha256": "e2a28789d814ea14e756238bec77979e3324c3d9a5fdf6a9a02921d9a9b3e1ef",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 348
+            },
+            "scale": 0.6884272997032641,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 91,
+                  "top": 10,
+                  "width": 179,
+                  "height": 332,
+                  "pixels": 36569
+                },
+                "output": {
+                  "left": 83,
+                  "top": 12,
+                  "width": 123,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 402,
+                  "top": 11,
+                  "width": 174,
+                  "height": 336,
+                  "pixels": 33791
+                },
+                "output": {
+                  "left": 81,
+                  "top": 13,
+                  "width": 120,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 705,
+                  "top": 12,
+                  "width": 195,
+                  "height": 330,
+                  "pixels": 35214
+                },
+                "output": {
+                  "left": 74,
+                  "top": 13,
+                  "width": 134,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 1025,
+                  "top": 10,
+                  "width": 194,
+                  "height": 332,
+                  "pixels": 35063
+                },
+                "output": {
+                  "left": 78,
+                  "top": 12,
+                  "width": 134,
+                  "height": 229
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+            "sourceImageSha256": "e2a28789d814ea14e756238bec77979e3324c3d9a5fdf6a9a02921d9a9b3e1ef",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 344,
+              "bottom": 646
+            },
+            "scale": 0.6057441253263708,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 31,
+                  "top": 10,
+                  "width": 250,
+                  "height": 285,
+                  "pixels": 35046
+                },
+                "output": {
+                  "left": 52,
+                  "top": 71,
+                  "width": 151,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 369,
+                  "top": 3,
+                  "width": 203,
+                  "height": 293,
+                  "pixels": 32553
+                },
+                "output": {
+                  "left": 67,
+                  "top": 67,
+                  "width": 123,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 660,
+                  "top": 18,
+                  "width": 315,
+                  "height": 278,
+                  "pixels": 37163
+                },
+                "output": {
+                  "left": 53,
+                  "top": 76,
+                  "width": 191,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 958,
+                  "top": 4,
+                  "width": 269,
+                  "height": 288,
+                  "pixels": 32007
+                },
+                "output": {
+                  "left": 44,
+                  "top": 67,
+                  "width": 163,
+                  "height": 174
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.1355935226137823,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 225,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 172,
+              "bodyBounds": [
+                55,
+                71,
+                147,
+                172
+              ],
+              "referenceBodyBounds": [
+                84,
+                15,
+                122,
+                225
+              ],
+              "nativeComparableBodyHeight": 283,
+              "nativeReferenceBodyHeight": 326,
+              "nativeBodyBounds": [
+                36,
+                354,
+                243,
+                283
+              ],
+              "nativeReferenceBodyBounds": [
+                93,
+                14,
+                176,
+                326
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+              "nativeComparableSourceSha256": "e2a28789d814ea14e756238bec77979e3324c3d9a5fdf6a9a02921d9a9b3e1ef",
+              "nativeReferenceSourceSha256": "e2a28789d814ea14e756238bec77979e3324c3d9a5fdf6a9a02921d9a9b3e1ef",
+              "nativeComparableSourceRow": 1,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+            "sourceImageSha256": "e2a28789d814ea14e756238bec77979e3324c3d9a5fdf6a9a02921d9a9b3e1ef",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 634,
+              "bottom": 959
+            },
+            "scale": 0.46123260437375746,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 14,
+                  "top": 3,
+                  "width": 302,
+                  "height": 321,
+                  "pixels": 39716
+                },
+                "output": {
+                  "left": 62,
+                  "top": 96,
+                  "width": 139,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 290,
+                  "top": 30,
+                  "width": 388,
+                  "height": 287,
+                  "pixels": 47082
+                },
+                "output": {
+                  "left": 45,
+                  "top": 108,
+                  "width": 179,
+                  "height": 132
+                }
+              },
+              {
+                "source": {
+                  "left": 651,
+                  "top": 25,
+                  "width": 384,
+                  "height": 289,
+                  "pixels": 40200
+                },
+                "output": {
+                  "left": 67,
+                  "top": 106,
+                  "width": 177,
+                  "height": 133
+                }
+              },
+              {
+                "source": {
+                  "left": 983,
+                  "top": 21,
+                  "width": 259,
+                  "height": 299,
+                  "pixels": 32260
+                },
+                "output": {
+                  "left": 75,
+                  "top": 104,
+                  "width": 119,
+                  "height": 138
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.4953987730061349,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 225,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 126,
+              "bodyBounds": [
+                65,
+                115,
+                135,
+                126
+              ],
+              "referenceBodyBounds": [
+                84,
+                15,
+                122,
+                225
+              ],
+              "nativeComparableBodyHeight": 273,
+              "nativeReferenceBodyHeight": 326,
+              "nativeBodyBounds": [
+                21,
+                678,
+                293,
+                273
+              ],
+              "nativeReferenceBodyBounds": [
+                93,
+                14,
+                176,
+                326
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+              "nativeComparableSourceSha256": "e2a28789d814ea14e756238bec77979e3324c3d9a5fdf6a9a02921d9a9b3e1ef",
+              "nativeReferenceSourceSha256": "e2a28789d814ea14e756238bec77979e3324c3d9a5fdf6a9a02921d9a9b3e1ef",
+              "nativeComparableSourceRow": 2,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+            "sourceImageSha256": "e2a28789d814ea14e756238bec77979e3324c3d9a5fdf6a9a02921d9a9b3e1ef",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 942,
+              "bottom": 1254
+            },
+            "scale": 0.6763848396501457,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 29,
+                  "top": 14,
+                  "width": 270,
+                  "height": 280,
+                  "pixels": 34806
+                },
+                "output": {
+                  "left": 42,
+                  "top": 42,
+                  "width": 183,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 356,
+                  "top": 76,
+                  "width": 265,
+                  "height": 236,
+                  "pixels": 33359
+                },
+                "output": {
+                  "left": 51,
+                  "top": 84,
+                  "width": 179,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 639,
+                  "top": 42,
+                  "width": 316,
+                  "height": 253,
+                  "pixels": 36058
+                },
+                "output": {
+                  "left": 30,
+                  "top": 61,
+                  "width": 214,
+                  "height": 171
+                }
+              },
+              {
+                "source": {
+                  "left": 946,
+                  "top": 1,
+                  "width": 275,
+                  "height": 300,
+                  "pixels": 33662
+                },
+                "output": {
+                  "left": 26,
+                  "top": 34,
+                  "width": 186,
+                  "height": 203
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0151913526146654,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 225,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 189,
+              "bodyBounds": [
+                60,
+                42,
+                164,
+                189
+              ],
+              "referenceBodyBounds": [
+                84,
+                15,
+                122,
+                225
+              ],
+              "nativeComparableBodyHeight": 278,
+              "nativeReferenceBodyHeight": 326,
+              "nativeBodyBounds": [
+                56,
+                958,
+                241,
+                278
+              ],
+              "nativeReferenceBodyBounds": [
+                93,
+                14,
+                176,
+                326
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+              "nativeComparableSourceSha256": "e2a28789d814ea14e756238bec77979e3324c3d9a5fdf6a9a02921d9a9b3e1ef",
+              "nativeReferenceSourceSha256": "e2a28789d814ea14e756238bec77979e3324c3d9a5fdf6a9a02921d9a9b3e1ef",
+              "nativeComparableSourceRow": 3,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/jetstream_sam-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8d3f9cedb56fc63c5c2a1ef5263b46bc9c90d2e2d328a820a83b00889cef29cb",
+              "904b0bafc705086a81ac1c4c585b5b8fb3f47ec57b37781fc529fc75954b5b20",
+              "aaa31509886fe88a037729006c3c73d0a1a3486ea4f505356423b60b388d11d0",
+              "fd760e644b1bf291ae8959bc713ff7449d2ddf2a3b1398b3cb1062b0bddb1028"
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "02fc00647d80aeaccf945fb5d30ef0dfd1c19ecc3049efc9d38ce05e22c224a6",
+              "99667238876bbd9dfd45314f04bda8b6619aefd51251b0447db9d58e43c8ac07",
+              "98afa44667b902eb969aee2c15368cf7f4ea51d4438a66424f89c27cf7cf4972",
+              "ba7e18c514a23d0ff2de1196278601f03d2c015b2b252aa693a0e31d52fe0b7a"
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "a134a7203c77e1b97b0e8450ae06f0ef78392cf3cf8b5b4c14216684b883eddc",
+              "8f8a3e6b7baa7e2ee666ff6219cf81c825f326dd2a3bf48b0fdd1abc7ad0a7e5",
+              "242912ceb59f0fffe147038846ba91aa778b687cb05887f9d4d78ab1d662959a",
+              "3bdb2ea8894fe8170714fe5a04053cca5529a2e563367b10517fb0daeccb6dc5"
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c496f0edc3f300705975b721572fd3cd106efb529f29ba70813ae63899401603",
+              "aff64136817a9cce581c0340e75c0750bd546d6d25bcd87ff2191643c68776fb",
+              "4afe7ecb3b4a2effd35d8a38856666a3ba71fcb0fa4484f9dbad5b9810a1a627",
+              "b466549e4f480638c7cd5e7d34b4a442927fc56d03495bb6f6b43c9574456894"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "SamuelRodrigues, JetstreamSam, MAINSTORY2013 MetalGearRisingRevengeance duel version. Adult muscular Brazilian swordsman, tan human face, darkbrown hair tied in short samurai ponytail/chonmage, facialstubble, brown eyes, confident grin. Gray/bronze powered exoskeleton with dark underlayers and red shoulder accents, anatomical RIGHT cybernetic arm, otherwise human wearing suit, not Raiden's fullymetal skull/jaw. NO whitehair or cyborgjaw, no eyepatch. One real red-bladed highfrequency katana MURASAMA, compactblack/red poweredSCABBARD on left hip with trigger/receiver mechanism that launches the draw. Left hand holds scabbard/trigger, right hand draws/cuts with katana; exactly one blade, not duplicate swords. No separate firearm in his hands: the scabbard mechanism powers the draw, not a shootinggun. Nativegenerated pixelart, authored compact choreography, source1to1Verifiedfalse; exact game-frame timing/anatomy not certified."
+      }
+    },
+    {
+      "id": "armstrong_mgr",
+      "heroId": "armstrong_mgr",
+      "universe": "Metal Gear Rising",
+      "name": "Senator Armstrong",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/armstrong_mgr.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "1369c584ea988748e90458840ae8042e3451ecb1e1688d86d724900aee6f04c0",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+      "sourceImageSha256": "080cfc4f10f16524e0c3110ddbf8ba358e107bbbcb87f2376bd8a225c905e6a4",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/metal-gear-rising/armstrong-mgr.png",
+      "referenceAssetSha256": "5ecda2c25111ec55513e1228c09ffaa42768c765186b70094e1be08aea697e67",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-references/armstrong_mgr.png",
+      "sourceWork": "Metal Gear Rising: Revengeance (2013), mainstory version",
+      "sourceReference": "https://metalgear.fandom.com/wiki/Senator_Armstrong%27s_nanomachines and https://en.wikipedia.org/wiki/Senator_Armstrong_%28Metal_Gear%29 indexed text: finalbattle nanomachine hardening blackens body and fists hit ground with destructive local effects; gamequote is not an attack power. New shirtless2013 finale version explicitly selected.",
+      "abilityName": "Poing aux nanomachines d’Armstrong",
+      "characterVersion": "SenatorStevenArmstrong in FINALBATTLE2013 MetalGearRisingRevengeance after EXCELSUS, an enormous adult muscular humanman, receding close darkhair, squarestrong jaw, rectangularglasses, bare chest, black/darkgray trousers/belt and blackdressshoes. This new version is SHIRTLESS; old localreferencewhite shirt/yellowtie is counter-example only, never reproduce shirt/tie/suit. Black nanomachine hardening visibly spreads across forearms/fists/chest in activeposes as darkcracked/plated skin, NOT robotic replacementhands or newmechanicalarms. Both realarms/hands remainhuman, facehuman. Weapon = his hardened FISTS, shoulders and local groundimpact. No swords, knives, guns, omelette/eggs/cookingitems, writtenmeme or phrase as power.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+            "sourceImageSha256": "080cfc4f10f16524e0c3110ddbf8ba358e107bbbcb87f2376bd8a225c905e6a4",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 365
+            },
+            "scale": 0.6444444444444445,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 59,
+                  "top": 6,
+                  "width": 224,
+                  "height": 351,
+                  "pixels": 48072
+                },
+                "output": {
+                  "left": 65,
+                  "top": 18,
+                  "width": 144,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 379,
+                  "top": 8,
+                  "width": 271,
+                  "height": 349,
+                  "pixels": 50409
+                },
+                "output": {
+                  "left": 69,
+                  "top": 19,
+                  "width": 175,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 683,
+                  "top": 7,
+                  "width": 228,
+                  "height": 350,
+                  "pixels": 42524
+                },
+                "output": {
+                  "left": 63,
+                  "top": 18,
+                  "width": 147,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 967,
+                  "top": 43,
+                  "width": 275,
+                  "height": 314,
+                  "pixels": 42951
+                },
+                "output": {
+                  "left": 44,
+                  "top": 42,
+                  "width": 177,
+                  "height": 202
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+            "sourceImageSha256": "080cfc4f10f16524e0c3110ddbf8ba358e107bbbcb87f2376bd8a225c905e6a4",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 359,
+              "bottom": 666
+            },
+            "scale": 0.5873417721518988,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 13,
+                  "top": 5,
+                  "width": 294,
+                  "height": 301,
+                  "pixels": 41614
+                },
+                "output": {
+                  "left": 44,
+                  "top": 67,
+                  "width": 173,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 381,
+                  "top": 15,
+                  "width": 260,
+                  "height": 286,
+                  "pixels": 38631
+                },
+                "output": {
+                  "left": 76,
+                  "top": 73,
+                  "width": 153,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 655,
+                  "top": 14,
+                  "width": 326,
+                  "height": 278,
+                  "pixels": 42941
+                },
+                "output": {
+                  "left": 52,
+                  "top": 72,
+                  "width": 191,
+                  "height": 163
+                }
+              },
+              {
+                "source": {
+                  "left": 948,
+                  "top": 29,
+                  "width": 295,
+                  "height": 268,
+                  "pixels": 36410
+                },
+                "output": {
+                  "left": 40,
+                  "top": 81,
+                  "width": 173,
+                  "height": 157
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0962604232389204,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 224,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 169,
+              "bodyBounds": [
+                45,
+                67,
+                171,
+                169
+              ],
+              "referenceBodyBounds": [
+                66,
+                19,
+                142,
+                224
+              ],
+              "nativeComparableBodyHeight": 287,
+              "nativeReferenceBodyHeight": 347,
+              "nativeBodyBounds": [
+                15,
+                364,
+                290,
+                287
+              ],
+              "nativeReferenceBodyBounds": [
+                61,
+                8,
+                220,
+                347
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+              "nativeComparableSourceSha256": "080cfc4f10f16524e0c3110ddbf8ba358e107bbbcb87f2376bd8a225c905e6a4",
+              "nativeReferenceSourceSha256": "080cfc4f10f16524e0c3110ddbf8ba358e107bbbcb87f2376bd8a225c905e6a4",
+              "nativeComparableSourceRow": 1,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+            "sourceImageSha256": "080cfc4f10f16524e0c3110ddbf8ba358e107bbbcb87f2376bd8a225c905e6a4",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 658,
+              "bottom": 952
+            },
+            "scale": 0.5550239234449761,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 20,
+                  "top": 6,
+                  "width": 316,
+                  "height": 279,
+                  "pixels": 43060
+                },
+                "output": {
+                  "left": 52,
+                  "top": 86,
+                  "width": 175,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 317,
+                  "top": 3,
+                  "width": 362,
+                  "height": 286,
+                  "pixels": 45031
+                },
+                "output": {
+                  "left": 43,
+                  "top": 84,
+                  "width": 201,
+                  "height": 159
+                }
+              },
+              {
+                "source": {
+                  "left": 656,
+                  "top": 9,
+                  "width": 327,
+                  "height": 282,
+                  "pixels": 44870
+                },
+                "output": {
+                  "left": 57,
+                  "top": 87,
+                  "width": 181,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 947,
+                  "top": 4,
+                  "width": 303,
+                  "height": 286,
+                  "pixels": 39767
+                },
+                "output": {
+                  "left": 45,
+                  "top": 85,
+                  "width": 168,
+                  "height": 159
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.1602719858356407,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 224,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 153,
+              "bodyBounds": [
+                52,
+                87,
+                173,
+                153
+              ],
+              "referenceBodyBounds": [
+                66,
+                19,
+                142,
+                224
+              ],
+              "nativeComparableBodyHeight": 275,
+              "nativeReferenceBodyHeight": 347,
+              "nativeBodyBounds": [
+                22,
+                666,
+                310,
+                275
+              ],
+              "nativeReferenceBodyBounds": [
+                61,
+                8,
+                220,
+                347
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+              "nativeComparableSourceSha256": "080cfc4f10f16524e0c3110ddbf8ba358e107bbbcb87f2376bd8a225c905e6a4",
+              "nativeReferenceSourceSha256": "080cfc4f10f16524e0c3110ddbf8ba358e107bbbcb87f2376bd8a225c905e6a4",
+              "nativeComparableSourceRow": 2,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+            "sourceImageSha256": "080cfc4f10f16524e0c3110ddbf8ba358e107bbbcb87f2376bd8a225c905e6a4",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 946,
+              "bottom": 1254
+            },
+            "scale": 0.6966966966966966,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 42,
+                  "top": 6,
+                  "width": 281,
+                  "height": 281,
+                  "pixels": 44445
+                },
+                "output": {
+                  "left": 48,
+                  "top": 41,
+                  "width": 196,
+                  "height": 196
+                }
+              },
+              {
+                "source": {
+                  "left": 320,
+                  "top": 57,
+                  "width": 297,
+                  "height": 232,
+                  "pixels": 38990
+                },
+                "output": {
+                  "left": 23,
+                  "top": 76,
+                  "width": 207,
+                  "height": 162
+                }
+              },
+              {
+                "source": {
+                  "left": 657,
+                  "top": 38,
+                  "width": 281,
+                  "height": 253,
+                  "pixels": 37756
+                },
+                "output": {
+                  "left": 40,
+                  "top": 63,
+                  "width": 196,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 977,
+                  "top": 5,
+                  "width": 265,
+                  "height": 293,
+                  "pixels": 40752
+                },
+                "output": {
+                  "left": 44,
+                  "top": 40,
+                  "width": 185,
+                  "height": 204
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.9217148459550193,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 224,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 194,
+              "bodyBounds": [
+                49,
+                42,
+                181,
+                194
+              ],
+              "referenceBodyBounds": [
+                66,
+                19,
+                142,
+                224
+              ],
+              "nativeComparableBodyHeight": 277,
+              "nativeReferenceBodyHeight": 347,
+              "nativeBodyBounds": [
+                44,
+                954,
+                258,
+                277
+              ],
+              "nativeReferenceBodyBounds": [
+                61,
+                8,
+                220,
+                347
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+              "nativeComparableSourceSha256": "080cfc4f10f16524e0c3110ddbf8ba358e107bbbcb87f2376bd8a225c905e6a4",
+              "nativeReferenceSourceSha256": "080cfc4f10f16524e0c3110ddbf8ba358e107bbbcb87f2376bd8a225c905e6a4",
+              "nativeComparableSourceRow": 3,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/armstrong_mgr-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "213675d002cbf2f0ce3faa4952dd88c16e0cdaa4dd9a78629d62490e41d50895",
+              "3d92647ea157ea3ed523a79bb662555d2120452705f8d1c75a03bdbf98300ca9",
+              "3ec7bea811bd5bc833951d9de6b5adfd71ed0f5c672558c21ce9c93696863168",
+              "bb9cecd91881b41470d98fd663607b5ea013c13660e08132ee655589a2cec124"
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "bde341fd2c40959e2f7138f598aa6f27bf65051fa6607f757b9a1adb656108e3",
+              "46fae69078d926b7e768420f7b1407c6397850ab734d3e26931fb701aa8ca45e",
+              "62bf7cfaeebbaeb54132bfd40b2b0abfa5aa9796fd217640cbf73b53c4ecfc44",
+              "d7db1ba67599efcba5b3e80c1a44b1351ce2693a5c2c8e78561bf6c77d9e7d38"
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "225c677f226445551a821afe9b71cc6f4b8dbc6f3910d79e5ed1e40bac3eb9cc",
+              "f9eea6f950dcabbf98cdc021a433ab6b7a71371e9a53c844a273823012f6cc04",
+              "f6861b6f0834e7ea9a30c2246e1a1bcce768ab0037f70b8e5bd74699b59eaba6",
+              "f3dc1f4d1128a01527c59fb7a91f5eadb24577452bbe1289d7670e1c8bcc5187"
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "40681f7640de13c4c1ce44fc2b98b70ee4df518873c0f5ee39534becbfc0ed4c",
+              "eb0036b67e61a701e6fda5108a024246d4d8a3421877b571e0e0ea190cf7601e",
+              "e87d11a60383d45097eb0b149c803cb622fd72cd25a43a6a49af61240cb5d9eb",
+              "88db986f603dfdd2d6a0327f11b64cae7c0d9349de55b3baa8066c30a9cef9c7"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "SenatorStevenArmstrong in FINALBATTLE2013 MetalGearRisingRevengeance after EXCELSUS, an enormous adult muscular humanman, receding close darkhair, squarestrong jaw, rectangularglasses, bare chest, black/darkgray trousers/belt and blackdressshoes. This new version is SHIRTLESS; old localreferencewhite shirt/yellowtie is counter-example only, never reproduce shirt/tie/suit. Black nanomachine hardening visibly spreads across forearms/fists/chest in activeposes as darkcracked/plated skin, NOT robotic replacementhands or newmechanicalarms. Both realarms/hands remainhuman, facehuman. Weapon = his hardened FISTS, shoulders and local groundimpact. No swords, knives, guns, omelette/eggs/cookingitems, writtenmeme or phrase as power. Nativegenerated pixelart, authored compact choreography, source1to1Verifiedfalse; exact game-frame timing/anatomy not certified."
+      }
+    },
+    {
+      "id": "mistral_mgr",
+      "heroId": "mistral_mgr",
+      "universe": "Metal Gear Rising",
+      "name": "Mistral",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/mistral_mgr.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "283426b99b894210580ec554bcb5f80fca465c1e22adb5c9079b4e072138f7aa",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-original.png",
+      "sourceImageSha256": "8647be93b28d8b3e5a0bf2483dac346fcaae6877158c2e7f2d576e4a65ab0822",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/metal-gear-rising/mistral-mgr.png",
+      "referenceAssetSha256": "c11321e1345a8e8f402f8af62eb3aaacc8cdcd223df69829055c05f2eb7b4ef2",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-references/mistral_mgr.png",
+      "sourceWork": "Metal Gear Rising: Revengeance (2013), mainstory version",
+      "sourceReference": "https://metalgear.fandom.com/wiki/Mistral and https://metalgear.fandom.com/wiki/Dwarf_Gekko indexed text: attachable DwarfGekko arms and linked-arm polearm LÉtranger. Physical sweeping staff, no Monsoon magnetism. Exact visibility/count of every attached arm not certified in small sprites.",
+      "abilityName": "Taille de L’Étranger",
+      "characterVersion": "Mistral from MAINSTORY2013 MetalGearRisingRevengeance, adult cyborgwoman, palehumanface, short asymmetrical darkred/burgundy hair sweeping over anatomicalleft sideofface, black/charcoal combatbodysuit with silver/gray cybernetic legs/armor, subtle redaccents. Functional primaryleft+right arms plus MULTIPLE pale/gray DWARFGEKKO ROBOTICARMS attached to sockets around shoulders/collar/back, visibly mechanical articulated joints and grippers. Canon cancarry up to14 extraDwarfGekkoarms,7eachside; show coherent compact cluster rather than giant fan that shrinksherbody. Her real polearm L'ÉTRANGER is assembled from linked DwarfGekko arms, jointed mechanicalstaff with gripping-hands ends, can flex into whip. No conventional wizardstaff, magnetism, purplegravitationorbits orMonsoonredhelmet. Keep fullycovered practical bodysuit/no sexualization, no loosebodyparts/victims; attachedrobotarms areequipment.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": true,
+      "originalSourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-original.png",
+      "originalSourceImageSha256": "8647be93b28d8b3e5a0bf2483dac346fcaae6877158c2e7f2d576e4a65ab0822",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-original.png",
+            "sourceImageSha256": "8647be93b28d8b3e5a0bf2483dac346fcaae6877158c2e7f2d576e4a65ab0822",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 343
+            },
+            "scale": 0.5728395061728395,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 54,
+                  "top": 26,
+                  "width": 249,
+                  "height": 299,
+                  "pixels": 33134
+                },
+                "output": {
+                  "left": 69,
+                  "top": 66,
+                  "width": 143,
+                  "height": 171
+                }
+              },
+              {
+                "source": {
+                  "left": 382,
+                  "top": 22,
+                  "width": 238,
+                  "height": 314,
+                  "pixels": 36775
+                },
+                "output": {
+                  "left": 77,
+                  "top": 64,
+                  "width": 136,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 652,
+                  "top": 55,
+                  "width": 334,
+                  "height": 271,
+                  "pixels": 35685
+                },
+                "output": {
+                  "left": 53,
+                  "top": 83,
+                  "width": 191,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 982,
+                  "top": 17,
+                  "width": 245,
+                  "height": 310,
+                  "pixels": 33576
+                },
+                "output": {
+                  "left": 62,
+                  "top": 61,
+                  "width": 140,
+                  "height": 178
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-original.png",
+            "sourceImageSha256": "8647be93b28d8b3e5a0bf2483dac346fcaae6877158c2e7f2d576e4a65ab0822",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 342,
+              "bottom": 635
+            },
+            "scale": 0.709480122324159,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 7,
+                  "width": 287,
+                  "height": 276,
+                  "pixels": 32230
+                },
+                "output": {
+                  "left": 40,
+                  "top": 42,
+                  "width": 204,
+                  "height": 196
+                }
+              },
+              {
+                "source": {
+                  "left": 324,
+                  "top": 13,
+                  "width": 280,
+                  "height": 279,
+                  "pixels": 31695
+                },
+                "output": {
+                  "left": 24,
+                  "top": 46,
+                  "width": 199,
+                  "height": 198
+                }
+              },
+              {
+                "source": {
+                  "left": 632,
+                  "top": 19,
+                  "width": 299,
+                  "height": 262,
+                  "pixels": 33435
+                },
+                "output": {
+                  "left": 20,
+                  "top": 50,
+                  "width": 212,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 988,
+                  "top": 22,
+                  "width": 252,
+                  "height": 260,
+                  "pixels": 33606
+                },
+                "output": {
+                  "left": 50,
+                  "top": 52,
+                  "width": 179,
+                  "height": 184
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.8086750543647095,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 170,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 174,
+              "bodyBounds": [
+                85,
+                62,
+                125,
+                174
+              ],
+              "referenceBodyBounds": [
+                90,
+                66,
+                105,
+                170
+              ],
+              "nativeComparableBodyHeight": 245,
+              "nativeReferenceBodyHeight": 296,
+              "nativeBodyBounds": [
+                96,
+                377,
+                176,
+                245
+              ],
+              "nativeReferenceBodyBounds": [
+                91,
+                27,
+                183,
+                296
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-original.png",
+              "nativeComparableSourceSha256": "8647be93b28d8b3e5a0bf2483dac346fcaae6877158c2e7f2d576e4a65ab0822",
+              "nativeReferenceSourceSha256": "8647be93b28d8b3e5a0bf2483dac346fcaae6877158c2e7f2d576e4a65ab0822",
+              "nativeComparableSourceRow": 1,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-attack-correction.png",
+            "sourceImageSha256": "24faeb34dd8da022ae35b63fd21b823832decfc79e970e69653535ab117023f4",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 724
+            },
+            "scale": 0.34268833087149186,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 57,
+                  "top": 227,
+                  "width": 472,
+                  "height": 460,
+                  "pixels": 97924
+                },
+                "output": {
+                  "left": 54,
+                  "top": 86,
+                  "width": 162,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 598,
+                  "top": 10,
+                  "width": 423,
+                  "height": 677,
+                  "pixels": 111677
+                },
+                "output": {
+                  "left": 54,
+                  "top": 12,
+                  "width": 145,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 1117,
+                  "top": 262,
+                  "width": 540,
+                  "height": 425,
+                  "pixels": 91772
+                },
+                "output": {
+                  "left": 46,
+                  "top": 98,
+                  "width": 185,
+                  "height": 146
+                }
+              },
+              {
+                "source": {
+                  "left": 1720,
+                  "top": 137,
+                  "width": 419,
+                  "height": 550,
+                  "pixels": 98409
+                },
+                "output": {
+                  "left": 66,
+                  "top": 56,
+                  "width": 144,
+                  "height": 188
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.012833518509573,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 170,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 127,
+              "bodyBounds": [
+                85,
+                115,
+                120,
+                127
+              ],
+              "referenceBodyBounds": [
+                90,
+                66,
+                105,
+                170
+              ],
+              "nativeComparableBodyHeight": 370,
+              "nativeReferenceBodyHeight": 489,
+              "nativeBodyBounds": [
+                147,
+                311,
+                350,
+                370
+              ],
+              "nativeReferenceBodyBounds": [
+                1775,
+                193,
+                364,
+                489
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-attack-correction.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-attack-correction.png",
+              "nativeComparableSourceSha256": "24faeb34dd8da022ae35b63fd21b823832decfc79e970e69653535ab117023f4",
+              "nativeReferenceSourceSha256": "24faeb34dd8da022ae35b63fd21b823832decfc79e970e69653535ab117023f4",
+              "nativeComparableSourceRow": 0,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 3,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-original.png",
+              "displayReferenceSourceDiffers": true,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in the declared column of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+              "poseBridge": {
+                "nativeReferenceLabel": "attack",
+                "nativeReferenceColumn": 3,
+                "displayReferenceLabel": "idle",
+                "displayReferenceColumn": 0,
+                "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+                "nativeReferenceNormalizedBodyBounds": [
+                  85,
+                  75,
+                  125,
+                  167
+                ]
+              }
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-original.png",
+            "sourceImageSha256": "8647be93b28d8b3e5a0bf2483dac346fcaae6877158c2e7f2d576e4a65ab0822",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 930,
+              "bottom": 1254
+            },
+            "scale": 0.664756446991404,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 34,
+                  "top": 2,
+                  "width": 254,
+                  "height": 299,
+                  "pixels": 36354
+                },
+                "output": {
+                  "left": 46,
+                  "top": 43,
+                  "width": 169,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 349,
+                  "top": 85,
+                  "width": 289,
+                  "height": 215,
+                  "pixels": 34722
+                },
+                "output": {
+                  "left": 47,
+                  "top": 98,
+                  "width": 192,
+                  "height": 143
+                }
+              },
+              {
+                "source": {
+                  "left": 666,
+                  "top": 90,
+                  "width": 292,
+                  "height": 215,
+                  "pixels": 29378
+                },
+                "output": {
+                  "left": 50,
+                  "top": 101,
+                  "width": 194,
+                  "height": 143
+                }
+              },
+              {
+                "source": {
+                  "left": 946,
+                  "top": 19,
+                  "width": 283,
+                  "height": 285,
+                  "pixels": 31654
+                },
+                "output": {
+                  "left": 27,
+                  "top": 54,
+                  "width": 188,
+                  "height": 189
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.8614864864864866,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 170,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 166,
+              "bodyBounds": [
+                80,
+                75,
+                135,
+                166
+              ],
+              "referenceBodyBounds": [
+                90,
+                66,
+                105,
+                170
+              ],
+              "nativeComparableBodyHeight": 249,
+              "nativeReferenceBodyHeight": 296,
+              "nativeBodyBounds": [
+                85,
+                980,
+                203,
+                249
+              ],
+              "nativeReferenceBodyBounds": [
+                91,
+                27,
+                183,
+                296
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-original.png",
+              "nativeComparableSourceSha256": "8647be93b28d8b3e5a0bf2483dac346fcaae6877158c2e7f2d576e4a65ab0822",
+              "nativeReferenceSourceSha256": "8647be93b28d8b3e5a0bf2483dac346fcaae6877158c2e7f2d576e4a65ab0822",
+              "nativeComparableSourceRow": 3,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/mistral_mgr-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "45af308ebc48f93cb18e5a70616556044c5040268ca0eb344276bc68fdfa78e4",
+              "5e3f4e9535d09c3572127b7cd7f30beabf5618c2699bc84d08654bde88a3d44a",
+              "c410fe1588862299098f760ac039f3eb389565fb00a30bdefe40c68b1c80ab69",
+              "1983118bc1ac3da99a9194a0f402b17fcda5c4806eaaf6a0d58de02685a65961"
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1de768477c965daef6e169c1feb5d17a97b48be89f3e1cdef94c94d1b680121e",
+              "6407ac10332c1a96fc19dc2757e9891b00e452296561286f438e6c7cff1ecbef",
+              "6a79b79981c660a9be736ef8e38cbd6ff1dd4ae2b155ee8cf6f6c357da326302",
+              "29a7cf140091f40bd3bf62fe8f74acb25a2f2f1068e5fca7a650fccde61c9486"
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "577aaac6afb67420e2170dd37b7be88805820049859ba0b7388e51384008312d",
+              "39a80c9911f82f7682864c24b88b4671896f1e4576978e5d88c608f174bdf22e",
+              "5dbf03e593df5d204b0d07f40d48a52cfb910d1eae34dbff8e7a3d6447540f89",
+              "ea5d23d289a1a66698c4c9a90aa13fcba91cff82c895b1dea0b16cf3bed4eb04"
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8c21ea9e5abdda535866b16218c3dca15af8f95bf9def20d59a6bfa3485c79ba",
+              "44fd5d6344fb4727426f9d011bc19ec5c03c8bda31b176a2912bc3398886e4d1",
+              "93352205f6f5bc9284884cb137b56dbff87e12e45fd48a17b562b3668830eb60",
+              "774e9d45fd51220ead7cc4af15a07e5a1c11563247a089a317f5cfa57908046e"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Mistral from MAINSTORY2013 MetalGearRisingRevengeance, adult cyborgwoman, palehumanface, short asymmetrical darkred/burgundy hair sweeping over anatomicalleft sideofface, black/charcoal combatbodysuit with silver/gray cybernetic legs/armor, subtle redaccents. Functional primaryleft+right arms plus MULTIPLE pale/gray DWARFGEKKO ROBOTICARMS attached to sockets around shoulders/collar/back, visibly mechanical articulated joints and grippers. Canon cancarry up to14 extraDwarfGekkoarms,7eachside; show coherent compact cluster rather than giant fan that shrinksherbody. Her real polearm L'ÉTRANGER is assembled from linked DwarfGekko arms, jointed mechanicalstaff with gripping-hands ends, can flex into whip. No conventional wizardstaff, magnetism, purplegravitationorbits orMonsoonredhelmet. Keep fullycovered practical bodysuit/no sexualization, no loosebodyparts/victims; attachedrobotarms areequipment. Nativegenerated pixelart, authored compact choreography, source1to1Verifiedfalse; exact game-frame timing/anatomy not certified."
+      }
+    },
+    {
+      "id": "monsoon_mgr",
+      "heroId": "monsoon_mgr",
+      "universe": "Metal Gear Rising",
+      "name": "Monsoon",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/monsoon_mgr.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "41e4c21afcf1cebd1dcfb3f2c54506799f229532f4ee65568f1fd41813b5d0d5",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+      "sourceImageSha256": "b9121c2202afa987789a20eddb7b3bd4094bfd2e46629df2754c8143fe46703b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/metal-gear-rising/monsoon-mgr.png",
+      "referenceAssetSha256": "ef24389421cab58eaa785ca82e5054a0496935fcf7bca3efc7c42e5626b4c57b",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-references/monsoon_mgr.png",
+      "sourceWork": "Metal Gear Rising: Revengeance (2013), mainstory version",
+      "sourceReference": "https://metalgear.fandom.com/wiki/Monsoon and https://www.piggyback.com/us/wp-content/uploads/sites/6/2020/04/MGR_U_SamplePages.pdf indexed text: red helmet/black visor/pale hair, segmented cyborg body, twinDystopia sai and electromagnetism moving inorganicmetal. No phrase/meme as attack.",
+      "abilityName": "Taille des sai Dystopia",
+      "characterVersion": "Monsoon from MAINSTORY2013 MetalGearRisingRevengeance, tall slim cyborgman, dark charcoal/red segmented mechanicalbody, many clean circular modulararm/leg/torso joints, red accents and deepredleftarm, palehumanlowerface withsmirk. Distinctive RED HELMET with dark horizontal VISOR overeyes and long silver/palehair trailingfromback ofhelmet; no bareRaidenface/white spikyRagnahair, no metaljaw or eyepatch. TWO real three-pronged SAI named DYSTOPIA, oneheldineachhand; not katanas/guns. Magneticmodularbody can separate cleanrobotsegments with small gaps, still controllably connected aswhole, no blood/flesh/wounds, no organic severing. Red-phosphorus/smokepouches atbelt. Power = electromagnetism moving INORGANIC METALDEBRIS and cleanrobotsegmentdodge, never writtenmemes or magicalletters.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+            "sourceImageSha256": "b9121c2202afa987789a20eddb7b3bd4094bfd2e46629df2754c8143fe46703b",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 353
+            },
+            "scale": 0.7051671732522796,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 64,
+                  "top": 11,
+                  "width": 221,
+                  "height": 327,
+                  "pixels": 36409
+                },
+                "output": {
+                  "left": 63,
+                  "top": 12,
+                  "width": 156,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 366,
+                  "top": 21,
+                  "width": 237,
+                  "height": 318,
+                  "pixels": 36305
+                },
+                "output": {
+                  "left": 54,
+                  "top": 19,
+                  "width": 167,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 687,
+                  "top": 19,
+                  "width": 195,
+                  "height": 321,
+                  "pixels": 36184
+                },
+                "output": {
+                  "left": 60,
+                  "top": 18,
+                  "width": 138,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 975,
+                  "top": 61,
+                  "width": 252,
+                  "height": 275,
+                  "pixels": 33118
+                },
+                "output": {
+                  "left": 42,
+                  "top": 47,
+                  "width": 178,
+                  "height": 194
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+            "sourceImageSha256": "b9121c2202afa987789a20eddb7b3bd4094bfd2e46629df2754c8143fe46703b",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 352,
+              "bottom": 650
+            },
+            "scale": 0.6666666666666666,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 32,
+                  "width": 291,
+                  "height": 263,
+                  "pixels": 36169
+                },
+                "output": {
+                  "left": 32,
+                  "top": 69,
+                  "width": 194,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 340,
+                  "top": 22,
+                  "width": 304,
+                  "height": 267,
+                  "pixels": 35616
+                },
+                "output": {
+                  "left": 41,
+                  "top": 62,
+                  "width": 203,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 665,
+                  "top": 14,
+                  "width": 283,
+                  "height": 278,
+                  "pixels": 33863
+                },
+                "output": {
+                  "left": 49,
+                  "top": 57,
+                  "width": 189,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 946,
+                  "top": 47,
+                  "width": 288,
+                  "height": 245,
+                  "pixels": 34114
+                },
+                "output": {
+                  "left": 27,
+                  "top": 79,
+                  "width": 192,
+                  "height": 163
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.0585238739003506,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 227,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 159,
+              "bodyBounds": [
+                85,
+                80,
+                125,
+                159
+              ],
+              "referenceBodyBounds": [
+                80,
+                15,
+                95,
+                227
+              ],
+              "nativeComparableBodyHeight": 238,
+              "nativeReferenceBodyHeight": 321,
+              "nativeBodyBounds": [
+                92,
+                401,
+                188,
+                238
+              ],
+              "nativeReferenceBodyBounds": [
+                88,
+                15,
+                135,
+                321
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+              "nativeComparableSourceSha256": "b9121c2202afa987789a20eddb7b3bd4094bfd2e46629df2754c8143fe46703b",
+              "nativeReferenceSourceSha256": "b9121c2202afa987789a20eddb7b3bd4094bfd2e46629df2754c8143fe46703b",
+              "nativeComparableSourceRow": 1,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+            "sourceImageSha256": "b9121c2202afa987789a20eddb7b3bd4094bfd2e46629df2754c8143fe46703b",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 638,
+              "bottom": 968
+            },
+            "scale": 0.5260770975056689,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 19,
+                  "top": 66,
+                  "width": 285,
+                  "height": 260,
+                  "pixels": 35303
+                },
+                "output": {
+                  "left": 56,
+                  "top": 107,
+                  "width": 150,
+                  "height": 137
+                }
+              },
+              {
+                "source": {
+                  "left": 355,
+                  "top": 1,
+                  "width": 267,
+                  "height": 325,
+                  "pixels": 36664
+                },
+                "output": {
+                  "left": 67,
+                  "top": 73,
+                  "width": 140,
+                  "height": 171
+                }
+              },
+              {
+                "source": {
+                  "left": 642,
+                  "top": 70,
+                  "width": 362,
+                  "height": 255,
+                  "pixels": 36819
+                },
+                "output": {
+                  "left": 53,
+                  "top": 109,
+                  "width": 190,
+                  "height": 134
+                }
+              },
+              {
+                "source": {
+                  "left": 949,
+                  "top": 65,
+                  "width": 296,
+                  "height": 260,
+                  "pixels": 31727
+                },
+                "output": {
+                  "left": 50,
+                  "top": 107,
+                  "width": 156,
+                  "height": 137
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.3441535278590284,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 227,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 131,
+              "bodyBounds": [
+                80,
+                110,
+                126,
+                131
+              ],
+              "referenceBodyBounds": [
+                80,
+                15,
+                95,
+                227
+              ],
+              "nativeComparableBodyHeight": 249,
+              "nativeReferenceBodyHeight": 321,
+              "nativeBodyBounds": [
+                65,
+                710,
+                238,
+                249
+              ],
+              "nativeReferenceBodyBounds": [
+                88,
+                15,
+                135,
+                321
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+              "nativeComparableSourceSha256": "b9121c2202afa987789a20eddb7b3bd4094bfd2e46629df2754c8143fe46703b",
+              "nativeReferenceSourceSha256": "b9121c2202afa987789a20eddb7b3bd4094bfd2e46629df2754c8143fe46703b",
+              "nativeComparableSourceRow": 2,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+            "sourceImageSha256": "b9121c2202afa987789a20eddb7b3bd4094bfd2e46629df2754c8143fe46703b",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 963,
+              "bottom": 1254
+            },
+            "scale": 0.6253369272237197,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 16,
+                  "top": 15,
+                  "width": 298,
+                  "height": 257,
+                  "pixels": 32119
+                },
+                "output": {
+                  "left": 40,
+                  "top": 80,
+                  "width": 186,
+                  "height": 161
+                }
+              },
+              {
+                "source": {
+                  "left": 355,
+                  "top": 58,
+                  "width": 298,
+                  "height": 218,
+                  "pixels": 31216
+                },
+                "output": {
+                  "left": 56,
+                  "top": 107,
+                  "width": 186,
+                  "height": 136
+                }
+              },
+              {
+                "source": {
+                  "left": 654,
+                  "top": 57,
+                  "width": 315,
+                  "height": 218,
+                  "pixels": 35157
+                },
+                "output": {
+                  "left": 47,
+                  "top": 106,
+                  "width": 197,
+                  "height": 136
+                }
+              },
+              {
+                "source": {
+                  "left": 949,
+                  "top": 2,
+                  "width": 288,
+                  "height": 275,
+                  "pixels": 33595
+                },
+                "output": {
+                  "left": 35,
+                  "top": 72,
+                  "width": 180,
+                  "height": 172
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.1270443925233644,
+            "statureReview": {
+              "referenceState": "idle",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 227,
+              "sourceComparableColumn": 0,
+              "normalizedBodyHeight": 160,
+              "bodyBounds": [
+                65,
+                80,
+                160,
+                160
+              ],
+              "referenceBodyBounds": [
+                80,
+                15,
+                95,
+                227
+              ],
+              "nativeComparableBodyHeight": 255,
+              "nativeReferenceBodyHeight": 321,
+              "nativeBodyBounds": [
+                56,
+                978,
+                256,
+                255
+              ],
+              "nativeReferenceBodyBounds": [
+                88,
+                15,
+                135,
+                321
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+              "nativeComparableSourceSha256": "b9121c2202afa987789a20eddb7b3bd4094bfd2e46629df2754c8143fe46703b",
+              "nativeReferenceSourceSha256": "b9121c2202afa987789a20eddb7b3bd4094bfd2e46629df2754c8143fe46703b",
+              "nativeComparableSourceRow": 3,
+              "nativeReferenceSourceRow": 0,
+              "nativeReferenceColumn": 0,
+              "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/base-part-c-sources/monsoon_mgr-original.png",
+              "displayReferenceSourceDiffers": false,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f7faad9ba866e360f8a1c194793ce7a59def114a4554fe0f7b7f9218279c9efa",
+              "9000cab9687e002c133b2ec43bc8544b304d2c6c300be9121fe7c177c54378e0",
+              "eeec8cafb9c3140c901f34adde3d093a6d2d6ea03392b74e7ccbec80e3982f20",
+              "ff95684eb85094d6b196e42c2ed8d0fffb7ce883dc376f16210743bc664ce0e8"
+            ]
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "800ff4a91f2c41381393a51b4d1d4809664555b709a3aeef9c8d2002405c0eb0",
+              "8441725bb2979f14406229acd779f3f2732bf3fb1086a5a7a74cfc228dd8976f",
+              "8d073377a498e4d69be752a8ac7f36a179a8d932bae6728a9390570b107443be",
+              "6604f29c3adcbd9ba1ca21be923d789556b2fdced174de2848a306409cb68fd3"
+            ]
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1fd59d6a641d45a766909aac1d0bcf13325cf0d45fef8cda924524769e22f592",
+              "67ebaa6ef5f8bd0692aa68e8bcd8765fab98506eaee15f3e0be8ca5089c4debb",
+              "df0378786c9d0642ced5a7bd434e96094e5daff3caf2393e345f2c02dfc84912",
+              "0c61f87c2a2112b27b5d0779da385581f704dc00a6f228d7e2c1b065d18824c7"
+            ]
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "23d973aeb90f9e6b70c3effdd0d69b5bc5f60b54e272580fb80ff9fb56687aad",
+              "fe073b319045f90b5be2a3bef4395df0a7ff6b08bbbeb09b8b7302bb4c073e63",
+              "8f159f90c35dd930689befbd1b81e94e51a72e1ecdb02a3bbf125aece9ec9217",
+              "c6770639c9bfaa6cbe8839cf167036b03a48e1ac0dd2b4a35898b043438cfdc6"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Monsoon from MAINSTORY2013 MetalGearRisingRevengeance, tall slim cyborgman, dark charcoal/red segmented mechanicalbody, many clean circular modulararm/leg/torso joints, red accents and deepredleftarm, palehumanlowerface withsmirk. Distinctive RED HELMET with dark horizontal VISOR overeyes and long silver/palehair trailingfromback ofhelmet; no bareRaidenface/white spikyRagnahair, no metaljaw or eyepatch. TWO real three-pronged SAI named DYSTOPIA, oneheldineachhand; not katanas/guns. Magneticmodularbody can separate cleanrobotsegments with small gaps, still controllably connected aswhole, no blood/flesh/wounds, no organic severing. Red-phosphorus/smokepouches atbelt. Power = electromagnetism moving INORGANIC METALDEBRIS and cleanrobotsegmentdodge, never writtenmemes or magicalletters. Nativegenerated pixelart, authored compact choreography, source1to1Verifiedfalse; exact game-frame timing/anatomy not certified."
+      }
+    }
+  ]
+}

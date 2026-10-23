@@ -1,0 +1,846 @@
+{
+  "date": "2026-10-23",
+  "runtimeSourceHashesBefore": {
+    "src/game/spriteAssets.js": "b3c387896717c3ce88bf969110bbecaef5dcec11b89c1309a033e9162759ee0f",
+    "src/game/engineRpg.js": "02088b4e379b55a9c76d4d09c839d55647064e71d7a96518bb3dcf2b2a19daf3",
+    "src/game/engineFighter.js": "8ce3014b9c518f846cb9e6563f7fd9710dca92983e385804d3b8ac5ab72d71f7",
+    "src/game/combatIdentity.js": "e6711eb117b4713bdbce7869c45f2358f828a3ab906632305e60699474ac11b3",
+    "src/game/combat/characterSuperVisuals.js": "39d2c1081dc3159e66901902e507de69652caa0b61e07c324213a1efc9446081",
+    "src/game/combat/nativeSuperVisualsWave11.js": "8c665915aea0dac98bdc961e3261e5a2568488d8268b134b0e500f84f44aefc8",
+    "src/game/combat/rosterSummonChoreographyWave11.js": "d3a6edd0cdb1253b76eddad08fbe03e79ae62ec7a3df487192b865fdb71efd9e"
+  },
+  "visualReview": {
+    "reviewed": [
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/summon-spike-contact.png",
+        "sha256": "fb1073f7e3a368af4f729ffd2b89bff4226a07d9f46d07a51562f1490013d0b6"
+      },
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/summon-ronon-contact.png",
+        "sha256": "3d57aea73c3f5e15b3668047b2cb227eb3243be65dde723dbd5955bb65b4d075"
+      },
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/summon-greer-contact.png",
+        "sha256": "094bd34ce2e98ce58b85bd45156ac272c77191e20bccbd570803f5e0349c5f55"
+      },
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/summon-roland-contact.png",
+        "sha256": "72d7919aca4ea553c6b5e2e14f1873aa9cb1316cf5b4168e2954979da8072fca"
+      },
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/summon-furiosa-contact.png",
+        "sha256": "26aa211fb9f9876345b2c98eef909fec2c765aa00049e5af9854172dfd7afba9"
+      },
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/summon-korben-contact.png",
+        "sha256": "6b5f5fd80137e1417c586e38b452bf4c1ce94bf33430a3319be909391baccb3b"
+      },
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/summon-lancelot-contact.png",
+        "sha256": "9398c36186e785937bc19b4d77038c1fa9d11191e27537ad2fd455017d79a173"
+      },
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/summon-ronon-anchor-review.png",
+        "sha256": "3ebb56e3f0569ad50ec40f384f58aa115e326517b3c3d0f6ec6e2c183c73a72b"
+      },
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/summon-greer-anchor-review.png",
+        "sha256": "0ba9fade2c57758be0036d4bb51d4f3a29a0ec0f6203f74a76fd5bf8ca3cc522"
+      },
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/summon-roland-anchor-review.png",
+        "sha256": "b4a8dd892410ea4a1c774ecca57733ec33b22deddd76748b5a5900dd0519cc1c"
+      },
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/summon-furiosa-anchor-review.png",
+        "sha256": "bfed9176d01f3b746cf3a7a7f2e1e2beb44b14afc12b2e457c9231e6cb0e8a8f"
+      },
+      {
+        "path": "docs/combat-fidelity-wave11-2026-10-23/summon-korben-anchor-review.png",
+        "sha256": "de3aa24e29d7cc0f36519fc3c66d8db733564c6044d63ea8f8abfa5534d9c448"
+      }
+    ],
+    "adaptationOnly": true,
+    "source1to1Verified": false,
+    "observations": "Seven sixteen-cell contact sheets and five barrel-anchor sheets actually viewed: complete bodies, continuous selected clothing, no procedural body or vehicle; five measured apertures lie on barrel tips / flash roots. Roland source halo border exception is documented, not repainted; final packed margin is checked by its builder. This does not certify source footage or anatomical identity."
+  },
+  "method": "Independent production Vite SSR projections and real EngineRpg targeting, shield/damage acceptance, simulation queues and summon impacts. No gameplay method is stubbed. Canvas recorder inspects actual drawing commands; this does not claim source pixel fidelity or browser coverage.",
+  "source1to1Verified": false,
+  "checks": [
+    {
+      "name": "40 exact identities, confirmed target projection, denial and render purity",
+      "status": "passed",
+      "fixtures": 160,
+      "blockedCloneProjections": 6
+    },
+    {
+      "name": "available native column anchors are visible source pixels and match packed dimensions, per-row renderScale and P2 reflection",
+      "status": "passed",
+      "projections": 232,
+      "visibleSourcePixels": 58,
+      "pendingIdentities": []
+    },
+    {
+      "name": "ordinary RPG flight stops at the impact and cannot restart after confirmed or denied contact",
+      "status": "passed",
+      "postImpactProjections": 156,
+      "preImpactAnchorUnavailable": [
+        "harry_potter"
+      ]
+    },
+    {
+      "name": "melee and area supers acknowledge accepted contacts without fictitious projectile travel",
+      "status": "passed",
+      "projections": 20
+    },
+    {
+      "name": "seventeen real RPG support actions preserve every enemy HP and apply only their declared ally effect",
+      "status": "passed",
+      "realActions": 34,
+      "basicBeneficialActions": 88
+    },
+    {
+      "name": "real RPG special acceptance: shields and dead selections cannot confirm, accepted points remain fixed after move/KO",
+      "status": "passed",
+      "realActions": 184
+    },
+    {
+      "name": "real Fighter launches from native muzzles, preserves direction after crossing, suppresses recovery and denied-hit flashes",
+      "status": "passed",
+      "realProjectiles": 26,
+      "nativeMuzzleChecks": 24,
+      "historicalStarts": 2
+    },
+    {
+      "name": "seven real RPG reinforcements: protected targets produce no accepted contact rings",
+      "status": "passed",
+      "realActions": 14
+    },
+    {
+      "name": "seven real RPG reinforcements: accepted contacts freeze before target movement/KO",
+      "status": "passed",
+      "realActions": 14
+    },
+    {
+      "name": "seven reinforcements only acknowledge actual mixed-target HP drops, without replacing dead or removed identities",
+      "status": "passed",
+      "realActions": 42
+    },
+    {
+      "name": "twenty-three historical native summons preserve complete metadata, PNG bytes and their existing scene contracts",
+      "status": "passed",
+      "historicalAssets": 23,
+      "realSceneContracts": 46
+    },
+    {
+      "name": "seventy-two historical entity callers keep their exact binding; ten selected callers explicitly change partner",
+      "status": "passed",
+      "historicalBindings": 72,
+      "intentionalReplacements": 10,
+      "historicalLegacyPngs": 28,
+      "shephardId": "shephard"
+    },
+    {
+      "name": "twenty-eight historical choreographies preserve their exact source definitions and sampled geometry",
+      "status": "passed",
+      "historicalChoreographies": 28,
+      "projections": 280
+    },
+    {
+      "name": "Hermione legacy support never damages, heals or draws an offensive bolt and acknowledges the actual partner",
+      "status": "passed",
+      "realActions": 2
+    },
+    {
+      "name": "eight reinforcement commands preserve cancellation, unique cost, pause and caller interruption without late impact",
+      "status": "passed",
+      "realInterruptedCommands": 48
+    },
+    {
+      "name": "eight reinforcement travels use the packed muzzle, end at impact and remain pure under P2 rotation",
+      "status": "passed",
+      "projections": 64
+    }
+  ],
+  "observations": [
+    {
+      "case": "support",
+      "id": "willow_rosenberg",
+      "side": "player",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "willow_rosenberg",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "xander_buffy",
+      "side": "player",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "xander_buffy",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "hermione_granger",
+      "side": "player",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "hermione_granger",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "snape",
+      "side": "player",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "snape",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "mckay_sga",
+      "side": "player",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "mckay_sga",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "elizabeth_weir",
+      "side": "player",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "elizabeth_weir",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "rush_sgu",
+      "side": "player",
+      "effect": "buff",
+      "targetSide": "ally",
+      "receiving": [
+        "rush_sgu",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "young_sgu",
+      "side": "player",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "young_sgu",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "chloe_sgu",
+      "side": "player",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "chloe_sgu",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "claptrap_borderlands",
+      "side": "player",
+      "effect": "buff",
+      "targetSide": "ally",
+      "receiving": [
+        "claptrap_borderlands",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "nux",
+      "side": "player",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "nux",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "toast_mm",
+      "side": "player",
+      "effect": "buff",
+      "targetSide": "ally",
+      "receiving": [
+        "toast_mm",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "capable_mm",
+      "side": "player",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "capable_mm",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "ruby_rhod",
+      "side": "player",
+      "effect": "buff",
+      "targetSide": "ally",
+      "receiving": [
+        "ruby_rhod",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "cornelius",
+      "side": "player",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "cornelius",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "perceval_kaamelott",
+      "side": "player",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "perceval_kaamelott",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "karadoc_kaamelott",
+      "side": "player",
+      "effect": "buff",
+      "targetSide": "ally",
+      "receiving": [
+        "karadoc_kaamelott",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "willow_rosenberg",
+      "side": "enemy",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "willow_rosenberg",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "xander_buffy",
+      "side": "enemy",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "xander_buffy",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "hermione_granger",
+      "side": "enemy",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "hermione_granger",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "snape",
+      "side": "enemy",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "snape",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "mckay_sga",
+      "side": "enemy",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "mckay_sga",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "elizabeth_weir",
+      "side": "enemy",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "elizabeth_weir",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "rush_sgu",
+      "side": "enemy",
+      "effect": "buff",
+      "targetSide": "ally",
+      "receiving": [
+        "rush_sgu",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "young_sgu",
+      "side": "enemy",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "young_sgu",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "chloe_sgu",
+      "side": "enemy",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "chloe_sgu",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "claptrap_borderlands",
+      "side": "enemy",
+      "effect": "buff",
+      "targetSide": "ally",
+      "receiving": [
+        "claptrap_borderlands",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "nux",
+      "side": "enemy",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "nux",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "toast_mm",
+      "side": "enemy",
+      "effect": "buff",
+      "targetSide": "ally",
+      "receiving": [
+        "toast_mm",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "capable_mm",
+      "side": "enemy",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "capable_mm",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "ruby_rhod",
+      "side": "enemy",
+      "effect": "buff",
+      "targetSide": "ally",
+      "receiving": [
+        "ruby_rhod",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "cornelius",
+      "side": "enemy",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "cornelius",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "perceval_kaamelott",
+      "side": "enemy",
+      "effect": "guard",
+      "targetSide": "ally",
+      "receiving": [
+        "perceval_kaamelott",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "support",
+      "id": "karadoc_kaamelott",
+      "side": "enemy",
+      "effect": "buff",
+      "targetSide": "ally",
+      "receiving": [
+        "karadoc_kaamelott",
+        "allied-observer"
+      ]
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "buffy_summers",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "buffy_summers",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "sheppard_sga",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "sheppard_sga",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "rush_sgu",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "rush_sgu",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "lilith_borderlands",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "lilith_borderlands",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "max",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "max",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "leeloo",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "leeloo",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "arthur_kaamelott",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "arthur_kaamelott",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    }
+  ],
+  "pending": [],
+  "sources": [
+    {
+      "path": "src/game/spriteAssets.js",
+      "sha256": "b3c387896717c3ce88bf969110bbecaef5dcec11b89c1309a033e9162759ee0f"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "02088b4e379b55a9c76d4d09c839d55647064e71d7a96518bb3dcf2b2a19daf3"
+    },
+    {
+      "path": "src/game/engineFighter.js",
+      "sha256": "8ce3014b9c518f846cb9e6563f7fd9710dca92983e385804d3b8ac5ab72d71f7"
+    },
+    {
+      "path": "src/game/combatIdentity.js",
+      "sha256": "e6711eb117b4713bdbce7869c45f2358f828a3ab906632305e60699474ac11b3"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "sha256": "39d2c1081dc3159e66901902e507de69652caa0b61e07c324213a1efc9446081"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave11.js",
+      "sha256": "8c665915aea0dac98bdc961e3261e5a2568488d8268b134b0e500f84f44aefc8"
+    },
+    {
+      "path": "src/game/combat/rosterSummonChoreographyWave11.js",
+      "sha256": "d3a6edd0cdb1253b76eddad08fbe03e79ae62ec7a3df487192b865fdb71efd9e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-spike-contact.png",
+      "sha256": "fb1073f7e3a368af4f729ffd2b89bff4226a07d9f46d07a51562f1490013d0b6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-ronon-contact.png",
+      "sha256": "3d57aea73c3f5e15b3668047b2cb227eb3243be65dde723dbd5955bb65b4d075"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-greer-contact.png",
+      "sha256": "094bd34ce2e98ce58b85bd45156ac272c77191e20bccbd570803f5e0349c5f55"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-roland-contact.png",
+      "sha256": "72d7919aca4ea553c6b5e2e14f1873aa9cb1316cf5b4168e2954979da8072fca"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-furiosa-contact.png",
+      "sha256": "26aa211fb9f9876345b2c98eef909fec2c765aa00049e5af9854172dfd7afba9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-korben-contact.png",
+      "sha256": "6b5f5fd80137e1417c586e38b452bf4c1ce94bf33430a3319be909391baccb3b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-lancelot-contact.png",
+      "sha256": "9398c36186e785937bc19b4d77038c1fa9d11191e27537ad2fd455017d79a173"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-ronon-anchor-review.png",
+      "sha256": "3ebb56e3f0569ad50ec40f384f58aa115e326517b3c3d0f6ec6e2c183c73a72b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-greer-anchor-review.png",
+      "sha256": "0ba9fade2c57758be0036d4bb51d4f3a29a0ec0f6203f74a76fd5bf8ca3cc522"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-roland-anchor-review.png",
+      "sha256": "b4a8dd892410ea4a1c774ecca57733ec33b22deddd76748b5a5900dd0519cc1c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-furiosa-anchor-review.png",
+      "sha256": "bfed9176d01f3b746cf3a7a7f2e1e2beb44b14afc12b2e457c9231e6cb0e8a8f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/summon-korben-anchor-review.png",
+      "sha256": "de3aa24e29d7cc0f36519fc3c66d8db733564c6044d63ea8f8abfa5534d9c448"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave11.js",
+      "sha256": "8c665915aea0dac98bdc961e3261e5a2568488d8268b134b0e500f84f44aefc8"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "sha256": "39d2c1081dc3159e66901902e507de69652caa0b61e07c324213a1efc9446081"
+    },
+    {
+      "path": "src/game/combat/rosterSummonChoreographyWave11.js",
+      "sha256": "d3a6edd0cdb1253b76eddad08fbe03e79ae62ec7a3df487192b865fdb71efd9e"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "02088b4e379b55a9c76d4d09c839d55647064e71d7a96518bb3dcf2b2a19daf3"
+    },
+    {
+      "path": "src/game/engineFighter.js",
+      "sha256": "8ce3014b9c518f846cb9e6563f7fd9710dca92983e385804d3b8ac5ab72d71f7"
+    },
+    {
+      "path": "src/game/combatIdentity.js",
+      "sha256": "e6711eb117b4713bdbce7869c45f2358f828a3ab906632305e60699474ac11b3"
+    },
+    {
+      "path": "src/game/combat/combatSourceDefinitionsWave11.js",
+      "sha256": "e53102616762fe2f5de752a9d92338a738039a9cc647766532675160c7f55e0e"
+    },
+    {
+      "path": "src/game/combat/rosterReinforcementsWave11.js",
+      "sha256": "4ff6f7833406c30333f1e573e7659ffdd58ccb0f6f7c0245300bb72edabbe62b"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "sha256": "7e71bdbf832b542ead68ed9ced345cbfcbb3f21d2147e71e945344fe5389e4dc"
+    },
+    {
+      "path": "src/game/combat/summonChoreography.js",
+      "sha256": "f605ccbab31e20de17b55b8a31b6e9acb14e3393b1b1572f46ec4f1e092c6f5f"
+    },
+    {
+      "path": "src/game/combat/summonAnimationsWave11.generated.json",
+      "sha256": "501c54380df888e6a17e4edc7bbdde12cb9b9218c576e1bf46dbae0c3607b895"
+    },
+    {
+      "path": "src/game/combat/entityAssets.generated.json",
+      "sha256": "15f808c873c319557a269f4bab01e1bdb65a959769c0c98b9d59e7bc29f458f9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/independent-review.mjs",
+      "sha256": "0155b7eaf9d2efecd3e3a3ae6c495be0129741b2ec2d950237be7e818acfc164"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/runtime-baseline.json",
+      "sha256": "51bd0c86ea4ece733aa204ac21085f5bd992912dabddaccac952d7f31f8646fb"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave11PartA.generated.json",
+      "sha256": "3886163e9b8da447972665ef5bbb464d21ead082049c34c4fc2c5654fd9d04a1"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartA.generated.json",
+      "sha256": "f5248c55f7d4883ed764fa29fe2bd22b4ca2ab829df2e9847cc65113b350c00d"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave11PartB.generated.json",
+      "sha256": "4a890a5519357b694e49daa5c7cf7866b37f2a95aa7611bdf17802a9a0e2f311"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartB.generated.json",
+      "sha256": "22122f2e47348dcf7aa82ee7f9e54a3f32b8cd9f63105e88921dbe43b190a4bc"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave11PartC.generated.json",
+      "sha256": "68fd0d324afd5014552452afc0298ce06a62be2299ae2d6648fe45a6ff841065"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartC.generated.json",
+      "sha256": "d95dc0963af7ae7c3ebc5d516b1740a94c3a63478d8d684eeb014fa7123d4e00"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave11PartD.generated.json",
+      "sha256": "28c078fec7bbd3444a6cec728ec527a69648bfd1f51cd69d08b0fd215b001f24"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartD.generated.json",
+      "sha256": "d8ed64c753412b0b29c188e62ec4e48a4a51c20173a81a9dd978d499dbb06215"
+    }
+  ],
+  "scope": {
+    "identities": 40,
+    "offensive": 23,
+    "supports": 17,
+    "ranged": 13,
+    "reinforcements": 8,
+    "summonsOnlyPreflight": false
+  },
+  "summary": {
+    "passed": 16,
+    "failed": 0
+  }
+}

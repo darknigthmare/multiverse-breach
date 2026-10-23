@@ -1,0 +1,3385 @@
+{
+  "method": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+  "date": "2026-10-23",
+  "source1to1Verified": false,
+  "modifiesBitmap": false,
+  "rendererAnchorBaseline": 244,
+  "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+  "measuredRows": [
+    {
+      "heroId": "buffy_summers",
+      "phase": "intro",
+      "renderScale": 0.825581,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 213,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        70,
+        14,
+        133,
+        228
+      ],
+      "referenceBodyBounds": [
+        70,
+        13,
+        133,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        57,
+        9,
+        124,
+        213
+      ],
+      "nativeReferenceBodyBounds": [
+        57,
+        8,
+        124,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeReferenceSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 188.232558,
+      "correctedBodyHeight": 188.232468,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "buffy_summers",
+      "phase": "outro",
+      "renderScale": 0.871615,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 219,
+      "nativeComparableBodyHeight": 216,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        91,
+        22,
+        96,
+        219
+      ],
+      "referenceBodyBounds": [
+        70,
+        13,
+        133,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        74,
+        229,
+        95,
+        216
+      ],
+      "nativeReferenceBodyBounds": [
+        57,
+        8,
+        124,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeReferenceSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190.883721,
+      "correctedBodyHeight": 190.883685,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "buffy_summers",
+      "phase": "roundVictory",
+      "renderScale": 0.827227,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 219,
+      "nativeComparableBodyHeight": 205,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        64,
+        20,
+        149,
+        219
+      ],
+      "referenceBodyBounds": [
+        70,
+        13,
+        133,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        51,
+        461,
+        139,
+        205
+      ],
+      "nativeReferenceBodyBounds": [
+        57,
+        8,
+        124,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeReferenceSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 181.162791,
+      "correctedBodyHeight": 181.162713,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "buffy_summers",
+      "phase": "roundDefeat",
+      "renderScale": 0.841085,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 217,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        56,
+        14,
+        152,
+        228
+      ],
+      "referenceBodyBounds": [
+        70,
+        13,
+        133,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        42,
+        669,
+        145,
+        217
+      ],
+      "nativeReferenceBodyBounds": [
+        57,
+        8,
+        124,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeReferenceSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 191.767442,
+      "correctedBodyHeight": 191.76738,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "buffy_summers",
+      "phase": "fatality",
+      "renderScale": 1.042214,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 184,
+      "nativeComparableBodyHeight": 217,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        72,
+        58,
+        121,
+        184
+      ],
+      "referenceBodyBounds": [
+        70,
+        13,
+        133,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        45,
+        896,
+        142,
+        217
+      ],
+      "nativeReferenceBodyBounds": [
+        57,
+        8,
+        124,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeReferenceSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 191.767442,
+      "correctedBodyHeight": 191.767376,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "buffy_summers",
+      "phase": "victory",
+      "renderScale": 0.924445,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 217,
+      "nativeComparableBodyHeight": 227,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        78,
+        19,
+        112,
+        217
+      ],
+      "referenceBodyBounds": [
+        70,
+        13,
+        133,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        59,
+        1115,
+        117,
+        227
+      ],
+      "nativeReferenceBodyBounds": [
+        57,
+        8,
+        124,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeReferenceSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 200.604651,
+      "correctedBodyHeight": 200.604565,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "buffy_summers",
+      "phase": "defeat",
+      "renderScale": 0.836798,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 226,
+      "nativeComparableBodyHeight": 214,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        73,
+        14,
+        130,
+        226
+      ],
+      "referenceBodyBounds": [
+        70,
+        13,
+        133,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        59,
+        1352,
+        123,
+        214
+      ],
+      "nativeReferenceBodyBounds": [
+        57,
+        8,
+        124,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeReferenceSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 189.116279,
+      "correctedBodyHeight": 189.116348,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "buffy_summers",
+      "phase": "super",
+      "renderScale": 1.140285,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 155,
+      "nativeComparableBodyHeight": 200,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        75,
+        87,
+        120,
+        155
+      ],
+      "referenceBodyBounds": [
+        70,
+        13,
+        133,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        42,
+        1571,
+        155,
+        200
+      ],
+      "nativeReferenceBodyBounds": [
+        57,
+        8,
+        124,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/buffy_summers-original.png",
+      "nativeReferenceSourceImageSha256": "7b06778fa4a291317f20d92f93ae00830dd72bd1071e2505e1301178554d4bd2",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 176.744186,
+      "correctedBodyHeight": 176.744175,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "willow_rosenberg",
+      "phase": "intro",
+      "renderScale": 0.832585,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 226,
+      "nativeComparableBodyHeight": 205,
+      "nativeReferenceBodyHeight": 207,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        96,
+        15,
+        99,
+        226
+      ],
+      "referenceBodyBounds": [
+        96,
+        14,
+        99,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        82,
+        18,
+        90,
+        205
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        17,
+        90,
+        207
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeReferenceSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 188.164251,
+      "correctedBodyHeight": 188.16421,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "willow_rosenberg",
+      "phase": "outro",
+      "renderScale": 0.869138,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 226,
+      "nativeComparableBodyHeight": 214,
+      "nativeReferenceBodyHeight": 207,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        95,
+        15,
+        91,
+        226
+      ],
+      "referenceBodyBounds": [
+        96,
+        14,
+        99,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        80,
+        239,
+        86,
+        214
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        17,
+        90,
+        207
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeReferenceSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 196.425121,
+      "correctedBodyHeight": 196.425188,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "willow_rosenberg",
+      "phase": "roundVictory",
+      "renderScale": 0.858803,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 202,
+      "nativeComparableBodyHeight": 189,
+      "nativeReferenceBodyHeight": 207,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        53,
+        39,
+        143,
+        202
+      ],
+      "referenceBodyBounds": [
+        96,
+        14,
+        99,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        41,
+        483,
+        134,
+        189
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        17,
+        90,
+        207
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeReferenceSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 173.478261,
+      "correctedBodyHeight": 173.478206,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "willow_rosenberg",
+      "phase": "roundDefeat",
+      "renderScale": 0.87963,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 216,
+      "nativeComparableBodyHeight": 207,
+      "nativeReferenceBodyHeight": 207,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        54,
+        24,
+        159,
+        216
+      ],
+      "referenceBodyBounds": [
+        96,
+        14,
+        99,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        40,
+        684,
+        152,
+        207
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        17,
+        90,
+        207
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeReferenceSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.00008,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "willow_rosenberg",
+      "phase": "fatality",
+      "renderScale": 1.082762,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 167,
+      "nativeComparableBodyHeight": 197,
+      "nativeReferenceBodyHeight": 207,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        65,
+        74,
+        141,
+        167
+      ],
+      "referenceBodyBounds": [
+        96,
+        14,
+        99,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        37,
+        926,
+        167,
+        197
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        17,
+        90,
+        207
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeReferenceSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 180.821256,
+      "correctedBodyHeight": 180.821254,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "willow_rosenberg",
+      "phase": "victory",
+      "renderScale": 0.880154,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 219,
+      "nativeComparableBodyHeight": 210,
+      "nativeReferenceBodyHeight": 207,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        75,
+        16,
+        130,
+        219
+      ],
+      "referenceBodyBounds": [
+        96,
+        14,
+        99,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        60,
+        1135,
+        124,
+        210
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        17,
+        90,
+        207
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeReferenceSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 192.753623,
+      "correctedBodyHeight": 192.753726,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "willow_rosenberg",
+      "phase": "defeat",
+      "renderScale": 0.851422,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 221,
+      "nativeComparableBodyHeight": 205,
+      "nativeReferenceBodyHeight": 207,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        80,
+        15,
+        115,
+        221
+      ],
+      "referenceBodyBounds": [
+        96,
+        14,
+        99,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        66,
+        1349,
+        107,
+        205
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        17,
+        90,
+        207
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeReferenceSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 188.164251,
+      "correctedBodyHeight": 188.164262,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "willow_rosenberg",
+      "phase": "super",
+      "renderScale": 1.161866,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 158,
+      "nativeComparableBodyHeight": 200,
+      "nativeReferenceBodyHeight": 207,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        74,
+        85,
+        128,
+        158
+      ],
+      "referenceBodyBounds": [
+        96,
+        14,
+        99,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        43,
+        1572,
+        162,
+        200
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        17,
+        90,
+        207
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/willow_rosenberg-original.png",
+      "nativeReferenceSourceImageSha256": "443ac318082e658c65421e7c1d528a76b0172fdc1d82c50de7649fb0cde5d848",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 183.574879,
+      "correctedBodyHeight": 183.574828,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "giles_buffy",
+      "phase": "intro",
+      "renderScale": 0.829726,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 227,
+      "nativeComparableBodyHeight": 228,
+      "nativeReferenceBodyHeight": 230,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        77,
+        14,
+        118,
+        227
+      ],
+      "referenceBodyBounds": [
+        77,
+        13,
+        118,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        60,
+        14,
+        119,
+        228
+      ],
+      "nativeReferenceBodyBounds": [
+        60,
+        13,
+        119,
+        230
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 188.347826,
+      "correctedBodyHeight": 188.347802,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "giles_buffy",
+      "phase": "outro",
+      "renderScale": 0.804155,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 226,
+      "nativeComparableBodyHeight": 220,
+      "nativeReferenceBodyHeight": 230,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        79,
+        14,
+        157,
+        226
+      ],
+      "referenceBodyBounds": [
+        77,
+        13,
+        118,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        63,
+        258,
+        153,
+        220
+      ],
+      "nativeReferenceBodyBounds": [
+        60,
+        13,
+        119,
+        230
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 181.73913,
+      "correctedBodyHeight": 181.73903,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "giles_buffy",
+      "phase": "roundVictory",
+      "renderScale": 0.822227,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 214,
+      "nativeComparableBodyHeight": 213,
+      "nativeReferenceBodyHeight": 230,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        79,
+        25,
+        149,
+        214
+      ],
+      "referenceBodyBounds": [
+        77,
+        13,
+        118,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        62,
+        500,
+        148,
+        213
+      ],
+      "nativeReferenceBodyBounds": [
+        60,
+        13,
+        119,
+        230
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 175.956522,
+      "correctedBodyHeight": 175.956578,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "giles_buffy",
+      "phase": "roundDefeat",
+      "renderScale": 0.756017,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 224,
+      "nativeComparableBodyHeight": 205,
+      "nativeReferenceBodyHeight": 230,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        70,
+        14,
+        153,
+        224
+      ],
+      "referenceBodyBounds": [
+        77,
+        13,
+        118,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        58,
+        725,
+        140,
+        205
+      ],
+      "nativeReferenceBodyBounds": [
+        60,
+        13,
+        119,
+        230
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 169.347826,
+      "correctedBodyHeight": 169.347808,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "giles_buffy",
+      "phase": "fatality",
+      "renderScale": 1.013834,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 176,
+      "nativeComparableBodyHeight": 216,
+      "nativeReferenceBodyHeight": 230,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        79,
+        63,
+        139,
+        176
+      ],
+      "referenceBodyBounds": [
+        77,
+        13,
+        118,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        51,
+        954,
+        170,
+        216
+      ],
+      "nativeReferenceBodyBounds": [
+        60,
+        13,
+        119,
+        230
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 178.434783,
+      "correctedBodyHeight": 178.434784,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "giles_buffy",
+      "phase": "victory",
+      "renderScale": 0.836957,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 231,
+      "nativeReferenceBodyHeight": 230,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        80,
+        14,
+        146,
+        228
+      ],
+      "referenceBodyBounds": [
+        77,
+        13,
+        118,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        62,
+        1175,
+        148,
+        231
+      ],
+      "nativeReferenceBodyBounds": [
+        60,
+        13,
+        119,
+        230
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190.826087,
+      "correctedBodyHeight": 190.826196,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "giles_buffy",
+      "phase": "defeat",
+      "renderScale": 0.695078,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 227,
+      "nativeComparableBodyHeight": 191,
+      "nativeReferenceBodyHeight": 230,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        60,
+        14,
+        164,
+        227
+      ],
+      "referenceBodyBounds": [
+        77,
+        13,
+        118,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        54,
+        1414,
+        138,
+        191
+      ],
+      "nativeReferenceBodyBounds": [
+        60,
+        13,
+        119,
+        230
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 157.782609,
+      "correctedBodyHeight": 157.782706,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "giles_buffy",
+      "phase": "super",
+      "renderScale": 1.002138,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 122,
+      "nativeComparableBodyHeight": 148,
+      "nativeReferenceBodyHeight": 230,
+      "referenceRenderScale": 0.8296943231441049,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        53,
+        119,
+        170,
+        122
+      ],
+      "referenceBodyBounds": [
+        77,
+        13,
+        118,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        20,
+        1615,
+        207,
+        148
+      ],
+      "nativeReferenceBodyBounds": [
+        60,
+        13,
+        119,
+        230
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/giles_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "f8223474553b87476f4075eda9ce6b2ee10cc9e9d99f4eddf975c25346b38b32",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 122.26087,
+      "correctedBodyHeight": 122.260836,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "xander_buffy",
+      "phase": "intro",
+      "renderScale": 0.833429,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 226,
+      "nativeComparableBodyHeight": 229,
+      "nativeReferenceBodyHeight": 231,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        69,
+        15,
+        133,
+        226
+      ],
+      "referenceBodyBounds": [
+        69,
+        14,
+        133,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        51,
+        17,
+        135,
+        229
+      ],
+      "nativeReferenceBodyBounds": [
+        51,
+        16,
+        135,
+        231
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 188.354978,
+      "correctedBodyHeight": 188.354954,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "xander_buffy",
+      "phase": "outro",
+      "renderScale": 0.840628,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 227,
+      "nativeComparableBodyHeight": 232,
+      "nativeReferenceBodyHeight": 231,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        74,
+        15,
+        114,
+        227
+      ],
+      "referenceBodyBounds": [
+        69,
+        14,
+        133,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        56,
+        264,
+        116,
+        232
+      ],
+      "nativeReferenceBodyBounds": [
+        51,
+        16,
+        135,
+        231
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190.822511,
+      "correctedBodyHeight": 190.822556,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "xander_buffy",
+      "phase": "roundVictory",
+      "renderScale": 0.899222,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 193,
+      "nativeComparableBodyHeight": 211,
+      "nativeReferenceBodyHeight": 231,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        59,
+        35,
+        142,
+        193
+      ],
+      "referenceBodyBounds": [
+        69,
+        14,
+        133,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        36,
+        521,
+        155,
+        211
+      ],
+      "nativeReferenceBodyBounds": [
+        51,
+        16,
+        135,
+        231
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 173.549784,
+      "correctedBodyHeight": 173.549846,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "xander_buffy",
+      "phase": "roundDefeat",
+      "renderScale": 0.822511,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 225,
+      "nativeComparableBodyHeight": 225,
+      "nativeReferenceBodyHeight": 231,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        53,
+        14,
+        163,
+        225
+      ],
+      "referenceBodyBounds": [
+        69,
+        14,
+        133,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        36,
+        754,
+        163,
+        225
+      ],
+      "nativeReferenceBodyBounds": [
+        51,
+        16,
+        135,
+        231
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 185.064935,
+      "correctedBodyHeight": 185.064975,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "xander_buffy",
+      "phase": "fatality",
+      "renderScale": 0.884381,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 226,
+      "nativeComparableBodyHeight": 243,
+      "nativeReferenceBodyHeight": 231,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        81,
+        14,
+        120,
+        226
+      ],
+      "referenceBodyBounds": [
+        69,
+        14,
+        133,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        60,
+        995,
+        129,
+        243
+      ],
+      "nativeReferenceBodyBounds": [
+        51,
+        16,
+        135,
+        231
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 199.87013,
+      "correctedBodyHeight": 199.870106,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "xander_buffy",
+      "phase": "victory",
+      "renderScale": 0.827364,
+      "referencePhase": "victory",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 230,
+      "nativeComparableBodyHeight": 648,
+      "nativeReferenceBodyHeight": 647,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        70,
+        13,
+        118,
+        230
+      ],
+      "referenceBodyBounds": [
+        70,
+        13,
+        118,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        107,
+        33,
+        332,
+        648
+      ],
+      "nativeReferenceBodyBounds": [
+        107,
+        34,
+        332,
+        647
+      ],
+      "nativeReferenceColumn": 0,
+      "sourceDensityCalibration": {
+        "kind": "independent-missing-phase-native-source",
+        "targetStandingBody": 190,
+        "reason": "Victory4 is a separately generated2172×724 source. Its pixel density is independently calibrated to the same190px standing reference; no main-atlas pixel-height equality is assumed."
+      },
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-missing-victory-row.png",
+      "nativeSourceImageSha256": "da48855edd2a3bf5a3302b1b0d90a4c1323b8b533a0d30aaf24822c89d88a05d",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-missing-victory-row.png",
+      "nativeReferenceSourceImageSha256": "da48855edd2a3bf5a3302b1b0d90a4c1323b8b533a0d30aaf24822c89d88a05d",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190.293663,
+      "correctedBodyHeight": 190.29372,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "xander_buffy",
+      "phase": "defeat",
+      "renderScale": 0.912595,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 210,
+      "nativeComparableBodyHeight": 233,
+      "nativeReferenceBodyHeight": 231,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        75,
+        31,
+        125,
+        210
+      ],
+      "referenceBodyBounds": [
+        69,
+        14,
+        133,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        52,
+        1263,
+        139,
+        233
+      ],
+      "nativeReferenceBodyBounds": [
+        51,
+        16,
+        135,
+        231
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 191.645022,
+      "correctedBodyHeight": 191.64495,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "xander_buffy",
+      "phase": "super",
+      "renderScale": 0.854978,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 237,
+      "nativeReferenceBodyHeight": 231,
+      "referenceRenderScale": 0.8333333333333334,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        63,
+        14,
+        160,
+        228
+      ],
+      "referenceBodyBounds": [
+        69,
+        14,
+        133,
+        228
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        43,
+        1518,
+        166,
+        237
+      ],
+      "nativeReferenceBodyBounds": [
+        51,
+        16,
+        135,
+        231
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/xander_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "001cbb6613fe92349d993091c88753c4f85a445d60b76933b4f556dd53350a36",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 194.935065,
+      "correctedBodyHeight": 194.934984,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "spike_buffy",
+      "phase": "intro",
+      "renderScale": 0.836871,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 225,
+      "nativeComparableBodyHeight": 221,
+      "nativeReferenceBodyHeight": 223,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        75,
+        16,
+        151,
+        225
+      ],
+      "referenceBodyBounds": [
+        75,
+        15,
+        151,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        59,
+        13,
+        148,
+        221
+      ],
+      "nativeReferenceBodyBounds": [
+        59,
+        12,
+        148,
+        223
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 188.295964,
+      "correctedBodyHeight": 188.295975,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "spike_buffy",
+      "phase": "outro",
+      "renderScale": 0.781016,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 209,
+      "nativeReferenceBodyHeight": 223,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        82,
+        14,
+        126,
+        228
+      ],
+      "referenceBodyBounds": [
+        75,
+        15,
+        151,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        69,
+        247,
+        116,
+        209
+      ],
+      "nativeReferenceBodyBounds": [
+        59,
+        12,
+        148,
+        223
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 178.071749,
+      "correctedBodyHeight": 178.071648,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "spike_buffy",
+      "phase": "roundVictory",
+      "renderScale": 0.847882,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 206,
+      "nativeComparableBodyHeight": 205,
+      "nativeReferenceBodyHeight": 223,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        56,
+        36,
+        155,
+        206
+      ],
+      "referenceBodyBounds": [
+        75,
+        15,
+        151,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        39,
+        482,
+        154,
+        205
+      ],
+      "nativeReferenceBodyBounds": [
+        59,
+        12,
+        148,
+        223
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 174.663677,
+      "correctedBodyHeight": 174.663692,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "spike_buffy",
+      "phase": "roundDefeat",
+      "renderScale": 0.805755,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 221,
+      "nativeComparableBodyHeight": 209,
+      "nativeReferenceBodyHeight": 223,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        52,
+        20,
+        188,
+        221
+      ],
+      "referenceBodyBounds": [
+        75,
+        15,
+        151,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        39,
+        691,
+        177,
+        209
+      ],
+      "nativeReferenceBodyBounds": [
+        59,
+        12,
+        148,
+        223
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 178.071749,
+      "correctedBodyHeight": 178.071855,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "spike_buffy",
+      "phase": "fatality",
+      "renderScale": 1.013211,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 185,
+      "nativeComparableBodyHeight": 220,
+      "nativeReferenceBodyHeight": 223,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        50,
+        50,
+        136,
+        185
+      ],
+      "referenceBodyBounds": [
+        75,
+        15,
+        151,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        18,
+        915,
+        162,
+        220
+      ],
+      "nativeReferenceBodyBounds": [
+        59,
+        12,
+        148,
+        223
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 187.443946,
+      "correctedBodyHeight": 187.444035,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "spike_buffy",
+      "phase": "victory",
+      "renderScale": 0.923019,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 228,
+      "nativeComparableBodyHeight": 247,
+      "nativeReferenceBodyHeight": 223,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        65,
+        14,
+        119,
+        228
+      ],
+      "referenceBodyBounds": [
+        75,
+        15,
+        151,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        43,
+        1147,
+        129,
+        247
+      ],
+      "nativeReferenceBodyBounds": [
+        59,
+        12,
+        148,
+        223
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 210.44843,
+      "correctedBodyHeight": 210.448332,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "spike_buffy",
+      "phase": "defeat",
+      "renderScale": 0.769298,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 206,
+      "nativeComparableBodyHeight": 186,
+      "nativeReferenceBodyHeight": 223,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        35,
+        35,
+        209,
+        206
+      ],
+      "referenceBodyBounds": [
+        75,
+        15,
+        151,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        27,
+        1397,
+        188,
+        186
+      ],
+      "nativeReferenceBodyBounds": [
+        59,
+        12,
+        148,
+        223
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 158.475336,
+      "correctedBodyHeight": 158.475388,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "spike_buffy",
+      "phase": "super",
+      "renderScale": 0.910442,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 175,
+      "nativeComparableBodyHeight": 187,
+      "nativeReferenceBodyHeight": 223,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        56,
+        67,
+        143,
+        175
+      ],
+      "referenceBodyBounds": [
+        75,
+        15,
+        151,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        34,
+        1585,
+        153,
+        187
+      ],
+      "nativeReferenceBodyBounds": [
+        59,
+        12,
+        148,
+        223
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/spike_buffy-original.png",
+      "nativeReferenceSourceImageSha256": "b064fdf6aa32c9e9a70f803f14c3df5d4dd446d42fda3d4fb1e4aaea52a762ff",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 159.327354,
+      "correctedBodyHeight": 159.32735,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ron_weasley",
+      "phase": "intro",
+      "renderScale": 0.836589,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 225,
+      "nativeComparableBodyHeight": 213,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        80,
+        17,
+        125,
+        225
+      ],
+      "referenceBodyBounds": [
+        80,
+        16,
+        125,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        65,
+        19,
+        119,
+        213
+      ],
+      "nativeReferenceBodyBounds": [
+        65,
+        18,
+        119,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeReferenceSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 188.232558,
+      "correctedBodyHeight": 188.232525,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ron_weasley",
+      "phase": "outro",
+      "renderScale": 0.930456,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 208,
+      "nativeComparableBodyHeight": 219,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        82,
+        25,
+        110,
+        208
+      ],
+      "referenceBodyBounds": [
+        80,
+        16,
+        125,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        62,
+        245,
+        116,
+        219
+      ],
+      "nativeReferenceBodyBounds": [
+        65,
+        18,
+        119,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeReferenceSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 193.534884,
+      "correctedBodyHeight": 193.534848,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ron_weasley",
+      "phase": "roundVictory",
+      "renderScale": 0.855345,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 218,
+      "nativeComparableBodyHeight": 211,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        49,
+        22,
+        163,
+        218
+      ],
+      "referenceBodyBounds": [
+        80,
+        16,
+        125,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        34,
+        485,
+        158,
+        211
+      ],
+      "nativeReferenceBodyBounds": [
+        65,
+        18,
+        119,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeReferenceSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 186.465116,
+      "correctedBodyHeight": 186.46521,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ron_weasley",
+      "phase": "roundDefeat",
+      "renderScale": 0.797313,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 225,
+      "nativeComparableBodyHeight": 203,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        40,
+        16,
+        186,
+        225
+      ],
+      "referenceBodyBounds": [
+        80,
+        16,
+        125,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        32,
+        713,
+        168,
+        203
+      ],
+      "nativeReferenceBodyBounds": [
+        65,
+        18,
+        119,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeReferenceSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 179.395349,
+      "correctedBodyHeight": 179.395425,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ron_weasley",
+      "phase": "fatality",
+      "renderScale": 1.230044,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 148,
+      "nativeComparableBodyHeight": 206,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        70,
+        92,
+        133,
+        148
+      ],
+      "referenceBodyBounds": [
+        80,
+        16,
+        125,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        31,
+        940,
+        185,
+        206
+      ],
+      "nativeReferenceBodyBounds": [
+        65,
+        18,
+        119,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeReferenceSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 182.046512,
+      "correctedBodyHeight": 182.046512,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ron_weasley",
+      "phase": "victory",
+      "renderScale": 0.875759,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 222,
+      "nativeComparableBodyHeight": 220,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        65,
+        19,
+        134,
+        222
+      ],
+      "referenceBodyBounds": [
+        80,
+        16,
+        125,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        48,
+        1169,
+        133,
+        220
+      ],
+      "nativeReferenceBodyBounds": [
+        65,
+        18,
+        119,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeReferenceSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 194.418605,
+      "correctedBodyHeight": 194.418498,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ron_weasley",
+      "phase": "defeat",
+      "renderScale": 0.767328,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 205,
+      "nativeComparableBodyHeight": 178,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        42,
+        32,
+        171,
+        205
+      ],
+      "referenceBodyBounds": [
+        80,
+        16,
+        125,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        36,
+        1404,
+        148,
+        178
+      ],
+      "nativeReferenceBodyBounds": [
+        65,
+        18,
+        119,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeReferenceSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 157.302326,
+      "correctedBodyHeight": 157.30224,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ron_weasley",
+      "phase": "super",
+      "renderScale": 1.187721,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 227,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 125,
+      "nativeComparableBodyHeight": 168,
+      "nativeReferenceBodyHeight": 215,
+      "referenceRenderScale": 0.8370044052863436,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        68,
+        117,
+        131,
+        125
+      ],
+      "referenceBodyBounds": [
+        80,
+        16,
+        125,
+        227
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        30,
+        1604,
+        176,
+        168
+      ],
+      "nativeReferenceBodyBounds": [
+        65,
+        18,
+        119,
+        215
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/ron_weasley-original.png",
+      "nativeReferenceSourceImageSha256": "d84b765805e0087b7dd934d62be94b59838b6474fcdc949683d94c9c62a9ea15",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 148.465116,
+      "correctedBodyHeight": 148.465125,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dumbledore",
+      "phase": "intro",
+      "renderScale": 1.094327,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 174,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 172,
+      "nativeComparableBodyHeight": 212,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 1.0919540229885059,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        62,
+        64,
+        159,
+        172
+      ],
+      "referenceBodyBounds": [
+        62,
+        63,
+        159,
+        174
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        30,
+        9,
+        196,
+        212
+      ],
+      "nativeReferenceBodyBounds": [
+        30,
+        8,
+        196,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-corrected.png",
+      "nativeSourceImageSha256": "52c53a1ddf74ac566fe748bcbfbcc85605a04c656d7ffa092b057befd7dfbde9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-corrected.png",
+      "nativeReferenceSourceImageSha256": "52c53a1ddf74ac566fe748bcbfbcc85605a04c656d7ffa092b057befd7dfbde9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 188.224299,
+      "correctedBodyHeight": 188.224244,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dumbledore",
+      "phase": "outro",
+      "renderScale": 0.920582,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 174,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 217,
+      "nativeComparableBodyHeight": 225,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 1.0919540229885059,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        40,
+        23,
+        190,
+        217
+      ],
+      "referenceBodyBounds": [
+        62,
+        63,
+        159,
+        174
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        19,
+        219,
+        197,
+        225
+      ],
+      "nativeReferenceBodyBounds": [
+        30,
+        8,
+        196,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-corrected.png",
+      "nativeSourceImageSha256": "52c53a1ddf74ac566fe748bcbfbcc85605a04c656d7ffa092b057befd7dfbde9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-corrected.png",
+      "nativeReferenceSourceImageSha256": "52c53a1ddf74ac566fe748bcbfbcc85605a04c656d7ffa092b057befd7dfbde9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 199.766355,
+      "correctedBodyHeight": 199.766294,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dumbledore",
+      "phase": "roundVictory",
+      "renderScale": 1.089635,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 174,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 176,
+      "nativeComparableBodyHeight": 216,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 1.0919540229885059,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        47,
+        61,
+        189,
+        176
+      ],
+      "referenceBodyBounds": [
+        62,
+        63,
+        159,
+        174
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        12,
+        442,
+        231,
+        216
+      ],
+      "nativeReferenceBodyBounds": [
+        30,
+        8,
+        196,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-corrected.png",
+      "nativeSourceImageSha256": "52c53a1ddf74ac566fe748bcbfbcc85605a04c656d7ffa092b057befd7dfbde9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-corrected.png",
+      "nativeReferenceSourceImageSha256": "52c53a1ddf74ac566fe748bcbfbcc85605a04c656d7ffa092b057befd7dfbde9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 191.775701,
+      "correctedBodyHeight": 191.77576,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dumbledore",
+      "phase": "roundDefeat",
+      "renderScale": 0.883815,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 174,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 220,
+      "nativeComparableBodyHeight": 219,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 1.0919540229885059,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        28,
+        22,
+        216,
+        220
+      ],
+      "referenceBodyBounds": [
+        62,
+        63,
+        159,
+        174
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        11,
+        657,
+        215,
+        219
+      ],
+      "nativeReferenceBodyBounds": [
+        30,
+        8,
+        196,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-corrected.png",
+      "nativeSourceImageSha256": "52c53a1ddf74ac566fe748bcbfbcc85605a04c656d7ffa092b057befd7dfbde9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-corrected.png",
+      "nativeReferenceSourceImageSha256": "52c53a1ddf74ac566fe748bcbfbcc85605a04c656d7ffa092b057befd7dfbde9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 194.439252,
+      "correctedBodyHeight": 194.4393,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dumbledore",
+      "phase": "fatality",
+      "renderScale": 1.270119,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 174,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 144,
+      "nativeComparableBodyHeight": 206,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 1.0919540229885059,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        56,
+        98,
+        135,
+        144
+      ],
+      "referenceBodyBounds": [
+        62,
+        63,
+        159,
+        174
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        8,
+        912,
+        192,
+        206
+      ],
+      "nativeReferenceBodyBounds": [
+        30,
+        8,
+        196,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-corrected.png",
+      "nativeSourceImageSha256": "52c53a1ddf74ac566fe748bcbfbcc85605a04c656d7ffa092b057befd7dfbde9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-corrected.png",
+      "nativeReferenceSourceImageSha256": "52c53a1ddf74ac566fe748bcbfbcc85605a04c656d7ffa092b057befd7dfbde9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 182.897196,
+      "correctedBodyHeight": 182.897136,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dumbledore",
+      "phase": "victory",
+      "renderScale": 1.054919,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 174,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 186,
+      "nativeComparableBodyHeight": 221,
+      "nativeReferenceBodyHeight": 214,
+      "referenceRenderScale": 1.0919540229885059,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        44,
+        57,
+        187,
+        186
+      ],
+      "referenceBodyBounds": [
+        62,
+        63,
+        159,
+        174
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        11,
+        1110,
+        222,
+        221
+      ],
+      "nativeReferenceBodyBounds": [
+        30,
+        8,
+        196,
+        214
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-corrected.png",
+      "nativeSourceImageSha256": "52c53a1ddf74ac566fe748bcbfbcc85605a04c656d7ffa092b057befd7dfbde9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-corrected.png",
+      "nativeReferenceSourceImageSha256": "52c53a1ddf74ac566fe748bcbfbcc85605a04c656d7ffa092b057befd7dfbde9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 196.214953,
+      "correctedBodyHeight": 196.214934,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dumbledore",
+      "phase": "defeat",
+      "renderScale": 0.826087,
+      "referencePhase": "defeat",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 230,
+      "nativeComparableBodyHeight": 429,
+      "nativeReferenceBodyHeight": 429,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        25,
+        13,
+        180,
+        230
+      ],
+      "referenceBodyBounds": [
+        25,
+        13,
+        180,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        30,
+        10,
+        336,
+        429
+      ],
+      "nativeReferenceBodyBounds": [
+        30,
+        10,
+        336,
+        429
+      ],
+      "nativeReferenceColumn": 0,
+      "sourceDensityCalibration": {
+        "kind": "independent-two-phase-native-correction",
+        "targetStandingBody": 190,
+        "reason": "The accepted8-pose phase-isolation source has its own standing/tired-guard reference. Super retains its actual wider stance projection. The original hand-corrected source supplies only the first six rows."
+      },
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-technique-rows-corrected.png",
+      "nativeSourceImageSha256": "596e408ba569daffeeada5241528211d5012f8eef778c45ef252d7962f952ce2",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-technique-rows-corrected.png",
+      "nativeReferenceSourceImageSha256": "596e408ba569daffeeada5241528211d5012f8eef778c45ef252d7962f952ce2",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.00001,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "dumbledore",
+      "phase": "super",
+      "renderScale": 1.078342,
+      "referencePhase": "defeat",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 161,
+      "nativeComparableBodyHeight": 392,
+      "nativeReferenceBodyHeight": 429,
+      "referenceRenderScale": 0.8260869565217391,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "bodyForm": "selected-screen-version-human",
+      "reason": "Approximate crown-to-shoe-sole ROI, inspected on original and normalized native crops. Weapon tips, raised hands and spell/flame extents do not set body height. Each actual native source density is calibrated independently; natural bends, kneels and wide stances preserve their source projection. No anatomy or bitmap is altered by the canvas factor.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        45,
+        81,
+        165,
+        161
+      ],
+      "referenceBodyBounds": [
+        25,
+        13,
+        180,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        20,
+        474,
+        401,
+        392
+      ],
+      "nativeReferenceBodyBounds": [
+        30,
+        10,
+        336,
+        429
+      ],
+      "nativeReferenceColumn": 0,
+      "sourceDensityCalibration": {
+        "kind": "independent-two-phase-native-correction",
+        "targetStandingBody": 190,
+        "reason": "The accepted8-pose phase-isolation source has its own standing/tired-guard reference. Super retains its actual wider stance projection. The original hand-corrected source supplies only the first six rows."
+      },
+      "nativeSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-technique-rows-corrected.png",
+      "nativeSourceImageSha256": "596e408ba569daffeeada5241528211d5012f8eef778c45ef252d7962f952ce2",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave11-2026-10-23/part-a-sources/dumbledore-technique-rows-corrected.png",
+      "nativeReferenceSourceImageSha256": "596e408ba569daffeeada5241528211d5012f8eef778c45ef252d7962f952ce2",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 173.613054,
+      "correctedBodyHeight": 173.613062,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    }
+  ]
+}

@@ -1,0 +1,2448 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "redxiii_ff7",
+      "heroId": "redxiii_ff7",
+      "universe": "Final Fantasy VII",
+      "name": "Red XIII",
+      "sheet": "/sprites/generated/combat-character-animations-wave4/redxiii_ff7.png",
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 8,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "69178309ce19444fbedf269d9ce8ec94572c6d2eb8e0832f81764b407bf93d88",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/redxiii_ff7.png",
+      "sourceImageSha256": "6a620f3915fbc439f61577d6b54c6e0bd3d53afc55c87e656359c496280bb8b6",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-vii/redxiii-ff7.png",
+      "referenceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/redxiii_ff7-reference.png",
+      "referenceAssetSha256": "cad74fa1a935ad7ce68df912b089169930293081001873fcd14c5887f22bc9e8",
+      "originalSourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/redxiii_ff7-original.png",
+      "originalSourceImageSha256": "12f10cdd034e6a62da97972504eb24f5689cb2b7714a747e49bdff1a8b34b273",
+      "nativeCorrection": true,
+      "sourceWork": "Final Fantasy VII (1997), Red XIII / Cosmo Memory",
+      "sourceReference": "Red XIII is a quadrupedal orange-red feline/canine creature with XIII shoulder tattoo, dark mane and a flame at his tail tip. Cosmo Memory is his fourth Limit Break; the compact astral sphere and pulse here are an adapted presentation, not a literal reproduction of the full source cinematic.",
+      "abilityName": "Cosmo Memory",
+      "identityCorrection": "Preserve the local nonhuman body and flame tail; face right for the runtime convention rather than copying the old left-facing orientation. No bipedal fighter, weapon or borrowed monster body.",
+      "sourceAbility": {
+        "id": "redxiii_ff7:super",
+        "name": "Cosmo Memory",
+        "effect": "damage",
+        "delivery": "area",
+        "duration": 1.1,
+        "hitAt": 0.451
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/redxiii_ff7.png",
+            "sourceImageSha256": "6a620f3915fbc439f61577d6b54c6e0bd3d53afc55c87e656359c496280bb8b6",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 259
+            },
+            "scale": 1.3257142857142856,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 32,
+                  "top": 98,
+                  "width": 166,
+                  "height": 111,
+                  "pixels": 10414
+                },
+                "output": {
+                  "left": 23,
+                  "top": 89,
+                  "width": 220,
+                  "height": 147
+                }
+              },
+              {
+                "source": {
+                  "left": 250,
+                  "top": 98,
+                  "width": 169,
+                  "height": 109,
+                  "pixels": 10708
+                },
+                "output": {
+                  "left": 18,
+                  "top": 89,
+                  "width": 224,
+                  "height": 145
+                }
+              },
+              {
+                "source": {
+                  "left": 484,
+                  "top": 97,
+                  "width": 157,
+                  "height": 118,
+                  "pixels": 10165
+                },
+                "output": {
+                  "left": 35,
+                  "top": 88,
+                  "width": 208,
+                  "height": 156
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 117,
+                  "width": 159,
+                  "height": 95,
+                  "pixels": 9213
+                },
+                "output": {
+                  "left": 22,
+                  "top": 114,
+                  "width": 211,
+                  "height": 126
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/redxiii_ff7.png",
+            "sourceImageSha256": "6a620f3915fbc439f61577d6b54c6e0bd3d53afc55c87e656359c496280bb8b6",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 258,
+              "bottom": 469
+            },
+            "scale": 1.2960893854748603,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 52,
+                  "width": 165,
+                  "height": 105,
+                  "pixels": 10163
+                },
+                "output": {
+                  "left": 30,
+                  "top": 107,
+                  "width": 214,
+                  "height": 136
+                }
+              },
+              {
+                "source": {
+                  "left": 261,
+                  "top": 44,
+                  "width": 153,
+                  "height": 114,
+                  "pixels": 9754
+                },
+                "output": {
+                  "left": 35,
+                  "top": 96,
+                  "width": 198,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 471,
+                  "top": 53,
+                  "width": 167,
+                  "height": 104,
+                  "pixels": 9928
+                },
+                "output": {
+                  "left": 20,
+                  "top": 108,
+                  "width": 216,
+                  "height": 135
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 53,
+                  "width": 166,
+                  "height": 105,
+                  "pixels": 10114
+                },
+                "output": {
+                  "left": 23,
+                  "top": 108,
+                  "width": 215,
+                  "height": 136
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/redxiii_ff7.png",
+            "sourceImageSha256": "6a620f3915fbc439f61577d6b54c6e0bd3d53afc55c87e656359c496280bb8b6",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 467,
+              "bottom": 694
+            },
+            "scale": 1.281767955801105,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 57,
+                  "width": 166,
+                  "height": 114,
+                  "pixels": 10568
+                },
+                "output": {
+                  "left": 31,
+                  "top": 90,
+                  "width": 213,
+                  "height": 146
+                }
+              },
+              {
+                "source": {
+                  "left": 258,
+                  "top": 50,
+                  "width": 150,
+                  "height": 125,
+                  "pixels": 10312
+                },
+                "output": {
+                  "left": 32,
+                  "top": 81,
+                  "width": 192,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 474,
+                  "top": 51,
+                  "width": 162,
+                  "height": 126,
+                  "pixels": 11447
+                },
+                "output": {
+                  "left": 25,
+                  "top": 82,
+                  "width": 208,
+                  "height": 162
+                }
+              },
+              {
+                "source": {
+                  "left": 691,
+                  "top": 68,
+                  "width": 165,
+                  "height": 105,
+                  "pixels": 10214
+                },
+                "output": {
+                  "left": 19,
+                  "top": 104,
+                  "width": 211,
+                  "height": 135
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/redxiii_ff7.png",
+            "sourceImageSha256": "6a620f3915fbc439f61577d6b54c6e0bd3d53afc55c87e656359c496280bb8b6",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 693,
+              "bottom": 898
+            },
+            "scale": 1.2677595628415301,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 38,
+                  "top": 50,
+                  "width": 164,
+                  "height": 114,
+                  "pixels": 10494
+                },
+                "output": {
+                  "left": 36,
+                  "top": 98,
+                  "width": 208,
+                  "height": 145
+                }
+              },
+              {
+                "source": {
+                  "left": 253,
+                  "top": 70,
+                  "width": 165,
+                  "height": 94,
+                  "pixels": 9430
+                },
+                "output": {
+                  "left": 27,
+                  "top": 124,
+                  "width": 209,
+                  "height": 119
+                }
+              },
+              {
+                "source": {
+                  "left": 471,
+                  "top": 80,
+                  "width": 168,
+                  "height": 85,
+                  "pixels": 9183
+                },
+                "output": {
+                  "left": 22,
+                  "top": 136,
+                  "width": 213,
+                  "height": 108
+                }
+              },
+              {
+                "source": {
+                  "left": 692,
+                  "top": 54,
+                  "width": 163,
+                  "height": 111,
+                  "pixels": 10674
+                },
+                "output": {
+                  "left": 21,
+                  "top": 103,
+                  "width": 207,
+                  "height": 141
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/redxiii_ff7.png",
+            "sourceImageSha256": "6a620f3915fbc439f61577d6b54c6e0bd3d53afc55c87e656359c496280bb8b6",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 895,
+              "bottom": 1127
+            },
+            "scale": 0.9957081545064378,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 53,
+                  "width": 165,
+                  "height": 130,
+                  "pixels": 11161
+                },
+                "output": {
+                  "left": 52,
+                  "top": 114,
+                  "width": 164,
+                  "height": 129
+                }
+              },
+              {
+                "source": {
+                  "left": 255,
+                  "top": 33,
+                  "width": 152,
+                  "height": 151,
+                  "pixels": 14328
+                },
+                "output": {
+                  "left": 51,
+                  "top": 94,
+                  "width": 151,
+                  "height": 150
+                }
+              },
+              {
+                "source": {
+                  "left": 438,
+                  "top": 61,
+                  "width": 221,
+                  "height": 123,
+                  "pixels": 14875
+                },
+                "output": {
+                  "left": 12,
+                  "top": 122,
+                  "width": 220,
+                  "height": 122
+                }
+              },
+              {
+                "source": {
+                  "left": 693,
+                  "top": 72,
+                  "width": 170,
+                  "height": 111,
+                  "pixels": 11093
+                },
+                "output": {
+                  "left": 45,
+                  "top": 132,
+                  "width": 169,
+                  "height": 111
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/redxiii_ff7.png",
+            "sourceImageSha256": "6a620f3915fbc439f61577d6b54c6e0bd3d53afc55c87e656359c496280bb8b6",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1126,
+              "bottom": 1353
+            },
+            "scale": 1.1897435897435897,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 56,
+                  "width": 175,
+                  "height": 111,
+                  "pixels": 11099
+                },
+                "output": {
+                  "left": 35,
+                  "top": 110,
+                  "width": 208,
+                  "height": 132
+                }
+              },
+              {
+                "source": {
+                  "left": 255,
+                  "top": 49,
+                  "width": 161,
+                  "height": 119,
+                  "pixels": 10823
+                },
+                "output": {
+                  "left": 36,
+                  "top": 101,
+                  "width": 192,
+                  "height": 142
+                }
+              },
+              {
+                "source": {
+                  "left": 472,
+                  "top": 47,
+                  "width": 156,
+                  "height": 122,
+                  "pixels": 10778
+                },
+                "output": {
+                  "left": 30,
+                  "top": 99,
+                  "width": 186,
+                  "height": 145
+                }
+              },
+              {
+                "source": {
+                  "left": 687,
+                  "top": 61,
+                  "width": 168,
+                  "height": 107,
+                  "pixels": 10377
+                },
+                "output": {
+                  "left": 22,
+                  "top": 116,
+                  "width": 200,
+                  "height": 127
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/redxiii_ff7.png",
+            "sourceImageSha256": "6a620f3915fbc439f61577d6b54c6e0bd3d53afc55c87e656359c496280bb8b6",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1352,
+              "bottom": 1529
+            },
+            "scale": 1.2406417112299466,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 32,
+                  "top": 57,
+                  "width": 169,
+                  "height": 93,
+                  "pixels": 9658
+                },
+                "output": {
+                  "left": 30,
+                  "top": 125,
+                  "width": 210,
+                  "height": 115
+                }
+              },
+              {
+                "source": {
+                  "left": 243,
+                  "top": 63,
+                  "width": 169,
+                  "height": 87,
+                  "pixels": 9405
+                },
+                "output": {
+                  "left": 17,
+                  "top": 132,
+                  "width": 210,
+                  "height": 108
+                }
+              },
+              {
+                "source": {
+                  "left": 464,
+                  "top": 59,
+                  "width": 164,
+                  "height": 91,
+                  "pixels": 9948
+                },
+                "output": {
+                  "left": 16,
+                  "top": 127,
+                  "width": 203,
+                  "height": 113
+                }
+              },
+              {
+                "source": {
+                  "left": 683,
+                  "top": 60,
+                  "width": 170,
+                  "height": 93,
+                  "pixels": 9457
+                },
+                "output": {
+                  "left": 12,
+                  "top": 129,
+                  "width": 211,
+                  "height": 115
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/redxiii_ff7.png",
+            "sourceImageSha256": "6a620f3915fbc439f61577d6b54c6e0bd3d53afc55c87e656359c496280bb8b6",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1528,
+              "bottom": 1774
+            },
+            "scale": 0.9957081545064378,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 30,
+                  "top": 93,
+                  "width": 172,
+                  "height": 93,
+                  "pixels": 9755
+                },
+                "output": {
+                  "left": 47,
+                  "top": 139,
+                  "width": 171,
+                  "height": 93
+                }
+              },
+              {
+                "source": {
+                  "left": 245,
+                  "top": 19,
+                  "width": 173,
+                  "height": 177,
+                  "pixels": 17067
+                },
+                "output": {
+                  "left": 41,
+                  "top": 66,
+                  "width": 172,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 438,
+                  "top": 65,
+                  "width": 223,
+                  "height": 130,
+                  "pixels": 17177
+                },
+                "output": {
+                  "left": 12,
+                  "top": 112,
+                  "width": 222,
+                  "height": 129
+                }
+              },
+              {
+                "source": {
+                  "left": 689,
+                  "top": 88,
+                  "width": 166,
+                  "height": 110,
+                  "pixels": 10648
+                },
+                "output": {
+                  "left": 41,
+                  "top": 134,
+                  "width": 165,
+                  "height": 110
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d5598838a9b8943cb38adc0bed07e388d2f947570b4316e44b8d3171106e4c89",
+              "43255fbc8c215ef11842109b1ad5ed752526895a50a6eea4175c5304dfb5b637",
+              "fa83fa242d4b6c4d49c69246bf6a8e1675d71d90a717afbda4ffcf1e7fcce95d",
+              "3c4a83a4b4447a2aeeb8d99fae12b1883c38ace72328e65b6209e9614f51c738"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "979202a18e3ecb64b34aa2033678bed632844b1b7eadf5343ada1769c98004ca",
+              "e340196a65ff7117b405e47426ffe46ec3628802e4f2bfd8dc5f57cebb4c320c",
+              "8e93e5ac5a665408841259527f75146e47e86f9fcb86c032f74d169f7f23ca43",
+              "1c5cd521a05c45f87b424e2d0ac206b6f7518f20b95b6b53662f971fccd3e99e"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6b9d1b10610c0da2e115797507281712ec4e386f5811f04126df2045592f6fde",
+              "297df69ecbd6ad28857089b834c445c2ff6285f4268c5cdabc4093f45a1412ca",
+              "0c032824ddb1cbb2bd88062d325da5ea9ff239cae0a568f91ff8170783eb6b5c",
+              "0a6ddc35d156d6d6d1f7e8e2e4c976e5740d614191a0e68811ddfa6812706a32"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8964f15c4351eccaf4c6653553e1b5341686c3e5c8eb0db0f3e52646842aa6ed",
+              "774673c5501497094f248268a8f4f34241f6302ba842a3ea6af603d5690378d0",
+              "1ed6e36dae580504132c26a86d9da76d2c4b451c75197d007266ebcbfa678c81",
+              "72387a40c06ef4f07f5b7e6be47e0571ca7aacd9972509e564093d33659183b9"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "30b2dea12d552ed0785c06c0d8578b0d642300d81b36a4fa28925405e6f08de1",
+              "8c2a05d5afb79214ddd6bad026c00044f6b386f307a0dedff29d0a00370520b4",
+              "e9e669d1679a828daf7adf3a514e56ccc41ddfdeba04c1d73bb2a8aa4e149ed7",
+              "a0d82299c363b41126c7ea33b841f6614316a84d653c2b48c3faf2b0c4daf877"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5d7546255318e99d33577fbb6765527ad4577ac5382ca00f07ac5e83a0e23c1a",
+              "941574446ab69502b632383233c636b98387512177531f91b008f55e275bb112",
+              "4fa6a5ce860174918601cba805125078f4c7fe1dcf9dcd279aa40201b70a0bfe",
+              "8f7c14a66f7d750ea1fa69c598025ee37b666b3c519d48f5af9752d1fc8ebc1d"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "dd7776ca54e4abf21bc18521caee87771badfaa8fcc2625efa0e85b09cf8a664",
+              "919f8524fb92d3a551ac4227d9c3249ff30c9306566cc042f60a5357df28aa2d",
+              "21665353229df9c3fcb8e0d3e1093aa5430dc35f1259a8251223ddf5938267e1",
+              "23a094aa963130b730d179c8760ecd17f1fef49604c9eafe4bf1234ce8719316"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5d59a13b27f9baf865acf6648d8f7fcc0cc6eab3d4341b89acd2e70cb04a48f5",
+              "89a9e515f54abd82b6c542bb00e730b942f66a449b75011607ea18d4f1496ede",
+              "85e816d8d8b6799eef84f8838410c029add4cecbdf2c490e1abfe3da9ae54c55",
+              "245d9421a5b22a897563eea2e4923957aeddcf6985306b69d404018d8167f8fc"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "eidolonPresent": false,
+        "defaultFacing": "right",
+        "quadruped": true,
+        "humanPreparationOnly": false,
+        "notes": "Red XIII is a quadrupedal orange-red feline/canine creature with XIII shoulder tattoo, dark mane and a flame at his tail tip. Cosmo Memory is his fourth Limit Break; the compact astral sphere and pulse here are an adapted presentation, not a literal reproduction of the full source cinematic. Preserve the local nonhuman body and flame tail; face right for the runtime convention rather than copying the old left-facing orientation. No bipedal fighter, weapon or borrowed monster body. This is original generated choreography; official pixels and source-game cinematic fidelity are not certified."
+      }
+    },
+    {
+      "id": "yuffie_ff7",
+      "heroId": "yuffie_ff7",
+      "universe": "Final Fantasy VII",
+      "name": "Yuffie Kisaragi",
+      "sheet": "/sprites/generated/combat-character-animations-wave4/yuffie_ff7.png",
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 8,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "74257a86ac17f220de451f778d1c89d69c87368ce13ba806a9e6d94a8ab7d2e3",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/yuffie_ff7.png",
+      "sourceImageSha256": "69688580302f8813d84b5497220f34fe8bf8e118c26b7eda0976de44be90a2bb",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-vii/yuffie-ff7.png",
+      "referenceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/yuffie_ff7-reference.png",
+      "referenceAssetSha256": "72681ba8a0046783d92801dfe84c80583ad3b6f056944a65f8754b4e2dfa7a24",
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "sourceWork": "Final Fantasy VII (1997), Yuffie Kisaragi / All Creation",
+      "sourceReference": "Original young Yuffie uses a large four-point shuriken and a green top/beige-shorts outfit. All Creation is her final offensive energy-beam Limit Break; it remains separate from the healing Clear Tranquil secondary.",
+      "abilityName": "All Creation",
+      "identityCorrection": "Retain her young1997 design, green top, short black hair, beige shorts, arm protection and four-point shuriken. No adult Advent Children outfit, Remake moogle disguise, five-point blade or magic staff.",
+      "sourceAbility": {
+        "id": "yuffie_ff7:super",
+        "name": "All Creation",
+        "effect": "damage",
+        "delivery": "beam",
+        "duration": 1.1,
+        "hitAt": 0.451
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/yuffie_ff7.png",
+            "sourceImageSha256": "69688580302f8813d84b5497220f34fe8bf8e118c26b7eda0976de44be90a2bb",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 249
+            },
+            "scale": 1.0497737556561086,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 34,
+                  "top": 51,
+                  "width": 157,
+                  "height": 183,
+                  "pixels": 14584
+                },
+                "output": {
+                  "left": 47,
+                  "top": 51,
+                  "width": 165,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 285,
+                  "top": 51,
+                  "width": 108,
+                  "height": 183,
+                  "pixels": 11724
+                },
+                "output": {
+                  "left": 78,
+                  "top": 51,
+                  "width": 113,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 468,
+                  "top": 14,
+                  "width": 144,
+                  "height": 221,
+                  "pixels": 13362
+                },
+                "output": {
+                  "left": 37,
+                  "top": 12,
+                  "width": 151,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 673,
+                  "top": 89,
+                  "width": 170,
+                  "height": 146,
+                  "pixels": 13841
+                },
+                "output": {
+                  "left": 20,
+                  "top": 91,
+                  "width": 178,
+                  "height": 153
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/yuffie_ff7.png",
+            "sourceImageSha256": "69688580302f8813d84b5497220f34fe8bf8e118c26b7eda0976de44be90a2bb",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 248,
+              "bottom": 468
+            },
+            "scale": 1.183673469387755,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 49,
+                  "top": 14,
+                  "width": 144,
+                  "height": 186,
+                  "pixels": 14219
+                },
+                "output": {
+                  "left": 55,
+                  "top": 12,
+                  "width": 170,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 277,
+                  "top": 14,
+                  "width": 123,
+                  "height": 189,
+                  "pixels": 13245
+                },
+                "output": {
+                  "left": 62,
+                  "top": 12,
+                  "width": 146,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 493,
+                  "top": 16,
+                  "width": 150,
+                  "height": 194,
+                  "pixels": 14244
+                },
+                "output": {
+                  "left": 55,
+                  "top": 14,
+                  "width": 178,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 691,
+                  "top": 30,
+                  "width": 165,
+                  "height": 178,
+                  "pixels": 13699
+                },
+                "output": {
+                  "left": 27,
+                  "top": 31,
+                  "width": 195,
+                  "height": 211
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/yuffie_ff7.png",
+            "sourceImageSha256": "69688580302f8813d84b5497220f34fe8bf8e118c26b7eda0976de44be90a2bb",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 467,
+              "bottom": 692
+            },
+            "scale": 1.1776649746192893,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 59,
+                  "width": 173,
+                  "height": 146,
+                  "pixels": 14604
+                },
+                "output": {
+                  "left": 39,
+                  "top": 70,
+                  "width": 204,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 270,
+                  "top": 22,
+                  "width": 135,
+                  "height": 185,
+                  "pixels": 12820
+                },
+                "output": {
+                  "left": 54,
+                  "top": 26,
+                  "width": 159,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 458,
+                  "top": 10,
+                  "width": 177,
+                  "height": 197,
+                  "pixels": 13347
+                },
+                "output": {
+                  "left": 15,
+                  "top": 12,
+                  "width": 208,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 679,
+                  "top": 43,
+                  "width": 176,
+                  "height": 164,
+                  "pixels": 15282
+                },
+                "output": {
+                  "left": 14,
+                  "top": 51,
+                  "width": 207,
+                  "height": 193
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/yuffie_ff7.png",
+            "sourceImageSha256": "69688580302f8813d84b5497220f34fe8bf8e118c26b7eda0976de44be90a2bb",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 691,
+              "bottom": 918
+            },
+            "scale": 1.0593607305936072,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 68,
+                  "top": 39,
+                  "width": 129,
+                  "height": 163,
+                  "pixels": 11703
+                },
+                "output": {
+                  "left": 83,
+                  "top": 64,
+                  "width": 137,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 294,
+                  "top": 57,
+                  "width": 108,
+                  "height": 152,
+                  "pixels": 10514
+                },
+                "output": {
+                  "left": 87,
+                  "top": 83,
+                  "width": 114,
+                  "height": 161
+                }
+              },
+              {
+                "source": {
+                  "left": 445,
+                  "top": 77,
+                  "width": 177,
+                  "height": 123,
+                  "pixels": 13696
+                },
+                "output": {
+                  "left": 12,
+                  "top": 104,
+                  "width": 188,
+                  "height": 130
+                }
+              },
+              {
+                "source": {
+                  "left": 684,
+                  "top": 18,
+                  "width": 166,
+                  "height": 184,
+                  "pixels": 16117
+                },
+                "output": {
+                  "left": 30,
+                  "top": 42,
+                  "width": 176,
+                  "height": 195
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/yuffie_ff7.png",
+            "sourceImageSha256": "69688580302f8813d84b5497220f34fe8bf8e118c26b7eda0976de44be90a2bb",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 916,
+              "bottom": 1115
+            },
+            "scale": 0.7295597484276729,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 36,
+                  "top": 29,
+                  "width": 169,
+                  "height": 154,
+                  "pixels": 14508
+                },
+                "output": {
+                  "left": 73,
+                  "top": 128,
+                  "width": 123,
+                  "height": 112
+                }
+              },
+              {
+                "source": {
+                  "left": 239,
+                  "top": 17,
+                  "width": 197,
+                  "height": 170,
+                  "pixels": 18162
+                },
+                "output": {
+                  "left": 60,
+                  "top": 119,
+                  "width": 144,
+                  "height": 124
+                }
+              },
+              {
+                "source": {
+                  "left": 432,
+                  "top": 15,
+                  "width": 281,
+                  "height": 173,
+                  "pixels": 24784
+                },
+                "output": {
+                  "left": 39,
+                  "top": 118,
+                  "width": 205,
+                  "height": 126
+                }
+              },
+              {
+                "source": {
+                  "left": 698,
+                  "top": 19,
+                  "width": 158,
+                  "height": 169,
+                  "pixels": 14350
+                },
+                "output": {
+                  "left": 71,
+                  "top": 121,
+                  "width": 115,
+                  "height": 123
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/yuffie_ff7.png",
+            "sourceImageSha256": "69688580302f8813d84b5497220f34fe8bf8e118c26b7eda0976de44be90a2bb",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1111,
+              "bottom": 1347
+            },
+            "scale": 1.0943396226415094,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 31,
+                  "top": 26,
+                  "width": 172,
+                  "height": 188,
+                  "pixels": 15940
+                },
+                "output": {
+                  "left": 41,
+                  "top": 30,
+                  "width": 188,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 255,
+                  "top": 10,
+                  "width": 152,
+                  "height": 212,
+                  "pixels": 14417
+                },
+                "output": {
+                  "left": 43,
+                  "top": 12,
+                  "width": 166,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 507,
+                  "top": 32,
+                  "width": 113,
+                  "height": 190,
+                  "pixels": 12766
+                },
+                "output": {
+                  "left": 76,
+                  "top": 36,
+                  "width": 124,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 688,
+                  "top": 30,
+                  "width": 153,
+                  "height": 192,
+                  "pixels": 15921
+                },
+                "output": {
+                  "left": 32,
+                  "top": 34,
+                  "width": 167,
+                  "height": 210
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/yuffie_ff7.png",
+            "sourceImageSha256": "69688580302f8813d84b5497220f34fe8bf8e118c26b7eda0976de44be90a2bb",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1346,
+              "bottom": 1557
+            },
+            "scale": 1.0131004366812226,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 15,
+                  "width": 184,
+                  "height": 183,
+                  "pixels": 15478
+                },
+                "output": {
+                  "left": 49,
+                  "top": 59,
+                  "width": 186,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 276,
+                  "top": 58,
+                  "width": 110,
+                  "height": 140,
+                  "pixels": 11794
+                },
+                "output": {
+                  "left": 71,
+                  "top": 102,
+                  "width": 111,
+                  "height": 142
+                }
+              },
+              {
+                "source": {
+                  "left": 440,
+                  "top": 69,
+                  "width": 155,
+                  "height": 129,
+                  "pixels": 11514
+                },
+                "output": {
+                  "left": 12,
+                  "top": 113,
+                  "width": 157,
+                  "height": 131
+                }
+              },
+              {
+                "source": {
+                  "left": 681,
+                  "top": 74,
+                  "width": 160,
+                  "height": 124,
+                  "pixels": 11628
+                },
+                "output": {
+                  "left": 32,
+                  "top": 118,
+                  "width": 162,
+                  "height": 126
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/yuffie_ff7.png",
+            "sourceImageSha256": "69688580302f8813d84b5497220f34fe8bf8e118c26b7eda0976de44be90a2bb",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1554,
+              "bottom": 1774
+            },
+            "scale": 0.760655737704918,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 20,
+                  "top": 21,
+                  "width": 184,
+                  "height": 179,
+                  "pixels": 19281
+                },
+                "output": {
+                  "left": 59,
+                  "top": 108,
+                  "width": 140,
+                  "height": 136
+                }
+              },
+              {
+                "source": {
+                  "left": 233,
+                  "top": 26,
+                  "width": 193,
+                  "height": 172,
+                  "pixels": 19712
+                },
+                "output": {
+                  "left": 52,
+                  "top": 112,
+                  "width": 147,
+                  "height": 131
+                }
+              },
+              {
+                "source": {
+                  "left": 402,
+                  "top": 11,
+                  "width": 297,
+                  "height": 188,
+                  "pixels": 31539
+                },
+                "output": {
+                  "left": 12,
+                  "top": 100,
+                  "width": 226,
+                  "height": 143
+                }
+              },
+              {
+                "source": {
+                  "left": 682,
+                  "top": 27,
+                  "width": 177,
+                  "height": 173,
+                  "pixels": 15923
+                },
+                "output": {
+                  "left": 56,
+                  "top": 112,
+                  "width": 135,
+                  "height": 132
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "20eb2f869def09e267a481c4f597322ec60cbdf0aef18e29be9bea764abea33b",
+              "73f31149a28b2c22f91edf1fd357177e54f5fdb263f9dc3cbbf87dd82d74e455",
+              "1a24ca8d366c9448f68293ea8bdf3113f0383aeb6a91703d19c294f79b7c8bbe",
+              "5e1aa669d317aa4a7299db5f5dc86cad57cbf1c76c71c10f324c37b29a8569cf"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "47dc58ebc4cf45bc5a699edbfad0baefc7221895b2cce455b720fe0bf7a84b86",
+              "c84a7811637dcbabfd36a6fc966646c5d8c62473d1c0c7d55d74e1e4fb6c13d3",
+              "38e57db5db5579e377fae58ddf61b773236670921dd9fc985d00497ffee57b70",
+              "af723472bc0a1bd9bd3d2b30721fedac707175f6b041d1ae11a6c2c0c6be76fc"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "61b5b4769bee00df06e53643c0edbe68d3162e63936e33296dbcba32ef78df33",
+              "b9bbd6b1a8cc9e94afc673b17e7f83d26349341a237030f360d41a59a34bac59",
+              "4fb89e273485abb7858becaee718451d05e5a63b9143905f15a21bda169b8da2",
+              "4f7c188e2bbc6c8dfdc83754450f4771d21cb50d0f7d110a9cd76a7ad2c1cdb3"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7a4cc3f7a03f80f2c49a5d4620ed35774e2ca51228ba694fe5d9be69da8a28d8",
+              "19f6a2b1d7240e8447aec4de001e20bd58825cf584527c52c3059d655d5a0e97",
+              "cf7e15f8d2fc4e2aa4c22dcad5300e24bebe2ac0b5863f6b9cd68546f6ebacb4",
+              "630951138a8561ea2bd3d32aa7ad9a9fd6d4d1fa76ff5972494d4bdbd416dfa5"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "36b31caf5f2c7c0c02d0d9bb6ceb25c46bb16261fad98396aa926f143e52aa35",
+              "41d11b708c2783590103a87e05cac799da35a04bea9e50644af7a2ecebfbdbf0",
+              "f1d05c690b29c5f8c6edc05b8b5c9580eb56b6a9680a9650e5fea0cbfc9a1a41",
+              "dd2ea65587c5d00038b3ceec9610e082059e88ddd1285abc073235a70add3d3f"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2052a105188655b22ec1dc47275ac05d2c59bda03feef4ffd57227f0250ec8af",
+              "fe06d25215a84a3a59d7510a9c46af04c6ba8e512da883b9f2987a77286c67ca",
+              "091c444c42fce7a360a2d3a53fc402c8876ec260ce30278d750381779be6c147",
+              "06e473b836ad07112b0c90d7f9299babf5e89a500d5fb410a89df60782babca8"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e4814ecc7601480e5cd0000b890cb1fab79d65aa4b77aaf357eaff8b280a483a",
+              "0ae46232fa18ffac8138789428c816f9718bfffaeb7e584ef99f91d2b04997ed",
+              "ebfdb7732f5dc3a40b541a0cfec6383c251a1f1d71f8927f574f5c141eb73f12",
+              "a81972f2e6744ab333bf4f43c2fa72bb6403979189026d31bca202f64dc4595c"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e37289ad4ffda632c0ba5032797d725c739dbda58000927be2cb18ed90ac4fe7",
+              "93a41ad79188bcf218d1efec7584afe95e5896d22aa259e85a3fa47cbcd386e9",
+              "f8b1bc27e19bb9170ba98a9eff768f7cfea7cdeec93aa8370ee1f30cda56681d",
+              "5d04191c6bd9e9eee82f4a40bbc886c2dcdbdffd6badca530a167a7344214fa5"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "eidolonPresent": false,
+        "defaultFacing": "right",
+        "quadruped": false,
+        "humanPreparationOnly": false,
+        "notes": "Original young Yuffie uses a large four-point shuriken and a green top/beige-shorts outfit. All Creation is her final offensive energy-beam Limit Break; it remains separate from the healing Clear Tranquil secondary. Retain her young1997 design, green top, short black hair, beige shorts, arm protection and four-point shuriken. No adult Advent Children outfit, Remake moogle disguise, five-point blade or magic staff. This is original generated choreography; official pixels and source-game cinematic fidelity are not certified."
+      }
+    },
+    {
+      "id": "vincent_ff7",
+      "heroId": "vincent_ff7",
+      "universe": "Final Fantasy VII",
+      "name": "Vincent Valentine",
+      "sheet": "/sprites/generated/combat-character-animations-wave4/vincent_ff7.png",
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 8,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "e8397c23f9524de57e6782c6cfc54212beecc3e286c100d408caa307edd874f1",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/vincent_ff7.png",
+      "sourceImageSha256": "569c5063b678ae74b3913968f38a26ecae4f0481f93ca3bafb3f44d04a54c548",
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-vii/vincent-ff7.png",
+      "referenceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/vincent_ff7-reference.png",
+      "referenceAssetSha256": "820bb71204dd4f00f4c1fc791114595a50ea04e7d3b3fbb0c8322141ce07ee87",
+      "originalSourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/vincent_ff7-original.png",
+      "originalSourceImageSha256": "29acee69458aebcae2e8983d0dcdca73d199b34f5620c0ed8e2691cb578e004e",
+      "nativeCorrection": true,
+      "sourceWork": "Final Fantasy VII (1997), Vincent Valentine / Chaos transformation preparation",
+      "sourceReference": "Vincent's fourth Limit Break transforms him into Chaos. This32-pose atlas deliberately remains his human1997 form, showing preparation/recovery only. A separate actual Chaos body atlas replaces the human body during the runtime buff; no demon anatomy is faked on these human frames.",
+      "abilityName": "Chaos",
+      "identityCorrection": "Preserve red cape/headband, long black hair, dark outfit and golden LEFT claw. Hold one small Quicksilver pistol in the anatomical RIGHT human hand only. Do not reproduce any ambiguous old pose that transfers the pistol into the gold claw.",
+      "sourceAbility": {
+        "id": "vincent_ff7:super",
+        "name": "Chaos",
+        "effect": "buff",
+        "delivery": "support",
+        "duration": 1.1,
+        "hitAt": 0.451
+      },
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/vincent_ff7.png",
+            "sourceImageSha256": "569c5063b678ae74b3913968f38a26ecae4f0481f93ca3bafb3f44d04a54c548",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 724
+            },
+            "scale": 0.44529750479846447,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 67,
+                  "top": 145,
+                  "width": 383,
+                  "height": 468,
+                  "pixels": 98572
+                },
+                "output": {
+                  "left": 37,
+                  "top": 30,
+                  "width": 171,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 694,
+                  "top": 148,
+                  "width": 377,
+                  "height": 465,
+                  "pixels": 96307
+                },
+                "output": {
+                  "left": 74,
+                  "top": 31,
+                  "width": 168,
+                  "height": 207
+                }
+              },
+              {
+                "source": {
+                  "left": 1208,
+                  "top": 160,
+                  "width": 378,
+                  "height": 445,
+                  "pixels": 98314
+                },
+                "output": {
+                  "left": 61,
+                  "top": 36,
+                  "width": 168,
+                  "height": 198
+                }
+              },
+              {
+                "source": {
+                  "left": 1640,
+                  "top": 185,
+                  "width": 498,
+                  "height": 441,
+                  "pixels": 97758
+                },
+                "output": {
+                  "left": 12,
+                  "top": 48,
+                  "width": 222,
+                  "height": 196
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/vincent_ff7-original.png",
+            "sourceImageSha256": "29acee69458aebcae2e8983d0dcdca73d199b34f5620c0ed8e2691cb578e004e",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 234,
+              "bottom": 452
+            },
+            "scale": 0.8315412186379928,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 57,
+                  "top": 7,
+                  "width": 163,
+                  "height": 199,
+                  "pixels": 16838
+                },
+                "output": {
+                  "left": 83,
+                  "top": 79,
+                  "width": 136,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 287,
+                  "top": 10,
+                  "width": 185,
+                  "height": 190,
+                  "pixels": 17231
+                },
+                "output": {
+                  "left": 90,
+                  "top": 81,
+                  "width": 154,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 469,
+                  "top": 11,
+                  "width": 200,
+                  "height": 188,
+                  "pixels": 15912
+                },
+                "output": {
+                  "left": 57,
+                  "top": 82,
+                  "width": 166,
+                  "height": 156
+                }
+              },
+              {
+                "source": {
+                  "left": 677,
+                  "top": 19,
+                  "width": 185,
+                  "height": 182,
+                  "pixels": 16279
+                },
+                "output": {
+                  "left": 46,
+                  "top": 89,
+                  "width": 154,
+                  "height": 151
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/vincent_ff7-original.png",
+            "sourceImageSha256": "29acee69458aebcae2e8983d0dcdca73d199b34f5620c0ed8e2691cb578e004e",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 451,
+              "bottom": 671
+            },
+            "scale": 0.9957081545064378,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 30,
+                  "top": 15,
+                  "width": 158,
+                  "height": 191,
+                  "pixels": 15370
+                },
+                "output": {
+                  "left": 47,
+                  "top": 52,
+                  "width": 157,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 251,
+                  "top": 12,
+                  "width": 187,
+                  "height": 196,
+                  "pixels": 19094
+                },
+                "output": {
+                  "left": 47,
+                  "top": 49,
+                  "width": 186,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 460,
+                  "top": 12,
+                  "width": 162,
+                  "height": 196,
+                  "pixels": 17717
+                },
+                "output": {
+                  "left": 34,
+                  "top": 49,
+                  "width": 161,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 660,
+                  "top": 17,
+                  "width": 213,
+                  "height": 188,
+                  "pixels": 17992
+                },
+                "output": {
+                  "left": 12,
+                  "top": 54,
+                  "width": 212,
+                  "height": 187
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/vincent_ff7-original.png",
+            "sourceImageSha256": "29acee69458aebcae2e8983d0dcdca73d199b34f5620c0ed8e2691cb578e004e",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 670,
+              "bottom": 888
+            },
+            "scale": 0.9626556016597511,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 47,
+                  "top": 11,
+                  "width": 184,
+                  "height": 204,
+                  "pixels": 20797
+                },
+                "output": {
+                  "left": 67,
+                  "top": 48,
+                  "width": 177,
+                  "height": 196
+                }
+              },
+              {
+                "source": {
+                  "left": 277,
+                  "top": 16,
+                  "width": 161,
+                  "height": 198,
+                  "pixels": 18081
+                },
+                "output": {
+                  "left": 74,
+                  "top": 52,
+                  "width": 155,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 458,
+                  "top": 24,
+                  "width": 164,
+                  "height": 186,
+                  "pixels": 17547
+                },
+                "output": {
+                  "left": 35,
+                  "top": 60,
+                  "width": 158,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 680,
+                  "top": 22,
+                  "width": 164,
+                  "height": 189,
+                  "pixels": 16443
+                },
+                "output": {
+                  "left": 35,
+                  "top": 58,
+                  "width": 158,
+                  "height": 182
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/vincent_ff7-original.png",
+            "sourceImageSha256": "29acee69458aebcae2e8983d0dcdca73d199b34f5620c0ed8e2691cb578e004e",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 872,
+              "bottom": 1111
+            },
+            "scale": 1.0220264317180616,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 19,
+                  "top": 23,
+                  "width": 164,
+                  "height": 203,
+                  "pixels": 18732
+                },
+                "output": {
+                  "left": 34,
+                  "top": 32,
+                  "width": 168,
+                  "height": 207
+                }
+              },
+              {
+                "source": {
+                  "left": 228,
+                  "top": 44,
+                  "width": 214,
+                  "height": 186,
+                  "pixels": 24193
+                },
+                "output": {
+                  "left": 21,
+                  "top": 54,
+                  "width": 219,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 441,
+                  "top": 6,
+                  "width": 220,
+                  "height": 222,
+                  "pixels": 39169
+                },
+                "output": {
+                  "left": 12,
+                  "top": 15,
+                  "width": 225,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 23,
+                  "width": 182,
+                  "height": 206,
+                  "pixels": 20258
+                },
+                "output": {
+                  "left": 20,
+                  "top": 32,
+                  "width": 186,
+                  "height": 211
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/vincent_ff7-original.png",
+            "sourceImageSha256": "29acee69458aebcae2e8983d0dcdca73d199b34f5620c0ed8e2691cb578e004e",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1110,
+              "bottom": 1338
+            },
+            "scale": 0.9169960474308301,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 61,
+                  "top": 10,
+                  "width": 159,
+                  "height": 202,
+                  "pixels": 18841
+                },
+                "output": {
+                  "left": 82,
+                  "top": 56,
+                  "width": 146,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 265,
+                  "top": 22,
+                  "width": 177,
+                  "height": 185,
+                  "pixels": 14601
+                },
+                "output": {
+                  "left": 66,
+                  "top": 67,
+                  "width": 162,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 428,
+                  "top": 12,
+                  "width": 191,
+                  "height": 203,
+                  "pixels": 21139
+                },
+                "output": {
+                  "left": 12,
+                  "top": 58,
+                  "width": 175,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 682,
+                  "top": 12,
+                  "width": 155,
+                  "height": 199,
+                  "pixels": 16243
+                },
+                "output": {
+                  "left": 42,
+                  "top": 58,
+                  "width": 142,
+                  "height": 182
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/vincent_ff7-original.png",
+            "sourceImageSha256": "29acee69458aebcae2e8983d0dcdca73d199b34f5620c0ed8e2691cb578e004e",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1337,
+              "bottom": 1528
+            },
+            "scale": 1.0593607305936072,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 13,
+                  "width": 187,
+                  "height": 169,
+                  "pixels": 17336
+                },
+                "output": {
+                  "left": 46,
+                  "top": 62,
+                  "width": 198,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 252,
+                  "top": 16,
+                  "width": 173,
+                  "height": 169,
+                  "pixels": 15998
+                },
+                "output": {
+                  "left": 43,
+                  "top": 65,
+                  "width": 183,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 452,
+                  "top": 28,
+                  "width": 197,
+                  "height": 141,
+                  "pixels": 15368
+                },
+                "output": {
+                  "left": 20,
+                  "top": 78,
+                  "width": 209,
+                  "height": 149
+                }
+              },
+              {
+                "source": {
+                  "left": 671,
+                  "top": 31,
+                  "width": 166,
+                  "height": 144,
+                  "pixels": 14118
+                },
+                "output": {
+                  "left": 17,
+                  "top": 81,
+                  "width": 176,
+                  "height": 153
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-a-sources/vincent_ff7-original.png",
+            "sourceImageSha256": "29acee69458aebcae2e8983d0dcdca73d199b34f5620c0ed8e2691cb578e004e",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1524,
+              "bottom": 1774
+            },
+            "scale": 0.8992248062015504,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 18,
+                  "top": 19,
+                  "width": 188,
+                  "height": 206,
+                  "pixels": 18804
+                },
+                "output": {
+                  "left": 44,
+                  "top": 55,
+                  "width": 169,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 204,
+                  "top": 5,
+                  "width": 231,
+                  "height": 224,
+                  "pixels": 37657
+                },
+                "output": {
+                  "left": 12,
+                  "top": 43,
+                  "width": 208,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 444,
+                  "top": 3,
+                  "width": 214,
+                  "height": 226,
+                  "pixels": 37149
+                },
+                "output": {
+                  "left": 29,
+                  "top": 41,
+                  "width": 192,
+                  "height": 203
+                }
+              },
+              {
+                "source": {
+                  "left": 677,
+                  "top": 15,
+                  "width": 193,
+                  "height": 213,
+                  "pixels": 20682
+                },
+                "output": {
+                  "left": 39,
+                  "top": 52,
+                  "width": 174,
+                  "height": 192
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9a71adb000e7fc8120d69fa0765289321359b6dcc7a38428a26cffc93ad4f4c5",
+              "cf8fd7b0d28d125609a068db7f5c95ab609565274a79708213cbf55529fde7e4",
+              "e7ef9d0a9cd3de6e38a4f16d61c7c77bc5813bd0fb65f6f6cc93918f3829316b",
+              "075c5b15a199135651317c4ba70bebd6185f2ae70401d0b7b184f18f59c970ba"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1d28107aa5a9e387b998b9869e472f2658a912e6eeb4b620e6aa814dda553694",
+              "29b245f179a0548cb0f3bfad615dfcceb5bd24620562c26022a72cd3f8e15978",
+              "15633cfe8abfac113f0f18c4b5dca14234e86ae3eab1e498b0c0838c869a8899",
+              "86c1a6c168f3504b1e9e0780fea1b2298b7deea34fdfdaa403427b6727c98550"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4e23ac9404f3a80ff99fa8da3a69bf8b84b4e1d6715bb4f74ec6d8261325717e",
+              "891a2472cccabd74e89bd323a2d107cf3dd3712170418b4b76f2f18f937bbed3",
+              "ecc1f3fc91dab6897dc4285530dc23462ff958422b490194ba7c115779f6e7e9",
+              "fceb98b99e697835d05628366a511013030bfe076e3fa3c1e3fc382f20d12d5e"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8f5e6b654452cbcd4396b166b96528f032dc0f5c54df7865fa7b82e41cea9a52",
+              "2399201750916bfe089bcbba25d0d41b42346bf346c93ca5f8d7df05099239f5",
+              "ce9f7b291d4a737ce6bdfba5b980a85c8341196010c19a0f6db725a75a54bcca",
+              "efc72965e5e8968e6d9980c2b78ed53d2cdaa52c7ada1a4d92aa4c4e332d28af"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b7911fbb1fde958db13e68dd884d657b7ae839fa7e17b124e004aa34860f1550",
+              "1652a6b544b87e68ae675c841ee657d54898c73bd9a087117c299002bbe4c9b8",
+              "62915e36465001d301909643bf4523036ef122072d7eec0230fd12c0357d5c0f",
+              "9607663d8e5bdc80ae656f1a90a3ff313d75dbba503735ec7dde078dfb232412"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "26dbbfa270eaf68762174800bca8f24c18aa04633dd14a6e3095432f386cd902",
+              "895b69bee47198626c40be44d512496ef39ae9f51a57f0c2b1ee034524b5ac4d",
+              "5776db8fa6a810a12db38d0cd0092236acba27e67a5b46fc1b549c5f45d91f27",
+              "8848ee201e58f4478504564fc47e5a4100c99811e4faa9bb8b7a350267a62904"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "88be3428a73f98faa2adefd7105bdf6365ad13e78b85529878680cbb6d5071aa",
+              "57f1c23725aa3ebd44de47c664643a72defe196df8fb7e9c7343c0adacf3416a",
+              "3deb2d98860ae281df7eaea4cdc738e499f207815835c9e3a5ccc025b20295a9",
+              "77f60a6bce119eca96f9aa7cc5b1bac5432020a423e7637c76a727152efae856"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "497edb7a30d9d2384466b8ffe657533e110260a1fe974f732008a40b142ddb8f",
+              "9ff58e3d7cb9f4879cc0bd2ef455bc8d3ad62d4a7f7bd53690f0b9809eabab52",
+              "f2f149f24ec279c218d56be348bc0037974fb1adf1f33c6c7c31dc1625d66d4d",
+              "db1682ebf54f4464a5567f64a36f9b7de7407d7efabeab15660b181ea4648b6e"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "eidolonPresent": false,
+        "defaultFacing": "right",
+        "quadruped": false,
+        "humanPreparationOnly": true,
+        "weaponHand": "right",
+        "clawHand": "left",
+        "separateFormAsset": "vincent-chaos",
+        "notes": "Vincent's fourth Limit Break transforms him into Chaos. This32-pose atlas deliberately remains his human1997 form, showing preparation/recovery only. A separate actual Chaos body atlas replaces the human body during the runtime buff; no demon anatomy is faked on these human frames. Preserve red cape/headband, long black hair, dark outfit and golden LEFT claw. Hold one small Quicksilver pistol in the anatomical RIGHT human hand only. Do not reproduce any ambiguous old pose that transfers the pistol into the gold claw. This is original generated choreography; official pixels and source-game cinematic fidelity are not certified."
+      }
+    }
+  ]
+}

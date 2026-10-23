@@ -1,0 +1,78 @@
+import { area, buff, defend, guard, hit, shot } from './rules.js';
+import { COMBAT_SOURCE_DEFINITIONS_WAVE11 as sources } from '../combatSourceDefinitionsWave11.js';
+
+const kit = (id, reference, simple, secondary, defense, special, color) => ({
+  sourceHeroId: id, universe: sources[id].universe, sourceWork: sources[id].sourceWork,
+  sourceReference: reference, sourceUrl: sources[id].sourceReference,
+  identityBasis: 'canonical-role', canonicalVerified: false, networkVerified: false,
+  source1to1Verified: false, gameplayAdaptation: true,
+  simple, secondary: { cd: 6, ...secondary }, defense,
+  special: { ...special, name: sources[id].name, color, animationDuration: 1.1, hitAt: 0.451, meterCost: 100 }
+});
+
+// These are selected screen-version actions with bounded engine effects, not
+// official named supers or new rules for staking, disarming or instant death.
+export const ABILITIES_WAVE11_PART_A = Object.freeze({
+  buffy_summers: kit('buffy_summers',
+    'Season seven, after Spike’s chip removal and before the final Scythe/amulet: Buffy fights with a wooden stake, martial kicks and personal parries. The chosen stake combination remains one engine impact and never executes an arbitrary opponent as a vampire.',
+    hit('Frappe au pieu de Buffy', 1.15, { range: 170 }),
+    hit('Coup de pied de la Tueuse', 1.8, { range: 170 }),
+    defend('Parade de la Tueuse', 0.65, { duration: 2 }),
+    hit(sources.buffy_summers.name, 4.9, { range: 180 }), '#d3ad78'),
+  willow_rosenberg: kit('willow_rosenberg',
+    'Season-seven auburn-haired Willow practices controlled protective witchcraft. The group ward is an authored protection adaptation, with no Dark Willow appearance, energy gun, damaging aura, finale activation of all Slayers or borrowed healing rule.',
+    buff('Lecture du sort de Willow', { duration: 3, buffMultiplier: 1.12 }),
+    guard('Barrière de Willow', { duration: 2.5, reduce: 0.3 }),
+    defend('Protection personnelle de Willow', 0.6, { duration: 2 }),
+    guard(sources.willow_rosenberg.name, { duration: 4, reduce: 0.5 }), '#c9a6ed'),
+  giles_buffy: kit('giles_buffy',
+    'Season-seven Rupert Giles is a human Watcher with glasses, research knowledge and a physical crossbow. Shooting a bolt is distinct from reporting a known weakness. He does not fire an energy beam from a book or project a magical command aura.',
+    shot('Tir d’arbalète de Giles', 1.15, { range: 600 }),
+    buff('Faiblesse signalée par Giles', { duration: 3, buffMultiplier: 1.15 }),
+    defend('Mise à couvert de Giles', 0.6, { duration: 2 }),
+    shot(sources.giles_buffy.name, 4.4, { range: 640 }), '#b99a62'),
+  xander_buffy: kit('xander_buffy',
+    'Season-seven human Xander, selected before Caleb’s eye injury, helps companions reach cover and encourages the Scooby Gang. These information and positioning actions remain zero-damage support. His old generated pistol and glowing gun aura are not retained.',
+    guard('Consigne de mise à couvert de Xander', { duration: 2.5, reduce: 0.25 }),
+    buff('Encouragement du Scooby Gang', { duration: 3, buffMultiplier: 1.12 }),
+    defend('Repli de Xander', 0.55, { duration: 2 }),
+    guard(sources.xander_buffy.name, { duration: 4, reduce: 0.45 }), '#b8ab93'),
+  spike_buffy: kit('spike_buffy',
+    'Soul-restored Spike after chip removal, with the black leather duster recovered in Get It Done, before the final amulet. He uses physical punches and kicks. No amulet beam, fire weapon, cigarette explosion, magic sword or transformation rule is introduced.',
+    hit('Crochet de Spike', 1.2, { range: 170 }),
+    hit('Coup de pied de Spike', 1.9, { range: 170 }),
+    defend('Parade de Spike', 0.65, { duration: 2 }),
+    hit(sources.spike_buffy.name, 5, { range: 180 }), '#d7dbdd'),
+  harry_potter: kit('harry_potter',
+    'Half-Blood Prince Harry, in his sixth-year Gryffindor uniform, casts the red Stunning Spell from a wooden wand. Protego is personal defence. Expelliarmus is represented as protective opening, without pretending that the engine implements physical disarming, Patronus damage or a killing curse.',
+    shot('Stupéfix de Harry', 1.15, { range: 600 }),
+    guard('Expelliarmus — ouverture de protection', { duration: 2.5, reduce: 0.3 }),
+    defend('Protego de Harry', 0.65, { duration: 2 }),
+    shot(sources.harry_potter.name, 4.6, { range: 640 }), '#e7564f'),
+  hermione_granger: kit('hermione_granger',
+    'Half-Blood Prince Hermione uses her wand, studied spell knowledge and Protego. The shield is protective and does not launch a damaging bolt. Protego Totalum from the later camping period and a giant offensive shield laser are excluded from this selected version.',
+    buff('Hermione identifie le sort pertinent', { duration: 3, buffMultiplier: 1.12 }),
+    guard('Couverture par Hermione', { duration: 2.5, reduce: 0.3 }),
+    defend('Protego personnel d’Hermione', 0.65, { duration: 2 }),
+    guard(sources.hermione_granger.name, { duration: 4, reduce: 0.5 }), '#bdcbe4'),
+  ron_weasley: kit('ron_weasley',
+    'Half-Blood Prince Ron uses a wooden wand and the red Stunning Spell, never the gun drawn in his old generated sheet. Wingardium Leviosa clears the route as a support adaptation; the special is one projectile impact, not a continuous firearm burst or killing curse.',
+    shot('Stupéfix de Ron', 1.15, { range: 600 }),
+    buff('Wingardium Leviosa — dégager le passage', { duration: 3, buffMultiplier: 1.12 }),
+    defend('Protego de Ron', 0.6, { duration: 2 }),
+    shot(sources.ron_weasley.name, 4.5, { range: 640 }), '#e36345'),
+  dumbledore: kit('dumbledore',
+    'Half-Blood Prince Dumbledore, with grey/silver robes and his blackened right hand, uses the wand-controlled firestorm seen in the cave against Inferi. The selected engine area attack is a bounded adaptation; it neither makes every opponent an Inferius nor adds instant death or repeated damage ticks.',
+    buff('Lecture des traces magiques', { duration: 3, buffMultiplier: 1.15 }),
+    guard('Protection au sortilège de Dumbledore', { duration: 2.5, reduce: 0.35 }),
+    defend('Protego de Dumbledore', 0.7, { duration: 2 }),
+    area(sources.dumbledore.name, 4.8, { range: 360, areaRadius: 180, maxTargets: 6 }), '#eda451'),
+  snape: kit('snape',
+    'Half-Blood Prince Severus Snape wears his plain black buttoned coat and cloak and uses a wooden wand. His selected Protego is defensive spell blocking, not a potion gun, lantern, golden alchemist apparatus, Sectumsempra attack or lethal finale.',
+    buff('Rogue identifie le sort adverse', { duration: 3, buffMultiplier: 1.12 }),
+    guard('Blocage des sorts par Rogue', { duration: 2.5, reduce: 0.35 }),
+    defend('Protego personnel de Rogue', 0.7, { duration: 2 }),
+    guard(sources.snape.name, { duration: 4, reduce: 0.5 }), '#aeb8c8')
+});
+
+export const ABILITY_REVISIONS_WAVE11_PART_A = Object.freeze({});

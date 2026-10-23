@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "heroId": "lilith_borderlands",
+  "universe": "Borderlands",
+  "sourceWork": "Borderlands (2009), original Lilith",
+  "expected": "Siren markings on the anatomical LEFT arm; no official exact tattoo pattern or animation pixel match is certified.",
+  "sourceFacts": [
+    {
+      "url": "https://www.shamusyoung.com/twentysidedtale/?p=37850",
+      "access": "indexed text read",
+      "supports": "Description of the original game Lilith specifically identifies chest and left-arm tattoos."
+    },
+    {
+      "url": "https://www.entertainmentearth.com/product/borderlands-collection-lilith-vinyl-figure-1/yt42933",
+      "access": "indexed licensed-figure description read",
+      "supports": "Later costume licensed figure likewise identifies left-arm tattoos; only laterality corroboration, not BL1 costume authority."
+    }
+  ],
+  "evidence": [
+    {
+      "label": "presentation-intro",
+      "sheet": "public/sprites/generated/combat-character-animations-wave11/lilith_borderlands.png",
+      "row": 0,
+      "column": 0,
+      "sheetSha256": "a71e713dcd359957607ec6d16076052c76625bf0715f51b9a9c59e5b6bdbfc44",
+      "crop": "docs/combat-fidelity-wave11-2026-10-23/part-c-contacts/lilith-presentation-intro-laterality.png",
+      "cropSha256": "e8aabe90d7ea74119004f72648d890ac2b58f6f9919bb9f8db4cf3e681b3a1a5",
+      "archivedNormalizedSheet": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/lilith_borderlands-before-left-arm-normalized.png"
+    },
+    {
+      "label": "presentation-outro",
+      "sheet": "public/sprites/generated/combat-character-animations-wave11/lilith_borderlands.png",
+      "row": 1,
+      "column": 3,
+      "sheetSha256": "a71e713dcd359957607ec6d16076052c76625bf0715f51b9a9c59e5b6bdbfc44",
+      "crop": "docs/combat-fidelity-wave11-2026-10-23/part-c-contacts/lilith-presentation-outro-laterality.png",
+      "cropSha256": "725551476a54f7eaf117b4c991d61259e0a5f7c55b5f9ae0fe09586bb8b9238b",
+      "archivedNormalizedSheet": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/lilith_borderlands-before-left-arm-normalized.png"
+    },
+    {
+      "label": "base-idle",
+      "sheet": "public/sprites/generated/combat-character-corrections-wave11/lilith_borderlands.png",
+      "row": 0,
+      "column": 0,
+      "sheetSha256": "5f2460d3ecb908c7531b5fa96d5190c4c17ab15debe8a12055738f048c76acfa",
+      "crop": "docs/combat-fidelity-wave11-2026-10-23/part-c-contacts/lilith-base-idle-laterality.png",
+      "cropSha256": "7b236dc6d9ae995d3d80a8e3532e8f9939e6d96a1c5edca5f3a8c2af947601e6",
+      "archivedNormalizedSheet": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-sources/lilith_borderlands-before-left-arm-normalized.png"
+    }
+  ],
+  "observed": "Final selected32 presentation and16 base poses use anatomical LEFT-arm tattoos with anatomical RIGHT bare. Sixteen calm presentations, four rear-view outro poses, twelve frontal corrective presentation poses and sixteen base poses were independently inspected before publication. Defeat column1 has the left arm partly occluded; no opposite tattoo is visible. No exact tattoo-pattern/source-frame certification is claimed.",
+  "status": "native-correction-complete-with-adaptation-limits",
+  "identityRecognitionReviewed": true,
+  "anatomicalLateralityCertified": false,
+  "bilateralTattooCertified": false,
+  "rendererMirrorLimit": "The ordinary two-dimensional facing flip mirrors the complete sprite. It does not preserve source anatomical handedness as a full3D turn would. Neither facing is certified as an exact source-frame reconstruction.",
+  "correctionRequirement": "Completed through native image_gen source redraws only. Sharp performed alpha segmentation, uniform row scaling, transparent padding and packing; no tattoo erasure/repaint, anatomical mirror or duplicate frame synthesis.",
+  "source1to1Verified": false,
+  "networkVerified": false,
+  "initialStatus": "probable-anatomical-laterality-inversion",
+  "initialObserved": "The strongly tattooed arm is screen-left in near-frontal intro/base and screen-right in the back-facing outro. Primary inspection and an independent second visual inspection agree this is probably the anatomical RIGHT arm. The front/back agreement makes an inversion sufficiently concrete to disclose. Three-quarter projections preclude an absolute anatomical pixel certification. Pale coloration on the far arm is insufficient to certify bilateral tattoos.",
+  "correction": {
+    "actualCalls": 6,
+    "newObservedNativeDrawings": 72,
+    "newRetainedDrawings": 48,
+    "intermediateCorrectiveDrawingsExcluded": 24,
+    "previousRetainedDrawingsReplaced": 48,
+    "retainedPublicPngCount": 2,
+    "newPublicPngCount": 0,
+    "source1to1Verified": false,
+    "providersModelJobAndGenerationIds": null,
+    "reviewers": [
+      "Part C primary full-source/contact inspection",
+      "Independent agent identites_combat source32/32 and base16 review",
+      "Parent root third review of final rear4 and frontal12"
+    ],
+    "reviewScope": {
+      "calmPresentationPoses": 16,
+      "rearOutroPoses": 4,
+      "newFrontalPresentationPoses": 12,
+      "basePoses": 16
+    },
+    "technicalPreservation": "part-c-left-arm-final-preservation.json",
+    "acceptedNativeSources": [
+      "part-c-sources/lilith_borderlands-left-arm-correction.png rows0/2/5/6 only",
+      "part-c-sources/lilith_borderlands-outro-c0-arm-correction.png row0",
+      "part-c-sources/lilith_borderlands-frontal-phases-arm-correction.png rows0/1/2",
+      "base-part-c-sources/lilith_borderlands-left-arm-correction.png rows0/1/2 only",
+      "base-part-c-sources/lilith_borderlands-hit-arm-correction.png row0"
+    ],
+    "rejectionsPreserved": "The original32/16 wrong-arm sources, excluded wrong-arm rows of the first full corrections, and the intermediate bilateral outro strip remain archived with exact arguments and SHA lineage. No explicit tool refusal occurred.",
+    "presentation32": {
+      "registry": "src/game/combat/characterAnimationsWave11PartC.generated.json",
+      "registrySha256": "64f881d7a95cdf7823cdccfc2c0ae25c888d218f5f40ce86a2815d9b47374852",
+      "sheet": "/sprites/generated/combat-character-animations-wave11/lilith_borderlands.png",
+      "sha256": "b53698259049e4b0a1bcd6255af62d3069170b11d5cab83977efc83e1fd98c0b",
+      "contact": "docs/combat-fidelity-wave11-2026-10-23/part-c-contacts/lilith_borderlands.png"
+    },
+    "base16": {
+      "registry": "src/game/combat/characterSpriteCorrectionsWave11PartC.generated.json",
+      "registrySha256": "40025270ffe6f2cb9eaf58fef8bc1d97ba643d010697e62e67714924704c9b77",
+      "sheet": "/sprites/generated/combat-character-corrections-wave11/lilith_borderlands.png",
+      "sha256": "0e82e3fd3b5a6f4a1465b8a7ffccb16dd093b20cf352175ba1cc9f5e93f95228",
+      "contact": "docs/combat-fidelity-wave11-2026-10-23/base-part-c-contacts/lilith_borderlands.png"
+    }
+  }
+}

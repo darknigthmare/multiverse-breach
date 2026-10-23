@@ -1,0 +1,21 @@
+{
+  "command": "node --test --test-concurrency=1 scripts/combatFidelity.test.mjs scripts/combatFidelityWave9.test.mjs scripts/combatCompletion.test.mjs scripts/combatContactVisualWave6.test.mjs",
+  "exitCode": 1,
+  "failures": [
+    "Mei Zhen’s ancestor message remains nonviolent in both the secondary and entity descriptors",
+    "Mei Zhen’s ordinary and cinematic ancestor support changes buffs without harming either team"
+  ],
+  "observed": {
+    "expectedSummonEffect": "buff",
+    "actualSummonEffect": "damage",
+    "enemyHpBefore": 10000,
+    "enemyHpAfter": 9981
+  },
+  "cause": "The broad raw explicit-summon fallback suppressed the existing authored nonviolent override for the same named ancestor action.",
+  "log": "historical-preflight-before-fix.log",
+  "logSha256": "d0b8674ad74066421b25e5ed47e2eadb447f4351d255be52a5c567704f5b7f90",
+  "sourceSha256Before": {
+    "src/game/combatIdentity.js": "2d0edbe642d5be20165d5292590f77ca9074ababd3959bf4f607da20b6474504",
+    "scripts/combatFidelity.test.mjs": "faebe92055c9c0131e47e723c0f29038e8dd6ef35b81f24314c0f3d9b867e9c3"
+  }
+}

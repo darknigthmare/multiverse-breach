@@ -1,0 +1,787 @@
+{
+  "date": "2026-10-23",
+  "records": [
+    {
+      "slug": "spike",
+      "id": "buffy-spike",
+      "key": "Buffy the Vampire Slayer::Spike::Enchaînement vampirique de Spike",
+      "universe": "Buffy the Vampire Slayer",
+      "entityName": "Spike",
+      "actionName": "Enchaînement vampirique de Spike",
+      "performerHeroId": "spike_buffy",
+      "sourceWork": "Buffy saison7, après retrait de la puce de Spike et avant la faux/amulette finale",
+      "prompt": "Create a NEW NATIVE 16-frame sprite sheet for the same named character, correcting the reference as explicitly specified. Crisp detailed2D game sprite art, consistent face/anatomy/equipment in every frame, side-facing RIGHT with a slight three-quarter view. Transparent RGBA background. Use a TALL PORTRAIT canvas and an exact uniform4-COLUMN by4-ROW grid:16different full-body drawings. Do not compress the bottom row. Every head, hair, hand, boot, coat hem, weapon and native effect must be completely inside its own cell, with generous transparent air on all four sides (especially bottom soles and long weapons). No crop, no contact with neighboring cells, no text, borders, labels, ground, cast shadow, backdrop or baked checkerboard. Same scale across all16poses, no fake copied/duplicated frames. Four successive poses in each row, read left to right. No blood or gore. \nCHARACTER AND SOURCE: Spike from Buffy the Vampire Slayer, season7 after removal of his chip but BEFORE the final amulet. Adult pale male vampire, short platinum-blond hair, black leather long coat, plain black tee, charcoal jeans and black boots. REMOVE the reference red necklace/amulet, all firearms, knives, magical rings and fire. His ability is an entirely physical fist combination.\nEXACT ROW ORDER: Row1: walk forward with coat moving, hands visible. Row2: plant feet and progressively raise both fists. Row3: four different grounded jab/cross/hook/recovery fighting poses, no blood or energy. Row4: lower fists and step back with four different movements.\nKeep every row generously separated and preserve the entire silhouette in ALL sixteen cells. The image is source artwork for extraction; never draw UI elements or logos.",
+      "promptFile": "docs/combat-fidelity-wave11-2026-10-23/summon-spike-initial.prompt.txt",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/spike-original.png",
+      "referenceImage": "public/sprites/generated/heroes/buffy-the-vampire-slayer/spike-buffy.png",
+      "identityReferenceImage": "public/sprites/generated/heroes/buffy-the-vampire-slayer/spike-buffy.png",
+      "toolArguments": {
+        "prompt": "Create a NEW NATIVE 16-frame sprite sheet for the same named character, correcting the reference as explicitly specified. Crisp detailed2D game sprite art, consistent face/anatomy/equipment in every frame, side-facing RIGHT with a slight three-quarter view. Transparent RGBA background. Use a TALL PORTRAIT canvas and an exact uniform4-COLUMN by4-ROW grid:16different full-body drawings. Do not compress the bottom row. Every head, hair, hand, boot, coat hem, weapon and native effect must be completely inside its own cell, with generous transparent air on all four sides (especially bottom soles and long weapons). No crop, no contact with neighboring cells, no text, borders, labels, ground, cast shadow, backdrop or baked checkerboard. Same scale across all16poses, no fake copied/duplicated frames. Four successive poses in each row, read left to right. No blood or gore. \nCHARACTER AND SOURCE: Spike from Buffy the Vampire Slayer, season7 after removal of his chip but BEFORE the final amulet. Adult pale male vampire, short platinum-blond hair, black leather long coat, plain black tee, charcoal jeans and black boots. REMOVE the reference red necklace/amulet, all firearms, knives, magical rings and fire. His ability is an entirely physical fist combination.\nEXACT ROW ORDER: Row1: walk forward with coat moving, hands visible. Row2: plant feet and progressively raise both fists. Row3: four different grounded jab/cross/hook/recovery fighting poses, no blood or energy. Row4: lower fists and step back with four different movements.\nKeep every row generously separated and preserve the entire silhouette in ALL sixteen cells. The image is source artwork for extraction; never draw UI elements or logos.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/public/sprites/generated/heroes/buffy-the-vampire-slayer/spike-buffy.png"
+        ],
+        "transparent_background": true
+      },
+      "nativeGenerationCalls": 1,
+      "file": "/workspace/generated_images/exec-32ca13a5-2af4-41b7-8dab-efe3b973b799.png",
+      "reviewed": true,
+      "reviewNotes": "Spike season7, black coat and bleach-blond hair, no amulet/fire/gun. Physical fists only. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "effectAnchors": null
+    },
+    {
+      "slug": "ronon",
+      "id": "atlantis-ronon",
+      "key": "Stargate Atlantis::Ronon Dex::Tir du pistolet satedan de Ronon",
+      "universe": "Stargate Atlantis",
+      "entityName": "Ronon Dex",
+      "actionName": "Tir du pistolet satedan de Ronon",
+      "performerHeroId": "ronon_dex",
+      "sourceWork": "Stargate Atlantis saison3 (2006–2007), avant les nanites et la fin de Weir",
+      "prompt": "Create a NEW NATIVE 16-frame sprite sheet for the same named character, correcting the reference as explicitly specified. Crisp detailed2D game sprite art, consistent face/anatomy/equipment in every frame, side-facing RIGHT with a slight three-quarter view. Transparent RGBA background. Use a TALL PORTRAIT canvas and an exact uniform4-COLUMN by4-ROW grid:16different full-body drawings. Do not compress the bottom row. Every head, hair, hand, boot, coat hem, weapon and native effect must be completely inside its own cell, with generous transparent air on all four sides (especially bottom soles and long weapons). No crop, no contact with neighboring cells, no text, borders, labels, ground, cast shadow, backdrop or baked checkerboard. Same scale across all16poses, no fake copied/duplicated frames. Four successive poses in each row, read left to right. No blood or gore. \nCHARACTER AND SOURCE: Ronon Dex from Stargate Atlantis season3. Tall muscular adult Satedan man, tan/brown skin, long dark dreadlocks, weathered brown leather sleeveless coat/vest and dark combat trousers/boots, compact original Satedan particle-magnum energy pistol, NOT a huge Earth revolver. Correct visible grip and compact barrel.\nEXACT ROW ORDER: Row1: enter walking with pistol lowered. Row2: plant feet and progressively aim the pistol in four distinct movements. Row3: four clearly different aimed firing/recoil poses, barrel clear on every aiming pose, no detached muzzle flashes and no projectile streaks. Row4: lower pistol and retreat in four distinct gestures.\nKeep every row generously separated and preserve the entire silhouette in ALL sixteen cells. The image is source artwork for extraction; never draw UI elements or logos.",
+      "promptFile": "docs/combat-fidelity-wave11-2026-10-23/summon-ronon-initial.prompt.txt",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/ronon-original.png",
+      "referenceImage": "public/sprites/generated/heroes/stargate-atlantis/ronon-dex.png",
+      "identityReferenceImage": "public/sprites/generated/heroes/stargate-atlantis/ronon-dex.png",
+      "toolArguments": {
+        "prompt": "Create a NEW NATIVE 16-frame sprite sheet for the same named character, correcting the reference as explicitly specified. Crisp detailed2D game sprite art, consistent face/anatomy/equipment in every frame, side-facing RIGHT with a slight three-quarter view. Transparent RGBA background. Use a TALL PORTRAIT canvas and an exact uniform4-COLUMN by4-ROW grid:16different full-body drawings. Do not compress the bottom row. Every head, hair, hand, boot, coat hem, weapon and native effect must be completely inside its own cell, with generous transparent air on all four sides (especially bottom soles and long weapons). No crop, no contact with neighboring cells, no text, borders, labels, ground, cast shadow, backdrop or baked checkerboard. Same scale across all16poses, no fake copied/duplicated frames. Four successive poses in each row, read left to right. No blood or gore. \nCHARACTER AND SOURCE: Ronon Dex from Stargate Atlantis season3. Tall muscular adult Satedan man, tan/brown skin, long dark dreadlocks, weathered brown leather sleeveless coat/vest and dark combat trousers/boots, compact original Satedan particle-magnum energy pistol, NOT a huge Earth revolver. Correct visible grip and compact barrel.\nEXACT ROW ORDER: Row1: enter walking with pistol lowered. Row2: plant feet and progressively aim the pistol in four distinct movements. Row3: four clearly different aimed firing/recoil poses, barrel clear on every aiming pose, no detached muzzle flashes and no projectile streaks. Row4: lower pistol and retreat in four distinct gestures.\nKeep every row generously separated and preserve the entire silhouette in ALL sixteen cells. The image is source artwork for extraction; never draw UI elements or logos.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/public/sprites/generated/heroes/stargate-atlantis/ronon-dex.png"
+        ],
+        "transparent_background": true
+      },
+      "nativeGenerationCalls": 1,
+      "file": "/workspace/generated_images/exec-15c48019-d432-412d-b924-8f89418cba15.png",
+      "reviewed": true,
+      "reviewNotes": "Atlantis season3, dreadlocks and compact Satedan energy sidearm. Native muzzle flashes remain attached to barrel. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          {
+            "x": 314,
+            "y": 105,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 77,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 311,
+            "y": 96,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 66,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "attack": [
+          {
+            "x": 296,
+            "y": 99,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 317,
+            "y": 97,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 252,
+            "neighborhoodVisiblePixelsAboveAlpha24": 75,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 305,
+            "y": 99,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 311,
+            "y": 96,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 72,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "slug": "greer",
+      "id": "sgu-greer",
+      "key": "Stargate Universe::Ronald Greer::Rafale de couverture de Greer",
+      "universe": "Stargate Universe",
+      "entityName": "Ronald Greer",
+      "actionName": "Rafale de couverture de Greer",
+      "performerHeroId": "greer_sgu",
+      "sourceWork": "Stargate Universe saison1 (2009–2010), pas de pouvoirs extraterrestres transférés à Chloe",
+      "prompt": "Create a NEW NATIVE 16-frame sprite sheet for the same named character, correcting the reference as explicitly specified. Crisp detailed2D game sprite art, consistent face/anatomy/equipment in every frame, side-facing RIGHT with a slight three-quarter view. Transparent RGBA background. Use a TALL PORTRAIT canvas and an exact uniform4-COLUMN by4-ROW grid:16different full-body drawings. Do not compress the bottom row. Every head, hair, hand, boot, coat hem, weapon and native effect must be completely inside its own cell, with generous transparent air on all four sides (especially bottom soles and long weapons). No crop, no contact with neighboring cells, no text, borders, labels, ground, cast shadow, backdrop or baked checkerboard. Same scale across all16poses, no fake copied/duplicated frames. Four successive poses in each row, read left to right. No blood or gore. \nCHARACTER AND SOURCE: Master Sergeant Ronald Greer from Stargate Universe season1, portrayed by Jamil Walker Smith: Black adult man with dark brown skin and very short tightly curled black hair, dark grey/black SGC tactical uniform/vest, practical boots, M4A1 carbine. The supplied generic reference is WRONG about his pale skin/face: correct it to the real character identity. No P90, no magic.\nEXACT ROW ORDER: Row1: enter with M4A1 at low ready. Row2: four progressively shouldered aiming stances. Row3: four distinct aimed trigger/recoil/bracing poses with both hands holding the same M4A1 and every barrel fully visible. Row4: four lowering/withdrawal recovery poses.\nKeep every row generously separated and preserve the entire silhouette in ALL sixteen cells. The image is source artwork for extraction; never draw UI elements or logos.",
+      "promptFile": "docs/combat-fidelity-wave11-2026-10-23/summon-greer-initial.prompt.txt",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/greer-original.png",
+      "referenceImage": "public/sprites/generated/heroes/stargate-universe/greer-sgu.png",
+      "identityReferenceImage": "public/sprites/generated/heroes/stargate-universe/greer-sgu.png",
+      "toolArguments": {
+        "prompt": "Create a NEW NATIVE 16-frame sprite sheet for the same named character, correcting the reference as explicitly specified. Crisp detailed2D game sprite art, consistent face/anatomy/equipment in every frame, side-facing RIGHT with a slight three-quarter view. Transparent RGBA background. Use a TALL PORTRAIT canvas and an exact uniform4-COLUMN by4-ROW grid:16different full-body drawings. Do not compress the bottom row. Every head, hair, hand, boot, coat hem, weapon and native effect must be completely inside its own cell, with generous transparent air on all four sides (especially bottom soles and long weapons). No crop, no contact with neighboring cells, no text, borders, labels, ground, cast shadow, backdrop or baked checkerboard. Same scale across all16poses, no fake copied/duplicated frames. Four successive poses in each row, read left to right. No blood or gore. \nCHARACTER AND SOURCE: Master Sergeant Ronald Greer from Stargate Universe season1, portrayed by Jamil Walker Smith: Black adult man with dark brown skin and very short tightly curled black hair, dark grey/black SGC tactical uniform/vest, practical boots, M4A1 carbine. The supplied generic reference is WRONG about his pale skin/face: correct it to the real character identity. No P90, no magic.\nEXACT ROW ORDER: Row1: enter with M4A1 at low ready. Row2: four progressively shouldered aiming stances. Row3: four distinct aimed trigger/recoil/bracing poses with both hands holding the same M4A1 and every barrel fully visible. Row4: four lowering/withdrawal recovery poses.\nKeep every row generously separated and preserve the entire silhouette in ALL sixteen cells. The image is source artwork for extraction; never draw UI elements or logos.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/public/sprites/generated/heroes/stargate-universe/greer-sgu.png"
+        ],
+        "transparent_background": true
+      },
+      "nativeGenerationCalls": 1,
+      "file": "/workspace/generated_images/exec-44dc2c15-6baa-46f2-a4d4-fbfb0cf64091.png",
+      "reviewed": true,
+      "reviewNotes": "Universe season1, Black soldier with dark brown skin and M4A1; original pale generic reference corrected. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          {
+            "x": 334,
+            "y": 108,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 244,
+            "neighborhoodVisiblePixelsAboveAlpha24": 40,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 324,
+            "y": 109,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 248,
+            "neighborhoodVisiblePixelsAboveAlpha24": 38,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "attack": [
+          {
+            "x": 330,
+            "y": 103,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 242,
+            "neighborhoodVisiblePixelsAboveAlpha24": 45,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 327,
+            "y": 102,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 247,
+            "neighborhoodVisiblePixelsAboveAlpha24": 52,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 334,
+            "y": 110,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 248,
+            "neighborhoodVisiblePixelsAboveAlpha24": 47,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 323,
+            "y": 109,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 246,
+            "neighborhoodVisiblePixelsAboveAlpha24": 35,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "slug": "roland",
+      "id": "borderlands-roland",
+      "key": "Borderlands::Roland::Rafale du fusil de Roland",
+      "universe": "Borderlands",
+      "entityName": "Roland",
+      "actionName": "Rafale du fusil de Roland",
+      "performerHeroId": "roland_bl",
+      "sourceWork": "Borderlands (2009), quatre chasseurs originaux et CL4P-TP ; pas de compétences du Pré-Sequel/BL2 transférées",
+      "prompt": "Create a NEW NATIVE 16-frame sprite sheet for the same named character, correcting the reference as explicitly specified. Crisp detailed2D game sprite art, consistent face/anatomy/equipment in every frame, side-facing RIGHT with a slight three-quarter view. Transparent RGBA background. Use a TALL PORTRAIT canvas and an exact uniform4-COLUMN by4-ROW grid:16different full-body drawings. Do not compress the bottom row. Every head, hair, hand, boot, coat hem, weapon and native effect must be completely inside its own cell, with generous transparent air on all four sides (especially bottom soles and long weapons). No crop, no contact with neighboring cells, no text, borders, labels, ground, cast shadow, backdrop or baked checkerboard. Same scale across all16poses, no fake copied/duplicated frames. Four successive poses in each row, read left to right. No blood or gore. \nCHARACTER AND SOURCE: Roland, the Soldier from the ORIGINAL Borderlands2009. Adult Black soldier, dark brown skin, short dark hair/stubble, olive tactical cap/helmet with goggles and olive/tan segmented combat armour, brown/olive cargo trousers, practical brown boots, ordinary BL1 assault rifle. Use the supplied accepted source32 design as the identity/equipment reference: retain its olive tactical cap/goggles and olive/tan original Soldier armour. NO CrimsonRaiders flag, NO summoned turret, no magic aura and no Borderlands2 costume. Keep both hands on the same physical assault rifle.\nEXACT ROW ORDER: Row1 four distinct entering walking poses, rifle lowered; row2 four distinct progressively braced and shouldered aiming stances; row3 four different aimed firing/recoil stances, entire barrel inside each cell, no detached muzzle flashes or brass crossing adjacent figures; row4 four distinct lowering/withdrawal poses. All16whole bodies, generous transparent margins, no empty or duplicate cells.",
+      "promptFile": "docs/combat-fidelity-wave11-2026-10-23/summon-roland.prompt.txt",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/roland-returned.png",
+      "referenceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/roland_bl-original.png",
+      "identityReferenceImage": "docs/combat-fidelity-wave11-2026-10-23/part-c-sources/roland_bl-original.png",
+      "toolArguments": {
+        "prompt": "Create a NEW NATIVE 16-frame sprite sheet for the same named character, correcting the reference as explicitly specified. Crisp detailed2D game sprite art, consistent face/anatomy/equipment in every frame, side-facing RIGHT with a slight three-quarter view. Transparent RGBA background. Use a TALL PORTRAIT canvas and an exact uniform4-COLUMN by4-ROW grid:16different full-body drawings. Do not compress the bottom row. Every head, hair, hand, boot, coat hem, weapon and native effect must be completely inside its own cell, with generous transparent air on all four sides (especially bottom soles and long weapons). No crop, no contact with neighboring cells, no text, borders, labels, ground, cast shadow, backdrop or baked checkerboard. Same scale across all16poses, no fake copied/duplicated frames. Four successive poses in each row, read left to right. No blood or gore. \nCHARACTER AND SOURCE: Roland, the Soldier from the ORIGINAL Borderlands2009. Adult Black soldier, dark brown skin, short dark hair/stubble, olive tactical cap/helmet with goggles and olive/tan segmented combat armour, brown/olive cargo trousers, practical brown boots, ordinary BL1 assault rifle. Use the supplied accepted source32 design as the identity/equipment reference: retain its olive tactical cap/goggles and olive/tan original Soldier armour. NO CrimsonRaiders flag, NO summoned turret, no magic aura and no Borderlands2 costume. Keep both hands on the same physical assault rifle.\nEXACT ROW ORDER: Row1 four distinct entering walking poses, rifle lowered; row2 four distinct progressively braced and shouldered aiming stances; row3 four different aimed firing/recoil stances, entire barrel inside each cell, no detached muzzle flashes or brass crossing adjacent figures; row4 four distinct lowering/withdrawal poses. All16whole bodies, generous transparent margins, no empty or duplicate cells.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/part-c-sources/roland_bl-original.png"
+        ],
+        "transparent_background": true
+      },
+      "nativeGenerationCalls": 1,
+      "file": "/workspace/generated_images/exec-f6286f35-8b27-42b8-b005-d39554944b48.png",
+      "reviewed": true,
+      "reviewNotes": "Borderlands2009 olive cap/goggles and original Soldier armour. Two faint alpha>24 orange muzzle-halo pixels reach source right edge; complete body/barrel retained and no pixels erased. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          {
+            "x": 327,
+            "y": 112,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 245,
+            "neighborhoodVisiblePixelsAboveAlpha24": 61,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 322,
+            "y": 106,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 242,
+            "neighborhoodVisiblePixelsAboveAlpha24": 42,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "attack": [
+          {
+            "x": 307,
+            "y": 94,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 309,
+            "y": 96,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 307,
+            "y": 113,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 245,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 296,
+            "y": 103,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 248,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "slug": "furiosa",
+      "id": "madmax-furiosa",
+      "key": "Mad Max::Furiosa::Tir de précision de Furiosa",
+      "universe": "Mad Max",
+      "entityName": "Furiosa",
+      "actionName": "Tir de précision de Furiosa",
+      "performerHeroId": "furiosa",
+      "sourceWork": "Mad Max: Fury Road (2015), équipements portatifs ; aucun véhicule créé par Canvas",
+      "prompt": "Edit this16-pose Furiosa source atlas, keeping the same16distinct complete full-body gestures, same actual mechanical LEFT lower arm, same clothing, short hair, grease paint, scale and4x4portrait composition. Correct the held rifle consistently in ALL16poses to the source FuryRoad2015 Chinese SKS Type56 sniper configuration: brown wooden stock, actual steel SKS barrel, a clear LONG TELESCOPIC SCOPE mounted above the receiver, no bayonet and no cleaning rod, and the short extra downward grip beneath the stock used with her left prosthetic hand. The first output omitted the scope; this is a native physical-weapon correction, not an extra effect. Keep every scope/barrel/hand/boot fully inside its own cell with generous clear air. Do not remove the prosthesis, do not attach a rifle to her body, do not draw vehicles, text, floor shadows or fake background. Transparent RGBA; no blood or gore.",
+      "promptFile": "docs/combat-fidelity-wave11-2026-10-23/summon-furiosa-scope-correction.prompt.txt",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/furiosa-scope-correction-returned.png",
+      "referenceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/furiosa-original.png",
+      "identityReferenceImage": "public/sprites/generated/heroes/mad-max/furiosa.png",
+      "toolArguments": {
+        "prompt": "Edit this16-pose Furiosa source atlas, keeping the same16distinct complete full-body gestures, same actual mechanical LEFT lower arm, same clothing, short hair, grease paint, scale and4x4portrait composition. Correct the held rifle consistently in ALL16poses to the source FuryRoad2015 Chinese SKS Type56 sniper configuration: brown wooden stock, actual steel SKS barrel, a clear LONG TELESCOPIC SCOPE mounted above the receiver, no bayonet and no cleaning rod, and the short extra downward grip beneath the stock used with her left prosthetic hand. The first output omitted the scope; this is a native physical-weapon correction, not an extra effect. Keep every scope/barrel/hand/boot fully inside its own cell with generous clear air. Do not remove the prosthesis, do not attach a rifle to her body, do not draw vehicles, text, floor shadows or fake background. Transparent RGBA; no blood or gore.",
+        "referenced_image_paths": [
+          "/workspace/generated_images/exec-c6066f60-0bec-4a8d-8a47-bcbea60baa22.png"
+        ],
+        "transparent_background": true
+      },
+      "nativeGenerationCalls": 2,
+      "file": "/workspace/generated_images/exec-d22a3dc2-dd1b-4967-8008-89948aed1cea.png",
+      "reviewed": true,
+      "reviewNotes": "FuryRoad2015 short hair/black grease, actual left mechanical forearm and wooden Type56 SKS with long telescopic sight; equipment corrected natively. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          {
+            "x": 350,
+            "y": 93,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 242,
+            "neighborhoodVisiblePixelsAboveAlpha24": 57,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 326,
+            "y": 93,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 238,
+            "neighborhoodVisiblePixelsAboveAlpha24": 40,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "attack": [
+          {
+            "x": 341,
+            "y": 94,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 245,
+            "neighborhoodVisiblePixelsAboveAlpha24": 64,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 331,
+            "y": 95,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 62,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 331,
+            "y": 95,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 244,
+            "neighborhoodVisiblePixelsAboveAlpha24": 51,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 318,
+            "y": 95,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 247,
+            "neighborhoodVisiblePixelsAboveAlpha24": 48,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "slug": "korben",
+      "id": "fifth-korben",
+      "key": "Le Cinquième Element::Korben Dallas::Rafale du pistolet de Korben",
+      "universe": "Le Cinquième Element",
+      "entityName": "Korben Dallas",
+      "actionName": "Rafale du pistolet de Korben",
+      "performerHeroId": "korben",
+      "sourceWork": "Le Cinquième Élément (1997) ; ZF-1 attribué à Zorg, pistolet ordinaire à Korben",
+      "prompt": "Create a NEW NATIVE 16-frame sprite sheet for the same named character, correcting the reference as explicitly specified. Crisp detailed2D game sprite art, consistent face/anatomy/equipment in every frame, side-facing RIGHT with a slight three-quarter view. Transparent RGBA background. Use a TALL PORTRAIT canvas and an exact uniform4-COLUMN by4-ROW grid:16different full-body drawings. Do not compress the bottom row. Every head, hair, hand, boot, coat hem, weapon and native effect must be completely inside its own cell, with generous transparent air on all four sides (especially bottom soles and long weapons). No crop, no contact with neighboring cells, no text, borders, labels, ground, cast shadow, backdrop or baked checkerboard. Same scale across all16poses, no fake copied/duplicated frames. Four successive poses in each row, read left to right. No blood or gore. \nCHARACTER AND SOURCE: Korben Dallas from The Fifth Element1997. Adult light-skinned man with close-cropped light brown/blond hair, distinctive orange ribbed sleeveless vest, dark cargo trousers, black boots, ordinary compact metal semi-automatic pistol. The ZF-1 belongs to Zorg and MUST NOT appear here. No taxi, no magic.\nEXACT ROW ORDER: Row1: walk in with pistol lowered. Row2: four progressively raised pistol aiming poses. Row3: four different aimed firing/recoil poses showing actual ordinary pistol in the hand, full barrel safely in the cell, no long detached flash. Row4: four lowering and stepping-back recovery poses.\nKeep every row generously separated and preserve the entire silhouette in ALL sixteen cells. The image is source artwork for extraction; never draw UI elements or logos.",
+      "promptFile": "docs/combat-fidelity-wave11-2026-10-23/summon-korben-initial.prompt.txt",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/korben-original.png",
+      "referenceImage": "public/sprites/generated/heroes/le-cinquieme-element/korben.png",
+      "identityReferenceImage": "public/sprites/generated/heroes/le-cinquieme-element/korben.png",
+      "toolArguments": {
+        "prompt": "Create a NEW NATIVE 16-frame sprite sheet for the same named character, correcting the reference as explicitly specified. Crisp detailed2D game sprite art, consistent face/anatomy/equipment in every frame, side-facing RIGHT with a slight three-quarter view. Transparent RGBA background. Use a TALL PORTRAIT canvas and an exact uniform4-COLUMN by4-ROW grid:16different full-body drawings. Do not compress the bottom row. Every head, hair, hand, boot, coat hem, weapon and native effect must be completely inside its own cell, with generous transparent air on all four sides (especially bottom soles and long weapons). No crop, no contact with neighboring cells, no text, borders, labels, ground, cast shadow, backdrop or baked checkerboard. Same scale across all16poses, no fake copied/duplicated frames. Four successive poses in each row, read left to right. No blood or gore. \nCHARACTER AND SOURCE: Korben Dallas from The Fifth Element1997. Adult light-skinned man with close-cropped light brown/blond hair, distinctive orange ribbed sleeveless vest, dark cargo trousers, black boots, ordinary compact metal semi-automatic pistol. The ZF-1 belongs to Zorg and MUST NOT appear here. No taxi, no magic.\nEXACT ROW ORDER: Row1: walk in with pistol lowered. Row2: four progressively raised pistol aiming poses. Row3: four different aimed firing/recoil poses showing actual ordinary pistol in the hand, full barrel safely in the cell, no long detached flash. Row4: four lowering and stepping-back recovery poses.\nKeep every row generously separated and preserve the entire silhouette in ALL sixteen cells. The image is source artwork for extraction; never draw UI elements or logos.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/public/sprites/generated/heroes/le-cinquieme-element/korben.png"
+        ],
+        "transparent_background": true
+      },
+      "nativeGenerationCalls": 1,
+      "file": "/workspace/generated_images/exec-45dba2f7-1e0c-43ce-99df-353d64235d3a.png",
+      "reviewed": true,
+      "reviewNotes": "FifthElement1997 orange top and ordinary pistol; no ZF1 substitution. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "preparation": [
+          null,
+          null,
+          {
+            "x": 310,
+            "y": 93,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 249,
+            "neighborhoodVisiblePixelsAboveAlpha24": 76,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 316,
+            "y": 92,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 59,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "attack": [
+          {
+            "x": 310,
+            "y": 92,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 251,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 312,
+            "y": 95,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 249,
+            "neighborhoodVisiblePixelsAboveAlpha24": 81,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 303,
+            "y": 96,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 248,
+            "neighborhoodVisiblePixelsAboveAlpha24": 79,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          },
+          {
+            "x": 309,
+            "y": 94,
+            "space": "packed-native-pixels",
+            "role": "physical-barrel-muzzle",
+            "centerAlpha": 250,
+            "neighborhoodVisiblePixelsAboveAlpha24": 69,
+            "neighborhoodPixels": 81,
+            "visuallyReviewed": true
+          }
+        ],
+        "recovery": [
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "slug": "lancelot",
+      "id": "kaamelott-lancelot",
+      "key": "Kaamelott::Lancelot::Passe d’armes de Lancelot",
+      "universe": "Kaamelott",
+      "entityName": "Lancelot",
+      "actionName": "Passe d’armes de Lancelot",
+      "performerHeroId": "lancelot_kaamelott",
+      "sourceWork": "Kaamelott LivreIII (2005), chevaliers humains ; paroles et rations ne blessent pas par magie",
+      "prompt": "Create a NEW NATIVE 16-frame sprite sheet for the same named character, correcting the reference as explicitly specified. Crisp detailed2D game sprite art, consistent face/anatomy/equipment in every frame, side-facing RIGHT with a slight three-quarter view. Transparent RGBA background. Use a TALL PORTRAIT canvas and an exact uniform4-COLUMN by4-ROW grid:16different full-body drawings. Do not compress the bottom row. Every head, hair, hand, boot, coat hem, weapon and native effect must be completely inside its own cell, with generous transparent air on all four sides (especially bottom soles and long weapons). No crop, no contact with neighboring cells, no text, borders, labels, ground, cast shadow, backdrop or baked checkerboard. Same scale across all16poses, no fake copied/duplicated frames. Four successive poses in each row, read left to right. No blood or gore. \nCHARACTER AND SOURCE: Lancelot from Kaamelott LivreIII, Thomas Cousseau character. Adult man with blond/light brown neck-length hair and short light beard/moustache, white/cream padded long-sleeved tunic, simple brown leather cross straps/belt, brown trousers/boots and a plain straight steel medieval sword with simple crossguard. The supplied dark-haired blue fantasy knight reference is WRONG: replace dark hair/blue armor/black cape with the real white tunic and blond hair. No holy magic, no light beams.\nEXACT ROW ORDER: Row1: enter with sword lowered. Row2: four progressively braced sword-ready stances. Row3: four distinct physical backswing/cut/thrust/return sword poses with complete blade inside cell, no magical arc or duplicate sword. Row4: four calm lowering and retreat recovery poses.\nKeep every row generously separated and preserve the entire silhouette in ALL sixteen cells. The image is source artwork for extraction; never draw UI elements or logos.",
+      "promptFile": "docs/combat-fidelity-wave11-2026-10-23/summon-lancelot-initial.prompt.txt",
+      "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/lancelot-original.png",
+      "referenceImage": "public/sprites/generated/heroes/kaamelott/lancelot-kaamelott.png",
+      "identityReferenceImage": "public/sprites/generated/heroes/kaamelott/lancelot-kaamelott.png",
+      "toolArguments": {
+        "prompt": "Create a NEW NATIVE 16-frame sprite sheet for the same named character, correcting the reference as explicitly specified. Crisp detailed2D game sprite art, consistent face/anatomy/equipment in every frame, side-facing RIGHT with a slight three-quarter view. Transparent RGBA background. Use a TALL PORTRAIT canvas and an exact uniform4-COLUMN by4-ROW grid:16different full-body drawings. Do not compress the bottom row. Every head, hair, hand, boot, coat hem, weapon and native effect must be completely inside its own cell, with generous transparent air on all four sides (especially bottom soles and long weapons). No crop, no contact with neighboring cells, no text, borders, labels, ground, cast shadow, backdrop or baked checkerboard. Same scale across all16poses, no fake copied/duplicated frames. Four successive poses in each row, read left to right. No blood or gore. \nCHARACTER AND SOURCE: Lancelot from Kaamelott LivreIII, Thomas Cousseau character. Adult man with blond/light brown neck-length hair and short light beard/moustache, white/cream padded long-sleeved tunic, simple brown leather cross straps/belt, brown trousers/boots and a plain straight steel medieval sword with simple crossguard. The supplied dark-haired blue fantasy knight reference is WRONG: replace dark hair/blue armor/black cape with the real white tunic and blond hair. No holy magic, no light beams.\nEXACT ROW ORDER: Row1: enter with sword lowered. Row2: four progressively braced sword-ready stances. Row3: four distinct physical backswing/cut/thrust/return sword poses with complete blade inside cell, no magical arc or duplicate sword. Row4: four calm lowering and retreat recovery poses.\nKeep every row generously separated and preserve the entire silhouette in ALL sixteen cells. The image is source artwork for extraction; never draw UI elements or logos.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/public/sprites/generated/heroes/kaamelott/lancelot-kaamelott.png"
+        ],
+        "transparent_background": true
+      },
+      "nativeGenerationCalls": 1,
+      "file": "/workspace/generated_images/exec-d1de9907-de53-4620-bcf6-837e38c7d501.png",
+      "reviewed": true,
+      "reviewNotes": "KaamelottLivreIII fair-haired man, cream padded tunic and brown crossed harness, plain steel sword; no fantasy magic. All16full bodies and4phases reviewed. A single standing head-to-sole calibration preserves crouch flexion; native game adaptation, no official frame or1:1 certification.",
+      "calibration": {
+        "row": 0,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "standing-head-to-sole-arrival-silhouette",
+        "excludesRaisedArmsAndWeapons": true
+      },
+      "effectAnchors": null
+    }
+  ],
+  "attempts": [
+    {
+      "key": "furiosa",
+      "heroId": "furiosa",
+      "response": "docs/combat-fidelity-wave11-2026-10-23/summon-furiosa-initial-result.json",
+      "status": "response-received",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "generatedPath": "/workspace/generated_images/exec-c6066f60-0bec-4a8d-8a47-bcbea60baa22.png",
+      "archivedPath": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/furiosa-original.png",
+      "sha256": "184a111b21d8ecd6b38c4917068f918448f16353865e0f51693e86f31826f7c0",
+      "reviewed": true,
+      "retained": false,
+      "retainedPoses": 0,
+      "exclusionReason": "Original scope omitted: all16 replaced by native scope correction."
+    },
+    {
+      "key": "furiosa-scope-correction",
+      "heroId": "furiosa",
+      "response": "docs/combat-fidelity-wave11-2026-10-23/summon-furiosa-scope-correction-result.json",
+      "status": "response-received",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "generatedPath": "/workspace/generated_images/exec-d22a3dc2-dd1b-4967-8008-89948aed1cea.png",
+      "archivedPath": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/furiosa-scope-correction-returned.png",
+      "sha256": "acf7086c57c2986698b35fc9b0f41512eeccc84ed14d8a4c52c85a641865ae6d",
+      "reviewed": true,
+      "retained": true,
+      "retainedPoses": 16
+    },
+    {
+      "key": "greer",
+      "heroId": "greer_sgu",
+      "response": "docs/combat-fidelity-wave11-2026-10-23/summon-greer-initial-result.json",
+      "status": "response-received",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "generatedPath": "/workspace/generated_images/exec-44dc2c15-6baa-46f2-a4d4-fbfb0cf64091.png",
+      "archivedPath": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/greer-original.png",
+      "sha256": "409bb1e9152235986f79cad254471b11967cb93c9c1c7f3680fb57a69c58f562",
+      "reviewed": true,
+      "retained": true,
+      "retainedPoses": 16
+    },
+    {
+      "key": "hermione",
+      "heroId": "hermione_granger",
+      "response": "docs/combat-fidelity-wave11-2026-10-23/summon-hermione-initial-result.json",
+      "status": "promise-rejected",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "explicitRefusal": true,
+      "refusalCode": "moderation_blocked",
+      "retryAuthorized": false,
+      "reviewed": false,
+      "retained": false,
+      "retainedPoses": 0,
+      "exclusionReason": "Explicit moderation_blocked; no native asset, existing support poses reused."
+    },
+    {
+      "key": "korben",
+      "heroId": "korben",
+      "response": "docs/combat-fidelity-wave11-2026-10-23/summon-korben-initial-result.json",
+      "status": "response-received",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "generatedPath": "/workspace/generated_images/exec-45dba2f7-1e0c-43ce-99df-353d64235d3a.png",
+      "archivedPath": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/korben-original.png",
+      "sha256": "d259fde7ee04b261692ca2497a4a7b130bf106c9430b8ca09e02fef2d46a7ee2",
+      "reviewed": true,
+      "retained": true,
+      "retainedPoses": 16
+    },
+    {
+      "key": "lancelot",
+      "heroId": "lancelot_kaamelott",
+      "response": "docs/combat-fidelity-wave11-2026-10-23/summon-lancelot-initial-result.json",
+      "status": "response-received",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "generatedPath": "/workspace/generated_images/exec-d1de9907-de53-4620-bcf6-837e38c7d501.png",
+      "archivedPath": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/lancelot-original.png",
+      "sha256": "b5389dad16a640755ca9508a7db4d86d6a48599a3792f106d523fe17dd218f99",
+      "reviewed": true,
+      "retained": true,
+      "retainedPoses": 16
+    },
+    {
+      "key": "roland",
+      "heroId": "roland_bl",
+      "response": "docs/combat-fidelity-wave11-2026-10-23/summon-roland-result.json",
+      "status": "response-received",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "generatedPath": "/workspace/generated_images/exec-f6286f35-8b27-42b8-b005-d39554944b48.png",
+      "archivedPath": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/roland-returned.png",
+      "sha256": "79443bba838e0dcb1828c26c73dc907224bf5b1a190c7f4368b05440f959a8f6",
+      "reviewed": true,
+      "retained": true,
+      "retainedPoses": 16
+    },
+    {
+      "key": "ronon",
+      "heroId": "ronon_dex",
+      "response": "docs/combat-fidelity-wave11-2026-10-23/summon-ronon-initial-result.json",
+      "status": "response-received",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "generatedPath": "/workspace/generated_images/exec-15c48019-d432-412d-b924-8f89418cba15.png",
+      "archivedPath": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/ronon-original.png",
+      "sha256": "65e4164698908c01ee89cb6d1ff5504cb5601648d2b75264146cba10d4b20d7f",
+      "reviewed": true,
+      "retained": true,
+      "retainedPoses": 16
+    },
+    {
+      "key": "spike",
+      "heroId": "spike_buffy",
+      "response": "docs/combat-fidelity-wave11-2026-10-23/summon-spike-initial-result.json",
+      "status": "response-received",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "generatedPath": "/workspace/generated_images/exec-32ca13a5-2af4-41b7-8dab-efe3b973b799.png",
+      "archivedPath": "docs/combat-fidelity-wave11-2026-10-23/summon-sources/spike-original.png",
+      "sha256": "fe72308bfea5f4ea5e8f2601f64fc808f98924adb8406164b9761d91c2c4b236",
+      "reviewed": true,
+      "retained": true,
+      "retainedPoses": 16
+    }
+  ],
+  "blocked": [
+    {
+      "heroId": "hermione_granger",
+      "requestId": "1ae437b2-a95d-4b1c-881a-72548b5912bf",
+      "reason": "moderation_blocked",
+      "nativeAssets": 0,
+      "legacySupportPoseReuse": true
+    }
+  ],
+  "source1to1Verified": false
+}

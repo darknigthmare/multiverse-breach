@@ -1,0 +1,392 @@
+[
+  {
+    "id": "arthur-motion-a",
+    "heroId": "arthur_kaamelott",
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-motion-a.prompt.txt",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT ARTHUR from KAAMELOTT LIVRE III(2005), explicitly adapted artwork based on the TV character. Approved shared version: SHORT slightly CURLY DARK BROWN hair, SHORT DARK BEARD AND MOUSTACHE, a THIN MODEST GOLD ROYAL CIRCLET, RED-BROWN LEATHER CUIRASS over BURGUNDY tunic, GRAY CHAINMAIL SLEEVES, BROWN LEATHER BELT and sword SCABBARD at LEFT hip, DARK BROWN trousers, LEATHER BOOTS, DARK BROWN CAPE with a DISCREET collar. The old supplied green sheet is FACE/IDENTITY REFERENCE ONLY: DO NOT copy its giant fantasy fur mane, squat chibi anatomy, massive crown, black fantasy armor, green background, white grid, gravestone or blue magical blade rays. Replace those with the explicit LivreIII clothes above. Normal human adult proportions and stature, not dwarf/chibi. Excalibur is a PHYSICAL STRAIGHT STEEL SWORD with a SIMPLE GOLD CROSSGUARD, held through the hilt by anatomical RIGHT hand or a real two-handed grip. No sword beam, fire blast, glowing body, dragon, summoned knight, gun or magic attack. Simple/light/crouch/aerial/ledgeAttack use real sword cuts; ordinary SECONDARY Estoc d’Excalibur is a physical THRUST for charged/special rows, distinct from the separate32 super Passe d’armes à Excalibur. Guard is a physical blade parry, not an invented energy shield. On movement or hanging rows, Excalibur remains stowed in the actual left scabbard so both hands are free. Gloves are simple fitted dark leather; hands anatomically joined to wrists/forearms. No opponent drawn, no gore, no dismemberment.\n\nCRITICAL: TRANSPARENT RGBA background, original native pixel clusters and shading, not an extracted official sprite or certified source1:1 animation. NO text/labels/grid/borders/floor/platform/scenery/drop shadows or decorative VFX. EXACTLY FOUR COLUMNS. Each numbered state is its own row of FOUR COMPLETE and anatomically DISTINCT hand-drawn bodies, chronological LEFT→RIGHT. Do NOT omit a row. Do not duplicate a pose with different effects. Full shoes/fingers/coat/cape/weapon tips stay inside their cell and never touch neighboring drawings or canvas edges. Body anatomy: exactly two connected arms/two legs, hands connect through actual wrists/elbows to shoulders. Default facing RIGHT. Keep one consistent upright crown-to-sole anatomical size throughout the whole native source; genuinely crouched, tucked, hanging or prone bodies retain their shorter projection. NEVER enlarge a crouch to fill a row. Draw every row at the SAME source pixel scale. Generous transparent gutter around EVERY body, at least20px between neighboring silhouettes, especially last two rows. Long weapons must fit completely: shrink ALL bodies uniformly rather than clip blade tips. Four real distinct joint/foot/torso configurations per row; natural breathing shifts for idle. Last row requires the same complete space as first. No cropped boot sole, detached fingertip, floating weapon or adjacent-row overlap.\n\nEXACTLY EIGHT ROWS×FOUR COLUMNS=32NATIVE COMPLETE BODIES, TALL PORTRAIT1:2 canvas, all8rows equally spaced. Never a cramped2:3canvas. Keep native standing body about170px on a1774px tall source, leaving transparent row gutters.\nROW1 idle: four subtle real breathing/weight-shift bodies, hands relaxed/ready, both feet planted. Weapon safely sheathed.\nROW2 walk: four real rightward walking stride phases, alternating legs and arms, weapon sheathed.\nROW3 run: four genuine rightward running strides, opposite knees/arms, weapon sheathed.\nROW4 turn: start facing LEFT, then left-rear three-quarter, right-rear three-quarter, END FACING RIGHT; four distinct physical turn drawings, never just mirrored duplicates.\nROW5 jumpStart: upright preparation -> knees bend -> heels rise -> actual takeoff, weapon sheathed.\nROW6 jumpRise: four distinct airborne rising configurations with moving hips/knees/arms, no floor, weapon sheathed.\nROW7 jumpApex: four true midair balance/tuck changes at apex, weapon sheathed.\nROW8 fall: four real descending body configurations gradually preparing boots for ground, complete feet, weapon sheathed.\n\nCHECK FINAL ROW: full feet, complete hands and sword/stake tips; at least20transparent pixels between every row. All numbered rows must actually be drawn. No skeleton placeholders or repeated frames.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png"
+      ],
+      "transparent_background": true
+    },
+    "expectedRows": 8,
+    "startedAt": {
+      "current_time": "2026-10-23 04:01:12 UTC"
+    },
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-f1a7daff-b112-4446-a8f2-afba9ba275f2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourcePath": "/workspace/generated_images/exec-f1a7daff-b112-4446-a8f2-afba9ba275f2.png",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "canonicalVerified": false,
+    "source1to1Verified": false,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-motion-a.native.png",
+    "sourceSha256": "5e183dcb6f338b06adfb1852a35cfe1625fdb0958344cc2f971e6816d714c5f5",
+    "dimensions": {
+      "width": 1024,
+      "height": 1536
+    },
+    "promptFileSha256": "daffa0bd3eb4ed3d1d40c49be19070b6a0e8b03f18ab77f490ba278307f13cab",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png",
+        "sha256": "271a7fe25443889971a39f3355424b882115271c7371c07d4276196f4ea8e791"
+      }
+    ],
+    "observedRows": 8,
+    "observedNativePoses": 32,
+    "review": {
+      "observedRows": 8,
+      "nativeStateOrder": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "missingStates": []
+    },
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  },
+  {
+    "id": "arthur-motion-b",
+    "heroId": "arthur_kaamelott",
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-motion-b.prompt.txt",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT ARTHUR from KAAMELOTT LIVRE III(2005), explicitly adapted artwork based on the TV character. Approved shared version: SHORT slightly CURLY DARK BROWN hair, SHORT DARK BEARD AND MOUSTACHE, a THIN MODEST GOLD ROYAL CIRCLET, RED-BROWN LEATHER CUIRASS over BURGUNDY tunic, GRAY CHAINMAIL SLEEVES, BROWN LEATHER BELT and sword SCABBARD at LEFT hip, DARK BROWN trousers, LEATHER BOOTS, DARK BROWN CAPE with a DISCREET collar. The old supplied green sheet is FACE/IDENTITY REFERENCE ONLY: DO NOT copy its giant fantasy fur mane, squat chibi anatomy, massive crown, black fantasy armor, green background, white grid, gravestone or blue magical blade rays. Replace those with the explicit LivreIII clothes above. Normal human adult proportions and stature, not dwarf/chibi. Excalibur is a PHYSICAL STRAIGHT STEEL SWORD with a SIMPLE GOLD CROSSGUARD, held through the hilt by anatomical RIGHT hand or a real two-handed grip. No sword beam, fire blast, glowing body, dragon, summoned knight, gun or magic attack. Simple/light/crouch/aerial/ledgeAttack use real sword cuts; ordinary SECONDARY Estoc d’Excalibur is a physical THRUST for charged/special rows, distinct from the separate32 super Passe d’armes à Excalibur. Guard is a physical blade parry, not an invented energy shield. On movement or hanging rows, Excalibur remains stowed in the actual left scabbard so both hands are free. Gloves are simple fitted dark leather; hands anatomically joined to wrists/forearms. No opponent drawn, no gore, no dismemberment.\n\nCRITICAL: TRANSPARENT RGBA background, original native pixel clusters and shading, not an extracted official sprite or certified source1:1 animation. NO text/labels/grid/borders/floor/platform/scenery/drop shadows or decorative VFX. EXACTLY FOUR COLUMNS. Each numbered state is its own row of FOUR COMPLETE and anatomically DISTINCT hand-drawn bodies, chronological LEFT→RIGHT. Do NOT omit a row. Do not duplicate a pose with different effects. Full shoes/fingers/coat/cape/weapon tips stay inside their cell and never touch neighboring drawings or canvas edges. Body anatomy: exactly two connected arms/two legs, hands connect through actual wrists/elbows to shoulders. Default facing RIGHT. Keep one consistent upright crown-to-sole anatomical size throughout the whole native source; genuinely crouched, tucked, hanging or prone bodies retain their shorter projection. NEVER enlarge a crouch to fill a row. Draw every row at the SAME source pixel scale. Generous transparent gutter around EVERY body, at least20px between neighboring silhouettes, especially last two rows. Long weapons must fit completely: shrink ALL bodies uniformly rather than clip blade tips. Four real distinct joint/foot/torso configurations per row; natural breathing shifts for idle. Last row requires the same complete space as first. No cropped boot sole, detached fingertip, floating weapon or adjacent-row overlap.\n\nEXACTLY EIGHT ROWS×FOUR COLUMNS=32NATIVE COMPLETE BODIES, TALL PORTRAIT1:2 canvas, all8rows equally spaced. Never a cramped2:3canvas. Keep native standing body about170px on a1774px tall source, leaving transparent row gutters.\nROW1 fastFall: four compact but physically different descending tucks/leg extensions, weapon sheathed, no floor.\nROW2 land: four complete chronological landing bodies: boots make contact -> knees compress -> hips rise -> UPRIGHT recovered standing. Weapon sheathed; keep original lower crouch height.\nROW3 crouchEnter: upright -> knees bend -> hips lower -> established crouch. Four different real bodies.\nROW4 crouchIdle: four different low balanced crouched stances/breathing shifts. Weapon sheathed; no size inflation.\nROW5 crouchExit: low crouch -> one knee straightens -> hips rise -> UPRIGHT standing. Four real transitions.\nROW6 crouchCharge: four low martial weight transfers preparing to rise/kick (Buffy) or step/thrust(Arthur), no release or magic. Weapon may stay sheathed.\nROW7 taunt1: four restrained character-appropriate gestures then return to upright. Buffy: wry empty-hand challenge/weightshift. Arthur: dry exasperated empty-hand shrug then composed kingly readiness. No new props.\nROW8 hitStun: four non-graphic struck/recoil/rebalance bodies with connected limbs. Weapon secured, no blood.\n\nCHECK FINAL ROW: full feet, complete hands and sword/stake tips; at least20transparent pixels between every row. All numbered rows must actually be drawn. No skeleton placeholders or repeated frames.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png"
+      ],
+      "transparent_background": true
+    },
+    "expectedRows": 8,
+    "startedAt": {
+      "current_time": "2026-10-23 04:01:12 UTC"
+    },
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-6579910d-4348-462d-b24e-92344f97fa9b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourcePath": "/workspace/generated_images/exec-6579910d-4348-462d-b24e-92344f97fa9b.png",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "canonicalVerified": false,
+    "source1to1Verified": false,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-motion-b.native.png",
+    "sourceSha256": "82c8bd0e2c4282cf11292c0728ed8cecb6fb9d13411b2e4ffb97923c7693e2e6",
+    "dimensions": {
+      "width": 1024,
+      "height": 1536
+    },
+    "promptFileSha256": "280a36d955ffb312247f0c35c9b34d248c1f17056a89a9552b002b73d66a7eb9",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png",
+        "sha256": "271a7fe25443889971a39f3355424b882115271c7371c07d4276196f4ea8e791"
+      }
+    ],
+    "observedRows": 8,
+    "observedNativePoses": 32,
+    "review": {
+      "observedRows": 8,
+      "nativeStateOrder": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "missingStates": []
+    },
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  },
+  {
+    "id": "arthur-defense",
+    "heroId": "arthur_kaamelott",
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-defense.prompt.txt",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT ARTHUR from KAAMELOTT LIVRE III(2005), explicitly adapted artwork based on the TV character. Approved shared version: SHORT slightly CURLY DARK BROWN hair, SHORT DARK BEARD AND MOUSTACHE, a THIN MODEST GOLD ROYAL CIRCLET, RED-BROWN LEATHER CUIRASS over BURGUNDY tunic, GRAY CHAINMAIL SLEEVES, BROWN LEATHER BELT and sword SCABBARD at LEFT hip, DARK BROWN trousers, LEATHER BOOTS, DARK BROWN CAPE with a DISCREET collar. The old supplied green sheet is FACE/IDENTITY REFERENCE ONLY: DO NOT copy its giant fantasy fur mane, squat chibi anatomy, massive crown, black fantasy armor, green background, white grid, gravestone or blue magical blade rays. Replace those with the explicit LivreIII clothes above. Normal human adult proportions and stature, not dwarf/chibi. Excalibur is a PHYSICAL STRAIGHT STEEL SWORD with a SIMPLE GOLD CROSSGUARD, held through the hilt by anatomical RIGHT hand or a real two-handed grip. No sword beam, fire blast, glowing body, dragon, summoned knight, gun or magic attack. Simple/light/crouch/aerial/ledgeAttack use real sword cuts; ordinary SECONDARY Estoc d’Excalibur is a physical THRUST for charged/special rows, distinct from the separate32 super Passe d’armes à Excalibur. Guard is a physical blade parry, not an invented energy shield. On movement or hanging rows, Excalibur remains stowed in the actual left scabbard so both hands are free. Gloves are simple fitted dark leather; hands anatomically joined to wrists/forearms. No opponent drawn, no gore, no dismemberment.\n\nCRITICAL: TRANSPARENT RGBA background, original native pixel clusters and shading, not an extracted official sprite or certified source1:1 animation. NO text/labels/grid/borders/floor/platform/scenery/drop shadows or decorative VFX. EXACTLY FOUR COLUMNS. Each numbered state is its own row of FOUR COMPLETE and anatomically DISTINCT hand-drawn bodies, chronological LEFT→RIGHT. Do NOT omit a row. Do not duplicate a pose with different effects. Full shoes/fingers/coat/cape/weapon tips stay inside their cell and never touch neighboring drawings or canvas edges. Body anatomy: exactly two connected arms/two legs, hands connect through actual wrists/elbows to shoulders. Default facing RIGHT. Keep one consistent upright crown-to-sole anatomical size throughout the whole native source; genuinely crouched, tucked, hanging or prone bodies retain their shorter projection. NEVER enlarge a crouch to fill a row. Draw every row at the SAME source pixel scale. Generous transparent gutter around EVERY body, at least20px between neighboring silhouettes, especially last two rows. Long weapons must fit completely: shrink ALL bodies uniformly rather than clip blade tips. Four real distinct joint/foot/torso configurations per row; natural breathing shifts for idle. Last row requires the same complete space as first. No cropped boot sole, detached fingertip, floating weapon or adjacent-row overlap.\n\nEXACTLY EIGHT ROWS×FOUR COLUMNS=32NATIVE COMPLETE BODIES, TALL PORTRAIT1:2 canvas, all8rows equally spaced. Never a cramped2:3canvas. Keep native standing body about170px on a1774px tall source, leaving transparent row gutters.\nROW1 shieldEnter: relaxed standing -> defensive arms/blade rises -> elbows brace -> composed parry stance.\nROW2 shieldHold: four distinct sustained defensive weight/arm configurations. Buffy bare-forearm martial parry, stake safely sheathed; Arthur uses actual Excalibur hilt grip and blade parry.\nROW3 shieldHit: four real parry impact/recoil bodies, joints and feet move, no invented round shield.\nROW4 perfectShield: four precise parry/deflection bodies with firm wrist/foot shifts, NO glow replacing anatomy.\nROW5 shieldBreak: EXACT DEDICATED FIFTH ROW REQUIRED: upright braced guard -> torso recoils -> knees buckle -> low stagger recovery. FOUR REAL FULL BODIES. This is not shieldExit and must not be omitted.\nROW6 shieldExit: defensive hands/blade lowers -> elbows relax -> feet reset -> UPRIGHT recovered standing. Four real transitions.\nROW7 dead: non-graphic knockdown sequence: shocked stance -> knees sink -> body rolls down -> lies still. Complete head/shoes, no gore.\nROW8 defeat: four non-graphic conscious exhausted/sitting/kneeling defeated body configurations. Complete body, no gravestone/new props.\n\nCHECK FINAL ROW: full feet, complete hands and sword/stake tips; at least20transparent pixels between every row. All numbered rows must actually be drawn. No skeleton placeholders or repeated frames.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png"
+      ],
+      "transparent_background": true
+    },
+    "expectedRows": 8,
+    "startedAt": {
+      "current_time": "2026-10-23 04:01:12 UTC"
+    },
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-00caba00-0fcd-4a92-9bd1-69989d5ec2d0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourcePath": "/workspace/generated_images/exec-00caba00-0fcd-4a92-9bd1-69989d5ec2d0.png",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "canonicalVerified": false,
+    "source1to1Verified": false,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-defense.native.png",
+    "sourceSha256": "75f06043252eb951cc150d47c79cceb6b91d8d38a85efbed2fdf6de3e898d204",
+    "dimensions": {
+      "width": 1024,
+      "height": 1536
+    },
+    "promptFileSha256": "6358bb7aa713e34a94c54e7cadfc49f98c5e1dd7f6116f7fa03822f89df3eda5",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png",
+        "sha256": "271a7fe25443889971a39f3355424b882115271c7371c07d4276196f4ea8e791"
+      }
+    ],
+    "observedRows": 8,
+    "observedNativePoses": 32,
+    "review": {
+      "observedRows": 8,
+      "nativeStateOrder": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "missingStates": []
+    },
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  },
+  {
+    "id": "arthur-combat-a",
+    "heroId": "arthur_kaamelott",
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-combat-a.prompt.txt",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT ARTHUR from KAAMELOTT LIVRE III(2005), explicitly adapted artwork based on the TV character. Approved shared version: SHORT slightly CURLY DARK BROWN hair, SHORT DARK BEARD AND MOUSTACHE, a THIN MODEST GOLD ROYAL CIRCLET, RED-BROWN LEATHER CUIRASS over BURGUNDY tunic, GRAY CHAINMAIL SLEEVES, BROWN LEATHER BELT and sword SCABBARD at LEFT hip, DARK BROWN trousers, LEATHER BOOTS, DARK BROWN CAPE with a DISCREET collar. The old supplied green sheet is FACE/IDENTITY REFERENCE ONLY: DO NOT copy its giant fantasy fur mane, squat chibi anatomy, massive crown, black fantasy armor, green background, white grid, gravestone or blue magical blade rays. Replace those with the explicit LivreIII clothes above. Normal human adult proportions and stature, not dwarf/chibi. Excalibur is a PHYSICAL STRAIGHT STEEL SWORD with a SIMPLE GOLD CROSSGUARD, held through the hilt by anatomical RIGHT hand or a real two-handed grip. No sword beam, fire blast, glowing body, dragon, summoned knight, gun or magic attack. Simple/light/crouch/aerial/ledgeAttack use real sword cuts; ordinary SECONDARY Estoc d’Excalibur is a physical THRUST for charged/special rows, distinct from the separate32 super Passe d’armes à Excalibur. Guard is a physical blade parry, not an invented energy shield. On movement or hanging rows, Excalibur remains stowed in the actual left scabbard so both hands are free. Gloves are simple fitted dark leather; hands anatomically joined to wrists/forearms. No opponent drawn, no gore, no dismemberment.\n\nCRITICAL: TRANSPARENT RGBA background, original native pixel clusters and shading, not an extracted official sprite or certified source1:1 animation. NO text/labels/grid/borders/floor/platform/scenery/drop shadows or decorative VFX. EXACTLY FOUR COLUMNS. Each numbered state is its own row of FOUR COMPLETE and anatomically DISTINCT hand-drawn bodies, chronological LEFT→RIGHT. Do NOT omit a row. Do not duplicate a pose with different effects. Full shoes/fingers/coat/cape/weapon tips stay inside their cell and never touch neighboring drawings or canvas edges. Body anatomy: exactly two connected arms/two legs, hands connect through actual wrists/elbows to shoulders. Default facing RIGHT. Keep one consistent upright crown-to-sole anatomical size throughout the whole native source; genuinely crouched, tucked, hanging or prone bodies retain their shorter projection. NEVER enlarge a crouch to fill a row. Draw every row at the SAME source pixel scale. Generous transparent gutter around EVERY body, at least20px between neighboring silhouettes, especially last two rows. Long weapons must fit completely: shrink ALL bodies uniformly rather than clip blade tips. Four real distinct joint/foot/torso configurations per row; natural breathing shifts for idle. Last row requires the same complete space as first. No cropped boot sole, detached fingertip, floating weapon or adjacent-row overlap.\n\nEXACTLY EIGHT ROWS×FOUR COLUMNS=32NATIVE COMPLETE BODIES, TALL PORTRAIT1:2 canvas, all8rows equally spaced. Never a cramped2:3canvas. Keep native standing body about170px on a1774px tall source, leaving transparent row gutters.\nROW1 attackLight1: actual Excalibur simple cut: right-hand hilt loads -> blade sweeps forward -> complete diagonal cutting extension -> recoil. Sword attached to correct hand, tip intact.\nROW2 attackLight2: actual sword cut2 from a different angle: hips/feet load -> blade crosses upward -> committed short cut -> return. Four real bodies, not four glowing copies.\nROW3 attackLight3: stronger physical sword cut: knees brace -> shoulders rotate -> complete diagonal steel blade cut -> balanced recovery. Blade tip stays within cell, no ray.\nROW4 crouchLight: EXACT FOURTH ROW: low physical sword cut, load -> short forward extension -> low steel sweep -> retract into crouch. Keep naturally shorter projection.\nROW5 chargeStart: ordinary Estoc preparation: right-hand hilt readies -> blade aligns forward -> rear knee bends -> forward line established. Actual blade throughout, no magic charging.\nROW6 chargeLoop: EXACT SIXTH ROW REQUIRED: four distinct loaded-thrust stances with varying elbows/hips/knees, actual hilt grip and intact blade. No aura-only duplicates.\nROW7 chargeRelease: ordinary SECONDARY Estoc d’Excalibur, four real phases: load rear leg -> step -> actual forward steel thrust -> elbow/hips retract. No blade ray or fire.\nROW8 chargeRecovery: extended sword thrust -> elbow retracts -> lead boot resets -> UPRIGHT ready with steel blade lowered safely. Four distinct physical bodies.\n\nCHECK FINAL ROW: full feet, complete hands and sword/stake tips; at least20transparent pixels between every row. All numbered rows must actually be drawn. No skeleton placeholders or repeated frames.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png"
+      ],
+      "transparent_background": true
+    },
+    "expectedRows": 8,
+    "startedAt": {
+      "current_time": "2026-10-23 04:01:12 UTC"
+    },
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-de8aa5ed-505a-4bb6-8920-02b42a5f948e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourcePath": "/workspace/generated_images/exec-de8aa5ed-505a-4bb6-8920-02b42a5f948e.png",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "canonicalVerified": false,
+    "source1to1Verified": false,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-combat-a.native.png",
+    "sourceSha256": "375b37b1c206e02cbfb1c66cb2fef1d19d3a8a26ddf9a67959ec7096a658a20e",
+    "dimensions": {
+      "width": 1024,
+      "height": 1536
+    },
+    "promptFileSha256": "b2118d27883f70f6bea3be18841730b60117c6ad2852befdb894698fdabcb6c9",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png",
+        "sha256": "271a7fe25443889971a39f3355424b882115271c7371c07d4276196f4ea8e791"
+      }
+    ],
+    "observedRows": 8,
+    "observedNativePoses": 32,
+    "review": {
+      "observedRows": 8,
+      "nativeStateOrder": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "missingStates": []
+    },
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  },
+  {
+    "id": "arthur-combat-b",
+    "heroId": "arthur_kaamelott",
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-combat-b.prompt.txt",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT ARTHUR from KAAMELOTT LIVRE III(2005), explicitly adapted artwork based on the TV character. Approved shared version: SHORT slightly CURLY DARK BROWN hair, SHORT DARK BEARD AND MOUSTACHE, a THIN MODEST GOLD ROYAL CIRCLET, RED-BROWN LEATHER CUIRASS over BURGUNDY tunic, GRAY CHAINMAIL SLEEVES, BROWN LEATHER BELT and sword SCABBARD at LEFT hip, DARK BROWN trousers, LEATHER BOOTS, DARK BROWN CAPE with a DISCREET collar. The old supplied green sheet is FACE/IDENTITY REFERENCE ONLY: DO NOT copy its giant fantasy fur mane, squat chibi anatomy, massive crown, black fantasy armor, green background, white grid, gravestone or blue magical blade rays. Replace those with the explicit LivreIII clothes above. Normal human adult proportions and stature, not dwarf/chibi. Excalibur is a PHYSICAL STRAIGHT STEEL SWORD with a SIMPLE GOLD CROSSGUARD, held through the hilt by anatomical RIGHT hand or a real two-handed grip. No sword beam, fire blast, glowing body, dragon, summoned knight, gun or magic attack. Simple/light/crouch/aerial/ledgeAttack use real sword cuts; ordinary SECONDARY Estoc d’Excalibur is a physical THRUST for charged/special rows, distinct from the separate32 super Passe d’armes à Excalibur. Guard is a physical blade parry, not an invented energy shield. On movement or hanging rows, Excalibur remains stowed in the actual left scabbard so both hands are free. Gloves are simple fitted dark leather; hands anatomically joined to wrists/forearms. No opponent drawn, no gore, no dismemberment.\n\nCRITICAL: TRANSPARENT RGBA background, original native pixel clusters and shading, not an extracted official sprite or certified source1:1 animation. NO text/labels/grid/borders/floor/platform/scenery/drop shadows or decorative VFX. EXACTLY FOUR COLUMNS. Each numbered state is its own row of FOUR COMPLETE and anatomically DISTINCT hand-drawn bodies, chronological LEFT→RIGHT. Do NOT omit a row. Do not duplicate a pose with different effects. Full shoes/fingers/coat/cape/weapon tips stay inside their cell and never touch neighboring drawings or canvas edges. Body anatomy: exactly two connected arms/two legs, hands connect through actual wrists/elbows to shoulders. Default facing RIGHT. Keep one consistent upright crown-to-sole anatomical size throughout the whole native source; genuinely crouched, tucked, hanging or prone bodies retain their shorter projection. NEVER enlarge a crouch to fill a row. Draw every row at the SAME source pixel scale. Generous transparent gutter around EVERY body, at least20px between neighboring silhouettes, especially last two rows. Long weapons must fit completely: shrink ALL bodies uniformly rather than clip blade tips. Four real distinct joint/foot/torso configurations per row; natural breathing shifts for idle. Last row requires the same complete space as first. No cropped boot sole, detached fingertip, floating weapon or adjacent-row overlap.\n\nEXACTLY EIGHT ROWS×FOUR COLUMNS=32NATIVE COMPLETE BODIES, TALL PORTRAIT1:2 canvas, all8rows equally spaced. Never a cramped2:3canvas. Keep native standing body about170px on a1774px tall source, leaving transparent row gutters.\nROW1 attackRecovery: extended sword cut -> hilt retracts -> boots reset -> complete ready stance, four real bodies.\nROW2 special: ordinary SECONDARY Estoc d’Excalibur, NOT separate super: rear-knee load -> step -> physical forward sword thrust -> composed recovery. Steel blade intact, no beam.\nROW3 aerialNeutral: airborne physical sword cut: knees tuck -> right hilt loads -> short visible steel cut -> recoil. Whole sword and boots stay in cell.\nROW4 aerialForward: forward airborne Excalibur cut: loaded tuck -> hips rotate -> physical blade extends/cuts forward -> airborne guard. Actual sword contact pose, no kick-only row.\nROW5 aerialDown: downward airborne sword strike: tucked body -> right/two-handed hilt above shoulder -> blade points/drives DOWN -> blade recoils for landing. Never a beam or boot-only attack.\nROW6 intro: UPRIGHT restrained kingly entry -> hand moves to left scabbard -> draws physical Excalibur -> settles real sword guard. Correct short hair/thin circlet, clear upright c0.\nROW7 victory: lower Excalibur -> relax elbows/feet -> restrained dry kingly acknowledgment -> composed upright ready. No grave, dragon or glowing transformation.\nROW8 ledgeAttack: c0 low top-out with empty glove palm, sword SHEATHED -> c1 body rises and releases edge -> c2 now FREE from edge, draws Excalibur and makes short real cut -> c3 balanced low sword guard. No sword held while palm must grip.\n\nCHECK FINAL ROW: full feet, complete hands and sword/stake tips; at least20transparent pixels between every row. All numbered rows must actually be drawn. No skeleton placeholders or repeated frames.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png"
+      ],
+      "transparent_background": true
+    },
+    "expectedRows": 8,
+    "startedAt": {
+      "current_time": "2026-10-23 04:01:12 UTC"
+    },
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-03b5230e-a2f3-427b-9c33-cc7a429686c6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourcePath": "/workspace/generated_images/exec-03b5230e-a2f3-427b-9c33-cc7a429686c6.png",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "canonicalVerified": false,
+    "source1to1Verified": false,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-combat-b.native.png",
+    "sourceSha256": "cba8c6642d4887ffbfa1443af9071ea1c590e7d76ed89ce8c777e80c9767dab0",
+    "dimensions": {
+      "width": 953,
+      "height": 1651
+    },
+    "promptFileSha256": "3c5e856db15060a23be4f16fe0c93dedb1401938a4a120e1e2dadf52418b6cb5",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png",
+        "sha256": "271a7fe25443889971a39f3355424b882115271c7371c07d4276196f4ea8e791"
+      }
+    ],
+    "observedRows": 7,
+    "observedNativePoses": 28,
+    "review": {
+      "observedRows": 7,
+      "nativeStateOrder": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "missingStates": [
+        "aerialDown"
+      ]
+    },
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  },
+  {
+    "id": "arthur-ledge",
+    "heroId": "arthur_kaamelott",
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-ledge.prompt.txt",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT ARTHUR from KAAMELOTT LIVRE III(2005), explicitly adapted artwork based on the TV character. Approved shared version: SHORT slightly CURLY DARK BROWN hair, SHORT DARK BEARD AND MOUSTACHE, a THIN MODEST GOLD ROYAL CIRCLET, RED-BROWN LEATHER CUIRASS over BURGUNDY tunic, GRAY CHAINMAIL SLEEVES, BROWN LEATHER BELT and sword SCABBARD at LEFT hip, DARK BROWN trousers, LEATHER BOOTS, DARK BROWN CAPE with a DISCREET collar. The old supplied green sheet is FACE/IDENTITY REFERENCE ONLY: DO NOT copy its giant fantasy fur mane, squat chibi anatomy, massive crown, black fantasy armor, green background, white grid, gravestone or blue magical blade rays. Replace those with the explicit LivreIII clothes above. Normal human adult proportions and stature, not dwarf/chibi. Excalibur is a PHYSICAL STRAIGHT STEEL SWORD with a SIMPLE GOLD CROSSGUARD, held through the hilt by anatomical RIGHT hand or a real two-handed grip. No sword beam, fire blast, glowing body, dragon, summoned knight, gun or magic attack. Simple/light/crouch/aerial/ledgeAttack use real sword cuts; ordinary SECONDARY Estoc d’Excalibur is a physical THRUST for charged/special rows, distinct from the separate32 super Passe d’armes à Excalibur. Guard is a physical blade parry, not an invented energy shield. On movement or hanging rows, Excalibur remains stowed in the actual left scabbard so both hands are free. Gloves are simple fitted dark leather; hands anatomically joined to wrists/forearms. No opponent drawn, no gore, no dismemberment.\n\nCRITICAL: TRANSPARENT RGBA background, original native pixel clusters and shading, not an extracted official sprite or certified source1:1 animation. NO text/labels/grid/borders/floor/platform/scenery/drop shadows or decorative VFX. EXACTLY FOUR COLUMNS. Each numbered state is its own row of FOUR COMPLETE and anatomically DISTINCT hand-drawn bodies, chronological LEFT→RIGHT. Do NOT omit a row. Do not duplicate a pose with different effects. Full shoes/fingers/coat/cape/weapon tips stay inside their cell and never touch neighboring drawings or canvas edges. Body anatomy: exactly two connected arms/two legs, hands connect through actual wrists/elbows to shoulders. Default facing RIGHT. Keep one consistent upright crown-to-sole anatomical size throughout the whole native source; genuinely crouched, tucked, hanging or prone bodies retain their shorter projection. NEVER enlarge a crouch to fill a row. Draw every row at the SAME source pixel scale. Generous transparent gutter around EVERY body, at least20px between neighboring silhouettes, especially last two rows. Long weapons must fit completely: shrink ALL bodies uniformly rather than clip blade tips. Four real distinct joint/foot/torso configurations per row; natural breathing shifts for idle. Last row requires the same complete space as first. No cropped boot sole, detached fingertip, floating weapon or adjacent-row overlap.\n\nEXACTLY FIVE ROWS×FOUR COLUMNS=20NATIVE COMPLETE BODIES, portrait4:5 canvas, equal row allocations.\nROW1 ledgeCatch: c0 airborne right hand reaching OPEN toward invisible ledge, NOT yet attached; c1 actual right fingers curl to GRIP overhead edge, other hand reaching lower; c2 BOTH connected hands grip overhead; c3 elbows pull/body tucks while BOTH real palms keep edge contact. Weapons stay SHEATHED. Entire fingers ABOVE crown with generous margin.\nROW2 ledgeHang: four genuinely distinct hanging bodies, two clenched gripping hands on the SAME invisible horizontal edge, arms connected to shoulders, shifting knees/hips/feet. Hands unobscured, no weapon in either hand. Preserve crown-to-sole projection, raised hands excluded from body calibration.\nROW3 ledgeClimb: c0 two real hands holding above crown; c1 elbows pull and one knee rises; c2 BOTH palms press DOWN on invisible top surface as hips rise; c3 low top-out crouch with both palms visibly planted and wrists connected. Four different real contact positions. No drawn ledge/platform, no held weapon.\nROW4 ledgeDrop: c0 two-hand hang -> c1 one hand releases -> c2 both hands free dropping -> c3 descending airborne recovery. Weapon safely SHEATHED.\nROW5 ledgeJump: c0 low top-out crouch with two real palms supporting -> c1 legs push and palms release -> c2 airborne outward tuck -> c3 extended airborne escape/recovery. Weapon stays SHEATHED. No magic flight.\n\nCHECK FINAL ROW: full feet, complete hands and sword/stake tips; at least20transparent pixels between every row. All numbered rows must actually be drawn. No skeleton placeholders or repeated frames.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png"
+      ],
+      "transparent_background": true
+    },
+    "expectedRows": 5,
+    "startedAt": {
+      "current_time": "2026-10-23 04:01:12 UTC"
+    },
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-585c3243-547d-4abc-addd-c5d373d3924c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourcePath": "/workspace/generated_images/exec-585c3243-547d-4abc-addd-c5d373d3924c.png",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "canonicalVerified": false,
+    "source1to1Verified": false,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-ledge.native.png",
+    "sourceSha256": "d8994dc3093321074c698e61baf5e87f2728ec6503a2e3f53b02cd6e5a967657",
+    "dimensions": {
+      "width": 1122,
+      "height": 1402
+    },
+    "promptFileSha256": "628a5ddd3e6a76b8e1969e2622a277949fceef758b92b3c425de305a02045354",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png",
+        "sha256": "271a7fe25443889971a39f3355424b882115271c7371c07d4276196f4ea8e791"
+      }
+    ],
+    "observedRows": 5,
+    "observedNativePoses": 20,
+    "review": {
+      "observedRows": 5,
+      "nativeStateOrder": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "missingStates": []
+    },
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  },
+  {
+    "id": "arthur-corrective-states",
+    "arguments": {
+      "prompt": "Create NEW NATIVE HAND-DRAWN detailed pixel-art animation bodies of ADULT ARTHUR from KAAMELOTT LIVRE III(2005), explicitly adapted artwork based on the TV character. Approved shared version: SHORT slightly CURLY DARK BROWN hair, SHORT DARK BEARD AND MOUSTACHE, a THIN MODEST GOLD ROYAL CIRCLET, RED-BROWN LEATHER CUIRASS over BURGUNDY tunic, GRAY CHAINMAIL SLEEVES, BROWN LEATHER BELT and sword SCABBARD at LEFT hip, DARK BROWN trousers, LEATHER BOOTS, DARK BROWN CAPE with a DISCREET collar. The old supplied green sheet is FACE/IDENTITY REFERENCE ONLY: DO NOT copy its giant fantasy fur mane, squat chibi anatomy, massive crown, black fantasy armor, green background, white grid, gravestone or blue magical blade rays. Replace those with the explicit LivreIII clothes above. Normal human adult proportions and stature, not dwarf/chibi. Excalibur is a PHYSICAL STRAIGHT STEEL SWORD with a SIMPLE GOLD CROSSGUARD, held through the hilt by anatomical RIGHT hand or a real two-handed grip. No sword beam, fire blast, glowing body, dragon, summoned knight, gun or magic attack. Simple/light/crouch/aerial/ledgeAttack use real sword cuts; ordinary SECONDARY Estoc d’Excalibur is a physical THRUST for charged/special rows, distinct from the separate32 super Passe d’armes à Excalibur. Guard is a physical blade parry, not an invented energy shield. On movement or hanging rows, Excalibur remains stowed in the actual left scabbard so both hands are free. Gloves are simple fitted dark leather; hands anatomically joined to wrists/forearms. No opponent drawn, no gore, no dismemberment.\n\n\nNATIVE CORRECTIVE STRIP. Transparent RGBA, exactly FOUR COLUMNS and 2 ROWS. Every cell is a NEW complete anatomically distinct hand-drawn body. Reference is outfit/face only; do not copy its poses. All cells and sword/stake tips have generous transparent gutters, no floor/platform/grid/text. Keep one consistent upright anatomical source pixel scale across all rows; crouched/airborne poses keep natural smaller projection. Final feet and blade tips MUST be complete and away from canvas edge. No procedural rotations, duplication or effects-only variation. Default facing RIGHT.\nROW1 uprightCalibration: four distinct calm fully UPRIGHT standing complete bodies, crown-to-sole clear, hands below crown, Excalibur held down safely or sheathed. This row is calibration only, NOT an extra game state. ROW2 aerialDown: four genuinely distinct airborne physical downward Excalibur sword attacks, clear actual hilt grip, knees/hips/arms changing, sword complete to its tip, body not on floor. No VFX, beam or magic.\nNo omitted rows. Exactly 8 complete distinct drawings. Four chronological configurations per row, anatomically connected two arms/two legs. Adult modest character, no opponent, no gore.\n",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-combat-a.native.png"
+      ],
+      "transparent_background": true
+    },
+    "promptFile": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-corrective-states.prompt.txt",
+    "expectedRows": 2,
+    "startedAt": {
+      "current_time": "2026-10-23 04:15:10 UTC"
+    },
+    "sourcePath": "/workspace/generated_images/exec-b6125c8c-d5da-4003-896c-cd5c676f67a5.png",
+    "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-b6125c8c-d5da-4003-896c-cd5c676f67a5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "model": null,
+    "jobId": null,
+    "generationId": null,
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "date": "2026-10-23",
+    "savedSource": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-corrective-states.native.png",
+    "sourceSha256": "32ac17c95897ce9e84514b9611a52d7d817b054ddac66ead9f1a9534a6c62e26",
+    "dimensions": {
+      "width": 1774,
+      "height": 887
+    },
+    "promptFileSha256": "dbe8c79f04f8ef0bedb3d26d7073f3d82ebc1f2a38ea5e417f449a4ee15d1806",
+    "references": [
+      {
+        "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-combat-a.native.png",
+        "sha256": "375b37b1c206e02cbfb1c66cb2fef1d19d3a8a26ddf9a67959ec7096a658a20e"
+      }
+    ],
+    "observedRows": 2,
+    "observedNativePoses": 8,
+    "review": {
+      "observedRows": 2,
+      "nativeStateOrder": [
+        "uprightCalibration",
+        "aerialDown"
+      ],
+      "missingStates": [],
+      "reason": "All explicitly requested corrective rows drawn; anatomy/edge review pending."
+    },
+    "canonicalVerified": false,
+    "canon1to1Verified": false,
+    "nativeReviewStatus": "reviewed"
+  }
+]

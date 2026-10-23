@@ -1,0 +1,488 @@
+{
+  "passed": true,
+  "heroId": "neo",
+  "date": "2026-10-23",
+  "coreDraws": 360,
+  "distinctSourceRectangles": 180,
+  "ledgeGrips": 8,
+  "flows": {
+    "core45": {
+      "passed": true,
+      "states": 45,
+      "physicsUnchanged": true
+    },
+    "movementPause": {
+      "passed": true,
+      "flow": "Real GameCanvas Smash: keyboard D+Space, hold D through landing, switch to Q",
+      "engineUrl": "/src/game/engineSmash.js?t=1792721825120",
+      "summary": {
+        "jumpRise": {
+          "updates": 30,
+          "draws": 30,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999,
+            0.11666666666666665,
+            0.13333333333333333,
+            0.15,
+            0.16666666666666666,
+            0.18333333333333332,
+            0.19999999999999998,
+            0.21666666666666665,
+            0.2333333333333333,
+            0.24999999999999997,
+            0.26666666666666666,
+            0.2833333333333333,
+            0.3,
+            0.31666666666666665,
+            0.3333333333333333,
+            0.35,
+            0.36666666666666664,
+            0.3833333333333333,
+            0.39999999999999997,
+            0.41666666666666663,
+            0.4333333333333333,
+            0.44999999999999996,
+            0.4666666666666666,
+            0.4833333333333333
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "fall": {
+          "updates": 33,
+          "draws": 33,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999,
+            0.11666666666666665,
+            0.13333333333333333,
+            0.15,
+            0.16666666666666666,
+            0.18333333333333332,
+            0.19999999999999998,
+            0.21666666666666665,
+            0.2333333333333333,
+            0.24999999999999997,
+            0.26666666666666666,
+            0.2833333333333333,
+            0.3,
+            0.31666666666666665,
+            0.3333333333333333,
+            0.35,
+            0.36666666666666664,
+            0.3833333333333333,
+            0.39999999999999997,
+            0.41666666666666663,
+            0.4333333333333333,
+            0.44999999999999996,
+            0.4666666666666666,
+            0.4833333333333333,
+            0.49999999999999994,
+            0.5166666666666666,
+            0.5333333333333333
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "land": {
+          "updates": 7,
+          "draws": 7,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "turn": {
+          "updates": 6,
+          "draws": 6,
+          "elapsed": [
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            -4
+          ],
+          "facings": [
+            -1
+          ]
+        }
+      },
+      "pause": {
+        "mechanism": "GameCanvas real sessionPaused prop through root.render; stable stage/team props and engine instance",
+        "before": {
+          "state": "idle",
+          "stateElapsed": 0.2333333333333333,
+          "x": 484,
+          "y": 368,
+          "vx": 0,
+          "vy": 0,
+          "hp": 140
+        },
+        "after": {
+          "state": "idle",
+          "stateElapsed": 0.2333333333333333,
+          "x": 484,
+          "y": 368,
+          "vx": 0,
+          "vy": 0,
+          "hp": 140
+        },
+        "durationMs": 300,
+        "unchanged": true
+      },
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "failedRequests": [
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+          "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "screenshot": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-movement.png"
+    },
+    "super32": {
+      "passed": true,
+      "engineUrl": "/src/game/engineSmash.js?t=1792721825120",
+      "sourceDraws": {
+        "count": 73,
+        "sheets": [
+          "/sprites/generated/combat-character-animations-wave10/neo.png"
+        ],
+        "rows": [
+          7
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "coldBoot": "Fresh Chromium process and page; no test preload; only production GameCanvas boot prepares sprites.",
+      "flow": "GameCanvas Smash → Neo Reloaded 2003 → panneau Enchaînement de l’Élu 100 % → clavier L → startup sans dégât → impact après hitAt → charge 0 % → aucun second impact",
+      "impact": {
+        "start": {
+          "name": "Enchaînement de l’Élu",
+          "charge": 0,
+          "hp": 100000,
+          "elapsed": 0.016666666666666666,
+          "hitAt": 0.451
+        },
+        "hit": {
+          "name": "Enchaînement de l’Élu",
+          "charge": 0,
+          "hp": 99914,
+          "elapsed": 0.4666666666666666,
+          "hitAt": 0.451
+        },
+        "gameOver": false
+      },
+      "sameInput": {
+        "before": 99914,
+        "retriggered": false,
+        "charge": 0
+      },
+      "final": {
+        "hitCount": 1,
+        "hp": 99914,
+        "charge": 0,
+        "action": null,
+        "profile": "Enchaînement de l’Élu"
+      },
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "failedRequests": [
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+          "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "screenshot": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-super.png"
+    }
+  },
+  "canonicalAnimation1to1Verified": false,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-core-browser.mjs",
+      "bytes": 7909,
+      "sha256": "bea9c92a70503584dc3e5f8dc71b315a4f99ff5ecda20b99263e530baecc395d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-core-result.json",
+      "bytes": 1099,
+      "sha256": "0b76bbf171e681c1aed6586b1856e71ac7996fa659439924a5e0816686f48265"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-core-review-1.png",
+      "bytes": 343487,
+      "sha256": "f414b534906edd58580db01dc42911a298325e14a00ddce98691255783c43e7e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-core-review-2.png",
+      "bytes": 378796,
+      "sha256": "05ac63efb279059f7be24407807499cd9894c38fe53d7296430ea8ae7489e7e0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-core-review-3.png",
+      "bytes": 346173,
+      "sha256": "617177ff4cd9f27e224707cb2ffd62e433dcccb5674d08425b0fb9abfe9ab50c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-core-trace.json",
+      "bytes": 159853,
+      "sha256": "83e50752b1a5fd7ff3034e89edd4c46b87ff53121183c15762515cc8cba4143e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-core.png",
+      "bytes": 1251997,
+      "sha256": "7b2d990667f65c3779191a3670397374e4c64f84935c9693900a3dba0bd3bf2f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-grips.png",
+      "bytes": 51628,
+      "sha256": "c1db3953e0c79754d6fe88a4d6ca60af030d28b20df54b7d7ef8dde5e868cfd6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-movement-browser.mjs",
+      "bytes": 9314,
+      "sha256": "472f9eb3e52a40b88937f6de5c02069f8e6fc4fb86083eb2376187235471fa0e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-movement-result.json",
+      "bytes": 4064,
+      "sha256": "c8b7164e2607819b325007df9935ffbd8e7667a4ddc145ee6238213884304495"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-movement-trace.json",
+      "bytes": 61196,
+      "sha256": "a3a4cc78cb759e45aba0167bcb49b64f0ad5334abb9bf6b1ddf7ed8c12fbfaa6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-movement.png",
+      "bytes": 388305,
+      "sha256": "7e9c226e48b9d382a60934437791c68255e363a792018d2efea1291ed3a3d3e0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-pause.png",
+      "bytes": 387257,
+      "sha256": "539b5dbfbbc014159629ca4a54065bf234abccf64e72014f1948cf4acff4e562"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-super-browser.mjs",
+      "bytes": 10268,
+      "sha256": "14d472fae418f14f5a43bb6390ed913cecd785b7c303fb2f4ab44ad5f8e463cd"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-super-draws.json",
+      "bytes": 26506,
+      "sha256": "5ab6ae4af3fb412704b1b19f4fb5fa39cdadf18f12e7ef5e6afb5a1a3c788df1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-super-result.json",
+      "bytes": 1621,
+      "sha256": "568207510473101d799c6c3df55bfaf92ff1b1ff43276685857c3628775b9a47"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-super-review.png",
+      "bytes": 72982,
+      "sha256": "9d6664495e23b1173a8f55fd6e0920e63cc5c182d8fd63b99ecf9b63d0762e62"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-super-trace.json",
+      "bytes": 17858,
+      "sha256": "0a76e796f4a636f34aba40a51e861a34b355112981230143cc7b8cfac55a4b0a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/neo-super.png",
+      "bytes": 432579,
+      "sha256": "dd3a019775090e44c38b5419cf615e4c702fddeed064c86a0a9dcf6d8e86041b"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "bytes": 133689,
+      "sha256": "c45de7e475ea262fdb7b33852e9073696d3cdf10b6ddb8eb1939c61e3c8a49b4"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "bytes": 115603,
+      "sha256": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "bytes": 65842,
+      "sha256": "ef8934b7e05b7d67228c825e8099f3846cf1c784821e5e5c8187331dd71f18a1"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "bytes": 35378,
+      "sha256": "e1164f8bc529682db345c69ec6bda4379b6dddbaa5068882d7fdfec407208bf4"
+    },
+    {
+      "path": "src/game/combatIdentity.js",
+      "bytes": 20618,
+      "sha256": "d557284fc3ef25e98d13f13a6096b3c73a39024233faa677f9af147f02929d0c"
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "bytes": 14862,
+      "sha256": "c334996786d4578d47b784f26f75c8bce42fb76068bbb275830df6c721f772c6"
+    },
+    {
+      "path": "src/game/melee/nativeMeleeManifest.js",
+      "bytes": 4519,
+      "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+    },
+    {
+      "path": "src/game/melee/neoMeleeManifest.js",
+      "bytes": 494,
+      "sha256": "03f4edc4360a2b9f33a755850c529656f4e1f46c0e228e45933b13e451bd7cfb"
+    },
+    {
+      "path": "src/game/combat/neoMeleeMotion.generated.json",
+      "bytes": 210712,
+      "sha256": "351482c77c59b60dbc850e5c678aa62885967b82714b3deeaa4b00f0a4c669d1"
+    },
+    {
+      "path": "src/game/combat/neoMeleeCombat.generated.json",
+      "bytes": 213752,
+      "sha256": "4f2889398eaa108107b1137c6b9711116176c9febdbae8b17821a428edc2ad4e"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "bytes": 6472,
+      "sha256": "430bff02e61e2ae17f5c88a1385b1b75026c5fed96278618e765fa3be025b27c"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "bytes": 3983,
+      "sha256": "d364a82a0c074d445cefc3cb1a17aebf6d98604c5c335d0718f7d0f77d72392f"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave10.js",
+      "bytes": 9348,
+      "sha256": "0c96457b67a4cd96669b69cb8b4abddcfa7368275e40aeb46909b6ee2c72522b"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave10PartA.generated.json",
+      "bytes": 514890,
+      "sha256": "e45887877ef65b64e742f2b142c96893d6be9c28275110c4729592460a077fe6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/collect-melee-evidence.mjs",
+      "bytes": 3300,
+      "sha256": "ed59ec1f774af5e6086b07a9cad00ae49c2dc66b022af1b1e4074074f8dd8e9e"
+    },
+    {
+      "path": "public/sprites/generated/melee-neo-wave10/neo-motion-a.png",
+      "bytes": 1054754,
+      "sha256": "438cf20e7729757752b3bb48f54398148a4d905eb62f582d8896e3f715881ea5"
+    },
+    {
+      "path": "public/sprites/generated/melee-neo-wave10/neo-motion-b.png",
+      "bytes": 869052,
+      "sha256": "9f1f8ce3a7543ea1d9afa61fcc0089fa76393a91b89a6acffdd2187fbb78d98f"
+    },
+    {
+      "path": "public/sprites/generated/melee-neo-wave10/neo-defense.png",
+      "bytes": 984095,
+      "sha256": "c4e336774b182dee24b694847973d396fdc48c6a0e7ad944411f101d9ab15882"
+    },
+    {
+      "path": "public/sprites/generated/melee-neo-wave10/neo-combat-a.png",
+      "bytes": 1102770,
+      "sha256": "dd91ff04bf086470979f06ae17f1308b078f120855d4bac8e21711c2eb708217"
+    },
+    {
+      "path": "public/sprites/generated/melee-neo-wave10/neo-combat-b.png",
+      "bytes": 951255,
+      "sha256": "5a2d58b9569bef65a19c340a505630c4dfbecfb9c47dd6f48b861c74075db928"
+    },
+    {
+      "path": "public/sprites/generated/melee-neo-wave10/neo-ledge.png",
+      "bytes": 685784,
+      "sha256": "266eb1ff2423d8be2c74ff4e0d770013de02404f6f1edac161e774df48c8cee5"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave10/neo.png",
+      "bytes": 1307573,
+      "sha256": "58344c77e5d00e40b24b5426b9464957db698014287a2d11ad52b06628679a38"
+    }
+  ],
+  "visualInspection": {
+    "reviewed": true,
+    "captures": [
+      "docs/combat-fidelity-wave10-2026-10-23/browser/neo-core-review-2.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/neo-grips.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/neo-super-review.png"
+    ],
+    "finding": "Closed Reloaded coat, native bare-hand kung-fu and hanging grips; dedicated32 row7 uses a physical kick/palm sequence.",
+    "limitations": [
+      "Original crossover choreography and generated art, not official extracted frames or verified1:1 animation.",
+      "Real-time playback can skip source columns under concurrent browser load; final movement proof was executed successfully with all four actual columns."
+    ]
+  }
+}

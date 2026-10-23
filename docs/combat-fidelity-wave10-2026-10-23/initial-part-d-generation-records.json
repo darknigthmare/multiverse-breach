@@ -1,0 +1,789 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "part": "D",
+  "records": [
+    {
+      "heroId": "venkman_gb",
+      "version": "Peter Venkman, Ghostbusters live-action film1984: adult white man with a slightly long face, receding short wavy brown hair, clean-shaven, TAN BEIGE field jumpsuit with rolled sleeves, dark elbow pads, utility belt, black gloves and black work boots. A real black mechanical proton pack is strapped to his back, with connected thick hose to a separately held black neutrona wand. No cartoon oversized head, jumpsuit from2016, modern armor or personal glowing body.",
+      "weapon": "The wand is a real two-handed cylindrical mechanical emitter attached by a hose to the back pack. Clear barrel opening aimed RIGHT when active. Orange core/blue tiny local sparks only; the LONG proton stream is runtime VFX and MUST NOT be painted across body cells.",
+      "basic": "physical neutrona wand handling: (1) low ready, (2) raise emitter two-handed to RIGHT, (3) planted stance and controlled recoil with tiny local orange/blue emitter spark, (4) lower wand with elbows relaxed. No pistol or body-origin beam.",
+      "intro": "(1) upright with wand on sling, (2) glance sideways and lift eyebrow while shifting hip, (3) take the connected wand in both hands with knees flexed, (4) cautious low ready stance.",
+      "outro": "(1) lower wand, (2) switch off emitter with thumb and look down, (3) secure wand on sling, (4) turn away with a dry small open-palm farewell.",
+      "roundVictory": "(1) exhale shoulders dropping, (2) check the wand held low, (3) brief restrained one-hand shrug with other hand on wand, (4) regain alert stance.",
+      "finale": "(1) take connected wand from low sling, muzzle DOWN, (2) aim real barrel RIGHT with two hands and front foot planted, (3) deeper leaning brace, emitter facing RIGHT with tiny orange/blue spark only, (4) shut down and lower wand, no emission.",
+      "victory": "(1) release tense breath, (2) sling wand with a small satisfied smile, (3) rest free hand on hip and glance aside, (4) modest wave with empty hand.",
+      "super": "(1) connected wand DOWN/off at waist, (2) feet wide and emitter raised two-handed RIGHT, (3) front knee bends and torso leans into a sustained lock with small local emitter spark, (4) power off and lower whole wand while straightening.",
+      "universe": "Ghostbusters",
+      "name": "Peter Venkman",
+      "sourceWork": "Ghostbusters (1984)",
+      "sourceReference": {
+        "simple": "1984 Peter Venkman wears the tan field jumpsuit and carries a real proton pack and connected neutrona wand. Existing beams are technological equipment adapted to cross-universe combat, not personal magic or a claim that all opponents are ghosts.",
+        "secondary": "1984 Peter Venkman wears the tan field jumpsuit and carries a real proton pack and connected neutrona wand. Existing beams are technological equipment adapted to cross-universe combat, not personal magic or a claim that all opponents are ghosts.",
+        "defense": "1984 Peter Venkman wears the tan field jumpsuit and carries a real proton pack and connected neutrona wand. Existing beams are technological equipment adapted to cross-universe combat, not personal magic or a claim that all opponents are ghosts.",
+        "special": "1984 Peter Venkman wears the tan field jumpsuit and carries a real proton pack and connected neutrona wand. Existing beams are technological equipment adapted to cross-universe combat, not personal magic or a claim that all opponents are ghosts."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Effluve du proton pack de Venkman",
+          "effect": "damage",
+          "delivery": "beam",
+          "targetSide": "enemy",
+          "range": 520
+        },
+        "secondary": {
+          "name": "Maintenir le faisceau de confinement",
+          "effect": "damage",
+          "delivery": "beam",
+          "targetSide": "enemy",
+          "range": 520
+        },
+        "defense": {
+          "name": "Couvert derrière le proton pack",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Effluve protonique de Venkman",
+          "effect": "damage",
+          "delivery": "beam",
+          "targetSide": "enemy",
+          "range": 760
+        }
+      },
+      "useOldReference": true,
+      "referenceAsset": "/sprites/generated/heroes/ghostbusters/venkman-gb.png",
+      "referenceArchive": "docs/combat-fidelity-wave10-2026-10-23/part-d-references/venkman_gb-old-base.png",
+      "referenceAssetSha256": "87e7bc1b585ee08b6c14c6c02cc8426c8af6ee882d15f932221d2f44df90e73f",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave10-2026-10-23/part-d-references/venkman_gb-old-base.png",
+      "targetBodyHeight": 190,
+      "reviewed": false,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "prompt": "Create a native game sprite atlas with EXACTLY THIRTY-TWO NEW complete full-body drawings of ONE named adult character, FOUR equal columns by EIGHT full rows on a tall portrait transparent RGBA canvas. Detailed crisp pixel-art adult proportions, same character and outfit in every cell. No text, numbers, grid, borders, scenery, painted floor or cast-shadow disks. Every body AND all held equipment has generous12–15% transparent cell margins: complete hair, hands, arms, legs, boot soles and weapon tips; never crop last-row feet. Same shared BODY DRAWING SCALE throughout the source; crouches/kneels remain naturally shorter, not inflated. Side/three-quarter facing RIGHT.\nIDENTITY/VERSION: Peter Venkman, Ghostbusters live-action film1984: adult white man with a slightly long face, receding short wavy brown hair, clean-shaven, TAN BEIGE field jumpsuit with rolled sleeves, dark elbow pads, utility belt, black gloves and black work boots. A real black mechanical proton pack is strapped to his back, with connected thick hose to a separately held black neutrona wand. No cartoon oversized head, jumpsuit from2016, modern armor or personal glowing body.\nEQUIPMENT/ROLE: The wand is a real two-handed cylindrical mechanical emitter attached by a hose to the back pack. Clear barrel opening aimed RIGHT when active. Orange core/blue tiny local sparks only; the LONG proton stream is runtime VFX and MUST NOT be painted across body cells.\nAttached OLD atlas is an appearance cue only. Redraw every pose; correct equipment and role according to the text above. Never copy old offensive effects into a support action.\nEIGHT DISTINCT STORYBOARD ROWS, FOUR anatomical poses each, top to bottom:\nROW 1: INTRO (1) upright with wand on sling, (2) glance sideways and lift eyebrow while shifting hip, (3) take the connected wand in both hands with knees flexed, (4) cautious low ready stance.\nROW 2: OUTRO (1) lower wand, (2) switch off emitter with thumb and look down, (3) secure wand on sling, (4) turn away with a dry small open-palm farewell.\nROW 3: ROUND VICTORY (1) exhale shoulders dropping, (2) check the wand held low, (3) brief restrained one-hand shrug with other hand on wand, (4) regain alert stance.\nROW 4: ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.\nROW 5: FINALE ADAPTATION (1) take connected wand from low sling, muzzle DOWN, (2) aim real barrel RIGHT with two hands and front foot planted, (3) deeper leaning brace, emitter facing RIGHT with tiny orange/blue spark only, (4) shut down and lower wand, no emission.\nROW 6: MATCH VICTORY (1) release tense breath, (2) sling wand with a small satisfied smile, (3) rest free hand on hip and glance aside, (4) modest wave with empty hand.\nROW 7: MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.\nROW 8: SUPER (1) connected wand DOWN/off at waist, (2) feet wide and emitter raised two-handed RIGHT, (3) front knee bends and torso leans into a sustained lock with small local emitter spark, (4) power off and lower whole wand while straightening.\nFinal check: EIGHT full rows x FOUR complete bodies=32. Four distinct shoulder/elbow/torso/leg drawings per row, not glow-only recolors. Physical weapon emitters point RIGHT in aiming/recoil columns2 and3 of damaging super/finale rows; columns1 and4 are lowered preparation/recovery with no emission. Support actions never fire weapons. Long beams, projectiles, magical barriers and target explosions belong to runtime, never paint them across body cells. No victim, gore, execution, injured body, transformation or extra person.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/part-d-prompts/venkman_gb-original.txt",
+      "sourceRows": 8,
+      "rows": [
+        "INTRO (1) upright with wand on sling, (2) glance sideways and lift eyebrow while shifting hip, (3) take the connected wand in both hands with knees flexed, (4) cautious low ready stance.",
+        "OUTRO (1) lower wand, (2) switch off emitter with thumb and look down, (3) secure wand on sling, (4) turn away with a dry small open-palm farewell.",
+        "ROUND VICTORY (1) exhale shoulders dropping, (2) check the wand held low, (3) brief restrained one-hand shrug with other hand on wand, (4) regain alert stance.",
+        "ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.",
+        "FINALE ADAPTATION (1) take connected wand from low sling, muzzle DOWN, (2) aim real barrel RIGHT with two hands and front foot planted, (3) deeper leaning brace, emitter facing RIGHT with tiny orange/blue spark only, (4) shut down and lower wand, no emission.",
+        "MATCH VICTORY (1) release tense breath, (2) sling wand with a small satisfied smile, (3) rest free hand on hip and glance aside, (4) modest wave with empty hand.",
+        "MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.",
+        "SUPER (1) connected wand DOWN/off at waist, (2) feet wide and emitter raised two-handed RIGHT, (3) front knee bends and torso leans into a sustained lock with small local emitter spark, (4) power off and lower whole wand while straightening."
+      ]
+    },
+    {
+      "heroId": "stantz_gb",
+      "version": "Ray Stantz, Ghostbusters live-action film1984: stocky adult white man, rounded face and short dark brown hair, clean-shaven, tan beige field jumpsuit, black elbow pads/gloves/work boots, utility belt, real black mechanical proton pack strapped behind with hose to black neutrona wand. His face/build must differ from the leaner Venkman; not an interchangeable clone.",
+      "weapon": "Basic uses the physical connected neutrona wand. SUPPORT special uses a small rectangular black metal GHOST TRAP with yellow/black hazard strips, carrying handle, short wire and real foot pedal. NO ghost inside, victim, captured human, beam cone sucking opponents in, magic shield or body power. The trap is equipment placed safely, not an offensive gun.",
+      "basic": "connected proton wand: (1) low ready, (2) lift physical emitter and front foot steps, (3) stable two-handed RIGHT aim with tiny orange/blue local emitter spark, (4) lower emitter and recover. This basic row is NOT the support trap row.",
+      "intro": "(1) stand with wand slung and small closed trap in hand, (2) lift trap to check latch with both hands, (3) bend knees and inspect its wire/foot pedal, (4) straighten into alert stance holding trap safely low.",
+      "outro": "(1) close inactive trap, (2) gather its short wire and pedal with both hands, (3) lift whole equipment by carrying handle, (4) turn shoulders and gesture safe passage.",
+      "roundVictory": "(1) lower tense shoulders, (2) check inactive trap by handle, (3) give a small encouraging thumbs-up, (4) return to balanced stance.",
+      "finale": "GUARD SUPPORT, not capture: (1) crouch with closed trap and pedal in hands, (2) kneel and set real trap beside boot, (3) stand with one boot beside the physical pedal and empty hand indicating allies stay clear, tiny indicator light only, (4) bend to close/check safe trap and nod. No cone, trapped entity or target.",
+      "victory": "(1) pick up safely closed trap, (2) stand inspecting handle, (3) modest approving nod and thumbs-up, (4) turn away with closed trap carried low.",
+      "super": "GUARD SUPPORT: (1) bend knees holding the closed trap by handle, (2) kneel to lay trap and wired foot pedal beside boot, (3) shift onto rear leg with front boot at pedal and empty palm signalling clear safe position, (4) straighten with hand lifted to guide allies while trap remains inactive. Four physical poses; no ghost-capture event against non-ghost opponents.",
+      "universe": "Ghostbusters",
+      "name": "Ray Stantz",
+      "sourceWork": "Ghostbusters (1984)",
+      "sourceReference": {
+        "simple": "1984 Ray Stantz uses proton equipment and the wired ghost trap. The existing trap secondary/super remain allied guard adaptations: placement, a safe-position signal and foot-pedal handling, without forcibly capturing or possessing arbitrary non-ghost opponents.",
+        "secondary": "1984 Ray Stantz uses proton equipment and the wired ghost trap. The existing trap secondary/super remain allied guard adaptations: placement, a safe-position signal and foot-pedal handling, without forcibly capturing or possessing arbitrary non-ghost opponents.",
+        "defense": "1984 Ray Stantz uses proton equipment and the wired ghost trap. The existing trap secondary/super remain allied guard adaptations: placement, a safe-position signal and foot-pedal handling, without forcibly capturing or possessing arbitrary non-ghost opponents.",
+        "special": "1984 Ray Stantz uses proton equipment and the wired ghost trap. The existing trap secondary/super remain allied guard adaptations: placement, a safe-position signal and foot-pedal handling, without forcibly capturing or possessing arbitrary non-ghost opponents."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Effluve protonique de Ray",
+          "effect": "damage",
+          "delivery": "beam",
+          "targetSide": "enemy",
+          "range": 520
+        },
+        "secondary": {
+          "name": "Positionner le piège à fantôme",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "defense": {
+          "name": "S’écarter de l’ouverture du piège",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Mise en place du piège à fantôme",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        }
+      },
+      "useOldReference": true,
+      "referenceAsset": "/sprites/generated/heroes/ghostbusters/stantz-gb.png",
+      "referenceArchive": "docs/combat-fidelity-wave10-2026-10-23/part-d-references/stantz_gb-old-base.png",
+      "referenceAssetSha256": "5f0d43bacc318c9d7924fc839a6ce461edf3fa1d6ca838a4d097164036ae1150",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave10-2026-10-23/part-d-references/stantz_gb-old-base.png",
+      "targetBodyHeight": 190,
+      "reviewed": false,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "prompt": "Create a native game sprite atlas with EXACTLY THIRTY-TWO NEW complete full-body drawings of ONE named adult character, FOUR equal columns by EIGHT full rows on a tall portrait transparent RGBA canvas. Detailed crisp pixel-art adult proportions, same character and outfit in every cell. No text, numbers, grid, borders, scenery, painted floor or cast-shadow disks. Every body AND all held equipment has generous12–15% transparent cell margins: complete hair, hands, arms, legs, boot soles and weapon tips; never crop last-row feet. Same shared BODY DRAWING SCALE throughout the source; crouches/kneels remain naturally shorter, not inflated. Side/three-quarter facing RIGHT.\nIDENTITY/VERSION: Ray Stantz, Ghostbusters live-action film1984: stocky adult white man, rounded face and short dark brown hair, clean-shaven, tan beige field jumpsuit, black elbow pads/gloves/work boots, utility belt, real black mechanical proton pack strapped behind with hose to black neutrona wand. His face/build must differ from the leaner Venkman; not an interchangeable clone.\nEQUIPMENT/ROLE: Basic uses the physical connected neutrona wand. SUPPORT special uses a small rectangular black metal GHOST TRAP with yellow/black hazard strips, carrying handle, short wire and real foot pedal. NO ghost inside, victim, captured human, beam cone sucking opponents in, magic shield or body power. The trap is equipment placed safely, not an offensive gun.\nAttached OLD atlas is an appearance cue only. Redraw every pose; correct equipment and role according to the text above. Never copy old offensive effects into a support action.\nEIGHT DISTINCT STORYBOARD ROWS, FOUR anatomical poses each, top to bottom:\nROW 1: INTRO (1) stand with wand slung and small closed trap in hand, (2) lift trap to check latch with both hands, (3) bend knees and inspect its wire/foot pedal, (4) straighten into alert stance holding trap safely low.\nROW 2: OUTRO (1) close inactive trap, (2) gather its short wire and pedal with both hands, (3) lift whole equipment by carrying handle, (4) turn shoulders and gesture safe passage.\nROW 3: ROUND VICTORY (1) lower tense shoulders, (2) check inactive trap by handle, (3) give a small encouraging thumbs-up, (4) return to balanced stance.\nROW 4: ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.\nROW 5: FINALE ADAPTATION GUARD SUPPORT, not capture: (1) crouch with closed trap and pedal in hands, (2) kneel and set real trap beside boot, (3) stand with one boot beside the physical pedal and empty hand indicating allies stay clear, tiny indicator light only, (4) bend to close/check safe trap and nod. No cone, trapped entity or target.\nROW 6: MATCH VICTORY (1) pick up safely closed trap, (2) stand inspecting handle, (3) modest approving nod and thumbs-up, (4) turn away with closed trap carried low.\nROW 7: MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.\nROW 8: SUPER GUARD SUPPORT: (1) bend knees holding the closed trap by handle, (2) kneel to lay trap and wired foot pedal beside boot, (3) shift onto rear leg with front boot at pedal and empty palm signalling clear safe position, (4) straighten with hand lifted to guide allies while trap remains inactive. Four physical poses; no ghost-capture event against non-ghost opponents.\nFinal check: EIGHT full rows x FOUR complete bodies=32. Four distinct shoulder/elbow/torso/leg drawings per row, not glow-only recolors. Physical weapon emitters point RIGHT in aiming/recoil columns2 and3 of damaging super/finale rows; columns1 and4 are lowered preparation/recovery with no emission. Support actions never fire weapons. Long beams, projectiles, magical barriers and target explosions belong to runtime, never paint them across body cells. No victim, gore, execution, injured body, transformation or extra person.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/part-d-prompts/stantz_gb-original.txt",
+      "sourceRows": 8,
+      "rows": [
+        "INTRO (1) stand with wand slung and small closed trap in hand, (2) lift trap to check latch with both hands, (3) bend knees and inspect its wire/foot pedal, (4) straighten into alert stance holding trap safely low.",
+        "OUTRO (1) close inactive trap, (2) gather its short wire and pedal with both hands, (3) lift whole equipment by carrying handle, (4) turn shoulders and gesture safe passage.",
+        "ROUND VICTORY (1) lower tense shoulders, (2) check inactive trap by handle, (3) give a small encouraging thumbs-up, (4) return to balanced stance.",
+        "ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.",
+        "FINALE ADAPTATION GUARD SUPPORT, not capture: (1) crouch with closed trap and pedal in hands, (2) kneel and set real trap beside boot, (3) stand with one boot beside the physical pedal and empty hand indicating allies stay clear, tiny indicator light only, (4) bend to close/check safe trap and nod. No cone, trapped entity or target.",
+        "MATCH VICTORY (1) pick up safely closed trap, (2) stand inspecting handle, (3) modest approving nod and thumbs-up, (4) turn away with closed trap carried low.",
+        "MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.",
+        "SUPER GUARD SUPPORT: (1) bend knees holding the closed trap by handle, (2) kneel to lay trap and wired foot pedal beside boot, (3) shift onto rear leg with front boot at pedal and empty palm signalling clear safe position, (4) straighten with hand lifted to guide allies while trap remains inactive. Four physical poses; no ghost-capture event against non-ghost opponents."
+      ]
+    },
+    {
+      "heroId": "zeddemore_gb",
+      "version": "Winston Zeddemore, Ghostbusters live-action film1984: adult Black man, short tightly curled black hair and neat black moustache, capable muscular but natural build, tan beige field jumpsuit, dark elbow pads, black gloves/work boots and utility belt. Real black mechanical proton pack strapped to his back, connected hose to black neutrona wand. No beard, shaved head, cartoon giant jaw or modern armor.",
+      "weapon": "Actual black two-handed neutrona wand with visible cylindrical emitter and connected pack hose; no firearm. Tiny orange/blue local emitter spark only; no long proton stream or giant glow painted across cells.",
+      "basic": "physical wand sequence: (1) low ready stance, (2) shoulder/arms raise emitter RIGHT with feet planted, (3) controlled forward brace and tiny local emitter spark, (4) lower wand and regain balanced stance.",
+      "intro": "(1) upright checking perimeter with wand slung, (2) adjust pack shoulder strap with free hand, (3) take connected wand in both hands, (4) steady two-handed low ready stance.",
+      "outro": "(1) lower and switch off emitter, (2) inspect hose connection near waist, (3) sling wand and relax shoulders, (4) give restrained follow-me hand signal while turning away.",
+      "roundVictory": "(1) breathe out, (2) check perimeter with wand held down, (3) modest short thumbs-up with offhand, (4) return to steady ready stance.",
+      "finale": "(1) connected wand DOWN/off at waist, (2) deliberate forward step and two-handed emitter aim RIGHT, (3) deeper stable brace with tiny orange/blue emitter spark only, (4) lower switched-off wand and recover feet.",
+      "victory": "(1) lower wand, (2) safely secure wand on sling, (3) hand on pack shoulder strap and small relieved nod, (4) calm relaxed standing with open-palmed farewell.",
+      "super": "(1) draw connected wand from low sling, emitter DOWN/off, (2) plant feet and bring physical emitter RIGHT two-handed, (3) shift front knee forward and brace elbows differently while tiny emitter spark shows technological discharge, (4) power down and lower whole wand with upright recovery.",
+      "universe": "Ghostbusters",
+      "name": "Winston Zeddemore",
+      "sourceWork": "Ghostbusters (1984)",
+      "sourceReference": {
+        "simple": "1984 Winston Zeddemore has short dark hair and moustache, tan field jumpsuit, proton pack and connected neutrona wand. Existing support fire is equipment-based; no spectral body transformation or magical ammunition is introduced.",
+        "secondary": "1984 Winston Zeddemore has short dark hair and moustache, tan field jumpsuit, proton pack and connected neutrona wand. Existing support fire is equipment-based; no spectral body transformation or magical ammunition is introduced.",
+        "defense": "1984 Winston Zeddemore has short dark hair and moustache, tan field jumpsuit, proton pack and connected neutrona wand. Existing support fire is equipment-based; no spectral body transformation or magical ammunition is introduced.",
+        "special": "1984 Winston Zeddemore has short dark hair and moustache, tan field jumpsuit, proton pack and connected neutrona wand. Existing support fire is equipment-based; no spectral body transformation or magical ammunition is introduced."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Effluve protonique de Winston",
+          "effect": "damage",
+          "delivery": "beam",
+          "targetSide": "enemy",
+          "range": 520
+        },
+        "secondary": {
+          "name": "Faisceau d’appui de Zeddemore",
+          "effect": "damage",
+          "delivery": "beam",
+          "targetSide": "enemy",
+          "range": 520
+        },
+        "defense": {
+          "name": "Posture stable du porteur de pack",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Effluve de couverture de Winston",
+          "effect": "damage",
+          "delivery": "beam",
+          "targetSide": "enemy",
+          "range": 760
+        }
+      },
+      "useOldReference": true,
+      "referenceAsset": "/sprites/generated/heroes/ghostbusters/zeddemore-gb.png",
+      "referenceArchive": "docs/combat-fidelity-wave10-2026-10-23/part-d-references/zeddemore_gb-old-base.png",
+      "referenceAssetSha256": "4089812715eccb61bd88fe91671ca31cf79d50966d7a75ef0845abff81ff9de8",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave10-2026-10-23/part-d-references/zeddemore_gb-old-base.png",
+      "targetBodyHeight": 190,
+      "reviewed": false,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "prompt": "Create a native game sprite atlas with EXACTLY THIRTY-TWO NEW complete full-body drawings of ONE named adult character, FOUR equal columns by EIGHT full rows on a tall portrait transparent RGBA canvas. Detailed crisp pixel-art adult proportions, same character and outfit in every cell. No text, numbers, grid, borders, scenery, painted floor or cast-shadow disks. Every body AND all held equipment has generous12–15% transparent cell margins: complete hair, hands, arms, legs, boot soles and weapon tips; never crop last-row feet. Same shared BODY DRAWING SCALE throughout the source; crouches/kneels remain naturally shorter, not inflated. Side/three-quarter facing RIGHT.\nIDENTITY/VERSION: Winston Zeddemore, Ghostbusters live-action film1984: adult Black man, short tightly curled black hair and neat black moustache, capable muscular but natural build, tan beige field jumpsuit, dark elbow pads, black gloves/work boots and utility belt. Real black mechanical proton pack strapped to his back, connected hose to black neutrona wand. No beard, shaved head, cartoon giant jaw or modern armor.\nEQUIPMENT/ROLE: Actual black two-handed neutrona wand with visible cylindrical emitter and connected pack hose; no firearm. Tiny orange/blue local emitter spark only; no long proton stream or giant glow painted across cells.\nAttached OLD atlas is an appearance cue only. Redraw every pose; correct equipment and role according to the text above. Never copy old offensive effects into a support action.\nEIGHT DISTINCT STORYBOARD ROWS, FOUR anatomical poses each, top to bottom:\nROW 1: INTRO (1) upright checking perimeter with wand slung, (2) adjust pack shoulder strap with free hand, (3) take connected wand in both hands, (4) steady two-handed low ready stance.\nROW 2: OUTRO (1) lower and switch off emitter, (2) inspect hose connection near waist, (3) sling wand and relax shoulders, (4) give restrained follow-me hand signal while turning away.\nROW 3: ROUND VICTORY (1) breathe out, (2) check perimeter with wand held down, (3) modest short thumbs-up with offhand, (4) return to steady ready stance.\nROW 4: ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.\nROW 5: FINALE ADAPTATION (1) connected wand DOWN/off at waist, (2) deliberate forward step and two-handed emitter aim RIGHT, (3) deeper stable brace with tiny orange/blue emitter spark only, (4) lower switched-off wand and recover feet.\nROW 6: MATCH VICTORY (1) lower wand, (2) safely secure wand on sling, (3) hand on pack shoulder strap and small relieved nod, (4) calm relaxed standing with open-palmed farewell.\nROW 7: MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.\nROW 8: SUPER (1) draw connected wand from low sling, emitter DOWN/off, (2) plant feet and bring physical emitter RIGHT two-handed, (3) shift front knee forward and brace elbows differently while tiny emitter spark shows technological discharge, (4) power down and lower whole wand with upright recovery.\nFinal check: EIGHT full rows x FOUR complete bodies=32. Four distinct shoulder/elbow/torso/leg drawings per row, not glow-only recolors. Physical weapon emitters point RIGHT in aiming/recoil columns2 and3 of damaging super/finale rows; columns1 and4 are lowered preparation/recovery with no emission. Support actions never fire weapons. Long beams, projectiles, magical barriers and target explosions belong to runtime, never paint them across body cells. No victim, gore, execution, injured body, transformation or extra person.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/part-d-prompts/zeddemore_gb-original.txt",
+      "sourceRows": 8,
+      "rows": [
+        "INTRO (1) upright checking perimeter with wand slung, (2) adjust pack shoulder strap with free hand, (3) take connected wand in both hands, (4) steady two-handed low ready stance.",
+        "OUTRO (1) lower and switch off emitter, (2) inspect hose connection near waist, (3) sling wand and relax shoulders, (4) give restrained follow-me hand signal while turning away.",
+        "ROUND VICTORY (1) breathe out, (2) check perimeter with wand held down, (3) modest short thumbs-up with offhand, (4) return to steady ready stance.",
+        "ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.",
+        "FINALE ADAPTATION (1) connected wand DOWN/off at waist, (2) deliberate forward step and two-handed emitter aim RIGHT, (3) deeper stable brace with tiny orange/blue emitter spark only, (4) lower switched-off wand and recover feet.",
+        "MATCH VICTORY (1) lower wand, (2) safely secure wand on sling, (3) hand on pack shoulder strap and small relieved nod, (4) calm relaxed standing with open-palmed farewell.",
+        "MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.",
+        "SUPER (1) draw connected wand from low sling, emitter DOWN/off, (2) plant feet and bring physical emitter RIGHT two-handed, (3) shift front knee forward and brace elbows differently while tiny emitter spark shows technological discharge, (4) power down and lower whole wand with upright recovery."
+      ]
+    },
+    {
+      "heroId": "spengler_gb",
+      "useOldReference": false,
+      "rejectedReference": "Old base mixes cartoon-sized quiff, a jetpack-running frame and offensive wand shots with the selected1984 PKE support role. It was inspected but is excluded from generation inputs.",
+      "version": "Egon Spengler, Ghostbusters LIVE-ACTION film1984: tall slim adult white man, long thoughtful face, dark brown swept-up hair of natural modest height, thin dark wire-frame ROUND/oval glasses, tan beige field jumpsuit, utility belt and black work boots. A practical mechanical proton pack may be strapped inactive behind him, but selected hands hold only the PKE scanner. Not cartoon Egon, not jet propulsion, no magically glowing body.",
+      "weapon": "The PKE METER is a SMALL HANDHELD dark rectangular detector with a short grip, a tiny green indicator display and TWO folding antenna/wings at its TOP, held physically in one hand while the other adjusts a dial or points at its reading. It is a SCANNER, never a gun. No projectile, beam, long lightning, wand attack, magic field or giant hologram.",
+      "basic": "BUFF SUPPORT scan: (1) hold PKE low and look at display, (2) lift scanner near chest with other finger at control, (3) lean forward and point to small reading while antennas are open, (4) lower scanner and signal measured information to ally. No attack.",
+      "intro": "(1) upright adjusting glasses with scanner low, (2) glance down at PKE display, (3) lift PKE and spread antenna arms using free hand, (4) attentive stance with scanner at chest.",
+      "outro": "(1) lower PKE and close antennas, (2) check small display with tilted head, (3) tuck scanner safely near belt, (4) turn away while adjusting glasses.",
+      "roundVictory": "(1) exhale with scanner down, (2) inspect reading, (3) slight satisfied head nod with one raised finger, (4) relaxed precise stance.",
+      "finale": "BUFF SUPPORT, no execution: (1) PKE held low while free hand opens antenna arms, (2) bend knees and scan at chest height, (3) turn upper torso while pointing to actual display and signalling relevant direction, (4) lower scanner and offer calm explanatory open palm. Tiny indicator only, no emitted magic.",
+      "victory": "(1) inspect last reading, (2) close antennas carefully with free hand, (3) small pleased nod while adjusting glasses, (4) stand relaxed with scanner safely held low.",
+      "super": "BUFF SUPPORT: (1) raise actual PKE with antenna arms partly folded, (2) lean over open antennas and adjust a physical control, (3) straighten front leg and point a free finger to display while looking toward ally, (4) lower PKE and give a measured open-hand direction signal. Four real anatomical poses; no attack or summoned spirit.",
+      "universe": "Ghostbusters",
+      "name": "Egon Spengler",
+      "sourceWork": "Ghostbusters (1984)",
+      "sourceReference": {
+        "simple": "1984 Egon Spengler has dark hair and glasses, a tan jumpsuit and the handheld PKE Meter with folding antenna arms. His selected simple/secondary/super stay informational buffs, with no attack from the scanner, jet propulsion or paranormal personal power.",
+        "secondary": "1984 Egon Spengler has dark hair and glasses, a tan jumpsuit and the handheld PKE Meter with folding antenna arms. His selected simple/secondary/super stay informational buffs, with no attack from the scanner, jet propulsion or paranormal personal power.",
+        "defense": "1984 Egon Spengler has dark hair and glasses, a tan jumpsuit and the handheld PKE Meter with folding antenna arms. His selected simple/secondary/super stay informational buffs, with no attack from the scanner, jet propulsion or paranormal personal power.",
+        "special": "1984 Egon Spengler has dark hair and glasses, a tan jumpsuit and the handheld PKE Meter with folding antenna arms. His selected simple/secondary/super stay informational buffs, with no attack from the scanner, jet propulsion or paranormal personal power."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Lire l’aiguille du PKE Meter",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "secondary": {
+          "name": "Annoncer la mesure paranormale d’Egon",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "defense": {
+          "name": "Abri du poste d’analyse PKE",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Lecture du PKE Meter",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/ghostbusters/spengler-gb.png",
+      "referenceArchive": "docs/combat-fidelity-wave10-2026-10-23/part-d-references/spengler_gb-old-base.png",
+      "referenceAssetSha256": "0872331fceb1af628d990a85c96342d6f2f665badd3e9af8480f5a84967c0d0a",
+      "referenceImage": null,
+      "targetBodyHeight": 190,
+      "reviewed": false,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "prompt": "Create a native game sprite atlas with EXACTLY THIRTY-TWO NEW complete full-body drawings of ONE named adult character, FOUR equal columns by EIGHT full rows on a tall portrait transparent RGBA canvas. Detailed crisp pixel-art adult proportions, same character and outfit in every cell. No text, numbers, grid, borders, scenery, painted floor or cast-shadow disks. Every body AND all held equipment has generous12–15% transparent cell margins: complete hair, hands, arms, legs, boot soles and weapon tips; never crop last-row feet. Same shared BODY DRAWING SCALE throughout the source; crouches/kneels remain naturally shorter, not inflated. Side/three-quarter facing RIGHT.\nIDENTITY/VERSION: Egon Spengler, Ghostbusters LIVE-ACTION film1984: tall slim adult white man, long thoughtful face, dark brown swept-up hair of natural modest height, thin dark wire-frame ROUND/oval glasses, tan beige field jumpsuit, utility belt and black work boots. A practical mechanical proton pack may be strapped inactive behind him, but selected hands hold only the PKE scanner. Not cartoon Egon, not jet propulsion, no magically glowing body.\nEQUIPMENT/ROLE: The PKE METER is a SMALL HANDHELD dark rectangular detector with a short grip, a tiny green indicator display and TWO folding antenna/wings at its TOP, held physically in one hand while the other adjusts a dial or points at its reading. It is a SCANNER, never a gun. No projectile, beam, long lightning, wand attack, magic field or giant hologram.\nNo old image is supplied: the inspected previous atlas had incorrect equipment/identity. Follow this exact written identity.\nEIGHT DISTINCT STORYBOARD ROWS, FOUR anatomical poses each, top to bottom:\nROW 1: INTRO (1) upright adjusting glasses with scanner low, (2) glance down at PKE display, (3) lift PKE and spread antenna arms using free hand, (4) attentive stance with scanner at chest.\nROW 2: OUTRO (1) lower PKE and close antennas, (2) check small display with tilted head, (3) tuck scanner safely near belt, (4) turn away while adjusting glasses.\nROW 3: ROUND VICTORY (1) exhale with scanner down, (2) inspect reading, (3) slight satisfied head nod with one raised finger, (4) relaxed precise stance.\nROW 4: ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.\nROW 5: FINALE ADAPTATION BUFF SUPPORT, no execution: (1) PKE held low while free hand opens antenna arms, (2) bend knees and scan at chest height, (3) turn upper torso while pointing to actual display and signalling relevant direction, (4) lower scanner and offer calm explanatory open palm. Tiny indicator only, no emitted magic.\nROW 6: MATCH VICTORY (1) inspect last reading, (2) close antennas carefully with free hand, (3) small pleased nod while adjusting glasses, (4) stand relaxed with scanner safely held low.\nROW 7: MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.\nROW 8: SUPER BUFF SUPPORT: (1) raise actual PKE with antenna arms partly folded, (2) lean over open antennas and adjust a physical control, (3) straighten front leg and point a free finger to display while looking toward ally, (4) lower PKE and give a measured open-hand direction signal. Four real anatomical poses; no attack or summoned spirit.\nFinal check: EIGHT full rows x FOUR complete bodies=32. Four distinct shoulder/elbow/torso/leg drawings per row, not glow-only recolors. Physical weapon emitters point RIGHT in aiming/recoil columns2 and3 of damaging super/finale rows; columns1 and4 are lowered preparation/recovery with no emission. Support actions never fire weapons. Long beams, projectiles, magical barriers and target explosions belong to runtime, never paint them across body cells. No victim, gore, execution, injured body, transformation or extra person.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/part-d-prompts/spengler_gb-original.txt",
+      "sourceRows": 8,
+      "rows": [
+        "INTRO (1) upright adjusting glasses with scanner low, (2) glance down at PKE display, (3) lift PKE and spread antenna arms using free hand, (4) attentive stance with scanner at chest.",
+        "OUTRO (1) lower PKE and close antennas, (2) check small display with tilted head, (3) tuck scanner safely near belt, (4) turn away while adjusting glasses.",
+        "ROUND VICTORY (1) exhale with scanner down, (2) inspect reading, (3) slight satisfied head nod with one raised finger, (4) relaxed precise stance.",
+        "ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.",
+        "FINALE ADAPTATION BUFF SUPPORT, no execution: (1) PKE held low while free hand opens antenna arms, (2) bend knees and scan at chest height, (3) turn upper torso while pointing to actual display and signalling relevant direction, (4) lower scanner and offer calm explanatory open palm. Tiny indicator only, no emitted magic.",
+        "MATCH VICTORY (1) inspect last reading, (2) close antennas carefully with free hand, (3) small pleased nod while adjusting glasses, (4) stand relaxed with scanner safely held low.",
+        "MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.",
+        "SUPER BUFF SUPPORT: (1) raise actual PKE with antenna arms partly folded, (2) lean over open antennas and adjust a physical control, (3) straighten front leg and point a free finger to display while looking toward ally, (4) lower PKE and give a measured open-hand direction signal. Four real anatomical poses; no attack or summoned spirit."
+      ]
+    },
+    {
+      "heroId": "janine_gb",
+      "useOldReference": false,
+      "rejectedReference": "Old Janine wears a field jumpsuit/proton pack, long ponytail and fires offensive beams. It is not the selected human1984 receptionist and is excluded from generation inputs.",
+      "version": "Janine Melnitz, an ADULT human receptionist from Ghostbusters live-action film1984: short angular copper-red/auburn BOB haircut above the collar, large angular red/dark CAT-EYE eyeglasses, pale blue-grey long-sleeved office BLOUSE with modest collar, dark charcoal knee-length office skirt, opaque dark tights and practical low black shoes. Natural adult proportions. She wears OFFICE CLOTHES, absolutely no Ghostbuster jumpsuit, armor, proton pack, ponytail or gun.",
+      "weapon": "Ordinary reception equipment ONLY: a small grey push-button DESK TELEPHONE BASE supported by the left palm, and matching physical HANDSET in the right hand connected to that base by a short clearly visible COILED CORD. When not calling, handset rests on the held base. No floating receiver, extra hand, gun, wand, scanner laser or paranormal power. Carrying this compact phone during fighting-game poses is an explicitly authored role adaptation.",
+      "basic": "BUFF SUPPORT taking a phone call: (1) lift handset from the small base supported in left palm, (2) bring handset to right ear and lean attentively, (3) turn shoulders with receiver at ear and free left hand supporting actual base, (4) lower handset toward base and look toward ally. No strike or emitted effect.",
+      "intro": "(1) stand holding small phone base with handset resting on it, (2) lift receiver in right hand, (3) lean slightly and listen with receiver at ear and base in other hand, (4) attentive office stance looking toward incoming call.",
+      "outro": "(1) bring receiver away from ear, (2) replace it on real base held in left palm, (3) shift weight and adjust glasses using now-free right hand, (4) turn away holding the complete telephone safely.",
+      "roundVictory": "(1) exhale with handset resting on base, (2) adjust glasses with free hand and look aside, (3) brief relieved small smile and nod, (4) poised upright receptionist stance.",
+      "finale": "BUFF SUPPORT DISPATCH, never an execution: (1) lift receiver while holding small physical base, (2) listen intently at ear with knees softened, (3) turn torso decisively toward ally while giving verbal instructions into handset, (4) lower receiver to base and offer a composed confident nod. No gun, field, beam, attack, supernatural hands or firehouse explosion.",
+      "victory": "(1) return handset to phone base, (2) straighten blouse sleeve with empty right hand, (3) adjust cat-eye glasses and small satisfied smile, (4) turn away with complete telephone held safely.",
+      "super": "BUFF SUPPORT firehouse coordination: (1) hold small telephone base low and raise receiver, (2) bring handset to ear while leaning forward, (3) rotate shoulders and speak clear dispatch information while supporting physical base in other hand, (4) replace receiver and straighten with a small confirming nod. Four different body poses; no paranormal equipment or attacks.",
+      "universe": "Ghostbusters",
+      "name": "Janine Melnitz",
+      "sourceWork": "Ghostbusters (1984)",
+      "sourceReference": {
+        "simple": "In the1984 film Janine Melnitz receives calls and handles the firehouse reception. Passing a call and recording a dispatch help the team coordinate; these authored support effects do not shoot telephones, summon armed personnel, capture people or grant paranormal powers.",
+        "secondary": "In the1984 film Janine Melnitz receives calls and handles the firehouse reception. Passing a call and recording a dispatch help the team coordinate; these authored support effects do not shoot telephones, summon armed personnel, capture people or grant paranormal powers.",
+        "defense": "In the1984 film Janine Melnitz receives calls and handles the firehouse reception. Passing a call and recording a dispatch help the team coordinate; these authored support effects do not shoot telephones, summon armed personnel, capture people or grant paranormal powers.",
+        "special": "In the1984 film Janine Melnitz receives calls and handles the firehouse reception. Passing a call and recording a dispatch help the team coordinate; these authored support effects do not shoot telephones, summon armed personnel, capture people or grant paranormal powers."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Prise d’appel de Janine",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "secondary": {
+          "name": "Transmission de l’alerte par Janine",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "defense": {
+          "name": "Abri derrière le comptoir de Janine",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Coordination de la caserne par Janine",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/ghostbusters/janine-gb.png",
+      "referenceArchive": "docs/combat-fidelity-wave10-2026-10-23/part-d-references/janine_gb-old-base.png",
+      "referenceAssetSha256": "01b85f31f56c0c2d903af77b0521fd2bf6a20f7d5751622e05fac7edeb63a3cb",
+      "referenceImage": null,
+      "targetBodyHeight": 190,
+      "reviewed": false,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "prompt": "Create a native game sprite atlas with EXACTLY THIRTY-TWO NEW complete full-body drawings of ONE named adult character, FOUR equal columns by EIGHT full rows on a tall portrait transparent RGBA canvas. Detailed crisp pixel-art adult proportions, same character and outfit in every cell. No text, numbers, grid, borders, scenery, painted floor or cast-shadow disks. Every body AND all held equipment has generous12–15% transparent cell margins: complete hair, hands, arms, legs, boot soles and weapon tips; never crop last-row feet. Same shared BODY DRAWING SCALE throughout the source; crouches/kneels remain naturally shorter, not inflated. Side/three-quarter facing RIGHT.\nIDENTITY/VERSION: Janine Melnitz, an ADULT human receptionist from Ghostbusters live-action film1984: short angular copper-red/auburn BOB haircut above the collar, large angular red/dark CAT-EYE eyeglasses, pale blue-grey long-sleeved office BLOUSE with modest collar, dark charcoal knee-length office skirt, opaque dark tights and practical low black shoes. Natural adult proportions. She wears OFFICE CLOTHES, absolutely no Ghostbuster jumpsuit, armor, proton pack, ponytail or gun.\nEQUIPMENT/ROLE: Ordinary reception equipment ONLY: a small grey push-button DESK TELEPHONE BASE supported by the left palm, and matching physical HANDSET in the right hand connected to that base by a short clearly visible COILED CORD. When not calling, handset rests on the held base. No floating receiver, extra hand, gun, wand, scanner laser or paranormal power. Carrying this compact phone during fighting-game poses is an explicitly authored role adaptation.\nNo old image is supplied: the inspected previous atlas had incorrect equipment/identity. Follow this exact written identity.\nEIGHT DISTINCT STORYBOARD ROWS, FOUR anatomical poses each, top to bottom:\nROW 1: INTRO (1) stand holding small phone base with handset resting on it, (2) lift receiver in right hand, (3) lean slightly and listen with receiver at ear and base in other hand, (4) attentive office stance looking toward incoming call.\nROW 2: OUTRO (1) bring receiver away from ear, (2) replace it on real base held in left palm, (3) shift weight and adjust glasses using now-free right hand, (4) turn away holding the complete telephone safely.\nROW 3: ROUND VICTORY (1) exhale with handset resting on base, (2) adjust glasses with free hand and look aside, (3) brief relieved small smile and nod, (4) poised upright receptionist stance.\nROW 4: ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.\nROW 5: FINALE ADAPTATION BUFF SUPPORT DISPATCH, never an execution: (1) lift receiver while holding small physical base, (2) listen intently at ear with knees softened, (3) turn torso decisively toward ally while giving verbal instructions into handset, (4) lower receiver to base and offer a composed confident nod. No gun, field, beam, attack, supernatural hands or firehouse explosion.\nROW 6: MATCH VICTORY (1) return handset to phone base, (2) straighten blouse sleeve with empty right hand, (3) adjust cat-eye glasses and small satisfied smile, (4) turn away with complete telephone held safely.\nROW 7: MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.\nROW 8: SUPER BUFF SUPPORT firehouse coordination: (1) hold small telephone base low and raise receiver, (2) bring handset to ear while leaning forward, (3) rotate shoulders and speak clear dispatch information while supporting physical base in other hand, (4) replace receiver and straighten with a small confirming nod. Four different body poses; no paranormal equipment or attacks.\nFinal check: EIGHT full rows x FOUR complete bodies=32. Four distinct shoulder/elbow/torso/leg drawings per row, not glow-only recolors. Physical weapon emitters point RIGHT in aiming/recoil columns2 and3 of damaging super/finale rows; columns1 and4 are lowered preparation/recovery with no emission. Support actions never fire weapons. Long beams, projectiles, magical barriers and target explosions belong to runtime, never paint them across body cells. No victim, gore, execution, injured body, transformation or extra person.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/part-d-prompts/janine_gb-original.txt",
+      "sourceRows": 8,
+      "rows": [
+        "INTRO (1) stand holding small phone base with handset resting on it, (2) lift receiver in right hand, (3) lean slightly and listen with receiver at ear and base in other hand, (4) attentive office stance looking toward incoming call.",
+        "OUTRO (1) bring receiver away from ear, (2) replace it on real base held in left palm, (3) shift weight and adjust glasses using now-free right hand, (4) turn away holding the complete telephone safely.",
+        "ROUND VICTORY (1) exhale with handset resting on base, (2) adjust glasses with free hand and look aside, (3) brief relieved small smile and nod, (4) poised upright receptionist stance.",
+        "ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.",
+        "FINALE ADAPTATION BUFF SUPPORT DISPATCH, never an execution: (1) lift receiver while holding small physical base, (2) listen intently at ear with knees softened, (3) turn torso decisively toward ally while giving verbal instructions into handset, (4) lower receiver to base and offer a composed confident nod. No gun, field, beam, attack, supernatural hands or firehouse explosion.",
+        "MATCH VICTORY (1) return handset to phone base, (2) straighten blouse sleeve with empty right hand, (3) adjust cat-eye glasses and small satisfied smile, (4) turn away with complete telephone held safely.",
+        "MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.",
+        "SUPER BUFF SUPPORT firehouse coordination: (1) hold small telephone base low and raise receiver, (2) bring handset to ear while leaning forward, (3) rotate shoulders and speak clear dispatch information while supporting physical base in other hand, (4) replace receiver and straighten with a small confirming nod. Four different body poses; no paranormal equipment or attacks."
+      ]
+    },
+    {
+      "heroId": "bill_l4d",
+      "version": "Bill, Left4Dead ORIGINAL2008: elderly white veteran with deeply lined face and full short GREY beard, olive GREEN BERET, olive military field jacket over pale undershirt, olive cargo trousers, black combat boots. Human survivor, not infected. No military body armor suit, no young clean-shaven face. A black real M16 assault rifle is safely slung/held for ordinary actions.",
+      "weapon": "Selected ordinary loadout is a physical black M16-style assault rifle with carry handle, slender long barrel, stock and box magazine. SUPPORT super uses calm cover/regroup hand signals with rifle pointed DOWN or safely slung, NOT a new damaging burst, magical shield or healing spell.",
+      "basic": "M16 physical shooting: (1) low ready, (2) shoulder complete rifle RIGHT, (3) elbows and torso take small actual recoil with tiny flash at true muzzle, (4) lower rifle and settle feet. No gore or victim.",
+      "intro": "(1) upright scan with M16 down, (2) adjust beret with free hand, (3) take rifle in both hands and bend knees, (4) cautious veteran low-ready stance.",
+      "outro": "(1) lower rifle, (2) check sling and receiver, (3) safely secure rifle against chest, (4) turn away with low follow-me hand signal.",
+      "roundVictory": "(1) breathe out, (2) check perimeter with rifle down, (3) restrained approving nod and small thumb-up, (4) steady low-ready stance.",
+      "finale": "GUARD SUPPORT veteran cover: (1) rifle safely slung DOWN while free hand signals stop, (2) low crouch scanning safe passage, (3) rise halfway and sweep empty palm to guide allies behind cover, (4) upright firm regroup signal with rifle still inactive. No firing, casualty or magical barrier.",
+      "victory": "(1) lower tense shoulders, (2) secure rifle sling, (3) adjust green beret and give a quiet approving nod, (4) turn away with low open-palm follow signal.",
+      "super": "GUARD SUPPORT: (1) plant feet with rifle safely down on sling, (2) drop to one knee and raise empty palm for allies to wait, (3) turn shoulders to inspect route while pointing with free hand, (4) stand halfway giving a decisive regroup/cover signal. No shot, projected shield, corpse or personal power.",
+      "universe": "Left 4 Dead",
+      "name": "Bill",
+      "sourceWork": "Left 4 Dead (2008)",
+      "sourceReference": {
+        "simple": "Original-game Bill is the grey-bearded veteran in green beret, olive field jacket and dark boots. The selected ordinary loadout is the available M16 assault rifle. His existing coverage super protects allies through an authored regroup/cover adaptation and adds no new damaging volley.",
+        "secondary": "Original-game Bill is the grey-bearded veteran in green beret, olive field jacket and dark boots. The selected ordinary loadout is the available M16 assault rifle. His existing coverage super protects allies through an authored regroup/cover adaptation and adds no new damaging volley.",
+        "defense": "Original-game Bill is the grey-bearded veteran in green beret, olive field jacket and dark boots. The selected ordinary loadout is the available M16 assault rifle. His existing coverage super protects allies through an authored regroup/cover adaptation and adds no new damaging volley.",
+        "special": "Original-game Bill is the grey-bearded veteran in green beret, olive field jacket and dark boots. The selected ordinary loadout is the available M16 assault rifle. His existing coverage super protects allies through an authored regroup/cover adaptation and adds no new damaging volley."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Rafale de vétéran de Bill",
+          "effect": "damage",
+          "delivery": "projectile",
+          "targetSide": "enemy",
+          "range": 480
+        },
+        "secondary": {
+          "name": "Tenir le passage pour les survivants",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "defense": {
+          "name": "Couvert de Bill derrière la barricade",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Couverture du vétéran Bill",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        }
+      },
+      "useOldReference": true,
+      "referenceAsset": "/sprites/generated/heroes/left-4-dead/bill-l4d.png",
+      "referenceArchive": "docs/combat-fidelity-wave10-2026-10-23/part-d-references/bill_l4d-old-base.png",
+      "referenceAssetSha256": "ac332da92da6585c2699a1db970c96b839faccd484d737a2898e5abf5cd1f607",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave10-2026-10-23/part-d-references/bill_l4d-old-base.png",
+      "targetBodyHeight": 190,
+      "reviewed": false,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "prompt": "Create a native game sprite atlas with EXACTLY THIRTY-TWO NEW complete full-body drawings of ONE named adult character, FOUR equal columns by EIGHT full rows on a tall portrait transparent RGBA canvas. Detailed crisp pixel-art adult proportions, same character and outfit in every cell. No text, numbers, grid, borders, scenery, painted floor or cast-shadow disks. Every body AND all held equipment has generous12–15% transparent cell margins: complete hair, hands, arms, legs, boot soles and weapon tips; never crop last-row feet. Same shared BODY DRAWING SCALE throughout the source; crouches/kneels remain naturally shorter, not inflated. Side/three-quarter facing RIGHT.\nIDENTITY/VERSION: Bill, Left4Dead ORIGINAL2008: elderly white veteran with deeply lined face and full short GREY beard, olive GREEN BERET, olive military field jacket over pale undershirt, olive cargo trousers, black combat boots. Human survivor, not infected. No military body armor suit, no young clean-shaven face. A black real M16 assault rifle is safely slung/held for ordinary actions.\nEQUIPMENT/ROLE: Selected ordinary loadout is a physical black M16-style assault rifle with carry handle, slender long barrel, stock and box magazine. SUPPORT super uses calm cover/regroup hand signals with rifle pointed DOWN or safely slung, NOT a new damaging burst, magical shield or healing spell.\nAttached OLD atlas is an appearance cue only. Redraw every pose; correct equipment and role according to the text above. Never copy old offensive effects into a support action.\nEIGHT DISTINCT STORYBOARD ROWS, FOUR anatomical poses each, top to bottom:\nROW 1: INTRO (1) upright scan with M16 down, (2) adjust beret with free hand, (3) take rifle in both hands and bend knees, (4) cautious veteran low-ready stance.\nROW 2: OUTRO (1) lower rifle, (2) check sling and receiver, (3) safely secure rifle against chest, (4) turn away with low follow-me hand signal.\nROW 3: ROUND VICTORY (1) breathe out, (2) check perimeter with rifle down, (3) restrained approving nod and small thumb-up, (4) steady low-ready stance.\nROW 4: ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.\nROW 5: FINALE ADAPTATION GUARD SUPPORT veteran cover: (1) rifle safely slung DOWN while free hand signals stop, (2) low crouch scanning safe passage, (3) rise halfway and sweep empty palm to guide allies behind cover, (4) upright firm regroup signal with rifle still inactive. No firing, casualty or magical barrier.\nROW 6: MATCH VICTORY (1) lower tense shoulders, (2) secure rifle sling, (3) adjust green beret and give a quiet approving nod, (4) turn away with low open-palm follow signal.\nROW 7: MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.\nROW 8: SUPER GUARD SUPPORT: (1) plant feet with rifle safely down on sling, (2) drop to one knee and raise empty palm for allies to wait, (3) turn shoulders to inspect route while pointing with free hand, (4) stand halfway giving a decisive regroup/cover signal. No shot, projected shield, corpse or personal power.\nFinal check: EIGHT full rows x FOUR complete bodies=32. Four distinct shoulder/elbow/torso/leg drawings per row, not glow-only recolors. Physical weapon emitters point RIGHT in aiming/recoil columns2 and3 of damaging super/finale rows; columns1 and4 are lowered preparation/recovery with no emission. Support actions never fire weapons. Long beams, projectiles, magical barriers and target explosions belong to runtime, never paint them across body cells. No victim, gore, execution, injured body, transformation or extra person.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/part-d-prompts/bill_l4d-original.txt",
+      "sourceRows": 8,
+      "rows": [
+        "INTRO (1) upright scan with M16 down, (2) adjust beret with free hand, (3) take rifle in both hands and bend knees, (4) cautious veteran low-ready stance.",
+        "OUTRO (1) lower rifle, (2) check sling and receiver, (3) safely secure rifle against chest, (4) turn away with low follow-me hand signal.",
+        "ROUND VICTORY (1) breathe out, (2) check perimeter with rifle down, (3) restrained approving nod and small thumb-up, (4) steady low-ready stance.",
+        "ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.",
+        "FINALE ADAPTATION GUARD SUPPORT veteran cover: (1) rifle safely slung DOWN while free hand signals stop, (2) low crouch scanning safe passage, (3) rise halfway and sweep empty palm to guide allies behind cover, (4) upright firm regroup signal with rifle still inactive. No firing, casualty or magical barrier.",
+        "MATCH VICTORY (1) lower tense shoulders, (2) secure rifle sling, (3) adjust green beret and give a quiet approving nod, (4) turn away with low open-palm follow signal.",
+        "MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.",
+        "SUPER GUARD SUPPORT: (1) plant feet with rifle safely down on sling, (2) drop to one knee and raise empty palm for allies to wait, (3) turn shoulders to inspect route while pointing with free hand, (4) stand halfway giving a decisive regroup/cover signal. No shot, projected shield, corpse or personal power."
+      ]
+    },
+    {
+      "heroId": "ellis_l4d",
+      "version": "Ellis, Left4Dead2 game2009: young ADULT white male mechanic, short brown hair under BLUE-and-WHITE baseball/trucker cap, yellow short-sleeved mechanic T-shirt with a small simple dark chest emblem, blue jeans, brown belt and work shoes/boots. Slim wiry human body, no infected form. No giant grenade launcher permanently held.",
+      "weapon": "Selected BASIC firearm is a compact real black UZI-style SMG with box magazine and short barrel, carried low/on sling outside basic firing. SUPPORT special uses a small physical metal spanner and compact closed toolkit, inspecting equipment and signalling readiness. No whole vehicle, turret, rocket/cannon, magic repair ray or helicopter in body cells.",
+      "basic": "actual compact SMG: (1) low ready with knees flexed, (2) raise short UZI-style weapon RIGHT with both hands, (3) tiny real muzzle flash and physical recoil with elbows changing angle, (4) lower SMG and rebalance. No giant grenade launcher.",
+      "intro": "(1) stand with SMG slung low, (2) tip blue/white cap brim with free hand, (3) check small spanner in belt pouch, (4) alert ready stance with gear held safely down.",
+      "outro": "(1) lower spanner after checking gear, (2) place it into compact toolkit, (3) close toolkit and secure it at belt, (4) turn away with a small cheerful follow signal.",
+      "roundVictory": "(1) breathe out and lower shoulders, (2) wipe forehead with sleeve, (3) short confident thumbs-up, (4) relaxed ready stance with weapon inactive.",
+      "finale": "BUFF SUPPORT equipment readiness: (1) crouch with small toolkit open beside boot, (2) one knee down inspecting a compact mechanical component held in palm with spanner, (3) rise halfway and tighten/check that component with real tool, (4) stand and offer confirming thumbs-up with equipment inactive. No magic beam, vehicle summon, enemy or execution.",
+      "victory": "(1) close compact toolkit, (2) put spanner back at belt, (3) tip cap and small satisfied grin, (4) turn shoulders away with open-palm team signal.",
+      "super": "BUFF SUPPORT: (1) kneel and set compact toolkit beside boot, (2) lean over real spanner and small mechanical component in left palm, (3) stand halfway checking the component with different elbows/legs, (4) upright thumbs-up and tool safely lowered. Four real body poses; no firing or supernatural repair light.",
+      "universe": "Left 4 Dead",
+      "name": "Ellis",
+      "sourceWork": "Left 4 Dead 2 (2009)",
+      "sourceReference": {
+        "simple": "Ellis wears the blue/white baseball cap, yellow mechanic T-shirt and blue jeans. His selected basic loadout is an available compact SMG; checking tools and equipment supplies the existing allied buff, not a cannon, invented vehicle summon or supernatural repair power.",
+        "secondary": "Ellis wears the blue/white baseball cap, yellow mechanic T-shirt and blue jeans. His selected basic loadout is an available compact SMG; checking tools and equipment supplies the existing allied buff, not a cannon, invented vehicle summon or supernatural repair power.",
+        "defense": "Ellis wears the blue/white baseball cap, yellow mechanic T-shirt and blue jeans. His selected basic loadout is an available compact SMG; checking tools and equipment supplies the existing allied buff, not a cannon, invented vehicle summon or supernatural repair power.",
+        "special": "Ellis wears the blue/white baseball cap, yellow mechanic T-shirt and blue jeans. His selected basic loadout is an available compact SMG; checking tools and equipment supplies the existing allied buff, not a cannon, invented vehicle summon or supernatural repair power."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Tir de survie d’Ellis",
+          "effect": "damage",
+          "delivery": "projectile",
+          "targetSide": "enemy",
+          "range": 480
+        },
+        "secondary": {
+          "name": "Vérifier le véhicule avec Ellis",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "defense": {
+          "name": "Abri du mécanicien survivant",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Remise en route par Ellis",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        }
+      },
+      "useOldReference": true,
+      "referenceAsset": "/sprites/generated/heroes/left-4-dead/ellis-l4d.png",
+      "referenceArchive": "docs/combat-fidelity-wave10-2026-10-23/part-d-references/ellis_l4d-old-base.png",
+      "referenceAssetSha256": "aca40dc3eac7b48f2933e219eeb26626a80ceebd5721dd806eedbeba942a1aca",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave10-2026-10-23/part-d-references/ellis_l4d-old-base.png",
+      "targetBodyHeight": 190,
+      "reviewed": false,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "prompt": "Create a native game sprite atlas with EXACTLY THIRTY-TWO NEW complete full-body drawings of ONE named adult character, FOUR equal columns by EIGHT full rows on a tall portrait transparent RGBA canvas. Detailed crisp pixel-art adult proportions, same character and outfit in every cell. No text, numbers, grid, borders, scenery, painted floor or cast-shadow disks. Every body AND all held equipment has generous12–15% transparent cell margins: complete hair, hands, arms, legs, boot soles and weapon tips; never crop last-row feet. Same shared BODY DRAWING SCALE throughout the source; crouches/kneels remain naturally shorter, not inflated. Side/three-quarter facing RIGHT.\nIDENTITY/VERSION: Ellis, Left4Dead2 game2009: young ADULT white male mechanic, short brown hair under BLUE-and-WHITE baseball/trucker cap, yellow short-sleeved mechanic T-shirt with a small simple dark chest emblem, blue jeans, brown belt and work shoes/boots. Slim wiry human body, no infected form. No giant grenade launcher permanently held.\nEQUIPMENT/ROLE: Selected BASIC firearm is a compact real black UZI-style SMG with box magazine and short barrel, carried low/on sling outside basic firing. SUPPORT special uses a small physical metal spanner and compact closed toolkit, inspecting equipment and signalling readiness. No whole vehicle, turret, rocket/cannon, magic repair ray or helicopter in body cells.\nAttached OLD atlas is an appearance cue only. Redraw every pose; correct equipment and role according to the text above. Never copy old offensive effects into a support action.\nEIGHT DISTINCT STORYBOARD ROWS, FOUR anatomical poses each, top to bottom:\nROW 1: INTRO (1) stand with SMG slung low, (2) tip blue/white cap brim with free hand, (3) check small spanner in belt pouch, (4) alert ready stance with gear held safely down.\nROW 2: OUTRO (1) lower spanner after checking gear, (2) place it into compact toolkit, (3) close toolkit and secure it at belt, (4) turn away with a small cheerful follow signal.\nROW 3: ROUND VICTORY (1) breathe out and lower shoulders, (2) wipe forehead with sleeve, (3) short confident thumbs-up, (4) relaxed ready stance with weapon inactive.\nROW 4: ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.\nROW 5: FINALE ADAPTATION BUFF SUPPORT equipment readiness: (1) crouch with small toolkit open beside boot, (2) one knee down inspecting a compact mechanical component held in palm with spanner, (3) rise halfway and tighten/check that component with real tool, (4) stand and offer confirming thumbs-up with equipment inactive. No magic beam, vehicle summon, enemy or execution.\nROW 6: MATCH VICTORY (1) close compact toolkit, (2) put spanner back at belt, (3) tip cap and small satisfied grin, (4) turn shoulders away with open-palm team signal.\nROW 7: MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.\nROW 8: SUPER BUFF SUPPORT: (1) kneel and set compact toolkit beside boot, (2) lean over real spanner and small mechanical component in left palm, (3) stand halfway checking the component with different elbows/legs, (4) upright thumbs-up and tool safely lowered. Four real body poses; no firing or supernatural repair light.\nFinal check: EIGHT full rows x FOUR complete bodies=32. Four distinct shoulder/elbow/torso/leg drawings per row, not glow-only recolors. Physical weapon emitters point RIGHT in aiming/recoil columns2 and3 of damaging super/finale rows; columns1 and4 are lowered preparation/recovery with no emission. Support actions never fire weapons. Long beams, projectiles, magical barriers and target explosions belong to runtime, never paint them across body cells. No victim, gore, execution, injured body, transformation or extra person.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/part-d-prompts/ellis_l4d-original.txt",
+      "sourceRows": 8,
+      "rows": [
+        "INTRO (1) stand with SMG slung low, (2) tip blue/white cap brim with free hand, (3) check small spanner in belt pouch, (4) alert ready stance with gear held safely down.",
+        "OUTRO (1) lower spanner after checking gear, (2) place it into compact toolkit, (3) close toolkit and secure it at belt, (4) turn away with a small cheerful follow signal.",
+        "ROUND VICTORY (1) breathe out and lower shoulders, (2) wipe forehead with sleeve, (3) short confident thumbs-up, (4) relaxed ready stance with weapon inactive.",
+        "ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.",
+        "FINALE ADAPTATION BUFF SUPPORT equipment readiness: (1) crouch with small toolkit open beside boot, (2) one knee down inspecting a compact mechanical component held in palm with spanner, (3) rise halfway and tighten/check that component with real tool, (4) stand and offer confirming thumbs-up with equipment inactive. No magic beam, vehicle summon, enemy or execution.",
+        "MATCH VICTORY (1) close compact toolkit, (2) put spanner back at belt, (3) tip cap and small satisfied grin, (4) turn shoulders away with open-palm team signal.",
+        "MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.",
+        "SUPER BUFF SUPPORT: (1) kneel and set compact toolkit beside boot, (2) lean over real spanner and small mechanical component in left palm, (3) stand halfway checking the component with different elbows/legs, (4) upright thumbs-up and tool safely lowered. Four real body poses; no firing or supernatural repair light."
+      ]
+    },
+    {
+      "heroId": "coach_l4d",
+      "version": "Coach, Left4Dead2 game2009: heavyset broad-shouldered middle-aged Black adult man, BALD head, warm determined face, PURPLE polo with YELLOW shoulders/short sleeves/collar, tan beige trousers, white wristbands and dark athletic shoes. Human survivor and former coach, not infected. No chainsaw in this selected kit.",
+      "weapon": "Selected BASIC gun is a real conventional pump-action SHOTGUN, long dark barrel, stock and wooden/dark pump fore-end, held with both hands. SUPPORT super is team instruction through empty-hand pointing and regroup gestures; shotgun safely slung DOWN or held inactive. No magic healing, rage aura, offensive chainsaw or additional shots in support rows.",
+      "basic": "physical pump shotgun action: (1) low ready and front knee bent, (2) raise full shotgun to shoulder RIGHT, (3) actual shot recoil with tiny muzzle flash and elbows back, (4) lower barrel slightly and cycle real fore-end with different posture. Whole barrel contained.",
+      "intro": "(1) upright with shotgun safely slung down, (2) glance across group and lift one open palm, (3) settle polo sleeve and shift feet, (4) ready stance holding shotgun low.",
+      "outro": "(1) lower pointing hand, (2) check shotgun sling, (3) straighten shoulders and rest free hand near belt, (4) turn away giving a follow-me team signal.",
+      "roundVictory": "(1) deep relieved breath, (2) wipe forehead with wristband, (3) approving small thumbs-up, (4) settle into alert stance.",
+      "finale": "BUFF SUPPORT leadership: (1) shotgun inactive on sling while empty hand signals wait, (2) lean forward on bent knees and point out a safe direction, (3) stand wider with both natural arms delivering a decisive regroup gesture, (4) lower hands and nod calmly. No shot, barrier beam, heal light or execution.",
+      "victory": "(1) exhale relieved, (2) rest one hand on hip with shotgun slung, (3) small approving nod and thumbs-up, (4) turn toward allies with open-palmed invitation to move.",
+      "super": "BUFF SUPPORT Consignes de Coach: (1) planted stance with firearm safely slung down and empty palm raised, (2) bend knees and point forward with full arm, (3) rotate shoulders and sweep open hand to regroup allies, (4) straighten and give a firm approving nod. Different actual limb/torso positions, no shooting or magical aura.",
+      "universe": "Left 4 Dead",
+      "name": "Coach",
+      "sourceWork": "Left 4 Dead 2 (2009)",
+      "sourceReference": {
+        "simple": "Coach is the bald heavyset Black survivor in the purple/yellow polo and tan trousers. The selected ordinary firearm is an available pump shotgun. His existing super is a zero-damage team instruction buff; no chainsaw attack, magical healing or additional damaging burst replaces that support role.",
+        "secondary": "Coach is the bald heavyset Black survivor in the purple/yellow polo and tan trousers. The selected ordinary firearm is an available pump shotgun. His existing super is a zero-damage team instruction buff; no chainsaw attack, magical healing or additional damaging burst replaces that support role.",
+        "defense": "Coach is the bald heavyset Black survivor in the purple/yellow polo and tan trousers. The selected ordinary firearm is an available pump shotgun. His existing super is a zero-damage team instruction buff; no chainsaw attack, magical healing or additional damaging burst replaces that support role.",
+        "special": "Coach is the bald heavyset Black survivor in the purple/yellow polo and tan trousers. The selected ordinary firearm is an available pump shotgun. His existing super is a zero-damage team instruction buff; no chainsaw attack, magical healing or additional damaging burst replaces that support role."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Tir du survivant Coach",
+          "effect": "damage",
+          "delivery": "projectile",
+          "targetSide": "enemy",
+          "range": 480
+        },
+        "secondary": {
+          "name": "Donner la prochaine consigne au groupe",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "defense": {
+          "name": "Tenir un angle de couvert avec Coach",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Consignes de Coach",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        }
+      },
+      "useOldReference": true,
+      "referenceAsset": "/sprites/generated/heroes/left-4-dead/coach-l4d.png",
+      "referenceArchive": "docs/combat-fidelity-wave10-2026-10-23/part-d-references/coach_l4d-old-base.png",
+      "referenceAssetSha256": "7b4ba6d7d9a9a51b49d47f9aa68cf0c243a8d4e9fa35cc76e6ef8ede527e788e",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave10-2026-10-23/part-d-references/coach_l4d-old-base.png",
+      "targetBodyHeight": 190,
+      "reviewed": false,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "prompt": "Create a native game sprite atlas with EXACTLY THIRTY-TWO NEW complete full-body drawings of ONE named adult character, FOUR equal columns by EIGHT full rows on a tall portrait transparent RGBA canvas. Detailed crisp pixel-art adult proportions, same character and outfit in every cell. No text, numbers, grid, borders, scenery, painted floor or cast-shadow disks. Every body AND all held equipment has generous12–15% transparent cell margins: complete hair, hands, arms, legs, boot soles and weapon tips; never crop last-row feet. Same shared BODY DRAWING SCALE throughout the source; crouches/kneels remain naturally shorter, not inflated. Side/three-quarter facing RIGHT.\nIDENTITY/VERSION: Coach, Left4Dead2 game2009: heavyset broad-shouldered middle-aged Black adult man, BALD head, warm determined face, PURPLE polo with YELLOW shoulders/short sleeves/collar, tan beige trousers, white wristbands and dark athletic shoes. Human survivor and former coach, not infected. No chainsaw in this selected kit.\nEQUIPMENT/ROLE: Selected BASIC gun is a real conventional pump-action SHOTGUN, long dark barrel, stock and wooden/dark pump fore-end, held with both hands. SUPPORT super is team instruction through empty-hand pointing and regroup gestures; shotgun safely slung DOWN or held inactive. No magic healing, rage aura, offensive chainsaw or additional shots in support rows.\nAttached OLD atlas is an appearance cue only. Redraw every pose; correct equipment and role according to the text above. Never copy old offensive effects into a support action.\nEIGHT DISTINCT STORYBOARD ROWS, FOUR anatomical poses each, top to bottom:\nROW 1: INTRO (1) upright with shotgun safely slung down, (2) glance across group and lift one open palm, (3) settle polo sleeve and shift feet, (4) ready stance holding shotgun low.\nROW 2: OUTRO (1) lower pointing hand, (2) check shotgun sling, (3) straighten shoulders and rest free hand near belt, (4) turn away giving a follow-me team signal.\nROW 3: ROUND VICTORY (1) deep relieved breath, (2) wipe forehead with wristband, (3) approving small thumbs-up, (4) settle into alert stance.\nROW 4: ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.\nROW 5: FINALE ADAPTATION BUFF SUPPORT leadership: (1) shotgun inactive on sling while empty hand signals wait, (2) lean forward on bent knees and point out a safe direction, (3) stand wider with both natural arms delivering a decisive regroup gesture, (4) lower hands and nod calmly. No shot, barrier beam, heal light or execution.\nROW 6: MATCH VICTORY (1) exhale relieved, (2) rest one hand on hip with shotgun slung, (3) small approving nod and thumbs-up, (4) turn toward allies with open-palmed invitation to move.\nROW 7: MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.\nROW 8: SUPER BUFF SUPPORT Consignes de Coach: (1) planted stance with firearm safely slung down and empty palm raised, (2) bend knees and point forward with full arm, (3) rotate shoulders and sweep open hand to regroup allies, (4) straighten and give a firm approving nod. Different actual limb/torso positions, no shooting or magical aura.\nFinal check: EIGHT full rows x FOUR complete bodies=32. Four distinct shoulder/elbow/torso/leg drawings per row, not glow-only recolors. Physical weapon emitters point RIGHT in aiming/recoil columns2 and3 of damaging super/finale rows; columns1 and4 are lowered preparation/recovery with no emission. Support actions never fire weapons. Long beams, projectiles, magical barriers and target explosions belong to runtime, never paint them across body cells. No victim, gore, execution, injured body, transformation or extra person.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/part-d-prompts/coach_l4d-original.txt",
+      "sourceRows": 8,
+      "rows": [
+        "INTRO (1) upright with shotgun safely slung down, (2) glance across group and lift one open palm, (3) settle polo sleeve and shift feet, (4) ready stance holding shotgun low.",
+        "OUTRO (1) lower pointing hand, (2) check shotgun sling, (3) straighten shoulders and rest free hand near belt, (4) turn away giving a follow-me team signal.",
+        "ROUND VICTORY (1) deep relieved breath, (2) wipe forehead with wristband, (3) approving small thumbs-up, (4) settle into alert stance.",
+        "ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.",
+        "FINALE ADAPTATION BUFF SUPPORT leadership: (1) shotgun inactive on sling while empty hand signals wait, (2) lean forward on bent knees and point out a safe direction, (3) stand wider with both natural arms delivering a decisive regroup gesture, (4) lower hands and nod calmly. No shot, barrier beam, heal light or execution.",
+        "MATCH VICTORY (1) exhale relieved, (2) rest one hand on hip with shotgun slung, (3) small approving nod and thumbs-up, (4) turn toward allies with open-palmed invitation to move.",
+        "MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.",
+        "SUPER BUFF SUPPORT Consignes de Coach: (1) planted stance with firearm safely slung down and empty palm raised, (2) bend knees and point forward with full arm, (3) rotate shoulders and sweep open hand to regroup allies, (4) straighten and give a firm approving nod. Different actual limb/torso positions, no shooting or magical aura."
+      ]
+    },
+    {
+      "heroId": "rochelle_l4d",
+      "version": "Rochelle, Left4Dead2 game2009: adult Black woman, dark brown skin, tied-back natural black hair in a short practical ponytail, gold hoop earrings, PINK fitted band T-shirt with simple dark chest graphic, dark blue jeans, belt and brown/black work boots. Human survivor/journalist, no infected form. No axe in the selected basic kit.",
+      "weapon": "Selected BASIC firearm is a compact black conventional SEMIAUTOMATIC PISTOL (P220-style), held physically; no axe or magic. SUPPORT super uses careful observation and empty-hand route/extraction signals while pistol remains holstered or down. No radio beam, enemy mind control, portal or invented aircraft.",
+      "basic": "physical pistol action: (1) draw compact black handgun from hip with bent knees, (2) two-handed aim RIGHT, (3) small real recoil with tiny muzzle flash and shoulders shifting, (4) lower pistol and recover balance. No axe swing.",
+      "intro": "(1) scan ahead with pistol holstered, (2) shade eyes with free hand and lean forward, (3) point a short safe-route signal, (4) return to careful low-ready stance.",
+      "outro": "(1) lower route-pointing hand, (2) check holster and belt, (3) look over shoulder while turning torso, (4) gesture allies follow with pistol secured.",
+      "roundVictory": "(1) relieved breath and lowered shoulders, (2) brush hair back with free hand, (3) small reassuring nod with open palm, (4) return to alert stance.",
+      "finale": "GUARD SUPPORT extraction route: (1) pistol holstered while raising open palm to wait, (2) crouch and lean to inspect an offscreen passage, (3) rise halfway and point confidently along safe route, (4) upright open-palm follow signal with gun still inactive. No firing, magic shield, target or execution.",
+      "victory": "(1) lower tense shoulders, (2) check perimeter with hand shading eyes, (3) relieved small smile and nod, (4) turn away with calm follow-me signal.",
+      "super": "GUARD SUPPORT: (1) gun holstered and empty palm raised, (2) one knee bent with torso leaning to inspect route, (3) stand wider and point actual arm along safe direction, (4) turn shoulders and invite allies to move with open palm. Four genuine anatomical poses; no shot or supernatural projection.",
+      "universe": "Left 4 Dead",
+      "name": "Rochelle",
+      "sourceWork": "Left 4 Dead 2 (2009)",
+      "sourceReference": {
+        "simple": "Rochelle wears her pink band T-shirt, dark jeans, hoop earrings and tied-back dark hair. Her basic loadout is an available conventional pistol, while observation and signalling the extraction route preserve the existing allied guard super. No axe action or psychic route projection is introduced.",
+        "secondary": "Rochelle wears her pink band T-shirt, dark jeans, hoop earrings and tied-back dark hair. Her basic loadout is an available conventional pistol, while observation and signalling the extraction route preserve the existing allied guard super. No axe action or psychic route projection is introduced.",
+        "defense": "Rochelle wears her pink band T-shirt, dark jeans, hoop earrings and tied-back dark hair. Her basic loadout is an available conventional pistol, while observation and signalling the extraction route preserve the existing allied guard super. No axe action or psychic route projection is introduced.",
+        "special": "Rochelle wears her pink band T-shirt, dark jeans, hoop earrings and tied-back dark hair. Her basic loadout is an available conventional pistol, while observation and signalling the extraction route preserve the existing allied guard super. No axe action or psychic route projection is introduced."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Pistolet de Rochelle",
+          "effect": "damage",
+          "delivery": "projectile",
+          "targetSide": "enemy",
+          "range": 480
+        },
+        "secondary": {
+          "name": "Repérer le prochain point d’extraction",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "defense": {
+          "name": "Se couvrir avant de traverser",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Repérage du trajet d’extraction",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        }
+      },
+      "useOldReference": true,
+      "referenceAsset": "/sprites/generated/heroes/left-4-dead/rochelle-l4d.png",
+      "referenceArchive": "docs/combat-fidelity-wave10-2026-10-23/part-d-references/rochelle_l4d-old-base.png",
+      "referenceAssetSha256": "f76022d79b3e0dff71938f4fb637325e02a2989618d354873e67df7568a5c7fa",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave10-2026-10-23/part-d-references/rochelle_l4d-old-base.png",
+      "targetBodyHeight": 190,
+      "reviewed": false,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "prompt": "Create a native game sprite atlas with EXACTLY THIRTY-TWO NEW complete full-body drawings of ONE named adult character, FOUR equal columns by EIGHT full rows on a tall portrait transparent RGBA canvas. Detailed crisp pixel-art adult proportions, same character and outfit in every cell. No text, numbers, grid, borders, scenery, painted floor or cast-shadow disks. Every body AND all held equipment has generous12–15% transparent cell margins: complete hair, hands, arms, legs, boot soles and weapon tips; never crop last-row feet. Same shared BODY DRAWING SCALE throughout the source; crouches/kneels remain naturally shorter, not inflated. Side/three-quarter facing RIGHT.\nIDENTITY/VERSION: Rochelle, Left4Dead2 game2009: adult Black woman, dark brown skin, tied-back natural black hair in a short practical ponytail, gold hoop earrings, PINK fitted band T-shirt with simple dark chest graphic, dark blue jeans, belt and brown/black work boots. Human survivor/journalist, no infected form. No axe in the selected basic kit.\nEQUIPMENT/ROLE: Selected BASIC firearm is a compact black conventional SEMIAUTOMATIC PISTOL (P220-style), held physically; no axe or magic. SUPPORT super uses careful observation and empty-hand route/extraction signals while pistol remains holstered or down. No radio beam, enemy mind control, portal or invented aircraft.\nAttached OLD atlas is an appearance cue only. Redraw every pose; correct equipment and role according to the text above. Never copy old offensive effects into a support action.\nEIGHT DISTINCT STORYBOARD ROWS, FOUR anatomical poses each, top to bottom:\nROW 1: INTRO (1) scan ahead with pistol holstered, (2) shade eyes with free hand and lean forward, (3) point a short safe-route signal, (4) return to careful low-ready stance.\nROW 2: OUTRO (1) lower route-pointing hand, (2) check holster and belt, (3) look over shoulder while turning torso, (4) gesture allies follow with pistol secured.\nROW 3: ROUND VICTORY (1) relieved breath and lowered shoulders, (2) brush hair back with free hand, (3) small reassuring nod with open palm, (4) return to alert stance.\nROW 4: ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.\nROW 5: FINALE ADAPTATION GUARD SUPPORT extraction route: (1) pistol holstered while raising open palm to wait, (2) crouch and lean to inspect an offscreen passage, (3) rise halfway and point confidently along safe route, (4) upright open-palm follow signal with gun still inactive. No firing, magic shield, target or execution.\nROW 6: MATCH VICTORY (1) lower tense shoulders, (2) check perimeter with hand shading eyes, (3) relieved small smile and nod, (4) turn away with calm follow-me signal.\nROW 7: MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.\nROW 8: SUPER GUARD SUPPORT: (1) gun holstered and empty palm raised, (2) one knee bent with torso leaning to inspect route, (3) stand wider and point actual arm along safe direction, (4) turn shoulders and invite allies to move with open palm. Four genuine anatomical poses; no shot or supernatural projection.\nFinal check: EIGHT full rows x FOUR complete bodies=32. Four distinct shoulder/elbow/torso/leg drawings per row, not glow-only recolors. Physical weapon emitters point RIGHT in aiming/recoil columns2 and3 of damaging super/finale rows; columns1 and4 are lowered preparation/recovery with no emission. Support actions never fire weapons. Long beams, projectiles, magical barriers and target explosions belong to runtime, never paint them across body cells. No victim, gore, execution, injured body, transformation or extra person.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/part-d-prompts/rochelle_l4d-original.txt",
+      "sourceRows": 8,
+      "rows": [
+        "INTRO (1) scan ahead with pistol holstered, (2) shade eyes with free hand and lean forward, (3) point a short safe-route signal, (4) return to careful low-ready stance.",
+        "OUTRO (1) lower route-pointing hand, (2) check holster and belt, (3) look over shoulder while turning torso, (4) gesture allies follow with pistol secured.",
+        "ROUND VICTORY (1) relieved breath and lowered shoulders, (2) brush hair back with free hand, (3) small reassuring nod with open palm, (4) return to alert stance.",
+        "ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.",
+        "FINALE ADAPTATION GUARD SUPPORT extraction route: (1) pistol holstered while raising open palm to wait, (2) crouch and lean to inspect an offscreen passage, (3) rise halfway and point confidently along safe route, (4) upright open-palm follow signal with gun still inactive. No firing, magic shield, target or execution.",
+        "MATCH VICTORY (1) lower tense shoulders, (2) check perimeter with hand shading eyes, (3) relieved small smile and nod, (4) turn away with calm follow-me signal.",
+        "MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.",
+        "SUPER GUARD SUPPORT: (1) gun holstered and empty palm raised, (2) one knee bent with torso leaning to inspect route, (3) stand wider and point actual arm along safe direction, (4) turn shoulders and invite allies to move with open palm. Four genuine anatomical poses; no shot or supernatural projection."
+      ]
+    },
+    {
+      "heroId": "nick_l4d",
+      "version": "Nick, Left4Dead2 game2009: adult white male gambler with short dark slicked-back hair, dark stubble, LIGHT CREAM/OFF-WHITE two-piece suit, open-collar BLUE shirt, gold chain and brown leather shoes. Human survivor, not infected. No military armor or trench coat.",
+      "weapon": "Simple uses one black conventional P220-style SEMIAUTOMATIC pistol. Secondary/super use TWO SEPARATE physical black semi-auto pistols, one squared P220-style pistol and a shorter Glock-style OFFHAND pistol. No revolver, magic gun or body cannon. Keep both barrels and both hands visible. The leading right-facing barrel is the runtime measured projectile origin; sequence is condensed to one simulation hit, no extra bullets created by body art.",
+      "basic": "single P220-style handgun: (1) draw from hip while bending knees, (2) two-handed aim RIGHT, (3) actual recoil with a tiny muzzle flash and elbows flexing, (4) lower pistol and regain balance. Offhand weapon remains stowed in BASIC row.",
+      "intro": "(1) upright scanning with both pistols down/holstered, (2) adjust suit lapel with free hand, (3) draw first pistol while knees soften, (4) compact alert low-ready stance.",
+      "outro": "(1) lower both pistols, (2) inspect one pistol while keeping other safely down, (3) return weapons to holsters, (4) turn shoulders away while adjusting jacket hem.",
+      "roundVictory": "(1) exhale with weapons down, (2) look aside and adjust shirt collar with free hand, (3) small restrained confident nod, (4) return to low-ready stance.",
+      "finale": "non-gory physical dual-pistol finish, no victim: (1) draw second pistol while BOTH barrels point DOWN, (2) raise BOTH separate pistols in a braced RIGHT aim, leading pistol slightly ahead, (3) torso recoils with elbows flexing differently while tiny flashes appear at real two barrel openings, (4) lower both pistols and settle feet, no flash. Whole anatomy and both guns contained.",
+      "victory": "(1) lower both pistols, (2) safely holster them, (3) straighten suit lapels and small tired smile, (4) turn away in relaxed stance.",
+      "super": "Double pistolet de Nick: (1) draw second physical pistol at waist with both barrels DOWN, (2) feet planted and BOTH pistols raised RIGHT with separate visible hands, (3) small real dual-pistol recoil with different elbows/torso and tiny muzzle flashes, leading barrel still clear, (4) lower both whole pistols to waist while regaining upright balance, no flash. No third gun, extra arm, beam or victim.",
+      "universe": "Left 4 Dead",
+      "name": "Nick",
+      "sourceWork": "Left 4 Dead 2 (2009)",
+      "sourceReference": {
+        "simple": "Nick wears a light suit over an open blue shirt, with dark slicked-back hair and stubble. His simple uses one physical semi-auto pistol; secondary/super use the available dual-pistol loadout, represented by a P220-style pistol and a shorter Glock-style offhand pistol. The engine condenses the depicted sequence into one accepted impact, without innate power or additional simulated bullets.",
+        "secondary": "Nick wears a light suit over an open blue shirt, with dark slicked-back hair and stubble. His simple uses one physical semi-auto pistol; secondary/super use the available dual-pistol loadout, represented by a P220-style pistol and a shorter Glock-style offhand pistol. The engine condenses the depicted sequence into one accepted impact, without innate power or additional simulated bullets.",
+        "defense": "Nick wears a light suit over an open blue shirt, with dark slicked-back hair and stubble. His simple uses one physical semi-auto pistol; secondary/super use the available dual-pistol loadout, represented by a P220-style pistol and a shorter Glock-style offhand pistol. The engine condenses the depicted sequence into one accepted impact, without innate power or additional simulated bullets.",
+        "special": "Nick wears a light suit over an open blue shirt, with dark slicked-back hair and stubble. His simple uses one physical semi-auto pistol; secondary/super use the available dual-pistol loadout, represented by a P220-style pistol and a shorter Glock-style offhand pistol. The engine condenses the depicted sequence into one accepted impact, without innate power or additional simulated bullets."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Premier pistolet de Nick",
+          "effect": "damage",
+          "delivery": "projectile",
+          "targetSide": "enemy",
+          "range": 480
+        },
+        "secondary": {
+          "name": "Deux pistolets du survivant Nick",
+          "effect": "damage",
+          "delivery": "projectile",
+          "targetSide": "enemy",
+          "range": 480
+        },
+        "defense": {
+          "name": "Retrait derrière les caisses avec Nick",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Double pistolet de Nick",
+          "effect": "damage",
+          "delivery": "projectile",
+          "targetSide": "enemy",
+          "range": 720
+        }
+      },
+      "useOldReference": true,
+      "referenceAsset": "/sprites/generated/heroes/left-4-dead/nick-l4d.png",
+      "referenceArchive": "docs/combat-fidelity-wave10-2026-10-23/part-d-references/nick_l4d-old-base.png",
+      "referenceAssetSha256": "681b44ec6a52e0e36057848476edc4e842ab873351e8541cb10ffed4a274df49",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave10-2026-10-23/part-d-references/nick_l4d-old-base.png",
+      "targetBodyHeight": 190,
+      "reviewed": false,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "source1to1Verified": false,
+      "canonicalVerified": false,
+      "networkVerified": false,
+      "prompt": "Create a native game sprite atlas with EXACTLY THIRTY-TWO NEW complete full-body drawings of ONE named adult character, FOUR equal columns by EIGHT full rows on a tall portrait transparent RGBA canvas. Detailed crisp pixel-art adult proportions, same character and outfit in every cell. No text, numbers, grid, borders, scenery, painted floor or cast-shadow disks. Every body AND all held equipment has generous12–15% transparent cell margins: complete hair, hands, arms, legs, boot soles and weapon tips; never crop last-row feet. Same shared BODY DRAWING SCALE throughout the source; crouches/kneels remain naturally shorter, not inflated. Side/three-quarter facing RIGHT.\nIDENTITY/VERSION: Nick, Left4Dead2 game2009: adult white male gambler with short dark slicked-back hair, dark stubble, LIGHT CREAM/OFF-WHITE two-piece suit, open-collar BLUE shirt, gold chain and brown leather shoes. Human survivor, not infected. No military armor or trench coat.\nEQUIPMENT/ROLE: Simple uses one black conventional P220-style SEMIAUTOMATIC pistol. Secondary/super use TWO SEPARATE physical black semi-auto pistols, one squared P220-style pistol and a shorter Glock-style OFFHAND pistol. No revolver, magic gun or body cannon. Keep both barrels and both hands visible. The leading right-facing barrel is the runtime measured projectile origin; sequence is condensed to one simulation hit, no extra bullets created by body art.\nAttached OLD atlas is an appearance cue only. Redraw every pose; correct equipment and role according to the text above. Never copy old offensive effects into a support action.\nEIGHT DISTINCT STORYBOARD ROWS, FOUR anatomical poses each, top to bottom:\nROW 1: INTRO (1) upright scanning with both pistols down/holstered, (2) adjust suit lapel with free hand, (3) draw first pistol while knees soften, (4) compact alert low-ready stance.\nROW 2: OUTRO (1) lower both pistols, (2) inspect one pistol while keeping other safely down, (3) return weapons to holsters, (4) turn shoulders away while adjusting jacket hem.\nROW 3: ROUND VICTORY (1) exhale with weapons down, (2) look aside and adjust shirt collar with free hand, (3) small restrained confident nod, (4) return to low-ready stance.\nROW 4: ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.\nROW 5: FINALE ADAPTATION non-gory physical dual-pistol finish, no victim: (1) draw second pistol while BOTH barrels point DOWN, (2) raise BOTH separate pistols in a braced RIGHT aim, leading pistol slightly ahead, (3) torso recoils with elbows flexing differently while tiny flashes appear at real two barrel openings, (4) lower both pistols and settle feet, no flash. Whole anatomy and both guns contained.\nROW 6: MATCH VICTORY (1) lower both pistols, (2) safely holster them, (3) straighten suit lapels and small tired smile, (4) turn away in relaxed stance.\nROW 7: MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.\nROW 8: SUPER Double pistolet de Nick: (1) draw second physical pistol at waist with both barrels DOWN, (2) feet planted and BOTH pistols raised RIGHT with separate visible hands, (3) small real dual-pistol recoil with different elbows/torso and tiny muzzle flashes, leading barrel still clear, (4) lower both whole pistols to waist while regaining upright balance, no flash. No third gun, extra arm, beam or victim.\nFinal check: EIGHT full rows x FOUR complete bodies=32. Four distinct shoulder/elbow/torso/leg drawings per row, not glow-only recolors. Physical weapon emitters point RIGHT in aiming/recoil columns2 and3 of damaging super/finale rows; columns1 and4 are lowered preparation/recovery with no emission. Support actions never fire weapons. Long beams, projectiles, magical barriers and target explosions belong to runtime, never paint them across body cells. No victim, gore, execution, injured body, transformation or extra person.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/part-d-prompts/nick_l4d-original.txt",
+      "sourceRows": 8,
+      "rows": [
+        "INTRO (1) upright scanning with both pistols down/holstered, (2) adjust suit lapel with free hand, (3) draw first pistol while knees soften, (4) compact alert low-ready stance.",
+        "OUTRO (1) lower both pistols, (2) inspect one pistol while keeping other safely down, (3) return weapons to holsters, (4) turn shoulders away while adjusting jacket hem.",
+        "ROUND VICTORY (1) exhale with weapons down, (2) look aside and adjust shirt collar with free hand, (3) small restrained confident nod, (4) return to low-ready stance.",
+        "ROUND DEFEAT alive and regrouping: (1) recoil with free forearm guarding and knees bent, (2) low bent-knee crouch with equipment safely controlled, (3) one knee down with head lowered and free hand bracing if available, (4) rise halfway looking toward fight. No injury, blood, death or lost equipment.",
+        "FINALE ADAPTATION non-gory physical dual-pistol finish, no victim: (1) draw second pistol while BOTH barrels point DOWN, (2) raise BOTH separate pistols in a braced RIGHT aim, leading pistol slightly ahead, (3) torso recoils with elbows flexing differently while tiny flashes appear at real two barrel openings, (4) lower both pistols and settle feet, no flash. Whole anatomy and both guns contained.",
+        "MATCH VICTORY (1) lower both pistols, (2) safely holster them, (3) straighten suit lapels and small tired smile, (4) turn away in relaxed stance.",
+        "MATCH DEFEAT alive fatigue: (1) shoulders sag with equipment safely down, (2) sink to one knee with free palm on thigh if available, (3) rest on heel head lowered with all held objects still physically supported, (4) lift head and brace to rise, both complete feet visible. No corpse, wounds, blood or dropped/disconnected anatomy.",
+        "SUPER Double pistolet de Nick: (1) draw second physical pistol at waist with both barrels DOWN, (2) feet planted and BOTH pistols raised RIGHT with separate visible hands, (3) small real dual-pistol recoil with different elbows/torso and tiny muzzle flashes, leading barrel still clear, (4) lower both whole pistols to waist while regaining upright balance, no flash. No third gun, extra arm, beam or victim."
+      ]
+    }
+  ]
+}

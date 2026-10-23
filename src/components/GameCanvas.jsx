@@ -9,8 +9,10 @@ import {
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineSmash } from '../game/engineSmash';
 import { EngineRpg } from '../game/engineRpg';
+import { resolveCharacterAnimationAsset } from '../game/combat/characterAnimationCatalog';
+import { preloadCharacterSuperAssets } from '../game/combat/characterSuperVisuals';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
-import { rpgUnitId } from '../game/rpgTargeting';
+import { getRpgCombatantAbility, rpgUnitId } from '../game/rpgTargeting';
 import { drawRpgTargeting, pickRpgTarget } from '../game/rpgTargetingPresentation';
 import { absorbBattleItemDamage, grantBattleItemShield } from '../game/battleItemShield';
 import { EngineTactics } from '../game/engineTactics';
@@ -193,6 +195,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [rpgTargeting, setRpgTargeting] = useState(null);
   const [rpgTargetingWait, setRpgTargetingWait] = useState(true);
   const rpgTargetingWaitRef = useRef(true);
+  const rpgSummonGamepadHeldRef = useRef({ player: false, enemy: false });
   const [autoBattle, setAutoBattle] = useState(false);
   const [speedMultiplier, setSpeedMultiplier] = useState(1); // 1 | 2
   const [battleCompleted, setBattleCompleted] = useState(false);
@@ -251,6 +254,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     meleeTouchHeldRef.current.player.clear();
     meleeTouchHeldRef.current.cpu.clear();
     meleeNeutralGateRef.current = { player: true, cpu: true };
+    // Require a fresh shoulder-button press after a pause or focus change.
+    rpgSummonGamepadHeldRef.current = { player: true, enemy: true };
   };
 
   // Une pause pilotee par le shell vide les controles sans reconstruire le moteur.
@@ -754,7 +759,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const activateBattleItem = (pickup, source = 'manual', requestedSide = 'player') => {
-    if (engineRef.current?.getTargetingState?.()) return false;
+    if (engineRef.current?.getTargetingState?.() || engineRef.current?.isSummonSceneActive?.()) return false;
     if (sessionPausedRef.current) return;
     if (!pickup || pickup.used || !engineRef.current || battleCompletedRef.current) return;
     const engine = engineRef.current;
@@ -895,7 +900,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const activateCustomAssist = (side = 'player') => {
-    if (engineRef.current?.getTargetingState?.()) return false;
+    if (engineRef.current?.getTargetingState?.() || engineRef.current?.isSummonSceneActive?.()) return false;
     if (sessionPausedRef.current) return false;
     const assist = battleConfig?.cosmetics?.npcAssist;
     const engine = engineRef.current;
@@ -962,7 +967,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const activateCustomFieldSuper = (side = 'player') => {
-    if (engineRef.current?.getTargetingState?.()) return false;
+    if (engineRef.current?.getTargetingState?.() || engineRef.current?.isSummonSceneActive?.()) return false;
     if (sessionPausedRef.current) return false;
     const fieldSuper = battleConfig?.fieldSuper;
     const engine = engineRef.current;
@@ -1112,12 +1117,14 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const spriteSources = [
       ...squadHeroes.map(hero => getHeroSpriteSheetSrc(hero, heroSpriteContext)),
       ...enemyList.map(getEnemySpriteSheetSrc),
+      ...[...squadHeroes, ...enemyList].map(hero => resolveCharacterAnimationAsset(hero)?.sheet),
       ...battleItemPool.map(getItemSpriteSrc)
     ].filter(Boolean);
     setSpriteBootStatus(lang === 'fr'
       ? `Plaquettes OpenAI: ${spriteSources.length} sprites indexes avant rendu final.`
       : `OpenAI sheets: ${spriteSources.length} sprites indexed before final render.`);
     preloadSpriteSheetSrcs(spriteSources);
+    preloadCharacterSuperAssets([...squadHeroes, ...enemyList]);
     if (stage.mode === 'Smash') {
       squadHeroes.forEach(hero => preloadMeleeSpriteSheetSrcs(hero));
     }
@@ -1277,6 +1284,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           else if (enemy) engine.selectEnemy?.(rpgUnitId(enemy));
         }
       }
+      if (stage.mode === 'RPG' && !e.repeat && engineRef.current
+        && (e.code === 'KeyU' || (isCustomP2 && e.code === 'Numpad5'))) {
+        e.preventDefault();
+        const engine = engineRef.current;
+        const side = e.code === 'Numpad5' ? 'enemy' : 'player';
+        const actor = side === 'enemy' ? engine.getSelectedEnemy?.() : engine.getSelectedHero?.();
+        if (!engine.getTargetingState?.()) engine.summon?.(actor, side);
+        setRpgTargeting(engine.getTargetingState?.() || null);
+      }
     };
 
     const handleKeyUp = (e) => {
@@ -1387,7 +1403,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         const renderUniverse = arenaStage.forceBaseArena || arenaStage.dlcSuppressedArena
           ? 'Nexus de Convergence'
           : stage.universe;
-        const usingOpenAiBackdrop = drawUniverseBackground(ctx, renderUniverse, width, height, stage.mode);
+        const usingOpenAiBackdrop = drawUniverseBackground(ctx, renderUniverse, width, height, stage.mode, {
+          stage: { ...arenaStage, universe: renderUniverse },
+          elapsedSeconds: animTime / 60,
+          reducedMotion: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches || false
+        });
         if (!bootClearedRef.current) {
           bootClearedRef.current = true;
           setCombatBooting(false);
@@ -1412,6 +1432,20 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         const engine = engineRef.current;
         if (engine) {
           engine.autoBattle = autoBattleRef.current;
+          if (stage.mode === 'RPG') {
+            const pads = navigator.getGamepads?.() || [];
+            for (const [padIndex, side] of [[0, 'player'], [1, 'enemy']]) {
+              const pressed = Boolean(pads[padIndex]?.buttons?.[5]?.pressed);
+              const wasHeld = rpgSummonGamepadHeldRef.current[side];
+              rpgSummonGamepadHeldRef.current[side] = pressed;
+              if (pressed && !wasHeld && (side === 'player' || battleConfig?.opponentControl === 'p2')
+                && !engine.getTargetingState?.()) {
+                const actor = side === 'enemy' ? engine.getSelectedEnemy?.() : engine.getSelectedHero?.();
+                engine.summon?.(actor, side);
+                setRpgTargeting(engine.getTargetingState?.() || null);
+              }
+            }
+          }
           let meleeHeldP1 = keysPressed.current;
           let meleeHeldP2 = {};
           if (stage.mode === 'Smash') {
@@ -1439,7 +1473,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             (engine.enemies || []).forEach(actor => actorsObservedDuringUpdate.enemies.add(actor));
           }
           matchInputLocked = stage.mode === 'Smash' && engine.isMatchInputLocked?.();
-          const gameplayAdvancing = updateLoops > 0 && !simulationPaused && !matchInputLocked && !engine.gameOver;
+          const gameplayAdvancing = updateLoops > 0 && !simulationPaused && !matchInputLocked && !engine.gameOver && !engine.isSummonSceneActive?.();
           if (stage.mode === 'Smash') {
             const nextPreMatch = engine.getPreMatchState?.(lang) || null;
             const cueKey = nextPreMatch ? `${nextPreMatch.state}:${nextPreMatch.cueId}` : null;
@@ -1575,7 +1609,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           }
         }
 
-        if (!simulationPaused && !engineRef.current?.gameOver && !(stage.mode === 'Smash' && engineRef.current?.isMatchInputLocked?.())) combatTime += updateLoops;
+        if (!simulationPaused && !engineRef.current?.gameOver && !engineRef.current?.isSummonSceneActive?.() && !(stage.mode === 'Smash' && engineRef.current?.isMatchInputLocked?.())) combatTime += updateLoops;
         animTime += updateLoops;
         frameId = requestAnimationFrame(tick);
       } catch (error) {
@@ -1770,7 +1804,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
   // Trigger Combat Event Item
   const handleActivateEventItem = () => {
-    if (engineRef.current?.getTargetingState?.()) return;
+    if (engineRef.current?.getTargetingState?.() || engineRef.current?.isSummonSceneActive?.()) return;
     if (sessionPausedRef.current) return;
     if (!engineRef.current || eventItemUsed || battleCompleted) return;
     if (stage.mode === 'Smash' && engineRef.current.isMatchInputLocked?.()) return;
@@ -1822,7 +1856,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const activeHeroObj = rpgTargeting
     ? [...teamState, ...opponentState].find(unit => rpgUnitId(unit) === rpgTargeting.actorId)
     : opponentHasCommand ? activeOpponentObj : teamState.find(h => h.id === activeHeroId) || teamState[0];
+  const rpgSummon = stage.mode === 'RPG' && activeHeroObj
+    ? engineRef.current?.getSummonState?.(activeHeroObj, rpgTargeting?.side || (opponentHasCommand ? 'enemy' : 'player'))
+    : null;
+  const rpgSceneActive = stage.mode === 'RPG' && Boolean(engineRef.current?.getSummonSceneState?.()?.active);
   const getCombatantMove = (combatant, type) => {
+    if (stage.mode === 'RPG') {
+      const action = getRpgCombatantAbility(combatant, type);
+      if (action) return action;
+    }
     if (combatant?.[type]) return combatant[type];
     const baseDamage = Math.max(1, Number(combatant?.atk) || 8);
     if (type === 'secondary') return { name: combatant?.special || 'Frappe lourde', dmg: 1.45, cd: 4 };
@@ -2723,7 +2765,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               <div style={{ display: stage.mode === 'Smash' ? 'none' : 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                 <button
                   onClick={() => handleActiveHeroAbility('simple')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={!!rpgTargeting || rpgSceneActive || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'simple' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise l attaque de base du heros actif.' : 'Use the active hero basic attack.'}
                 >
@@ -2733,7 +2775,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('secondary')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={!!rpgTargeting || rpgSceneActive || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'secondary' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise la competence secondaire si elle n est pas en recharge.' : 'Use the secondary skill if it is not on cooldown.'}
                 >
@@ -2745,7 +2787,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('defense')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={!!rpgTargeting || rpgSceneActive || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'defense' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise une action defensive: reduction de degats, protection ou posture tactique.' : 'Use a defensive action: damage reduction, protection, or tactical stance.'}
                 >
@@ -2755,7 +2797,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('special')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={!!rpgTargeting || rpgSceneActive || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className="btn-special"
                   title={lang === 'fr' ? 'Utilise l attaque speciale quand la jauge speciale est a 100%.' : 'Use the special attack when the special gauge reaches 100%.'}
                   style={{
@@ -2770,6 +2812,28 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                     {activeHeroObj.specialCharge < 100 ? `SPECIAL CHARGE: ${Math.round(activeHeroObj.specialCharge)}%` : 'READY!'}
                   </div>
                 </button>
+
+                {stage.mode === 'RPG' && rpgSummon?.available && (
+                  <button
+                    type="button"
+                    className="btn-special"
+                    onClick={() => handleActiveHeroAbility('summon')}
+                    disabled={sessionPaused || battleCompleted || !!rpgTargeting || rpgSceneActive || !rpgSummon.ready}
+                    style={{ gridColumn: 'span 2', borderColor: rpgSummon.ready ? '#b3a0ff' : '#53636b', padding: '12px 10px' }}
+                    title={lang === 'fr'
+                      ? '100 ATB et 100 % de charge spéciale. Une utilisation par combattant et par combat ; choisis puis confirme les cibles.'
+                      : '100 ATB and 100% special charge. Once per fighter per battle; choose and confirm targets.'}
+                  >
+                    {rpgSummon.kind === 'summon' ? (lang === 'fr' ? 'INVOCATION' : 'SUMMON') : (lang === 'fr' ? 'RENFORT' : 'REINFORCEMENT')}
+                    {' · '}{rpgSummon.entityName || rpgSummon.name}
+                    <span style={{ display: 'block', marginTop: 6, fontSize: 10, lineHeight: 1.5 }}>
+                      {rpgSummon.used
+                        ? (lang === 'fr' ? 'Déjà utilisé dans ce combat' : 'Already used this battle')
+                        : (lang === 'fr' ? '100 ATB + charge 100 % · 1 fois par combat' : '100 ATB + 100% charge · Once per battle')}
+                      {' · '}{opponentHasCommand ? (lang === 'fr' ? 'PavNum 5' : 'Numpad 5') : 'U'} / R1 · RB
+                    </span>
+                  </button>
+                )}
 
                 {stage.mode === 'Tactics' && selectedAction && (
                   <button
@@ -2830,6 +2894,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                     onRemap={handleMeleeRemap}
                     onReset={handleResetMeleeInputs}
                     runtimeActor={teamState.find(hero => hero.id === activeHeroId) || teamState[0]}
+                    superProfile={engineRef.current?.getMeleeSuper?.(teamState.find(hero => hero.id === activeHeroId) || teamState[0])}
                     onTouchAction={handleMeleeTouchAction}
                   />
                 </div>

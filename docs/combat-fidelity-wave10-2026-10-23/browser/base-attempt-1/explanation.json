@@ -1,0 +1,5 @@
+{
+  "kind": "harness-baseline-shape-assumption",
+  "productionChanged": false,
+  "cause": "The frozen baseSpriteCorrections.entries snapshot contains a projection, not full raw registry objects. The initial harness compared unequal object shapes. It is corrected to compare exactly the frozen fields plus18 full historical registry SHA256 hashes, without weakening real metadata/PNG/draw conservation."
+}

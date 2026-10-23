@@ -1,0 +1,4073 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "noctis_ff15",
+      "heroId": "noctis_ff15",
+      "universe": "Final Fantasy XV",
+      "name": "Noctis Lucis Caelum",
+      "sheet": "/sprites/generated/combat-character-animations-wave3/noctis_ff15.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "da867e153444edcf9d5df4fc9d7ff6c02eb8ff8801ffdcb633da4f259101f077",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/noctis_ff15-correction.png",
+      "sourceImageSha256": "7ad010dd926a3d3f06b0c5ed900a8273126a9d80652e03070d6fdc386e24ad31",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-xv/noctis-ff15.png",
+      "referenceAssetSha256": "151f00916eaeb437693f120329beec40c64e4cbffae6ffdf979da3221ae82e6f",
+      "referenceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-references/noctis_ff15.png",
+      "sourceWork": "Final Fantasy XV (2016)",
+      "sourceReference": "Final Fantasy XV (2016), young Noctis in Crownsguard fatigues, Engine Blade and Armiger Royal Arms. Compact four-pose Armiger choreography is authored adaptation, not source-identical timing or weapon count.",
+      "abilityName": "Armiger",
+      "characterVersion": "Young20-year-old Noctis before the10-year time skip, Crownsguard fatigues; no older king, beard, royal robe or throne costume.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/noctis_ff15-original.png",
+      "originalSourceImageSha256": "d4b076a5c296f66fc9c1bbecb4f6d691f6688d085aadc4c458c944e2a6707228",
+      "nativeCorrection": true,
+      "nativeCorrectionReason": "Initial native finale crossed an opaque adaptive column seam, and Armiger fog obscured individual Royal Arms. Replace only two action rows with compact separated native sword poses.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/noctis_ff15-original.png",
+            "sourceImageSha256": "d4b076a5c296f66fc9c1bbecb4f6d691f6688d085aadc4c458c944e2a6707228",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 225
+            },
+            "scale": 1.0691244239631337,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 13,
+                  "width": 175,
+                  "height": 206,
+                  "pixels": 15493
+                },
+                "output": {
+                  "left": 22,
+                  "top": 24,
+                  "width": 187,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 268,
+                  "top": 17,
+                  "width": 173,
+                  "height": 202,
+                  "pixels": 14949
+                },
+                "output": {
+                  "left": 59,
+                  "top": 28,
+                  "width": 185,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 481,
+                  "top": 15,
+                  "width": 162,
+                  "height": 204,
+                  "pixels": 14564
+                },
+                "output": {
+                  "left": 50,
+                  "top": 26,
+                  "width": 173,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 29,
+                  "width": 184,
+                  "height": 190,
+                  "pixels": 14645
+                },
+                "output": {
+                  "left": 43,
+                  "top": 41,
+                  "width": 197,
+                  "height": 203
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/noctis_ff15-original.png",
+            "sourceImageSha256": "d4b076a5c296f66fc9c1bbecb4f6d691f6688d085aadc4c458c944e2a6707228",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 221,
+              "bottom": 459
+            },
+            "scale": 1.0220264317180616,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 31,
+                  "top": 6,
+                  "width": 145,
+                  "height": 227,
+                  "pixels": 16232
+                },
+                "output": {
+                  "left": 46,
+                  "top": 12,
+                  "width": 148,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 266,
+                  "top": 15,
+                  "width": 150,
+                  "height": 217,
+                  "pixels": 15040
+                },
+                "output": {
+                  "left": 60,
+                  "top": 21,
+                  "width": 153,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 501,
+                  "top": 13,
+                  "width": 125,
+                  "height": 219,
+                  "pixels": 14101
+                },
+                "output": {
+                  "left": 73,
+                  "top": 19,
+                  "width": 128,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 669,
+                  "top": 12,
+                  "width": 196,
+                  "height": 217,
+                  "pixels": 15714
+                },
+                "output": {
+                  "left": 19,
+                  "top": 18,
+                  "width": 200,
+                  "height": 222
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/noctis_ff15-original.png",
+            "sourceImageSha256": "d4b076a5c296f66fc9c1bbecb4f6d691f6688d085aadc4c458c944e2a6707228",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 458,
+              "bottom": 694
+            },
+            "scale": 1.0403587443946187,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 11,
+                  "top": 9,
+                  "width": 187,
+                  "height": 217,
+                  "pixels": 18341
+                },
+                "output": {
+                  "left": 24,
+                  "top": 17,
+                  "width": 195,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 223,
+                  "top": 10,
+                  "width": 195,
+                  "height": 216,
+                  "pixels": 18256
+                },
+                "output": {
+                  "left": 14,
+                  "top": 18,
+                  "width": 203,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 500,
+                  "top": 4,
+                  "width": 136,
+                  "height": 223,
+                  "pixels": 17709
+                },
+                "output": {
+                  "left": 71,
+                  "top": 12,
+                  "width": 141,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 711,
+                  "top": 5,
+                  "width": 175,
+                  "height": 221,
+                  "pixels": 16506
+                },
+                "output": {
+                  "left": 60,
+                  "top": 13,
+                  "width": 182,
+                  "height": 230
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/noctis_ff15-original.png",
+            "sourceImageSha256": "d4b076a5c296f66fc9c1bbecb4f6d691f6688d085aadc4c458c944e2a6707228",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 685,
+              "bottom": 892
+            },
+            "scale": 0.9789029535864979,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 44,
+                  "top": 10,
+                  "width": 137,
+                  "height": 191,
+                  "pixels": 14994
+                },
+                "output": {
+                  "left": 63,
+                  "top": 54,
+                  "width": 134,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 228,
+                  "top": 65,
+                  "width": 223,
+                  "height": 139,
+                  "pixels": 14142
+                },
+                "output": {
+                  "left": 26,
+                  "top": 108,
+                  "width": 218,
+                  "height": 136
+                }
+              },
+              {
+                "source": {
+                  "left": 465,
+                  "top": 13,
+                  "width": 164,
+                  "height": 190,
+                  "pixels": 16572
+                },
+                "output": {
+                  "left": 41,
+                  "top": 57,
+                  "width": 161,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 690,
+                  "top": 27,
+                  "width": 196,
+                  "height": 174,
+                  "pixels": 14481
+                },
+                "output": {
+                  "left": 44,
+                  "top": 71,
+                  "width": 192,
+                  "height": 170
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/noctis_ff15-correction.png",
+            "sourceImageSha256": "7ad010dd926a3d3f06b0c5ed900a8273126a9d80652e03070d6fdc386e24ad31",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 447
+            },
+            "scale": 0.46680080482897385,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 48,
+                  "top": 128,
+                  "width": 353,
+                  "height": 310,
+                  "pixels": 45511
+                },
+                "output": {
+                  "left": 47,
+                  "top": 99,
+                  "width": 165,
+                  "height": 145
+                }
+              },
+              {
+                "source": {
+                  "left": 509,
+                  "top": 49,
+                  "width": 294,
+                  "height": 340,
+                  "pixels": 44275
+                },
+                "output": {
+                  "left": 55,
+                  "top": 62,
+                  "width": 137,
+                  "height": 159
+                }
+              },
+              {
+                "source": {
+                  "left": 919,
+                  "top": 99,
+                  "width": 438,
+                  "height": 335,
+                  "pixels": 57892
+                },
+                "output": {
+                  "left": 39,
+                  "top": 86,
+                  "width": 204,
+                  "height": 156
+                }
+              },
+              {
+                "source": {
+                  "left": 1339,
+                  "top": 74,
+                  "width": 385,
+                  "height": 362,
+                  "pixels": 53102
+                },
+                "output": {
+                  "left": 28,
+                  "top": 74,
+                  "width": 180,
+                  "height": 169
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/noctis_ff15-original.png",
+            "sourceImageSha256": "d4b076a5c296f66fc9c1bbecb4f6d691f6688d085aadc4c458c944e2a6707228",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1113,
+              "bottom": 1360
+            },
+            "scale": 0.9747899159663865,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 5,
+                  "width": 157,
+                  "height": 233,
+                  "pixels": 18151
+                },
+                "output": {
+                  "left": 65,
+                  "top": 12,
+                  "width": 153,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 266,
+                  "top": 17,
+                  "width": 119,
+                  "height": 223,
+                  "pixels": 15570
+                },
+                "output": {
+                  "left": 63,
+                  "top": 24,
+                  "width": 116,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 494,
+                  "top": 13,
+                  "width": 135,
+                  "height": 230,
+                  "pixels": 18589
+                },
+                "output": {
+                  "left": 69,
+                  "top": 20,
+                  "width": 132,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 13,
+                  "width": 175,
+                  "height": 230,
+                  "pixels": 18968
+                },
+                "output": {
+                  "left": 50,
+                  "top": 20,
+                  "width": 171,
+                  "height": 224
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/noctis_ff15-original.png",
+            "sourceImageSha256": "d4b076a5c296f66fc9c1bbecb4f6d691f6688d085aadc4c458c944e2a6707228",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1346,
+              "bottom": 1552
+            },
+            "scale": 0.9133858267716536,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 1,
+                  "width": 193,
+                  "height": 204,
+                  "pixels": 15210
+                },
+                "output": {
+                  "left": 57,
+                  "top": 58,
+                  "width": 176,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 253,
+                  "top": 43,
+                  "width": 196,
+                  "height": 147,
+                  "pixels": 14159
+                },
+                "output": {
+                  "left": 55,
+                  "top": 96,
+                  "width": 179,
+                  "height": 134
+                }
+              },
+              {
+                "source": {
+                  "left": 454,
+                  "top": 51,
+                  "width": 227,
+                  "height": 132,
+                  "pixels": 14604
+                },
+                "output": {
+                  "left": 36,
+                  "top": 103,
+                  "width": 207,
+                  "height": 121
+                }
+              },
+              {
+                "source": {
+                  "left": 694,
+                  "top": 42,
+                  "width": 175,
+                  "height": 158,
+                  "pixels": 14090
+                },
+                "output": {
+                  "left": 53,
+                  "top": 95,
+                  "width": 160,
+                  "height": 144
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/noctis_ff15-correction.png",
+            "sourceImageSha256": "7ad010dd926a3d3f06b0c5ed900a8273126a9d80652e03070d6fdc386e24ad31",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 444,
+              "bottom": 887
+            },
+            "scale": 0.4280442804428044,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 49,
+                  "top": 7,
+                  "width": 326,
+                  "height": 407,
+                  "pixels": 56797
+                },
+                "output": {
+                  "left": 54,
+                  "top": 70,
+                  "width": 140,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 468,
+                  "top": 94,
+                  "width": 468,
+                  "height": 305,
+                  "pixels": 41505
+                },
+                "output": {
+                  "left": 44,
+                  "top": 107,
+                  "width": 200,
+                  "height": 131
+                }
+              },
+              {
+                "source": {
+                  "left": 924,
+                  "top": 46,
+                  "width": 382,
+                  "height": 358,
+                  "pixels": 49305
+                },
+                "output": {
+                  "left": 49,
+                  "top": 86,
+                  "width": 164,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 1374,
+                  "top": 122,
+                  "width": 346,
+                  "height": 286,
+                  "pixels": 45084
+                },
+                "output": {
+                  "left": 52,
+                  "top": 119,
+                  "width": 148,
+                  "height": 122
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b8c144c354d5c253235853875b5e9f80f272f7da4eba1ebdca93d11a8402e057",
+              "528e3eaa90fc719d707f7eddacd668edb8207c5a5fa51da72170c69dc45b7350",
+              "711b0a014c9313e25eb38418007e5e6cad57331c8d5ccc6482de97d8be41f249",
+              "e4268c2cca1e63d37184da54a457466d5fb276a4c593ce5afe3f7fb6e02bbfc4"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "a943a908be1ee3f08adbd5453c91f6aa4eb2932c9ad769f53c9d511686e1a54e",
+              "765a8bb5841643dc2c54891c49ee19357498246b3124796be1a5bbb4ce779ee9",
+              "55c11de589137fe9ab37be2c46f4e2fe7ba5a424f39ec18d7528b2ac472c99a5",
+              "c23764e3f25e167dd563725431fbc111faee7b88bf63573623ca493f89ba6a26"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "49284fa74e05e599889acd384a85a085480a3f56b576c58d6c6bf8a708b5ef66",
+              "215f65c20b4433df3c03a46c54c7323125c7d689750af442c6afb8c3a18c8a0e",
+              "ef916eeaf01164f86bb4aa5eede45dbc29661cb87a1a95ad6a3b519e757ed1d6",
+              "2a466f864671c1b6a92b69fd4c9290f93753208ea0a289323285553d201e3421"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6912f433d2a2e989cc772e205f2cb66059ee23c646d6191d479dad8d4734b483",
+              "3eabd1c35940cc9d4184d35195ec637a5c15105eebec9c691d294727c74b79c2",
+              "d9d82971884a599d8ccd17f0bed07b39641d38d6e78bdfd9c75d6823f0b8b236",
+              "e3652e585b1272257778fab642e5e1bdf0c79249da4ac2e0f02f2d84c63e9768"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c12e68a8768b98d85b0ba928cd7519d61b5bb90c1d7ddd05a9c8296a629c7dac",
+              "60e3364261700f25ce8a3cd0c45bd4dc3980d7c172ec285c8944eebc0c7ef51c",
+              "eba3b9cb4c790a85158d1b939e8df13c26e56cccd640d812c829b3e8721e5c27",
+              "fd8111ffc5d07e68313f18b4b1bcedb4b48ebbd53a56df8f437b026ef7deb4d7"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8000c90d34751e6f79e439b344f94d175fe6a66d43bf5e631c22cd7164733c4d",
+              "33538e034b0213bc2000ef1cd614b63fe4116f317c2e0b8a25219faf09ce5ddf",
+              "fdda90b6044c570c3b76417d36c2c8a3da82f4680abe1d673d840dd38eea7342",
+              "f9f311cbcf74b53b1c1f7e3140be3bc91564d6e5cff093bd68f89848d3f1d88d"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "108c0d8ae1e78b14aa7025976c26a8a7a15610cae0204a50d43879cfb076652b",
+              "65913ca304acca3c5ec8f128d392c62dd1985995ef19fd8ea3a848417a8f38c9",
+              "cd643d023ead396706b45e49fab8f1c0e70d7034c2366adaf5f23c2db96a0efc",
+              "c032c046b2f641992af3958b23759b3d91f1f30b0467c1f62168a80e3c9324ad"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "bc7824997b800067f89dd7c09b4a57bfe8d4ef644b1bf0837bb536f03218e5b0",
+              "89d0c44c23a6d01999352925f4b2c6284b9abc88bc2c0ff1b0a533d29ea797bd",
+              "791d325ae025c98595956aa33f53e7ad4569acf3ce7b98c4d1f40fae3b278b0f",
+              "382ce5aab83e277ffd50a90c36b865bbd06d660a351531b559d507b86e3da1d4"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Young20-year-old Noctis before the10-year time skip, Crownsguard fatigues; no older king, beard, royal robe or throne costume. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "gladiolus_ff15",
+      "heroId": "gladiolus_ff15",
+      "universe": "Final Fantasy XV",
+      "name": "Gladiolus",
+      "sheet": "/sprites/generated/combat-character-animations-wave3/gladiolus_ff15.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "f94988b1528985533aaceee7039924776639ed068d051a9900d156eee4ff6127",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/gladiolus_ff15-correction.png",
+      "sourceImageSha256": "686de25b384a693aa080e991c9cb780b66635d8b916d8b2ee8b19e9b8b3f89bd",
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-xv/gladiolus-ff15.png",
+      "referenceAssetSha256": "210c3a30d9589d37cebf198adcbc2009fdf76f6bd13a9bd2ceaeab6854230c07",
+      "referenceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-references/gladiolus_ff15.png",
+      "sourceWork": "Final Fantasy XV (2016)",
+      "sourceReference": "Final Fantasy XV (2016), Gladiolus Amicitia — Dawnhammer is a greatsword overhead ground strike, compactly adapted. The old local unarmed/gun-slot defaults do not establish his equipment.",
+      "abilityName": "Dawnhammer",
+      "characterVersion": "Adult Gladiolus Amicitia in original open black Crownsguard shirt and tattoos, original greatsword role.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/gladiolus_ff15-original.png",
+      "originalSourceImageSha256": "bf8ce2155264036358ad2b4d46619309d5021d663469ddf63b87f30c1efffd6b",
+      "nativeCorrection": true,
+      "nativeCorrectionReason": "Initial roundDefeat rightmost greatsword was cut by native source right edge at y714..735. Replace entire temporary-defeat row with four new complete sword poses; preserve28 other cells.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/gladiolus_ff15-original.png",
+            "sourceImageSha256": "bf8ce2155264036358ad2b4d46619309d5021d663469ddf63b87f30c1efffd6b",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 233
+            },
+            "scale": 0.9872340425531915,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 26,
+                  "width": 165,
+                  "height": 198,
+                  "pixels": 14873
+                },
+                "output": {
+                  "left": 40,
+                  "top": 48,
+                  "width": 163,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 274,
+                  "top": 9,
+                  "width": 176,
+                  "height": 215,
+                  "pixels": 13937
+                },
+                "output": {
+                  "left": 70,
+                  "top": 31,
+                  "width": 174,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 450,
+                  "top": 11,
+                  "width": 205,
+                  "height": 212,
+                  "pixels": 13556
+                },
+                "output": {
+                  "left": 25,
+                  "top": 33,
+                  "width": 202,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 707,
+                  "top": 8,
+                  "width": 172,
+                  "height": 217,
+                  "pixels": 13605
+                },
+                "output": {
+                  "left": 60,
+                  "top": 30,
+                  "width": 170,
+                  "height": 214
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/gladiolus_ff15-original.png",
+            "sourceImageSha256": "bf8ce2155264036358ad2b4d46619309d5021d663469ddf63b87f30c1efffd6b",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 224,
+              "bottom": 447
+            },
+            "scale": 1.1047619047619048,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 16,
+                  "width": 122,
+                  "height": 202,
+                  "pixels": 15325
+                },
+                "output": {
+                  "left": 63,
+                  "top": 21,
+                  "width": 135,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 245,
+                  "top": 15,
+                  "width": 162,
+                  "height": 203,
+                  "pixels": 15610
+                },
+                "output": {
+                  "left": 31,
+                  "top": 20,
+                  "width": 179,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 494,
+                  "top": 8,
+                  "width": 165,
+                  "height": 210,
+                  "pixels": 15955
+                },
+                "output": {
+                  "left": 61,
+                  "top": 12,
+                  "width": 182,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 704,
+                  "top": 15,
+                  "width": 161,
+                  "height": 203,
+                  "pixels": 14195
+                },
+                "output": {
+                  "left": 48,
+                  "top": 20,
+                  "width": 178,
+                  "height": 224
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/gladiolus_ff15-original.png",
+            "sourceImageSha256": "bf8ce2155264036358ad2b4d46619309d5021d663469ddf63b87f30c1efffd6b",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 438,
+              "bottom": 666
+            },
+            "scale": 0.9027237354085603,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 19,
+                  "top": 44,
+                  "width": 220,
+                  "height": 166,
+                  "pixels": 15452
+                },
+                "output": {
+                  "left": 45,
+                  "top": 91,
+                  "width": 199,
+                  "height": 150
+                }
+              },
+              {
+                "source": {
+                  "left": 287,
+                  "top": 13,
+                  "width": 134,
+                  "height": 200,
+                  "pixels": 15027
+                },
+                "output": {
+                  "left": 87,
+                  "top": 63,
+                  "width": 121,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 486,
+                  "top": 11,
+                  "width": 155,
+                  "height": 202,
+                  "pixels": 16687
+                },
+                "output": {
+                  "left": 66,
+                  "top": 62,
+                  "width": 140,
+                  "height": 182
+                }
+              },
+              {
+                "source": {
+                  "left": 723,
+                  "top": 1,
+                  "width": 130,
+                  "height": 212,
+                  "pixels": 15602
+                },
+                "output": {
+                  "left": 80,
+                  "top": 53,
+                  "width": 117,
+                  "height": 191
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/gladiolus_ff15-correction.png",
+            "sourceImageSha256": "686de25b384a693aa080e991c9cb780b66635d8b916d8b2ee8b19e9b8b3f89bd",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 724
+            },
+            "scale": 0.3552833078101072,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 71,
+                  "top": 185,
+                  "width": 527,
+                  "height": 481,
+                  "pixels": 93865
+                },
+                "output": {
+                  "left": 57,
+                  "top": 72,
+                  "width": 187,
+                  "height": 171
+                }
+              },
+              {
+                "source": {
+                  "left": 550,
+                  "top": 211,
+                  "width": 491,
+                  "height": 459,
+                  "pixels": 93686
+                },
+                "output": {
+                  "left": 34,
+                  "top": 81,
+                  "width": 174,
+                  "height": 163
+                }
+              },
+              {
+                "source": {
+                  "left": 1161,
+                  "top": 170,
+                  "width": 361,
+                  "height": 496,
+                  "pixels": 104549
+                },
+                "output": {
+                  "left": 58,
+                  "top": 66,
+                  "width": 128,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 1642,
+                  "top": 113,
+                  "width": 500,
+                  "height": 556,
+                  "pixels": 95502
+                },
+                "output": {
+                  "left": 36,
+                  "top": 46,
+                  "width": 178,
+                  "height": 198
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/gladiolus_ff15-original.png",
+            "sourceImageSha256": "bf8ce2155264036358ad2b4d46619309d5021d663469ddf63b87f30c1efffd6b",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 850,
+              "bottom": 1119
+            },
+            "scale": 0.8529411764705882,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 35,
+                  "width": 230,
+                  "height": 229,
+                  "pixels": 19456
+                },
+                "output": {
+                  "left": 44,
+                  "top": 49,
+                  "width": 196,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 243,
+                  "top": 4,
+                  "width": 196,
+                  "height": 240,
+                  "pixels": 15289
+                },
+                "output": {
+                  "left": 52,
+                  "top": 22,
+                  "width": 167,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 440,
+                  "top": 9,
+                  "width": 250,
+                  "height": 252,
+                  "pixels": 21852
+                },
+                "output": {
+                  "left": 30,
+                  "top": 27,
+                  "width": 213,
+                  "height": 215
+                }
+              },
+              {
+                "source": {
+                  "left": 683,
+                  "top": 93,
+                  "width": 188,
+                  "height": 163,
+                  "pixels": 16742
+                },
+                "output": {
+                  "left": 49,
+                  "top": 98,
+                  "width": 160,
+                  "height": 139
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 2
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/gladiolus_ff15-original.png",
+            "sourceImageSha256": "bf8ce2155264036358ad2b4d46619309d5021d663469ddf63b87f30c1efffd6b",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1105,
+              "bottom": 1342
+            },
+            "scale": 1.008695652173913,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 60,
+                  "top": 21,
+                  "width": 129,
+                  "height": 209,
+                  "pixels": 14505
+                },
+                "output": {
+                  "left": 77,
+                  "top": 31,
+                  "width": 130,
+                  "height": 211
+                }
+              },
+              {
+                "source": {
+                  "left": 278,
+                  "top": 2,
+                  "width": 134,
+                  "height": 230,
+                  "pixels": 14394
+                },
+                "output": {
+                  "left": 73,
+                  "top": 12,
+                  "width": 135,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 481,
+                  "top": 28,
+                  "width": 169,
+                  "height": 199,
+                  "pixels": 17194
+                },
+                "output": {
+                  "left": 54,
+                  "top": 38,
+                  "width": 170,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 705,
+                  "top": 25,
+                  "width": 170,
+                  "height": 203,
+                  "pixels": 16908
+                },
+                "output": {
+                  "left": 56,
+                  "top": 35,
+                  "width": 171,
+                  "height": 205
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/gladiolus_ff15-original.png",
+            "sourceImageSha256": "bf8ce2155264036358ad2b4d46619309d5021d663469ddf63b87f30c1efffd6b",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1335,
+              "bottom": 1535
+            },
+            "scale": 0.9707112970711297,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 28,
+                  "top": 14,
+                  "width": 186,
+                  "height": 180,
+                  "pixels": 16474
+                },
+                "output": {
+                  "left": 48,
+                  "top": 68,
+                  "width": 181,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 256,
+                  "top": 1,
+                  "width": 150,
+                  "height": 182,
+                  "pixels": 15504
+                },
+                "output": {
+                  "left": 54,
+                  "top": 56,
+                  "width": 146,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 439,
+                  "top": 53,
+                  "width": 177,
+                  "height": 142,
+                  "pixels": 15236
+                },
+                "output": {
+                  "left": 16,
+                  "top": 106,
+                  "width": 172,
+                  "height": 138
+                }
+              },
+              {
+                "source": {
+                  "left": 657,
+                  "top": 62,
+                  "width": 218,
+                  "height": 133,
+                  "pixels": 15066
+                },
+                "output": {
+                  "left": 12,
+                  "top": 115,
+                  "width": 212,
+                  "height": 129
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/gladiolus_ff15-original.png",
+            "sourceImageSha256": "bf8ce2155264036358ad2b4d46619309d5021d663469ddf63b87f30c1efffd6b",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1510,
+              "bottom": 1774
+            },
+            "scale": 0.8560885608856088,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 73,
+                  "width": 191,
+                  "height": 166,
+                  "pixels": 15267
+                },
+                "output": {
+                  "left": 43,
+                  "top": 97,
+                  "width": 164,
+                  "height": 142
+                }
+              },
+              {
+                "source": {
+                  "left": 232,
+                  "top": 1,
+                  "width": 182,
+                  "height": 238,
+                  "pixels": 15964
+                },
+                "output": {
+                  "left": 42,
+                  "top": 35,
+                  "width": 156,
+                  "height": 204
+                }
+              },
+              {
+                "source": {
+                  "left": 419,
+                  "top": 33,
+                  "width": 241,
+                  "height": 212,
+                  "pixels": 25858
+                },
+                "output": {
+                  "left": 12,
+                  "top": 63,
+                  "width": 206,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 666,
+                  "top": 81,
+                  "width": 211,
+                  "height": 142,
+                  "pixels": 18372
+                },
+                "output": {
+                  "left": 34,
+                  "top": 104,
+                  "width": 181,
+                  "height": 122
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "44c35e58ba5258bcaa7c6effae8bb26d022805ceb3e2dec8536f6c168c9ffa4b",
+              "4f615680c11b02263fea7102eba4620b76950bd7e7c30147bafa95cecfe2b68b",
+              "11014d0ebd6026b23813a87baf98e34b0133a59068ff0e386bfbec27bf403a0b",
+              "35cd8f85d379170357862ed864c377c8effa21a76203c48e2295e15a47263c49"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "a7fa35ab92689699fea0b298c63e8a6649400af7d6e8b5813858f51f03a4d673",
+              "9c6808a8be6206fc1cb90cc273da94357641382fc61fb32b54d22ca34fd7ad9b",
+              "027a70ec45368c3309bb29425b6f7c6243bc510171713a51c720b68e3cb5109a",
+              "8c3d4eb34ff380891e5fd24baff98080a6878e0d458cab6529968be1949f142d"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fbd351200f3402f690ec535d46aaacb977475f6b2fa38bad5091b6ea63f1ed08",
+              "25c491fcd622cf19c6e5fd8bbc5803b43d14353ab8b6fd9d1a16f76627cb4a38",
+              "eff57e33e9b946b497ad7e9e85fc5430d79f17c084b80fbf6da9bd5bf0112218",
+              "56f6fe2cba1eac1eef3ccba481419cccc1154b9553c80c8006c97581b891f6de"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "27162c2aed7309c20e252f6442b269c1cbc96f3663283843d20395972c85f45b",
+              "61485aa081c6462bfe3c184713d5e81b767d14985ff7d305f87a9752c33ec8e9",
+              "7fb2525384b88b78b9e6876246c0ec5a86496f6d5f6ec092e3ee7312de33f43b",
+              "c355b6fb4d35d727c02e975a97384ebac52506dd91e0f27b8b19a07ba1f49d79"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4ce8f511611943137d3758f88ba6bc90ad29af0e55764cd3fb0932c10d77f2b6",
+              "363b44b21b09390b43388abecd152fc8a34cb687c696240e37219d531c24e1dd",
+              "15d9bcf4a3427738b44b5bef089d345ce44a35bdb2f3e389bb98a9df2bb2bf2a",
+              "c041e4e14910f876427b6980387c560678cc866106e3ed99dd1edffd80eae77e"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "53e9e9fb5001256ddb189b995fe21c941eac10ee99288da84249d424a56f1136",
+              "333439e3c405252662e4ae9ecc01aeddfd5b85da4be18055d5bb23b49c3d99d3",
+              "88819bc6738235aa7cf4c162a44880b1d3d8b9e674180486bf6eaa8a7c7a89dd",
+              "9b7a19b284516b947e4750168519fc5f3e43df8064fb8785ce2421131ce79bf3"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fa581bc8da0533c7ae288c67cb0000335fc96add24fab2b7e1b79c56f8d70e23",
+              "13cb9b4524d9d56dbbe1e1215ea5e136be13c76afa8c04ccd01cd5af8e0088bb",
+              "12e9788978fb42bf73ed02204218ec14ee6a15116ebfdabc912027fba30b78b5",
+              "cb16df3aeec4026ab25aaf7d81ae044c97002fc74cb116f487f804a682a11f5f"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "68746203673e02fa58c3700839402ba173fbd4303c30345ad1988a43fd52ff47",
+              "611ef20506cf26976cf605fdccccde9188a118d5b0196b2a1dffe0d104d371ce",
+              "6733e8fea5271dd7e69050c14f439c6a4453c00c73b2d4e49501fddb23f477c4",
+              "8b4a3e2c2a2187e811240c8f7655b9dc1fe479cc7e3c1574a027c6f81e1eb956"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Adult Gladiolus Amicitia in original open black Crownsguard shirt and tattoos, original greatsword role. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "ignis_ff15",
+      "heroId": "ignis_ff15",
+      "universe": "Final Fantasy XV",
+      "name": "Ignis",
+      "sheet": "/sprites/generated/combat-character-animations-wave3/ignis_ff15.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "380787327cb9eaa38b5c9fe1afeb13beab472d0ac9ad341568d056e22f1ac883",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/ignis_ff15-original.png",
+      "sourceImageSha256": "1b3789e3265729d1426a67830682f610fb177bb1915468edd28b74fba332a967",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-xv/ignis-ff15.png",
+      "referenceAssetSha256": "95a1903a6210e9e17c59a1f90b2df0394f458a19d3e5cec5e52b2a5ad5107295",
+      "referenceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-references/ignis_ff15.png",
+      "sourceWork": "Final Fantasy XV (2016)",
+      "sourceReference": "Final Fantasy XV (2016), sighted Ignis Scientia before Altissia — dual daggers, Regroup support and Overwhelm coordinated assault. These four-pose sequences represent his directing gestures and dagger portion, not a claim that he attacks with firearms or performs the entire team action alone.",
+      "abilityName": "Overwhelm",
+      "characterVersion": "Sighted Ignis Scientia before Altissia, clear spectacles and original Crownsguard suit; no scarred blind DLC variant.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/ignis_ff15-original.png",
+            "sourceImageSha256": "1b3789e3265729d1426a67830682f610fb177bb1915468edd28b74fba332a967",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 239
+            },
+            "scale": 1.0131004366812226,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 69,
+                  "top": 10,
+                  "width": 116,
+                  "height": 226,
+                  "pixels": 13932
+                },
+                "output": {
+                  "left": 86,
+                  "top": 13,
+                  "width": 118,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 285,
+                  "top": 9,
+                  "width": 109,
+                  "height": 229,
+                  "pixels": 14327
+                },
+                "output": {
+                  "left": 80,
+                  "top": 12,
+                  "width": 110,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 468,
+                  "top": 21,
+                  "width": 181,
+                  "height": 213,
+                  "pixels": 14843
+                },
+                "output": {
+                  "left": 40,
+                  "top": 24,
+                  "width": 183,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 706,
+                  "top": 14,
+                  "width": 149,
+                  "height": 218,
+                  "pixels": 13421
+                },
+                "output": {
+                  "left": 57,
+                  "top": 17,
+                  "width": 151,
+                  "height": 221
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/ignis_ff15-original.png",
+            "sourceImageSha256": "1b3789e3265729d1426a67830682f610fb177bb1915468edd28b74fba332a967",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 227,
+              "bottom": 469
+            },
+            "scale": 0.9957081545064378,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 70,
+                  "top": 4,
+                  "width": 102,
+                  "height": 232,
+                  "pixels": 14287
+                },
+                "output": {
+                  "left": 87,
+                  "top": 12,
+                  "width": 102,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 284,
+                  "top": 4,
+                  "width": 100,
+                  "height": 233,
+                  "pixels": 12939
+                },
+                "output": {
+                  "left": 80,
+                  "top": 12,
+                  "width": 100,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 505,
+                  "top": 10,
+                  "width": 121,
+                  "height": 227,
+                  "pixels": 13713
+                },
+                "output": {
+                  "left": 79,
+                  "top": 18,
+                  "width": 120,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 735,
+                  "top": 5,
+                  "width": 107,
+                  "height": 231,
+                  "pixels": 14056
+                },
+                "output": {
+                  "left": 87,
+                  "top": 13,
+                  "width": 107,
+                  "height": 230
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/ignis_ff15-original.png",
+            "sourceImageSha256": "1b3789e3265729d1426a67830682f610fb177bb1915468edd28b74fba332a967",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 459,
+              "bottom": 706
+            },
+            "scale": 0.9547325102880658,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 40,
+                  "top": 14,
+                  "width": 184,
+                  "height": 224,
+                  "pixels": 17071
+                },
+                "output": {
+                  "left": 60,
+                  "top": 23,
+                  "width": 176,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 284,
+                  "top": 9,
+                  "width": 117,
+                  "height": 236,
+                  "pixels": 15724
+                },
+                "output": {
+                  "left": 82,
+                  "top": 19,
+                  "width": 112,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 509,
+                  "top": 2,
+                  "width": 105,
+                  "height": 242,
+                  "pixels": 14594
+                },
+                "output": {
+                  "left": 85,
+                  "top": 12,
+                  "width": 100,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 728,
+                  "top": 12,
+                  "width": 118,
+                  "height": 232,
+                  "pixels": 14857
+                },
+                "output": {
+                  "left": 82,
+                  "top": 22,
+                  "width": 113,
+                  "height": 221
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/ignis_ff15-original.png",
+            "sourceImageSha256": "1b3789e3265729d1426a67830682f610fb177bb1915468edd28b74fba332a967",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 693,
+              "bottom": 906
+            },
+            "scale": 1.154228855721393,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 46,
+                  "top": 5,
+                  "width": 142,
+                  "height": 200,
+                  "pixels": 13440
+                },
+                "output": {
+                  "left": 53,
+                  "top": 12,
+                  "width": 164,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 261,
+                  "top": 10,
+                  "width": 158,
+                  "height": 195,
+                  "pixels": 13343
+                },
+                "output": {
+                  "left": 45,
+                  "top": 18,
+                  "width": 182,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 477,
+                  "top": 7,
+                  "width": 153,
+                  "height": 199,
+                  "pixels": 14521
+                },
+                "output": {
+                  "left": 39,
+                  "top": 14,
+                  "width": 177,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 698,
+                  "top": 10,
+                  "width": 165,
+                  "height": 195,
+                  "pixels": 13023
+                },
+                "output": {
+                  "left": 38,
+                  "top": 18,
+                  "width": 190,
+                  "height": 225
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/ignis_ff15-original.png",
+            "sourceImageSha256": "1b3789e3265729d1426a67830682f610fb177bb1915468edd28b74fba332a967",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 897,
+              "bottom": 1132
+            },
+            "scale": 0.9586776859504132,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 49,
+                  "top": 3,
+                  "width": 180,
+                  "height": 226,
+                  "pixels": 16664
+                },
+                "output": {
+                  "left": 69,
+                  "top": 27,
+                  "width": 173,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 230,
+                  "top": 41,
+                  "width": 222,
+                  "height": 184,
+                  "pixels": 17121
+                },
+                "output": {
+                  "left": 30,
+                  "top": 64,
+                  "width": 213,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 453,
+                  "top": 18,
+                  "width": 222,
+                  "height": 209,
+                  "pixels": 21692
+                },
+                "output": {
+                  "left": 31,
+                  "top": 42,
+                  "width": 213,
+                  "height": 200
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 10,
+                  "width": 142,
+                  "height": 219,
+                  "pixels": 14560
+                },
+                "output": {
+                  "left": 67,
+                  "top": 34,
+                  "width": 136,
+                  "height": 210
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/ignis_ff15-original.png",
+            "sourceImageSha256": "1b3789e3265729d1426a67830682f610fb177bb1915468edd28b74fba332a967",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1125,
+              "bottom": 1368
+            },
+            "scale": 0.9789029535864979,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 61,
+                  "top": 3,
+                  "width": 129,
+                  "height": 233,
+                  "pixels": 15469
+                },
+                "output": {
+                  "left": 79,
+                  "top": 12,
+                  "width": 126,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 292,
+                  "top": 32,
+                  "width": 114,
+                  "height": 203,
+                  "pixels": 13791
+                },
+                "output": {
+                  "left": 88,
+                  "top": 40,
+                  "width": 112,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 515,
+                  "top": 3,
+                  "width": 113,
+                  "height": 237,
+                  "pixels": 14596
+                },
+                "output": {
+                  "left": 89,
+                  "top": 12,
+                  "width": 111,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 725,
+                  "top": 3,
+                  "width": 108,
+                  "height": 236,
+                  "pixels": 15290
+                },
+                "output": {
+                  "left": 78,
+                  "top": 12,
+                  "width": 106,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/ignis_ff15-original.png",
+            "sourceImageSha256": "1b3789e3265729d1426a67830682f610fb177bb1915468edd28b74fba332a967",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1363,
+              "bottom": 1571
+            },
+            "scale": 1.1317073170731706,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 50,
+                  "top": 4,
+                  "width": 161,
+                  "height": 201,
+                  "pixels": 15718
+                },
+                "output": {
+                  "left": 59,
+                  "top": 15,
+                  "width": 182,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 255,
+                  "top": 31,
+                  "width": 142,
+                  "height": 175,
+                  "pixels": 15025
+                },
+                "output": {
+                  "left": 40,
+                  "top": 46,
+                  "width": 161,
+                  "height": 198
+                }
+              },
+              {
+                "source": {
+                  "left": 485,
+                  "top": 1,
+                  "width": 170,
+                  "height": 202,
+                  "pixels": 13965
+                },
+                "output": {
+                  "left": 49,
+                  "top": 12,
+                  "width": 192,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 680,
+                  "top": 1,
+                  "width": 194,
+                  "height": 188,
+                  "pixels": 13660
+                },
+                "output": {
+                  "left": 19,
+                  "top": 12,
+                  "width": 220,
+                  "height": 213
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/ignis_ff15-original.png",
+            "sourceImageSha256": "1b3789e3265729d1426a67830682f610fb177bb1915468edd28b74fba332a967",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1562,
+              "bottom": 1774
+            },
+            "scale": 0.7508090614886731,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 29,
+                  "top": 5,
+                  "width": 236,
+                  "height": 200,
+                  "pixels": 15156
+                },
+                "output": {
+                  "left": 67,
+                  "top": 94,
+                  "width": 177,
+                  "height": 150
+                }
+              },
+              {
+                "source": {
+                  "left": 226,
+                  "top": 7,
+                  "width": 210,
+                  "height": 196,
+                  "pixels": 21699
+                },
+                "output": {
+                  "left": 48,
+                  "top": 95,
+                  "width": 158,
+                  "height": 147
+                }
+              },
+              {
+                "source": {
+                  "left": 452,
+                  "top": 3,
+                  "width": 202,
+                  "height": 202,
+                  "pixels": 21273
+                },
+                "output": {
+                  "left": 51,
+                  "top": 92,
+                  "width": 152,
+                  "height": 152
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 29,
+                  "width": 201,
+                  "height": 166,
+                  "pixels": 15617
+                },
+                "output": {
+                  "left": 48,
+                  "top": 112,
+                  "width": 151,
+                  "height": 125
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5a2696fac31d3b12c34742a403c8882213d410ba88d6c060d7e11ab66b6fabfa",
+              "3f3ca0ecf8a69f6b8b865215c78be850aecaabb5a5d175c6878892483864c4bc",
+              "23d057bd0f7d555488f60e7b21a59e82dd965c74553e1d55932cbbc1391bd555",
+              "199afee7828833607419c07d1570c49b51d7754fbb8f5013d678121057101d63"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "be9024d5d5ae76392af32d0ef7bb3aff3c976133ce79c5047c37075d4552458f",
+              "71fb16b65d11fcc0ecb9281aa565de2645ce5127bb719624f9076af7b866d8e9",
+              "24a5caac68f0893c07e087c22acdc28bdec9f89c3e1256515f866d342b905691",
+              "2c2ef9acb0db31377de3f2f98a52dcb7984335d89bf4b27c6ea049d5034f4126"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5f88f8a9cda4892d04315758b530773749bc83711a94a7cd6c5dc85a1261606b",
+              "a7cef5c361abb12d46fdbf19ad28590c658fceb9aba9563ae6f51e3af07667df",
+              "8929c0deecde7cdaf3f26940df01a26e5d8f415a674916ede3a40c601b574a92",
+              "ccfbcf52aff146eb80e4c01e573af28a34e4bbbe0cfa80ec53adc5b3d53aa0a7"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b189804de9278d14730d7337140d515f2de3e13d2711e5fac08a48c0b8b4e438",
+              "ab6043897ed0bebda9bda8422abbe4ad39215a6755dc7af29d38a47a760c8b25",
+              "5d3de696fc08a3fb877376c9ec932b7b9a6509e2f7942ec2404a7341227c36f7",
+              "1caf8ea40ab290311955634b54f34639766b63b2e049990eb006f1b778d99643"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "43c125b74d7e624802bd5c59caed7561cb24a2dba4575bcb7772c07c5c954fb1",
+              "867c0e010edf50fccc1f83e79e152bb7f73b21c8c16d35b556dd93b7f4d69d32",
+              "8998d8b5b503b6874eda64f6c028cb7fe76a0707e5752bf05c08302cec9762ee",
+              "64ac2e3c8c07744b86217d62172e1ecfffc07a84b61a9db0712c71f6fbd005c4"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "17e2a565ced074a3220ba70ef26f8ac81f59a42a0721ba4d86de242ee2745022",
+              "8e0db9dc69cc521f7161b01febec53058a141fd0545b168e7eedb5cb6a8a4b37",
+              "de87f9ae92be6f760c38c24999c1aed1f82a3c33928575a9000062929d589760",
+              "e165a039077e862bbc869c751d37dd3abbb7c67eb053f5ec668df40a05226f41"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "dd322d318c987c16e6261c02612f8d15a0693d76521224c470008c4c5001a718",
+              "cb3dbb43217dd168c519e801ac2f586924c1b2bd4b3e52e8eed80c5abee524b2",
+              "9542360a1431c45164ab540ca76ee49a18804e6ad1ace451a6bd0d7b9638ed27",
+              "7f9b4e83c86f3effad55fcfbc6759cf2a462421e66cc8afd729ed5afb85ebe58"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2dfc664b368658eeb289f6ee7011579db12c5a86d1f330f6885f060d47a2f9d5",
+              "3c721a2399bf1aadd9f489e58109ce3379681350d9074717bf6bc2ad3e73fe12",
+              "1bbe148c0705744b56b76b9d8e95d8f8ef952538d5e375fb3b9db58ad5c93617",
+              "b8d37ac9bf604eb783e8fc70ff600d47f955333d8aeb931eeae02c791ed9f899"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Sighted Ignis Scientia before Altissia, clear spectacles and original Crownsguard suit; no scarred blind DLC variant. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "prompto_ff15",
+      "heroId": "prompto_ff15",
+      "universe": "Final Fantasy XV",
+      "name": "Prompto Argentum",
+      "sheet": "/sprites/generated/combat-character-animations-wave3/prompto_ff15.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "b42429e872f617749b6bd7a8042ede3a67a17e892170f1fbecbcfadeac763bdd",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/prompto_ff15-original.png",
+      "sourceImageSha256": "c7cb69a2c1fce10e8dc7aad652874cc8ed668c2e34680cdda57eab9a24fc29e2",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-xv/prompto-ff15.png",
+      "referenceAssetSha256": "a04e9510342660f6a9f9b1152cd4225239638d2ebdc119fa636610f4f89da53d",
+      "referenceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-references/prompto_ff15.png",
+      "sourceWork": "Final Fantasy XV (2016)",
+      "sourceReference": "Final Fantasy XV (2016), Prompto Argentum — handgun specialist, Piercer and Trigger Happy ballistic technique. Burst count and gun poses are compact authored adaptation; no firearm from another franchise or camera-as-weapon.",
+      "abilityName": "Trigger Happy",
+      "characterVersion": "Young original Prompto Argentum in sleeveless Crownsguard vest, blond hair, red hip plaid, handgun role.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/prompto_ff15-original.png",
+            "sourceImageSha256": "c7cb69a2c1fce10e8dc7aad652874cc8ed668c2e34680cdda57eab9a24fc29e2",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 235
+            },
+            "scale": 1.045045045045045,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 37,
+                  "top": 8,
+                  "width": 162,
+                  "height": 219,
+                  "pixels": 15567
+                },
+                "output": {
+                  "left": 51,
+                  "top": 12,
+                  "width": 169,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 310,
+                  "top": 8,
+                  "width": 114,
+                  "height": 222,
+                  "pixels": 14579
+                },
+                "output": {
+                  "left": 104,
+                  "top": 12,
+                  "width": 119,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 525,
+                  "top": 8,
+                  "width": 110,
+                  "height": 222,
+                  "pixels": 15305
+                },
+                "output": {
+                  "left": 97,
+                  "top": 12,
+                  "width": 115,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 707,
+                  "top": 17,
+                  "width": 173,
+                  "height": 213,
+                  "pixels": 16012
+                },
+                "output": {
+                  "left": 56,
+                  "top": 21,
+                  "width": 181,
+                  "height": 223
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/prompto_ff15-original.png",
+            "sourceImageSha256": "c7cb69a2c1fce10e8dc7aad652874cc8ed668c2e34680cdda57eab9a24fc29e2",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 228,
+              "bottom": 461
+            },
+            "scale": 1.0043290043290043,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 64,
+                  "top": 9,
+                  "width": 111,
+                  "height": 223,
+                  "pixels": 15091
+                },
+                "output": {
+                  "left": 81,
+                  "top": 20,
+                  "width": 111,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 235,
+                  "top": 13,
+                  "width": 172,
+                  "height": 210,
+                  "pixels": 17968
+                },
+                "output": {
+                  "left": 30,
+                  "top": 24,
+                  "width": 173,
+                  "height": 211
+                }
+              },
+              {
+                "source": {
+                  "left": 493,
+                  "top": 1,
+                  "width": 139,
+                  "height": 221,
+                  "pixels": 15737
+                },
+                "output": {
+                  "left": 66,
+                  "top": 12,
+                  "width": 140,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 729,
+                  "top": 10,
+                  "width": 129,
+                  "height": 213,
+                  "pixels": 14123
+                },
+                "output": {
+                  "left": 81,
+                  "top": 21,
+                  "width": 130,
+                  "height": 214
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/prompto_ff15-original.png",
+            "sourceImageSha256": "c7cb69a2c1fce10e8dc7aad652874cc8ed668c2e34680cdda57eab9a24fc29e2",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 448,
+              "bottom": 694
+            },
+            "scale": 0.9872340425531915,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 54,
+                  "top": 7,
+                  "width": 125,
+                  "height": 234,
+                  "pixels": 15728
+                },
+                "output": {
+                  "left": 72,
+                  "top": 13,
+                  "width": 123,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 276,
+                  "top": 13,
+                  "width": 149,
+                  "height": 226,
+                  "pixels": 17550
+                },
+                "output": {
+                  "left": 72,
+                  "top": 19,
+                  "width": 147,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 496,
+                  "top": 6,
+                  "width": 158,
+                  "height": 231,
+                  "pixels": 18201
+                },
+                "output": {
+                  "left": 70,
+                  "top": 12,
+                  "width": 156,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 702,
+                  "top": 23,
+                  "width": 157,
+                  "height": 206,
+                  "pixels": 16072
+                },
+                "output": {
+                  "left": 55,
+                  "top": 29,
+                  "width": 155,
+                  "height": 203
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/prompto_ff15-original.png",
+            "sourceImageSha256": "c7cb69a2c1fce10e8dc7aad652874cc8ed668c2e34680cdda57eab9a24fc29e2",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 681,
+              "bottom": 892
+            },
+            "scale": 1.1485148514851484,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 8,
+                  "width": 127,
+                  "height": 196,
+                  "pixels": 15383
+                },
+                "output": {
+                  "left": 60,
+                  "top": 18,
+                  "width": 146,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 241,
+                  "top": 47,
+                  "width": 184,
+                  "height": 158,
+                  "pixels": 17195
+                },
+                "output": {
+                  "left": 23,
+                  "top": 63,
+                  "width": 211,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 482,
+                  "top": 3,
+                  "width": 159,
+                  "height": 193,
+                  "pixels": 15987
+                },
+                "output": {
+                  "left": 45,
+                  "top": 12,
+                  "width": 183,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 701,
+                  "top": 7,
+                  "width": 172,
+                  "height": 197,
+                  "pixels": 15624
+                },
+                "output": {
+                  "left": 42,
+                  "top": 17,
+                  "width": 198,
+                  "height": 226
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/prompto_ff15-original.png",
+            "sourceImageSha256": "c7cb69a2c1fce10e8dc7aad652874cc8ed668c2e34680cdda57eab9a24fc29e2",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 883,
+              "bottom": 1121
+            },
+            "scale": 0.7483870967741936,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 13,
+                  "width": 152,
+                  "height": 221,
+                  "pixels": 16848
+                },
+                "output": {
+                  "left": 79,
+                  "top": 78,
+                  "width": 114,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 239,
+                  "top": 14,
+                  "width": 243,
+                  "height": 220,
+                  "pixels": 20437
+                },
+                "output": {
+                  "left": 58,
+                  "top": 79,
+                  "width": 182,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 473,
+                  "top": 33,
+                  "width": 236,
+                  "height": 202,
+                  "pixels": 20621
+                },
+                "output": {
+                  "left": 67,
+                  "top": 93,
+                  "width": 177,
+                  "height": 151
+                }
+              },
+              {
+                "source": {
+                  "left": 701,
+                  "top": 5,
+                  "width": 166,
+                  "height": 230,
+                  "pixels": 18032
+                },
+                "output": {
+                  "left": 72,
+                  "top": 72,
+                  "width": 124,
+                  "height": 172
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/prompto_ff15-original.png",
+            "sourceImageSha256": "c7cb69a2c1fce10e8dc7aad652874cc8ed668c2e34680cdda57eab9a24fc29e2",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1113,
+              "bottom": 1364
+            },
+            "scale": 0.9547325102880658,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 37,
+                  "top": 9,
+                  "width": 153,
+                  "height": 211,
+                  "pixels": 14851
+                },
+                "output": {
+                  "left": 57,
+                  "top": 18,
+                  "width": 146,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 283,
+                  "top": 3,
+                  "width": 144,
+                  "height": 243,
+                  "pixels": 15873
+                },
+                "output": {
+                  "left": 81,
+                  "top": 12,
+                  "width": 137,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 502,
+                  "top": 15,
+                  "width": 142,
+                  "height": 231,
+                  "pixels": 17044
+                },
+                "output": {
+                  "left": 78,
+                  "top": 23,
+                  "width": 136,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 729,
+                  "top": 3,
+                  "width": 126,
+                  "height": 243,
+                  "pixels": 16358
+                },
+                "output": {
+                  "left": 83,
+                  "top": 12,
+                  "width": 120,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/prompto_ff15-original.png",
+            "sourceImageSha256": "c7cb69a2c1fce10e8dc7aad652874cc8ed668c2e34680cdda57eab9a24fc29e2",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1360,
+              "bottom": 1584
+            },
+            "scale": 1.0691244239631337,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 29,
+                  "top": 5,
+                  "width": 149,
+                  "height": 209,
+                  "pixels": 17470
+                },
+                "output": {
+                  "left": 40,
+                  "top": 12,
+                  "width": 159,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 268,
+                  "top": 57,
+                  "width": 143,
+                  "height": 163,
+                  "pixels": 15139
+                },
+                "output": {
+                  "left": 59,
+                  "top": 68,
+                  "width": 153,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 484,
+                  "top": 96,
+                  "width": 176,
+                  "height": 126,
+                  "pixels": 13491
+                },
+                "output": {
+                  "left": 53,
+                  "top": 109,
+                  "width": 188,
+                  "height": 135
+                }
+              },
+              {
+                "source": {
+                  "left": 684,
+                  "top": 76,
+                  "width": 188,
+                  "height": 135,
+                  "pixels": 14220
+                },
+                "output": {
+                  "left": 30,
+                  "top": 88,
+                  "width": 201,
+                  "height": 144
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/prompto_ff15-original.png",
+            "sourceImageSha256": "c7cb69a2c1fce10e8dc7aad652874cc8ed668c2e34680cdda57eab9a24fc29e2",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1568,
+              "bottom": 1774
+            },
+            "scale": 0.6823529411764706,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 19,
+                  "top": 30,
+                  "width": 180,
+                  "height": 168,
+                  "pixels": 14821
+                },
+                "output": {
+                  "left": 65,
+                  "top": 124,
+                  "width": 123,
+                  "height": 115
+                }
+              },
+              {
+                "source": {
+                  "left": 185,
+                  "top": 1,
+                  "width": 303,
+                  "height": 196,
+                  "pixels": 20808
+                },
+                "output": {
+                  "left": 27,
+                  "top": 104,
+                  "width": 207,
+                  "height": 134
+                }
+              },
+              {
+                "source": {
+                  "left": 471,
+                  "top": 47,
+                  "width": 253,
+                  "height": 159,
+                  "pixels": 18686
+                },
+                "output": {
+                  "left": 71,
+                  "top": 136,
+                  "width": 173,
+                  "height": 108
+                }
+              },
+              {
+                "source": {
+                  "left": 702,
+                  "top": 12,
+                  "width": 176,
+                  "height": 194,
+                  "pixels": 15912
+                },
+                "output": {
+                  "left": 77,
+                  "top": 112,
+                  "width": 120,
+                  "height": 132
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b479fc5ea91fd8caea480dd132526cb928e0da6d6db14262723b4cd47aa7a507",
+              "2b80b4bc659f6941bbf8148c29dd8a5db84625fd84f71a9d88e002e1e2cccf79",
+              "69b7fe7951f431e49cbf2faacba0b8dc3cbf1ea5678fd80d2db0eb16039b4db4",
+              "799db6640ac4b8b260e75c3c438e646ef83df17048d4c4167ae41fadedde71a3"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "da2ac8ca2f4f261c7c2aa58cdb0f638e6f5296262fe5e8feb2d8796827febd16",
+              "d724486b747c9cc277d01c15686331e9aad5a796d7627cb97a36083bda7e5776",
+              "723f5724342c3266fcd9281477d9cf80492dbbd00ef5c1c92feb1c5752959ed0",
+              "9ce2fe531d719c9f2383ab5cd5acf4ed6b97e173ad7e99c53902ca008185bfa6"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "bcf4f7103e1678e0b6214ff261e23edea059e3093946661ff180e6d725e4e043",
+              "8dc3db6c743f98bdc16d732ee3532ee4c18a25e8f79bf481197fdbb818501b9e",
+              "056ddfe4269537085787e221866495c966b87755689127f1db30266abd040562",
+              "ca5de3e718b3c7665e35de2e2a7d4f5b0044fb2fae6766b4141e50a80e3581fd"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "13f6cc7cbacc52b73f8bec7b8e4ba04dbd5671b589fa81724e19ec5f03f59d2a",
+              "951d816413dd0ff7383c6ce6872d5180d43b715a61a428288de8fdc488b19d1a",
+              "e0e9a9c56b9f164b7348e8fe5af6a4023ca8aa74c88b50156123a2b02ce47165",
+              "f316bb206f3e4ab28f359d62f704c03e84a886e19b4427641f535e0328ee2b0f"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2aff54fce7efb2bc9ee12ea20119ddc1a39679fb7eefc19760c7280de629e5e4",
+              "953ec6d3c8f5cb768795831845d619682ff2c5af48da65b8e32c6c485b614825",
+              "5cec1acffc6098affc13432eee6b86cf1a3369739517f51e96160b8839636e00",
+              "d0c11f539d8e555121ad323e389f26990c6ebde6eb84bafdcb04624230fe83b8"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c8645d4621f0d6098fb6892c41eb1cc3678ec2a955a06a1871221ece43c9f35b",
+              "a5ec845587ce933512ebf13685be13089e163fb9e42456c08552ed8d25da6542",
+              "6fbebaf9b9681868c3843f51e5cafb76d616d0b8cd9d1ad6f0c48eb046c17f8d",
+              "cc0a6d40c306139d61c526bfae622613752649b75ad37e44a14b49154d7672f8"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d92832f4c55056b4482cbfefba4a151c9078f8e78bf71d9d496f65a2891342e4",
+              "1d3d070f8e078240d1de7fa9b0175e26e08331a90b2d059fc3f6289dedffe11b",
+              "7f3955579e61826b88f455d9c720a3d367b47dd43569e4e9c161ac2a37fb7879",
+              "d73427747f30fd504d10e7468eb50f9a69f5407b109fa22e105cecd639dd2479"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "97a65c3f6b56a6e771166456cfd562279a7ac6b80450568d9bcb9673603d3fc6",
+              "a185ffebebdf60f1ac5077a8b6d36f72ba8084851e8a23735d804c533a79a839",
+              "71aa3324dd56058b7d85427273ddd75df259dff1dcf1c241079b7d5c05cc0048",
+              "3bb34dcb3b3e6391c6123a94bf1c3332735195a19d8ed5a74c84a2c2305264cf"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Young original Prompto Argentum in sleeveless Crownsguard vest, blond hair, red hip plaid, handgun role. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "lunafreya_ff15",
+      "heroId": "lunafreya_ff15",
+      "universe": "Final Fantasy XV",
+      "name": "Lunafreya",
+      "sheet": "/sprites/generated/combat-character-animations-wave3/lunafreya_ff15.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "53ce58cb316a62ef08888266b25866e65318c1d0fb7e8d8437cbfbd9c1fd73c7",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/lunafreya_ff15-original.png",
+      "sourceImageSha256": "7a8ee393c632340a509013dbb46cc58ffd589932fbd73193587f54771cfffdcd",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-xv/lunafreya-ff15.png",
+      "referenceAssetSha256": "5fd2533cc2338a2679b89561bef5874244516e9e255736e7cf8a7d5aa0626747",
+      "referenceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-references/lunafreya_ff15.png",
+      "sourceWork": "Final Fantasy XV (2016)",
+      "sourceReference": "Final Fantasy XV (2016), Lunafreya Nox Fleuret as Oracle: cleansing and healing through prayer and blessing. Oracle’s Blessing is the project’s authored group-healing name, not a verified source attack name. This atlas preserves the local white-gown identity and represents support only.",
+      "abilityName": "Oracle’s Blessing",
+      "characterVersion": "Young adult Lunafreya Nox Fleuret in the flowing off-shoulder white gown and braided blond updo of the inspected local reference; no dark childhood dress or armored fighter redesign.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/lunafreya_ff15-original.png",
+            "sourceImageSha256": "7a8ee393c632340a509013dbb46cc58ffd589932fbd73193587f54771cfffdcd",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 250
+            },
+            "scale": 0.9206349206349206,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 9,
+                  "width": 183,
+                  "height": 230,
+                  "pixels": 19137
+                },
+                "output": {
+                  "left": 47,
+                  "top": 25,
+                  "width": 168,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 260,
+                  "top": 10,
+                  "width": 141,
+                  "height": 231,
+                  "pixels": 16140
+                },
+                "output": {
+                  "left": 61,
+                  "top": 26,
+                  "width": 130,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 453,
+                  "top": 10,
+                  "width": 227,
+                  "height": 236,
+                  "pixels": 20871
+                },
+                "output": {
+                  "left": 35,
+                  "top": 26,
+                  "width": 209,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 699,
+                  "top": 10,
+                  "width": 174,
+                  "height": 237,
+                  "pixels": 18123
+                },
+                "output": {
+                  "left": 57,
+                  "top": 26,
+                  "width": 160,
+                  "height": 218
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/lunafreya_ff15-original.png",
+            "sourceImageSha256": "7a8ee393c632340a509013dbb46cc58ffd589932fbd73193587f54771cfffdcd",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 234,
+              "bottom": 477
+            },
+            "scale": 0.9626556016597511,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 24,
+                  "top": 10,
+                  "width": 202,
+                  "height": 232,
+                  "pixels": 26447
+                },
+                "output": {
+                  "left": 44,
+                  "top": 21,
+                  "width": 194,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 250,
+                  "top": 1,
+                  "width": 185,
+                  "height": 233,
+                  "pixels": 21095
+                },
+                "output": {
+                  "left": 48,
+                  "top": 12,
+                  "width": 178,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 464,
+                  "top": 8,
+                  "width": 186,
+                  "height": 228,
+                  "pixels": 23278
+                },
+                "output": {
+                  "left": 41,
+                  "top": 19,
+                  "width": 179,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 691,
+                  "top": 8,
+                  "width": 161,
+                  "height": 223,
+                  "pixels": 19179
+                },
+                "output": {
+                  "left": 46,
+                  "top": 19,
+                  "width": 155,
+                  "height": 215
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/lunafreya_ff15-original.png",
+            "sourceImageSha256": "7a8ee393c632340a509013dbb46cc58ffd589932fbd73193587f54771cfffdcd",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 462,
+              "bottom": 712
+            },
+            "scale": 0.8721804511278195,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 1,
+                  "width": 200,
+                  "height": 236,
+                  "pixels": 23992
+                },
+                "output": {
+                  "left": 50,
+                  "top": 36,
+                  "width": 174,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 253,
+                  "top": 6,
+                  "width": 148,
+                  "height": 233,
+                  "pixels": 16823
+                },
+                "output": {
+                  "left": 59,
+                  "top": 40,
+                  "width": 129,
+                  "height": 203
+                }
+              },
+              {
+                "source": {
+                  "left": 466,
+                  "top": 3,
+                  "width": 221,
+                  "height": 235,
+                  "pixels": 21991
+                },
+                "output": {
+                  "left": 51,
+                  "top": 37,
+                  "width": 193,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 7,
+                  "width": 158,
+                  "height": 233,
+                  "pixels": 17213
+                },
+                "output": {
+                  "left": 57,
+                  "top": 41,
+                  "width": 138,
+                  "height": 203
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/lunafreya_ff15-original.png",
+            "sourceImageSha256": "7a8ee393c632340a509013dbb46cc58ffd589932fbd73193587f54771cfffdcd",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 699,
+              "bottom": 922
+            },
+            "scale": 1.0403587443946187,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 25,
+                  "top": 10,
+                  "width": 158,
+                  "height": 207,
+                  "pixels": 15970
+                },
+                "output": {
+                  "left": 39,
+                  "top": 29,
+                  "width": 164,
+                  "height": 215
+                }
+              },
+              {
+                "source": {
+                  "left": 233,
+                  "top": 45,
+                  "width": 211,
+                  "height": 168,
+                  "pixels": 16972
+                },
+                "output": {
+                  "left": 24,
+                  "top": 65,
+                  "width": 220,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 443,
+                  "top": 13,
+                  "width": 183,
+                  "height": 197,
+                  "pixels": 19922
+                },
+                "output": {
+                  "left": 12,
+                  "top": 32,
+                  "width": 190,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 682,
+                  "top": 1,
+                  "width": 173,
+                  "height": 208,
+                  "pixels": 17376
+                },
+                "output": {
+                  "left": 30,
+                  "top": 19,
+                  "width": 180,
+                  "height": 216
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/lunafreya_ff15-original.png",
+            "sourceImageSha256": "7a8ee393c632340a509013dbb46cc58ffd589932fbd73193587f54771cfffdcd",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 907,
+              "bottom": 1148
+            },
+            "scale": 0.9169960474308301,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 20,
+                  "top": 30,
+                  "width": 168,
+                  "height": 193,
+                  "pixels": 15451
+                },
+                "output": {
+                  "left": 45,
+                  "top": 53,
+                  "width": 154,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 235,
+                  "top": 6,
+                  "width": 224,
+                  "height": 218,
+                  "pixels": 22883
+                },
+                "output": {
+                  "left": 38,
+                  "top": 31,
+                  "width": 205,
+                  "height": 200
+                }
+              },
+              {
+                "source": {
+                  "left": 442,
+                  "top": 12,
+                  "width": 233,
+                  "height": 226,
+                  "pixels": 34568
+                },
+                "output": {
+                  "left": 25,
+                  "top": 37,
+                  "width": 214,
+                  "height": 207
+                }
+              },
+              {
+                "source": {
+                  "left": 684,
+                  "top": 14,
+                  "width": 179,
+                  "height": 214,
+                  "pixels": 23627
+                },
+                "output": {
+                  "left": 44,
+                  "top": 39,
+                  "width": 164,
+                  "height": 196
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/lunafreya_ff15-original.png",
+            "sourceImageSha256": "7a8ee393c632340a509013dbb46cc58ffd589932fbd73193587f54771cfffdcd",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1135,
+              "bottom": 1374
+            },
+            "scale": 0.8405797101449275,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 30,
+                  "top": 4,
+                  "width": 154,
+                  "height": 232,
+                  "pixels": 17138
+                },
+                "output": {
+                  "left": 60,
+                  "top": 49,
+                  "width": 129,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 244,
+                  "top": 5,
+                  "width": 177,
+                  "height": 229,
+                  "pixels": 20705
+                },
+                "output": {
+                  "left": 54,
+                  "top": 50,
+                  "width": 149,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 451,
+                  "top": 1,
+                  "width": 241,
+                  "height": 234,
+                  "pixels": 29575
+                },
+                "output": {
+                  "left": 41,
+                  "top": 46,
+                  "width": 203,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 679,
+                  "top": 10,
+                  "width": 185,
+                  "height": 222,
+                  "pixels": 18962
+                },
+                "output": {
+                  "left": 46,
+                  "top": 54,
+                  "width": 156,
+                  "height": 187
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/lunafreya_ff15-original.png",
+            "sourceImageSha256": "7a8ee393c632340a509013dbb46cc58ffd589932fbd73193587f54771cfffdcd",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1361,
+              "bottom": 1558
+            },
+            "scale": 0.9957081545064378,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 34,
+                  "top": 1,
+                  "width": 158,
+                  "height": 189,
+                  "pixels": 13588
+                },
+                "output": {
+                  "left": 51,
+                  "top": 50,
+                  "width": 157,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 236,
+                  "top": 28,
+                  "width": 170,
+                  "height": 168,
+                  "pixels": 13545
+                },
+                "output": {
+                  "left": 32,
+                  "top": 77,
+                  "width": 169,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 438,
+                  "top": 45,
+                  "width": 195,
+                  "height": 138,
+                  "pixels": 14939
+                },
+                "output": {
+                  "left": 12,
+                  "top": 94,
+                  "width": 194,
+                  "height": 137
+                }
+              },
+              {
+                "source": {
+                  "left": 685,
+                  "top": 23,
+                  "width": 178,
+                  "height": 163,
+                  "pixels": 13148
+                },
+                "output": {
+                  "left": 37,
+                  "top": 72,
+                  "width": 177,
+                  "height": 162
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/part-c-sources/lunafreya_ff15-original.png",
+            "sourceImageSha256": "7a8ee393c632340a509013dbb46cc58ffd589932fbd73193587f54771cfffdcd",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1531,
+              "bottom": 1774
+            },
+            "scale": 0.8169014084507042,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 18,
+                  "top": 19,
+                  "width": 192,
+                  "height": 215,
+                  "pixels": 25035
+                },
+                "output": {
+                  "left": 52,
+                  "top": 61,
+                  "width": 157,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 227,
+                  "top": 22,
+                  "width": 227,
+                  "height": 211,
+                  "pixels": 30587
+                },
+                "output": {
+                  "left": 42,
+                  "top": 63,
+                  "width": 185,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 444,
+                  "top": 3,
+                  "width": 252,
+                  "height": 240,
+                  "pixels": 44833
+                },
+                "output": {
+                  "left": 38,
+                  "top": 48,
+                  "width": 206,
+                  "height": 196
+                }
+              },
+              {
+                "source": {
+                  "left": 685,
+                  "top": 60,
+                  "width": 202,
+                  "height": 183,
+                  "pixels": 21518
+                },
+                "output": {
+                  "left": 54,
+                  "top": 95,
+                  "width": 165,
+                  "height": 149
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "95fc1d253219909f5c25026a8bcfa8ae1bd173a3db29ccbe4136d80d2dac0e64",
+              "5c0fc178a39712784f150b5dda97cdac058ba0fd59db1c4c25de1d5e649d1bfb",
+              "0cd0d0a38806fe7bbda4e6bc8dbcb75df9800f44324e1d4c0597243927576787",
+              "8acdb44f2d175671d37f1f4abe8b16f819b0dfa5a1ec41d3e2d9b5f4c20f56ed"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ecfbc6e30c1543718a0ff626cfc6b7342c9ae6c43df864c680088ecd43b701ee",
+              "8dfdc1f9c787ad9824e051a601a28b0696de164815ca99ff8dbc60ff6b2326ab",
+              "4728e2f109f13a8e1c822e79580efab58887f27a9b882d203ea24a3c210f208f",
+              "dbc9a8cdf60d2d8864e0279f053d71999d2fabfeac7d02b7a657708e6741444b"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "38137623804d1520fffe3aaab481012f5738ec482f89bdf85eb06001400e0a67",
+              "5e090c0675088f9399553e01e9720f3359fd73e9ed4704e689fb45afed8192af",
+              "9138b72e601a1141698371ed29feba59d67f58588bb67d5291af7d81b300eeac",
+              "d4786235d874ac6bbacf2706233a146924b8cc0e41fb9f5ccaa369c11d1f9479"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "67f0f707aaadb38a5a5c6879e0a91e9254c02c32a630be6b2d3b4ca389ee1611",
+              "f503e9300ed0760868357e7254a49228d0a9fd7c1e37fc48ee9b6ab0ea4b0687",
+              "3eed585c103086071a6d14e58e5ba5168bde1e9c66011edd3e6b7e4fdfd6e9f8",
+              "a3079a29399ad73eb89598ef6dcb489b66b0f42c8f07198b91fe377cbd707203"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1662c5a6fdca4837e9e0392613c78b8cbcc2046063f8ed3cfe8ea8b282b17b08",
+              "20b88d75c674bf2d26a70ad37200410afc3ce235138557eb7ad3f720f665c028",
+              "4e7b5d1c39e3f0bb4372a1e15c69e7edb15f7bd58bfd8dfd5419831fc265cbe3",
+              "2fe1e7be3c330e960da24ef41b57fdaa4ffc6b43091fe8c016c5f3ffb1247259"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d6ca8ff233893793a923f594736c7d10ab9793500b3e3f6b69a9988f7ee5211d",
+              "5bc1f4792fcd1b461f83c1815e8f9cedcff21856f4c56edf83dd3f0bb74501e8",
+              "da27ce98d0f2aa058485515b34193871936747cb485a059b44740b2bae116288",
+              "76f0f98ee48ad197be9184f8a7625d5375d442518ddc72ecff01a3f07a1bc77d"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "39d5b2ca8cf770d955d0306db9d67f1efcf5593eb446498a91c9c2fcd67e4240",
+              "370acdad592c9bfa4789b88a7da022e45a93baca2844ddf1ca194afca727443d",
+              "274a7606461e2ee2d0834287fe4dca1a864ca0577adb743ba2a918097388a973",
+              "2122382daa66151de456f76f3f6fa9972d2cb871bfeee8958c178a07dfec3dd2"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e8e8a7975e3ec7f9d9aad8638912a115900e7ce4b78271660f49f0601734a84d",
+              "4dbcf11e5a23b837a6638cf47a544bad98fac314fbc0b1869be27a3135a62893",
+              "5325d507888079c65d6375a75afde794c17a32ef5f2d394fab1f009656235120",
+              "dd10f867456fa6f3464ebecd5c62558590ea152795f361e3c791d9413248d053"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Young adult Lunafreya Nox Fleuret in the flowing off-shoulder white gown and braided blond updo of the inspected local reference; no dark childhood dress or armored fighter redesign. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+✔ 40 Wave10 identities dispatch purely with exact source identity and support accents stay at their own caster (28490.452166ms)
+✔ rpg player: all40 supers pay once, preserve startup/pause and resolve only once (172.015171ms)
+✔ rpg opponent: all40 supers pay once, preserve startup/pause and resolve only once (142.667198ms)
+✔ melee player: all40 supers pay once, preserve startup/pause and resolve only once (158.992452ms)
+✔ melee opponent: all40 supers pay once, preserve startup/pause and resolve only once (157.049906ms)
+✔ fighter player: all40 supers pay once, preserve startup/pause and resolve only once (67.258004ms)
+✔ fighter opponent: all40 supers pay once, preserve startup/pause and resolve only once (60.092078ms)
+✔ melee player:25 offensive supers suppress misses and preserve confirmed points (345.747717ms)
+✔ melee opponent:25 offensive supers suppress misses and preserve confirmed points (323.001571ms)
+✔ fighter player:25 offensive supers suppress misses and preserve confirmed points (32.073059ms)
+✔ fighter opponent:25 offensive supers suppress misses and preserve confirmed points (73.898486ms)
+✔ RPG player:25 damage supers cannot paint contact on protected/dead targets (66.066445ms)
+✔ RPG opponent:25 damage supers cannot paint contact on protected/dead targets (47.760777ms)
+✔ rpg player:disposal cancels pending40 supers without further effects (9.760782ms)
+✔ rpg opponent:disposal cancels pending40 supers without further effects (9.051732ms)
+✔ fighter player:disposal cancels pending40 supers without further effects (3.619574ms)
+✔ fighter opponent:disposal cancels pending40 supers without further effects (4.893356ms)
+✔ Fighter player:every Wave10 physical projectile uses its real position, incoming facing and one accepted collision (65.355561ms)
+✔ Fighter opponent:every Wave10 physical projectile uses its real position, incoming facing and one accepted collision (26.286424ms)
+✔ Fighter player:every Wave10 physical projectile suppresses unaccepted contacts (11.05114ms)
+✔ Fighter opponent:every Wave10 physical projectile suppresses unaccepted contacts (23.727132ms)
+✖ Every Wave10 active native aperture is an actual source pixel and projects with its own row scale, phase and facing (180.113167ms)
+✔ Fighter player:every tracked Wave10 shot physically spawns at its measured native weapon opening (40.432715ms)
+✔ Fighter opponent:every tracked Wave10 shot physically spawns at its measured native weapon opening (7.653031ms)
+✔ Wave10 cosmetic weapon travel stays on the action clock and cannot invent a target impact (3.645773ms)
+✔ Proton streams start at their physical wand and require an accepted cross-universe contact (0.739496ms)
+✔ Janine retains only24 accepted presentation drawings and uses an explicitly non-dedicated existing-pose fallback (1.424209ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 26
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 31199.467371
+
+✖ failing tests:
+
+test at scripts/nativeSuperRuntimeWave10.test.mjs:183:1
+✖ Every Wave10 active native aperture is an actual source pixel and projects with its own row scale, phase and facing (180.113167ms)
+  AssertionError [ERR_ASSERTION]: trinity/super/0: anchor misses genuine native pixels
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/nativeSuperRuntimeWave10.test.mjs:200:87)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

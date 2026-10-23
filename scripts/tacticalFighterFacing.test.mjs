@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 import { faceGridUnitToward, getGridFacingBonus, getGridFacingVector } from '../src/game/tacticalFacing.js';
+import { HEROES_DB } from '../src/game/heroes.js';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const noop = () => {};
@@ -78,6 +79,25 @@ const makeFighter = () => {
   engine.getActive('cpu').meter = 100;
   return engine;
 };
+
+for (const side of ['hero', 'enemy']) {
+  test(`Tactics ${side} Leon gunfire damages the target without inventing infection`, () => {
+    const engine = makeTactics();
+    const attacker = side === 'hero' ? engine.heroes[0] : engine.enemies[0];
+    const target = side === 'hero' ? engine.enemies[0] : engine.heroes[0];
+    Object.assign(attacker, HEROES_DB.find(hero => hero.id === 'leon'), { gridX: 2, gridY: 2, currentHp: 10000, maxHp: 10000 });
+    Object.assign(target, { gridX: 3, gridY: 2, currentHp: 10000, maxHp: 10000 });
+    engine.activeUnit = attacker;
+    engine.activeUnitType = side;
+    engine.actionPhase = 'action';
+    engine.selectedAction = 'simple';
+    engine.calculateAttackRange();
+    const result = engine.handleCellClick(target.gridX, target.gridY);
+    assert.equal(result.handled, true);
+    assert.ok(target.currentHp < 10000);
+    assert.equal(target.statusEffects.infected, 0);
+  });
+}
 
 for (const vector of [
   { x: 1, y: 0 }, { x: 1, y: 1 }, { x: 0, y: 1 }, { x: -1, y: 1 },

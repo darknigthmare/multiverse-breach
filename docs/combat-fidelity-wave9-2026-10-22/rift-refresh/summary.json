@@ -1,0 +1,626 @@
+{
+  "success": true,
+  "exitCodes": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "catalogTotal": 3199,
+  "changedCatalogEntries": 20,
+  "changedReferencePaths": 20,
+  "exactExpectedWave9HeroIds": [
+    "ada_wong",
+    "aramaki",
+    "baird",
+    "barry_burton",
+    "batou",
+    "carlos_oliveira",
+    "chris_redfield",
+    "claire_redfield",
+    "cole",
+    "dom",
+    "garrus",
+    "hoffman_cog",
+    "liara",
+    "marcus",
+    "motoko",
+    "saito_gits",
+    "shepard",
+    "tali",
+    "togusa",
+    "wrex"
+  ],
+  "qualityBefore": {
+    "characterArcEntryCount": 1912,
+    "entriesWithLocalReferences": 1912,
+    "entriesWithoutLocalReferences": 0,
+    "uniqueReferencePathCount": 1912,
+    "missingReferenceFileCount": 0,
+    "referenceClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    },
+    "entryClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    }
+  },
+  "qualityAfter": {
+    "characterArcEntryCount": 1912,
+    "entriesWithLocalReferences": 1912,
+    "entriesWithoutLocalReferences": 0,
+    "uniqueReferencePathCount": 1912,
+    "missingReferenceFileCount": 0,
+    "referenceClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    },
+    "entryClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    }
+  },
+  "all20NewReferencesApproved": true,
+  "availableDossiers": 1031,
+  "pendingDossiers": 2168,
+  "historicalAuditScriptsUnchanged": true,
+  "qualityThresholdsUnchanged": true,
+  "packageJsonChangedConcurrently": true,
+  "packageJsonChangeNote": "This worker did not edit package.json. Concurrent repository work changed its hash; the raw result retains this difference.",
+  "changedEntries": [
+    {
+      "id": 9311,
+      "name": {
+        "fr": "Arc Personnage - Marcus Fenix",
+        "en": "Character Arc - Marcus Fenix"
+      },
+      "heroName": "Marcus Fenix",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/gears-of-war/marcus.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9-part-a/marcus.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9321,
+      "name": {
+        "fr": "Arc Personnage - Commander Shepard",
+        "en": "Character Arc - Commander Shepard"
+      },
+      "heroName": "Commander Shepard",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/mass-effect/shepard.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/shepard.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9334,
+      "name": {
+        "fr": "Arc Personnage - Motoko Kusanagi",
+        "en": "Character Arc - Motoko Kusanagi"
+      },
+      "heroName": "Motoko Kusanagi",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/ghost-in-the-shell/motoko.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/motoko.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9336,
+      "name": {
+        "fr": "Arc Personnage - Dom Santiago",
+        "en": "Character Arc - Dom Santiago"
+      },
+      "heroName": "Dom Santiago",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/gears-of-war/dom.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9-part-a/dom.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9337,
+      "name": {
+        "fr": "Arc Personnage - Augustus Cole",
+        "en": "Character Arc - Augustus Cole"
+      },
+      "heroName": "Augustus Cole",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/gears-of-war/cole.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9-part-a/cole.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9338,
+      "name": {
+        "fr": "Arc Personnage - Damon Baird",
+        "en": "Character Arc - Damon Baird"
+      },
+      "heroName": "Damon Baird",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "promptOpenAI",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/gears-of-war/baird.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9-part-a/baird.png"
+      ],
+      "promptChanges": [
+        {
+          "before": "laser",
+          "after": "gun"
+        }
+      ]
+    },
+    {
+      "id": 9340,
+      "name": {
+        "fr": "Arc Personnage - Colonel Hoffman",
+        "en": "Character Arc - Colonel Hoffman"
+      },
+      "heroName": "Colonel Hoffman",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/gears-of-war/hoffman-cog.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9-part-a/hoffman_cog.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9370,
+      "name": {
+        "fr": "Arc Personnage - Chris Redfield",
+        "en": "Character Arc - Chris Redfield"
+      },
+      "heroName": "Chris Redfield",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/resident-evil/chris-redfield.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/chris_redfield.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9371,
+      "name": {
+        "fr": "Arc Personnage - Claire Redfield",
+        "en": "Character Arc - Claire Redfield"
+      },
+      "heroName": "Claire Redfield",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/resident-evil/claire-redfield.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/claire_redfield.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9372,
+      "name": {
+        "fr": "Arc Personnage - Ada Wong",
+        "en": "Character Arc - Ada Wong"
+      },
+      "heroName": "Ada Wong",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "promptOpenAI",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/resident-evil/ada-wong.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/ada_wong.png"
+      ],
+      "promptChanges": [
+        {
+          "before": "laser",
+          "after": "gun"
+        }
+      ]
+    },
+    {
+      "id": 9374,
+      "name": {
+        "fr": "Arc Personnage - Barry Burton",
+        "en": "Character Arc - Barry Burton"
+      },
+      "heroName": "Barry Burton",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/resident-evil/barry-burton.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/barry_burton.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9375,
+      "name": {
+        "fr": "Arc Personnage - Carlos Oliveira",
+        "en": "Character Arc - Carlos Oliveira"
+      },
+      "heroName": "Carlos Oliveira",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/resident-evil/carlos-oliveira.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/carlos_oliveira.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9496,
+      "name": {
+        "fr": "Arc Personnage - Garrus Vakarian",
+        "en": "Character Arc - Garrus Vakarian"
+      },
+      "heroName": "Garrus Vakarian",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/mass-effect/garrus.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/garrus.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9497,
+      "name": {
+        "fr": "Arc Personnage - Liara T'Soni",
+        "en": "Character Arc - Liara T'Soni"
+      },
+      "heroName": "Liara T'Soni",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "promptOpenAI",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/mass-effect/liara.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/liara.png"
+      ],
+      "promptChanges": [
+        {
+          "before": "biotic",
+          "after": "gun"
+        }
+      ]
+    },
+    {
+      "id": 9498,
+      "name": {
+        "fr": "Arc Personnage - Tali Zorah",
+        "en": "Character Arc - Tali Zorah"
+      },
+      "heroName": "Tali Zorah",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "promptOpenAI",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/mass-effect/tali.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/tali.png"
+      ],
+      "promptChanges": [
+        {
+          "before": "laser",
+          "after": "gun"
+        }
+      ]
+    },
+    {
+      "id": 9499,
+      "name": {
+        "fr": "Arc Personnage - Urdnot Wrex",
+        "en": "Character Arc - Urdnot Wrex"
+      },
+      "heroName": "Urdnot Wrex",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/mass-effect/wrex.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/wrex.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9602,
+      "name": {
+        "fr": "Arc Personnage - Batou",
+        "en": "Character Arc - Batou"
+      },
+      "heroName": "Batou",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/ghost-in-the-shell/batou.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/batou.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9603,
+      "name": {
+        "fr": "Arc Personnage - Togusa",
+        "en": "Character Arc - Togusa"
+      },
+      "heroName": "Togusa",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/ghost-in-the-shell/togusa.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/togusa.png"
+      ],
+      "promptChanges": []
+    },
+    {
+      "id": 9604,
+      "name": {
+        "fr": "Arc Personnage - Daisuke Aramaki",
+        "en": "Character Arc - Daisuke Aramaki"
+      },
+      "heroName": "Daisuke Aramaki",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "promptOpenAI",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/ghost-in-the-shell/aramaki.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/aramaki.png"
+      ],
+      "promptChanges": [
+        {
+          "before": "gun",
+          "after": "terminal"
+        }
+      ]
+    },
+    {
+      "id": 9605,
+      "name": {
+        "fr": "Arc Personnage - Saito",
+        "en": "Character Arc - Saito"
+      },
+      "heroName": "Saito",
+      "keys": [
+        "candidatsReferencesLocalesAudit",
+        "referencesLocalesOpenAI"
+      ],
+      "referencesBefore": [
+        "/sprites/generated/heroes/ghost-in-the-shell/saito-gits.png"
+      ],
+      "referencesAfter": [
+        "/sprites/generated/combat-character-corrections-wave9/saito_gits.png"
+      ],
+      "promptChanges": []
+    }
+  ],
+  "currentBaseSourceWorks": {
+    "marcus": {
+      "part": "A",
+      "sourceWork": "Gears of War 2 (2008)",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9-part-a/marcus.png",
+      "sha256": "16828bd8af639b77eceb5343b29af47647af83d76bda8f933a481970ee297d2e"
+    },
+    "dom": {
+      "part": "A",
+      "sourceWork": "Gears of War 2 (2008)",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9-part-a/dom.png",
+      "sha256": "89a1f6b0ea752cb45cbb8f8414fa82dc9294b9cb94dacd6bc5e49514de4c8f8c"
+    },
+    "cole": {
+      "part": "A",
+      "sourceWork": "Gears of War 2 (2008)",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9-part-a/cole.png",
+      "sha256": "eaa0e24f76e91ce4df00d27bde6163a629ecaa602ec611acbc432d54807822ae"
+    },
+    "baird": {
+      "part": "A",
+      "sourceWork": "Gears of War 2 (2008)",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9-part-a/baird.png",
+      "sha256": "a47a4e5f3c07aeb2cfacb236ef48bef617cfa6aad8ac29447234b3078ad4d2af"
+    },
+    "hoffman_cog": {
+      "part": "A",
+      "sourceWork": "Gears of War 2 (2008)",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9-part-a/hoffman_cog.png",
+      "sha256": "c41c1a1778b5546e950f29f95ef48e9f2766d52d68329c38d9101de05beacd3d"
+    },
+    "shepard": {
+      "part": "B",
+      "sourceWork": "Mass Effect 2 (2010), default male Soldier Shepard",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/shepard.png",
+      "sha256": "90f7e39c957e58146786b0550bb8dd156689401eeffd3ebae9d63ad064bc88ba"
+    },
+    "garrus": {
+      "part": "B",
+      "sourceWork": "Mass Effect 2 (2010), scarred Garrus after Archangel recruitment",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/garrus.png",
+      "sha256": "a088ac9a27421c0ace756122bcb414216b9f77a379258f9c402248cfde579607"
+    },
+    "liara": {
+      "part": "B",
+      "sourceWork": "Mass Effect 2: Lair of the Shadow Broker (2010)",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/liara.png",
+      "sha256": "af004a9ad729bef072cfde3e0dafe55964165781fa8d7faabd578a94dacb6ed7"
+    },
+    "tali": {
+      "part": "B",
+      "sourceWork": "Mass Effect 2 (2010), sealed enviro-suit Tali",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/tali.png",
+      "sha256": "f7f3f558ed73695388efb300da33e63dde51c93f782a54a2d6944fbd16daaf66"
+    },
+    "wrex": {
+      "part": "B",
+      "sourceWork": "Mass Effect (2007), heavy red-armored krogan Wrex",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/wrex.png",
+      "sha256": "d45e32a21aeada37fb49e3fc672a3273c52e4a2c6575a7b44a3dfe0b7cea0e79"
+    },
+    "motoko": {
+      "part": "C",
+      "sourceWork": "Ghost in the Shell: Stand Alone Complex (2002), season 1",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/motoko.png",
+      "sha256": "908c9d36685421648be133b43718d9b0096251e9025704e7047186daff8ac2e5"
+    },
+    "batou": {
+      "part": "C",
+      "sourceWork": "Ghost in the Shell: Stand Alone Complex (2002), season 1",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/batou.png",
+      "sha256": "e93fb2926e17de107527a747af36738824a06375e04bf95dd8db2e31d873f0ba"
+    },
+    "togusa": {
+      "part": "C",
+      "sourceWork": "Ghost in the Shell: Stand Alone Complex (2002), season 1",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/togusa.png",
+      "sha256": "05a6c53a1c81514d68310b86fb62184a63a6364fa083526f1a6a853f2d1a292b"
+    },
+    "aramaki": {
+      "part": "C",
+      "sourceWork": "Ghost in the Shell: Stand Alone Complex (2002), season 1",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/aramaki.png",
+      "sha256": "452aaec536e90c08ce1117a5913ba8945a5b349da324da1b0a58b4ada1e3a027"
+    },
+    "saito_gits": {
+      "part": "C",
+      "sourceWork": "Ghost in the Shell: Stand Alone Complex (2002), season 1",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/saito_gits.png",
+      "sha256": "0a4847680877fbe60b5a739c5865f77aaa27d761a2c7df7234be9e0670846c2e"
+    },
+    "chris_redfield": {
+      "part": "D",
+      "sourceWork": "Resident Evil 5 (2009)",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/chris_redfield.png",
+      "sha256": "f13a5b588e29849123c1764ab06789b785eda18f49d6e1411577c6c98ae91bc9"
+    },
+    "claire_redfield": {
+      "part": "D",
+      "sourceWork": "Resident Evil 2 remake (2019)",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/claire_redfield.png",
+      "sha256": "61f348b470003b2470d5a1ce24554d47308ae5623822b24bc100641a66b0e963"
+    },
+    "ada_wong": {
+      "part": "D",
+      "sourceWork": "Resident Evil 4: Separate Ways (2005)",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/ada_wong.png",
+      "sha256": "edf50e8257e95d9a1bcace58feb3127b3bc923f5956c44bc463a8d8677681325"
+    },
+    "barry_burton": {
+      "part": "D",
+      "sourceWork": "Resident Evil remake (2002)",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/barry_burton.png",
+      "sha256": "23bc4345ec802afd154fd6b4d002f0726be9ea1c619931d119ea76b6dcfe2b77"
+    },
+    "carlos_oliveira": {
+      "part": "D",
+      "sourceWork": "Resident Evil 3 remake (2020)",
+      "sheet": "/sprites/generated/combat-character-corrections-wave9/carlos_oliveira.png",
+      "sha256": "8d3c76cab0108513729672702d0a90c264425737a7c6337faf61ca312ba258e8"
+    }
+  },
+  "generatedOutputs": {
+    "docs/rift-dossiers/catalog.json": {
+      "sha256": "62d2874380a92aad4298398975e4c0fc5e2ac4503f0293b4d8b351789fa042e6",
+      "bytes": 10843411
+    },
+    "docs/rift-dossiers/character-reference-quality.json": {
+      "sha256": "c5c79692838f7ee634f0180c0df4d134f379db95b312322e3f542482d7ef8005",
+      "bytes": 3563575
+    },
+    "src/game/riftDossierAssets.json": {
+      "sha256": "1be40e3a9e98bb98f7c5ed97a75f4e8970bd3f68ccacf79cf28d55aed68f0c97",
+      "bytes": 552094
+    }
+  },
+  "runnerControlLog": "docs/combat-fidelity-wave9-2026-10-22/rift-refresh/runner-control.json",
+  "timingNote": "The audit child continued during the runner-parent hold requested to protect browser fixtures; step2 wall time includes that hold."
+}

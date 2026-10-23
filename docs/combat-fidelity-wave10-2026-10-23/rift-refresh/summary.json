@@ -1,0 +1,759 @@
+{
+  "passed": true,
+  "date": "2026-10-23",
+  "commands": [
+    {
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs",
+        "--refresh-character-reference-audit"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 7.156,
+      "log": "01-catalog-refresh.log",
+      "logSha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/auditCharacterReferenceQuality.py"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 479.869,
+      "log": "02-character-reference-audit.log",
+      "logSha256": "cc4213f4000b1d22e61d187bf3fafd97589f45d967562cafeaf3fc85d9055485"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 4.943,
+      "log": "03-catalog-build.log",
+      "logSha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierAssetRegistry.mjs"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.918,
+      "log": "04-asset-registry-build.log",
+      "logSha256": "0ae6d3724a446f09f64e6b22d192d46ca63237ce1f541acce4e94aae3905c82c"
+    },
+    {
+      "argv": [
+        "npm",
+        "run",
+        "rift:audit"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 5.142,
+      "log": "05-rift-audit.log",
+      "logSha256": "c2329e6e7f1c2a09d9c3031556456fc58c9efe6ca1b348a83f5bcefa25ced44d"
+    }
+  ],
+  "firstFailedAudit": {
+    "exitCode": 1,
+    "elapsedSeconds": 450.121,
+    "archive": "first-attempt-known-retired-reference",
+    "cause": "Old Freeman known-case reference retired from current catalog; expectation retained and evaluated separately on actual old pixels."
+  },
+  "historicalAuditScriptsUnchanged": false,
+  "historicalCatalogBuildersUnchanged": true,
+  "packageUnchanged": true,
+  "qualityThresholdsUnchanged": true,
+  "knownCaseExpectationsUnchanged": true,
+  "manualReferencePinsUnchanged": true,
+  "qualityAuditChangedForRetiredReferences": true,
+  "qualityConstantsUnchanged": {
+    "EXPECTED_CHARACTER_ARC_ENTRY_COUNT": true,
+    "EXPECTED_UNIQUE_REFERENCE_PATH_COUNT": true,
+    "ALPHA_OCCUPIED_THRESHOLD": true,
+    "STRONG_NEIGHBOR_DIFFERENCE": true,
+    "THRESHOLDS": true,
+    "KNOWN_EXPECTATIONS": true,
+    "MANUAL_APPROVED_REFERENCE_SHA256": true
+  },
+  "historicalKnownCaseReferences": [
+    {
+      "path": "/sprites/generated/heroes/half-life/freeman.png",
+      "classification": "approved",
+      "reasons": [
+        "meets-detailed-sprite-reference-thresholds"
+      ],
+      "metrics": {
+        "fileBytes": 788816,
+        "fileSha256": "88f9e1269f442c9eb805f78bfd776ebd5cdbe6aba85fbc57db390464d443fd28",
+        "format": "PNG",
+        "sourceMode": "RGBA",
+        "width": 1024,
+        "height": 1024,
+        "pixelCount": 1048576,
+        "hasAlpha": true,
+        "alphaLevelCount": 117,
+        "opaquePixels": 238076,
+        "alphaOccupancy": 0.227047,
+        "semiTransparentPixelShare": 0.012413,
+        "occupiedBoundingBox": [
+          22,
+          19,
+          1007,
+          960
+        ],
+        "occupiedBoundingBoxFill": 0.256856,
+        "opaqueColorCount": 99418,
+        "quantizedColorCount16": 770,
+        "dominantOpaqueColorShare": 0.010144,
+        "colorEntropyBits": 15.571761,
+        "luminanceEntropyBits": 7.126967,
+        "bytesPerPixel": 0.752274,
+        "validOpaqueNeighborPairs": 462993,
+        "colorTransitionRate": 0.99622,
+        "strongDetailRate": 0.574905,
+        "meanNeighborDifference": 21.784057,
+        "tileDiversity4x4": {
+          "tileCount": 16,
+          "uniqueCoarseTileCount": 16,
+          "uniqueCoarseTileShare": 1.0
+        }
+      }
+    }
+  ],
+  "all40NewReferencesApproved": true,
+  "changedReferenceCount": 40,
+  "newBase16References": 39,
+  "partial24FallbackReferences": 1,
+  "references": [
+    {
+      "stageId": 9202,
+      "character": "Gordon Freeman",
+      "previous": [
+        "/sprites/generated/heroes/half-life/freeman.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/freeman.png"
+      ]
+    },
+    {
+      "stageId": 9207,
+      "character": "Neo",
+      "previous": [
+        "/sprites/generated/heroes/the-matrix/neo.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10-part-a/neo.png"
+      ]
+    },
+    {
+      "stageId": 9208,
+      "character": "Jack O'Neill",
+      "previous": [
+        "/sprites/generated/heroes/stargate/oneill.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10-part-a/oneill.png"
+      ]
+    },
+    {
+      "stageId": 9215,
+      "character": "Barney Calhoun",
+      "previous": [
+        "/sprites/generated/heroes/half-life/barney.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/barney.png"
+      ]
+    },
+    {
+      "stageId": 9217,
+      "character": "Alyx Vance",
+      "previous": [
+        "/sprites/generated/heroes/half-life/alyx-vance.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/alyx_vance.png"
+      ]
+    },
+    {
+      "stageId": 9218,
+      "character": "Samantha Carter",
+      "previous": [
+        "/sprites/generated/heroes/stargate/sam-carter.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10-part-a/sam_carter.png"
+      ]
+    },
+    {
+      "stageId": 9219,
+      "character": "Teal'c",
+      "previous": [
+        "/sprites/generated/heroes/stargate/tealc.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10-part-a/tealc.png"
+      ]
+    },
+    {
+      "stageId": 9220,
+      "character": "Daniel Jackson",
+      "previous": [
+        "/sprites/generated/heroes/stargate/daniel-jackson.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10-part-a/daniel_jackson.png"
+      ]
+    },
+    {
+      "stageId": 9227,
+      "character": "Trinity",
+      "previous": [
+        "/sprites/generated/heroes/the-matrix/trinity.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10-part-a/trinity.png"
+      ]
+    },
+    {
+      "stageId": 9228,
+      "character": "Morpheus",
+      "previous": [
+        "/sprites/generated/heroes/the-matrix/morpheus.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10-part-a/morpheus.png"
+      ]
+    },
+    {
+      "stageId": 9313,
+      "character": "Dallas",
+      "previous": [
+        "/sprites/generated/heroes/payday/dallas.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/dallas.png"
+      ]
+    },
+    {
+      "stageId": 9386,
+      "character": "Agent Smith",
+      "previous": [
+        "/sprites/generated/heroes/the-matrix/agent-smith.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10-part-a/agent_smith.png"
+      ]
+    },
+    {
+      "stageId": 9392,
+      "character": "Seraph",
+      "previous": [
+        "/sprites/generated/heroes/the-matrix/seraph.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10-part-a/seraph.png"
+      ]
+    },
+    {
+      "stageId": 9393,
+      "character": "General Hammond",
+      "previous": [
+        "/sprites/generated/heroes/stargate/hammond-sgc.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10-part-a/hammond_sgc.png"
+      ]
+    },
+    {
+      "stageId": 9399,
+      "character": "Eli Vance",
+      "previous": [
+        "/sprites/generated/heroes/half-life/eli-vance.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/eli_vance.png"
+      ]
+    },
+    {
+      "stageId": 9400,
+      "character": "Dr. Kleiner",
+      "previous": [
+        "/sprites/generated/heroes/half-life/kleiner.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/kleiner.png"
+      ]
+    },
+    {
+      "stageId": 9420,
+      "character": "Wolf",
+      "previous": [
+        "/sprites/generated/heroes/payday/wolf-pd.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/wolf_pd.png"
+      ]
+    },
+    {
+      "stageId": 9421,
+      "character": "Hoxton",
+      "previous": [
+        "/sprites/generated/heroes/payday/hoxton.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/hoxton.png"
+      ]
+    },
+    {
+      "stageId": 9422,
+      "character": "Chains",
+      "previous": [
+        "/sprites/generated/heroes/payday/chains-pd.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/chains_pd.png"
+      ]
+    },
+    {
+      "stageId": 9424,
+      "character": "Clover",
+      "previous": [
+        "/sprites/generated/heroes/payday/clover-pd.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/clover_pd.png"
+      ]
+    },
+    {
+      "stageId": 9502,
+      "character": "Paladin Danse",
+      "previous": [
+        "/sprites/generated/heroes/fallout/paladin.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/paladin.png"
+      ]
+    },
+    {
+      "stageId": 9503,
+      "character": "Nick Valentine",
+      "previous": [
+        "/sprites/generated/heroes/fallout/nick-v.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/nick_v.png"
+      ]
+    },
+    {
+      "stageId": 9504,
+      "character": "Dogmeat",
+      "previous": [
+        "/sprites/generated/heroes/fallout/dogmeat.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/dogmeat.png"
+      ]
+    },
+    {
+      "stageId": 9505,
+      "character": "Piper Wright",
+      "previous": [
+        "/sprites/generated/heroes/fallout/piper-wright.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/piper_wright.png"
+      ]
+    },
+    {
+      "stageId": 9506,
+      "character": "Preston Garvey",
+      "previous": [
+        "/sprites/generated/heroes/fallout/preston-garvey.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/preston_garvey.png"
+      ]
+    },
+    {
+      "stageId": 9645,
+      "character": "Corporal Hicks",
+      "previous": [
+        "/sprites/generated/heroes/aliens/hicks-aliens.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/hicks_aliens.png"
+      ]
+    },
+    {
+      "stageId": 9646,
+      "character": "Vasquez",
+      "previous": [
+        "/sprites/generated/heroes/aliens/vasquez-aliens.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/vasquez_aliens.png"
+      ]
+    },
+    {
+      "stageId": 9647,
+      "character": "Bishop",
+      "previous": [
+        "/sprites/generated/heroes/aliens/bishop-aliens.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/bishop_aliens.png"
+      ]
+    },
+    {
+      "stageId": 9648,
+      "character": "Ellen Ripley Aliens",
+      "previous": [
+        "/sprites/generated/heroes/aliens/ripley-aliens.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/ripley_aliens.png"
+      ]
+    },
+    {
+      "stageId": 9650,
+      "character": "Hudson",
+      "previous": [
+        "/sprites/generated/heroes/aliens/hudson-aliens.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/hudson_aliens.png"
+      ]
+    },
+    {
+      "stageId": 9862,
+      "character": "Peter Venkman",
+      "previous": [
+        "/sprites/generated/heroes/ghostbusters/venkman-gb.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/venkman_gb.png"
+      ]
+    },
+    {
+      "stageId": 9863,
+      "character": "Ray Stantz",
+      "previous": [
+        "/sprites/generated/heroes/ghostbusters/stantz-gb.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/stantz_gb.png"
+      ]
+    },
+    {
+      "stageId": 9864,
+      "character": "Winston Zeddemore",
+      "previous": [
+        "/sprites/generated/heroes/ghostbusters/zeddemore-gb.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/zeddemore_gb.png"
+      ]
+    },
+    {
+      "stageId": 9865,
+      "character": "Egon Spengler",
+      "previous": [
+        "/sprites/generated/heroes/ghostbusters/spengler-gb.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/spengler_gb.png"
+      ]
+    },
+    {
+      "stageId": 9866,
+      "character": "Janine Melnitz",
+      "previous": [
+        "/sprites/generated/heroes/ghostbusters/janine-gb.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-animations-wave10/janine_gb.png"
+      ]
+    },
+    {
+      "stageId": 10198,
+      "character": "Bill",
+      "previous": [
+        "/sprites/generated/heroes/left-4-dead/bill-l4d.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/bill_l4d.png"
+      ]
+    },
+    {
+      "stageId": 10199,
+      "character": "Ellis",
+      "previous": [
+        "/sprites/generated/heroes/left-4-dead/ellis-l4d.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/ellis_l4d.png"
+      ]
+    },
+    {
+      "stageId": 10200,
+      "character": "Coach",
+      "previous": [
+        "/sprites/generated/heroes/left-4-dead/coach-l4d.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/coach_l4d.png"
+      ]
+    },
+    {
+      "stageId": 10201,
+      "character": "Rochelle",
+      "previous": [
+        "/sprites/generated/heroes/left-4-dead/rochelle-l4d.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/rochelle_l4d.png"
+      ]
+    },
+    {
+      "stageId": 10202,
+      "character": "Nick",
+      "previous": [
+        "/sprites/generated/heroes/left-4-dead/nick-l4d.png"
+      ],
+      "current": [
+        "/sprites/generated/combat-character-corrections-wave10/nick_l4d.png"
+      ]
+    }
+  ],
+  "catalogTotalBefore": 3199,
+  "catalogTotalAfter": 3199,
+  "qualityBefore": {
+    "characterArcEntryCount": 1912,
+    "entriesWithLocalReferences": 1912,
+    "entriesWithoutLocalReferences": 0,
+    "uniqueReferencePathCount": 1912,
+    "missingReferenceFileCount": 0,
+    "referenceClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    },
+    "entryClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    }
+  },
+  "qualityAfter": {
+    "characterArcEntryCount": 1912,
+    "entriesWithLocalReferences": 1912,
+    "entriesWithoutLocalReferences": 0,
+    "uniqueReferencePathCount": 1912,
+    "missingReferenceFileCount": 0,
+    "referenceClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    },
+    "entryClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    }
+  },
+  "registryStatuses": {
+    "available": 1030,
+    "pending": 2169
+  },
+  "sourceSha256Before": {
+    "scripts/buildRiftDossierCatalog.mjs": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+    "scripts/auditCharacterReferenceQuality.py": "421b20d86cc2c3d4388e36d209b03b01b480dee08bebe2b8c6a43b4f23ad2912",
+    "scripts/buildRiftDossierAssetRegistry.mjs": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+    "package.json": "bd00a7560454f62c83d2396d045bc2af89f3dfc1518f15b9985dd7be38ad95e9"
+  },
+  "sourceSha256After": {
+    "scripts/buildRiftDossierCatalog.mjs": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+    "scripts/auditCharacterReferenceQuality.py": "de13d252fb7675b3715be22c6c0bcf5d51d02675ae35c62be622a6606db14edb",
+    "scripts/buildRiftDossierAssetRegistry.mjs": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+    "package.json": "bd00a7560454f62c83d2396d045bc2af89f3dfc1518f15b9985dd7be38ad95e9"
+  },
+  "finalOutputSha256": {
+    "docs/rift-dossiers/catalog.json": "432409585c4aafb1ad66ba580026b99f57e8aecb16e22297cf3b48bc419c15f7",
+    "docs/rift-dossiers/character-reference-quality.json": "7dce3436fc4d7dee3ea5ebae47fab7c72fd20c58ad5a95dd54161ea8dee5f0c6",
+    "src/game/riftDossierAssets.json": "313258fc13043cce88bdd7cdc81bf0bd0fd50bc924215d03d803fb2275360c5a"
+  },
+  "success": true,
+  "changedReferencePaths": 40,
+  "exitCodes": {
+    "01-catalog-refresh": 0,
+    "02-character-reference-audit": 0,
+    "03-catalog-build": 0,
+    "04-asset-registry-build": 0,
+    "05-rift-audit": 0
+  },
+  "registryAvailabilityDelta": {
+    "promptChanges": [
+      {
+        "id": 9218,
+        "character": "Samantha Carter",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": true,
+        "beforePromptSha256": "b6dc8a285da9fa8fd9ae5fc830e6f54d7ae8901dafda3cd97cb3f309ae0cf2c9",
+        "afterPromptSha256": "f02823c06988f57f015ce9864270f346b89f48ea40977ccf1c4e7f973af71cd3",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9218-character-arc-carter-naquadah-window-v1.webp"
+      },
+      {
+        "id": 9386,
+        "character": "Agent Smith",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "a4124c3a8917292de97ab505e9f10834a0c6351b65d3a2327394ab2ae1167acc",
+        "afterPromptSha256": "e6b4ef9432e942beb12186da24e494143bda233e7b15d9b101f0952e33481b0e",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9386-character-arc-agent-smith-v1.webp"
+      },
+      {
+        "id": 9393,
+        "character": "General Hammond",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "de4d914754eb5f4ea232fc51135b06373504e6b406e4855724f2b2933adebebb",
+        "afterPromptSha256": "0a77a76a5873e496d591787b7d24eee8f1402d871d26cfbb385c2b266adc86f3",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9393-character-arc-general-hammond-v1.webp"
+      },
+      {
+        "id": 9399,
+        "character": "Eli Vance",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "02f710330c2f41df78a58941a648eeccf9c334a57195b2ca4c06da0fc076148d",
+        "afterPromptSha256": "bd2c48e2703a4b4fbe386d1e8e23a5fb287cbe1b3332157271cac8f9495f8506",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9399-character-arc-eli-vance-v1.webp"
+      },
+      {
+        "id": 9400,
+        "character": "Dr. Kleiner",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "687500a2b017b28ca58f89294684ffd48620808598503ba747e9f62a83bce6fd",
+        "afterPromptSha256": "2b64f867f24fd4b7f9a9d638b44fa87d6fdbd159fc8d17e220d729b54288e8cd",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9400-character-arc-dr-kleiner-v1.webp"
+      },
+      {
+        "id": 9424,
+        "character": "Clover",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "85700694385947a49ec5259e18fb7b2e630fd310aea6fdd9e5c4b6c1f36adcc7",
+        "afterPromptSha256": "a3cee2bf12456a4b971c4d9e25f68ae4b73d099ec3a84df2a1e1ece81ac2be91",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9424-character-arc-clover-v1.webp"
+      },
+      {
+        "id": 9504,
+        "character": "Dogmeat",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "771708f0e16667db9e064d3db6ac46d5390302d36a8a38c40ffe538b37545c53",
+        "afterPromptSha256": "59ae1765fefb819dd3a3a376ad319a847f24ac4b7f958535d69a74e15f64b121",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9504-character-arc-dogmeat-v1.webp"
+      },
+      {
+        "id": 9506,
+        "character": "Preston Garvey",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "f624d8097a4b394a4cb28efe0a23c2a6de48ec8555f90a3d0a8ecd09f692ab44",
+        "afterPromptSha256": "47501a5201c471d6335f1cd63d13c2a98828701e5da10c47a18fe81dd8a6bc65",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9506-character-arc-preston-garvey-v1.webp"
+      },
+      {
+        "id": 9646,
+        "character": "Vasquez",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "e0ac3932723fbced98c31f9c3d8683e54f5162de4da66c545f5df25f0eee9c71",
+        "afterPromptSha256": "9f81beb8ad8be1f1bb3b5c7ef123d3804987e0b7f1eb310bf106f086932315f4",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9646-character-arc-vasquez-v1.webp"
+      },
+      {
+        "id": 9647,
+        "character": "Bishop",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "5521adccf6d4a397c600802c57227cc682adca15e75adc46adfdcf84bb457083",
+        "afterPromptSha256": "47981301fc5a3e13fe629db976325c9c172e2f489846cecbf134ad203b89db50",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9647-character-arc-bishop-v1.webp"
+      },
+      {
+        "id": 9863,
+        "character": "Ray Stantz",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "eb3e1e564097a540bae95bfb2623a624e8b907d46d2b9f01f463ffa9fd9f3693",
+        "afterPromptSha256": "3dccf4c17935178c71388fe50aa2d5b23c70dded08f599afc2c19e4e02ea616e",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9863-character-arc-ray-stantz-v1.webp"
+      },
+      {
+        "id": 9864,
+        "character": "Winston Zeddemore",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "f1128c00969f7c0bf545746dbd7fd038460e39832860893295a5ef80e0dba857",
+        "afterPromptSha256": "13828d9161a8da70c59ae2745f9204485f6af03e06e245f8fb5e2f528ff54091",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9864-character-arc-winston-zeddemore-v1.webp"
+      },
+      {
+        "id": 9865,
+        "character": "Egon Spengler",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "640829c68d7e9cb212481c62c5b5f70283d7be293b7ce22070e738eb411b6b95",
+        "afterPromptSha256": "39b560c0776d690103e96b970c59b866703856ae34b34382ea7ee8f1efbedf01",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9865-character-arc-egon-spengler-v1.webp"
+      },
+      {
+        "id": 9866,
+        "character": "Janine Melnitz",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "ce229b67afebd7b2c8d76994bfe77de373d5a3021ba5b907a4ce9a2e7868c2d8",
+        "afterPromptSha256": "d117ab6405465dbc7f5e4979ca88b2a97d9777d00c8c8d982afb9fb872628b27",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9866-character-arc-janine-melnitz-v1.webp"
+      },
+      {
+        "id": 10201,
+        "character": "Rochelle",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": false,
+        "beforePromptSha256": "6b11a9aca2b3b36e9308ec088960b349a2db9b4e29ee51e4953a0127ba627ef4",
+        "afterPromptSha256": "d964e71bc007ba8fd3c17ff60028cdad810d69e542baee9925d6ab0e1f123df8",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-10201-character-arc-rochelle-v1.webp"
+      }
+    ],
+    "newlyPendingBecausePromptChanged": [
+      {
+        "id": 9218,
+        "character": "Samantha Carter",
+        "currentStatus": "pending",
+        "oldPromptMatchesExistingLedger": true,
+        "beforePromptSha256": "b6dc8a285da9fa8fd9ae5fc830e6f54d7ae8901dafda3cd97cb3f309ae0cf2c9",
+        "afterPromptSha256": "f02823c06988f57f015ce9864270f346b89f48ea40977ccf1c4e7f973af71cd3",
+        "assetPath": "/images/rift-dossiers/openai/arc-personnage/stage-9218-character-arc-carter-naquadah-window-v1.webp",
+        "currentBitmapSha256": "83a8782d876377dd0a325bca8a0f753d7604db9fc0be9e26532d8e2914e9a655",
+        "historicalLedgerImageSha256": "83a8782d876377dd0a325bca8a0f753d7604db9fc0be9e26532d8e2914e9a655",
+        "historicalBitmapHashStillMatches": true
+      }
+    ],
+    "historicalLedgerChanged": false,
+    "historicalBitmapChangedByRefresh": false,
+    "explanation": "Registry requires exact prompt hash provenance. Existing artwork is not relabeled as a new prompt; a changed prompt stays pending until genuinely regenerated.",
+    "availableCountBeforeReconstructed": 1031,
+    "availableCountAfter": 1030,
+    "pendingCountAfter": 2169
+  },
+  "limitations": [
+    "Carter dossier9218 remains pending after its prompt changed from the prior firearm identity to the corrected W10equipment; old bitmap and exact ledger remain untouched. A genuinely regenerated matching dossier image would be needed to restore available status."
+  ]
+}

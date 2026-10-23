@@ -1,0 +1,20 @@
+{"completed":1,"caller":"buffy_summers","side":"player","kind":"native16","effects":1,"hpImpacts":1}
+{"completed":2,"caller":"buffy_summers","side":"enemy","kind":"native16","effects":1,"hpImpacts":1}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert.ok(native.calls.length > 0 && native.calls.every(call => call.row === 0))
+
+    at file:///workspace/multiverse-breach/docs/combat-fidelity-wave11-2026-10-23/browser/summon-wave11-browser.mjs:176:14 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

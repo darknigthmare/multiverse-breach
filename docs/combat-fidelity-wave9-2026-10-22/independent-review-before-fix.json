@@ -1,0 +1,691 @@
+{
+  "date": "2026-10-22",
+  "method": "Independent production Vite SSR projections and real EngineRpg targeting, shield/damage acceptance, simulation queues and summon impacts. No gameplay method is stubbed. Canvas recorder inspects actual drawing commands; this does not claim source pixel fidelity or browser coverage.",
+  "source1to1Verified": false,
+  "checks": [
+    {
+      "name": "20 exact identities, confirmed target projection, denial and render purity",
+      "status": "passed",
+      "fixtures": 80
+    },
+    {
+      "name": "available native column anchors match packed dimensions, per-row renderScale and P2 reflection",
+      "status": "passed",
+      "projections": 240,
+      "pendingIdentities": [
+        "marcus",
+        "dom",
+        "cole",
+        "baird",
+        "hoffman_cog",
+        "wrex",
+        "aramaki"
+      ]
+    },
+    {
+      "name": "external orbital columns never originate from the carried designator",
+      "status": "passed",
+      "columns": 4
+    },
+    {
+      "name": "ordinary RPG flight stops at the impact and cannot restart after confirmed or denied contact",
+      "status": "passed",
+      "postImpactProjections": 156,
+      "preImpactAnchorUnavailable": [
+        "dom",
+        "cole"
+      ]
+    },
+    {
+      "name": "real RPG Wrex guards only himself, and Tali Attack Drone damages one selected enemy",
+      "status": "passed",
+      "realActions": 4
+    },
+    {
+      "name": "real RPG special acceptance: shields and dead selections cannot confirm, accepted points remain fixed after move/KO",
+      "status": "passed",
+      "realActions": 96
+    },
+    {
+      "name": "four real RPG reinforcements: protected targets produce no accepted contact rings",
+      "status": "failed",
+      "message": "Protected reinforcement targets must not receive accepted-hit rings\n+ actual - expected\n\n+ [\n+   {\n+     contactRings: 3,\n+     id: 'marcus',\n+     side: 'player'\n+   },\n+   {\n+     contactRings: 3,\n+     id: 'marcus',\n+     side: 'enemy'\n+   },\n+   {\n+     contactRings: 1,\n+     id: 'shepard',\n+     side: 'player'\n+   },\n+   {\n+     contactRings: 1,\n+     id: 'shepard',\n+     side: 'enemy'\n+   },\n+   {\n+     contactRings: 1,\n+     id: 'motoko',\n+     side: 'player'\n+   },\n+   {\n+     contactRings: 1,\n+     id: 'motoko',\n+     side: 'enemy'\n+   },\n+   {\n+     contactRings: 3,\n+     id: 'chris_redfield',\n+     side: 'player'\n+   },\n+   {\n+     contactRings: 3,\n+     id: 'chris_redfield',\n+     side: 'enemy'\n+   }\n+ ]\n- []\n",
+      "stack": [
+        "AssertionError [ERR_ASSERTION]: Protected reinforcement targets must not receive accepted-hit rings",
+        "+ actual - expected",
+        "",
+        "+ [",
+        "+   {",
+        "+     contactRings: 3,"
+      ],
+      "actual": [
+        {
+          "id": "marcus",
+          "side": "player",
+          "contactRings": 3
+        },
+        {
+          "id": "marcus",
+          "side": "enemy",
+          "contactRings": 3
+        },
+        {
+          "id": "shepard",
+          "side": "player",
+          "contactRings": 1
+        },
+        {
+          "id": "shepard",
+          "side": "enemy",
+          "contactRings": 1
+        },
+        {
+          "id": "motoko",
+          "side": "player",
+          "contactRings": 1
+        },
+        {
+          "id": "motoko",
+          "side": "enemy",
+          "contactRings": 1
+        },
+        {
+          "id": "chris_redfield",
+          "side": "player",
+          "contactRings": 3
+        },
+        {
+          "id": "chris_redfield",
+          "side": "enemy",
+          "contactRings": 3
+        }
+      ],
+      "expected": []
+    },
+    {
+      "name": "four real RPG reinforcements: accepted contacts freeze before target movement/KO",
+      "status": "failed",
+      "message": "A reinforcement contact ring must stay at the accepted impact point\n+ actual - expected\n\n+ [\n+   {\n+     after: [\n+       [\n+         'ellipse',\n+         571,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         591,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         611,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     before: [\n+       [\n+         'ellipse',\n+         360,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         380,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         400,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     id: 'marcus',\n+     side: 'player'\n+   },\n+   {\n+     after: [\n+       [\n+         'ellipse',\n+         891,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         871,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         851,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     before: [\n+       [\n+         'ellipse',\n+         680,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         660,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         640,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     id: 'marcus',\n+     side: 'enemy'\n+   },\n+   {\n+     after: [\n+       [\n+         'ellipse',\n+         571,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     before: [\n+       [\n+         'ellipse',\n+         360,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     id: 'shepard',\n+     side: 'player'\n+   },\n+   {\n+     after: [\n+       [\n+         'ellipse',\n+         891,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     before: [\n+       [\n+         'ellipse',\n+         680,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     id: 'shepard',\n+     side: 'enemy'\n+   },\n+   {\n+     after: [\n+       [\n+         'ellipse',\n+         571,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     before: [\n+       [\n+         'ellipse',\n+         360,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     id: 'motoko',\n+     side: 'player'\n+   },\n+   {\n+     after: [\n+       [\n+         'ellipse',\n+         891,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     before: [\n+       [\n+         'ellipse',\n+         680,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     id: 'motoko',\n+     side: 'enemy'\n+   },\n+   {\n+     after: [\n+       [\n+         'ellipse',\n+         571,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         591,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         611,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     before: [\n+       [\n+         'ellipse',\n+         360,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         380,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         400,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     id: 'chris_redfield',\n+     side: 'player'\n+   },\n+   {\n+     after: [\n+       [\n+         'ellipse',\n+         891,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         871,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         851,\n+         227.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     before: [\n+       [\n+         'ellipse',\n+         680,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         660,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ],\n+       [\n+         'ellipse',\n+         640,\n+         300.6,\n+         7,\n+         5,\n+         0,\n+         0,\n+         6.283185307179586\n+       ]\n+     ],\n+     id: 'chris_redfield',\n+     side: 'enemy'\n+   }\n+ ]\n- []\n",
+      "stack": [
+        "AssertionError [ERR_ASSERTION]: A reinforcement contact ring must stay at the accepted impact point",
+        "+ actual - expected",
+        "",
+        "+ [",
+        "+   {",
+        "+     after: ["
+      ],
+      "actual": [
+        {
+          "id": "marcus",
+          "side": "player",
+          "before": [
+            [
+              "ellipse",
+              360,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              380,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              400,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ],
+          "after": [
+            [
+              "ellipse",
+              571,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              591,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              611,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ]
+        },
+        {
+          "id": "marcus",
+          "side": "enemy",
+          "before": [
+            [
+              "ellipse",
+              680,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              660,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              640,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ],
+          "after": [
+            [
+              "ellipse",
+              891,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              871,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              851,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ]
+        },
+        {
+          "id": "shepard",
+          "side": "player",
+          "before": [
+            [
+              "ellipse",
+              360,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ],
+          "after": [
+            [
+              "ellipse",
+              571,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ]
+        },
+        {
+          "id": "shepard",
+          "side": "enemy",
+          "before": [
+            [
+              "ellipse",
+              680,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ],
+          "after": [
+            [
+              "ellipse",
+              891,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ]
+        },
+        {
+          "id": "motoko",
+          "side": "player",
+          "before": [
+            [
+              "ellipse",
+              360,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ],
+          "after": [
+            [
+              "ellipse",
+              571,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ]
+        },
+        {
+          "id": "motoko",
+          "side": "enemy",
+          "before": [
+            [
+              "ellipse",
+              680,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ],
+          "after": [
+            [
+              "ellipse",
+              891,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ]
+        },
+        {
+          "id": "chris_redfield",
+          "side": "player",
+          "before": [
+            [
+              "ellipse",
+              360,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              380,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              400,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ],
+          "after": [
+            [
+              "ellipse",
+              571,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              591,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              611,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ]
+        },
+        {
+          "id": "chris_redfield",
+          "side": "enemy",
+          "before": [
+            [
+              "ellipse",
+              680,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              660,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              640,
+              300.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ],
+          "after": [
+            [
+              "ellipse",
+              891,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              871,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ],
+            [
+              "ellipse",
+              851,
+              227.6,
+              7,
+              5,
+              0,
+              0,
+              6.283185307179586
+            ]
+          ]
+        }
+      ],
+      "expected": []
+    },
+    {
+      "name": "four reinforcement travels use the packed muzzle, end at impact and remain pure under P2 rotation",
+      "status": "passed",
+      "projections": 32
+    }
+  ],
+  "observations": [
+    {
+      "case": "personal support/single drone",
+      "id": "wrex",
+      "side": "player",
+      "targetSide": "self",
+      "shape": "single"
+    },
+    {
+      "case": "personal support/single drone",
+      "id": "tali",
+      "side": "player",
+      "targetSide": "enemy",
+      "shape": "single"
+    },
+    {
+      "case": "personal support/single drone",
+      "id": "wrex",
+      "side": "enemy",
+      "targetSide": "self",
+      "shape": "single"
+    },
+    {
+      "case": "personal support/single drone",
+      "id": "tali",
+      "side": "enemy",
+      "targetSide": "enemy",
+      "shape": "single"
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "marcus",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0,
+        0,
+        0
+      ],
+      "contactRings": 3
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "marcus",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0,
+        0,
+        0
+      ],
+      "contactRings": 3
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "shepard",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 1
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "shepard",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 1
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "motoko",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 1
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "motoko",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 1
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "chris_redfield",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0,
+        0,
+        0
+      ],
+      "contactRings": 3
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "chris_redfield",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0,
+        0,
+        0
+      ],
+      "contactRings": 3
+    }
+  ],
+  "pending": [
+    {
+      "kind": "native-anchor-art-not-registered",
+      "identities": [
+        "marcus",
+        "dom",
+        "cole",
+        "baird",
+        "hoffman_cog",
+        "wrex",
+        "aramaki"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave9.js",
+      "sha256": "440ededbd47d47b7879d2dc4590fed9e540ae6bba990c05c07c51566cc94e174"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "sha256": "874c34cd24328a515920868514aa4aa68382f982dcfb9987178cfcdefa728c58"
+    },
+    {
+      "path": "src/game/combat/rosterSummonChoreographyWave9.js",
+      "sha256": "6881d802d79405c92c3116ea1046773142bfb14c0ae116540b70f55602d5007e"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "1fd53b9c1a9e63bf7ca5305817f30e954d58206feaccbf3e6aa4efba44ca9d9c"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "sha256": "d969ab6e5437df18ac6a6ace8dc9500f0036d5588f1a6ed1d84481cb5f0fb5c1"
+    },
+    {
+      "path": "src/game/combat/summonChoreography.js",
+      "sha256": "bcc877df43021cef37677cdaf84ed12161860ac684766a4b2a3fd1f7e0cfe2b4"
+    },
+    {
+      "path": "src/game/combat/summonAnimationsWave9.generated.json",
+      "sha256": "4cf12b795087beb1df35d5961ce158b3c7687a98ae083f3c31aac83703d21e7f"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave9PartA.generated.json",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave9PartB.generated.json",
+      "sha256": "41627b85bb96250aceea35607682e7d6190f43a28c4fcda98647f6f5114eff8c"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave9PartC.generated.json",
+      "sha256": "dd0b8a2a246eaa0cdb5b166565fbe6a930648c8c74ae0cc7c9ed2ee09bc621ba"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave9PartD.generated.json",
+      "sha256": "f8c7b11fbabbe48bd1e78275fb7952e06ac69d601e55c41cab7f2afee6eef280"
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 2
+  },
+  "earlierAnchorContractFinding": {
+    "observed": "Before PartB regeneration, shepard.super[0] was [188,109] and the production helper required anchor.x/anchor.y, returning null.",
+    "originalFileHashCaptured": false,
+    "correctedBeforeThisRecordedRun": true,
+    "correctedProjectionCount": 240
+  }
+}

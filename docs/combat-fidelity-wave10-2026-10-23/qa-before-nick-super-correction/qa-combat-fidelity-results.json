@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "command": "node --test scripts/combatFidelityWave10.test.mjs",
+  "exitCode": 0,
+  "tests": 25,
+  "passed": 25,
+  "failed": 0,
+  "log": "docs/combat-fidelity-wave10-2026-10-23/qa-combat-fidelity-tests.log",
+  "logSha256": "e4b8a4f9517467678e9227ef7e8f79f7f83377f11b29b91563becb92d8a629f6",
+  "durationMs": 21062.762645,
+  "oldPreserved": {
+    "characterRecords": 117,
+    "bodyRegistries": 67,
+    "pngs": 273,
+    "full45Manifests": 8,
+    "presentationRecipes": 124,
+    "summonBodies": 15,
+    "stageDefinitions": 241,
+    "stageRenderOperationHashes": 482
+  },
+  "newRetained": {
+    "presentationFull32": 39,
+    "presentationPartial24": 1,
+    "base16": 39,
+    "full45Heroes": 2,
+    "full45States": 90,
+    "partners16": 8,
+    "pngs": 99,
+    "distinctRgbaCells": 2384
+  },
+  "actualOriginPixels": {
+    "activeCoordinates": 103,
+    "projectedBothFacings": 206,
+    "partCPhysicalFirearmPoints": 36,
+    "centerAlphaThreshold": 24,
+    "minimumVisible9x9": 8
+  },
+  "partC": {
+    "presentations": 10,
+    "presentationPoses": 320,
+    "bases": 10,
+    "basePoses": 160,
+    "pngs": 20,
+    "allPngHashesUnchangedAfterTwoAnchorCorrections": true,
+    "buildersCheckPassed": true,
+    "lintPassed": true
+  },
+  "regressions": [
+    "Exact historical SHA256 and deep equality before adding the batch",
+    "Actual drawImage cells for every new phase/state on both facings and zero-simulation-time pause",
+    "Janine six accepted phases remain distinct from missing super/fatality and absent base16",
+    "Physical emitter centers and nine-by-nine neighborhoods independently decoded from final PNGs",
+    "Native hand/adjacent wrist pixels and actual P1/P2 ledge attachment",
+    "Near-ground moving falls preserve air state before collision, all four landing cells and immediate horizontal velocity",
+    "Native scenes/helpers do not change health, meter, match result or callback counts"
+  ],
+  "notClaimed": [
+    "Official source frames",
+    "1:1 canonical choreography verification",
+    "Missing/refused poses as retained artwork"
+  ],
+  "source1to1Verified": false,
+  "inputHashes": {
+    "scripts/combatFidelityWave10.test.mjs": "8695d4491ee9fd4e4ec6bbdb985c65737ef7420f32ab3f5abfc0c468b75dadda",
+    "src/game/engineSmash.js": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277",
+    "src/game/combat/characterAnimationsWave10PartA.generated.json": "e45887877ef65b64e742f2b142c96893d6be9c28275110c4729592460a077fe6",
+    "src/game/combat/characterSpriteCorrectionsWave10PartA.generated.json": "297dc06a7c979ab081c32a98bc88c7a469a87b828955ca9268103f2b92567488",
+    "src/game/combat/nativeSuperAnchorsWave10PartA.generated.json": "c04112d2ff6149593f76f51fe2c1da9de1306819644c9574cb55a9d79a19f083",
+    "src/game/combat/characterAnimationsWave10PartB.generated.json": "3735da3ce3d87713ccf0fee6e6e2717d6d6fe8dbbc63c102566dd76e9ef854c3",
+    "src/game/combat/characterSpriteCorrectionsWave10PartB.generated.json": "e7f53699ff0e7500156b984495018f6f055eb63a0d6b0e4b4ef82a206dac95e0",
+    "src/game/combat/nativeSuperAnchorsWave10PartB.generated.json": "2be69e115c8dfd490a4f6933e8588c2b8a3d841a6f9ef581a595bae18f8271fa",
+    "src/game/combat/characterAnimationsWave10PartC.generated.json": "5e40d9c1b8ada2a1e23d06db7c37497eb62a449d402822e92acf4b586bdf0217",
+    "src/game/combat/characterSpriteCorrectionsWave10PartC.generated.json": "672a5464a3ada65773b7a4ec07561f2c250b46a411ddfa9ab7498e00e8648bb2",
+    "src/game/combat/nativeSuperAnchorsWave10PartC.generated.json": "db2be9d41a9aac0205ea704df216b426b004b15d803c0908351cf0a7a88805a7",
+    "src/game/combat/characterAnimationsWave10PartD.generated.json": "ad0ac03ba86e636afd676b4d82ebb9bfb3489d374c3ac983f180f4793786c724",
+    "src/game/combat/characterSpriteCorrectionsWave10PartD.generated.json": "551c5f53b61a11fc00f4af3c23eb0a20ff690418fb0102089070bca57439a0cf",
+    "src/game/combat/nativeSuperAnchorsWave10PartD.generated.json": "cdfb856d42611941cc0e2daf7f8f644896b8775fda138dbf431995abb2531227",
+    "src/game/combat/neoMeleeMotion.generated.json": "351482c77c59b60dbc850e5c678aa62885967b82714b3deeaa4b00f0a4c669d1",
+    "src/game/combat/neoMeleeCombat.generated.json": "4f2889398eaa108107b1137c6b9711116176c9febdbae8b17821a428edc2ad4e",
+    "src/game/combat/freemanMeleeMotion.generated.json": "67b4ea127d4e6503badfe5949804769397f751d8b86747760890ce20d4cb9c00",
+    "src/game/combat/freemanMeleeCombat.generated.json": "b5a53648db94112c7406bd6d9e667ccbf055726876b07fed63fce5e1668c57ae",
+    "src/game/combat/summonAnimationsWave10.generated.json": "bf91bf446d7f0c2bb3b424d7ca7af179bf5db84ce32f71a1b3b103b589810895"
+  }
+}

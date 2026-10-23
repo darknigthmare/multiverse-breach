@@ -5,6 +5,7 @@ import {
   tickMeleeState,
   transitionMeleeState
 } from './meleeStateMachine.js';
+import { resolveCombatAbility } from '../combatIdentity.js';
 
 export const MELEE_RUNTIME_DEFAULTS = Object.freeze({
   guardMeterMax: 100,
@@ -55,12 +56,27 @@ export const initializeMeleeActorRuntime = actor => {
   actor.ledgeRegrabTimer = Math.max(0, finite(actor.ledgeRegrabTimer));
   actor.ledgeActionTimer = Math.max(0, finite(actor.ledgeActionTimer));
   actor.meleeMetrics = createMetrics(actor.meleeMetrics);
+  if (actor.meleeSuperSupport) {
+    actor.meleeSuperSupport.remaining = Math.max(0, finite(actor.meleeSuperSupport.remaining));
+    if (actor.meleeSuperSupport.remaining <= 0) actor.meleeSuperSupport = null;
+  }
   return actor;
 };
 
-const startDefinedAction = (actor, actionId, powerScale = 1) => {
-  const definition = cloneMeleeActionDefinition(actionId);
+const startDefinedAction = (actor, actionId, powerScale = 1, overrides = null) => {
+  const baseDefinition = cloneMeleeActionDefinition(actionId);
+  const definition = baseDefinition && { ...baseDefinition, ...overrides };
   if (!definition) return false;
+  const slot = ['charged', 'special'].includes(actionId) ? 'secondary'
+    : ['light1', 'light2', 'light3', 'crouchLight', 'aerialNeutral', 'aerialForward', 'aerialDown', 'ledgeAttack'].includes(actionId) ? 'simple' : null;
+  const ability = slot ? resolveCombatAbility(actor, slot) : null;
+  if (ability?.provenance.identityAuthored) {
+    definition.abilityProfile = ability;
+    definition.range = ability.range;
+    definition.duration = ability.duration;
+    definition.hitAt = ability.hitAt;
+    definition.facing = actor.facing === -1 ? -1 : 1;
+  }
   actor.action = {
     ...definition,
     id: actionId,
@@ -81,12 +97,40 @@ export const beginMeleeAction = (actor, actionId, options = {}) => {
   if (actor.action) {
     const nextDefinition = cloneMeleeActionDefinition(actionId);
     if (nextDefinition && isMeleeCancelOpen(actor, nextDefinition.state)) {
-      return startDefinedAction(actor, actionId, options.powerScale);
+      return startDefinedAction(actor, actionId, options.powerScale, options.definition);
     }
     if (options.queue) actor.queuedMeleeAction = actionId;
     return false;
   }
-  return startDefinedAction(actor, actionId, options.powerScale);
+  return startDefinedAction(actor, actionId, options.powerScale, options.definition);
+};
+
+/** A super snapshots its authored move and spends meter only on a successful start. */
+export const beginMeleeSuper = (actor, profile) => {
+  initializeMeleeActorRuntime(actor);
+  if (!actor || !profile || actor.charging || actor.meleeRecoveryTimer > 0
+    || ['attack', 'defense', 'hit', 'hitStun', 'shieldBreak'].includes(actor.state)) return false;
+  const meterCost = clamp(finite(profile.meterCost, 100), 1, 100);
+  if (finite(actor.specialCharge) < meterCost) return false;
+  const duration = clamp(finite(profile.duration, 0.92), 0.2, 8);
+  const hitAt = clamp(finite(profile.hitAt, duration * 0.48), 0.01, duration);
+  const range = clamp(finite(profile.range, 132), 1, 2400);
+  const started = beginMeleeAction(actor, 'super', {
+    definition: {
+      duration,
+      hitAt,
+      range,
+      meterCost,
+      superProfile: { ...profile, range, duration, hitAt, meterCost },
+      facing: actor.facing === -1 ? -1 : 1
+    }
+  });
+  if (!started) return false;
+  actor.specialCharge = clamp(finite(actor.specialCharge) - meterCost, 0, 100);
+  actor.queuedMeleeAction = null;
+  actor.crouching = false;
+  actor.vx = 0;
+  return true;
 };
 
 export const beginMeleeLightCombo = actor => {
@@ -198,7 +242,10 @@ export const absorbMeleeGuardHit = (actor, values = {}) => {
   } else {
     transitionMeleeState(actor, 'shieldHit', { force: true, restart: true });
   }
-  return { guarded: true, perfect: false, damageScale: 0.24, knockbackScale: 0.3 };
+  const defense = resolveCombatAbility(actor, 'defense');
+  return { guarded: true, perfect: false,
+    damageScale: defense?.provenance.identityAuthored ? 1 - clamp(finite(defense.guardReduce, 0.76), 0, 0.95) : 0.24,
+    knockbackScale: 0.3 };
 };
 
 export const tryCatchMeleeLedge = (actor, platforms = []) => {
@@ -229,6 +276,9 @@ export const performMeleeLedgeAction = (actor, action) => {
   const ledge = actor.ledge;
   const insideDirection = ledge.side === 'left' ? 1 : -1;
   if (action === 'climb') {
+    // Climbing clears actor.ledge, but the visual grip must keep following the
+    // same live platform that carries the physical actor during its motion.
+    actor.meleeLedgeVisual = { side: ledge.side, platform: ledge.platform };
     actor.x += insideDirection * 22;
     actor.y = ledge.platform.y;
     actor.ledgeActionTimer = 0.34;
@@ -276,6 +326,16 @@ export const getMeleeHurtbox = actor => {
 export const tickMeleeCombatActor = (actor, dt = 1 / 60, hooks = {}) => {
   initializeMeleeActorRuntime(actor);
   const step = clamp(finite(dt, 1 / 60), 0, 0.1);
+  if (actor.meleeSuperSupport) {
+    actor.meleeSuperSupport.remaining = Math.max(0, actor.meleeSuperSupport.remaining - step);
+    if (actor.meleeSuperSupport.remaining === 0) actor.meleeSuperSupport = null;
+  }
+  // Interrupted attacks must never fire later when their old windup elapses.
+  if (actor.currentHp <= 0 || ['hit', 'hitStun', 'dead', 'intro', 'victory', 'defeat', 'shieldBreak'].includes(actor.state)) {
+    actor.action = null;
+    actor.queuedMeleeAction = null;
+    actor.charging = false;
+  }
   if (isMeleePresentationLocked(actor) && actor.state !== 'intro') {
     actor.stateElapsed += step;
     return actor;
@@ -308,8 +368,6 @@ export const tickMeleeCombatActor = (actor, dt = 1 / 60, hooks = {}) => {
       actor.shieldBreakTimer = MELEE_RUNTIME_DEFAULTS.shieldBreakSeconds;
       actor.meleeMetrics.guardBreaks += 1;
       transitionMeleeState(actor, 'shieldBreak', { force: true, restart: true });
-    } else if (actor.state === 'shieldHold' || actor.state === 'shieldEnter') {
-      transitionMeleeState(actor, 'shieldHold', { force: true });
     }
   } else if (actor.guardRegenDelay <= 0) {
     actor.guardMeter = clamp(actor.guardMeter + MELEE_RUNTIME_DEFAULTS.guardRegenPerSecond * step, 0, actor.guardMeterMax);
@@ -323,17 +381,18 @@ export const tickMeleeCombatActor = (actor, dt = 1 / 60, hooks = {}) => {
   }
 
   if (actor.action) {
-    actor.action.elapsed += step;
-    if (!actor.action.hitApplied && actor.action.elapsed >= actor.action.hitAt) {
-      actor.action.hitApplied = true;
-      const resolvedHits = hooks.resolveActionHit?.(actor, actor.action);
-      if (actor.action.id === 'charged' && resolvedHits) {
+    const activeAction = actor.action;
+    activeAction.elapsed += step;
+    if (!activeAction.hitApplied && activeAction.elapsed >= activeAction.hitAt) {
+      activeAction.hitApplied = true;
+      const resolvedHits = hooks.resolveActionHit?.(actor, activeAction);
+      if (activeAction.id === 'charged' && resolvedHits) {
         actor.meleeMetrics.chargedHits += Math.max(1, Math.floor(finite(resolvedHits, 1)));
       }
     }
-    if (actor.action.elapsed >= actor.action.duration) {
-      const recoveryState = actor.action.recoveryState;
-      const recoveryDuration = actor.action.recoveryDuration;
+    if (actor.action === activeAction && activeAction.elapsed >= activeAction.duration) {
+      const recoveryState = activeAction.recoveryState;
+      const recoveryDuration = activeAction.recoveryDuration;
       const queued = actor.queuedMeleeAction;
       actor.action = null;
       actor.queuedMeleeAction = null;

@@ -1,0 +1,502 @@
+{
+  "passed": true,
+  "heroId": "arthur_kaamelott",
+  "date": "2026-10-23",
+  "coreDraws": 360,
+  "distinctSourceRectangles": 180,
+  "ledgeGrips": 8,
+  "flows": {
+    "core45": {
+      "passed": true,
+      "states": 45,
+      "physicsUnchanged": true
+    },
+    "movementPause": {
+      "passed": true,
+      "flow": "Real GameCanvas Smash: keyboard D+Space, hold D through landing, switch to Q",
+      "engineUrl": "/src/game/engineSmash.js?t=1792730554910",
+      "summary": {
+        "jumpRise": {
+          "updates": 30,
+          "draws": 30,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999,
+            0.11666666666666665,
+            0.13333333333333333,
+            0.15,
+            0.16666666666666666,
+            0.18333333333333332,
+            0.19999999999999998,
+            0.21666666666666665,
+            0.2333333333333333,
+            0.24999999999999997,
+            0.26666666666666666,
+            0.2833333333333333,
+            0.3,
+            0.31666666666666665,
+            0.3333333333333333,
+            0.35,
+            0.36666666666666664,
+            0.3833333333333333,
+            0.39999999999999997,
+            0.41666666666666663,
+            0.4333333333333333,
+            0.44999999999999996,
+            0.4666666666666666,
+            0.4833333333333333
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "fall": {
+          "updates": 32,
+          "draws": 31,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999,
+            0.11666666666666665,
+            0.13333333333333333,
+            0.15,
+            0.16666666666666666,
+            0.18333333333333332,
+            0.19999999999999998,
+            0.21666666666666665,
+            0.2333333333333333,
+            0.24999999999999997,
+            0.26666666666666666,
+            0.2833333333333333,
+            0.3,
+            0.31666666666666665,
+            0.3333333333333333,
+            0.35,
+            0.36666666666666664,
+            0.3833333333333333,
+            0.39999999999999997,
+            0.41666666666666663,
+            0.4333333333333333,
+            0.44999999999999996,
+            0.4666666666666666,
+            0.4833333333333333,
+            0.49999999999999994,
+            0.5166666666666666
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "land": {
+          "updates": 7,
+          "draws": 7,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "turn": {
+          "updates": 6,
+          "draws": 6,
+          "elapsed": [
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            -4
+          ],
+          "facings": [
+            -1
+          ]
+        }
+      },
+      "pause": {
+        "mechanism": "GameCanvas real sessionPaused prop through root.render; stable stage/team props and engine instance",
+        "before": {
+          "state": "idle",
+          "stateElapsed": 0.3833333333333333,
+          "x": 484,
+          "y": 368,
+          "vx": 0,
+          "vy": 0,
+          "hp": 120
+        },
+        "after": {
+          "state": "idle",
+          "stateElapsed": 0.3833333333333333,
+          "x": 484,
+          "y": 368,
+          "vx": 0,
+          "vy": 0,
+          "hp": 120
+        },
+        "durationMs": 300,
+        "unchanged": true
+      },
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "failedRequests": [
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+          "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "screenshot": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-movement.png"
+    },
+    "super32": {
+      "passed": true,
+      "engineUrl": "/src/game/engineSmash.js?t=1792730554910",
+      "sourceDraws": {
+        "count": 50,
+        "sheets": [
+          "/sprites/generated/combat-character-animations-wave11/arthur_kaamelott.png"
+        ],
+        "rows": [
+          7
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "coldBoot": "Fresh Chromium process and page; no test preload; only production GameCanvas boot prepares sprites.",
+      "flow": "GameCanvas Smash → Arthur Livre III 2005 → panneau Passe d’armes à Excalibur 100 % → clavier L → startup sans dégât → impact après hitAt → charge 0 % → aucun second impact",
+      "impact": {
+        "start": {
+          "name": "Passe d’armes à Excalibur",
+          "charge": 0,
+          "hp": 100000,
+          "elapsed": 0.016666666666666666,
+          "hitAt": 0.451
+        },
+        "hit": {
+          "name": "Passe d’armes à Excalibur",
+          "charge": 0,
+          "hp": 99950,
+          "elapsed": 0.4666666666666666,
+          "hitAt": 0.451
+        },
+        "gameOver": false
+      },
+      "sameInput": {
+        "before": 99950,
+        "retriggered": false,
+        "charge": 0
+      },
+      "final": {
+        "hitCount": 1,
+        "hp": 99950,
+        "charge": 0,
+        "action": null,
+        "profile": "Passe d’armes à Excalibur"
+      },
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "failedRequests": [
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+          "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "screenshot": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-super.png"
+    }
+  },
+  "canonicalAnimation1to1Verified": false,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-core-browser.mjs",
+      "bytes": 7958,
+      "sha256": "496e8a4cbbe655582573158f9908bb91b48da384c44b4821256cb1f3245b847e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-core-result.json",
+      "bytes": 1154,
+      "sha256": "4c8b95b79579496b3935c83ed5dc306e8edc318495101a80750ced954719c4a8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-core-review.png",
+      "bytes": 248234,
+      "sha256": "3631b9fe63c87bdeb07c5ead7c33972892568a70ae3ffd2430464326bce16c2c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-core-trace.json",
+      "bytes": 172315,
+      "sha256": "01d436b725b17e8ee6caf5e09e477f26de689f9426dfdb6e1c157d1c486c755e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-core.log",
+      "bytes": 1028,
+      "sha256": "c51da47a10065b3a5cd02a73068cc74088a372954222f6e50971034deaaaa2d6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-core.png",
+      "bytes": 1558832,
+      "sha256": "800ef4427f4fb3f944bc2d0133543bda50e9666676034de6b71af7509a22f456"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-grips.png",
+      "bytes": 53990,
+      "sha256": "aecc5011eb36347f278bd6a3f997291f3066f2e3188cf581f0e9c0d4f018cb84"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-movement-browser.mjs",
+      "bytes": 9359,
+      "sha256": "802aafe00013fb10b138282a1e9b43f895484d862319eebc264819c11733acf5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-movement-result.json",
+      "bytes": 4039,
+      "sha256": "a3d6b19309b0315c0d632df0a51191445eb4785816803dcf203f3d9b5da46af7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-movement-trace.json",
+      "bytes": 64848,
+      "sha256": "d216e258e2014c8d8bdcfc14e3eacdc8f5500a3e84fdbb41bfd9507d79ce0bb7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-movement.log",
+      "bytes": 2569,
+      "sha256": "4c4103c8e5b8edbb9ae2b84321eb8647552a65c484fc3c70ded541c030eb282b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-movement.png",
+      "bytes": 1360044,
+      "sha256": "2f4b5bdda68a63025e54daf2c5c97c892d6137d591b8abb6c570279dc444826d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-pause.png",
+      "bytes": 1360237,
+      "sha256": "bde76038039280381e7358f077788383f600a583df5f2861f58a2ae74407e897"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-super-browser.mjs",
+      "bytes": 10361,
+      "sha256": "4426f05aa610ed7979652eb66b30eeab15495e1788e9e346437b6bb5a5e5770f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-super-draws.json",
+      "bytes": 18802,
+      "sha256": "32e4c1781f5f6cee04a61b67fab9c46a99175d109fb36a42bbd8dfc5df6a91ad"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-super-result.json",
+      "bytes": 1653,
+      "sha256": "0a26b68d0f577048c7b18e52907c61ec63bac3245a41d6e95fd26c65a8850f8e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-super-trace.json",
+      "bytes": 17980,
+      "sha256": "cb57626896d2c4e93b26ac912824121030adc5c3ae0bf4dac490cf7e95027a8a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-super.log",
+      "bytes": 1319,
+      "sha256": "7ac37b746e2976c94214d073dcab6c46b853c8d99c903e16c6544ba0f74d4cc3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-super.png",
+      "bytes": 1366775,
+      "sha256": "ce200c08e662ce45677f7f09c210ace3cb1c0800140b03c7044370dc37133a5e"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "bytes": 133689,
+      "sha256": "c45de7e475ea262fdb7b33852e9073696d3cdf10b6ddb8eb1939c61e3c8a49b4"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "bytes": 115603,
+      "sha256": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "bytes": 66075,
+      "sha256": "ea8134258b27da2c3bd01c5e01738a8084c9e720d79220e33e06eadcafdf9ee6"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "bytes": 38302,
+      "sha256": "b3c387896717c3ce88bf969110bbecaef5dcec11b89c1309a033e9162759ee0f"
+    },
+    {
+      "path": "src/game/combatIdentity.js",
+      "bytes": 20825,
+      "sha256": "e6711eb117b4713bdbce7869c45f2358f828a3ab906632305e60699474ac11b3"
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "bytes": 15189,
+      "sha256": "874f19ff275bd62590cdfdc98df8a7760bf0fd512e3c991705d94e82519182d0"
+    },
+    {
+      "path": "src/game/melee/nativeMeleeManifest.js",
+      "bytes": 4519,
+      "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+    },
+    {
+      "path": "src/game/melee/arthurMeleeManifest.js",
+      "bytes": 517,
+      "sha256": "7e8c54b2eb3b379d851ed645f736e0ab6e50eba3c2f2ee151f8932e3061cf8f2"
+    },
+    {
+      "path": "src/game/combat/arthurMeleeMotion.generated.json",
+      "bytes": 215005,
+      "sha256": "08f3f17264aecc536a2a782f7848c8e50543c183a4b6578f11eeb867c24ce654"
+    },
+    {
+      "path": "src/game/combat/arthurMeleeCombat.generated.json",
+      "bytes": 226432,
+      "sha256": "4e526117777811510e3bbd80a10a250bb6b5dc11acc400a2391e1b1f6ecf6444"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "bytes": 6924,
+      "sha256": "7e71bdbf832b542ead68ed9ced345cbfcbb3f21d2147e71e945344fe5389e4dc"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "bytes": 4387,
+      "sha256": "39d2c1081dc3159e66901902e507de69652caa0b61e07c324213a1efc9446081"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave11.js",
+      "bytes": 9500,
+      "sha256": "8c665915aea0dac98bdc961e3261e5a2568488d8268b134b0e500f84f44aefc8"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave11PartD.generated.json",
+      "bytes": 332066,
+      "sha256": "d8ed64c753412b0b29c188e62ec4e48a4a51c20173a81a9dd978d499dbb06215"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/browser/collect-melee-evidence.mjs",
+      "bytes": 4070,
+      "sha256": "49ec087d5f2d2a6784e76212a8d7cc699f31dc14e78b3a9da76bb3603fa8a629"
+    },
+    {
+      "path": "public/sprites/generated/melee-arthur-wave11/arthur-motion-a.png",
+      "bytes": 1454890,
+      "sha256": "725b2596d6104c673b49b1abc4b5a4243c66f926d6254d56c8b7b94542b174fc"
+    },
+    {
+      "path": "public/sprites/generated/melee-arthur-wave11/arthur-motion-b.png",
+      "bytes": 1519230,
+      "sha256": "ddb66a766f309e0eab5121f1841975c074c6df31ca7aaef4fe36f298383101ab"
+    },
+    {
+      "path": "public/sprites/generated/melee-arthur-wave11/arthur-defense.png",
+      "bytes": 1232991,
+      "sha256": "232412fb824cc49a567726d073838f4e6ae7e6976880632973ffe97faa196b3e"
+    },
+    {
+      "path": "public/sprites/generated/melee-arthur-wave11/arthur-combat-a.png",
+      "bytes": 882602,
+      "sha256": "7575d950db3204179819fb5825f3d7ded68316a3ad70fee51c5c1ae01be85db0"
+    },
+    {
+      "path": "public/sprites/generated/melee-arthur-wave11/arthur-combat-b.png",
+      "bytes": 1283339,
+      "sha256": "c03b4b41a8e0d5cb697eb11324d4dfb078c61b490799136f29afb85103f76e14"
+    },
+    {
+      "path": "public/sprites/generated/melee-arthur-wave11/arthur-ledge.png",
+      "bytes": 931809,
+      "sha256": "556a226f3e512b45d5725ab7bc979adc55aca19eb2570d854315464bcc62f589"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave11/arthur_kaamelott.png",
+      "bytes": 673661,
+      "sha256": "086c42efd2c932edf2aa2a5a188b864233cab543ef9f40cbc1d59b7f28aa6e2d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/hand-measurements.json",
+      "bytes": 16925,
+      "sha256": "9b587e2a369cf54b874dc98619bf0e806b617538f87db1edf5e58e2b7a443774"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/full45-native-evidence.json",
+      "bytes": 7876,
+      "sha256": "8ae0a32bb840819f8e073b3744806ad8b1b22c351656042b2a30f99514e35909"
+    },
+    {
+      "path": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/body-roi-independent.json",
+      "bytes": 8917,
+      "sha256": "91569ef355e043ebba90ab76e43b47398578ba82db0e0f1c7cf83adcdaa71154"
+    }
+  ],
+  "visualInspection": {
+    "reviewed": true,
+    "captures": [
+      "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-core-review.png",
+      "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-grips.png",
+      "docs/combat-fidelity-wave11-2026-10-23/browser/arthur-super.png"
+    ],
+    "finding": "LivreIII Arthur with short hair/beard, red-brown cuirass/mail/brown cape and a thin circlet; physical Excalibur cuts/thrusts, sword sheathed at real grips. Dedicated32 row7 shows physical swordplay.",
+    "limitations": [
+      "Original adapted crossover choreography and generated art, not official extracted frames or certified frame-for-frame animation.",
+      "Source-wide body calibration uses approximate anatomical landmarks; hanging body projection is preserved."
+    ]
+  }
+}

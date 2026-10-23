@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-23",
+  "stageProductionFrozen": true,
+  "source1to1Validated": false,
+  "definitions": 401,
+  "addedMechanisms": 80,
+  "coveredRosterUniverses": 204,
+  "fourModeUniverses": 200,
+  "baseOnly": 321,
+  "oldDefinitionsPreserved": 321,
+  "oldCommandHashesPreserved": 642,
+  "baselineSha256": "b950b641d8ae75f0978a4854baf60735ce103b4c26bcf5a2f03c0633e594a12d",
+  "tests": [
+    {
+      "command": "node --test scripts/stageAnimationWave11.test.mjs scripts/stageAtmosphere.test.mjs",
+      "dedicatedWave11": 6,
+      "atmosphere": 9,
+      "path": "stage-node-atmosphere.log",
+      "tests": 15,
+      "passed": 15,
+      "failed": 0,
+      "sha256": "ca4397c62bc12a9b0c9983eb07c64d7a8b0b2a9e1d6856f45b666a77f31b14cc"
+    },
+    {
+      "command": "npm run test:stages",
+      "path": "stage-regression.log",
+      "tests": 74,
+      "passed": 74,
+      "failed": 0,
+      "sha256": "7283340432e3cd1171a24d350d451925c22938aad931b697222bc56ef0e4fc4b"
+    }
+  ],
+  "historicalTestFilesChanged": 0,
+  "lint": {
+    "command": "npx oxlint src/game/melee/stageAnimationCatalogWave11.js src/game/melee/stageAnimationCatalog.js scripts/stageAnimationWave11.test.mjs scripts/stageAnimationWave11.browser.mjs",
+    "exitCode": 0,
+    "log": "stage-lint.log"
+  },
+  "browser": {
+    "mechanisms": 80,
+    "modeRenderChecks": 320,
+    "additionalViewportChecks": 240,
+    "pageErrors": [],
+    "worstMirrorAlphaErrorRatio": 0.01522822945158975,
+    "visualReview": {
+      "reviewed": [
+        "stage-browser-panel-1.png",
+        "stage-browser-panel-2.png",
+        "stage-browser-panel-3.png",
+        "stage-browser-panel-4.png"
+      ],
+      "observations": "All four final sheets inspected. Architectural sections / flow lines stay behind the upper clip; empty combat lane. Full mechanisms fit the reduced height-based unit. No bodies, weapons, vehicles, teleport or falling-hazard action. These are schematic authored outlines, not official scene images."
+    }
+  },
+  "inputHashes": [
+    {
+      "path": "../../src/game/melee/stageAnimationCatalogWave11.js",
+      "sha256": "13549c59ce422d9e1c2b8a052cf90cc1b8a15e48562a0660d2da9d3d7c56d49d"
+    },
+    {
+      "path": "../../src/game/melee/stageAnimationCatalog.js",
+      "sha256": "752399ae100b708685de420eb0371a4ae6796f1d115b2c3049d9d30b97cdf3d9"
+    },
+    {
+      "path": "../../scripts/stageAnimationWave11.test.mjs",
+      "sha256": "20a133c86814f96a916f6ae6a478c861deb1153dd77f0ae92780f6a89898e7f4"
+    },
+    {
+      "path": "../../scripts/stageAnimationWave11.browser.mjs",
+      "sha256": "31b7f8da1993931c32f6b22260a3b5d232687d4ffb24ddd1ab44b112e202e387"
+    },
+    {
+      "path": "stage-baseline.json",
+      "sha256": "b950b641d8ae75f0978a4854baf60735ce103b4c26bcf5a2f03c0633e594a12d"
+    },
+    {
+      "path": "stage-source-access.json",
+      "sha256": "14abb3975d7d8cd32d88360fccb236a5ab0cd8ba2cf2a53689f8133a9dde4bfc"
+    },
+    {
+      "path": "stage-browser.json",
+      "sha256": "e9617e40086aa51caa58465503429667c1bd564218f1a2186ca5234165f6ff96"
+    },
+    {
+      "path": "stage-audit.mjs",
+      "sha256": "b944e3a5d945f9fb99861fa1533083f0cc0d367ffc35703abc2cda2c7ab0b8af"
+    }
+  ],
+  "globalBuild": "owned-by-root-not-asserted"
+}

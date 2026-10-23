@@ -1,0 +1,598 @@
+{
+  "date": "2026-10-23",
+  "heroId": "freeman",
+  "sourceWork": "Half-Life 2 (2004)",
+  "reviewed": true,
+  "method": "Manual anatomical localization on actual native body/hand pixels; normalized9x9 visible-alpha neighborhoods and inverse source mapping. At most2px local refinement, never translation/redrawing of artwork.",
+  "source1to1Verified": false,
+  "requiredPalms": 12,
+  "requiredWrists": 12,
+  "requiredContacts": 11,
+  "states": {
+    "ledgeCatch": [
+      {
+        "frame": 0,
+        "x": 190,
+        "y": 52,
+        "normalizedX": 0.7421875,
+        "normalizedY": 0.203125,
+        "contact": false,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+        "sourcePalm": {
+          "x": 234,
+          "y": 39
+        },
+        "measurement": "Actual native gloved palm anatomically localized and refined at most2px in same hand ROI; no pixels changed.",
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "wrist": {
+          "x": 182,
+          "y": 68,
+          "normalizedX": 0.7109375,
+          "normalizedY": 0.265625,
+          "sourcePoint": {
+            "x": 224,
+            "y": 59
+          },
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "measurement": "Actual adjoining sleeve cuff/wrist, connected through arm to shoulder; no floating hand or synthetic contact."
+        },
+        "supportHands": [
+          {
+            "x": 77,
+            "y": 132,
+            "normalizedX": 0.30078125,
+            "normalizedY": 0.515625,
+            "contact": false
+          }
+        ]
+      },
+      {
+        "frame": 1,
+        "x": 122,
+        "y": 48,
+        "normalizedX": 0.4765625,
+        "normalizedY": 0.1875,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+        "sourcePalm": {
+          "x": 419,
+          "y": 33
+        },
+        "measurement": "Actual native gloved palm anatomically localized and refined at most2px in same hand ROI; no pixels changed.",
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "wrist": {
+          "x": 120,
+          "y": 62,
+          "normalizedX": 0.46875,
+          "normalizedY": 0.2421875,
+          "sourcePoint": {
+            "x": 416,
+            "y": 51
+          },
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "measurement": "Actual adjoining sleeve cuff/wrist, connected through arm to shoulder; no floating hand or synthetic contact."
+        },
+        "supportHands": [
+          {
+            "x": 187,
+            "y": 85,
+            "normalizedX": 0.73046875,
+            "normalizedY": 0.33203125,
+            "contact": false
+          }
+        ]
+      },
+      {
+        "frame": 2,
+        "x": 173,
+        "y": 57,
+        "normalizedX": 0.67578125,
+        "normalizedY": 0.22265625,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+        "sourcePalm": {
+          "x": 734,
+          "y": 35
+        },
+        "measurement": "Actual native gloved palm anatomically localized and refined at most2px in same hand ROI; no pixels changed.",
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "wrist": {
+          "x": 173,
+          "y": 71,
+          "normalizedX": 0.67578125,
+          "normalizedY": 0.27734375,
+          "sourcePoint": {
+            "x": 734,
+            "y": 53
+          },
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "measurement": "Actual adjoining sleeve cuff/wrist, connected through arm to shoulder; no floating hand or synthetic contact."
+        },
+        "supportHands": [
+          {
+            "x": 104,
+            "y": 57,
+            "normalizedX": 0.40625,
+            "normalizedY": 0.22265625,
+            "contact": true
+          }
+        ]
+      },
+      {
+        "frame": 3,
+        "x": 161,
+        "y": 56,
+        "normalizedX": 0.62890625,
+        "normalizedY": 0.21875,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+        "sourcePalm": {
+          "x": 1007,
+          "y": 35
+        },
+        "measurement": "Actual native gloved palm anatomically localized and refined at most2px in same hand ROI; no pixels changed.",
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "wrist": {
+          "x": 161,
+          "y": 70,
+          "normalizedX": 0.62890625,
+          "normalizedY": 0.2734375,
+          "sourcePoint": {
+            "x": 1007,
+            "y": 53
+          },
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "measurement": "Actual adjoining sleeve cuff/wrist, connected through arm to shoulder; no floating hand or synthetic contact."
+        },
+        "supportHands": [
+          {
+            "x": 95,
+            "y": 55,
+            "normalizedX": 0.37109375,
+            "normalizedY": 0.21484375,
+            "contact": true
+          }
+        ]
+      }
+    ],
+    "ledgeHang": [
+      {
+        "frame": 0,
+        "x": 159,
+        "y": 29,
+        "normalizedX": 0.62109375,
+        "normalizedY": 0.11328125,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+        "sourcePalm": {
+          "x": 202,
+          "y": 312
+        },
+        "measurement": "Actual native gloved palm anatomically localized and refined at most2px in same hand ROI; no pixels changed.",
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "wrist": {
+          "x": 159,
+          "y": 44,
+          "normalizedX": 0.62109375,
+          "normalizedY": 0.171875,
+          "sourcePoint": {
+            "x": 202,
+            "y": 331
+          },
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "measurement": "Actual adjoining sleeve cuff/wrist, connected through arm to shoulder; no floating hand or synthetic contact."
+        },
+        "supportHands": [
+          {
+            "x": 100,
+            "y": 29,
+            "normalizedX": 0.390625,
+            "normalizedY": 0.11328125,
+            "contact": true
+          }
+        ]
+      },
+      {
+        "frame": 1,
+        "x": 158,
+        "y": 30,
+        "normalizedX": 0.6171875,
+        "normalizedY": 0.1171875,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+        "sourcePalm": {
+          "x": 476,
+          "y": 312
+        },
+        "measurement": "Actual native gloved palm anatomically localized and refined at most2px in same hand ROI; no pixels changed.",
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "wrist": {
+          "x": 158,
+          "y": 44,
+          "normalizedX": 0.6171875,
+          "normalizedY": 0.171875,
+          "sourcePoint": {
+            "x": 476,
+            "y": 330
+          },
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "measurement": "Actual adjoining sleeve cuff/wrist, connected through arm to shoulder; no floating hand or synthetic contact."
+        },
+        "supportHands": [
+          {
+            "x": 91,
+            "y": 30,
+            "normalizedX": 0.35546875,
+            "normalizedY": 0.1171875,
+            "contact": true
+          }
+        ]
+      },
+      {
+        "frame": 2,
+        "x": 178,
+        "y": 65,
+        "normalizedX": 0.6953125,
+        "normalizedY": 0.25390625,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+        "sourcePalm": {
+          "x": 738,
+          "y": 311
+        },
+        "measurement": "Actual native gloved palm anatomically localized and refined at most2px in same hand ROI; no pixels changed.",
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "wrist": {
+          "x": 176,
+          "y": 79,
+          "normalizedX": 0.6875,
+          "normalizedY": 0.30859375,
+          "sourcePoint": {
+            "x": 735,
+            "y": 329
+          },
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "measurement": "Actual adjoining sleeve cuff/wrist, connected through arm to shoulder; no floating hand or synthetic contact."
+        },
+        "supportHands": [
+          {
+            "x": 117,
+            "y": 65,
+            "normalizedX": 0.45703125,
+            "normalizedY": 0.25390625,
+            "contact": true
+          }
+        ]
+      },
+      {
+        "frame": 3,
+        "x": 181,
+        "y": 56,
+        "normalizedX": 0.70703125,
+        "normalizedY": 0.21875,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+        "sourcePalm": {
+          "x": 1014,
+          "y": 310
+        },
+        "measurement": "Actual native gloved palm anatomically localized and refined at most2px in same hand ROI; no pixels changed.",
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "wrist": {
+          "x": 181,
+          "y": 70,
+          "normalizedX": 0.70703125,
+          "normalizedY": 0.2734375,
+          "sourcePoint": {
+            "x": 1014,
+            "y": 328
+          },
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "measurement": "Actual adjoining sleeve cuff/wrist, connected through arm to shoulder; no floating hand or synthetic contact."
+        },
+        "supportHands": [
+          {
+            "x": 119,
+            "y": 57,
+            "normalizedX": 0.46484375,
+            "normalizedY": 0.22265625,
+            "contact": true
+          }
+        ]
+      }
+    ],
+    "ledgeClimb": [
+      {
+        "frame": 0,
+        "x": 165,
+        "y": 66,
+        "normalizedX": 0.64453125,
+        "normalizedY": 0.2578125,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+        "sourcePalm": {
+          "x": 203,
+          "y": 609
+        },
+        "measurement": "Actual native gloved palm anatomically localized and refined at most2px in same hand ROI; no pixels changed.",
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "wrist": {
+          "x": 165,
+          "y": 79,
+          "normalizedX": 0.64453125,
+          "normalizedY": 0.30859375,
+          "sourcePoint": {
+            "x": 203,
+            "y": 626
+          },
+          "visibleNeighborhood9x9": 80,
+          "sourceVisibleNeighborhood9x9": 81,
+          "measurement": "Actual adjoining sleeve cuff/wrist, connected through arm to shoulder; no floating hand or synthetic contact."
+        },
+        "supportHands": [
+          {
+            "x": 92,
+            "y": 68,
+            "normalizedX": 0.359375,
+            "normalizedY": 0.265625,
+            "contact": true
+          }
+        ]
+      },
+      {
+        "frame": 1,
+        "x": 166,
+        "y": 66,
+        "normalizedX": 0.6484375,
+        "normalizedY": 0.2578125,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+        "sourcePalm": {
+          "x": 472,
+          "y": 610
+        },
+        "measurement": "Actual native gloved palm anatomically localized and refined at most2px in same hand ROI; no pixels changed.",
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "wrist": {
+          "x": 166,
+          "y": 79,
+          "normalizedX": 0.6484375,
+          "normalizedY": 0.30859375,
+          "sourcePoint": {
+            "x": 472,
+            "y": 626
+          },
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "measurement": "Actual adjoining sleeve cuff/wrist, connected through arm to shoulder; no floating hand or synthetic contact."
+        },
+        "supportHands": [
+          {
+            "x": 93,
+            "y": 66,
+            "normalizedX": 0.36328125,
+            "normalizedY": 0.2578125,
+            "contact": true
+          }
+        ]
+      },
+      {
+        "frame": 2,
+        "x": 176,
+        "y": 139,
+        "normalizedX": 0.6875,
+        "normalizedY": 0.54296875,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+        "sourcePalm": {
+          "x": 745,
+          "y": 694
+        },
+        "measurement": "Actual native gloved palm anatomically localized and refined at most2px in same hand ROI; no pixels changed.",
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "wrist": {
+          "x": 176,
+          "y": 129,
+          "normalizedX": 0.6875,
+          "normalizedY": 0.50390625,
+          "sourcePoint": {
+            "x": 745,
+            "y": 681
+          },
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "measurement": "Actual adjoining sleeve cuff/wrist, connected through arm to shoulder; no floating hand or synthetic contact."
+        },
+        "supportHands": [
+          {
+            "x": 88,
+            "y": 140,
+            "normalizedX": 0.34375,
+            "normalizedY": 0.546875,
+            "contact": true
+          }
+        ]
+      },
+      {
+        "frame": 3,
+        "x": 185,
+        "y": 238,
+        "normalizedX": 0.72265625,
+        "normalizedY": 0.9296875,
+        "contact": true,
+        "baseline": "ledgeGrip",
+        "sourceImage": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png",
+        "sourcePalm": {
+          "x": 1057,
+          "y": 753
+        },
+        "measurement": "Actual native gloved palm anatomically localized and refined at most2px in same hand ROI; no pixels changed.",
+        "visibleNeighborhood9x9": 81,
+        "sourceVisibleNeighborhood9x9": 81,
+        "wrist": {
+          "x": 179,
+          "y": 229,
+          "normalizedX": 0.69921875,
+          "normalizedY": 0.89453125,
+          "sourcePoint": {
+            "x": 1049,
+            "y": 741
+          },
+          "visibleNeighborhood9x9": 81,
+          "sourceVisibleNeighborhood9x9": 81,
+          "measurement": "Actual adjoining sleeve cuff/wrist, connected through arm to shoulder; no floating hand or synthetic contact."
+        },
+        "supportHands": [
+          {
+            "x": 105,
+            "y": 240,
+            "normalizedX": 0.41015625,
+            "normalizedY": 0.9375,
+            "contact": true
+          }
+        ]
+      }
+    ]
+  },
+  "roiReview": [
+    {
+      "state": "ledgeCatch",
+      "frame": 0,
+      "palm": 81,
+      "wrist": 81,
+      "nativePalm": 81,
+      "nativeWrist": 81,
+      "source": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png"
+    },
+    {
+      "state": "ledgeCatch",
+      "frame": 1,
+      "palm": 81,
+      "wrist": 81,
+      "nativePalm": 81,
+      "nativeWrist": 81,
+      "source": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png"
+    },
+    {
+      "state": "ledgeCatch",
+      "frame": 2,
+      "palm": 81,
+      "wrist": 81,
+      "nativePalm": 81,
+      "nativeWrist": 81,
+      "source": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png"
+    },
+    {
+      "state": "ledgeCatch",
+      "frame": 3,
+      "palm": 81,
+      "wrist": 81,
+      "nativePalm": 81,
+      "nativeWrist": 81,
+      "source": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png"
+    },
+    {
+      "state": "ledgeHang",
+      "frame": 0,
+      "palm": 81,
+      "wrist": 81,
+      "nativePalm": 81,
+      "nativeWrist": 81,
+      "source": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png"
+    },
+    {
+      "state": "ledgeHang",
+      "frame": 1,
+      "palm": 81,
+      "wrist": 81,
+      "nativePalm": 81,
+      "nativeWrist": 81,
+      "source": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png"
+    },
+    {
+      "state": "ledgeHang",
+      "frame": 2,
+      "palm": 81,
+      "wrist": 81,
+      "nativePalm": 81,
+      "nativeWrist": 81,
+      "source": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png"
+    },
+    {
+      "state": "ledgeHang",
+      "frame": 3,
+      "palm": 81,
+      "wrist": 81,
+      "nativePalm": 81,
+      "nativeWrist": 81,
+      "source": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png"
+    },
+    {
+      "state": "ledgeClimb",
+      "frame": 0,
+      "palm": 81,
+      "wrist": 80,
+      "nativePalm": 81,
+      "nativeWrist": 81,
+      "source": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png"
+    },
+    {
+      "state": "ledgeClimb",
+      "frame": 1,
+      "palm": 81,
+      "wrist": 81,
+      "nativePalm": 81,
+      "nativeWrist": 81,
+      "source": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png"
+    },
+    {
+      "state": "ledgeClimb",
+      "frame": 2,
+      "palm": 81,
+      "wrist": 81,
+      "nativePalm": 81,
+      "nativeWrist": 81,
+      "source": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png"
+    },
+    {
+      "state": "ledgeClimb",
+      "frame": 3,
+      "palm": 81,
+      "wrist": 81,
+      "nativePalm": 81,
+      "nativeWrist": 81,
+      "source": "docs/combat-fidelity-wave10-2026-10-23/freeman-sources/freeman-ledge.native.png"
+    }
+  ],
+  "visiblePixelRule": "alpha >24 (strict); exact alpha24 is excluded from neighborhood count, while segmentation still uses alpha>=24."
+}

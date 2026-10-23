@@ -1,0 +1,59 @@
+✔ the frozen W10 assets,372 PNGs,80 registries and ten detailed manifests remain exactly immutable (7958.052899ms)
+✔ the runtime union preserves157 old records and adds exactly37 complete32 atlases, excluding three explicit refusals (2885.641352ms)
+✔ every new native phase draws all four actual cells on P1/P2 and freezes when only wall time advances (86.276981ms)
+✔ all37 new base layouts contain592 real cells and render every native cell with baseline244 and its authored row scale (1785.356256ms)
+✔ all164 prior character presentation recipes remain exactly immutable (7.435287ms)
+✔ new Fighter scenes freeze on zero simulation time and drawing never changes match resources or outcome (52.260893ms)
+✔ the401 stage mechanisms preserve all321 prior definitions and their exact recorded render operations (156.466201ms)
+✔ Beast Boy exposes only the eight accepted T-Rex poses and refused heroes retain declared fallbacks (1.473773ms)
+✔ all23 prior summon bodies stay immutable and the eight new partners resolve only their exact triplets (31.300751ms)
+✔ the forty native visual helpers are deterministic projections and never mutate combat state (23.974549ms)
+✔ buffy_summers has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (455.164134ms)
+✔ buffy_summers: all45 states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (11.142961ms)
+✔ buffy_summers keeps real190px standing calibration and source-wide stature factors in actual draw rectangles (118.875741ms)
+✔ buffy_summers ordinary actions follow runtime impact clocks while the full super uses its separate atlas (1.004776ms)
+✔ arthur_kaamelott has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (422.812102ms)
+✔ arthur_kaamelott: all45 states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (12.406086ms)
+✔ arthur_kaamelott keeps real190px standing calibration and source-wide stature factors in actual draw rectangles (135.205056ms)
+✔ arthur_kaamelott ordinary actions follow runtime impact clocks while the full super uses its separate atlas (0.808419ms)
+✔ all40 selected source versions and four-slot kits match independent W11 identities and support roles (5.059383ms)
+✔ Janine exposes only six accepted phases and uses declared existing-pose fallbacks for the two refused phases (3.894205ms)
+✔ buffy_summers:12 real palms and wrists remain attached to both actual ledges without mutating physics (10.679551ms)
+✔ arthur_kaamelott:12 real palms and wrists remain attached to both actual ledges without mutating physics (14.126071ms)
+✔ measured physical origins match actual scaled native draw rectangles on both sides, while supports and recovery stay inactive (1003.348893ms)
+✔ all93 newly retained PNGs contain2248 distinct real RGBA cells across presentations, bases,45-state sheets and partners (4642.145774ms)
+✔ real Buffy and Arthur land from the last3px of a moving fall, preserve all four landing cells and keep P1/P2 velocity responsive (9.242811ms)
+✖ three explicit refusals stay uncounted and defensive legacy reuse never becomes a new offensive native phase (8.994445ms)
+✔ Part C body scales reproduce human standing190 and small monowheel120 while retaining the measured native posture ratios (2142.64199ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 26
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 22854.045979
+
+✖ failing tests:
+
+test at scripts/combatFidelityWave11.test.mjs:571:1
+✖ three explicit refusals stay uncounted and defensive legacy reuse never becomes a new offensive native phase (8.994445ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '/sprites/generated/heroes/harry-potter/blocked-runtime-p2.png'
+  - '/sprites/generated/heroes/harry-potter/hermione-granger.png'
+  
+      at file:///workspace/multiverse-breach/scripts/combatFidelityWave11.test.mjs:580:381
+      at fakeImages (file:///workspace/multiverse-breach/scripts/combatFidelityWave11.test.mjs:131:16)
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatFidelityWave11.test.mjs:571:121)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '/sprites/generated/heroes/harry-potter/blocked-runtime-p2.png',
+    expected: '/sprites/generated/heroes/harry-potter/hermione-granger.png',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

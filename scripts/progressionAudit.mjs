@@ -18,6 +18,8 @@ import { BOOSTER_ART_UNIVERSES } from '../src/game/portalBoosterCatalog.js';
 import { SPECIAL_EVENTS, getSpecialEventRewardById } from '../src/game/specialEvents.js';
 import { getGridFacingBonus } from '../src/game/tacticalFacing.js';
 import { findBattlePickupSource, normalizeBattlePickupDefinition } from '../src/game/battlePickupSemantics.js';
+import { resolveMeleeSuper } from '../src/game/combatIdentity.js';
+import { HEROES_DB } from '../src/game/heroes.js';
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
 const fail = (message) => {
@@ -739,7 +741,14 @@ assert(fighterModeSource.includes('new EngineFighter') && fighterModeSource.incl
 assert(fighterModeSource.includes("triggerPlayerAction('tag'") && fighterModeSource.includes("['1', '2', '3']"), 'Fighter screen must expose manual three-slot tag controls.');
 assert(fighterEngineSource.includes('fighters: playerHeroes.slice(0, 3)') && fighterEngineSource.includes('activeIndex: 0'), 'Fighter engine must keep one active combatant in a three-signature cell.');
 assert(fighterEngineSource.includes('requestTag(side, index, forced = false)') && fighterEngineSource.includes("this.requestTag(side, next.index, true)"), 'Fighter engine must support manual and forced K.O. replacements.');
-assert(fighterEngineSource.includes('guardBreak') && fighterEngineSource.includes('comboWindow') && fighterEngineSource.includes('meterCost: 100'), 'Fighter engine must retain guard break, combos, and rupture meter rules.');
+assert(
+  fighterEngineSource.includes('guardBreak')
+  && fighterEngineSource.includes('comboWindow')
+  && fighterEngineSource.includes('meterCost: identity.meterCost')
+  && fighterEngineSource.includes('fighter.meter - (spec.meterCost || 0)')
+  && HEROES_DB.every(hero => resolveMeleeSuper(hero)?.meterCost === 100),
+  'Fighter engine must retain guard break, combos, and one full-meter cost for every authored super.'
+);
 assert(fighterEngineSource.includes('spawnProjectile') && fighterEngineSource.includes('crouching') && fighterEngineSource.includes('targetHalfHeight'), 'Fighter engine must retain ranged attacks and crouch evasion.');
 assert(hubSource.includes('recordFighterMatch') && hubSource.includes('fighterCareer'), 'Fighter results must feed long-term progression and career records.');
 assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');
@@ -780,7 +789,12 @@ assert(characterPlaquesSource.includes('arca_nova') && characterPlaquesSource.in
 assert(characterPlaquesSource.includes('arca_marrow') && characterPlaquesSource.includes('Chasseur de sceaux'), 'Marrow must keep his detailed OC origin and Breach dossier.');
 assert(characterPlaquesSource.includes('arca_sable') && characterPlaquesSource.includes('Cartographe des routes assumees'), 'Sable must keep her detailed OC origin and Breach dossier.');
 assert(characterPlaquesSource.includes('arca_loom') && characterPlaquesSource.includes('Tisseuse de lignes de vie'), 'Loom must keep her detailed OC origin and Breach dossier.');
-assert(rpgEngineSource.includes("drawPixelSprite(ctx, h.x, h.y, h, animTime, h.facing") && rpgEngineSource.includes("drawPixelEnemy(ctx, e.x, e.y, e, animTime, e.facing"), 'RPG rendering must respect live unit orientation.');
+assert([
+  'drawPixelSprite(ctx, h.x, h.y, this.getRpgPresentationActor(h), animTime, h.facing',
+  'drawPixelSprite(ctx, e.x, e.y, this.getRpgPresentationActor(heroSpriteActor), animTime, e.facing',
+  'drawBoss(ctx, e.x, e.y, this.getRpgPresentationActor(e), animTime, e.facing',
+  'drawPixelEnemy(ctx, e.x, e.y, this.getRpgPresentationActor(e), animTime, e.facing'
+].every(call => rpgEngineSource.includes(call)), 'RPG presentation actors must retain live hero, enemy and boss orientation.');
 assert(tacticsEngineSource.includes("drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, unit.facing") && tacticsEngineSource.includes("drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, unit.facing"), 'Tactics rendering must respect live unit orientation.');
 assert(rendererSource.includes('drawBoss = (ctx, x, y, boss, animTime, facing = -1)') && rendererSource.includes('ctx.scale(facing, 1)'), 'Boss rendering must accept live orientation instead of forcing left.');
 assert(hubSource.includes('const previousNpcX = npc.x') && hubSource.includes('const horizontalTravel = npc.x - previousNpcX'), 'Mosaic City NPC facing must follow actual horizontal travel.');

@@ -1,0 +1,1335 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "leon",
+      "heroId": "leon",
+      "universe": "Resident Evil",
+      "name": "Leon S. Kennedy",
+      "sheet": "/sprites/generated/combat-character-corrections-wave5/leon.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "04b07d43bf6344cea7da00f2bc39234979a066c190d4f634f0bf73802011583b",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/leon-original.png",
+      "sourceImageSha256": "f00d0bcc534690d49601fd6b3286082ce7592129a2f414af571a35545f4081c1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/leon.png",
+      "referenceAssetSha256": "92fa0154280056d78e66cf5d9eaa2a2b73491b6bb1af2fb618c5a278f8255913",
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/base-references/leon-old-base.png",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/base-references/leon.png",
+          "sha256": "713be7250b6b0a48416ef27458e510b795d27fc81691a7c9e44f1a319761c84d"
+        }
+      ],
+      "sourceWork": "Resident Evil4(2005)",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#leon; Resident Evil4(2005); project-approved wave5 presentation source inspected for exact costume and equipment consistency. RE4(2005) young agent brown shearling jacket/black shirt/dark tactical trousers, replacing RPD-looking base without modifying its archived PNG.",
+      "abilityName": "Tir du Silver Ghost",
+      "characterVersion": "RE4(2005) young agent brown shearling jacket/black shirt/dark tactical trousers, replacing RPD-looking base without modifying its archived PNG.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/leon-original.png",
+            "sourceImageSha256": "f00d0bcc534690d49601fd6b3286082ce7592129a2f414af571a35545f4081c1",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 325
+            },
+            "scale": 0.7508090614886731,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 63,
+                  "top": 9,
+                  "width": 179,
+                  "height": 309,
+                  "pixels": 30076
+                },
+                "output": {
+                  "left": 58,
+                  "top": 12,
+                  "width": 134,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 386,
+                  "top": 10,
+                  "width": 187,
+                  "height": 306,
+                  "pixels": 30967
+                },
+                "output": {
+                  "left": 65,
+                  "top": 13,
+                  "width": 140,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 692,
+                  "top": 16,
+                  "width": 181,
+                  "height": 299,
+                  "pixels": 30736
+                },
+                "output": {
+                  "left": 59,
+                  "top": 17,
+                  "width": 136,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 1010,
+                  "top": 11,
+                  "width": 190,
+                  "height": 305,
+                  "pixels": 30129
+                },
+                "output": {
+                  "left": 62,
+                  "top": 14,
+                  "width": 143,
+                  "height": 229
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/leon-original.png",
+            "sourceImageSha256": "f00d0bcc534690d49601fd6b3286082ce7592129a2f414af571a35545f4081c1",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 321,
+              "bottom": 622
+            },
+            "scale": 0.8027681660899654,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 34,
+                  "top": 11,
+                  "width": 220,
+                  "height": 282,
+                  "pixels": 26914
+                },
+                "output": {
+                  "left": 29,
+                  "top": 18,
+                  "width": 177,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 377,
+                  "top": 10,
+                  "width": 198,
+                  "height": 283,
+                  "pixels": 26576
+                },
+                "output": {
+                  "left": 53,
+                  "top": 17,
+                  "width": 159,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 644,
+                  "top": 6,
+                  "width": 284,
+                  "height": 283,
+                  "pixels": 29117
+                },
+                "output": {
+                  "left": 16,
+                  "top": 14,
+                  "width": 228,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 1008,
+                  "top": 8,
+                  "width": 203,
+                  "height": 284,
+                  "pixels": 25999
+                },
+                "output": {
+                  "left": 56,
+                  "top": 15,
+                  "width": 163,
+                  "height": 228
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/leon-original.png",
+            "sourceImageSha256": "f00d0bcc534690d49601fd6b3286082ce7592129a2f414af571a35545f4081c1",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 621,
+              "bottom": 937
+            },
+            "scale": 0.7412140575079872,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 54,
+                  "top": 9,
+                  "width": 194,
+                  "height": 300,
+                  "pixels": 32472
+                },
+                "output": {
+                  "left": 52,
+                  "top": 22,
+                  "width": 144,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 353,
+                  "top": 9,
+                  "width": 256,
+                  "height": 299,
+                  "pixels": 34214
+                },
+                "output": {
+                  "left": 41,
+                  "top": 22,
+                  "width": 190,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 657,
+                  "top": 9,
+                  "width": 283,
+                  "height": 300,
+                  "pixels": 35175
+                },
+                "output": {
+                  "left": 34,
+                  "top": 22,
+                  "width": 210,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 985,
+                  "top": 16,
+                  "width": 224,
+                  "height": 291,
+                  "pixels": 32064
+                },
+                "output": {
+                  "left": 45,
+                  "top": 27,
+                  "width": 166,
+                  "height": 216
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/leon-original.png",
+            "sourceImageSha256": "f00d0bcc534690d49601fd6b3286082ce7592129a2f414af571a35545f4081c1",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 936,
+              "bottom": 1254
+            },
+            "scale": 0.7972508591065293,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 58,
+                  "top": 8,
+                  "width": 198,
+                  "height": 290,
+                  "pixels": 33430
+                },
+                "output": {
+                  "left": 49,
+                  "top": 12,
+                  "width": 158,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 384,
+                  "top": 8,
+                  "width": 198,
+                  "height": 291,
+                  "pixels": 31607
+                },
+                "output": {
+                  "left": 59,
+                  "top": 12,
+                  "width": 158,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 658,
+                  "top": 64,
+                  "width": 235,
+                  "height": 221,
+                  "pixels": 31579
+                },
+                "output": {
+                  "left": 28,
+                  "top": 57,
+                  "width": 187,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 992,
+                  "top": 18,
+                  "width": 211,
+                  "height": 275,
+                  "pixels": 30941
+                },
+                "output": {
+                  "left": 44,
+                  "top": 20,
+                  "width": 168,
+                  "height": 219
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8d354ca67052d864b19c61242239b1457c1f52d693803f39ccf5c1843987864d",
+              "3447e9db7bf795a9a775a4e1a5e1f263ed1b7782c75771d90851d67f200c45ea",
+              "02fe98f3de1e52f6dcd477385411de8f4161b8f30278d81b5831e799cde2f360",
+              "48b547733bfb4b99236c5ba7d01d04e5c742b17c1ff59a2ad0f3fca29a31a9a0"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "45d862679076c65f4bb65c72af820661701e9547a2a373267b7762f31791d561",
+              "2a7c6ad14720fa38a8eb3e368efcb953e568ab411256455f478dfa0dd3186397",
+              "55065f8f9b5e65fe06f28e1472104193e9c28416ca5862d109512a128f82f5cd",
+              "03b74f2d826c6e1eb63e2ce936b74d873e14265a6fb2091601a099774035f0f9"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ca0f236ef23b9926717fe1d82e22d92cdb82640099de69f36e356653a6542a98",
+              "cfcf82d7932bca4b71ed87b0915f19ffbac749a4b427e4b27bc928cd73f11e8a",
+              "dd4d00444d9753222f290f8fc864b543e1aae1d82ba5a0a3a2e00a8c5fa1532f",
+              "19f4d296ad78bf588885f6e5b538b2f308098f87faeb58f02a7cc1e288270a88"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f0ef34f31068282ad485818d49b8123ae4e3deb433269ed674d7b9d885700a0d",
+              "6a846720022dd949d1b3714f35e9f7d439168245c963d7432217b93a5141168d",
+              "12b9a62b75a3dc48d7d8dc010b85393bdfe4387faf289a61503fd062f0571ef6",
+              "8bd4b12231adef656c3bfa2d44a064e3963fb286822d5de3f2acefbe76284038"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "RE4(2005) young agent brown shearling jacket/black shirt/dark tactical trousers, replacing RPD-looking base without modifying its archived PNG. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "solbadguy",
+      "heroId": "solbadguy",
+      "universe": "Guilty Gear",
+      "name": "Sol Badguy",
+      "sheet": "/sprites/generated/combat-character-corrections-wave5/solbadguy.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "c0d578bece894bf8f82ecc845e0955a7bc1ad8b633f3e1ac5a40e3e84bc056d9",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/solbadguy-original.png",
+      "sourceImageSha256": "d98d4775dede8c1112c3c87de611b62027dcdd4c3dd7a9a4a2fab0c72dfb2030",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/solbadguy.png",
+      "referenceAssetSha256": "2ef61c3e9725c6a53ae4f10856d2d92bf351f7c6ea030ec7ddbc3fe754f540c2",
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/base-references/solbadguy-old-base.png",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/base-references/solbadguy.png",
+          "sha256": "9845d991c4a9297fd26257465803716cc4b486b18bc13fe4cd3d1e0f4d358b83"
+        }
+      ],
+      "sourceWork": "Guilty Gear Strive",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#solbadguy; Guilty Gear Strive; project-approved wave5 presentation source inspected for exact costume and equipment consistency. Sol Badguy Strive red-black cropped jacket/dark trousers, long brown ponytail/headband and broad red-black mechanical OutrageMkII.",
+      "abilityName": "Taille de l’Outrage Mk.II",
+      "characterVersion": "Sol Badguy Strive red-black cropped jacket/dark trousers, long brown ponytail/headband and broad red-black mechanical OutrageMkII.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/solbadguy-original.png",
+            "sourceImageSha256": "d98d4775dede8c1112c3c87de611b62027dcdd4c3dd7a9a4a2fab0c72dfb2030",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 341
+            },
+            "scale": 0.7295597484276729,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 11,
+                  "top": 15,
+                  "width": 286,
+                  "height": 318,
+                  "pixels": 47342
+                },
+                "output": {
+                  "left": 22,
+                  "top": 12,
+                  "width": 209,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 353,
+                  "top": 17,
+                  "width": 260,
+                  "height": 311,
+                  "pixels": 43943
+                },
+                "output": {
+                  "left": 42,
+                  "top": 13,
+                  "width": 190,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 675,
+                  "top": 25,
+                  "width": 238,
+                  "height": 301,
+                  "pixels": 42736
+                },
+                "output": {
+                  "left": 49,
+                  "top": 19,
+                  "width": 174,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 951,
+                  "top": 20,
+                  "width": 289,
+                  "height": 306,
+                  "pixels": 46286
+                },
+                "output": {
+                  "left": 21,
+                  "top": 16,
+                  "width": 211,
+                  "height": 223
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/solbadguy-original.png",
+            "sourceImageSha256": "d98d4775dede8c1112c3c87de611b62027dcdd4c3dd7a9a4a2fab0c72dfb2030",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 336,
+              "bottom": 626
+            },
+            "scale": 0.7051671732522796,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 9,
+                  "width": 279,
+                  "height": 266,
+                  "pixels": 43366
+                },
+                "output": {
+                  "left": 41,
+                  "top": 50,
+                  "width": 197,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 372,
+                  "top": 20,
+                  "width": 253,
+                  "height": 257,
+                  "pixels": 38978
+                },
+                "output": {
+                  "left": 59,
+                  "top": 58,
+                  "width": 178,
+                  "height": 181
+                }
+              },
+              {
+                "source": {
+                  "left": 647,
+                  "top": 17,
+                  "width": 301,
+                  "height": 261,
+                  "pixels": 38148
+                },
+                "output": {
+                  "left": 32,
+                  "top": 56,
+                  "width": 212,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 965,
+                  "top": 24,
+                  "width": 276,
+                  "height": 260,
+                  "pixels": 38133
+                },
+                "output": {
+                  "left": 35,
+                  "top": 61,
+                  "width": 195,
+                  "height": 183
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/solbadguy-original.png",
+            "sourceImageSha256": "d98d4775dede8c1112c3c87de611b62027dcdd4c3dd7a9a4a2fab0c72dfb2030",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 618,
+              "bottom": 935
+            },
+            "scale": 0.6219839142091153,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 10,
+                  "top": 3,
+                  "width": 315,
+                  "height": 303,
+                  "pixels": 47348
+                },
+                "output": {
+                  "left": 37,
+                  "top": 52,
+                  "width": 196,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 319,
+                  "top": 17,
+                  "width": 329,
+                  "height": 288,
+                  "pixels": 46278
+                },
+                "output": {
+                  "left": 34,
+                  "top": 61,
+                  "width": 205,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 651,
+                  "top": 27,
+                  "width": 319,
+                  "height": 285,
+                  "pixels": 46903
+                },
+                "output": {
+                  "left": 45,
+                  "top": 67,
+                  "width": 198,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 945,
+                  "top": 47,
+                  "width": 301,
+                  "height": 257,
+                  "pixels": 35793
+                },
+                "output": {
+                  "left": 33,
+                  "top": 79,
+                  "width": 187,
+                  "height": 160
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/solbadguy-original.png",
+            "sourceImageSha256": "d98d4775dede8c1112c3c87de611b62027dcdd4c3dd7a9a4a2fab0c72dfb2030",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 917,
+              "bottom": 1254
+            },
+            "scale": 0.6321525885558583,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 6,
+                  "width": 307,
+                  "height": 305,
+                  "pixels": 47841
+                },
+                "output": {
+                  "left": 50,
+                  "top": 51,
+                  "width": 194,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 314,
+                  "top": 6,
+                  "width": 322,
+                  "height": 305,
+                  "pixels": 49346
+                },
+                "output": {
+                  "left": 29,
+                  "top": 51,
+                  "width": 204,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 685,
+                  "top": 77,
+                  "width": 267,
+                  "height": 230,
+                  "pixels": 38661
+                },
+                "output": {
+                  "left": 66,
+                  "top": 96,
+                  "width": 169,
+                  "height": 145
+                }
+              },
+              {
+                "source": {
+                  "left": 943,
+                  "top": 3,
+                  "width": 282,
+                  "height": 308,
+                  "pixels": 44661
+                },
+                "output": {
+                  "left": 30,
+                  "top": 49,
+                  "width": 178,
+                  "height": 195
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "279fbba2dc6b4911b09ea5d27371a339a6ce58a5ab34fddc17af8975678454fc",
+              "9a725776c8d58f9ed10a27db2293d3dcad1669cf23788f0d9a40ec8565821a6c",
+              "36092ef4fc19d6f9051aaeda2146565e0cfa3ef0b4265e91b6aa2e77269a4259",
+              "391ad6811854ab60270c517550b3e30bbbb1a02963c858848e6c3a7db72e902b"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2312bc08907674461d712f2b11c44988bbc69b6af5642045ea3b06592f0ee93a",
+              "40370effc7f8d8d3bdd8d4883735645ecd8432505cba955c89207a6adaaff247",
+              "af74c2ecfc5e32d66690757c70d3e4e7034b314904e2db79a565292c9883e7d1",
+              "73c95cac888347da41ba9a54a055205f427ce498f8508b63283c7fb2a8744cd9"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6703c6a36a7015b34167b9575a57313c71159236829f5040cd1ec9cc6ec56dd5",
+              "9bef804337fe55279264e1a2431b8b11e36f075bd0bfc172dd3efd76bc699246",
+              "b2b49db957adbbe1131f64cc36204467bbd5de9a593c01007eb85881e10f61ab",
+              "bd17210ff547ce50d554660737cd49cb9c99da14d73fad787816daf3512fcc5d"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "36471a118bbf6a3b45c958b4e5f7e9c60aea4ec31d614ec1bd1c165602c6203f",
+              "9b23991a05e8e6872567d7cdc3a8acad49cfb900c6329a6de56650ff4656df7a",
+              "6bde36c2d7e58b5e912eebcd6fa4043a216e57ec72c5e4e3defe5749451253d9",
+              "7c40c469c2641032f2174dbc1357a8bfb81145725c443e44f96ee40910948a86"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Sol Badguy Strive red-black cropped jacket/dark trousers, long brown ponytail/headband and broad red-black mechanical OutrageMkII. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "ky",
+      "heroId": "ky",
+      "universe": "Guilty Gear",
+      "name": "Ky Kiske",
+      "sheet": "/sprites/generated/combat-character-corrections-wave5/ky.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "714fba60e60fdc5695bca3d9a99ddec0ec7f8a94806a8ce3bc59821e5ce1e563",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/ky-original.png",
+      "sourceImageSha256": "037a0ec3b4f4a2e019433ff464d42d4066225cbfe7af4cdd97b8cb5af01e1b34",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/ky.png",
+      "referenceAssetSha256": "d52a506bc733cd6d2aaeacb942a64b5701e0a1e947c6f89ed21ff66521c21e60",
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/base-references/ky-old-base.png",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/base-references/ky.png",
+          "sha256": "b03317d52e58a338fe80f29e5c350519c6231a7c8c77c83fbd4ef78b5694c3a5"
+        }
+      ],
+      "sourceWork": "Guilty Gear Strive",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#ky; Guilty Gear Strive; project-approved wave5 presentation source inspected for exact costume and equipment consistency. Ky Kiske Strive short blond hair/white-blue coat/dark trousers, silver-blue Thunderseal sword.",
+      "abilityName": "Taille de la Thunderseal",
+      "characterVersion": "Ky Kiske Strive short blond hair/white-blue coat/dark trousers, silver-blue Thunderseal sword.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/ky-original.png",
+            "sourceImageSha256": "037a0ec3b4f4a2e019433ff464d42d4066225cbfe7af4cdd97b8cb5af01e1b34",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 335
+            },
+            "scale": 0.7412140575079872,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 21,
+                  "top": 17,
+                  "width": 292,
+                  "height": 301,
+                  "pixels": 38065
+                },
+                "output": {
+                  "left": 27,
+                  "top": 19,
+                  "width": 216,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 338,
+                  "top": 28,
+                  "width": 288,
+                  "height": 291,
+                  "pixels": 36060
+                },
+                "output": {
+                  "left": 30,
+                  "top": 28,
+                  "width": 213,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 18,
+                  "width": 221,
+                  "height": 302,
+                  "pixels": 36721
+                },
+                "output": {
+                  "left": 44,
+                  "top": 20,
+                  "width": 164,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 957,
+                  "top": 23,
+                  "width": 293,
+                  "height": 296,
+                  "pixels": 34251
+                },
+                "output": {
+                  "left": 24,
+                  "top": 24,
+                  "width": 217,
+                  "height": 219
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/ky-original.png",
+            "sourceImageSha256": "037a0ec3b4f4a2e019433ff464d42d4066225cbfe7af4cdd97b8cb5af01e1b34",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 334,
+              "bottom": 616
+            },
+            "scale": 0.6705202312138728,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 30,
+                  "width": 253,
+                  "height": 240,
+                  "pixels": 32406
+                },
+                "output": {
+                  "left": 38,
+                  "top": 81,
+                  "width": 170,
+                  "height": 161
+                }
+              },
+              {
+                "source": {
+                  "left": 338,
+                  "top": 18,
+                  "width": 305,
+                  "height": 255,
+                  "pixels": 32292
+                },
+                "output": {
+                  "left": 39,
+                  "top": 73,
+                  "width": 205,
+                  "height": 171
+                }
+              },
+              {
+                "source": {
+                  "left": 630,
+                  "top": 18,
+                  "width": 303,
+                  "height": 255,
+                  "pixels": 31607
+                },
+                "output": {
+                  "left": 25,
+                  "top": 73,
+                  "width": 203,
+                  "height": 171
+                }
+              },
+              {
+                "source": {
+                  "left": 950,
+                  "top": 17,
+                  "width": 301,
+                  "height": 244,
+                  "pixels": 31818
+                },
+                "output": {
+                  "left": 29,
+                  "top": 72,
+                  "width": 202,
+                  "height": 164
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/ky-original.png",
+            "sourceImageSha256": "037a0ec3b4f4a2e019433ff464d42d4066225cbfe7af4cdd97b8cb5af01e1b34",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 614,
+              "bottom": 936
+            },
+            "scale": 0.5829145728643216,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 15,
+                  "top": 8,
+                  "width": 297,
+                  "height": 305,
+                  "pixels": 37079
+                },
+                "output": {
+                  "left": 45,
+                  "top": 64,
+                  "width": 173,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 313,
+                  "top": 44,
+                  "width": 356,
+                  "height": 256,
+                  "pixels": 33569
+                },
+                "output": {
+                  "left": 36,
+                  "top": 85,
+                  "width": 208,
+                  "height": 149
+                }
+              },
+              {
+                "source": {
+                  "left": 634,
+                  "top": 55,
+                  "width": 310,
+                  "height": 261,
+                  "pixels": 38003
+                },
+                "output": {
+                  "left": 41,
+                  "top": 92,
+                  "width": 181,
+                  "height": 152
+                }
+              },
+              {
+                "source": {
+                  "left": 942,
+                  "top": 70,
+                  "width": 310,
+                  "height": 221,
+                  "pixels": 31627
+                },
+                "output": {
+                  "left": 38,
+                  "top": 101,
+                  "width": 181,
+                  "height": 129
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/base-sources/ky-original.png",
+            "sourceImageSha256": "037a0ec3b4f4a2e019433ff464d42d4066225cbfe7af4cdd97b8cb5af01e1b34",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 932,
+              "bottom": 1254
+            },
+            "scale": 0.760655737704918,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 13,
+                  "width": 254,
+                  "height": 281,
+                  "pixels": 38457
+                },
+                "output": {
+                  "left": 34,
+                  "top": 27,
+                  "width": 193,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 322,
+                  "top": 37,
+                  "width": 277,
+                  "height": 249,
+                  "pixels": 32774
+                },
+                "output": {
+                  "left": 15,
+                  "top": 45,
+                  "width": 211,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 632,
+                  "top": 92,
+                  "width": 265,
+                  "height": 206,
+                  "pixels": 30797
+                },
+                "output": {
+                  "left": 13,
+                  "top": 87,
+                  "width": 202,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 945,
+                  "top": 9,
+                  "width": 296,
+                  "height": 279,
+                  "pixels": 35099
+                },
+                "output": {
+                  "left": 12,
+                  "top": 24,
+                  "width": 225,
+                  "height": 212
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5ed9f3db26f7c241a51bf9fe97b5c808fb0958d14d99744b061e0561dbbed627",
+              "d73fdd5033fbe342740b65ea0d8028f86bd6639fe09570c895fcdfc04da7a0f3",
+              "55dfcab20ae5cc0fa2276f6bd7d87aeb466267e5b91c66bff2cbb957b2716b7e",
+              "f73126dafbaf95bb66b4611a349f9b5dba34ae2fd40226f9bf5d0078cb4b20c1"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8020b85bdc257a64ac16b4d0d4051cd64ccd4e8d563b367a2c4a0e18e5f636a5",
+              "b2f36a8db83d15efa0b9ea60d2cba06f0a7351dfee8f9a2b9e79df9f06dd0371",
+              "6010418eb4eb41fe1bf56773cfde7e561ded9c11559217a7c6415f3188b62cd2",
+              "5884157ba9e4e4726e027f1defd2d893c91fc41359fc6630d4296febafa5a36f"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fef96b0a4c51e0f15f6f8aff50c7facb78f2a82e04fe433f0e3fdf8a820a31ce",
+              "18f76a2b487ee93ca0590aaae6a429846cc98d16a031fe29872564528d697622",
+              "e02262fb597bdc5440304f4000e04b7935e3a3b50c14b3c08e6668c79bb2b65d",
+              "7a0b94e333f0375c1c0d056e8108e61fd972f358d73beac0111558bb5c1f4810"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ec73fb101f52305fa24dbdaf459204ca8ba6ef6db59c3a0a3b472c7564a60911",
+              "6a1456df569d258a020c8be214c32d8472d4956731f6940e24a7af206c7bf0a9",
+              "2605a32d65cf654fcf6ba30c8414d07c11317f26d22ca0645965063c75b1f2e9",
+              "a54e155e69022493ee1b451cfe68367c1ad8ade0c9754ccb3b7177b23db693c6"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Ky Kiske Strive short blond hair/white-blue coat/dark trousers, silver-blue Thunderseal sword. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    }
+  ]
+}

@@ -1,0 +1,481 @@
+{
+  "passed": true,
+  "heroId": "freeman",
+  "date": "2026-10-23",
+  "coreDraws": 360,
+  "distinctSourceRectangles": 180,
+  "ledgeGrips": 8,
+  "flows": {
+    "core45": {
+      "passed": true,
+      "states": 45,
+      "physicsUnchanged": true
+    },
+    "movementPause": {
+      "passed": true,
+      "flow": "Real GameCanvas Smash: keyboard D+Space, hold D through landing, switch to Q",
+      "engineUrl": "/src/game/engineSmash.js?t=1792721825120",
+      "summary": {
+        "jumpRise": {
+          "updates": 27,
+          "draws": 27,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999,
+            0.11666666666666665,
+            0.13333333333333333,
+            0.15,
+            0.16666666666666666,
+            0.18333333333333332,
+            0.19999999999999998,
+            0.21666666666666665,
+            0.2333333333333333,
+            0.24999999999999997,
+            0.26666666666666666,
+            0.2833333333333333,
+            0.3,
+            0.31666666666666665,
+            0.3333333333333333,
+            0.35,
+            0.36666666666666664,
+            0.3833333333333333,
+            0.39999999999999997,
+            0.41666666666666663,
+            0.4333333333333333
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "fall": {
+          "updates": 29,
+          "draws": 29,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999,
+            0.11666666666666665,
+            0.13333333333333333,
+            0.15,
+            0.16666666666666666,
+            0.18333333333333332,
+            0.19999999999999998,
+            0.21666666666666665,
+            0.2333333333333333,
+            0.24999999999999997,
+            0.26666666666666666,
+            0.2833333333333333,
+            0.3,
+            0.31666666666666665,
+            0.3333333333333333,
+            0.35,
+            0.36666666666666664,
+            0.3833333333333333,
+            0.39999999999999997,
+            0.41666666666666663,
+            0.4333333333333333,
+            0.44999999999999996,
+            0.4666666666666666
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "land": {
+          "updates": 7,
+          "draws": 7,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "turn": {
+          "updates": 6,
+          "draws": 6,
+          "elapsed": [
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            -4
+          ],
+          "facings": [
+            -1
+          ]
+        }
+      },
+      "pause": {
+        "mechanism": "GameCanvas real sessionPaused prop through root.render; stable stage/team props and engine instance",
+        "before": {
+          "state": "idle",
+          "stateElapsed": 0.3333333333333333,
+          "x": 452,
+          "y": 350,
+          "vx": 0,
+          "vy": 0,
+          "hp": 145
+        },
+        "after": {
+          "state": "idle",
+          "stateElapsed": 0.3333333333333333,
+          "x": 452,
+          "y": 350,
+          "vx": 0,
+          "vy": 0,
+          "hp": 145
+        },
+        "durationMs": 300,
+        "unchanged": true
+      },
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "failedRequests": [
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+          "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "screenshot": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-movement.png"
+    },
+    "super32": {
+      "passed": true,
+      "engineUrl": "/src/game/engineSmash.js?t=1792721825120",
+      "sourceDraws": {
+        "count": 75,
+        "sheets": [
+          "/sprites/generated/combat-character-animations-wave10/freeman.png"
+        ],
+        "rows": [
+          7
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "coldBoot": "Fresh Chromium process and page; no test preload; only production GameCanvas boot prepares sprites.",
+      "flow": "GameCanvas Smash → Freeman HL2 2004 → panneau Pistolet antigravité surchargé 100 % → clavier L → startup sans dégât → impact après hitAt → charge 0 % → aucun second impact",
+      "impact": {
+        "start": {
+          "name": "Pistolet antigravité surchargé",
+          "charge": 0,
+          "hp": 100000,
+          "elapsed": 0.016666666666666666,
+          "hitAt": 0.451
+        },
+        "hit": {
+          "name": "Pistolet antigravité surchargé",
+          "charge": 0,
+          "hp": 99931,
+          "elapsed": 0.4666666666666666,
+          "hitAt": 0.451
+        },
+        "gameOver": false
+      },
+      "sameInput": {
+        "before": 99931,
+        "retriggered": false,
+        "charge": 0
+      },
+      "final": {
+        "hitCount": 1,
+        "hp": 99931,
+        "charge": 0,
+        "action": null,
+        "profile": "Pistolet antigravité surchargé"
+      },
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+      ],
+      "failedRequests": [
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+          "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+        }
+      ],
+      "screenshot": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-super.png"
+    }
+  },
+  "canonicalAnimation1to1Verified": false,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-core-browser.mjs",
+      "bytes": 7961,
+      "sha256": "439bb5983c8f4dcba872ee7c4a6b8809f6cdedf38d376e6f85eabf2da726f425"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-core-result.json",
+      "bytes": 1159,
+      "sha256": "4034872b604b91f9dce54b59084c49da600b177d26a7b84cd7d6b72da06232c3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-core-review-1.png",
+      "bytes": 365269,
+      "sha256": "06cc71481de17bf0c5215465ffd65278b4f008c958ab8fb6268dab4cf6605c86"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-core-review-2.png",
+      "bytes": 407685,
+      "sha256": "10716e0e21596ffa042529d51cab18239a3e7924300a16e5730259554a33ac65"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-core-review-3.png",
+      "bytes": 411281,
+      "sha256": "246028219661393c4e1f4dce607e641dfa29535db30f7decb8d252c501e6b61f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-core-trace.json",
+      "bytes": 166449,
+      "sha256": "32d01df60bf3f6f579d77608cbe9fcbedb6650dfd9536c58bb82fa373898d7b3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-core.png",
+      "bytes": 1259980,
+      "sha256": "74a0c0de1a70e702d51ca56dfcc2fbd6cea2e4509214d098273416a66ab570fb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-grips.png",
+      "bytes": 50588,
+      "sha256": "64a6d69138d282d3d983950ea9503e87e37bfc35a08100ea66e95307181f9822"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-movement-browser.mjs",
+      "bytes": 9361,
+      "sha256": "b40d89a41002a691ebd6f6f0391f80c855e4ee3b8da66aefee7e366cd22bd654"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-movement-result.json",
+      "bytes": 3870,
+      "sha256": "0efda4fb6583223648ad2e7b7d41466c9ad5349de1e47a42e37c1249c720a6b0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-movement-trace.json",
+      "bytes": 59683,
+      "sha256": "4ae9c88405d134c2809c8fd2eeaae97e7e9d7394e2400ac0c7ba2823c93aaa1e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-movement.png",
+      "bytes": 1526408,
+      "sha256": "27c9945d2ed128ad223adaab6b5f070c44a2ace9b6da1f8d98d4561e81f503b2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-pause.png",
+      "bytes": 1526373,
+      "sha256": "7d8fc1858f56e14a4224e73c6be5912b57c79aa9066b3129b2937d69abd78280"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-super-browser.mjs",
+      "bytes": 10367,
+      "sha256": "8681be2a161cb6cb53d351dc1c66c4cff4b693e20319c07927d00e082cc9f207"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-super-draws.json",
+      "bytes": 27537,
+      "sha256": "e0c0b7cbd4fd458fba5570d843edbf262ff5f3c0d159b9765790f7297870bbaf"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-super-result.json",
+      "bytes": 1656,
+      "sha256": "3e049511164362f5529d25df00327be3143de46f53e5028e252fb18b765cda76"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-super-review.png",
+      "bytes": 161848,
+      "sha256": "163256ce8c3408bbf3adca2c957b8bb316cef11e00920e22f24721c208c3f7e4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-super-trace.json",
+      "bytes": 18248,
+      "sha256": "7f0a57ed548776b4833c9cb44456ce7557154f13ff7bda1a1015a4f95fab65d5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-super.png",
+      "bytes": 1514338,
+      "sha256": "4e3f8341ed9dff0f0c7a7d2b44954d08b2a15ecb331ac2c820c8e37e95d0d910"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "bytes": 133689,
+      "sha256": "c45de7e475ea262fdb7b33852e9073696d3cdf10b6ddb8eb1939c61e3c8a49b4"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "bytes": 115603,
+      "sha256": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277"
+    },
+    {
+      "path": "src/game/renderer.js",
+      "bytes": 65842,
+      "sha256": "ef8934b7e05b7d67228c825e8099f3846cf1c784821e5e5c8187331dd71f18a1"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "bytes": 35378,
+      "sha256": "e1164f8bc529682db345c69ec6bda4379b6dddbaa5068882d7fdfec407208bf4"
+    },
+    {
+      "path": "src/game/combatIdentity.js",
+      "bytes": 20618,
+      "sha256": "d557284fc3ef25e98d13f13a6096b3c73a39024233faa677f9af147f02929d0c"
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "bytes": 14862,
+      "sha256": "c334996786d4578d47b784f26f75c8bce42fb76068bbb275830df6c721f772c6"
+    },
+    {
+      "path": "src/game/melee/nativeMeleeManifest.js",
+      "bytes": 4519,
+      "sha256": "73792cc7312c775d2edcd9bf29ec61a9ad3c37cfea025ac7c8375205625830d0"
+    },
+    {
+      "path": "src/game/melee/freemanMeleeManifest.js",
+      "bytes": 512,
+      "sha256": "2497a8eef99fab09ac164e5bd2c289b2756ec7ff331bb13359f4b9cc44fd3482"
+    },
+    {
+      "path": "src/game/combat/freemanMeleeMotion.generated.json",
+      "bytes": 211829,
+      "sha256": "67b4ea127d4e6503badfe5949804769397f751d8b86747760890ce20d4cb9c00"
+    },
+    {
+      "path": "src/game/combat/freemanMeleeCombat.generated.json",
+      "bytes": 211549,
+      "sha256": "b5a53648db94112c7406bd6d9e667ccbf055726876b07fed63fce5e1668c57ae"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "bytes": 6472,
+      "sha256": "430bff02e61e2ae17f5c88a1385b1b75026c5fed96278618e765fa3be025b27c"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "bytes": 3983,
+      "sha256": "d364a82a0c074d445cefc3cb1a17aebf6d98604c5c335d0718f7d0f77d72392f"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave10.js",
+      "bytes": 9348,
+      "sha256": "0c96457b67a4cd96669b69cb8b4abddcfa7368275e40aeb46909b6ee2c72522b"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave10PartB.generated.json",
+      "bytes": 433318,
+      "sha256": "3735da3ce3d87713ccf0fee6e6e2717d6d6fe8dbbc63c102566dd76e9ef854c3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave10-2026-10-23/browser/collect-melee-evidence.mjs",
+      "bytes": 3300,
+      "sha256": "ed59ec1f774af5e6086b07a9cad00ae49c2dc66b022af1b1e4074074f8dd8e9e"
+    },
+    {
+      "path": "public/sprites/generated/melee-freeman-wave10/freeman-motion-a.png",
+      "bytes": 1131558,
+      "sha256": "61196877decde3710305833dfb0030e2d497d83eda4fec43f42ecee789b3bfaf"
+    },
+    {
+      "path": "public/sprites/generated/melee-freeman-wave10/freeman-motion-b.png",
+      "bytes": 1111735,
+      "sha256": "0cefb0b1acbf780e3fb160105352bae01262629916970095c5b6c40d1f029b61"
+    },
+    {
+      "path": "public/sprites/generated/melee-freeman-wave10/freeman-defense.png",
+      "bytes": 1293355,
+      "sha256": "a5a132c75e93c98a8b908e8532c7576b98c4eb93fb2d41f54e8397207f2df454"
+    },
+    {
+      "path": "public/sprites/generated/melee-freeman-wave10/freeman-combat-a.png",
+      "bytes": 1087031,
+      "sha256": "03bc8b8a6b12bff81b4dff413a7092fbccbe94932c859075353f89a721b4d9e1"
+    },
+    {
+      "path": "public/sprites/generated/melee-freeman-wave10/freeman-combat-b.png",
+      "bytes": 1178747,
+      "sha256": "f744dac3a7d09988ef31c22ded80c669d894460d2c9535462e2f6f8323217c4a"
+    },
+    {
+      "path": "public/sprites/generated/melee-freeman-wave10/freeman-ledge.png",
+      "bytes": 782489,
+      "sha256": "b0056f7bca478993aeee5b6c4d12fa23a80e3e7ca382ba33af2ec618f120e2bc"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave10/freeman.png",
+      "bytes": 1813097,
+      "sha256": "8df67085ad828cf3b54151a9d510335162ba61730c9e30ed74b1825b05d6b2af"
+    }
+  ],
+  "visualInspection": {
+    "reviewed": true,
+    "captures": [
+      "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-core-review-3.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-grips.png",
+      "docs/combat-fidelity-wave10-2026-10-23/browser/freeman-super-review.png"
+    ],
+    "finding": "Orange HEV with real crowbar for light/air/get-up, orange Gravity Gun secondary and distinct dedicated32 blue super gun/sphere; native hanging gloves grip the edge.",
+    "limitations": [
+      "Original crossover choreography and generated art, not official extracted frames or verified1:1 animation.",
+      "Real-time playback can skip source columns under concurrent browser load; final movement proof was executed successfully with all four actual columns."
+    ]
+  }
+}

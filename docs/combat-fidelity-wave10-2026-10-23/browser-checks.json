@@ -1,0 +1,389 @@
+{
+  "date": "2026-10-23",
+  "browser": "local Chromium",
+  "status": "retained-browser-checks-frozen",
+  "passed": true,
+  "observedRegistryCounts": {
+    "nativeHeroEntries": 157,
+    "complete32": 155,
+    "partialCharacters": 2,
+    "partialPoses": 32,
+    "partialDetails": [
+      {
+        "heroId": "beast_boy_tt",
+        "poses": 8,
+        "phases": [
+          "fatality",
+          "super"
+        ]
+      },
+      {
+        "heroId": "janine_gb",
+        "poses": 24,
+        "phases": [
+          "intro",
+          "outro",
+          "roundVictory",
+          "roundDefeat",
+          "victory",
+          "defeat"
+        ]
+      }
+    ],
+    "dedicatedBases16": 103,
+    "newDedicatedBases16": 39,
+    "nativeSummonAssets": 23,
+    "historicalNativeSummonAssets": 15
+  },
+  "officialSourceFramesImported": 0,
+  "source1to1Verified": false,
+  "missingEvidence": [],
+  "countsAreSeparate": "Native poses, source rectangles, draw calls, pixel mirrors, engine fixtures and UI journeys are separate observations.",
+  "observedInternalRuntimeErrors": 0,
+  "externalFailure": "Only recorded Google Fonts proxy failures are accepted. Internal requests and browser page errors fail aggregation.",
+  "validationScope": "Browser observations and a separate independent SSR review. Build and production HTTP distribution are recorded in validation.json.",
+  "checks": [
+    {
+      "path": "browser/native-presentations.json",
+      "sha256": "a3ea019d5ef26350a067a5a70f129158b988368f7f9cf8ff67a33a7874aa5bd7",
+      "domain": "native-presentations",
+      "observedPassed": true,
+      "metrics": {
+        "nativeHeroEntries": 157,
+        "complete32": 155,
+        "partialCharacters": 2,
+        "partialPoses": 32,
+        "partialDetails": [
+          {
+            "heroId": "beast_boy_tt",
+            "poses": 8,
+            "phases": [
+              "fatality",
+              "super"
+            ]
+          },
+          {
+            "heroId": "janine_gb",
+            "poses": 24,
+            "phases": [
+              "intro",
+              "outro",
+              "roundVictory",
+              "roundDefeat",
+              "victory",
+              "defeat"
+            ]
+          }
+        ],
+        "nativeFrameDraws": 9984,
+        "geometryChecks": 9984,
+        "preservedHistoricalRecords": 117,
+        "preservedHistoricalGeometry": 7440,
+        "preservedFullManifests": 8,
+        "fullMeleeManifests": 10,
+        "preservedSummons": 15,
+        "gorillaFallbackDraws": 48,
+        "janineReusedPresentationDraws": 16
+      },
+      "scope": "Actual exposed phases, four native columns and both facings. Beast Boy retains eight T-Rex poses. Janine retains six presentation phases/24 poses; her refused super/finale are explicitly reused accepted intro cells, not additional native poses.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 1,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/base-corrections.json",
+      "sha256": "79b560bce830b2a654ebc655c0d09a77be03ff6ac48cb74272b98534752a8de7",
+      "domain": "base-corrections",
+      "observedPassed": true,
+      "metrics": {
+        "newCharacters": 39,
+        "newFrameDraws": 1248,
+        "previousCharacters": 64,
+        "previousFrameDraws": 2048,
+        "totalFrameDraws": 3296,
+        "janineReusedOrdinaryDraws": 64
+      },
+      "legacyGeometryUnchanged": true,
+      "scope": "Real base renderer, all sixteen cells and both facings. Historical PNG bytes/geometry remain unchanged. Janine reuses accepted presentation art in eight ordinary states; she is excluded from the dedicated base16 count.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 1,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/neo-evidence.json",
+      "sha256": "04fddc64c322d5976ddf550c1a7f7b90b582bb9caa91fe91d9a2e0165132c46c",
+      "domain": "neo-45-state-gamecanvas",
+      "observedPassed": true,
+      "metrics": {
+        "frameDraws": 360,
+        "distinctNativeRectangles": 180,
+        "measuredGrips": 8,
+        "nativeSuperDraws": 73,
+        "superImpacts": 1
+      },
+      "scope": "Three real GameCanvas journeys: full45 renderer, keyboard movement/ledge/pause and cold-boot native32 super with one accepted impact. Draw calls, poses and journeys remain separate measurements.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/freeman-evidence.json",
+      "sha256": "b37153a802a02c7814fa3c20e626a13552515679385e73c07eeaad1adc3ebd27",
+      "domain": "freeman-45-state-gamecanvas",
+      "observedPassed": true,
+      "metrics": {
+        "frameDraws": 360,
+        "distinctNativeRectangles": 180,
+        "measuredGrips": 8,
+        "nativeSuperDraws": 75,
+        "superImpacts": 1
+      },
+      "scope": "Three real GameCanvas journeys: full45 renderer, keyboard movement/ledge/pause and cold-boot native32 super with one accepted impact. Draw calls, poses and journeys remain separate measurements.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/native-super-runtime.json",
+      "sha256": "097ff6b63f20d7542292e89afb5d8ad6b7ec947eb93ddf5e14c95f0650642249",
+      "domain": "forty-character-super-runtime",
+      "observedPassed": true,
+      "method": "Chromium actual engines imported from exact compiled component URLs, controlled authoritative stepping and real native/base PNG drawing. No keyboard UI flow claim.",
+      "metrics": {
+        "characters": [
+          "neo",
+          "trinity",
+          "morpheus",
+          "agent_smith",
+          "seraph",
+          "oneill",
+          "tealc",
+          "sam_carter",
+          "daniel_jackson",
+          "hammond_sgc",
+          "freeman",
+          "barney",
+          "alyx_vance",
+          "eli_vance",
+          "kleiner",
+          "paladin",
+          "nick_v",
+          "dogmeat",
+          "piper_wright",
+          "preston_garvey",
+          "hicks_aliens",
+          "vasquez_aliens",
+          "bishop_aliens",
+          "ripley_aliens",
+          "hudson_aliens",
+          "dallas",
+          "wolf_pd",
+          "hoxton",
+          "chains_pd",
+          "clover_pd",
+          "venkman_gb",
+          "stantz_gb",
+          "zeddemore_gb",
+          "spengler_gb",
+          "janine_gb",
+          "bill_l4d",
+          "ellis_l4d",
+          "coach_l4d",
+          "rochelle_l4d",
+          "nick_l4d"
+        ],
+        "engineCases": 240,
+        "physicalProjectileCases": 34,
+        "modes": [
+          "rpg",
+          "melee",
+          "fighter"
+        ],
+        "sides": [
+          "player",
+          "opponent"
+        ],
+        "observedBodyKinds": {
+          "native32": 234,
+          "adapted-existing-pose": 6
+        }
+      },
+      "scope": "Forty identities in three actual engines and both camps within Chromium, plus34 physical Fighter projectile flows. Janine uses explicitly adapted existing poses for her support; no native super/finale is claimed. Isolated engine fixtures do not claim240 keyboard UI journeys.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 1,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/summon-wave10-result.json",
+      "sha256": "9b9e6c7c30fc1bcbb44427f7ebe587e6cc30b405cc986f669c6c4df4beb85b35",
+      "domain": "rpg-native-roster-reinforcements-gamecanvas",
+      "observedPassed": true,
+      "metrics": {
+        "flows": 16,
+        "distinctNativeSourceCells": 128,
+        "nativePlayerCells": 128,
+        "nativeOpponentCells": 128,
+        "mirrorChecks": 256,
+        "damagingPartners": 6,
+        "supportivePartners": 2,
+        "damagingFlows": 12,
+        "acceptedHpImpacts": 12,
+        "supportFlows": 4,
+        "supportEffectEvents": 4,
+        "supportDamageImpacts": 0,
+        "supportAlliedHpUnchanged": true,
+        "allEffectsOnce": true
+      },
+      "scope": "Eight real partners in both camps. GameCanvas command controls, confirmation/cancellation/pause, one cost and one effect. Egon/Coach are support effects with no enemy HP loss; sixteen journeys do not mean sixteen damaging attacks.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "source1to1Verified": false
+    },
+    {
+      "path": "stage-browser.json",
+      "sha256": "d67c6cdf33520ed27601cf06aae67dd4c3e092515c1c07c2ac3d920451a9c275",
+      "domain": "stage-mechanisms",
+      "observedPassed": true,
+      "metrics": {
+        "mechanisms": 80,
+        "universes": 40,
+        "fourModeDraws": 320,
+        "additionalViewportChecks": 240,
+        "worstMirrorAlphaErrorRatio": 0.009407460638923369
+      },
+      "scope": "Eighty mechanisms in40 previously ambiance-only roster universes. Real pixels, four modes, extra formats, pause/reduced motion, mirror and clipping. These procedural mechanisms are not official source frames and add no gameplay event.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "source1to1Verified": false
+    }
+  ],
+  "independentReview": {
+    "path": "independent-review.json",
+    "sha256": "f87ebbece3469dacab15eddb3664f2676c39ccc35694620ceb0c006eab2979cc",
+    "domain": "independent-runtime-and-projection-review",
+    "observedPassed": true,
+    "metrics": {
+      "domains": 16,
+      "pending": 0
+    },
+    "checks": [
+      {
+        "name": "40 exact identities, confirmed target projection, denial and render purity",
+        "status": "passed",
+        "fixtures": 160
+      },
+      {
+        "name": "available native column anchors are visible source pixels and match packed dimensions, per-row renderScale and P2 reflection",
+        "status": "passed",
+        "projections": 412,
+        "visibleSourcePixels": 103,
+        "pendingIdentities": []
+      },
+      {
+        "name": "ordinary RPG flight stops at the impact and cannot restart after confirmed or denied contact",
+        "status": "passed",
+        "postImpactProjections": 204,
+        "preImpactAnchorUnavailable": []
+      },
+      {
+        "name": "two proton streams begin at measured launchers only after accepted impact; melee creates no fictitious flight",
+        "status": "passed",
+        "projections": 16
+      },
+      {
+        "name": "fifteen real RPG support actions preserve every enemy HP and apply only their declared ally effect",
+        "status": "passed",
+        "realActions": 30
+      },
+      {
+        "name": "real RPG special acceptance: shields and dead selections cannot confirm, accepted points remain fixed after move/KO",
+        "status": "passed",
+        "realActions": 200
+      },
+      {
+        "name": "real Fighter launches from native muzzles, preserves direction after crossing, suppresses recovery and denied-hit flashes",
+        "status": "passed",
+        "realProjectiles": 34,
+        "nativeMuzzleChecks": 34
+      },
+      {
+        "name": "six real RPG reinforcements: protected targets produce no accepted contact rings",
+        "status": "passed",
+        "realActions": 12
+      },
+      {
+        "name": "six real RPG reinforcements: accepted contacts freeze before target movement/KO",
+        "status": "passed",
+        "realActions": 12
+      },
+      {
+        "name": "six reinforcements only acknowledge actual mixed-target HP drops, without replacing dead or removed identities",
+        "status": "passed",
+        "realActions": 36
+      },
+      {
+        "name": "fifteen historical native summons preserve complete metadata, PNG bytes and their existing scene contracts",
+        "status": "passed",
+        "historicalAssets": 15,
+        "realSceneContracts": 30
+      },
+      {
+        "name": "seventy-two historical entity callers keep their exact binding; ten selected callers explicitly change partner",
+        "status": "passed",
+        "historicalBindings": 72,
+        "intentionalReplacements": 10,
+        "historicalLegacyPngs": 28,
+        "shephardId": "shephard"
+      },
+      {
+        "name": "twenty-eight historical choreographies preserve their exact source definitions and sampled geometry",
+        "status": "passed",
+        "historicalChoreographies": 28,
+        "projections": 280
+      },
+      {
+        "name": "two genuine support reinforcements never damage or draw a shot and acknowledge their own performer",
+        "status": "passed",
+        "realActions": 4
+      },
+      {
+        "name": "eight reinforcement commands preserve cancellation, unique cost, pause and caller interruption without late impact",
+        "status": "passed",
+        "realInterruptedCommands": 48
+      },
+      {
+        "name": "eight reinforcement travels use the packed muzzle, end at impact and remain pure under P2 rotation",
+        "status": "passed",
+        "projections": 64
+      }
+    ],
+    "scope": "Production Vite SSR, distinct from browser journeys: native aperture projections, accepted contacts, shields/dead/removed targets, move/KO snapshots, physical Fighter launches, support-only partners, fifteen historical native summons and72 legacy bindings.",
+    "freezeStatus": "frozen-observation",
+    "errors": [],
+    "externalFontRequestFailures": 0,
+    "source1to1Verified": false
+  },
+  "nativeArtifactRetention": {
+    "path": "browser/evidence.json",
+    "sha256": "f56aa96c80120ae406e31befa972ba4ed6ddc4b86f4741c79dd705b8f5eb2ad4",
+    "observedPassed": true,
+    "metrics": {
+      "verifiedArtifacts": 112,
+      "reviewedPaths": 18,
+      "finalNativeRerun": true,
+      "retainedBaseScopeVerification": true
+    },
+    "scope": "Retained artifact manifest for the two native/base browser domains above. It is not an additional browser journey or an eighth browser domain.",
+    "freezeStatus": "frozen-observation",
+    "errors": [],
+    "externalFontRequestFailures": 0,
+    "source1to1Verified": false
+  }
+}

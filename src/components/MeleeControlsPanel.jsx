@@ -126,6 +126,7 @@ export default function MeleeControlsPanel({
   onRemap,
   onReset,
   runtimeActor,
+  superProfile = null,
   onTouchAction,
   trial = false
 }) {
@@ -179,6 +180,7 @@ export default function MeleeControlsPanel({
   const guardPercent = Math.round((guardValue / guardMaximum) * 100);
   const chargeSeconds = clamp(Number(runtimeActor?.chargeHoldSeconds) || 0, 0, CHARGED_ATTACK_DATA.maxHoldSeconds);
   const chargePercent = Math.round((chargeSeconds / CHARGED_ATTACK_DATA.maxHoldSeconds) * 100);
+  const superCharge = clamp(Number(runtimeActor?.specialCharge) || 0, 0, 100);
 
   const slotLabel = slot => (
     (trial ? TRIAL_SLOT_LABELS[slot.id] : null)?.[isFrench ? 'fr' : 'en']
@@ -344,6 +346,21 @@ export default function MeleeControlsPanel({
           </output>
         </div>
       </div>
+
+      {!trial && superProfile && (
+        <div style={{ padding: 8, border: `1px solid ${superProfile.color || '#ffe66d'}`, background: 'rgba(0, 0, 0, 0.3)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginBottom: 5 }}>
+            <strong>SUPER · {superProfile.name}</strong>
+            <output>{Math.floor(superCharge)}%</output>
+          </div>
+          <progress aria-label={`Super ${superProfile.name}`} value={superCharge} max={100} style={{ width: '100%', height: 8, accentColor: superProfile.color || '#ffe66d' }} />
+          <p style={{ margin: '6px 0 0', color: '#abc1c6', lineHeight: 1.5 }}>
+            {isFrench
+              ? 'Commande spéciale : technique à 30 % ; super à 100 %. Le super consomme toute la jauge.'
+              : 'Special command: technique at 30%; super at 100%. The super consumes the full gauge.'}
+          </p>
+        </div>
+      )}
 
       <p id={liveId} role="status" aria-live="polite" aria-atomic="true" style={{ minHeight: 13, margin: 0, color: capture ? '#ffe66d' : '#8fa8ad' }}>
         {announcement || copy.instructions}

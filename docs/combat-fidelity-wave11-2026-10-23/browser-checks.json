@@ -1,0 +1,398 @@
+{
+  "date": "2026-10-23",
+  "browser": "local Chromium",
+  "status": "retained-browser-checks-frozen",
+  "passed": true,
+  "observedRegistryCounts": {
+    "nativeHeroEntries": 194,
+    "complete32": 192,
+    "partialCharacters": 2,
+    "partialPoses": 32,
+    "partialDetails": [
+      {
+        "heroId": "beast_boy_tt",
+        "poses": 8,
+        "phases": [
+          "fatality",
+          "super"
+        ]
+      },
+      {
+        "heroId": "janine_gb",
+        "poses": 24,
+        "phases": [
+          "intro",
+          "outro",
+          "roundVictory",
+          "roundDefeat",
+          "victory",
+          "defeat"
+        ]
+      }
+    ],
+    "dedicatedBases16": 140,
+    "newDedicatedBases16": 37,
+    "nativeSummonAssets": 30,
+    "historicalNativeSummonAssets": 23
+  },
+  "officialSourceFramesImported": 0,
+  "source1to1Verified": false,
+  "missingEvidence": [],
+  "countsAreSeparate": "Native poses, source rectangles, draw calls, pixel mirrors, engine fixtures and UI journeys are separate observations.",
+  "observedInternalRuntimeErrors": 0,
+  "externalFailure": "Only recorded Google Fonts proxy failures are accepted. Internal requests and browser page errors fail aggregation.",
+  "validationScope": "Browser observations and a separate independent SSR review. Build and production HTTP distribution are recorded in validation.json.",
+  "checks": [
+    {
+      "path": "browser/native-presentations.json",
+      "sha256": "43f1b80bd2a42dbb8fb4025d9ff0c741ebfdc3b13c37881047f7f7756ba4b5ca",
+      "domain": "native-presentations",
+      "observedPassed": true,
+      "metrics": {
+        "nativeHeroEntries": 194,
+        "complete32": 192,
+        "partialCharacters": 2,
+        "partialPoses": 32,
+        "partialDetails": [
+          {
+            "heroId": "beast_boy_tt",
+            "poses": 8,
+            "phases": [
+              "fatality",
+              "super"
+            ]
+          },
+          {
+            "heroId": "janine_gb",
+            "poses": 24,
+            "phases": [
+              "intro",
+              "outro",
+              "roundVictory",
+              "roundDefeat",
+              "victory",
+              "defeat"
+            ]
+          }
+        ],
+        "nativeFrameDraws": 12352,
+        "geometryChecks": 12352,
+        "preservedHistoricalRecords": 157,
+        "preservedHistoricalGeometry": 9984,
+        "preservedFullManifests": 10,
+        "fullMeleeManifests": 12,
+        "preservedSummons": 23,
+        "gorillaFallbackDraws": 48,
+        "janineReusedPresentationDraws": 16
+      },
+      "scope": "Actual exposed phases, four native columns and both facings. Beast Boy retains eight T-Rex poses. Janine retains six presentation phases/24 poses; her refused super/finale reuse accepted intro cells. Harry/Hermione/Snape have no new native32; any reused old poses remain separately declared.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 1,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/base-corrections.json",
+      "sha256": "2e378b618788976b17f08fd2c0330317f5f2e7cd5fa65176d026c896ba334f38",
+      "domain": "base-corrections",
+      "observedPassed": true,
+      "metrics": {
+        "newCharacters": 37,
+        "newFrameDraws": 1184,
+        "previousCharacters": 103,
+        "previousFrameDraws": 3296,
+        "totalFrameDraws": 4480,
+        "janineReusedOrdinaryDraws": 64,
+        "refusedLegacyFallbackDraws": 384,
+        "quietSupportDraws": 48
+      },
+      "legacyGeometryUnchanged": true,
+      "scope": "Real base renderer, all sixteen cells and both facings. Historical PNG bytes/geometry remain unchanged. Janine reuses accepted presentation art in eight ordinary states; she is excluded from the dedicated base16 count. The384 blocked-character reuse draws and48 calm ordinary support draws are separate from dedicated native cells.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 1,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/buffy-evidence.json",
+      "sha256": "a086f6ec54f0a08828b6a823323339c7efdb0fd1ede00d3fce5c3c97737f7083",
+      "domain": "buffy-45-state-gamecanvas",
+      "observedPassed": true,
+      "metrics": {
+        "frameDraws": 360,
+        "distinctNativeRectangles": 180,
+        "measuredGrips": 8,
+        "nativeSuperDraws": 52,
+        "superImpacts": 1
+      },
+      "scope": "Three real GameCanvas journeys: full45 renderer, keyboard movement/ledge/pause and cold-boot native32 super with one accepted impact. Draw calls, poses and journeys remain separate measurements.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/arthur-evidence.json",
+      "sha256": "d5b725f01b52273891d43dad3677791d8f88a1df38d8b6cfdeb635b0fb26f81d",
+      "domain": "arthur-45-state-gamecanvas",
+      "observedPassed": true,
+      "metrics": {
+        "frameDraws": 360,
+        "distinctNativeRectangles": 180,
+        "measuredGrips": 8,
+        "nativeSuperDraws": 50,
+        "superImpacts": 1
+      },
+      "scope": "Three real GameCanvas journeys: full45 renderer, keyboard movement/ledge/pause and cold-boot native32 super with one accepted impact. Draw calls, poses and journeys remain separate measurements.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/native-super-runtime.json",
+      "sha256": "e00e7ad8b21e84610abaa6b14b9b6729126682ae6eefd2ab10a78402668415d4",
+      "domain": "forty-character-super-runtime",
+      "observedPassed": true,
+      "method": "Chromium actual engines imported from exact compiled component URLs, controlled authoritative stepping and real native/base PNG drawing. 240 authoritative fixtures and26 actual physical flights;37 new native bodies and3 explicit old-pose fallbacks. No keyboard UI flow claim.",
+      "metrics": {
+        "characters": [
+          "buffy_summers",
+          "willow_rosenberg",
+          "giles_buffy",
+          "xander_buffy",
+          "spike_buffy",
+          "harry_potter",
+          "hermione_granger",
+          "ron_weasley",
+          "dumbledore",
+          "snape",
+          "sheppard_sga",
+          "mckay_sga",
+          "teyla_sga",
+          "ronon_dex",
+          "elizabeth_weir",
+          "rush_sgu",
+          "young_sgu",
+          "greer_sgu",
+          "chloe_sgu",
+          "matt_scott_sgu",
+          "lilith_borderlands",
+          "mordecai_borderlands",
+          "roland_bl",
+          "brick_bl",
+          "claptrap_borderlands",
+          "max",
+          "furiosa",
+          "nux",
+          "toast_mm",
+          "capable_mm",
+          "korben",
+          "leeloo",
+          "ruby_rhod",
+          "zorg",
+          "cornelius",
+          "arthur_kaamelott",
+          "perceval_kaamelott",
+          "karadoc_kaamelott",
+          "leodagan_kaamelott",
+          "lancelot_kaamelott"
+        ],
+        "engineCases": 240,
+        "physicalProjectileCases": 26,
+        "modes": [
+          "rpg",
+          "melee",
+          "fighter"
+        ],
+        "sides": [
+          "player",
+          "opponent"
+        ],
+        "observedBodyKinds": {
+          "native32": 222,
+          "legacy-fallback": 18
+        }
+      },
+      "scope": "Forty identities in three actual engines and both camps within Chromium, plus26 physical Fighter projectile flows (24 native muzzles and2 historical Harry starts). Harry/Hermione/Snape use explicitly adapted existing poses; no new native super/finale is claimed. Isolated engine fixtures do not claim240 keyboard UI journeys.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 1,
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/summon-wave11-result.json",
+      "sha256": "885235b1423aad38eb807ffe6057458ee216c83576d3c817e5ceed04f9721171",
+      "domain": "rpg-native-roster-reinforcements-gamecanvas",
+      "observedPassed": true,
+      "metrics": {
+        "flows": 16,
+        "nativeFlows": 14,
+        "fallbackFlows": 2,
+        "distinctNativeSourceCells": 112,
+        "nativePlayerCells": 112,
+        "nativeOpponentCells": 112,
+        "mirrorChecks": 224,
+        "damagingPartners": 7,
+        "supportivePartners": 1,
+        "damagingFlows": 14,
+        "acceptedHpImpacts": 14,
+        "supportFlows": 2,
+        "supportEffectEvents": 2,
+        "supportDamageImpacts": 0,
+        "supportAlliedHpUnchanged": true,
+        "allEffectsOnce": true
+      },
+      "scope": "Eight real partners in both camps. GameCanvas command controls, confirmation/cancellation/pause, one cost and one effect. Seven partners use new native16 atlases; Hermione uses old accepted poses for two guard-support journeys, never a new native asset. Sixteen journeys do not mean sixteen damaging attacks.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "source1to1Verified": false
+    },
+    {
+      "path": "stage-browser.json",
+      "sha256": "e9617e40086aa51caa58465503429667c1bd564218f1a2186ca5234165f6ff96",
+      "domain": "stage-mechanisms",
+      "observedPassed": true,
+      "metrics": {
+        "mechanisms": 80,
+        "universes": 40,
+        "fourModeDraws": 320,
+        "additionalViewportChecks": 240,
+        "worstMirrorAlphaErrorRatio": 0.01522822945158975
+      },
+      "scope": "Eighty mechanisms in40 previously ambiance-only roster universes. Real pixels, four modes, extra formats, pause/reduced motion, mirror and clipping. These procedural mechanisms are not official source frames and add no gameplay event.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "source1to1Verified": false
+    }
+  ],
+  "independentReview": {
+    "path": "independent-review.json",
+    "sha256": "2c22d0875a488f12297e6d2cae9b66c167b02adc4ab66b9cb782b8b3df9156c7",
+    "domain": "independent-runtime-and-projection-review",
+    "observedPassed": true,
+    "metrics": {
+      "domains": 16,
+      "pending": 0
+    },
+    "checks": [
+      {
+        "name": "40 exact identities, confirmed target projection, denial and render purity",
+        "status": "passed",
+        "fixtures": 160,
+        "blockedCloneProjections": 6
+      },
+      {
+        "name": "available native column anchors are visible source pixels and match packed dimensions, per-row renderScale and P2 reflection",
+        "status": "passed",
+        "projections": 232,
+        "visibleSourcePixels": 58,
+        "pendingIdentities": []
+      },
+      {
+        "name": "ordinary RPG flight stops at the impact and cannot restart after confirmed or denied contact",
+        "status": "passed",
+        "postImpactProjections": 156,
+        "preImpactAnchorUnavailable": [
+          "harry_potter"
+        ]
+      },
+      {
+        "name": "melee and area supers acknowledge accepted contacts without fictitious projectile travel",
+        "status": "passed",
+        "projections": 20
+      },
+      {
+        "name": "seventeen real RPG support actions preserve every enemy HP and apply only their declared ally effect",
+        "status": "passed",
+        "realActions": 34,
+        "basicBeneficialActions": 88
+      },
+      {
+        "name": "real RPG special acceptance: shields and dead selections cannot confirm, accepted points remain fixed after move/KO",
+        "status": "passed",
+        "realActions": 184
+      },
+      {
+        "name": "real Fighter launches from native muzzles, preserves direction after crossing, suppresses recovery and denied-hit flashes",
+        "status": "passed",
+        "realProjectiles": 26,
+        "nativeMuzzleChecks": 24,
+        "historicalStarts": 2
+      },
+      {
+        "name": "seven real RPG reinforcements: protected targets produce no accepted contact rings",
+        "status": "passed",
+        "realActions": 14
+      },
+      {
+        "name": "seven real RPG reinforcements: accepted contacts freeze before target movement/KO",
+        "status": "passed",
+        "realActions": 14
+      },
+      {
+        "name": "seven reinforcements only acknowledge actual mixed-target HP drops, without replacing dead or removed identities",
+        "status": "passed",
+        "realActions": 42
+      },
+      {
+        "name": "twenty-three historical native summons preserve complete metadata, PNG bytes and their existing scene contracts",
+        "status": "passed",
+        "historicalAssets": 23,
+        "realSceneContracts": 46
+      },
+      {
+        "name": "seventy-two historical entity callers keep their exact binding; ten selected callers explicitly change partner",
+        "status": "passed",
+        "historicalBindings": 72,
+        "intentionalReplacements": 10,
+        "historicalLegacyPngs": 28,
+        "shephardId": "shephard"
+      },
+      {
+        "name": "twenty-eight historical choreographies preserve their exact source definitions and sampled geometry",
+        "status": "passed",
+        "historicalChoreographies": 28,
+        "projections": 280
+      },
+      {
+        "name": "Hermione legacy support never damages, heals or draws an offensive bolt and acknowledges the actual partner",
+        "status": "passed",
+        "realActions": 2
+      },
+      {
+        "name": "eight reinforcement commands preserve cancellation, unique cost, pause and caller interruption without late impact",
+        "status": "passed",
+        "realInterruptedCommands": 48
+      },
+      {
+        "name": "eight reinforcement travels use the packed muzzle, end at impact and remain pure under P2 rotation",
+        "status": "passed",
+        "projections": 64
+      }
+    ],
+    "scope": "Production Vite SSR, distinct from browser journeys: native aperture projections, accepted contacts, shields/dead/removed targets, move/KO snapshots, physical Fighter launches, support-only partners, twenty-three historical native summons and72 legacy bindings.",
+    "freezeStatus": "frozen-observation",
+    "errors": [],
+    "externalFontRequestFailures": 0,
+    "source1to1Verified": false
+  },
+  "nativeArtifactRetention": {
+    "path": "browser/evidence.json",
+    "sha256": "5c2fc9d325470c3f0f370894b1e455c685a113e28613ce6759762758d8b4f645",
+    "observedPassed": true,
+    "metrics": {
+      "verifiedArtifacts": 113,
+      "reviewedPaths": 22,
+      "finalNativeRerun": null,
+      "retainedBaseScopeVerification": null
+    },
+    "scope": "Retained artifact manifest for the two native/base browser domains above. It is not an additional browser journey or an eighth browser domain.",
+    "freezeStatus": "frozen-observation",
+    "errors": [],
+    "externalFontRequestFailures": 0,
+    "source1to1Verified": false
+  }
+}

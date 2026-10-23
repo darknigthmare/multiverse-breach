@@ -1,0 +1,98 @@
+{
+  "startedAt": "2026-10-22T20:11:31.214348+00:00",
+  "authorization": "Root: GEL4GROUPES20BASES confirmed; exact five-command sequence authorized.",
+  "sourceSha256Before": {
+    "scripts/buildRiftDossierCatalog.mjs": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+    "scripts/auditCharacterReferenceQuality.py": "421b20d86cc2c3d4388e36d209b03b01b480dee08bebe2b8c6a43b4f23ad2912",
+    "scripts/buildRiftDossierAssetRegistry.mjs": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+    "package.json": "24b97a4b509c9dc1220e5ae8382e8def9bbf1d4f06dd0a0dbac69a5dcdf7e147"
+  },
+  "generatedSha256Before": {
+    "docs/rift-dossiers/catalog.json": "9d2a66e07e937420597eb78b718a15ed98b376b35ae1af57b3231c64091d1674",
+    "docs/rift-dossiers/character-reference-quality.json": "522bd8a34bddf004706339732d49ad2aded786937b7e1bb5e1cf469629e6ba70",
+    "src/game/riftDossierAssets.json": "1be40e3a9e98bb98f7c5ed97a75f4e8970bd3f68ccacf79cf28d55aed68f0c97"
+  },
+  "steps": [
+    {
+      "id": "01-catalog-refresh",
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs",
+        "--refresh-character-reference-audit"
+      ],
+      "startedAt": "2026-10-22T20:11:31.260616+00:00",
+      "log": "01-catalog-refresh.log",
+      "exitCode": 0,
+      "finishedAt": "2026-10-22T20:11:35.766191+00:00",
+      "elapsedSeconds": 4.506,
+      "logSha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "id": "02-character-reference-audit",
+      "argv": [
+        "python",
+        "scripts/auditCharacterReferenceQuality.py"
+      ],
+      "startedAt": "2026-10-22T20:11:35.766727+00:00",
+      "log": "02-character-reference-audit.log",
+      "exitCode": 0,
+      "finishedAt": "2026-10-22T20:20:25.482496+00:00",
+      "elapsedSeconds": 529.716,
+      "logSha256": "cc4213f4000b1d22e61d187bf3fafd97589f45d967562cafeaf3fc85d9055485"
+    },
+    {
+      "id": "03-catalog-build",
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs"
+      ],
+      "startedAt": "2026-10-22T20:20:25.483163+00:00",
+      "log": "03-catalog-build.log",
+      "exitCode": 0,
+      "finishedAt": "2026-10-22T20:20:29.718364+00:00",
+      "elapsedSeconds": 4.235,
+      "logSha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "id": "04-asset-registry-build",
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierAssetRegistry.mjs"
+      ],
+      "startedAt": "2026-10-22T20:20:29.719191+00:00",
+      "log": "04-asset-registry-build.log",
+      "exitCode": 0,
+      "finishedAt": "2026-10-22T20:20:30.638102+00:00",
+      "elapsedSeconds": 0.919,
+      "logSha256": "9cf974e6e697feb274d7259404a7fe3bdee014a54ebd8ea36fa4bc712b8efe92"
+    },
+    {
+      "id": "05-rift-audit",
+      "argv": [
+        "npm",
+        "run",
+        "rift:audit"
+      ],
+      "startedAt": "2026-10-22T20:20:30.638518+00:00",
+      "log": "05-rift-audit.log",
+      "exitCode": 0,
+      "finishedAt": "2026-10-22T20:20:35.781675+00:00",
+      "elapsedSeconds": 5.143,
+      "logSha256": "fb2c06d8d245038e0172e3aa3b6dbd46a0acf36b2aa5a6ad8862f5ed82253fea"
+    }
+  ],
+  "finishedAt": "2026-10-22T20:20:35.782122+00:00",
+  "success": true,
+  "sourceSha256After": {
+    "scripts/buildRiftDossierCatalog.mjs": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+    "scripts/auditCharacterReferenceQuality.py": "421b20d86cc2c3d4388e36d209b03b01b480dee08bebe2b8c6a43b4f23ad2912",
+    "scripts/buildRiftDossierAssetRegistry.mjs": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+    "package.json": "21c198bb7b185783c3c9ca6e9a71d7fc47e429ea1e5fb10942b83a7d4610e683"
+  },
+  "generatedSha256After": {
+    "docs/rift-dossiers/catalog.json": "62d2874380a92aad4298398975e4c0fc5e2ac4503f0293b4d8b351789fa042e6",
+    "docs/rift-dossiers/character-reference-quality.json": "c5c79692838f7ee634f0180c0df4d134f379db95b312322e3f542482d7ef8005",
+    "src/game/riftDossierAssets.json": "1be40e3a9e98bb98f7c5ed97a75f4e8970bd3f68ccacf79cf28d55aed68f0c97"
+  },
+  "sourceFilesUnchanged": false
+}

@@ -1,0 +1,3743 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "ragna-combat-a",
+      "heroId": "ragna",
+      "universe": "BlazBlue",
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-combat-a.png",
+      "states": {
+        "attackLight1": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1.1865012615643398
+        },
+        "attackLight2": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1.1865012615643398
+        },
+        "attackLight3": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1.1865012615643398
+        },
+        "crouchLight": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1.1865012615643398
+        },
+        "chargeStart": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1
+        },
+        "chargeLoop": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true,
+          "renderScale": 1
+        },
+        "chargeRelease": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1.1865012615643398
+        },
+        "chargeRecovery": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1
+        }
+      },
+      "stateOrder": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 8,
+      "frames": 32,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "alpha": true,
+      "sha256": "a565a7b28fa69f08f6e9c361349b5865269b37b198dd4d43354b67350a53cc7c",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-a-initial-source.png",
+      "sourceImageSha256": "d6b0cb8aeba067fb739cab088776a3be8f678c3886c3dff2ed575e9b276f82da",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "originalSourceRows": 8,
+      "referenceAsset": "/sprites/generated/heroes/blazblue/ragna.png",
+      "referenceAssetSha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-reference-original.png",
+      "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+      "sourceReference": "CSE-era Ragna costume and Blood-Scythe. Effective kit was resolved before prompts: Taille de Blood-Scythe / Dead Spike / Carnage Scissors. Current ability metadata cites Centralfiction; these newly drawn CSE-era poses are project adaptations, not verified game frames. Back-carried sword and ledge traversal are physical gameplay adaptations.",
+      "normalization": {
+        "method": "alpha-segmentation-common-source-scale-with-body-render-calibration",
+        "frameSize": 256,
+        "padding": 12,
+        "margins": 10,
+        "baseline": 244,
+        "sharedScalePerSource": true,
+        "sharedScalePerState": false,
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "sourceAlphaBoundsThreshold": 4,
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png": 0.7811447811447811,
+          "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-a-initial-source.png": 0.8482142857142857
+        },
+        "statureCalibration": {
+          "state": "chargeRecovery",
+          "row": 7,
+          "frame": 3,
+          "sourceRoi": {
+            "x": 701,
+            "y": 1528,
+            "width": 183,
+            "height": 224
+          },
+          "sourceBodyHeight": 224,
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-a-initial-source.png",
+          "targetBodyHeight": 190,
+          "requestedScale": 0.8482142857142857,
+          "safetyScale": 0.9666666666666667,
+          "scale": 0.8482142857142857,
+          "normalizedBodyHeight": 190,
+          "renderScale": 1,
+          "effectiveBodyHeight": 190,
+          "safetyLimited": false,
+          "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+          "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+        },
+        "sourceCalibrations": [
+          {
+            "state": "excluded-upright-calibration",
+            "row": 6,
+            "frame": 0,
+            "sourceRoi": {
+              "x": 50,
+              "y": 1428,
+              "width": 143,
+              "height": 205
+            },
+            "sourceBodyHeight": 205,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+            "targetBodyHeight": 190,
+            "requestedScale": 0.926829268292683,
+            "safetyScale": 0.7811447811447811,
+            "scale": 0.7811447811447811,
+            "normalizedBodyHeight": 160.13468013468014,
+            "renderScale": 1.1865012615643398,
+            "effectiveBodyHeight": 190,
+            "safetyLimited": true,
+            "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+            "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+          },
+          {
+            "state": "chargeRecovery",
+            "row": 7,
+            "frame": 3,
+            "sourceRoi": {
+              "x": 701,
+              "y": 1528,
+              "width": 183,
+              "height": 224
+            },
+            "sourceBodyHeight": 224,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-a-initial-source.png",
+            "targetBodyHeight": 190,
+            "requestedScale": 0.8482142857142857,
+            "safetyScale": 0.9666666666666667,
+            "scale": 0.8482142857142857,
+            "normalizedBodyHeight": 190,
+            "renderScale": 1,
+            "effectiveBodyHeight": 190,
+            "safetyLimited": false,
+            "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+            "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+          }
+        ],
+        "rows": [
+          {
+            "state": "attackLight1",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+            "sourceImageSha256": "373a47044101a796112081cae7f955d31d15dc291fd16c2353b9f02072da7bd2",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 286
+            },
+            "scale": 0.7811447811447811,
+            "renderScale": 1.1865012615643398,
+            "statureCalibration": {
+              "state": "excluded-upright-calibration",
+              "row": 6,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 50,
+                "y": 1428,
+                "width": 143,
+                "height": 205
+              },
+              "sourceBodyHeight": 205,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.926829268292683,
+              "safetyScale": 0.7811447811447811,
+              "scale": 0.7811447811447811,
+              "normalizedBodyHeight": 160.13468013468014,
+              "renderScale": 1.1865012615643398,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": true,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 100,
+                  "width": 192,
+                  "height": 168,
+                  "pixels": 15157
+                },
+                "output": {
+                  "left": 53,
+                  "top": 113,
+                  "width": 150,
+                  "height": 131
+                },
+                "sourceFrameRgbaSha256": "16f30e30fa7ca3caab65fea18b09e4d8ce3d06636a260b57d554d5129139f0b3"
+              },
+              {
+                "source": {
+                  "left": 264,
+                  "top": 54,
+                  "width": 194,
+                  "height": 214,
+                  "pixels": 19693
+                },
+                "output": {
+                  "left": 52,
+                  "top": 77,
+                  "width": 152,
+                  "height": 167
+                },
+                "sourceFrameRgbaSha256": "c3e126de7c3153fabad96e515beaab94b8d6301266c667283b67ced5d62e84e8"
+              },
+              {
+                "source": {
+                  "left": 480,
+                  "top": 113,
+                  "width": 212,
+                  "height": 151,
+                  "pixels": 16420
+                },
+                "output": {
+                  "left": 45,
+                  "top": 123,
+                  "width": 166,
+                  "height": 118
+                },
+                "sourceFrameRgbaSha256": "866c49ea74b5d9c60ef3b7468021915ba816a79d863635a329575c240e16df04"
+              },
+              {
+                "source": {
+                  "left": 714,
+                  "top": 135,
+                  "width": 213,
+                  "height": 130,
+                  "pixels": 14061
+                },
+                "output": {
+                  "left": 45,
+                  "top": 140,
+                  "width": 166,
+                  "height": 102
+                },
+                "sourceFrameRgbaSha256": "b1d975e35b99742e0d520a89438fc5a83145d68fcbe95eab06b43fa4f1f1ca5e"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "16f30e30fa7ca3caab65fea18b09e4d8ce3d06636a260b57d554d5129139f0b3",
+              "c3e126de7c3153fabad96e515beaab94b8d6301266c667283b67ced5d62e84e8",
+              "866c49ea74b5d9c60ef3b7468021915ba816a79d863635a329575c240e16df04",
+              "b1d975e35b99742e0d520a89438fc5a83145d68fcbe95eab06b43fa4f1f1ca5e"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "attackLight1"
+            }
+          },
+          {
+            "state": "attackLight2",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+            "sourceImageSha256": "373a47044101a796112081cae7f955d31d15dc291fd16c2353b9f02072da7bd2",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 285,
+              "bottom": 476
+            },
+            "scale": 0.7811447811447811,
+            "renderScale": 1.1865012615643398,
+            "statureCalibration": {
+              "state": "excluded-upright-calibration",
+              "row": 6,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 50,
+                "y": 1428,
+                "width": 143,
+                "height": 205
+              },
+              "sourceBodyHeight": 205,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.926829268292683,
+              "safetyScale": 0.7811447811447811,
+              "scale": 0.7811447811447811,
+              "normalizedBodyHeight": 160.13468013468014,
+              "renderScale": 1.1865012615643398,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": true,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 15,
+                  "top": 41,
+                  "width": 207,
+                  "height": 144,
+                  "pixels": 17719
+                },
+                "output": {
+                  "left": 47,
+                  "top": 131,
+                  "width": 162,
+                  "height": 112
+                },
+                "sourceFrameRgbaSha256": "fb211ebb48818b601c390d5fe6eef5a164312fc5cf81f0297d724156633f299e"
+              },
+              {
+                "source": {
+                  "left": 260,
+                  "top": 19,
+                  "width": 208,
+                  "height": 167,
+                  "pixels": 17823
+                },
+                "output": {
+                  "left": 47,
+                  "top": 114,
+                  "width": 162,
+                  "height": 130
+                },
+                "sourceFrameRgbaSha256": "ea81a0150e19f5ab308963e30e840f5097d0a612d1e103d7e3379d73918c5b8a"
+              },
+              {
+                "source": {
+                  "left": 484,
+                  "top": 34,
+                  "width": 228,
+                  "height": 150,
+                  "pixels": 16329
+                },
+                "output": {
+                  "left": 39,
+                  "top": 125,
+                  "width": 178,
+                  "height": 117
+                },
+                "sourceFrameRgbaSha256": "fe2e24544d923f903f3be04d8e6d3d9131012d7aafb8cf695d2813e752032f47"
+              },
+              {
+                "source": {
+                  "left": 730,
+                  "top": 30,
+                  "width": 199,
+                  "height": 156,
+                  "pixels": 15444
+                },
+                "output": {
+                  "left": 51,
+                  "top": 122,
+                  "width": 155,
+                  "height": 122
+                },
+                "sourceFrameRgbaSha256": "d47160bd3b743189d427575c24eec29bf75e81594b413d9562b78d47fbd72ba8"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "fb211ebb48818b601c390d5fe6eef5a164312fc5cf81f0297d724156633f299e",
+              "ea81a0150e19f5ab308963e30e840f5097d0a612d1e103d7e3379d73918c5b8a",
+              "fe2e24544d923f903f3be04d8e6d3d9131012d7aafb8cf695d2813e752032f47",
+              "d47160bd3b743189d427575c24eec29bf75e81594b413d9562b78d47fbd72ba8"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "attackLight2"
+            }
+          },
+          {
+            "state": "attackLight3",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+            "sourceImageSha256": "373a47044101a796112081cae7f955d31d15dc291fd16c2353b9f02072da7bd2",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 475,
+              "bottom": 774
+            },
+            "scale": 0.7811447811447811,
+            "renderScale": 1.1865012615643398,
+            "statureCalibration": {
+              "state": "excluded-upright-calibration",
+              "row": 6,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 50,
+                "y": 1428,
+                "width": 143,
+                "height": 205
+              },
+              "sourceBodyHeight": 205,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.926829268292683,
+              "safetyScale": 0.7811447811447811,
+              "scale": 0.7811447811447811,
+              "normalizedBodyHeight": 160.13468013468014,
+              "renderScale": 1.1865012615643398,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": true,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 25,
+                  "top": 136,
+                  "width": 203,
+                  "height": 142,
+                  "pixels": 13930
+                },
+                "output": {
+                  "left": 49,
+                  "top": 133,
+                  "width": 159,
+                  "height": 111
+                },
+                "sourceFrameRgbaSha256": "a8a5c1aa6ada46a83430ef2fc8bdaf7e0532c5e48580729103ffa27133c9c00d"
+              },
+              {
+                "source": {
+                  "left": 265,
+                  "top": 54,
+                  "width": 183,
+                  "height": 215,
+                  "pixels": 17591
+                },
+                "output": {
+                  "left": 57,
+                  "top": 69,
+                  "width": 143,
+                  "height": 168
+                },
+                "sourceFrameRgbaSha256": "2ea81fb722965c5218df33f63f694f3d3f0d17c7a6e093e85013eaf95f701f8c"
+              },
+              {
+                "source": {
+                  "left": 492,
+                  "top": 7,
+                  "width": 189,
+                  "height": 263,
+                  "pixels": 19555
+                },
+                "output": {
+                  "left": 54,
+                  "top": 32,
+                  "width": 148,
+                  "height": 205
+                },
+                "sourceFrameRgbaSha256": "792feb458b9d773ba5c72b9b6013338bec03b1e1ae4cdb7ddd5c64888a188f39"
+              },
+              {
+                "source": {
+                  "left": 732,
+                  "top": 108,
+                  "width": 197,
+                  "height": 165,
+                  "pixels": 16351
+                },
+                "output": {
+                  "left": 51,
+                  "top": 111,
+                  "width": 154,
+                  "height": 129
+                },
+                "sourceFrameRgbaSha256": "625f34b1f647b4c8e191a8dc2518747139a9667aebd3826b74913b58db12c9a4"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "a8a5c1aa6ada46a83430ef2fc8bdaf7e0532c5e48580729103ffa27133c9c00d",
+              "2ea81fb722965c5218df33f63f694f3d3f0d17c7a6e093e85013eaf95f701f8c",
+              "792feb458b9d773ba5c72b9b6013338bec03b1e1ae4cdb7ddd5c64888a188f39",
+              "625f34b1f647b4c8e191a8dc2518747139a9667aebd3826b74913b58db12c9a4"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "attackLight3"
+            }
+          },
+          {
+            "state": "crouchLight",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+            "sourceImageSha256": "373a47044101a796112081cae7f955d31d15dc291fd16c2353b9f02072da7bd2",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 773,
+              "bottom": 955
+            },
+            "scale": 0.7811447811447811,
+            "renderScale": 1.1865012615643398,
+            "statureCalibration": {
+              "state": "excluded-upright-calibration",
+              "row": 6,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 50,
+                "y": 1428,
+                "width": 143,
+                "height": 205
+              },
+              "sourceBodyHeight": 205,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.926829268292683,
+              "safetyScale": 0.7811447811447811,
+              "scale": 0.7811447811447811,
+              "normalizedBodyHeight": 160.13468013468014,
+              "renderScale": 1.1865012615643398,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": true,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 19,
+                  "top": 21,
+                  "width": 188,
+                  "height": 155,
+                  "pixels": 14908
+                },
+                "output": {
+                  "left": 55,
+                  "top": 120,
+                  "width": 147,
+                  "height": 121
+                },
+                "sourceFrameRgbaSha256": "771265155535ab14310cffdb6070c0289df45cc07a6a85c20afec6a80be78411"
+              },
+              {
+                "source": {
+                  "left": 232,
+                  "top": 25,
+                  "width": 243,
+                  "height": 143,
+                  "pixels": 16445
+                },
+                "output": {
+                  "left": 33,
+                  "top": 123,
+                  "width": 190,
+                  "height": 112
+                },
+                "sourceFrameRgbaSha256": "5118aaf72cad4c87d5b6872639fc8694787fe5ab580c80f2802f6848cff187c6"
+              },
+              {
+                "source": {
+                  "left": 464,
+                  "top": 44,
+                  "width": 297,
+                  "height": 136,
+                  "pixels": 19874
+                },
+                "output": {
+                  "left": 12,
+                  "top": 138,
+                  "width": 232,
+                  "height": 106
+                },
+                "sourceFrameRgbaSha256": "527cc3aba66efc8099b6319492c51f9ed72bf6a98c35a034a24d93c7bbb4280f"
+              },
+              {
+                "source": {
+                  "left": 752,
+                  "top": 28,
+                  "width": 167,
+                  "height": 138,
+                  "pixels": 14629
+                },
+                "output": {
+                  "left": 63,
+                  "top": 125,
+                  "width": 130,
+                  "height": 108
+                },
+                "sourceFrameRgbaSha256": "0002c4a5637d1c673f7ecb4258a57ed6860e186adba2dffa512b524fc9c512b0"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "771265155535ab14310cffdb6070c0289df45cc07a6a85c20afec6a80be78411",
+              "5118aaf72cad4c87d5b6872639fc8694787fe5ab580c80f2802f6848cff187c6",
+              "527cc3aba66efc8099b6319492c51f9ed72bf6a98c35a034a24d93c7bbb4280f",
+              "0002c4a5637d1c673f7ecb4258a57ed6860e186adba2dffa512b524fc9c512b0"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "crouchLight"
+            }
+          },
+          {
+            "state": "chargeStart",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-a-initial-source.png",
+            "sourceImageSha256": "d6b0cb8aeba067fb739cab088776a3be8f678c3886c3dff2ed575e9b276f82da",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 851,
+              "bottom": 1108
+            },
+            "scale": 0.8482142857142857,
+            "renderScale": 1,
+            "statureCalibration": {
+              "state": "chargeRecovery",
+              "row": 7,
+              "frame": 3,
+              "sourceRoi": {
+                "x": 701,
+                "y": 1528,
+                "width": 183,
+                "height": 224
+              },
+              "sourceBodyHeight": 224,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-a-initial-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.8482142857142857,
+              "safetyScale": 0.9666666666666667,
+              "scale": 0.8482142857142857,
+              "normalizedBodyHeight": 190,
+              "renderScale": 1,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": false,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 20,
+                  "top": 8,
+                  "width": 220,
+                  "height": 236,
+                  "pixels": 25375
+                },
+                "output": {
+                  "left": 35,
+                  "top": 42,
+                  "width": 187,
+                  "height": 200
+                },
+                "sourceFrameRgbaSha256": "3917a09c07887a9c61d3340a62022f45deb0233799b05cbc751685f6c1f3ee10"
+              },
+              {
+                "source": {
+                  "left": 222,
+                  "top": 35,
+                  "width": 224,
+                  "height": 211,
+                  "pixels": 24007
+                },
+                "output": {
+                  "left": 33,
+                  "top": 65,
+                  "width": 190,
+                  "height": 179
+                },
+                "sourceFrameRgbaSha256": "7ab2eef9ff0dd6c8500aa42bffade6ddc7a220020ffb6c74667c328eee963e06"
+              },
+              {
+                "source": {
+                  "left": 442,
+                  "top": 50,
+                  "width": 224,
+                  "height": 195,
+                  "pixels": 23371
+                },
+                "output": {
+                  "left": 33,
+                  "top": 78,
+                  "width": 190,
+                  "height": 165
+                },
+                "sourceFrameRgbaSha256": "b04cef867fbee1e93a8eac6cb616c21c25824313a59057e6a933deb4219a2d23"
+              },
+              {
+                "source": {
+                  "left": 675,
+                  "top": 51,
+                  "width": 204,
+                  "height": 193,
+                  "pixels": 22072
+                },
+                "output": {
+                  "left": 42,
+                  "top": 79,
+                  "width": 173,
+                  "height": 164
+                },
+                "sourceFrameRgbaSha256": "1ef02eac8b319b6228269b732e170c88ca35002c45c68591990b2f53ea955ebd"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "3917a09c07887a9c61d3340a62022f45deb0233799b05cbc751685f6c1f3ee10",
+              "7ab2eef9ff0dd6c8500aa42bffade6ddc7a220020ffb6c74667c328eee963e06",
+              "b04cef867fbee1e93a8eac6cb616c21c25824313a59057e6a933deb4219a2d23",
+              "1ef02eac8b319b6228269b732e170c88ca35002c45c68591990b2f53ea955ebd"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "chargeStart"
+            }
+          },
+          {
+            "state": "chargeLoop",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-a-initial-source.png",
+            "sourceImageSha256": "d6b0cb8aeba067fb739cab088776a3be8f678c3886c3dff2ed575e9b276f82da",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1107,
+              "bottom": 1334
+            },
+            "scale": 0.8482142857142857,
+            "renderScale": 1,
+            "statureCalibration": {
+              "state": "chargeRecovery",
+              "row": 7,
+              "frame": 3,
+              "sourceRoi": {
+                "x": 701,
+                "y": 1528,
+                "width": 183,
+                "height": 224
+              },
+              "sourceBodyHeight": 224,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-a-initial-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.8482142857142857,
+              "safetyScale": 0.9666666666666667,
+              "scale": 0.8482142857142857,
+              "normalizedBodyHeight": 190,
+              "renderScale": 1,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": false,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 16,
+                  "width": 201,
+                  "height": 204,
+                  "pixels": 21983
+                },
+                "output": {
+                  "left": 43,
+                  "top": 70,
+                  "width": 170,
+                  "height": 173
+                },
+                "sourceFrameRgbaSha256": "6ae7d71e83a8b3362c25192c4fe7713160d566b9a50a8ce31ee2e331d838b115"
+              },
+              {
+                "source": {
+                  "left": 223,
+                  "top": 14,
+                  "width": 221,
+                  "height": 206,
+                  "pixels": 21493
+                },
+                "output": {
+                  "left": 35,
+                  "top": 68,
+                  "width": 187,
+                  "height": 175
+                },
+                "sourceFrameRgbaSha256": "5406be6e1052eae070b5ae0df840020cd406192feb46a38279b5e2b11009e778"
+              },
+              {
+                "source": {
+                  "left": 445,
+                  "top": 11,
+                  "width": 240,
+                  "height": 209,
+                  "pixels": 25491
+                },
+                "output": {
+                  "left": 26,
+                  "top": 66,
+                  "width": 204,
+                  "height": 177
+                },
+                "sourceFrameRgbaSha256": "4c2c52cb59067ae1a76580ebf9658915b8d79d68fe7f1e8d3293de28da1f5026"
+              },
+              {
+                "source": {
+                  "left": 679,
+                  "top": 12,
+                  "width": 194,
+                  "height": 209,
+                  "pixels": 20196
+                },
+                "output": {
+                  "left": 46,
+                  "top": 67,
+                  "width": 165,
+                  "height": 177
+                },
+                "sourceFrameRgbaSha256": "220ba0079c21734ae3481f69777bc82e5d82b0d84f22868cfa4163e4df8fc3c4"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "6ae7d71e83a8b3362c25192c4fe7713160d566b9a50a8ce31ee2e331d838b115",
+              "5406be6e1052eae070b5ae0df840020cd406192feb46a38279b5e2b11009e778",
+              "4c2c52cb59067ae1a76580ebf9658915b8d79d68fe7f1e8d3293de28da1f5026",
+              "220ba0079c21734ae3481f69777bc82e5d82b0d84f22868cfa4163e4df8fc3c4"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "chargeLoop"
+            }
+          },
+          {
+            "state": "chargeRelease",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+            "sourceImageSha256": "373a47044101a796112081cae7f955d31d15dc291fd16c2353b9f02072da7bd2",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 950,
+              "bottom": 1203
+            },
+            "scale": 0.7811447811447811,
+            "renderScale": 1.1865012615643398,
+            "statureCalibration": {
+              "state": "excluded-upright-calibration",
+              "row": 6,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 50,
+                "y": 1428,
+                "width": 143,
+                "height": 205
+              },
+              "sourceBodyHeight": 205,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.926829268292683,
+              "safetyScale": 0.7811447811447811,
+              "scale": 0.7811447811447811,
+              "normalizedBodyHeight": 160.13468013468014,
+              "renderScale": 1.1865012615643398,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": true,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 78,
+                  "width": 215,
+                  "height": 155,
+                  "pixels": 15802
+                },
+                "output": {
+                  "left": 44,
+                  "top": 122,
+                  "width": 168,
+                  "height": 121
+                },
+                "sourceFrameRgbaSha256": "b48977840c44a1962033bdfc90b014b9e3e31833e814163dcd183ede110b0fe9"
+              },
+              {
+                "source": {
+                  "left": 257,
+                  "top": 3,
+                  "width": 205,
+                  "height": 226,
+                  "pixels": 18388
+                },
+                "output": {
+                  "left": 48,
+                  "top": 64,
+                  "width": 160,
+                  "height": 177
+                },
+                "sourceFrameRgbaSha256": "2bcc90beb9a8e5430c26a3df88c621bf697642bdd1be75959473eeefc5babc01"
+              },
+              {
+                "source": {
+                  "left": 462,
+                  "top": 65,
+                  "width": 268,
+                  "height": 166,
+                  "pixels": 22097
+                },
+                "output": {
+                  "left": 24,
+                  "top": 112,
+                  "width": 209,
+                  "height": 130
+                },
+                "sourceFrameRgbaSha256": "bd387300dc7fc21d3a10518e6abf317d8f650dbb316c37503bef9a86b107cf00"
+              },
+              {
+                "source": {
+                  "left": 743,
+                  "top": 59,
+                  "width": 166,
+                  "height": 175,
+                  "pixels": 15300
+                },
+                "output": {
+                  "left": 63,
+                  "top": 107,
+                  "width": 130,
+                  "height": 137
+                },
+                "sourceFrameRgbaSha256": "6e69b30ce814393fbad71abc5bab06e97e38085437a06689ce4b92206f11fa05"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "b48977840c44a1962033bdfc90b014b9e3e31833e814163dcd183ede110b0fe9",
+              "2bcc90beb9a8e5430c26a3df88c621bf697642bdd1be75959473eeefc5babc01",
+              "bd387300dc7fc21d3a10518e6abf317d8f650dbb316c37503bef9a86b107cf00",
+              "6e69b30ce814393fbad71abc5bab06e97e38085437a06689ce4b92206f11fa05"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Dead Spike ground-origin casting gesture; runtime projectile travels separately, no transformation."
+            }
+          },
+          {
+            "state": "chargeRecovery",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-a-initial-source.png",
+            "sourceImageSha256": "d6b0cb8aeba067fb739cab088776a3be8f678c3886c3dff2ed575e9b276f82da",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1527,
+              "bottom": 1774
+            },
+            "scale": 0.8482142857142857,
+            "renderScale": 1,
+            "statureCalibration": {
+              "state": "chargeRecovery",
+              "row": 7,
+              "frame": 3,
+              "sourceRoi": {
+                "x": 701,
+                "y": 1528,
+                "width": 183,
+                "height": 224
+              },
+              "sourceBodyHeight": 224,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-a-initial-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.8482142857142857,
+              "safetyScale": 0.9666666666666667,
+              "scale": 0.8482142857142857,
+              "normalizedBodyHeight": 190,
+              "renderScale": 1,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": false,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 11,
+                  "top": 82,
+                  "width": 219,
+                  "height": 146,
+                  "pixels": 17572
+                },
+                "output": {
+                  "left": 35,
+                  "top": 120,
+                  "width": 186,
+                  "height": 124
+                },
+                "sourceFrameRgbaSha256": "e5cdadeb2c0abafb2e96300114a725e710537d770ad8993d212632b5f2802130"
+              },
+              {
+                "source": {
+                  "left": 227,
+                  "top": 44,
+                  "width": 222,
+                  "height": 174,
+                  "pixels": 19030
+                },
+                "output": {
+                  "left": 34,
+                  "top": 88,
+                  "width": 188,
+                  "height": 148
+                },
+                "sourceFrameRgbaSha256": "03c9ab667fed377a4fa86db07a47144feec36e744292f39f97f4ffc193c4a233"
+              },
+              {
+                "source": {
+                  "left": 472,
+                  "top": 17,
+                  "width": 196,
+                  "height": 207,
+                  "pixels": 20728
+                },
+                "output": {
+                  "left": 45,
+                  "top": 65,
+                  "width": 166,
+                  "height": 176
+                },
+                "sourceFrameRgbaSha256": "6bdb8ae9c28491890c010b416ad8f685920e2f20c501e45eb7b7b1cc1f22aaf5"
+              },
+              {
+                "source": {
+                  "left": 701,
+                  "top": 1,
+                  "width": 183,
+                  "height": 224,
+                  "pixels": 20661
+                },
+                "output": {
+                  "left": 51,
+                  "top": 51,
+                  "width": 155,
+                  "height": 190
+                },
+                "sourceFrameRgbaSha256": "957cde8c868f93ca8aafc264c5e649feb0555e88b7793d061ff17f3c7a7503a1"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "e5cdadeb2c0abafb2e96300114a725e710537d770ad8993d212632b5f2802130",
+              "03c9ab667fed377a4fa86db07a47144feec36e744292f39f97f4ffc193c4a233",
+              "6bdb8ae9c28491890c010b416ad8f685920e2f20c501e45eb7b7b1cc1f22aaf5",
+              "957cde8c868f93ca8aafc264c5e649feb0555e88b7793d061ff17f3c7a7503a1"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "chargeRecovery"
+            }
+          }
+        ],
+        "emptyRows": [],
+        "contactAnchorMeasurements": {}
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "source1to1Verified": false,
+        "networkVerified": false,
+        "notes": "Shared190 effective standing stature through one measured scale and render factor per source. All84 final native poses visually inspected. Whole Blood-Scythe/VFX retained without per-row size fit. Twelve primary glove palms and twelve adjoining wrists manually inspected in normalized pixels; Catch0 is pre-contact."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-20",
+        "nativeGeneratedArtwork": true,
+        "sourceGameAsset": false,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-8e40a6e3-b124-47d8-a210-9610674f180b.png",
+        "promptFile": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/native-prompts.json",
+        "prompt": "Create a native pixel-art sprite animation atlas for Ragna the Bloodedge, specifically BlazBlue Continuum Shift Extend (2011). Use the attached local reference for his costume, hair and proportions ONLY; that old reference omitted his weapon, so draw the actual Blood-Scythe in this new artwork. Adult lean male, spiky WHITE hair, heterochromatic red/green eyes when both eyes show, long vivid RED coat with black straps and silver buckles, black shirt and loose black pants, red/black boots, black gloves with silver wrist guards, Azure Grimoire associated with his RIGHT arm. Blood-Scythe is the huge solid GRAY mechanical block-shaped sword with RED grip and dark fittings, not a glowing blue katana. Keep the same man, outfit and weapon in all cells. No Black Beast transformation, no Kaioken, no Sonic, no guns. RIGHT eye red, LEFT eye green; the Azure Grimoire is the RIGHT arm. In these adapted body poses carry Blood-Scythe in the LEFT hand or in BOTH hands where needed, with the right gauntlet contributing to the cast; do not reverse the costume asymmetry. Facing RIGHT in three-quarter side view. Crisp colored pixel art with dark outline, readable anatomy, transparent RGBA background.\nExactly FOUR columns. Each row is exactly one animation state, with FOUR genuinely different hand-drawn anatomical poses ordered left to right. Draw changed arms, leg placement, torso angle and the blade position; do not duplicate a pose with only glow changes, digital rotation, mirroring or resizing. Consistent source scale across the ENTIRE atlas: standing body head-to-sole stays constant, natural crouches/lunges are shorter. Never enlarge a crouch to standing height. Fully show hair, fingers, coat tails, boots and the whole weapon in every cell. Keep the weapon compactly canted/foreshortened so the total silhouette fits within about 1.15 standing body heights in width and 1.20 in height; preserve a real large Blood-Scythe rather than making it a tiny knife. Leave generous fully transparent gutters and outer margins. No cell dividers, words, labels, numbers, text, painted ground or environment. No unrelated debris. Production target cells are256x256 at a comparable standing height190; do not crop any blade or glove.\nDraw EXACTLY 8 rows by4 columns =32 native poses, ideally a1024x2048 atlas, one state per row:\nROW0 attackLight1: physical Blood-Scythe slash; planted sword-ready stance, raised diagonal preparation, powerful compact descending diagonal sword cut, low follow-through with weight transferred. Distinct blade/arms/feet in all4.\nROW1 attackLight2: chained horizontal sword slash; low preparation with blade behind, twist with both hands near waist, full forward slash with blade foreshortened toward right, wide-footed crossed-body follow-through.\nROW2 attackLight3: rising heavy sword finish; crouched sword-low load, body beginning to rise, upward canted blade with extended torso, grounded recovery with blade lowered. No levitation or giant beam.\nROW3 crouchLight: actual low sword attack; deep bent-knee crouch, lower forward shoulder and ready blade, low sweeping gray blade near boot level, bent-knee low recovery. All4 bodies remain physically shorter than upright reference.\nROW4 chargeStart: preparatory dark power gather, NOT an attack; upright ready with sword canted, knees bending while right hand braces grip, lower rooted torso, deep loaded stance with tiny red-black energy near the right gauntlet.\nROW5 chargeLoop: FOUR genuinely distinct newly drawn held charge poses, no strike; broad stance with blade braced low, slightly deeper bent knees and elbows tucked, opposite supporting foot rotation with right shoulder drawn back, restrained torso lean with grip tightened. Keep sword near body. Red-black aura may be tiny but bodies themselves must differ. Do NOT draw the release or only4 glow variants.\nROW6 chargeRelease: actual secondary Dead Spike, NOT Carnage Scissors: crouched dark-load with sword low; weight shifting and sword drawing upward; forceful forward ground-origin energy cast with a small attached red-black fang-shaped motif by the blade; rooted recoiling stance after release. It is a projectile casting action, not a transformation or giant creature body; the runtime supplies the traveling projectile separately.\nROW7 chargeRecovery: low post-cast lean with sword near floor; blade drawn back and knees starting to straighten; relaxed torso rising and coat settling; FULL UPRIGHT standing reference with feet planted and whole Blood-Scythe canted close to body. Last pose is the stature calibration. Exactly32 drawings; no omitted row.",
+        "promptSha256": "bd546bff6ce35fbb501e3e4937d6adc58768ba0e848eaffa518f70df961574c6",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [
+          {
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+            "sourceImageSha256": "373a47044101a796112081cae7f955d31d15dc291fd16c2353b9f02072da7bd2",
+            "generatedSourcePath": "/workspace/generated_images/exec-8ca00fa0-6f11-4ac0-a06c-b55019d49908.png",
+            "selectedStates": [
+              "attackLight1",
+              "attackLight2",
+              "attackLight3",
+              "crouchLight",
+              "chargeRelease"
+            ],
+            "calibrationRow": 6,
+            "calibrationPosesExcludedFromSelectedCount": 4,
+            "promptFile": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-prompt.json",
+            "prompt": "Create ONE corrective NATIVE pixel-art atlas for Ragna the Bloodedge, BlazBlue Continuum Shift Extend (2011). The first attached image supplies costume; the next two are the newly drawn source atlases whose blade overlaps must be repaired. Red long coat, black straps/silver buckles, black trousers, red-black boots, black gloves/silver cuffs, spiky white hair, RIGHT eye red/LEFT eye green, RIGHT Azure Grimoire arm. Gray mechanical block greatsword Blood-Scythe with red grip, carried left or both hands. No transformation or Black Beast body.\nEXACTLY FOUR COLUMNS and SEVEN ROWS =28 fully drawn native poses. Transparent RGBA. Each row has four distinct anatomical poses; rows0..5 are24 selected corrective poses, row6 is four genuinely upright calibration poses that will be archived but not counted as combat states.\nCRUCIAL FIX: THE PREVIOUS SOURCES HAD TOUCHING OR CUT BLADES. Draw MUCH SMALLER full characters inside LARGE transparent cells. Standing body head-to-boot is only about60% of a cell height, NOT filling the cell. Each full figure+large sword+aura must leave at least20% transparent padding from ALL FOUR cell boundaries. Wide sword cuts may use compact diagonals and foreshortening, but must retain the whole gray Blood-Scythe with its tip and red grip. No blade, hand, boot, quiff or energy may touch the canvas border or another pose. Maintain one source-wide body scale across all seven rows; natural crouches stay shorter. Technical scale will later restore a measured190px standing body, so do NOT enlarge poses to fill their cell. No row text, labels, grid, ground or background. No tiny copied/rotated poses: draw all28 anatomically anew.\nROW0 attackLight1: planted sword-ready stance; raised diagonal preparation; forceful diagonal descending sword slash; low transferred-weight follow-through. FOUR different body/arms/blade/foot positions.\nROW1 attackLight2: low sword-behind preparation; torso twist with both hands near waist; horizontal slash represented with strongly FORESHORTENED gray blade aimed into right-front depth, whole tip visible; wide-foot crossed-body follow-through. Keep all blades within their own cell.\nROW2 attackLight3: crouched sword-low load; rising torso and sword; upward canted blade with elongated torso; grounded blade-lowered recovery. Space for the complete raised blade above the head.\nROW3 crouchLight: deep crouch with bent knees; forward low shoulder with grip ready; low complete gray sword sweep canted into depth; short low recovery with sword drawn back. Four actual crouched anatomies.\nROW4 chargeRelease: SECONDARY Dead Spike casting action, NOT super Carnage Scissors. Low dark load with blade; upward pull with right Grimoire arm and grip; forward ground-origin cast with only a SMALL red-black fang-shaped attached energy curl near the blade; recoiling rooted recovery. Full traveling projectile is handled in the runtime, so never extend a giant effect across cells.\nROW5 attackRecovery: low sword follow-through; pulling blade inward while changing planted foot; torso rising and blade drawn close; full upright neutral readiness. Four fresh poses, no overlap between cells.\nROW6 stature calibration only: FOUR FULLY UPRIGHT neutral adult Ragna poses with legs straight and heels on an inferred shared baseline. Hands and greatsword close to body or upright along shoulder. Full head tips, feet and sword all visible. No crouch, no slouch, no raised arms above head. Show four native slightly different neutral hand/stance poses at SAME body size so source head-to-sole can be measured.\nExactly28 drawings, all seven rows. Transparent gaps around every silhouette; character scale much smaller than previous sources to prevent all blade contacts. No frame is allowed to borrow artwork from its neighbor.",
+            "reason": "Original A attackLight1/2 touch outer native edges; A attackLight3/crouchLight/chargeRelease have visible column seam crossings (11/39/8 samples), and B attackRecovery has27 visible crossings. Replace those24 poses only; four new upright calibration poses are archived but excluded from the84 selected states."
+          }
+        ],
+        "conditioning": "Native image_gen drawing only. Sharp performs alpha-aware segmentation, extraction, one common nearest-neighbor source scale, transparent packing and diagnostic crops. No procedural body drawing, mirrored/rotated substitute or copied fake pose."
+      }
+    },
+    {
+      "id": "ragna-combat-b",
+      "heroId": "ragna",
+      "universe": "BlazBlue",
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-combat-b.png",
+      "states": {
+        "attackRecovery": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1.1865012615643398
+        },
+        "special": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1.1260775862068966
+        },
+        "aerialNeutral": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1.1260775862068966
+        },
+        "aerialForward": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1.1260775862068966
+        },
+        "aerialDown": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1
+        },
+        "intro": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1
+        },
+        "victory": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": true,
+          "renderScale": 1.1260775862068966
+        },
+        "ledgeAttack": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1.1260775862068966
+        }
+      },
+      "stateOrder": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 8,
+      "frames": 32,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "alpha": true,
+      "sha256": "765db1cd049c2fab54a09ec9bcd87b82be46c885d9711a7b27164e13f94314b0",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+      "sourceImageSha256": "4ba911834b9f7bb8e258ee78b5f22a00175f463957d8b3374224cdec77fc49eb",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "originalSourceRows": 8,
+      "referenceAsset": "/sprites/generated/heroes/blazblue/ragna.png",
+      "referenceAssetSha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-reference-original.png",
+      "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+      "sourceReference": "CSE-era Ragna costume and Blood-Scythe. Effective kit was resolved before prompts: Taille de Blood-Scythe / Dead Spike / Carnage Scissors. Current ability metadata cites Centralfiction; these newly drawn CSE-era poses are project adaptations, not verified game frames. Back-carried sword and ledge traversal are physical gameplay adaptations.",
+      "normalization": {
+        "method": "alpha-segmentation-common-source-scale-with-body-render-calibration",
+        "frameSize": 256,
+        "padding": 12,
+        "margins": 10,
+        "baseline": 244,
+        "sharedScalePerSource": true,
+        "sharedScalePerState": false,
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "sourceAlphaBoundsThreshold": 4,
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png": 0.7811447811447811,
+          "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png": 0.7811447811447811,
+          "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-aerial-intro-correction-source.png": 0.5705705705705706
+        },
+        "statureCalibration": {
+          "state": "intro",
+          "row": 5,
+          "frame": 0,
+          "sourceRoi": {
+            "x": 15,
+            "y": 1095,
+            "width": 193,
+            "height": 216
+          },
+          "sourceBodyHeight": 216,
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+          "targetBodyHeight": 190,
+          "requestedScale": 0.8796296296296297,
+          "safetyScale": 0.7811447811447811,
+          "scale": 0.7811447811447811,
+          "normalizedBodyHeight": 168.72727272727272,
+          "renderScale": 1.1260775862068966,
+          "effectiveBodyHeight": 190,
+          "safetyLimited": true,
+          "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+          "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+        },
+        "sourceCalibrations": [
+          {
+            "state": "excluded-upright-calibration",
+            "row": 6,
+            "frame": 0,
+            "sourceRoi": {
+              "x": 50,
+              "y": 1428,
+              "width": 143,
+              "height": 205
+            },
+            "sourceBodyHeight": 205,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+            "targetBodyHeight": 190,
+            "requestedScale": 0.926829268292683,
+            "safetyScale": 0.7811447811447811,
+            "scale": 0.7811447811447811,
+            "normalizedBodyHeight": 160.13468013468014,
+            "renderScale": 1.1865012615643398,
+            "effectiveBodyHeight": 190,
+            "safetyLimited": true,
+            "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+            "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+          },
+          {
+            "state": "intro",
+            "row": 5,
+            "frame": 0,
+            "sourceRoi": {
+              "x": 15,
+              "y": 1095,
+              "width": 193,
+              "height": 216
+            },
+            "sourceBodyHeight": 216,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+            "targetBodyHeight": 190,
+            "requestedScale": 0.8796296296296297,
+            "safetyScale": 0.7811447811447811,
+            "scale": 0.7811447811447811,
+            "normalizedBodyHeight": 168.72727272727272,
+            "renderScale": 1.1260775862068966,
+            "effectiveBodyHeight": 190,
+            "safetyLimited": true,
+            "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+            "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+          },
+          {
+            "state": "excluded-upright-calibration",
+            "row": 2,
+            "frame": 0,
+            "sourceRoi": {
+              "x": 95,
+              "y": 730,
+              "width": 179,
+              "height": 333
+            },
+            "sourceBodyHeight": 333,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-aerial-intro-correction-source.png",
+            "targetBodyHeight": 190,
+            "requestedScale": 0.5705705705705706,
+            "safetyScale": 0.5843828715365239,
+            "scale": 0.5705705705705706,
+            "normalizedBodyHeight": 190,
+            "renderScale": 1,
+            "effectiveBodyHeight": 190,
+            "safetyLimited": false,
+            "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+            "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+          }
+        ],
+        "rows": [
+          {
+            "state": "attackRecovery",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+            "sourceImageSha256": "373a47044101a796112081cae7f955d31d15dc291fd16c2353b9f02072da7bd2",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1202,
+              "bottom": 1426
+            },
+            "scale": 0.7811447811447811,
+            "renderScale": 1.1865012615643398,
+            "statureCalibration": {
+              "state": "excluded-upright-calibration",
+              "row": 6,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 50,
+                "y": 1428,
+                "width": 143,
+                "height": 205
+              },
+              "sourceBodyHeight": 205,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.926829268292683,
+              "safetyScale": 0.7811447811447811,
+              "scale": 0.7811447811447811,
+              "normalizedBodyHeight": 160.13468013468014,
+              "renderScale": 1.1865012615643398,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": true,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 42,
+                  "width": 224,
+                  "height": 161,
+                  "pixels": 18040
+                },
+                "output": {
+                  "left": 41,
+                  "top": 106,
+                  "width": 175,
+                  "height": 126
+                },
+                "sourceFrameRgbaSha256": "b42dbf5db00055baf2ca58fb471a29fbc8d30b0986e3ed397eb4ab81b720952b"
+              },
+              {
+                "source": {
+                  "left": 249,
+                  "top": 29,
+                  "width": 203,
+                  "height": 184,
+                  "pixels": 17198
+                },
+                "output": {
+                  "left": 49,
+                  "top": 96,
+                  "width": 159,
+                  "height": 144
+                },
+                "sourceFrameRgbaSha256": "1db509b211853fcc9fd8c2cb2b728f19ca99be96fed2178255e8fe1117f8d52c"
+              },
+              {
+                "source": {
+                  "left": 519,
+                  "top": 22,
+                  "width": 158,
+                  "height": 196,
+                  "pixels": 17051
+                },
+                "output": {
+                  "left": 67,
+                  "top": 90,
+                  "width": 123,
+                  "height": 153
+                },
+                "sourceFrameRgbaSha256": "a305cfbcb7d7573270084dc3d8d9823e5cc8fd990383ee303b66ee74e6aba31b"
+              },
+              {
+                "source": {
+                  "left": 726,
+                  "top": 19,
+                  "width": 173,
+                  "height": 200,
+                  "pixels": 17421
+                },
+                "output": {
+                  "left": 61,
+                  "top": 88,
+                  "width": 135,
+                  "height": 156
+                },
+                "sourceFrameRgbaSha256": "2ee5b924fc261a9e5fc06d1585c4afd61d2e84f6594d690cd5b01ccc86e45496"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "b42dbf5db00055baf2ca58fb471a29fbc8d30b0986e3ed397eb4ab81b720952b",
+              "1db509b211853fcc9fd8c2cb2b728f19ca99be96fed2178255e8fe1117f8d52c",
+              "a305cfbcb7d7573270084dc3d8d9823e5cc8fd990383ee303b66ee74e6aba31b",
+              "2ee5b924fc261a9e5fc06d1585c4afd61d2e84f6594d690cd5b01ccc86e45496"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "attackRecovery"
+            }
+          },
+          {
+            "state": "special",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+            "sourceImageSha256": "4ba911834b9f7bb8e258ee78b5f22a00175f463957d8b3374224cdec77fc49eb",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 229,
+              "bottom": 441
+            },
+            "scale": 0.7811447811447811,
+            "renderScale": 1.1260775862068966,
+            "statureCalibration": {
+              "state": "intro",
+              "row": 5,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 15,
+                "y": 1095,
+                "width": 193,
+                "height": 216
+              },
+              "sourceBodyHeight": 216,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.8796296296296297,
+              "safetyScale": 0.7811447811447811,
+              "scale": 0.7811447811447811,
+              "normalizedBodyHeight": 168.72727272727272,
+              "renderScale": 1.1260775862068966,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": true,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 14,
+                  "top": 54,
+                  "width": 231,
+                  "height": 144,
+                  "pixels": 18463
+                },
+                "output": {
+                  "left": 38,
+                  "top": 131,
+                  "width": 180,
+                  "height": 112
+                },
+                "sourceFrameRgbaSha256": "b0d1b35a2e33b0b5e4759e8417e7f221a41a6c83fdce6d37f8e5979cc9d69922"
+              },
+              {
+                "source": {
+                  "left": 229,
+                  "top": 3,
+                  "width": 214,
+                  "height": 195,
+                  "pixels": 19667
+                },
+                "output": {
+                  "left": 45,
+                  "top": 91,
+                  "width": 167,
+                  "height": 152
+                },
+                "sourceFrameRgbaSha256": "0a5d08c05bc865631b99319163ae12d0f57d83ba7cbf3bfda33e6d089e9031dd"
+              },
+              {
+                "source": {
+                  "left": 441,
+                  "top": 41,
+                  "width": 233,
+                  "height": 156,
+                  "pixels": 20235
+                },
+                "output": {
+                  "left": 37,
+                  "top": 121,
+                  "width": 182,
+                  "height": 122
+                },
+                "sourceFrameRgbaSha256": "91392a2a1782b436e2bfd9e616762649ece0982736d850134c081af7814c1ad6"
+              },
+              {
+                "source": {
+                  "left": 685,
+                  "top": 41,
+                  "width": 194,
+                  "height": 158,
+                  "pixels": 17015
+                },
+                "output": {
+                  "left": 52,
+                  "top": 121,
+                  "width": 152,
+                  "height": 123
+                },
+                "sourceFrameRgbaSha256": "809384a0d94537e3c896b0edf2cbf43becf896945508abc46b05f4783973906d"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "b0d1b35a2e33b0b5e4759e8417e7f221a41a6c83fdce6d37f8e5979cc9d69922",
+              "0a5d08c05bc865631b99319163ae12d0f57d83ba7cbf3bfda33e6d089e9031dd",
+              "91392a2a1782b436e2bfd9e616762649ece0982736d850134c081af7814c1ad6",
+              "809384a0d94537e3c896b0edf2cbf43becf896945508abc46b05f4783973906d"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Dead Spike ground-origin casting gesture; runtime projectile travels separately, no transformation."
+            }
+          },
+          {
+            "state": "aerialNeutral",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+            "sourceImageSha256": "4ba911834b9f7bb8e258ee78b5f22a00175f463957d8b3374224cdec77fc49eb",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 439,
+              "bottom": 652
+            },
+            "scale": 0.7811447811447811,
+            "renderScale": 1.1260775862068966,
+            "statureCalibration": {
+              "state": "intro",
+              "row": 5,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 15,
+                "y": 1095,
+                "width": 193,
+                "height": 216
+              },
+              "sourceBodyHeight": 216,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.8796296296296297,
+              "safetyScale": 0.7811447811447811,
+              "scale": 0.7811447811447811,
+              "normalizedBodyHeight": 168.72727272727272,
+              "renderScale": 1.1260775862068966,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": true,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 10,
+                  "top": 20,
+                  "width": 185,
+                  "height": 170,
+                  "pixels": 19207
+                },
+                "output": {
+                  "left": 56,
+                  "top": 100,
+                  "width": 145,
+                  "height": 133
+                },
+                "sourceFrameRgbaSha256": "f32b1e4c3562356f1482a847d584c3985650ffa1b607833cf52ed20285ae7342"
+              },
+              {
+                "source": {
+                  "left": 227,
+                  "top": 12,
+                  "width": 194,
+                  "height": 192,
+                  "pixels": 20362
+                },
+                "output": {
+                  "left": 52,
+                  "top": 94,
+                  "width": 152,
+                  "height": 150
+                },
+                "sourceFrameRgbaSha256": "1f9cabc0d2f3356c3c81feab3da44200ee8e3733511cfad5909f34334361e5dc"
+              },
+              {
+                "source": {
+                  "left": 454,
+                  "top": 25,
+                  "width": 248,
+                  "height": 168,
+                  "pixels": 19036
+                },
+                "output": {
+                  "left": 31,
+                  "top": 104,
+                  "width": 194,
+                  "height": 131
+                },
+                "sourceFrameRgbaSha256": "af11bb96c60647825b8c723031d94daf52ceb3e27dc7fa61a75f5faf94fb7690"
+              },
+              {
+                "source": {
+                  "left": 678,
+                  "top": 13,
+                  "width": 186,
+                  "height": 182,
+                  "pixels": 18400
+                },
+                "output": {
+                  "left": 56,
+                  "top": 95,
+                  "width": 145,
+                  "height": 142
+                },
+                "sourceFrameRgbaSha256": "0bc9401273a538201dd5f7522e07b53af91026922f122f96fa20f081321db1dc"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "f32b1e4c3562356f1482a847d584c3985650ffa1b607833cf52ed20285ae7342",
+              "1f9cabc0d2f3356c3c81feab3da44200ee8e3733511cfad5909f34334361e5dc",
+              "af11bb96c60647825b8c723031d94daf52ceb3e27dc7fa61a75f5faf94fb7690",
+              "0bc9401273a538201dd5f7522e07b53af91026922f122f96fa20f081321db1dc"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "aerialNeutral"
+            }
+          },
+          {
+            "state": "aerialForward",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+            "sourceImageSha256": "4ba911834b9f7bb8e258ee78b5f22a00175f463957d8b3374224cdec77fc49eb",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 651,
+              "bottom": 864
+            },
+            "scale": 0.7811447811447811,
+            "renderScale": 1.1260775862068966,
+            "statureCalibration": {
+              "state": "intro",
+              "row": 5,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 15,
+                "y": 1095,
+                "width": 193,
+                "height": 216
+              },
+              "sourceBodyHeight": 216,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.8796296296296297,
+              "safetyScale": 0.7811447811447811,
+              "scale": 0.7811447811447811,
+              "normalizedBodyHeight": 168.72727272727272,
+              "renderScale": 1.1260775862068966,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": true,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 16,
+                  "top": 14,
+                  "width": 200,
+                  "height": 180,
+                  "pixels": 20084
+                },
+                "output": {
+                  "left": 50,
+                  "top": 92,
+                  "width": 156,
+                  "height": 141
+                },
+                "sourceFrameRgbaSha256": "4f2b14b31a4a8d35f3ea49640d90b4f9840cc20a01a0c155e4004a12de6e7ff8"
+              },
+              {
+                "source": {
+                  "left": 228,
+                  "top": 19,
+                  "width": 214,
+                  "height": 190,
+                  "pixels": 18330
+                },
+                "output": {
+                  "left": 45,
+                  "top": 96,
+                  "width": 167,
+                  "height": 148
+                },
+                "sourceFrameRgbaSha256": "cd45c3884718c94c907a467052203f35b4d00ec591b2f11377c7701d9bebff96"
+              },
+              {
+                "source": {
+                  "left": 436,
+                  "top": 9,
+                  "width": 297,
+                  "height": 193,
+                  "pixels": 21197
+                },
+                "output": {
+                  "left": 12,
+                  "top": 88,
+                  "width": 232,
+                  "height": 151
+                },
+                "sourceFrameRgbaSha256": "6a62f210b44833ca6b77c3c41b4b5ecbdcc54f74143440253e49a5764b0dfb2e"
+              },
+              {
+                "source": {
+                  "left": 699,
+                  "top": 14,
+                  "width": 175,
+                  "height": 188,
+                  "pixels": 17494
+                },
+                "output": {
+                  "left": 60,
+                  "top": 92,
+                  "width": 137,
+                  "height": 147
+                },
+                "sourceFrameRgbaSha256": "e4f18384f073b3b787a4cb20738c0e2b3609866ba8a637c168bf914c9f1ee742"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "4f2b14b31a4a8d35f3ea49640d90b4f9840cc20a01a0c155e4004a12de6e7ff8",
+              "cd45c3884718c94c907a467052203f35b4d00ec591b2f11377c7701d9bebff96",
+              "6a62f210b44833ca6b77c3c41b4b5ecbdcc54f74143440253e49a5764b0dfb2e",
+              "e4f18384f073b3b787a4cb20738c0e2b3609866ba8a637c168bf914c9f1ee742"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "aerialForward"
+            }
+          },
+          {
+            "state": "aerialDown",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-aerial-intro-correction-source.png",
+            "sourceImageSha256": "5c68ba0520fe9d2a2f519ab0d4339933a398556d6e11eed5b0d6672efd6c20df",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 412
+            },
+            "scale": 0.5705705705705706,
+            "renderScale": 1,
+            "statureCalibration": {
+              "state": "excluded-upright-calibration",
+              "row": 2,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 95,
+                "y": 730,
+                "width": 179,
+                "height": 333
+              },
+              "sourceBodyHeight": 333,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-aerial-intro-correction-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.5705705705705706,
+              "safetyScale": 0.5843828715365239,
+              "scale": 0.5705705705705706,
+              "normalizedBodyHeight": 190,
+              "renderScale": 1,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": false,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 30,
+                  "top": 24,
+                  "width": 296,
+                  "height": 318,
+                  "pixels": 45220
+                },
+                "output": {
+                  "left": 44,
+                  "top": 23,
+                  "width": 169,
+                  "height": 181
+                },
+                "sourceFrameRgbaSha256": "421e209d06de3a34f62b89a6a88f5c007a8deb14d4297b8225bec3e7d716377a"
+              },
+              {
+                "source": {
+                  "left": 389,
+                  "top": 124,
+                  "width": 384,
+                  "height": 261,
+                  "pixels": 36657
+                },
+                "output": {
+                  "left": 19,
+                  "top": 80,
+                  "width": 219,
+                  "height": 149
+                },
+                "sourceFrameRgbaSha256": "27f6bbd2b8f87c8c4c0553cad20fc8d7c6c5d86b049aad2750989d34ad2949c8"
+              },
+              {
+                "source": {
+                  "left": 749,
+                  "top": 129,
+                  "width": 388,
+                  "height": 282,
+                  "pixels": 40019
+                },
+                "output": {
+                  "left": 18,
+                  "top": 83,
+                  "width": 221,
+                  "height": 161
+                },
+                "sourceFrameRgbaSha256": "29490449d168c2ef45730a2a8dde6c719db2e664189bb33253acb51512173a86"
+              },
+              {
+                "source": {
+                  "left": 1123,
+                  "top": 71,
+                  "width": 287,
+                  "height": 332,
+                  "pixels": 42495
+                },
+                "output": {
+                  "left": 46,
+                  "top": 50,
+                  "width": 164,
+                  "height": 189
+                },
+                "sourceFrameRgbaSha256": "eaf44961728acb1ee5197a81042d522413ccce1517de44ba46f13bb89f4e89c5"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "421e209d06de3a34f62b89a6a88f5c007a8deb14d4297b8225bec3e7d716377a",
+              "27f6bbd2b8f87c8c4c0553cad20fc8d7c6c5d86b049aad2750989d34ad2949c8",
+              "29490449d168c2ef45730a2a8dde6c719db2e664189bb33253acb51512173a86",
+              "eaf44961728acb1ee5197a81042d522413ccce1517de44ba46f13bb89f4e89c5"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "aerialDown"
+            }
+          },
+          {
+            "state": "intro",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-aerial-intro-correction-source.png",
+            "sourceImageSha256": "5c68ba0520fe9d2a2f519ab0d4339933a398556d6e11eed5b0d6672efd6c20df",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 398,
+              "bottom": 731
+            },
+            "scale": 0.5705705705705706,
+            "renderScale": 1,
+            "statureCalibration": {
+              "state": "excluded-upright-calibration",
+              "row": 2,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 95,
+                "y": 730,
+                "width": 179,
+                "height": 333
+              },
+              "sourceBodyHeight": 333,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-aerial-intro-correction-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.5705705705705706,
+              "safetyScale": 0.5843828715365239,
+              "scale": 0.5705705705705706,
+              "normalizedBodyHeight": 190,
+              "renderScale": 1,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": false,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 39,
+                  "top": 2,
+                  "width": 253,
+                  "height": 324,
+                  "pixels": 43498
+                },
+                "output": {
+                  "left": 56,
+                  "top": 57,
+                  "width": 144,
+                  "height": 185
+                },
+                "sourceFrameRgbaSha256": "fde5e6958eccc20c8033cb8b3645113192da8eaa295b7a38d77d7e156e94091a"
+              },
+              {
+                "source": {
+                  "left": 458,
+                  "top": 4,
+                  "width": 181,
+                  "height": 322,
+                  "pixels": 40111
+                },
+                "output": {
+                  "left": 77,
+                  "top": 59,
+                  "width": 103,
+                  "height": 184
+                },
+                "sourceFrameRgbaSha256": "af3b41e2c1c9e3f0585f44d3cf814d96873f5c8d8d2159c3cbc8945f97e1ca5b"
+              },
+              {
+                "source": {
+                  "left": 725,
+                  "top": 59,
+                  "width": 397,
+                  "height": 269,
+                  "pixels": 46617
+                },
+                "output": {
+                  "left": 15,
+                  "top": 90,
+                  "width": 227,
+                  "height": 153
+                },
+                "sourceFrameRgbaSha256": "935d2e1ac720e3bdf5659a4ecb2106c4972256e5c583dd8f17f58064a780c1ae"
+              },
+              {
+                "source": {
+                  "left": 1101,
+                  "top": 39,
+                  "width": 323,
+                  "height": 290,
+                  "pixels": 42752
+                },
+                "output": {
+                  "left": 36,
+                  "top": 79,
+                  "width": 184,
+                  "height": 165
+                },
+                "sourceFrameRgbaSha256": "50078c00e9d3b43536bf951975ecbb873ca0ad6b9c673e86c1f390539e433e60"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "fde5e6958eccc20c8033cb8b3645113192da8eaa295b7a38d77d7e156e94091a",
+              "af3b41e2c1c9e3f0585f44d3cf814d96873f5c8d8d2159c3cbc8945f97e1ca5b",
+              "935d2e1ac720e3bdf5659a4ecb2106c4972256e5c583dd8f17f58064a780c1ae",
+              "50078c00e9d3b43536bf951975ecbb873ca0ad6b9c673e86c1f390539e433e60"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "intro"
+            }
+          },
+          {
+            "state": "victory",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+            "sourceImageSha256": "4ba911834b9f7bb8e258ee78b5f22a00175f463957d8b3374224cdec77fc49eb",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1306,
+              "bottom": 1549
+            },
+            "scale": 0.7811447811447811,
+            "renderScale": 1.1260775862068966,
+            "statureCalibration": {
+              "state": "intro",
+              "row": 5,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 15,
+                "y": 1095,
+                "width": 193,
+                "height": 216
+              },
+              "sourceBodyHeight": 216,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.8796296296296297,
+              "safetyScale": 0.7811447811447811,
+              "scale": 0.7811447811447811,
+              "normalizedBodyHeight": 168.72727272727272,
+              "renderScale": 1.1260775862068966,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": true,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 31,
+                  "top": 6,
+                  "width": 160,
+                  "height": 230,
+                  "pixels": 19851
+                },
+                "output": {
+                  "left": 66,
+                  "top": 64,
+                  "width": 125,
+                  "height": 180
+                },
+                "sourceFrameRgbaSha256": "5f3f05f392b176d2fc9ed7b1464ad02308ebdc9095863e958c85b8edd80228f5"
+              },
+              {
+                "source": {
+                  "left": 257,
+                  "top": 5,
+                  "width": 153,
+                  "height": 226,
+                  "pixels": 20749
+                },
+                "output": {
+                  "left": 68,
+                  "top": 64,
+                  "width": 120,
+                  "height": 177
+                },
+                "sourceFrameRgbaSha256": "2288b03677b51b75225fbd2f724f6829b09803a4e83a49b3ed822a8622fac881"
+              },
+              {
+                "source": {
+                  "left": 457,
+                  "top": 12,
+                  "width": 184,
+                  "height": 219,
+                  "pixels": 21056
+                },
+                "output": {
+                  "left": 56,
+                  "top": 69,
+                  "width": 144,
+                  "height": 171
+                },
+                "sourceFrameRgbaSha256": "e8edac6db1733337836bd36cf6d600dd53429fc790b55b0b287b23a918932691"
+              },
+              {
+                "source": {
+                  "left": 682,
+                  "top": 2,
+                  "width": 176,
+                  "height": 231,
+                  "pixels": 21066
+                },
+                "output": {
+                  "left": 60,
+                  "top": 61,
+                  "width": 137,
+                  "height": 180
+                },
+                "sourceFrameRgbaSha256": "0edd886f7a46c5b06dd4f4052e9d4edcdbd6965bc01e4ad9554eb110b80c6001"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "5f3f05f392b176d2fc9ed7b1464ad02308ebdc9095863e958c85b8edd80228f5",
+              "2288b03677b51b75225fbd2f724f6829b09803a4e83a49b3ed822a8622fac881",
+              "e8edac6db1733337836bd36cf6d600dd53429fc790b55b0b287b23a918932691",
+              "0edd886f7a46c5b06dd4f4052e9d4edcdbd6965bc01e4ad9554eb110b80c6001"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "victory"
+            }
+          },
+          {
+            "state": "ledgeAttack",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+            "sourceImageSha256": "4ba911834b9f7bb8e258ee78b5f22a00175f463957d8b3374224cdec77fc49eb",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1537,
+              "bottom": 1774
+            },
+            "scale": 0.7811447811447811,
+            "renderScale": 1.1260775862068966,
+            "statureCalibration": {
+              "state": "intro",
+              "row": 5,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 15,
+                "y": 1095,
+                "width": 193,
+                "height": 216
+              },
+              "sourceBodyHeight": 216,
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.8796296296296297,
+              "safetyScale": 0.7811447811447811,
+              "scale": 0.7811447811447811,
+              "normalizedBodyHeight": 168.72727272727272,
+              "renderScale": 1.1260775862068966,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": true,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting.",
+              "measurement": "Visually inspected upright hair-tip to boot-sole interval in the named native calibration pose. Weapon and aura do not determine stature."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 49,
+                  "top": 13,
+                  "width": 126,
+                  "height": 216,
+                  "pixels": 15484
+                },
+                "output": {
+                  "left": 79,
+                  "top": 69,
+                  "width": 98,
+                  "height": 169
+                },
+                "sourceFrameRgbaSha256": "2cd03625742ad0b3473d4e54806620ce7f547fb410eb346acc0da5811fe37743"
+              },
+              {
+                "source": {
+                  "left": 281,
+                  "top": 8,
+                  "width": 130,
+                  "height": 229,
+                  "pixels": 16001
+                },
+                "output": {
+                  "left": 77,
+                  "top": 65,
+                  "width": 102,
+                  "height": 179
+                },
+                "sourceFrameRgbaSha256": "ecee7dcd313b0075fcc5caa13fd66134c8e745734e18d9560c04766cdd9a36ac"
+              },
+              {
+                "source": {
+                  "left": 485,
+                  "top": 8,
+                  "width": 171,
+                  "height": 223,
+                  "pixels": 17408
+                },
+                "output": {
+                  "left": 61,
+                  "top": 65,
+                  "width": 134,
+                  "height": 174
+                },
+                "sourceFrameRgbaSha256": "6901c5fd3f7f0be60ec157f68cb104bf3f846899284f0333ffe9e116be1a2840"
+              },
+              {
+                "source": {
+                  "left": 683,
+                  "top": 74,
+                  "width": 152,
+                  "height": 146,
+                  "pixels": 14063
+                },
+                "output": {
+                  "left": 69,
+                  "top": 117,
+                  "width": 119,
+                  "height": 114
+                },
+                "sourceFrameRgbaSha256": "6d6b598149deee4198b9d0d61e7234615c96fcb30dcc8840368fabc753d8e48f"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "2cd03625742ad0b3473d4e54806620ce7f547fb410eb346acc0da5811fe37743",
+              "ecee7dcd313b0075fcc5caa13fd66134c8e745734e18d9560c04766cdd9a36ac",
+              "6901c5fd3f7f0be60ec157f68cb104bf3f846899284f0333ffe9e116be1a2840",
+              "6d6b598149deee4198b9d0d61e7234615c96fcb30dcc8840368fabc753d8e48f"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "ledgeAttack"
+            }
+          }
+        ],
+        "emptyRows": [],
+        "contactAnchorMeasurements": {}
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "source1to1Verified": false,
+        "networkVerified": false,
+        "notes": "Shared190 effective standing stature through one measured scale and render factor per source. All84 final native poses visually inspected. Whole Blood-Scythe/VFX retained without per-row size fit. Twelve primary glove palms and twelve adjoining wrists manually inspected in normalized pixels; Catch0 is pre-contact."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-20",
+        "nativeGeneratedArtwork": true,
+        "sourceGameAsset": false,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-fa2d4b49-058a-4a36-b51c-6103d4f727b6.png",
+        "promptFile": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/native-prompts.json",
+        "prompt": "Create a native pixel-art sprite animation atlas for Ragna the Bloodedge, specifically BlazBlue Continuum Shift Extend (2011). Use the attached local reference for his costume, hair and proportions ONLY; that old reference omitted his weapon, so draw the actual Blood-Scythe in this new artwork. Adult lean male, spiky WHITE hair, heterochromatic red/green eyes when both eyes show, long vivid RED coat with black straps and silver buckles, black shirt and loose black pants, red/black boots, black gloves with silver wrist guards, Azure Grimoire associated with his RIGHT arm. Blood-Scythe is the huge solid GRAY mechanical block-shaped sword with RED grip and dark fittings, not a glowing blue katana. Keep the same man, outfit and weapon in all cells. No Black Beast transformation, no Kaioken, no Sonic, no guns. RIGHT eye red, LEFT eye green; the Azure Grimoire is the RIGHT arm. In these adapted body poses carry Blood-Scythe in the LEFT hand or in BOTH hands where needed, with the right gauntlet contributing to the cast; do not reverse the costume asymmetry. Facing RIGHT in three-quarter side view. Crisp colored pixel art with dark outline, readable anatomy, transparent RGBA background.\nExactly FOUR columns. Each row is exactly one animation state, with FOUR genuinely different hand-drawn anatomical poses ordered left to right. Draw changed arms, leg placement, torso angle and the blade position; do not duplicate a pose with only glow changes, digital rotation, mirroring or resizing. Consistent source scale across the ENTIRE atlas: standing body head-to-sole stays constant, natural crouches/lunges are shorter. Never enlarge a crouch to standing height. Fully show hair, fingers, coat tails, boots and the whole weapon in every cell. Keep the weapon compactly canted/foreshortened so the total silhouette fits within about 1.15 standing body heights in width and 1.20 in height; preserve a real large Blood-Scythe rather than making it a tiny knife. Leave generous fully transparent gutters and outer margins. No cell dividers, words, labels, numbers, text, painted ground or environment. No unrelated debris. Production target cells are256x256 at a comparable standing height190; do not crop any blade or glove.\nDraw EXACTLY8 rows by4 columns =32 native poses, ideally1024x2048, each row as follows:\nROW0 attackRecovery: low sword follow-through, pulling the blade inward, torso rising with a planted front foot, fully upright neutral sword-ready stance.\nROW1 special: actual SECONDARY Dead Spike; crouched preparation with gray sword low; pull the sword and right arm upward while shifting weight; complete forward casting gesture with only a small red-black fang-shaped energy curl at the floor near the blade; planted low recovery. No Gauntlet Hades, no super Carnage Scissors, no Black Beast transformation. It is a projectile casting action, with traveling projectile handled separately by the runtime.\nROW2 aerialNeutral: airborne close sword attack; knees bent and blade close; torso coiling with grip at shoulder; compact gray blade cutting diagonally forward; tucked airborne recovery, all4 feet clearly ungrounded. Preserve natural scale and whole sword.\nROW3 aerialForward: real forward airborne sword strike; forward lean with back leg bent; torso twist loading gray blade; extended forward sword cut with deliberately canted/foreshortened weapon; airborne uncoiling with both legs changed. No identical stance shifted around.\nROW4 aerialDown: descending sword attack adaptation; tucked falling load; gray blade angled down while arms brace it; descending diagonal cut below the body with both knees bent; low airborne pullback. No landing floor or painted impact smoke obscuring anatomy.\nROW5 intro: FULL UPRIGHT standing reference, gray sword held near shoulder and boots planted; right gauntlet checked with other hand; gray blade brought forward in compact readiness; firm forward-facing sword guard. Four different body/hand postures. Pose0 is the stature calibration.\nROW6 victory: blade lowered in one hand and relaxed stance; Blood-Scythe resting close at shoulder with hand at hip; restrained red-coat confident stance with free hand lowered; returning the blade to back/shoulder carrying position. No celebration copied4times.\nROW7 ledgeAttack: physical ledge counter adaptation with Blood-Scythe safely secured on back so hands are free; hanging by one high glove, pull-up with raised knee, one bracing palm plus a real forward boot kick, low planted-palm recovery with bent knees. No visible ledge, block, post or ground. Four real body poses. Exactly32 drawings.",
+        "promptSha256": "06dae25fac77aef1e83c297672c7c37f1fb407654952f392224261a93bcedcb6",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [
+          {
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+            "sourceImageSha256": "373a47044101a796112081cae7f955d31d15dc291fd16c2353b9f02072da7bd2",
+            "generatedSourcePath": "/workspace/generated_images/exec-8ca00fa0-6f11-4ac0-a06c-b55019d49908.png",
+            "selectedStates": [
+              "attackRecovery"
+            ],
+            "calibrationRow": 6,
+            "calibrationPosesExcludedFromSelectedCount": 4,
+            "promptFile": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-prompt.json",
+            "prompt": "Create ONE corrective NATIVE pixel-art atlas for Ragna the Bloodedge, BlazBlue Continuum Shift Extend (2011). The first attached image supplies costume; the next two are the newly drawn source atlases whose blade overlaps must be repaired. Red long coat, black straps/silver buckles, black trousers, red-black boots, black gloves/silver cuffs, spiky white hair, RIGHT eye red/LEFT eye green, RIGHT Azure Grimoire arm. Gray mechanical block greatsword Blood-Scythe with red grip, carried left or both hands. No transformation or Black Beast body.\nEXACTLY FOUR COLUMNS and SEVEN ROWS =28 fully drawn native poses. Transparent RGBA. Each row has four distinct anatomical poses; rows0..5 are24 selected corrective poses, row6 is four genuinely upright calibration poses that will be archived but not counted as combat states.\nCRUCIAL FIX: THE PREVIOUS SOURCES HAD TOUCHING OR CUT BLADES. Draw MUCH SMALLER full characters inside LARGE transparent cells. Standing body head-to-boot is only about60% of a cell height, NOT filling the cell. Each full figure+large sword+aura must leave at least20% transparent padding from ALL FOUR cell boundaries. Wide sword cuts may use compact diagonals and foreshortening, but must retain the whole gray Blood-Scythe with its tip and red grip. No blade, hand, boot, quiff or energy may touch the canvas border or another pose. Maintain one source-wide body scale across all seven rows; natural crouches stay shorter. Technical scale will later restore a measured190px standing body, so do NOT enlarge poses to fill their cell. No row text, labels, grid, ground or background. No tiny copied/rotated poses: draw all28 anatomically anew.\nROW0 attackLight1: planted sword-ready stance; raised diagonal preparation; forceful diagonal descending sword slash; low transferred-weight follow-through. FOUR different body/arms/blade/foot positions.\nROW1 attackLight2: low sword-behind preparation; torso twist with both hands near waist; horizontal slash represented with strongly FORESHORTENED gray blade aimed into right-front depth, whole tip visible; wide-foot crossed-body follow-through. Keep all blades within their own cell.\nROW2 attackLight3: crouched sword-low load; rising torso and sword; upward canted blade with elongated torso; grounded blade-lowered recovery. Space for the complete raised blade above the head.\nROW3 crouchLight: deep crouch with bent knees; forward low shoulder with grip ready; low complete gray sword sweep canted into depth; short low recovery with sword drawn back. Four actual crouched anatomies.\nROW4 chargeRelease: SECONDARY Dead Spike casting action, NOT super Carnage Scissors. Low dark load with blade; upward pull with right Grimoire arm and grip; forward ground-origin cast with only a SMALL red-black fang-shaped attached energy curl near the blade; recoiling rooted recovery. Full traveling projectile is handled in the runtime, so never extend a giant effect across cells.\nROW5 attackRecovery: low sword follow-through; pulling blade inward while changing planted foot; torso rising and blade drawn close; full upright neutral readiness. Four fresh poses, no overlap between cells.\nROW6 stature calibration only: FOUR FULLY UPRIGHT neutral adult Ragna poses with legs straight and heels on an inferred shared baseline. Hands and greatsword close to body or upright along shoulder. Full head tips, feet and sword all visible. No crouch, no slouch, no raised arms above head. Show four native slightly different neutral hand/stance poses at SAME body size so source head-to-sole can be measured.\nExactly28 drawings, all seven rows. Transparent gaps around every silhouette; character scale much smaller than previous sources to prevent all blade contacts. No frame is allowed to borrow artwork from its neighbor.",
+            "reason": "Original A attackLight1/2 touch outer native edges; A attackLight3/crouchLight/chargeRelease have visible column seam crossings (11/39/8 samples), and B attackRecovery has27 visible crossings. Replace those24 poses only; four new upright calibration poses are archived but excluded from the84 selected states."
+          },
+          {
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-aerial-intro-correction-source.png",
+            "sourceImageSha256": "5c68ba0520fe9d2a2f519ab0d4339933a398556d6e11eed5b0d6672efd6c20df",
+            "generatedSourcePath": "/workspace/generated_images/exec-cfa85d51-c6b1-48e0-ab6a-d18ecd63435f.png",
+            "selectedStates": [
+              "aerialDown",
+              "intro"
+            ],
+            "calibrationRow": 2,
+            "calibrationPosesExcludedFromSelectedCount": 4,
+            "promptFile": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-aerial-intro-correction-prompt.json",
+            "prompt": "Create a NATIVE corrective pixel-art sheet for Ragna the Bloodedge (BlazBlue Continuum Shift Extend2011), matching the attached costume and the already drawn combat sheet. Adult spikyWHITE hair, RIGHT eye red/LEFT green, long RED coat with black straps and silverbuckles, loose black trousers, redblack boots, black gloves/silvercuffs; RIGHT AzureGrimoire arm. Exactly ONE physical Blood-Scythe per pose: huge solid GRAY mechanical blade with RED grip and darkblack mechanicalspine. No BlackBeast or second sword. FacingRIGHT three-quarter side view.\nEXACTLY FOUR COLUMNS × THREE ROWS =12 genuinely distinct native drawings. TransparentRGBA; NO painted floor, labels, boxes or grid. Same source-wide body size throughout. Standing body head-to-sole about60% of cell height, leaving generous transparent gutter for whole weapons and coat tails. EVERY complete blade tip, hand, boot and hair point must stay inside its own cell with wide transparent gaps. Do not touch another drawing or outer edge. Four changed anatomical drawings per row, not shifted/rotated/copied glow variants.\nROW0 aerialDown, four airborne descending sword poses:0 knees tucked and ONE gray sword drawn diagonally across front of torso for downward load;1 head and torso leaning into descent, BOTH hands on the red grip and ONLYONE blade now angled lower-forward;2 real descending diagonal cut below the body with bent legs, ONE COMPLETE GRAYBLADE below/infront and NO separate blade above or behind the head;3 blade withdrawn toward waist while legs uncurl in a falling recovery. ONEWEAPON ONLY; do not leave a back-mounted second blade while holding one in front. Clear silhouette at constant body scale. No sword or effect crossing into the row below. No floor/landinghit.\nROW1 intro, four native readiness poses:0 FULL UPRIGHT calibration-quality body, ONEBlood-Scythe carried close to shoulder or by his side;1 check the right gauntlet with his free left hand while ONEsword is secured at his back;2 bring THATONEgray blade forward into a low two-handed readiness with knees slightlybent;3 guarded firm stance with ONEgray blade canted near body. No floating bladefragment above his head, no secondweapon or hidden neighboring pose. Four different hand/torso/legpositions.\nROW2 CALIBRATION ONLY, excluded from combat count: four genuine FULLY UPRIGHT neutral poses with straight legs and feet on inferredsharedbaseline. Same adult body scale as rows0/1. Onegray sword close by side/back/shoulder without protruding above hair or belowboots; no slouch/no crouch/no raisedhands. Allhair points/solesvisible; preserve body head-to-solemeasurement. They are newly drawn calibrationposes, not extra selected combat states.\nExactly12drawings, 4perrow, wholeanatomy/weapons contained. Sourceonlynativeart; no duplicatedbodies, weapon ghosts or background. This correction fixes a prior two-blade aerialpose and its bladeoverlap into intro; fix actual drawing rather than hiding a tip.",
+            "reason": "Initial B aerialDown/frame2 contains two gray blade shapes and its descending tip is assigned into intro/frame2; replace aerialDown and intro with eight actual new native poses, preserving one physical Blood-Scythe. Four upright calibration drawings remain excluded."
+          }
+        ],
+        "conditioning": "Native image_gen drawing only. Sharp performs alpha-aware segmentation, extraction, one common nearest-neighbor source scale, transparent packing and diagnostic crops. No procedural body drawing, mirrored/rotated substitute or copied fake pose."
+      }
+    },
+    {
+      "id": "ragna-ledge",
+      "heroId": "ragna",
+      "universe": "BlazBlue",
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-ledge.png",
+      "states": {
+        "ledgeCatch": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1
+        },
+        "ledgeHang": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true,
+          "renderScale": 1
+        },
+        "ledgeClimb": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1
+        },
+        "ledgeDrop": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1
+        },
+        "ledgeJump": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false,
+          "renderScale": 1
+        }
+      },
+      "stateOrder": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 5,
+      "frames": 20,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "alpha": true,
+      "sha256": "8c7a8402d9b7f2d80252534ed0453bc6b878a001795a3aed5af7b2f1e601a640",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+      "sourceImageSha256": "639c1205fbd1cc4104943377016681b768432a2a1d342b7c2c3f7f585a034621",
+      "sourceDimensions": [
+        1122,
+        1402
+      ],
+      "originalSourceRows": 5,
+      "referenceAsset": "/sprites/generated/heroes/blazblue/ragna.png",
+      "referenceAssetSha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-reference-original.png",
+      "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+      "sourceReference": "CSE-era Ragna costume and Blood-Scythe. Effective kit was resolved before prompts: Taille de Blood-Scythe / Dead Spike / Carnage Scissors. Current ability metadata cites Centralfiction; these newly drawn CSE-era poses are project adaptations, not verified game frames. Back-carried sword and ledge traversal are physical gameplay adaptations.",
+      "normalization": {
+        "method": "alpha-segmentation-common-source-scale-with-body-render-calibration",
+        "frameSize": 256,
+        "padding": 12,
+        "margins": 10,
+        "baseline": 244,
+        "sharedScalePerSource": true,
+        "sharedScalePerState": false,
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "sourceAlphaBoundsThreshold": 4,
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png": 0.753968253968254
+        },
+        "statureCalibration": {
+          "state": "ledgeHang",
+          "row": 1,
+          "frame": 0,
+          "sourceRoi": {
+            "x": 53,
+            "y": 337,
+            "width": 154,
+            "height": 252
+          },
+          "sourceBodyHeight": 252,
+          "headAnchor": {
+            "x": 155,
+            "y": 337
+          },
+          "footAnchor": {
+            "x": 135,
+            "y": 588
+          },
+          "measurement": "Visually inspected approximate white-hair outline to boot sole in straight-legged hanging pose; raised arms, fists and the back-mounted sword are excluded from the body-height interval.",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+          "targetBodyHeight": 190,
+          "requestedScale": 0.753968253968254,
+          "safetyScale": 0.7945205479452054,
+          "scale": 0.753968253968254,
+          "normalizedBodyHeight": 190,
+          "renderScale": 1,
+          "effectiveBodyHeight": 190,
+          "safetyLimited": false,
+          "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting."
+        },
+        "sourceCalibrations": [
+          {
+            "state": "ledgeHang",
+            "row": 1,
+            "frame": 0,
+            "sourceRoi": {
+              "x": 53,
+              "y": 337,
+              "width": 154,
+              "height": 252
+            },
+            "sourceBodyHeight": 252,
+            "headAnchor": {
+              "x": 155,
+              "y": 337
+            },
+            "footAnchor": {
+              "x": 135,
+              "y": 588
+            },
+            "measurement": "Visually inspected approximate white-hair outline to boot sole in straight-legged hanging pose; raised arms, fists and the back-mounted sword are excluded from the body-height interval.",
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+            "targetBodyHeight": 190,
+            "requestedScale": 0.753968253968254,
+            "safetyScale": 0.7945205479452054,
+            "scale": 0.753968253968254,
+            "normalizedBodyHeight": 190,
+            "renderScale": 1,
+            "effectiveBodyHeight": 190,
+            "safetyLimited": false,
+            "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting."
+          }
+        ],
+        "rows": [
+          {
+            "state": "ledgeCatch",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+            "sourceImageSha256": "639c1205fbd1cc4104943377016681b768432a2a1d342b7c2c3f7f585a034621",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 299
+            },
+            "scale": 0.753968253968254,
+            "renderScale": 1,
+            "statureCalibration": {
+              "state": "ledgeHang",
+              "row": 1,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 53,
+                "y": 337,
+                "width": 154,
+                "height": 252
+              },
+              "sourceBodyHeight": 252,
+              "headAnchor": {
+                "x": 155,
+                "y": 337
+              },
+              "footAnchor": {
+                "x": 135,
+                "y": 588
+              },
+              "measurement": "Visually inspected approximate white-hair outline to boot sole in straight-legged hanging pose; raised arms, fists and the back-mounted sword are excluded from the body-height interval.",
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.753968253968254,
+              "safetyScale": 0.7945205479452054,
+              "scale": 0.753968253968254,
+              "normalizedBodyHeight": 190,
+              "renderScale": 1,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": false,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 5,
+                  "width": 248,
+                  "height": 282,
+                  "pixels": 27178
+                },
+                "output": {
+                  "left": 35,
+                  "top": 24,
+                  "width": 187,
+                  "height": 213
+                },
+                "sourceFrameRgbaSha256": "4616a5c8a2b57a79defab89a22adf3304f48d7b0e640d1488498f427ff00e449"
+              },
+              {
+                "source": {
+                  "left": 339,
+                  "top": 12,
+                  "width": 245,
+                  "height": 282,
+                  "pixels": 25055
+                },
+                "output": {
+                  "left": 36,
+                  "top": 29,
+                  "width": 185,
+                  "height": 213
+                },
+                "sourceFrameRgbaSha256": "68278d1acf0bd0d191164f394cd5668520f52dccca44d82d96f94c57df9f7f6a"
+              },
+              {
+                "source": {
+                  "left": 646,
+                  "top": 12,
+                  "width": 184,
+                  "height": 255,
+                  "pixels": 26291
+                },
+                "output": {
+                  "left": 59,
+                  "top": 29,
+                  "width": 139,
+                  "height": 192
+                },
+                "sourceFrameRgbaSha256": "cc8bcc3395baa5df8867b8009101b9e6d521f840e5de8746c6af4f07df08fd90"
+              },
+              {
+                "source": {
+                  "left": 916,
+                  "top": 13,
+                  "width": 182,
+                  "height": 284,
+                  "pixels": 26932
+                },
+                "output": {
+                  "left": 60,
+                  "top": 30,
+                  "width": 137,
+                  "height": 214
+                },
+                "sourceFrameRgbaSha256": "d5662f33c8d4a46a1247974a2162f08d4ad1c16ba7f1fedb4acd804039c64361"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "4616a5c8a2b57a79defab89a22adf3304f48d7b0e640d1488498f427ff00e449",
+              "68278d1acf0bd0d191164f394cd5668520f52dccca44d82d96f94c57df9f7f6a",
+              "cc8bcc3395baa5df8867b8009101b9e6d521f840e5de8746c6af4f07df08fd90",
+              "d5662f33c8d4a46a1247974a2162f08d4ad1c16ba7f1fedb4acd804039c64361"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "ledgeCatch"
+            }
+          },
+          {
+            "state": "ledgeHang",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+            "sourceImageSha256": "639c1205fbd1cc4104943377016681b768432a2a1d342b7c2c3f7f585a034621",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 290,
+              "bottom": 597
+            },
+            "scale": 0.753968253968254,
+            "renderScale": 1,
+            "statureCalibration": {
+              "state": "ledgeHang",
+              "row": 1,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 53,
+                "y": 337,
+                "width": 154,
+                "height": 252
+              },
+              "sourceBodyHeight": 252,
+              "headAnchor": {
+                "x": 155,
+                "y": 337
+              },
+              "footAnchor": {
+                "x": 135,
+                "y": 588
+              },
+              "measurement": "Visually inspected approximate white-hair outline to boot sole in straight-legged hanging pose; raised arms, fists and the back-mounted sword are excluded from the body-height interval.",
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.753968253968254,
+              "safetyScale": 0.7945205479452054,
+              "scale": 0.753968253968254,
+              "normalizedBodyHeight": 190,
+              "renderScale": 1,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": false,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 53,
+                  "top": 7,
+                  "width": 154,
+                  "height": 292,
+                  "pixels": 27410
+                },
+                "output": {
+                  "left": 70,
+                  "top": 24,
+                  "width": 116,
+                  "height": 220
+                },
+                "sourceFrameRgbaSha256": "cbad3a1d77c438546f990ac4be842861ccb3d1261c807945d81e3a642283297a"
+              },
+              {
+                "source": {
+                  "left": 346,
+                  "top": 7,
+                  "width": 191,
+                  "height": 287,
+                  "pixels": 25433
+                },
+                "output": {
+                  "left": 56,
+                  "top": 24,
+                  "width": 144,
+                  "height": 216
+                },
+                "sourceFrameRgbaSha256": "6421226824673c8ce3ff3c5cb5a7a3ba45c7de6e3229304fc847615dbf75ab49"
+              },
+              {
+                "source": {
+                  "left": 645,
+                  "top": 9,
+                  "width": 185,
+                  "height": 288,
+                  "pixels": 28589
+                },
+                "output": {
+                  "left": 59,
+                  "top": 25,
+                  "width": 139,
+                  "height": 217
+                },
+                "sourceFrameRgbaSha256": "54968c5ef1e5de408f09b255588822867e7e0c28647068a88422a4b3ff0d9449"
+              },
+              {
+                "source": {
+                  "left": 926,
+                  "top": 13,
+                  "width": 181,
+                  "height": 266,
+                  "pixels": 26604
+                },
+                "output": {
+                  "left": 60,
+                  "top": 28,
+                  "width": 136,
+                  "height": 201
+                },
+                "sourceFrameRgbaSha256": "a973ef4e772c468cdd36ecad93d602ab6656cfdc991ac3984ec9fc5af2a82714"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "cbad3a1d77c438546f990ac4be842861ccb3d1261c807945d81e3a642283297a",
+              "6421226824673c8ce3ff3c5cb5a7a3ba45c7de6e3229304fc847615dbf75ab49",
+              "54968c5ef1e5de408f09b255588822867e7e0c28647068a88422a4b3ff0d9449",
+              "a973ef4e772c468cdd36ecad93d602ab6656cfdc991ac3984ec9fc5af2a82714"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "ledgeHang"
+            }
+          },
+          {
+            "state": "ledgeClimb",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+            "sourceImageSha256": "639c1205fbd1cc4104943377016681b768432a2a1d342b7c2c3f7f585a034621",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 592,
+              "bottom": 843
+            },
+            "scale": 0.753968253968254,
+            "renderScale": 1,
+            "statureCalibration": {
+              "state": "ledgeHang",
+              "row": 1,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 53,
+                "y": 337,
+                "width": 154,
+                "height": 252
+              },
+              "sourceBodyHeight": 252,
+              "headAnchor": {
+                "x": 155,
+                "y": 337
+              },
+              "footAnchor": {
+                "x": 135,
+                "y": 588
+              },
+              "measurement": "Visually inspected approximate white-hair outline to boot sole in straight-legged hanging pose; raised arms, fists and the back-mounted sword are excluded from the body-height interval.",
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.753968253968254,
+              "safetyScale": 0.7945205479452054,
+              "scale": 0.753968253968254,
+              "normalizedBodyHeight": 190,
+              "renderScale": 1,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": false,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 38,
+                  "top": 7,
+                  "width": 187,
+                  "height": 235,
+                  "pixels": 26576
+                },
+                "output": {
+                  "left": 58,
+                  "top": 64,
+                  "width": 141,
+                  "height": 177
+                },
+                "sourceFrameRgbaSha256": "044ba56147e80bbe061a674cc8f51171f86c7e6990f546f20d1303cf9eb87fea"
+              },
+              {
+                "source": {
+                  "left": 334,
+                  "top": 7,
+                  "width": 187,
+                  "height": 239,
+                  "pixels": 27390
+                },
+                "output": {
+                  "left": 58,
+                  "top": 64,
+                  "width": 141,
+                  "height": 180
+                },
+                "sourceFrameRgbaSha256": "99df9efdf2e6d9a1490ee6d3cfa339676171a0be42fd80fec5fc951d83d387ec"
+              },
+              {
+                "source": {
+                  "left": 604,
+                  "top": 39,
+                  "width": 216,
+                  "height": 174,
+                  "pixels": 25229
+                },
+                "output": {
+                  "left": 47,
+                  "top": 88,
+                  "width": 163,
+                  "height": 131
+                },
+                "sourceFrameRgbaSha256": "33d6e64a4cea5097e33a8b0809bbd0f84d2656f6558c4ecf6247270df2a91014"
+              },
+              {
+                "source": {
+                  "left": 865,
+                  "top": 36,
+                  "width": 241,
+                  "height": 174,
+                  "pixels": 24884
+                },
+                "output": {
+                  "left": 37,
+                  "top": 86,
+                  "width": 182,
+                  "height": 131
+                },
+                "sourceFrameRgbaSha256": "8460644f72232fb6cf48455ba089848650b736533585112713ecf406c4087c98"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "044ba56147e80bbe061a674cc8f51171f86c7e6990f546f20d1303cf9eb87fea",
+              "99df9efdf2e6d9a1490ee6d3cfa339676171a0be42fd80fec5fc951d83d387ec",
+              "33d6e64a4cea5097e33a8b0809bbd0f84d2656f6558c4ecf6247270df2a91014",
+              "8460644f72232fb6cf48455ba089848650b736533585112713ecf406c4087c98"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "ledgeClimb"
+            }
+          },
+          {
+            "state": "ledgeDrop",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+            "sourceImageSha256": "639c1205fbd1cc4104943377016681b768432a2a1d342b7c2c3f7f585a034621",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 836,
+              "bottom": 1123
+            },
+            "scale": 0.753968253968254,
+            "renderScale": 1,
+            "statureCalibration": {
+              "state": "ledgeHang",
+              "row": 1,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 53,
+                "y": 337,
+                "width": 154,
+                "height": 252
+              },
+              "sourceBodyHeight": 252,
+              "headAnchor": {
+                "x": 155,
+                "y": 337
+              },
+              "footAnchor": {
+                "x": 135,
+                "y": 588
+              },
+              "measurement": "Visually inspected approximate white-hair outline to boot sole in straight-legged hanging pose; raised arms, fists and the back-mounted sword are excluded from the body-height interval.",
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.753968253968254,
+              "safetyScale": 0.7945205479452054,
+              "scale": 0.753968253968254,
+              "normalizedBodyHeight": 190,
+              "renderScale": 1,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": false,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 50,
+                  "top": 7,
+                  "width": 171,
+                  "height": 276,
+                  "pixels": 27263
+                },
+                "output": {
+                  "left": 64,
+                  "top": 36,
+                  "width": 129,
+                  "height": 208
+                },
+                "sourceFrameRgbaSha256": "84dee3fe6464a19f0c101a1e2348e799a8f55961068df14a4a6144588c84ab52"
+              },
+              {
+                "source": {
+                  "left": 328,
+                  "top": 5,
+                  "width": 223,
+                  "height": 270,
+                  "pixels": 28621
+                },
+                "output": {
+                  "left": 44,
+                  "top": 34,
+                  "width": 168,
+                  "height": 204
+                },
+                "sourceFrameRgbaSha256": "ecee4e09be70cec6aab6200390ad4ee120fd3556c97c73c3a5100433a5f0b7be"
+              },
+              {
+                "source": {
+                  "left": 601,
+                  "top": 7,
+                  "width": 237,
+                  "height": 258,
+                  "pixels": 29191
+                },
+                "output": {
+                  "left": 39,
+                  "top": 36,
+                  "width": 179,
+                  "height": 195
+                },
+                "sourceFrameRgbaSha256": "3e3e3e7615493641cd0f73eaf5171f2c2a038c4250a75e40fea5a44c7f87ac21"
+              },
+              {
+                "source": {
+                  "left": 875,
+                  "top": 49,
+                  "width": 233,
+                  "height": 229,
+                  "pixels": 28121
+                },
+                "output": {
+                  "left": 40,
+                  "top": 68,
+                  "width": 176,
+                  "height": 173
+                },
+                "sourceFrameRgbaSha256": "919e2def1189557decaec817a0259fdad3e18ce3d272f26c1efa534dd0218772"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "84dee3fe6464a19f0c101a1e2348e799a8f55961068df14a4a6144588c84ab52",
+              "ecee4e09be70cec6aab6200390ad4ee120fd3556c97c73c3a5100433a5f0b7be",
+              "3e3e3e7615493641cd0f73eaf5171f2c2a038c4250a75e40fea5a44c7f87ac21",
+              "919e2def1189557decaec817a0259fdad3e18ce3d272f26c1efa534dd0218772"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "ledgeDrop"
+            }
+          },
+          {
+            "state": "ledgeJump",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+            "sourceImageSha256": "639c1205fbd1cc4104943377016681b768432a2a1d342b7c2c3f7f585a034621",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 1111,
+              "bottom": 1402
+            },
+            "scale": 0.753968253968254,
+            "renderScale": 1,
+            "statureCalibration": {
+              "state": "ledgeHang",
+              "row": 1,
+              "frame": 0,
+              "sourceRoi": {
+                "x": 53,
+                "y": 337,
+                "width": 154,
+                "height": 252
+              },
+              "sourceBodyHeight": 252,
+              "headAnchor": {
+                "x": 155,
+                "y": 337
+              },
+              "footAnchor": {
+                "x": 135,
+                "y": 588
+              },
+              "measurement": "Visually inspected approximate white-hair outline to boot sole in straight-legged hanging pose; raised arms, fists and the back-mounted sword are excluded from the body-height interval.",
+              "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+              "targetBodyHeight": 190,
+              "requestedScale": 0.753968253968254,
+              "safetyScale": 0.7945205479452054,
+              "scale": 0.753968253968254,
+              "normalizedBodyHeight": 190,
+              "renderScale": 1,
+              "effectiveBodyHeight": 190,
+              "safetyLimited": false,
+              "scope": "One common source-wide nearest-neighbor pixel scale and one common source-wide render factor. All selected poses from this source share both; no per-row or per-pose stature fitting."
+            },
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 48,
+                  "top": 15,
+                  "width": 176,
+                  "height": 246,
+                  "pixels": 25694
+                },
+                "output": {
+                  "left": 62,
+                  "top": 51,
+                  "width": 133,
+                  "height": 185
+                },
+                "sourceFrameRgbaSha256": "87f9a38798bfec4e910926822c00f4e0109c59b2e7387e97db30ef162071f9ca"
+              },
+              {
+                "source": {
+                  "left": 333,
+                  "top": 15,
+                  "width": 195,
+                  "height": 229,
+                  "pixels": 27032
+                },
+                "output": {
+                  "left": 55,
+                  "top": 51,
+                  "width": 147,
+                  "height": 173
+                },
+                "sourceFrameRgbaSha256": "b9ea7085047d455d46e48945bc898e6296d600345d93694c957bef1022f82316"
+              },
+              {
+                "source": {
+                  "left": 602,
+                  "top": 4,
+                  "width": 236,
+                  "height": 265,
+                  "pixels": 27962
+                },
+                "output": {
+                  "left": 39,
+                  "top": 43,
+                  "width": 178,
+                  "height": 200
+                },
+                "sourceFrameRgbaSha256": "a7ea6df84528887dce5d1f8e246c5f6f1ff1d35f51ba024058c375d239b764d5"
+              },
+              {
+                "source": {
+                  "left": 872,
+                  "top": 32,
+                  "width": 245,
+                  "height": 239,
+                  "pixels": 30404
+                },
+                "output": {
+                  "left": 36,
+                  "top": 64,
+                  "width": 185,
+                  "height": 180
+                },
+                "sourceFrameRgbaSha256": "f260c38fb6493d80142ac6f0593f7fcd62858ff519446a7d1cf8e9ca0615be3c"
+              }
+            ],
+            "nativeFrameRgbaSha256": [
+              "87f9a38798bfec4e910926822c00f4e0109c59b2e7387e97db30ef162071f9ca",
+              "b9ea7085047d455d46e48945bc898e6296d600345d93694c957bef1022f82316",
+              "a7ea6df84528887dce5d1f8e246c5f6f1ff1d35f51ba024058c375d239b764d5",
+              "f260c38fb6493d80142ac6f0593f7fcd62858ff519446a7d1cf8e9ca0615be3c"
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "ledgeJump"
+            }
+          }
+        ],
+        "emptyRows": [
+          5,
+          6,
+          7
+        ],
+        "contactAnchorMeasurements": {
+          "ledgeCatch": [
+            {
+              "frame": 0,
+              "x": 202,
+              "y": 42,
+              "normalizedX": 0.7890625,
+              "normalizedY": 0.1640625,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 71,
+                  "y": 137,
+                  "normalizedX": 0.27734375,
+                  "normalizedY": 0.53515625,
+                  "contact": false
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 194,
+                "y": 56,
+                "normalizedX": 0.7578125,
+                "normalizedY": 0.21875,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 1,
+              "x": 160,
+              "y": 42,
+              "normalizedX": 0.625,
+              "normalizedY": 0.1640625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 202,
+                  "y": 124,
+                  "normalizedX": 0.7890625,
+                  "normalizedY": 0.484375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 159,
+                "y": 55,
+                "normalizedX": 0.62109375,
+                "normalizedY": 0.21484375,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 2,
+              "x": 107,
+              "y": 38,
+              "normalizedX": 0.41796875,
+              "normalizedY": 0.1484375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 179,
+                  "y": 38,
+                  "normalizedX": 0.69921875,
+                  "normalizedY": 0.1484375,
+                  "contact": true
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 108,
+                "y": 54,
+                "normalizedX": 0.421875,
+                "normalizedY": 0.2109375,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 3,
+              "x": 97,
+              "y": 42,
+              "normalizedX": 0.37890625,
+              "normalizedY": 0.1640625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 163,
+                  "y": 42,
+                  "normalizedX": 0.63671875,
+                  "normalizedY": 0.1640625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 100,
+                "y": 57,
+                "normalizedX": 0.390625,
+                "normalizedY": 0.22265625,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            }
+          ],
+          "ledgeHang": [
+            {
+              "frame": 0,
+              "x": 111,
+              "y": 34,
+              "normalizedX": 0.43359375,
+              "normalizedY": 0.1328125,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 170,
+                  "y": 32,
+                  "normalizedX": 0.6640625,
+                  "normalizedY": 0.125,
+                  "contact": true
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 111,
+                "y": 49,
+                "normalizedX": 0.43359375,
+                "normalizedY": 0.19140625,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 1,
+              "x": 128,
+              "y": 36,
+              "normalizedX": 0.5,
+              "normalizedY": 0.140625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 169,
+                  "y": 115,
+                  "normalizedX": 0.66015625,
+                  "normalizedY": 0.44921875,
+                  "contact": false
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 128,
+                "y": 49,
+                "normalizedX": 0.5,
+                "normalizedY": 0.19140625,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 2,
+              "x": 90,
+              "y": 34,
+              "normalizedX": 0.3515625,
+              "normalizedY": 0.1328125,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 164,
+                  "y": 35,
+                  "normalizedX": 0.640625,
+                  "normalizedY": 0.13671875,
+                  "contact": true
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 91,
+                "y": 51,
+                "normalizedX": 0.35546875,
+                "normalizedY": 0.19921875,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 3,
+              "x": 97,
+              "y": 42,
+              "normalizedX": 0.37890625,
+              "normalizedY": 0.1640625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 167,
+                  "y": 43,
+                  "normalizedX": 0.65234375,
+                  "normalizedY": 0.16796875,
+                  "contact": true
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 99,
+                "y": 55,
+                "normalizedX": 0.38671875,
+                "normalizedY": 0.21484375,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            }
+          ],
+          "ledgeClimb": [
+            {
+              "frame": 0,
+              "x": 100,
+              "y": 76,
+              "normalizedX": 0.390625,
+              "normalizedY": 0.296875,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 168,
+                  "y": 76,
+                  "normalizedX": 0.65625,
+                  "normalizedY": 0.296875,
+                  "contact": true
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 103,
+                "y": 91,
+                "normalizedX": 0.40234375,
+                "normalizedY": 0.35546875,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 1,
+              "x": 169,
+              "y": 75,
+              "normalizedX": 0.66015625,
+              "normalizedY": 0.29296875,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 121,
+                  "y": 155,
+                  "normalizedX": 0.47265625,
+                  "normalizedY": 0.60546875,
+                  "contact": false
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 167,
+                "y": 90,
+                "normalizedX": 0.65234375,
+                "normalizedY": 0.3515625,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 2,
+              "x": 72,
+              "y": 204,
+              "normalizedX": 0.28125,
+              "normalizedY": 0.796875,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 72,
+                "y": 198,
+                "normalizedX": 0.28125,
+                "normalizedY": 0.7734375,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 3,
+              "x": 106,
+              "y": 207,
+              "normalizedX": 0.4140625,
+              "normalizedY": 0.80859375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 191,
+                  "y": 206,
+                  "normalizedX": 0.74609375,
+                  "normalizedY": 0.8046875,
+                  "contact": true
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 107,
+                "y": 200,
+                "normalizedX": 0.41796875,
+                "normalizedY": 0.78125,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            }
+          ],
+          "ledgeDrop": [
+            {
+              "frame": 0,
+              "x": 103,
+              "y": 49,
+              "normalizedX": 0.40234375,
+              "normalizedY": 0.19140625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 167,
+                  "y": 50,
+                  "normalizedX": 0.65234375,
+                  "normalizedY": 0.1953125,
+                  "contact": true
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 105,
+                "y": 62,
+                "normalizedX": 0.41015625,
+                "normalizedY": 0.2421875,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 1,
+              "x": 82,
+              "y": 45,
+              "normalizedX": 0.3203125,
+              "normalizedY": 0.17578125,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 193,
+                  "y": 95,
+                  "normalizedX": 0.75390625,
+                  "normalizedY": 0.37109375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 85,
+                "y": 59,
+                "normalizedX": 0.33203125,
+                "normalizedY": 0.23046875,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 2,
+              "x": 82,
+              "y": 45,
+              "normalizedX": 0.3203125,
+              "normalizedY": 0.17578125,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 87,
+                  "y": 56,
+                  "normalizedX": 0.33984375,
+                  "normalizedY": 0.21875,
+                  "contact": false
+                },
+                {
+                  "x": 201,
+                  "y": 70,
+                  "normalizedX": 0.78515625,
+                  "normalizedY": 0.2734375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Former edge reference after actual release, contact false; visible free glove locations listed separately."
+            },
+            {
+              "frame": 3,
+              "x": 82,
+              "y": 45,
+              "normalizedX": 0.3203125,
+              "normalizedY": 0.17578125,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 54,
+                  "y": 125,
+                  "normalizedX": 0.2109375,
+                  "normalizedY": 0.48828125,
+                  "contact": false
+                },
+                {
+                  "x": 204,
+                  "y": 141,
+                  "normalizedX": 0.796875,
+                  "normalizedY": 0.55078125,
+                  "contact": false
+                }
+              ],
+              "measurement": "Former edge reference after actual release, contact false; visible free glove locations listed separately."
+            }
+          ],
+          "ledgeJump": [
+            {
+              "frame": 0,
+              "x": 103,
+              "y": 64,
+              "normalizedX": 0.40234375,
+              "normalizedY": 0.25,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 168,
+                  "y": 65,
+                  "normalizedX": 0.65625,
+                  "normalizedY": 0.25390625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 106,
+                "y": 76,
+                "normalizedX": 0.4140625,
+                "normalizedY": 0.296875,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 1,
+              "x": 97,
+              "y": 65,
+              "normalizedX": 0.37890625,
+              "normalizedY": 0.25390625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 164,
+                  "y": 65,
+                  "normalizedX": 0.640625,
+                  "normalizedY": 0.25390625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Approximate native black-glove palm center manually inspected in normalized pixels. Project edge anchor, not an official game-frame measurement.",
+              "wrist": {
+                "x": 100,
+                "y": 78,
+                "normalizedX": 0.390625,
+                "normalizedY": 0.3046875,
+                "measurement": "Actual adjoining silver/black glove cuff at the red-coat wrist, inspected independently of sword hardware."
+              }
+            },
+            {
+              "frame": 2,
+              "x": 97,
+              "y": 65,
+              "normalizedX": 0.37890625,
+              "normalizedY": 0.25390625,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 121,
+                  "y": 57,
+                  "normalizedX": 0.47265625,
+                  "normalizedY": 0.22265625,
+                  "contact": false
+                },
+                {
+                  "x": 203,
+                  "y": 117,
+                  "normalizedX": 0.79296875,
+                  "normalizedY": 0.45703125,
+                  "contact": false
+                }
+              ],
+              "measurement": "Former edge reference after actual release, contact false; visible free glove locations listed separately."
+            },
+            {
+              "frame": 3,
+              "x": 97,
+              "y": 65,
+              "normalizedX": 0.37890625,
+              "normalizedY": 0.25390625,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 70,
+                  "y": 126,
+                  "normalizedX": 0.2734375,
+                  "normalizedY": 0.4921875,
+                  "contact": false
+                },
+                {
+                  "x": 205,
+                  "y": 88,
+                  "normalizedX": 0.80078125,
+                  "normalizedY": 0.34375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Former edge reference after actual release, contact false; visible free glove locations listed separately."
+            }
+          ]
+        }
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "source1to1Verified": false,
+        "networkVerified": false,
+        "notes": "Shared190 effective standing stature through one measured scale and render factor per source. All84 final native poses visually inspected. Whole Blood-Scythe/VFX retained without per-row size fit. Twelve primary glove palms and twelve adjoining wrists manually inspected in normalized pixels; Catch0 is pre-contact."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-20",
+        "nativeGeneratedArtwork": true,
+        "sourceGameAsset": false,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-2d48a884-4493-41c3-bec1-87071a4c163a.png",
+        "promptFile": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/native-prompts.json",
+        "prompt": "Create a native pixel-art sprite animation atlas for Ragna the Bloodedge, specifically BlazBlue Continuum Shift Extend (2011). Use the attached local reference for his costume, hair and proportions ONLY; that old reference omitted his weapon, so draw the actual Blood-Scythe in this new artwork. Adult lean male, spiky WHITE hair, heterochromatic red/green eyes when both eyes show, long vivid RED coat with black straps and silver buckles, black shirt and loose black pants, red/black boots, black gloves with silver wrist guards, Azure Grimoire associated with his RIGHT arm. Blood-Scythe is the huge solid GRAY mechanical block-shaped sword with RED grip and dark fittings, not a glowing blue katana. Keep the same man, outfit and weapon in all cells. No Black Beast transformation, no Kaioken, no Sonic, no guns. RIGHT eye red, LEFT eye green; the Azure Grimoire is the RIGHT arm. In these adapted body poses carry Blood-Scythe in the LEFT hand or in BOTH hands where needed, with the right gauntlet contributing to the cast; do not reverse the costume asymmetry. Facing RIGHT in three-quarter side view. Crisp colored pixel art with dark outline, readable anatomy, transparent RGBA background.\nExactly FOUR columns. Each row is exactly one animation state, with FOUR genuinely different hand-drawn anatomical poses ordered left to right. Draw changed arms, leg placement, torso angle and the blade position; do not duplicate a pose with only glow changes, digital rotation, mirroring or resizing. Consistent source scale across the ENTIRE atlas: standing body head-to-sole stays constant, natural crouches/lunges are shorter. Never enlarge a crouch to standing height. Fully show hair, fingers, coat tails, boots and the whole weapon in every cell. Keep the weapon compactly canted/foreshortened so the total silhouette fits within about 1.15 standing body heights in width and 1.20 in height; preserve a real large Blood-Scythe rather than making it a tiny knife. Leave generous fully transparent gutters and outer margins. No cell dividers, words, labels, numbers, text, painted ground or environment. No unrelated debris. Production target cells are256x256 at a comparable standing height190; do not crop any blade or glove.\nDraw EXACTLY5 active rows by4 columns =20 native poses on transparent background, ideally1024x1280. Do not draw extra states or reserve false poses. Blood-Scythe is visibly secured diagonally close along his back, leaving BOTH actual gloved hands free; never place an edge or a handle in a supposed gripping hand. Raised fingers and black/silver glove cuffs must be fully drawn, with generous transparent clearance above them. No bars, posts, ledges, platforms, gray stubs, ropes, painted floor, motion debris or magic. Infer a common invisible physical edge under his hands, but DO NOT PAINT IT. His body must actually hang below the supporting hand(s), fingers visibly hooked or palms pressing. Arm anatomy and changing knees matter. Draw every glove distinctly from sword hardware.\nROW0 ledgeCatch: pose0 is a genuine reaching PRE-CONTACT moment with one OPEN forward/upward palm, body falling below it; pose1 securely hooked high glove with shoulder loaded and free hand reaching; pose2 two closed high grips and knees tucked; pose3 two grips supporting his dangling coat and lowered boots. Each native pose must show a different arm/leg configuration.\nROW1 ledgeHang: pose0 two high glove grips with legs hanging almost straight; pose1 ONE clearly hooked raised support glove and the other free hand near chest while torso swings; pose2 two grips with one knee raised; pose3 two grips with both bent knees shifted. Keep native body scale constant and allow suspended straight-leg pose0 as head-to-boot calibration excluding raised arms.\nROW2 ledgeClimb: pose0 two loaded grips with tucked knees and shoulders pulling upward; pose1 one genuinely HIGH support glove and a bent elbow pulling body up, free hand pressing nearer chest; pose2 torso above former edge with one broad gloved PALM pressing at about hip level and knee coming over; pose3 low crouch above former edge with two broad actual palms pressing downward. Show whole black/silver gloves and adjoining wrist cuffs, no sword hilt used as hand, no floor.\nROW3 ledgeDrop: pose0 settled two-hand high support; pose1 only one glove still hooked while other open palm releases; pose2 BOTH hands clearly open and released, body falling; pose3 free falling body with arms lower and legs changed. Released poses have no contact at all.\nROW4 ledgeJump: pose0 two-hand tucked hang; pose1 bent-elbow push with bent knees; pose2 BOTH hands released while body rises, one hand open overhead and front knee lifting; pose3 clear free airborne arc with arms and coat moving. No spinball, no new attack, no fake platform.\nExactly20 actual distinct drawings, 4 per named state. Complete every glove and all20 bodies.",
+        "promptSha256": "48e34f1116c8bddd7998962a3f68d874b7a2c0bd1cdc4510e0be30dec178a9cb",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [],
+        "conditioning": "Native image_gen drawing only. Sharp performs alpha-aware segmentation, extraction, one common nearest-neighbor source scale, transparent packing and diagnostic crops. No procedural body drawing, mirrored/rotated substitute or copied fake pose."
+      }
+    }
+  ]
+}

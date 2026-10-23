@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/sequences_fighter",
+  "readOnlyImages": true,
+  "editedPixels": false,
+  "source1to1Verified": false,
+  "sourceSegmentationNote": "Shared automatic segmentAtlas fails on the complete but nonuniform seven-row combat-b source because the lower source has extra blank canvas. Intro measured directly by a local pixel ROI; no native missing pose is inferred from that heuristic failure.",
+  "measurements": [
+    {
+      "name": "arthur-motion-a",
+      "state": "idle",
+      "row": 0,
+      "col": 0,
+      "roi": {
+        "left": 81,
+        "top": 8,
+        "width": 111,
+        "height": 194
+      },
+      "path": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-motion-a.native.png",
+      "sha256": "5e183dcb6f338b06adfb1852a35cfe1625fdb0958344cc2f971e6816d714c5f5",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "alphaThreshold": 24,
+      "bodyBounds": {
+        "top": 12,
+        "bottom": 197,
+        "left": 81,
+        "right": 191,
+        "height": 186,
+        "pixels": 13187
+      },
+      "bodyHeight": 186,
+      "scaleTo190": 1.021505376344086,
+      "notes": "First/selected upright crown-to-sole vertical span; lateral sword and raised arm do not define the extrema. Visual adaptation, not certified source anatomy."
+    },
+    {
+      "name": "arthur-motion-b",
+      "state": "taunt1",
+      "row": 6,
+      "col": 0,
+      "roi": {
+        "left": 69,
+        "top": 1183,
+        "width": 166,
+        "height": 193
+      },
+      "path": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-motion-b.native.png",
+      "sha256": "82c8bd0e2c4282cf11292c0728ed8cecb6fb9d13411b2e4ffb97923c7693e2e6",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "alphaThreshold": 24,
+      "bodyBounds": {
+        "top": 1183,
+        "bottom": 1375,
+        "left": 71,
+        "right": 232,
+        "height": 193,
+        "pixels": 16445
+      },
+      "bodyHeight": 193,
+      "scaleTo190": 0.9844559585492227,
+      "notes": "First/selected upright crown-to-sole vertical span; lateral sword and raised arm do not define the extrema. Visual adaptation, not certified source anatomy."
+    },
+    {
+      "name": "arthur-defense",
+      "state": "shieldExit",
+      "row": 5,
+      "col": 3,
+      "roi": {
+        "left": 815,
+        "top": 950,
+        "width": 112,
+        "height": 190
+      },
+      "path": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-defense.native.png",
+      "sha256": "75f06043252eb951cc150d47c79cceb6b91d8d38a85efbed2fdf6de3e898d204",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "alphaThreshold": 24,
+      "bodyBounds": {
+        "top": 955,
+        "bottom": 1136,
+        "left": 815,
+        "right": 926,
+        "height": 182,
+        "pixels": 12823
+      },
+      "bodyHeight": 182,
+      "scaleTo190": 1.043956043956044,
+      "notes": "First/selected upright crown-to-sole vertical span; lateral sword and raised arm do not define the extrema. Visual adaptation, not certified source anatomy."
+    },
+    {
+      "name": "arthur-combat-a",
+      "state": "chargeRecovery",
+      "row": 7,
+      "col": 3,
+      "roi": {
+        "left": 816,
+        "top": 1325,
+        "width": 138,
+        "height": 200
+      },
+      "path": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-combat-a.native.png",
+      "sha256": "375b37b1c206e02cbfb1c66cb2fef1d19d3a8a26ddf9a67959ec7096a658a20e",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "alphaThreshold": 24,
+      "bodyBounds": {
+        "top": 1331,
+        "bottom": 1518,
+        "left": 816,
+        "right": 952,
+        "height": 188,
+        "pixels": 14038
+      },
+      "bodyHeight": 188,
+      "scaleTo190": 1.0106382978723405,
+      "notes": "First/selected upright crown-to-sole vertical span; lateral sword and raised arm do not define the extrema. Visual adaptation, not certified source anatomy."
+    },
+    {
+      "name": "arthur-combat-b",
+      "state": "intro",
+      "row": 4,
+      "col": 0,
+      "roi": {
+        "left": 40,
+        "top": 830,
+        "width": 165,
+        "height": 215
+      },
+      "path": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-combat-b.native.png",
+      "sha256": "cba8c6642d4887ffbfa1443af9071ea1c590e7d76ed89ce8c777e80c9767dab0",
+      "sourceDimensions": [
+        953,
+        1651
+      ],
+      "alphaThreshold": 24,
+      "bodyBounds": {
+        "top": 835,
+        "bottom": 1037,
+        "left": 55,
+        "right": 183,
+        "height": 203,
+        "pixels": 16183
+      },
+      "bodyHeight": 203,
+      "scaleTo190": 0.9359605911330049,
+      "notes": "First/selected upright crown-to-sole vertical span; lateral sword and raised arm do not define the extrema. Visual adaptation, not certified source anatomy."
+    },
+    {
+      "name": "arthur-ledge",
+      "state": "ledgeHang",
+      "row": 1,
+      "col": 0,
+      "headRoi": {
+        "left": 140,
+        "top": 365,
+        "width": 40,
+        "height": 70
+      },
+      "feetRoi": {
+        "left": 70,
+        "top": 545,
+        "width": 100,
+        "height": 75
+      },
+      "bentPose": true,
+      "path": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-ledge.native.png",
+      "sha256": "d8994dc3093321074c698e61baf5e87f2728ec6503a2e3f53b02cd6e5a967657",
+      "sourceDimensions": [
+        1122,
+        1402
+      ],
+      "alphaThreshold": 24,
+      "headBounds": {
+        "top": 378,
+        "bottom": 434,
+        "left": 140,
+        "right": 179,
+        "height": 57,
+        "pixels": 2150
+      },
+      "feetBounds": {
+        "top": 545,
+        "bottom": 609,
+        "left": 70,
+        "right": 169,
+        "height": 65,
+        "pixels": 3323
+      },
+      "projectedBodyHeight": 232,
+      "scaleTo190": null,
+      "notes": "Head/sole projection only, raised arms excluded. Knees and legs are flexed: do not treat this projection as an upright body-density calibration. Bridge scale against a standing source/head/trunk measurement and retain natural shortening.",
+      "anatomicalPathEstimate": {
+        "landmarks": [
+          {
+            "joint": "crown/head-top",
+            "x": 158,
+            "y": 378
+          },
+          {
+            "joint": "pelvis/hip-center-estimate-under-tunic",
+            "x": 153,
+            "y": 508
+          },
+          {
+            "joint": "longer-left-knee-estimate",
+            "x": 126,
+            "y": 550
+          },
+          {
+            "joint": "longer-left-ankle",
+            "x": 104,
+            "y": 587
+          },
+          {
+            "joint": "longer-left-sole-tip",
+            "x": 92,
+            "y": 609
+          }
+        ],
+        "segments": [
+          {
+            "from": "crown/head-top",
+            "to": "pelvis/hip-center-estimate-under-tunic",
+            "length": 130.09611831257686
+          },
+          {
+            "from": "pelvis/hip-center-estimate-under-tunic",
+            "to": "longer-left-knee-estimate",
+            "length": 49.92995093127972
+          },
+          {
+            "from": "longer-left-knee-estimate",
+            "to": "longer-left-ankle",
+            "length": 43.046486500061775
+          },
+          {
+            "from": "longer-left-ankle",
+            "to": "longer-left-sole-tip",
+            "length": 25.059928172283335
+          }
+        ],
+        "estimatedStandingBodyHeight": 248.1324839162017,
+        "uncertaintyPixels": 10,
+        "estimatedSourceWideScaleTo190": 0.7657199774946276,
+        "projectedBodyHeightAfterScale": 177.6470347787536,
+        "usesRaisedHands": false,
+        "method": "Independent visual crown→pelvis→knee→ankle→sole chain along the longer hanging leg. Hip/knee under clothing are approximate anatomical landmarks, not certified bone positions. Preserve naturally flexed projection; no row or pose enlargement."
+      }
+    },
+    {
+      "name": "arthur-corrective-states",
+      "state": "uprightCalibration",
+      "row": 0,
+      "col": 0,
+      "roi": {
+        "left": 30,
+        "top": 0,
+        "width": 325,
+        "height": 430
+      },
+      "path": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-corrective-states.native.png",
+      "sha256": "32ac17c95897ce9e84514b9611a52d7d817b054ddac66ead9f1a9534a6c62e26",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "alphaThreshold": 24,
+      "bodyBounds": {
+        "top": 6,
+        "bottom": 419,
+        "left": 77,
+        "right": 337,
+        "height": 414,
+        "pixels": 66390
+      },
+      "bodyHeight": 414,
+      "scaleTo190": 0.45893719806763283,
+      "notes": "First/selected upright crown-to-sole vertical span; lateral sword and raised arm do not define the extrema. Visual adaptation, not certified source anatomy."
+    }
+  ]
+}

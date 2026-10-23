@@ -4,6 +4,8 @@ import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
 import { ParticleSystem, drawUniverseBackground, preloadSpriteSheetSrcs } from '../game/renderer';
 import { getRecentUniverseLevelProfile } from '../game/recentUniverseLevels';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout } from '../game/spriteAssets';
+import { resolveCharacterAnimationAsset } from '../game/combat/characterAnimationCatalog';
+import { preloadCharacterSuperAssets } from '../game/combat/characterSuperVisuals';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import sound from '../game/soundEngine';
@@ -28,6 +30,10 @@ const emptySnapshot = {
   phase: 'idle',
   timer: 99,
   countdown: 3,
+  roundNumber: 1,
+  roundsToWin: 2,
+  roundWins: { player: 0, cpu: 0 },
+  presentation: null,
   announcement: '',
   combo: 0,
   maxCombo: 0,
@@ -491,10 +497,12 @@ export default function FighterMode({
     preloadSpriteSheetSrcs([
       ...playerHeroes.map(hero => getHeroSpriteSheetSrc(hero, 'melee')),
       ...opponentHeroes.map(hero => getHeroSpriteSheetSrc(hero, 'melee')),
+      ...[...playerHeroes, ...opponentHeroes].map(hero => resolveCharacterAnimationAsset(hero)?.sheet).filter(Boolean),
       ...cosmeticSpriteSheets
     ]);
 
     const particles = new ParticleSystem();
+    preloadCharacterSuperAssets([...playerHeroes, ...opponentHeroes]);
     const engine = new EngineFighter(
       canvas.width,
       canvas.height,
@@ -526,7 +534,8 @@ export default function FighterMode({
           player: activeFieldSuper,
           opponent: opponentControl === 'p2' ? activeFieldSuper : null
         },
-        cosmetics: fighterCosmetics
+        cosmetics: fighterCosmetics,
+        roundsToWin: customConfig?.roundsToWin || 2
       }
     );
     engineRef.current = engine;
@@ -536,6 +545,8 @@ export default function FighterMode({
     const simulationClock = createFixedStepClock();
     simulationClockRef.current = simulationClock;
     let snapshotClock = 0;
+    let visualElapsedSeconds = 0;
+    const reducedMotion = Boolean(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
     const loop = now => {
       const steps = simulationClock.advance(now, { paused: sessionPausedRef.current || document.hidden });
       const dt = steps * COMBAT_STEP_MS / 1000;
@@ -543,6 +554,7 @@ export default function FighterMode({
         animationId = requestAnimationFrame(loop);
         return;
       }
+      visualElapsedSeconds += dt;
       engine.setSideInput('player', inputRef.current.player);
       engine.setSideInput('cpu', inputRef.current.cpu);
       for (let step = 0; step < steps; step += 1) {
@@ -552,8 +564,12 @@ export default function FighterMode({
       const ctx = canvas.getContext('2d');
       if (ctx) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawUniverseBackground(ctx, arenaUniverse, canvas.width, canvas.height, 'Combat');
-        engine.draw(ctx, now / 16.67);
+        drawUniverseBackground(ctx, arenaUniverse, canvas.width, canvas.height, 'Combat', {
+          stage: fighterMusicStage,
+          elapsedSeconds: visualElapsedSeconds,
+          reducedMotion
+        });
+        engine.draw(ctx, visualElapsedSeconds * 60);
         particles.draw(ctx);
       }
       snapshotClock += dt;
@@ -662,6 +678,7 @@ export default function FighterMode({
       window.removeEventListener('blur', clearInputs);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       sound.stopBgm();
+      engine.dispose();
       engineRef.current = null;
       inputRef.current = { player: {}, cpu: {} };
     };
@@ -672,7 +689,9 @@ export default function FighterMode({
     arenaUniverse,
     battleMusicStage,
     configuredDifficulty,
+    customConfig?.roundsToWin,
     fighterCosmetics,
+    fighterMusicStage,
     isCustomBattle,
     matchNonce,
     matchStarted,
@@ -743,6 +762,9 @@ export default function FighterMode({
 
   const playerSnapshot = snapshot.player || emptySnapshot.player;
   const cpuSnapshot = snapshot.cpu || emptySnapshot.cpu;
+  const phaseLabels = lang === 'fr'
+    ? { intro: 'ENTRÉES', countdown: 'PRÉPARATION', running: 'DUEL ACTIF', roundResult: 'RÉSULTAT DE MANCHE', fatality: 'FINALE', victory: 'VICTOIRE', defeat: 'DÉFAITE', outro: 'SORTIES' }
+    : { intro: 'ENTRANCES', countdown: 'READY', running: 'LIVE FIGHT', roundResult: 'ROUND RESULT', fatality: 'FINISHER', victory: 'VICTORY', defeat: 'DEFEAT', outro: 'EXITS' };
   const playerFieldState = snapshot.fieldSupers?.player || {
     charge: snapshot.fieldSuperCharge,
     used: snapshot.fieldSuperUsed,
@@ -935,17 +957,12 @@ export default function FighterMode({
         <div>
           <span>ARENE D IMPACT A.R.C.A. / {arenaUniverse}</span>
           <strong>{arenaLevelProfile?.combat?.name || (lang === 'fr' ? 'Duel de convergence' : 'Convergence Duel')}</strong>
+          <small>{lang === 'fr' ? 'MANCHE' : 'ROUND'} {snapshot.roundNumber || 1} · J1 {snapshot.roundWins?.player || 0} – {snapshot.roundWins?.cpu || 0} J2 · {snapshot.roundsToWin || 2} {lang === 'fr' ? 'GAGNANTES' : 'TO WIN'}</small>
         </div>
         <div>
           <b>{snapshot.phase === 'countdown' ? snapshot.countdown : snapshot.timer}s</b>
           <small>
-            {opponentControl === 'p2'
-              ? (lang === 'fr' ? 'P2 LOCAL' : 'LOCAL P2')
-              : snapshot.phase === 'countdown'
-                ? (lang === 'fr' ? 'ANCRAGE' : 'SYNC')
-              : snapshot.phase === 'running'
-                ? (lang === 'fr' ? 'DUEL ACTIF' : 'LIVE FIGHT')
-                : snapshot.phase.toUpperCase()}
+            {phaseLabels[snapshot.phase] || snapshot.phase.toUpperCase()}{opponentControl === 'p2' ? ' · P2 LOCAL' : ''}
           </small>
         </div>
         {!dedicatedSession && (
@@ -967,13 +984,20 @@ export default function FighterMode({
             aria-label={lang === 'fr' ? 'Arene de combat A.R.C.A. jouable' : 'Playable A.R.C.A. fighting arena'}
             data-fighter-phase={snapshot.phase}
             data-fighter-timer={snapshot.timer}
+            data-fighter-round={snapshot.roundNumber}
             data-player-active={playerSnapshot.activeIndex}
             data-opponent-active={cpuSnapshot.activeIndex}
           />
           <p className="gameplay-live-status" role="status" aria-live="polite">
             {lang === 'fr'
-              ? `Duel ${snapshot.phase}. ${snapshot.timer} secondes. ${playerSnapshot.fighters.filter(fighter => !fighter.ko).length} signatures joueur et ${cpuSnapshot.fighters.filter(fighter => !fighter.ko).length} signatures adverses encore actives.`
-              : `Fight ${snapshot.phase}. ${snapshot.timer} seconds. ${playerSnapshot.fighters.filter(fighter => !fighter.ko).length} player signatures and ${cpuSnapshot.fighters.filter(fighter => !fighter.ko).length} opponent signatures remain.`}
+              ? `Manche ${snapshot.roundNumber}. ${phaseLabels[snapshot.phase] || snapshot.phase}. Score ${snapshot.roundWins?.player || 0} à ${snapshot.roundWins?.cpu || 0}. ${snapshot.timer} secondes.`
+              : `Round ${snapshot.roundNumber}. ${phaseLabels[snapshot.phase] || snapshot.phase}. Score ${snapshot.roundWins?.player || 0} to ${snapshot.roundWins?.cpu || 0}. ${snapshot.timer} seconds.`}
+            {snapshot.presentation?.entries.map(entry => `${entry.fighterName} : ${entry.identity.name}. ${entry.identity.description}`).join(' ')}
+          </p>
+          <p style={{ color: '#8fa8ad', fontSize: 10, margin: '6px 10px' }}>
+            {lang === 'fr'
+              ? 'Chaque manche : PV et garde restaurés, jauge personnelle à 0, super terrain à 20 %, assist à 40 %.'
+              : 'Each round: full HP and guard, personal meter at 0, field super at 20%, assist at 40%.'}
           </p>
           {summary && (
             <div
@@ -1024,7 +1048,7 @@ export default function FighterMode({
               <span>{lang === 'fr' ? 'REMPLACANTS' : 'TAG ROSTER'}</span>
               <b>{playerSnapshot.tagCooldown > 0 ? `${playerSnapshot.tagCooldown.toFixed(1)}s` : 'READY'}</b>
             </div>
-            <Lineup lang={lang} heroes={playerHeroes} side="player" snapshot={playerSnapshot} onTag={index => triggerTag(index)} />
+            <Lineup lang={lang} heroes={playerHeroes} side="player" snapshot={playerSnapshot} interactive={snapshot.phase === 'running'} onTag={index => triggerTag(index)} />
           </section>
           <section>
             <div className="fighter-side-heading">
@@ -1036,7 +1060,7 @@ export default function FighterMode({
               heroes={opponentHeroes}
               side="cpu"
               snapshot={cpuSnapshot}
-              interactive={opponentControl === 'p2'}
+              interactive={opponentControl === 'p2' && snapshot.phase === 'running'}
               onTag={index => triggerTag(index, 'cpu')}
             />
           </section>

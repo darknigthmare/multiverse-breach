@@ -1,0 +1,441 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "seifer_ff8",
+      "heroId": "seifer_ff8",
+      "name": "Seifer Almasy",
+      "universe": "Final Fantasy VIII",
+      "sheet": "/sprites/generated/combat-character-corrections-wave2/seifer_ff8.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "9a68806007ea498a870a6ae0bbdb5c53f8e022df9cdee872006b144e27abee85",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/seifer-base-sources/seifer_ff8.png",
+      "sourceImageSha256": "4780d57186256e705d874af9e5642f82bd8ebe81ac6a64d7ccc104245e1c252a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-viii/seifer-ff8.png",
+      "referenceImage": "docs/combat-fidelity-wave2-2026-10-18/seifer-base-sources/seifer_ff8-previous-reference.png",
+      "referenceAssetSha256": "2463b68c100e894ce0bf15b271a91c252a6e7e1331b10ffb357cc3cf2fce8f7c",
+      "nativeIdentityReference": {
+        "archivedPath": "docs/combat-fidelity-wave2-2026-10-18/seifer-base-sources/seifer_ff8-corrected-identity-reference.png",
+        "sha256": "92a67376b169a37275c9d436c7e12f5b68bdca9628a9ac8a4418ad736f5afd7b",
+        "note": "Actual image_gen reference: the previously generated corrected white-coat Seifer atlas. The preceding black-coat bitmap is archived as a counterexample, not copied as a costume."
+      },
+      "sourceWork": "Final Fantasy VIII (1999), Seifer Almasy",
+      "sourceReference": "Seifer's long pale coat with red cross motifs and Hyperion gunblade correct the preceding local Squall-like black fur jacket. His basic attack is a one-handed Hyperion cut, not a generic punch.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "networkVerified": false,
+      "canon1to1Verified": false,
+      "canonicalVerified": false,
+      "operation": "native-imagegen-identity-correction",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "idle",
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/seifer-base-sources/seifer_ff8.png",
+            "sourceImageSha256": "4780d57186256e705d874af9e5642f82bd8ebe81ac6a64d7ccc104245e1c252a",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 352
+            },
+            "scale": 0.7891156462585034,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 47,
+                  "width": 240,
+                  "height": 286,
+                  "pixels": 33372
+                },
+                "output": {
+                  "left": 30,
+                  "top": 18,
+                  "width": 189,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 355,
+                  "top": 48,
+                  "width": 227,
+                  "height": 286,
+                  "pixels": 31356
+                },
+                "output": {
+                  "left": 37,
+                  "top": 18,
+                  "width": 179,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 676,
+                  "top": 40,
+                  "width": 250,
+                  "height": 293,
+                  "pixels": 35721
+                },
+                "output": {
+                  "left": 43,
+                  "top": 12,
+                  "width": 197,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 963,
+                  "top": 41,
+                  "width": 266,
+                  "height": 292,
+                  "pixels": 31054
+                },
+                "output": {
+                  "left": 22,
+                  "top": 13,
+                  "width": 210,
+                  "height": 230
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "run",
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/seifer-base-sources/seifer_ff8.png",
+            "sourceImageSha256": "4780d57186256e705d874af9e5642f82bd8ebe81ac6a64d7ccc104245e1c252a",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 351,
+              "bottom": 642
+            },
+            "scale": 0.6498599439775911,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 55,
+                  "top": 21,
+                  "width": 221,
+                  "height": 259,
+                  "pixels": 32647
+                },
+                "output": {
+                  "left": 62,
+                  "top": 74,
+                  "width": 144,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 348,
+                  "top": 19,
+                  "width": 267,
+                  "height": 263,
+                  "pixels": 31535
+                },
+                "output": {
+                  "left": 49,
+                  "top": 73,
+                  "width": 174,
+                  "height": 171
+                }
+              },
+              {
+                "source": {
+                  "left": 665,
+                  "top": 19,
+                  "width": 297,
+                  "height": 260,
+                  "pixels": 34496
+                },
+                "output": {
+                  "left": 51,
+                  "top": 73,
+                  "width": 193,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 962,
+                  "top": 33,
+                  "width": 258,
+                  "height": 246,
+                  "pixels": 29617
+                },
+                "output": {
+                  "left": 40,
+                  "top": 82,
+                  "width": 168,
+                  "height": 160
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/seifer-base-sources/seifer_ff8.png",
+            "sourceImageSha256": "4780d57186256e705d874af9e5642f82bd8ebe81ac6a64d7ccc104245e1c252a",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 639,
+              "bottom": 954
+            },
+            "scale": 0.4419047619047619,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 28,
+                  "top": 7,
+                  "width": 274,
+                  "height": 297,
+                  "pixels": 40566
+                },
+                "output": {
+                  "left": 71,
+                  "top": 113,
+                  "width": 121,
+                  "height": 131
+                }
+              },
+              {
+                "source": {
+                  "left": 319,
+                  "top": 64,
+                  "width": 408,
+                  "height": 240,
+                  "pixels": 34925
+                },
+                "output": {
+                  "left": 61,
+                  "top": 138,
+                  "width": 180,
+                  "height": 106
+                }
+              },
+              {
+                "source": {
+                  "left": 649,
+                  "top": 107,
+                  "width": 397,
+                  "height": 197,
+                  "pixels": 33738
+                },
+                "output": {
+                  "left": 68,
+                  "top": 157,
+                  "width": 175,
+                  "height": 87
+                }
+              },
+              {
+                "source": {
+                  "left": 1021,
+                  "top": 22,
+                  "width": 186,
+                  "height": 282,
+                  "pixels": 33328
+                },
+                "output": {
+                  "left": 94,
+                  "top": 119,
+                  "width": 82,
+                  "height": 125
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "hit",
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/seifer-base-sources/seifer_ff8.png",
+            "sourceImageSha256": "4780d57186256e705d874af9e5642f82bd8ebe81ac6a64d7ccc104245e1c252a",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 952,
+              "bottom": 1254
+            },
+            "scale": 0.7918088737201365,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 31,
+                  "top": 10,
+                  "width": 272,
+                  "height": 259,
+                  "pixels": 37173
+                },
+                "output": {
+                  "left": 28,
+                  "top": 38,
+                  "width": 215,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 379,
+                  "top": 49,
+                  "width": 182,
+                  "height": 220,
+                  "pixels": 27182
+                },
+                "output": {
+                  "left": 56,
+                  "top": 69,
+                  "width": 144,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 659,
+                  "top": 77,
+                  "width": 258,
+                  "height": 190,
+                  "pixels": 30137
+                },
+                "output": {
+                  "left": 29,
+                  "top": 91,
+                  "width": 204,
+                  "height": 150
+                }
+              },
+              {
+                "source": {
+                  "left": 981,
+                  "top": 13,
+                  "width": 222,
+                  "height": 257,
+                  "pixels": 30952
+                },
+                "output": {
+                  "left": 36,
+                  "top": 41,
+                  "width": 176,
+                  "height": 203
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ],
+        "sharedScalePerState": true
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4658b1e7b533413cf3c3d0c6b3b2e20feab322ee497b0392abf0791ea4c7438e",
+              "ce662e1fdef8af803f59c17829399b1784d80f6b7b8f9e23009ca8983f23b7f0",
+              "c81dc7164a0ba8bc8861375afeea5f486b6ed5c4564ad839ae4ef569a72a09be",
+              "a9c057e06521359900a74f0f9c53249494dcf7c3eff373cb1f833cbc73b99edd"
+            ]
+          },
+          {
+            "phase": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5d469c6da066450074dd761b66c49bc2254034cd8b7b71ad3717ed656e0495e6",
+              "469834e6048678aca5c8d3f195c7c929ed3d3dfa2b1f61a66d43c0adb85299d3",
+              "86e95bea2689bfc2ebd7d9ee10326b2a4477109b33c42edd47b1a6713b71d19b",
+              "9e7e6eb82cd5cea2f42bf87950d6160c280140f71fc4cbae9050fad928c02168"
+            ]
+          },
+          {
+            "phase": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b4b78c322ad917cf3dbff21f8d74e5cb7bf52f4f9360ab348b44ae564a0271c7",
+              "662b4aa918a6be8ade8165e8e5bb9712727f961cfe957f8ac4fb7445afff7b7c",
+              "e0cf563ef678e00fa6239251ca895b4e3bfa9d8e8e3e69821859d1aa382d81c1",
+              "7791ccc98c2f2004400e0680f9e547487865aa086998337b23c3d6d3a2c571e4"
+            ]
+          },
+          {
+            "phase": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e0012f87a804f8bca514b043cbc6a23b224b318f61cf00a7c68f382432524b8f",
+              "ae4aaad79f8b8005e159f7bdca5dd9ca761c27f469bfcc74e53696240a0d8773",
+              "f2c8813dd80b6de8d77943d357f9ed3a8d3ccecf8f6afa1be26205d53ffe1da9",
+              "fa5d315e4da182e31547fea80c832013e58b348b53efd0ca223ad843ac3e9721"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "whiteCoat": true,
+        "redCrossMotifs": true,
+        "hyperionWeapon": true,
+        "notes": "Corrected original FFVIII Seifer identity: long pale coat/red crosses, blonde hair, dark clothing and Hyperion. Ordinary run, one-handed blade attack and recoil frames replace the black fur-jacket/unarmed mismatch. Official pixel or complete costume fidelity is not certified."
+      }
+    }
+  ]
+}

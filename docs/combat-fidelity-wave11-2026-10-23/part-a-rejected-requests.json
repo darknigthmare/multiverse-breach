@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "plannedHeroIds": [
+    "buffy_summers",
+    "willow_rosenberg",
+    "giles_buffy",
+    "xander_buffy",
+    "spike_buffy",
+    "harry_potter",
+    "hermione_granger",
+    "ron_weasley",
+    "dumbledore",
+    "snape"
+  ],
+  "missingVisualHeroIds": [
+    "harry_potter",
+    "hermione_granger",
+    "snape"
+  ],
+  "initialUnclassifiedFailure": {
+    "heroId": "harry_potter",
+    "operation": "native32",
+    "request": "docs/combat-fidelity-wave11-2026-10-23/part-a-requests/harry_potter.json",
+    "result": "Promise rejected, no accepted file",
+    "diagnosticLimitation": "Initial handler serialized reason.message only, which was absent on this error value. Exact rejection details were not retained and cannot be reconstructed honestly.",
+    "model": null,
+    "generationId": null,
+    "jobId": null,
+    "requestId": null,
+    "retried": true,
+    "blockedPendingRootCoordination": false,
+    "finalResult": "Explicit moderation_blocked on the single strictly-identical authorized retry; no further requests or base16."
+  },
+  "policyRefusals": [
+    {
+      "heroId": "harry_potter",
+      "operation": "strict-identical-native32-retry",
+      "requestId": "d65fa0cb-55d2-40fa-9009-6405a9e5cf69",
+      "code": "moderation_blocked",
+      "stage": "output",
+      "exactResult": {
+        "heroId": "harry_potter",
+        "operation": "strict-identical-arguments-retry",
+        "status": "rejected",
+        "details": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID d65fa0cb-55d2-40fa-9009-6405a9e5cf69.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+        "stringValue": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID d65fa0cb-55d2-40fa-9009-6405a9e5cf69.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")"
+      }
+    },
+    {
+      "heroId": "hermione_granger",
+      "operation": "parent-native-reinforcement16",
+      "requestId": "1ae437b2-a95d-4b1c-881a-72548b5912bf",
+      "code": "moderation_blocked",
+      "exactResultFile": "docs/combat-fidelity-wave11-2026-10-23/summon-hermione-initial-result.json",
+      "ourNative32Requests": 0,
+      "ourBase16Requests": 0
+    },
+    {
+      "heroId": "snape",
+      "operation": "native32",
+      "requestId": "bf8ebf5f-2292-41f6-877a-abcb296bfee8",
+      "code": "moderation_blocked",
+      "stage": "output",
+      "exactResult": {
+        "heroId": "snape",
+        "status": "rejected",
+        "details": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID bf8ebf5f-2292-41f6-877a-abcb296bfee8.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")"
+      }
+    }
+  ],
+  "noRefusalBypass": true,
+  "noAliasReplacement": true,
+  "baseRequestsForBlockedHeroes": 0,
+  "ourKnownNativeCalls": 20,
+  "ourAcceptedNativeFiles": 17,
+  "ourRetainedOutputPngs": 14,
+  "retainedNativePoses": 336,
+  "knownCallAccounting": "9 initial32 calls (Hermione never emitted),1 identical Harry retry,3 native corrections (Xander victory4, Dumbledore full32 hand and two-row8 phase isolation),7 base16 calls. Three unsuccessful own calls: initial Harry cause unknown, Harry explicit retry refusal, Snape explicit refusal. Parent Hermione refusal is recorded separately."
+}

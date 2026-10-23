@@ -54,7 +54,7 @@ export const CANON_ROSTER_WAVE_PART_G = freezeCanonRosterPart([
     heroes: [
       hero('cadence', 'Cadence', 'Red-haired adventurer, blue tunic, brown boots, small dagger and glowing heart beat marker.', 'Dagger Beat', 'Golden Lute Resonance', { role: 'slayer' }),
       hero('melody', 'Melody', 'Older red-haired bard in practical purple adventuring clothes carrying the Golden Lute.', 'Lute Pulse', 'Family Refrain', { role: 'tactical' }),
-      hero('aria', 'Aria', 'Elder musician in a dark purple dress and hood, holding a compact golden lute.', 'Lute Note', 'Aria Perfect Measure', { role: 'tactical' })
+      hero('aria', 'Aria', 'Elder adventurer with gray hair, a dark purple dress and hood, carrying only a small basic dagger; no lute. Aria is Cadence’s grandmother, whose playable mode is restricted to the dagger.', 'Dagger Beat', 'Aria Perfect Measure', { role: 'tactical', weaponType: 'melee' })
     ],
     enemies: [
       threat('skeleton', 'Skeleton', 'White dungeon skeleton with square skull, tiny sword and beat-ready stance.', 'Bone Sword', 'Rhythmic Step'),

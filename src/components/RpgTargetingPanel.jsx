@@ -21,6 +21,11 @@ export default function RpgTargetingPanel({ targeting, lang, paused, wait, onWai
               {targeting.shape === 'multi' ? ` (${targeting.selectedTargetIds.length}/${targeting.maxTargets})` : ''}
               {' · '}{wait ? (fr ? 'Combat en attente' : 'Combat waiting') : (fr ? 'Combat actif' : 'Combat active')}
             </div>
+            {targeting.summon && <div style={{ fontSize: 12, marginTop: 7, color: '#ffd48c' }}>
+              {targeting.summon.kind === 'reinforcement' ? (fr ? 'Renfort' : 'Reinforcement') : (fr ? 'Invocation' : 'Summon')}
+              {' · '}{targeting.summon.entityName}
+              {' · '}{fr ? '100 ATB + 100 charge spéciale · Une fois par personnage et combat. Coût à la confirmation.' : '100 ATB + 100 special charge · Once per character per battle. Cost on confirmation.'}
+            </div>}
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {targeting.eligibleTargets.map(target => {

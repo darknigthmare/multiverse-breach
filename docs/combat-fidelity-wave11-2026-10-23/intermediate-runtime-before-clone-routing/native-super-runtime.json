@@ -1,0 +1,5698 @@
+{
+  "date": "2026-10-23",
+  "method": "Real Vite SSR engines, accepted gameplay changes and recorded canvas commands. Native decoding and real browser drawing are verified separately.",
+  "coverage": {
+    "identities": 40,
+    "nativeBodies": 37,
+    "legacyFallbacks": [
+      "harry_potter",
+      "hermione_granger",
+      "snape"
+    ],
+    "nativeProjectileOrigins": 12,
+    "historicalProjectileOrigins": [
+      "harry_potter"
+    ],
+    "modes": [
+      "rpg",
+      "melee",
+      "fighter"
+    ],
+    "sides": [
+      "player",
+      "opponent"
+    ],
+    "supports": [
+      "willow_rosenberg",
+      "xander_buffy",
+      "hermione_granger",
+      "snape",
+      "mckay_sga",
+      "elizabeth_weir",
+      "rush_sgu",
+      "young_sgu",
+      "chloe_sgu",
+      "claptrap_borderlands",
+      "nux",
+      "toast_mm",
+      "capable_mm",
+      "ruby_rhod",
+      "cornelius",
+      "perceval_kaamelott",
+      "karadoc_kaamelott"
+    ],
+    "contactSupers": [
+      "buffy_summers",
+      "giles_buffy",
+      "spike_buffy",
+      "harry_potter",
+      "ron_weasley",
+      "dumbledore",
+      "sheppard_sga",
+      "teyla_sga",
+      "ronon_dex",
+      "greer_sgu",
+      "matt_scott_sgu",
+      "lilith_borderlands",
+      "mordecai_borderlands",
+      "roland_bl",
+      "brick_bl",
+      "max",
+      "furiosa",
+      "korben",
+      "leeloo",
+      "zorg",
+      "arthur_kaamelott",
+      "leodagan_kaamelott",
+      "lancelot_kaamelott"
+    ],
+    "trackedFighter": [
+      "giles_buffy",
+      "harry_potter",
+      "ron_weasley",
+      "sheppard_sga",
+      "ronon_dex",
+      "greer_sgu",
+      "matt_scott_sgu",
+      "mordecai_borderlands",
+      "roland_bl",
+      "max",
+      "furiosa",
+      "korben",
+      "zorg"
+    ]
+  },
+  "sources": [
+    {
+      "path": "scripts/nativeSuperRuntimeWave11.test.mjs",
+      "sha256": "7b0e1b6b7b060d1decf42172b19a536abb9bd73a4c22314bb438936a298165ea"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "1496fb07e4cfd8375ed9ee0b460024ef6bce2ea4f0fb73130baa125e93696799"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "sha256": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277"
+    },
+    {
+      "path": "src/game/engineFighter.js",
+      "sha256": "8ce3014b9c518f846cb9e6563f7fd9710dca92983e385804d3b8ac5ab72d71f7"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave11.js",
+      "sha256": "8c665915aea0dac98bdc961e3261e5a2568488d8268b134b0e500f84f44aefc8"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "sha256": "39d2c1081dc3159e66901902e507de69652caa0b61e07c324213a1efc9446081"
+    }
+  ],
+  "observations": [
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "buffy_summers",
+      "name": "Enchaînement au pieu de Buffy",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -60,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "willow_rosenberg",
+      "name": "Protection de Willow",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "giles_buffy",
+      "name": "Couverture à l’arbalète de Giles",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "xander_buffy",
+      "name": "Mise à couvert de Xander",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "spike_buffy",
+      "name": "Enchaînement vampirique de Spike",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "harry_potter",
+      "name": "Stupéfix de Harry",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "hermione_granger",
+      "name": "Protego d’Hermione",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "ron_weasley",
+      "name": "Stupéfix de Ron",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "dumbledore",
+      "name": "Tempête de feu de Dumbledore",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -58,
+        -48,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "snape",
+      "name": "Protego de Rogue",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "sheppard_sga",
+      "name": "Rafale au P90 de Sheppard",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -38,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "mckay_sga",
+      "name": "Diagnostic de terrain de McKay",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "teyla_sga",
+      "name": "Enchaînement athosien de Teyla",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -51,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "ronon_dex",
+      "name": "Tir du pistolet satedan de Ronon",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -65,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "elizabeth_weir",
+      "name": "Coordination de l’expédition par Weir",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "rush_sgu",
+      "name": "Lecture des systèmes par Rush",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "young_sgu",
+      "name": "Ordres de couverture de Young",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "greer_sgu",
+      "name": "Rafale de couverture de Greer",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "chloe_sgu",
+      "name": "Relais des consignes par Chloe",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "matt_scott_sgu",
+      "name": "Tir de couverture de Scott",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "lilith_borderlands",
+      "name": "Phasewalk de Lilith",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        -52,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "mordecai_borderlands",
+      "name": "Tir de précision de Mordecai",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "roland_bl",
+      "name": "Rafale du fusil de Roland",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "brick_bl",
+      "name": "Berserk de Brick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -70,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "claptrap_borderlands",
+      "name": "Appel de service de Claptrap",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "max",
+      "name": "Décharge du fusil scié de Max",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -59,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "furiosa",
+      "name": "Tir de précision de Furiosa",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -58,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "nux",
+      "name": "Réparation du moteur par Nux",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "toast_mm",
+      "name": "Vérification des munitions par Toast",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "capable_mm",
+      "name": "Assistance au passage de Capable",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "korben",
+      "name": "Rafale du pistolet de Korben",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -62,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "leeloo",
+      "name": "Enchaînement de Leeloo",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -54,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "ruby_rhod",
+      "name": "Relais radio de Ruby Rhod",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "zorg",
+      "name": "Rafale du ZF-1 de Zorg",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "cornelius",
+      "name": "Consignes des gardiens de Cornelius",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "arthur_kaamelott",
+      "name": "Passe d’armes à Excalibur",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "perceval_kaamelott",
+      "name": "Garde de Perceval",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "karadoc_kaamelott",
+      "name": "Distribution des rations de Karadoc",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "leodagan_kaamelott",
+      "name": "Charge de Léodagan",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "lancelot_kaamelott",
+      "name": "Passe d’armes de Lancelot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "buffy_summers",
+      "name": "Enchaînement au pieu de Buffy",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -65,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "willow_rosenberg",
+      "name": "Protection de Willow",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "giles_buffy",
+      "name": "Couverture à l’arbalète de Giles",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "xander_buffy",
+      "name": "Mise à couvert de Xander",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "spike_buffy",
+      "name": "Enchaînement vampirique de Spike",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -52,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "harry_potter",
+      "name": "Stupéfix de Harry",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "hermione_granger",
+      "name": "Protego d’Hermione",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "ron_weasley",
+      "name": "Stupéfix de Ron",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "dumbledore",
+      "name": "Tempête de feu de Dumbledore",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -56,
+        -51,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "snape",
+      "name": "Protego de Rogue",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "sheppard_sga",
+      "name": "Rafale au P90 de Sheppard",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "mckay_sga",
+      "name": "Diagnostic de terrain de McKay",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "teyla_sga",
+      "name": "Enchaînement athosien de Teyla",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "ronon_dex",
+      "name": "Tir du pistolet satedan de Ronon",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -68,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "elizabeth_weir",
+      "name": "Coordination de l’expédition par Weir",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "rush_sgu",
+      "name": "Lecture des systèmes par Rush",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "young_sgu",
+      "name": "Ordres de couverture de Young",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "greer_sgu",
+      "name": "Rafale de couverture de Greer",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "chloe_sgu",
+      "name": "Relais des consignes par Chloe",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "matt_scott_sgu",
+      "name": "Tir de couverture de Scott",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "lilith_borderlands",
+      "name": "Phasewalk de Lilith",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -54,
+        -50,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "mordecai_borderlands",
+      "name": "Tir de précision de Mordecai",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -54,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "roland_bl",
+      "name": "Rafale du fusil de Roland",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "brick_bl",
+      "name": "Berserk de Brick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "claptrap_borderlands",
+      "name": "Appel de service de Claptrap",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "max",
+      "name": "Décharge du fusil scié de Max",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -68,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "furiosa",
+      "name": "Tir de précision de Furiosa",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -62,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "nux",
+      "name": "Réparation du moteur par Nux",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "toast_mm",
+      "name": "Vérification des munitions par Toast",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "capable_mm",
+      "name": "Assistance au passage de Capable",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "korben",
+      "name": "Rafale du pistolet de Korben",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -63,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "leeloo",
+      "name": "Enchaînement de Leeloo",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -56,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "ruby_rhod",
+      "name": "Relais radio de Ruby Rhod",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "zorg",
+      "name": "Rafale du ZF-1 de Zorg",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -51,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "cornelius",
+      "name": "Consignes des gardiens de Cornelius",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "arthur_kaamelott",
+      "name": "Passe d’armes à Excalibur",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "perceval_kaamelott",
+      "name": "Garde de Perceval",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "karadoc_kaamelott",
+      "name": "Distribution des rations de Karadoc",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "leodagan_kaamelott",
+      "name": "Charge de Léodagan",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "lancelot_kaamelott",
+      "name": "Passe d’armes de Lancelot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -56,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "buffy_summers",
+      "name": "Enchaînement au pieu de Buffy",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -67,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "willow_rosenberg",
+      "name": "Protection de Willow",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "giles_buffy",
+      "name": "Couverture à l’arbalète de Giles",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "xander_buffy",
+      "name": "Mise à couvert de Xander",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "spike_buffy",
+      "name": "Enchaînement vampirique de Spike",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "harry_potter",
+      "name": "Stupéfix de Harry",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "hermione_granger",
+      "name": "Protego d’Hermione",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "ron_weasley",
+      "name": "Stupéfix de Ron",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "dumbledore",
+      "name": "Tempête de feu de Dumbledore",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        -56,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "snape",
+      "name": "Protego de Rogue",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "sheppard_sga",
+      "name": "Rafale au P90 de Sheppard",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -38,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "mckay_sga",
+      "name": "Diagnostic de terrain de McKay",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "teyla_sga",
+      "name": "Enchaînement athosien de Teyla",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -51,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "ronon_dex",
+      "name": "Tir du pistolet satedan de Ronon",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "elizabeth_weir",
+      "name": "Coordination de l’expédition par Weir",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "rush_sgu",
+      "name": "Lecture des systèmes par Rush",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "young_sgu",
+      "name": "Ordres de couverture de Young",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "greer_sgu",
+      "name": "Rafale de couverture de Greer",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "chloe_sgu",
+      "name": "Relais des consignes par Chloe",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "matt_scott_sgu",
+      "name": "Tir de couverture de Scott",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "lilith_borderlands",
+      "name": "Phasewalk de Lilith",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        -48,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "mordecai_borderlands",
+      "name": "Tir de précision de Mordecai",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -52,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "roland_bl",
+      "name": "Rafale du fusil de Roland",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "brick_bl",
+      "name": "Berserk de Brick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "claptrap_borderlands",
+      "name": "Appel de service de Claptrap",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "max",
+      "name": "Décharge du fusil scié de Max",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -71,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "furiosa",
+      "name": "Tir de précision de Furiosa",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -67,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "nux",
+      "name": "Réparation du moteur par Nux",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "toast_mm",
+      "name": "Vérification des munitions par Toast",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "capable_mm",
+      "name": "Assistance au passage de Capable",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "korben",
+      "name": "Rafale du pistolet de Korben",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -70,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "leeloo",
+      "name": "Enchaînement de Leeloo",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "ruby_rhod",
+      "name": "Relais radio de Ruby Rhod",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "zorg",
+      "name": "Rafale du ZF-1 de Zorg",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -54,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "cornelius",
+      "name": "Consignes des gardiens de Cornelius",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "arthur_kaamelott",
+      "name": "Passe d’armes à Excalibur",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "perceval_kaamelott",
+      "name": "Garde de Perceval",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "karadoc_kaamelott",
+      "name": "Distribution des rations de Karadoc",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "leodagan_kaamelott",
+      "name": "Charge de Léodagan",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "lancelot_kaamelott",
+      "name": "Passe d’armes de Lancelot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -56,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "buffy_summers",
+      "name": "Enchaînement au pieu de Buffy",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "willow_rosenberg",
+      "name": "Protection de Willow",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "giles_buffy",
+      "name": "Couverture à l’arbalète de Giles",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "xander_buffy",
+      "name": "Mise à couvert de Xander",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "spike_buffy",
+      "name": "Enchaînement vampirique de Spike",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -51,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "harry_potter",
+      "name": "Stupéfix de Harry",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -56,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "hermione_granger",
+      "name": "Protego d’Hermione",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "ron_weasley",
+      "name": "Stupéfix de Ron",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "dumbledore",
+      "name": "Tempête de feu de Dumbledore",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -52,
+        -53,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "snape",
+      "name": "Protego de Rogue",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "sheppard_sga",
+      "name": "Rafale au P90 de Sheppard",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "mckay_sga",
+      "name": "Diagnostic de terrain de McKay",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "teyla_sga",
+      "name": "Enchaînement athosien de Teyla",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "ronon_dex",
+      "name": "Tir du pistolet satedan de Ronon",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -63,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "elizabeth_weir",
+      "name": "Coordination de l’expédition par Weir",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "rush_sgu",
+      "name": "Lecture des systèmes par Rush",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "young_sgu",
+      "name": "Ordres de couverture de Young",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "greer_sgu",
+      "name": "Rafale de couverture de Greer",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "chloe_sgu",
+      "name": "Relais des consignes par Chloe",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "matt_scott_sgu",
+      "name": "Tir de couverture de Scott",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "lilith_borderlands",
+      "name": "Phasewalk de Lilith",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -57,
+        -53,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "mordecai_borderlands",
+      "name": "Tir de précision de Mordecai",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "roland_bl",
+      "name": "Rafale du fusil de Roland",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "brick_bl",
+      "name": "Berserk de Brick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -69,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "claptrap_borderlands",
+      "name": "Appel de service de Claptrap",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "max",
+      "name": "Décharge du fusil scié de Max",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -60,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "furiosa",
+      "name": "Tir de précision de Furiosa",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -60,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "nux",
+      "name": "Réparation du moteur par Nux",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "toast_mm",
+      "name": "Vérification des munitions par Toast",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "capable_mm",
+      "name": "Assistance au passage de Capable",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "korben",
+      "name": "Rafale du pistolet de Korben",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -68,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "leeloo",
+      "name": "Enchaînement de Leeloo",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -58,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "ruby_rhod",
+      "name": "Relais radio de Ruby Rhod",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "zorg",
+      "name": "Rafale du ZF-1 de Zorg",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -52,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "cornelius",
+      "name": "Consignes des gardiens de Cornelius",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "arthur_kaamelott",
+      "name": "Passe d’armes à Excalibur",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -52,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "perceval_kaamelott",
+      "name": "Garde de Perceval",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "karadoc_kaamelott",
+      "name": "Distribution des rations de Karadoc",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "leodagan_kaamelott",
+      "name": "Charge de Léodagan",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "lancelot_kaamelott",
+      "name": "Passe d’armes de Lancelot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "buffy_summers",
+      "name": "Enchaînement au pieu de Buffy",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -107.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "willow_rosenberg",
+      "name": "Protection de Willow",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "giles_buffy",
+      "name": "Couverture à l’arbalète de Giles",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "xander_buffy",
+      "name": "Mise à couvert de Xander",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "spike_buffy",
+      "name": "Enchaînement vampirique de Spike",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -95.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "harry_potter",
+      "name": "Stupéfix de Harry",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -100.5,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "hermione_granger",
+      "name": "Protego d’Hermione",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "ron_weasley",
+      "name": "Stupéfix de Ron",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -86.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "dumbledore",
+      "name": "Tempête de feu de Dumbledore",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -96.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "snape",
+      "name": "Protego de Rogue",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "sheppard_sga",
+      "name": "Rafale au P90 de Sheppard",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "mckay_sga",
+      "name": "Diagnostic de terrain de McKay",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "teyla_sga",
+      "name": "Enchaînement athosien de Teyla",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "ronon_dex",
+      "name": "Tir du pistolet satedan de Ronon",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.89999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "elizabeth_weir",
+      "name": "Coordination de l’expédition par Weir",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "rush_sgu",
+      "name": "Lecture des systèmes par Rush",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "young_sgu",
+      "name": "Ordres de couverture de Young",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "greer_sgu",
+      "name": "Rafale de couverture de Greer",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "chloe_sgu",
+      "name": "Relais des consignes par Chloe",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "matt_scott_sgu",
+      "name": "Tir de couverture de Scott",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -86.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "lilith_borderlands",
+      "name": "Phasewalk de Lilith",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -94.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "mordecai_borderlands",
+      "name": "Tir de précision de Mordecai",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -93.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "roland_bl",
+      "name": "Rafale du fusil de Roland",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -85.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "brick_bl",
+      "name": "Berserk de Brick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -109.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "claptrap_borderlands",
+      "name": "Appel de service de Claptrap",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "max",
+      "name": "Décharge du fusil scié de Max",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -107,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "furiosa",
+      "name": "Tir de précision de Furiosa",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -107.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "nux",
+      "name": "Réparation du moteur par Nux",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "toast_mm",
+      "name": "Vérification des munitions par Toast",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "capable_mm",
+      "name": "Assistance au passage de Capable",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "korben",
+      "name": "Rafale du pistolet de Korben",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -108.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "leeloo",
+      "name": "Enchaînement de Leeloo",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -100.5,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "ruby_rhod",
+      "name": "Relais radio de Ruby Rhod",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "zorg",
+      "name": "Rafale du ZF-1 de Zorg",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -96.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "cornelius",
+      "name": "Consignes des gardiens de Cornelius",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "arthur_kaamelott",
+      "name": "Passe d’armes à Excalibur",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "perceval_kaamelott",
+      "name": "Garde de Perceval",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "karadoc_kaamelott",
+      "name": "Distribution des rations de Karadoc",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "leodagan_kaamelott",
+      "name": "Charge de Léodagan",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -87.60000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "lancelot_kaamelott",
+      "name": "Passe d’armes de Lancelot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -102.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "buffy_summers",
+      "name": "Enchaînement au pieu de Buffy",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -107.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "willow_rosenberg",
+      "name": "Protection de Willow",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "giles_buffy",
+      "name": "Couverture à l’arbalète de Giles",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "xander_buffy",
+      "name": "Mise à couvert de Xander",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "spike_buffy",
+      "name": "Enchaînement vampirique de Spike",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -95.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "harry_potter",
+      "name": "Stupéfix de Harry",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -100.5,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "hermione_granger",
+      "name": "Protego d’Hermione",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "ron_weasley",
+      "name": "Stupéfix de Ron",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -86.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "dumbledore",
+      "name": "Tempête de feu de Dumbledore",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -96.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "snape",
+      "name": "Protego de Rogue",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "sheppard_sga",
+      "name": "Rafale au P90 de Sheppard",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "mckay_sga",
+      "name": "Diagnostic de terrain de McKay",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "teyla_sga",
+      "name": "Enchaînement athosien de Teyla",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "ronon_dex",
+      "name": "Tir du pistolet satedan de Ronon",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.89999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "elizabeth_weir",
+      "name": "Coordination de l’expédition par Weir",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "rush_sgu",
+      "name": "Lecture des systèmes par Rush",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "young_sgu",
+      "name": "Ordres de couverture de Young",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "greer_sgu",
+      "name": "Rafale de couverture de Greer",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -84,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "chloe_sgu",
+      "name": "Relais des consignes par Chloe",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "matt_scott_sgu",
+      "name": "Tir de couverture de Scott",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -86.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "lilith_borderlands",
+      "name": "Phasewalk de Lilith",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -94.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "mordecai_borderlands",
+      "name": "Tir de précision de Mordecai",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -93.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "roland_bl",
+      "name": "Rafale du fusil de Roland",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -85.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "brick_bl",
+      "name": "Berserk de Brick",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -109.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "claptrap_borderlands",
+      "name": "Appel de service de Claptrap",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "max",
+      "name": "Décharge du fusil scié de Max",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -107,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "furiosa",
+      "name": "Tir de précision de Furiosa",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -107.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "nux",
+      "name": "Réparation du moteur par Nux",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "toast_mm",
+      "name": "Vérification des munitions par Toast",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "capable_mm",
+      "name": "Assistance au passage de Capable",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "korben",
+      "name": "Rafale du pistolet de Korben",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -108.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "leeloo",
+      "name": "Enchaînement de Leeloo",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -100.5,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "ruby_rhod",
+      "name": "Relais radio de Ruby Rhod",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "zorg",
+      "name": "Rafale du ZF-1 de Zorg",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -96.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "cornelius",
+      "name": "Consignes des gardiens de Cornelius",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "arthur_kaamelott",
+      "name": "Passe d’armes à Excalibur",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -90,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "perceval_kaamelott",
+      "name": "Garde de Perceval",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "karadoc_kaamelott",
+      "name": "Distribution des rations de Karadoc",
+      "effect": "buff",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "leodagan_kaamelott",
+      "name": "Charge de Léodagan",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -87.60000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "lancelot_kaamelott",
+      "name": "Passe d’armes de Lancelot",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -102.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "giles_buffy",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 16.899999999999977,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "harry_potter",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 20.100000000000023,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "ron_weasley",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 17.200000000000045,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "sheppard_sga",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 16.399999999999977,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "ronon_dex",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 21,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "greer_sgu",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 16.799999999999955,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "matt_scott_sgu",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 17.200000000000045,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "mordecai_borderlands",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 18.799999999999955,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "roland_bl",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 17.200000000000045,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "max",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 21.399999999999977,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "furiosa",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 21.399999999999977,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "korben",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 21.799999999999955,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "zorg",
+      "side": "player",
+      "committedFacing": 1,
+      "guarded": true,
+      "damage": 19.299999999999955,
+      "impact": {
+        "x": 700,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "giles_buffy",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 16.899999999999977,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "harry_potter",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 20.100000000000023,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "ron_weasley",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 17.200000000000045,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "sheppard_sga",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 16.399999999999977,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "ronon_dex",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 21,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "greer_sgu",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 16.799999999999955,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "matt_scott_sgu",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 17.200000000000045,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "mordecai_borderlands",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 18.799999999999955,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "roland_bl",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 17.200000000000045,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "max",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 21.399999999999977,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "furiosa",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 21.399999999999977,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "korben",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 21.799999999999955,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Physical projectile",
+      "id": "zorg",
+      "side": "opponent",
+      "committedFacing": -1,
+      "guarded": true,
+      "damage": 19.299999999999955,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      },
+      "singleAcceptedHit": true
+    },
+    {
+      "case": "Native aperture RGBA/projection",
+      "projectedActivePoints": 232,
+      "inactivePoints": 952,
+      "frameDimensions": [
+        256,
+        256
+      ],
+      "baseline": 244
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "giles_buffy",
+      "side": "player",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 225,
+        "y": 155
+      },
+      "origin": {
+        "x": 253.919721921875,
+        "y": 360.527265453125
+      },
+      "range": 640,
+      "lifetime": 1.1270774578425482,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "harry_potter",
+      "side": "player",
+      "bodyKind": "legacy-fallback",
+      "nativePoint": null,
+      "origin": {
+        "x": 258,
+        "y": 346
+      },
+      "range": 640,
+      "lifetime": 1.1192307692307693,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "ron_weasley",
+      "side": "player",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 227,
+        "y": 145
+      },
+      "origin": {
+        "x": 265.2225852265625,
+        "y": 344.7774147734375
+      },
+      "range": 640,
+      "lifetime": 1.1053411822566106,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "sheppard_sga",
+      "side": "player",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 202,
+        "y": 68
+      },
+      "origin": {
+        "x": 234.35641519823787,
+        "y": 328.2874449339207
+      },
+      "range": 640,
+      "lifetime": 1.1646992015418502,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "ronon_dex",
+      "side": "player",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 217,
+        "y": 136
+      },
+      "origin": {
+        "x": 249.1454785741018,
+        "y": 350.3627900449102
+      },
+      "range": 640,
+      "lifetime": 1.1362586950498041,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "greer_sgu",
+      "side": "player",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 210,
+        "y": 118
+      },
+      "origin": {
+        "x": 250.07205240174673,
+        "y": 333.06001704121843
+      },
+      "range": 640,
+      "lifetime": 1.134476822304333,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "matt_scott_sgu",
+      "side": "player",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 211,
+        "y": 115
+      },
+      "origin": {
+        "x": 241.639665812419,
+        "y": 345.2829290385295
+      },
+      "range": 640,
+      "lifetime": 1.1506929503607326,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "mordecai_borderlands",
+      "side": "player",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 211,
+        "y": 143
+      },
+      "origin": {
+        "x": 255.73867585433663,
+        "y": 342.1734185386988
+      },
+      "range": 700,
+      "lifetime": 1.2389640848955066,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "roland_bl",
+      "side": "player",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 195,
+        "y": 124
+      },
+      "origin": {
+        "x": 236.16624749208887,
+        "y": 345.2246313574528
+      },
+      "range": 640,
+      "lifetime": 1.161218754822906,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "max",
+      "side": "player",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 173,
+        "y": 111
+      },
+      "origin": {
+        "x": 227.99632895513577,
+        "y": 327.2552944214876
+      },
+      "range": 580,
+      "lifetime": 1.0615455212401235,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "furiosa",
+      "side": "player",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 226,
+        "y": 158
+      },
+      "origin": {
+        "x": 259.0128339264234,
+        "y": 358.21322737068965
+      },
+      "range": 680,
+      "lifetime": 1.194206088603032,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "korben",
+      "side": "player",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 209,
+        "y": 91
+      },
+      "origin": {
+        "x": 245.0929715231998,
+        "y": 324.8243871228448
+      },
+      "range": 640,
+      "lifetime": 1.1440519778400002,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "zorg",
+      "side": "player",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 198,
+        "y": 104
+      },
+      "origin": {
+        "x": 241.8224603518553,
+        "y": 326.3550792962894
+      },
+      "range": 680,
+      "lifetime": 1.2272644993233552,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "giles_buffy",
+      "side": "opponent",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 225,
+        "y": 155
+      },
+      "origin": {
+        "x": 1446.080278078125,
+        "y": 360.527265453125
+      },
+      "range": 640,
+      "lifetime": 1.1270774578425482,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "harry_potter",
+      "side": "opponent",
+      "bodyKind": "legacy-fallback",
+      "nativePoint": null,
+      "origin": {
+        "x": 1442,
+        "y": 346
+      },
+      "range": 640,
+      "lifetime": 1.1192307692307693,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "ron_weasley",
+      "side": "opponent",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 227,
+        "y": 145
+      },
+      "origin": {
+        "x": 1434.7774147734376,
+        "y": 344.7774147734375
+      },
+      "range": 640,
+      "lifetime": 1.1053411822566108,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "sheppard_sga",
+      "side": "opponent",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 202,
+        "y": 68
+      },
+      "origin": {
+        "x": 1465.643584801762,
+        "y": 328.2874449339207
+      },
+      "range": 640,
+      "lifetime": 1.16469920154185,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "ronon_dex",
+      "side": "opponent",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 217,
+        "y": 136
+      },
+      "origin": {
+        "x": 1450.8545214258982,
+        "y": 350.3627900449102
+      },
+      "range": 640,
+      "lifetime": 1.1362586950498041,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "greer_sgu",
+      "side": "opponent",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 210,
+        "y": 118
+      },
+      "origin": {
+        "x": 1449.9279475982532,
+        "y": 333.06001704121843
+      },
+      "range": 640,
+      "lifetime": 1.134476822304333,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "matt_scott_sgu",
+      "side": "opponent",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 211,
+        "y": 115
+      },
+      "origin": {
+        "x": 1458.360334187581,
+        "y": 345.2829290385295
+      },
+      "range": 640,
+      "lifetime": 1.1506929503607326,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "mordecai_borderlands",
+      "side": "opponent",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 211,
+        "y": 143
+      },
+      "origin": {
+        "x": 1444.2613241456634,
+        "y": 342.1734185386988
+      },
+      "range": 700,
+      "lifetime": 1.2389640848955066,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "roland_bl",
+      "side": "opponent",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 195,
+        "y": 124
+      },
+      "origin": {
+        "x": 1463.8337525079112,
+        "y": 345.2246313574528
+      },
+      "range": 640,
+      "lifetime": 1.161218754822906,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "max",
+      "side": "opponent",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 173,
+        "y": 111
+      },
+      "origin": {
+        "x": 1472.0036710448642,
+        "y": 327.2552944214876
+      },
+      "range": 580,
+      "lifetime": 1.0615455212401235,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "furiosa",
+      "side": "opponent",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 226,
+        "y": 158
+      },
+      "origin": {
+        "x": 1440.9871660735766,
+        "y": 358.21322737068965
+      },
+      "range": 680,
+      "lifetime": 1.194206088603032,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "korben",
+      "side": "opponent",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 209,
+        "y": 91
+      },
+      "origin": {
+        "x": 1454.9070284768002,
+        "y": 324.8243871228448
+      },
+      "range": 640,
+      "lifetime": 1.1440519778400002,
+      "pauseStable": true
+    },
+    {
+      "case": "Physical muzzle spawn",
+      "id": "zorg",
+      "side": "opponent",
+      "bodyKind": "native32",
+      "nativePoint": {
+        "x": 198,
+        "y": 104
+      },
+      "origin": {
+        "x": 1458.1775396481446,
+        "y": 326.3550792962894
+      },
+      "range": 680,
+      "lifetime": 1.227264499323355,
+      "pauseStable": true
+    }
+  ],
+  "source1to1Verified": false
+}

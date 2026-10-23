@@ -1,0 +1,84 @@
+✔ RPG player left edge records Snake/Raiden visual facing after physical approach (8037.640867ms)
+✔ RPG player right edge records Snake/Raiden visual facing after physical approach (2.194112ms)
+✔ RPG enemy left edge records Snake/Raiden visual facing after physical approach (2.08715ms)
+✔ RPG enemy right edge records Snake/Raiden visual facing after physical approach (1.657442ms)
+✔ Fighter player Snake/Raiden contact marks require the actual92px collision, alive target and committed facing (25.551202ms)
+✔ Fighter cpu Snake/Raiden contact marks require the actual92px collision, alive target and committed facing (12.3879ms)
+✔ Fighter player confirmed Snake/Raiden hits lock their contact point across knockback, death and repeated paused draws (10.241061ms)
+✔ Fighter cpu confirmed Snake/Raiden hits lock their contact point across knockback, death and repeated paused draws (7.045506ms)
+✔ Fighter player Lady/Parasoul keep actual projectile travel, frozen clocks and exactly one accepted impact (10.967296ms)
+✔ Fighter cpu Lady/Parasoul keep actual projectile travel, frozen clocks and exactly one accepted impact (17.420779ms)
+✖ Wave6 controlled contact keeps miss trails while previous native visual families ignore the new optional contract (12.633326ms)
+✔ Smash Snake/Raiden perfect shields keep their own feedback and reject offensive contact marks in both camps (8.04866ms)
+✔ Smash misses cannot acquire a contact when a target crosses back into range after the resolved hit (5.936462ms)
+✔ Smash accepted Snake/Raiden contacts keep the original hit point through movement and death in both camps (12.629567ms)
+✔ Smash Sonic retains only speed trails after a miss and repeated zero-delta draws keep gameplay frozen (4.681898ms)
+✔ adversarial hero sprites preserve battle state while resolving exact source artwork (1.401105ms)
+✔ monsters, same-name shells and wrong universes never borrow roster hero artwork (0.223668ms)
+✔ every roster hero has a finite super sourced from its own universe (82.790731ms)
+✔ all authored overrides identify existing heroes in the exact source universe (1.844615ms)
+✔ famous techniques have their own delivery and support semantics (0.569891ms)
+✔ empty enemy shells and unrelated universe names never borrow a hero super (0.732165ms)
+✔ every universe uses its own real performer or an explicitly authored entity (128.963633ms)
+✔ FFVII materia entities never impersonate a party-member sprite (0.729051ms)
+✔ technical and realistic equipment stays a reinforcement instead of a magical summon (0.477281ms)
+✔ medical and barricade drones preserve healing and guard without damage targeting (0.369087ms)
+✔ explicit support metadata and localized names survive without classifying by genre or name (0.787339ms)
+✔ separate calls return independent profile and performer metadata (0.948191ms)
+✔ presentation phases preserve hero identity and state that finales are adaptations (0.856453ms)
+✔ RPG summon selection and cancellation never spend resources for player (8618.18513ms)
+✔ RPG summon selection and cancellation never spend resources for enemy (1.236016ms)
+✔ RPG summon requires both full gauges, commits once and remains separate from the special (4.522417ms)
+✔ RPG cinematic has one impact at the exact simulation tick and a completed return (1.251459ms)
+✔ RPG summon pause freezes the scene and queued attacks without late wall-time effects (1.144398ms)
+✔ RPG summon cancels safely on dispose (0.443519ms)
+✔ RPG summon cancels safely on gameOver (0.369648ms)
+✔ RPG summon cancels safely on dead-caller (0.539694ms)
+✔ RPG invocation cannot silently acquire a replacement for an invalidated target (2.082424ms)
+✔ RPG catalog deployment preserves arca_loom support semantics (1.375547ms)
+✔ RPG catalog deployment preserves arca_bastion support semantics (0.661389ms)
+✔ RPG explicit revival, buff and cleansing deployments keep their declared effect (2.173711ms)
+✔ RPG automatic sides use the same invocation resolver and keep manual targeting closed (0.648849ms)
+✔ RPG auto falls back to the original special when a healing invocation has no eligible ally (1.462488ms)
+✔ RPG every catalog invocation can resolve its authored effect from the combat formation (170.910055ms)
+✔ RPG reinforcement uses its existing partner identity and matches buffed damage preview (1.998026ms)
+ℹ tests 44
+ℹ suites 0
+ℹ pass 43
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18431.980893
+
+✖ failing tests:
+
+test at scripts/combatContactVisualWave6.test.mjs:179:1
+✖ Wave6 controlled contact keeps miss trails while previous native visual families ignore the new optional contract (12.633326ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      color: '#d3ad78',
+  +   contactEligible: false,
+  +   contactVisual: {
+  +     confirmed: false
+  +   },
+  -   contactEligible: true,
+      delivery: 'melee',
+      effect: 'damage',
+      facing: 1,
+      family: 'native-wave11',
+      gameplayEffect: 'none',
+  
+      at TestContext.<anonymous> (file:///workspace/multiverse-breach/scripts/combatContactVisualWave6.test.mjs:194:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { family: 'native-wave11', heroId: 'buffy_summers', name: 'Enchaînement au pieu de Buffy', kind: 'stake', effect: 'damage', supportive: false, delivery: 'melee', progress: 0.5, impactProgress: 0.41, release: true, releaseProgress: 0.15254237288135597, facing: 1, height: 72, range: 180, color: '#d3ad78', ground: { x: 300, y: 350 }, motion: { x: 0, y: 0 }, origin: { x: 300, y: 317.6 }, target: { x: 400, y: 350 }, nativeMuzzleActive: false, nativeAnchor: null, contactEligible: false, contactVisual: { confirmed: false }, gameplayEffect: 'none', source1to1Verified: false },
+    expected: { family: 'native-wave11', heroId: 'buffy_summers', name: 'Enchaînement au pieu de Buffy', kind: 'stake', effect: 'damage', supportive: false, delivery: 'melee', progress: 0.5, impactProgress: 0.41, release: true, releaseProgress: 0.15254237288135597, facing: 1, height: 72, range: 180, color: '#d3ad78', ground: { x: 300, y: 350 }, motion: { x: 0, y: 0 }, origin: { x: 300, y: 317.6 }, target: { x: 400, y: 350 }, nativeMuzzleActive: false, nativeAnchor: null, contactEligible: true, gameplayEffect: 'none', source1to1Verified: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

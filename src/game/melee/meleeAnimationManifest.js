@@ -1,4 +1,16 @@
 import { MELEE_STATES } from './meleeStateMachine.js';
+import { CLOUD_MELEE_MANIFEST } from './cloudMeleeManifest.js';
+import { TIFA_MELEE_MANIFEST } from './tifaMeleeManifest.js';
+import { GOKU_MELEE_MANIFEST } from './gokuMeleeManifest.js';
+import { VEGETA_MELEE_MANIFEST } from './vegetaMeleeManifest.js';
+import { SONIC_MELEE_MANIFEST } from './sonicMeleeManifest.js';
+import { RAGNA_MELEE_MANIFEST } from './ragnaMeleeManifest.js';
+import { KIRYU_MELEE_MANIFEST } from './kiryuMeleeManifest.js';
+import { CHRIS_MELEE_MANIFEST } from './chrisMeleeManifest.js';
+import { NEO_MELEE_MANIFEST } from './neoMeleeManifest.js';
+import { FREEMAN_MELEE_MANIFEST } from './freemanMeleeManifest.js';
+import { BUFFY_MELEE_MANIFEST } from './buffyMeleeManifest.js';
+import { ARTHUR_MELEE_MANIFEST } from './arthurMeleeManifest.js';
 
 const PLAYER_ANCHOR_MELEE_BASE = '/sprites/generated/heroes/nexus-de-convergence/player-anchor/melee';
 
@@ -135,7 +147,19 @@ export const PLAYER_ANCHOR_MELEE_MANIFEST = Object.freeze({
 });
 
 const MANIFESTS = Object.freeze({
-  [PLAYER_ANCHOR_MELEE_MANIFEST.characterId]: PLAYER_ANCHOR_MELEE_MANIFEST
+  [PLAYER_ANCHOR_MELEE_MANIFEST.characterId]: PLAYER_ANCHOR_MELEE_MANIFEST,
+  ...(CLOUD_MELEE_MANIFEST ? { [CLOUD_MELEE_MANIFEST.characterId]: CLOUD_MELEE_MANIFEST } : {}),
+  ...(TIFA_MELEE_MANIFEST ? { [TIFA_MELEE_MANIFEST.characterId]: TIFA_MELEE_MANIFEST } : {}),
+  ...(GOKU_MELEE_MANIFEST ? { [GOKU_MELEE_MANIFEST.characterId]: GOKU_MELEE_MANIFEST } : {}),
+  ...(VEGETA_MELEE_MANIFEST ? { [VEGETA_MELEE_MANIFEST.characterId]: VEGETA_MELEE_MANIFEST } : {}),
+  ...(SONIC_MELEE_MANIFEST ? { [SONIC_MELEE_MANIFEST.characterId]: SONIC_MELEE_MANIFEST } : {}),
+  ...(RAGNA_MELEE_MANIFEST ? { [RAGNA_MELEE_MANIFEST.characterId]: RAGNA_MELEE_MANIFEST } : {}),
+  ...(KIRYU_MELEE_MANIFEST ? { [KIRYU_MELEE_MANIFEST.characterId]: KIRYU_MELEE_MANIFEST } : {}),
+  ...(CHRIS_MELEE_MANIFEST ? { [CHRIS_MELEE_MANIFEST.characterId]: CHRIS_MELEE_MANIFEST } : {}),
+  ...(NEO_MELEE_MANIFEST ? { [NEO_MELEE_MANIFEST.characterId]: NEO_MELEE_MANIFEST } : {}),
+  ...(FREEMAN_MELEE_MANIFEST ? { [FREEMAN_MELEE_MANIFEST.characterId]: FREEMAN_MELEE_MANIFEST } : {}),
+  ...(BUFFY_MELEE_MANIFEST ? { [BUFFY_MELEE_MANIFEST.characterId]: BUFFY_MELEE_MANIFEST } : {}),
+  ...(ARTHUR_MELEE_MANIFEST ? { [ARTHUR_MELEE_MANIFEST.characterId]: ARTHUR_MELEE_MANIFEST } : {})
 });
 
 const normalizePath = value => {
@@ -158,25 +182,33 @@ export const resolveMeleeAnimation = (manifest, state) => (
   || null
 );
 
-export const getMeleeAnimationFrame = (manifest, state, elapsedMs = 0) => {
+export const getMeleeAnimationFrame = (manifest, state, elapsedMs = 0, options = {}) => {
   const entry = resolveMeleeAnimation(manifest, state);
   if (!entry) return null;
   const frameCount = Math.max(1, Math.floor(Number(entry.frameCount) || 1));
   const absoluteFrame = Math.max(0, Math.floor((Math.max(0, Number(elapsedMs) || 0) / 1000) * (Number(entry.fps) || 1)));
-  const relativeFrame = entry.loop ? absoluteFrame % frameCount : Math.min(frameCount - 1, absoluteFrame);
+  let relativeFrame = entry.loop ? absoluteFrame % frameCount : Math.min(frameCount - 1, absoluteFrame);
+  const action = options.action;
+  if (entry.timeline === 'action-impact' && frameCount === 4 && action?.duration > 0 && action.hitAt > 0 && action.hitAt < action.duration && Number.isFinite(action.elapsed)) {
+    const elapsed = Math.max(0, action.elapsed);
+    relativeFrame = elapsed < action.hitAt * 0.55 ? 0 : elapsed < action.hitAt ? 1
+      : elapsed < action.hitAt + (action.duration - action.hitAt) * 0.65 ? 2 : 3;
+  }
+  const sourceFrame = entry.frameOrder?.[relativeFrame] ?? relativeFrame;
   return {
     animation: entry,
     frame: relativeFrame,
-    col: (Number(entry.startColumn) || 0) + relativeFrame,
+    col: (Number(entry.startColumn) || 0) + sourceFrame,
     row: Number(entry.row) || 0,
     trim: manifest.trimByState?.[state] || null,
-    anchor: manifest.anchorByState?.[state] || { x: 0.5, y: 0.94, baseline: 'feet' }
+    anchor: manifest.anchorByFrame?.[state]?.[sourceFrame] || manifest.anchorByState?.[state] || { x: 0.5, y: 0.94, baseline: 'feet' }
   };
 };
 
 export const getMeleeAnimationSheetSources = characterOrId => {
-  const id = typeof characterOrId === 'string' ? characterOrId : characterOrId?.id;
+  const id = typeof characterOrId === 'string' ? characterOrId : characterOrId?.sourceHeroId || characterOrId?.sourceId || characterOrId?.id;
   const manifest = getMeleeAnimationManifest(id);
+  if (manifest?.universe && typeof characterOrId === 'object' && manifest.universe !== characterOrId?.universe) return [];
   return manifest ? [...new Set(Object.values(manifest.animations).map(entry => entry.sheet))] : [];
 };
 
@@ -184,6 +216,7 @@ export const getMeleeSheetLayout = source => {
   const path = normalizePath(source);
   for (const manifest of Object.values(MANIFESTS)) {
     if (Object.values(manifest.animations).some(entry => entry.sheet === path)) {
+      if (manifest.sheetLayouts?.[path]) return manifest.sheetLayouts[path];
       return { columns: manifest.columns, rows: manifest.rows, cellWidth: manifest.cellWidth, cellHeight: manifest.cellHeight };
     }
   }
@@ -209,9 +242,12 @@ export const validateMeleeAnimationManifest = manifest => {
     });
     if (!(Number(entry.frameCount) > 0)) errors.push(`${state}: frameCount must be positive`);
     if ((Number(entry.startColumn) || 0) + (Number(entry.frameCount) || 0) > Number(manifest.columns)) errors.push(`${state}: frames exceed sheet columns`);
+    if (!Number.isInteger(entry.row) || entry.row < 0 || entry.row >= manifest.rows) errors.push(`${state}: row exceeds sheet rows`);
+    if (entry.frameOrder && (entry.frameOrder.length !== entry.frameCount || new Set(entry.frameOrder).size !== entry.frameCount || entry.frameOrder.some(frame => !Number.isInteger(frame) || frame < 0 || frame >= entry.frameCount))) errors.push(`${state}: invalid frame order`);
     if (!manifest.anchorByState?.[state]?.baseline) errors.push(`${state}: baseline anchor is required`);
   });
   const validEntries = Object.values(manifest.animations || {}).filter(entry => entry && typeof entry === 'object');
-  if (new Set(validEntries.map(entry => entry.frameCount)).size < 2) errors.push('frameCount must vary by state');
+  if (new Set(validEntries.map(entry => entry.frameCount)).size < 2 && !manifest.dedicatedStateRows) errors.push('frameCount must vary by state');
+  if (manifest.dedicatedStateRows && new Set(validEntries.map(entry => `${entry.sheet}:${entry.row}`)).size !== MELEE_STATES.length) errors.push('dedicated state rows must be unique');
   return errors;
 };

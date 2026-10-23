@@ -1,0 +1,236 @@
+{
+  "date": "2026-10-22",
+  "method": "Independent production Vite SSR projections and real EngineRpg targeting, shield/damage acceptance, simulation queues and summon impacts. No gameplay method is stubbed. Canvas recorder inspects actual drawing commands; this does not claim source pixel fidelity or browser coverage.",
+  "source1to1Verified": false,
+  "checks": [
+    {
+      "name": "20 exact identities, confirmed target projection, denial and render purity",
+      "status": "passed",
+      "fixtures": 80
+    },
+    {
+      "name": "available native column anchors match packed dimensions, per-row renderScale and P2 reflection",
+      "status": "passed",
+      "projections": 312,
+      "pendingIdentities": []
+    },
+    {
+      "name": "external orbital columns never originate from the carried designator",
+      "status": "passed",
+      "columns": 4
+    },
+    {
+      "name": "ordinary RPG flight stops at the impact and cannot restart after confirmed or denied contact",
+      "status": "passed",
+      "postImpactProjections": 156,
+      "preImpactAnchorUnavailable": []
+    },
+    {
+      "name": "real RPG Wrex guards only himself, and Tali Attack Drone damages one selected enemy",
+      "status": "passed",
+      "realActions": 4
+    },
+    {
+      "name": "real RPG special acceptance: shields and dead selections cannot confirm, accepted points remain fixed after move/KO",
+      "status": "passed",
+      "realActions": 96
+    },
+    {
+      "name": "real Fighter launches from native muzzles, preserves direction after crossing, suppresses recovery and denied-hit flashes",
+      "status": "passed",
+      "realProjectiles": 24,
+      "nativeMuzzleChecks": 24
+    },
+    {
+      "name": "four real RPG reinforcements: protected targets produce no accepted contact rings",
+      "status": "passed",
+      "realActions": 8
+    },
+    {
+      "name": "four real RPG reinforcements: accepted contacts freeze before target movement/KO",
+      "status": "passed",
+      "realActions": 8
+    },
+    {
+      "name": "four reinforcements only acknowledge actual mixed-target HP drops, without replacing dead or removed identities",
+      "status": "passed",
+      "realActions": 24
+    },
+    {
+      "name": "eleven historical native summons retain full metadata, PNG bytes and the original live-target scene contract",
+      "status": "passed",
+      "historicalAssets": 11,
+      "realSceneContracts": 22
+    },
+    {
+      "name": "four reinforcement travels use the packed muzzle, end at impact and remain pure under P2 rotation",
+      "status": "passed",
+      "projections": 32
+    }
+  ],
+  "observations": [
+    {
+      "case": "personal support/single drone",
+      "id": "wrex",
+      "side": "player",
+      "targetSide": "self",
+      "shape": "single"
+    },
+    {
+      "case": "personal support/single drone",
+      "id": "tali",
+      "side": "player",
+      "targetSide": "enemy",
+      "shape": "single"
+    },
+    {
+      "case": "personal support/single drone",
+      "id": "wrex",
+      "side": "enemy",
+      "targetSide": "self",
+      "shape": "single"
+    },
+    {
+      "case": "personal support/single drone",
+      "id": "tali",
+      "side": "enemy",
+      "targetSide": "enemy",
+      "shape": "single"
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "marcus",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0,
+        0,
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "marcus",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0,
+        0,
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "shepard",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "shepard",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "motoko",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "motoko",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "chris_redfield",
+      "side": "player",
+      "acceptedHpDeltas": [
+        0,
+        0,
+        0
+      ],
+      "contactRings": 0
+    },
+    {
+      "case": "reinforcement fully shielded",
+      "id": "chris_redfield",
+      "side": "enemy",
+      "acceptedHpDeltas": [
+        0,
+        0,
+        0
+      ],
+      "contactRings": 0
+    }
+  ],
+  "pending": [],
+  "sources": [
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave9.js",
+      "sha256": "440ededbd47d47b7879d2dc4590fed9e540ae6bba990c05c07c51566cc94e174"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "sha256": "874c34cd24328a515920868514aa4aa68382f982dcfb9987178cfcdefa728c58"
+    },
+    {
+      "path": "src/game/combat/rosterSummonChoreographyWave9.js",
+      "sha256": "65595ade29b3f6ae5d6995d9e181162dbbc3df275c961432d13954126a9b7cb1"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "e9ff9f5b044e042f4a2cc9cb0bfdb2a1707c0ea33cf37f56e108e157ca3f62bd"
+    },
+    {
+      "path": "src/game/engineFighter.js",
+      "sha256": "bb4db0463884b4d6f356fef6dccfc6c5851d916b0cec200a75eb81f6a48c8016"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "sha256": "d969ab6e5437df18ac6a6ace8dc9500f0036d5588f1a6ed1d84481cb5f0fb5c1"
+    },
+    {
+      "path": "src/game/combat/summonChoreography.js",
+      "sha256": "d52acb853d5904b152fc02a58b1ac2afb1d3252b86af4e82d467a36d47999a38"
+    },
+    {
+      "path": "src/game/combat/summonAnimationsWave9.generated.json",
+      "sha256": "4cf12b795087beb1df35d5961ce158b3c7687a98ae083f3c31aac83703d21e7f"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave9PartA.generated.json",
+      "sha256": "33ebb81c630e91bbc67a6112cf5d94883f8845f711dc3d93ada61450ecfe88e8"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave9PartB.generated.json",
+      "sha256": "41627b85bb96250aceea35607682e7d6190f43a28c4fcda98647f6f5114eff8c"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave9PartC.generated.json",
+      "sha256": "dd0b8a2a246eaa0cdb5b166565fbe6a930648c8c74ae0cc7c9ed2ee09bc621ba"
+    },
+    {
+      "path": "src/game/combat/nativeSuperAnchorsWave9PartD.generated.json",
+      "sha256": "f8c7b11fbabbe48bd1e78275fb7952e06ac69d601e55c41cab7f2afee6eef280"
+    }
+  ],
+  "summary": {
+    "passed": 12,
+    "failed": 0
+  }
+}

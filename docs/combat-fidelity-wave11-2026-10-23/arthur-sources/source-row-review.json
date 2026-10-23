@@ -1,0 +1,93 @@
+{
+  "arthur-motion-a": {
+    "observedRows": 8,
+    "nativeStateOrder": [
+      "idle",
+      "walk",
+      "run",
+      "turn",
+      "jumpStart",
+      "jumpRise",
+      "jumpApex",
+      "fall"
+    ],
+    "missingStates": []
+  },
+  "arthur-motion-b": {
+    "observedRows": 8,
+    "nativeStateOrder": [
+      "fastFall",
+      "land",
+      "crouchEnter",
+      "crouchIdle",
+      "crouchExit",
+      "crouchCharge",
+      "taunt1",
+      "hitStun"
+    ],
+    "missingStates": []
+  },
+  "arthur-defense": {
+    "observedRows": 8,
+    "nativeStateOrder": [
+      "shieldEnter",
+      "shieldHold",
+      "shieldHit",
+      "perfectShield",
+      "shieldBreak",
+      "shieldExit",
+      "dead",
+      "defeat"
+    ],
+    "missingStates": []
+  },
+  "arthur-combat-a": {
+    "observedRows": 8,
+    "nativeStateOrder": [
+      "attackLight1",
+      "attackLight2",
+      "attackLight3",
+      "crouchLight",
+      "chargeStart",
+      "chargeLoop",
+      "chargeRelease",
+      "chargeRecovery"
+    ],
+    "missingStates": []
+  },
+  "arthur-combat-b": {
+    "observedRows": 7,
+    "nativeStateOrder": [
+      "attackRecovery",
+      "special",
+      "aerialNeutral",
+      "aerialForward",
+      "intro",
+      "victory",
+      "ledgeAttack"
+    ],
+    "missingStates": [
+      "aerialDown"
+    ]
+  },
+  "arthur-ledge": {
+    "observedRows": 5,
+    "nativeStateOrder": [
+      "ledgeCatch",
+      "ledgeHang",
+      "ledgeClimb",
+      "ledgeDrop",
+      "ledgeJump"
+    ],
+    "missingStates": []
+  },
+  "arthur-corrective-states": {
+    "observedRows": 2,
+    "nativeStateOrder": [
+      "uprightCalibration",
+      "aerialDown"
+    ],
+    "missingStates": [],
+    "reason": "All explicitly requested corrective rows drawn; anatomy/edge review pending."
+  }
+}

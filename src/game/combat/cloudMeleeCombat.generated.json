@@ -1,0 +1,2380 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "cloud-combat-a",
+      "heroId": "cloud_ff7",
+      "universe": "Final Fantasy VII",
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-combat-a.png",
+      "states": {
+        "attackLight1": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "attackLight2": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "attackLight3": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "crouchLight": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "chargeStart": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "chargeLoop": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "chargeRelease": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "chargeRecovery": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "stateOrder": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "sha256": "69739860160bf09700f777e965b3bc8746787c6afed87e38f83bd155b28ad45e",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-a-correction.png",
+      "sourceImageSha256": "9dcf0d2d38802267d2e16d453457ea516f6308d18ddb13e81f23a3d48889f162",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "originalSourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-a-source.png",
+      "originalSourceImageSha256": "0da17e242d7773242e1fe3dba9975484a502ae5c2849cdc694b6ef92830d9438",
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-vii/cloud-ff7.png",
+      "referenceAssetSha256": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference.png",
+      "previousAtlasReference": "/sprites/generated/combat-character-animations/cloud_ff7.png",
+      "previousAtlasReferenceSha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd",
+      "sourceWork": "Final Fantasy VII (1997)",
+      "sourceReference": "Cloud and Buster Sword from FFVII; three physical sword cuts and charge phases adapted to project Melee mechanics. chargeRelease uses the corrected native Braver downward cleave, not Cross-slash.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "frameSize": 256,
+        "padding": 12,
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "emptyRows": [],
+        "rows": [
+          {
+            "state": "attackLight1",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-a-correction.png",
+            "sourceImageSha256": "9dcf0d2d38802267d2e16d453457ea516f6308d18ddb13e81f23a3d48889f162",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 243
+            },
+            "scale": 0.9789029535864979,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 19,
+                  "top": 84,
+                  "width": 210,
+                  "height": 151,
+                  "pixels": 12395
+                },
+                "output": {
+                  "left": 38,
+                  "top": 93,
+                  "width": 206,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 222,
+                  "top": 24,
+                  "width": 219,
+                  "height": 214,
+                  "pixels": 13832
+                },
+                "output": {
+                  "left": 20,
+                  "top": 35,
+                  "width": 214,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 448,
+                  "top": 12,
+                  "width": 218,
+                  "height": 226,
+                  "pixels": 14576
+                },
+                "output": {
+                  "left": 24,
+                  "top": 23,
+                  "width": 213,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 699,
+                  "top": 50,
+                  "width": 178,
+                  "height": 188,
+                  "pixels": 14347
+                },
+                "output": {
+                  "left": 53,
+                  "top": 60,
+                  "width": 174,
+                  "height": 184
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Four native anatomical/sword-angle pose changes inspected in the normalized row, without procedural pose substitution."
+            }
+          },
+          {
+            "state": "attackLight2",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-a-correction.png",
+            "sourceImageSha256": "9dcf0d2d38802267d2e16d453457ea516f6308d18ddb13e81f23a3d48889f162",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 242,
+              "bottom": 457
+            },
+            "scale": 0.6705202312138728,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 6,
+                  "width": 176,
+                  "height": 196,
+                  "pixels": 13403
+                },
+                "output": {
+                  "left": 62,
+                  "top": 107,
+                  "width": 118,
+                  "height": 131
+                }
+              },
+              {
+                "source": {
+                  "left": 231,
+                  "top": 54,
+                  "width": 227,
+                  "height": 152,
+                  "pixels": 12868
+                },
+                "output": {
+                  "left": 60,
+                  "top": 139,
+                  "width": 152,
+                  "height": 102
+                }
+              },
+              {
+                "source": {
+                  "left": 452,
+                  "top": 57,
+                  "width": 275,
+                  "height": 150,
+                  "pixels": 14396
+                },
+                "output": {
+                  "left": 59,
+                  "top": 141,
+                  "width": 184,
+                  "height": 101
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 73,
+                  "width": 186,
+                  "height": 138,
+                  "pixels": 11572
+                },
+                "output": {
+                  "left": 74,
+                  "top": 151,
+                  "width": 125,
+                  "height": 93
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Four native anatomical/sword-angle pose changes inspected in the normalized row, without procedural pose substitution."
+            }
+          },
+          {
+            "state": "attackLight3",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-a-correction.png",
+            "sourceImageSha256": "9dcf0d2d38802267d2e16d453457ea516f6308d18ddb13e81f23a3d48889f162",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 451,
+              "bottom": 712
+            },
+            "scale": 0.8,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 4,
+                  "width": 169,
+                  "height": 227,
+                  "pixels": 14972
+                },
+                "output": {
+                  "left": 58,
+                  "top": 58,
+                  "width": 135,
+                  "height": 182
+                }
+              },
+              {
+                "source": {
+                  "left": 239,
+                  "top": 22,
+                  "width": 205,
+                  "height": 211,
+                  "pixels": 13524
+                },
+                "output": {
+                  "left": 53,
+                  "top": 73,
+                  "width": 164,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 444,
+                  "top": 106,
+                  "width": 255,
+                  "height": 125,
+                  "pixels": 13202
+                },
+                "output": {
+                  "left": 40,
+                  "top": 140,
+                  "width": 204,
+                  "height": 100
+                }
+              },
+              {
+                "source": {
+                  "left": 681,
+                  "top": 109,
+                  "width": 197,
+                  "height": 127,
+                  "pixels": 10918
+                },
+                "output": {
+                  "left": 52,
+                  "top": 142,
+                  "width": 158,
+                  "height": 102
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 4,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Four native anatomical/sword-angle pose changes inspected in the normalized row, without procedural pose substitution."
+            }
+          },
+          {
+            "state": "crouchLight",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-a-correction.png",
+            "sourceImageSha256": "9dcf0d2d38802267d2e16d453457ea516f6308d18ddb13e81f23a3d48889f162",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 711,
+              "bottom": 875
+            },
+            "scale": 0.8467153284671532,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 14,
+                  "top": 28,
+                  "width": 206,
+                  "height": 119,
+                  "pixels": 11707
+                },
+                "output": {
+                  "left": 46,
+                  "top": 140,
+                  "width": 174,
+                  "height": 101
+                }
+              },
+              {
+                "source": {
+                  "left": 234,
+                  "top": 29,
+                  "width": 210,
+                  "height": 113,
+                  "pixels": 10782
+                },
+                "output": {
+                  "left": 44,
+                  "top": 141,
+                  "width": 178,
+                  "height": 96
+                }
+              },
+              {
+                "source": {
+                  "left": 444,
+                  "top": 32,
+                  "width": 247,
+                  "height": 111,
+                  "pixels": 12340
+                },
+                "output": {
+                  "left": 35,
+                  "top": 143,
+                  "width": 209,
+                  "height": 94
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 30,
+                  "width": 198,
+                  "height": 121,
+                  "pixels": 10137
+                },
+                "output": {
+                  "left": 38,
+                  "top": 142,
+                  "width": 168,
+                  "height": 102
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Four native anatomical/sword-angle pose changes inspected in the normalized row, without procedural pose substitution."
+            }
+          },
+          {
+            "state": "chargeStart",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-a-correction.png",
+            "sourceImageSha256": "9dcf0d2d38802267d2e16d453457ea516f6308d18ddb13e81f23a3d48889f162",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 874,
+              "bottom": 1100
+            },
+            "scale": 1.0892018779342723,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 28,
+                  "width": 190,
+                  "height": 171,
+                  "pixels": 13310
+                },
+                "output": {
+                  "left": 37,
+                  "top": 52,
+                  "width": 207,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 243,
+                  "top": 34,
+                  "width": 188,
+                  "height": 167,
+                  "pixels": 12893
+                },
+                "output": {
+                  "left": 30,
+                  "top": 59,
+                  "width": 205,
+                  "height": 182
+                }
+              },
+              {
+                "source": {
+                  "left": 454,
+                  "top": 14,
+                  "width": 197,
+                  "height": 190,
+                  "pixels": 15864
+                },
+                "output": {
+                  "left": 19,
+                  "top": 37,
+                  "width": 215,
+                  "height": 207
+                }
+              },
+              {
+                "source": {
+                  "left": 701,
+                  "top": 38,
+                  "width": 154,
+                  "height": 164,
+                  "pixels": 14209
+                },
+                "output": {
+                  "left": 46,
+                  "top": 63,
+                  "width": 168,
+                  "height": 179
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Four native anatomical/sword-angle pose changes inspected in the normalized row, without procedural pose substitution."
+            }
+          },
+          {
+            "state": "chargeLoop",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-a-source.png",
+            "sourceImageSha256": "0da17e242d7773242e1fe3dba9975484a502ae5c2849cdc694b6ef92830d9438",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1096,
+              "bottom": 1301
+            },
+            "scale": 1.2677595628415301,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 27,
+                  "width": 180,
+                  "height": 154,
+                  "pixels": 12297
+                },
+                "output": {
+                  "left": 15,
+                  "top": 47,
+                  "width": 228,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 262,
+                  "top": 36,
+                  "width": 154,
+                  "height": 146,
+                  "pixels": 11992
+                },
+                "output": {
+                  "left": 38,
+                  "top": 59,
+                  "width": 195,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 470,
+                  "top": 22,
+                  "width": 171,
+                  "height": 159,
+                  "pixels": 13176
+                },
+                "output": {
+                  "left": 21,
+                  "top": 41,
+                  "width": 217,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 702,
+                  "top": 34,
+                  "width": 141,
+                  "height": 146,
+                  "pixels": 11484
+                },
+                "output": {
+                  "left": 34,
+                  "top": 56,
+                  "width": 179,
+                  "height": 185
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Original native row retained: four sustained bracing postures and changing elbow/knee angles, without any detached effects. The broad correction had incorrectly turned this row into normal strikes."
+            }
+          },
+          {
+            "state": "chargeRelease",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-braver-correction.png",
+            "sourceImageSha256": "9981680bbd96dd271a9bb36f83c0ca248bd5e95b837ac6f91f11a78de39250bf",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 431,
+              "bottom": 887
+            },
+            "scale": 0.5433255269320844,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 4,
+                  "width": 317,
+                  "height": 389,
+                  "pixels": 45223
+                },
+                "output": {
+                  "left": 36,
+                  "top": 13,
+                  "width": 172,
+                  "height": 211
+                }
+              },
+              {
+                "source": {
+                  "left": 505,
+                  "top": 67,
+                  "width": 323,
+                  "height": 362,
+                  "pixels": 42775
+                },
+                "output": {
+                  "left": 41,
+                  "top": 47,
+                  "width": 175,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 944,
+                  "top": 169,
+                  "width": 301,
+                  "height": 252,
+                  "pixels": 37932
+                },
+                "output": {
+                  "left": 38,
+                  "top": 103,
+                  "width": 164,
+                  "height": 137
+                }
+              },
+              {
+                "source": {
+                  "left": 1339,
+                  "top": 18,
+                  "width": 408,
+                  "height": 401,
+                  "pixels": 50291
+                },
+                "output": {
+                  "left": 12,
+                  "top": 21,
+                  "width": 222,
+                  "height": 218
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Braver: raised sword and tucked airborne legs → descending vertical cleave → low point-down impact → rising recovery; no Cross-slash marks."
+            }
+          },
+          {
+            "state": "chargeRecovery",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-a-correction.png",
+            "sourceImageSha256": "9dcf0d2d38802267d2e16d453457ea516f6308d18ddb13e81f23a3d48889f162",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1530,
+              "bottom": 1774
+            },
+            "scale": 0.8888888888888888,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 13,
+                  "top": 56,
+                  "width": 228,
+                  "height": 143,
+                  "pixels": 12734
+                },
+                "output": {
+                  "left": 41,
+                  "top": 112,
+                  "width": 203,
+                  "height": 127
+                }
+              },
+              {
+                "source": {
+                  "left": 231,
+                  "top": 13,
+                  "width": 212,
+                  "height": 189,
+                  "pixels": 13343
+                },
+                "output": {
+                  "left": 38,
+                  "top": 74,
+                  "width": 188,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 477,
+                  "top": 41,
+                  "width": 173,
+                  "height": 161,
+                  "pixels": 13042
+                },
+                "output": {
+                  "left": 59,
+                  "top": 99,
+                  "width": 154,
+                  "height": 143
+                }
+              },
+              {
+                "source": {
+                  "left": 702,
+                  "top": 28,
+                  "width": 177,
+                  "height": 176,
+                  "pixels": 14373
+                },
+                "output": {
+                  "left": 62,
+                  "top": 88,
+                  "width": 157,
+                  "height": 156
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Four native anatomical/sword-angle pose changes inspected in the normalized row, without procedural pose substitution."
+            }
+          }
+        ],
+        "contactAnchorMeasurements": {}
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "References, all three native atlases, all normalized state rows and per-frame ledge crops inspected. Braver correction replaces only special and chargeRelease. Inactive ledge rows remain fully transparent and are not counted. Ledge contact anchors are per-frame because hands move; hanging sprites must not use the feet baseline244."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "sourceGameAsset": false,
+        "nativeGeneratedArtwork": true,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-8746b46c-fac1-4664-8d3d-ec6635c399f0.png",
+        "promptFile": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/native-prompts.json",
+        "prompt": "Create a production pixel-art animation sprite atlas of Cloud Strife from ORIGINAL FINAL FANTASY VII (1997), using the attached existing game sprites only as identity/style reference. He has sharply spiked golden hair, sleeveless dark purple SOLDIER outfit with loose purple trousers, brown boots, dark gloves, one steel left shoulder guard, and the enormous broad straight-edged grey BUSTER SWORD with its recognizable clipped tip and short red-brown hilt. No Remake harness redesign, no Fusion Sword, no gun, no extra weapons, no transformed outfit. Match the detailed crisp pixel sprite rendering of the reference. The character is a young adult with the same consistent proportions and costume in every cell. Transparent RGBA background, absolutely NO floor, horizon, grid lines, labels, captions, numbers, borders, or panel decoration. Native artwork only; each frame must actually change anatomy, limb bend, sword angle, and torso silhouette, never a translated duplicate or glow-only copy. All subjects stay fully inside their own equal cells with clear transparent gutters; every spike, hand, boot and sword tip is included. Face right throughout, allowing the torso to rotate naturally during an attack. Exactly FOUR columns: four sequential animation poses for each row, never a fifth figure. Frame positions must be evenly spaced. Each row is an independent state, not a continuation of the row above. Keep body scale consistent between rows; motions should read at small game scale. This is a generated 2D adaptation, not a claim of traced official frames.\nCanvas portrait 1:2, ideally 1024x2048. EXACTLY EIGHT ROWS by FOUR COLUMNS, 32 full sprites total. Keep grounded soles at a common baseline within each ground-combat row. All attacks are physical sword techniques without lightning lasers or summoned creatures.\nRow 1 attackLight1: quick rising diagonal Buster Sword cut. Four poses: low two-handed ready → sword sweeping diagonally upward before torso → high tip follow-through with arms extended → controlled high guard. Distinct knees and shoulder rotation.\nRow 2 attackLight2: reverse horizontal cut. Four poses: torso wound back, sword high behind left shoulder → forceful rightward waist-height slash, right leg steps → broad blade extended far right and hips rotated → blade pulled back low with counter-rotation.\nRow 3 attackLight3: stronger overhead finisher. Four poses: deep rear stance, both arms lift the heavy sword over head → downward blade mid swing in front of face → deep forward lunge with sword reaching ground level ahead → braced low finishing stance with bent front knee.\nRow 4 crouchLight: low knee-bent sweeping sword cut. Four poses: crouched draw with left knee close to floor → compact rightward shin-height cut → blade extended to the right while body stays crouched → sword retracts into crouch guard. Never stand up in this row.\nRow 5 chargeStart: physical windup. Four poses: standing sword guard → rear foot plants wider and knees bend → both hands lift sword behind head → whole body braced in a low charged stance, Buster Sword held back. The arms and sword change angle clearly in all four.\nRow 6 chargeLoop: sustained physical bracing. Four poses cycle weight from rear foot → both knees deeper with hilt closer to shoulder → elbows widen and chest twists → rear heel braces and elbows draw in. Sword remains heavy and gripped with both hands. No energy ball; distinct real poses rather than identical idle art.\nRow 7 chargeRelease: forceful two-handed diagonal cut. Four poses: deep windup with blade back → explosive forward hip turn and blade diagonally down across front → long full extension with leading leg bent and sword low ahead → heavy low follow-through. Only a small thin blade trail if needed, never obscuring the limbs.\nRow 8 chargeRecovery: return after the heavy cut. Four poses: weight far forward and sword low ahead → rear leg steps under body as blade rises → torso straightens, elbows pull blade into guard → feet stabilize and sword returns to shoulder-height ready. Four different recovery postures.",
+        "promptSha256": "183400384310919819295d2df685a5121c9adc28c0b4e46c30c80a29b30655a3",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [
+          {
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-a-correction.png",
+            "sourceImageSha256": "9dcf0d2d38802267d2e16d453457ea516f6308d18ddb13e81f23a3d48889f162",
+            "generatedSourcePath": "/workspace/generated_images/exec-6310d773-854f-44a5-a903-cb1254fc97ec.png",
+            "prompt": "Create a production pixel-art animation sprite atlas of Cloud Strife from ORIGINAL FINAL FANTASY VII (1997), using the attached existing game sprites only as identity/style reference. He has sharply spiked golden hair, sleeveless dark purple SOLDIER outfit with loose purple trousers, brown boots, dark gloves, one steel left shoulder guard, and the enormous broad straight-edged grey BUSTER SWORD with its recognizable clipped tip and short red-brown hilt. No Remake harness redesign, no Fusion Sword, no gun, no extra weapons, no transformed outfit. Match the detailed crisp pixel sprite rendering of the reference. The character is a young adult with the same consistent proportions and costume in every cell. Transparent RGBA background, absolutely NO floor, horizon, grid lines, labels, captions, numbers, borders, or panel decoration. Native artwork only; each frame must actually change anatomy, limb bend, sword angle, and torso silhouette, never a translated duplicate or glow-only copy. All subjects stay fully inside their own equal cells with clear transparent gutters; every spike, hand, boot and sword tip is included. Face right throughout, allowing the torso to rotate naturally during an attack. Exactly FOUR columns: four sequential animation poses for each row, never a fifth figure. Frame positions must be evenly spaced. Each row is an independent state, not a continuation of the row above. Keep body scale consistent between rows; motions should read at small game scale. This is a generated 2D adaptation, not a claim of traced official frames.\nCanvas portrait 1:2, ideally 1024x2048. EXACTLY EIGHT ROWS by FOUR COLUMNS, 32 full sprites total. Keep grounded soles at a common baseline within each ground-combat row. All attacks are physical sword techniques without lightning lasers or summoned creatures.\nRow 1 attackLight1: quick rising diagonal Buster Sword cut. Four poses: low two-handed ready → sword sweeping diagonally upward before torso → high tip follow-through with arms extended → controlled high guard. Distinct knees and shoulder rotation.\nRow 2 attackLight2: reverse horizontal cut. Four poses: torso wound back, sword high behind left shoulder → forceful rightward waist-height slash, right leg steps → broad blade extended far right and hips rotated → blade pulled back low with counter-rotation.\nRow 3 attackLight3: stronger overhead finisher. Four poses: deep rear stance, both arms lift the heavy sword over head → downward blade mid swing in front of face → deep forward lunge with sword reaching ground level ahead → braced low finishing stance with bent front knee.\nRow 4 crouchLight: low knee-bent sweeping sword cut. Four poses: crouched draw with left knee close to floor → compact rightward shin-height cut → blade extended to the right while body stays crouched → sword retracts into crouch guard. Never stand up in this row.\nRow 5 chargeStart: physical windup. Four poses: standing sword guard → rear foot plants wider and knees bend → both hands lift sword behind head → whole body braced in a low charged stance, Buster Sword held back. The arms and sword change angle clearly in all four.\nRow 6 chargeLoop: sustained physical bracing. Four poses cycle weight from rear foot → both knees deeper with hilt closer to shoulder → elbows widen and chest twists → rear heel braces and elbows draw in. Sword remains heavy and gripped with both hands. No energy ball; distinct real poses rather than identical idle art.\nRow 7 chargeRelease: forceful two-handed diagonal cut. Four poses: deep windup with blade back → explosive forward hip turn and blade diagonally down across front → long full extension with leading leg bent and sword low ahead → heavy low follow-through. Only a small thin blade trail if needed, never obscuring the limbs.\nRow 8 chargeRecovery: return after the heavy cut. Four poses: weight far forward and sword low ahead → rear leg steps under body as blade rises → torso straightens, elbows pull blade into guard → feet stabilize and sword returns to shoulder-height ready. Four different recovery postures.\nNATIVE CORRECTION of the attached first combat atlas: it has detached blue/white trail fragments spilling into the next frame. Repaint this complete 8-row x 4-column sheet with EXACTLY the SAME 8 state rows and 4 physical pose stages per row. DELETE ALL SWORD TRAILS AND EVERY ENERGY/GLOW EFFECT entirely, so only the character and the actual grey Buster Sword remain. Absolutely no blue, white, gold or transparent streaks in the blank gaps. Preserve hands and anatomical motion, not just a held sword: each of the four poses within a row changes arm angle, torso rotation and leg bend clearly. In chargeStart row5, make frame1 upright sword-down guard, frame2 wide bent-knee blade rising two-handed, frame3 both arms fully overhead blade behind head, frame4 deep braced low rear stance. Keep all 32 subjects centered with at least 28 transparent pixels between the entire sword silhouette and every cell boundary. Four fixed equal columns, eight fixed equal rows; align all cell columns vertically. Reduce sword width or sprite scale uniformly a little if needed to contain the complete blade, NEVER crop or allow stray fragments outside a cell. Keep character head/body size consistent; no labels, no floor. Strict transparent background.",
+            "promptFile": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-a-correction-prompt.json",
+            "reason": "Detached native blue-white slash fragments cross expected column gutters and are assigned to neighboring frames after alpha-seam segmentation.",
+            "excludedRow": "chargeLoop",
+            "excludedRowReason": "Correction row did not sustain the charge; the valid original native chargeLoop row is retained."
+          },
+          {
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-braver-correction.png",
+            "sourceImageSha256": "9981680bbd96dd271a9bb36f83c0ca248bd5e95b837ac6f91f11a78de39250bf",
+            "generatedSourcePath": "/workspace/generated_images/exec-b976636f-5f2e-4a8b-b180-535b69aef423.png",
+            "promptFile": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-braver-correction-prompt.json",
+            "prompt": "Create a native pixel-art SPRITE SHEET CORRECTION for Cloud Strife from original Final Fantasy VII (1997), matching the attached original Cloud game reference: golden spiky hair, sleeveless purple SOLDIER clothing, brown boots, gloves, one steel shoulder guard, enormous broad steel BUSTER SWORD with clipped point and red-brown hilt. No Remake redesign or alternate weapon. Transparent RGBA background. Landscape 2:1 canvas, ideally 1024x512. EXACTLY FOUR COLUMNS and TWO ROWS: EIGHT complete full-body sprites, no text, no labels, no grid lines, no floor, no platform or scenery. Detailed crisp pixel art consistent with the reference. Face right. Every body, boot, hand, blade tip must be fully contained in its cell with clear transparent margins. Four sequential poses in every row must differ in anatomy, elbow bend, torso angle, leg posture and sword orientation. Never duplicate or merely translate a pose.\nThis is BRAVER, Cloud's FFVII first Limit Break: a leap and a powerful VERTICAL DOWNWARD SWORD CLEAVE. It is not Cross-slash, not Omnislash. NO X slash, no crossed trails, no horizontal beam, no magical rune, no giant blue arc, no separate effect fragments. Physical Buster Sword action only, a tiny compact impact spark touching the actual sword tip is optional.\nROW 1: special, BRAVER secondary technique. Frame1: airborne preparatory leap, both knees bent and boots visibly floating, both hands holding Buster Sword high above head with blade tilted back. Frame2: vertical descending cut, arms drive the sword downward in front of torso, steel blade nearly vertical with tip pointing below hands, one knee opening as Cloud descends. Frame3: ground-level impact posture on an invisible floor, deeply bent front knee, torso leaned forward, both hands grip the vertical sword whose point is at sole level, back leg extends for balance; do not paint any floor or dust cloud. Frame4: recovery, torso rises and bends less, rear foot steps inward, blade is pulled diagonally upward from the low impact to a guard in front of chest. These are four different real physical poses.\nROW 2: chargeRelease, a heavier BRAVER release adapted to the project's charge mechanic. Frame1: compressed airborne release after push-off, knees tucked asymmetrically, torso straighter, sword fully overhead held by both hands. Frame2: forceful downward chopping phase, torso and elbows drive forward/down with blade point under the right shoulder and legs spread back; full-body genuinely airborne silhouette. Frame3: deep heavy landing with both knees bent, shoulders folded down and the heavy sword held point-down just ahead of front boot, readable low braced impact. Frame4: heavy-cut recovery, one foot braces far back, front knee still bent, both hands draw the sword up alongside torso and head lifts. Give row2 distinct anatomy from row1, not copies. Keep both rows equally spaced, subjects complete with margins. No effects crossing cells. This is generated adapted animation, not a claim of official source-game frames.",
+            "reason": "The effective authored Cloud secondary in abilitiesCanonical.js is Braver. The first combat-b special row showed Cross-slash and must be replaced; chargeRelease is aligned to Braver as requested.",
+            "selectedSourceRow": 1,
+            "selectedState": "chargeRelease"
+          }
+        ],
+        "conditioning": "Only the exported segmentAtlas and normalizeRow helpers perform alpha-seam extraction, nearest-neighbor normalization, transparent padding and atlas assembly. No limb redrawing, procedural pose synthesis or duplicated frames."
+      }
+    },
+    {
+      "id": "cloud-combat-b",
+      "heroId": "cloud_ff7",
+      "universe": "Final Fantasy VII",
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-combat-b.png",
+      "states": {
+        "attackRecovery": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "special": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "aerialNeutral": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "aerialForward": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "aerialDown": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "intro": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": true
+        },
+        "ledgeAttack": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "stateOrder": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "sha256": "75101402b58dfb01fc99b65804c7767583eb7d799cb04cdaf67cfedb4186c9e8",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-b-source.png",
+      "sourceImageSha256": "9c57cf4b61813f3005221a1835f5280ef67e75cd89c8ebd3ef85214f442d4d7b",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "originalSourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-b-source.png",
+      "originalSourceImageSha256": "9c57cf4b61813f3005221a1835f5280ef67e75cd89c8ebd3ef85214f442d4d7b",
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-vii/cloud-ff7.png",
+      "referenceAssetSha256": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference.png",
+      "previousAtlasReference": "/sprites/generated/combat-character-animations/cloud_ff7.png",
+      "previousAtlasReferenceSha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd",
+      "sourceWork": "Final Fantasy VII (1997)",
+      "sourceReference": "Cloud, Buster Sword, Braver (effective secondary technique in abilitiesCanonical.js); physical aerial cuts and sword victory flourish adapted to the project Melee mechanics. The earlier Cross-slash row is archived and excluded.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "frameSize": 256,
+        "padding": 12,
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "emptyRows": [],
+        "rows": [
+          {
+            "state": "attackRecovery",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-b-source.png",
+            "sourceImageSha256": "9c57cf4b61813f3005221a1835f5280ef67e75cd89c8ebd3ef85214f442d4d7b",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 236
+            },
+            "scale": 0.709480122324159,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 51,
+                  "width": 251,
+                  "height": 162,
+                  "pixels": 14691
+                },
+                "output": {
+                  "left": 66,
+                  "top": 123,
+                  "width": 178,
+                  "height": 115
+                }
+              },
+              {
+                "source": {
+                  "left": 242,
+                  "top": 50,
+                  "width": 207,
+                  "height": 166,
+                  "pixels": 12056
+                },
+                "output": {
+                  "left": 64,
+                  "top": 123,
+                  "width": 147,
+                  "height": 118
+                }
+              },
+              {
+                "source": {
+                  "left": 482,
+                  "top": 39,
+                  "width": 197,
+                  "height": 176,
+                  "pixels": 13424
+                },
+                "output": {
+                  "left": 77,
+                  "top": 115,
+                  "width": 140,
+                  "height": 125
+                }
+              },
+              {
+                "source": {
+                  "left": 682,
+                  "top": 33,
+                  "width": 184,
+                  "height": 188,
+                  "pixels": 14877
+                },
+                "output": {
+                  "left": 61,
+                  "top": 111,
+                  "width": 131,
+                  "height": 133
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Four native anatomical/sword-angle pose changes inspected in the normalized row, without procedural pose substitution."
+            }
+          },
+          {
+            "state": "special",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-braver-correction.png",
+            "sourceImageSha256": "9981680bbd96dd271a9bb36f83c0ca248bd5e95b837ac6f91f11a78de39250bf",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 433
+            },
+            "scale": 0.5700245700245701,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 19,
+                  "width": 341,
+                  "height": 384,
+                  "pixels": 47740
+                },
+                "output": {
+                  "left": 31,
+                  "top": 12,
+                  "width": 194,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 536,
+                  "top": 53,
+                  "width": 288,
+                  "height": 363,
+                  "pixels": 42744
+                },
+                "output": {
+                  "left": 54,
+                  "top": 31,
+                  "width": 164,
+                  "height": 207
+                }
+              },
+              {
+                "source": {
+                  "left": 941,
+                  "top": 191,
+                  "width": 309,
+                  "height": 235,
+                  "pixels": 32834
+                },
+                "output": {
+                  "left": 32,
+                  "top": 110,
+                  "width": 176,
+                  "height": 134
+                }
+              },
+              {
+                "source": {
+                  "left": 1402,
+                  "top": 68,
+                  "width": 321,
+                  "height": 354,
+                  "pixels": 42372
+                },
+                "output": {
+                  "left": 42,
+                  "top": 40,
+                  "width": 183,
+                  "height": 202
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Braver: raised sword and tucked airborne legs → descending vertical cleave → low point-down impact → rising recovery; no Cross-slash marks."
+            }
+          },
+          {
+            "state": "aerialNeutral",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-b-source.png",
+            "sourceImageSha256": "9c57cf4b61813f3005221a1835f5280ef67e75cd89c8ebd3ef85214f442d4d7b",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 441,
+              "bottom": 659
+            },
+            "scale": 0.9957081545064378,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 31,
+                  "top": 26,
+                  "width": 168,
+                  "height": 175,
+                  "pixels": 17669
+                },
+                "output": {
+                  "left": 48,
+                  "top": 64,
+                  "width": 167,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 257,
+                  "top": 40,
+                  "width": 192,
+                  "height": 159,
+                  "pixels": 13790
+                },
+                "output": {
+                  "left": 53,
+                  "top": 78,
+                  "width": 191,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 453,
+                  "top": 23,
+                  "width": 185,
+                  "height": 184,
+                  "pixels": 15138
+                },
+                "output": {
+                  "left": 27,
+                  "top": 61,
+                  "width": 184,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 683,
+                  "top": 40,
+                  "width": 183,
+                  "height": 158,
+                  "pixels": 11577
+                },
+                "output": {
+                  "left": 35,
+                  "top": 78,
+                  "width": 182,
+                  "height": 157
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Four native anatomical/sword-angle pose changes inspected in the normalized row, without procedural pose substitution."
+            }
+          },
+          {
+            "state": "aerialForward",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-b-source.png",
+            "sourceImageSha256": "9c57cf4b61813f3005221a1835f5280ef67e75cd89c8ebd3ef85214f442d4d7b",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 658,
+              "bottom": 889
+            },
+            "scale": 0.8923076923076924,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 34,
+                  "top": 8,
+                  "width": 162,
+                  "height": 196,
+                  "pixels": 12515
+                },
+                "output": {
+                  "left": 59,
+                  "top": 52,
+                  "width": 145,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 242,
+                  "top": 51,
+                  "width": 206,
+                  "height": 154,
+                  "pixels": 11485
+                },
+                "output": {
+                  "left": 47,
+                  "top": 91,
+                  "width": 184,
+                  "height": 137
+                }
+              },
+              {
+                "source": {
+                  "left": 460,
+                  "top": 64,
+                  "width": 224,
+                  "height": 159,
+                  "pixels": 12519
+                },
+                "output": {
+                  "left": 44,
+                  "top": 102,
+                  "width": 200,
+                  "height": 142
+                }
+              },
+              {
+                "source": {
+                  "left": 679,
+                  "top": 51,
+                  "width": 190,
+                  "height": 170,
+                  "pixels": 11091
+                },
+                "output": {
+                  "left": 41,
+                  "top": 91,
+                  "width": 170,
+                  "height": 152
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Four native anatomical/sword-angle pose changes inspected in the normalized row, without procedural pose substitution."
+            }
+          },
+          {
+            "state": "aerialDown",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-b-source.png",
+            "sourceImageSha256": "9c57cf4b61813f3005221a1835f5280ef67e75cd89c8ebd3ef85214f442d4d7b",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 884,
+              "bottom": 1127
+            },
+            "scale": 0.9789029535864979,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 77,
+                  "top": 4,
+                  "width": 135,
+                  "height": 180,
+                  "pixels": 10825
+                },
+                "output": {
+                  "left": 95,
+                  "top": 12,
+                  "width": 132,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 274,
+                  "top": 31,
+                  "width": 135,
+                  "height": 187,
+                  "pixels": 10549
+                },
+                "output": {
+                  "left": 71,
+                  "top": 38,
+                  "width": 132,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 462,
+                  "top": 65,
+                  "width": 175,
+                  "height": 176,
+                  "pixels": 11030
+                },
+                "output": {
+                  "left": 38,
+                  "top": 72,
+                  "width": 171,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 694,
+                  "top": 44,
+                  "width": 169,
+                  "height": 156,
+                  "pixels": 10846
+                },
+                "output": {
+                  "left": 48,
+                  "top": 51,
+                  "width": 165,
+                  "height": 153
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Four native anatomical/sword-angle pose changes inspected in the normalized row, without procedural pose substitution."
+            }
+          },
+          {
+            "state": "intro",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-b-source.png",
+            "sourceImageSha256": "9c57cf4b61813f3005221a1835f5280ef67e75cd89c8ebd3ef85214f442d4d7b",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1100,
+              "bottom": 1325
+            },
+            "scale": 1.0691244239631337,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 30,
+                  "width": 155,
+                  "height": 186,
+                  "pixels": 14397
+                },
+                "output": {
+                  "left": 33,
+                  "top": 41,
+                  "width": 166,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 254,
+                  "top": 3,
+                  "width": 157,
+                  "height": 217,
+                  "pixels": 13440
+                },
+                "output": {
+                  "left": 44,
+                  "top": 12,
+                  "width": 168,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 483,
+                  "top": 15,
+                  "width": 179,
+                  "height": 203,
+                  "pixels": 14474
+                },
+                "output": {
+                  "left": 52,
+                  "top": 25,
+                  "width": 191,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 703,
+                  "top": 29,
+                  "width": 174,
+                  "height": 188,
+                  "pixels": 14404
+                },
+                "output": {
+                  "left": 50,
+                  "top": 40,
+                  "width": 186,
+                  "height": 201
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Low sword → rising two-handed blade → sword settling against shoulder → relaxed shoulder carry, with different wrist/torso/foot positions."
+            }
+          },
+          {
+            "state": "victory",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-b-source.png",
+            "sourceImageSha256": "9c57cf4b61813f3005221a1835f5280ef67e75cd89c8ebd3ef85214f442d4d7b",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1318,
+              "bottom": 1549
+            },
+            "scale": 1.0740740740740742,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 60,
+                  "top": 6,
+                  "width": 130,
+                  "height": 216,
+                  "pixels": 13032
+                },
+                "output": {
+                  "left": 73,
+                  "top": 12,
+                  "width": 140,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 246,
+                  "top": 22,
+                  "width": 185,
+                  "height": 199,
+                  "pixels": 15894
+                },
+                "output": {
+                  "left": 35,
+                  "top": 29,
+                  "width": 199,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 477,
+                  "top": 32,
+                  "width": 156,
+                  "height": 188,
+                  "pixels": 12236
+                },
+                "output": {
+                  "left": 45,
+                  "top": 40,
+                  "width": 168,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 703,
+                  "top": 32,
+                  "width": 169,
+                  "height": 187,
+                  "pixels": 13673
+                },
+                "output": {
+                  "left": 49,
+                  "top": 40,
+                  "width": 182,
+                  "height": 201
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Four native anatomical/sword-angle pose changes inspected in the normalized row, without procedural pose substitution."
+            }
+          },
+          {
+            "state": "ledgeAttack",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-combat-b-source.png",
+            "sourceImageSha256": "9c57cf4b61813f3005221a1835f5280ef67e75cd89c8ebd3ef85214f442d4d7b",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1546,
+              "bottom": 1774
+            },
+            "scale": 1.0497737556561086,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 82,
+                  "top": 6,
+                  "width": 86,
+                  "height": 221,
+                  "pixels": 10612
+                },
+                "output": {
+                  "left": 98,
+                  "top": 12,
+                  "width": 90,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 308,
+                  "top": 12,
+                  "width": 124,
+                  "height": 191,
+                  "pixels": 11633
+                },
+                "output": {
+                  "left": 102,
+                  "top": 18,
+                  "width": 130,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 460,
+                  "top": 7,
+                  "width": 197,
+                  "height": 145,
+                  "pixels": 10580
+                },
+                "output": {
+                  "left": 29,
+                  "top": 13,
+                  "width": 207,
+                  "height": 152
+                }
+              },
+              {
+                "source": {
+                  "left": 673,
+                  "top": 40,
+                  "width": 195,
+                  "height": 104,
+                  "pixels": 9974
+                },
+                "output": {
+                  "left": 20,
+                  "top": 48,
+                  "width": 205,
+                  "height": 109
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Actual hanging, grip, pull-up or release silhouettes inspected with four per-cell crops; invisible ledge and no painted scenery."
+            }
+          }
+        ],
+        "contactAnchorMeasurements": {}
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "References, all three native atlases, all normalized state rows and per-frame ledge crops inspected. Braver correction replaces only special and chargeRelease. Inactive ledge rows remain fully transparent and are not counted. Ledge contact anchors are per-frame because hands move; hanging sprites must not use the feet baseline244."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "sourceGameAsset": false,
+        "nativeGeneratedArtwork": true,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-7d9ffea5-3211-4b89-9eac-702c5ce2e88a.png",
+        "promptFile": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/native-prompts.json",
+        "prompt": "Create a production pixel-art animation sprite atlas of Cloud Strife from ORIGINAL FINAL FANTASY VII (1997), using the attached existing game sprites only as identity/style reference. He has sharply spiked golden hair, sleeveless dark purple SOLDIER outfit with loose purple trousers, brown boots, dark gloves, one steel left shoulder guard, and the enormous broad straight-edged grey BUSTER SWORD with its recognizable clipped tip and short red-brown hilt. No Remake harness redesign, no Fusion Sword, no gun, no extra weapons, no transformed outfit. Match the detailed crisp pixel sprite rendering of the reference. The character is a young adult with the same consistent proportions and costume in every cell. Transparent RGBA background, absolutely NO floor, horizon, grid lines, labels, captions, numbers, borders, or panel decoration. Native artwork only; each frame must actually change anatomy, limb bend, sword angle, and torso silhouette, never a translated duplicate or glow-only copy. All subjects stay fully inside their own equal cells with clear transparent gutters; every spike, hand, boot and sword tip is included. Face right throughout, allowing the torso to rotate naturally during an attack. Exactly FOUR columns: four sequential animation poses for each row, never a fifth figure. Frame positions must be evenly spaced. Each row is an independent state, not a continuation of the row above. Keep body scale consistent between rows; motions should read at small game scale. This is a generated 2D adaptation, not a claim of traced official frames.\nCanvas portrait 1:2, ideally 1024x2048. EXACTLY EIGHT ROWS by FOUR COLUMNS, 32 full sprites total. Grounded rows use a consistent sole baseline. Airborne and ledge rows must show genuinely tucked or dangling legs, without any ground drawn.\nRow 1 attackRecovery: after a normal sword strike. Four poses: forward bent stance with blade extended down-right → elbows retract the sword and lead knee bends → body rises, blade moves across torso → upright neutral guard with sword raised near shoulder. Clearly distinct recovery anatomy.\nRow 2 special: CROSS-SLASH, the physical secondary limit technique, NOT Omnislash. Four poses: wide low stance and two-handed sword drawn back → first sharp diagonal sword cut down-right → reverse diagonal cut up-right with body rotation, forming a thin crossed slash trace → final horizontal cut and braced finishing lunge. No giant laser beam, no jumping Omnislash, no floating rune replacing the actual sword action. Only compact blade motion traces.\nRow 3 aerialNeutral: airborne circular sword swing. Four poses: knees tucked while sword winds up at left → airborne torso twists and blade passes across front → blade follows round high-right while legs change tuck → knees open into falling-ready posture and sword returns near body. Every boot floats with no floor.\nRow 4 aerialForward: airborne forward cleave. Four poses: raised sword behind head with both knees bent → chest twists right and both hands drive blade down-forward → sword reaches diagonally down-right with front leg opening → follow-through, tucked rear leg and torso recovering. Entire silhouette airborne.\nRow 5 aerialDown: downward plunging Buster Sword attack. Four poses: knees tucked and sword raised → torso leans forward, sword rotates point-down below body → both hands guide point downward, legs spread back for balance → knees absorb imaginary landing as sword remains below hands, no ground painted. Sword points toward lower-right, not an energy projectile.\nRow 6 intro: recognizable Cloud preparation. Four poses: sword tip down near side → both hands lift heavy Buster Sword in front → blade swings up and settles against shoulder → confident ready stance with one hand at hilt and free hand relaxed. No text or dialogue.\nRow 7 victory: recognizable sword victory flourish. Four poses: broad blade raised in front → sword rotates across and above head with torso turn → blade lowered onto shoulder while other arm balances → relaxed upright sword-on-shoulder finish. Actual sword rotations and different arm positions.\nRow 8 ledgeAttack: sword counterattack from hanging position, with NO ledge or scenery painted. Four poses: one gloved hand gripping invisible ledge at upper-right, body hangs beneath and Buster Sword points down from other hand → gripping elbow pulls torso toward imaginary edge, front knee tucks → torso rises above grip and free hand sweeps Buster Sword forward-right → crouched recovery on invisible platform at top of previous grip level, blade forward. Show the hand grip clearly and maintain consistent hypothetical edge position through the row.",
+        "promptSha256": "eb6b4ed86d073199919f7303bdfa68f111f35ff973d69f28337f06b56651a1d9",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [
+          {
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-braver-correction.png",
+            "sourceImageSha256": "9981680bbd96dd271a9bb36f83c0ca248bd5e95b837ac6f91f11a78de39250bf",
+            "generatedSourcePath": "/workspace/generated_images/exec-b976636f-5f2e-4a8b-b180-535b69aef423.png",
+            "promptFile": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-braver-correction-prompt.json",
+            "prompt": "Create a native pixel-art SPRITE SHEET CORRECTION for Cloud Strife from original Final Fantasy VII (1997), matching the attached original Cloud game reference: golden spiky hair, sleeveless purple SOLDIER clothing, brown boots, gloves, one steel shoulder guard, enormous broad steel BUSTER SWORD with clipped point and red-brown hilt. No Remake redesign or alternate weapon. Transparent RGBA background. Landscape 2:1 canvas, ideally 1024x512. EXACTLY FOUR COLUMNS and TWO ROWS: EIGHT complete full-body sprites, no text, no labels, no grid lines, no floor, no platform or scenery. Detailed crisp pixel art consistent with the reference. Face right. Every body, boot, hand, blade tip must be fully contained in its cell with clear transparent margins. Four sequential poses in every row must differ in anatomy, elbow bend, torso angle, leg posture and sword orientation. Never duplicate or merely translate a pose.\nThis is BRAVER, Cloud's FFVII first Limit Break: a leap and a powerful VERTICAL DOWNWARD SWORD CLEAVE. It is not Cross-slash, not Omnislash. NO X slash, no crossed trails, no horizontal beam, no magical rune, no giant blue arc, no separate effect fragments. Physical Buster Sword action only, a tiny compact impact spark touching the actual sword tip is optional.\nROW 1: special, BRAVER secondary technique. Frame1: airborne preparatory leap, both knees bent and boots visibly floating, both hands holding Buster Sword high above head with blade tilted back. Frame2: vertical descending cut, arms drive the sword downward in front of torso, steel blade nearly vertical with tip pointing below hands, one knee opening as Cloud descends. Frame3: ground-level impact posture on an invisible floor, deeply bent front knee, torso leaned forward, both hands grip the vertical sword whose point is at sole level, back leg extends for balance; do not paint any floor or dust cloud. Frame4: recovery, torso rises and bends less, rear foot steps inward, blade is pulled diagonally upward from the low impact to a guard in front of chest. These are four different real physical poses.\nROW 2: chargeRelease, a heavier BRAVER release adapted to the project's charge mechanic. Frame1: compressed airborne release after push-off, knees tucked asymmetrically, torso straighter, sword fully overhead held by both hands. Frame2: forceful downward chopping phase, torso and elbows drive forward/down with blade point under the right shoulder and legs spread back; full-body genuinely airborne silhouette. Frame3: deep heavy landing with both knees bent, shoulders folded down and the heavy sword held point-down just ahead of front boot, readable low braced impact. Frame4: heavy-cut recovery, one foot braces far back, front knee still bent, both hands draw the sword up alongside torso and head lifts. Give row2 distinct anatomy from row1, not copies. Keep both rows equally spaced, subjects complete with margins. No effects crossing cells. This is generated adapted animation, not a claim of official source-game frames.",
+            "reason": "The effective authored Cloud secondary in abilitiesCanonical.js is Braver. The first combat-b special row showed Cross-slash and must be replaced; chargeRelease is aligned to Braver as requested.",
+            "selectedSourceRow": 0,
+            "selectedState": "special"
+          }
+        ],
+        "conditioning": "Only the exported segmentAtlas and normalizeRow helpers perform alpha-seam extraction, nearest-neighbor normalization, transparent padding and atlas assembly. No limb redrawing, procedural pose synthesis or duplicated frames."
+      }
+    },
+    {
+      "id": "cloud-ledge",
+      "heroId": "cloud_ff7",
+      "universe": "Final Fantasy VII",
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-ledge.png",
+      "states": {
+        "ledgeCatch": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ledgeHang": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "ledgeClimb": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ledgeDrop": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ledgeJump": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "stateOrder": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 5,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 20,
+      "sha256": "771c9ee9d5ad7410baf145b5498731467fb80af41cea30a264f654d65f641c38",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-ledge-source.png",
+      "sourceImageSha256": "2bd0839258dea471e69ae61cc2d85dfe7cf33bec0f16b270041fd8228dfcd2e5",
+      "sourceDimensions": [
+        1122,
+        1402
+      ],
+      "originalSourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-ledge-source.png",
+      "originalSourceImageSha256": "2bd0839258dea471e69ae61cc2d85dfe7cf33bec0f16b270041fd8228dfcd2e5",
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-vii/cloud-ff7.png",
+      "referenceAssetSha256": "5ba9805159c0a161d62454d95b681cd5e9ac0b96632b086e1fed27a280eb88bc",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-reference.png",
+      "previousAtlasReference": "/sprites/generated/combat-character-animations/cloud_ff7.png",
+      "previousAtlasReferenceSha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd",
+      "sourceWork": "Final Fantasy VII (1997)",
+      "sourceReference": "Cloud identity and Buster Sword from FFVII; five ledge states are explicit project traversal adaptations, not canonical FFVII gameplay animations.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "frameSize": 256,
+        "padding": 12,
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "emptyRows": [
+          5,
+          6,
+          7
+        ],
+        "rows": [
+          {
+            "state": "ledgeCatch",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-ledge-source.png",
+            "sourceImageSha256": "2bd0839258dea471e69ae61cc2d85dfe7cf33bec0f16b270041fd8228dfcd2e5",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 305
+            },
+            "scale": 0.8592592592592593,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 53,
+                  "top": 24,
+                  "width": 220,
+                  "height": 246,
+                  "pixels": 17529
+                },
+                "output": {
+                  "left": 53,
+                  "top": 12,
+                  "width": 189,
+                  "height": 211
+                }
+              },
+              {
+                "source": {
+                  "left": 330,
+                  "top": 38,
+                  "width": 165,
+                  "height": 240,
+                  "pixels": 18112
+                },
+                "output": {
+                  "left": 50,
+                  "top": 24,
+                  "width": 142,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 654,
+                  "top": 43,
+                  "width": 142,
+                  "height": 235,
+                  "pixels": 20013
+                },
+                "output": {
+                  "left": 87,
+                  "top": 28,
+                  "width": 122,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 924,
+                  "top": 57,
+                  "width": 115,
+                  "height": 237,
+                  "pixels": 19170
+                },
+                "output": {
+                  "left": 78,
+                  "top": 40,
+                  "width": 99,
+                  "height": 204
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Actual hanging, grip, pull-up or release silhouettes inspected with four per-cell crops; invisible ledge and no painted scenery."
+            }
+          },
+          {
+            "state": "ledgeHang",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-ledge-source.png",
+            "sourceImageSha256": "2bd0839258dea471e69ae61cc2d85dfe7cf33bec0f16b270041fd8228dfcd2e5",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 304,
+              "bottom": 589
+            },
+            "scale": 0.8821292775665399,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 92,
+                  "top": 12,
+                  "width": 120,
+                  "height": 261,
+                  "pixels": 19393
+                },
+                "output": {
+                  "left": 85,
+                  "top": 14,
+                  "width": 106,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 343,
+                  "top": 10,
+                  "width": 151,
+                  "height": 232,
+                  "pixels": 18942
+                },
+                "output": {
+                  "left": 59,
+                  "top": 12,
+                  "width": 133,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 654,
+                  "top": 10,
+                  "width": 155,
+                  "height": 255,
+                  "pixels": 21181
+                },
+                "output": {
+                  "left": 86,
+                  "top": 12,
+                  "width": 137,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 941,
+                  "top": 11,
+                  "width": 130,
+                  "height": 253,
+                  "pixels": 19441
+                },
+                "output": {
+                  "left": 92,
+                  "top": 13,
+                  "width": 115,
+                  "height": 223
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Actual hanging, grip, pull-up or release silhouettes inspected with four per-cell crops; invisible ledge and no painted scenery."
+            }
+          },
+          {
+            "state": "ledgeClimb",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-ledge-source.png",
+            "sourceImageSha256": "2bd0839258dea471e69ae61cc2d85dfe7cf33bec0f16b270041fd8228dfcd2e5",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 588,
+              "bottom": 845
+            },
+            "scale": 0.9707112970711297,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 84,
+                  "top": 16,
+                  "width": 154,
+                  "height": 220,
+                  "pixels": 21837
+                },
+                "output": {
+                  "left": 73,
+                  "top": 17,
+                  "width": 149,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 362,
+                  "top": 11,
+                  "width": 170,
+                  "height": 225,
+                  "pixels": 22917
+                },
+                "output": {
+                  "left": 71,
+                  "top": 12,
+                  "width": 165,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 645,
+                  "top": 16,
+                  "width": 171,
+                  "height": 234,
+                  "pixels": 21155
+                },
+                "output": {
+                  "left": 73,
+                  "top": 17,
+                  "width": 166,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 877,
+                  "top": 72,
+                  "width": 206,
+                  "height": 164,
+                  "pixels": 20223
+                },
+                "output": {
+                  "left": 26,
+                  "top": 71,
+                  "width": 200,
+                  "height": 159
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Actual hanging, grip, pull-up or release silhouettes inspected with four per-cell crops; invisible ledge and no painted scenery."
+            }
+          },
+          {
+            "state": "ledgeDrop",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-ledge-source.png",
+            "sourceImageSha256": "2bd0839258dea471e69ae61cc2d85dfe7cf33bec0f16b270041fd8228dfcd2e5",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 843,
+              "bottom": 1122
+            },
+            "scale": 0.8787878787878788,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 88,
+                  "top": 9,
+                  "width": 131,
+                  "height": 239,
+                  "pixels": 19345
+                },
+                "output": {
+                  "left": 82,
+                  "top": 12,
+                  "width": 115,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 346,
+                  "top": 9,
+                  "width": 202,
+                  "height": 234,
+                  "pixels": 22156
+                },
+                "output": {
+                  "left": 62,
+                  "top": 12,
+                  "width": 178,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 644,
+                  "top": 29,
+                  "width": 166,
+                  "height": 239,
+                  "pixels": 21331
+                },
+                "output": {
+                  "left": 78,
+                  "top": 30,
+                  "width": 146,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 893,
+                  "top": 51,
+                  "width": 193,
+                  "height": 222,
+                  "pixels": 20832
+                },
+                "output": {
+                  "left": 50,
+                  "top": 49,
+                  "width": 170,
+                  "height": 195
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Actual hanging, grip, pull-up or release silhouettes inspected with four per-cell crops; invisible ledge and no painted scenery."
+            }
+          },
+          {
+            "state": "ledgeJump",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/cloud-ledge-source.png",
+            "sourceImageSha256": "2bd0839258dea471e69ae61cc2d85dfe7cf33bec0f16b270041fd8228dfcd2e5",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 1120,
+              "bottom": 1402
+            },
+            "scale": 0.9354838709677419,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 93,
+                  "top": 8,
+                  "width": 142,
+                  "height": 220,
+                  "pixels": 19569
+                },
+                "output": {
+                  "left": 84,
+                  "top": 12,
+                  "width": 133,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 362,
+                  "top": 22,
+                  "width": 151,
+                  "height": 234,
+                  "pixels": 19807
+                },
+                "output": {
+                  "left": 73,
+                  "top": 25,
+                  "width": 141,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 638,
+                  "top": 9,
+                  "width": 171,
+                  "height": 247,
+                  "pixels": 20750
+                },
+                "output": {
+                  "left": 69,
+                  "top": 13,
+                  "width": 160,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 894,
+                  "top": 21,
+                  "width": 185,
+                  "height": 234,
+                  "pixels": 20895
+                },
+                "output": {
+                  "left": 46,
+                  "top": 24,
+                  "width": 173,
+                  "height": 219
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "fourDistinctNativePoses": true,
+              "manuallyInspected": true,
+              "action": "Actual hanging, grip, pull-up or release silhouettes inspected with four per-cell crops; invisible ledge and no painted scenery."
+            }
+          }
+        ],
+        "contactAnchorMeasurements": {
+          "ledgeCatch": [
+            {
+              "frame": 0,
+              "x": 228,
+              "y": 27,
+              "normalizedX": 0.890625,
+              "normalizedY": 0.10546875,
+              "baseline": "ledgeGrip",
+              "contact": false,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 1,
+              "x": 175,
+              "y": 38,
+              "normalizedX": 0.68359375,
+              "normalizedY": 0.1484375,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 2,
+              "x": 168,
+              "y": 44,
+              "normalizedX": 0.65625,
+              "normalizedY": 0.171875,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 3,
+              "x": 161,
+              "y": 56,
+              "normalizedX": 0.62890625,
+              "normalizedY": 0.21875,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            }
+          ],
+          "ledgeHang": [
+            {
+              "frame": 0,
+              "x": 168,
+              "y": 27,
+              "normalizedX": 0.65625,
+              "normalizedY": 0.10546875,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 1,
+              "x": 179,
+              "y": 27,
+              "normalizedX": 0.69921875,
+              "normalizedY": 0.10546875,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 2,
+              "x": 179,
+              "y": 27,
+              "normalizedX": 0.69921875,
+              "normalizedY": 0.10546875,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 3,
+              "x": 117,
+              "y": 27,
+              "normalizedX": 0.45703125,
+              "normalizedY": 0.10546875,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            }
+          ],
+          "ledgeClimb": [
+            {
+              "frame": 0,
+              "x": 198,
+              "y": 48,
+              "normalizedX": 0.7734375,
+              "normalizedY": 0.1875,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 1,
+              "x": 184,
+              "y": 42,
+              "normalizedX": 0.71875,
+              "normalizedY": 0.1640625,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 2,
+              "x": 149,
+              "y": 164,
+              "normalizedX": 0.58203125,
+              "normalizedY": 0.640625,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 3,
+              "x": 164,
+              "y": 218,
+              "normalizedX": 0.640625,
+              "normalizedY": 0.8515625,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            }
+          ],
+          "ledgeDrop": [
+            {
+              "frame": 0,
+              "x": 166,
+              "y": 24,
+              "normalizedX": 0.6484375,
+              "normalizedY": 0.09375,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 1,
+              "x": 167,
+              "y": 27,
+              "normalizedX": 0.65234375,
+              "normalizedY": 0.10546875,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 2,
+              "x": 167,
+              "y": 27,
+              "normalizedX": 0.65234375,
+              "normalizedY": 0.10546875,
+              "baseline": "ledgeGrip",
+              "contact": false,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 3,
+              "x": 167,
+              "y": 27,
+              "normalizedX": 0.65234375,
+              "normalizedY": 0.10546875,
+              "baseline": "ledgeGrip",
+              "contact": false,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            }
+          ],
+          "ledgeJump": [
+            {
+              "frame": 0,
+              "x": 175,
+              "y": 27,
+              "normalizedX": 0.68359375,
+              "normalizedY": 0.10546875,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 1,
+              "x": 189,
+              "y": 38,
+              "normalizedX": 0.73828125,
+              "normalizedY": 0.1484375,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 2,
+              "x": 189,
+              "y": 38,
+              "normalizedX": 0.73828125,
+              "normalizedY": 0.1484375,
+              "baseline": "ledgeGrip",
+              "contact": false,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            },
+            {
+              "frame": 3,
+              "x": 189,
+              "y": 38,
+              "normalizedX": 0.73828125,
+              "normalizedY": 0.1484375,
+              "baseline": "ledgeGrip",
+              "contact": false,
+              "measurement": "manual native-pixel inspection; approximate palm center, not a source-game canonical anchor"
+            }
+          ]
+        }
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "References, all three native atlases, all normalized state rows and per-frame ledge crops inspected. Braver correction replaces only special and chargeRelease. Inactive ledge rows remain fully transparent and are not counted. Ledge contact anchors are per-frame because hands move; hanging sprites must not use the feet baseline244."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "sourceGameAsset": false,
+        "nativeGeneratedArtwork": true,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-112febc8-3987-4dd9-bc44-4455408ca101.png",
+        "promptFile": "docs/combat-fidelity-wave2-2026-10-18/cloud-sources/native-prompts.json",
+        "prompt": "Create a production pixel-art animation sprite atlas of Cloud Strife from ORIGINAL FINAL FANTASY VII (1997), using the attached existing game sprites only as identity/style reference. He has sharply spiked golden hair, sleeveless dark purple SOLDIER outfit with loose purple trousers, brown boots, dark gloves, one steel left shoulder guard, and the enormous broad straight-edged grey BUSTER SWORD with its recognizable clipped tip and short red-brown hilt. No Remake harness redesign, no Fusion Sword, no gun, no extra weapons, no transformed outfit. Match the detailed crisp pixel sprite rendering of the reference. The character is a young adult with the same consistent proportions and costume in every cell. Transparent RGBA background, absolutely NO floor, horizon, grid lines, labels, captions, numbers, borders, or panel decoration. Native artwork only; each frame must actually change anatomy, limb bend, sword angle, and torso silhouette, never a translated duplicate or glow-only copy. All subjects stay fully inside their own equal cells with clear transparent gutters; every spike, hand, boot and sword tip is included. Face right throughout, allowing the torso to rotate naturally during an attack. Exactly FOUR columns: four sequential animation poses for each row, never a fifth figure. Frame positions must be evenly spaced. Each row is an independent state, not a continuation of the row above. Keep body scale consistent between rows; motions should read at small game scale. This is a generated 2D adaptation, not a claim of traced official frames.\nCanvas portrait 4:5, ideally 1024x1280. EXACTLY FIVE ROWS by FOUR COLUMNS, 20 full sprites total. These are dedicated LEDGE MOVEMENTS, not standing combat poses. NO painted ledge, floor, rock, platform, boundary line or scenery anywhere. Infer an imaginary ledge just above and to the right of the hanging torso. Keep the invisible grip location near x=65% of each cell and y=20% of each cell. Make hands and grip readable; the hanging body and both boots are clearly below the grip. Buster Sword stays secured diagonally on his back except when hand placement changes during ascent; no extra sword, no fighting slash.\nRow 1 ledgeCatch: four truly different airborne catching poses. Reaching right gloved hand upward toward invisible edge, knees trailing → fingers hook at imaginary edge, right arm fully stretched overhead, other arm reaches up → both hands grip at same edge, torso swings inward, knees tuck → elbows flex slightly, body settles into hanging posture and boots dangle. Grip fingers present, not holding sword above head.\nRow 2 ledgeHang: four hanging poses beneath the same invisible grip point. Both hands hold overhead with elbows straight, knees loosely bent → left elbow bends and torso shifts toward edge, legs swing back → both elbows lengthen and knees draw forward → right elbow bends slightly as boots swing down. Each frame is truly suspended, shoulders below the grip, no standing.\nRow 3 ledgeClimb: four distinct stages of pulling onto the invisible ledge. Both arms pull chest toward grip → elbows bend strongly and chin reaches edge level, right knee comes up → one palm presses down on edge as hips rotate and knee lifts over it → crouched body above former edge level with one hand braced below torso and Buster Sword still on back. Include entire figure within cell at every height; do not crop.\nRow 4 ledgeDrop: four stages of release. Two-handed hang → one hand releases and body rotates slightly away → both hands release, arms lifted but open, body falls with bent knees → arms spread lower for balance, legs extend downward in freefall, entire body below old grip position.\nRow 5 ledgeJump: four stages of jumping away from the edge. Hanging with both knees drawn up → arms push against the invisible edge and torso coils → fingers release, body launches upward-left with one knee raised and other leg extended back → airborne upward arc with both hands free and knees recovering. No ground-contact landing pose. All 20 figures remain complete and separate in their cells.",
+        "promptSha256": "b76d126ac64e12d82e6fbf24fc7e152d12d8af564f062df61502ad373eb0c6fe",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [],
+        "conditioning": "Only the exported segmentAtlas and normalizeRow helpers perform alpha-seam extraction, nearest-neighbor normalization, transparent padding and atlas assembly. No limb redrawing, procedural pose synthesis or duplicated frames."
+      }
+    }
+  ]
+}

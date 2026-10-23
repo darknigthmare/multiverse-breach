@@ -1,0 +1,128 @@
+
+> lively-darwin@0.0.0 test:combat-presentation
+> node --test --test-concurrency=1 scripts/combatIdentity.test.mjs scripts/combatCompletion.test.mjs scripts/engineSmashSuper.test.mjs scripts/rpgSummon.test.mjs scripts/rpgAuthoredSpecial.test.mjs scripts/fighterPresentationRuntime.test.mjs scripts/stageAtmosphere.test.mjs scripts/combatModesIntegration.test.mjs && node scripts/combatCompletionAudit.mjs --check
+
+✔ completion covers every exact identity in the independent 1089-character baseline (6.229245ms)
+✔ the 191 additional decisive-action identities are tracked separately and fill the remaining catalog exactly (1.832452ms)
+✔ every completed action carries an explicit identity basis and source scene (23.232073ms)
+✔ support completion never carries damage and offensive completion has positive damage (16.710061ms)
+✔ independent character roles retain beneficial semantics after their generic super is replaced (0.404289ms)
+✔ completed startup, impact, range and resource values are finite and ordered (16.673307ms)
+✔ resolved completion profiles cannot mutate the source hero, catalog, or another resolution (57.448504ms)
+✔ battle-prefixed identities preserve the exact source ID while foreign universes cannot borrow completion (56.326047ms)
+✔ all 1911 runtime heroes have a non-generic super, including outside the 1089 baseline (17.786019ms)
+✔ the 28 entity sheets cover the exact 82 caller profiles from the independent missing-assets baseline (0.74736ms)
+✔ the82 historical entity bindings retain their assets while ten explicit W10 callers select real partners (93.564446ms)
+✔ the 28 entity PNGs contain four distinct visible poses with real alpha and uncropped margins (184.131005ms)
+✔ normalized entity sheets retain byte-verifiable archived native sources and honest provenance (47.074069ms)
+✔ an unrelated universe, entity or action never borrows an existing entity bitmap (0.716105ms)
+✔ entity poses follow simulation arrival, preparation, one impact and return without advancing during pause (3.661861ms)
+✔ adversarial hero sprites preserve battle state while resolving exact source artwork (1.815467ms)
+✔ monsters, same-name shells and wrong universes never borrow roster hero artwork (0.353586ms)
+✔ every roster hero has a finite super sourced from its own universe (60.68899ms)
+✔ all authored overrides identify existing heroes in the exact source universe (1.640132ms)
+✔ famous techniques have their own delivery and support semantics (0.3833ms)
+✔ empty enemy shells and unrelated universe names never borrow a hero super (0.50795ms)
+✔ every universe uses its own real performer or an explicitly authored entity (113.953667ms)
+✔ FFVII materia entities never impersonate a party-member sprite (0.599514ms)
+✔ technical and realistic equipment stays a reinforcement instead of a magical summon (0.543854ms)
+✔ medical and barricade drones preserve healing and guard without damage targeting (0.358784ms)
+✔ explicit support metadata and localized names survive without classifying by genre or name (0.928444ms)
+✔ separate calls return independent profile and performer metadata (0.778055ms)
+✔ presentation phases preserve hero identity and state that finales are adaptations (0.594677ms)
+✔ Fighter authored Rebecca super heals the correct player team once (7210.13076ms)
+✔ Fighter authored Rebecca super heals the correct cpu team once (0.816444ms)
+✔ Fighter P2 canonical super respects facing guard and spends one activation (1.414651ms)
+✔ Fighter counter-hit cancels an uncommitted super and dispose blocks impacts (1.249373ms)
+✔ Fighter canonical projectile preserves launch direction and its finite launch range (2.189372ms)
+✔ Fighter timeout final omits fatality and reports a P2 win once after outro (1.732697ms)
+✔ authored Rebecca support is preserved by the Melee runtime and its HP cap (4.999255ms)
+✔ RPG P2 Pelican impact waits through pause and respects guard plus item shield once (5.298394ms)
+✔ RPG P2 medical invocation keeps ally healing, radiation cap and dead-unit exclusion (2.130634ms)
+✔ RPG canonical Stand keeps the confirmed identity when that target dies during arrival (1.048702ms)
+✔ RPG disposal before an invocation impact cancels the scene and all delayed damage (0.527751ms)
+✔ keyboard/touch special and legacy ability dispatch share one timed super and one meter spend (6575.901663ms)
+✔ beam respects facing, finite range and height while projectile hits the nearest target (2.322932ms)
+✔ authored heal restores nearby living allies without damaging enemies or reviving (0.576304ms)
+✔ guard, buff, cleanse and revive retain their support effects and expire during simulation (2.176443ms)
+✔ interruption, pause input reset and outcome cannot produce a delayed second impact (1.261301ms)
+✔ perfect guard works on supers; missing abilities spend no meter for P2 or CPU (1.142253ms)
+✔ CPU and local P2 can activate their own authored super with the same runtime (0.888923ms)
+✔ every fighter keeps its own intro duration and outcome while pending attacks are cleared (1.938587ms)
+✔ character introductions freeze combat, controls and the round timer before the countdown (6381.371391ms)
+✔ the first round shows both outcomes without completing or rewarding the match (2.195481ms)
+✔ round restart restores both rosters and resources with the score preserved (0.995882ms)
+✔ a lost opening round does not finish the match and the player can win the next two (1.995581ms)
+✔ finale, victory and outro use the winner identity and cannot deal further damage (9.56754ms)
+✔ support supers heal their intended team without damaging the opponent (1.337164ms)
+✔ the presentation renderer displays the character, universe and real source ability through every phase (5.238922ms)
+✔ RPG all authored catalog specials resolve the same identity and effect as their source capability (6691.243406ms)
+✔ RPG custom actors retain exact action objects and authored IDs cannot cross universes (1.100059ms)
+✔ RPG side-prefixed P2 actors resolve authored abilities through exact source identity (0.342377ms)
+✔ RPG authored melee special approaches the selected opponent and applies real damage for player (6.443329ms)
+✔ RPG authored melee special approaches the selected opponent and applies real damage for enemy (0.97394ms)
+✔ RPG authored medical special heals its own eligible squad without damaging opponents for player (1.853276ms)
+✔ RPG authored medical special heals its own eligible squad without damaging opponents for enemy (0.933238ms)
+✔ RPG authored performer support buffs allies and never becomes an offensive generic burst (1.251017ms)
+✔ RPG Mei Zhen ancestor invocation uses the authored support correction and retains its exact entity and choreography (1.781387ms)
+✔ RPG Mei Zhen invocation applies one allied buff through a paused complete cinematic for player (4.487179ms)
+✔ RPG Mei Zhen invocation applies one allied buff through a paused complete cinematic for enemy (12.249178ms)
+✔ RPG authored cleansing and revival retain their eligible target rules and apply their real effect (1.809229ms)
+✔ GameCanvas RPG command labels use the same authored ability helper as targeting (0.635528ms)
+✔ RPG summon selection and cancellation never spend resources for player (6350.320705ms)
+✔ RPG summon selection and cancellation never spend resources for enemy (1.252649ms)
+✔ RPG summon requires both full gauges, commits once and remains separate from the special (4.216274ms)
+✔ RPG cinematic has one impact at the exact simulation tick and a completed return (1.577584ms)
+✔ RPG summon pause freezes the scene and queued attacks without late wall-time effects (1.119316ms)
+✔ RPG summon cancels safely on dispose (2.600082ms)
+✔ RPG summon cancels safely on gameOver (0.378807ms)
+✔ RPG summon cancels safely on dead-caller (0.449575ms)
+✔ RPG invocation cannot silently acquire a replacement for an invalidated target (1.757739ms)
+✔ RPG catalog deployment preserves arca_loom support semantics (1.173879ms)
+✔ RPG catalog deployment preserves arca_bastion support semantics (0.800981ms)
+✔ RPG explicit revival, buff and cleansing deployments keep their declared effect (1.920547ms)
+✔ RPG automatic sides use the same invocation resolver and keep manual targeting closed (0.747969ms)
+✔ RPG auto falls back to the original special when a healing invocation has no eligible ally (1.301363ms)
+✔ RPG every catalog invocation can resolve its authored effect from the combat formation (161.758054ms)
+✔ RPG reinforcement uses its existing partner identity and matches buffed damage preview (1.577824ms)
+✔ authored atmosphere identifies the actual location, with transparent adaptation provenance (2.650619ms)
+✔ different places in one universe do not inherit unrelated canonical set pieces (1.707041ms)
+✔ physical profiles use authored surfaces and never genre, faction or stage hashes (0.970828ms)
+✔ every authored rendering branch draws finite, deterministic, low-opacity background geometry (17.632614ms)
+✔ reduced motion freezes animation, invalid clocks cannot poison drawing and stage options disable the layer (0.888093ms)
+✔ lore and crossover registry entries resolve without pretending visual validation (51.846682ms)
+✔ all 255 formerly missing universes have explicit reference scenes, local motifs and placements (118.966159ms)
+✔ all 525 roster universes resolve without a scene name and unknown universes stay unconfigured (9.755242ms)
+✔ caller scenes always beat universe defaults, including unknown scenes and ordinary rooms (0.353645ms)
+ℹ tests 92
+ℹ suites 0
+ℹ pass 92
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 37326.593019
+{
+  "heroes": 1911,
+  "universes": 525,
+  "supers": 1911,
+  "authored": 1402,
+  "genericCapabilities": 0,
+  "profilesWithEntityAssets": 72,
+  "uniqueEntityAssets": 28,
+  "missingEntityProfiles": 0,
+  "unconfiguredAtmospheres": 0,
+  "identityBasis": {
+    "existing-catalog": 509,
+    "canonical-role": 961,
+    "authored-source-adaptation": 85,
+    "explicit-source-loadout": 6,
+    "canonical-technique": 169,
+    "authored-universe-canon": 181
+  }
+}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

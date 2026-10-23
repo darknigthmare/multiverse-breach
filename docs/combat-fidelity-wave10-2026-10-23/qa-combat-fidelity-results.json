@@ -1,0 +1,490 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "command": "node --test scripts/combatFidelityWave10.test.mjs",
+  "exitCode": 0,
+  "tests": 25,
+  "passed": 25,
+  "failed": 0,
+  "log": "docs/combat-fidelity-wave10-2026-10-23/qa-combat-fidelity-tests.log",
+  "logSha256": "68548fa816a738dfd664645c82f3e8fce33d2214603b5a56e3c928ce688ef3d8",
+  "durationMs": 45548.566511,
+  "oldPreserved": {
+    "characterRecords": 117,
+    "bodyRegistries": 67,
+    "pngs": 273,
+    "full45Manifests": 8,
+    "presentationRecipes": 124,
+    "summonBodies": 15,
+    "stageDefinitions": 241,
+    "stageRenderOperationHashes": 482
+  },
+  "newRetained": {
+    "presentationFull32": 39,
+    "presentationPartial24": 1,
+    "base16": 39,
+    "full45Heroes": 2,
+    "full45States": 90,
+    "partners16": 8,
+    "pngs": 99,
+    "distinctRgbaCells": 2384
+  },
+  "actualOriginPixels": {
+    "activeCoordinates": 103,
+    "projectedBothFacings": 206,
+    "partCPhysicalFirearmPoints": 36,
+    "centerAlphaThreshold": 24,
+    "minimumVisible9x9": 8
+  },
+  "partC": {
+    "presentations": 10,
+    "presentationPoses": 320,
+    "bases": 10,
+    "basePoses": 160,
+    "pngs": 20,
+    "allPngHashesUnchangedAfterTwoAnchorCorrections": true,
+    "buildersCheckPassed": true,
+    "lintPassed": true,
+    "additionalReadOnlySourceCanvasCheck": {
+      "acceptedNativeSources": 20,
+      "outerCanvasPixelsAlphaAbove24": 0
+    }
+  },
+  "regressions": [
+    "Exact historical SHA256 and deep equality before adding the batch",
+    "Actual drawImage cells for every new phase/state on both facings and zero-simulation-time pause",
+    "Janine six accepted phases remain distinct from missing super/fatality and absent base16",
+    "Physical emitter centers and nine-by-nine neighborhoods independently decoded from final PNGs",
+    "Native hand/adjacent wrist pixels and actual P1/P2 ledge attachment",
+    "Near-ground moving falls preserve air state before collision, all four landing cells and immediate horizontal velocity",
+    "Native scenes/helpers do not change health, meter, match result or callback counts"
+  ],
+  "notClaimed": [
+    "Official source frames",
+    "1:1 canonical choreography verification",
+    "Missing/refused poses as retained artwork"
+  ],
+  "source1to1Verified": false,
+  "inputHashes": {
+    "scripts/combatFidelityWave10.test.mjs": "8695d4491ee9fd4e4ec6bbdb985c65737ef7420f32ab3f5abfc0c468b75dadda",
+    "src/game/engineSmash.js": "d400a95e190c699c0dd4d4d4985194588bf681b015b31be0ada67870705b6277",
+    "src/game/combat/characterAnimationsWave10PartA.generated.json": "e45887877ef65b64e742f2b142c96893d6be9c28275110c4729592460a077fe6",
+    "src/game/combat/characterSpriteCorrectionsWave10PartA.generated.json": "297dc06a7c979ab081c32a98bc88c7a469a87b828955ca9268103f2b92567488",
+    "src/game/combat/nativeSuperAnchorsWave10PartA.generated.json": "c04112d2ff6149593f76f51fe2c1da9de1306819644c9574cb55a9d79a19f083",
+    "src/game/combat/characterAnimationsWave10PartB.generated.json": "3735da3ce3d87713ccf0fee6e6e2717d6d6fe8dbbc63c102566dd76e9ef854c3",
+    "src/game/combat/characterSpriteCorrectionsWave10PartB.generated.json": "e7f53699ff0e7500156b984495018f6f055eb63a0d6b0e4b4ef82a206dac95e0",
+    "src/game/combat/nativeSuperAnchorsWave10PartB.generated.json": "2be69e115c8dfd490a4f6933e8588c2b8a3d841a6f9ef581a595bae18f8271fa",
+    "src/game/combat/characterAnimationsWave10PartC.generated.json": "5e40d9c1b8ada2a1e23d06db7c37497eb62a449d402822e92acf4b586bdf0217",
+    "src/game/combat/characterSpriteCorrectionsWave10PartC.generated.json": "672a5464a3ada65773b7a4ec07561f2c250b46a411ddfa9ab7498e00e8648bb2",
+    "src/game/combat/nativeSuperAnchorsWave10PartC.generated.json": "db2be9d41a9aac0205ea704df216b426b004b15d803c0908351cf0a7a88805a7",
+    "src/game/combat/characterAnimationsWave10PartD.generated.json": "822170868ef5b953b6af4f70894175584e818772a9eab7c555c59941db290044",
+    "src/game/combat/characterSpriteCorrectionsWave10PartD.generated.json": "551c5f53b61a11fc00f4af3c23eb0a20ff690418fb0102089070bca57439a0cf",
+    "src/game/combat/nativeSuperAnchorsWave10PartD.generated.json": "df06964d8a5c7eb2bd45c01269b94ce528e6414dd53a100f964ff8642d20a33b",
+    "src/game/combat/neoMeleeMotion.generated.json": "351482c77c59b60dbc850e5c678aa62885967b82714b3deeaa4b00f0a4c669d1",
+    "src/game/combat/neoMeleeCombat.generated.json": "4f2889398eaa108107b1137c6b9711116176c9febdbae8b17821a428edc2ad4e",
+    "src/game/combat/freemanMeleeMotion.generated.json": "67b4ea127d4e6503badfe5949804769397f751d8b86747760890ce20d4cb9c00",
+    "src/game/combat/freemanMeleeCombat.generated.json": "b5a53648db94112c7406bd6d9e667ccbf055726876b07fed63fce5e1668c57ae",
+    "src/game/combat/summonAnimationsWave10.generated.json": "bf91bf446d7f0c2bb3b424d7ca7af179bf5db84ce32f71a1b3b103b589810895"
+  },
+  "afterNickNativeCorrection": true,
+  "previousPassingResultArchive": "docs/combat-fidelity-wave10-2026-10-23/qa-before-nick-super-correction",
+  "retainedPngs": [
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/agent_smith.png",
+      "sha256": "33f4a6fae89e3977dbad722122c4ceba03ff9cc4b5deaeb6e4361d8594e64a7e"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/alyx_vance.png",
+      "sha256": "097300fca6a25bfb32bf87e9c0987f59149949ff0e09452b505c96b8b52647c1"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/barney.png",
+      "sha256": "0cc907848d9e5abebc57f5ee9fa5f287a65c45ee0c57f22c76a0d96815df2b96"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/bill_l4d.png",
+      "sha256": "292fd9ee8e7c18041f6013ecb67d250f63a18921531661441190190c95652fd7"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/bishop_aliens.png",
+      "sha256": "e5a3f348592fff35df5030065ede7e11bfc0c41566db77c630e75c9d5980a069"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/chains_pd.png",
+      "sha256": "7e428b62f1835c48fd78f2ddd53a372448104878f09f7bceae8702f4ac277d21"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/clover_pd.png",
+      "sha256": "8e5f7e2634c200ce6989249d61123cd89feeaf94741a13b9d946f5b115a24731"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/coach_l4d.png",
+      "sha256": "3770dee8e8d1c50cf5f04ebdc16bc39f000a819eecb9bd0023464c606036d158"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/dallas.png",
+      "sha256": "cb8efbe6ba7587c56f46f890b57e70cb33fd7671db5a8d81556fd56e5d124ffe"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/daniel_jackson.png",
+      "sha256": "fca2ee38963b54fa97d68af6739f4496127970c899dc314d5b53fea622bef652"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/dogmeat.png",
+      "sha256": "1710fa0c8d43194ed72265f193e2dc587cd244ab3f861de6ae197e447c3b003c"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/eli_vance.png",
+      "sha256": "a0f41f6703a34ba92907cea1287abdaded71eb53ace00ba50aa7ce4f7de4462e"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/ellis_l4d.png",
+      "sha256": "9cfa76406d163b9663107673ef6573907314a6877698857ee9c3b8205c219a52"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/freeman.png",
+      "sha256": "8df67085ad828cf3b54151a9d510335162ba61730c9e30ed74b1825b05d6b2af"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/hammond_sgc.png",
+      "sha256": "90c310fb88e5c898d809f31f35789c85d38561a65192143f104d09baa7922268"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/hicks_aliens.png",
+      "sha256": "d5b7b3e691b1cb07ca51c4bd3b229efeba7400ce3f74616297c1540460b85c70"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/hoxton.png",
+      "sha256": "1052e3999ca7c2317800594e14916786aba001ebabefd04e90c6888b464fbc68"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/hudson_aliens.png",
+      "sha256": "0b642978d6b94905418fa2e0c19443597da706e8b30425a68cf65e48a60ba135"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/janine_gb.png",
+      "sha256": "8bb3f6607ca80c9092d0e7742544e0c7c8e9e44062391b22d479939a1e74aa08"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/kleiner.png",
+      "sha256": "2e2f7bb7a1b8bda6ab635aa7bc03ca72555d6872d8b6777440de13927b3baf74"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/morpheus.png",
+      "sha256": "5161a5b11bdcc1e3da3f9f807fe9441a5f9389f864de863a31cfb2e9d05d167e"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/neo.png",
+      "sha256": "58344c77e5d00e40b24b5426b9464957db698014287a2d11ad52b06628679a38"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/nick_l4d.png",
+      "sha256": "2f4cfa90de3716f0138397c99bd8d54bffbcf7453e81ca7856f7d35a77325a01"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/nick_v.png",
+      "sha256": "bee2ab5509ae9ef6c56a3a96e6ddf3e46a66d3440fdd89de7218f89a1e1b98be"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/oneill.png",
+      "sha256": "10f2cbeeaf90902afa645f87804485c2f690457876c1a5637f3e4e549ef8da5d"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/paladin.png",
+      "sha256": "cbbf1a41410be6e06c1b3b3ea89444a07045a3dc73459dee06da7e3a01a260f6"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/piper_wright.png",
+      "sha256": "7a5cb87e3a0eb365c60ef591b112d84c5c5f4831d5ef8c1ad4bd0b8d1a7b0b3c"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/preston_garvey.png",
+      "sha256": "2ca26901b61481152fedb24fcb69f4a356fbdf401da2f721ef292995063bdb0b"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/ripley_aliens.png",
+      "sha256": "e2c2f392997c1f961dac268e24cfba53ddea98f49e2847c2c8705355ca738e6c"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/rochelle_l4d.png",
+      "sha256": "2838f4c06aee1b9fc9ff7e2b4ab272fc969c8802adea663767edfb3a896a350f"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/sam_carter.png",
+      "sha256": "936767874d4be24a1ad7926fb39bd865e039a501f535141617c4bc854b570f63"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/seraph.png",
+      "sha256": "b952d469f9807c014a05b28d6922e42add5941618fa0837853e2cd0530e812c6"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/spengler_gb.png",
+      "sha256": "0929ea4c134f6fb30aee212be20d0b944e2c95abeffb1452ea099a4b85219f79"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/stantz_gb.png",
+      "sha256": "e03becfe68d4570c0a0e19d00f9f687989287ae708d63be992a070c4a583db48"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/tealc.png",
+      "sha256": "b791bc4aeda81c5f0004c1b402082741062449d378d14e118b32ce4b3a34821e"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/trinity.png",
+      "sha256": "db7200ccdf4a156215fb0b4943cccb500a5fdea7b3cdc32ec0794e2baf620f8b"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/vasquez_aliens.png",
+      "sha256": "d437b91dc38a9749a320cdfb9366c93e24d26c7da7d8cdbc55ce684a2890642c"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/venkman_gb.png",
+      "sha256": "92a7f4f928448c211c4d5956b6ef3f0612bb1957ded4fc7778ca8ff356d0f5ef"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/wolf_pd.png",
+      "sha256": "86c16372353a584bfb65b66c090e8195de970326ffc3a3698e0e6fd009017782"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave10/zeddemore_gb.png",
+      "sha256": "31577717e8bb63266bee1ce07775c81b915f1cfb89d76afb8b7a3ebe13189b33"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10-part-a/agent_smith.png",
+      "sha256": "c9251f9dc382bff7374270c509cf544e4fbfe399331d2ceea5cf5373ed106e63"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10-part-a/daniel_jackson.png",
+      "sha256": "a9112eab51d66b7b0e7006c9765f9ef024ce2bdd9048dba6da1eaa857131a52e"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10-part-a/hammond_sgc.png",
+      "sha256": "a8cf1da7088d3dd145b4e2f4272ef2142fe88c58e1f9092119978635341de6cc"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10-part-a/morpheus.png",
+      "sha256": "71814c2ea55fd9edac711bb6d8eca3aaa25313c60f1e96b13e6a85ef0bda10af"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10-part-a/neo.png",
+      "sha256": "d5e7339c795ecc21f8e638fd81cad8bf6f53ce8ce15ace6e5cc4f394896fc26e"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10-part-a/oneill.png",
+      "sha256": "b71f8ee203ae037e50df666d276d273f2e7bab8c7909eeea194e580c41d7b91e"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10-part-a/sam_carter.png",
+      "sha256": "7a8eb10a3ad7a5883cd1b4909feb9dc618ff96a31b25337b21d36c0f853d7c98"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10-part-a/seraph.png",
+      "sha256": "c65a8d5e91287da639d35329efd2081f13786f729ec1577fd1e4665851faed5a"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10-part-a/tealc.png",
+      "sha256": "61e2239fc65dbad418fcbeb262968b6982210aebe31b9b3b4bfd3c8cbeb48a1b"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10-part-a/trinity.png",
+      "sha256": "36e06e8814b64a3efd989a3bb07ca5c724e6eaae593440da45ac67bb12d3812b"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/alyx_vance.png",
+      "sha256": "bc5204264b950a9e4264dad4f7c54182196430111ab4e7794044a712406fbfc4"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/barney.png",
+      "sha256": "857dc3e22c97be8d05538edc87685daaefd4fd33b1df749572adcebc86bb3d04"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/bill_l4d.png",
+      "sha256": "8cf38687ba3350b22381de93f5bb6d606d3d53525b3fcc8952a417110dccfe9c"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/bishop_aliens.png",
+      "sha256": "c696bf9b7a2b6624a0f2b07d56f583a8010ef5bc8631290b73bfb386a8caa5c3"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/chains_pd.png",
+      "sha256": "6aabb4177b8c252167a0df7dfba28c98945f6307244470a9cf01f5e0d8c67267"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/clover_pd.png",
+      "sha256": "9a4b619c1eb1771ff656c384c674db686149cc5573e755f8f3e4a877e3e09c8a"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/coach_l4d.png",
+      "sha256": "e826beeb6d2582e147c25d46916ca81233be44df3bcd4bfa3907e5f114b01f70"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/dallas.png",
+      "sha256": "fb7300980bda5bfe46ba930bdf5c6ba4498dcfb8f74b6a6cf889a824256b773b"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/dogmeat.png",
+      "sha256": "387f8c2933d6e9a43e27f77284a928d4f07d96c61acb6ff91d975b65c9511973"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/eli_vance.png",
+      "sha256": "0bc1fba827d690284a37702ece428426146fa8b152b152dd497fe721c802cabf"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/ellis_l4d.png",
+      "sha256": "32d312cb1b1611c3f61a04674d6c663b323105280b4ccaf6af68908aed086d60"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/freeman.png",
+      "sha256": "f60ffe51362337694fce06bcc9d123c7a704309addabef4fe56c72df49f51ae0"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/hicks_aliens.png",
+      "sha256": "8366c156823c2abee09d097923aa14399527a4f00b82f2e920cd92dd3cd74cb1"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/hoxton.png",
+      "sha256": "80c01a72264644cc9679d3a11d519247e3aa97fec22ee52af10dc73f824182d5"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/hudson_aliens.png",
+      "sha256": "9cb5afeb930700674a13b3e77a62403f0364cbabfd99e98c25e844f6019392b7"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/kleiner.png",
+      "sha256": "29e33c1cdaffe107b3b034fa97b9752e5a0c24b6321bf1454b64405f45bdc425"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/nick_l4d.png",
+      "sha256": "92859097400f8ec2056dd367403d8e532a9ae7b96c4fe265cb0ae1ea0049dff6"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/nick_v.png",
+      "sha256": "83722271c5d94d7e320a2e787e8607bbbedfe6b0f4f06497b2a10e5e174a1ec3"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/paladin.png",
+      "sha256": "bd9981780db90c946995fb47da980e0379292dc2e4d3049dce1488183660113f"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/piper_wright.png",
+      "sha256": "042f709176b1ef86cb04aa92cf6f952fe07b213d4530fe6c2d2e2dcc0277a2a4"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/preston_garvey.png",
+      "sha256": "603cb04066bdbd310bad0eac795b77b69ff6b328bc0bcbf8dd3230394026bb78"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/ripley_aliens.png",
+      "sha256": "96dea9a4ebb1c2fbfead1b0b3271f2efb4939f490390a3d2b5956572458b62e9"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/rochelle_l4d.png",
+      "sha256": "37027d6aefec528006165e3be565df816f6b331e1b7c4731394af9b9e9224333"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/spengler_gb.png",
+      "sha256": "78151e1af590457441f8629da33c599979d6ad419d1af2a82ea049d8d0c9ad81"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/stantz_gb.png",
+      "sha256": "cb8eb586be38cd97239bfc4b6ecaccbf18e348d6adf3dfd4b3a98ccb925e7ce8"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/vasquez_aliens.png",
+      "sha256": "7c1edd3d5461af9d2f9c89f0838d2bb2f40bbab785539a7469d72a77a611b503"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/venkman_gb.png",
+      "sha256": "3ce223313598414f9f94ec88e6e68e2623016dad302aa9ea1d3e3e06ef10440f"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/wolf_pd.png",
+      "sha256": "2b023d0e4c2bdc3ba85f0c2ae4cf372d5c9d73ca83b742a83c3913a59fef66be"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave10/zeddemore_gb.png",
+      "sha256": "870afe556151337a3d76e1ed078b884fa1475fa0082a12f6a4952f640805f21c"
+    },
+    {
+      "sheet": "/sprites/generated/melee-freeman-wave10/freeman-combat-a.png",
+      "sha256": "03bc8b8a6b12bff81b4dff413a7092fbccbe94932c859075353f89a721b4d9e1"
+    },
+    {
+      "sheet": "/sprites/generated/melee-freeman-wave10/freeman-combat-b.png",
+      "sha256": "f744dac3a7d09988ef31c22ded80c669d894460d2c9535462e2f6f8323217c4a"
+    },
+    {
+      "sheet": "/sprites/generated/melee-freeman-wave10/freeman-defense.png",
+      "sha256": "a5a132c75e93c98a8b908e8532c7576b98c4eb93fb2d41f54e8397207f2df454"
+    },
+    {
+      "sheet": "/sprites/generated/melee-freeman-wave10/freeman-ledge.png",
+      "sha256": "b0056f7bca478993aeee5b6c4d12fa23a80e3e7ca382ba33af2ec618f120e2bc"
+    },
+    {
+      "sheet": "/sprites/generated/melee-freeman-wave10/freeman-motion-a.png",
+      "sha256": "61196877decde3710305833dfb0030e2d497d83eda4fec43f42ecee789b3bfaf"
+    },
+    {
+      "sheet": "/sprites/generated/melee-freeman-wave10/freeman-motion-b.png",
+      "sha256": "0cefb0b1acbf780e3fb160105352bae01262629916970095c5b6c40d1f029b61"
+    },
+    {
+      "sheet": "/sprites/generated/melee-neo-wave10/neo-combat-a.png",
+      "sha256": "dd91ff04bf086470979f06ae17f1308b078f120855d4bac8e21711c2eb708217"
+    },
+    {
+      "sheet": "/sprites/generated/melee-neo-wave10/neo-combat-b.png",
+      "sha256": "5a2d58b9569bef65a19c340a505630c4dfbecfb9c47dd6f48b861c74075db928"
+    },
+    {
+      "sheet": "/sprites/generated/melee-neo-wave10/neo-defense.png",
+      "sha256": "c4e336774b182dee24b694847973d396fdc48c6a0e7ad944411f101d9ab15882"
+    },
+    {
+      "sheet": "/sprites/generated/melee-neo-wave10/neo-ledge.png",
+      "sha256": "266eb1ff2423d8be2c74ff4e0d770013de02404f6f1edac161e774df48c8cee5"
+    },
+    {
+      "sheet": "/sprites/generated/melee-neo-wave10/neo-motion-a.png",
+      "sha256": "438cf20e7729757752b3bb48f54398148a4d905eb62f582d8896e3f715881ea5"
+    },
+    {
+      "sheet": "/sprites/generated/melee-neo-wave10/neo-motion-b.png",
+      "sha256": "9f1f8ce3a7543ea1d9afa61fcc0089fa76393a91b89a6acffdd2187fbb78d98f"
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave10/alyx.png",
+      "sha256": "a6433a3e91b8e455f59046e53b3c48c73a3666e6e3e974892d6c05a32c6de976"
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave10/chains.png",
+      "sha256": "3287a1447981be03a5d8aeb8891574a7214b9303a49fa5c3ecc216ef1d1d8570"
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave10/coach.png",
+      "sha256": "eb6e1e62e8f9af42a4538f2013b05e05460874e4a4c01ef0f6cd3ccbc3245260"
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave10/egon.png",
+      "sha256": "b19a6f4d0fff61fa8246fe38c517f17bc471572886c83b211a6fd8ba4db20fc6"
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave10/hicks.png",
+      "sha256": "d13b2ca7094b5e6a1d6733271518bed0cac18ba92668f55d103511d8eb00e1cd"
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave10/nick.png",
+      "sha256": "8ec436358aba7aae62f8588c561fd06da9606d7f7260364a12c085abbf3908f6"
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave10/tealc.png",
+      "sha256": "7b7f9db1ef700b8cf036a4408bf26e4eadc1856a4ba1a6c337579a1c1116cb3e"
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave10/trinity.png",
+      "sha256": "077821da87ab9a44b3c3440cdbbc38a382bcd5c02a7384ede5413ed5d7b64ad1"
+    }
+  ],
+  "retainedPngSetSha256": "ed0d6b4be96bd28c1efb9b48207491d4c65a57114f4ca8e8b6a2ea53661163fa"
+}

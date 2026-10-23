@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "tool": "mcp__codex_apps__search_service_web_run",
+  "request": {
+    "open": [
+      {
+        "ref_id": "https://buffy.fandom.com/wiki/Buffy_the_Vampire_Slayer_season_7"
+      },
+      {
+        "ref_id": "https://buffy.fandom.com/wiki/Spike%27s_duster"
+      },
+      {
+        "ref_id": "https://propstore.com/product/harry-potter-and-the-half-blood-prince-2009/lot-176-dumbledores-michael-gambon-hero-robe/"
+      },
+      {
+        "ref_id": "https://harrypotter.fandom.com/wiki/Stunning_Spell"
+      }
+    ],
+    "response_length": "long"
+  },
+  "results": [
+    {
+      "url": "https://buffy.fandom.com/wiki/Buffy_the_Vampire_Slayer_season_7",
+      "access": "Search result excerpt read; direct open failed: Failed to fetch restricted URL"
+    },
+    {
+      "url": "https://buffy.fandom.com/wiki/Spike%27s_duster",
+      "access": "Search excerpt read; direct open failed: Failed to fetch restricted URL"
+    },
+    {
+      "url": "https://propstore.com/product/harry-potter-and-the-half-blood-prince-2009/lot-176-dumbledores-michael-gambon-hero-robe/",
+      "access": "Full page opened successfully; costume description at lines97–99"
+    },
+    {
+      "url": "https://harrypotter.fandom.com/wiki/Stunning_Spell",
+      "access": "Direct open failed: Failed to fetch restricted URL"
+    }
+  ],
+  "rawResponseArchived": false,
+  "sourceFacts": "docs/combat-fidelity-wave11-2026-10-23/part-a-source-facts.json"
+}

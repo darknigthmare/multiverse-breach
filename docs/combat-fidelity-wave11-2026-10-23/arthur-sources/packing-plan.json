@@ -1,0 +1,537 @@
+{
+  "heroId": "arthur_kaamelott",
+  "registryStem": "arthur",
+  "universe": "Kaamelott",
+  "sourceWork": "Kaamelott — Livre III (2005)",
+  "date": "2026-10-23",
+  "archiveDir": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources",
+  "outputDir": "public/sprites/generated/melee-arthur-wave11",
+  "reference": {
+    "asset": "public/sprites/generated/heroes/kaamelott/arthur-kaamelott.png",
+    "savedImage": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-reference-original.png"
+  },
+  "correctionId": "arthur-corrective-states",
+  "sourceReference": "Authored crossover movement and choreography based on the stated version and equipment; not copied official animation and not certified frame-for-frame canon. Simple/air/ledge actions follow the actual simple profile; charge/special use the secondary profile.",
+  "sources": [
+    {
+      "id": "arthur-motion-a",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-motion-a.native.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 0,
+        "column": 0,
+        "state": "idle",
+        "raisedArmsExcluded": false,
+        "reason": "First/selected upright crown-to-sole vertical span; lateral sword and raised arm do not define the extrema. Visual adaptation, not certified source anatomy. Independent approximate visual ROI, not certified source anatomy.",
+        "bodyBounds": {
+          "x": 81,
+          "y": 12,
+          "width": 111,
+          "height": 186
+        }
+      }
+    },
+    {
+      "id": "arthur-motion-b",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-motion-b.native.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 6,
+        "column": 0,
+        "state": "taunt1",
+        "raisedArmsExcluded": false,
+        "reason": "First/selected upright crown-to-sole vertical span; lateral sword and raised arm do not define the extrema. Visual adaptation, not certified source anatomy. Independent approximate visual ROI, not certified source anatomy.",
+        "bodyBounds": {
+          "x": 71,
+          "y": 1183,
+          "width": 162,
+          "height": 193
+        }
+      }
+    },
+    {
+      "id": "arthur-defense",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-defense.native.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 5,
+        "column": 3,
+        "state": "shieldExit",
+        "raisedArmsExcluded": false,
+        "reason": "First/selected upright crown-to-sole vertical span; lateral sword and raised arm do not define the extrema. Visual adaptation, not certified source anatomy. Independent approximate visual ROI, not certified source anatomy.",
+        "bodyBounds": {
+          "x": 815,
+          "y": 955,
+          "width": 112,
+          "height": 182
+        }
+      }
+    },
+    {
+      "id": "arthur-combat-a",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-combat-a.native.png",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 7,
+        "column": 3,
+        "state": "chargeRecovery",
+        "raisedArmsExcluded": false,
+        "reason": "First/selected upright crown-to-sole vertical span; lateral sword and raised arm do not define the extrema. Visual adaptation, not certified source anatomy. Independent approximate visual ROI, not certified source anatomy.",
+        "bodyBounds": {
+          "x": 816,
+          "y": 1331,
+          "width": 137,
+          "height": 188
+        }
+      }
+    },
+    {
+      "id": "arthur-combat-b",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-combat-b.native.png",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 4,
+        "column": 0,
+        "state": "intro",
+        "raisedArmsExcluded": false,
+        "reason": "First/selected upright crown-to-sole vertical span; lateral sword and raised arm do not define the extrema. Visual adaptation, not certified source anatomy. Independent approximate visual ROI, not certified source anatomy.",
+        "bodyBounds": {
+          "x": 55,
+          "y": 835,
+          "width": 129,
+          "height": 203
+        }
+      }
+    },
+    {
+      "id": "arthur-ledge",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-ledge.native.png",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 1,
+        "column": 0,
+        "state": "ledgeHang",
+        "raisedArmsExcluded": true,
+        "reason": "Head/sole projection only, raised arms excluded. Knees and legs are flexed: do not treat this projection as an upright body-density calibration. Bridge scale against a standing source/head/trunk measurement and retain natural shortening. Independent approximate visual ROI, not certified source anatomy.",
+        "bodyBounds": {
+          "x": 70,
+          "y": 378,
+          "width": 110,
+          "height": 232
+        },
+        "nativeStandingBodyHeight": 248.1324839162017,
+        "standingEquivalentMethod": "approximate-native-crown-hip-knee-ankle-sole-path; projected ROI retained separately",
+        "anatomicalPath": {
+          "coordinateSpace": "native-source-pixels",
+          "points": [
+            [
+              158,
+              378
+            ],
+            [
+              153,
+              508
+            ],
+            [
+              126,
+              550
+            ],
+            [
+              104,
+              587
+            ],
+            [
+              92,
+              609
+            ]
+          ],
+          "pathLengthApprox": 248.1324839162017,
+          "uprightEquivalentApprox": 248.1324839162017,
+          "projectedCrownToSole": 232,
+          "landmarkUncertaintyPx": 10
+        }
+      }
+    },
+    {
+      "id": "arthur-corrective-states",
+      "image": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-corrective-states.native.png",
+      "states": [
+        "uprightCalibration",
+        "aerialDown"
+      ],
+      "calibration": {
+        "reviewed": true,
+        "row": 0,
+        "column": 0,
+        "state": "uprightCalibration",
+        "raisedArmsExcluded": false,
+        "reason": "First/selected upright crown-to-sole vertical span; lateral sword and raised arm do not define the extrema. Visual adaptation, not certified source anatomy. Independent approximate visual ROI, not certified source anatomy.",
+        "bodyBounds": {
+          "x": 77,
+          "y": 6,
+          "width": 261,
+          "height": 414
+        }
+      }
+    }
+  ],
+  "atlases": [
+    {
+      "id": "arthur-motion-a",
+      "batch": "Motion",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "selection": {
+        "idle": {
+          "sourceId": "arthur-motion-a",
+          "row": 0
+        },
+        "walk": {
+          "sourceId": "arthur-motion-a",
+          "row": 1
+        },
+        "run": {
+          "sourceId": "arthur-motion-a",
+          "row": 2
+        },
+        "turn": {
+          "sourceId": "arthur-motion-a",
+          "row": 3
+        },
+        "jumpStart": {
+          "sourceId": "arthur-motion-a",
+          "row": 4
+        },
+        "jumpRise": {
+          "sourceId": "arthur-motion-a",
+          "row": 5
+        },
+        "jumpApex": {
+          "sourceId": "arthur-motion-a",
+          "row": 6
+        },
+        "fall": {
+          "sourceId": "arthur-motion-a",
+          "row": 7
+        }
+      }
+    },
+    {
+      "id": "arthur-motion-b",
+      "batch": "Motion",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "selection": {
+        "fastFall": {
+          "sourceId": "arthur-motion-b",
+          "row": 0
+        },
+        "land": {
+          "sourceId": "arthur-motion-b",
+          "row": 1
+        },
+        "crouchEnter": {
+          "sourceId": "arthur-motion-b",
+          "row": 2
+        },
+        "crouchIdle": {
+          "sourceId": "arthur-motion-b",
+          "row": 3
+        },
+        "crouchExit": {
+          "sourceId": "arthur-motion-b",
+          "row": 4
+        },
+        "crouchCharge": {
+          "sourceId": "arthur-motion-b",
+          "row": 5
+        },
+        "taunt1": {
+          "sourceId": "arthur-motion-b",
+          "row": 6
+        },
+        "hitStun": {
+          "sourceId": "arthur-motion-b",
+          "row": 7
+        }
+      }
+    },
+    {
+      "id": "arthur-defense",
+      "batch": "Motion",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "selection": {
+        "shieldEnter": {
+          "sourceId": "arthur-defense",
+          "row": 0
+        },
+        "shieldHold": {
+          "sourceId": "arthur-defense",
+          "row": 1
+        },
+        "shieldHit": {
+          "sourceId": "arthur-defense",
+          "row": 2
+        },
+        "perfectShield": {
+          "sourceId": "arthur-defense",
+          "row": 3
+        },
+        "shieldBreak": {
+          "sourceId": "arthur-defense",
+          "row": 4
+        },
+        "shieldExit": {
+          "sourceId": "arthur-defense",
+          "row": 5
+        },
+        "dead": {
+          "sourceId": "arthur-defense",
+          "row": 6
+        },
+        "defeat": {
+          "sourceId": "arthur-defense",
+          "row": 7
+        }
+      }
+    },
+    {
+      "id": "arthur-combat-a",
+      "batch": "Combat",
+      "states": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "selection": {
+        "attackLight1": {
+          "sourceId": "arthur-combat-a",
+          "row": 0
+        },
+        "attackLight2": {
+          "sourceId": "arthur-combat-a",
+          "row": 1
+        },
+        "attackLight3": {
+          "sourceId": "arthur-combat-a",
+          "row": 2
+        },
+        "crouchLight": {
+          "sourceId": "arthur-combat-a",
+          "row": 3
+        },
+        "chargeStart": {
+          "sourceId": "arthur-combat-a",
+          "row": 4
+        },
+        "chargeLoop": {
+          "sourceId": "arthur-combat-a",
+          "row": 5
+        },
+        "chargeRelease": {
+          "sourceId": "arthur-combat-a",
+          "row": 6
+        },
+        "chargeRecovery": {
+          "sourceId": "arthur-combat-a",
+          "row": 7
+        }
+      }
+    },
+    {
+      "id": "arthur-combat-b",
+      "batch": "Combat",
+      "states": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "selection": {
+        "attackRecovery": {
+          "sourceId": "arthur-combat-b",
+          "row": 0
+        },
+        "special": {
+          "sourceId": "arthur-combat-b",
+          "row": 1
+        },
+        "aerialNeutral": {
+          "sourceId": "arthur-combat-b",
+          "row": 2
+        },
+        "aerialForward": {
+          "sourceId": "arthur-combat-b",
+          "row": 3
+        },
+        "aerialDown": {
+          "sourceId": "arthur-corrective-states",
+          "row": 1
+        },
+        "intro": {
+          "sourceId": "arthur-combat-b",
+          "row": 4
+        },
+        "victory": {
+          "sourceId": "arthur-combat-b",
+          "row": 5
+        },
+        "ledgeAttack": {
+          "sourceId": "arthur-combat-b",
+          "row": 6
+        }
+      },
+      "discardedRows": [
+        {
+          "sourceImage": "docs/combat-fidelity-wave11-2026-10-23/arthur-sources/arthur-corrective-states.native.png",
+          "row": 0,
+          "state": "uprightCalibration",
+          "poses": 4,
+          "reason": "Four native upright body calibration poses only; not selected or counted among the45 game states."
+        }
+      ]
+    },
+    {
+      "id": "arthur-ledge",
+      "batch": "Combat",
+      "states": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "selection": {
+        "ledgeCatch": {
+          "sourceId": "arthur-ledge",
+          "row": 0
+        },
+        "ledgeHang": {
+          "sourceId": "arthur-ledge",
+          "row": 1
+        },
+        "ledgeClimb": {
+          "sourceId": "arthur-ledge",
+          "row": 2
+        },
+        "ledgeDrop": {
+          "sourceId": "arthur-ledge",
+          "row": 3
+        },
+        "ledgeJump": {
+          "sourceId": "arthur-ledge",
+          "row": 4
+        }
+      }
+    }
+  ],
+  "incompleteInitialSources": [
+    {
+      "id": "arthur-combat-b",
+      "observedRows": 7,
+      "expectedRows": 8,
+      "missingState": "aerialDown"
+    }
+  ],
+  "visualReview": {
+    "complete": true,
+    "outfit": "Livre III adult Arthur, short slightly curly dark hair/beard, thin gold circlet, red-brown leather and burgundy tunic, gray mail sleeves, brown cape and boots.",
+    "weapons": "Physical steel Excalibur, simple gold hilt. Cuts for simple and real thrust for secondary. No beams or magic. Hands free at ledge; sword sheathed.",
+    "limitations": [
+      "Original adapted crossover choreography, not exported official animation or certified frame-for-frame canon.",
+      "Runtime facing mirrors the native artwork, including anatomical or costume asymmetry.",
+      "Ledge source uses its own crown-to-sole hanging calibration, raised hands excluded; actual lower-body flexion is documented.",
+      "Hanging body calibration uses an approximate actual crown→hip→knee→ankle→sole path (±10px), while the shorter projected ROI and all knee flexion remain unchanged."
+    ]
+  }
+}

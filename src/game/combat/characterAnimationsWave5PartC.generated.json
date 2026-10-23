@@ -1,0 +1,4472 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "leon",
+      "heroId": "leon",
+      "universe": "Resident Evil",
+      "name": "Leon S. Kennedy",
+      "sheet": "/sprites/generated/combat-character-animations-wave5/leon.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "4371ef37814dc1e38d0efcb29f74b6394ec2b350892e3ccd0e7ced5c1eafed9b",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+      "sourceImageSha256": "eac7ed89a989b866f8ed2798d342f86004fbaa901fc7a1b0f39fbed759fb0646",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/leon.png",
+      "referenceAssetSha256": "92fa0154280056d78e66cf5d9eaa2a2b73491b6bb1af2fb618c5a278f8255913",
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-references/leon.png",
+      "sourceWork": "Resident Evil 4 (2005)",
+      "sourceReference": "src/game/canonicalCombatOverrides.js#leon; src/game/combat/abilities/abilitiesCanonical.js#leon; Resident Evil4(2005), special rocket launcher supplied for the final Saddler encounter. Local base RPD-looking outfit is intentionally not costume authority for this agent-version atlas.",
+      "abilityName": "Special Rocket Launcher",
+      "characterVersion": "Young adult Leon, RE4(2005) agent outfit: brown shearling flight jacket, black fitted shirt, dark tactical trousers, holsters and boots; not RPD uniform.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+            "sourceImageSha256": "eac7ed89a989b866f8ed2798d342f86004fbaa901fc7a1b0f39fbed759fb0646",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 228
+            },
+            "scale": 1.0841121495327102,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 49,
+                  "top": 11,
+                  "width": 127,
+                  "height": 210,
+                  "pixels": 14570
+                },
+                "output": {
+                  "left": 61,
+                  "top": 13,
+                  "width": 138,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 269,
+                  "top": 11,
+                  "width": 126,
+                  "height": 213,
+                  "pixels": 14510
+                },
+                "output": {
+                  "left": 59,
+                  "top": 13,
+                  "width": 137,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 490,
+                  "top": 10,
+                  "width": 125,
+                  "height": 213,
+                  "pixels": 14316
+                },
+                "output": {
+                  "left": 58,
+                  "top": 12,
+                  "width": 136,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 708,
+                  "top": 10,
+                  "width": 161,
+                  "height": 212,
+                  "pixels": 14671
+                },
+                "output": {
+                  "left": 54,
+                  "top": 12,
+                  "width": 175,
+                  "height": 230
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+            "sourceImageSha256": "eac7ed89a989b866f8ed2798d342f86004fbaa901fc7a1b0f39fbed759fb0646",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 224,
+              "bottom": 450
+            },
+            "scale": 1.0790697674418606,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 6,
+                  "width": 120,
+                  "height": 213,
+                  "pixels": 13527
+                },
+                "output": {
+                  "left": 57,
+                  "top": 14,
+                  "width": 129,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 269,
+                  "top": 8,
+                  "width": 123,
+                  "height": 211,
+                  "pixels": 14576
+                },
+                "output": {
+                  "left": 59,
+                  "top": 16,
+                  "width": 133,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 493,
+                  "top": 7,
+                  "width": 108,
+                  "height": 212,
+                  "pixels": 12484
+                },
+                "output": {
+                  "left": 62,
+                  "top": 15,
+                  "width": 117,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 729,
+                  "top": 4,
+                  "width": 109,
+                  "height": 215,
+                  "pixels": 13964
+                },
+                "output": {
+                  "left": 77,
+                  "top": 12,
+                  "width": 118,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+            "sourceImageSha256": "eac7ed89a989b866f8ed2798d342f86004fbaa901fc7a1b0f39fbed759fb0646",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 446,
+              "bottom": 675
+            },
+            "scale": 1.0642201834862386,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 54,
+                  "top": 7,
+                  "width": 121,
+                  "height": 211,
+                  "pixels": 14368
+                },
+                "output": {
+                  "left": 67,
+                  "top": 15,
+                  "width": 129,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 268,
+                  "top": 7,
+                  "width": 130,
+                  "height": 212,
+                  "pixels": 14081
+                },
+                "output": {
+                  "left": 59,
+                  "top": 15,
+                  "width": 138,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 495,
+                  "top": 7,
+                  "width": 121,
+                  "height": 215,
+                  "pixels": 15507
+                },
+                "output": {
+                  "left": 65,
+                  "top": 15,
+                  "width": 129,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 724,
+                  "top": 4,
+                  "width": 123,
+                  "height": 218,
+                  "pixels": 15119
+                },
+                "output": {
+                  "left": 73,
+                  "top": 12,
+                  "width": 131,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+            "sourceImageSha256": "eac7ed89a989b866f8ed2798d342f86004fbaa901fc7a1b0f39fbed759fb0646",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 661,
+              "bottom": 890
+            },
+            "scale": 1.0740740740740742,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 37,
+                  "top": 6,
+                  "width": 143,
+                  "height": 216,
+                  "pixels": 15636
+                },
+                "output": {
+                  "left": 49,
+                  "top": 12,
+                  "width": 154,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 242,
+                  "top": 35,
+                  "width": 165,
+                  "height": 178,
+                  "pixels": 16648
+                },
+                "output": {
+                  "left": 31,
+                  "top": 43,
+                  "width": 177,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 478,
+                  "top": 59,
+                  "width": 152,
+                  "height": 154,
+                  "pixels": 15136
+                },
+                "output": {
+                  "left": 46,
+                  "top": 69,
+                  "width": 163,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 692,
+                  "top": 55,
+                  "width": 146,
+                  "height": 159,
+                  "pixels": 14053
+                },
+                "output": {
+                  "left": 38,
+                  "top": 65,
+                  "width": 157,
+                  "height": 171
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+            "sourceImageSha256": "eac7ed89a989b866f8ed2798d342f86004fbaa901fc7a1b0f39fbed759fb0646",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 885,
+              "bottom": 1116
+            },
+            "scale": 0.7682119205298014,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 30,
+                  "top": 6,
+                  "width": 172,
+                  "height": 217,
+                  "pixels": 17476
+                },
+                "output": {
+                  "left": 66,
+                  "top": 77,
+                  "width": 132,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 227,
+                  "top": 6,
+                  "width": 217,
+                  "height": 217,
+                  "pixels": 18156
+                },
+                "output": {
+                  "left": 47,
+                  "top": 77,
+                  "width": 167,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 444,
+                  "top": 6,
+                  "width": 261,
+                  "height": 217,
+                  "pixels": 21986
+                },
+                "output": {
+                  "left": 43,
+                  "top": 77,
+                  "width": 201,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 694,
+                  "top": 5,
+                  "width": 165,
+                  "height": 218,
+                  "pixels": 18680
+                },
+                "output": {
+                  "left": 65,
+                  "top": 77,
+                  "width": 127,
+                  "height": 167
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.4172797262617625,
+            "statureReview": {
+              "sourceComparableColumn": 3,
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 228,
+              "normalizedBodyHeight": 167,
+              "bodyBounds": [
+                65,
+                77,
+                127,
+                167
+              ],
+              "referenceBodyBounds": [
+                61,
+                13,
+                138,
+                228
+              ],
+              "sourceBodyHeightApprox": 217,
+              "referenceSourceBodyHeightApprox": 210,
+              "normalizationScale": 0.7682119205298014,
+              "referenceNormalizationScale": 1.0841121495327102,
+              "compensatedBodyHeightApprox": 236.68571428571434,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": false,
+              "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+              "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+              "nativeComparableBodyHeight": 218,
+              "nativeReferenceBodyHeight": 210,
+              "nativeComparableBodyBounds": [
+                694,
+                5,
+                165,
+                218
+              ],
+              "nativeReferenceBodyBounds": [
+                49,
+                11,
+                127,
+                210
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+              "nativeComparableRow": 4,
+              "nativeReferenceRow": 0,
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+            "sourceImageSha256": "eac7ed89a989b866f8ed2798d342f86004fbaa901fc7a1b0f39fbed759fb0646",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1109,
+              "bottom": 1346
+            },
+            "scale": 1.045045045045045,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 48,
+                  "top": 7,
+                  "width": 117,
+                  "height": 218,
+                  "pixels": 14985
+                },
+                "output": {
+                  "left": 62,
+                  "top": 13,
+                  "width": 122,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 282,
+                  "top": 7,
+                  "width": 106,
+                  "height": 220,
+                  "pixels": 14162
+                },
+                "output": {
+                  "left": 75,
+                  "top": 13,
+                  "width": 111,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 493,
+                  "top": 10,
+                  "width": 123,
+                  "height": 217,
+                  "pixels": 15932
+                },
+                "output": {
+                  "left": 64,
+                  "top": 16,
+                  "width": 129,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 6,
+                  "width": 128,
+                  "height": 222,
+                  "pixels": 15649
+                },
+                "output": {
+                  "left": 61,
+                  "top": 12,
+                  "width": 134,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+            "sourceImageSha256": "eac7ed89a989b866f8ed2798d342f86004fbaa901fc7a1b0f39fbed759fb0646",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1345,
+              "bottom": 1543
+            },
+            "scale": 0.9957081545064378,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 11,
+                  "width": 205,
+                  "height": 179,
+                  "pixels": 14642
+                },
+                "output": {
+                  "left": 40,
+                  "top": 66,
+                  "width": 204,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 244,
+                  "top": 46,
+                  "width": 167,
+                  "height": 138,
+                  "pixels": 14024
+                },
+                "output": {
+                  "left": 40,
+                  "top": 101,
+                  "width": 166,
+                  "height": 137
+                }
+              },
+              {
+                "source": {
+                  "left": 455,
+                  "top": 58,
+                  "width": 197,
+                  "height": 127,
+                  "pixels": 14722
+                },
+                "output": {
+                  "left": 29,
+                  "top": 113,
+                  "width": 196,
+                  "height": 126
+                }
+              },
+              {
+                "source": {
+                  "left": 667,
+                  "top": 76,
+                  "width": 208,
+                  "height": 111,
+                  "pixels": 14092
+                },
+                "output": {
+                  "left": 19,
+                  "top": 130,
+                  "width": 207,
+                  "height": 111
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+            "sourceImageSha256": "eac7ed89a989b866f8ed2798d342f86004fbaa901fc7a1b0f39fbed759fb0646",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1542,
+              "bottom": 1774
+            },
+            "scale": 0.7116564417177914,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 28,
+                  "top": 6,
+                  "width": 149,
+                  "height": 214,
+                  "pixels": 17013
+                },
+                "output": {
+                  "left": 69,
+                  "top": 91,
+                  "width": 106,
+                  "height": 152
+                }
+              },
+              {
+                "source": {
+                  "left": 247,
+                  "top": 13,
+                  "width": 205,
+                  "height": 207,
+                  "pixels": 18227
+                },
+                "output": {
+                  "left": 67,
+                  "top": 96,
+                  "width": 146,
+                  "height": 147
+                }
+              },
+              {
+                "source": {
+                  "left": 441,
+                  "top": 11,
+                  "width": 276,
+                  "height": 209,
+                  "pixels": 21602
+                },
+                "output": {
+                  "left": 47,
+                  "top": 95,
+                  "width": 196,
+                  "height": 149
+                }
+              },
+              {
+                "source": {
+                  "left": 703,
+                  "top": 10,
+                  "width": 157,
+                  "height": 211,
+                  "pixels": 16663
+                },
+                "output": {
+                  "left": 76,
+                  "top": 94,
+                  "width": 112,
+                  "height": 150
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.5272380952380953,
+            "statureReview": {
+              "sourceComparableColumn": 3,
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 228,
+              "normalizedBodyHeight": 150,
+              "bodyBounds": [
+                76,
+                94,
+                112,
+                150
+              ],
+              "referenceBodyBounds": [
+                61,
+                13,
+                138,
+                228
+              ],
+              "sourceBodyHeightApprox": 211,
+              "referenceSourceBodyHeightApprox": 210,
+              "normalizationScale": 0.7116564417177914,
+              "referenceNormalizationScale": 1.0841121495327102,
+              "compensatedBodyHeightApprox": 229.0857142857143,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": false,
+              "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+              "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+              "nativeComparableBodyHeight": 211,
+              "nativeReferenceBodyHeight": 210,
+              "nativeComparableBodyBounds": [
+                703,
+                10,
+                157,
+                211
+              ],
+              "nativeReferenceBodyBounds": [
+                49,
+                11,
+                127,
+                210
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+              "nativeComparableRow": 7,
+              "nativeReferenceRow": 0,
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "65e38e50bec55e477d666e9474d32482b0d5860c39f7d05c6c3fdfa8a5a84765",
+              "b537bfb60b89ac8649a2461d4cf1967510bba54e575e8fafa989265f009e6843",
+              "fe826bdd8c3e7aaff8e33436a22013ace5354961a72e8f550087f8aebc619967",
+              "99faac7fb11fed03946ab8b52c4c4bf2eeab5ecee0da1103f8f5890a505dbf84"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1d4be66eb107ee72d92852ce39291fa746341543f86df649bf01002e1abcec9b",
+              "869e783fb68eee019c5363c8666d76e7bb154a80dfa071be29e6047b01026f41",
+              "be43c93ad8251cf469b6c7ab868cc2bebcb361a73cd60884b4386fb7ac39f5fd",
+              "7453e98472110a92e6867305b420dc1fc72a67f0269766ea9e4b57c993eff99d"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "2a99db82b7aeb6dc94bf4dabe173e3dfe5d24bbebe4807e5f1f7704848657617",
+              "266d90dfea285c32970228bc177d28369ac35e2019a178cbe022836e9812f431",
+              "200f78646b3fd778e0100870cdc39a4ab225f05f6f4216c752d08f115dd525e6",
+              "3ffd9d04688f0f404e561bcd21a8815480daeb8a2e6be593ef8a26682d9543f6"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7d0c40c323c8fe460810f9e0573413693f386dfeadbc761e8734e230dc0eaf7d",
+              "f25aff5841f525b38c29161734cc18bb090d60c164b4bd6d3766c6859129c7e6",
+              "569a0e13e521492b0298caa80a665b1abb15c54cfaabafb671bceca8f2816d3f",
+              "b5759ac12cdb20e7ed0ebb78f7de0b2c201331e9e91c202264fef483a1a7869d"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7bdc5816275a1fdf7d650f338c1bc277ebd85dedea70b6363bf65cc144098fe3",
+              "d3c23a664752d1220f725f06c89c7dccb147fc0e22ce1fee6613755e14c91ad5",
+              "1ff3ec83fb0de0e781c83d2eaddbb72f471b26efc5deb21b421d58168559585d",
+              "e23dc60a9690791652e465b98e4f494073910beaedc4adb709e7a38105834760"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "87c66f802493704ef31624dcc17ae60d076a03d1a380b7d5735f1bb9bcabab75",
+              "7bde898f297a3434a50ed6da6464653731532167a636f571a6c3320ecb8a2e32",
+              "9a691196ed75c9bebe5a64bb2950bcd30b4353c6f1138857bccbba3bd9fa2d55",
+              "4d624425a3590d3502b03fcf42bd139c4a2db71206665f58d3666bde7d223819"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fff1a36fd91a6aa5c0bcfefca49d34e04a44a500b9968623e3b85002478a3d25",
+              "93eab1908a1686bda8266fd222a06da9e6bf9cd39894993de3bd652a86abb369",
+              "d350bf88ac38833d86c7cfe65a3cbd99fc0d0c2a9e14350dba8bd9386a7d1b0c",
+              "966c9e35b24add56a7824c2e011724bf9f12ab4772e022e295538e6b402c5b5a"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1320edfeeed23c9b05974e8c377540e141ac8edc16d6980a7af3d3f1d4f8baab",
+              "216f8fd1d98979fa7a3b93b69ffdb78c30921adc95f98e2b26f6e0fb1b62195f",
+              "b5de6276160ed02ede5757c80c004d911405a94c6e553a7548ee43d325f84c06",
+              "afab9f145ed54f987fd7c45a668cb6c769c567b0bb444ee806548c41a9fed5c8"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Young adult Leon, RE4(2005) agent outfit: brown shearling flight jacket, black fitted shirt, dark tactical trousers, holsters and boots; not RPD uniform. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "jill",
+      "heroId": "jill",
+      "universe": "Resident Evil",
+      "name": "Jill Valentine",
+      "sheet": "/sprites/generated/combat-character-animations-wave5/jill.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "afe84d8904b9e530ae11f24626641af36727eb82aebf98a7581e665e7a1d46f7",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+      "sourceImageSha256": "e8626dcc45165e78950865ddb5756282a6c09365a9ccf28a9bbbfb9300820362",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/jill.png",
+      "referenceAssetSha256": "82319b40e8f5155016e524af1f3e924af8e06632e9621a82206ae7e7602aa856",
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-references/jill.png",
+      "sourceWork": "Resident Evil 3 (2020)",
+      "sourceReference": "src/game/canonicalCombatOverrides.js#jill; src/game/combat/abilities/abilitiesCanonical.js#jill; Resident Evil3(2020), NEST2 final Nemesis encounter using the experimental FINGeR electromagnetic cannon.",
+      "abilityName": "FINGeR Railgun",
+      "characterVersion": "Jill, Resident Evil3 Remake2020: blue tank top, dark tactical trousers, shoulder holster, short brown bob; heavy experimental FINGeR hardware.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+            "sourceImageSha256": "e8626dcc45165e78950865ddb5756282a6c09365a9ccf28a9bbbfb9300820362",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 229
+            },
+            "scale": 1.031111111111111,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 36,
+                  "top": 2,
+                  "width": 142,
+                  "height": 221,
+                  "pixels": 15007
+                },
+                "output": {
+                  "left": 51,
+                  "top": 14,
+                  "width": 146,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 271,
+                  "top": 0,
+                  "width": 140,
+                  "height": 224,
+                  "pixels": 14783
+                },
+                "output": {
+                  "left": 64,
+                  "top": 12,
+                  "width": 144,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 479,
+                  "top": 0,
+                  "width": 171,
+                  "height": 225,
+                  "pixels": 15594
+                },
+                "output": {
+                  "left": 50,
+                  "top": 12,
+                  "width": 176,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 705,
+                  "top": 7,
+                  "width": 142,
+                  "height": 217,
+                  "pixels": 13819
+                },
+                "output": {
+                  "left": 55,
+                  "top": 19,
+                  "width": 146,
+                  "height": 224
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+            "sourceImageSha256": "e8626dcc45165e78950865ddb5756282a6c09365a9ccf28a9bbbfb9300820362",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 220,
+              "bottom": 469
+            },
+            "scale": 0.9586776859504132,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 42,
+                  "top": 7,
+                  "width": 126,
+                  "height": 231,
+                  "pixels": 14777
+                },
+                "output": {
+                  "left": 62,
+                  "top": 18,
+                  "width": 121,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 286,
+                  "top": 1,
+                  "width": 134,
+                  "height": 239,
+                  "pixels": 15439
+                },
+                "output": {
+                  "left": 83,
+                  "top": 12,
+                  "width": 128,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 496,
+                  "top": 6,
+                  "width": 122,
+                  "height": 237,
+                  "pixels": 14164
+                },
+                "output": {
+                  "left": 72,
+                  "top": 17,
+                  "width": 117,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 7,
+                  "width": 124,
+                  "height": 232,
+                  "pixels": 14366
+                },
+                "output": {
+                  "left": 67,
+                  "top": 18,
+                  "width": 119,
+                  "height": 222
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+            "sourceImageSha256": "e8626dcc45165e78950865ddb5756282a6c09365a9ccf28a9bbbfb9300820362",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 452,
+              "bottom": 717
+            },
+            "scale": 0.8923076923076924,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 44,
+                  "top": 3,
+                  "width": 136,
+                  "height": 258,
+                  "pixels": 16271
+                },
+                "output": {
+                  "left": 68,
+                  "top": 12,
+                  "width": 121,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 278,
+                  "top": 6,
+                  "width": 138,
+                  "height": 256,
+                  "pixels": 17221
+                },
+                "output": {
+                  "left": 79,
+                  "top": 15,
+                  "width": 123,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 490,
+                  "top": 7,
+                  "width": 133,
+                  "height": 254,
+                  "pixels": 16867
+                },
+                "output": {
+                  "left": 71,
+                  "top": 16,
+                  "width": 119,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 716,
+                  "top": 3,
+                  "width": 129,
+                  "height": 260,
+                  "pixels": 17208
+                },
+                "output": {
+                  "left": 74,
+                  "top": 12,
+                  "width": 115,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+            "sourceImageSha256": "e8626dcc45165e78950865ddb5756282a6c09365a9ccf28a9bbbfb9300820362",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 711,
+              "bottom": 928
+            },
+            "scale": 1.1047619047619048,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 37,
+                  "top": 6,
+                  "width": 148,
+                  "height": 207,
+                  "pixels": 14166
+                },
+                "output": {
+                  "left": 46,
+                  "top": 15,
+                  "width": 164,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 260,
+                  "top": 38,
+                  "width": 143,
+                  "height": 173,
+                  "pixels": 14963
+                },
+                "output": {
+                  "left": 48,
+                  "top": 51,
+                  "width": 158,
+                  "height": 191
+                }
+              },
+              {
+                "source": {
+                  "left": 456,
+                  "top": 59,
+                  "width": 165,
+                  "height": 150,
+                  "pixels": 14392
+                },
+                "output": {
+                  "left": 19,
+                  "top": 74,
+                  "width": 182,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 694,
+                  "top": 3,
+                  "width": 158,
+                  "height": 208,
+                  "pixels": 15618
+                },
+                "output": {
+                  "left": 37,
+                  "top": 12,
+                  "width": 175,
+                  "height": 230
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+            "sourceImageSha256": "e8626dcc45165e78950865ddb5756282a6c09365a9ccf28a9bbbfb9300820362",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 912,
+              "bottom": 1138
+            },
+            "scale": 0.6590909090909091,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 0,
+                  "top": 13,
+                  "width": 219,
+                  "height": 212,
+                  "pixels": 21998
+                },
+                "output": {
+                  "left": 55,
+                  "top": 104,
+                  "width": 144,
+                  "height": 140
+                }
+              },
+              {
+                "source": {
+                  "left": 231,
+                  "top": 23,
+                  "width": 211,
+                  "height": 196,
+                  "pixels": 18073
+                },
+                "output": {
+                  "left": 61,
+                  "top": 111,
+                  "width": 139,
+                  "height": 129
+                }
+              },
+              {
+                "source": {
+                  "left": 453,
+                  "top": 3,
+                  "width": 277,
+                  "height": 216,
+                  "pixels": 27767
+                },
+                "output": {
+                  "left": 61,
+                  "top": 98,
+                  "width": 183,
+                  "height": 142
+                }
+              },
+              {
+                "source": {
+                  "left": 677,
+                  "top": 11,
+                  "width": 204,
+                  "height": 211,
+                  "pixels": 17907
+                },
+                "output": {
+                  "left": 63,
+                  "top": 103,
+                  "width": 134,
+                  "height": 139
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.5660666037305901,
+            "statureReview": {
+              "sourceComparableColumn": 3,
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 228,
+              "normalizedBodyHeight": 139,
+              "bodyBounds": [
+                63,
+                103,
+                134,
+                139
+              ],
+              "referenceBodyBounds": [
+                51,
+                14,
+                146,
+                228
+              ],
+              "sourceBodyHeightApprox": 211,
+              "referenceSourceBodyHeightApprox": 221,
+              "normalizationScale": 0.6590909090909091,
+              "referenceNormalizationScale": 1.031111111111111,
+              "compensatedBodyHeightApprox": 217.68325791855207,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": false,
+              "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+              "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+              "nativeComparableBodyHeight": 211,
+              "nativeReferenceBodyHeight": 221,
+              "nativeComparableBodyBounds": [
+                677,
+                11,
+                204,
+                211
+              ],
+              "nativeReferenceBodyBounds": [
+                36,
+                2,
+                142,
+                221
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+              "nativeComparableRow": 4,
+              "nativeReferenceRow": 0,
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+            "sourceImageSha256": "e8626dcc45165e78950865ddb5756282a6c09365a9ccf28a9bbbfb9300820362",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1122,
+              "bottom": 1390
+            },
+            "scale": 0.8854961832061069,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 39,
+                  "top": 3,
+                  "width": 136,
+                  "height": 262,
+                  "pixels": 17911
+                },
+                "output": {
+                  "left": 64,
+                  "top": 12,
+                  "width": 120,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 268,
+                  "top": 6,
+                  "width": 118,
+                  "height": 256,
+                  "pixels": 15855
+                },
+                "output": {
+                  "left": 71,
+                  "top": 15,
+                  "width": 104,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 457,
+                  "top": 8,
+                  "width": 149,
+                  "height": 255,
+                  "pixels": 17100
+                },
+                "output": {
+                  "left": 42,
+                  "top": 16,
+                  "width": 132,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 3,
+                  "width": 135,
+                  "height": 259,
+                  "pixels": 17896
+                },
+                "output": {
+                  "left": 71,
+                  "top": 12,
+                  "width": 120,
+                  "height": 229
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+            "sourceImageSha256": "e8626dcc45165e78950865ddb5756282a6c09365a9ccf28a9bbbfb9300820362",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1383,
+              "bottom": 1563
+            },
+            "scale": 0.8689138576779026,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 18,
+                  "top": 4,
+                  "width": 199,
+                  "height": 170,
+                  "pixels": 14750
+                },
+                "output": {
+                  "left": 47,
+                  "top": 96,
+                  "width": 173,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 245,
+                  "top": 31,
+                  "width": 201,
+                  "height": 140,
+                  "pixels": 13307
+                },
+                "output": {
+                  "left": 52,
+                  "top": 120,
+                  "width": 175,
+                  "height": 122
+                }
+              },
+              {
+                "source": {
+                  "left": 442,
+                  "top": 33,
+                  "width": 203,
+                  "height": 133,
+                  "pixels": 13637
+                },
+                "output": {
+                  "left": 30,
+                  "top": 121,
+                  "width": 176,
+                  "height": 116
+                }
+              },
+              {
+                "source": {
+                  "left": 643,
+                  "top": 84,
+                  "width": 244,
+                  "height": 75,
+                  "pixels": 11186
+                },
+                "output": {
+                  "left": 12,
+                  "top": 166,
+                  "width": 212,
+                  "height": 65
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+            "sourceImageSha256": "e8626dcc45165e78950865ddb5756282a6c09365a9ccf28a9bbbfb9300820362",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1548,
+              "bottom": 1774
+            },
+            "scale": 0.7295597484276729,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 6,
+                  "top": 8,
+                  "width": 212,
+                  "height": 217,
+                  "pixels": 20205
+                },
+                "output": {
+                  "left": 51,
+                  "top": 85,
+                  "width": 155,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 217,
+                  "top": 19,
+                  "width": 257,
+                  "height": 207,
+                  "pixels": 22678
+                },
+                "output": {
+                  "left": 44,
+                  "top": 93,
+                  "width": 187,
+                  "height": 151
+                }
+              },
+              {
+                "source": {
+                  "left": 436,
+                  "top": 29,
+                  "width": 277,
+                  "height": 196,
+                  "pixels": 27107
+                },
+                "output": {
+                  "left": 42,
+                  "top": 100,
+                  "width": 202,
+                  "height": 143
+                }
+              },
+              {
+                "source": {
+                  "left": 679,
+                  "top": 2,
+                  "width": 197,
+                  "height": 218,
+                  "pixels": 18713
+                },
+                "output": {
+                  "left": 57,
+                  "top": 81,
+                  "width": 144,
+                  "height": 159
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.4144967130538717,
+            "statureReview": {
+              "sourceComparableColumn": 3,
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 228,
+              "normalizedBodyHeight": 159,
+              "bodyBounds": [
+                57,
+                81,
+                144,
+                159
+              ],
+              "referenceBodyBounds": [
+                51,
+                14,
+                146,
+                228
+              ],
+              "sourceBodyHeightApprox": 218,
+              "referenceSourceBodyHeightApprox": 221,
+              "normalizationScale": 0.7295597484276729,
+              "referenceNormalizationScale": 1.031111111111111,
+              "compensatedBodyHeightApprox": 224.9049773755656,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": false,
+              "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+              "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+              "nativeComparableBodyHeight": 218,
+              "nativeReferenceBodyHeight": 221,
+              "nativeComparableBodyBounds": [
+                679,
+                2,
+                197,
+                218
+              ],
+              "nativeReferenceBodyBounds": [
+                36,
+                2,
+                142,
+                221
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+              "nativeComparableRow": 7,
+              "nativeReferenceRow": 0,
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5bc59ad9988eaadac1253f8f969d61ea404e92ee7a57b3810a94113af60c3fc8",
+              "377ba8431eba023af3d4d59b9d6692801878abf81b6df6a5773f416bdff138a4",
+              "a05d3c026ce2740fd335c3fb84077fce9db1f66a3b952ba755e022fa867b24a8",
+              "a3fdfa0fc7f3fecb62878151675fff620cddc236172134e2f9537f8da4a890d9"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9281f0e8a711ea9c5a6bde3bca48da85680e22a4e5250850c0bbbbff10cf3848",
+              "bfe772ecaa6afa941c1fe321224fbc9135a22ba10275617f17af2f0611a6ea78",
+              "1231cc45da897e2359ef4b159f44243859a096b542a099d4be9f10cf1300e03d",
+              "54e416444572eaa6d53f5cef222a717000ffe31f3ec0125cfaf56b521cae5359"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e6db2096d68da1ec22f9b99cffb748613274d05bedd3210b6c3a696b67bbbfa6",
+              "d2e6f8b2f6c9b2c6c2c28fb4f69595808dd51bac9575059ebdabd82b10355745",
+              "39b80114db286fca81e121e91c216d1d4c3aeb2ce1b3c39c9b3f855d75df71f4",
+              "989ddbdef2fca00cfe2bfa70122343e8d7bac5c725b7a8857293ade995df8d4e"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "250327a763bea07599d9aa6324f698c03b8e69e3df34acb6d3fbc09cab4e8b03",
+              "7c2c9aa573f3328ccd1859603c25bc25901da3e8baec74fbf3a544d804c8c546",
+              "6f4d19d30a5f3222b8d5f1c719e410468e4d91e88320f1f6be1e93ded5d2e8b0",
+              "cc186de263a17757c5ba81c09a10486155db48b0b1235477f362475ab9cc98fd"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b6960fdcb7b510d06b4ca4323ce448fdd33d30d401a066999ab85c409da13178",
+              "62598a139935762fd3858a48a78762007f722a8bb4f5b522e48cfcae6f28f32f",
+              "0fd45208386c882748a8e9697b3739975b5a03a114ffc01b20014ec813ef54af",
+              "0e4bb0bc2a84fea81898d710dce488af2545b0145bd8913bd4b4d202d2ac4833"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "68a1365192522a3fb6c6f200da895759c78c34e599d627595d3dff465de7bec1",
+              "16039d58a9e0210e7acb1ecbb17ea7128fab057df863496e35e99a0cd8a22111",
+              "228a884abe056a207e039d1e6a722082654220fd17a619d886e379801425e53c",
+              "cb1a44618b18bec2e86d1e2ca299eefdec2bad1df786b1717cdaac2aa2b748c1"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f95f27353da5f149a3124a30efa0f87c6e5b4512681b38ef6a9da32b06481e63",
+              "f57b843c4e73144306e03246bf0e8714ff3a223ad1de69ab4606f5a2cc1f2eb0",
+              "ddb08d8b93951de9b19abc3674d9cb6d3657885fadaf17b8284935f286f16e6b",
+              "e3319ce432786c08b92b555e6a071c8d1c73a086397b15f8edc087fab9c492d7"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "795741835335e18e50d144d273bde24de523e35266882fae1eb455ce59445d0a",
+              "75197bcbcd9368a973e9b98360b7e220df89daea5585d4bfe908b8912e9ace0b",
+              "eca83df5a155fbede768a7f09e2aa3120258a2f398f35df20429ccb6f5eb8440",
+              "4e0c1925808879486ed6e7b767908be9969d778dbae202fa8fa5532f43d842d0"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Jill, Resident Evil3 Remake2020: blue tank top, dark tactical trousers, shoulder holster, short brown bob; heavy experimental FINGeR hardware. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "rebecca_chambers",
+      "heroId": "rebecca_chambers",
+      "universe": "Resident Evil",
+      "name": "Rebecca Chambers",
+      "sheet": "/sprites/generated/combat-character-animations-wave5/rebecca_chambers.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "22b69378ac4840fbced1c7d38f82d36c48906dfe14f63863f7350ff73fbc7bf5",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/rebecca_chambers-original.png",
+      "sourceImageSha256": "e52f33d7ada5a6cdfbc815a4507e5f65abef762311b69cfa9d462b0c15405101",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/rebecca-chambers.png",
+      "referenceAssetSha256": "c13c98d5837b200f64576a67c88c57176192d74ca953a2c3be5460b3203835f0",
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-references/rebecca_chambers.png",
+      "sourceWork": "Resident Evil 0 (2002)",
+      "sourceReference": "src/game/combatCanonExtensions.js#rebecca_chambers; src/game/combat/abilities/abilitiesCanonical.js#rebecca_chambers; Resident Evil0(2002) herb mixing and first-aid identity; final support presentation is an authored adaptation of First Aid, no offensive weapon.",
+      "abilityName": "First Aid",
+      "characterVersion": "Rebecca Chambers RE0(2002), short brown hair, green short sleeves under pale medic vest, olive trousers/boots, hip medical pouch. Entire special/finale is ally support.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/rebecca_chambers-original.png",
+            "sourceImageSha256": "e52f33d7ada5a6cdfbc815a4507e5f65abef762311b69cfa9d462b0c15405101",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 261
+            },
+            "scale": 0.9469387755102041,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 48,
+                  "top": 13,
+                  "width": 144,
+                  "height": 241,
+                  "pixels": 16585
+                },
+                "output": {
+                  "left": 68,
+                  "top": 14,
+                  "width": 136,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 286,
+                  "top": 17,
+                  "width": 110,
+                  "height": 237,
+                  "pixels": 16224
+                },
+                "output": {
+                  "left": 84,
+                  "top": 18,
+                  "width": 104,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 502,
+                  "top": 14,
+                  "width": 125,
+                  "height": 242,
+                  "pixels": 17867
+                },
+                "output": {
+                  "left": 78,
+                  "top": 15,
+                  "width": 118,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 724,
+                  "top": 11,
+                  "width": 109,
+                  "height": 244,
+                  "pixels": 16517
+                },
+                "output": {
+                  "left": 79,
+                  "top": 12,
+                  "width": 103,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/rebecca_chambers-original.png",
+            "sourceImageSha256": "e52f33d7ada5a6cdfbc815a4507e5f65abef762311b69cfa9d462b0c15405101",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 251,
+              "bottom": 505
+            },
+            "scale": 0.928,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 57,
+                  "top": 11,
+                  "width": 134,
+                  "height": 239,
+                  "pixels": 17556
+                },
+                "output": {
+                  "left": 78,
+                  "top": 21,
+                  "width": 124,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 281,
+                  "top": 11,
+                  "width": 118,
+                  "height": 240,
+                  "pixels": 16181
+                },
+                "output": {
+                  "left": 80,
+                  "top": 21,
+                  "width": 110,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 506,
+                  "top": 1,
+                  "width": 110,
+                  "height": 249,
+                  "pixels": 16245
+                },
+                "output": {
+                  "left": 83,
+                  "top": 12,
+                  "width": 102,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 702,
+                  "top": 9,
+                  "width": 159,
+                  "height": 237,
+                  "pixels": 16359
+                },
+                "output": {
+                  "left": 59,
+                  "top": 19,
+                  "width": 148,
+                  "height": 220
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/rebecca_chambers-original.png",
+            "sourceImageSha256": "e52f33d7ada5a6cdfbc815a4507e5f65abef762311b69cfa9d462b0c15405101",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 498,
+              "bottom": 761
+            },
+            "scale": 0.928,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 54,
+                  "top": 9,
+                  "width": 145,
+                  "height": 250,
+                  "pixels": 18210
+                },
+                "output": {
+                  "left": 75,
+                  "top": 12,
+                  "width": 135,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 286,
+                  "top": 11,
+                  "width": 129,
+                  "height": 248,
+                  "pixels": 18289
+                },
+                "output": {
+                  "left": 85,
+                  "top": 14,
+                  "width": 120,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 508,
+                  "top": 9,
+                  "width": 120,
+                  "height": 249,
+                  "pixels": 16752
+                },
+                "output": {
+                  "left": 85,
+                  "top": 12,
+                  "width": 111,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 727,
+                  "top": 10,
+                  "width": 114,
+                  "height": 246,
+                  "pixels": 17203
+                },
+                "output": {
+                  "left": 82,
+                  "top": 13,
+                  "width": 106,
+                  "height": 228
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/rebecca_chambers-original.png",
+            "sourceImageSha256": "e52f33d7ada5a6cdfbc815a4507e5f65abef762311b69cfa9d462b0c15405101",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 754,
+              "bottom": 985
+            },
+            "scale": 1.0593607305936072,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 48,
+                  "top": 7,
+                  "width": 151,
+                  "height": 219,
+                  "pixels": 17891
+                },
+                "output": {
+                  "left": 61,
+                  "top": 12,
+                  "width": 160,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 260,
+                  "top": 54,
+                  "width": 165,
+                  "height": 164,
+                  "pixels": 16075
+                },
+                "output": {
+                  "left": 51,
+                  "top": 62,
+                  "width": 175,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 476,
+                  "top": 65,
+                  "width": 174,
+                  "height": 150,
+                  "pixels": 15637
+                },
+                "output": {
+                  "left": 45,
+                  "top": 73,
+                  "width": 184,
+                  "height": 159
+                }
+              },
+              {
+                "source": {
+                  "left": 707,
+                  "top": 7,
+                  "width": 142,
+                  "height": 215,
+                  "pixels": 16749
+                },
+                "output": {
+                  "left": 55,
+                  "top": 12,
+                  "width": 150,
+                  "height": 228
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/rebecca_chambers-original.png",
+            "sourceImageSha256": "e52f33d7ada5a6cdfbc815a4507e5f65abef762311b69cfa9d462b0c15405101",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 978,
+              "bottom": 1178
+            },
+            "scale": 0.9586776859504132,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 25,
+                  "top": 1,
+                  "width": 191,
+                  "height": 196,
+                  "pixels": 20434
+                },
+                "output": {
+                  "left": 46,
+                  "top": 56,
+                  "width": 183,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 265,
+                  "top": 9,
+                  "width": 173,
+                  "height": 181,
+                  "pixels": 18939
+                },
+                "output": {
+                  "left": 63,
+                  "top": 64,
+                  "width": 166,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 472,
+                  "top": 5,
+                  "width": 203,
+                  "height": 191,
+                  "pixels": 21393
+                },
+                "output": {
+                  "left": 49,
+                  "top": 60,
+                  "width": 195,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 691,
+                  "top": 7,
+                  "width": 174,
+                  "height": 188,
+                  "pixels": 20105
+                },
+                "output": {
+                  "left": 46,
+                  "top": 62,
+                  "width": 167,
+                  "height": 180
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/rebecca_chambers-original.png",
+            "sourceImageSha256": "e52f33d7ada5a6cdfbc815a4507e5f65abef762311b69cfa9d462b0c15405101",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1169,
+              "bottom": 1422
+            },
+            "scale": 0.9392712550607287,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 53,
+                  "top": 1,
+                  "width": 129,
+                  "height": 246,
+                  "pixels": 17674
+                },
+                "output": {
+                  "left": 74,
+                  "top": 12,
+                  "width": 121,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 294,
+                  "top": 10,
+                  "width": 101,
+                  "height": 235,
+                  "pixels": 14974
+                },
+                "output": {
+                  "left": 92,
+                  "top": 20,
+                  "width": 95,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 511,
+                  "top": 5,
+                  "width": 116,
+                  "height": 243,
+                  "pixels": 16101
+                },
+                "output": {
+                  "left": 87,
+                  "top": 16,
+                  "width": 109,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 721,
+                  "top": 3,
+                  "width": 132,
+                  "height": 244,
+                  "pixels": 17416
+                },
+                "output": {
+                  "left": 76,
+                  "top": 14,
+                  "width": 124,
+                  "height": 229
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/rebecca_chambers-original.png",
+            "sourceImageSha256": "e52f33d7ada5a6cdfbc815a4507e5f65abef762311b69cfa9d462b0c15405101",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1415,
+              "bottom": 1598
+            },
+            "scale": 1.0892018779342723,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 40,
+                  "top": 4,
+                  "width": 150,
+                  "height": 176,
+                  "pixels": 13655
+                },
+                "output": {
+                  "left": 51,
+                  "top": 52,
+                  "width": 163,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 265,
+                  "top": 12,
+                  "width": 144,
+                  "height": 162,
+                  "pixels": 13199
+                },
+                "output": {
+                  "left": 54,
+                  "top": 61,
+                  "width": 157,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 478,
+                  "top": 25,
+                  "width": 175,
+                  "height": 148,
+                  "pixels": 15701
+                },
+                "output": {
+                  "left": 45,
+                  "top": 75,
+                  "width": 191,
+                  "height": 161
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 69,
+                  "width": 204,
+                  "height": 102,
+                  "pixels": 11714
+                },
+                "output": {
+                  "left": 12,
+                  "top": 123,
+                  "width": 222,
+                  "height": 111
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/rebecca_chambers-original.png",
+            "sourceImageSha256": "e52f33d7ada5a6cdfbc815a4507e5f65abef762311b69cfa9d462b0c15405101",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1575,
+              "bottom": 1774
+            },
+            "scale": 0.9830508474576272,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 43,
+                  "top": 15,
+                  "width": 133,
+                  "height": 175,
+                  "pixels": 15452
+                },
+                "output": {
+                  "left": 61,
+                  "top": 68,
+                  "width": 131,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 253,
+                  "top": 26,
+                  "width": 183,
+                  "height": 165,
+                  "pixels": 18577
+                },
+                "output": {
+                  "left": 50,
+                  "top": 79,
+                  "width": 180,
+                  "height": 162
+                }
+              },
+              {
+                "source": {
+                  "left": 479,
+                  "top": 23,
+                  "width": 193,
+                  "height": 171,
+                  "pixels": 21523
+                },
+                "output": {
+                  "left": 54,
+                  "top": 76,
+                  "width": 190,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 1,
+                  "width": 169,
+                  "height": 193,
+                  "pixels": 15859
+                },
+                "output": {
+                  "left": 50,
+                  "top": 54,
+                  "width": 166,
+                  "height": 190
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f3e65de518caac057e2d511074506d3d0dbb41f7e4fd8824ae4c5fac505497a5",
+              "14bb9907083f815ad196a2942ca7f5da81002df0460a66e39dd3e2bec0ef657d",
+              "11c78ace1ee7350d3a37fc6888756c8ec45ebb3a0800eedf27455351bfe3cf8f",
+              "2ccbdf30bf6a4265086ea519501dc4d3a346ba6f6f02a81c6524b7a8ff6f1d5b"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e3fcc219a95f387c4e95c8cda3810530c3ff1f92077dc941567a7f3a2a07e6de",
+              "e1cda613ab9f822f06fd14cdf4dfdb3310166137714505889cca7e55d76cef9c",
+              "08e376572db9906bd7b3c5f856370f29f33386ba7270870c8516ee40e9bec5f1",
+              "4c071f80624c1405b67995547de88322e67c710e6bd51574881fe8eec5b7c605"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4df60587e7b8753ebe2b65a38c8a2b22a6fc6739cf1032ec3d78c0d0d6bd1e51",
+              "d26d20b0674f471459684aa8d3a38634c200baddf9f10bdab526ad77cff297ed",
+              "d94ba0ebb771a5fe484a7848b64385552adfc08d2867a9009a67c435922b8614",
+              "aad1702716e939d1101d3d40983cd0d02a316fa2e9dc17bb1e1f27a06ec774f6"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7a2941f25ffd7faa601b4388fc7eb55d89b0d0b834a9cbf8a43ab919a6c1cf27",
+              "4e674ce4f8a8c420d1b65aca4fb5c5fa893fd1c1753312b2813633327c62f0f8",
+              "31bf623d246edf12db5c9c32443fce1c001ba32f0b58a20dddc39e19124439ec",
+              "baacc80a1bc59840d42294f78c2db3f96113cde2ea4b6756870380acd45cdaf4"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ceeddb65afd5bb891287518f261173dd9049917ad44217f82c738a05844001b6",
+              "cf02d5fa35a3255f4af98f3a13c488d969a574a1022212753c6e30e954d6fc16",
+              "cffbc3e8ec52fa194b6f04fcdaae943c8cc909ab3ea07a89dccc5b572bd36f2a",
+              "2aff106fcab29c3fa3705b0234b702463426fe5fbd097ca89930e9a7301436ae"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "413f48a424fc4bdfa57dcdc89f074250413c731e4cdb5747bd3bbcaa1bc6d534",
+              "088a8b95d126238bc51b42032ff6e8a7df1e08e97a931900d372d5f666cc6646",
+              "23b5356894b79a0d63f429dae9a9304fd4cf9ff2adc7f692afee857665b36891",
+              "cb6fb4bc91c65b0a655082d06a132bd2a0535ea7072ff69018d653348c985cc8"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e4963fe9fe064b6b6fdd64a80c787a05f350a858c86dec48b8b3ed73cc053af9",
+              "ca71cc30de8f3778454fe226102e0f34c5d8946793b53c621ded1d85d3cf5e49",
+              "2182e115e484af3748db73944cc05ad1258c8d0d8dc74d18ea172788cdeae800",
+              "f5d3b1de0abdbddc74aa206b96b863ff792fb2a4257201dfec4aaafb57295e60"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7df574060ac0a809b578145312b590392c8fd01894f0c8b68e0520848a6c9790",
+              "485ce11de3066e7c551fce19cdad25a99c4c07318b52597e33282a7b393684b9",
+              "8abae63cf4610d5940749af2750f45634ef14c866ad1b0ad8b42dc9cdf7a7df9",
+              "0d51971eadfb1e5a31c42116b00ed4effcd9971c5785c9b7c6247612bca180a5"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Rebecca Chambers RE0(2002), short brown hair, green short sleeves under pale medic vest, olive trousers/boots, hip medical pouch. Entire special/finale is ally support. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "arca_mirelle",
+      "heroId": "arca_mirelle",
+      "universe": "Nexus de Convergence",
+      "name": "Mirelle Suture",
+      "sheet": "/sprites/generated/combat-character-animations-wave5/arca_mirelle.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "9308ab582c37f7c3421e7ef2264ced506d280dbfdda7128376b62b47b9341632",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+      "sourceImageSha256": "0b30e373421afe65000acfd948a27ad42f5605a1e2bd84edca6552bd92b94301",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "referenceAsset": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-melee-combat.png",
+      "referenceAssetSha256": "1aedca25bfc922fed363d1ac5eeb7168afe8ab1aff0cd4f429f0d4327c054302",
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-references/arca_mirelle.png",
+      "sourceWork": "Nexus de Convergence (project authored universe)",
+      "sourceReference": "src/game/heroes.js#arca_mirelle; public/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/manifest.json#loreAnchors; src/game/ocCampaign.js names Mirelle Suture as stitcher of memories. The effective Suture du Voile damages enemies in an area while Patch de Trame heals allies; no resurrected dead or soul soldiers.",
+      "abilityName": "Suture du Voile",
+      "characterVersion": "Mirelle Suture, authored A.R.C.A. hacker-healer: dark pointed hat/gold goggles, long dark gold-trimmed coat, teal lining, floating cyan cards and white-teal resonance threads.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+            "sourceImageSha256": "0b30e373421afe65000acfd948a27ad42f5605a1e2bd84edca6552bd92b94301",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 229
+            },
+            "scale": 1.099526066350711,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 10,
+                  "width": 151,
+                  "height": 210,
+                  "pixels": 18302
+                },
+                "output": {
+                  "left": 56,
+                  "top": 12,
+                  "width": 166,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 261,
+                  "top": 15,
+                  "width": 157,
+                  "height": 206,
+                  "pixels": 17770
+                },
+                "output": {
+                  "left": 49,
+                  "top": 17,
+                  "width": 173,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 462,
+                  "top": 32,
+                  "width": 181,
+                  "height": 188,
+                  "pixels": 18321
+                },
+                "output": {
+                  "left": 26,
+                  "top": 36,
+                  "width": 199,
+                  "height": 207
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 36,
+                  "width": 183,
+                  "height": 184,
+                  "pixels": 17634
+                },
+                "output": {
+                  "left": 40,
+                  "top": 41,
+                  "width": 201,
+                  "height": 202
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+            "sourceImageSha256": "0b30e373421afe65000acfd948a27ad42f5605a1e2bd84edca6552bd92b94301",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 224,
+              "bottom": 451
+            },
+            "scale": 1.0892018779342723,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 41,
+                  "top": 19,
+                  "width": 166,
+                  "height": 199,
+                  "pixels": 19388
+                },
+                "output": {
+                  "left": 52,
+                  "top": 27,
+                  "width": 181,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 277,
+                  "top": 20,
+                  "width": 130,
+                  "height": 198,
+                  "pixels": 16304
+                },
+                "output": {
+                  "left": 67,
+                  "top": 28,
+                  "width": 142,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 480,
+                  "top": 13,
+                  "width": 150,
+                  "height": 205,
+                  "pixels": 18021
+                },
+                "output": {
+                  "left": 47,
+                  "top": 21,
+                  "width": 163,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 687,
+                  "top": 5,
+                  "width": 179,
+                  "height": 212,
+                  "pixels": 18144
+                },
+                "output": {
+                  "left": 31,
+                  "top": 12,
+                  "width": 195,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+            "sourceImageSha256": "0b30e373421afe65000acfd948a27ad42f5605a1e2bd84edca6552bd92b94301",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 448,
+              "bottom": 672
+            },
+            "scale": 1.1207729468599035,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 51,
+                  "top": 12,
+                  "width": 156,
+                  "height": 202,
+                  "pixels": 18591
+                },
+                "output": {
+                  "left": 61,
+                  "top": 18,
+                  "width": 175,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 269,
+                  "top": 18,
+                  "width": 152,
+                  "height": 196,
+                  "pixels": 17341
+                },
+                "output": {
+                  "left": 57,
+                  "top": 24,
+                  "width": 170,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 487,
+                  "top": 7,
+                  "width": 143,
+                  "height": 207,
+                  "pixels": 18228
+                },
+                "output": {
+                  "left": 52,
+                  "top": 12,
+                  "width": 160,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 724,
+                  "top": 9,
+                  "width": 127,
+                  "height": 205,
+                  "pixels": 16218
+                },
+                "output": {
+                  "left": 70,
+                  "top": 14,
+                  "width": 142,
+                  "height": 230
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+            "sourceImageSha256": "0b30e373421afe65000acfd948a27ad42f5605a1e2bd84edca6552bd92b94301",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 671,
+              "bottom": 886
+            },
+            "scale": 1.0642201834862386,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 7,
+                  "width": 196,
+                  "height": 191,
+                  "pixels": 19305
+                },
+                "output": {
+                  "left": 33,
+                  "top": 41,
+                  "width": 209,
+                  "height": 203
+                }
+              },
+              {
+                "source": {
+                  "left": 246,
+                  "top": 45,
+                  "width": 193,
+                  "height": 152,
+                  "pixels": 14598
+                },
+                "output": {
+                  "left": 36,
+                  "top": 81,
+                  "width": 205,
+                  "height": 162
+                }
+              },
+              {
+                "source": {
+                  "left": 457,
+                  "top": 33,
+                  "width": 206,
+                  "height": 158,
+                  "pixels": 16681
+                },
+                "output": {
+                  "left": 24,
+                  "top": 68,
+                  "width": 219,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 688,
+                  "top": 23,
+                  "width": 159,
+                  "height": 168,
+                  "pixels": 15434
+                },
+                "output": {
+                  "left": 34,
+                  "top": 58,
+                  "width": 169,
+                  "height": 179
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+            "sourceImageSha256": "0b30e373421afe65000acfd948a27ad42f5605a1e2bd84edca6552bd92b94301",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 885,
+              "bottom": 1112
+            },
+            "scale": 0.8345323741007195,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 30,
+                  "top": 17,
+                  "width": 173,
+                  "height": 203,
+                  "pixels": 20674
+                },
+                "output": {
+                  "left": 61,
+                  "top": 75,
+                  "width": 144,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 234,
+                  "top": 20,
+                  "width": 208,
+                  "height": 192,
+                  "pixels": 24330
+                },
+                "output": {
+                  "left": 46,
+                  "top": 77,
+                  "width": 174,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 445,
+                  "top": 19,
+                  "width": 248,
+                  "height": 193,
+                  "pixels": 31106
+                },
+                "output": {
+                  "left": 37,
+                  "top": 76,
+                  "width": 207,
+                  "height": 161
+                }
+              },
+              {
+                "source": {
+                  "left": 678,
+                  "top": 22,
+                  "width": 186,
+                  "height": 188,
+                  "pixels": 17728
+                },
+                "output": {
+                  "left": 46,
+                  "top": 79,
+                  "width": 155,
+                  "height": 157
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.3171974522292993,
+            "statureReview": {
+              "sourceComparableColumn": 3,
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 231,
+              "normalizedBodyHeight": 157,
+              "bodyBounds": [
+                46,
+                79,
+                155,
+                157
+              ],
+              "referenceBodyBounds": [
+                56,
+                12,
+                166,
+                231
+              ],
+              "sourceBodyHeightApprox": 188,
+              "referenceSourceBodyHeightApprox": 210,
+              "normalizationScale": 0.8345323741007195,
+              "referenceNormalizationScale": 1.099526066350711,
+              "compensatedBodyHeightApprox": 206.79999999999998,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": true,
+              "reason": "There is intentional flexion/forward lean. Suggested multiplier reverses only the differing row normalization, retaining the shorter source-body projection; do not divide standing height by crouched height.",
+              "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+              "nativeComparableBodyHeight": 188,
+              "nativeReferenceBodyHeight": 210,
+              "nativeComparableBodyBounds": [
+                678,
+                22,
+                186,
+                188
+              ],
+              "nativeReferenceBodyBounds": [
+                45,
+                10,
+                151,
+                210
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+              "nativeComparableRow": 4,
+              "nativeReferenceRow": 0,
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+            "sourceImageSha256": "0b30e373421afe65000acfd948a27ad42f5605a1e2bd84edca6552bd92b94301",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1110,
+              "bottom": 1345
+            },
+            "scale": 1.0740740740740742,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 61,
+                  "top": 10,
+                  "width": 137,
+                  "height": 209,
+                  "pixels": 19768
+                },
+                "output": {
+                  "left": 74,
+                  "top": 16,
+                  "width": 147,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 259,
+                  "top": 22,
+                  "width": 159,
+                  "height": 197,
+                  "pixels": 19025
+                },
+                "output": {
+                  "left": 49,
+                  "top": 29,
+                  "width": 171,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 476,
+                  "top": 14,
+                  "width": 154,
+                  "height": 206,
+                  "pixels": 18169
+                },
+                "output": {
+                  "left": 44,
+                  "top": 21,
+                  "width": 165,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 708,
+                  "top": 6,
+                  "width": 143,
+                  "height": 216,
+                  "pixels": 18210
+                },
+                "output": {
+                  "left": 55,
+                  "top": 12,
+                  "width": 154,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+            "sourceImageSha256": "0b30e373421afe65000acfd948a27ad42f5605a1e2bd84edca6552bd92b94301",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1344,
+              "bottom": 1541
+            },
+            "scale": 1.045045045045045,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 10,
+                  "top": 14,
+                  "width": 210,
+                  "height": 170,
+                  "pixels": 20517
+                },
+                "output": {
+                  "left": 23,
+                  "top": 66,
+                  "width": 219,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 247,
+                  "top": 34,
+                  "width": 187,
+                  "height": 148,
+                  "pixels": 14189
+                },
+                "output": {
+                  "left": 39,
+                  "top": 87,
+                  "width": 195,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 450,
+                  "top": 45,
+                  "width": 205,
+                  "height": 132,
+                  "pixels": 13275
+                },
+                "output": {
+                  "left": 19,
+                  "top": 99,
+                  "width": 214,
+                  "height": 138
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 76,
+                  "width": 217,
+                  "height": 108,
+                  "pixels": 13075
+                },
+                "output": {
+                  "left": 17,
+                  "top": 131,
+                  "width": 227,
+                  "height": 113
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+            "sourceImageSha256": "0b30e373421afe65000acfd948a27ad42f5605a1e2bd84edca6552bd92b94301",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1540,
+              "bottom": 1774
+            },
+            "scale": 0.9508196721311475,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 21,
+                  "top": 16,
+                  "width": 202,
+                  "height": 199,
+                  "pixels": 25239
+                },
+                "output": {
+                  "left": 43,
+                  "top": 51,
+                  "width": 192,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 223,
+                  "top": 16,
+                  "width": 219,
+                  "height": 199,
+                  "pixels": 23940
+                },
+                "output": {
+                  "left": 24,
+                  "top": 51,
+                  "width": 208,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 442,
+                  "top": 22,
+                  "width": 234,
+                  "height": 187,
+                  "pixels": 29556
+                },
+                "output": {
+                  "left": 21,
+                  "top": 57,
+                  "width": 222,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 692,
+                  "top": 12,
+                  "width": 168,
+                  "height": 207,
+                  "pixels": 18619
+                },
+                "output": {
+                  "left": 48,
+                  "top": 47,
+                  "width": 160,
+                  "height": 197
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.1558375634517768,
+            "statureReview": {
+              "sourceComparableColumn": 3,
+              "referencePhase": "intro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 231,
+              "normalizedBodyHeight": 197,
+              "bodyBounds": [
+                48,
+                47,
+                160,
+                197
+              ],
+              "referenceBodyBounds": [
+                56,
+                12,
+                166,
+                231
+              ],
+              "sourceBodyHeightApprox": 207,
+              "referenceSourceBodyHeightApprox": 210,
+              "normalizationScale": 0.9508196721311475,
+              "referenceNormalizationScale": 1.099526066350711,
+              "compensatedBodyHeightApprox": 227.70000000000002,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": false,
+              "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+              "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+              "nativeComparableBodyHeight": 207,
+              "nativeReferenceBodyHeight": 210,
+              "nativeComparableBodyBounds": [
+                692,
+                12,
+                168,
+                207
+              ],
+              "nativeReferenceBodyBounds": [
+                45,
+                10,
+                151,
+                210
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+              "nativeComparableRow": 7,
+              "nativeReferenceRow": 0,
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "014daf6096926d0b49da9a072e3ae122ac164c847b010547ec6bf28bd69b9070",
+              "600814c0fa5679a45ceb3bef9072913b7552b809c1964da083d96642f12a9742",
+              "3605d5ae531922360004277cca8c4379a355df4433910c6e9450a8c33b1f42b7",
+              "e292dc906f5b61ff2d87aa2e381fc5bf68cc90b38b9ca9583fc49d4589b06c57"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9ebeccaa01c685f17e1ca1ef7e722697fdeb39422075bb97d4ac836aaa62cb05",
+              "dc0fab999a9007380222bf252af4bf40ce2b221a864771137fe703b1d90cf298",
+              "2740af1b10c85c8450f53d981d138972f82877a5ce2b1234596590d92f452db1",
+              "faf0867186c684f82e2d4dfff72dadc2eee8a8f62ab78b450565c1475d216ce9"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "6449dc4d336e7f38d455f14c33773fa0839a0cd396abb3763dec6ff22245181d",
+              "d8fcc8171f22ca3302a67d777964274817e0e56b188d25101c3e100be5d0b364",
+              "58bbc43dfdd6aeab8f7e545b44da8e5244551d6cdff987d21f552bcd88eb063f",
+              "3f6061fea95667c50fc3de1b168b3b1a43f08efbe8cd2876617b7d08b311f345"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "19b04834341df1b6a4288e48492225fc6c0e630ce0549be05c672863bf9605d2",
+              "33980dc20abfd06d86326bb636ffaadf948860b3b86a59371caa45320c142e54",
+              "e815433df3d8dcf2826c69978825073fe8b853829818b316763caa57053cba4d",
+              "cd0940d0a810b0edb9c3adb20a45e27d8482d6ed61553c82ff551a6081698d36"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d40aa21db7f824ebe7f80ec17bea6bd31e85e536f804186413ae9bc5ed42f4db",
+              "d89990f9027270f2d7b09899580da5a4d00da9e0a6f1bf99d378e1689eaa705d",
+              "d504444e0ebca9f986e9ba88fb947850bd79aa872a834bb51128417860841fed",
+              "107a5e844d1c44d2b7e1ce87630e582ec770e8e1cee5631e80312d54674f6b2c"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f3a78190c001e7980fe58bfe4e012bef5921f29da93ea758a93e2bf1bd970759",
+              "edfd092084f67fc8cc71e0a59ae915c3111aeca80190383bbd839b751139cc09",
+              "87a8171edf4a2170684cf98cf2b0578c94389cd3ae0a99f2b5e2044883f9e966",
+              "4b569bd8840e18aa81891bd4f8b4b0b5924a05c2771c9b52bad80ed3163c8c92"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fb5a5b99095e111c47f2a348735eca835669c22bc90e4962a6defd5665c42d47",
+              "7f9ef9b527943f1d2033a511b67a4115aa046b73255305e41e5ae32269ec6e4e",
+              "fc8ba4cef0456de4d31b9505870e2980758f64d18ec9f24f6ed07a617ce75de3",
+              "35af89574338fa38f3d98a0ed6e8798400943c6542d589ac8c0caea1a99d2744"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e738024e0aee4970fd1327406e0bb433dec725e565ae6ef23f05896faa1ca322",
+              "abab6b2641e455a004458bc7fbb03ae6a9f05ab89e5b00ed7b5eedeac840e269",
+              "9523e50c3d4839d2ba8962c768befdabe729aa2974fa80feaf0b790cbe0d97e5",
+              "38473db63510bc1427691a47588ac6793c580a1ad5e3814828c01fd590727ca8"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Mirelle Suture, authored A.R.C.A. hacker-healer: dark pointed hat/gold goggles, long dark gold-trimmed coat, teal lining, floating cyan cards and white-teal resonance threads. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "arca_bastion",
+      "heroId": "arca_bastion",
+      "universe": "Nexus de Convergence",
+      "name": "Bastion Korr",
+      "sheet": "/sprites/generated/combat-character-animations-wave5/arca_bastion.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "0be893d4c9f2e4dde62ba0e9359eb62d07be7f54c5d10372a43411a76d6018cf",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-correction.png",
+      "sourceImageSha256": "3e4d14fafa91018449c3be16b3f7e715d97b461ddfc16920ce5792a2e5d4629e",
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "referenceAsset": "/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/arca-bastion-universal-v1.png",
+      "referenceAssetSha256": "ba6a82bf9566061137be08f3f771fab84e3b896db3381a6415c396198abc1277",
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-references/arca_bastion.png",
+      "sourceWork": "Nexus de Convergence (project authored universe)",
+      "sourceReference": "src/game/characterPlaques.js#arca_bastion: Verrou de Convergence seals a deceptive passage; public/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/manifest.json#loreAnchors: Atrium rifle, hexagonal orange anchor shield and Convergence Lock. Effective project special is offensive enemy beam/line, distinct from defensive Rempart and Balise; no dead become soldiers.",
+      "abilityName": "Verrou de Convergence",
+      "characterVersion": "Bastion Korr, Atrium heavy guardian: dark hair, dark gunmetal armor/long coat with gold-orange trim, Atrium rifle, orange hexagonal anchor shield; no borrowed franchise costume.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+      "originalSourceImageSha256": "f7e3c5bd0b185e8436d43f979772f9473be13e6b34f4c11630c0e0d9d84c4dfb",
+      "nativeCorrection": true,
+      "nativeCorrectionReason": "Original intro last pose clips the opaque rifle tip against the native source border; replace only intro with four newly drawn compact low-ready rifle and shield poses.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-correction.png",
+            "sourceImageSha256": "3e4d14fafa91018449c3be16b3f7e715d97b461ddfc16920ce5792a2e5d4629e",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 724
+            },
+            "scale": 0.4288354898336414,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 56,
+                  "top": 100,
+                  "width": 443,
+                  "height": 541,
+                  "pixels": 148352
+                },
+                "output": {
+                  "left": 36,
+                  "top": 12,
+                  "width": 190,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 621,
+                  "top": 101,
+                  "width": 403,
+                  "height": 536,
+                  "pixels": 131574
+                },
+                "output": {
+                  "left": 45,
+                  "top": 12,
+                  "width": 173,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 1153,
+                  "top": 101,
+                  "width": 452,
+                  "height": 538,
+                  "pixels": 153804
+                },
+                "output": {
+                  "left": 40,
+                  "top": 12,
+                  "width": 194,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 1699,
+                  "top": 101,
+                  "width": 418,
+                  "height": 539,
+                  "pixels": 149498
+                },
+                "output": {
+                  "left": 42,
+                  "top": 12,
+                  "width": 179,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+            "sourceImageSha256": "f7e3c5bd0b185e8436d43f979772f9473be13e6b34f4c11630c0e0d9d84c4dfb",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 223,
+              "bottom": 447
+            },
+            "scale": 1.0740740740740742,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 34,
+                  "top": 7,
+                  "width": 156,
+                  "height": 213,
+                  "pixels": 20138
+                },
+                "output": {
+                  "left": 45,
+                  "top": 14,
+                  "width": 168,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 266,
+                  "top": 5,
+                  "width": 139,
+                  "height": 215,
+                  "pixels": 20043
+                },
+                "output": {
+                  "left": 56,
+                  "top": 12,
+                  "width": 149,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 478,
+                  "top": 7,
+                  "width": 147,
+                  "height": 214,
+                  "pixels": 20772
+                },
+                "output": {
+                  "left": 46,
+                  "top": 14,
+                  "width": 158,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 693,
+                  "top": 7,
+                  "width": 172,
+                  "height": 213,
+                  "pixels": 18858
+                },
+                "output": {
+                  "left": 39,
+                  "top": 14,
+                  "width": 185,
+                  "height": 229
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+            "sourceImageSha256": "f7e3c5bd0b185e8436d43f979772f9473be13e6b34f4c11630c0e0d9d84c4dfb",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 446,
+              "bottom": 674
+            },
+            "scale": 1.0740740740740742,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 6,
+                  "width": 151,
+                  "height": 213,
+                  "pixels": 21196
+                },
+                "output": {
+                  "left": 44,
+                  "top": 14,
+                  "width": 162,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 267,
+                  "top": 8,
+                  "width": 151,
+                  "height": 211,
+                  "pixels": 21391
+                },
+                "output": {
+                  "left": 58,
+                  "top": 16,
+                  "width": 162,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 480,
+                  "top": 5,
+                  "width": 139,
+                  "height": 215,
+                  "pixels": 19722
+                },
+                "output": {
+                  "left": 48,
+                  "top": 13,
+                  "width": 149,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 710,
+                  "top": 4,
+                  "width": 129,
+                  "height": 216,
+                  "pixels": 18441
+                },
+                "output": {
+                  "left": 57,
+                  "top": 12,
+                  "width": 139,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+            "sourceImageSha256": "f7e3c5bd0b185e8436d43f979772f9473be13e6b34f4c11630c0e0d9d84c4dfb",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 673,
+              "bottom": 886
+            },
+            "scale": 1.0790697674418606,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 8,
+                  "top": 7,
+                  "width": 201,
+                  "height": 198,
+                  "pixels": 25007
+                },
+                "output": {
+                  "left": 17,
+                  "top": 28,
+                  "width": 217,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 227,
+                  "top": 41,
+                  "width": 195,
+                  "height": 163,
+                  "pixels": 22643
+                },
+                "output": {
+                  "left": 14,
+                  "top": 65,
+                  "width": 210,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 447,
+                  "top": 41,
+                  "width": 189,
+                  "height": 166,
+                  "pixels": 18895
+                },
+                "output": {
+                  "left": 12,
+                  "top": 65,
+                  "width": 204,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 674,
+                  "top": 6,
+                  "width": 185,
+                  "height": 198,
+                  "pixels": 23358
+                },
+                "output": {
+                  "left": 18,
+                  "top": 27,
+                  "width": 200,
+                  "height": 214
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+            "sourceImageSha256": "f7e3c5bd0b185e8436d43f979772f9473be13e6b34f4c11630c0e0d9d84c4dfb",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 883,
+              "bottom": 1107
+            },
+            "scale": 0.7160493827160493,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 8,
+                  "top": 11,
+                  "width": 198,
+                  "height": 207,
+                  "pixels": 25921
+                },
+                "output": {
+                  "left": 54,
+                  "top": 94,
+                  "width": 142,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 229,
+                  "top": 8,
+                  "width": 192,
+                  "height": 211,
+                  "pixels": 26373
+                },
+                "output": {
+                  "left": 54,
+                  "top": 92,
+                  "width": 137,
+                  "height": 151
+                }
+              },
+              {
+                "source": {
+                  "left": 445,
+                  "top": 14,
+                  "width": 271,
+                  "height": 206,
+                  "pixels": 31515
+                },
+                "output": {
+                  "left": 50,
+                  "top": 96,
+                  "width": 194,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 707,
+                  "top": 8,
+                  "width": 173,
+                  "height": 212,
+                  "pixels": 22354
+                },
+                "output": {
+                  "left": 79,
+                  "top": 92,
+                  "width": 124,
+                  "height": 152
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.4995058067704472,
+            "statureReview": {
+              "sourceComparableColumn": 3,
+              "referencePhase": "outro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 229,
+              "normalizedBodyHeight": 152,
+              "bodyBounds": [
+                79,
+                92,
+                124,
+                152
+              ],
+              "referenceBodyBounds": [
+                45,
+                14,
+                168,
+                229
+              ],
+              "sourceBodyHeightApprox": 212,
+              "referenceSourceBodyHeightApprox": 213,
+              "normalizationScale": 0.7160493827160493,
+              "referenceNormalizationScale": 1.0740740740740742,
+              "compensatedBodyHeightApprox": 227.92488262910797,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": false,
+              "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+              "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+              "nativeComparableBodyHeight": 212,
+              "nativeReferenceBodyHeight": 213,
+              "nativeComparableBodyBounds": [
+                707,
+                8,
+                173,
+                212
+              ],
+              "nativeReferenceBodyBounds": [
+                34,
+                7,
+                156,
+                213
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+              "nativeComparableRow": 4,
+              "nativeReferenceRow": 1,
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+            }
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+            "sourceImageSha256": "f7e3c5bd0b185e8436d43f979772f9473be13e6b34f4c11630c0e0d9d84c4dfb",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1105,
+              "bottom": 1336
+            },
+            "scale": 1.0593607305936072,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 38,
+                  "top": 9,
+                  "width": 150,
+                  "height": 214,
+                  "pixels": 21411
+                },
+                "output": {
+                  "left": 51,
+                  "top": 16,
+                  "width": 159,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 260,
+                  "top": 8,
+                  "width": 143,
+                  "height": 216,
+                  "pixels": 18418
+                },
+                "output": {
+                  "left": 51,
+                  "top": 15,
+                  "width": 151,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 486,
+                  "top": 6,
+                  "width": 127,
+                  "height": 218,
+                  "pixels": 18479
+                },
+                "output": {
+                  "left": 56,
+                  "top": 13,
+                  "width": 135,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 703,
+                  "top": 5,
+                  "width": 150,
+                  "height": 219,
+                  "pixels": 22164
+                },
+                "output": {
+                  "left": 51,
+                  "top": 12,
+                  "width": 159,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+            "sourceImageSha256": "f7e3c5bd0b185e8436d43f979772f9473be13e6b34f4c11630c0e0d9d84c4dfb",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1334,
+              "bottom": 1545
+            },
+            "scale": 0.9243027888446215,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 7,
+                  "width": 145,
+                  "height": 195,
+                  "pixels": 19671
+                },
+                "output": {
+                  "left": 47,
+                  "top": 64,
+                  "width": 134,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 221,
+                  "top": 29,
+                  "width": 194,
+                  "height": 168,
+                  "pixels": 23298
+                },
+                "output": {
+                  "left": 25,
+                  "top": 84,
+                  "width": 179,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 429,
+                  "top": 54,
+                  "width": 222,
+                  "height": 148,
+                  "pixels": 18523
+                },
+                "output": {
+                  "left": 12,
+                  "top": 107,
+                  "width": 205,
+                  "height": 137
+                }
+              },
+              {
+                "source": {
+                  "left": 661,
+                  "top": 77,
+                  "width": 226,
+                  "height": 115,
+                  "pixels": 16736
+                },
+                "output": {
+                  "left": 22,
+                  "top": 128,
+                  "width": 209,
+                  "height": 106
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+            "sourceImageSha256": "f7e3c5bd0b185e8436d43f979772f9473be13e6b34f4c11630c0e0d9d84c4dfb",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1543,
+              "bottom": 1774
+            },
+            "scale": 0.7295597484276729,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 11,
+                  "top": 18,
+                  "width": 195,
+                  "height": 200,
+                  "pixels": 24725
+                },
+                "output": {
+                  "left": 55,
+                  "top": 97,
+                  "width": 142,
+                  "height": 146
+                }
+              },
+              {
+                "source": {
+                  "left": 238,
+                  "top": 10,
+                  "width": 208,
+                  "height": 208,
+                  "pixels": 24378
+                },
+                "output": {
+                  "left": 59,
+                  "top": 92,
+                  "width": 152,
+                  "height": 152
+                }
+              },
+              {
+                "source": {
+                  "left": 445,
+                  "top": 7,
+                  "width": 268,
+                  "height": 211,
+                  "pixels": 30152
+                },
+                "output": {
+                  "left": 48,
+                  "top": 89,
+                  "width": 196,
+                  "height": 154
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 8,
+                  "width": 173,
+                  "height": 211,
+                  "pixels": 21107
+                },
+                "output": {
+                  "left": 69,
+                  "top": 90,
+                  "width": 126,
+                  "height": 154
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.4730504237546491,
+            "statureReview": {
+              "sourceComparableColumn": 3,
+              "referencePhase": "outro",
+              "referenceColumn": 0,
+              "referenceBodyHeight": 229,
+              "normalizedBodyHeight": 154,
+              "bodyBounds": [
+                69,
+                90,
+                126,
+                154
+              ],
+              "referenceBodyBounds": [
+                45,
+                14,
+                168,
+                229
+              ],
+              "sourceBodyHeightApprox": 211,
+              "referenceSourceBodyHeightApprox": 213,
+              "normalizationScale": 0.7295597484276729,
+              "referenceNormalizationScale": 1.0740740740740742,
+              "compensatedBodyHeightApprox": 226.84976525821597,
+              "measurementKind": "visual-body-roi",
+              "excludesWeaponEffects": true,
+              "poseHasIntentionalFlexion": false,
+              "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+              "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+              "nativeComparableBodyHeight": 211,
+              "nativeReferenceBodyHeight": 213,
+              "nativeComparableBodyBounds": [
+                695,
+                8,
+                173,
+                211
+              ],
+              "nativeReferenceBodyBounds": [
+                34,
+                7,
+                156,
+                213
+              ],
+              "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+              "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+              "nativeComparableRow": 7,
+              "nativeReferenceRow": 1,
+              "sourceResolutionComparable": true,
+              "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "77809045cd2624a693051f2c4e1863bd5df754c1595a69dc3bfa5d5452790f73",
+              "9a378c6dec8b8d538489c19bdec6560ba8606b80ca7cff7302f67416ca8d3ff0",
+              "812ea9b49ebdf4dcdec1b4bd3ca63e910f18ccaa6e5900a3b2b0fe53472b6e12",
+              "50b08d8009a5c9dab7111cd39b7ec59775822d350f0ffc795724ee97a8ea7f27"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "0085184758ce110ee14486d848d939c6a16a16a101fc1b1589c75ab0993290fa",
+              "93988403e9bf3fbe00b673c7a8e648b8699a0f1ed0a6864050008ddb0adc6973",
+              "82dec296faf5473ceede320e2e69566d3e4942b38cb5ce29d07d02879430b792",
+              "38fc2003d153a4e3fad07252b49f68f03e8be3fdbf8c2b82b8947f08a4fb626b"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c096bd89a8f5caca32fadfe438e994f9c3d9b857385f61a545f008939d303dcb",
+              "c64dff75619fbe10a2a097d3257efeb9d6d68c6146cc4c5e6c288dc670a6c290",
+              "6f7d335d5e3b523219c7d72224bbe2a6f2e4693b87fda19852d285c8addfbde8",
+              "7c1404ed4c2ad96cec854c38e887b4f06aec2178b54fa6c60877ca4f0b24bae3"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4f935ab5f752887eb9b5f866216d45b4234f755e0a09ac530ba41638f759f842",
+              "8c86f73fe11a1f856b8cdcf4a28420a77563ff9e0e446b81fe67fa4bd4aa3695",
+              "218517e94ea4c43fa6ab9ab5a26c2d0a4f4f83d876fd7be56e95c8de2ce34f37",
+              "1c5baa9f746dd6ab311fec40e747aaee2dc8a32204ae43d2d55b0051fd61de86"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b7469a2e7a1f11ddd3d5a50befdcf901cf2d8b03c15b20223226c6428e422610",
+              "5e96a280bebee411194700b87369072d331275f041d838661022d6638c32bb4a",
+              "69a390daae37db82b2c2f74b9fa56c3e51dc58feb5dbca289e64fb69afb70502",
+              "720dfb14ae7025a65bf8c374a02fb3554e52b921609009aa5f8d79170d7cd34e"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c256fb6be993fa95765e79bc4ba49c7aef77884c67ae7be637e1adec3e740e1a",
+              "4743c1d8f68bfab54b8fb1e236d716466f8f103ad3c3df9e30e54dee4eb37c8b",
+              "a74dd9b56315fe922af0b1fed107803173717a65544dedd0701ff382294e3c3f",
+              "9db4308323203493a1d30ae2952922a595b0f22a81cb53db8b8deec975e93383"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4d5becac18032ec7f6c3701d36a29a4c50540994927a8e70837472f292d583a4",
+              "76358d715794ad7071c447d65262ae8225647fb8325cbc15025aa82651f72de7",
+              "597e2b5b93449c17c0d05a4bafbd2528aeb7630e9c66c034d9ec3bfbb098d0c9",
+              "46265a7790cb78541bc882cedcc487abc1467c11eacb87d50c0d80959aff0676"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "58321ba24c5df81b5b050d12bbbbc647caaa07cc7c49316e95e59f7217be2d70",
+              "127a1a68de2b807149fdb38c9fe819db8e7b6964024c83f99262cfb50e7cbb38",
+              "4d1a92f51dd08e8f8efc3128ae4abb126d5a6e289261bdb0bdc59658a994600c",
+              "d86818ef814275c50bd34942dc754959f67c92b7d0c1b71fc8d1d9db99fec69a"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Bastion Korr, Atrium heavy guardian: dark hair, dark gunmetal armor/long coat with gold-orange trim, Atrium rifle, orange hexagonal anchor shield; no borrowed franchise costume. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    }
+  ]
+}

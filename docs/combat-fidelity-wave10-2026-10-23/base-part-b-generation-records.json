@@ -1,0 +1,2525 @@
+{
+  "schemaVersion": 1,
+  "provider": "OpenAI",
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "canon1to1Verified": false,
+  "records": [
+    {
+      "heroId": "freeman",
+      "name": "Gordon Freeman",
+      "universe": "Half-Life",
+      "sourceWork": "Half-Life 2 (2004), Citadel finale",
+      "sourceReference": "Normal orange Gravity Gun secondary projects a small metal crate; the super alone is the blue Citadel tool redirecting a captured Combine energy ball. One compact gameplay impact replaces original lethality. Source reference shows old wrong minigun and is used only for HEV/face.",
+      "sourceUrl": "https://combineoverwiki.net/wiki/Zero_Point_Energy_Field_Manipulator",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave10-2026-10-23/part-b-source-facts.json"
+      ],
+      "version": "Half-Life 2 (2004), Citadel finale",
+      "ability": "Coup de pied-de-biche de Freeman",
+      "prompt": "Draw ONE genuinely new detailed 2D PIXEL-ART BASIC animation atlas of the SAME fictional videogame character as the inspected attached native presentation reference. That reference contains32poses; all16 new drawings must be fresh, never copied cells. No real actor portrait.\nLOCKED IDENTITY: Adult fictional Gordon Freeman, original Half-Life2(2004), short brown hair, close brown goatee, rectangular black glasses, orange and charcoal MarkV HEV armor with lambda chest plate, grey shoulder/knee armor, black gloves and boots. Match the local face/HEV silhouette only. His ordinary physical weapon is a RED steel CROWBAR. REMOVE the old reference’s invented minigun. No actor portrait.\nEXACT GRID: FOUR COLUMNS by FOUR ROWS=16 distinct complete poses, square1024x1024 true transparent alpha, equal256pxcells. All heads, arms, props, tools, muzzles, paws and tails inside each cell with at least24px transparent gutters. No text, label, panel, gridline, scene, floor, watermark or opponent. Combat faces RIGHT. Standing BODY190px, baseline244, one consistent source-wide anatomical scale. Natural run/crouch/recoil height variation remains; never independently enlarge short postures.\nROW1 IDLE:4 distinct ready postures with actual hand/head/torso changes; physical equipment held safely. Never translate/repeat an unchanged pose.\nROW2 RUN:4 genuine alternating running phases, left leg forward, passing, right leg forward, gathering step; actual equipment remains gripped or secured.\nROW3 ATTACK/ACTION: Four distinct physical CROWBAR swings, windup across shoulder, forward swing, low followthrough, return to guard. No gun in this basic attack row.\nROW4 HIT:4 new non-graphic intact recoil postures: shoulder flinch, torso twist back, low protective stagger, crouched recovery; same anatomy/outfit/props, no blood/death or attack power.\nExactly4 full bodies per row, all4 rows present,16different new native poses. Tiny physical firing flash only where the prescribed basic action is a real shot; support characters show no weapon/discharge, no shield bubble or magic. Keep generous transparent margins; muzzle recovery is empty, no captured ball/tool magic in non-prescribed rows.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-prompts/freeman.txt",
+      "referenceAsset": "/sprites/generated/heroes/half-life/freeman.png",
+      "referenceImage": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/freeman.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave10-2026-10-23/part-b-sources/freeman-initial.png",
+      "referenceContextSha256": "eb214894411e2596276f9a89b60414439ad014a3afba2ff0cea410a35fc1ca74",
+      "oldReferenceArchive": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/freeman-old-base.png",
+      "bodyCalibrationTarget": 190,
+      "bodyCalibrationKind": "biped-standing-height",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-6ff9db6a-f014-4f78-9aa1-2f5fe90f1c92.png",
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          65,
+          19,
+          130,
+          220
+        ],
+        "referenceNormalizedBodyHeight": 220,
+        "referencePackingScale": 0.6884272997032641,
+        "nativeReferenceBodyHeight": 319.5689655172414,
+        "sourceWideRenderPixelsPerNativePixel": 0.5945508497437281,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.8636363636363636,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              65,
+              19,
+              130,
+              220
+            ],
+            "normalizedBodyHeight": 220,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              65,
+              19,
+              130,
+              220
+            ],
+            "referenceBodyHeight": 220,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8636363636363636,
+            "nativeComparableBodyHeight": 319.5689655172414,
+            "nativeReferenceBodyHeight": 319.5689655172414,
+            "nativeBodyBounds": [
+              64.90517241379311,
+              20.905172413793103,
+              188.83620689655172,
+              319.5689655172414
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              64.90517241379311,
+              20.905172413793103,
+              188.83620689655172,
+              319.5689655172414
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.7380631238198003,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              35,
+              19,
+              205,
+              223
+            ],
+            "normalizedBodyHeight": 223,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              65,
+              19,
+              130,
+              220
+            ],
+            "referenceBodyHeight": 220,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8636363636363636,
+            "nativeComparableBodyHeight": 276.82758620689657,
+            "nativeReferenceBodyHeight": 319.5689655172414,
+            "nativeBodyBounds": [
+              41.48275862068966,
+              16.482758620689655,
+              254.48275862068965,
+              276.82758620689657
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              64.90517241379311,
+              20.905172413793103,
+              188.83620689655172,
+              319.5689655172414
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 1.0917183706501215,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              66,
+              98,
+              131,
+              143
+            ],
+            "normalizedBodyHeight": 143,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              65,
+              19,
+              130,
+              220
+            ],
+            "referenceBodyHeight": 220,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8636363636363636,
+            "nativeComparableBodyHeight": 262.57758620689657,
+            "nativeReferenceBodyHeight": 319.5689655172414,
+            "nativeBodyBounds": [
+              43.672413793103445,
+              63.431034482758626,
+              240.54310344827587,
+              262.57758620689657
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              64.90517241379311,
+              20.905172413793103,
+              188.83620689655172,
+              319.5689655172414
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.7688157539789587,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              47,
+              23,
+              183,
+              209
+            ],
+            "normalizedBodyHeight": 209,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              65,
+              19,
+              130,
+              220
+            ],
+            "referenceBodyHeight": 220,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8636363636363636,
+            "nativeComparableBodyHeight": 270.2586206896552,
+            "nativeReferenceBodyHeight": 319.5689655172414,
+            "nativeBodyBounds": [
+              51.58620689655172,
+              8.586206896551724,
+              236.63793103448276,
+              270.2586206896552
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              64.90517241379311,
+              20.905172413793103,
+              188.83620689655172,
+              319.5689655172414
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "barney",
+      "name": "Barney Calhoun",
+      "universe": "Half-Life",
+      "sourceWork": "Half-Life 2 (2004)",
+      "sourceReference": "Barney wears originalHL2 Civil Protection clothing and uses a pulse rifle. His coordination secondary is a support adaptation. No Black Mesa uniform or invented evacuation damage.",
+      "sourceUrl": "https://combineoverwiki.net/wiki/Barney_Calhoun",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave10-2026-10-23/part-b-source-facts.json"
+      ],
+      "version": "Half-Life 2 (2004)",
+      "ability": "Tir de l’AR2 de Barney",
+      "prompt": "Draw ONE genuinely new detailed 2D PIXEL-ART BASIC animation atlas of the SAME fictional videogame character as the inspected attached native presentation reference. That reference contains32poses; all16 new drawings must be fresh, never copied cells. No real actor portrait.\nLOCKED IDENTITY: Adult fictional Barney Calhoun, original Half-Life2(2004), UNMASKED Civil Protection undercover officer and Resistance leader, short dark hair graying at sides, stubble, dark NAVY padded jacket and BLACK chest armor, GREY-OLIVE GREEN trousers, black tall tactical boots. No helmet. Carry a real black COMBINE AR2 pulse rifle, compact heavy angular receiver, shoulder stock and SHORT broad muzzle. The old reference has the WRONG Half-Life1 blue security uniform/helmet/pistol: explicitly REPLACE those, retaining only his mature face and pixel style. No real actor portrait.\nEXACT GRID: FOUR COLUMNS by FOUR ROWS=16 distinct complete poses, square1024x1024 true transparent alpha, equal256pxcells. All heads, arms, props, tools, muzzles, paws and tails inside each cell with at least24px transparent gutters. No text, label, panel, gridline, scene, floor, watermark or opponent. Combat faces RIGHT. Standing BODY190px, baseline244, one consistent source-wide anatomical scale. Natural run/crouch/recoil height variation remains; never independently enlarge short postures.\nROW1 IDLE:4 distinct ready postures with actual hand/head/torso changes; physical equipment held safely. Never translate/repeat an unchanged pose.\nROW2 RUN:4 genuine alternating running phases, left leg forward, passing, right leg forward, gathering step; actual equipment remains gripped or secured.\nROW3 ATTACK/ACTION: Four distinct AR2 rifle poses: raise from low ready, aim right, recoil a short physical shot, return low. Real muzzle clearly visible; no pistol or crowbar.\nROW4 HIT:4 new non-graphic intact recoil postures: shoulder flinch, torso twist back, low protective stagger, crouched recovery; same anatomy/outfit/props, no blood/death or attack power.\nExactly4 full bodies per row, all4 rows present,16different new native poses. Tiny physical firing flash only where the prescribed basic action is a real shot; support characters show no weapon/discharge, no shield bubble or magic. Keep generous transparent margins; muzzle recovery is empty, no captured ball/tool magic in non-prescribed rows.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-prompts/barney.txt",
+      "referenceAsset": "/sprites/generated/heroes/half-life/barney.png",
+      "referenceImage": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/barney.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave10-2026-10-23/part-b-sources/barney-initial.png",
+      "referenceContextSha256": "ea9a93a6d815d86c5fe0d8d23be8082b5638076005d45217801a38dac4c0205a",
+      "oldReferenceArchive": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/barney-old-base.png",
+      "bodyCalibrationTarget": 190,
+      "bodyCalibrationKind": "biped-standing-height",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-7fcc5f86-d370-4455-b841-71606a20fee0.png",
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          73,
+          14,
+          127,
+          228
+        ],
+        "referenceNormalizedBodyHeight": 228,
+        "referencePackingScale": 0.6946107784431138,
+        "nativeReferenceBodyHeight": 328.2413793103448,
+        "sourceWideRenderPixelsPerNativePixel": 0.5788423153692615,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.8333333333333333,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              73,
+              14,
+              127,
+              228
+            ],
+            "normalizedBodyHeight": 228,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              73,
+              14,
+              127,
+              228
+            ],
+            "referenceBodyHeight": 228,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8333333333333334,
+            "nativeComparableBodyHeight": 328.2413793103448,
+            "nativeReferenceBodyHeight": 328.2413793103448,
+            "nativeBodyBounds": [
+              77.87931034482759,
+              21.879310344827587,
+              182.83620689655172,
+              328.2413793103448
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              77.87931034482759,
+              21.879310344827587,
+              182.83620689655172,
+              328.2413793103448
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.7559880239520957,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              38,
+              19,
+              187,
+              223
+            ],
+            "normalizedBodyHeight": 223,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              73,
+              14,
+              127,
+              228
+            ],
+            "referenceBodyHeight": 228,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8333333333333334,
+            "nativeComparableBodyHeight": 291.2456896551724,
+            "nativeReferenceBodyHeight": 328.2413793103448,
+            "nativeBodyBounds": [
+              38.61206896551724,
+              18.612068965517242,
+              244.22844827586206,
+              291.2456896551724
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              77.87931034482759,
+              21.879310344827587,
+              182.83620689655172,
+              328.2413793103448
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 1.030439121756487,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              63,
+              78,
+              136,
+              164
+            ],
+            "normalizedBodyHeight": 164,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              73,
+              14,
+              127,
+              228
+            ],
+            "referenceBodyHeight": 228,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8333333333333334,
+            "nativeComparableBodyHeight": 291.94827586206895,
+            "nativeReferenceBodyHeight": 328.2413793103448,
+            "nativeBodyBounds": [
+              40.560344827586206,
+              7.560344827586206,
+              242.1034482758621,
+              291.94827586206895
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              77.87931034482759,
+              21.879310344827587,
+              182.83620689655172,
+              328.2413793103448
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.6836327345309381,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              39,
+              36,
+              176,
+              205
+            ],
+            "normalizedBodyHeight": 205,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              73,
+              14,
+              127,
+              228
+            ],
+            "referenceBodyHeight": 228,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8333333333333334,
+            "nativeComparableBodyHeight": 242.11206896551724,
+            "nativeReferenceBodyHeight": 328.2413793103448,
+            "nativeBodyBounds": [
+              51.543103448275865,
+              14,
+              207.86206896551724,
+              242.11206896551724
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              77.87931034482759,
+              21.879310344827587,
+              182.83620689655172,
+              328.2413793103448
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "alyx_vance",
+      "name": "Alyx Vance",
+      "universe": "Half-Life",
+      "sourceWork": "Half-Life 2 (2004)",
+      "sourceReference": "HL2 Alyx uses her own automatic pistol and physical multitool. Door opening gives bounded support, no offensive hacking magic or Half-Life:Alyx gravity gloves.",
+      "sourceUrl": "https://combineoverwiki.net/wiki/Alyx%27s_Gun",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave10-2026-10-23/part-b-source-facts.json"
+      ],
+      "version": "Half-Life 2 (2004)",
+      "ability": "Tir du pistolet d’Alyx",
+      "prompt": "Draw ONE genuinely new detailed 2D PIXEL-ART BASIC animation atlas of the SAME fictional videogame character as the inspected attached native presentation reference. That reference contains32poses; all16 new drawings must be fresh, never copied cells. No real actor portrait.\nLOCKED IDENTITY: Adult fictional Alyx Vance, original Half-Life2(2004): brown eyes, tied-back dark brown hair held with dark headband, short distressed BROWN jacket with WHITE hood/white inner shirt, faded blue jeans, dark brown boots and fingerless gloves. Her actual ALYX GUN is a compact BLACK automatic HANDGUN with upper slide and extended magazine, two-handed grip when aimed. Correct old holographic dog and magical hacking circle: neither belongs here. No Half-Life:Alyx VR gloves, no real actor portrait.\nEXACT GRID: FOUR COLUMNS by FOUR ROWS=16 distinct complete poses, square1024x1024 true transparent alpha, equal256pxcells. All heads, arms, props, tools, muzzles, paws and tails inside each cell with at least24px transparent gutters. No text, label, panel, gridline, scene, floor, watermark or opponent. Combat faces RIGHT. Standing BODY190px, baseline244, one consistent source-wide anatomical scale. Natural run/crouch/recoil height variation remains; never independently enlarge short postures.\nROW1 IDLE:4 distinct ready postures with actual hand/head/torso changes; physical equipment held safely. Never translate/repeat an unchanged pose.\nROW2 RUN:4 genuine alternating running phases, left leg forward, passing, right leg forward, gathering step; actual equipment remains gripped or secured.\nROW3 ATTACK/ACTION: Four different poses firing the actual compact Alyx Gun: low ready, two-hand aim RIGHT, small recoil/muzzle flash, lowered recovery. No machinegun, projected dog or hand magic.\nROW4 HIT:4 new non-graphic intact recoil postures: shoulder flinch, torso twist back, low protective stagger, crouched recovery; same anatomy/outfit/props, no blood/death or attack power.\nExactly4 full bodies per row, all4 rows present,16different new native poses. Tiny physical firing flash only where the prescribed basic action is a real shot; support characters show no weapon/discharge, no shield bubble or magic. Keep generous transparent margins; muzzle recovery is empty, no captured ball/tool magic in non-prescribed rows.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-prompts/alyx_vance.txt",
+      "referenceAsset": "/sprites/generated/heroes/half-life/alyx-vance.png",
+      "referenceImage": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/alyx_vance.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave10-2026-10-23/part-b-sources/alyx_vance-initial.png",
+      "referenceContextSha256": "fb6371d760426b2bb5faeeed5281131da23b9ac790a147af429949acc5ef56ce",
+      "oldReferenceArchive": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/alyx_vance-old-base.png",
+      "bodyCalibrationTarget": 190,
+      "bodyCalibrationKind": "biped-standing-height",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-6aa6fc21-196a-4698-8c33-94b703950391.png",
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          78,
+          16,
+          119,
+          226
+        ],
+        "referenceNormalizedBodyHeight": 226,
+        "referencePackingScale": 0.6863905325443787,
+        "nativeReferenceBodyHeight": 329.2586206896552,
+        "sourceWideRenderPixelsPerNativePixel": 0.5770539875373095,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.84070796460177,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              78,
+              16,
+              119,
+              226
+            ],
+            "normalizedBodyHeight": 226,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              78,
+              16,
+              119,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8407079646017699,
+            "nativeComparableBodyHeight": 329.2586206896552,
+            "nativeReferenceBodyHeight": 329.2586206896552,
+            "nativeBodyBounds": [
+              83.91379310344827,
+              5.8275862068965525,
+              173.3706896551724,
+              329.2586206896552
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              83.91379310344827,
+              5.8275862068965525,
+              173.3706896551724,
+              329.2586206896552
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.7859873278525422,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              48,
+              13,
+              162,
+              225
+            ],
+            "normalizedBodyHeight": 225,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              78,
+              16,
+              119,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8407079646017699,
+            "nativeComparableBodyHeight": 306.4655172413793,
+            "nativeReferenceBodyHeight": 329.2586206896552,
+            "nativeBodyBounds": [
+              48.08620689655172,
+              8.362068965517242,
+              220.65517241379308,
+              306.4655172413793
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              83.91379310344827,
+              5.8275862068965525,
+              173.3706896551724,
+              329.2586206896552
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 0.9526365397706446,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              53,
+              57,
+              132,
+              185
+            ],
+            "normalizedBodyHeight": 185,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              78,
+              16,
+              119,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8407079646017699,
+            "nativeComparableBodyHeight": 305.4094827586207,
+            "nativeReferenceBodyHeight": 329.2586206896552,
+            "nativeBodyBounds": [
+              32.30172413793103,
+              1,
+              217.91379310344826,
+              305.4094827586207
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              83.91379310344827,
+              5.8275862068965525,
+              173.3706896551724,
+              329.2586206896552
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.6914698643766036,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              36,
+              17,
+              176,
+              225
+            ],
+            "normalizedBodyHeight": 225,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              78,
+              16,
+              119,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8407079646017699,
+            "nativeComparableBodyHeight": 269.6120689655172,
+            "nativeReferenceBodyHeight": 329.2586206896552,
+            "nativeBodyBounds": [
+              46.5948275862069,
+              9.594827586206897,
+              210.89655172413794,
+              269.6120689655172
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              83.91379310344827,
+              5.8275862068965525,
+              173.3706896551724,
+              329.2586206896552
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "eli_vance",
+      "name": "Eli Vance",
+      "universe": "Half-Life",
+      "sourceWork": "Half-Life 2 (2004), Black Mesa East",
+      "sourceReference": "Eli is a scientist and Resistance coordinator; briefing is an authored bounded ally buff, not a canonical named attack. No handheld energy gun. Left below-knee prosthesis preserved; no actor portrait.",
+      "sourceUrl": "https://combineoverwiki.net/wiki/Eli_Vance",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave10-2026-10-23/part-b-source-facts.json"
+      ],
+      "version": "Half-Life 2 (2004), Black Mesa East",
+      "ability": "Eli compare les données de la Résistance",
+      "prompt": "Draw ONE genuinely new detailed 2D PIXEL-ART BASIC animation atlas of the SAME fictional videogame character as the inspected attached native presentation reference. That reference contains32poses; all16 new drawings must be fresh, never copied cells. No real actor portrait.\nLOCKED IDENTITY: Elderly fictional Black scientist Eli Vance, original Half-Life2(2004): short grey hair, grey beard and moustache, worn olive utility vest over a faded light-grey long-sleeve Harvard sweatshirt with sleeves rolled, tan work trousers, brown right boot. Missing LEFT lower leg replaced below knee by a visible black curved mechanical prosthetic, exactly ONE biological lower leg and ONE prosthesis. Use reference only for face/clothes/prosthesis, REMOVE ITS INVENTED LASER GUN. Hands hold only an ordinary paper clipboard/notebook, pen or small physical walkie-talkie. No real actor portrait.\nEXACT GRID: FOUR COLUMNS by FOUR ROWS=16 distinct complete poses, square1024x1024 true transparent alpha, equal256pxcells. All heads, arms, props, tools, muzzles, paws and tails inside each cell with at least24px transparent gutters. No text, label, panel, gridline, scene, floor, watermark or opponent. Combat faces RIGHT. Standing BODY190px, baseline244, one consistent source-wide anatomical scale. Natural run/crouch/recoil height variation remains; never independently enlarge short postures.\nROW1 IDLE:4 distinct ready postures with actual hand/head/torso changes; physical equipment held safely. Never translate/repeat an unchanged pose.\nROW2 RUN:4 genuine alternating running phases, left leg forward, passing, right leg forward, gathering step; actual equipment remains gripped or secured.\nROW3 ATTACK/ACTION: This action is SUPPORT: four different poses comparing paper research notes, point at page, speak into small ordinary radio, lower radio and acknowledge. Zero weapon fire and zero offensive effect. Keep all four full bodies and prosthetic intact.\nROW4 HIT:4 new non-graphic intact recoil postures: shoulder flinch, torso twist back, low protective stagger, crouched recovery; same anatomy/outfit/props, no blood/death or attack power.\nExactly4 full bodies per row, all4 rows present,16different new native poses. Tiny physical firing flash only where the prescribed basic action is a real shot; support characters show no weapon/discharge, no shield bubble or magic. Keep generous transparent margins; muzzle recovery is empty, no captured ball/tool magic in non-prescribed rows.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-prompts/eli_vance.txt",
+      "referenceAsset": "/sprites/generated/heroes/half-life/eli-vance.png",
+      "referenceImage": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/eli_vance.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave10-2026-10-23/part-b-sources/eli_vance-initial.png",
+      "referenceContextSha256": "97c9ef299605decb67803b8996f4710ec46c8cf95f6a249ae181883f74c0fc82",
+      "oldReferenceArchive": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/eli_vance-old-base.png",
+      "bodyCalibrationTarget": 190,
+      "bodyCalibrationKind": "biped-standing-height",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-9a84e40d-2c81-4f19-a964-e2209932f291.png",
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          89,
+          14,
+          103,
+          228
+        ],
+        "referenceNormalizedBodyHeight": 228,
+        "referencePackingScale": 0.672463768115942,
+        "nativeReferenceBodyHeight": 339.05172413793105,
+        "sourceWideRenderPixelsPerNativePixel": 0.5603864734299516,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.8333333333333333,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              89,
+              14,
+              103,
+              228
+            ],
+            "normalizedBodyHeight": 228,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              89,
+              14,
+              103,
+              228
+            ],
+            "referenceBodyHeight": 228,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8333333333333334,
+            "nativeComparableBodyHeight": 339.05172413793105,
+            "nativeReferenceBodyHeight": 339.05172413793105,
+            "nativeBodyBounds": [
+              98.48706896551724,
+              15.487068965517242,
+              153.16810344827587,
+              339.05172413793105
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              98.48706896551724,
+              15.487068965517242,
+              153.16810344827587,
+              339.05172413793105
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.7415458937198067,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              41,
+              24,
+              182,
+              218
+            ],
+            "normalizedBodyHeight": 218,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              89,
+              14,
+              103,
+              228
+            ],
+            "referenceBodyHeight": 228,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8333333333333334,
+            "nativeComparableBodyHeight": 288.4741379310345,
+            "nativeReferenceBodyHeight": 339.05172413793105,
+            "nativeBodyBounds": [
+              41.9698275862069,
+              16.323275862068964,
+              240.83620689655172,
+              288.4741379310345
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              98.48706896551724,
+              15.487068965517242,
+              153.16810344827587,
+              339.05172413793105
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 0.8526570048309177,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              66,
+              17,
+              133,
+              222
+            ],
+            "normalizedBodyHeight": 222,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              89,
+              14,
+              103,
+              228
+            ],
+            "referenceBodyHeight": 228,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8333333333333334,
+            "nativeComparableBodyHeight": 337.78448275862064,
+            "nativeReferenceBodyHeight": 339.05172413793105,
+            "nativeBodyBounds": [
+              62.564655172413794,
+              10.52155172413793,
+              202.3663793103448,
+              337.78448275862064
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              98.48706896551724,
+              15.487068965517242,
+              153.16810344827587,
+              339.05172413793105
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.7439613526570047,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              62,
+              63,
+              151,
+              178
+            ],
+            "normalizedBodyHeight": 178,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              89,
+              14,
+              103,
+              228
+            ],
+            "referenceBodyHeight": 228,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8333333333333334,
+            "nativeComparableBodyHeight": 236.3103448275862,
+            "nativeReferenceBodyHeight": 339.05172413793105,
+            "nativeBodyBounds": [
+              68.65517241379311,
+              7.637931034482758,
+              200.4655172413793,
+              236.3103448275862
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              98.48706896551724,
+              15.487068965517242,
+              153.16810344827587,
+              339.05172413793105
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "kleiner",
+      "name": "Dr. Isaac Kleiner",
+      "universe": "Half-Life",
+      "sourceWork": "Half-Life 2 (2004), Kleiner laboratory",
+      "sourceReference": "Selected laboratory support is a bounded ally guard adapting safe-transfer preparation; not a claim that Kleiner creates handheld shields. His source occasionally shows a shotgun but this chosen kit and art are non-offensive laboratory work.",
+      "sourceUrl": "https://combineoverwiki.net/wiki/Isaac_Kleiner",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave10-2026-10-23/part-b-source-facts.json"
+      ],
+      "version": "Half-Life 2 (2004), Kleiner laboratory",
+      "ability": "Kleiner vérifie les relais du laboratoire",
+      "prompt": "Draw ONE genuinely new detailed 2D PIXEL-ART BASIC animation atlas of the SAME fictional videogame character as the inspected attached native presentation reference. That reference contains32poses; all16 new drawings must be fresh, never copied cells. No real actor portrait.\nLOCKED IDENTITY: Elderly fictional Dr Isaac Kleiner, original Half-Life2(2004): balding head with thin grey fringe, rectangular black glasses, slim slightly stooped body, long worn WHITE LAB COAT, pale blue shirt and dark red tie, tan-grey trousers, brown shoes. Use local reference for face and coat ONLY; REMOVE ITS INVENTED HEAVY LASER GUN. Hands may hold a paper clipboard, pencil or compact rectangular physical lab-control box with buttons; never a gun, magic staff or ray emitter. No real actor portrait.\nEXACT GRID: FOUR COLUMNS by FOUR ROWS=16 distinct complete poses, square1024x1024 true transparent alpha, equal256pxcells. All heads, arms, props, tools, muzzles, paws and tails inside each cell with at least24px transparent gutters. No text, label, panel, gridline, scene, floor, watermark or opponent. Combat faces RIGHT. Standing BODY190px, baseline244, one consistent source-wide anatomical scale. Natural run/crouch/recoil height variation remains; never independently enlarge short postures.\nROW1 IDLE:4 distinct ready postures with actual hand/head/torso changes; physical equipment held safely. Never translate/repeat an unchanged pose.\nROW2 RUN:4 genuine alternating running phases, left leg forward, passing, right leg forward, gathering step; actual equipment remains gripped or secured.\nROW3 ATTACK/ACTION: Four distinct SUPPORT poses checking physical relays on a small rectangular handheld control panel: inspect, adjust knob, compare clipboard, acknowledge. No offensive discharge, gun, magic or healing.\nROW4 HIT:4 new non-graphic intact recoil postures: shoulder flinch, torso twist back, low protective stagger, crouched recovery; same anatomy/outfit/props, no blood/death or attack power.\nExactly4 full bodies per row, all4 rows present,16different new native poses. Tiny physical firing flash only where the prescribed basic action is a real shot; support characters show no weapon/discharge, no shield bubble or magic. Keep generous transparent margins; muzzle recovery is empty, no captured ball/tool magic in non-prescribed rows.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-prompts/kleiner.txt",
+      "referenceAsset": "/sprites/generated/heroes/half-life/kleiner.png",
+      "referenceImage": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/kleiner.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave10-2026-10-23/part-b-sources/kleiner-initial.png",
+      "referenceContextSha256": "dcee994574cbe06ca3532ae582ab0632759a95324fb95aeb2fb4b2d331b50c18",
+      "oldReferenceArchive": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/kleiner-old-base.png",
+      "bodyCalibrationTarget": 190,
+      "bodyCalibrationKind": "biped-standing-height",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-42d1d752-a90e-4a17-8d39-e63dd5a8ac1c.png",
+      "correction": {
+        "file": "/workspace/generated_images/exec-04329b69-3d8e-4f57-b913-880a6b434def.png",
+        "prompt": "Draw ONE native detailed 2D PIXEL-ART corrective row of FOUR NEW FULL-BODY poses of fictional Dr Isaac Kleiner, Half-Life2(2004), matching the attached references. Concrete defect in the square basic atlas: its ACTION row cuts all four bodies at the shins and omits shoes. Replace ONLY that row with four complete newly drawn bodies; do not repeat cells or synthesize feet. The other12 poses are retained separately, so output ONLY a single horizontal row,4columns by1row.\nIDENTITY: Elderly balding scientist with grey fringe, rectangular black glasses, white knee-length lab coat, pale blue shirt, dark red tie, tan-grey trousers and BROWN SHOES. Slim slightly stooped body. Real physical rectangular handheld control box with tiny status lamps, paper clipboard and pencil. NO gun, weapon, projected beam, portal, shield bubble, magic or healing.\nFour distinct complete SUPPORT poses, ALL with full visible head, torso, both legs AND BOTH BROWN SHOES clearly inside the frame:1hold physical control box at waist and inspect knob;2turn the mundane knob with head tilted and shifted legs;3compare the box with a paper clipboard, body leaning naturally;4lower controls and acknowledge with a cautious open hand. Every pose needs a different arm/head/leg arrangement. No opponent, injury, floor, labels or background.\nEXACT layout:4equal256pxcells across one row, target1024x256 transparent RGBA; standing body about190px tall with consistent source-wide scale, shoes onbaseline244, at least24px transparent space around full anatomy and controls. Make the characters SMALL ENOUGH to fit full head-to-shoe anatomy. Nothing clipped at top or bottom, no legs crossing cell edges. Render all limbs and complete shoes natively. True transparent background.",
+        "referenceImages": [
+          "/workspace/generated_images/exec-42d1d752-a90e-4a17-8d39-e63dd5a8ac1c.png",
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/kleiner.png"
+        ],
+        "targetRows": [
+          2
+        ],
+        "sourceRows": [
+          0
+        ],
+        "reason": "Four action-row bodies were clipped below shins in the initial native base; only that row is replaced."
+      },
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          73,
+          14,
+          122,
+          222
+        ],
+        "referenceNormalizedBodyHeight": 222,
+        "referencePackingScale": 0.672463768115942,
+        "nativeReferenceBodyHeight": 330.1293103448276,
+        "sourceWideRenderPixelsPerNativePixel": 0.5755320537929233,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.8558558558558558,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              73,
+              14,
+              122,
+              222
+            ],
+            "normalizedBodyHeight": 222,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              73,
+              14,
+              122,
+              222
+            ],
+            "referenceBodyHeight": 222,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8558558558558559,
+            "nativeComparableBodyHeight": 330.1293103448276,
+            "nativeReferenceBodyHeight": 330.1293103448276,
+            "nativeBodyBounds": [
+              74.97413793103448,
+              8.974137931034484,
+              181.42241379310346,
+              330.1293103448276
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              74.97413793103448,
+              8.974137931034484,
+              181.42241379310346,
+              330.1293103448276
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.7715106410758583,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              43,
+              21,
+              191,
+              215
+            ],
+            "normalizedBodyHeight": 215,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              73,
+              14,
+              122,
+              222
+            ],
+            "referenceBodyHeight": 222,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8558558558558559,
+            "nativeComparableBodyHeight": 288.21120689655174,
+            "nativeReferenceBodyHeight": 330.1293103448276,
+            "nativeBodyBounds": [
+              43.34051724137931,
+              6.3405172413793105,
+              256.03879310344826,
+              288.21120689655174
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              74.97413793103448,
+              8.974137931034484,
+              181.42241379310346,
+              330.1293103448276
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 0.8333333333333334,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              60,
+              14,
+              129,
+              228
+            ],
+            "normalizedBodyHeight": 228,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              73,
+              14,
+              122,
+              222
+            ],
+            "referenceBodyHeight": 222,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8558558558558559,
+            "nativeComparableBodyHeight": 330.1293103448276,
+            "nativeReferenceBodyHeight": 330.1293103448276,
+            "nativeBodyBounds": [
+              83.75431034482759,
+              59.508620689655174,
+              355.3060344827586,
+              627.9827586206897
+            ],
+            "sourceDensityRatio": 0.5256980479367434,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "This four-pose native correction has a different raster density. Its complete standing body is calibrated against the original source standing body by an explicit scalar density ratio; the remaining12 original cells retain their original source-wide scale.",
+            "nativeReferenceBodyBounds": [
+              74.97413793103448,
+              8.974137931034484,
+              181.42241379310346,
+              330.1293103448276
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.731818775297036,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              44,
+              27,
+              172,
+              215
+            ],
+            "normalizedBodyHeight": 215,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              73,
+              14,
+              122,
+              222
+            ],
+            "referenceBodyHeight": 222,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8558558558558559,
+            "nativeComparableBodyHeight": 273.3836206896552,
+            "nativeReferenceBodyHeight": 330.1293103448276,
+            "nativeBodyBounds": [
+              50.543103448275865,
+              20.814655172413794,
+              218.70689655172413,
+              273.3836206896552
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              74.97413793103448,
+              8.974137931034484,
+              181.42241379310346,
+              330.1293103448276
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "paladin",
+      "name": "Paladin Danse",
+      "universe": "Fallout",
+      "sourceWork": "Fallout 4 (2015), Brotherhood T-60b",
+      "sourceReference": "T-60b Brotherhood Danse uses a laser rifle. Source weapons verified on a page actually opened; finite single-target gameplay shot, personal power-armor guard, no Liberty Prime summon.",
+      "sourceUrl": "https://gamevoyagers.com/do-companions-use-ammo-in-fallout-4/",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave10-2026-10-23/part-b-source-facts.json"
+      ],
+      "version": "Fallout 4 (2015), Brotherhood T-60b",
+      "ability": "Tir du fusil laser de Danse",
+      "prompt": "Draw ONE genuinely new detailed 2D PIXEL-ART BASIC animation atlas of the SAME fictional videogame character as the inspected attached native presentation reference. That reference contains32poses; all16 new drawings must be fresh, never copied cells. No real actor portrait.\nLOCKED IDENTITY: Adult fictional Paladin Danse from Fallout4(2015), short dark hair, dark eyebrows and stubble, head UNCOVERED, broad massive grey steel Brotherhood T-60b POWER ARMOR with very heavy rounded shoulders and chest, mechanical thick arms/legs, large boots, worn Brotherhood insignia. Keep the giant armored body properly wide. His real physical LASER RIFLE must be visible: rusty olive/tan angular box receiver, long black vented barrel ending in a distinct front aperture, rear stock, held in BOTH hands. Old reference lacks the gun: add the actual rifle, not an unarmed boxer. No actor portrait.\nEXACT GRID: FOUR COLUMNS by FOUR ROWS=16 distinct complete poses, square1024x1024 true transparent alpha, equal256pxcells. All heads, arms, props, tools, muzzles, paws and tails inside each cell with at least24px transparent gutters. No text, label, panel, gridline, scene, floor, watermark or opponent. Combat faces RIGHT. Standing BODY190px, baseline244, one consistent source-wide anatomical scale. Natural run/crouch/recoil height variation remains; never independently enlarge short postures.\nROW1 IDLE:4 distinct ready postures with actual hand/head/torso changes; physical equipment held safely. Never translate/repeat an unchanged pose.\nROW2 RUN:4 genuine alternating running phases, left leg forward, passing, right leg forward, gathering step; actual equipment remains gripped or secured.\nROW3 ATTACK/ACTION: Four distinct real laser-rifle poses: lift stock to shoulder, aim both hands RIGHT, one short red pulse at true muzzle, recovery. Heavy armor remains complete. No fists-only attack, gun from hands, Liberty Prime or area blast.\nROW4 HIT:4 new non-graphic intact recoil postures: shoulder flinch, torso twist back, low protective stagger, crouched recovery; same anatomy/outfit/props, no blood/death or attack power.\nExactly4 full bodies per row, all4 rows present,16different new native poses. Tiny physical firing flash only where the prescribed basic action is a real shot; support characters show no weapon/discharge, no shield bubble or magic. Keep generous transparent margins; muzzle recovery is empty, no captured ball/tool magic in non-prescribed rows.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-prompts/paladin.txt",
+      "referenceAsset": "/sprites/generated/heroes/fallout/paladin.png",
+      "referenceImage": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/paladin.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave10-2026-10-23/part-b-sources/paladin-initial.png",
+      "referenceContextSha256": "8fe597d1f9ae752528149c662217a9bdec9c1b0472dddce4d8bba4adbca127f7",
+      "oldReferenceArchive": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/paladin-old-base.png",
+      "bodyCalibrationTarget": 190,
+      "bodyCalibrationKind": "biped-standing-height",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-44f36524-9d05-4221-9731-ec27ebb6f7f4.png",
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          50,
+          16,
+          174,
+          225
+        ],
+        "referenceNormalizedBodyHeight": 225,
+        "referencePackingScale": 0.6803519061583577,
+        "nativeReferenceBodyHeight": 330.71120689655174,
+        "sourceWideRenderPixelsPerNativePixel": 0.5745193874226132,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.8444444444444444,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              50,
+              16,
+              174,
+              225
+            ],
+            "normalizedBodyHeight": 225,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              50,
+              16,
+              174,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8444444444444444,
+            "nativeComparableBodyHeight": 330.71120689655174,
+            "nativeReferenceBodyHeight": 330.71120689655174,
+            "nativeBodyBounds": [
+              41.939655172413794,
+              15.469827586206897,
+              255.75000000000003,
+              330.71120689655174
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              41.939655172413794,
+              15.469827586206897,
+              255.75000000000003,
+              330.71120689655174
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.953405017921147,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              43,
+              58,
+              180,
+              181
+            ],
+            "normalizedBodyHeight": 181,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              50,
+              16,
+              174,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8444444444444444,
+            "nativeComparableBodyHeight": 300.3663793103448,
+            "nativeReferenceBodyHeight": 330.71120689655174,
+            "nativeBodyBounds": [
+              16.31896551724138,
+              14.65948275862069,
+              298.7068965517241,
+              300.3663793103448
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              41.939655172413794,
+              15.469827586206897,
+              255.75000000000003,
+              330.71120689655174
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 1.1465623981753015,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              56,
+              90,
+              147,
+              152
+            ],
+            "normalizedBodyHeight": 152,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              50,
+              16,
+              174,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8444444444444444,
+            "nativeComparableBodyHeight": 303.3448275862069,
+            "nativeReferenceBodyHeight": 330.71120689655174,
+            "nativeBodyBounds": [
+              13.991379310344827,
+              6.995689655172414,
+              293.3663793103449,
+              303.3448275862069
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              41.939655172413794,
+              15.469827586206897,
+              255.75000000000003,
+              330.71120689655174
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.7602476376669924,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              36,
+              50,
+              179,
+              188
+            ],
+            "normalizedBodyHeight": 188,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              50,
+              16,
+              174,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8444444444444444,
+            "nativeComparableBodyHeight": 248.77586206896552,
+            "nativeReferenceBodyHeight": 330.71120689655174,
+            "nativeBodyBounds": [
+              34.939655172413794,
+              10.262931034482758,
+              236.86637931034483,
+              248.77586206896552
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              41.939655172413794,
+              15.469827586206897,
+              255.75000000000003,
+              330.71120689655174
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "nick_v",
+      "name": "Nick Valentine",
+      "universe": "Fallout",
+      "sourceWork": "Fallout 4 (2015)",
+      "sourceReference": "Default Fallout4 Nick uses a pipe revolver pistol, not a standard .44. Calibre is intentionally not asserted. Detective information is allied support rather than an offensive scan.",
+      "sourceUrl": "https://gamevoyagers.com/do-companions-use-ammo-in-fallout-4/",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave10-2026-10-23/part-b-source-facts.json"
+      ],
+      "version": "Fallout 4 (2015)",
+      "ability": "Tir du revolver artisanal de Nick",
+      "prompt": "Draw ONE genuinely new detailed 2D PIXEL-ART BASIC animation atlas of the SAME fictional videogame character as the inspected attached native presentation reference. That reference contains32poses; all16 new drawings must be fresh, never copied cells. No real actor portrait.\nLOCKED IDENTITY: Fictional Nick Valentine, Fallout4(2015) SYNTH DETECTIVE, worn brown fedora and faded tan trench coat, pale weathered synthetic face with exposed mechanical gaps on cheek/neck, amber-yellow eyes, white shirt and dark tie, dark trousers and worn shoes. Visible skeletal mechanical right hand where coat sleeve ends. Give his actual compact PIPE REVOLVER PISTOL: homemade dark steel pipe barrel, visible cylinder, rough wooden grip, mechanical improvised fittings, held in skeletal/covered hands naturally. NOT the standard .44 polished revolver, not a rifle, not an energy gun. Old reference is unarmed; add this actual pistol. No actor portrait.\nEXACT GRID: FOUR COLUMNS by FOUR ROWS=16 distinct complete poses, square1024x1024 true transparent alpha, equal256pxcells. All heads, arms, props, tools, muzzles, paws and tails inside each cell with at least24px transparent gutters. No text, label, panel, gridline, scene, floor, watermark or opponent. Combat faces RIGHT. Standing BODY190px, baseline244, one consistent source-wide anatomical scale. Natural run/crouch/recoil height variation remains; never independently enlarge short postures.\nROW1 IDLE:4 distinct ready postures with actual hand/head/torso changes; physical equipment held safely. Never translate/repeat an unchanged pose.\nROW2 RUN:4 genuine alternating running phases, left leg forward, passing, right leg forward, gathering step; actual equipment remains gripped or secured.\nROW3 ATTACK/ACTION: Four new distinct pipe-revolver poses: low draw, aim right, one small ordinary muzzle flash/recoil, safe low ready. Clearly visible improvised pipe barrel and cylinder. No fists-only, standard .44, laser or clue beam.\nROW4 HIT:4 new non-graphic intact recoil postures: shoulder flinch, torso twist back, low protective stagger, crouched recovery; same anatomy/outfit/props, no blood/death or attack power.\nExactly4 full bodies per row, all4 rows present,16different new native poses. Tiny physical firing flash only where the prescribed basic action is a real shot; support characters show no weapon/discharge, no shield bubble or magic. Keep generous transparent margins; muzzle recovery is empty, no captured ball/tool magic in non-prescribed rows.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-prompts/nick_v.txt",
+      "referenceAsset": "/sprites/generated/heroes/fallout/nick-v.png",
+      "referenceImage": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/nick_v.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave10-2026-10-23/part-b-sources/nick_v-initial.png",
+      "referenceContextSha256": "fe6e64a51fb6797386d1b0898934d08d14ba51e685c33aba98fcd4ed3be261b0",
+      "oldReferenceArchive": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/nick_v-old-base.png",
+      "bodyCalibrationTarget": 190,
+      "bodyCalibrationKind": "biped-standing-height",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-6988b6f0-f6bb-45dd-b2a2-67e869c88578.png",
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          66,
+          14,
+          134,
+          226
+        ],
+        "referenceNormalizedBodyHeight": 226,
+        "referencePackingScale": 0.709480122324159,
+        "nativeReferenceBodyHeight": 318.5431034482759,
+        "sourceWideRenderPixelsPerNativePixel": 0.5964655895645584,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.8407079646017699,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              66,
+              14,
+              134,
+              226
+            ],
+            "normalizedBodyHeight": 226,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              66,
+              14,
+              134,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8407079646017699,
+            "nativeComparableBodyHeight": 318.5431034482759,
+            "nativeReferenceBodyHeight": 318.5431034482759,
+            "nativeBodyBounds": [
+              68.81896551724138,
+              13.818965517241379,
+              188.8706896551724,
+              318.5431034482759
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              68.81896551724138,
+              13.818965517241379,
+              188.8706896551724,
+              318.5431034482759
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.7661497659062001,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              28,
+              32,
+              205,
+              207
+            ],
+            "normalizedBodyHeight": 207,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              66,
+              14,
+              134,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8407079646017699,
+            "nativeComparableBodyHeight": 265.8879310344828,
+            "nativeReferenceBodyHeight": 318.5431034482759,
+            "nativeBodyBounds": [
+              28.56896551724138,
+              19.28448275862069,
+              263.3189655172414,
+              265.8879310344828
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              68.81896551724138,
+              13.818965517241379,
+              188.8706896551724,
+              318.5431034482759
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 1.0515276988444155,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              57,
+              89,
+              142,
+              153
+            ],
+            "normalizedBodyHeight": 153,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              66,
+              14,
+              134,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8407079646017699,
+            "nativeComparableBodyHeight": 269.7284482758621,
+            "nativeReferenceBodyHeight": 318.5431034482759,
+            "nativeBodyBounds": [
+              31.762931034482758,
+              31.525862068965516,
+              250.33620689655174,
+              269.7284482758621
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              68.81896551724138,
+              13.818965517241379,
+              188.8706896551724,
+              318.5431034482759
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.7430110145868853,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              48,
+              23,
+              183,
+              219
+            ],
+            "normalizedBodyHeight": 219,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              66,
+              14,
+              134,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8407079646017699,
+            "nativeComparableBodyHeight": 272.8060344827586,
+            "nativeReferenceBodyHeight": 318.5431034482759,
+            "nativeBodyBounds": [
+              57.491379310344826,
+              17.245689655172413,
+              227.96120689655174,
+              272.8060344827586
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              68.81896551724138,
+              13.818965517241379,
+              188.8706896551724,
+              318.5431034482759
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "dogmeat",
+      "name": "Dogmeat",
+      "universe": "Fallout",
+      "sourceWork": "Fallout 4 (2015)",
+      "sourceReference": "Dogmeat remains a natural quadruped companion with one close bite/hold gameplay impact. Ear-tip height110, withers80 and body-length170 calibration are independent of bipedBODY190; one source-wide scale preserves low crouches/leaps. No weapon or humanoid anatomy.",
+      "sourceUrl": "https://fallout.fandom.com/wiki/Dogmeat_(Fallout_4)",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave10-2026-10-23/part-b-source-facts.json"
+      ],
+      "version": "Fallout 4 (2015)",
+      "ability": "Morsure d’interception de Dogmeat",
+      "prompt": "Draw ONE genuinely new detailed 2D PIXEL-ART BASIC animation atlas of the SAME fictional videogame character as the inspected attached native presentation reference. That reference contains32poses; all16 new drawings must be fresh, never copied cells. No real actor portrait.\nLOCKED IDENTITY: Dogmeat, fictional adult GERMAN SHEPHERD DOG from Fallout4(2015). Real natural canine anatomy: elongated muzzle, erect pointed ears, brown/tan fur with BLACK SADDLE, four real canine legs ending in PAWS and claws, hocks and dog elbows, one long bushy tail, no human torso or hands. Keep a simple worn olive cloth neck bandana; REMOVE the old sprite’s huge saddlebags/armor so anatomy is readable. QUADRUPED IN EVERY CELL; never stands as a human, never holds anything. Proportional reference: standing ear-tip height about110px, withers80px, nose-to-rump body length about170px, long tail extends behind within cell. DO NOT force human190px vertical height. Match this one canine scale across every row.\nEXACT GRID: FOUR COLUMNS by FOUR ROWS=16 distinct complete poses, square1024x1024 true transparent alpha, equal256pxcells. All heads, arms, props, tools, muzzles, paws and tails inside each cell with at least24px transparent gutters. No text, label, panel, gridline, scene, floor, watermark or opponent. Combat faces RIGHT. Keep QUADRUPED natural proportions: ear-tip height about110px/withers80px/body length170px plus tail. No forced190px human height; all four canine limbs in every cell, no hands/weapon. ONE consistent source-wide canine scale, crouches stay shorter.\nROW1 IDLE:4 distinct four-paw alert weight shifts, ear/head movement and natural canine stance. Never translate/repeat an unchanged pose.\nROW2 RUN:4 genuine canine locomotion phases with four real legs: front reach/back push, gathered suspension, opposite reach, landing; natural dog spine and tail. No biped sprint or human arms.\nROW3 ATTACK/ACTION: Four actual canine bite poses: quadruped low crouch, forward snap with natural open jaw, paws braced jaw closing on EMPTY AIR, return to four-paw guard. Every cell has exactly four canine limbs and one tail; no weapon/hand, no magical slash trail.\nROW4 HIT:4 new non-graphic canine recoil poses: shoulders flinch, low four-paw stagger, defensive dog crouch, stable four-paw recovery. Exactly four canine limbs and one tail, no injury, blood, magical stars, weapon or upright humanoid.\nExactly4 full bodies per row, all4 rows present,16different new native poses. Tiny physical firing flash only where the prescribed basic action is a real shot; support characters show no weapon/discharge, no shield bubble or magic. Keep generous transparent margins; muzzle recovery is empty, no captured ball/tool magic in non-prescribed rows.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-prompts/dogmeat.txt",
+      "referenceAsset": "/sprites/generated/heroes/fallout/dogmeat.png",
+      "referenceImage": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/dogmeat.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave10-2026-10-23/part-b-sources/dogmeat-initial.png",
+      "referenceContextSha256": "9f955b6e9e7219cf2350b934b7b2e2644b56556525db5865f0287b12e2c46a1a",
+      "oldReferenceArchive": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/dogmeat-old-base.png",
+      "bodyCalibrationTarget": 110,
+      "bodyCalibrationKind": "quadruped-ear-tip-height-and-body-length",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-eab2d574-d938-4804-b27f-1824421723b8.png",
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "quadruped",
+        "calibrationTargetBodyHeight": 110,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          38,
+          90,
+          183,
+          150
+        ],
+        "referenceNormalizedBodyHeight": 150,
+        "referencePackingScale": 0.6321525885558583,
+        "nativeReferenceBodyHeight": 237.2844827586207,
+        "sourceWideRenderPixelsPerNativePixel": 0.4635785649409627,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "quadrupedCalibration": {
+          "measurement": "ear-tip-to-paw vertical height in natural standing reference",
+          "earTipHeight": 110,
+          "nominalWithersHeight": 80,
+          "actualProjectedReferenceWidth": 134.2,
+          "nativeForeshorteningPreserved": true,
+          "neverForcedToHumanoid190": true,
+          "uniformScaleOnly": true,
+          "note": "Projected horizontal width follows native anatomy and three-quarter posture; no stretching enforces the prompt’s nominal body-length goal. Raised tails are excluded from ear-height measurement."
+        },
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.7333333333333333,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "quadruped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": true,
+            "cell": 0,
+            "bodyBounds": [
+              38,
+              90,
+              183,
+              150
+            ],
+            "normalizedBodyHeight": 150,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              38,
+              90,
+              183,
+              150
+            ],
+            "referenceBodyHeight": 150,
+            "calibrationTargetBodyHeight": 110,
+            "referenceRenderScale": 0.7333333333333333,
+            "nativeComparableBodyHeight": 237.2844827586207,
+            "nativeReferenceBodyHeight": 237.2844827586207,
+            "nativeBodyBounds": [
+              14.581896551724139,
+              96,
+              289.4870689655172,
+              237.2844827586207
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "Natural quadruped ear-to-paw110 calibration, never humanoid190. Raised tail, leap height, crouch and low canine bite remain actual native anatomy; one uniform source-wide scale, no redraw/stretch.",
+            "nativeReferenceBodyBounds": [
+              14.581896551724139,
+              96,
+              289.4870689655172,
+              237.2844827586207
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.6833787465940054,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "quadruped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": true,
+            "cell": 0,
+            "bodyBounds": [
+              34,
+              115,
+              200,
+              125
+            ],
+            "normalizedBodyHeight": 125,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              38,
+              90,
+              183,
+              150
+            ],
+            "referenceBodyHeight": 150,
+            "calibrationTargetBodyHeight": 110,
+            "referenceRenderScale": 0.7333333333333333,
+            "nativeComparableBodyHeight": 184.26724137931035,
+            "nativeReferenceBodyHeight": 237.2844827586207,
+            "nativeBodyBounds": [
+              17.474137931034484,
+              61.474137931034484,
+              294.82758620689657,
+              184.26724137931035
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "Natural quadruped ear-to-paw110 calibration, never humanoid190. Raised tail, leap height, crouch and low canine bite remain actual native anatomy; one uniform source-wide scale, no redraw/stretch.",
+            "nativeReferenceBodyBounds": [
+              14.581896551724139,
+              96,
+              289.4870689655172,
+              237.2844827586207
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 0.727338782924614,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "quadruped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": true,
+            "cell": 0,
+            "bodyBounds": [
+              39,
+              129,
+              184,
+              104
+            ],
+            "normalizedBodyHeight": 104,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              38,
+              90,
+              183,
+              150
+            ],
+            "referenceBodyHeight": 150,
+            "calibrationTargetBodyHeight": 110,
+            "referenceRenderScale": 0.7333333333333333,
+            "nativeComparableBodyHeight": 163.17241379310346,
+            "nativeReferenceBodyHeight": 237.2844827586207,
+            "nativeBodyBounds": [
+              17.275862068965516,
+              83.70689655172414,
+              288.68965517241384,
+              163.17241379310346
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "Natural quadruped ear-to-paw110 calibration, never humanoid190. Raised tail, leap height, crouch and low canine bite remain actual native anatomy; one uniform source-wide scale, no redraw/stretch.",
+            "nativeReferenceBodyBounds": [
+              14.581896551724139,
+              96,
+              289.4870689655172,
+              237.2844827586207
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.677384196185286,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "quadruped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": true,
+            "cell": 0,
+            "bodyBounds": [
+              32,
+              108,
+              201,
+              129
+            ],
+            "normalizedBodyHeight": 129,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              38,
+              90,
+              183,
+              150
+            ],
+            "referenceBodyHeight": 150,
+            "calibrationTargetBodyHeight": 110,
+            "referenceRenderScale": 0.7333333333333333,
+            "nativeComparableBodyHeight": 188.4956896551724,
+            "nativeReferenceBodyHeight": 237.2844827586207,
+            "nativeBodyBounds": [
+              15.922413793103448,
+              59.46120689655172,
+              293.70258620689657,
+              188.4956896551724
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "Natural quadruped ear-to-paw110 calibration, never humanoid190. Raised tail, leap height, crouch and low canine bite remain actual native anatomy; one uniform source-wide scale, no redraw/stretch.",
+            "nativeReferenceBodyBounds": [
+              14.581896551724139,
+              96,
+              289.4870689655172,
+              237.2844827586207
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "piper_wright",
+      "name": "Piper Wright",
+      "universe": "Fallout",
+      "sourceWork": "Fallout 4 (2015), Publick Occurrences",
+      "sourceReference": "Piper default weapon is the10mm pistol. Publick Occurrences super preserves the previous zero-damage allied information buff; numerical attack bonus is an explicit gameplay adaptation of reporting, not healing or the source experience perk.",
+      "sourceUrl": "https://gamevoyagers.com/do-companions-use-ammo-in-fallout-4/",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave10-2026-10-23/part-b-source-facts.json"
+      ],
+      "version": "Fallout 4 (2015), Publick Occurrences",
+      "ability": "Pistolet 10 mm de Piper",
+      "prompt": "Draw ONE genuinely new detailed 2D PIXEL-ART BASIC animation atlas of the SAME fictional videogame character as the inspected attached native presentation reference. That reference contains32poses; all16 new drawings must be fresh, never copied cells. No real actor portrait.\nLOCKED IDENTITY: Adult fictional Piper Wright, Fallout4(2015) journalist: dark shoulder-length hair, RED PRESS CAP, long weathered RED LEATHER TRENCH COAT, cream scarf and brown shirt, dark trousers and brown boots. Small actual Fallout4 10MM PISTOL with bulky angular upper slide/receiver and short barrel, not an old six-shooter revolver; holster it whenever holding newspaper. A folded paper newspaper and pencil are her support props. Use old local face/coat only, CORRECT its wrong revolver/energy rings. No actor portrait.\nEXACT GRID: FOUR COLUMNS by FOUR ROWS=16 distinct complete poses, square1024x1024 true transparent alpha, equal256pxcells. All heads, arms, props, tools, muzzles, paws and tails inside each cell with at least24px transparent gutters. No text, label, panel, gridline, scene, floor, watermark or opponent. Combat faces RIGHT. Standing BODY190px, baseline244, one consistent source-wide anatomical scale. Natural run/crouch/recoil height variation remains; never independently enlarge short postures.\nROW1 IDLE:4 distinct ready postures with actual hand/head/torso changes; physical equipment held safely. Never translate/repeat an unchanged pose.\nROW2 RUN:4 genuine alternating running phases, left leg forward, passing, right leg forward, gathering step; actual equipment remains gripped or secured.\nROW3 ATTACK/ACTION: This BASIC remains an ordinary 10MM PISTOL shot: four distinct low-ready, two-hand aim RIGHT, tiny warm muzzle flash/recoil, lowered recovery. Show bulky angular automatic pistol slide, NOT a revolver. No rays or red magic rings.\nROW4 HIT:4 new non-graphic intact recoil postures: shoulder flinch, torso twist back, low protective stagger, crouched recovery; same anatomy/outfit/props, no blood/death or attack power.\nExactly4 full bodies per row, all4 rows present,16different new native poses. Tiny physical firing flash only where the prescribed basic action is a real shot; support characters show no weapon/discharge, no shield bubble or magic. Keep generous transparent margins; muzzle recovery is empty, no captured ball/tool magic in non-prescribed rows.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-prompts/piper_wright.txt",
+      "referenceAsset": "/sprites/generated/heroes/fallout/piper-wright.png",
+      "referenceImage": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/piper_wright.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave10-2026-10-23/part-b-sources/piper_wright-initial.png",
+      "referenceContextSha256": "a13c8aaecc119b34cf925972b8e68fa725015dcb333605356da6b30126ab42f2",
+      "oldReferenceArchive": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/piper_wright-old-base.png",
+      "bodyCalibrationTarget": 190,
+      "bodyCalibrationKind": "biped-standing-height",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-5a49bc43-c644-4554-93b5-ba07b3b717b0.png",
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          85,
+          15,
+          133,
+          220
+        ],
+        "referenceNormalizedBodyHeight": 220,
+        "referencePackingScale": 0.6966966966966966,
+        "nativeReferenceBodyHeight": 315.7758620689655,
+        "sourceWideRenderPixelsPerNativePixel": 0.6016926016926016,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.8636363636363636,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              85,
+              15,
+              133,
+              220
+            ],
+            "normalizedBodyHeight": 220,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              85,
+              15,
+              133,
+              220
+            ],
+            "referenceBodyHeight": 220,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8636363636363636,
+            "nativeComparableBodyHeight": 315.7758620689655,
+            "nativeReferenceBodyHeight": 315.7758620689655,
+            "nativeBodyBounds": [
+              95.30603448275862,
+              6.306034482758621,
+              190.90086206896552,
+              315.7758620689655
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              95.30603448275862,
+              6.306034482758621,
+              190.90086206896552,
+              315.7758620689655
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.7858312858312857,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              41,
+              19,
+              194,
+              223
+            ],
+            "normalizedBodyHeight": 223,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              85,
+              15,
+              133,
+              220
+            ],
+            "referenceBodyHeight": 220,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8636363636363636,
+            "nativeComparableBodyHeight": 291.2456896551724,
+            "nativeReferenceBodyHeight": 315.7758620689655,
+            "nativeBodyBounds": [
+              42.918103448275865,
+              6.306034482758621,
+              253.37068965517238,
+              291.2456896551724
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              95.30603448275862,
+              6.306034482758621,
+              190.90086206896552,
+              315.7758620689655
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 0.8584493584493583,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              63,
+              27,
+              145,
+              214
+            ],
+            "normalizedBodyHeight": 214,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              85,
+              15,
+              133,
+              220
+            ],
+            "referenceBodyHeight": 220,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8636363636363636,
+            "nativeComparableBodyHeight": 305.31896551724134,
+            "nativeReferenceBodyHeight": 315.7758620689655,
+            "nativeBodyBounds": [
+              64.28017241379311,
+              7.853448275862069,
+              206.875,
+              305.31896551724134
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              95.30603448275862,
+              6.306034482758621,
+              190.90086206896552,
+              315.7758620689655
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.7573027573027573,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              60,
+              20,
+              180,
+              222
+            ],
+            "normalizedBodyHeight": 222,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              85,
+              15,
+              133,
+              220
+            ],
+            "referenceBodyHeight": 220,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8636363636363636,
+            "nativeComparableBodyHeight": 279.4137931034483,
+            "nativeReferenceBodyHeight": 315.7758620689655,
+            "nativeBodyBounds": [
+              71.51724137931035,
+              6.517241379310345,
+              226.55172413793105,
+              279.4137931034483
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              95.30603448275862,
+              6.306034482758621,
+              190.90086206896552,
+              315.7758620689655
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "preston_garvey",
+      "name": "Preston Garvey",
+      "universe": "Fallout",
+      "sourceWork": "Fallout 4 (2015), Commonwealth Minutemen",
+      "sourceReference": "Preston’s actual weapon is a crank-charged laser musket. Its super shape is corrected from an unverified penetrating line to one finite single-target projectile. Physical command secondary remains support, no artillery summon.",
+      "sourceUrl": "https://gamevoyagers.com/do-companions-use-ammo-in-fallout-4/",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave10-2026-10-23/part-b-source-facts.json"
+      ],
+      "version": "Fallout 4 (2015), Commonwealth Minutemen",
+      "ability": "Tir du mousquet laser",
+      "prompt": "Draw ONE genuinely new detailed 2D PIXEL-ART BASIC animation atlas of the SAME fictional videogame character as the inspected attached native presentation reference. That reference contains32poses; all16 new drawings must be fresh, never copied cells. No real actor portrait.\nLOCKED IDENTITY: Adult fictional Black Preston Garvey from Fallout4(2015): brown MINUTEMAN HAT with turned brim, worn TAN COLONIAL DUSTER, cream shirt/vest, green neck scarf, dark trousers and brown boots. Carry the actual improvised LASER MUSKET: long wooden stock and foregrip, exposed metal/brass wires and copper coil assembly, SIDE HAND CRANK, long narrow barrel with beam focuser. This is not a modern machinegun and not a ballistic musket. Use local face/duster; CORRECT its modern rifle and golden magic halo. No actor portrait.\nEXACT GRID: FOUR COLUMNS by FOUR ROWS=16 distinct complete poses, square1024x1024 true transparent alpha, equal256pxcells. All heads, arms, props, tools, muzzles, paws and tails inside each cell with at least24px transparent gutters. No text, label, panel, gridline, scene, floor, watermark or opponent. Combat faces RIGHT. Standing BODY190px, baseline244, one consistent source-wide anatomical scale. Natural run/crouch/recoil height variation remains; never independently enlarge short postures.\nROW1 IDLE:4 distinct ready postures with actual hand/head/torso changes; physical equipment held safely. Never translate/repeat an unchanged pose.\nROW2 RUN:4 genuine alternating running phases, left leg forward, passing, right leg forward, gathering step; actual equipment remains gripped or secured.\nROW3 ATTACK/ACTION: Four distinct LASER MUSKET poses: side crank-charge, shoulder wooden stock and aim right, short finite red muzzle pulse, low-ready recovery. Long real barrel and side crank remain clear. No modern rifle, ballistic flash or golden aura.\nROW4 HIT:4 new non-graphic intact recoil postures: shoulder flinch, torso twist back, low protective stagger, crouched recovery; same anatomy/outfit/props, no blood/death or attack power.\nExactly4 full bodies per row, all4 rows present,16different new native poses. Tiny physical firing flash only where the prescribed basic action is a real shot; support characters show no weapon/discharge, no shield bubble or magic. Keep generous transparent margins; muzzle recovery is empty, no captured ball/tool magic in non-prescribed rows.",
+      "promptFile": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-prompts/preston_garvey.txt",
+      "referenceAsset": "/sprites/generated/heroes/fallout/preston-garvey.png",
+      "referenceImage": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/preston_garvey.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave10-2026-10-23/part-b-sources/preston_garvey-initial.png",
+      "referenceContextSha256": "dd664bd18995bd04214ec6d9ad88c3263070cbe2147d506de069727a9d2d8b6f",
+      "oldReferenceArchive": "docs/combat-fidelity-wave10-2026-10-23/base-part-b-references/preston_garvey-old-base.png",
+      "bodyCalibrationTarget": 190,
+      "bodyCalibrationKind": "biped-standing-height",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-34c20926-72b3-4ef7-bbf8-450b7e6690eb.png",
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "anatomy": "biped",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "idle",
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          48,
+          15,
+          184,
+          216
+        ],
+        "referenceNormalizedBodyHeight": 216,
+        "referencePackingScale": 0.709480122324159,
+        "nativeReferenceBodyHeight": 304.44827586206895,
+        "sourceWideRenderPixelsPerNativePixel": 0.6240797372295843,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Raster density difference explicitly retained; each independent native source has one standing-body calibration, with no per-row anatomical equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.8796296296296297,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              48,
+              15,
+              184,
+              216
+            ],
+            "normalizedBodyHeight": 216,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              48,
+              15,
+              184,
+              216
+            ],
+            "referenceBodyHeight": 216,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8796296296296297,
+            "nativeComparableBodyHeight": 304.44827586206895,
+            "nativeReferenceBodyHeight": 304.44827586206895,
+            "nativeBodyBounds": [
+              43.81896551724138,
+              23.81896551724138,
+              259.3448275862069,
+              304.44827586206895
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              43.81896551724138,
+              23.81896551724138,
+              259.3448275862069,
+              304.44827586206895
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.9119096160380564,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              35,
+              47,
+              208,
+              195
+            ],
+            "normalizedBodyHeight": 195,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              48,
+              15,
+              184,
+              216
+            ],
+            "referenceBodyHeight": 216,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8796296296296297,
+            "nativeComparableBodyHeight": 284.9353448275862,
+            "nativeReferenceBodyHeight": 304.44827586206895,
+            "nativeBodyBounds": [
+              20.461206896551722,
+              13.461206896551724,
+              303.9310344827586,
+              284.9353448275862
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              43.81896551724138,
+              23.81896551724138,
+              259.3448275862069,
+              304.44827586206895
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 1.2777494620002265,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              68,
+              101,
+              122,
+              142
+            ],
+            "normalizedBodyHeight": 142,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              48,
+              15,
+              184,
+              216
+            ],
+            "referenceBodyHeight": 216,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8796296296296297,
+            "nativeComparableBodyHeight": 290.73275862068965,
+            "nativeReferenceBodyHeight": 304.44827586206895,
+            "nativeBodyBounds": [
+              34.0948275862069,
+              8.047413793103448,
+              249.7844827586207,
+              290.73275862068965
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              43.81896551724138,
+              23.81896551724138,
+              259.3448275862069,
+              304.44827586206895
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.9253596103749009,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "anatomy": "biped",
+            "excludesWeaponEffects": true,
+            "excludesRaisedTailFromEarHeight": false,
+            "cell": 0,
+            "bodyBounds": [
+              57,
+              53,
+              175,
+              188
+            ],
+            "normalizedBodyHeight": 188,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              48,
+              15,
+              184,
+              216
+            ],
+            "referenceBodyHeight": 216,
+            "calibrationTargetBodyHeight": 190,
+            "referenceRenderScale": 0.8796296296296297,
+            "nativeComparableBodyHeight": 278.7586206896552,
+            "nativeReferenceBodyHeight": 304.44827586206895,
+            "nativeBodyBounds": [
+              50.96551724137931,
+              16.482758620689655,
+              259.48275862068965,
+              278.7586206896552
+            ],
+            "sourceDensityRatio": 1,
+            "sourceComparableColumn": 0,
+            "nativeMeasurementMapping": "Visually reviewed normalized head/hat-or-ear-to-foot/paw BODY ROI mapped through the recorded uniform packing scale into native pixels; about1–2 normalized pixels of manual precision.",
+            "ratioFormula": "targetHeight * densityAdjustedNativeBodyHeight / nativeReferenceBodyHeight",
+            "reason": "One source-wide standing BODY190 scale; muzzle, weapon reach, props and effects do not determine body height. Actual crouch, kneel, run and recoil posture ratios remain native.",
+            "nativeReferenceBodyBounds": [
+              43.81896551724138,
+              23.81896551724138,
+              259.3448275862069,
+              304.44827586206895
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
