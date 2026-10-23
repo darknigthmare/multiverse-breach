@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "universe": "Final Fantasy VIII",
+  "sourceWork": "Final Fantasy VIII (1999)",
+  "verification": {
+    "method": "Read-only web search followed by opening the three cited pages with mcp__codex_apps__search_service_web_run.",
+    "factValidationPassed": true,
+    "scope": "Hyper Shot ammunition and target count, with the contrasting Shot ammunition table.",
+    "globalCanon1to1Verified": false,
+    "globalVisual1to1Verified": false,
+    "doesNotCertify": "These specific gameplay facts do not certify native generated atlas poses, animation timing, colors, projectile artwork, damage, armor rules or overall 1:1 fidelity. Native image provenance remains separately marked not certified.",
+    "accessNotes": "Direct shell HTTP requests were blocked. The web tool returned readable page extracts for Gamer Corner, Gamer Guides and Jegged. No login, paywall bypass or image generation was used."
+  },
+  "facts": [
+    {
+      "id": "ff8-irvine-hyper-shot-pulse-ammo-single-target",
+      "characterId": "irvine_ff8",
+      "ability": "Hyper Shot",
+      "claim": "Hyper Shot consumes Pulse Ammo and damages one chosen enemy per shot. It is not the Shotgun Ammo / Scatter Shot or Fire Ammo / Flame Shot group-targeting attack.",
+      "verified": true,
+      "sources": [
+        {
+          "title": "Gamer Corner Guides — Hyper Shot",
+          "url": "https://guides.gamercorner.net/ffviii/limit-breaks/hyper-shot",
+          "accessedOn": "2026-10-18",
+          "verificationMode": "page-opened-and-read",
+          "locator": "Description and Item fields, extracted lines 72–74",
+          "excerpt": "Description Damage one enemy; Item Pulse Ammo",
+          "supports": ["Pulse Ammo", "one enemy per shot"]
+        },
+        {
+          "title": "Gamer Guides — Final Fantasy VIII, Irvine",
+          "url": "https://www.gamerguides.com/final-fantasy-viii/guide/preface/characters/irvine",
+          "accessedOn": "2026-10-18",
+          "verificationMode": "page-opened-and-read",
+          "locator": "Limit Break: Shot ammunition table, extracted lines 221–230",
+          "excerpt": "Pulse Ammo | Hyper Shot | Slow | Damages one enemy (base power 120).",
+          "supports": ["Pulse Ammo", "one enemy per shot", "Scatter Shot and Flame Shot target all enemies"]
+        },
+        {
+          "title": "Jegged — Final Fantasy VIII Limit Breaks: Shot",
+          "url": "https://jegged.com/Games/Final-Fantasy-VIII/Limit-Breaks/Shot.html",
+          "accessedOn": "2026-10-18",
+          "verificationMode": "page-opened-and-read",
+          "locator": "Shot ammunition table, extracted line 29",
+          "excerpt": "Pulse Ammo | Hyper Shot | Regular damage to one enemy (most powerful).",
+          "supports": ["Pulse Ammo", "one enemy per shot"]
+        }
+      ],
+      "runtimeAdaptation": "The project now resolves Hyper Shot as a single-target bullet/projectile. Existing project damage, one-impact action timing and resource rules remain adaptations; the sources do not establish them as game-identical."
+    }
+  ]
+}

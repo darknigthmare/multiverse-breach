@@ -1,0 +1,4547 @@
+{
+  "date": "2026-10-20",
+  "passed": true,
+  "buildExit0SignalRequired": true,
+  "baseUrl": "http://127.0.0.1:5191",
+  "audit": "docs/combat-fidelity-wave7-2026-10-20/current.json",
+  "auditSha256": "f9f7097e90a1fd29546367afce66b7a9707448e4b11519e7349eb313969b3e84",
+  "registries": [
+    {
+      "file": "src/game/combat/characterAnimations.generated.json",
+      "sha256": "9ce0486c4fdf04dab0cef66be0142d34bffb79f2f2d08c803d17d10924958d60",
+      "sheetEntries": 8
+    },
+    {
+      "file": "src/game/combat/entityAssets.generated.json",
+      "sha256": "15f808c873c319557a269f4bab01e1bdb65a959769c0c98b9d59e7bc29f458f9",
+      "sheetEntries": 28
+    },
+    {
+      "file": "src/game/combat/characterSpriteCorrections.generated.json",
+      "sha256": "6ac9eea1f16d5c40bddf3b843e0d2ab4da9ef2c5a8038578dc50a5211ce7bd87",
+      "sheetEntries": 1
+    },
+    {
+      "file": "src/game/combat/characterSpriteCorrectionsWave2.generated.json",
+      "sha256": "66ec54decea43364441fed1301cc7bc688bd193fb12784ded245fe99c62f2ff4",
+      "sheetEntries": 1
+    },
+    {
+      "file": "src/game/combat/characterSpriteCorrectionsWave4.generated.json",
+      "sha256": "1554d13e31b32cf48c78861dc05fc876521bd859b42cf62756f585a182c2d881",
+      "sheetEntries": 2
+    },
+    {
+      "file": "src/game/combat/characterSpriteCorrectionsWave5.generated.json",
+      "sha256": "1fb86e5baa6341563c3210adf510f3d1372198df4a746aeaa8527363a10a0d7e",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/characterSpriteCorrectionsWave6PartA.generated.json",
+      "sha256": "7f1db081afeb2f2f730d471e098d2eb45adf554c307cbb4855de05aa4dfe550b",
+      "sheetEntries": 1
+    },
+    {
+      "file": "src/game/combat/characterSpriteCorrectionsWave7PartA.generated.json",
+      "sha256": "68844a72791078c11b33f961fd1951e9f8a693c13fa6fa281535ba63e4229828",
+      "sheetEntries": 5
+    },
+    {
+      "file": "src/game/combat/characterSpriteCorrectionsWave6PartB.generated.json",
+      "sha256": "f462dc36282e43e527fcd72b12d92e71f6199970bba2ba001ff787904113c9cf",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/characterSpriteCorrectionsWave7PartB.generated.json",
+      "sha256": "17ea25fe4bf69c62cc06a5f178d79a2903c1990fa73ff613eb2d1ae68a535246",
+      "sheetEntries": 4
+    },
+    {
+      "file": "src/game/combat/characterSpriteCorrectionsWave6PartC.generated.json",
+      "sha256": "df86b137ccd0e8b7df977ea0eed9cd7662d8c0c27a58a2ee14dcb55089a5f3ed",
+      "sheetEntries": 2
+    },
+    {
+      "file": "src/game/combat/characterSpriteCorrectionsWave7PartC.generated.json",
+      "sha256": "fe1bc64c1f2ec950278157d46cc98f997819455270d1e0310ac3379075e9a7ad",
+      "sheetEntries": 5
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave2PartA.generated.json",
+      "sha256": "235d3b8ba7f88726e1c225bb7bb964572275abd16b90cb97b14d2f093c9e41f1",
+      "sheetEntries": 4
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave2PartB.generated.json",
+      "sha256": "4eed9141e17e89b4198524bc94615476e5f7fcb4f8bc26b2700a394276e5af4c",
+      "sheetEntries": 4
+    },
+    {
+      "file": "src/game/combat/cloudMeleeMotion.generated.json",
+      "sha256": "fe87742728e7783d7f5a9f20d38017752d587b584e88b8984977cc43ae509238",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/cloudMeleeCombat.generated.json",
+      "sha256": "2163f4863d03f9d379ba121c45340b770c0457b443c40eaac1c23cfe036d61fa",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/tifaMeleeMotion.generated.json",
+      "sha256": "2412d751e253bcf1540ba3ce9333c260c066e1e3a5eeeb69a5cf8344d3d0bcb6",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/tifaMeleeCombat.generated.json",
+      "sha256": "b3b239d6c89df4271e70ec590dbd179beabffbe6f24c96ce344dd839a96c27af",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/gokuMeleeMotion.generated.json",
+      "sha256": "868e0f7b8278462b148c7de137db77af19dc240912c4a251ccd59dc336b18893",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/gokuMeleeCombat.generated.json",
+      "sha256": "3506b4612b5f389222400e9cc57b4873a5777fce770294e19dc7bf97fd9df6cb",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/vegetaMeleeMotion.generated.json",
+      "sha256": "d0c827f43a3debc2795491252086c1e4f96980b5d056a3e84ec2b52ed7ec929f",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/vegetaMeleeCombat.generated.json",
+      "sha256": "fe40a8df19fe9644da28a906f86cbab58ca9b0e5ffb5da3492ce232ac5fdc399",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/sonicMeleeMotion.generated.json",
+      "sha256": "fd5b20aff25edb1d03bbf024a3d7de125fd81372ce5963b8475102b7c24137cd",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/sonicMeleeCombat.generated.json",
+      "sha256": "b20084f217147f26fb5f385cd570711f0cdbf918e67e0db4a922b18cf26b91f6",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/ragnaMeleeMotion.generated.json",
+      "sha256": "ed22bdbda69522b3e07df50576572cf2ad4b2097035d44e9b26094c0209c3598",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/ragnaMeleeCombat.generated.json",
+      "sha256": "6eaefac113458caefc5ff0b691bbce1ca5346b47e86cf5c7ceacaea00a24cd5e",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave3PartA.generated.json",
+      "sha256": "7ae3b22bfd21f8bdf9a70cb61a9eee1d5873d7a48b1691bbfb1b5d97a212c947",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave3PartB.generated.json",
+      "sha256": "d1de18dfc95a1839375d7ea5559a0970a0b5038258c64e9edac7c6d8c829fcdb",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave3PartC.generated.json",
+      "sha256": "32b569b95be24ef9d251f679f0796b755e60e2404bae21bbcfa15c62a19ca6f4",
+      "sheetEntries": 5
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave4PartA.generated.json",
+      "sha256": "6351f37270fbf662d9f16866eb2154faee2188bea016237f677e53690d6beaa6",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave4PartB.generated.json",
+      "sha256": "afd805bb39298c7c3e7c498021ca8776638dd8e7dfc22f88c8017602cf13d519",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave4PartC.generated.json",
+      "sha256": "6be89ebcb338c3c7bb2d581bd56c808d565a2c3762d77e4bc69e35e7c66b43de",
+      "sheetEntries": 2
+    },
+    {
+      "file": "src/game/combat/characterFormsWave4.generated.json",
+      "sha256": "f75a424f154c35daab27647424475d9f51f2c11d6dde4f468e9e5dca6e7a6a7f",
+      "sheetEntries": 1
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave5PartA.generated.json",
+      "sha256": "0ff31dda7ebcf6f3b9888c01d46872808eb27b28c5d5075d9d10ef944a7cdf5c",
+      "sheetEntries": 5
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave5PartB.generated.json",
+      "sha256": "ce2c8a56692c5fa31dacf5d87cff227e9defe1c9138ed1a67711e059ec3450e1",
+      "sheetEntries": 5
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave5PartC.generated.json",
+      "sha256": "914ccb579b24d522aa094d12ef8ae368a060f0d8037f350364e56d076b60c522",
+      "sheetEntries": 5
+    },
+    {
+      "file": "src/game/combat/summonAnimationsWave5.generated.json",
+      "sha256": "208453f01ab3ebdfa46703130ebf411b403e0c160e1bd002d3dba7238cca9835",
+      "sheetEntries": 1
+    },
+    {
+      "file": "src/game/combat/summonAnimationsWave6.generated.json",
+      "sha256": "80e2a5aca9c3f89dae7cf94b4b95fc0245f66dedf8b04ea94bd31984ce22cd5b",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/summonAnimationsWave7.generated.json",
+      "sha256": "31d34364a4bbfd260758058d9bc83c9e51a4fdf31e478157cb633ed59ccc1fd6",
+      "sheetEntries": 3
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave6PartA.generated.json",
+      "sha256": "ba9136050f331c95c5e9a28e4c1021408e74658124fd74526a06cd1ae335ec4d",
+      "sheetEntries": 5
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave6PartB.generated.json",
+      "sha256": "44935da8fe8b5267a3dbd1f0dbe7988678fbec59f596080f65690db651ce14d2",
+      "sheetEntries": 5
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave6PartC.generated.json",
+      "sha256": "21e4040d76faffb4d8f9a085aa26c8443414d68ea266824001e9a395defb0e6d",
+      "sheetEntries": 5
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave7PartA.generated.json",
+      "sha256": "abc22a616f1fa2a79762150c104a32918ae96be656c20d2c0e55ec1b1103ba39",
+      "sheetEntries": 5
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave7PartB.generated.json",
+      "sha256": "385eac5d0378c9439cd5bdfb1d6e54b1acc64d7ad27fb1289982d43618929aab",
+      "sheetEntries": 5
+    },
+    {
+      "file": "src/game/combat/characterAnimationsWave7PartC.generated.json",
+      "sha256": "24e646613bcb7b88478d37046a9335dd0b42884cbd6c21a2e22f4c2b78c0f8f8",
+      "sheetEntries": 5
+    }
+  ],
+  "registryCount": 45,
+  "uniquePngCount": 179,
+  "historicalManifest": "docs/combat-fidelity-wave6-2026-10-20/validation.json",
+  "historicalManifestSha256": "a8009ffadb7f81cef5fb74191dc0c01bd8a3aa3b8a66367ad69a3132362dcbfe",
+  "historicalImagesPreserved": 141,
+  "newManagedImages": 38,
+  "publicDistHttpBytesIdentical": true,
+  "localFullDecodeCount": 179,
+  "browserDecodeCount": 179,
+  "browserHttpHashesMatch": true,
+  "pageErrors": [],
+  "assets": [
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/irvine_ff8.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "064308772fc61429c177563b039dab5a9da945804ca2d193e31620241378a33c",
+      "registries": [
+        "src/game/combat/characterAnimationsWave2PartB.generated.json"
+      ],
+      "bytes": 1737819,
+      "publicSha256": "064308772fc61429c177563b039dab5a9da945804ca2d193e31620241378a33c",
+      "distSha256": "064308772fc61429c177563b039dab5a9da945804ca2d193e31620241378a33c",
+      "httpSha256": "064308772fc61429c177563b039dab5a9da945804ca2d193e31620241378a33c",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/laguna_ff8.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "c022526b92bd7985ffa3e4501eb37821b9de312f94aa98b1576f5d2d2f6e5fcb",
+      "registries": [
+        "src/game/combat/characterAnimationsWave2PartB.generated.json"
+      ],
+      "bytes": 1830115,
+      "publicSha256": "c022526b92bd7985ffa3e4501eb37821b9de312f94aa98b1576f5d2d2f6e5fcb",
+      "distSha256": "c022526b92bd7985ffa3e4501eb37821b9de312f94aa98b1576f5d2d2f6e5fcb",
+      "httpSha256": "c022526b92bd7985ffa3e4501eb37821b9de312f94aa98b1576f5d2d2f6e5fcb",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/quistis_ff8.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "1eefeca016e5d2fa993d03882d113c7ab03e01184f00f8ffce9b5fcefb036c25",
+      "registries": [
+        "src/game/combat/characterAnimationsWave2PartA.generated.json"
+      ],
+      "bytes": 1539452,
+      "publicSha256": "1eefeca016e5d2fa993d03882d113c7ab03e01184f00f8ffce9b5fcefb036c25",
+      "distSha256": "1eefeca016e5d2fa993d03882d113c7ab03e01184f00f8ffce9b5fcefb036c25",
+      "httpSha256": "1eefeca016e5d2fa993d03882d113c7ab03e01184f00f8ffce9b5fcefb036c25",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/rinoa_ff8.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "2589272c9c766b83d2ea86e8f5b51b36c6f3c0e35e81036109a683848c97b853",
+      "registries": [
+        "src/game/combat/characterAnimationsWave2PartA.generated.json"
+      ],
+      "bytes": 1914445,
+      "publicSha256": "2589272c9c766b83d2ea86e8f5b51b36c6f3c0e35e81036109a683848c97b853",
+      "distSha256": "2589272c9c766b83d2ea86e8f5b51b36c6f3c0e35e81036109a683848c97b853",
+      "httpSha256": "2589272c9c766b83d2ea86e8f5b51b36c6f3c0e35e81036109a683848c97b853",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/seifer_ff8.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "72097c01854fa71cc166f25109b2e413b9a19bb51a9ce088a5f940dff830328b",
+      "registries": [
+        "src/game/combat/characterAnimationsWave2PartA.generated.json"
+      ],
+      "bytes": 1733683,
+      "publicSha256": "72097c01854fa71cc166f25109b2e413b9a19bb51a9ce088a5f940dff830328b",
+      "distSha256": "72097c01854fa71cc166f25109b2e413b9a19bb51a9ce088a5f940dff830328b",
+      "httpSha256": "72097c01854fa71cc166f25109b2e413b9a19bb51a9ce088a5f940dff830328b",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/selphie_ff8.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "b4ac604ae9d18c72c08076adc58fe7558d0b0aa75f694401789bd9cd438975be",
+      "registries": [
+        "src/game/combat/characterAnimationsWave2PartB.generated.json"
+      ],
+      "bytes": 1970163,
+      "publicSha256": "b4ac604ae9d18c72c08076adc58fe7558d0b0aa75f694401789bd9cd438975be",
+      "distSha256": "b4ac604ae9d18c72c08076adc58fe7558d0b0aa75f694401789bd9cd438975be",
+      "httpSha256": "b4ac604ae9d18c72c08076adc58fe7558d0b0aa75f694401789bd9cd438975be",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/squall_ff8.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "839e0d51fe615d7788816dd6f36dc36ca26fcc4e7cc687e4bec1e1b4ad12cabb",
+      "registries": [
+        "src/game/combat/characterAnimationsWave2PartA.generated.json"
+      ],
+      "bytes": 1750298,
+      "publicSha256": "839e0d51fe615d7788816dd6f36dc36ca26fcc4e7cc687e4bec1e1b4ad12cabb",
+      "distSha256": "839e0d51fe615d7788816dd6f36dc36ca26fcc4e7cc687e4bec1e1b4ad12cabb",
+      "httpSha256": "839e0d51fe615d7788816dd6f36dc36ca26fcc4e7cc687e4bec1e1b4ad12cabb",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/zell_ff8.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "3818151ef2246f026056d81710cae23ab4c3d385019b09a584cbb15298bcc0ee",
+      "registries": [
+        "src/game/combat/characterAnimationsWave2PartB.generated.json"
+      ],
+      "bytes": 1588586,
+      "publicSha256": "3818151ef2246f026056d81710cae23ab4c3d385019b09a584cbb15298bcc0ee",
+      "distSha256": "3818151ef2246f026056d81710cae23ab4c3d385019b09a584cbb15298bcc0ee",
+      "httpSha256": "3818151ef2246f026056d81710cae23ab4c3d385019b09a584cbb15298bcc0ee",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/fang_ff13.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "102ac05748354c165ec3d2707b22d0a5f563424f9f9dcb02a9c5408654295d93",
+      "registries": [
+        "src/game/combat/characterAnimationsWave3PartA.generated.json"
+      ],
+      "bytes": 1413676,
+      "publicSha256": "102ac05748354c165ec3d2707b22d0a5f563424f9f9dcb02a9c5408654295d93",
+      "distSha256": "102ac05748354c165ec3d2707b22d0a5f563424f9f9dcb02a9c5408654295d93",
+      "httpSha256": "102ac05748354c165ec3d2707b22d0a5f563424f9f9dcb02a9c5408654295d93",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/gladiolus_ff15.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "f94988b1528985533aaceee7039924776639ed068d051a9900d156eee4ff6127",
+      "registries": [
+        "src/game/combat/characterAnimationsWave3PartC.generated.json"
+      ],
+      "bytes": 1562923,
+      "publicSha256": "f94988b1528985533aaceee7039924776639ed068d051a9900d156eee4ff6127",
+      "distSha256": "f94988b1528985533aaceee7039924776639ed068d051a9900d156eee4ff6127",
+      "httpSha256": "f94988b1528985533aaceee7039924776639ed068d051a9900d156eee4ff6127",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/hope_ff13.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "a9921fdba10102099aa318ea6776f4ff1406e1859256e5da9c353b1217ea641a",
+      "registries": [
+        "src/game/combat/characterAnimationsWave3PartB.generated.json"
+      ],
+      "bytes": 1823979,
+      "publicSha256": "a9921fdba10102099aa318ea6776f4ff1406e1859256e5da9c353b1217ea641a",
+      "distSha256": "a9921fdba10102099aa318ea6776f4ff1406e1859256e5da9c353b1217ea641a",
+      "httpSha256": "a9921fdba10102099aa318ea6776f4ff1406e1859256e5da9c353b1217ea641a",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/ignis_ff15.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "380787327cb9eaa38b5c9fe1afeb13beab472d0ac9ad341568d056e22f1ac883",
+      "registries": [
+        "src/game/combat/characterAnimationsWave3PartC.generated.json"
+      ],
+      "bytes": 1568403,
+      "publicSha256": "380787327cb9eaa38b5c9fe1afeb13beab472d0ac9ad341568d056e22f1ac883",
+      "distSha256": "380787327cb9eaa38b5c9fe1afeb13beab472d0ac9ad341568d056e22f1ac883",
+      "httpSha256": "380787327cb9eaa38b5c9fe1afeb13beab472d0ac9ad341568d056e22f1ac883",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/lightning_ff13.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "b8ca305d65183453f88aee29a7c545622c88fcc5b5282877d165d92b96785e62",
+      "registries": [
+        "src/game/combat/characterAnimationsWave3PartA.generated.json"
+      ],
+      "bytes": 1637906,
+      "publicSha256": "b8ca305d65183453f88aee29a7c545622c88fcc5b5282877d165d92b96785e62",
+      "distSha256": "b8ca305d65183453f88aee29a7c545622c88fcc5b5282877d165d92b96785e62",
+      "httpSha256": "b8ca305d65183453f88aee29a7c545622c88fcc5b5282877d165d92b96785e62",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/lunafreya_ff15.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "53ce58cb316a62ef08888266b25866e65318c1d0fb7e8d8437cbfbd9c1fd73c7",
+      "registries": [
+        "src/game/combat/characterAnimationsWave3PartC.generated.json"
+      ],
+      "bytes": 1975381,
+      "publicSha256": "53ce58cb316a62ef08888266b25866e65318c1d0fb7e8d8437cbfbd9c1fd73c7",
+      "distSha256": "53ce58cb316a62ef08888266b25866e65318c1d0fb7e8d8437cbfbd9c1fd73c7",
+      "httpSha256": "53ce58cb316a62ef08888266b25866e65318c1d0fb7e8d8437cbfbd9c1fd73c7",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/noctis_ff15.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "da867e153444edcf9d5df4fc9d7ff6c02eb8ff8801ffdcb633da4f259101f077",
+      "registries": [
+        "src/game/combat/characterAnimationsWave3PartC.generated.json"
+      ],
+      "bytes": 1568117,
+      "publicSha256": "da867e153444edcf9d5df4fc9d7ff6c02eb8ff8801ffdcb633da4f259101f077",
+      "distSha256": "da867e153444edcf9d5df4fc9d7ff6c02eb8ff8801ffdcb633da4f259101f077",
+      "httpSha256": "da867e153444edcf9d5df4fc9d7ff6c02eb8ff8801ffdcb633da4f259101f077",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/prompto_ff15.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "b42429e872f617749b6bd7a8042ede3a67a17e892170f1fbecbcfadeac763bdd",
+      "registries": [
+        "src/game/combat/characterAnimationsWave3PartC.generated.json"
+      ],
+      "bytes": 1700202,
+      "publicSha256": "b42429e872f617749b6bd7a8042ede3a67a17e892170f1fbecbcfadeac763bdd",
+      "distSha256": "b42429e872f617749b6bd7a8042ede3a67a17e892170f1fbecbcfadeac763bdd",
+      "httpSha256": "b42429e872f617749b6bd7a8042ede3a67a17e892170f1fbecbcfadeac763bdd",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/sazh_ff13.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "7de32f03f97b38c9f0d02d58a19f43721e6ac58ae1b3076ef2146732a1323fd3",
+      "registries": [
+        "src/game/combat/characterAnimationsWave3PartB.generated.json"
+      ],
+      "bytes": 1877302,
+      "publicSha256": "7de32f03f97b38c9f0d02d58a19f43721e6ac58ae1b3076ef2146732a1323fd3",
+      "distSha256": "7de32f03f97b38c9f0d02d58a19f43721e6ac58ae1b3076ef2146732a1323fd3",
+      "httpSha256": "7de32f03f97b38c9f0d02d58a19f43721e6ac58ae1b3076ef2146732a1323fd3",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/snow_ff13.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "7a7c5de69cb73a1c49b366f905ff90e29cfe764d4e514a6e97bf84d7ab6724ec",
+      "registries": [
+        "src/game/combat/characterAnimationsWave3PartB.generated.json"
+      ],
+      "bytes": 2002659,
+      "publicSha256": "7a7c5de69cb73a1c49b366f905ff90e29cfe764d4e514a6e97bf84d7ab6724ec",
+      "distSha256": "7a7c5de69cb73a1c49b366f905ff90e29cfe764d4e514a6e97bf84d7ab6724ec",
+      "httpSha256": "7a7c5de69cb73a1c49b366f905ff90e29cfe764d4e514a6e97bf84d7ab6724ec",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/vanille_ff13.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "4a8fddae11e99512a85736c16f4235178cb57a807cfc019deff392230966b16d",
+      "registries": [
+        "src/game/combat/characterAnimationsWave3PartA.generated.json"
+      ],
+      "bytes": 1849262,
+      "publicSha256": "4a8fddae11e99512a85736c16f4235178cb57a807cfc019deff392230966b16d",
+      "distSha256": "4a8fddae11e99512a85736c16f4235178cb57a807cfc019deff392230966b16d",
+      "httpSha256": "4a8fddae11e99512a85736c16f4235178cb57a807cfc019deff392230966b16d",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/kakashi_war.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "b248d7d2868139f601ad7d29e11ae013d094ef229e5f9a7fb39d8ba77c37f34f",
+      "registries": [
+        "src/game/combat/characterAnimationsWave4PartC.generated.json"
+      ],
+      "bytes": 1675446,
+      "publicSha256": "b248d7d2868139f601ad7d29e11ae013d094ef229e5f9a7fb39d8ba77c37f34f",
+      "distSha256": "b248d7d2868139f601ad7d29e11ae013d094ef229e5f9a7fb39d8ba77c37f34f",
+      "httpSha256": "b248d7d2868139f601ad7d29e11ae013d094ef229e5f9a7fb39d8ba77c37f34f",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/naruto_uzumaki_young.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "2b5f506ec3eb24532389632bf7b65ca96310260a5f6f83569ee3610b01f816ac",
+      "registries": [
+        "src/game/combat/characterAnimationsWave4PartB.generated.json"
+      ],
+      "bytes": 1873579,
+      "publicSha256": "2b5f506ec3eb24532389632bf7b65ca96310260a5f6f83569ee3610b01f816ac",
+      "distSha256": "2b5f506ec3eb24532389632bf7b65ca96310260a5f6f83569ee3610b01f816ac",
+      "httpSha256": "2b5f506ec3eb24532389632bf7b65ca96310260a5f6f83569ee3610b01f816ac",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/piccolo_dbz.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "94c6a68f6862aa8490cda63637935863012299aab7faabb5074c72cf399a0bec",
+      "registries": [
+        "src/game/combat/characterAnimationsWave4PartC.generated.json"
+      ],
+      "bytes": 1616347,
+      "publicSha256": "94c6a68f6862aa8490cda63637935863012299aab7faabb5074c72cf399a0bec",
+      "distSha256": "94c6a68f6862aa8490cda63637935863012299aab7faabb5074c72cf399a0bec",
+      "httpSha256": "94c6a68f6862aa8490cda63637935863012299aab7faabb5074c72cf399a0bec",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/redxiii_ff7.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "69178309ce19444fbedf269d9ce8ec94572c6d2eb8e0832f81764b407bf93d88",
+      "registries": [
+        "src/game/combat/characterAnimationsWave4PartA.generated.json"
+      ],
+      "bytes": 1320972,
+      "publicSha256": "69178309ce19444fbedf269d9ce8ec94572c6d2eb8e0832f81764b407bf93d88",
+      "distSha256": "69178309ce19444fbedf269d9ce8ec94572c6d2eb8e0832f81764b407bf93d88",
+      "httpSha256": "69178309ce19444fbedf269d9ce8ec94572c6d2eb8e0832f81764b407bf93d88",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/sakura_haruno_young.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "cf619b5d8d2797a44be03a5e84096128de311463014bc75416a888923ce6bcba",
+      "registries": [
+        "src/game/combat/characterAnimationsWave4PartB.generated.json"
+      ],
+      "bytes": 1859432,
+      "publicSha256": "cf619b5d8d2797a44be03a5e84096128de311463014bc75416a888923ce6bcba",
+      "distSha256": "cf619b5d8d2797a44be03a5e84096128de311463014bc75416a888923ce6bcba",
+      "httpSha256": "cf619b5d8d2797a44be03a5e84096128de311463014bc75416a888923ce6bcba",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/sasuke_uchiha_young.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "9c9c7807ccd0ed8fbcc68f0a23c06020ba0e3f32c69ba6cc04abb5723346f6b3",
+      "registries": [
+        "src/game/combat/characterAnimationsWave4PartB.generated.json"
+      ],
+      "bytes": 1458048,
+      "publicSha256": "9c9c7807ccd0ed8fbcc68f0a23c06020ba0e3f32c69ba6cc04abb5723346f6b3",
+      "distSha256": "9c9c7807ccd0ed8fbcc68f0a23c06020ba0e3f32c69ba6cc04abb5723346f6b3",
+      "httpSha256": "9c9c7807ccd0ed8fbcc68f0a23c06020ba0e3f32c69ba6cc04abb5723346f6b3",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/vincent_ff7.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "e8397c23f9524de57e6782c6cfc54212beecc3e286c100d408caa307edd874f1",
+      "registries": [
+        "src/game/combat/characterAnimationsWave4PartA.generated.json"
+      ],
+      "bytes": 2060334,
+      "publicSha256": "e8397c23f9524de57e6782c6cfc54212beecc3e286c100d408caa307edd874f1",
+      "distSha256": "e8397c23f9524de57e6782c6cfc54212beecc3e286c100d408caa307edd874f1",
+      "httpSha256": "e8397c23f9524de57e6782c6cfc54212beecc3e286c100d408caa307edd874f1",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/yuffie_ff7.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "74257a86ac17f220de451f778d1c89d69c87368ce13ba806a9e6d94a8ab7d2e3",
+      "registries": [
+        "src/game/combat/characterAnimationsWave4PartA.generated.json"
+      ],
+      "bytes": 1671392,
+      "publicSha256": "74257a86ac17f220de451f778d1c89d69c87368ce13ba806a9e6d94a8ab7d2e3",
+      "distSha256": "74257a86ac17f220de451f778d1c89d69c87368ce13ba806a9e6d94a8ab7d2e3",
+      "httpSha256": "74257a86ac17f220de451f778d1c89d69c87368ce13ba806a9e6d94a8ab7d2e3",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/arbiter.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "9a682e0afbab5ace71ccc2ff2863bde5a96f43ae9d168c7006cffc81e946bc8a",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartA.generated.json"
+      ],
+      "bytes": 1595317,
+      "publicSha256": "9a682e0afbab5ace71ccc2ff2863bde5a96f43ae9d168c7006cffc81e946bc8a",
+      "distSha256": "9a682e0afbab5ace71ccc2ff2863bde5a96f43ae9d168c7006cffc81e946bc8a",
+      "httpSha256": "9a682e0afbab5ace71ccc2ff2863bde5a96f43ae9d168c7006cffc81e946bc8a",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/arca_bastion.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "0be893d4c9f2e4dde62ba0e9359eb62d07be7f54c5d10372a43411a76d6018cf",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartC.generated.json"
+      ],
+      "bytes": 2059030,
+      "publicSha256": "0be893d4c9f2e4dde62ba0e9359eb62d07be7f54c5d10372a43411a76d6018cf",
+      "distSha256": "0be893d4c9f2e4dde62ba0e9359eb62d07be7f54c5d10372a43411a76d6018cf",
+      "httpSha256": "0be893d4c9f2e4dde62ba0e9359eb62d07be7f54c5d10372a43411a76d6018cf",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/arca_mirelle.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "9308ab582c37f7c3421e7ef2264ced506d280dbfdda7128376b62b47b9341632",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartC.generated.json"
+      ],
+      "bytes": 2108525,
+      "publicSha256": "9308ab582c37f7c3421e7ef2264ced506d280dbfdda7128376b62b47b9341632",
+      "distSha256": "9308ab582c37f7c3421e7ef2264ced506d280dbfdda7128376b62b47b9341632",
+      "httpSha256": "9308ab582c37f7c3421e7ef2264ced506d280dbfdda7128376b62b47b9341632",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/boruto_uzumaki.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "f1f6599b3d921a6bd69c6e9044f9e73ec9bed4eee79ba7bacf0cf534552f7448",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartB.generated.json"
+      ],
+      "bytes": 1605130,
+      "publicSha256": "f1f6599b3d921a6bd69c6e9044f9e73ec9bed4eee79ba7bacf0cf534552f7448",
+      "distSha256": "f1f6599b3d921a6bd69c6e9044f9e73ec9bed4eee79ba7bacf0cf534552f7448",
+      "httpSha256": "f1f6599b3d921a6bd69c6e9044f9e73ec9bed4eee79ba7bacf0cf534552f7448",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/doom_marine_classic.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "ddce61163eaf6702179dfedc316263ff3911b3ecc333b4c72e2573b75c7cb8f4",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartA.generated.json"
+      ],
+      "bytes": 1822973,
+      "publicSha256": "ddce61163eaf6702179dfedc316263ff3911b3ecc333b4c72e2573b75c7cb8f4",
+      "distSha256": "ddce61163eaf6702179dfedc316263ff3911b3ecc333b4c72e2573b75c7cb8f4",
+      "httpSha256": "ddce61163eaf6702179dfedc316263ff3911b3ecc333b4c72e2573b75c7cb8f4",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/doomslayer.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "4186857c67f46a7039e630d62e1ba46c3712f023a8c9e2dc5cd795d175fcf54a",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartA.generated.json"
+      ],
+      "bytes": 1674324,
+      "publicSha256": "4186857c67f46a7039e630d62e1ba46c3712f023a8c9e2dc5cd795d175fcf54a",
+      "distSha256": "4186857c67f46a7039e630d62e1ba46c3712f023a8c9e2dc5cd795d175fcf54a",
+      "httpSha256": "4186857c67f46a7039e630d62e1ba46c3712f023a8c9e2dc5cd795d175fcf54a",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/jill.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "afe84d8904b9e530ae11f24626641af36727eb82aebf98a7581e665e7a1d46f7",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartC.generated.json"
+      ],
+      "bytes": 1488144,
+      "publicSha256": "afe84d8904b9e530ae11f24626641af36727eb82aebf98a7581e665e7a1d46f7",
+      "distSha256": "afe84d8904b9e530ae11f24626641af36727eb82aebf98a7581e665e7a1d46f7",
+      "httpSha256": "afe84d8904b9e530ae11f24626641af36727eb82aebf98a7581e665e7a1d46f7",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/johnson.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "b533dcd4e743e522d7691a47404605b0b6f3c11e024ad56788b10c2fbe9bdfb2",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartA.generated.json"
+      ],
+      "bytes": 1582625,
+      "publicSha256": "b533dcd4e743e522d7691a47404605b0b6f3c11e024ad56788b10c2fbe9bdfb2",
+      "distSha256": "b533dcd4e743e522d7691a47404605b0b6f3c11e024ad56788b10c2fbe9bdfb2",
+      "httpSha256": "b533dcd4e743e522d7691a47404605b0b6f3c11e024ad56788b10c2fbe9bdfb2",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/ky.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "7bf02e808319f6749cc151a8839c5da948b22af6f6a4998a9ecddabb8fe832e1",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartB.generated.json"
+      ],
+      "bytes": 1874726,
+      "publicSha256": "7bf02e808319f6749cc151a8839c5da948b22af6f6a4998a9ecddabb8fe832e1",
+      "distSha256": "7bf02e808319f6749cc151a8839c5da948b22af6f6a4998a9ecddabb8fe832e1",
+      "httpSha256": "7bf02e808319f6749cc151a8839c5da948b22af6f6a4998a9ecddabb8fe832e1",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/leon.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "4371ef37814dc1e38d0efcb29f74b6394ec2b350892e3ccd0e7ced5c1eafed9b",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartC.generated.json"
+      ],
+      "bytes": 1517032,
+      "publicSha256": "4371ef37814dc1e38d0efcb29f74b6394ec2b350892e3ccd0e7ced5c1eafed9b",
+      "distSha256": "4371ef37814dc1e38d0efcb29f74b6394ec2b350892e3ccd0e7ced5c1eafed9b",
+      "httpSha256": "4371ef37814dc1e38d0efcb29f74b6394ec2b350892e3ccd0e7ced5c1eafed9b",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/masterchief.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "a739f192adc3029323e8996df9abf78a352c3e44f8635f7c8e7632662cdfb709",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartA.generated.json"
+      ],
+      "bytes": 1349788,
+      "publicSha256": "a739f192adc3029323e8996df9abf78a352c3e44f8635f7c8e7632662cdfb709",
+      "distSha256": "a739f192adc3029323e8996df9abf78a352c3e44f8635f7c8e7632662cdfb709",
+      "httpSha256": "a739f192adc3029323e8996df9abf78a352c3e44f8635f7c8e7632662cdfb709",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/mitsuki_boruto.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "ed1bd8fbbb60bed4f9b1a2cf8bfe718572c28055e52946b79bb79903bfa184d3",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartB.generated.json"
+      ],
+      "bytes": 1683083,
+      "publicSha256": "ed1bd8fbbb60bed4f9b1a2cf8bfe718572c28055e52946b79bb79903bfa184d3",
+      "distSha256": "ed1bd8fbbb60bed4f9b1a2cf8bfe718572c28055e52946b79bb79903bfa184d3",
+      "httpSha256": "ed1bd8fbbb60bed4f9b1a2cf8bfe718572c28055e52946b79bb79903bfa184d3",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/rebecca_chambers.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "22b69378ac4840fbced1c7d38f82d36c48906dfe14f63863f7350ff73fbc7bf5",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartC.generated.json"
+      ],
+      "bytes": 1826869,
+      "publicSha256": "22b69378ac4840fbced1c7d38f82d36c48906dfe14f63863f7350ff73fbc7bf5",
+      "distSha256": "22b69378ac4840fbced1c7d38f82d36c48906dfe14f63863f7350ff73fbc7bf5",
+      "httpSha256": "22b69378ac4840fbced1c7d38f82d36c48906dfe14f63863f7350ff73fbc7bf5",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/sarada_uchiha.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "b97000fa58928ceb214b624655909211bf380b24a79ef1158c6856beedf89ea3",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartB.generated.json"
+      ],
+      "bytes": 1551952,
+      "publicSha256": "b97000fa58928ceb214b624655909211bf380b24a79ef1158c6856beedf89ea3",
+      "distSha256": "b97000fa58928ceb214b624655909211bf380b24a79ef1158c6856beedf89ea3",
+      "httpSha256": "b97000fa58928ceb214b624655909211bf380b24a79ef1158c6856beedf89ea3",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/solbadguy.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "aac2118b28f8cebff1d600a61f2229bc35886c3e0ae271f95804e715b81e9489",
+      "registries": [
+        "src/game/combat/characterAnimationsWave5PartB.generated.json"
+      ],
+      "bytes": 1869797,
+      "publicSha256": "aac2118b28f8cebff1d600a61f2229bc35886c3e0ae271f95804e715b81e9489",
+      "distSha256": "aac2118b28f8cebff1d600a61f2229bc35886c3e0ae271f95804e715b81e9489",
+      "httpSha256": "aac2118b28f8cebff1d600a61f2229bc35886c3e0ae271f95804e715b81e9489",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/devil_may_cry_dante.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "cfc95536688d393c14038d38c6a6f67cf56c97e09878810735ffbdc5996843bd",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartB.generated.json"
+      ],
+      "bytes": 2091095,
+      "publicSha256": "cfc95536688d393c14038d38c6a6f67cf56c97e09878810735ffbdc5996843bd",
+      "distSha256": "cfc95536688d393c14038d38c6a6f67cf56c97e09878810735ffbdc5996843bd",
+      "httpSha256": "cfc95536688d393c14038d38c6a6f67cf56c97e09878810735ffbdc5996843bd",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/devil_may_cry_lady.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "44ff222970ccaba684692b31e12700ad59a84b7827ca89240b0c1dd35935fa69",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartB.generated.json"
+      ],
+      "bytes": 1660007,
+      "publicSha256": "44ff222970ccaba684692b31e12700ad59a84b7827ca89240b0c1dd35935fa69",
+      "distSha256": "44ff222970ccaba684692b31e12700ad59a84b7827ca89240b0c1dd35935fa69",
+      "httpSha256": "44ff222970ccaba684692b31e12700ad59a84b7827ca89240b0c1dd35935fa69",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/devil_may_cry_nero.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "b9a5189854abf1437b35ee54f0c3ee886122d7a1660b772669220c6a519e6eae",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartB.generated.json"
+      ],
+      "bytes": 2377063,
+      "publicSha256": "b9a5189854abf1437b35ee54f0c3ee886122d7a1660b772669220c6a519e6eae",
+      "distSha256": "b9a5189854abf1437b35ee54f0c3ee886122d7a1660b772669220c6a519e6eae",
+      "httpSha256": "b9a5189854abf1437b35ee54f0c3ee886122d7a1660b772669220c6a519e6eae",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/giorno_giovanna.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "b69805c29123c73d8ea814e2f9924ba19376632ec774df9b6fbcd0e03b95efb2",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartA.generated.json"
+      ],
+      "bytes": 2030254,
+      "publicSha256": "b69805c29123c73d8ea814e2f9924ba19376632ec774df9b6fbcd0e03b95efb2",
+      "distSha256": "b69805c29123c73d8ea814e2f9924ba19376632ec774df9b6fbcd0e03b95efb2",
+      "httpSha256": "b69805c29123c73d8ea814e2f9924ba19376632ec774df9b6fbcd0e03b95efb2",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/joseph_joestar.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "9e380d793f8f542c90434a195e30506422738b119e9ec1e8b10558491c7edea6",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartC.generated.json"
+      ],
+      "bytes": 1861767,
+      "publicSha256": "9e380d793f8f542c90434a195e30506422738b119e9ec1e8b10558491c7edea6",
+      "distSha256": "9e380d793f8f542c90434a195e30506422738b119e9ec1e8b10558491c7edea6",
+      "httpSha256": "9e380d793f8f542c90434a195e30506422738b119e9ec1e8b10558491c7edea6",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/jotaro_kujo.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "6df167646f1844177e43712604f66f1159bea2e5d53dee8f351bf46c9dc5cb73",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartA.generated.json"
+      ],
+      "bytes": 2174834,
+      "publicSha256": "6df167646f1844177e43712604f66f1159bea2e5d53dee8f351bf46c9dc5cb73",
+      "distSha256": "6df167646f1844177e43712604f66f1159bea2e5d53dee8f351bf46c9dc5cb73",
+      "httpSha256": "6df167646f1844177e43712604f66f1159bea2e5d53dee8f351bf46c9dc5cb73",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/knuckles_echidna.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "07597a67f2fa87db21d13e69805740b6fdc229e237f2e215271d47c41cb0c742",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartA.generated.json"
+      ],
+      "bytes": 2260452,
+      "publicSha256": "07597a67f2fa87db21d13e69805740b6fdc229e237f2e215271d47c41cb0c742",
+      "distSha256": "07597a67f2fa87db21d13e69805740b6fdc229e237f2e215271d47c41cb0c742",
+      "httpSha256": "07597a67f2fa87db21d13e69805740b6fdc229e237f2e215271d47c41cb0c742",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/miles_tails_prower.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "1850f52435f9f782d08fcb1dfb9535737498489066b9c9c6f1abbc3ab66bc47e",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartA.generated.json"
+      ],
+      "bytes": 2320735,
+      "publicSha256": "1850f52435f9f782d08fcb1dfb9535737498489066b9c9c6f1abbc3ab66bc47e",
+      "distSha256": "1850f52435f9f782d08fcb1dfb9535737498489066b9c9c6f1abbc3ab66bc47e",
+      "httpSha256": "1850f52435f9f782d08fcb1dfb9535737498489066b9c9c6f1abbc3ab66bc47e",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/otacon.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "63155b329429d680734f625443ae088070eb4ae27c97a8e597522444e37e2ac4",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartC.generated.json"
+      ],
+      "bytes": 2179364,
+      "publicSha256": "63155b329429d680734f625443ae088070eb4ae27c97a8e597522444e37e2ac4",
+      "distSha256": "63155b329429d680734f625443ae088070eb4ae27c97a8e597522444e37e2ac4",
+      "httpSha256": "63155b329429d680734f625443ae088070eb4ae27c97a8e597522444e37e2ac4",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/raiden.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "dc9d3c5118397dd0f497e32e32e4ba1cdb3c0b54a953573f06ad2e2a11cee797",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartC.generated.json"
+      ],
+      "bytes": 2028235,
+      "publicSha256": "dc9d3c5118397dd0f497e32e32e4ba1cdb3c0b54a953573f06ad2e2a11cee797",
+      "distSha256": "dc9d3c5118397dd0f497e32e32e4ba1cdb3c0b54a953573f06ad2e2a11cee797",
+      "httpSha256": "dc9d3c5118397dd0f497e32e32e4ba1cdb3c0b54a953573f06ad2e2a11cee797",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/skullgirls_beowulf.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "3b53c4368db33a73fac3aa09b4178b52dfbfd88b90d9354907e106f7572830b0",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartC.generated.json"
+      ],
+      "bytes": 2185761,
+      "publicSha256": "3b53c4368db33a73fac3aa09b4178b52dfbfd88b90d9354907e106f7572830b0",
+      "distSha256": "3b53c4368db33a73fac3aa09b4178b52dfbfd88b90d9354907e106f7572830b0",
+      "httpSha256": "3b53c4368db33a73fac3aa09b4178b52dfbfd88b90d9354907e106f7572830b0",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/skullgirls_big_band.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "09fdcf2057b4cda84cfc6cea582249fe7315f86e0b309e644bbb9fdf3857da93",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartB.generated.json"
+      ],
+      "bytes": 2225286,
+      "publicSha256": "09fdcf2057b4cda84cfc6cea582249fe7315f86e0b309e644bbb9fdf3857da93",
+      "distSha256": "09fdcf2057b4cda84cfc6cea582249fe7315f86e0b309e644bbb9fdf3857da93",
+      "httpSha256": "09fdcf2057b4cda84cfc6cea582249fe7315f86e0b309e644bbb9fdf3857da93",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/skullgirls_parasoul.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "08bec276feff6d9731c93dbedf1910ebf15bbccbed7c0f5d26a1350430602e90",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartB.generated.json"
+      ],
+      "bytes": 1468428,
+      "publicSha256": "08bec276feff6d9731c93dbedf1910ebf15bbccbed7c0f5d26a1350430602e90",
+      "distSha256": "08bec276feff6d9731c93dbedf1910ebf15bbccbed7c0f5d26a1350430602e90",
+      "httpSha256": "08bec276feff6d9731c93dbedf1910ebf15bbccbed7c0f5d26a1350430602e90",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/snake.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "9b0b69c12a6a3bd3c3890edaca01987884997f7085c6297bdf3eb187ef81c76a",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartC.generated.json"
+      ],
+      "bytes": 1655467,
+      "publicSha256": "9b0b69c12a6a3bd3c3890edaca01987884997f7085c6297bdf3eb187ef81c76a",
+      "distSha256": "9b0b69c12a6a3bd3c3890edaca01987884997f7085c6297bdf3eb187ef81c76a",
+      "httpSha256": "9b0b69c12a6a3bd3c3890edaca01987884997f7085c6297bdf3eb187ef81c76a",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/sonic_hedgehog.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "9dad280e47782fbea27d8f06209b656b892297c4e3f99d5c8d97c27c04ad76c1",
+      "registries": [
+        "src/game/combat/characterAnimationsWave6PartA.generated.json"
+      ],
+      "bytes": 2305040,
+      "publicSha256": "9dad280e47782fbea27d8f06209b656b892297c4e3f99d5c8d97c27c04ad76c1",
+      "distSha256": "9dad280e47782fbea27d8f06209b656b892297c4e3f99d5c8d97c27c04ad76c1",
+      "httpSha256": "9dad280e47782fbea27d8f06209b656b892297c4e3f99d5c8d97c27c04ad76c1",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/axl_gg.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "4ac5bb4e0349042f3bca1f994ad9c6fa945922bd78cc26cf3725ac121640a6a2",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartC.generated.json"
+      ],
+      "bytes": 2175512,
+      "publicSha256": "4ac5bb4e0349042f3bca1f994ad9c6fa945922bd78cc26cf3725ac121640a6a2",
+      "distSha256": "4ac5bb4e0349042f3bca1f994ad9c6fa945922bd78cc26cf3725ac121640a6a2",
+      "httpSha256": "4ac5bb4e0349042f3bca1f994ad9c6fa945922bd78cc26cf3725ac121640a6a2",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/baiken_gg.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "8c9790da7a859fe758974f56ce03a331ed1c51bc19387307870716933b89f15e",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartC.generated.json"
+      ],
+      "bytes": 2108519,
+      "publicSha256": "8c9790da7a859fe758974f56ce03a331ed1c51bc19387307870716933b89f15e",
+      "distSha256": "8c9790da7a859fe758974f56ce03a331ed1c51bc19387307870716933b89f15e",
+      "httpSha256": "8c9790da7a859fe758974f56ce03a331ed1c51bc19387307870716933b89f15e",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/dizzy_gg.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "2c6fa3891ff7086952b8bc432402c991dd573235224d81ea63a357c55d8ef18f",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartC.generated.json"
+      ],
+      "bytes": 3166480,
+      "publicSha256": "2c6fa3891ff7086952b8bc432402c991dd573235224d81ea63a357c55d8ef18f",
+      "distSha256": "2c6fa3891ff7086952b8bc432402c991dd573235224d81ea63a357c55d8ef18f",
+      "httpSha256": "2c6fa3891ff7086952b8bc432402c991dd573235224d81ea63a357c55d8ef18f",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/han_solo.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "2ca105124606a7f9d8841034a5af004f21bff1f48eef68b34f0a2ad3c588e6c4",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartB.generated.json"
+      ],
+      "bytes": 1790927,
+      "publicSha256": "2ca105124606a7f9d8841034a5af004f21bff1f48eef68b34f0a2ad3c588e6c4",
+      "distSha256": "2ca105124606a7f9d8841034a5af004f21bff1f48eef68b34f0a2ad3c588e6c4",
+      "httpSha256": "2ca105124606a7f9d8841034a5af004f21bff1f48eef68b34f0a2ad3c588e6c4",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/hazama_bb.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "2161239fb9dc5c1e4b611b820918f87ee7d2717d91011288425cbbc333527be6",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartA.generated.json"
+      ],
+      "bytes": 1627242,
+      "publicSha256": "2161239fb9dc5c1e4b611b820918f87ee7d2717d91011288425cbbc333527be6",
+      "distSha256": "2161239fb9dc5c1e4b611b820918f87ee7d2717d91011288425cbbc333527be6",
+      "httpSha256": "2161239fb9dc5c1e4b611b820918f87ee7d2717d91011288425cbbc333527be6",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/jin.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "3d15fd77036f7d04232e76ff74eacb270d13b81cdc6a7ac85c8064374a3dc3cd",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartA.generated.json"
+      ],
+      "bytes": 1449446,
+      "publicSha256": "3d15fd77036f7d04232e76ff74eacb270d13b81cdc6a7ac85c8064374a3dc3cd",
+      "distSha256": "3d15fd77036f7d04232e76ff74eacb270d13b81cdc6a7ac85c8064374a3dc3cd",
+      "httpSha256": "3d15fd77036f7d04232e76ff74eacb270d13b81cdc6a7ac85c8064374a3dc3cd",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/kaoru_kamiya.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "c7920c1310cd84d721a30d82ed14e107cdff95c43a6eac80cef67465aeb3c7a8",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartB.generated.json"
+      ],
+      "bytes": 1913965,
+      "publicSha256": "c7920c1310cd84d721a30d82ed14e107cdff95c43a6eac80cef67465aeb3c7a8",
+      "distSha256": "c7920c1310cd84d721a30d82ed14e107cdff95c43a6eac80cef67465aeb3c7a8",
+      "httpSha256": "c7920c1310cd84d721a30d82ed14e107cdff95c43a6eac80cef67465aeb3c7a8",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/kenshin_himura.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "8e22ed9a18de9bd4cfc5647f37443f1ed30f59126428808f8bf95df428d501f1",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartB.generated.json"
+      ],
+      "bytes": 2012515,
+      "publicSha256": "8e22ed9a18de9bd4cfc5647f37443f1ed30f59126428808f8bf95df428d501f1",
+      "distSha256": "8e22ed9a18de9bd4cfc5647f37443f1ed30f59126428808f8bf95df428d501f1",
+      "httpSha256": "8e22ed9a18de9bd4cfc5647f37443f1ed30f59126428808f8bf95df428d501f1",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/leia_organa.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "17238d142cc248bf6c77d50ccf9b42167a304cdc065bdae4ce165118ab9d546c",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartB.generated.json"
+      ],
+      "bytes": 1773259,
+      "publicSha256": "17238d142cc248bf6c77d50ccf9b42167a304cdc065bdae4ce165118ab9d546c",
+      "distSha256": "17238d142cc248bf6c77d50ccf9b42167a304cdc065bdae4ce165118ab9d546c",
+      "httpSha256": "17238d142cc248bf6c77d50ccf9b42167a304cdc065bdae4ce165118ab9d546c",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/may_gg.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "79b2971e3c236ab8a3d686cb04b3459f9ff3af513456af9223a03843d1af1e01",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartC.generated.json"
+      ],
+      "bytes": 2096985,
+      "publicSha256": "79b2971e3c236ab8a3d686cb04b3459f9ff3af513456af9223a03843d1af1e01",
+      "distSha256": "79b2971e3c236ab8a3d686cb04b3459f9ff3af513456af9223a03843d1af1e01",
+      "httpSha256": "79b2971e3c236ab8a3d686cb04b3459f9ff3af513456af9223a03843d1af1e01",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/millia_gg.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "74c703dd8a368791572e1b26c6a6149cd2c943f2f0ebad7fed0b03f35e11a2cc",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartC.generated.json"
+      ],
+      "bytes": 2004830,
+      "publicSha256": "74c703dd8a368791572e1b26c6a6149cd2c943f2f0ebad7fed0b03f35e11a2cc",
+      "distSha256": "74c703dd8a368791572e1b26c6a6149cd2c943f2f0ebad7fed0b03f35e11a2cc",
+      "httpSha256": "74c703dd8a368791572e1b26c6a6149cd2c943f2f0ebad7fed0b03f35e11a2cc",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/noel.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "578ce418eb0ca8609be2c5e6b372ac9e2f637ee5c2456f23213cce1cc8b53ddf",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartA.generated.json"
+      ],
+      "bytes": 1954054,
+      "publicSha256": "578ce418eb0ca8609be2c5e6b372ac9e2f637ee5c2456f23213cce1cc8b53ddf",
+      "distSha256": "578ce418eb0ca8609be2c5e6b372ac9e2f637ee5c2456f23213cce1cc8b53ddf",
+      "httpSha256": "578ce418eb0ca8609be2c5e6b372ac9e2f637ee5c2456f23213cce1cc8b53ddf",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/rachel_bb.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "fa26c32fdfd579f2ba8830b9f1d7414f5ae6baa9f99da28d81aa0cea16e0b9d7",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartA.generated.json"
+      ],
+      "bytes": 2530778,
+      "publicSha256": "fa26c32fdfd579f2ba8830b9f1d7414f5ae6baa9f99da28d81aa0cea16e0b9d7",
+      "distSha256": "fa26c32fdfd579f2ba8830b9f1d7414f5ae6baa9f99da28d81aa0cea16e0b9d7",
+      "httpSha256": "fa26c32fdfd579f2ba8830b9f1d7414f5ae6baa9f99da28d81aa0cea16e0b9d7",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/ragna.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "58d0072cce17860584abb36614aa2efdb7b1255127ff26be4779121f072c215e",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartA.generated.json"
+      ],
+      "bytes": 1321591,
+      "publicSha256": "58d0072cce17860584abb36614aa2efdb7b1255127ff26be4779121f072c215e",
+      "distSha256": "58d0072cce17860584abb36614aa2efdb7b1255127ff26be4779121f072c215e",
+      "httpSha256": "58d0072cce17860584abb36614aa2efdb7b1255127ff26be4779121f072c215e",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/sanosuke_sagara.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "51072225dfa01cd5de302b96d68497988f1128fa4a9f451bcced2808e391dc5b",
+      "registries": [
+        "src/game/combat/characterAnimationsWave7PartB.generated.json"
+      ],
+      "bytes": 1831579,
+      "publicSha256": "51072225dfa01cd5de302b96d68497988f1128fa4a9f451bcced2808e391dc5b",
+      "distSha256": "51072225dfa01cd5de302b96d68497988f1128fa4a9f451bcced2808e391dc5b",
+      "httpSha256": "51072225dfa01cd5de302b96d68497988f1128fa4a9f451bcced2808e391dc5b",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/aerith_ff7.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "93fd1b9497a90f4735d1be125bade917c0c2d4e5f966ae7654144b9435c0bce1",
+      "registries": [
+        "src/game/combat/characterAnimations.generated.json"
+      ],
+      "bytes": 2434280,
+      "publicSha256": "93fd1b9497a90f4735d1be125bade917c0c2d4e5f966ae7654144b9435c0bce1",
+      "distSha256": "93fd1b9497a90f4735d1be125bade917c0c2d4e5f966ae7654144b9435c0bce1",
+      "httpSha256": "93fd1b9497a90f4735d1be125bade917c0c2d4e5f966ae7654144b9435c0bce1",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/barret_ff7.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "4971f2477742549d70c9e16c9f00ff059d1dae5120da42a5b511541bc23b3809",
+      "registries": [
+        "src/game/combat/characterAnimations.generated.json"
+      ],
+      "bytes": 2349109,
+      "publicSha256": "4971f2477742549d70c9e16c9f00ff059d1dae5120da42a5b511541bc23b3809",
+      "distSha256": "4971f2477742549d70c9e16c9f00ff059d1dae5120da42a5b511541bc23b3809",
+      "httpSha256": "4971f2477742549d70c9e16c9f00ff059d1dae5120da42a5b511541bc23b3809",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/cloud_ff7.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd",
+      "registries": [
+        "src/game/combat/characterAnimations.generated.json"
+      ],
+      "bytes": 1273789,
+      "publicSha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd",
+      "distSha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd",
+      "httpSha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/goku_dbz.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+      "registries": [
+        "src/game/combat/characterAnimations.generated.json"
+      ],
+      "bytes": 1614615,
+      "publicSha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+      "distSha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+      "httpSha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/naruto_six_paths.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "96880a08de46edd1cfb0493947892aaf9498e370cf6ffead729d53a4df3d57b4",
+      "registries": [
+        "src/game/combat/characterAnimations.generated.json"
+      ],
+      "bytes": 1348087,
+      "publicSha256": "96880a08de46edd1cfb0493947892aaf9498e370cf6ffead729d53a4df3d57b4",
+      "distSha256": "96880a08de46edd1cfb0493947892aaf9498e370cf6ffead729d53a4df3d57b4",
+      "httpSha256": "96880a08de46edd1cfb0493947892aaf9498e370cf6ffead729d53a4df3d57b4",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/sasuke_rinnegan.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "ca4b21e4c5eef89bdab0d3d8f9471f7b5906641f4b70fb7f1feab6c470376f09",
+      "registries": [
+        "src/game/combat/characterAnimations.generated.json"
+      ],
+      "bytes": 1997453,
+      "publicSha256": "ca4b21e4c5eef89bdab0d3d8f9471f7b5906641f4b70fb7f1feab6c470376f09",
+      "distSha256": "ca4b21e4c5eef89bdab0d3d8f9471f7b5906641f4b70fb7f1feab6c470376f09",
+      "httpSha256": "ca4b21e4c5eef89bdab0d3d8f9471f7b5906641f4b70fb7f1feab6c470376f09",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/tifa_ff7.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+      "registries": [
+        "src/game/combat/characterAnimations.generated.json"
+      ],
+      "bytes": 2031251,
+      "publicSha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+      "distSha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+      "httpSha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/vegeta_dbz.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+      "registries": [
+        "src/game/combat/characterAnimations.generated.json"
+      ],
+      "bytes": 1108912,
+      "publicSha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+      "distSha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+      "httpSha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave2/seifer_ff8.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "9a68806007ea498a870a6ae0bbdb5c53f8e022df9cdee872006b144e27abee85",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave2.generated.json"
+      ],
+      "bytes": 829021,
+      "publicSha256": "9a68806007ea498a870a6ae0bbdb5c53f8e022df9cdee872006b144e27abee85",
+      "distSha256": "9a68806007ea498a870a6ae0bbdb5c53f8e022df9cdee872006b144e27abee85",
+      "httpSha256": "9a68806007ea498a870a6ae0bbdb5c53f8e022df9cdee872006b144e27abee85",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave4/redxiii_ff7.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "7865cc3c4a9a5ccafcb50386ca992e5c481ac8e1d4e6bd492c6fac95f7ceef95",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave4.generated.json"
+      ],
+      "bytes": 776274,
+      "publicSha256": "7865cc3c4a9a5ccafcb50386ca992e5c481ac8e1d4e6bd492c6fac95f7ceef95",
+      "distSha256": "7865cc3c4a9a5ccafcb50386ca992e5c481ac8e1d4e6bd492c6fac95f7ceef95",
+      "httpSha256": "7865cc3c4a9a5ccafcb50386ca992e5c481ac8e1d4e6bd492c6fac95f7ceef95",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave4/vincent_ff7.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "ce28744f43ce226f4ba850530505ad678e70d9f1bee2f245fbe9f79640ae5d40",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave4.generated.json"
+      ],
+      "bytes": 826883,
+      "publicSha256": "ce28744f43ce226f4ba850530505ad678e70d9f1bee2f245fbe9f79640ae5d40",
+      "distSha256": "ce28744f43ce226f4ba850530505ad678e70d9f1bee2f245fbe9f79640ae5d40",
+      "httpSha256": "ce28744f43ce226f4ba850530505ad678e70d9f1bee2f245fbe9f79640ae5d40",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave5/ky.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "714fba60e60fdc5695bca3d9a99ddec0ec7f8a94806a8ce3bc59821e5ce1e563",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave5.generated.json"
+      ],
+      "bytes": 996239,
+      "publicSha256": "714fba60e60fdc5695bca3d9a99ddec0ec7f8a94806a8ce3bc59821e5ce1e563",
+      "distSha256": "714fba60e60fdc5695bca3d9a99ddec0ec7f8a94806a8ce3bc59821e5ce1e563",
+      "httpSha256": "714fba60e60fdc5695bca3d9a99ddec0ec7f8a94806a8ce3bc59821e5ce1e563",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave5/leon.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "04b07d43bf6344cea7da00f2bc39234979a066c190d4f634f0bf73802011583b",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave5.generated.json"
+      ],
+      "bytes": 925609,
+      "publicSha256": "04b07d43bf6344cea7da00f2bc39234979a066c190d4f634f0bf73802011583b",
+      "distSha256": "04b07d43bf6344cea7da00f2bc39234979a066c190d4f634f0bf73802011583b",
+      "httpSha256": "04b07d43bf6344cea7da00f2bc39234979a066c190d4f634f0bf73802011583b",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave5/solbadguy.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "c0d578bece894bf8f82ecc845e0955a7bc1ad8b633f3e1ac5a40e3e84bc056d9",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave5.generated.json"
+      ],
+      "bytes": 1055559,
+      "publicSha256": "c0d578bece894bf8f82ecc845e0955a7bc1ad8b633f3e1ac5a40e3e84bc056d9",
+      "distSha256": "c0d578bece894bf8f82ecc845e0955a7bc1ad8b633f3e1ac5a40e3e84bc056d9",
+      "httpSha256": "c0d578bece894bf8f82ecc845e0955a7bc1ad8b633f3e1ac5a40e3e84bc056d9",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6-part-a/miles_tails_prower.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "337ecdf19e9111e0b249b3f28d7c42bb277108a7ac1a77b21f48ecad786518b7",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave6PartA.generated.json"
+      ],
+      "bytes": 1423476,
+      "publicSha256": "337ecdf19e9111e0b249b3f28d7c42bb277108a7ac1a77b21f48ecad786518b7",
+      "distSha256": "337ecdf19e9111e0b249b3f28d7c42bb277108a7ac1a77b21f48ecad786518b7",
+      "httpSha256": "337ecdf19e9111e0b249b3f28d7c42bb277108a7ac1a77b21f48ecad786518b7",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/devil_may_cry_lady.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "b5b5efe91eda7af8fc800e5ea53f4249b1899453c90f3f75a94fc4b91dbf8c79",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave6PartB.generated.json"
+      ],
+      "bytes": 940660,
+      "publicSha256": "b5b5efe91eda7af8fc800e5ea53f4249b1899453c90f3f75a94fc4b91dbf8c79",
+      "distSha256": "b5b5efe91eda7af8fc800e5ea53f4249b1899453c90f3f75a94fc4b91dbf8c79",
+      "httpSha256": "b5b5efe91eda7af8fc800e5ea53f4249b1899453c90f3f75a94fc4b91dbf8c79",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/devil_may_cry_nero.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "0a041d60ba10d081c2a6118f9ecba20b014e9fb2ee505fd59db7bd50cb64f69f",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave6PartB.generated.json"
+      ],
+      "bytes": 855080,
+      "publicSha256": "0a041d60ba10d081c2a6118f9ecba20b014e9fb2ee505fd59db7bd50cb64f69f",
+      "distSha256": "0a041d60ba10d081c2a6118f9ecba20b014e9fb2ee505fd59db7bd50cb64f69f",
+      "httpSha256": "0a041d60ba10d081c2a6118f9ecba20b014e9fb2ee505fd59db7bd50cb64f69f",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/joseph_joestar.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "b334852a756a6e1871c8c2a0a96acbe91af80b839d03b9804f4b49b4b6d3c2cb",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave6PartC.generated.json"
+      ],
+      "bytes": 871074,
+      "publicSha256": "b334852a756a6e1871c8c2a0a96acbe91af80b839d03b9804f4b49b4b6d3c2cb",
+      "distSha256": "b334852a756a6e1871c8c2a0a96acbe91af80b839d03b9804f4b49b4b6d3c2cb",
+      "httpSha256": "b334852a756a6e1871c8c2a0a96acbe91af80b839d03b9804f4b49b4b6d3c2cb",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/skullgirls_beowulf.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "bb19b6cf6b1965b685197b94b21fb8e65e306bd472f2d6f4eeb06f41978b3540",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave6PartC.generated.json"
+      ],
+      "bytes": 1173294,
+      "publicSha256": "bb19b6cf6b1965b685197b94b21fb8e65e306bd472f2d6f4eeb06f41978b3540",
+      "distSha256": "bb19b6cf6b1965b685197b94b21fb8e65e306bd472f2d6f4eeb06f41978b3540",
+      "httpSha256": "bb19b6cf6b1965b685197b94b21fb8e65e306bd472f2d6f4eeb06f41978b3540",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/skullgirls_parasoul.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "d805a91d14b3cc4d6fbf5dcd80399192228da5621074d0f46d24ee6b4ae7b2be",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave6PartB.generated.json"
+      ],
+      "bytes": 667475,
+      "publicSha256": "d805a91d14b3cc4d6fbf5dcd80399192228da5621074d0f46d24ee6b4ae7b2be",
+      "distSha256": "d805a91d14b3cc4d6fbf5dcd80399192228da5621074d0f46d24ee6b4ae7b2be",
+      "httpSha256": "d805a91d14b3cc4d6fbf5dcd80399192228da5621074d0f46d24ee6b4ae7b2be",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/hazama_bb.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "282c4d58cac1c24ae7dda1cc15603ff93ca4f6dfa29ef28c55a17d88200c8dcd",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartA.generated.json"
+      ],
+      "bytes": 731872,
+      "publicSha256": "282c4d58cac1c24ae7dda1cc15603ff93ca4f6dfa29ef28c55a17d88200c8dcd",
+      "distSha256": "282c4d58cac1c24ae7dda1cc15603ff93ca4f6dfa29ef28c55a17d88200c8dcd",
+      "httpSha256": "282c4d58cac1c24ae7dda1cc15603ff93ca4f6dfa29ef28c55a17d88200c8dcd",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/jin.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "2e67a7a593577d72bb086d23c1445a0ce3aecad33bcf61812acf1ef9437696d4",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartA.generated.json"
+      ],
+      "bytes": 512977,
+      "publicSha256": "2e67a7a593577d72bb086d23c1445a0ce3aecad33bcf61812acf1ef9437696d4",
+      "distSha256": "2e67a7a593577d72bb086d23c1445a0ce3aecad33bcf61812acf1ef9437696d4",
+      "httpSha256": "2e67a7a593577d72bb086d23c1445a0ce3aecad33bcf61812acf1ef9437696d4",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/noel.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "30136fafac3f6713a30dd9d1ebf3b08db12e9d7289a6440815a1d7ee4bc0d170",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartA.generated.json"
+      ],
+      "bytes": 899154,
+      "publicSha256": "30136fafac3f6713a30dd9d1ebf3b08db12e9d7289a6440815a1d7ee4bc0d170",
+      "distSha256": "30136fafac3f6713a30dd9d1ebf3b08db12e9d7289a6440815a1d7ee4bc0d170",
+      "httpSha256": "30136fafac3f6713a30dd9d1ebf3b08db12e9d7289a6440815a1d7ee4bc0d170",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/rachel_bb.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "530760fb791d3ab0c90dcee655202508055c0e4addb9d216164c583d5b8824bd",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartA.generated.json"
+      ],
+      "bytes": 968715,
+      "publicSha256": "530760fb791d3ab0c90dcee655202508055c0e4addb9d216164c583d5b8824bd",
+      "distSha256": "530760fb791d3ab0c90dcee655202508055c0e4addb9d216164c583d5b8824bd",
+      "httpSha256": "530760fb791d3ab0c90dcee655202508055c0e4addb9d216164c583d5b8824bd",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/ragna.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "f9ecdef781f4e84f7cdd4bced2e4d82091eb06acef89634007b99761d758cce7",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartA.generated.json"
+      ],
+      "bytes": 741421,
+      "publicSha256": "f9ecdef781f4e84f7cdd4bced2e4d82091eb06acef89634007b99761d758cce7",
+      "distSha256": "f9ecdef781f4e84f7cdd4bced2e4d82091eb06acef89634007b99761d758cce7",
+      "httpSha256": "f9ecdef781f4e84f7cdd4bced2e4d82091eb06acef89634007b99761d758cce7",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/axl_gg.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "03a2a9be9153233ba46224da9ad25f6afc0a698c34bbb0760fec406c1d84a8df",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartC.generated.json"
+      ],
+      "bytes": 884168,
+      "publicSha256": "03a2a9be9153233ba46224da9ad25f6afc0a698c34bbb0760fec406c1d84a8df",
+      "distSha256": "03a2a9be9153233ba46224da9ad25f6afc0a698c34bbb0760fec406c1d84a8df",
+      "httpSha256": "03a2a9be9153233ba46224da9ad25f6afc0a698c34bbb0760fec406c1d84a8df",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/baiken_gg.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "f8d281b72302f43ac5ab999f32e5b30b253bc9ca2adc5f304491fd302b1d167d",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartC.generated.json"
+      ],
+      "bytes": 1111848,
+      "publicSha256": "f8d281b72302f43ac5ab999f32e5b30b253bc9ca2adc5f304491fd302b1d167d",
+      "distSha256": "f8d281b72302f43ac5ab999f32e5b30b253bc9ca2adc5f304491fd302b1d167d",
+      "httpSha256": "f8d281b72302f43ac5ab999f32e5b30b253bc9ca2adc5f304491fd302b1d167d",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/dizzy_gg.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "bf90d0a65eaaff98ee64ecbcfb1ea86764905d5abd206b29c605a5f08b9c16f5",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartC.generated.json"
+      ],
+      "bytes": 1494313,
+      "publicSha256": "bf90d0a65eaaff98ee64ecbcfb1ea86764905d5abd206b29c605a5f08b9c16f5",
+      "distSha256": "bf90d0a65eaaff98ee64ecbcfb1ea86764905d5abd206b29c605a5f08b9c16f5",
+      "httpSha256": "bf90d0a65eaaff98ee64ecbcfb1ea86764905d5abd206b29c605a5f08b9c16f5",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/han_solo.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "422985c683664f21278d6e5698346450502479c050c93392199ed5e1ff916be1",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartB.generated.json"
+      ],
+      "bytes": 960710,
+      "publicSha256": "422985c683664f21278d6e5698346450502479c050c93392199ed5e1ff916be1",
+      "distSha256": "422985c683664f21278d6e5698346450502479c050c93392199ed5e1ff916be1",
+      "httpSha256": "422985c683664f21278d6e5698346450502479c050c93392199ed5e1ff916be1",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/kaoru_kamiya.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "07c991397f27124435aadc4b67e2e7bed1ee125413d4a3a1f942f34ef820eae7",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartB.generated.json"
+      ],
+      "bytes": 924666,
+      "publicSha256": "07c991397f27124435aadc4b67e2e7bed1ee125413d4a3a1f942f34ef820eae7",
+      "distSha256": "07c991397f27124435aadc4b67e2e7bed1ee125413d4a3a1f942f34ef820eae7",
+      "httpSha256": "07c991397f27124435aadc4b67e2e7bed1ee125413d4a3a1f942f34ef820eae7",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/kenshin_himura.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "ce5c5fd1836244e9c6ab89d13e2762e95fba2bc31032b00b450f8148781888c5",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartB.generated.json"
+      ],
+      "bytes": 1095252,
+      "publicSha256": "ce5c5fd1836244e9c6ab89d13e2762e95fba2bc31032b00b450f8148781888c5",
+      "distSha256": "ce5c5fd1836244e9c6ab89d13e2762e95fba2bc31032b00b450f8148781888c5",
+      "httpSha256": "ce5c5fd1836244e9c6ab89d13e2762e95fba2bc31032b00b450f8148781888c5",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/may_gg.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "e0bfc4e01859b8f24e75855dfa9272583603b20ebdd506bf1fc80837b6ee836b",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartC.generated.json"
+      ],
+      "bytes": 1101207,
+      "publicSha256": "e0bfc4e01859b8f24e75855dfa9272583603b20ebdd506bf1fc80837b6ee836b",
+      "distSha256": "e0bfc4e01859b8f24e75855dfa9272583603b20ebdd506bf1fc80837b6ee836b",
+      "httpSha256": "e0bfc4e01859b8f24e75855dfa9272583603b20ebdd506bf1fc80837b6ee836b",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/millia_gg.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "7517b08c7e82e30f8d4214bfe53379bb82d9ce5a693e74ab92801f4b5e519eab",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartC.generated.json"
+      ],
+      "bytes": 1010727,
+      "publicSha256": "7517b08c7e82e30f8d4214bfe53379bb82d9ce5a693e74ab92801f4b5e519eab",
+      "distSha256": "7517b08c7e82e30f8d4214bfe53379bb82d9ce5a693e74ab92801f4b5e519eab",
+      "httpSha256": "7517b08c7e82e30f8d4214bfe53379bb82d9ce5a693e74ab92801f4b5e519eab",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/sanosuke_sagara.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "3fe3f8d46870a03b97b42be4adfe79ad2c1cced9983f281f9a5fe67296ade4e3",
+      "registries": [
+        "src/game/combat/characterSpriteCorrectionsWave7PartB.generated.json"
+      ],
+      "bytes": 934620,
+      "publicSha256": "3fe3f8d46870a03b97b42be4adfe79ad2c1cced9983f281f9a5fe67296ade4e3",
+      "distSha256": "3fe3f8d46870a03b97b42be4adfe79ad2c1cced9983f281f9a5fe67296ade4e3",
+      "httpSha256": "3fe3f8d46870a03b97b42be4adfe79ad2c1cced9983f281f9a5fe67296ade4e3",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections/crypt_necrodancer_aria.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "c5c9f4f1459b263074855ce06d746f0d4941d51f8a869acee2e7c1be9e0bc4a5",
+      "registries": [
+        "src/game/combat/characterSpriteCorrections.generated.json"
+      ],
+      "bytes": 1262880,
+      "publicSha256": "c5c9f4f1459b263074855ce06d746f0d4941d51f8a869acee2e7c1be9e0bc4a5",
+      "distSha256": "c5c9f4f1459b263074855ce06d746f0d4941d51f8a869acee2e7c1be9e0bc4a5",
+      "httpSha256": "c5c9f4f1459b263074855ce06d746f0d4941d51f8a869acee2e7c1be9e0bc4a5",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-forms-wave4/vincent-chaos.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "10801b05b9ad4589405f03f79c9e976708df552b40291ce788fe4106d2e0798f",
+      "registries": [
+        "src/game/combat/characterFormsWave4.generated.json"
+      ],
+      "bytes": 936572,
+      "publicSha256": "10801b05b9ad4589405f03f79c9e976708df552b40291ce788fe4106d2e0798f",
+      "distSha256": "10801b05b9ad4589405f03f79c9e976708df552b40291ce788fe4106d2e0798f",
+      "httpSha256": "10801b05b9ad4589405f03f79c9e976708df552b40291ce788fe4106d2e0798f",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/aegea-shield-forge.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "873d20bdf4b42bea268a0bb37f25e867df3eb7d629b4e18f0df21ac65e19582e",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 279445,
+      "publicSha256": "873d20bdf4b42bea268a0bb37f25e867df3eb7d629b4e18f0df21ac65e19582e",
+      "distSha256": "873d20bdf4b42bea268a0bb37f25e867df3eb7d629b4e18f0df21ac65e19582e",
+      "httpSha256": "873d20bdf4b42bea268a0bb37f25e867df3eb7d629b4e18f0df21ac65e19582e",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/aether-sky-mutineers.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "f3d0c65a752e93b9278d5da01baba7d31d7139fd02fc5fd4fb291e911c6c24d3",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 217830,
+      "publicSha256": "f3d0c65a752e93b9278d5da01baba7d31d7139fd02fc5fd4fb291e911c6c24d3",
+      "distSha256": "f3d0c65a752e93b9278d5da01baba7d31d7139fd02fc5fd4fb291e911c6c24d3",
+      "httpSha256": "f3d0c65a752e93b9278d5da01baba7d31d7139fd02fc5fd4fb291e911c6c24d3",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/aether-valve-drone.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "ef54ef457e94603e9e15b5367aa1215df484e3437123ad9ec4ab6bdbc0a98af1",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 304487,
+      "publicSha256": "ef54ef457e94603e9e15b5367aa1215df484e3437123ad9ec4ab6bdbc0a98af1",
+      "distSha256": "ef54ef457e94603e9e15b5367aa1215df484e3437123ad9ec4ab6bdbc0a98af1",
+      "httpSha256": "ef54ef457e94603e9e15b5367aa1215df484e3437123ad9ec4ab6bdbc0a98af1",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/doom-bfg9000.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "24257e6f9c367028e0af4fa0304c98a7f76225e4e06dd34f563030826466ef1c",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 195043,
+      "publicSha256": "24257e6f9c367028e0af4fa0304c98a7f76225e4e06dd34f563030826466ef1c",
+      "distSha256": "24257e6f9c367028e0af4fa0304c98a7f76225e4e06dd34f563030826466ef1c",
+      "httpSha256": "24257e6f9c367028e0af4fa0304c98a7f76225e4e06dd34f563030826466ef1c",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/ff7-bahamut.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "ecbcd34bd73328279d14458e2f781c2e8a363ed86a093b26563a718a8e4c0ed5",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 215067,
+      "publicSha256": "ecbcd34bd73328279d14458e2f781c2e8a363ed86a093b26563a718a8e4c0ed5",
+      "distSha256": "ecbcd34bd73328279d14458e2f781c2e8a363ed86a093b26563a718a8e4c0ed5",
+      "httpSha256": "ecbcd34bd73328279d14458e2f781c2e8a363ed86a093b26563a718a8e4c0ed5",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/ff7-ifrit.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "dc25d37ea481a3caf527d20e30ebdf84a6ac1af73504aa48a49f1e7557d5bf25",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 360566,
+      "publicSha256": "dc25d37ea481a3caf527d20e30ebdf84a6ac1af73504aa48a49f1e7557d5bf25",
+      "distSha256": "dc25d37ea481a3caf527d20e30ebdf84a6ac1af73504aa48a49f1e7557d5bf25",
+      "httpSha256": "dc25d37ea481a3caf527d20e30ebdf84a6ac1af73504aa48a49f1e7557d5bf25",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/ff7-shiva.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "5f96a333ad2b03c42aef1b462001fb13a8eb4fae2dcdb8ff37a2249149818c01",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 357430,
+      "publicSha256": "5f96a333ad2b03c42aef1b462001fb13a8eb4fae2dcdb8ff37a2249149818c01",
+      "distSha256": "5f96a333ad2b03c42aef1b462001fb13a8eb4fae2dcdb8ff37a2249149818c01",
+      "httpSha256": "5f96a333ad2b03c42aef1b462001fb13a8eb4fae2dcdb8ff37a2249149818c01",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/guilty-gear-yamada.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "7d5dbe695ecf455243b4a0d0779eef4ee3fb5fd7c94ec1f4d0e02b9be1471d71",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 287577,
+      "publicSha256": "7d5dbe695ecf455243b4a0d0779eef4ee3fb5fd7c94ec1f4d0e02b9be1471d71",
+      "distSha256": "7d5dbe695ecf455243b4a0d0779eef4ee3fb5fd7c94ec1f4d0e02b9be1471d71",
+      "httpSha256": "7d5dbe695ecf455243b4a0d0779eef4ee3fb5fd7c94ec1f4d0e02b9be1471d71",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/half-life-dog.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "ab1b4af724b84336ffc0724af23edab4769b3890830b6effeec2802ff0eab80a",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 188179,
+      "publicSha256": "ab1b4af724b84336ffc0724af23edab4769b3890830b6effeec2802ff0eab80a",
+      "distSha256": "ab1b4af724b84336ffc0724af23edab4769b3890830b6effeec2802ff0eab80a",
+      "httpSha256": "ab1b4af724b84336ffc0724af23edab4769b3890830b6effeec2802ff0eab80a",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/halo-pelican.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "83512108af4aef0a689dec91c72da9c908bcc345a495ade374d198eca9baa614",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 239123,
+      "publicSha256": "83512108af4aef0a689dec91c72da9c908bcc345a495ade374d198eca9baa614",
+      "distSha256": "83512108af4aef0a689dec91c72da9c908bcc345a495ade374d198eca9baa614",
+      "httpSha256": "83512108af4aef0a689dec91c72da9c908bcc345a495ade374d198eca9baa614",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/ilyr-nym-choir.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "23ca7c92a8466e449a6f94f93b077e70863f43c73c1828d341aa13ea7da3086a",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 186449,
+      "publicSha256": "23ca7c92a8466e449a6f94f93b077e70863f43c73c1828d341aa13ea7da3086a",
+      "distSha256": "23ca7c92a8466e449a6f94f93b077e70863f43c73c1828d341aa13ea7da3086a",
+      "httpSha256": "23ca7c92a8466e449a6f94f93b077e70863f43c73c1828d341aa13ea7da3086a",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/jojo-gold-experience.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "2794007bd0de1dd30de70eafdb4b41d654c58e2ef4f88cc67ffdda2f0773dd28",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 194609,
+      "publicSha256": "2794007bd0de1dd30de70eafdb4b41d654c58e2ef4f88cc67ffdda2f0773dd28",
+      "distSha256": "2794007bd0de1dd30de70eafdb4b41d654c58e2ef4f88cc67ffdda2f0773dd28",
+      "httpSha256": "2794007bd0de1dd30de70eafdb4b41d654c58e2ef4f88cc67ffdda2f0773dd28",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/jojo-hermit-purple.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "429caf678b2eeab7ec16aa9eb2f5aacd337c6b22ad8ca333fa4bac21c388eea8",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 253627,
+      "publicSha256": "429caf678b2eeab7ec16aa9eb2f5aacd337c6b22ad8ca333fa4bac21c388eea8",
+      "distSha256": "429caf678b2eeab7ec16aa9eb2f5aacd337c6b22ad8ca333fa4bac21c388eea8",
+      "httpSha256": "429caf678b2eeab7ec16aa9eb2f5aacd337c6b22ad8ca333fa4bac21c388eea8",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/jojo-star-platinum.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "c5f7897fd2f18b12d948ffab5f309f2c6ba1624e3d95cbec8968c21ac0d9143f",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 273860,
+      "publicSha256": "c5f7897fd2f18b12d948ffab5f309f2c6ba1624e3d95cbec8968c21ac0d9143f",
+      "distSha256": "c5f7897fd2f18b12d948ffab5f309f2c6ba1624e3d95cbec8968c21ac0d9143f",
+      "httpSha256": "c5f7897fd2f18b12d948ffab5f309f2c6ba1624e3d95cbec8968c21ac0d9143f",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/mandate-ancestor.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "7fac8d39f299354aa6506544bf3caeb059cb6af48e9323dda8f2fcc121a05c86",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 333555,
+      "publicSha256": "7fac8d39f299354aa6506544bf3caeb059cb6af48e9323dda8f2fcc121a05c86",
+      "distSha256": "7fac8d39f299354aa6506544bf3caeb059cb6af48e9323dda8f2fcc121a05c86",
+      "httpSha256": "7fac8d39f299354aa6506544bf3caeb059cb6af48e9323dda8f2fcc121a05c86",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/meridian-clockwork-falcon.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "b8deff5fdc9b6b548c702ab3806b99cfeb3cfdb5899ba5df61a6af9655ba387a",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 271481,
+      "publicSha256": "b8deff5fdc9b6b548c702ab3806b99cfeb3cfdb5899ba5df61a6af9655ba387a",
+      "distSha256": "b8deff5fdc9b6b548c702ab3806b99cfeb3cfdb5899ba5df61a6af9655ba387a",
+      "httpSha256": "b8deff5fdc9b6b548c702ab3806b99cfeb3cfdb5899ba5df61a6af9655ba387a",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/neon-ghostline.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "5760ca3c9771c86b8cde1b396457475f05810eb03f09dec3a4ceac65837d3de2",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 344712,
+      "publicSha256": "5760ca3c9771c86b8cde1b396457475f05810eb03f09dec3a4ceac65837d3de2",
+      "distSha256": "5760ca3c9771c86b8cde1b396457475f05810eb03f09dec3a4ceac65837d3de2",
+      "httpSha256": "5760ca3c9771c86b8cde1b396457475f05810eb03f09dec3a4ceac65837d3de2",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/nexus-barricade.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "ec1e7ad232026018ba4dc372ee5381515ccab4b6a14f497318f7f39218a1800a",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 248835,
+      "publicSha256": "ec1e7ad232026018ba4dc372ee5381515ccab4b6a14f497318f7f39218a1800a",
+      "distSha256": "ec1e7ad232026018ba4dc372ee5381515ccab4b6a14f497318f7f39218a1800a",
+      "httpSha256": "ec1e7ad232026018ba4dc372ee5381515ccab4b6a14f497318f7f39218a1800a",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/nexus-return-probe.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "4e945bbcbd8531fc8056d26134d7eb95309f52c68965d0fd297c3da88e594356",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 119773,
+      "publicSha256": "4e945bbcbd8531fc8056d26134d7eb95309f52c68965d0fd297c3da88e594356",
+      "distSha256": "4e945bbcbd8531fc8056d26134d7eb95309f52c68965d0fd297c3da88e594356",
+      "httpSha256": "4e945bbcbd8531fc8056d26134d7eb95309f52c68965d0fd297c3da88e594356",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/nexus-suture-drone.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "b9e6935592594e9db57fec3d922d7176324b0b146855206428f81ec28ada2baa",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 204500,
+      "publicSha256": "b9e6935592594e9db57fec3d922d7176324b0b146855206428f81ec28ada2baa",
+      "distSha256": "b9e6935592594e9db57fec3d922d7176324b0b146855206428f81ec28ada2baa",
+      "httpSha256": "b9e6935592594e9db57fec3d922d7176324b0b146855206428f81ec28ada2baa",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/nexus-tessera-reflection.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "0a43a6714156156b4c9daebb71be05ce61e62686ec414b8b902d48dd0b4c7042",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 198702,
+      "publicSha256": "0a43a6714156156b4c9daebb71be05ce61e62686ec414b8b902d48dd0b4c7042",
+      "distSha256": "0a43a6714156156b4c9daebb71be05ce61e62686ec414b8b902d48dd0b4c7042",
+      "httpSha256": "0a43a6714156156b4c9daebb71be05ce61e62686ec414b8b902d48dd0b4c7042",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/payday-sentry.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "c6fbb7280493cdecf1e37963d1b95c12c174594ec9f8c55bdda6e83fbe97072b",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 135934,
+      "publicSha256": "c6fbb7280493cdecf1e37963d1b95c12c174594ec9f8c55bdda6e83fbe97072b",
+      "distSha256": "c6fbb7280493cdecf1e37963d1b95c12c174594ec9f8c55bdda6e83fbe97072b",
+      "httpSha256": "c6fbb7280493cdecf1e37963d1b95c12c174594ec9f8c55bdda6e83fbe97072b",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/portal-turret.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "545858b675f74496cb5856ddbea240501a6aa2080493ba3a4b7bbf03250eb40b",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 129337,
+      "publicSha256": "545858b675f74496cb5856ddbea240501a6aa2080493ba3a4b7bbf03250eb40b",
+      "distSha256": "545858b675f74496cb5856ddbea240501a6aa2080493ba3a4b7bbf03250eb40b",
+      "httpSha256": "545858b675f74496cb5856ddbea240501a6aa2080493ba3a4b7bbf03250eb40b",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/skullgirls-black-egrets.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "ba88f04b9f05001250765edb2cee1f3147a26696ee7fd2664377f9ac747fe5d0",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 231939,
+      "publicSha256": "ba88f04b9f05001250765edb2cee1f3147a26696ee7fd2664377f9ac747fe5d0",
+      "distSha256": "ba88f04b9f05001250765edb2cee1f3147a26696ee7fd2664377f9ac747fe5d0",
+      "httpSha256": "ba88f04b9f05001250765edb2cee1f3147a26696ee7fd2664377f9ac747fe5d0",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/slender-pages.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "baf2d0b9871b4d01257c16640cf646fc3fd8c44f2dcd271e9f02231fa5310a38",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 289247,
+      "publicSha256": "baf2d0b9871b4d01257c16640cf646fc3fd8c44f2dcd271e9f02231fa5310a38",
+      "distSha256": "baf2d0b9871b4d01257c16640cf646fc3fd8c44f2dcd271e9f02231fa5310a38",
+      "httpSha256": "baf2d0b9871b4d01257c16640cf646fc3fd8c44f2dcd271e9f02231fa5310a38",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/sonic-tornado.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "4ebd9ad1eb35922051f6e97d9ea9caf0c921a085ee47c42df139bb9d489c4d5d",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 282459,
+      "publicSha256": "4ebd9ad1eb35922051f6e97d9ea9caf0c921a085ee47c42df139bb9d489c4d5d",
+      "distSha256": "4ebd9ad1eb35922051f6e97d9ea9caf0c921a085ee47c42df139bb9d489c4d5d",
+      "httpSha256": "4ebd9ad1eb35922051f6e97d9ea9caf0c921a085ee47c42df139bb9d489c4d5d",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/tawantinsuyu-relay.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "1822b9cad1d857ac469ffebf489bd3bea8e4807994655ad9299014d38350a80b",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 239978,
+      "publicSha256": "1822b9cad1d857ac469ffebf489bd3bea8e4807994655ad9299014d38350a80b",
+      "distSha256": "1822b9cad1d857ac469ffebf489bd3bea8e4807994655ad9299014d38350a80b",
+      "httpSha256": "1822b9cad1d857ac469ffebf489bd3bea8e4807994655ad9299014d38350a80b",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/yomi-yokai-parade.png",
+      "width": 1024,
+      "height": 256,
+      "sha256": "0041844779e7d98f21aa8cbc77a74b8bf266d916032115fc0eb3907d52965964",
+      "registries": [
+        "src/game/combat/entityAssets.generated.json"
+      ],
+      "bytes": 334720,
+      "publicSha256": "0041844779e7d98f21aa8cbc77a74b8bf266d916032115fc0eb3907d52965964",
+      "distSha256": "0041844779e7d98f21aa8cbc77a74b8bf266d916032115fc0eb3907d52965964",
+      "httpSha256": "0041844779e7d98f21aa8cbc77a74b8bf266d916032115fc0eb3907d52965964",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-combat-a.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "69739860160bf09700f777e965b3bc8746787c6afed87e38f83bd155b28ad45e",
+      "registries": [
+        "src/game/combat/cloudMeleeCombat.generated.json"
+      ],
+      "bytes": 1283056,
+      "publicSha256": "69739860160bf09700f777e965b3bc8746787c6afed87e38f83bd155b28ad45e",
+      "distSha256": "69739860160bf09700f777e965b3bc8746787c6afed87e38f83bd155b28ad45e",
+      "httpSha256": "69739860160bf09700f777e965b3bc8746787c6afed87e38f83bd155b28ad45e",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-combat-b.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "75101402b58dfb01fc99b65804c7767583eb7d799cb04cdaf67cfedb4186c9e8",
+      "registries": [
+        "src/game/combat/cloudMeleeCombat.generated.json"
+      ],
+      "bytes": 1437655,
+      "publicSha256": "75101402b58dfb01fc99b65804c7767583eb7d799cb04cdaf67cfedb4186c9e8",
+      "distSha256": "75101402b58dfb01fc99b65804c7767583eb7d799cb04cdaf67cfedb4186c9e8",
+      "httpSha256": "75101402b58dfb01fc99b65804c7767583eb7d799cb04cdaf67cfedb4186c9e8",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-defense.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "f25fafe187b8d99fc81a7d22c14c3850c2592f4a7932d1d104dcef65a8af2897",
+      "registries": [
+        "src/game/combat/cloudMeleeMotion.generated.json"
+      ],
+      "bytes": 1517196,
+      "publicSha256": "f25fafe187b8d99fc81a7d22c14c3850c2592f4a7932d1d104dcef65a8af2897",
+      "distSha256": "f25fafe187b8d99fc81a7d22c14c3850c2592f4a7932d1d104dcef65a8af2897",
+      "httpSha256": "f25fafe187b8d99fc81a7d22c14c3850c2592f4a7932d1d104dcef65a8af2897",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-ledge.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "771c9ee9d5ad7410baf145b5498731467fb80af41cea30a264f654d65f641c38",
+      "registries": [
+        "src/game/combat/cloudMeleeCombat.generated.json"
+      ],
+      "bytes": 1228335,
+      "publicSha256": "771c9ee9d5ad7410baf145b5498731467fb80af41cea30a264f654d65f641c38",
+      "distSha256": "771c9ee9d5ad7410baf145b5498731467fb80af41cea30a264f654d65f641c38",
+      "httpSha256": "771c9ee9d5ad7410baf145b5498731467fb80af41cea30a264f654d65f641c38",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-motion-a.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "bdbdb9bb7927792205f4fdbc8d7f7d728a1c2511d87db04c046c0d9d9beaca81",
+      "registries": [
+        "src/game/combat/cloudMeleeMotion.generated.json"
+      ],
+      "bytes": 1639624,
+      "publicSha256": "bdbdb9bb7927792205f4fdbc8d7f7d728a1c2511d87db04c046c0d9d9beaca81",
+      "distSha256": "bdbdb9bb7927792205f4fdbc8d7f7d728a1c2511d87db04c046c0d9d9beaca81",
+      "httpSha256": "bdbdb9bb7927792205f4fdbc8d7f7d728a1c2511d87db04c046c0d9d9beaca81",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-motion-b.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "9a8c387db60ce5ccd6a9cc0b49d72e8677857058d353d8ecb17488f72d5fe1fb",
+      "registries": [
+        "src/game/combat/cloudMeleeMotion.generated.json"
+      ],
+      "bytes": 1887945,
+      "publicSha256": "9a8c387db60ce5ccd6a9cc0b49d72e8677857058d353d8ecb17488f72d5fe1fb",
+      "distSha256": "9a8c387db60ce5ccd6a9cc0b49d72e8677857058d353d8ecb17488f72d5fe1fb",
+      "httpSha256": "9a8c387db60ce5ccd6a9cc0b49d72e8677857058d353d8ecb17488f72d5fe1fb",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-combat-a.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "85730a037c5ebc8653c4bfb9d7a8974c0e670a438684a6c648998912f09787f8",
+      "registries": [
+        "src/game/combat/gokuMeleeCombat.generated.json"
+      ],
+      "bytes": 1546362,
+      "publicSha256": "85730a037c5ebc8653c4bfb9d7a8974c0e670a438684a6c648998912f09787f8",
+      "distSha256": "85730a037c5ebc8653c4bfb9d7a8974c0e670a438684a6c648998912f09787f8",
+      "httpSha256": "85730a037c5ebc8653c4bfb9d7a8974c0e670a438684a6c648998912f09787f8",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-combat-b.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "065601ef7bd816b5a258369a2ac39d0fccbf1513a8836d6630b9569f7de175fe",
+      "registries": [
+        "src/game/combat/gokuMeleeCombat.generated.json"
+      ],
+      "bytes": 1480022,
+      "publicSha256": "065601ef7bd816b5a258369a2ac39d0fccbf1513a8836d6630b9569f7de175fe",
+      "distSha256": "065601ef7bd816b5a258369a2ac39d0fccbf1513a8836d6630b9569f7de175fe",
+      "httpSha256": "065601ef7bd816b5a258369a2ac39d0fccbf1513a8836d6630b9569f7de175fe",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-defense.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "f7ab7296a08b5d468de2e5a0a0e3feb5d9916089a7806267171ec2519e3a5df2",
+      "registries": [
+        "src/game/combat/gokuMeleeMotion.generated.json"
+      ],
+      "bytes": 1762164,
+      "publicSha256": "f7ab7296a08b5d468de2e5a0a0e3feb5d9916089a7806267171ec2519e3a5df2",
+      "distSha256": "f7ab7296a08b5d468de2e5a0a0e3feb5d9916089a7806267171ec2519e3a5df2",
+      "httpSha256": "f7ab7296a08b5d468de2e5a0a0e3feb5d9916089a7806267171ec2519e3a5df2",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-ledge.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "4bf47f2fcafaddf71bfde028d968633a52c074f6af6f9bf2c72dfa52f5352b9e",
+      "registries": [
+        "src/game/combat/gokuMeleeCombat.generated.json"
+      ],
+      "bytes": 1162651,
+      "publicSha256": "4bf47f2fcafaddf71bfde028d968633a52c074f6af6f9bf2c72dfa52f5352b9e",
+      "distSha256": "4bf47f2fcafaddf71bfde028d968633a52c074f6af6f9bf2c72dfa52f5352b9e",
+      "httpSha256": "4bf47f2fcafaddf71bfde028d968633a52c074f6af6f9bf2c72dfa52f5352b9e",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-motion-a.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "9bed1d1097b0273cd43df592636e9cbbdb7cf6b921b81e125f6d06271924a9c9",
+      "registries": [
+        "src/game/combat/gokuMeleeMotion.generated.json"
+      ],
+      "bytes": 1575066,
+      "publicSha256": "9bed1d1097b0273cd43df592636e9cbbdb7cf6b921b81e125f6d06271924a9c9",
+      "distSha256": "9bed1d1097b0273cd43df592636e9cbbdb7cf6b921b81e125f6d06271924a9c9",
+      "httpSha256": "9bed1d1097b0273cd43df592636e9cbbdb7cf6b921b81e125f6d06271924a9c9",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-motion-b.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "6e83dab1b8b85c64dddbdd60ceeece56dd9c47fcd55fd21a26a6b3e70ffeace8",
+      "registries": [
+        "src/game/combat/gokuMeleeMotion.generated.json"
+      ],
+      "bytes": 1757466,
+      "publicSha256": "6e83dab1b8b85c64dddbdd60ceeece56dd9c47fcd55fd21a26a6b3e70ffeace8",
+      "distSha256": "6e83dab1b8b85c64dddbdd60ceeece56dd9c47fcd55fd21a26a6b3e70ffeace8",
+      "httpSha256": "6e83dab1b8b85c64dddbdd60ceeece56dd9c47fcd55fd21a26a6b3e70ffeace8",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-combat-a.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "a565a7b28fa69f08f6e9c361349b5865269b37b198dd4d43354b67350a53cc7c",
+      "registries": [
+        "src/game/combat/ragnaMeleeCombat.generated.json"
+      ],
+      "bytes": 1315512,
+      "publicSha256": "a565a7b28fa69f08f6e9c361349b5865269b37b198dd4d43354b67350a53cc7c",
+      "distSha256": "a565a7b28fa69f08f6e9c361349b5865269b37b198dd4d43354b67350a53cc7c",
+      "httpSha256": "a565a7b28fa69f08f6e9c361349b5865269b37b198dd4d43354b67350a53cc7c",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-combat-b.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "765db1cd049c2fab54a09ec9bcd87b82be46c885d9711a7b27164e13f94314b0",
+      "registries": [
+        "src/game/combat/ragnaMeleeCombat.generated.json"
+      ],
+      "bytes": 1284328,
+      "publicSha256": "765db1cd049c2fab54a09ec9bcd87b82be46c885d9711a7b27164e13f94314b0",
+      "distSha256": "765db1cd049c2fab54a09ec9bcd87b82be46c885d9711a7b27164e13f94314b0",
+      "httpSha256": "765db1cd049c2fab54a09ec9bcd87b82be46c885d9711a7b27164e13f94314b0",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-defense.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "d3db1bd2b454d7a91a003dfd91b4ca9d4286317eef581a0116b42e98251e8ec9",
+      "registries": [
+        "src/game/combat/ragnaMeleeMotion.generated.json"
+      ],
+      "bytes": 1420513,
+      "publicSha256": "d3db1bd2b454d7a91a003dfd91b4ca9d4286317eef581a0116b42e98251e8ec9",
+      "distSha256": "d3db1bd2b454d7a91a003dfd91b4ca9d4286317eef581a0116b42e98251e8ec9",
+      "httpSha256": "d3db1bd2b454d7a91a003dfd91b4ca9d4286317eef581a0116b42e98251e8ec9",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-ledge.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "8c7a8402d9b7f2d80252534ed0453bc6b878a001795a3aed5af7b2f1e601a640",
+      "registries": [
+        "src/game/combat/ragnaMeleeCombat.generated.json"
+      ],
+      "bytes": 1044565,
+      "publicSha256": "8c7a8402d9b7f2d80252534ed0453bc6b878a001795a3aed5af7b2f1e601a640",
+      "distSha256": "8c7a8402d9b7f2d80252534ed0453bc6b878a001795a3aed5af7b2f1e601a640",
+      "httpSha256": "8c7a8402d9b7f2d80252534ed0453bc6b878a001795a3aed5af7b2f1e601a640",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-motion-a.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "bb18707e0dfb64b4b42cf07762a14992d8de20f002e6d522afbcee60873b00cd",
+      "registries": [
+        "src/game/combat/ragnaMeleeMotion.generated.json"
+      ],
+      "bytes": 1654803,
+      "publicSha256": "bb18707e0dfb64b4b42cf07762a14992d8de20f002e6d522afbcee60873b00cd",
+      "distSha256": "bb18707e0dfb64b4b42cf07762a14992d8de20f002e6d522afbcee60873b00cd",
+      "httpSha256": "bb18707e0dfb64b4b42cf07762a14992d8de20f002e6d522afbcee60873b00cd",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-motion-b.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "51b20d4ddbcf556637a45fb69a9168f9671f2b96a48b720e2209ac6d3529d888",
+      "registries": [
+        "src/game/combat/ragnaMeleeMotion.generated.json"
+      ],
+      "bytes": 1321387,
+      "publicSha256": "51b20d4ddbcf556637a45fb69a9168f9671f2b96a48b720e2209ac6d3529d888",
+      "distSha256": "51b20d4ddbcf556637a45fb69a9168f9671f2b96a48b720e2209ac6d3529d888",
+      "httpSha256": "51b20d4ddbcf556637a45fb69a9168f9671f2b96a48b720e2209ac6d3529d888",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-combat-a.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "bf26d9439d1c876f50bea8cb3e032551a8f955143e8543cf18e3ae0690740800",
+      "registries": [
+        "src/game/combat/sonicMeleeCombat.generated.json"
+      ],
+      "bytes": 1355914,
+      "publicSha256": "bf26d9439d1c876f50bea8cb3e032551a8f955143e8543cf18e3ae0690740800",
+      "distSha256": "bf26d9439d1c876f50bea8cb3e032551a8f955143e8543cf18e3ae0690740800",
+      "httpSha256": "bf26d9439d1c876f50bea8cb3e032551a8f955143e8543cf18e3ae0690740800",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-combat-b.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "c3d698842c81f58ff6b2ed2fcf7b8cd4f06e51b06828518ef55a3d8e58e567ee",
+      "registries": [
+        "src/game/combat/sonicMeleeCombat.generated.json"
+      ],
+      "bytes": 1574540,
+      "publicSha256": "c3d698842c81f58ff6b2ed2fcf7b8cd4f06e51b06828518ef55a3d8e58e567ee",
+      "distSha256": "c3d698842c81f58ff6b2ed2fcf7b8cd4f06e51b06828518ef55a3d8e58e567ee",
+      "httpSha256": "c3d698842c81f58ff6b2ed2fcf7b8cd4f06e51b06828518ef55a3d8e58e567ee",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-defense.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "22380435ba5e40c6ce39fa52293dee661f4391b6f90f20e8962a6f7da3f4c367",
+      "registries": [
+        "src/game/combat/sonicMeleeMotion.generated.json"
+      ],
+      "bytes": 1468064,
+      "publicSha256": "22380435ba5e40c6ce39fa52293dee661f4391b6f90f20e8962a6f7da3f4c367",
+      "distSha256": "22380435ba5e40c6ce39fa52293dee661f4391b6f90f20e8962a6f7da3f4c367",
+      "httpSha256": "22380435ba5e40c6ce39fa52293dee661f4391b6f90f20e8962a6f7da3f4c367",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-ledge.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "20b57a3ceaeb111a1a4afd2db92927b9b81c32b178bc80a9285e48664efee8da",
+      "registries": [
+        "src/game/combat/sonicMeleeCombat.generated.json"
+      ],
+      "bytes": 1219957,
+      "publicSha256": "20b57a3ceaeb111a1a4afd2db92927b9b81c32b178bc80a9285e48664efee8da",
+      "distSha256": "20b57a3ceaeb111a1a4afd2db92927b9b81c32b178bc80a9285e48664efee8da",
+      "httpSha256": "20b57a3ceaeb111a1a4afd2db92927b9b81c32b178bc80a9285e48664efee8da",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-motion-a.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "32a3ece479a9cdc74ca5e53d768a1fc033da0199272276ba9fb72588addcdced",
+      "registries": [
+        "src/game/combat/sonicMeleeMotion.generated.json"
+      ],
+      "bytes": 1687559,
+      "publicSha256": "32a3ece479a9cdc74ca5e53d768a1fc033da0199272276ba9fb72588addcdced",
+      "distSha256": "32a3ece479a9cdc74ca5e53d768a1fc033da0199272276ba9fb72588addcdced",
+      "httpSha256": "32a3ece479a9cdc74ca5e53d768a1fc033da0199272276ba9fb72588addcdced",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-motion-b.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "3a98ed00d57fb009fb49d401c3ed82516311c187a0f6f1331c3658572e42a6e6",
+      "registries": [
+        "src/game/combat/sonicMeleeMotion.generated.json"
+      ],
+      "bytes": 1605832,
+      "publicSha256": "3a98ed00d57fb009fb49d401c3ed82516311c187a0f6f1331c3658572e42a6e6",
+      "distSha256": "3a98ed00d57fb009fb49d401c3ed82516311c187a0f6f1331c3658572e42a6e6",
+      "httpSha256": "3a98ed00d57fb009fb49d401c3ed82516311c187a0f6f1331c3658572e42a6e6",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-combat-a.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "f34b01774196673e44701e31a691b8a30c8ceb668d44b4e31264b0a047cd978a",
+      "registries": [
+        "src/game/combat/tifaMeleeCombat.generated.json"
+      ],
+      "bytes": 1913443,
+      "publicSha256": "f34b01774196673e44701e31a691b8a30c8ceb668d44b4e31264b0a047cd978a",
+      "distSha256": "f34b01774196673e44701e31a691b8a30c8ceb668d44b4e31264b0a047cd978a",
+      "httpSha256": "f34b01774196673e44701e31a691b8a30c8ceb668d44b4e31264b0a047cd978a",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-combat-b.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "4f88276e0293eaa2d05796c96bbae56693d620d995ec51d8c28d5ff6f9cb7d74",
+      "registries": [
+        "src/game/combat/tifaMeleeCombat.generated.json"
+      ],
+      "bytes": 1730336,
+      "publicSha256": "4f88276e0293eaa2d05796c96bbae56693d620d995ec51d8c28d5ff6f9cb7d74",
+      "distSha256": "4f88276e0293eaa2d05796c96bbae56693d620d995ec51d8c28d5ff6f9cb7d74",
+      "httpSha256": "4f88276e0293eaa2d05796c96bbae56693d620d995ec51d8c28d5ff6f9cb7d74",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-defense.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "0e17fbe82ea8b925083f222e3a47b0b63f541cc2a8f43627ed6ab73eb9d9a6e1",
+      "registries": [
+        "src/game/combat/tifaMeleeMotion.generated.json"
+      ],
+      "bytes": 1970160,
+      "publicSha256": "0e17fbe82ea8b925083f222e3a47b0b63f541cc2a8f43627ed6ab73eb9d9a6e1",
+      "distSha256": "0e17fbe82ea8b925083f222e3a47b0b63f541cc2a8f43627ed6ab73eb9d9a6e1",
+      "httpSha256": "0e17fbe82ea8b925083f222e3a47b0b63f541cc2a8f43627ed6ab73eb9d9a6e1",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-ledge.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "9bf31fb2211f68b07c39757230f6b944f704ab3661b4b5dab3ef4d263cac26bd",
+      "registries": [
+        "src/game/combat/tifaMeleeCombat.generated.json"
+      ],
+      "bytes": 1183405,
+      "publicSha256": "9bf31fb2211f68b07c39757230f6b944f704ab3661b4b5dab3ef4d263cac26bd",
+      "distSha256": "9bf31fb2211f68b07c39757230f6b944f704ab3661b4b5dab3ef4d263cac26bd",
+      "httpSha256": "9bf31fb2211f68b07c39757230f6b944f704ab3661b4b5dab3ef4d263cac26bd",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-motion-a.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "80fb30a7b74db4c6ac2ae70bfcab580a216880bcb8b1a27c80a6edd674f09e82",
+      "registries": [
+        "src/game/combat/tifaMeleeMotion.generated.json"
+      ],
+      "bytes": 1911162,
+      "publicSha256": "80fb30a7b74db4c6ac2ae70bfcab580a216880bcb8b1a27c80a6edd674f09e82",
+      "distSha256": "80fb30a7b74db4c6ac2ae70bfcab580a216880bcb8b1a27c80a6edd674f09e82",
+      "httpSha256": "80fb30a7b74db4c6ac2ae70bfcab580a216880bcb8b1a27c80a6edd674f09e82",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-motion-b.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "2a3583ba3c45f905f533b2a5d917e37c1dd63d5735c1c789168f2c4d8737c42e",
+      "registries": [
+        "src/game/combat/tifaMeleeMotion.generated.json"
+      ],
+      "bytes": 1868786,
+      "publicSha256": "2a3583ba3c45f905f533b2a5d917e37c1dd63d5735c1c789168f2c4d8737c42e",
+      "distSha256": "2a3583ba3c45f905f533b2a5d917e37c1dd63d5735c1c789168f2c4d8737c42e",
+      "httpSha256": "2a3583ba3c45f905f533b2a5d917e37c1dd63d5735c1c789168f2c4d8737c42e",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-combat-a.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "aaa2646277a63adc1736cdff21d1271f1fdc3f520a35abd24a4b0505a04be95e",
+      "registries": [
+        "src/game/combat/vegetaMeleeCombat.generated.json"
+      ],
+      "bytes": 1597062,
+      "publicSha256": "aaa2646277a63adc1736cdff21d1271f1fdc3f520a35abd24a4b0505a04be95e",
+      "distSha256": "aaa2646277a63adc1736cdff21d1271f1fdc3f520a35abd24a4b0505a04be95e",
+      "httpSha256": "aaa2646277a63adc1736cdff21d1271f1fdc3f520a35abd24a4b0505a04be95e",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-combat-b.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "f39c1a4005618d03773537d9eb7b6cc9f7b76c0014473042ce2a1c086d056bda",
+      "registries": [
+        "src/game/combat/vegetaMeleeCombat.generated.json"
+      ],
+      "bytes": 1516626,
+      "publicSha256": "f39c1a4005618d03773537d9eb7b6cc9f7b76c0014473042ce2a1c086d056bda",
+      "distSha256": "f39c1a4005618d03773537d9eb7b6cc9f7b76c0014473042ce2a1c086d056bda",
+      "httpSha256": "f39c1a4005618d03773537d9eb7b6cc9f7b76c0014473042ce2a1c086d056bda",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-defense.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "dff4c90f5aff0aea0ed9522fa1ca482c8c07755a19b97ad6743a15a05cb3f5c9",
+      "registries": [
+        "src/game/combat/vegetaMeleeMotion.generated.json"
+      ],
+      "bytes": 1680362,
+      "publicSha256": "dff4c90f5aff0aea0ed9522fa1ca482c8c07755a19b97ad6743a15a05cb3f5c9",
+      "distSha256": "dff4c90f5aff0aea0ed9522fa1ca482c8c07755a19b97ad6743a15a05cb3f5c9",
+      "httpSha256": "dff4c90f5aff0aea0ed9522fa1ca482c8c07755a19b97ad6743a15a05cb3f5c9",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-ledge.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "e30de6b87287208271ff1b62d5aca66da3caf432e7ac2599ff9ebf385f58e363",
+      "registries": [
+        "src/game/combat/vegetaMeleeCombat.generated.json"
+      ],
+      "bytes": 1088085,
+      "publicSha256": "e30de6b87287208271ff1b62d5aca66da3caf432e7ac2599ff9ebf385f58e363",
+      "distSha256": "e30de6b87287208271ff1b62d5aca66da3caf432e7ac2599ff9ebf385f58e363",
+      "httpSha256": "e30de6b87287208271ff1b62d5aca66da3caf432e7ac2599ff9ebf385f58e363",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-motion-a.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "0f0768cfcf9dfbc21072f0841b9c2751a59df1ef347ea03e210e6746e9a620e6",
+      "registries": [
+        "src/game/combat/vegetaMeleeMotion.generated.json"
+      ],
+      "bytes": 1588801,
+      "publicSha256": "0f0768cfcf9dfbc21072f0841b9c2751a59df1ef347ea03e210e6746e9a620e6",
+      "distSha256": "0f0768cfcf9dfbc21072f0841b9c2751a59df1ef347ea03e210e6746e9a620e6",
+      "httpSha256": "0f0768cfcf9dfbc21072f0841b9c2751a59df1ef347ea03e210e6746e9a620e6",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-motion-b.png",
+      "width": 1024,
+      "height": 2048,
+      "sha256": "bc2d8066456be8278385bb6bcfd383a74f6f8b113c4a9dacea8a9905867c814c",
+      "registries": [
+        "src/game/combat/vegetaMeleeMotion.generated.json"
+      ],
+      "bytes": 1553958,
+      "publicSha256": "bc2d8066456be8278385bb6bcfd383a74f6f8b113c4a9dacea8a9905867c814c",
+      "distSha256": "bc2d8066456be8278385bb6bcfd383a74f6f8b113c4a9dacea8a9905867c814c",
+      "httpSha256": "bc2d8066456be8278385bb6bcfd383a74f6f8b113c4a9dacea8a9905867c814c",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "db0753da04e298b95d4d7ade559c24bc58cf10449f27530a17893be81f3f7583",
+      "registries": [
+        "src/game/combat/summonAnimationsWave5.generated.json"
+      ],
+      "bytes": 1446113,
+      "publicSha256": "db0753da04e298b95d4d7ade559c24bc58cf10449f27530a17893be81f3f7583",
+      "distSha256": "db0753da04e298b95d4d7ade559c24bc58cf10449f27530a17893be81f3f7583",
+      "httpSha256": "db0753da04e298b95d4d7ade559c24bc58cf10449f27530a17893be81f3f7583",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave6/shiva.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "d4fd23a0600e13bee61e0e24b66ea1675d4dae72321a59747eabc9e2d4343c03",
+      "registries": [
+        "src/game/combat/summonAnimationsWave6.generated.json"
+      ],
+      "bytes": 1144339,
+      "publicSha256": "d4fd23a0600e13bee61e0e24b66ea1675d4dae72321a59747eabc9e2d4343c03",
+      "distSha256": "d4fd23a0600e13bee61e0e24b66ea1675d4dae72321a59747eabc9e2d4343c03",
+      "httpSha256": "d4fd23a0600e13bee61e0e24b66ea1675d4dae72321a59747eabc9e2d4343c03",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave6/star-platinum.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "9120946d8445d7827c98f676b1665a6f91bdd6c98e369580d97232497855644a",
+      "registries": [
+        "src/game/combat/summonAnimationsWave6.generated.json"
+      ],
+      "bytes": 880912,
+      "publicSha256": "9120946d8445d7827c98f676b1665a6f91bdd6c98e369580d97232497855644a",
+      "distSha256": "9120946d8445d7827c98f676b1665a6f91bdd6c98e369580d97232497855644a",
+      "httpSha256": "9120946d8445d7827c98f676b1665a6f91bdd6c98e369580d97232497855644a",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave6/tornado.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "d304ceee90cf317ee60efff349c7f367517b82fdc3857f07d05f9ffc8501720c",
+      "registries": [
+        "src/game/combat/summonAnimationsWave6.generated.json"
+      ],
+      "bytes": 789455,
+      "publicSha256": "d304ceee90cf317ee60efff349c7f367517b82fdc3857f07d05f9ffc8501720c",
+      "distSha256": "d304ceee90cf317ee60efff349c7f367517b82fdc3857f07d05f9ffc8501720c",
+      "httpSha256": "d304ceee90cf317ee60efff349c7f367517b82fdc3857f07d05f9ffc8501720c",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": true
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave7/bahamut.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "adfdc0c89e9b41b392eb8e43934598a116f401c79081914185e0b0859b48682c",
+      "registries": [
+        "src/game/combat/summonAnimationsWave7.generated.json"
+      ],
+      "bytes": 612519,
+      "publicSha256": "adfdc0c89e9b41b392eb8e43934598a116f401c79081914185e0b0859b48682c",
+      "distSha256": "adfdc0c89e9b41b392eb8e43934598a116f401c79081914185e0b0859b48682c",
+      "httpSha256": "adfdc0c89e9b41b392eb8e43934598a116f401c79081914185e0b0859b48682c",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave7/black-egrets.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "c9d4010bc625951a17a68d1f433652e8c82cfce025d75aefbdddf3133465258c",
+      "registries": [
+        "src/game/combat/summonAnimationsWave7.generated.json"
+      ],
+      "bytes": 626532,
+      "publicSha256": "c9d4010bc625951a17a68d1f433652e8c82cfce025d75aefbdddf3133465258c",
+      "distSha256": "c9d4010bc625951a17a68d1f433652e8c82cfce025d75aefbdddf3133465258c",
+      "httpSha256": "c9d4010bc625951a17a68d1f433652e8c82cfce025d75aefbdddf3133465258c",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave7/yamada.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "7cdb90732038e8ce497db67acc365c76bf838ca4ce5fdd29246c58237ae51adf",
+      "registries": [
+        "src/game/combat/summonAnimationsWave7.generated.json"
+      ],
+      "bytes": 788468,
+      "publicSha256": "7cdb90732038e8ce497db67acc365c76bf838ca4ce5fdd29246c58237ae51adf",
+      "distSha256": "7cdb90732038e8ce497db67acc365c76bf838ca4ce5fdd29246c58237ae51adf",
+      "httpSha256": "7cdb90732038e8ce497db67acc365c76bf838ca4ce5fdd29246c58237ae51adf",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "localFullDecode": true,
+      "historical": false
+    }
+  ],
+  "browserImages": [
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/irvine_ff8.png",
+      "sha256": "064308772fc61429c177563b039dab5a9da945804ca2d193e31620241378a33c",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/laguna_ff8.png",
+      "sha256": "c022526b92bd7985ffa3e4501eb37821b9de312f94aa98b1576f5d2d2f6e5fcb",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/quistis_ff8.png",
+      "sha256": "1eefeca016e5d2fa993d03882d113c7ab03e01184f00f8ffce9b5fcefb036c25",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/rinoa_ff8.png",
+      "sha256": "2589272c9c766b83d2ea86e8f5b51b36c6f3c0e35e81036109a683848c97b853",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/seifer_ff8.png",
+      "sha256": "72097c01854fa71cc166f25109b2e413b9a19bb51a9ce088a5f940dff830328b",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/selphie_ff8.png",
+      "sha256": "b4ac604ae9d18c72c08076adc58fe7558d0b0aa75f694401789bd9cd438975be",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/squall_ff8.png",
+      "sha256": "839e0d51fe615d7788816dd6f36dc36ca26fcc4e7cc687e4bec1e1b4ad12cabb",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/zell_ff8.png",
+      "sha256": "3818151ef2246f026056d81710cae23ab4c3d385019b09a584cbb15298bcc0ee",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/fang_ff13.png",
+      "sha256": "102ac05748354c165ec3d2707b22d0a5f563424f9f9dcb02a9c5408654295d93",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/gladiolus_ff15.png",
+      "sha256": "f94988b1528985533aaceee7039924776639ed068d051a9900d156eee4ff6127",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/hope_ff13.png",
+      "sha256": "a9921fdba10102099aa318ea6776f4ff1406e1859256e5da9c353b1217ea641a",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/ignis_ff15.png",
+      "sha256": "380787327cb9eaa38b5c9fe1afeb13beab472d0ac9ad341568d056e22f1ac883",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/lightning_ff13.png",
+      "sha256": "b8ca305d65183453f88aee29a7c545622c88fcc5b5282877d165d92b96785e62",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/lunafreya_ff15.png",
+      "sha256": "53ce58cb316a62ef08888266b25866e65318c1d0fb7e8d8437cbfbd9c1fd73c7",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/noctis_ff15.png",
+      "sha256": "da867e153444edcf9d5df4fc9d7ff6c02eb8ff8801ffdcb633da4f259101f077",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/prompto_ff15.png",
+      "sha256": "b42429e872f617749b6bd7a8042ede3a67a17e892170f1fbecbcfadeac763bdd",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/sazh_ff13.png",
+      "sha256": "7de32f03f97b38c9f0d02d58a19f43721e6ac58ae1b3076ef2146732a1323fd3",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/snow_ff13.png",
+      "sha256": "7a7c5de69cb73a1c49b366f905ff90e29cfe764d4e514a6e97bf84d7ab6724ec",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/vanille_ff13.png",
+      "sha256": "4a8fddae11e99512a85736c16f4235178cb57a807cfc019deff392230966b16d",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/kakashi_war.png",
+      "sha256": "b248d7d2868139f601ad7d29e11ae013d094ef229e5f9a7fb39d8ba77c37f34f",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/naruto_uzumaki_young.png",
+      "sha256": "2b5f506ec3eb24532389632bf7b65ca96310260a5f6f83569ee3610b01f816ac",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/piccolo_dbz.png",
+      "sha256": "94c6a68f6862aa8490cda63637935863012299aab7faabb5074c72cf399a0bec",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/redxiii_ff7.png",
+      "sha256": "69178309ce19444fbedf269d9ce8ec94572c6d2eb8e0832f81764b407bf93d88",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/sakura_haruno_young.png",
+      "sha256": "cf619b5d8d2797a44be03a5e84096128de311463014bc75416a888923ce6bcba",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/sasuke_uchiha_young.png",
+      "sha256": "9c9c7807ccd0ed8fbcc68f0a23c06020ba0e3f32c69ba6cc04abb5723346f6b3",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/vincent_ff7.png",
+      "sha256": "e8397c23f9524de57e6782c6cfc54212beecc3e286c100d408caa307edd874f1",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/yuffie_ff7.png",
+      "sha256": "74257a86ac17f220de451f778d1c89d69c87368ce13ba806a9e6d94a8ab7d2e3",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/arbiter.png",
+      "sha256": "9a682e0afbab5ace71ccc2ff2863bde5a96f43ae9d168c7006cffc81e946bc8a",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/arca_bastion.png",
+      "sha256": "0be893d4c9f2e4dde62ba0e9359eb62d07be7f54c5d10372a43411a76d6018cf",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/arca_mirelle.png",
+      "sha256": "9308ab582c37f7c3421e7ef2264ced506d280dbfdda7128376b62b47b9341632",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/boruto_uzumaki.png",
+      "sha256": "f1f6599b3d921a6bd69c6e9044f9e73ec9bed4eee79ba7bacf0cf534552f7448",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/doom_marine_classic.png",
+      "sha256": "ddce61163eaf6702179dfedc316263ff3911b3ecc333b4c72e2573b75c7cb8f4",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/doomslayer.png",
+      "sha256": "4186857c67f46a7039e630d62e1ba46c3712f023a8c9e2dc5cd795d175fcf54a",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/jill.png",
+      "sha256": "afe84d8904b9e530ae11f24626641af36727eb82aebf98a7581e665e7a1d46f7",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/johnson.png",
+      "sha256": "b533dcd4e743e522d7691a47404605b0b6f3c11e024ad56788b10c2fbe9bdfb2",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/ky.png",
+      "sha256": "7bf02e808319f6749cc151a8839c5da948b22af6f6a4998a9ecddabb8fe832e1",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/leon.png",
+      "sha256": "4371ef37814dc1e38d0efcb29f74b6394ec2b350892e3ccd0e7ced5c1eafed9b",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/masterchief.png",
+      "sha256": "a739f192adc3029323e8996df9abf78a352c3e44f8635f7c8e7632662cdfb709",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/mitsuki_boruto.png",
+      "sha256": "ed1bd8fbbb60bed4f9b1a2cf8bfe718572c28055e52946b79bb79903bfa184d3",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/rebecca_chambers.png",
+      "sha256": "22b69378ac4840fbced1c7d38f82d36c48906dfe14f63863f7350ff73fbc7bf5",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/sarada_uchiha.png",
+      "sha256": "b97000fa58928ceb214b624655909211bf380b24a79ef1158c6856beedf89ea3",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/solbadguy.png",
+      "sha256": "aac2118b28f8cebff1d600a61f2229bc35886c3e0ae271f95804e715b81e9489",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/devil_may_cry_dante.png",
+      "sha256": "cfc95536688d393c14038d38c6a6f67cf56c97e09878810735ffbdc5996843bd",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/devil_may_cry_lady.png",
+      "sha256": "44ff222970ccaba684692b31e12700ad59a84b7827ca89240b0c1dd35935fa69",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/devil_may_cry_nero.png",
+      "sha256": "b9a5189854abf1437b35ee54f0c3ee886122d7a1660b772669220c6a519e6eae",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/giorno_giovanna.png",
+      "sha256": "b69805c29123c73d8ea814e2f9924ba19376632ec774df9b6fbcd0e03b95efb2",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/joseph_joestar.png",
+      "sha256": "9e380d793f8f542c90434a195e30506422738b119e9ec1e8b10558491c7edea6",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/jotaro_kujo.png",
+      "sha256": "6df167646f1844177e43712604f66f1159bea2e5d53dee8f351bf46c9dc5cb73",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/knuckles_echidna.png",
+      "sha256": "07597a67f2fa87db21d13e69805740b6fdc229e237f2e215271d47c41cb0c742",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/miles_tails_prower.png",
+      "sha256": "1850f52435f9f782d08fcb1dfb9535737498489066b9c9c6f1abbc3ab66bc47e",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/otacon.png",
+      "sha256": "63155b329429d680734f625443ae088070eb4ae27c97a8e597522444e37e2ac4",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/raiden.png",
+      "sha256": "dc9d3c5118397dd0f497e32e32e4ba1cdb3c0b54a953573f06ad2e2a11cee797",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/skullgirls_beowulf.png",
+      "sha256": "3b53c4368db33a73fac3aa09b4178b52dfbfd88b90d9354907e106f7572830b0",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/skullgirls_big_band.png",
+      "sha256": "09fdcf2057b4cda84cfc6cea582249fe7315f86e0b309e644bbb9fdf3857da93",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/skullgirls_parasoul.png",
+      "sha256": "08bec276feff6d9731c93dbedf1910ebf15bbccbed7c0f5d26a1350430602e90",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/snake.png",
+      "sha256": "9b0b69c12a6a3bd3c3890edaca01987884997f7085c6297bdf3eb187ef81c76a",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/sonic_hedgehog.png",
+      "sha256": "9dad280e47782fbea27d8f06209b656b892297c4e3f99d5c8d97c27c04ad76c1",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/axl_gg.png",
+      "sha256": "4ac5bb4e0349042f3bca1f994ad9c6fa945922bd78cc26cf3725ac121640a6a2",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/baiken_gg.png",
+      "sha256": "8c9790da7a859fe758974f56ce03a331ed1c51bc19387307870716933b89f15e",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/dizzy_gg.png",
+      "sha256": "2c6fa3891ff7086952b8bc432402c991dd573235224d81ea63a357c55d8ef18f",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/han_solo.png",
+      "sha256": "2ca105124606a7f9d8841034a5af004f21bff1f48eef68b34f0a2ad3c588e6c4",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/hazama_bb.png",
+      "sha256": "2161239fb9dc5c1e4b611b820918f87ee7d2717d91011288425cbbc333527be6",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/jin.png",
+      "sha256": "3d15fd77036f7d04232e76ff74eacb270d13b81cdc6a7ac85c8064374a3dc3cd",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/kaoru_kamiya.png",
+      "sha256": "c7920c1310cd84d721a30d82ed14e107cdff95c43a6eac80cef67465aeb3c7a8",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/kenshin_himura.png",
+      "sha256": "8e22ed9a18de9bd4cfc5647f37443f1ed30f59126428808f8bf95df428d501f1",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/leia_organa.png",
+      "sha256": "17238d142cc248bf6c77d50ccf9b42167a304cdc065bdae4ce165118ab9d546c",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/may_gg.png",
+      "sha256": "79b2971e3c236ab8a3d686cb04b3459f9ff3af513456af9223a03843d1af1e01",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/millia_gg.png",
+      "sha256": "74c703dd8a368791572e1b26c6a6149cd2c943f2f0ebad7fed0b03f35e11a2cc",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/noel.png",
+      "sha256": "578ce418eb0ca8609be2c5e6b372ac9e2f637ee5c2456f23213cce1cc8b53ddf",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/rachel_bb.png",
+      "sha256": "fa26c32fdfd579f2ba8830b9f1d7414f5ae6baa9f99da28d81aa0cea16e0b9d7",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/ragna.png",
+      "sha256": "58d0072cce17860584abb36614aa2efdb7b1255127ff26be4779121f072c215e",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave7/sanosuke_sagara.png",
+      "sha256": "51072225dfa01cd5de302b96d68497988f1128fa4a9f451bcced2808e391dc5b",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/aerith_ff7.png",
+      "sha256": "93fd1b9497a90f4735d1be125bade917c0c2d4e5f966ae7654144b9435c0bce1",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/barret_ff7.png",
+      "sha256": "4971f2477742549d70c9e16c9f00ff059d1dae5120da42a5b511541bc23b3809",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/cloud_ff7.png",
+      "sha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/goku_dbz.png",
+      "sha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/naruto_six_paths.png",
+      "sha256": "96880a08de46edd1cfb0493947892aaf9498e370cf6ffead729d53a4df3d57b4",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/sasuke_rinnegan.png",
+      "sha256": "ca4b21e4c5eef89bdab0d3d8f9471f7b5906641f4b70fb7f1feab6c470376f09",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/tifa_ff7.png",
+      "sha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/vegeta_dbz.png",
+      "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave2/seifer_ff8.png",
+      "sha256": "9a68806007ea498a870a6ae0bbdb5c53f8e022df9cdee872006b144e27abee85",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave4/redxiii_ff7.png",
+      "sha256": "7865cc3c4a9a5ccafcb50386ca992e5c481ac8e1d4e6bd492c6fac95f7ceef95",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave4/vincent_ff7.png",
+      "sha256": "ce28744f43ce226f4ba850530505ad678e70d9f1bee2f245fbe9f79640ae5d40",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave5/ky.png",
+      "sha256": "714fba60e60fdc5695bca3d9a99ddec0ec7f8a94806a8ce3bc59821e5ce1e563",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave5/leon.png",
+      "sha256": "04b07d43bf6344cea7da00f2bc39234979a066c190d4f634f0bf73802011583b",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave5/solbadguy.png",
+      "sha256": "c0d578bece894bf8f82ecc845e0955a7bc1ad8b633f3e1ac5a40e3e84bc056d9",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6-part-a/miles_tails_prower.png",
+      "sha256": "337ecdf19e9111e0b249b3f28d7c42bb277108a7ac1a77b21f48ecad786518b7",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/devil_may_cry_lady.png",
+      "sha256": "b5b5efe91eda7af8fc800e5ea53f4249b1899453c90f3f75a94fc4b91dbf8c79",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/devil_may_cry_nero.png",
+      "sha256": "0a041d60ba10d081c2a6118f9ecba20b014e9fb2ee505fd59db7bd50cb64f69f",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/joseph_joestar.png",
+      "sha256": "b334852a756a6e1871c8c2a0a96acbe91af80b839d03b9804f4b49b4b6d3c2cb",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/skullgirls_beowulf.png",
+      "sha256": "bb19b6cf6b1965b685197b94b21fb8e65e306bd472f2d6f4eeb06f41978b3540",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/skullgirls_parasoul.png",
+      "sha256": "d805a91d14b3cc4d6fbf5dcd80399192228da5621074d0f46d24ee6b4ae7b2be",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/hazama_bb.png",
+      "sha256": "282c4d58cac1c24ae7dda1cc15603ff93ca4f6dfa29ef28c55a17d88200c8dcd",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/jin.png",
+      "sha256": "2e67a7a593577d72bb086d23c1445a0ce3aecad33bcf61812acf1ef9437696d4",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/noel.png",
+      "sha256": "30136fafac3f6713a30dd9d1ebf3b08db12e9d7289a6440815a1d7ee4bc0d170",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/rachel_bb.png",
+      "sha256": "530760fb791d3ab0c90dcee655202508055c0e4addb9d216164c583d5b8824bd",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7-part-a/ragna.png",
+      "sha256": "f9ecdef781f4e84f7cdd4bced2e4d82091eb06acef89634007b99761d758cce7",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/axl_gg.png",
+      "sha256": "03a2a9be9153233ba46224da9ad25f6afc0a698c34bbb0760fec406c1d84a8df",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/baiken_gg.png",
+      "sha256": "f8d281b72302f43ac5ab999f32e5b30b253bc9ca2adc5f304491fd302b1d167d",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/dizzy_gg.png",
+      "sha256": "bf90d0a65eaaff98ee64ecbcfb1ea86764905d5abd206b29c605a5f08b9c16f5",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/han_solo.png",
+      "sha256": "422985c683664f21278d6e5698346450502479c050c93392199ed5e1ff916be1",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/kaoru_kamiya.png",
+      "sha256": "07c991397f27124435aadc4b67e2e7bed1ee125413d4a3a1f942f34ef820eae7",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/kenshin_himura.png",
+      "sha256": "ce5c5fd1836244e9c6ab89d13e2762e95fba2bc31032b00b450f8148781888c5",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/may_gg.png",
+      "sha256": "e0bfc4e01859b8f24e75855dfa9272583603b20ebdd506bf1fc80837b6ee836b",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/millia_gg.png",
+      "sha256": "7517b08c7e82e30f8d4214bfe53379bb82d9ce5a693e74ab92801f4b5e519eab",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave7/sanosuke_sagara.png",
+      "sha256": "3fe3f8d46870a03b97b42be4adfe79ad2c1cced9983f281f9a5fe67296ade4e3",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections/crypt_necrodancer_aria.png",
+      "sha256": "c5c9f4f1459b263074855ce06d746f0d4941d51f8a869acee2e7c1be9e0bc4a5",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-forms-wave4/vincent-chaos.png",
+      "sha256": "10801b05b9ad4589405f03f79c9e976708df552b40291ce788fe4106d2e0798f",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/aegea-shield-forge.png",
+      "sha256": "873d20bdf4b42bea268a0bb37f25e867df3eb7d629b4e18f0df21ac65e19582e",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/aether-sky-mutineers.png",
+      "sha256": "f3d0c65a752e93b9278d5da01baba7d31d7139fd02fc5fd4fb291e911c6c24d3",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/aether-valve-drone.png",
+      "sha256": "ef54ef457e94603e9e15b5367aa1215df484e3437123ad9ec4ab6bdbc0a98af1",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/doom-bfg9000.png",
+      "sha256": "24257e6f9c367028e0af4fa0304c98a7f76225e4e06dd34f563030826466ef1c",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/ff7-bahamut.png",
+      "sha256": "ecbcd34bd73328279d14458e2f781c2e8a363ed86a093b26563a718a8e4c0ed5",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/ff7-ifrit.png",
+      "sha256": "dc25d37ea481a3caf527d20e30ebdf84a6ac1af73504aa48a49f1e7557d5bf25",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/ff7-shiva.png",
+      "sha256": "5f96a333ad2b03c42aef1b462001fb13a8eb4fae2dcdb8ff37a2249149818c01",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/guilty-gear-yamada.png",
+      "sha256": "7d5dbe695ecf455243b4a0d0779eef4ee3fb5fd7c94ec1f4d0e02b9be1471d71",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/half-life-dog.png",
+      "sha256": "ab1b4af724b84336ffc0724af23edab4769b3890830b6effeec2802ff0eab80a",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/halo-pelican.png",
+      "sha256": "83512108af4aef0a689dec91c72da9c908bcc345a495ade374d198eca9baa614",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/ilyr-nym-choir.png",
+      "sha256": "23ca7c92a8466e449a6f94f93b077e70863f43c73c1828d341aa13ea7da3086a",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/jojo-gold-experience.png",
+      "sha256": "2794007bd0de1dd30de70eafdb4b41d654c58e2ef4f88cc67ffdda2f0773dd28",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/jojo-hermit-purple.png",
+      "sha256": "429caf678b2eeab7ec16aa9eb2f5aacd337c6b22ad8ca333fa4bac21c388eea8",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/jojo-star-platinum.png",
+      "sha256": "c5f7897fd2f18b12d948ffab5f309f2c6ba1624e3d95cbec8968c21ac0d9143f",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/mandate-ancestor.png",
+      "sha256": "7fac8d39f299354aa6506544bf3caeb059cb6af48e9323dda8f2fcc121a05c86",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/meridian-clockwork-falcon.png",
+      "sha256": "b8deff5fdc9b6b548c702ab3806b99cfeb3cfdb5899ba5df61a6af9655ba387a",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/neon-ghostline.png",
+      "sha256": "5760ca3c9771c86b8cde1b396457475f05810eb03f09dec3a4ceac65837d3de2",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/nexus-barricade.png",
+      "sha256": "ec1e7ad232026018ba4dc372ee5381515ccab4b6a14f497318f7f39218a1800a",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/nexus-return-probe.png",
+      "sha256": "4e945bbcbd8531fc8056d26134d7eb95309f52c68965d0fd297c3da88e594356",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/nexus-suture-drone.png",
+      "sha256": "b9e6935592594e9db57fec3d922d7176324b0b146855206428f81ec28ada2baa",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/nexus-tessera-reflection.png",
+      "sha256": "0a43a6714156156b4c9daebb71be05ce61e62686ec414b8b902d48dd0b4c7042",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/payday-sentry.png",
+      "sha256": "c6fbb7280493cdecf1e37963d1b95c12c174594ec9f8c55bdda6e83fbe97072b",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/portal-turret.png",
+      "sha256": "545858b675f74496cb5856ddbea240501a6aa2080493ba3a4b7bbf03250eb40b",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/skullgirls-black-egrets.png",
+      "sha256": "ba88f04b9f05001250765edb2cee1f3147a26696ee7fd2664377f9ac747fe5d0",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/slender-pages.png",
+      "sha256": "baf2d0b9871b4d01257c16640cf646fc3fd8c44f2dcd271e9f02231fa5310a38",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/sonic-tornado.png",
+      "sha256": "4ebd9ad1eb35922051f6e97d9ea9caf0c921a085ee47c42df139bb9d489c4d5d",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/tawantinsuyu-relay.png",
+      "sha256": "1822b9cad1d857ac469ffebf489bd3bea8e4807994655ad9299014d38350a80b",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/yomi-yokai-parade.png",
+      "sha256": "0041844779e7d98f21aa8cbc77a74b8bf266d916032115fc0eb3907d52965964",
+      "width": 1024,
+      "height": 256,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-combat-a.png",
+      "sha256": "69739860160bf09700f777e965b3bc8746787c6afed87e38f83bd155b28ad45e",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-combat-b.png",
+      "sha256": "75101402b58dfb01fc99b65804c7767583eb7d799cb04cdaf67cfedb4186c9e8",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-defense.png",
+      "sha256": "f25fafe187b8d99fc81a7d22c14c3850c2592f4a7932d1d104dcef65a8af2897",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-ledge.png",
+      "sha256": "771c9ee9d5ad7410baf145b5498731467fb80af41cea30a264f654d65f641c38",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-motion-a.png",
+      "sha256": "bdbdb9bb7927792205f4fdbc8d7f7d728a1c2511d87db04c046c0d9d9beaca81",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-motion-b.png",
+      "sha256": "9a8c387db60ce5ccd6a9cc0b49d72e8677857058d353d8ecb17488f72d5fe1fb",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-combat-a.png",
+      "sha256": "85730a037c5ebc8653c4bfb9d7a8974c0e670a438684a6c648998912f09787f8",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-combat-b.png",
+      "sha256": "065601ef7bd816b5a258369a2ac39d0fccbf1513a8836d6630b9569f7de175fe",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-defense.png",
+      "sha256": "f7ab7296a08b5d468de2e5a0a0e3feb5d9916089a7806267171ec2519e3a5df2",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-ledge.png",
+      "sha256": "4bf47f2fcafaddf71bfde028d968633a52c074f6af6f9bf2c72dfa52f5352b9e",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-motion-a.png",
+      "sha256": "9bed1d1097b0273cd43df592636e9cbbdb7cf6b921b81e125f6d06271924a9c9",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-motion-b.png",
+      "sha256": "6e83dab1b8b85c64dddbdd60ceeece56dd9c47fcd55fd21a26a6b3e70ffeace8",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-combat-a.png",
+      "sha256": "a565a7b28fa69f08f6e9c361349b5865269b37b198dd4d43354b67350a53cc7c",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-combat-b.png",
+      "sha256": "765db1cd049c2fab54a09ec9bcd87b82be46c885d9711a7b27164e13f94314b0",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-defense.png",
+      "sha256": "d3db1bd2b454d7a91a003dfd91b4ca9d4286317eef581a0116b42e98251e8ec9",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-ledge.png",
+      "sha256": "8c7a8402d9b7f2d80252534ed0453bc6b878a001795a3aed5af7b2f1e601a640",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-motion-a.png",
+      "sha256": "bb18707e0dfb64b4b42cf07762a14992d8de20f002e6d522afbcee60873b00cd",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-ragna-wave7/ragna-motion-b.png",
+      "sha256": "51b20d4ddbcf556637a45fb69a9168f9671f2b96a48b720e2209ac6d3529d888",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-combat-a.png",
+      "sha256": "bf26d9439d1c876f50bea8cb3e032551a8f955143e8543cf18e3ae0690740800",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-combat-b.png",
+      "sha256": "c3d698842c81f58ff6b2ed2fcf7b8cd4f06e51b06828518ef55a3d8e58e567ee",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-defense.png",
+      "sha256": "22380435ba5e40c6ce39fa52293dee661f4391b6f90f20e8962a6f7da3f4c367",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-ledge.png",
+      "sha256": "20b57a3ceaeb111a1a4afd2db92927b9b81c32b178bc80a9285e48664efee8da",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-motion-a.png",
+      "sha256": "32a3ece479a9cdc74ca5e53d768a1fc033da0199272276ba9fb72588addcdced",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-motion-b.png",
+      "sha256": "3a98ed00d57fb009fb49d401c3ed82516311c187a0f6f1331c3658572e42a6e6",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-combat-a.png",
+      "sha256": "f34b01774196673e44701e31a691b8a30c8ceb668d44b4e31264b0a047cd978a",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-combat-b.png",
+      "sha256": "4f88276e0293eaa2d05796c96bbae56693d620d995ec51d8c28d5ff6f9cb7d74",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-defense.png",
+      "sha256": "0e17fbe82ea8b925083f222e3a47b0b63f541cc2a8f43627ed6ab73eb9d9a6e1",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-ledge.png",
+      "sha256": "9bf31fb2211f68b07c39757230f6b944f704ab3661b4b5dab3ef4d263cac26bd",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-motion-a.png",
+      "sha256": "80fb30a7b74db4c6ac2ae70bfcab580a216880bcb8b1a27c80a6edd674f09e82",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-motion-b.png",
+      "sha256": "2a3583ba3c45f905f533b2a5d917e37c1dd63d5735c1c789168f2c4d8737c42e",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-combat-a.png",
+      "sha256": "aaa2646277a63adc1736cdff21d1271f1fdc3f520a35abd24a4b0505a04be95e",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-combat-b.png",
+      "sha256": "f39c1a4005618d03773537d9eb7b6cc9f7b76c0014473042ce2a1c086d056bda",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-defense.png",
+      "sha256": "dff4c90f5aff0aea0ed9522fa1ca482c8c07755a19b97ad6743a15a05cb3f5c9",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-ledge.png",
+      "sha256": "e30de6b87287208271ff1b62d5aca66da3caf432e7ac2599ff9ebf385f58e363",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-motion-a.png",
+      "sha256": "0f0768cfcf9dfbc21072f0841b9c2751a59df1ef347ea03e210e6746e9a620e6",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-motion-b.png",
+      "sha256": "bc2d8066456be8278385bb6bcfd383a74f6f8b113c4a9dacea8a9905867c814c",
+      "width": 1024,
+      "height": 2048,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+      "sha256": "db0753da04e298b95d4d7ade559c24bc58cf10449f27530a17893be81f3f7583",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave6/shiva.png",
+      "sha256": "d4fd23a0600e13bee61e0e24b66ea1675d4dae72321a59747eabc9e2d4343c03",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave6/star-platinum.png",
+      "sha256": "9120946d8445d7827c98f676b1665a6f91bdd6c98e369580d97232497855644a",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave6/tornado.png",
+      "sha256": "d304ceee90cf317ee60efff349c7f367517b82fdc3857f07d05f9ffc8501720c",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave7/bahamut.png",
+      "sha256": "adfdc0c89e9b41b392eb8e43934598a116f401c79081914185e0b0859b48682c",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave7/black-egrets.png",
+      "sha256": "c9d4010bc625951a17a68d1f433652e8c82cfce025d75aefbdddf3133465258c",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave7/yamada.png",
+      "sha256": "7cdb90732038e8ce497db67acc365c76bf838ca4ce5fdd29246c58237ae51adf",
+      "width": 1024,
+      "height": 1024,
+      "decoded": true
+    }
+  ],
+  "source1to1Verified": false
+}

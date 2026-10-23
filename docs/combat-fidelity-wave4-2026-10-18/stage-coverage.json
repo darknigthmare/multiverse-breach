@@ -1,0 +1,6034 @@
+{
+  "date": "2026-10-18",
+  "scope": "525 HEROES_DB universes, mode probes without a concrete scene; source-scene resolution and chronology constraints are separately tested",
+  "baselineProfiles": 65,
+  "addedProfiles": 24,
+  "totalProfiles": 89,
+  "addedUniverses": [
+    "Star Wars",
+    "Ghost in the Shell",
+    "Mad Max",
+    "Mad Max: Fury Road",
+    "Cyberpunk",
+    "Cyberpunk: Edgerunners",
+    "RoboCop",
+    "Blade Runner",
+    "Cowboy Bebop",
+    "Neon Genesis Evangelion",
+    "Le Cinquième Element",
+    "Futurama"
+  ],
+  "before": {
+    "universes": 525,
+    "withAnyModeMechanism": 36,
+    "withEveryModeMechanism": 32,
+    "baseAtmosphereOnly": 489,
+    "byMode": {
+      "Combat": {
+        "mechanisms": 35,
+        "baseAtmosphereOnly": 490
+      },
+      "Melee": {
+        "mechanisms": 36,
+        "baseAtmosphereOnly": 489
+      },
+      "RPG": {
+        "mechanisms": 32,
+        "baseAtmosphereOnly": 493
+      },
+      "Tactics": {
+        "mechanisms": 33,
+        "baseAtmosphereOnly": 492
+      }
+    }
+  },
+  "after": {
+    "universes": 525,
+    "withAnyModeMechanism": 48,
+    "withEveryModeMechanism": 44,
+    "baseAtmosphereOnly": 477,
+    "byMode": {
+      "Combat": {
+        "mechanisms": 47,
+        "baseAtmosphereOnly": 478
+      },
+      "Melee": {
+        "mechanisms": 48,
+        "baseAtmosphereOnly": 477
+      },
+      "RPG": {
+        "mechanisms": 44,
+        "baseAtmosphereOnly": 481
+      },
+      "Tactics": {
+        "mechanisms": 45,
+        "baseAtmosphereOnly": 480
+      }
+    }
+  },
+  "newOfficialAnimationFrames": 0,
+  "newEffectAtlases": 0,
+  "newStaticBackdropRegions": 0,
+  "source1to1Validated": 0,
+  "fidelityVerified": false,
+  "officialSourceFrames": false,
+  "mechanismGeometry": "original scene-specific procedural geometry; timing, dimensions and several mechanical details are openly authored adaptations",
+  "timeSource": "simulation-elapsed-seconds",
+  "reducedMotion": "freeze-at-time-zero",
+  "gameplayEffect": "none",
+  "preservationEvidence": "stage-baseline.json preserves65 prior definitions and130 recorder SHA256 hashes captured before integration",
+  "sourceChecks": "stage-source-checks.json",
+  "browserEvidence": "stage-browser.json",
+  "localAssetInventory": {
+    "method": "Filesystem filename inventory plus reading the three existing cosmetic reference-dossier.json manifests; no source image was downloaded.",
+    "existingRelevantPaths": [
+      "public/backgrounds/ghost-in-the-shell-smash-openai.png",
+      "public/backgrounds/lore-stages/cyberpunk-edgerunners/combat.webp",
+      "public/backgrounds/lore-stages/cyberpunk-edgerunners/melee-backdrop.webp",
+      "public/backgrounds/lore-stages/cyberpunk-edgerunners/melee-platforms.webp",
+      "public/backgrounds/lore-stages/cyberpunk-edgerunners/melee.webp",
+      "public/backgrounds/lore-stages/cyberpunk-edgerunners/rpg.webp",
+      "public/backgrounds/lore-stages/cyberpunk-edgerunners/tactics-tiles.webp",
+      "public/backgrounds/lore-stages/cyberpunk-edgerunners/tactics.webp",
+      "public/backgrounds/lore-stages/futurama/combat.webp",
+      "public/backgrounds/lore-stages/futurama/melee-backdrop.webp",
+      "public/backgrounds/lore-stages/futurama/melee-platforms.webp",
+      "public/backgrounds/lore-stages/futurama/melee.webp",
+      "public/backgrounds/lore-stages/futurama/rpg.webp",
+      "public/backgrounds/lore-stages/futurama/tactics-tiles.webp",
+      "public/backgrounds/lore-stages/futurama/tactics.webp",
+      "public/backgrounds/lore-stages/neon-genesis-evangelion/combat.webp",
+      "public/backgrounds/lore-stages/neon-genesis-evangelion/melee-backdrop.webp",
+      "public/backgrounds/lore-stages/neon-genesis-evangelion/melee-platforms.webp",
+      "public/backgrounds/lore-stages/neon-genesis-evangelion/melee.webp",
+      "public/backgrounds/lore-stages/neon-genesis-evangelion/rpg.webp",
+      "public/backgrounds/lore-stages/neon-genesis-evangelion/tactics-tiles.webp",
+      "public/backgrounds/lore-stages/neon-genesis-evangelion/tactics.webp",
+      "public/backgrounds/mad-max-rpg-openai.png",
+      "public/backgrounds/star-wars-smash-openai.png",
+      "public/sprites/generated/finals/le-cinquieme-element/stagesetpiece.png",
+      "public/sprites/generated/finals/neon-genesis-evangelion/stagesetpiece.png",
+      "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/hud-theme.webp",
+      "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/intro-poses-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/ko-effects-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/portal-effects-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/profile-banner.webp",
+      "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/profile-title.webp",
+      "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/reference-dossier.json",
+      "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/victory-poses-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/le-cinquieme-element/hud-theme.webp",
+      "public/visuals/cosmetics/openai/universes/le-cinquieme-element/intro-poses-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/le-cinquieme-element/ko-effects-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/le-cinquieme-element/portal-effects-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/le-cinquieme-element/profile-banner.webp",
+      "public/visuals/cosmetics/openai/universes/le-cinquieme-element/profile-title.webp",
+      "public/visuals/cosmetics/openai/universes/le-cinquieme-element/reference-dossier.json",
+      "public/visuals/cosmetics/openai/universes/le-cinquieme-element/victory-poses-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/star-wars/hud-theme.webp",
+      "public/visuals/cosmetics/openai/universes/star-wars/intro-poses-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/star-wars/ko-effects-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/star-wars/portal-effects-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/star-wars/profile-banner.webp",
+      "public/visuals/cosmetics/openai/universes/star-wars/profile-title.webp",
+      "public/visuals/cosmetics/openai/universes/star-wars/reference-dossier.json",
+      "public/visuals/cosmetics/openai/universes/star-wars/victory-poses-atlas.webp"
+    ],
+    "existingCosmeticAtlasPaths": [
+      "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/intro-poses-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/ko-effects-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/portal-effects-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/victory-poses-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/le-cinquieme-element/intro-poses-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/le-cinquieme-element/ko-effects-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/le-cinquieme-element/portal-effects-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/le-cinquieme-element/victory-poses-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/star-wars/intro-poses-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/star-wars/ko-effects-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/star-wars/portal-effects-atlas.webp",
+      "public/visuals/cosmetics/openai/universes/star-wars/victory-poses-atlas.webp"
+    ],
+    "newAssetPaths": [],
+    "newSourceFrames": 0,
+    "newAtlasFrames": 0,
+    "bitmapComposites": 0,
+    "interpretation": "Existing cosmetic sheets contain portal/KO/presentation rows. They do not supply the24 mechanical loops drawn in this wave; none is relabelled as source frames or used as a universal portal."
+  },
+  "profiles": [
+    {
+      "id": "star-wars-death-star1-blast-doors",
+      "universes": [
+        "Star Wars"
+      ],
+      "scenePattern": "/(?:death star|[eé]toile.*mort).*(?:hangar|blast|porte)|(?:hangar|blast door).*(?:death star|[eé]toile.*mort)/i",
+      "excludedScenePattern": "/death star\\s*(?:ii|2)|[eé]toile.*mort\\s*(?:ii|2)|endor|starkiller|[eé]pisode\\s*(?:vi\\b|vii|viii|ix|[6789])|destroyed|d[eé]truite/i",
+      "sourceWork": "Star Wars: A New Hope (1977), first Death Star",
+      "sourceReference": "https://www.starwars.com/databank/Death-Star",
+      "sourceScene": "Death Star I — hangar, portes blindées de l’Épisode IV",
+      "continuity": "Episode IV, first Death Star before destruction",
+      "mechanism": "death-star1-blast-doors",
+      "color": "#aebbc5",
+      "periodSeconds": 30,
+      "sceneEvidence": "The official Databank establishes the first Death Star and Episode IV. These empty hangar blast-door leaves interpret its mechanical architecture; exact panel outlines and the repeated opening cycle are authored, not validated film frames.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "star-wars-cloud-city-carbon-lift",
+      "universes": [
+        "Star Wars"
+      ],
+      "scenePattern": "/(?:cloud city|cit[eé].*nuages|bespin).*(?:carbon|cong[eé]lation)|carbon.*(?:cloud city|bespin)/i",
+      "excludedScenePattern": "/kamino|death star|starkiller|[eé]pisode\\s*(?:iv\\b|vi\\b|vii|viii|ix|[46789])|destroyed|d[eé]truite/i",
+      "sourceWork": "Star Wars: The Empire Strikes Back (1980), Cloud City",
+      "sourceReference": "https://www.starwars.com/databank/carbon-freezing",
+      "sourceScene": "Cloud City — chambre de congélation carbonique, plateforme vide de l’Épisode V",
+      "continuity": "Episode V, Cloud City carbon-freezing chamber",
+      "mechanism": "cloud-city-carbon-lift",
+      "color": "#c2a183",
+      "periodSeconds": 36,
+      "sceneEvidence": "The Databank locates carbon freezing in Cloud City in Episode V. An empty chamber platform, guide rods and overhead handling yoke move as a mechanical adaptation; nobody is frozen, injured or spawned.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "ghost-shell-sac-tachikoma-maintenance",
+      "universes": [
+        "Ghost in the Shell"
+      ],
+      "scenePattern": "/(?:section\\s*9|sac|stand alone complex).*tachikoma|tachikoma.*(?:maintenance|atelier|entretien)/i",
+      "excludedScenePattern": "/1995|2017|sac.?2045|arise|innocence|tachikoma.*(?:destroyed|d[eé]truit)/i",
+      "sourceWork": "Ghost in the Shell: Stand Alone Complex 2nd GIG (2004)",
+      "sourceReference": "https://theghostintheshell.jp/en/series/stand_alone_complex",
+      "sourceScene": "Section 9 — atelier de maintenance des Tachikoma, SAC 2nd GIG",
+      "continuity": "Stand Alone Complex / 2nd GIG, not the 1995 film or SAC_2045",
+      "mechanism": "sac-tachikoma-wheel-diagnostic",
+      "color": "#90b8c8",
+      "periodSeconds": 26,
+      "sceneEvidence": "The official SAC page describes four-legged wheeled Tachikoma and Proto maintaining them. Four wheel hubs turn on a fixed maintenance cradle; the small chassis stays in the workshop and has no targeting, weapon or collision.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "ghost-shell-sac-cyberbrain-dive-room",
+      "universes": [
+        "Ghost in the Shell"
+      ],
+      "scenePattern": "/(?:section\\s*9|sac|stand alone complex).*(?:dive|plong[eé]e|cyberbrain.*room)|cyberbrain dive room/i",
+      "excludedScenePattern": "/1995|2017|sac.?2045|arise|innocence/i",
+      "sourceWork": "Ghost in the Shell: Stand Alone Complex 2nd GIG (2004)",
+      "sourceReference": "https://theghostintheshell.jp/en/series/stand_alone_complex",
+      "sourceScene": "Section 9 — salle de plongée cyberbrain d’Ishikawa, SAC 2nd GIG",
+      "continuity": "Stand Alone Complex / 2nd GIG",
+      "mechanism": "sac-dive-room-cable-reels",
+      "color": "#9ebbc3",
+      "periodSeconds": 32,
+      "sceneEvidence": "The official SAC page places Ishikawa in a cyberbrain dive room. Empty seats, cable reels and articulated connector booms give that documented room an authored mechanical treatment; reel geometry and idle motion are adaptations, not a claimed source loop.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "mad-max-mfp-interceptor-blower",
+      "universes": [
+        "Mad Max"
+      ],
+      "scenePattern": "/mfp.*(?:garage|interceptor|pursuit)|(?:garage|interceptor).*mfp/i",
+      "excludedScenePattern": "/fury road|furiosa|citadel|citadelle|1979.*destroyed|d[eé]truit|road warrior|mad max\\s*2/i",
+      "sourceWork": "Mad Max (1979), Main Force Patrol garage",
+      "sourceReference": "https://en.wikipedia.org/wiki/Pursuit_Special",
+      "sourceScene": "MFP — garage de Mad Max 1979, courroie du compresseur de l’Interceptor",
+      "continuity": "Mad Max (1979), fictional blower engaged",
+      "mechanism": "mfp-interceptor-blower-belt",
+      "color": "#b9b5a2",
+      "periodSeconds": 19,
+      "sceneEvidence": "The Pursuit Special is assembled in the MFP garage. The fictional engaged supercharger drives this belt drawing; the 1979 filming prop had a nonfunctional blower, so this is explicitly a film-world interpretation rather than a claim about real prop mechanics.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "mad-max2-refinery-process-pump",
+      "universes": [
+        "Mad Max"
+      ],
+      "scenePattern": "/(?:mad max\\s*2|road warrior|pappagallo).*(?:refinery|raffinerie)|(?:refinery|raffinerie).*pappagallo/i",
+      "excludedScenePattern": "/fury road|furiosa|citadel|citadelle|exploded|explos[eé]e|destroyed|d[eé]truite|apr[eè]s.*explosion/i",
+      "sourceWork": "Mad Max 2 / The Road Warrior (1981), Pappagallo refinery compound",
+      "sourceReference": "https://en.wikipedia.org/wiki/Mad_Max_2",
+      "sourceScene": "Road Warrior — raffinerie de Pappagallo en activité, pompes de procédé",
+      "continuity": "Mad Max 2 (1981), refinery before demolition",
+      "mechanism": "road-warrior-refinery-process-pump",
+      "color": "#c1ac87",
+      "periodSeconds": 23,
+      "sceneEvidence": "The plot establishes a working oil refinery occupied by Pappagallo’s settlers before its demolition. A linked flywheel, piston and process pipe interpret that function; this exact pump layout and timing are original, not a verified film prop.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "fury-road-citadel-water-actuators",
+      "universes": [
+        "Mad Max: Fury Road"
+      ],
+      "scenePattern": "/(?:citadel|citadelle).*(?:water|eau|aqua\\s*cola|actuat|actionneur)|aqua\\s*cola.*(?:citadel|citadelle)/i",
+      "excludedScenePattern": "/mad max\\s*2|road warrior|mfp|1979|furiosa.*2024|destroyed|d[eé]truite/i",
+      "sourceWork": "Mad Max: Fury Road (2015), Citadel water release",
+      "sourceReference": "https://www.fxguide.com/fxfeatured/a-graphic-tale-the-visual-effects-of-mad-max-fury-road/",
+      "sourceScene": "Citadelle de Fury Road 2015 — actionneurs des conduites d’Aqua Cola",
+      "continuity": "Mad Max: Fury Road (2015)",
+      "mechanism": "citadel-water-pipe-actuators",
+      "color": "#b7c5b3",
+      "periodSeconds": 39,
+      "sceneEvidence": "The fxguide production interview identifies ship-pump actuators on the Citadel balcony and the water-release shot. Linked valve arms and a bounded falling-water ribbon interpret those pieces; no water pushes, floods or changes the combat floor.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "fury-road-war-rig-tanker-coupling",
+      "universes": [
+        "Mad Max: Fury Road"
+      ],
+      "scenePattern": "/war rig.*(?:desert|d[eé]sert|tanker|citerne|coupl)|(?:citerne|tanker).*war rig/i",
+      "excludedScenePattern": "/mad max\\s*2|road warrior|mfp|1979|furiosa.*2024|crash|wreck|[eé]pave|renvers[eé]/i",
+      "sourceWork": "Mad Max: Fury Road (2015), War Rig on the desert route",
+      "sourceReference": "https://www.fxguide.com/fxfeatured/a-graphic-tale-the-visual-effects-of-mad-max-fury-road/",
+      "sourceScene": "Fury Road — route désertique du War Rig, roues et attelage de la citerne",
+      "continuity": "Mad Max: Fury Road (2015), intact travelling War Rig",
+      "mechanism": "war-rig-articulated-tanker",
+      "color": "#c0aa8b",
+      "periodSeconds": 41,
+      "sceneEvidence": "The production interview describes the War Rig driving in the desert and its physical/VFX vehicle work. A distant tractor and cylindrical tanker share a fixed hitch while their wheels turn; no chase actors, collisions or playable vehicle are introduced.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "cyberpunk2077-ncart-viaduct-train",
+      "universes": [
+        "Cyberpunk"
+      ],
+      "scenePattern": "/(?:2077|night city|ncart).*(?:ncart|viaduct|viaduc|metro|m[eé]tro)|ncart.*(?:2\\.1|train)/i",
+      "excludedScenePattern": "/edgerunners|2076|2075|2022 anime|before.*2\\.1|avant.*2\\.1/i",
+      "sourceWork": "Cyberpunk 2077, Update 2.1 (2023), NCART",
+      "sourceReference": "https://www.cyberpunk.net/en/news/49597/update-2-1-patch-notes",
+      "sourceScene": "Night City 2077 — NCART 2.1, rame articulée sur le viaduc",
+      "continuity": "Cyberpunk 2077, playable NCART introduced in Update 2.1",
+      "mechanism": "ncart2077-viaduct-train",
+      "color": "#b9b37f",
+      "periodSeconds": 43,
+      "sceneEvidence": "CDPR Update 2.1 documents five NCART lines and nineteen stations. A three-car train crosses a concrete viaduct with articulated joins; the chosen span and timetable are authored and provide no ride, route change or collision.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "cyberpunk2077-h10-apartment-door",
+      "universes": [
+        "Cyberpunk"
+      ],
+      "scenePattern": "/(?:h10|v.s apartment|appartement.*v).*(?:apartment|appartement|door|porte)|(?:apartment|appartement|door|porte).*h10/i",
+      "excludedScenePattern": "/edgerunners|2076|2075|h4\\b|gloria|david|abandoned|abandonn[eé]/i",
+      "sourceWork": "Cyberpunk 2077, V’s Megabuilding H10 apartment",
+      "sourceReference": "https://www.cyberpunk.net/en/news/49831/patch-2-11",
+      "sourceScene": "Megabuilding H10 — appartement de V, porte coulissante et rail supérieur",
+      "continuity": "Cyberpunk 2077, H10 apartment; not David’s H4 home",
+      "mechanism": "h10-apartment-sliding-door",
+      "color": "#b8b291",
+      "periodSeconds": 33,
+      "sceneEvidence": "The official Patch 2.11 notes identify the H10 apartment door and its automatic closing. The sliding leaf and overhead drive interpret that doorway; their shape and maintenance-style opening cycle are authored, with no usable entrance, apartment state or security effect.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "edgerunners-david-ncart-platform",
+      "universes": [
+        "Cyberpunk: Edgerunners"
+      ],
+      "scenePattern": "/(?:david|edgerunners).*(?:ncart|metro|m[eé]tro|platform|quai)|ncart.*(?:2076|2075|anime)/i",
+      "excludedScenePattern": "/update\\s*2\\.1|2077.*game|jeu.*2077|phantom liberty|v.s apartment/i",
+      "sourceWork": "Cyberpunk: Edgerunners (2022), David’s commute",
+      "sourceReference": "https://vulkk.com/2022/09/17/all-locations-from-edgerunners-in-cyberpunk2077/",
+      "sourceScene": "Edgerunners — quai NCART du trajet scolaire de David, rame à l’arrêt",
+      "continuity": "Cyberpunk: Edgerunners (2022), anime commute before Academy expulsion",
+      "mechanism": "edgerunners-platform-train-doors",
+      "color": "#b1bd8b",
+      "periodSeconds": 37,
+      "sceneEvidence": "The location comparison identifies the metro station used by David on his way to Arasaka Academy. A stopped train opens paired leaves behind a fixed platform screen; the door cycle and projection are authored, not footage or an anime timing reconstruction.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "edgerunners-doc-clinic-chair",
+      "universes": [
+        "Cyberpunk: Edgerunners"
+      ],
+      "scenePattern": "/(?:doc|ripperdoc).*clinic|clinique.*(?:doc|ripper)|edgerunners.*(?:chair|fauteuil|clinic)/i",
+      "excludedScenePattern": "/viktor|vektor|phantom liberty|update\\s*2\\.1|2077.*game|jeu.*2077/i",
+      "sourceWork": "Cyberpunk: Edgerunners (2022), Doc’s clinic in episodes 1–2",
+      "sourceReference": "https://www.springfieldspringfield.co.uk/view_episode_scripts.php?episode=s01e02&tv-show=cyberpunk-edgerunners-2022",
+      "sourceScene": "Edgerunners — clinique de Doc, fauteuil de cyberware vide et appui articulé",
+      "continuity": "Cyberpunk: Edgerunners (2022), Doc; not Viktor Vektor’s game clinic",
+      "mechanism": "edgerunners-doc-chair-linkage",
+      "color": "#a2b9b6",
+      "periodSeconds": 34,
+      "sceneEvidence": "Episode 2’s transcript explicitly names Doc’s clinic and treatment. The empty reclining fixture and linked support are an authored interpretation of that clinical setting, not evidence that these exact moving struts appear in an official frame; no treatment changes a hero.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "robocop1987-ocp-ed209-diagnostic",
+      "universes": [
+        "RoboCop"
+      ],
+      "scenePattern": "/ocp.*(?:ed.?209|boardroom|conseil)|ed.?209.*(?:ocp|diagnostic|demo)/i",
+      "excludedScenePattern": "/2014|remake|robocop\\s*[23]|delta city.*completed|d[eé]truit|destroyed/i",
+      "sourceWork": "RoboCop (1987), OCP boardroom ED-209 demonstration",
+      "sourceReference": "https://en.wikipedia.org/wiki/RoboCop",
+      "sourceScene": "OCP — salle du conseil de RoboCop 1987, diagnostic mécanique de l’ED-209",
+      "continuity": "RoboCop (1987), ED-209 demonstration; no attack reenactment",
+      "mechanism": "ocp-ed209-diagnostic-joints",
+      "color": "#abb8bf",
+      "periodSeconds": 29,
+      "sceneEvidence": "The film’s plot identifies the OCP boardroom ED-209 demonstration. The distant unit pivots its upper housing and knee joints above fixed feet; this harmless diagnostic cycle adapts the prop without reenacting its attack or adding an NPC.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "robocop1987-metro-west-maintenance",
+      "universes": [
+        "RoboCop"
+      ],
+      "scenePattern": "/metro west.*(?:maintenance|chair|fauteuil|atelier)|robocop.*1987.*maintenance/i",
+      "excludedScenePattern": "/2014|remake|robocop\\s*[23]|ed.?209|destroyed|d[eé]truit/i",
+      "sourceWork": "RoboCop (1987), Metro West maintenance station",
+      "sourceReference": "https://en.wikipedia.org/wiki/RoboCop",
+      "sourceScene": "Metro West — station de maintenance de RoboCop 1987, siège et connecteurs vides",
+      "continuity": "RoboCop (1987), Metro West police station",
+      "mechanism": "metro-west-maintenance-booms",
+      "color": "#a6babc",
+      "periodSeconds": 35,
+      "sceneEvidence": "The film places RoboCop at Metro West and shows him during maintenance. A fixed upright service chair and two connector booms interpret that station; no occupant, memory sequence, healing or armor change is simulated and the exact mechanism is authored.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "blade-runner1982-spinner-vtol",
+      "universes": [
+        "Blade Runner"
+      ],
+      "scenePattern": "/(?:los angeles|la\\s*2019|blade runner.*1982).*(?:spinner|vtol)|spinner.*(?:2019|1982)/i",
+      "excludedScenePattern": "/2049|2099|wallace|las vegas|k.s spinner/i",
+      "sourceWork": "Blade Runner (1982), Los Angeles 2019 police Spinner",
+      "sourceReference": "https://www.bfi.org.uk/features/blade-runner",
+      "sourceScene": "Los Angeles 2019 — Spinner de Blade Runner 1982, ascension verticale",
+      "continuity": "Blade Runner (1982), Los Angeles 2019; not 2049",
+      "mechanism": "blade-runner-spinner-vtol",
+      "color": "#a6b8c4",
+      "periodSeconds": 47,
+      "sceneEvidence": "The BFI article describes the film’s flying cars and its Los Angeles setting. A recognizable twin-front-pod police Spinner rises behind the scene; its path and mechanical outline are original approximations, without importing a vehicle, pilot or source frames.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "blade-runner1982-bradbury-cage-lift",
+      "universes": [
+        "Blade Runner"
+      ],
+      "scenePattern": "/bradbury.*(?:elevator|lift|ascenseur|cage)|(?:elevator|ascenseur).*bradbury/i",
+      "excludedScenePattern": "/2049|2099|wallace|las vegas/i",
+      "sourceWork": "Blade Runner (1982), Bradbury Building atrium elevator",
+      "sourceReference": "https://moviemaps.org/images/1d7i",
+      "sourceScene": "Bradbury Building — ascenseur à cage de l’atrium dans Blade Runner 1982",
+      "continuity": "Blade Runner (1982), Bradbury Building",
+      "mechanism": "bradbury-cage-elevator",
+      "color": "#b9aa91",
+      "periodSeconds": 44,
+      "sceneEvidence": "MovieMaps identifies the on-screen Bradbury elevator ascending the atrium; the BFI separately identifies the filming location. The small lattice cage travels within fixed iron guides, with no usable platform or change to stage collision.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "bebop-swordfish-hangar-folding-wings",
+      "universes": [
+        "Cowboy Bebop"
+      ],
+      "scenePattern": "/bebop.*(?:hangar|swordfish.*wing)|swordfish.*(?:fold|ailes|wings)/i",
+      "excludedScenePattern": "/2021|netflix.*live|live.action|remake|red tail|hammerhead/i",
+      "sourceWork": "Cowboy Bebop (1998 anime), Swordfish II in the Bebop hangar",
+      "sourceReference": "https://special.goodsmile.info/swordfish-II/en/",
+      "sourceScene": "Bebop — hangar du Swordfish II, repli des ailes de l’anime de 1998",
+      "continuity": "Cowboy Bebop (1998 anime), Swordfish II; not the 2021 live-action show",
+      "mechanism": "swordfish-folding-wings",
+      "color": "#c09284",
+      "periodSeconds": 31,
+      "sceneEvidence": "The licensed Swordfish model page, supervised by mechanical designer Kimitoshi Yamane, documents folding wings, landing gear and a parked configuration. This empty hangar silhouette articulates the wing joints; proportions and maintenance cycle are authored.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "bebop-swordfish-service-monopod",
+      "universes": [
+        "Cowboy Bebop"
+      ],
+      "scenePattern": "/swordfish.*(?:monopod|train.*atterrissage|service|landing gear)|bebop.*service bay/i",
+      "excludedScenePattern": "/2021|netflix.*live|live.action|remake|red tail|hammerhead|folding wings|repli.*ailes/i",
+      "sourceWork": "Cowboy Bebop (1998 anime), Swordfish II service bay",
+      "sourceReference": "https://special.goodsmile.info/swordfish-II/en/",
+      "sourceScene": "Swordfish II — baie de service du Bebop, monopode et verrière articulés",
+      "continuity": "Cowboy Bebop (1998 anime), Swordfish II mechanical design",
+      "mechanism": "swordfish-service-monopod",
+      "color": "#b69c91",
+      "periodSeconds": 38,
+      "sceneEvidence": "The supervised licensed model documents a monopod shown closed or open and an opening cockpit cover. A side-view service cradle supports the ship while the monopod and empty canopy move; the repeated maintenance choreography is an adaptation, not a claimed anime scene loop.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "eva1995-tokyo3-retracting-buildings",
+      "universes": [
+        "Neon Genesis Evangelion"
+      ],
+      "scenePattern": "/tokyo.?3.*(?:retract|r[eé]tract|building|immeuble|fortress)|fortress.*tokyo.?3/i",
+      "excludedScenePattern": "/rebuild|3\\.0|2\\.0|1\\.0|wunder|end of evangelion|third impact|troisi[eè]me impact|destroyed|d[eé]truite|crater|crat[eè]re/i",
+      "sourceWork": "Neon Genesis Evangelion (1995 TV), Tokyo-3 fortress city",
+      "sourceReference": "https://wiki.evageeks.org/Tokyo-3",
+      "sourceScene": "Tokyo-3 — immeubles rétractables de la série TV 1995, configuration de forteresse",
+      "continuity": "1995 TV, intact Tokyo-3 before its destruction; not Rebuild",
+      "mechanism": "tokyo3-hydraulic-buildings",
+      "color": "#b7b6a0",
+      "periodSeconds": 49,
+      "sceneEvidence": "EvaWiki describes buildings descending under the surface on hydraulic systems and protective armor sliding over them. Three bounded background shafts show that mechanism; their speeds and projections are original, and the battle floor never retracts.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "eva1995-nerv-launch-frame",
+      "universes": [
+        "Neon Genesis Evangelion"
+      ],
+      "scenePattern": "/(?:nerv|geofront|g[eé]ofront).*(?:launch|catapult|lancement)|tokyo.?3.*(?:eva.*launch|lancement.*eva)/i",
+      "excludedScenePattern": "/rebuild|3\\.0|2\\.0|1\\.0|wunder|end of evangelion|third impact|troisi[eè]me impact|destroyed|d[eé]truite|crater|crat[eè]re/i",
+      "sourceWork": "Neon Genesis Evangelion (1995 TV), NERV launch shafts beneath Tokyo-3",
+      "sourceReference": "https://wiki.evageeks.org/Tokyo-3",
+      "sourceScene": "NERV — puits de lancement du Géofront TV 1995, berceau vide sur rails",
+      "continuity": "1995 TV, intact NERV Tokyo-3 launch system",
+      "mechanism": "nerv-empty-launch-frame",
+      "color": "#b5aa92",
+      "periodSeconds": 27,
+      "sceneEvidence": "EvaWiki identifies EVA units launching from beneath Tokyo-3 through disguised gates. This empty guide-frame, interlock and cable assembly interprets that system; no EVA, weapon cache, launch command, collision or encounter is created.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "fifth-element2263-taxi-lanes",
+      "universes": [
+        "Le Cinquième Element"
+      ],
+      "scenePattern": "/(?:new york|2263|cinqui[eè]me).*(?:taxi|traffic|trafic)|taxi.*(?:korben|2263)/i",
+      "excludedScenePattern": "/1914|fhloston|floston|destroyed|d[eé]truit/i",
+      "sourceWork": "The Fifth Element (1997), New York 2263 taxi traffic",
+      "sourceReference": "https://en.wikipedia.org/wiki/The_Fifth_Element",
+      "sourceScene": "New York 2263 — taxi jaune de Korben et voies aériennes du Cinquième Élément",
+      "continuity": "The Fifth Element (1997), future New York 2263; not the 1914 prologue",
+      "mechanism": "new-york2263-yellow-taxi-lanes",
+      "color": "#c4b174",
+      "periodSeconds": 45,
+      "sceneEvidence": "The film article describes Korben’s flying taxi and the digitally created traffic lanes. Boxy yellow taxis travel on separated height bands with vertical connector lights; the routes and timing are authored, without playable traffic or a chase.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "fifth-element-fhloston-opera-curtains",
+      "universes": [
+        "Le Cinquième Element"
+      ],
+      "scenePattern": "/fhloston.*(?:opera|op[eé]ra|curtain|rideau|paradise)|floston.*(?:opera|rideau)/i",
+      "excludedScenePattern": "/after.*(?:bomb|explosion)|apr[eè]s.*(?:bombe|explosion)|destroyed|d[eé]truit|1914/i",
+      "sourceWork": "The Fifth Element (1997), Fhloston Paradise opera auditorium",
+      "sourceReference": "https://en.wikipedia.org/wiki/The_Fifth_Element",
+      "sourceScene": "Fhloston Paradise — salle d’opéra avant évacuation, rideaux et câbles de cintres",
+      "continuity": "The Fifth Element (1997), Fhloston Paradise before destruction",
+      "mechanism": "fhloston-opera-curtain-rig",
+      "color": "#b09db9",
+      "periodSeconds": 42,
+      "sceneEvidence": "The film article identifies the Fhloston opera performance and the Royal Opera House filming location. Pleated curtains and a visible rig drum interpret the auditorium’s staging; this cycle is authored, with no Diva performance, explosion or automatic music playback.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "futurama-new-new-york-tubes",
+      "universes": [
+        "Futurama"
+      ],
+      "scenePattern": "/new new york.*(?:tube|transport)|futurama.*(?:transport tube|tube.*transport)/i",
+      "excludedScenePattern": "/1999.*old new york|old new york|ancien new york|destroyed|d[eé]truit/i",
+      "sourceWork": "Futurama, Space Pilot 3000 (1999), New New York transport tubes",
+      "sourceReference": "https://imsdb.com/transcripts/Futurama-Space-Pilot-3000.html",
+      "sourceScene": "New New York — tubes de transport du pilote de Futurama, conduits transparents",
+      "continuity": "Space Pilot 3000, future New New York",
+      "mechanism": "new-new-york-pneumatic-tubes",
+      "color": "#9cbeac",
+      "periodSeconds": 33,
+      "sceneEvidence": "The pilot transcript describes green overhead tubes carrying passengers across the city. Two routed transparent conduits show small air-flow markers instead of occupants; the pressure visualization is authored, with no transport, suction or character displacement.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "futurama-planet-express-roof",
+      "universes": [
+        "Futurama"
+      ],
+      "scenePattern": "/planet express.*(?:hangar|roof|toit)|(?:hangar|toit).*planet express/i",
+      "excludedScenePattern": "/destroyed|d[eé]truit|crash|[eé]pave/i",
+      "sourceWork": "Futurama, Space Pilot 3000 (1999), Planet Express hangar",
+      "sourceReference": "https://imsdb.com/transcripts/Futurama-Space-Pilot-3000.html",
+      "sourceScene": "Planet Express — hangar du pilote, toit rétractable et vérin de rampe",
+      "continuity": "Space Pilot 3000, intact Planet Express headquarters",
+      "mechanism": "planet-express-retractable-roof",
+      "color": "#9cb7b1",
+      "periodSeconds": 40,
+      "sceneEvidence": "The pilot transcript explicitly describes machinery tilting the ship and the whole hangar roof retracting. Sliding roof panels and an empty hinged service ramp interpret that mechanism; no ship launches, floor angle or building state changes.",
+      "animationWave": 4,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "fidelityVerified": false,
+      "officialSourceFrames": false,
+      "gameplayEffect": "none"
+    }
+  ],
+  "rows": [
+    {
+      "universe": "28 Days Later",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "A Nightmare on Elm Street",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Absolver: Downfall",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Ado",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Adoprixtoxis",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Aegea: War of the Moirai",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Aetherion: Seven Laws of Magic",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Aevum Fracture",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Agony",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Alien",
+      "modes": {
+        "Combat": "alien-nostromo-mother-relay-panels",
+        "Melee": "alien-nostromo-airlock-pressure-cycle",
+        "RPG": "alien-nostromo-mother-relay-panels",
+        "Tactics": "alien-nostromo-airlock-pressure-cycle"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Alien 3",
+      "modes": {
+        "Combat": "alien3-fiorina-leadworks-ladle-hoist",
+        "Melee": "alien3-fiorina-leadworks-ladle-hoist",
+        "RPG": "alien3-fiorina-leadworks-ladle-hoist",
+        "Tactics": "alien3-fiorina-leadworks-ladle-hoist"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Alien Resurrection",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Alien vs Predator",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Alien: Covenant",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Alien: Romulus",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Aliens",
+      "modes": {
+        "Combat": "aliens-atmosphere-processor-pressure-valves",
+        "Melee": "aliens-atmosphere-processor-pressure-valves",
+        "RPG": "aliens-atmosphere-processor-pressure-valves",
+        "Tactics": "aliens-atmosphere-processor-pressure-valves"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Aliens vs Predator: Requiem",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Altered Beast",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "American Dad",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Angels Fall First",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Another",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Ash vs Evil Dead",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "ASMRZ",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Assassin's Creed",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Asterix & Obelix",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Atarashii Gakko",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Atomic Heart",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Attack on Titan",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Aural Vampire",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Avatar (Na'vi)",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Baby Cart",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Babymetal",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Back to the Future",
+      "modes": {
+        "Combat": "back-future-1955-clocktower-escapement",
+        "Melee": "back-future-doc-garage-flux-capacitor",
+        "RPG": "back-future-1955-clocktower-escapement",
+        "Tactics": "back-future-doc-garage-flux-capacitor"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Band-Maid",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Banlieue 13",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Battle Royale",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Beat Banger — Safe Rhythm Studio",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Bella Poarch",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Ben 10",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Bendy and the Ink Machine",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Beyond Good & Evil",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Bible Black",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Big Mouth",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Bigflo & Oli",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Billie Eilish",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "BioShock",
+      "modes": {
+        "Combat": "bioshock-bathysphere-pressure-winch",
+        "Melee": "bioshock-bathysphere-pressure-winch",
+        "RPG": "bioshock-bathysphere-pressure-winch",
+        "Tactics": "bioshock-hephaestus-core-regulators"
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "BIT.TRIP",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Black Eyed Peas",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Blackpink",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Blade Runner",
+      "modes": {
+        "Combat": "blade-runner1982-spinner-vtol",
+        "Melee": "blade-runner1982-bradbury-cage-lift",
+        "RPG": "blade-runner1982-spinner-vtol",
+        "Tactics": "blade-runner1982-bradbury-cage-lift"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "BlazBlue",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Borderlands",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Borderlands 2",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Boruto: Naruto Next Generations",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Boruto: Two Blue Vortex",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Breaking Bad",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Bring Me the Horizon",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "BRINK",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Brütal Legend",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Buckethead",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Buckshot Roulette",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Buffy the Vampire Slayer",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Camera Cafe",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Cells at Work!",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Chainsaw Man",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Chappie",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Charmed",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Chicken Run",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Choo-Choo Charles",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Chucky",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Cloverfield",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Commando",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Cool Spot",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Counter-Strike",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Cowboy Bebop",
+      "modes": {
+        "Combat": "bebop-swordfish-hangar-folding-wings",
+        "Melee": "bebop-swordfish-service-monopod",
+        "RPG": "bebop-swordfish-hangar-folding-wings",
+        "Tactics": "bebop-swordfish-service-monopod"
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Crash Bandicoot",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Croc",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Croc: Legend of the Gobbos",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Crypt of the NecroDancer",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Crysis",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Cthulhu",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Cuphead",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Cyberpunk",
+      "modes": {
+        "Combat": "cyberpunk2077-ncart-viaduct-train",
+        "Melee": "cyberpunk2077-h10-apartment-door",
+        "RPG": "cyberpunk2077-ncart-viaduct-train",
+        "Tactics": "cyberpunk2077-h10-apartment-door"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Cyberpunk: Edgerunners",
+      "modes": {
+        "Combat": "edgerunners-david-ncart-platform",
+        "Melee": "edgerunners-doc-clinic-chair",
+        "RPG": "edgerunners-david-ncart-platform",
+        "Tactics": "edgerunners-doc-clinic-chair"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Daft Punk",
+      "modes": {
+        "Combat": "daft-punk-alive-led-sequencer",
+        "Melee": "daft-punk-alive-led-sequencer",
+        "RPG": "daft-punk-alive-led-sequencer",
+        "Tactics": "daft-punk-alive-led-sequencer"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Daikatana",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Dandadan",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Dante's Inferno",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Dark Souls",
+      "modes": {
+        "Combat": "dark-souls-firelink-parish-elevator",
+        "Melee": "dark-souls-anor-londo-rotating-staircase",
+        "RPG": "dark-souls-firelink-parish-elevator",
+        "Tactics": "dark-souls-anor-londo-rotating-staircase"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Day of the Dead",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Dead by Daylight",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Dead Rising",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Dead Space",
+      "modes": {
+        "Combat": "dead-space-ishimura-centrifuge",
+        "Melee": "dead-space-ishimura-tram-coupling",
+        "RPG": "dead-space-ishimura-tram-coupling",
+        "Tactics": "dead-space-ishimura-centrifuge"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Deadman Wonderland",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Deadmau5",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Death Note",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Defiance",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Demon Slayer",
+      "modes": {
+        "Combat": "demon-slayer-infinity-background-screens",
+        "Melee": "demon-slayer-infinity-background-screens",
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Deponia",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Despicer",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Deus Ex",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Devil May Cry",
+      "modes": {
+        "Combat": "devil-may-cry3-temen-ni-gru-gears",
+        "Melee": "devil-may-cry4-fortuna-gyro-blade",
+        "RPG": "devil-may-cry3-temen-ni-gru-gears",
+        "Tactics": "devil-may-cry4-fortuna-gyro-blade"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Devilman",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Die Antwoord",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Digimon",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Digimon Celestial Rift",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Digital Circus",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Dino Crisis",
+      "modes": {
+        "Combat": "dino-crisis-ibis-reactor-regulation",
+        "Melee": "dino-crisis-ibis-perimeter-beacons",
+        "RPG": "dino-crisis-ibis-reactor-regulation",
+        "Tactics": "dino-crisis-ibis-reactor-regulation"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Discipline: The Record of a Crusade",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Discworld",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Disenchantment",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Doom",
+      "modes": {
+        "Combat": "doom-uac-mars-cooling-cycle",
+        "Melee": "doom-uac-mars-cooling-cycle",
+        "RPG": "doom-uac-mars-cooling-cycle",
+        "Tactics": "doom-uac-mars-cooling-cycle"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Doom Sweeper — Safe Apocalypse",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Dragon Ball Z",
+      "modes": {
+        "Combat": "dbz-cell-games-cloud-drift",
+        "Melee": "dbz-namek-water-refraction",
+        "RPG": "dbz-time-chamber-hourglasses",
+        "Tactics": "dbz-cell-games-cloud-drift"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Duke Nukem",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Dungeon Meshi",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Dynamite Duke",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "E.Y.E: Divine Cybermancy",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Early Edition",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Earthworm Jim",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Ecco the Dolphin",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Elfen Lied",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Elvira",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Eminem",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Evil Dead",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Evil Dead (2013)",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Evolution",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Evolution: The Animated Series",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Evolve",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Exit 8",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Extreme Ghostbusters",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "F.E.A.R.",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Fallout",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Famille Pirate",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Family Guy",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Fantomas",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Final Fantasy VII",
+      "modes": {
+        "Combat": "ff7-reactor-mako-circulation",
+        "Melee": "ff7-reactor-mako-circulation",
+        "RPG": "ff7-reactor-mako-circulation",
+        "Tactics": "ff7-reactor-mako-circulation"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Final Fantasy VIII",
+      "modes": {
+        "Combat": "ff8-balamb-garden-flight-ring",
+        "Melee": "ff8-d-district-prison-screw-tower",
+        "RPG": "ff8-balamb-garden-flight-ring",
+        "Tactics": "ff8-d-district-prison-screw-tower"
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Final Fantasy XIII",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Final Fantasy XV",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Finding Frankie",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Flashback",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Freddi Fish",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Friday the 13th",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Frieren: Beyond Journeys End",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "From",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Fullmetal Alchemist",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Futurama",
+      "modes": {
+        "Combat": "futurama-new-new-york-tubes",
+        "Melee": "futurama-planet-express-roof",
+        "RPG": "futurama-new-new-york-tubes",
+        "Tactics": "futurama-planet-express-roof"
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Gantz",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Gears of War",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Gex",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Ghost",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Ghost in the Shell",
+      "modes": {
+        "Combat": "ghost-shell-sac-tachikoma-maintenance",
+        "Melee": "ghost-shell-sac-cyberbrain-dive-room",
+        "RPG": "ghost-shell-sac-tachikoma-maintenance",
+        "Tactics": "ghost-shell-sac-cyberbrain-dive-room"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Ghostbusters",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Ghosts of Mars",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Goat Simulator",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Godzilla",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Godzilla The Animated Series",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Goemon's Great Adventure",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Gorillaz",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Gremlins",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "GTFO",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Guilty Gear",
+      "modes": {
+        "Combat": "guilty-gear-zepp-airship-propellers",
+        "Melee": "guilty-gear-may-ship-anchor-winch",
+        "RPG": "guilty-gear-may-ship-anchor-winch",
+        "Tactics": "guilty-gear-zepp-airship-propellers"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Guitar Hero",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Gunnm",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Guns N Roses",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Gushing over Magical Girls — Safe Adult Reinterpretation",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "H2G2",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Half-Life",
+      "modes": {
+        "Combat": "half-life-sector-c-spectrometer-rotor",
+        "Melee": "half-life-sector-c-spectrometer-rotor",
+        "RPG": "half-life-black-mesa-transit-tram",
+        "Tactics": "half-life-black-mesa-transit-tram"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Halloween",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Halo",
+      "modes": {
+        "Combat": "halo-truth-and-reconciliation-gravity-lift",
+        "Melee": "halo-truth-and-reconciliation-gravity-lift",
+        "RPG": "halo-truth-and-reconciliation-gravity-lift",
+        "Tactics": "halo-installation04-forerunner-beacons"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Happy Wheels",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Harry Potter",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "HAWKEN",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Haydee — Safe Adaptation",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Hazbin Hotel",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Heart Eyes",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Heart of Darkness",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Heavy Metal 2000",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Helios 56",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Hell House LLC",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Hellblade: Senua’s Sacrifice",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Hello Neighbor",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Hellraiser",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Helluva Boss",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Hexen",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "HITMAN — World of Assassination",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Home Alone",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Horizon Zero Dawn",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Hoshi",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Hotline Miami",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "House of 1000 Corpses",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "House of the Dead",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "House of the Dead 2",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "House of the Dead 3",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "How to Make a Monster",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Ice Age",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Ilyr Concordat",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Imperium Aeternum",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Indila",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Infernum: Nine Pits",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Inside Out",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Insidious",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Interstellar Marines",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Inuyashiki",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Invincible",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Iron Sky",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Iron Tempest",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Italian Brainrot",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Jersey Devil",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Jet Set Radio",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "John Wick",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "JoJo's Bizarre Adventure",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Joker New 52",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Kaamelott",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Karune Cal",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Kazaam",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Kemet: The Devoured Sun",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Kill Bill",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Killer Instinct",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Killer Tomatoes from Outer Space",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Killing Floor 2",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Killzone",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Korn",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Kung Pow",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Kyary Pamyu Pamyu",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "La Casa de Papel",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "La Cite de la Peur",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "La Petite Histoire de France",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Lady Gaga",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Ladybaby",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Land of the Dead",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Last Action Hero",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Le Cinquième Element",
+      "modes": {
+        "Combat": "fifth-element2263-taxi-lanes",
+        "Melee": "fifth-element-fhloston-opera-curtains",
+        "RPG": "fifth-element2263-taxi-lanes",
+        "Tactics": "fifth-element-fhloston-opera-curtains"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Le Donjon de Naheulbeuk",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Left 4 Dead",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Legacy of Kain",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Les Aventures de Saturnin",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Les Aventuriers du Survivaure",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Les Chevaliers du Fiel",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Les Inconnus",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Les Kassos",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Les Tuche",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Les Visiteurs",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Les Visiteurs du Futur",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Les Zinzins de l’espace",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Like a Dragon",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Lil Nas X",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Lilo & Stitch",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Linkin Park",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Little Big",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "LittleBigPlanet",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Lost Planet 2",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "M3GAN",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Mad Max",
+      "modes": {
+        "Combat": "mad-max-mfp-interceptor-blower",
+        "Melee": "mad-max2-refinery-process-pump",
+        "RPG": "mad-max-mfp-interceptor-blower",
+        "Tactics": "mad-max2-refinery-process-pump"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Mad Max: Fury Road",
+      "modes": {
+        "Combat": "fury-road-citadel-water-actuators",
+        "Melee": "fury-road-war-rig-tanker-coupling",
+        "RPG": "fury-road-citadel-water-actuators",
+        "Tactics": "fury-road-war-rig-tanker-coupling"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "MagiC JacK",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Magicka",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Malcolm in the Middle",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Man with a Mission",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Mandate of Nine Heavens",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Marathon",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Marble Hornets",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Marilyn Manson",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Mars Attacks",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Marvel Zombies — MCU Animation",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Mashle",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Mass Effect",
+      "modes": {
+        "Combat": "mass-effect-normandy-sr1-galaxy-map",
+        "Melee": "mass-effect-presidium-skycar-lanes",
+        "RPG": "mass-effect-normandy-sr1-galaxy-map",
+        "Tactics": "mass-effect-presidium-skycar-lanes"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Max Payne 2",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "MDK",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "MediEvil",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Meet the Feebles",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Men in Black",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Meridian Clockwork",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Méridien Creux",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Metal Gear",
+      "modes": {
+        "Combat": "metal-gear-shadow-moses-heliport-searchlights",
+        "Melee": "metal-gear-shadow-moses-cargo-lift",
+        "RPG": "metal-gear-shadow-moses-heliport-searchlights",
+        "Tactics": "metal-gear-shadow-moses-cargo-lift"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Metal Gear Rising",
+      "modes": {
+        "Combat": "metal-gear-rising-world-marshal-freight-lift",
+        "Melee": "metal-gear-rising-abkhazia-refinery-compressor",
+        "RPG": "metal-gear-rising-world-marshal-freight-lift",
+        "Tactics": "metal-gear-rising-abkhazia-refinery-compressor"
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Metal Slug",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Metal: Hellsinger",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Michael Jackson",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Minecraft",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Minions",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Mirror's Edge",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Moonwalker",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Mr. Bean",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Murder Drones",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Mythos Primordia",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Naruto",
+      "modes": {
+        "Combat": "naruto-forest-canopy-wind",
+        "Melee": "naruto-valley-waterfall-current",
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Naruto Shippuden",
+      "modes": {
+        "Combat": null,
+        "Melee": "naruto-valley-waterfall-current",
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Natural Selection 2",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Necronomicon",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Negima",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Nemesis — Awaken Realms",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Neon Genesis Evangelion",
+      "modes": {
+        "Combat": "eva1995-tokyo3-retracting-buildings",
+        "Melee": "eva1995-nerv-launch-frame",
+        "RPG": "eva1995-tokyo3-retracting-buildings",
+        "Tactics": "eva1995-nerv-launch-frame"
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Neon Requiem",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Nexus de Convergence",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Nicolas et Pimprenelle",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "NieR",
+      "modes": {
+        "Combat": "nier-automata-amusement-carousel",
+        "Melee": "nier-automata-abandoned-factory-conveyor",
+        "RPG": "nier-automata-amusement-carousel",
+        "Tactics": "nier-automata-abandoned-factory-conveyor"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Night of the Living Dead",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Nightwish",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Nine Realms: Last Twilight",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "No Man's Sky",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Noelle Perna",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Noob",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Nyan Cat",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Oddworld",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Oggy et les Cafards",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Oliver Tree",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "One Punch Man",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Onechanbara",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Overgrowth",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Overlord Anime",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Palworld",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Parasite Eve",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Parasyte",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Payday",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Pee-wee",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Peepoodo — Safe Educational Adaptation",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Phantasmagoria",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Pingu",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Pirates of the Caribbean",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Planete Hurlante",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Plants vs. Zombies",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Police Squad",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Poppy Playtime",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Portal",
+      "modes": {
+        "Combat": "portal-aperture-wall-aperture-phases",
+        "Melee": "portal-aperture-wall-aperture-phases",
+        "RPG": "portal-aperture-wall-aperture-phases",
+        "Tactics": "portal-aperture-wall-aperture-phases"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Postal",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Predator",
+      "modes": {
+        "Combat": "predator-dutch-counterweight-ropes",
+        "Melee": "predator-jungle-waterfall-vines",
+        "RPG": "predator-jungle-waterfall-vines",
+        "Tactics": "predator-dutch-counterweight-ropes"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Predator 2",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Predator: Badlands",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Predator: Killer of Killers",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Predators",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Prey",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Prey (2006)",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Prometheus",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "PSY",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Psycho-Pass",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "PUBG",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Puppet Master",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Putt-Putt",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Quake",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Queen Bee",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "R.E.P.O.",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Rambo",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Rammstein",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Rayman",
+      "modes": {
+        "Combat": "rayman3-hoodlum-headquarters-conveyor",
+        "Melee": "rayman-legends-undersea-security-scanner",
+        "RPG": "rayman3-hoodlum-headquarters-conveyor",
+        "Tactics": "rayman-legends-undersea-security-scanner"
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Re-Animator",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "REC",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Red Faction",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Redneck Rampage",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Reflets d’Acide",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Remember Me",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Repo! The Genetic Opera",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Resident Evil",
+      "modes": {
+        "Combat": "resident-evil-spencer-dining-clock",
+        "Melee": "resident-evil-spencer-dining-clock",
+        "RPG": "resident-evil-spencer-dining-clock",
+        "Tactics": "resident-evil-rpd-reception-console"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Richard au pays des livres magiques",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Rick & Morty",
+      "modes": {
+        "Combat": "rick-morty-garage-portal-phases",
+        "Melee": "rick-morty-garage-portal-phases",
+        "RPG": "rick-morty-garage-portal-phases",
+        "Tactics": "rick-morty-garage-portal-phases"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Rick Astley",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Ristar",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Rival Schools",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Rob Zombie",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "RoboCop",
+      "modes": {
+        "Combat": "robocop1987-ocp-ed209-diagnostic",
+        "Melee": "robocop1987-metro-west-maintenance",
+        "RPG": "robocop1987-ocp-ed209-diagnostic",
+        "Tactics": "robocop1987-metro-west-maintenance"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Rock of Ages",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Rocky",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Rocky Horror Picture Show",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Roger Rabbit",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Rosario + Vampire",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "RRRrrrr!!!",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Rubber",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Rugrats",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Rurouni Kenshin",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Sam & Max",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Samantha Oups!",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Sanctum",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Sartorius Stedim Biotech",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Sausage Party",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Saw",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Scary Movie",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "SCP Foundation",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Seaman",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Secret of Monkey Island",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Serious Sam",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Shadow Man",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Shaka Ponk",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Shakira",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Sharknado",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Shaun of the Dead",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Silent Hill",
+      "modes": {
+        "Combat": "silent-hill-toluca-rowboat-wake",
+        "Melee": "silent-hill-lakeside-carousel",
+        "RPG": null,
+        "Tactics": "silent-hill-toluca-rowboat-wake"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Silent Hill f",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Sinister",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Siren Head",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Skibidi",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Skrillex",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Skullgirls",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Skyline",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Slender Man",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Small Soldiers",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Solar Opposites",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Soldier of Fortune",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Solo Leveling",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Sonic",
+      "modes": {
+        "Combat": "sonic-green-hill-sunflowers",
+        "Melee": "sonic-green-hill-sunflowers",
+        "RPG": "sonic-green-hill-sunflowers",
+        "Tactics": "sonic-scrap-brain-conveyor-gears"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Soul Calibur",
+      "modes": {
+        "Combat": "soul-calibur2-village-wind-mill",
+        "Melee": "soul-calibur6-indian-port-moored-boats",
+        "RPG": "soul-calibur2-village-wind-mill",
+        "Tactics": "soul-calibur6-indian-port-moored-boats"
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Spawn",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Spermageddon",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Spider: The Video Game",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Splatterhouse",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Splice",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Spoof Movie",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Spy Fox",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Spy Kids",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Spy x Family",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Spyro",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Squid Game",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Squirrel with a Gun",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Stan Helsing",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Star Wars",
+      "modes": {
+        "Combat": "star-wars-death-star1-blast-doors",
+        "Melee": "star-wars-cloud-city-carbon-lift",
+        "RPG": "star-wars-death-star1-blast-doors",
+        "Tactics": "star-wars-cloud-city-carbon-lift"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Stargate",
+      "modes": {
+        "Combat": "stargate-sgc-four-phase-event-horizon",
+        "Melee": "stargate-sgc-four-phase-event-horizon",
+        "RPG": "stargate-sgc-four-phase-event-horizon",
+        "Tactics": "stargate-sgc-four-phase-event-horizon"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Stargate Atlantis",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Stargate Infinity",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Stargate Universe",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Starship Troopers",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Steins;Gate",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Stellar Dream — Safe Colony Mission",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Stranger Things",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Streets of Rage",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Sub Urban",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Subverse — Safe Galactic Rebellion",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Super Meat Boy",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Superhero Movie",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "SUPERHOT",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Sword Art Online",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Sword Art Online: Gun Gale Online",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "System of a Down",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Tail Concerto",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Tanya the Evil",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Tawantinsuyu: The Split Sun",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Team Fortress 2",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Teen Titans",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Tekken",
+      "modes": {
+        "Combat": "tekken8-urban-square-taxi-traffic",
+        "Melee": "tekken4-airport-parked-airliner-turbine",
+        "RPG": "tekken8-urban-square-taxi-traffic",
+        "Tactics": "tekken4-airport-parked-airliner-turbine"
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Téléchat",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Tenacious D",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Terminator",
+      "modes": {
+        "Combat": "terminator-2029-hk-searchlight",
+        "Melee": "terminator-factory-hydraulic-press",
+        "RPG": "terminator-2029-hk-searchlight",
+        "Tactics": "terminator-factory-hydraulic-press"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Terrifier",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Thalassa Mnémique",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Aether Crown",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Amazing Patate Show",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Backrooms — Kane Pixels",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Ball",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Batman Who Laughs",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "The Big Bang Theory",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Binding of Isaac: Rebirth",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Brave Little Toaster",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "The Collector",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "The Conjuring",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Creator",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Crownless Sea",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Da Vinci Code",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Dark Knight",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Darkness",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Drowned Testament",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Expendables",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Forest",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Grudge",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "The Horribly Slow Murderer",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Last of Us",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "The Lord of the Rings",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Matrix",
+      "modes": {
+        "Combat": "matrix-operator-terminal-refresh",
+        "Melee": "matrix-operator-terminal-refresh",
+        "RPG": "matrix-operator-terminal-refresh",
+        "Tactics": "matrix-operator-terminal-refresh"
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Mummy",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Predator",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "The Purge",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Ring",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "The Silence of the Lambs",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Simpsons",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "The Smurfs",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Surge",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Texas Chain Saw Massacre",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Thing",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Truman Show",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Walking Dead — Telltale",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "The Weeknd",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "The Wild Thornberrys",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Them!",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Tintin",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Titanfall 2",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Tokyo Ghoul",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Tom Clancy’s Splinter Cell",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Tomb Raider",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Tomba",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Tommy Heavenly6",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Torbahead",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Toxic Avenger",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Toy Soldiers",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Tremors",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Trololo",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Turok",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Twisted Metal",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Ultra Vomit",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Universal Soldier",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Unreal",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Unreal Tournament",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Unreal Tournament 2004",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Uzumaki",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Valedor: The Shattered Crown",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "VelociPastor",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Viridienne Ultime",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Virus",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Vocaloid",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Voyage de Chihiro",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Wakfu",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Wallace & Gromit",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "War of the Worlds",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Warhammer 40,000: Space Marine",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Within Temptation",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Wolfenstein",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Woodruff",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Worms",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Wrong Turn",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Yakuza",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Yomi no Kage",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Yu-Gi-Oh",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Zak et Crysta",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Zero Escape: The Nonary Games",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Zombi",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Zombies Ate My Neighbors",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "physical-motif-adaptation"
+    },
+    {
+      "universe": "Zootopia",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    },
+    {
+      "universe": "Zorro",
+      "modes": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "baseAtmosphereStatus": "authored-location-adaptation"
+    }
+  ]
+}

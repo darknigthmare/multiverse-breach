@@ -1,0 +1,13 @@
+# Wave6 Part C — five native presentation atlases
+
+Snake, Raiden, Otacon, Joseph Joestar and Beowulf each have32 genuinely distinct RGBA poses: intro, outro, roundVictory, roundDefeat, fatality, victory, defeat and super, four cells per phase. Five actual native `image_gen` calls produced these sources. Outputs are1024×2048, four columns, eight rows and256-pixel cells with ten transparent margin pixels and baseline244. All five sources and normalized contacts were inspected. No opaque pixels cross the extracted native column seams.
+
+Snake follows the parent-corrected MGS1 punch-punch-kick kit, with no damaging chaff or advanced BigBoss CQC. Raiden uses his MGR cyborg body and real HF blade; the non-graphic mechanical core prop does not imply implemented health theft or instant-kill. Otacon types commands at a portable terminal and supports allies, with no offensive ray. Joseph is aged67 from StardustCrusaders with gray beard, fedora, gloves and real thorny purple vines conducting small Hamon currents. Beowulf is a human wrestler with wolf-pelt costume and physical folding chair TheHurting, using representative spring/backflip/body-press keyframes rather than a complete opponent-interaction sequence.
+
+The archived generation records contain exact prompts, reference inputs, native image paths and null model/job/generation identifiers where the tool supplied none. Every normalized row names its actual native source and row. Sharp only segments transparent seams, applies uniform per-phase nearest-neighbor scale, pads alpha and packs source drawings. The builder reconstructs each complete PNG and verifies its exact SHA256, all32 real RGBA cell hashes and reference/source hashes. No pose, anatomy, mirror or painted effect is synthesized in code.
+
+Independent body-only measurements are archived in `part-c-stature-review.json`. Six rows on Snake, Joseph and Beowulf use display compensation around baseline244, retaining native pose-height ratios. Raiden's small differences and Otacon's real kneeling support are left alone. Source PNGs are unchanged. These measurements are authored visual approximations, not official anatomy or animation-frame evidence.
+
+Two JoJoWiki secondary-source pages were actually read for aged Joseph and vine mechanics; their HTML hashes and the blocked/unusable source attempts are preserved. They do not certify the generated art. `part-c-source-facts.json` records the exact version choices, effective kit semantics and remaining limitations. Global1:1 and network-verification flags remain false.
+
+Check with `node scripts/buildCombatCharacterAnimationsWave6PartC.mjs --check`.

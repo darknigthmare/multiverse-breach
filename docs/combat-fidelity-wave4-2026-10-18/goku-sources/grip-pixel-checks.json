@@ -1,0 +1,240 @@
+{
+  "date": "2026-10-18",
+  "sheet": "/sprites/generated/melee-goku-wave4/goku-ledge.png",
+  "sha256": "4bf47f2fcafaddf71bfde028d968633a52c074f6af6f9bf2c72dfa52f5352b9e",
+  "method": "Manual visual palm selection followed by independent 9×9 opaque/skin ROI and 49×49 nearby blue-wrist pixel checks. Color thresholds verify pixel location only; they do not certify canonical anatomy or source-game fidelity.",
+  "contactMeaning": "Inferred project edge support. Catch frame 0 is a reaching palm with contact false. Drop/jump released frames carry the former edge reference with contact false.",
+  "requiredStates": 3,
+  "requiredFrames": 12,
+  "allPassed": true,
+  "checks": [
+    {
+      "state": "ledgeCatch",
+      "frame": 0,
+      "x": 227,
+      "y": 29,
+      "normalizedX": 0.88671875,
+      "normalizedY": 0.11328125,
+      "contact": false,
+      "palmRoi": {
+        "radius": 4,
+        "visiblePixels": 81,
+        "skinPixels": 70
+      },
+      "wristRoi": {
+        "radius": 24,
+        "bluePixels": 134
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeCatch",
+      "frame": 1,
+      "x": 198,
+      "y": 32,
+      "normalizedX": 0.7734375,
+      "normalizedY": 0.125,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "visiblePixels": 81,
+        "skinPixels": 59
+      },
+      "wristRoi": {
+        "radius": 24,
+        "bluePixels": 130
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeCatch",
+      "frame": 2,
+      "x": 154,
+      "y": 33,
+      "normalizedX": 0.6015625,
+      "normalizedY": 0.12890625,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "visiblePixels": 81,
+        "skinPixels": 61
+      },
+      "wristRoi": {
+        "radius": 24,
+        "bluePixels": 122
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeCatch",
+      "frame": 3,
+      "x": 159,
+      "y": 34,
+      "normalizedX": 0.62109375,
+      "normalizedY": 0.1328125,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "visiblePixels": 81,
+        "skinPixels": 53
+      },
+      "wristRoi": {
+        "radius": 24,
+        "bluePixels": 117
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeHang",
+      "frame": 0,
+      "x": 150,
+      "y": 25,
+      "normalizedX": 0.5859375,
+      "normalizedY": 0.09765625,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "visiblePixels": 81,
+        "skinPixels": 81
+      },
+      "wristRoi": {
+        "radius": 24,
+        "bluePixels": 136
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeHang",
+      "frame": 1,
+      "x": 102,
+      "y": 24,
+      "normalizedX": 0.3984375,
+      "normalizedY": 0.09375,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "visiblePixels": 81,
+        "skinPixels": 80
+      },
+      "wristRoi": {
+        "radius": 24,
+        "bluePixels": 155
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeHang",
+      "frame": 2,
+      "x": 173,
+      "y": 25,
+      "normalizedX": 0.67578125,
+      "normalizedY": 0.09765625,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "visiblePixels": 81,
+        "skinPixels": 81
+      },
+      "wristRoi": {
+        "radius": 24,
+        "bluePixels": 133
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeHang",
+      "frame": 3,
+      "x": 172,
+      "y": 25,
+      "normalizedX": 0.671875,
+      "normalizedY": 0.09765625,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "visiblePixels": 81,
+        "skinPixels": 81
+      },
+      "wristRoi": {
+        "radius": 24,
+        "bluePixels": 136
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeClimb",
+      "frame": 0,
+      "x": 183,
+      "y": 54,
+      "normalizedX": 0.71484375,
+      "normalizedY": 0.2109375,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "visiblePixels": 81,
+        "skinPixels": 81
+      },
+      "wristRoi": {
+        "radius": 24,
+        "bluePixels": 183
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeClimb",
+      "frame": 1,
+      "x": 88,
+      "y": 56,
+      "normalizedX": 0.34375,
+      "normalizedY": 0.21875,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "visiblePixels": 81,
+        "skinPixels": 81
+      },
+      "wristRoi": {
+        "radius": 24,
+        "bluePixels": 203
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeClimb",
+      "frame": 2,
+      "x": 218,
+      "y": 198,
+      "normalizedX": 0.8515625,
+      "normalizedY": 0.7734375,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "visiblePixels": 80,
+        "skinPixels": 45
+      },
+      "wristRoi": {
+        "radius": 24,
+        "bluePixels": 173
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeClimb",
+      "frame": 3,
+      "x": 202,
+      "y": 199,
+      "normalizedX": 0.7890625,
+      "normalizedY": 0.77734375,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "visiblePixels": 81,
+        "skinPixels": 76
+      },
+      "wristRoi": {
+        "radius": 24,
+        "bluePixels": 166
+      },
+      "passed": true
+    }
+  ]
+}

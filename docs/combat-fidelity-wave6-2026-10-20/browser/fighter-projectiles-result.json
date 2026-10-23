@@ -1,0 +1,185 @@
+{
+  "passed": true,
+  "flow": "Actual FighterMode, Lady/Parasoul local P1/P2 keyboard R/O, live projectile geometry, real sessionPaused prop, one confirmed collision/HP change and expiry.",
+  "note": "L is the secondary command in FighterMode; R/O exercise the100% supers. Test setup only seeds the meter, positions and durable target HP, then uses the unmodified gameplay loop and keyboard handlers.",
+  "results": [
+    {
+      "id": "devil_may_cry_lady",
+      "side": "player",
+      "engineUrl": "/src/game/engineFighter.js?t=1792489155319",
+      "initialHp": 100000,
+      "initialTargetX": 740,
+      "cast": {
+        "name": "Kalina Ann",
+        "elapsed": 0.016666666666666666,
+        "hitAt": 0.451,
+        "meter": 0,
+        "hp": 100000
+      },
+      "hits": 1,
+      "impactEvents": 1,
+      "collision": {
+        "hpBefore": 100000,
+        "hpAfter": 99906.2,
+        "impact": [
+          {
+            "x": 740,
+            "y": 387,
+            "elapsed": 0
+          }
+        ],
+        "elapsed": 1.4666666666666663,
+        "actorActionElapsed": null
+      },
+      "finalHp": 99906.2,
+      "key": "R",
+      "pause": {
+        "durationMs": 250,
+        "stateUnchanged": true,
+        "canvasUnchanged": true
+      },
+      "frames": 122,
+      "drawFrames": 144,
+      "flightCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/browser/fighter-projectiles-devil_may_cry_lady-player-paused.png",
+      "contactCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/browser/fighter-projectiles-devil_may_cry_lady-player-impact.png",
+      "tracePath": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/browser/fighter-projectiles-devil_may_cry_lady-player-trace.json",
+      "passed": true
+    },
+    {
+      "id": "devil_may_cry_lady",
+      "side": "cpu",
+      "engineUrl": "/src/game/engineFighter.js?t=1792489155319",
+      "initialHp": 100000,
+      "initialTargetX": 220,
+      "cast": {
+        "name": "Kalina Ann",
+        "elapsed": 0.016666666666666666,
+        "hitAt": 0.451,
+        "meter": 0,
+        "hp": 100000
+      },
+      "hits": 1,
+      "impactEvents": 1,
+      "collision": {
+        "hpBefore": 100000,
+        "hpAfter": 99906.2,
+        "impact": [
+          {
+            "x": 220,
+            "y": 387,
+            "elapsed": 0
+          }
+        ],
+        "elapsed": 1.4499999999999997,
+        "actorActionElapsed": null
+      },
+      "finalHp": 99906.2,
+      "key": "O",
+      "pause": {
+        "durationMs": 250,
+        "stateUnchanged": true,
+        "canvasUnchanged": true
+      },
+      "frames": 121,
+      "drawFrames": 147,
+      "flightCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/browser/fighter-projectiles-devil_may_cry_lady-cpu-paused.png",
+      "contactCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/browser/fighter-projectiles-devil_may_cry_lady-cpu-impact.png",
+      "tracePath": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/browser/fighter-projectiles-devil_may_cry_lady-cpu-trace.json",
+      "passed": true
+    },
+    {
+      "id": "skullgirls_parasoul",
+      "side": "player",
+      "engineUrl": "/src/game/engineFighter.js?t=1792489155319",
+      "initialHp": 100000,
+      "initialTargetX": 740,
+      "cast": {
+        "name": "Inferno Brigade",
+        "elapsed": 0.016666666666666666,
+        "hitAt": 0.451,
+        "meter": 0,
+        "hp": 100000
+      },
+      "hits": 1,
+      "impactEvents": 1,
+      "collision": {
+        "hpBefore": 100000,
+        "hpAfter": 99906.2,
+        "impact": [
+          {
+            "x": 740,
+            "y": 387,
+            "elapsed": 0
+          }
+        ],
+        "elapsed": 1.4333333333333331,
+        "actorActionElapsed": null
+      },
+      "finalHp": 99906.2,
+      "key": "R",
+      "pause": {
+        "durationMs": 250,
+        "stateUnchanged": true,
+        "canvasUnchanged": true
+      },
+      "frames": 119,
+      "drawFrames": 148,
+      "flightCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/browser/fighter-projectiles-skullgirls_parasoul-player-paused.png",
+      "contactCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/browser/fighter-projectiles-skullgirls_parasoul-player-impact.png",
+      "tracePath": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/browser/fighter-projectiles-skullgirls_parasoul-player-trace.json",
+      "passed": true
+    },
+    {
+      "id": "skullgirls_parasoul",
+      "side": "cpu",
+      "engineUrl": "/src/game/engineFighter.js?t=1792489155319",
+      "initialHp": 100000,
+      "initialTargetX": 220,
+      "cast": {
+        "name": "Inferno Brigade",
+        "elapsed": 0.016666666666666666,
+        "hitAt": 0.451,
+        "meter": 0,
+        "hp": 100000
+      },
+      "hits": 1,
+      "impactEvents": 1,
+      "collision": {
+        "hpBefore": 100000,
+        "hpAfter": 99906.2,
+        "impact": [
+          {
+            "x": 220,
+            "y": 387,
+            "elapsed": 0
+          }
+        ],
+        "elapsed": 1.4499999999999997,
+        "actorActionElapsed": null
+      },
+      "finalHp": 99906.2,
+      "key": "O",
+      "pause": {
+        "durationMs": 250,
+        "stateUnchanged": true,
+        "canvasUnchanged": true
+      },
+      "frames": 123,
+      "drawFrames": 145,
+      "flightCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/browser/fighter-projectiles-skullgirls_parasoul-cpu-paused.png",
+      "contactCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/browser/fighter-projectiles-skullgirls_parasoul-cpu-impact.png",
+      "tracePath": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/browser/fighter-projectiles-skullgirls_parasoul-cpu-trace.json",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ]
+}

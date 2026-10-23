@@ -1,0 +1,238 @@
+{
+  "date": "2026-10-20",
+  "heroId": "kiryu_yakuza",
+  "sourceWork": "Yakuza Kiwami (2016)",
+  "passed": true,
+  "method": "Real Chromium drawPixelSprite and mounted React GameCanvas; exact HMR EngineSmash module URL extracted from compiled GameCanvas; only isolated-browser setup prepares positions/meter.",
+  "core": {
+    "states": 45,
+    "nativePoses": 180,
+    "actualDrawImageCalls": 360,
+    "facings": [
+      1,
+      -1
+    ],
+    "gripCalls": 8,
+    "gripCapture": "Four separately spaced frame pairs so native poses do not overlap in the contact proof.",
+    "rendererDidNotMutateActor": true
+  },
+  "movement": {
+    "realKeys": [
+      "D",
+      "Space",
+      "Q"
+    ],
+    "fourColumns": true,
+    "landVx": [
+      4
+    ],
+    "turnVx": [
+      -4
+    ],
+    "turnFacing": [
+      -1
+    ],
+    "pauseUnchanged": true,
+    "pauseMs": 300
+  },
+  "super": {
+    "name": "Coup du Dragon de Dojima",
+    "coldBoot": true,
+    "realKeyHeldMs": 80,
+    "draws": {
+      "count": 74,
+      "sheets": [
+        "/sprites/generated/combat-character-animations-wave8/kiryu_yakuza.png"
+      ],
+      "rows": [
+        7
+      ],
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "hitAt": 0.45,
+    "acceptedElapsed": 0.4666666666666666,
+    "initialEnemyHp": 100000,
+    "finalEnemyHp": 99953,
+    "acceptedImpacts": 1,
+    "meterFinal": 0,
+    "retriggered": false
+  },
+  "pageErrors": [],
+  "toleratedExternalFailure": "Google Fonts CSS blocked by session proxy (ERR_TUNNEL_CONNECTION_FAILED); no internal asset failures.",
+  "visualReview": {
+    "capturesInspected": true,
+    "costumeAndBareHandCombatCoherent": true,
+    "turnEndsLogicalFacing": true,
+    "physicalLedgeGripProjection": true,
+    "source1to1Verified": false,
+    "limitations": [
+      "Original generated/adapted choreography, not official source-game frames.",
+      "PNG comparisons and browser checks cannot certify exact canonical pixel art or timings.",
+      "P2 uses runtime facing mirroring."
+    ]
+  },
+  "sources": [
+    {
+      "path": "src/game/engineSmash.js",
+      "sha256": "f98d96ee1b01e0c9c5670b9899b12e04f2c5f6b28afc1dd66505e99043c434ea",
+      "bytes": 115250
+    },
+    {
+      "path": "src/game/renderer.js",
+      "sha256": "ef8934b7e05b7d67228c825e8099f3846cf1c784821e5e5c8187331dd71f18a1",
+      "bytes": 65842
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "sha256": "e3d5dacc11bec1f2adc8174a806bf17f522afcfe30ba1cdac95ce7dcbdef6cbd",
+      "bytes": 14379
+    },
+    {
+      "path": "src/game/melee/kiryuMeleeManifest.js",
+      "sha256": "4a1dbb5fefe11be4ec195b12b54055fba5d1f7f8999fac38c780fc889bccf2ff",
+      "bytes": 505
+    },
+    {
+      "path": "src/game/combat/kiryuMeleeMotion.generated.json",
+      "sha256": "6ea084bba3e0e6f11d1011ae3b3de3539dec5ef19f21a602ff16d251b6ed4490",
+      "bytes": 203960
+    },
+    {
+      "path": "src/game/combat/kiryuMeleeCombat.generated.json",
+      "sha256": "2b721d57e1456c572a88f782ca54a7a0d4b70d5a09679b15c6262fdc67ac53be",
+      "bytes": 203256
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave8PartB.generated.json",
+      "sha256": "b65b45623ca0ea7d1247347c669bce3be9959838530cae961771a4b0cf1cd77d",
+      "bytes": 216385
+    },
+    {
+      "path": "public/sprites/generated/melee-kiryu-wave8/kiryu-motion-a.png",
+      "sha256": "621059c56b75564167aa58c069743c939cb0bbd093b776b3baf0598cfb2e1429",
+      "bytes": 1402329
+    },
+    {
+      "path": "public/sprites/generated/melee-kiryu-wave8/kiryu-motion-b.png",
+      "sha256": "88daae21a95d3d5a3a03f7b78cc27586a54604f497f5c646a082cf57bbb66eeb",
+      "bytes": 1200561
+    },
+    {
+      "path": "public/sprites/generated/melee-kiryu-wave8/kiryu-defense.png",
+      "sha256": "6880d6a6a609a548c6ecbecce3baccccb6620d12995c4fb2b59703ad59fdee9e",
+      "bytes": 1083307
+    },
+    {
+      "path": "public/sprites/generated/melee-kiryu-wave8/kiryu-combat-a.png",
+      "sha256": "f40f687cf894accf150085040ca21a81d6f87d2686af54416d9b4541199934da",
+      "bytes": 1230679
+    },
+    {
+      "path": "public/sprites/generated/melee-kiryu-wave8/kiryu-combat-b.png",
+      "sha256": "63edd578484b72da5acac2fb905e0908fb886363e5a7e8ec63dc0d7dae0206c2",
+      "bytes": 1158659
+    },
+    {
+      "path": "public/sprites/generated/melee-kiryu-wave8/kiryu-ledge.png",
+      "sha256": "df44da15f10a73aad2e2bc8012873752bf2887cc30ebfce6204b239e342e3cf9",
+      "bytes": 912322
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave8/kiryu_yakuza.png",
+      "sha256": "3ae89df3053d49aa678a6e2e9b521a0245e923f9b7769c3a0233fd61b4f35915",
+      "bytes": 1739307
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-core-browser.mjs",
+      "sha256": "64242f79028338cea722b5bb7e6fdf8737336b63278b6971939378cdb68605ec",
+      "bytes": 7934
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-movement-browser.mjs",
+      "sha256": "86279c06c08c1ddaaaa28dc538e47fd0b9e74ffc4cc5228fe0bee6ab40e12fdc",
+      "bytes": 9331
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-super-browser.mjs",
+      "sha256": "7cc85be30fde55627db5179873a661b443e2d84b2d2aeeadb1c546198d35e139",
+      "bytes": 10293
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-core-result.json",
+      "sha256": "132b5ce0daa195792eff78275cab155a3674b1cc60e270191cfc44fa47d27aaf",
+      "bytes": 1128
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-movement-result.json",
+      "sha256": "b6de4a1a74dca205a6dd9dc0cca59b083ab077b54d979bdb8df4bcbd9b36186f",
+      "bytes": 4039
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-super-result.json",
+      "sha256": "c6fc6fe2d36d91587592afea337093523fe051d00cc41bcb2e8d06b7b90f1334",
+      "bytes": 1623
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-core-trace.json",
+      "sha256": "65e715b27ab3449448fc110a1206034a8a4225e1af1efc94517d939444d47851",
+      "bytes": 163483
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-movement-trace.json",
+      "sha256": "b268a8fe9cc65a4f0b22d56719212ae9dfc120526d03104007aa1738642452f4",
+      "bytes": 61576
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-super-trace.json",
+      "sha256": "5d1dff1b2677315ba224df3c002c470dc3ef5b3d5b5980909f96af19051fd3fa",
+      "bytes": 17531
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-super-draws.json",
+      "sha256": "414477939accab4e17beb2144821b55207d14e4312d63c73f7dfbdae99c27d5c",
+      "bytes": 27372
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-core.png",
+      "sha256": "91a58e19189da846faf9a54461ec4cf10a2ae480b5b83724f3f2eab27d1da47f",
+      "bytes": 1282303
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-grips.png",
+      "sha256": "6177338cbbfa279ef18a5d92272be61b68926aba0aee662a4b5d6e797538cdec",
+      "bytes": 53997
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-movement.png",
+      "sha256": "bfa26d9f391d02483e9b803c6db993d38ad8972dacc0a14ccb5ea0f8ccff519e",
+      "bytes": 415250
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-pause.png",
+      "sha256": "09416657018fc5f8cfe5338b7b301c0b9f44f9ec041c7791aa1353950b1cecca",
+      "bytes": 415299
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-super.png",
+      "sha256": "da157a9ce5846ac9544eb0c6049c14727adfb280fb102a686f605c6f728470cc",
+      "bytes": 479521
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-core-review-crop.png",
+      "sha256": "4f297448913ea2e3edbb03e67330e9fc731deacc747297acccb807d859e737c5",
+      "bytes": 202156
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-super-review-crop.png",
+      "sha256": "0ebb258b97091f55c58c0357d019174e74e3497678f639340cec93f66e566c8c",
+      "bytes": 51663
+    }
+  ]
+}

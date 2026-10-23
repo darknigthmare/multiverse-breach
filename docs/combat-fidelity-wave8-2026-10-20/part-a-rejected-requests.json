@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "provider": "OpenAI",
+  "failures": [
+    {
+      "heroId": "robin_tt",
+      "attempt": "initial-native-generation",
+      "prompt": "Draw a NEW detailed crisp pixel-art fighter atlas on TRANSPARENT RGBA. EXACT8ROWS ×4COLUMNS =32 DIFFERENT full-body poses. ALL8rows separately present, especially row4 round-defeat BEFORE row5 finisher. WIDE empty alpha gutters25px around every cell and30px outerborder; small complete figures, never crop hair, feet, cape, staff or effect. No figure/effect bridges neighboringcells. Default FACINGRIGHT, three-quarter sideview. No text/grid/floor/shadow/scenery/opponent. Body physicalscale constant within eachrow, preserve actual bends/kneels. Source is TEEN TITANS2003 original CartoonNetwork animated-series designs and proportions, NOT TeenTitansGo chibi, liveaction, medieval fantasy or later comic redesign. The attached old local sprite is an IDENTITY COUNTEREXAMPLE with wrong costume; correct according to the source design below, do not reproduce its armor/robes. Fullneutral superhero framing, sourcecostumes and sourcepowers only. These are original adapted choreography, not official screenshots. Eightrows TOPTOBOTTOM: INTRO, OUTRO, ROUNDVICTORY, ROUNDDEFEAT, FINISHER, VICTORY, DEFEAT, SUPER. All4poses in eachrow genuinelydistinct, completeactor always present. ROBIN2003: slim athletic TEEN BOY, large angular eyes in BLACK DOMINO MASK with WHITEeye shapes, spiky BLACKHAIR. Plain RED short tunic/vest with three small yellow horizontal fastenings and yellow R in blackcircle at LEFTchest; GREEN shortsleeves, GREEN elbow-lengthgauntletgloves and GREEN tights/leggings, BLACK ankleboots. YELLOWutilitybelt. BLACK cape with YELLOWinnerlining. No realistic heavysegmentedarmor, goggles, darkblacklegarmor or gun. Real GRAY straight collapsible BO STAFF, held in twohands for strikes, BIRDARANG stowed onutilitybelt. 1 INTRO: pulls collapsedstaff frombelt; extendsgraystaff; grips withbothhands; settlesrightguard. 2 OUTRO: lowersstaff; collapsesit; replaces onbelt; turns toleave. 3 ROUNDVICTORY: straightensguard; brief confidentgrin; small staffspin; readyguard. 4 ROUNDDEFEAT: leansbreathing; handonknee; crouchedrecovery; riseslowguard. 5 FINISHER STAFFCOMBO: lowwindup; advanceswithhorizontalgraystaffsweep; overheadfollowupstrikeRIGHT; recoversholdingstaff. Noenergyshot. 6 VICTORY: relaxes; rests staffovershoulder; freehandonhip; smilesslightly. 7 DEFEAT: recoils; kneels withheldstaff; headbows; stayskneeling alive. 8 SUPER STAFFCOMBO: twohandwindup; lungingstaffthrust; differentwidephysicalstaffsweepRIGHT withveryshortsilvertrail; returnssteadyguard. ",
+      "refs": [
+        "/workspace/multiverse-breach/.tmp/wave8-art-references/robin-old-design-counterexample.png"
+      ],
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 18802497-2bc7-42cb-9dd9-a7adf873dc44.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+      "sourceImage": null,
+      "path": null,
+      "provider": "OpenAI",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "requestId": "18802497-2bc7-42cb-9dd9-a7adf873dc44",
+      "args": {
+        "prompt": "Draw a NEW detailed crisp pixel-art fighter atlas on TRANSPARENT RGBA. EXACT8ROWS ×4COLUMNS =32 DIFFERENT full-body poses. ALL8rows separately present, especially row4 round-defeat BEFORE row5 finisher. WIDE empty alpha gutters25px around every cell and30px outerborder; small complete figures, never crop hair, feet, cape, staff or effect. No figure/effect bridges neighboringcells. Default FACINGRIGHT, three-quarter sideview. No text/grid/floor/shadow/scenery/opponent. Body physicalscale constant within eachrow, preserve actual bends/kneels. Source is TEEN TITANS2003 original CartoonNetwork animated-series designs and proportions, NOT TeenTitansGo chibi, liveaction, medieval fantasy or later comic redesign. The attached old local sprite is an IDENTITY COUNTEREXAMPLE with wrong costume; correct according to the source design below, do not reproduce its armor/robes. Fullneutral superhero framing, sourcecostumes and sourcepowers only. These are original adapted choreography, not official screenshots. Eightrows TOPTOBOTTOM: INTRO, OUTRO, ROUNDVICTORY, ROUNDDEFEAT, FINISHER, VICTORY, DEFEAT, SUPER. All4poses in eachrow genuinelydistinct, completeactor always present. ROBIN2003: slim athletic TEEN BOY, large angular eyes in BLACK DOMINO MASK with WHITEeye shapes, spiky BLACKHAIR. Plain RED short tunic/vest with three small yellow horizontal fastenings and yellow R in blackcircle at LEFTchest; GREEN shortsleeves, GREEN elbow-lengthgauntletgloves and GREEN tights/leggings, BLACK ankleboots. YELLOWutilitybelt. BLACK cape with YELLOWinnerlining. No realistic heavysegmentedarmor, goggles, darkblacklegarmor or gun. Real GRAY straight collapsible BO STAFF, held in twohands for strikes, BIRDARANG stowed onutilitybelt. 1 INTRO: pulls collapsedstaff frombelt; extendsgraystaff; grips withbothhands; settlesrightguard. 2 OUTRO: lowersstaff; collapsesit; replaces onbelt; turns toleave. 3 ROUNDVICTORY: straightensguard; brief confidentgrin; small staffspin; readyguard. 4 ROUNDDEFEAT: leansbreathing; handonknee; crouchedrecovery; riseslowguard. 5 FINISHER STAFFCOMBO: lowwindup; advanceswithhorizontalgraystaffsweep; overheadfollowupstrikeRIGHT; recoversholdingstaff. Noenergyshot. 6 VICTORY: relaxes; rests staffovershoulder; freehandonhip; smilesslightly. 7 DEFEAT: recoils; kneels withheldstaff; headbows; stayskneeling alive. 8 SUPER STAFFCOMBO: twohandwindup; lungingstaffthrust; differentwidephysicalstaffsweepRIGHT withveryshortsilvertrail; returnssteadyguard. ",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/.tmp/wave8-art-references/robin-old-design-counterexample.png"
+        ]
+      },
+      "accepted": false,
+      "artifactProduced": false,
+      "policyBypassAttempted": false,
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/robin_tt-request-1-prompt.txt",
+      "promptSha256": "b3c7e12e06b507830f55b0a3e4102f750e59dfd20d8624fad34ea4ea4bba40e5",
+      "errorFile": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/robin_tt-request-1-error.txt",
+      "errorSha256": "d68027bcf68363e96f385d3f2d5391a651f1aca4e712020f36f11dc40836e9da",
+      "archivedReferences": [
+        {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/robin_tt-request-1-reference-1.png",
+          "sha256": "1486a1079e1d0145f20457a960d0b2571d10264bba3d5f7611dfbfe38aeb9c6f",
+          "originalPath": "/workspace/multiverse-breach/.tmp/wave8-art-references/robin-old-design-counterexample.png"
+        }
+      ]
+    },
+    {
+      "heroId": "raven_tt",
+      "attempt": "initial-native-generation",
+      "prompt": "Draw a NEW detailed crisp pixel-art fighter atlas on TRANSPARENT RGBA. EXACT8ROWS ×4COLUMNS =32 DIFFERENT full-body poses. ALL8rows separately present, especially row4 round-defeat BEFORE row5 finisher. WIDE empty alpha gutters25px around every cell and30px outerborder; small complete figures, never crop hair, feet, cape, staff or effect. No figure/effect bridges neighboringcells. Default FACINGRIGHT, three-quarter sideview. No text/grid/floor/shadow/scenery/opponent. Body physicalscale constant within eachrow, preserve actual bends/kneels. Source is TEEN TITANS2003 original CartoonNetwork animated-series designs and proportions, NOT TeenTitansGo chibi, liveaction, medieval fantasy or later comic redesign. The attached old local sprite is an IDENTITY COUNTEREXAMPLE with wrong costume; correct according to the source design below, do not reproduce its armor/robes. Fullneutral superhero framing, sourcecostumes and sourcepowers only. These are original adapted choreography, not official screenshots. Eightrows TOPTOBOTTOM: INTRO, OUTRO, ROUNDVICTORY, ROUNDDEFEAT, FINISHER, VICTORY, DEFEAT, SUPER. All4poses in eachrow genuinelydistinct, completeactor always present. RAVEN2003: pale GRAYskin, short darkPURPLEbob withwidowspeak, purpleeyes, small REDforeheadgem, reservedcalmexpression. Plain DARKNAVY LONGSLEEVE LEOTARD, gray barelegs belowit, BLUE ankleboots, darkBLUE/VIOLET HOODEDCAPE fastenedwithroundgoldclaspandREDgem; GOLDcirclebeltwithREDgemmedallions. NOtrousers, embroideredfantasycoat, floatingcrystal, staff, firearm, sword, demonicbody or extraeyes. Actual2003Raven silhouette, notGo chibi. Telekineticenergy BLACK with subtleVIOLETedges. 1 INTRO: openscape; joinsfingerscalmly; openspalms; guardedrightstance. 2 OUTRO: lowershands; folds arms; turnshead; wrapscapeandwalksright. 3 ROUNDVICTORY: exhalescalmly; smallnod; lowerspalms; resumescomposure. 4 ROUNDDEFEAT: leansbreathing; handonknee; lowersone-knee; steadiesherself. 5 FINISHER PROTECTIONONLY: prayerlikehandgesture; openspalms; COMPACT translucentBLACK/VIOLETprotectivedome enclosesherfullbody; softlyreleasesbarrier. ALLYGUARD, NOdamage/attack/targetstrike. 6 VICTORY: armsfolded; slightcalm smile; hoodadjustment; relaxedstanding. 7 DEFEAT: stumbles; sitsonknees; headlow; remainsaliveexhausted. 8 SUPER ALLYBARRIER: differentjoinedhandgesture; raisesbothpalms; roundedBLACKforcefieldwithvioletedgeswrapsaroundherfullbody, clearlytransparentenoughtoseeher; lowershandsafterguard. Neveroffensivebeam/laser/explosion. ",
+      "refs": [
+        "/workspace/multiverse-breach/.tmp/wave8-art-references/raven-old-design-counterexample.png"
+      ],
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 40bf8369-c830-4f0e-873f-9fe7e563a128.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+      "sourceImage": null,
+      "path": null,
+      "provider": "OpenAI",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "requestId": "40bf8369-c830-4f0e-873f-9fe7e563a128",
+      "args": {
+        "prompt": "Draw a NEW detailed crisp pixel-art fighter atlas on TRANSPARENT RGBA. EXACT8ROWS ×4COLUMNS =32 DIFFERENT full-body poses. ALL8rows separately present, especially row4 round-defeat BEFORE row5 finisher. WIDE empty alpha gutters25px around every cell and30px outerborder; small complete figures, never crop hair, feet, cape, staff or effect. No figure/effect bridges neighboringcells. Default FACINGRIGHT, three-quarter sideview. No text/grid/floor/shadow/scenery/opponent. Body physicalscale constant within eachrow, preserve actual bends/kneels. Source is TEEN TITANS2003 original CartoonNetwork animated-series designs and proportions, NOT TeenTitansGo chibi, liveaction, medieval fantasy or later comic redesign. The attached old local sprite is an IDENTITY COUNTEREXAMPLE with wrong costume; correct according to the source design below, do not reproduce its armor/robes. Fullneutral superhero framing, sourcecostumes and sourcepowers only. These are original adapted choreography, not official screenshots. Eightrows TOPTOBOTTOM: INTRO, OUTRO, ROUNDVICTORY, ROUNDDEFEAT, FINISHER, VICTORY, DEFEAT, SUPER. All4poses in eachrow genuinelydistinct, completeactor always present. RAVEN2003: pale GRAYskin, short darkPURPLEbob withwidowspeak, purpleeyes, small REDforeheadgem, reservedcalmexpression. Plain DARKNAVY LONGSLEEVE LEOTARD, gray barelegs belowit, BLUE ankleboots, darkBLUE/VIOLET HOODEDCAPE fastenedwithroundgoldclaspandREDgem; GOLDcirclebeltwithREDgemmedallions. NOtrousers, embroideredfantasycoat, floatingcrystal, staff, firearm, sword, demonicbody or extraeyes. Actual2003Raven silhouette, notGo chibi. Telekineticenergy BLACK with subtleVIOLETedges. 1 INTRO: openscape; joinsfingerscalmly; openspalms; guardedrightstance. 2 OUTRO: lowershands; folds arms; turnshead; wrapscapeandwalksright. 3 ROUNDVICTORY: exhalescalmly; smallnod; lowerspalms; resumescomposure. 4 ROUNDDEFEAT: leansbreathing; handonknee; lowersone-knee; steadiesherself. 5 FINISHER PROTECTIONONLY: prayerlikehandgesture; openspalms; COMPACT translucentBLACK/VIOLETprotectivedome enclosesherfullbody; softlyreleasesbarrier. ALLYGUARD, NOdamage/attack/targetstrike. 6 VICTORY: armsfolded; slightcalm smile; hoodadjustment; relaxedstanding. 7 DEFEAT: stumbles; sitsonknees; headlow; remainsaliveexhausted. 8 SUPER ALLYBARRIER: differentjoinedhandgesture; raisesbothpalms; roundedBLACKforcefieldwithvioletedgeswrapsaroundherfullbody, clearlytransparentenoughtoseeher; lowershandsafterguard. Neveroffensivebeam/laser/explosion. ",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/.tmp/wave8-art-references/raven-old-design-counterexample.png"
+        ]
+      },
+      "accepted": false,
+      "artifactProduced": false,
+      "policyBypassAttempted": false,
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/raven_tt-request-2-prompt.txt",
+      "promptSha256": "1eb107ee3dc65861cb79525d4ec39b9c2d5e1b588a4827f60d5ea068290c6fb4",
+      "errorFile": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/raven_tt-request-2-error.txt",
+      "errorSha256": "56884b07a24e2c9d90efd0410691176ad35cb713f88634c9aae3814e94824831",
+      "archivedReferences": [
+        {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/raven_tt-request-2-reference-1.png",
+          "sha256": "333531e554d99f053ca141b6e5f9a22fe4577c8e898f77b8cb732198524a68a0",
+          "originalPath": "/workspace/multiverse-breach/.tmp/wave8-art-references/raven-old-design-counterexample.png"
+        }
+      ]
+    },
+    {
+      "heroId": "robin_tt",
+      "prompt": "Create a calm, NON-VIOLENT animation-model sprite sheet of the named TeenTitans2003 CARTOON character. This is an original pixel-art pose study for a game, not an official animation copy. Exactly8 clearly SEPARATEDROWS and4COLUMNS,32complete SMALL fullbodyfigures on TRANSPARENT RGBA. Nootherpeople, no scene, no text/grid/shadow. Verywide25pxalphaguttersand30pxouterborder. Allfigures/feet/hair/capes/props entirelyinsideowncell, nodrawingcrossescells. Consistentbodyproportionswithinrow, kneelingreallyshorterthanstanding. Trueoriginal2003design, notGo chibi or realisticarmoredfantasy. Attachedoldlocalreferenceis a COUNTEREXAMPLE withincorrectcostume; correctitfromthenameddesign. DefaultfacingRIGHT. The8ROWS inexactorder:1arrival,2departure,3smallcelebration,4restingbreath,5specialdemonstrationA,6happyrest,7seatedrest,8specialdemonstrationB. Fourdistinctcompleteposesineveryrow. Nobody is struck or hurt; movements demonstrated alone in emptyspace. ROBIN2003: slim athletic TEEN BOY, large angular eyes in BLACK DOMINO MASK with WHITEeye shapes, spiky BLACKHAIR. Plain RED short tunic/vest with three small yellow horizontal fastenings and yellow R in blackcircle at LEFTchest; GREEN shortsleeves, GREEN elbow-lengthgauntletgloves and GREEN tights/leggings, BLACK ankleboots. YELLOWutilitybelt. BLACK cape with YELLOWinnerlining. No realistic heavysegmentedarmor, goggles, darkblacklegarmor or gun. Real GRAY straight collapsible BO STAFF, held in twohands for strikes, BIRDARANG stowed onutilitybelt. 1 ARRIVAL: retrievesgraystaff; unfoldsstraightstaff; holdsitbothhands; readybalancedstance.2 DEPARTURE: lowersstaff; shortensit; putsitonbelt; turnsright.3 CELEBRATION: straightens; smiles; makesasmallstafftwirl; ready.4 RESTINGBREATH: leansforward; handonknee; relaxedcrouch; returnsupright.5 SOLOSTAFFDEMONSTRATIONA: lowbalancedwindup; slowhorizontalstaffextensionRIGHT; guidedarcstaffmotion; balancedrecovery.6 HAPPYREST: freehandonhip; staffovershoulder; smallnod; relaxedstance.7 SEATEDREST: lowersstaff; sitsononeknee; headslightlybowed; relaxedkneeling.8 SOLOSTAFFDEMONSTRATIONB: stafftwirlwindup; stepsforwardholdingstaffinbothhands; shortcontrolledforwardthrustintoEMPTYAIR; returnsguard. No energy fromstaff, noactualtargetorimpact.",
+      "refs": [
+        "/workspace/multiverse-breach/.tmp/wave8-art-references/robin-old-design-counterexample.png"
+      ],
+      "attempt": "benign-pose-revision-after-output-refusal",
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 748183ce-0adf-43bf-aeb0-3c0ac4bb6028.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceImage": null,
+      "path": null,
+      "provider": "OpenAI",
+      "requestId": "748183ce-0adf-43bf-aeb0-3c0ac4bb6028",
+      "args": {
+        "prompt": "Create a calm, NON-VIOLENT animation-model sprite sheet of the named TeenTitans2003 CARTOON character. This is an original pixel-art pose study for a game, not an official animation copy. Exactly8 clearly SEPARATEDROWS and4COLUMNS,32complete SMALL fullbodyfigures on TRANSPARENT RGBA. Nootherpeople, no scene, no text/grid/shadow. Verywide25pxalphaguttersand30pxouterborder. Allfigures/feet/hair/capes/props entirelyinsideowncell, nodrawingcrossescells. Consistentbodyproportionswithinrow, kneelingreallyshorterthanstanding. Trueoriginal2003design, notGo chibi or realisticarmoredfantasy. Attachedoldlocalreferenceis a COUNTEREXAMPLE withincorrectcostume; correctitfromthenameddesign. DefaultfacingRIGHT. The8ROWS inexactorder:1arrival,2departure,3smallcelebration,4restingbreath,5specialdemonstrationA,6happyrest,7seatedrest,8specialdemonstrationB. Fourdistinctcompleteposesineveryrow. Nobody is struck or hurt; movements demonstrated alone in emptyspace. ROBIN2003: slim athletic TEEN BOY, large angular eyes in BLACK DOMINO MASK with WHITEeye shapes, spiky BLACKHAIR. Plain RED short tunic/vest with three small yellow horizontal fastenings and yellow R in blackcircle at LEFTchest; GREEN shortsleeves, GREEN elbow-lengthgauntletgloves and GREEN tights/leggings, BLACK ankleboots. YELLOWutilitybelt. BLACK cape with YELLOWinnerlining. No realistic heavysegmentedarmor, goggles, darkblacklegarmor or gun. Real GRAY straight collapsible BO STAFF, held in twohands for strikes, BIRDARANG stowed onutilitybelt. 1 ARRIVAL: retrievesgraystaff; unfoldsstraightstaff; holdsitbothhands; readybalancedstance.2 DEPARTURE: lowersstaff; shortensit; putsitonbelt; turnsright.3 CELEBRATION: straightens; smiles; makesasmallstafftwirl; ready.4 RESTINGBREATH: leansforward; handonknee; relaxedcrouch; returnsupright.5 SOLOSTAFFDEMONSTRATIONA: lowbalancedwindup; slowhorizontalstaffextensionRIGHT; guidedarcstaffmotion; balancedrecovery.6 HAPPYREST: freehandonhip; staffovershoulder; smallnod; relaxedstance.7 SEATEDREST: lowersstaff; sitsononeknee; headslightlybowed; relaxedkneeling.8 SOLOSTAFFDEMONSTRATIONB: stafftwirlwindup; stepsforwardholdingstaffinbothhands; shortcontrolledforwardthrustintoEMPTYAIR; returnsguard. No energy fromstaff, noactualtargetorimpact.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/.tmp/wave8-art-references/robin-old-design-counterexample.png"
+        ]
+      },
+      "accepted": false,
+      "artifactProduced": false,
+      "policyBypassAttempted": false,
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/robin_tt-request-3-prompt.txt",
+      "promptSha256": "4c30709f422bbbdf93086ca96fed8e701d1bd58fa2c7d1c37e401eda46588f25",
+      "errorFile": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/robin_tt-request-3-error.txt",
+      "errorSha256": "0c0d71596cba3f1128b7518d854f7437b463a775040f3bbf4912c7e65843ee9c",
+      "archivedReferences": [
+        {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/robin_tt-request-3-reference-1.png",
+          "sha256": "1486a1079e1d0145f20457a960d0b2571d10264bba3d5f7611dfbfe38aeb9c6f",
+          "originalPath": "/workspace/multiverse-breach/.tmp/wave8-art-references/robin-old-design-counterexample.png"
+        }
+      ]
+    },
+    {
+      "heroId": "raven_tt",
+      "prompt": "Create a calm, NON-VIOLENT animation-model sprite sheet of the named TeenTitans2003 CARTOON character. This is an original pixel-art pose study for a game, not an official animation copy. Exactly8 clearly SEPARATEDROWS and4COLUMNS,32complete SMALL fullbodyfigures on TRANSPARENT RGBA. Nootherpeople, no scene, no text/grid/shadow. Verywide25pxalphaguttersand30pxouterborder. Allfigures/feet/hair/capes/props entirelyinsideowncell, nodrawingcrossescells. Consistentbodyproportionswithinrow, kneelingreallyshorterthanstanding. Trueoriginal2003design, notGo chibi or realisticarmoredfantasy. Attachedoldlocalreferenceis a COUNTEREXAMPLE withincorrectcostume; correctitfromthenameddesign. DefaultfacingRIGHT. The8ROWS inexactorder:1arrival,2departure,3smallcelebration,4restingbreath,5specialdemonstrationA,6happyrest,7seatedrest,8specialdemonstrationB. Fourdistinctcompleteposesineveryrow. Nobody is struck or hurt; movements demonstrated alone in emptyspace. RAVEN2003: pale GRAYskin, short darkPURPLEbob withwidowspeak, purpleeyes, small REDforeheadgem, reservedcalmexpression. Plain DARKNAVY LONGSLEEVE LEOTARD, the standard animated leotard silhouette with BLUE ankleboots, darkBLUE/VIOLET HOODEDCAPE fastenedwithroundgoldclaspandREDgem; GOLDcirclebeltwithREDgemmedallions. NOtrousers, embroideredfantasycoat, floatingcrystal, staff, firearm, sword, demonicbody or extraeyes. Actual2003Raven silhouette, notGo chibi. Telekineticenergy BLACK with subtleVIOLETedges. 1 ARRIVAL: calmlyopencape; fingersjoined; openpalms; poisedstance.2 DEPARTURE: lowershands; foldsarms; turnshead; wrapscapeandwalksright.3 CELEBRATION: quietexhale; smallnod; lowerpalms; calmstanding.4 RESTINGBREATH: leans; handonknee; restsone-knee; steadiesherself.5 GENTLEPROTECTIVEBARRIERA: palmsjoin; palmsopen; translucentBLACK/VIOLETroundedDOME enclosesherFULLBODY; handsrelax. Thedomeprotects,itdoesnotstrikeanybody.6 HAPPYREST: armsfold; slightcalmsmile; adjustsplainhood; relaxedstance.7 SEATEDREST: lowersgently; sitsonknees; headrelaxed; quietrest.8 GENTLEPROTECTIVEBARRIERB: fingersmeet; bothpalmsrise; differentBLACKroundedforcefieldwithvioletedgewrapsaroundher,fullbodyvisibleinside; lowerspalmscalmly. Protectiononly, no beam/projectile/attack.",
+      "refs": [
+        "/workspace/multiverse-breach/.tmp/wave8-art-references/raven-old-design-counterexample.png"
+      ],
+      "attempt": "benign-pose-revision-after-output-refusal",
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 21f6f1e0-f6a6-4e8e-bf5e-2cb081214fa7.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceImage": null,
+      "path": null,
+      "provider": "OpenAI",
+      "requestId": "21f6f1e0-f6a6-4e8e-bf5e-2cb081214fa7",
+      "args": {
+        "prompt": "Create a calm, NON-VIOLENT animation-model sprite sheet of the named TeenTitans2003 CARTOON character. This is an original pixel-art pose study for a game, not an official animation copy. Exactly8 clearly SEPARATEDROWS and4COLUMNS,32complete SMALL fullbodyfigures on TRANSPARENT RGBA. Nootherpeople, no scene, no text/grid/shadow. Verywide25pxalphaguttersand30pxouterborder. Allfigures/feet/hair/capes/props entirelyinsideowncell, nodrawingcrossescells. Consistentbodyproportionswithinrow, kneelingreallyshorterthanstanding. Trueoriginal2003design, notGo chibi or realisticarmoredfantasy. Attachedoldlocalreferenceis a COUNTEREXAMPLE withincorrectcostume; correctitfromthenameddesign. DefaultfacingRIGHT. The8ROWS inexactorder:1arrival,2departure,3smallcelebration,4restingbreath,5specialdemonstrationA,6happyrest,7seatedrest,8specialdemonstrationB. Fourdistinctcompleteposesineveryrow. Nobody is struck or hurt; movements demonstrated alone in emptyspace. RAVEN2003: pale GRAYskin, short darkPURPLEbob withwidowspeak, purpleeyes, small REDforeheadgem, reservedcalmexpression. Plain DARKNAVY LONGSLEEVE LEOTARD, the standard animated leotard silhouette with BLUE ankleboots, darkBLUE/VIOLET HOODEDCAPE fastenedwithroundgoldclaspandREDgem; GOLDcirclebeltwithREDgemmedallions. NOtrousers, embroideredfantasycoat, floatingcrystal, staff, firearm, sword, demonicbody or extraeyes. Actual2003Raven silhouette, notGo chibi. Telekineticenergy BLACK with subtleVIOLETedges. 1 ARRIVAL: calmlyopencape; fingersjoined; openpalms; poisedstance.2 DEPARTURE: lowershands; foldsarms; turnshead; wrapscapeandwalksright.3 CELEBRATION: quietexhale; smallnod; lowerpalms; calmstanding.4 RESTINGBREATH: leans; handonknee; restsone-knee; steadiesherself.5 GENTLEPROTECTIVEBARRIERA: palmsjoin; palmsopen; translucentBLACK/VIOLETroundedDOME enclosesherFULLBODY; handsrelax. Thedomeprotects,itdoesnotstrikeanybody.6 HAPPYREST: armsfold; slightcalmsmile; adjustsplainhood; relaxedstance.7 SEATEDREST: lowersgently; sitsonknees; headrelaxed; quietrest.8 GENTLEPROTECTIVEBARRIERB: fingersmeet; bothpalmsrise; differentBLACKroundedforcefieldwithvioletedgewrapsaroundher,fullbodyvisibleinside; lowerspalmscalmly. Protectiononly, no beam/projectile/attack.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/.tmp/wave8-art-references/raven-old-design-counterexample.png"
+        ]
+      },
+      "accepted": false,
+      "artifactProduced": false,
+      "policyBypassAttempted": false,
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/raven_tt-request-4-prompt.txt",
+      "promptSha256": "ad1b1f6c59610371d6612d3600e1f80c6fd68cbd82157ae089dbb54837a93f0e",
+      "errorFile": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/raven_tt-request-4-error.txt",
+      "errorSha256": "84f4a3d375b2bb117d2667f4727d05fd6e07918523a97b4d06fc98ff4e087a16",
+      "archivedReferences": [
+        {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/raven_tt-request-4-reference-1.png",
+          "sha256": "333531e554d99f053ca141b6e5f9a22fe4577c8e898f77b8cb732198524a68a0",
+          "originalPath": "/workspace/multiverse-breach/.tmp/wave8-art-references/raven-old-design-counterexample.png"
+        }
+      ]
+    },
+    {
+      "heroId": "starfire_tt",
+      "prompt": "Create a calm, NON-VIOLENT animation-model sprite sheet of the named TeenTitans2003 CARTOON character. This is an original pixel-art pose study for a game, not an official animation copy. Exactly8 clearly SEPARATEDROWS and4COLUMNS,32complete SMALL fullbodyfigures on TRANSPARENT RGBA. Nootherpeople, no scene, no text/grid/shadow. Verywide25pxalphaguttersand30pxouterborder. Allfigures/feet/hair/capes/props entirelyinsideowncell, nodrawingcrossescells. Consistentbodyproportionswithinrow, kneelingreallyshorterthanstanding. Trueoriginal2003design, notGo chibi or realisticarmoredfantasy. Attachedoldlocalreferenceis a COUNTEREXAMPLE withincorrectcostume; correctitfromthenameddesign. DefaultfacingRIGHT. The8ROWS inexactorder:1arrival,2departure,3smallcelebration,4restingbreath,5specialdemonstrationA,6happyrest,7seatedrest,8specialdemonstrationB. Fourdistinctcompleteposesineveryrow. Nobody is struck or hurt; movements demonstrated alone in emptyspace. STARFIRE2003: long STRAIGHTFIERYREDhair towaist withstraightbangs, lightORANGEskin, brightGREENeyes withlightgreensclera. Iconic VIOLET sleevelesscroptop and matchingvioletminiskirt, SILVERbelt, SILVERgorgetcollar with roundGREENgem, SILVERforearmbracers withGREENhandgems, silverupperRIGHTarmband, thighhighVIOLETboots withsilvertopbandsandsoles. Canonicalcartooncostume, NEUTRALbattleposes, no armor/cape/pants/sword/gun. GREENSTAR-BOLTS form inher OPENPALMS, neverwhite/yellowmagicstarsfloating asobjects. TeenTitans2003 proportionalceltoon, notGo chibi. 1 INTRO: friendlysmallwave; fistsready; opensonegreenlitpalm; rightguard. 2 OUTRO: letsgreenglowfade; nods; turns; lightstepaway. 3 ROUNDVICTORY: pleasedsmile; smallfistraise; lowersarms; ready. 4 ROUNDREST: bendsbreathing; handonknee; crouches briefly; recovers. 5 SOLODEMONSTRATION STARBOLTVOLLEY: bothpalmschargegreen; bracesarms; extendspalmsRIGHT withtinyGREENmuzzleflares; handsrecover. 6 VICTORY: joyfulsmallfistraise; relaxedwave; handsatwaist; smiles. 7 REST: stagger; kneels; headlow; stayskneeling alive. 8 SOLOPOWER STARBOLTVOLLEY: openspalmsnearhips; raisesgreenchargedhands; pushesbothpalmsRIGHT withSHORTlocalgreenenergyflashes; lowershands. No enormousdistantprojectile/beam or explosionpaintedintotile; runtimeownsflyingstarbolt. ",
+      "refs": [
+        "/workspace/multiverse-breach/.tmp/wave8-art-references/starfire-old-design-counterexample.png"
+      ],
+      "attempt": "initial-native-generation",
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID b91260ab-b28b-4741-9e9d-08705afa64cb.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceImage": null,
+      "path": null,
+      "provider": "OpenAI",
+      "requestId": "b91260ab-b28b-4741-9e9d-08705afa64cb",
+      "args": {
+        "prompt": "Create a calm, NON-VIOLENT animation-model sprite sheet of the named TeenTitans2003 CARTOON character. This is an original pixel-art pose study for a game, not an official animation copy. Exactly8 clearly SEPARATEDROWS and4COLUMNS,32complete SMALL fullbodyfigures on TRANSPARENT RGBA. Nootherpeople, no scene, no text/grid/shadow. Verywide25pxalphaguttersand30pxouterborder. Allfigures/feet/hair/capes/props entirelyinsideowncell, nodrawingcrossescells. Consistentbodyproportionswithinrow, kneelingreallyshorterthanstanding. Trueoriginal2003design, notGo chibi or realisticarmoredfantasy. Attachedoldlocalreferenceis a COUNTEREXAMPLE withincorrectcostume; correctitfromthenameddesign. DefaultfacingRIGHT. The8ROWS inexactorder:1arrival,2departure,3smallcelebration,4restingbreath,5specialdemonstrationA,6happyrest,7seatedrest,8specialdemonstrationB. Fourdistinctcompleteposesineveryrow. Nobody is struck or hurt; movements demonstrated alone in emptyspace. STARFIRE2003: long STRAIGHTFIERYREDhair towaist withstraightbangs, lightORANGEskin, brightGREENeyes withlightgreensclera. Iconic VIOLET sleevelesscroptop and matchingvioletminiskirt, SILVERbelt, SILVERgorgetcollar with roundGREENgem, SILVERforearmbracers withGREENhandgems, silverupperRIGHTarmband, thighhighVIOLETboots withsilvertopbandsandsoles. Canonicalcartooncostume, NEUTRALbattleposes, no armor/cape/pants/sword/gun. GREENSTAR-BOLTS form inher OPENPALMS, neverwhite/yellowmagicstarsfloating asobjects. TeenTitans2003 proportionalceltoon, notGo chibi. 1 INTRO: friendlysmallwave; fistsready; opensonegreenlitpalm; rightguard. 2 OUTRO: letsgreenglowfade; nods; turns; lightstepaway. 3 ROUNDVICTORY: pleasedsmile; smallfistraise; lowersarms; ready. 4 ROUNDREST: bendsbreathing; handonknee; crouches briefly; recovers. 5 SOLODEMONSTRATION STARBOLTVOLLEY: bothpalmschargegreen; bracesarms; extendspalmsRIGHT withtinyGREENmuzzleflares; handsrecover. 6 VICTORY: joyfulsmallfistraise; relaxedwave; handsatwaist; smiles. 7 REST: stagger; kneels; headlow; stayskneeling alive. 8 SOLOPOWER STARBOLTVOLLEY: openspalmsnearhips; raisesgreenchargedhands; pushesbothpalmsRIGHT withSHORTlocalgreenenergyflashes; lowershands. No enormousdistantprojectile/beam or explosionpaintedintotile; runtimeownsflyingstarbolt. ",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/.tmp/wave8-art-references/starfire-old-design-counterexample.png"
+        ]
+      },
+      "accepted": false,
+      "artifactProduced": false,
+      "policyBypassAttempted": false,
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/starfire_tt-request-5-prompt.txt",
+      "promptSha256": "fc9e08c9048668c0253926d5183a00081065f3b35c0cd5febdbc8a276d32c470",
+      "errorFile": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/starfire_tt-request-5-error.txt",
+      "errorSha256": "b38801571a8b12ee031f1d20e501b59b4275e0f09520246fa9d20d96486534a2",
+      "archivedReferences": [
+        {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/starfire_tt-request-5-reference-1.png",
+          "sha256": "e4daf31b97df8b37b5615fb5209b0e047295e2d23ccbac084b9a73c4a10e6c24",
+          "originalPath": "/workspace/multiverse-breach/.tmp/wave8-art-references/starfire-old-design-counterexample.png"
+        }
+      ]
+    },
+    {
+      "key": "wave8-beast_boy_tt-correction",
+      "heroId": "beast_boy_tt",
+      "prompt": "Create NEW TALL PORTRAIT atlas aspect1:2, roughly1024wide2048tall, EXACT8ROWS×4COLUMNS,32 FULLBODY pixel-art poses onTRANSPARENT RGBA. VERYWIDEtransparentguttersbetween32separatefiguresandouterpadding30px. Everyhead,foot,tail,armcompleteinsideowncell, nootheractors,text,scene,grid orfloor. IMPORTANT IDENTITY CORRECTION: previousattachedBeastBoyhasGO-likeverybighead. CorrecttheHUMANOIDtooriginalTEENTITANS2003, normalteen-cartoonathleticproportions: SMALLHEAD about1/5.5ofstandingheight, longerslimtorso/arms/legs, ANGULARface, notbigroundedbabyeyes/chibibody. DoNOTcopypriorGo-proportions. SameGREENskin,shortdarkgreenhair,pointedears,black/purpleclosefittingTitansbodysuit,graybelt/gloves/boots, no medievalcoat/gun/partialhugearms. All6humanrowsuseaFULLNORMALPROPORTIONEDTeenTitans2003figure. ENTIRE rows5and8areACTUAL GREEN T-REX bodies, preservepropertheropodanatomy:biggreenhead,longcounterbalancingtail,TWOstronghindlegs,TWOtiny2digitforearms,lightergreenunderside. Neverhumanhead/torso/clothesontheT-Rex. All4dinosaurposesineachrowTRUEFULLDINOSAUR. FOUR distinctposesineveryrow, eightrowsEXACTLY:1humanarrival smirk/fistclench/rightguard/readystance;2humandeparturerelax/wave/turn/walkright;3humansmallcelebration fistup/grin/armsrelax/ready;4humanrestingbreathlean/handonknee/crouch/steady;5T-REXDEMONSTRATIONA lowpreparation/rightstep/forwardroar/recoverstand;6humanhappyrest salute/smallfistraise/handswaist/relaxed;7humanseatedrest lowerbody/oneknee/headbow/quietseated;8T-REXDEMONSTRATIONB tailtwist/advance/rightlungeintoemptyspace/readytwobigfeet. Nooneelsepresent,nobodyhurt. Nativecompletebodiesonly. Designcorrectionmustshrinkhumanheadandlengthenrealhumanlimbs,tooriginal2003animationproportions. DoNOTsynthesizehalfhumandinosaurorjustresizehumantobodyofanimal.",
+      "refs": [
+        "/workspace/generated_images/exec-0d8ec9ec-03c4-4941-b077-645f00fa628c.png"
+      ],
+      "error": "image generation failed: http 400 Bad Request: Some(\"{\\n  \\\"error\\\": {\\n    \\\"message\\\": \\\"Your request was rejected by the safety system. If you believe this is an error, contact us at help.openai.com and include the request ID 50f14fc4-f9e9-43c5-bdde-8910bc72f7a0.\\\",\\n    \\\"type\\\": \\\"image_generation_user_error\\\",\\n    \\\"param\\\": null,\\n    \\\"code\\\": \\\"moderation_blocked\\\",\\n    \\\"moderation_details\\\": {\\n      \\\"moderation_stage\\\": \\\"output\\\",\\n      \\\"categories\\\": [\\n        \\\"other\\\"\\n      ]\\n    }\\n  }\\n}\")",
+      "path": null,
+      "attempt": "native-human-proportions-correction",
+      "sourceImage": null,
+      "provider": "OpenAI",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "requestId": "50f14fc4-f9e9-43c5-bdde-8910bc72f7a0",
+      "args": {
+        "prompt": "Create NEW TALL PORTRAIT atlas aspect1:2, roughly1024wide2048tall, EXACT8ROWS×4COLUMNS,32 FULLBODY pixel-art poses onTRANSPARENT RGBA. VERYWIDEtransparentguttersbetween32separatefiguresandouterpadding30px. Everyhead,foot,tail,armcompleteinsideowncell, nootheractors,text,scene,grid orfloor. IMPORTANT IDENTITY CORRECTION: previousattachedBeastBoyhasGO-likeverybighead. CorrecttheHUMANOIDtooriginalTEENTITANS2003, normalteen-cartoonathleticproportions: SMALLHEAD about1/5.5ofstandingheight, longerslimtorso/arms/legs, ANGULARface, notbigroundedbabyeyes/chibibody. DoNOTcopypriorGo-proportions. SameGREENskin,shortdarkgreenhair,pointedears,black/purpleclosefittingTitansbodysuit,graybelt/gloves/boots, no medievalcoat/gun/partialhugearms. All6humanrowsuseaFULLNORMALPROPORTIONEDTeenTitans2003figure. ENTIRE rows5and8areACTUAL GREEN T-REX bodies, preservepropertheropodanatomy:biggreenhead,longcounterbalancingtail,TWOstronghindlegs,TWOtiny2digitforearms,lightergreenunderside. Neverhumanhead/torso/clothesontheT-Rex. All4dinosaurposesineachrowTRUEFULLDINOSAUR. FOUR distinctposesineveryrow, eightrowsEXACTLY:1humanarrival smirk/fistclench/rightguard/readystance;2humandeparturerelax/wave/turn/walkright;3humansmallcelebration fistup/grin/armsrelax/ready;4humanrestingbreathlean/handonknee/crouch/steady;5T-REXDEMONSTRATIONA lowpreparation/rightstep/forwardroar/recoverstand;6humanhappyrest salute/smallfistraise/handswaist/relaxed;7humanseatedrest lowerbody/oneknee/headbow/quietseated;8T-REXDEMONSTRATIONB tailtwist/advance/rightlungeintoemptyspace/readytwobigfeet. Nooneelsepresent,nobodyhurt. Nativecompletebodiesonly. Designcorrectionmustshrinkhumanheadandlengthenrealhumanlimbs,tooriginal2003animationproportions. DoNOTsynthesizehalfhumandinosaurorjustresizehumantobodyofanimal.",
+        "transparent_background": true,
+        "referenced_image_paths": [
+          "/workspace/generated_images/exec-0d8ec9ec-03c4-4941-b077-645f00fa628c.png"
+        ]
+      },
+      "accepted": false,
+      "artifactProduced": false,
+      "policyBypassAttempted": false,
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/beast_boy_tt-request-6-prompt.txt",
+      "promptSha256": "ac7906fb62596f7fe3d28d6bb7f0cbfb9e9d712d28196c2ef94f06471431ce1d",
+      "errorFile": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/beast_boy_tt-request-6-error.txt",
+      "errorSha256": "b39e74e6f673cbc8235495a525d5ddbedaeea36138d6a33b4c133bd514281258",
+      "archivedReferences": [
+        {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/part-a-rejected-sources/beast_boy_tt-request-6-reference-1.png",
+          "sha256": "9d5327f5afda58b64bedc34222bf819593dacdd0873dd9a397416ba4770ba35e",
+          "originalPath": "/workspace/generated_images/exec-0d8ec9ec-03c4-4941-b077-645f00fa628c.png"
+        }
+      ]
+    }
+  ],
+  "stoppedIdentities": [
+    "robin_tt",
+    "raven_tt",
+    "starfire_tt"
+  ],
+  "notes": "Output moderation returned no usable image or generation metadata. No retry after the final explicit stop instruction; no identity substitution, filter bypass, artistic code reconstruction, or fabricated file is counted."
+}

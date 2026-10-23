@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "scope": "Wave 5 Part A: weapon identity checks supporting generated adaptations. Textual source facts do not verify any generated source-game pixels or cinematic timings.",
+  "sourceGameExactnessVerified": false,
+  "sources": [
+    {
+      "url": "https://www.halopedia.org/M6_Spartan_Laser",
+      "access": "web-tool full page, targeted passage actually read",
+      "locator": "lines739,751,757 in turn974918view0",
+      "facts": [
+        "John-117 is identified firing an M6/R at the Battle of Installation 00.",
+        "The M6 is a portable shoulder-fired solid-state laser; source describes a charging indicator.",
+        "The M6/R is described as the Human-Covenant War variant."
+      ],
+      "quotes": [
+        {
+          "text": "shoulder-fired, directed energy weapon",
+          "locator": "line751"
+        }
+      ],
+      "application": "Chief and Johnson super rows hold a bulky physical shoulder launcher with a red charging point and laser discharge. The four-pose choreography and effect extent are generated adaptations."
+    },
+    {
+      "url": "https://www.halopedia.org/Avery_Johnson",
+      "access": "web-tool full page, targeted passage actually read",
+      "locator": "line1164 in turn974918view1",
+      "quotes": [
+        {
+          "text": "A battered Johnson with an M6/R Spartan Laser on Installation 08 in Halo 3.",
+          "locator": "line1164"
+        }
+      ],
+      "facts": [
+        "Johnson using this weapon is source-supported rather than a magical ability assigned to a human Marine."
+      ],
+      "application": "His ordinary BR55 and the super M6/R remain distinguishable. The local bareheaded face design is retained; this read does not establish that every official costume lacks a cap."
+    },
+    {
+      "url": "https://www.halopedia.org/Type-1_energy_sword",
+      "access": "web-tool full page, targeted passage actually read",
+      "locator": "lines879–880 in turn974918view2",
+      "quotes": [
+        {
+          "text": "The second attack is to lunge with the energy sword",
+          "locator": "line880"
+        }
+      ],
+      "facts": [
+        "The source distinguishes a normal sword swipe from a forward lunge.",
+        "The weapon is playable from Halo2."
+      ],
+      "application": "Arbiter super and finisher rows use an alien forward body lunge with one twin-pronged plasma sword, no human rifle."
+    }
+  ],
+  "unavailableAttempts": [
+    {
+      "url": "https://doomwiki.org/wiki/BFG9000",
+      "toolReference": "turn369811view0",
+      "result": "Failed to fetch restricted URL; no page content verified."
+    },
+    {
+      "url": "https://doomwiki.org/wiki/BFG-9000_(Doom_Eternal)",
+      "toolReference": "turn369811view1",
+      "result": "Failed to fetch restricted URL; no page content verified."
+    }
+  ],
+  "otherSourceBasis": {
+    "doom": "DOOM (1993) and DOOM Eternal version names, local inspected reference bitmaps, and existing effective BFG-9000 profiles. Green projectiles and four-pose sequences are generated visual adaptations; no network verification of the two DoomWiki pages is claimed.",
+    "ifrit": "User-specified Final Fantasy VII (1997) design and inspected existing four-frame Ifrit asset. New mouth fire / flame wave is an authored Hellfire animation, not certified original summoning footage."
+  }
+}

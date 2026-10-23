@@ -1,0 +1,349 @@
+{
+  "date": "2026-10-20",
+  "sheet": "/sprites/generated/melee-ragna-wave7/ragna-ledge.png",
+  "sha256": "8c7a8402d9b7f2d80252534ed0453bc6b878a001795a3aed5af7b2f1e601a640",
+  "requiredFrames": 12,
+  "contactFrames": 11,
+  "rgbaRois": 24,
+  "allPassed": true,
+  "method": "Manual inspection of actual black glove palms and adjoining silver/black cuffs, followed by 9×9 native RGBA/color checks. No sword fitting or red sleeve is used as a palm. Anchors are project measurements, not official game animation evidence.",
+  "contactMeaning": "Catch0 explicitly reaches before contact. Remaining Catch/Hang/Climb primary anchors support the inferred edge. Climb1 uses the raised hand; free hands and released Drop/Jump poses have contact false.",
+  "checks": [
+    {
+      "state": "ledgeCatch",
+      "frame": 0,
+      "x": 202,
+      "y": 42,
+      "normalizedX": 0.7890625,
+      "normalizedY": 0.1640625,
+      "contact": false,
+      "palmRoi": {
+        "radius": 4,
+        "x": 202,
+        "y": 42,
+        "visiblePixels": 81,
+        "darkGlovePixels": 81,
+        "silverCuffPixels": 0,
+        "rgbaSha256": "cbefd93a20106804383c398c062bfb332b425c51c9a00e6a84df74c90974e068"
+      },
+      "wristRoi": {
+        "radius": 4,
+        "x": 194,
+        "y": 56,
+        "visiblePixels": 81,
+        "darkGlovePixels": 35,
+        "silverCuffPixels": 23,
+        "rgbaSha256": "1ef490418c4132610ccdd035e265190355c4e01ee84a82e484d0abb0487113e6"
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeCatch",
+      "frame": 1,
+      "x": 160,
+      "y": 42,
+      "normalizedX": 0.625,
+      "normalizedY": 0.1640625,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "x": 160,
+        "y": 42,
+        "visiblePixels": 81,
+        "darkGlovePixels": 81,
+        "silverCuffPixels": 0,
+        "rgbaSha256": "e6f38f26c1dd0be307b89cfe791d9bda615f18eab4ce286f926de2820a82d327"
+      },
+      "wristRoi": {
+        "radius": 4,
+        "x": 159,
+        "y": 55,
+        "visiblePixels": 81,
+        "darkGlovePixels": 13,
+        "silverCuffPixels": 58,
+        "rgbaSha256": "8bf2242d3734523c58e86ad790c284e84db794b24a64420acf1ab274114871ed"
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeCatch",
+      "frame": 2,
+      "x": 107,
+      "y": 38,
+      "normalizedX": 0.41796875,
+      "normalizedY": 0.1484375,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "x": 107,
+        "y": 38,
+        "visiblePixels": 81,
+        "darkGlovePixels": 81,
+        "silverCuffPixels": 0,
+        "rgbaSha256": "59051660db74fcb7d92485d5069fec3615a8af432abe97ebac70e1e2978b9ebc"
+      },
+      "wristRoi": {
+        "radius": 4,
+        "x": 108,
+        "y": 54,
+        "visiblePixels": 81,
+        "darkGlovePixels": 26,
+        "silverCuffPixels": 49,
+        "rgbaSha256": "556e87e520f633315adefd9286812e2e527a7df59cbfe8e17b52d0748b836967"
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeCatch",
+      "frame": 3,
+      "x": 97,
+      "y": 42,
+      "normalizedX": 0.37890625,
+      "normalizedY": 0.1640625,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "x": 97,
+        "y": 42,
+        "visiblePixels": 81,
+        "darkGlovePixels": 81,
+        "silverCuffPixels": 0,
+        "rgbaSha256": "ecc58e94632afd5e0a5b632b78e62d845579a31256c62608c0864bd4588035e3"
+      },
+      "wristRoi": {
+        "radius": 4,
+        "x": 100,
+        "y": 57,
+        "visiblePixels": 81,
+        "darkGlovePixels": 27,
+        "silverCuffPixels": 52,
+        "rgbaSha256": "11cacff005f14212532db7f2f106d018cfefc8fac2e7191b6ddc5b2fa4ae5282"
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeHang",
+      "frame": 0,
+      "x": 111,
+      "y": 34,
+      "normalizedX": 0.43359375,
+      "normalizedY": 0.1328125,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "x": 111,
+        "y": 34,
+        "visiblePixels": 81,
+        "darkGlovePixels": 81,
+        "silverCuffPixels": 0,
+        "rgbaSha256": "527fdef4d8a13770e2404af7009790685ee8596e00dabd9514b1b3d9f1cc42d2"
+      },
+      "wristRoi": {
+        "radius": 4,
+        "x": 111,
+        "y": 49,
+        "visiblePixels": 81,
+        "darkGlovePixels": 38,
+        "silverCuffPixels": 34,
+        "rgbaSha256": "87942a2197eff8992b7baf7dcdde3c9d8bf498fd9905ca5f3257bcfbd0e69bad"
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeHang",
+      "frame": 1,
+      "x": 128,
+      "y": 36,
+      "normalizedX": 0.5,
+      "normalizedY": 0.140625,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "x": 128,
+        "y": 36,
+        "visiblePixels": 81,
+        "darkGlovePixels": 81,
+        "silverCuffPixels": 0,
+        "rgbaSha256": "b8034e1390cdc8ac37d2e9f8b121cb7468e4b21e30fb5d8727750caba1df4274"
+      },
+      "wristRoi": {
+        "radius": 4,
+        "x": 128,
+        "y": 49,
+        "visiblePixels": 81,
+        "darkGlovePixels": 40,
+        "silverCuffPixels": 38,
+        "rgbaSha256": "8871d822a35f250eeb34e1c9a4815f7589d29b320e2a734acdb1edbdd5f4e180"
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeHang",
+      "frame": 2,
+      "x": 90,
+      "y": 34,
+      "normalizedX": 0.3515625,
+      "normalizedY": 0.1328125,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "x": 90,
+        "y": 34,
+        "visiblePixels": 81,
+        "darkGlovePixels": 81,
+        "silverCuffPixels": 0,
+        "rgbaSha256": "204c2fd87d5099e698c701bcdba0c954bf2d3b1ae570174e1d0f7eb2ef65777c"
+      },
+      "wristRoi": {
+        "radius": 4,
+        "x": 91,
+        "y": 51,
+        "visiblePixels": 81,
+        "darkGlovePixels": 31,
+        "silverCuffPixels": 44,
+        "rgbaSha256": "cec97ec44c2d5e53aa1c6b148d20e52d59b2e5f94c333e0013b6d6334cb19f12"
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeHang",
+      "frame": 3,
+      "x": 97,
+      "y": 42,
+      "normalizedX": 0.37890625,
+      "normalizedY": 0.1640625,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "x": 97,
+        "y": 42,
+        "visiblePixels": 81,
+        "darkGlovePixels": 80,
+        "silverCuffPixels": 2,
+        "rgbaSha256": "199ebf22661903222866024a92c457a3728d3410243285b9f043862a83b5bbb9"
+      },
+      "wristRoi": {
+        "radius": 4,
+        "x": 99,
+        "y": 55,
+        "visiblePixels": 81,
+        "darkGlovePixels": 45,
+        "silverCuffPixels": 34,
+        "rgbaSha256": "669347e73056165e32e2f572a10739d0be371a7e6fb358a68aa928d84a9be3f0"
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeClimb",
+      "frame": 0,
+      "x": 100,
+      "y": 76,
+      "normalizedX": 0.390625,
+      "normalizedY": 0.296875,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "x": 100,
+        "y": 76,
+        "visiblePixels": 81,
+        "darkGlovePixels": 81,
+        "silverCuffPixels": 0,
+        "rgbaSha256": "56ae4bf340a7dc95fab6d6d2b2853f97377004acaa0f493516fdb025e6ec355b"
+      },
+      "wristRoi": {
+        "radius": 4,
+        "x": 103,
+        "y": 91,
+        "visiblePixels": 81,
+        "darkGlovePixels": 35,
+        "silverCuffPixels": 41,
+        "rgbaSha256": "830bc3138a4c018e97513e72cfb940589b48a3e42a20ef0a8c87b77a2353af43"
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeClimb",
+      "frame": 1,
+      "x": 169,
+      "y": 75,
+      "normalizedX": 0.66015625,
+      "normalizedY": 0.29296875,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "x": 169,
+        "y": 75,
+        "visiblePixels": 81,
+        "darkGlovePixels": 81,
+        "silverCuffPixels": 0,
+        "rgbaSha256": "7a8eb8e83ae54114a94d28dcb8f177da0e33dea3e0d4a4a6e6322032438d9ce0"
+      },
+      "wristRoi": {
+        "radius": 4,
+        "x": 167,
+        "y": 90,
+        "visiblePixels": 81,
+        "darkGlovePixels": 20,
+        "silverCuffPixels": 49,
+        "rgbaSha256": "e10b307f8c4da64672ec2a94d24265a975ceaa1e6ed815fbf711171aa51ce39b"
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeClimb",
+      "frame": 2,
+      "x": 72,
+      "y": 204,
+      "normalizedX": 0.28125,
+      "normalizedY": 0.796875,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "x": 72,
+        "y": 204,
+        "visiblePixels": 81,
+        "darkGlovePixels": 81,
+        "silverCuffPixels": 0,
+        "rgbaSha256": "d45504d443e04cd08f72105b2ca4b32c4d47b7ada6df0b485cd687cee72a9765"
+      },
+      "wristRoi": {
+        "radius": 4,
+        "x": 72,
+        "y": 198,
+        "visiblePixels": 81,
+        "darkGlovePixels": 60,
+        "silverCuffPixels": 14,
+        "rgbaSha256": "5544c1b975573785be1b1d462b771dc45add6fccd22f629fbcab2bb6f92be103"
+      },
+      "passed": true
+    },
+    {
+      "state": "ledgeClimb",
+      "frame": 3,
+      "x": 106,
+      "y": 207,
+      "normalizedX": 0.4140625,
+      "normalizedY": 0.80859375,
+      "contact": true,
+      "palmRoi": {
+        "radius": 4,
+        "x": 106,
+        "y": 207,
+        "visiblePixels": 81,
+        "darkGlovePixels": 81,
+        "silverCuffPixels": 0,
+        "rgbaSha256": "8144eb3ecd969517fb2c20b864a396e7c6f6d9e8d6f47c32f55240fb5fc38442"
+      },
+      "wristRoi": {
+        "radius": 4,
+        "x": 107,
+        "y": 200,
+        "visiblePixels": 81,
+        "darkGlovePixels": 53,
+        "silverCuffPixels": 16,
+        "rgbaSha256": "f9926214c019f2cfcd08aafd00e06e8bde942dc277f1a7207aee9d7592682fe8"
+      },
+      "passed": true
+    }
+  ]
+}

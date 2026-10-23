@@ -1,0 +1,375 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "part": "B",
+  "status": "art-and-builders-frozen",
+  "presentationAtlases": 5,
+  "basicAtlases": 5,
+  "totalAtlases": 10,
+  "presentationPoses": 160,
+  "basicPoses": 80,
+  "totalDistinctPoses": 240,
+  "actualNativeToolInvocations": 10,
+  "returnedNativeImages": 10,
+  "failedNativeCalls": 0,
+  "nativeCorrections": 0,
+  "procedurallyDrawnPoses": 0,
+  "oldPngEdited": 0,
+  "bodyCalibration": "One native-source scale from inspected standing body to190px; posture proportions and density differences explicitly preserved.",
+  "registeredBodyRois": 60,
+  "transparentMarginPixels": 10,
+  "baseline": 244,
+  "canon1to1Verified": false,
+  "globalFidelity1to1": false,
+  "networkScope": "Concrete sources read and search-only/restricted pages distinguished in part-b-source-facts.json, no blanket verification claim.",
+  "registries": [
+    {
+      "path": "src/game/combat/characterAnimationsWave8PartB.generated.json",
+      "sha256": "b65b45623ca0ea7d1247347c669bce3be9959838530cae961771a4b0cf1cd77d",
+      "entries": 5
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave8PartB.generated.json",
+      "sha256": "900354c150df75ce2c3eca54e5ea8b5a53109e486994a8651a7c67d0cea202de",
+      "entries": 5
+    }
+  ],
+  "builders": [
+    "scripts/buildCombatCharacterAnimationsWave8PartB.mjs",
+    "scripts/buildCombatCharacterSpriteCorrectionsWave8PartB.mjs"
+  ],
+  "attemptArchive": "docs/combat-fidelity-wave8-2026-10-20/part-b-attempts.json",
+  "sourceFacts": "docs/combat-fidelity-wave8-2026-10-20/part-b-source-facts.json",
+  "assets": [
+    {
+      "heroId": "kiryu_yakuza",
+      "sheet": "/sprites/generated/combat-character-animations-wave8/kiryu_yakuza.png",
+      "sha256": "3ae89df3053d49aa678a6e2e9b521a0245e923f9b7769c3a0233fd61b4f35915",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "actualPublicSha256": "3ae89df3053d49aa678a6e2e9b521a0245e923f9b7769c3a0233fd61b4f35915",
+      "standingBodyHeight": 190,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          73,
+          18,
+          130,
+          221
+        ],
+        "referenceNormalizedBodyHeight": 221,
+        "referencePackingScale": 1.0545454545454545,
+        "nativeReferenceBodyHeight": 209.5689655172414,
+        "sourceWideRenderPixelsPerNativePixel": 0.9066227889757301,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "majima_yakuza",
+      "sheet": "/sprites/generated/combat-character-animations-wave8/majima_yakuza.png",
+      "sha256": "1875e481f9a456ed97aa6b88e189bf33879376add29f845387467d2a6427b449",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "actualPublicSha256": "1875e481f9a456ed97aa6b88e189bf33879376add29f845387467d2a6427b449",
+      "standingBodyHeight": 190,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          85,
+          16,
+          151,
+          225
+        ],
+        "referenceNormalizedBodyHeight": 225,
+        "referencePackingScale": 1.0220264317180616,
+        "nativeReferenceBodyHeight": 220.15086206896552,
+        "sourceWideRenderPixelsPerNativePixel": 0.8630445423396965,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "ichiban_yakuza",
+      "sheet": "/sprites/generated/combat-character-animations-wave8/ichiban_yakuza.png",
+      "sha256": "49dbe8192185ee35331c07b00c88f24f57c1b3e7c8f6077d19d129b6bf6b0e2f",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "actualPublicSha256": "49dbe8192185ee35331c07b00c88f24f57c1b3e7c8f6077d19d129b6bf6b0e2f",
+      "standingBodyHeight": 190,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          53,
+          16,
+          153,
+          220
+        ],
+        "referenceNormalizedBodyHeight": 220,
+        "referencePackingScale": 1.0790697674418606,
+        "nativeReferenceBodyHeight": 203.87931034482756,
+        "sourceWideRenderPixelsPerNativePixel": 0.931923890063425,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "saejima_yakuza",
+      "sheet": "/sprites/generated/combat-character-animations-wave8/saejima_yakuza.png",
+      "sha256": "81042532a2e88c9a1aacd8aae45c2c663d1afe989a6873df319b6e1e96dd2a85",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "actualPublicSha256": "81042532a2e88c9a1aacd8aae45c2c663d1afe989a6873df319b6e1e96dd2a85",
+      "standingBodyHeight": 190,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          77,
+          20,
+          152,
+          221
+        ],
+        "referenceNormalizedBodyHeight": 221,
+        "referencePackingScale": 0.9666666666666667,
+        "nativeReferenceBodyHeight": 228.6206896551724,
+        "sourceWideRenderPixelsPerNativePixel": 0.8310708898944194,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "akiyama_yakuza",
+      "sheet": "/sprites/generated/combat-character-animations-wave8/akiyama_yakuza.png",
+      "sha256": "755057bf68ab7f3a620c39ac6a16c228efecfe2de48b0c4d0941db8c56067b5f",
+      "width": 1024,
+      "height": 2048,
+      "frames": 32,
+      "actualPublicSha256": "755057bf68ab7f3a620c39ac6a16c228efecfe2de48b0c4d0941db8c56067b5f",
+      "standingBodyHeight": 190,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referencePhase": "intro",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          98,
+          17,
+          123,
+          222
+        ],
+        "referenceNormalizedBodyHeight": 222,
+        "referencePackingScale": 1.0175438596491229,
+        "nativeReferenceBodyHeight": 218.17241379310343,
+        "sourceWideRenderPixelsPerNativePixel": 0.8708708708708709,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true
+      }
+    },
+    {
+      "heroId": "kiryu_yakuza",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/kiryu_yakuza.png",
+      "sha256": "d958830dda17d5fcd840ef7f61a7b04d88591a28bd51d2b2ab6ece55bfca6a3f",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "actualPublicSha256": "d958830dda17d5fcd840ef7f61a7b04d88591a28bd51d2b2ab6ece55bfca6a3f",
+      "standingBodyHeight": 190,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          62,
+          15,
+          143,
+          226
+        ],
+        "referenceNormalizedBodyHeight": 226,
+        "referencePackingScale": 0.703030303030303,
+        "nativeReferenceBodyHeight": 321.4655172413793,
+        "sourceWideRenderPixelsPerNativePixel": 0.5910431751139716,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Different native grid aspect and raster dimensions; ratio explicitly reported. Each original source is independently calibrated once from its idle standing body to190, not calibrated per state. No row-specific pose equalization."
+        }
+      }
+    },
+    {
+      "heroId": "majima_yakuza",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/majima_yakuza.png",
+      "sha256": "c5b854660e10ce92fb7d74f6953027d0d0b7c53510d11bc0453b6eeaf838549f",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "actualPublicSha256": "c5b854660e10ce92fb7d74f6953027d0d0b7c53510d11bc0453b6eeaf838549f",
+      "standingBodyHeight": 190,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          54,
+          14,
+          155,
+          227
+        ],
+        "referenceNormalizedBodyHeight": 227,
+        "referencePackingScale": 0.6863905325443787,
+        "nativeReferenceBodyHeight": 330.71551724137936,
+        "sourceWideRenderPixelsPerNativePixel": 0.5745118994864843,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Different native grid aspect and raster dimensions; ratio explicitly reported. Each original source is independently calibrated once from its idle standing body to190, not calibrated per state. No row-specific pose equalization."
+        }
+      }
+    },
+    {
+      "heroId": "ichiban_yakuza",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/ichiban_yakuza.png",
+      "sha256": "95c8ace3a8d067ca3bdef6cce420312875b7cc8b5816858e0145be505a056732",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "actualPublicSha256": "95c8ace3a8d067ca3bdef6cce420312875b7cc8b5816858e0145be505a056732",
+      "standingBodyHeight": 190,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          55,
+          14,
+          159,
+          227
+        ],
+        "referenceNormalizedBodyHeight": 227,
+        "referencePackingScale": 0.6987951807228916,
+        "nativeReferenceBodyHeight": 324.84482758620686,
+        "sourceWideRenderPixelsPerNativePixel": 0.584894644657927,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Different native grid aspect and raster dimensions; ratio explicitly reported. Each original source is independently calibrated once from its idle standing body to190, not calibrated per state. No row-specific pose equalization."
+        }
+      }
+    },
+    {
+      "heroId": "saejima_yakuza",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/saejima_yakuza.png",
+      "sha256": "78484c700c2aa1f9d71cc54f961df71cce1c95ed62c9e2dd0fc4789cd9328002",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "actualPublicSha256": "78484c700c2aa1f9d71cc54f961df71cce1c95ed62c9e2dd0fc4789cd9328002",
+      "standingBodyHeight": 190,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          58,
+          16,
+          152,
+          226
+        ],
+        "referenceNormalizedBodyHeight": 226,
+        "referencePackingScale": 0.6744186046511628,
+        "nativeReferenceBodyHeight": 335.1034482758621,
+        "sourceWideRenderPixelsPerNativePixel": 0.5669890924058448,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Different native grid aspect and raster dimensions; ratio explicitly reported. Each original source is independently calibrated once from its idle standing body to190, not calibrated per state. No row-specific pose equalization."
+        }
+      }
+    },
+    {
+      "heroId": "akiyama_yakuza",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/akiyama_yakuza.png",
+      "sha256": "f1bea38cd83faad461656b2f09b8ad7bfb5793f97f3e21ca5d12138851dca76d",
+      "width": 1024,
+      "height": 1024,
+      "frames": 16,
+      "actualPublicSha256": "f1bea38cd83faad461656b2f09b8ad7bfb5793f97f3e21ca5d12138851dca76d",
+      "standingBodyHeight": 190,
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          73,
+          13,
+          132,
+          226
+        ],
+        "referenceNormalizedBodyHeight": 226,
+        "referencePackingScale": 0.6904761904761905,
+        "nativeReferenceBodyHeight": 327.3103448275862,
+        "sourceWideRenderPixelsPerNativePixel": 0.5804888327012221,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Different native grid aspect and raster dimensions; ratio explicitly reported. Each original source is independently calibrated once from its idle standing body to190, not calibrated per state. No row-specific pose equalization."
+        }
+      }
+    }
+  ]
+}

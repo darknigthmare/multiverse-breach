@@ -1,0 +1,185 @@
+{
+  "passed": true,
+  "flow": "Actual FighterMode, local P1/P2 keyboard R/O, live projectile geometry, real sessionPaused prop, one confirmed collision/HP change and expiry.",
+  "note": "L is the secondary command in FighterMode; R/O exercise the100% supers. Test setup only seeds the meter, positions and durable target HP, then uses the unmodified gameplay loop and keyboard handlers.",
+  "results": [
+    {
+      "id": "boruto_uzumaki",
+      "side": "player",
+      "engineUrl": "/src/game/engineFighter.js?t=1792485811125",
+      "initialHp": 100000,
+      "initialTargetX": 740,
+      "cast": {
+        "name": "Vanishing Rasengan",
+        "elapsed": 0.016666666666666666,
+        "hitAt": 0.451,
+        "meter": 0,
+        "hp": 100000
+      },
+      "hits": 1,
+      "impactEvents": 1,
+      "collision": {
+        "hpBefore": 100000,
+        "hpAfter": 99901.7,
+        "impact": [
+          {
+            "x": 740,
+            "y": 387,
+            "elapsed": 0
+          }
+        ],
+        "elapsed": 1.5333333333333328,
+        "actorActionElapsed": null
+      },
+      "finalHp": 99901.7,
+      "key": "R",
+      "pause": {
+        "durationMs": 250,
+        "stateUnchanged": true,
+        "canvasUnchanged": true
+      },
+      "frames": 127,
+      "drawFrames": 147,
+      "flightCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-boruto_uzumaki-player-paused.png",
+      "contactCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-boruto_uzumaki-player-impact.png",
+      "tracePath": "/workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-boruto_uzumaki-player-trace.json",
+      "passed": true
+    },
+    {
+      "id": "boruto_uzumaki",
+      "side": "cpu",
+      "engineUrl": "/src/game/engineFighter.js?t=1792485811125",
+      "initialHp": 100000,
+      "initialTargetX": 220,
+      "cast": {
+        "name": "Vanishing Rasengan",
+        "elapsed": 0.016666666666666666,
+        "hitAt": 0.451,
+        "meter": 0,
+        "hp": 100000
+      },
+      "hits": 1,
+      "impactEvents": 1,
+      "collision": {
+        "hpBefore": 100000,
+        "hpAfter": 99901.7,
+        "impact": [
+          {
+            "x": 220,
+            "y": 387,
+            "elapsed": 0
+          }
+        ],
+        "elapsed": 1.4166666666666665,
+        "actorActionElapsed": null
+      },
+      "finalHp": 99901.7,
+      "key": "O",
+      "pause": {
+        "durationMs": 250,
+        "stateUnchanged": true,
+        "canvasUnchanged": true
+      },
+      "frames": 119,
+      "drawFrames": 147,
+      "flightCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-boruto_uzumaki-cpu-paused.png",
+      "contactCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-boruto_uzumaki-cpu-impact.png",
+      "tracePath": "/workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-boruto_uzumaki-cpu-trace.json",
+      "passed": true
+    },
+    {
+      "id": "leon",
+      "side": "player",
+      "engineUrl": "/src/game/engineFighter.js?t=1792485811125",
+      "initialHp": 100000,
+      "initialTargetX": 740,
+      "cast": {
+        "name": "Special Rocket Launcher",
+        "elapsed": 0.016666666666666666,
+        "hitAt": 0.451,
+        "meter": 0,
+        "hp": 100000
+      },
+      "hits": 1,
+      "impactEvents": 1,
+      "collision": {
+        "hpBefore": 100000,
+        "hpAfter": 99893.1,
+        "impact": [
+          {
+            "x": 740,
+            "y": 387,
+            "elapsed": 0
+          }
+        ],
+        "elapsed": 1.4166666666666665,
+        "actorActionElapsed": null
+      },
+      "finalHp": 99893.1,
+      "key": "R",
+      "pause": {
+        "durationMs": 250,
+        "stateUnchanged": true,
+        "canvasUnchanged": true
+      },
+      "frames": 119,
+      "drawFrames": 147,
+      "flightCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-leon-player-paused.png",
+      "contactCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-leon-player-impact.png",
+      "tracePath": "/workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-leon-player-trace.json",
+      "passed": true
+    },
+    {
+      "id": "leon",
+      "side": "cpu",
+      "engineUrl": "/src/game/engineFighter.js?t=1792485811125",
+      "initialHp": 100000,
+      "initialTargetX": 220,
+      "cast": {
+        "name": "Special Rocket Launcher",
+        "elapsed": 0.016666666666666666,
+        "hitAt": 0.451,
+        "meter": 0,
+        "hp": 100000
+      },
+      "hits": 1,
+      "impactEvents": 1,
+      "collision": {
+        "hpBefore": 100000,
+        "hpAfter": 99893.1,
+        "impact": [
+          {
+            "x": 220,
+            "y": 387,
+            "elapsed": 0
+          }
+        ],
+        "elapsed": 1.4499999999999997,
+        "actorActionElapsed": null
+      },
+      "finalHp": 99893.1,
+      "key": "O",
+      "pause": {
+        "durationMs": 250,
+        "stateUnchanged": true,
+        "canvasUnchanged": true
+      },
+      "frames": 121,
+      "drawFrames": 146,
+      "flightCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-leon-cpu-paused.png",
+      "contactCapture": "/workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-leon-cpu-impact.png",
+      "tracePath": "/workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-leon-cpu-trace.json",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ]
+}

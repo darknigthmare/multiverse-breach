@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "scope": "Wave6 PartA source/identity review. No generated source-game visual exactness is certified.",
+  "sourceGameExactnessVerified": false,
+  "localReferences": [
+    {
+      "heroId": "sonic_hedgehog",
+      "asset": "/sprites/generated/heroes/sonic/sonic-hedgehog.png",
+      "reviewed": true,
+      "identity": "Blue/green-eyed Adventure Sonic, white gloves, red/white shoes; normal form."
+    },
+    {
+      "heroId": "miles_tails_prower",
+      "asset": "/sprites/generated/heroes/sonic/miles-tails-prower.png",
+      "reviewed": true,
+      "identity": "Orange two-tailed blue-eyed fox. This old base lacks the Cyclone required by the resolved kit; retained as fox-design context only."
+    },
+    {
+      "heroId": "knuckles_echidna",
+      "asset": "/sprites/generated/heroes/sonic/knuckles-echidna.png",
+      "reviewed": true,
+      "identity": "Red echidna with white chest crescent and two-spiked gloves; no firearm. New compact glove reinforcement follows the selected HammerGloves upgrade."
+    },
+    {
+      "heroId": "jotaro_kujo",
+      "asset": "/sprites/generated/heroes/jojo-s-bizarre-adventure/jotaro-kujo.png",
+      "standAsset": "/sprites/generated/combat-entities/jojo-star-platinum.png",
+      "reviewed": true,
+      "identity": "Black Part3 student outfit/goldchain, purple StarPlatinum. Both references passed to the initial native generation."
+    },
+    {
+      "heroId": "giorno_giovanna",
+      "asset": "/sprites/generated/heroes/jojo-s-bizarre-adventure/giorno-giovanna.png",
+      "standAsset": "/sprites/generated/combat-entities/jojo-gold-experience.png",
+      "reviewed": true,
+      "identity": "Purple suit/blond three curls; ordinary GoldExperience, not Requiem. Both references passed to the initial native generation."
+    }
+  ],
+  "networkReads": [
+    {
+      "url": "https://sonic.fandom.com/wiki/Power_Laser",
+      "access": "indexed search excerpt actually read; full-page open unavailable",
+      "toolReference": "turn722279search1",
+      "quotes": [
+        "emit a large multi-colored beam of energy from the front"
+      ],
+      "application": "PowerLaser comes from the piloted machine front, not Tails hands; compact white/blue/yellow beam depiction is adapted."
+    },
+    {
+      "url": "https://sonic.fandom.com/wiki/Thunder_Arrow",
+      "access": "indexed search excerpt actually read; full-page open unavailable",
+      "toolReference": "turn722279search0",
+      "quotes": [
+        "several thin but straight lightning bolts above his opponents"
+      ],
+      "application": "Thin descending lightning in front/right of Knuckles, no firearm or hand laser."
+    },
+    {
+      "url": "https://sonic.fandom.com/wiki/Cyclone",
+      "access": "indexed search excerpts actually read; full-page open unavailable",
+      "toolReferences": [
+        "turn722279search3",
+        "turn684377search5"
+      ],
+      "facts": [
+        "Walker mode has two legs and lacks aircraft rear/wings.",
+        "Mainline SA2 action stages use the piloted Cyclone."
+      ],
+      "application": "Blue/yellow compact two-legged walker, visible fox pilot, no Tornado-plane substitution."
+    },
+    {
+      "url": "https://usermanual.wiki/Document/sonicad2dcmanual.2525051430.pdf",
+      "access": "indexed manual search excerpt/description only; no retained official image pixels read",
+      "toolReference": "turn722279search23",
+      "facts": [
+        "Search description identifies the Cyclone as a blue-and-yellow walker behind Tails."
+      ],
+      "visualComparisonVerified": false
+    },
+    {
+      "url": "https://www.sonicscene.net/media-and-downloads/official-artwork/sonic-adventure-2",
+      "access": "full gallery page text actually read",
+      "toolReference": "turn400554view0",
+      "locator": "lines97,126,216,278",
+      "facts": [
+        "Gallery labels a CycloneSA2 image in its SonicAdventure2 official-artwork category."
+      ],
+      "visualComparisonVerified": false
+    }
+  ],
+  "unavailableAttempts": [
+    {
+      "url": "https://sonic.fandom.com/wiki/Cyclone",
+      "toolReference": "turn523314view0",
+      "result": "402 PaymentRequired"
+    },
+    {
+      "url": "https://sonic.fandom.com/wiki/Power_Laser",
+      "toolReference": "turn523314view1",
+      "result": "restricted URL"
+    },
+    {
+      "url": "https://sonic.fandom.com/wiki/Thunder_Arrow",
+      "toolReference": "turn523314view2",
+      "result": "402 PaymentRequired"
+    },
+    {
+      "url": "https://www.sonicscene.net/images/igallery/resized/401-500/CycloneSA2-466-800-600-100.png",
+      "toolReference": "turn257847view0",
+      "result": "Web connector returned only ImageDisplayed text, no accessible image content; direct archival request returned403. No official image was archived or passed as a native reference."
+    }
+  ],
+  "limits": [
+    "Cyclone’s new machine design is generated from explicit source identity/text and the inspected fox reference; no external frame/shape comparison was available.",
+    "JoJo effects only depict ordinary Stand punch barrages. No time-stop, Requiem or extra attack-count mechanic is implemented.",
+    "New Sonic presentation calibration uses the190px standing-body contract supplied for the new45state melee assets; native curled/crouched proportions are preserved."
+  ]
+}

@@ -1,0 +1,2356 @@
+{
+  "method": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+  "date": "2026-10-20",
+  "source1to1Verified": false,
+  "modifiesBitmap": false,
+  "rendererAnchorBaseline": 244,
+  "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+  "measuredRows": [
+    {
+      "heroId": "ragna",
+      "phase": "intro",
+      "renderScale": 0.913462,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 208,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 208,
+      "nativeComparableBodyHeight": 182,
+      "nativeReferenceBodyHeight": 182,
+      "referenceRenderScale": 0.9134615384615384,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        58,
+        35,
+        143,
+        208
+      ],
+      "referenceBodyBounds": [
+        58,
+        35,
+        143,
+        208
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        50,
+        57,
+        125,
+        182
+      ],
+      "nativeReferenceBodyBounds": [
+        50,
+        57,
+        125,
+        182
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeReferenceSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.000096,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ragna",
+      "phase": "outro",
+      "renderScale": 0.800213,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 208,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 227,
+      "nativeComparableBodyHeight": 174,
+      "nativeReferenceBodyHeight": 182,
+      "referenceRenderScale": 0.9134615384615384,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        63,
+        17,
+        151,
+        227
+      ],
+      "referenceBodyBounds": [
+        58,
+        35,
+        143,
+        208
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        61,
+        275,
+        116,
+        174
+      ],
+      "nativeReferenceBodyBounds": [
+        50,
+        57,
+        125,
+        182
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeReferenceSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 181.648352,
+      "correctedBodyHeight": 181.648351,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ragna",
+      "phase": "roundVictory",
+      "renderScale": 0.933538,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 208,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 208,
+      "nativeComparableBodyHeight": 186,
+      "nativeReferenceBodyHeight": 182,
+      "referenceRenderScale": 0.9134615384615384,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        71,
+        33,
+        127,
+        208
+      ],
+      "referenceBodyBounds": [
+        58,
+        35,
+        143,
+        208
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        60,
+        487,
+        113,
+        186
+      ],
+      "nativeReferenceBodyBounds": [
+        50,
+        57,
+        125,
+        182
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeReferenceSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 194.175824,
+      "correctedBodyHeight": 194.175904,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ragna",
+      "phase": "roundDefeat",
+      "renderScale": 1.059308,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 208,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 136,
+      "nativeComparableBodyHeight": 138,
+      "nativeReferenceBodyHeight": 182,
+      "referenceRenderScale": 0.9134615384615384,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        70,
+        108,
+        141,
+        136
+      ],
+      "referenceBodyBounds": [
+        58,
+        35,
+        143,
+        208
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        52,
+        727,
+        143,
+        138
+      ],
+      "nativeReferenceBodyBounds": [
+        50,
+        57,
+        125,
+        182
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeReferenceSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 144.065934,
+      "correctedBodyHeight": 144.065888,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ragna",
+      "phase": "fatality",
+      "renderScale": 1.321604,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 208,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 94,
+      "nativeComparableBodyHeight": 119,
+      "nativeReferenceBodyHeight": 182,
+      "referenceRenderScale": 0.9134615384615384,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        52,
+        139,
+        149,
+        94
+      ],
+      "referenceBodyBounds": [
+        58,
+        35,
+        143,
+        208
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        679,
+        947,
+        190,
+        119
+      ],
+      "nativeReferenceBodyBounds": [
+        50,
+        57,
+        125,
+        182
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeReferenceSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 124.230769,
+      "correctedBodyHeight": 124.230776,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ragna",
+      "phase": "victory",
+      "renderScale": 1.049956,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 208,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 174,
+      "nativeComparableBodyHeight": 175,
+      "nativeReferenceBodyHeight": 182,
+      "referenceRenderScale": 0.9134615384615384,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        46,
+        70,
+        118,
+        174
+      ],
+      "referenceBodyBounds": [
+        58,
+        35,
+        143,
+        208
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        694,
+        1125,
+        119,
+        175
+      ],
+      "nativeReferenceBodyBounds": [
+        50,
+        57,
+        125,
+        182
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeReferenceSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 182.692308,
+      "correctedBodyHeight": 182.692344,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ragna",
+      "phase": "defeat",
+      "renderScale": 0.795614,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 208,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 227,
+      "nativeComparableBodyHeight": 173,
+      "nativeReferenceBodyHeight": 182,
+      "referenceRenderScale": 0.9134615384615384,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        63,
+        12,
+        181,
+        227
+      ],
+      "referenceBodyBounds": [
+        58,
+        35,
+        143,
+        208
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        61,
+        1338,
+        138,
+        173
+      ],
+      "nativeReferenceBodyBounds": [
+        50,
+        57,
+        125,
+        182
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeReferenceSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 180.604396,
+      "correctedBodyHeight": 180.604378,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "ragna",
+      "phase": "super",
+      "renderScale": 1.43022,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 208,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 100,
+      "nativeComparableBodyHeight": 137,
+      "nativeReferenceBodyHeight": 182,
+      "referenceRenderScale": 0.9134615384615384,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        49,
+        144,
+        135,
+        100
+      ],
+      "referenceBodyBounds": [
+        58,
+        35,
+        143,
+        208
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        668,
+        1596,
+        186,
+        137
+      ],
+      "nativeReferenceBodyBounds": [
+        50,
+        57,
+        125,
+        182
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/ragna-corrected.png",
+      "nativeReferenceSourceImageSha256": "1878a1b024139c7c2fd38cff95157d440b4ed7be8e260b48763ada1c65ef7ba9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 143.021978,
+      "correctedBodyHeight": 143.022,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "jin",
+      "phase": "intro",
+      "renderScale": 1,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 184,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 184,
+      "nativeComparableBodyHeight": 185,
+      "nativeReferenceBodyHeight": 185,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 184,
+      "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        62,
+        60,
+        128,
+        184
+      ],
+      "referenceBodyBounds": [
+        62,
+        60,
+        128,
+        184
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        45,
+        51,
+        129,
+        185
+      ],
+      "nativeReferenceBodyBounds": [
+        45,
+        51,
+        129,
+        185
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-corrected.png",
+      "nativeSourceImageSha256": "4f439a62be43b47eed1cf914d4e212d431048797e360848e32cda68937e7555c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-corrected.png",
+      "nativeReferenceSourceImageSha256": "4f439a62be43b47eed1cf914d4e212d431048797e360848e32cda68937e7555c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 184,
+      "correctedBodyHeight": 184,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "jin",
+      "phase": "outro",
+      "renderScale": 0.876679,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 184,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 194,
+      "nativeComparableBodyHeight": 171,
+      "nativeReferenceBodyHeight": 185,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 184,
+      "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        57,
+        45,
+        145,
+        194
+      ],
+      "referenceBodyBounds": [
+        62,
+        60,
+        128,
+        184
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        48,
+        270,
+        128,
+        171
+      ],
+      "nativeReferenceBodyBounds": [
+        45,
+        51,
+        129,
+        185
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-corrected.png",
+      "nativeSourceImageSha256": "4f439a62be43b47eed1cf914d4e212d431048797e360848e32cda68937e7555c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-corrected.png",
+      "nativeReferenceSourceImageSha256": "4f439a62be43b47eed1cf914d4e212d431048797e360848e32cda68937e7555c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 170.075676,
+      "correctedBodyHeight": 170.075726,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "jin",
+      "phase": "roundVictory",
+      "renderScale": 0.805148,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 184,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 187,
+      "nativeReferenceBodyHeight": 185,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 184,
+      "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        60,
+        12,
+        152,
+        231
+      ],
+      "referenceBodyBounds": [
+        62,
+        60,
+        128,
+        184
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        56,
+        478,
+        123,
+        187
+      ],
+      "nativeReferenceBodyBounds": [
+        45,
+        51,
+        129,
+        185
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-corrected.png",
+      "nativeSourceImageSha256": "4f439a62be43b47eed1cf914d4e212d431048797e360848e32cda68937e7555c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-corrected.png",
+      "nativeReferenceSourceImageSha256": "4f439a62be43b47eed1cf914d4e212d431048797e360848e32cda68937e7555c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 185.989189,
+      "correctedBodyHeight": 185.989188,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "jin",
+      "phase": "roundDefeat",
+      "renderScale": 0.956341,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 184,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 130,
+      "nativeComparableBodyHeight": 125,
+      "nativeReferenceBodyHeight": 185,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 184,
+      "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        32,
+        103,
+        167,
+        130
+      ],
+      "referenceBodyBounds": [
+        62,
+        60,
+        128,
+        184
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        19,
+        743,
+        161,
+        125
+      ],
+      "nativeReferenceBodyBounds": [
+        45,
+        51,
+        129,
+        185
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-corrected.png",
+      "nativeSourceImageSha256": "4f439a62be43b47eed1cf914d4e212d431048797e360848e32cda68937e7555c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-corrected.png",
+      "nativeReferenceSourceImageSha256": "4f439a62be43b47eed1cf914d4e212d431048797e360848e32cda68937e7555c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 124.324324,
+      "correctedBodyHeight": 124.32433,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "jin",
+      "phase": "fatality",
+      "renderScale": 1.268966,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 184,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 145,
+      "nativeComparableBodyHeight": 333,
+      "nativeReferenceBodyHeight": 333,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 184,
+      "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        42,
+        99,
+        158,
+        145
+      ],
+      "referenceBodyBounds": [
+        62,
+        60,
+        128,
+        184
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        1354,
+        75,
+        362,
+        333
+      ],
+      "nativeReferenceBodyBounds": [
+        1354,
+        75,
+        362,
+        333
+      ],
+      "nativeReferenceColumn": 3,
+      "sourceDensityCalibration": {
+        "kind": "separate-native-technique-source",
+        "referenceSourceRow": 0,
+        "referenceSourceColumn": 3,
+        "referencePose": "standing recovery",
+        "referenceNativeBodyHeight": 333,
+        "targetRenderedIntroBodyHeight": 184,
+        "reason": "The eight-pose correction source has a different resolution and pixel density from the full32 source. Use its own standing recovery body as denominator rather than comparing raw pixel heights across these independent images."
+      },
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-technique-rows-corrected.png",
+      "nativeSourceImageSha256": "3e61186832cae01bb03be6266346ce198173cdc26a75ea25f923d3603bb07b4f",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-technique-rows-corrected.png",
+      "nativeReferenceSourceImageSha256": "3e61186832cae01bb03be6266346ce198173cdc26a75ea25f923d3603bb07b4f",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 184,
+      "correctedBodyHeight": 184.00007,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "jin",
+      "phase": "victory",
+      "renderScale": 0.83027,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 184,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 230,
+      "nativeComparableBodyHeight": 192,
+      "nativeReferenceBodyHeight": 185,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 184,
+      "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        24,
+        14,
+        139,
+        230
+      ],
+      "referenceBodyBounds": [
+        62,
+        60,
+        128,
+        184
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        689,
+        1102,
+        116,
+        192
+      ],
+      "nativeReferenceBodyBounds": [
+        45,
+        51,
+        129,
+        185
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-corrected.png",
+      "nativeSourceImageSha256": "4f439a62be43b47eed1cf914d4e212d431048797e360848e32cda68937e7555c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-corrected.png",
+      "nativeReferenceSourceImageSha256": "4f439a62be43b47eed1cf914d4e212d431048797e360848e32cda68937e7555c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190.962162,
+      "correctedBodyHeight": 190.9621,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "jin",
+      "phase": "defeat",
+      "renderScale": 0.928288,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 184,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 195,
+      "nativeComparableBodyHeight": 182,
+      "nativeReferenceBodyHeight": 185,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 184,
+      "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        53,
+        49,
+        141,
+        195
+      ],
+      "referenceBodyBounds": [
+        62,
+        60,
+        128,
+        184
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        41,
+        1340,
+        132,
+        182
+      ],
+      "nativeReferenceBodyBounds": [
+        45,
+        51,
+        129,
+        185
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-corrected.png",
+      "nativeSourceImageSha256": "4f439a62be43b47eed1cf914d4e212d431048797e360848e32cda68937e7555c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-corrected.png",
+      "nativeReferenceSourceImageSha256": "4f439a62be43b47eed1cf914d4e212d431048797e360848e32cda68937e7555c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 181.016216,
+      "correctedBodyHeight": 181.01616,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "jin",
+      "phase": "super",
+      "renderScale": 1.491015,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 184,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 126,
+      "nativeComparableBodyHeight": 340,
+      "nativeReferenceBodyHeight": 333,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 184,
+      "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        76,
+        118,
+        119,
+        126
+      ],
+      "referenceBodyBounds": [
+        62,
+        60,
+        128,
+        184
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        1411,
+        481,
+        320,
+        340
+      ],
+      "nativeReferenceBodyBounds": [
+        1354,
+        75,
+        362,
+        333
+      ],
+      "nativeReferenceColumn": 3,
+      "sourceDensityCalibration": {
+        "kind": "separate-native-technique-source",
+        "referenceSourceRow": 0,
+        "referenceSourceColumn": 3,
+        "referencePose": "standing recovery",
+        "referenceNativeBodyHeight": 333,
+        "targetRenderedIntroBodyHeight": 184,
+        "reason": "The eight-pose correction source has a different resolution and pixel density from the full32 source. Use its own standing recovery body as denominator rather than comparing raw pixel heights across these independent images."
+      },
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-technique-rows-corrected.png",
+      "nativeSourceImageSha256": "3e61186832cae01bb03be6266346ce198173cdc26a75ea25f923d3603bb07b4f",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/jin-technique-rows-corrected.png",
+      "nativeReferenceSourceImageSha256": "3e61186832cae01bb03be6266346ce198173cdc26a75ea25f923d3603bb07b4f",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 187.867868,
+      "correctedBodyHeight": 187.86789,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "noel",
+      "phase": "intro",
+      "renderScale": 1,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 225,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 225,
+      "nativeComparableBodyHeight": 212,
+      "nativeReferenceBodyHeight": 212,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 225,
+      "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        46,
+        19,
+        161,
+        225
+      ],
+      "referenceBodyBounds": [
+        46,
+        19,
+        161,
+        225
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        33,
+        12,
+        152,
+        212
+      ],
+      "nativeReferenceBodyBounds": [
+        33,
+        12,
+        152,
+        212
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeReferenceSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 225,
+      "correctedBodyHeight": 225,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "noel",
+      "phase": "outro",
+      "renderScale": 0.965253,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 225,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 211,
+      "nativeReferenceBodyHeight": 212,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 225,
+      "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        43,
+        12,
+        165,
+        232
+      ],
+      "referenceBodyBounds": [
+        46,
+        19,
+        161,
+        225
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        34,
+        238,
+        150,
+        211
+      ],
+      "nativeReferenceBodyBounds": [
+        33,
+        12,
+        152,
+        212
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeReferenceSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 223.938679,
+      "correctedBodyHeight": 223.938696,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "noel",
+      "phase": "roundVictory",
+      "renderScale": 1.040713,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 225,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 206,
+      "nativeComparableBodyHeight": 202,
+      "nativeReferenceBodyHeight": 212,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 225,
+      "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        15,
+        38,
+        211,
+        206
+      ],
+      "referenceBodyBounds": [
+        46,
+        19,
+        161,
+        225
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        666,
+        480,
+        206,
+        202
+      ],
+      "nativeReferenceBodyBounds": [
+        33,
+        12,
+        152,
+        212
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeReferenceSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 214.386792,
+      "correctedBodyHeight": 214.386878,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "noel",
+      "phase": "roundDefeat",
+      "renderScale": 0.902619,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 225,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 214,
+      "nativeComparableBodyHeight": 182,
+      "nativeReferenceBodyHeight": 212,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 225,
+      "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        32,
+        30,
+        180,
+        214
+      ],
+      "referenceBodyBounds": [
+        46,
+        19,
+        161,
+        225
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        29,
+        705,
+        153,
+        182
+      ],
+      "nativeReferenceBodyBounds": [
+        33,
+        12,
+        152,
+        212
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeReferenceSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 193.160377,
+      "correctedBodyHeight": 193.160466,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "noel",
+      "phase": "fatality",
+      "renderScale": 0.981568,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 225,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 173,
+      "nativeComparableBodyHeight": 160,
+      "nativeReferenceBodyHeight": 212,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 225,
+      "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        40,
+        69,
+        186,
+        173
+      ],
+      "referenceBodyBounds": [
+        46,
+        19,
+        161,
+        225
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        29,
+        949,
+        172,
+        160
+      ],
+      "nativeReferenceBodyBounds": [
+        33,
+        12,
+        152,
+        212
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeReferenceSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 169.811321,
+      "correctedBodyHeight": 169.811264,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "noel",
+      "phase": "victory",
+      "renderScale": 1.056452,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 225,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 218,
+      "nativeComparableBodyHeight": 217,
+      "nativeReferenceBodyHeight": 212,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 225,
+      "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        55,
+        19,
+        107,
+        218
+      ],
+      "referenceBodyBounds": [
+        46,
+        19,
+        161,
+        225
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        703,
+        1123,
+        107,
+        217
+      ],
+      "nativeReferenceBodyBounds": [
+        33,
+        12,
+        152,
+        212
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeReferenceSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 230.306604,
+      "correctedBodyHeight": 230.306536,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "noel",
+      "phase": "defeat",
+      "renderScale": 0.945012,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 225,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 219,
+      "nativeComparableBodyHeight": 195,
+      "nativeReferenceBodyHeight": 212,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 225,
+      "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        44,
+        25,
+        199,
+        219
+      ],
+      "referenceBodyBounds": [
+        46,
+        19,
+        161,
+        225
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        36,
+        1346,
+        178,
+        195
+      ],
+      "nativeReferenceBodyBounds": [
+        33,
+        12,
+        152,
+        212
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeReferenceSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 206.957547,
+      "correctedBodyHeight": 206.957628,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "noel",
+      "phase": "super",
+      "renderScale": 1.073048,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 225,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 181,
+      "nativeComparableBodyHeight": 183,
+      "nativeReferenceBodyHeight": 212,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 225,
+      "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        30,
+        53,
+        188,
+        181
+      ],
+      "referenceBodyBounds": [
+        46,
+        19,
+        161,
+        225
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        677,
+        1567,
+        190,
+        183
+      ],
+      "nativeReferenceBodyBounds": [
+        33,
+        12,
+        152,
+        212
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/noel-corrected.png",
+      "nativeReferenceSourceImageSha256": "3ac118d6c616a0092d7c0597002e42358414f2c8a6773f274ccc0f221af27093",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 194.221698,
+      "correctedBodyHeight": 194.221688,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "rachel_bb",
+      "phase": "intro",
+      "renderScale": 1,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 157,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 157,
+      "nativeComparableBodyHeight": 144,
+      "nativeReferenceBodyHeight": 144,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 157,
+      "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        45,
+        87,
+        182,
+        157
+      ],
+      "referenceBodyBounds": [
+        45,
+        87,
+        182,
+        157
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        35,
+        88,
+        167,
+        144
+      ],
+      "nativeReferenceBodyBounds": [
+        35,
+        88,
+        167,
+        144
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeReferenceSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 157,
+      "correctedBodyHeight": 157,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "rachel_bb",
+      "phase": "outro",
+      "renderScale": 1.02656,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 157,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 154,
+      "nativeComparableBodyHeight": 145,
+      "nativeReferenceBodyHeight": 144,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 157,
+      "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        34,
+        90,
+        194,
+        154
+      ],
+      "referenceBodyBounds": [
+        45,
+        87,
+        182,
+        157
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        23,
+        304,
+        182,
+        145
+      ],
+      "nativeReferenceBodyBounds": [
+        35,
+        88,
+        167,
+        144
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeReferenceSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 158.090278,
+      "correctedBodyHeight": 158.09024,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "rachel_bb",
+      "phase": "roundVictory",
+      "renderScale": 1.010012,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 157,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 163,
+      "nativeComparableBodyHeight": 151,
+      "nativeReferenceBodyHeight": 144,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 157,
+      "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        42,
+        79,
+        200,
+        163
+      ],
+      "referenceBodyBounds": [
+        45,
+        87,
+        182,
+        157
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        31,
+        522,
+        185,
+        151
+      ],
+      "nativeReferenceBodyBounds": [
+        35,
+        88,
+        167,
+        144
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeReferenceSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 164.631944,
+      "correctedBodyHeight": 164.631956,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "rachel_bb",
+      "phase": "roundDefeat",
+      "renderScale": 1.00144,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 157,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 135,
+      "nativeComparableBodyHeight": 124,
+      "nativeReferenceBodyHeight": 144,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 157,
+      "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        44,
+        105,
+        192,
+        135
+      ],
+      "referenceBodyBounds": [
+        45,
+        87,
+        182,
+        157
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        34,
+        754,
+        176,
+        124
+      ],
+      "nativeReferenceBodyBounds": [
+        35,
+        88,
+        167,
+        144
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeReferenceSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 135.194444,
+      "correctedBodyHeight": 135.1944,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "rachel_bb",
+      "phase": "fatality",
+      "renderScale": 1.082759,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 157,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 145,
+      "nativeComparableBodyHeight": 144,
+      "nativeReferenceBodyHeight": 144,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 157,
+      "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        44,
+        99,
+        200,
+        145
+      ],
+      "referenceBodyBounds": [
+        45,
+        87,
+        182,
+        157
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        27,
+        963,
+        199,
+        144
+      ],
+      "nativeReferenceBodyBounds": [
+        35,
+        88,
+        167,
+        144
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeReferenceSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 157,
+      "correctedBodyHeight": 157.000055,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "rachel_bb",
+      "phase": "victory",
+      "renderScale": 1.031166,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 157,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 166,
+      "nativeComparableBodyHeight": 157,
+      "nativeReferenceBodyHeight": 144,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 157,
+      "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        44,
+        78,
+        192,
+        166
+      ],
+      "referenceBodyBounds": [
+        45,
+        87,
+        182,
+        157
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        31,
+        1177,
+        182,
+        157
+      ],
+      "nativeReferenceBodyBounds": [
+        35,
+        88,
+        167,
+        144
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeReferenceSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 171.173611,
+      "correctedBodyHeight": 171.173556,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "rachel_bb",
+      "phase": "defeat",
+      "renderScale": 0.97496,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 157,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 104,
+      "nativeComparableBodyHeight": 93,
+      "nativeReferenceBodyHeight": 144,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 157,
+      "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        44,
+        132,
+        195,
+        104
+      ],
+      "referenceBodyBounds": [
+        45,
+        87,
+        182,
+        157
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        36,
+        1414,
+        174,
+        93
+      ],
+      "nativeReferenceBodyBounds": [
+        35,
+        88,
+        167,
+        144
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeReferenceSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 101.395833,
+      "correctedBodyHeight": 101.39584,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "rachel_bb",
+      "phase": "super",
+      "renderScale": 1.07459,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 157,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 139,
+      "nativeComparableBodyHeight": 137,
+      "nativeReferenceBodyHeight": 144,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 157,
+      "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        45,
+        103,
+        187,
+        139
+      ],
+      "referenceBodyBounds": [
+        45,
+        87,
+        182,
+        157
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        29,
+        1596,
+        184,
+        137
+      ],
+      "nativeReferenceBodyBounds": [
+        35,
+        88,
+        167,
+        144
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/rachel_bb-corrected.png",
+      "nativeReferenceSourceImageSha256": "9d701b18f2d5c5c7f73b3743cdcdd2104568cf2eaeb989e3e160e4121af28bb9",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 149.368056,
+      "correctedBodyHeight": 149.36801,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hazama_bb",
+      "phase": "intro",
+      "renderScale": 1,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 213,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 231,
+      "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        97,
+        12,
+        118,
+        231
+      ],
+      "referenceBodyBounds": [
+        97,
+        12,
+        118,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        82,
+        18,
+        109,
+        213
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        18,
+        109,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeReferenceSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 231,
+      "correctedBodyHeight": 231,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hazama_bb",
+      "phase": "outro",
+      "renderScale": 1.027924,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 230,
+      "nativeComparableBodyHeight": 218,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 231,
+      "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        61,
+        12,
+        139,
+        230
+      ],
+      "referenceBodyBounds": [
+        97,
+        12,
+        118,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        47,
+        244,
+        132,
+        218
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        18,
+        109,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeReferenceSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 236.422535,
+      "correctedBodyHeight": 236.42252,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hazama_bb",
+      "phase": "roundVictory",
+      "renderScale": 1.046117,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 226,
+      "nativeComparableBodyHeight": 218,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 231,
+      "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        65,
+        12,
+        142,
+        226
+      ],
+      "referenceBodyBounds": [
+        97,
+        12,
+        118,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        50,
+        480,
+        137,
+        218
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        18,
+        109,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeReferenceSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 236.422535,
+      "correctedBodyHeight": 236.422442,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hazama_bb",
+      "phase": "roundDefeat",
+      "renderScale": 0.855934,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 223,
+      "nativeComparableBodyHeight": 176,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 231,
+      "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        46,
+        21,
+        198,
+        223
+      ],
+      "referenceBodyBounds": [
+        97,
+        12,
+        118,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        46,
+        725,
+        156,
+        176
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        18,
+        109,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeReferenceSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190.873239,
+      "correctedBodyHeight": 190.873282,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hazama_bb",
+      "phase": "fatality",
+      "renderScale": 1.33161,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 158,
+      "nativeComparableBodyHeight": 194,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 231,
+      "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        64,
+        84,
+        129,
+        158
+      ],
+      "referenceBodyBounds": [
+        97,
+        12,
+        118,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        697,
+        933,
+        158,
+        194
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        18,
+        109,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeReferenceSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 210.394366,
+      "correctedBodyHeight": 210.39438,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hazama_bb",
+      "phase": "victory",
+      "renderScale": 1.041509,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 227,
+      "nativeComparableBodyHeight": 218,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 231,
+      "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        63,
+        12,
+        160,
+        227
+      ],
+      "referenceBodyBounds": [
+        97,
+        12,
+        118,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        48,
+        1147,
+        154,
+        218
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        18,
+        109,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeReferenceSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 236.422535,
+      "correctedBodyHeight": 236.422543,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hazama_bb",
+      "phase": "defeat",
+      "renderScale": 0.912978,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 196,
+      "nativeComparableBodyHeight": 165,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 231,
+      "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        75,
+        48,
+        169,
+        196
+      ],
+      "referenceBodyBounds": [
+        97,
+        12,
+        118,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        66,
+        1385,
+        142,
+        165
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        18,
+        109,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeReferenceSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 178.943662,
+      "correctedBodyHeight": 178.943688,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "hazama_bb",
+      "phase": "super",
+      "renderScale": 1.266471,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 149,
+      "nativeComparableBodyHeight": 174,
+      "nativeReferenceBodyHeight": 213,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 231,
+      "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        64,
+        95,
+        130,
+        149
+      ],
+      "referenceBodyBounds": [
+        97,
+        12,
+        118,
+        231
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        701,
+        1582,
+        152,
+        174
+      ],
+      "nativeReferenceBodyBounds": [
+        82,
+        18,
+        109,
+        213
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-a-sources/hazama_bb-original.png",
+      "nativeReferenceSourceImageSha256": "8cc32ddce988ec886d1c820839476eb75252dda5a22915af895447f8e631de1c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 188.704225,
+      "correctedBodyHeight": 188.704179,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    }
+  ]
+}

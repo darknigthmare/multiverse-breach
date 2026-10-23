@@ -1,0 +1,6240 @@
+{
+  "date": "2026-10-20",
+  "rpg": {
+    "flow": "GameCanvas → bouton invocation → annulation → clavier U → confirmation → scène FF7 → impact → verrou une utilisation",
+    "early": {
+      "before": 2,
+      "after": 2,
+      "scene": {
+        "active": true,
+        "actorId": "hero:0:cloud_ff7",
+        "side": "player",
+        "name": "Ifrit — Hellfire",
+        "entityName": "Ifrit",
+        "actionName": "Hellfire",
+        "kind": "summon",
+        "universe": "Final Fantasy VII",
+        "color": "#ff8645",
+        "tick": 2,
+        "durationTicks": 216,
+        "impactTick": 114,
+        "impacted": false,
+        "phase": "arrival",
+        "targetIds": [
+          "enemy:custom:0:tifa_ff7"
+        ],
+        "performerId": null,
+        "entityAssetId": "ff7-ifrit",
+        "entityAnimationAssetId": "ifrit-ff7-hellfire",
+        "entityAnimationFrame": {
+          "assetId": "ifrit-ff7-hellfire",
+          "key": "Final Fantasy VII::Ifrit::Hellfire",
+          "phase": "arrival",
+          "progress": 0.05555555555555555,
+          "row": 0,
+          "col": 0,
+          "index": 0,
+          "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+          "arrivalEndTick": 36,
+          "attackStartTick": 84,
+          "impactTick": 114,
+          "returnStartTick": 149,
+          "visualOnly": true,
+          "source1to1Verified": false
+        },
+        "entityFrame": {
+          "index": 0,
+          "phase": "arrival"
+        },
+        "choreography": {
+          "id": "ff7-ifrit",
+          "fidelity": "authored-motion-adaptation",
+          "path": "ifrit-manifest",
+          "phase": "arrival",
+          "poseIndex": 0,
+          "tick": 2,
+          "durationTicks": 216,
+          "impactTick": 114,
+          "arrivalEndTick": 36,
+          "attackStartTick": 84,
+          "returnStartTick": 149,
+          "arrivalProgress": 0.05555555555555555,
+          "preparationProgress": 0,
+          "travelProgress": 0,
+          "attackProgress": 0,
+          "returnProgress": 0,
+          "effect": "damage",
+          "color": "#ff8645",
+          "side": 1,
+          "width": 1040,
+          "height": 460,
+          "performer": {
+            "x": 250,
+            "y": 371.39368998628254,
+            "scale": 0.9337777777777777,
+            "size": 212.90133333333333,
+            "alpha": 0.1111111111111111,
+            "facing": 1,
+            "rotation": 0
+          },
+          "origin": {
+            "x": 313.8704,
+            "y": 279.8461166529492
+          },
+          "caller": {
+            "x": 146,
+            "y": 304
+          },
+          "target": {
+            "x": 770,
+            "y": 304
+          },
+          "targets": [
+            {
+              "id": "enemy:custom:0:tifa_ff7",
+              "x": 770,
+              "y": 304,
+              "centerY": 260.3
+            }
+          ],
+          "visuals": []
+        },
+        "assetMissing": false
+      },
+      "charge": 0,
+      "atb": 0,
+      "used": true
+    },
+    "native": {
+      "ticksBefore": 5,
+      "ticksAfter": 5,
+      "frames": [
+        {
+          "tick": 5,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.1388888888888889,
+            "row": 0,
+            "col": 0,
+            "index": 0,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 6,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.16666666666666666,
+            "row": 0,
+            "col": 0,
+            "index": 0,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 7,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.19444444444444445,
+            "row": 0,
+            "col": 0,
+            "index": 0,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 8,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.2222222222222222,
+            "row": 0,
+            "col": 0,
+            "index": 0,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 9,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.25,
+            "row": 0,
+            "col": 1,
+            "index": 1,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 10,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.2777777777777778,
+            "row": 0,
+            "col": 1,
+            "index": 1,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 11,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.3055555555555556,
+            "row": 0,
+            "col": 1,
+            "index": 1,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 12,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.3333333333333333,
+            "row": 0,
+            "col": 1,
+            "index": 1,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 13,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.3611111111111111,
+            "row": 0,
+            "col": 1,
+            "index": 1,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 14,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.3888888888888889,
+            "row": 0,
+            "col": 1,
+            "index": 1,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 15,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.4166666666666667,
+            "row": 0,
+            "col": 1,
+            "index": 1,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 16,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.4444444444444444,
+            "row": 0,
+            "col": 1,
+            "index": 1,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 17,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.4722222222222222,
+            "row": 0,
+            "col": 1,
+            "index": 1,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 18,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.5,
+            "row": 0,
+            "col": 2,
+            "index": 2,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 19,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.5277777777777778,
+            "row": 0,
+            "col": 2,
+            "index": 2,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 20,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.5555555555555556,
+            "row": 0,
+            "col": 2,
+            "index": 2,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 21,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.5833333333333334,
+            "row": 0,
+            "col": 2,
+            "index": 2,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 22,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.6111111111111112,
+            "row": 0,
+            "col": 2,
+            "index": 2,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 23,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.6388888888888888,
+            "row": 0,
+            "col": 2,
+            "index": 2,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 24,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.6666666666666666,
+            "row": 0,
+            "col": 2,
+            "index": 2,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 25,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.6944444444444444,
+            "row": 0,
+            "col": 2,
+            "index": 2,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 26,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.7222222222222222,
+            "row": 0,
+            "col": 2,
+            "index": 2,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 27,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.75,
+            "row": 0,
+            "col": 3,
+            "index": 3,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 28,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.7777777777777778,
+            "row": 0,
+            "col": 3,
+            "index": 3,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 29,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.8055555555555556,
+            "row": 0,
+            "col": 3,
+            "index": 3,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 30,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.8333333333333334,
+            "row": 0,
+            "col": 3,
+            "index": 3,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 31,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.8611111111111112,
+            "row": 0,
+            "col": 3,
+            "index": 3,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 32,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.8888888888888888,
+            "row": 0,
+            "col": 3,
+            "index": 3,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 33,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.9166666666666666,
+            "row": 0,
+            "col": 3,
+            "index": 3,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 34,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.9444444444444444,
+            "row": 0,
+            "col": 3,
+            "index": 3,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 35,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "arrival",
+            "progress": 0.9722222222222222,
+            "row": 0,
+            "col": 3,
+            "index": 3,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 36,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0,
+            "row": 1,
+            "col": 0,
+            "index": 4,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 37,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.020833333333333332,
+            "row": 1,
+            "col": 0,
+            "index": 4,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 38,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.041666666666666664,
+            "row": 1,
+            "col": 0,
+            "index": 4,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 39,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.0625,
+            "row": 1,
+            "col": 0,
+            "index": 4,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 40,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.08333333333333333,
+            "row": 1,
+            "col": 0,
+            "index": 4,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 41,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.10416666666666667,
+            "row": 1,
+            "col": 0,
+            "index": 4,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 42,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.125,
+            "row": 1,
+            "col": 0,
+            "index": 4,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 43,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.14583333333333334,
+            "row": 1,
+            "col": 0,
+            "index": 4,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 44,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.16666666666666666,
+            "row": 1,
+            "col": 0,
+            "index": 4,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 45,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.1875,
+            "row": 1,
+            "col": 0,
+            "index": 4,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 46,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.20833333333333334,
+            "row": 1,
+            "col": 0,
+            "index": 4,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 47,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.22916666666666666,
+            "row": 1,
+            "col": 0,
+            "index": 4,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 48,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.25,
+            "row": 1,
+            "col": 1,
+            "index": 5,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 49,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.2708333333333333,
+            "row": 1,
+            "col": 1,
+            "index": 5,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 50,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.2916666666666667,
+            "row": 1,
+            "col": 1,
+            "index": 5,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 51,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.3125,
+            "row": 1,
+            "col": 1,
+            "index": 5,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 52,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.3333333333333333,
+            "row": 1,
+            "col": 1,
+            "index": 5,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 53,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.3541666666666667,
+            "row": 1,
+            "col": 1,
+            "index": 5,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 54,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.375,
+            "row": 1,
+            "col": 1,
+            "index": 5,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 55,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.3958333333333333,
+            "row": 1,
+            "col": 1,
+            "index": 5,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 56,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.4166666666666667,
+            "row": 1,
+            "col": 1,
+            "index": 5,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 57,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.4375,
+            "row": 1,
+            "col": 1,
+            "index": 5,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 58,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.4583333333333333,
+            "row": 1,
+            "col": 1,
+            "index": 5,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 59,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.4791666666666667,
+            "row": 1,
+            "col": 1,
+            "index": 5,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 60,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.5,
+            "row": 1,
+            "col": 2,
+            "index": 6,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 61,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.5208333333333334,
+            "row": 1,
+            "col": 2,
+            "index": 6,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 62,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.5416666666666666,
+            "row": 1,
+            "col": 2,
+            "index": 6,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 63,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.5625,
+            "row": 1,
+            "col": 2,
+            "index": 6,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 64,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.5833333333333334,
+            "row": 1,
+            "col": 2,
+            "index": 6,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 65,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.6041666666666666,
+            "row": 1,
+            "col": 2,
+            "index": 6,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 66,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.625,
+            "row": 1,
+            "col": 2,
+            "index": 6,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 67,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.6458333333333334,
+            "row": 1,
+            "col": 2,
+            "index": 6,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 68,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.6666666666666666,
+            "row": 1,
+            "col": 2,
+            "index": 6,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 69,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.6875,
+            "row": 1,
+            "col": 2,
+            "index": 6,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 70,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.7083333333333334,
+            "row": 1,
+            "col": 2,
+            "index": 6,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 71,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.7291666666666666,
+            "row": 1,
+            "col": 2,
+            "index": 6,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 72,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.75,
+            "row": 1,
+            "col": 3,
+            "index": 7,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 73,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.7708333333333334,
+            "row": 1,
+            "col": 3,
+            "index": 7,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 74,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.7916666666666666,
+            "row": 1,
+            "col": 3,
+            "index": 7,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 75,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.8125,
+            "row": 1,
+            "col": 3,
+            "index": 7,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 76,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.8333333333333334,
+            "row": 1,
+            "col": 3,
+            "index": 7,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 77,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.8541666666666666,
+            "row": 1,
+            "col": 3,
+            "index": 7,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 78,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.875,
+            "row": 1,
+            "col": 3,
+            "index": 7,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 79,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.8958333333333334,
+            "row": 1,
+            "col": 3,
+            "index": 7,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 80,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.9166666666666666,
+            "row": 1,
+            "col": 3,
+            "index": 7,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 81,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.9375,
+            "row": 1,
+            "col": 3,
+            "index": 7,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 82,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.9583333333333334,
+            "row": 1,
+            "col": 3,
+            "index": 7,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 83,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "preparation",
+            "progress": 0.9791666666666666,
+            "row": 1,
+            "col": 3,
+            "index": 7,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 84,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 85,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.015384615384615385,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 86,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.03076923076923077,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 87,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.046153846153846156,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 88,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.06153846153846154,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 89,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.07692307692307693,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 90,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.09230769230769231,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 91,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.1076923076923077,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 92,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.12307692307692308,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 93,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.13846153846153847,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 94,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.15384615384615385,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 95,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.16923076923076924,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 96,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.18461538461538463,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 97,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.2,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 98,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.2153846153846154,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 99,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.23076923076923078,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 100,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.24615384615384617,
+            "row": 2,
+            "col": 0,
+            "index": 8,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 101,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.26153846153846155,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 102,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.27692307692307694,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 103,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.2923076923076923,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 104,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.3076923076923077,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 105,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.3230769230769231,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 106,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.3384615384615385,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 107,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.35384615384615387,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 108,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.36923076923076925,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 109,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.38461538461538464,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 110,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.4,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 111,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.4153846153846154,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 112,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.4307692307692308,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 113,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.4461538461538462,
+            "row": 2,
+            "col": 1,
+            "index": 9,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": false
+        },
+        {
+          "tick": 114,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.46153846153846156,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 115,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.47692307692307695,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 116,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.49230769230769234,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 117,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.5076923076923077,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 118,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.5230769230769231,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 119,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.5384615384615384,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 120,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.5538461538461539,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 121,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.5692307692307692,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 122,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.5846153846153846,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 123,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.6,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 124,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.6153846153846154,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 125,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.6307692307692307,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 126,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.6461538461538462,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 127,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.6615384615384615,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 128,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.676923076923077,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 129,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.6923076923076923,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 130,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.7076923076923077,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 131,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.7230769230769231,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 132,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.7384615384615385,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 133,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.7538461538461538,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 134,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.7692307692307693,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 135,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.7846153846153846,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 136,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.8,
+            "row": 2,
+            "col": 2,
+            "index": 10,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 137,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.8153846153846154,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 138,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.8307692307692308,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 139,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.8461538461538461,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 140,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.8615384615384616,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 141,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.8769230769230769,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 142,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.8923076923076924,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 143,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.9076923076923077,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 144,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.9230769230769231,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 145,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.9384615384615385,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 146,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.9538461538461539,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 147,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.9692307692307692,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 148,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 0.9846153846153847,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 149,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "attack",
+            "progress": 1,
+            "row": 2,
+            "col": 3,
+            "index": 11,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 150,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.014925373134328358,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 151,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.029850746268656716,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 152,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.04477611940298507,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 153,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.05970149253731343,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 154,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.07462686567164178,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 155,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.08955223880597014,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 156,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.1044776119402985,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 157,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.11940298507462686,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 158,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.13432835820895522,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 159,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.14925373134328357,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 160,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.16417910447761194,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 161,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.1791044776119403,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 162,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.19402985074626866,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 163,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.208955223880597,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 164,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.22388059701492538,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 165,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.23880597014925373,
+            "row": 3,
+            "col": 0,
+            "index": 12,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 166,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.2537313432835821,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 167,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.26865671641791045,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 168,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.2835820895522388,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 169,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.29850746268656714,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 170,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.31343283582089554,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 171,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.3283582089552239,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 172,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.34328358208955223,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 173,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.3582089552238806,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 174,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.373134328358209,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 175,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.3880597014925373,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 176,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.40298507462686567,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 177,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.417910447761194,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 178,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.43283582089552236,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 179,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.44776119402985076,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 180,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.4626865671641791,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 181,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.47761194029850745,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 182,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.4925373134328358,
+            "row": 3,
+            "col": 1,
+            "index": 13,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 183,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.5074626865671642,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 184,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.5223880597014925,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 185,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.5373134328358209,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 186,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.5522388059701493,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 187,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.5671641791044776,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 188,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.582089552238806,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 189,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.5970149253731343,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 190,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.6119402985074627,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 191,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.6268656716417911,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 192,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.6417910447761194,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 193,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.6567164179104478,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 194,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.6716417910447762,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 195,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.6865671641791045,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 196,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.7014925373134329,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 197,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.7164179104477612,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 198,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.7313432835820896,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 199,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.746268656716418,
+            "row": 3,
+            "col": 2,
+            "index": 14,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 200,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.7611940298507462,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 201,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.7761194029850746,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 202,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.7910447761194029,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 203,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.8059701492537313,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 204,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.8208955223880597,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 205,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.835820895522388,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 206,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.8507462686567164,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 207,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.8656716417910447,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 208,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.8805970149253731,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 209,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.8955223880597015,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 210,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.9104477611940298,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 211,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.9253731343283582,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 212,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.9402985074626866,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 213,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.9552238805970149,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 214,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.9701492537313433,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        },
+        {
+          "tick": 215,
+          "frame": {
+            "assetId": "ifrit-ff7-hellfire",
+            "key": "Final Fantasy VII::Ifrit::Hellfire",
+            "phase": "recovery",
+            "progress": 0.9850746268656716,
+            "row": 3,
+            "col": 3,
+            "index": 15,
+            "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+            "arrivalEndTick": 36,
+            "attackStartTick": 84,
+            "impactTick": 114,
+            "returnStartTick": 149,
+            "visualOnly": true,
+            "source1to1Verified": false
+          },
+          "impacted": true
+        }
+      ],
+      "calls": [
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 5,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 6,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 7,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 8,
+          "col": 0,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 9,
+          "col": 1,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 10,
+          "col": 1,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 11,
+          "col": 1,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 12,
+          "col": 1,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 13,
+          "col": 1,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 14,
+          "col": 1,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 15,
+          "col": 1,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 16,
+          "col": 1,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 17,
+          "col": 1,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 18,
+          "col": 2,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 19,
+          "col": 2,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 20,
+          "col": 2,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 21,
+          "col": 2,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 22,
+          "col": 2,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 23,
+          "col": 2,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 24,
+          "col": 2,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 25,
+          "col": 2,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 26,
+          "col": 2,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 27,
+          "col": 3,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 28,
+          "col": 3,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 29,
+          "col": 3,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 30,
+          "col": 3,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 31,
+          "col": 3,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 32,
+          "col": 3,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 33,
+          "col": 3,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 34,
+          "col": 3,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 35,
+          "col": 3,
+          "row": 0,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 36,
+          "col": 0,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 37,
+          "col": 0,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 38,
+          "col": 0,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 39,
+          "col": 0,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 40,
+          "col": 0,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 41,
+          "col": 0,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 42,
+          "col": 0,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 43,
+          "col": 0,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 44,
+          "col": 0,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 45,
+          "col": 0,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 46,
+          "col": 0,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 47,
+          "col": 0,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 48,
+          "col": 1,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 49,
+          "col": 1,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 50,
+          "col": 1,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 51,
+          "col": 1,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 52,
+          "col": 1,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 53,
+          "col": 1,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 54,
+          "col": 1,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 55,
+          "col": 1,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 56,
+          "col": 1,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 57,
+          "col": 1,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 58,
+          "col": 1,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 59,
+          "col": 1,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 60,
+          "col": 2,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 61,
+          "col": 2,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 62,
+          "col": 2,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 63,
+          "col": 2,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 64,
+          "col": 2,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 65,
+          "col": 2,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 66,
+          "col": 2,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 67,
+          "col": 2,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 68,
+          "col": 2,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 69,
+          "col": 2,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 70,
+          "col": 2,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 71,
+          "col": 2,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 72,
+          "col": 3,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 73,
+          "col": 3,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 74,
+          "col": 3,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 75,
+          "col": 3,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 76,
+          "col": 3,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 77,
+          "col": 3,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 78,
+          "col": 3,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 79,
+          "col": 3,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 80,
+          "col": 3,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 81,
+          "col": 3,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 82,
+          "col": 3,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 83,
+          "col": 3,
+          "row": 1,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 84,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 85,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 86,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 87,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 88,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 89,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 90,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 91,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 92,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 93,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 94,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 95,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 96,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 97,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 98,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 99,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 100,
+          "col": 0,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 101,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 102,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 103,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 104,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 105,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 106,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 107,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 108,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 109,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 110,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 111,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 112,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 113,
+          "col": 1,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 114,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 115,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 116,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 117,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 118,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 119,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 120,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 121,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 122,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 123,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 124,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 125,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 126,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 127,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 128,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 129,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 130,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 131,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 132,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 133,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 134,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 135,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 136,
+          "col": 2,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 137,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 138,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 139,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 140,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 141,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 142,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 143,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 144,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 145,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 146,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 147,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 148,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 149,
+          "col": 3,
+          "row": 2,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 150,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 151,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 152,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 153,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 154,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 155,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 156,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 157,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 158,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 159,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 160,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 161,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 162,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 163,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 164,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 165,
+          "col": 0,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 166,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 167,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 168,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 169,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 170,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 171,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 172,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 173,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 174,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 175,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 176,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 177,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 178,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 179,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 180,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 181,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 182,
+          "col": 1,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 183,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 184,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 185,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 186,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 187,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 188,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 189,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 190,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 191,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 192,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 193,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 194,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 195,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 196,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 197,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 198,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 199,
+          "col": 2,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 200,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 201,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 202,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 203,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 204,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 205,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 206,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 207,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 208,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 209,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 210,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 211,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 212,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 213,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 214,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        },
+        {
+          "tick": 215,
+          "col": 3,
+          "row": 3,
+          "sw": 256,
+          "sh": 256,
+          "facing": 1
+        }
+      ],
+      "hpChanges": [
+        {
+          "tick": 114,
+          "before": 100000,
+          "after": 99946
+        }
+      ],
+      "finalHp": 99946
+    },
+    "final": {
+      "active": false,
+      "hp": 99946,
+      "canSummonAgain": false
+    },
+    "errors": []
+  },
+  "fighter": {
+    "flow": "FighterMode → intro → KO manche 1 → victoire/défaite → reprise manche 2 → KO → finale → victoire → outro → résultat unique",
+    "firstRound": {
+      "phase": "roundResult",
+      "roundWins": {
+        "player": 1,
+        "cpu": 0
+      },
+      "finished": false,
+      "completions": 0,
+      "browserHud": {
+        "phase": "roundResult",
+        "round": "1",
+        "status": "Manche 1. RÉSULTAT DE MANCHE. Score 1 à 0. 99 secondes.Cloud Strife : Cloud Strife — Manche gagnée. Final Fantasy VII · Omnislash Tifa Lockhart : Tifa Lockhart — Manche perdue. Final Fantasy VII"
+      }
+    },
+    "finisher": {
+      "phase": "fatality",
+      "roundWins": {
+        "player": 2,
+        "cpu": 0
+      },
+      "completions": 0,
+      "browserHud": {
+        "phase": "fatality",
+        "round": "2",
+        "status": "Manche 2. FINALE. Score 2 à 0. 98 secondes.Cloud Strife : Cloud Strife — Finale. Final Fantasy VII · Finale adaptée : Omnislash"
+      }
+    },
+    "complete": {
+      "phase": "victory",
+      "result": "victory",
+      "completions": 1,
+      "roundWins": {
+        "player": 2,
+        "cpu": 0
+      }
+    },
+    "errors": []
+  },
+  "errors": []
+}

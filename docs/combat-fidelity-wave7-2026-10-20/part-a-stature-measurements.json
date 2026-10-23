@@ -1,0 +1,717 @@
+{
+  "ragna": {
+    "referenceColumn": 0,
+    "reason": "Ragna body height runs from white hair to boot soles, excluding overhead/forward Blood-Scythe and red-black arcs. Calibrate the standing intro to190px to match the new45-state manifest. Every row keeps its native lunge, bend or knee-height ratio; no crouch is expanded to standing height.",
+    "intro": {
+      "column": 0,
+      "bodyBounds": [
+        58,
+        35,
+        143,
+        208
+      ],
+      "nativeRowBodyBounds": [
+        50,
+        57,
+        125,
+        182
+      ]
+    },
+    "outro": {
+      "column": 0,
+      "bodyBounds": [
+        63,
+        17,
+        151,
+        227
+      ],
+      "nativeRowBodyBounds": [
+        61,
+        18,
+        116,
+        174
+      ]
+    },
+    "roundVictory": {
+      "column": 0,
+      "bodyBounds": [
+        71,
+        33,
+        127,
+        208
+      ],
+      "nativeRowBodyBounds": [
+        60,
+        19,
+        113,
+        186
+      ]
+    },
+    "roundDefeat": {
+      "column": 0,
+      "bodyBounds": [
+        70,
+        108,
+        141,
+        136
+      ],
+      "nativeRowBodyBounds": [
+        52,
+        31,
+        143,
+        138
+      ]
+    },
+    "fatality": {
+      "column": 3,
+      "bodyBounds": [
+        52,
+        139,
+        149,
+        94
+      ],
+      "nativeRowBodyBounds": [
+        679,
+        71,
+        190,
+        119
+      ]
+    },
+    "victory": {
+      "column": 3,
+      "bodyBounds": [
+        46,
+        70,
+        118,
+        174
+      ],
+      "nativeRowBodyBounds": [
+        694,
+        46,
+        119,
+        175
+      ]
+    },
+    "defeat": {
+      "column": 0,
+      "bodyBounds": [
+        63,
+        12,
+        181,
+        227
+      ],
+      "nativeRowBodyBounds": [
+        61,
+        19,
+        138,
+        173
+      ]
+    },
+    "super": {
+      "column": 3,
+      "bodyBounds": [
+        49,
+        144,
+        135,
+        100
+      ],
+      "nativeRowBodyBounds": [
+        668,
+        76,
+        186,
+        137
+      ]
+    },
+    "referenceBodyBounds": [
+      58,
+      35,
+      143,
+      208
+    ],
+    "nativeReferenceRowBodyBounds": [
+      50,
+      57,
+      125,
+      182
+    ],
+    "calibrationTargetBodyHeight": 190
+  },
+  "jin": {
+    "referenceColumn": 0,
+    "reason": "Jin alone is measured from blond hair to boot soles, excluding Yukianesa/ice. The two corrected technique rows have a separate, denser native source: their recovery-standing body is the same-source denominator, mapped to the intro rendered body. The deep lunge remains naturally shorter.",
+    "intro": {
+      "column": 0,
+      "bodyBounds": [
+        62,
+        60,
+        128,
+        184
+      ],
+      "nativeRowBodyBounds": [
+        45,
+        51,
+        129,
+        185
+      ]
+    },
+    "outro": {
+      "column": 0,
+      "bodyBounds": [
+        57,
+        45,
+        145,
+        194
+      ],
+      "nativeRowBodyBounds": [
+        48,
+        19,
+        128,
+        171
+      ]
+    },
+    "roundVictory": {
+      "column": 0,
+      "bodyBounds": [
+        60,
+        12,
+        152,
+        231
+      ],
+      "nativeRowBodyBounds": [
+        56,
+        17,
+        123,
+        187
+      ]
+    },
+    "roundDefeat": {
+      "column": 0,
+      "bodyBounds": [
+        32,
+        103,
+        167,
+        130
+      ],
+      "nativeRowBodyBounds": [
+        19,
+        64,
+        161,
+        125
+      ]
+    },
+    "fatality": {
+      "column": 3,
+      "bodyBounds": [
+        42,
+        99,
+        158,
+        145
+      ],
+      "nativeRowBodyBounds": [
+        1354,
+        75,
+        362,
+        333
+      ],
+      "nativeReferenceRowBodyBounds": [
+        1354,
+        75,
+        362,
+        333
+      ],
+      "nativeReferencePhase": "fatality",
+      "nativeReferenceColumn": 3,
+      "sourceDensityCalibration": {
+        "kind": "separate-native-technique-source",
+        "referenceSourceRow": 0,
+        "referenceSourceColumn": 3,
+        "referencePose": "standing recovery",
+        "referenceNativeBodyHeight": 333,
+        "targetRenderedIntroBodyHeight": 184,
+        "reason": "The eight-pose correction source has a different resolution and pixel density from the full32 source. Use its own standing recovery body as denominator rather than comparing raw pixel heights across these independent images."
+      }
+    },
+    "victory": {
+      "column": 3,
+      "bodyBounds": [
+        24,
+        14,
+        139,
+        230
+      ],
+      "nativeRowBodyBounds": [
+        689,
+        19,
+        116,
+        192
+      ]
+    },
+    "defeat": {
+      "column": 0,
+      "bodyBounds": [
+        53,
+        49,
+        141,
+        195
+      ],
+      "nativeRowBodyBounds": [
+        41,
+        23,
+        132,
+        182
+      ]
+    },
+    "super": {
+      "column": 3,
+      "bodyBounds": [
+        76,
+        118,
+        119,
+        126
+      ],
+      "nativeRowBodyBounds": [
+        1411,
+        45,
+        320,
+        340
+      ],
+      "nativeReferenceRowBodyBounds": [
+        1354,
+        75,
+        362,
+        333
+      ],
+      "nativeReferencePhase": "fatality",
+      "nativeReferenceColumn": 3,
+      "sourceDensityCalibration": {
+        "kind": "separate-native-technique-source",
+        "referenceSourceRow": 0,
+        "referenceSourceColumn": 3,
+        "referencePose": "standing recovery",
+        "referenceNativeBodyHeight": 333,
+        "targetRenderedIntroBodyHeight": 184,
+        "reason": "The eight-pose correction source has a different resolution and pixel density from the full32 source. Use its own standing recovery body as denominator rather than comparing raw pixel heights across these independent images."
+      }
+    },
+    "referenceBodyBounds": [
+      62,
+      60,
+      128,
+      184
+    ],
+    "nativeReferenceRowBodyBounds": [
+      45,
+      51,
+      129,
+      185
+    ]
+  },
+  "noel": {
+    "referenceColumn": 0,
+    "reason": "Noel body is measured from blue beret to boot soles, excluding lifted Bolverk barrels and local muzzle flashes. Selected columns avoid a gun raised above the beret. Natural airborne knee compression and crouches retain native ratios.",
+    "intro": {
+      "column": 0,
+      "bodyBounds": [
+        46,
+        19,
+        161,
+        225
+      ],
+      "nativeRowBodyBounds": [
+        33,
+        12,
+        152,
+        212
+      ]
+    },
+    "outro": {
+      "column": 0,
+      "bodyBounds": [
+        43,
+        12,
+        165,
+        232
+      ],
+      "nativeRowBodyBounds": [
+        34,
+        8,
+        150,
+        211
+      ]
+    },
+    "roundVictory": {
+      "column": 3,
+      "bodyBounds": [
+        15,
+        38,
+        211,
+        206
+      ],
+      "nativeRowBodyBounds": [
+        666,
+        29,
+        206,
+        202
+      ]
+    },
+    "roundDefeat": {
+      "column": 0,
+      "bodyBounds": [
+        32,
+        30,
+        180,
+        214
+      ],
+      "nativeRowBodyBounds": [
+        29,
+        12,
+        153,
+        182
+      ]
+    },
+    "fatality": {
+      "column": 0,
+      "bodyBounds": [
+        40,
+        69,
+        186,
+        173
+      ],
+      "nativeRowBodyBounds": [
+        29,
+        54,
+        172,
+        160
+      ]
+    },
+    "victory": {
+      "column": 3,
+      "bodyBounds": [
+        55,
+        19,
+        107,
+        218
+      ],
+      "nativeRowBodyBounds": [
+        703,
+        12,
+        107,
+        217
+      ]
+    },
+    "defeat": {
+      "column": 0,
+      "bodyBounds": [
+        44,
+        25,
+        199,
+        219
+      ],
+      "nativeRowBodyBounds": [
+        36,
+        4,
+        178,
+        195
+      ]
+    },
+    "super": {
+      "column": 3,
+      "bodyBounds": [
+        30,
+        53,
+        188,
+        181
+      ],
+      "nativeRowBodyBounds": [
+        677,
+        27,
+        190,
+        183
+      ]
+    },
+    "referenceBodyBounds": [
+      46,
+      19,
+      161,
+      225
+    ],
+    "nativeReferenceRowBodyBounds": [
+      33,
+      12,
+      152,
+      212
+    ]
+  },
+  "rachel_bb": {
+    "referenceColumn": 0,
+    "reason": "Rachel body is measured from her black hair-ribbon/bow to boot soles or the bottom of her gathered dress in kneeling poses. Nago umbrella canopy, Gii, rods and lightning are excluded from the vertical body ROI. Do not expand genuine kneels to standing height.",
+    "intro": {
+      "column": 0,
+      "bodyBounds": [
+        45,
+        87,
+        182,
+        157
+      ],
+      "nativeRowBodyBounds": [
+        35,
+        88,
+        167,
+        144
+      ]
+    },
+    "outro": {
+      "column": 0,
+      "bodyBounds": [
+        34,
+        90,
+        194,
+        154
+      ],
+      "nativeRowBodyBounds": [
+        23,
+        74,
+        182,
+        145
+      ]
+    },
+    "roundVictory": {
+      "column": 0,
+      "bodyBounds": [
+        42,
+        79,
+        200,
+        163
+      ],
+      "nativeRowBodyBounds": [
+        31,
+        70,
+        185,
+        151
+      ]
+    },
+    "roundDefeat": {
+      "column": 0,
+      "bodyBounds": [
+        44,
+        105,
+        192,
+        135
+      ],
+      "nativeRowBodyBounds": [
+        34,
+        69,
+        176,
+        124
+      ]
+    },
+    "fatality": {
+      "column": 0,
+      "bodyBounds": [
+        44,
+        99,
+        200,
+        145
+      ],
+      "nativeRowBodyBounds": [
+        27,
+        82,
+        199,
+        144
+      ]
+    },
+    "victory": {
+      "column": 0,
+      "bodyBounds": [
+        44,
+        78,
+        192,
+        166
+      ],
+      "nativeRowBodyBounds": [
+        31,
+        68,
+        182,
+        157
+      ]
+    },
+    "defeat": {
+      "column": 0,
+      "bodyBounds": [
+        44,
+        132,
+        195,
+        104
+      ],
+      "nativeRowBodyBounds": [
+        36,
+        65,
+        174,
+        93
+      ]
+    },
+    "super": {
+      "column": 0,
+      "bodyBounds": [
+        45,
+        103,
+        187,
+        139
+      ],
+      "nativeRowBodyBounds": [
+        29,
+        91,
+        184,
+        137
+      ]
+    },
+    "referenceBodyBounds": [
+      45,
+      87,
+      182,
+      157
+    ],
+    "nativeReferenceRowBodyBounds": [
+      35,
+      88,
+      167,
+      144
+    ]
+  },
+  "hazama_bb": {
+    "referenceColumn": 0,
+    "reason": "Hazama body is measured from fedora top to shoe soles, excluding Ouroboros chains and snake heads. Technique recovery columns avoid chains above the hat. Native knee bends and hat-tip poses keep their source-height ratios.",
+    "intro": {
+      "column": 0,
+      "bodyBounds": [
+        97,
+        12,
+        118,
+        231
+      ],
+      "nativeRowBodyBounds": [
+        82,
+        18,
+        109,
+        213
+      ]
+    },
+    "outro": {
+      "column": 0,
+      "bodyBounds": [
+        61,
+        12,
+        139,
+        230
+      ],
+      "nativeRowBodyBounds": [
+        47,
+        7,
+        132,
+        218
+      ]
+    },
+    "roundVictory": {
+      "column": 0,
+      "bodyBounds": [
+        65,
+        12,
+        142,
+        226
+      ],
+      "nativeRowBodyBounds": [
+        50,
+        9,
+        137,
+        218
+      ]
+    },
+    "roundDefeat": {
+      "column": 0,
+      "bodyBounds": [
+        46,
+        21,
+        198,
+        223
+      ],
+      "nativeRowBodyBounds": [
+        46,
+        13,
+        156,
+        176
+      ]
+    },
+    "fatality": {
+      "column": 3,
+      "bodyBounds": [
+        64,
+        84,
+        129,
+        158
+      ],
+      "nativeRowBodyBounds": [
+        697,
+        22,
+        158,
+        194
+      ]
+    },
+    "victory": {
+      "column": 0,
+      "bodyBounds": [
+        63,
+        12,
+        160,
+        227
+      ],
+      "nativeRowBodyBounds": [
+        48,
+        10,
+        154,
+        218
+      ]
+    },
+    "defeat": {
+      "column": 0,
+      "bodyBounds": [
+        75,
+        48,
+        169,
+        196
+      ],
+      "nativeRowBodyBounds": [
+        66,
+        8,
+        142,
+        165
+      ]
+    },
+    "super": {
+      "column": 3,
+      "bodyBounds": [
+        64,
+        95,
+        130,
+        149
+      ],
+      "nativeRowBodyBounds": [
+        701,
+        27,
+        152,
+        174
+      ]
+    },
+    "referenceBodyBounds": [
+      97,
+      12,
+      118,
+      231
+    ],
+    "nativeReferenceRowBodyBounds": [
+      82,
+      18,
+      109,
+      213
+    ]
+  }
+}

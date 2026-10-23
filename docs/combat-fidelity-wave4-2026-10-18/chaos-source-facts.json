@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "sourceWork": "Final Fantasy VII (1997)",
+  "canon1to1Verified": false,
+  "scope": "Textual identity/attack facts used for the separate Chaos body; no official model, texture, frame sequence or timing was reproduced.",
+  "sources": [
+    {
+      "id": "ffonline-vincent",
+      "url": "https://www.ffonline.com/ff7/characters/Vincent-Valentine",
+      "title": "Final Fantasy Online: Vincent Valentine",
+      "verificationMode": "page-opened-and-read-via-web-tool",
+      "pageRead": true,
+      "locator": "Chaos section, extracted lines106–110",
+      "excerpts": [
+        "uses Chaos Saber for physical damage to all enemies",
+        "or Satan Slam to inflict Death"
+      ],
+      "paraphrase": "The guide describes an uncontrollable transformation, increased defensive statistics, a physical Chaos Saber attack affecting all enemies and the separate conditional-death Satan Slam action. These original mechanics are documented rather than added to the project's temporary buff."
+    },
+    {
+      "id": "ffwiki-original-chaos-description",
+      "url": "https://finalfantasy.fandom.com/wiki/Chaos_%28Final_Fantasy_VII%29",
+      "title": "Final Fantasy Wiki: Chaos (Final Fantasy VII)",
+      "verificationMode": "indexed-search-result-excerpt-read; direct-page-open-blocked",
+      "pageRead": false,
+      "indexedExcerptRead": true,
+      "directOpenError": "Failed to fetch restricted URL",
+      "excerpts": [
+        "dark gray skinned devil",
+        "a bald head with elongated ears",
+        "horns, hooves, and bat wings"
+      ],
+      "paraphrase": "The indexed description explicitly separates the original game's classical demon from the later Dirge of Cerberus version resembling a corrupted, equipped Vincent. This supports the dark bald horned body and bat wings; it is not an inspected official image reference."
+    },
+    {
+      "id": "ffwiki-chaos-ability-search",
+      "url": "https://finalfantasy.fandom.com/wiki/Chaos_%28Final_Fantasy_VII_ability%29",
+      "verificationMode": "indexed-search-result-excerpt-read; direct-page-open-blocked-by-robots",
+      "pageRead": false,
+      "indexedExcerptRead": true,
+      "paraphrase": "The indexed ability entry lists Chaos Saber and Satan Slam, including the original US spelling Stan Slam. It also states that the original Limit forms lack dedicated victory poses. No victory state is claimed for this four-state body atlas."
+    }
+  ],
+  "implementationBoundary": {
+    "projectSuper": "Chaos",
+    "projectEffect": "temporary self buff",
+    "bodyStates": ["idle", "run", "attack", "hit"],
+    "drawnAttackMotif": "adapted unarmed Chaos Saber claw sweep",
+    "drawnAttackIsLiteralHeldSaber": false,
+    "killmoveEstablishedAsCanonicalAttackByReadSources": false,
+    "killmoveNote": "No source read here establishes a separate original FFVII technique named Killmove. It must not be relabeled as an attested source ability or confused with Chaos Saber.",
+    "satanSlamImplemented": false,
+    "instantDeathImplemented": false,
+    "uncontrollableSourceMechanicReproduced": false,
+    "sourceDamageMultipliersReproduced": false,
+    "formArtReferenceImagesPassedToImagegen": [],
+    "appearanceLimit": "New generated adaptation with dark demon body and red-brown wing membranes. Textual identity was checked with the access modes above; the pixels, complete anatomy and animation are not source-certified1:1."
+  }
+}

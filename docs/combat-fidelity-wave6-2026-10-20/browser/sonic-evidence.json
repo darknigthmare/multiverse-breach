@@ -1,0 +1,402 @@
+{
+  "date": "2026-10-20",
+  "passed": true,
+  "environment": {
+    "browser": "Chromium /usr/bin/chromium",
+    "origin": "http://127.0.0.1:5188/",
+    "actor": "sonic_hedgehog",
+    "opponent": "cloud_ff7"
+  },
+  "core": {
+    "passed": true,
+    "character": "sonic_hedgehog",
+    "states": 45,
+    "distinctCorePoses": 180,
+    "coreFrameDraws": 360,
+    "gripFrameDraws": 8,
+    "physicsUnchanged": true,
+    "rendererUrl": "/src/game/renderer.js?t=1792488714830",
+    "sources": [
+      "/sprites/generated/melee-sonic-wave6/sonic-motion-a.png",
+      "/sprites/generated/melee-sonic-wave6/sonic-motion-b.png",
+      "/sprites/generated/melee-sonic-wave6/sonic-defense.png",
+      "/sprites/generated/melee-sonic-wave6/sonic-combat-a.png",
+      "/sprites/generated/melee-sonic-wave6/sonic-combat-b.png",
+      "/sprites/generated/melee-sonic-wave6/sonic-ledge.png"
+    ],
+    "pageErrors": [],
+    "coreCapture": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-core.png",
+    "gripCapture": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-grips.png"
+  },
+  "movement": {
+    "summary": {
+      "jumpRise": {
+        "updates": 26,
+        "draws": 26,
+        "elapsed": [
+          0,
+          0.016666666666666666,
+          0.03333333333333333,
+          0.05,
+          0.06666666666666667,
+          0.08333333333333333,
+          0.09999999999999999,
+          0.11666666666666665,
+          0.13333333333333333,
+          0.15,
+          0.16666666666666666,
+          0.18333333333333332,
+          0.19999999999999998,
+          0.21666666666666665,
+          0.2333333333333333,
+          0.24999999999999997,
+          0.26666666666666666,
+          0.2833333333333333,
+          0.3,
+          0.31666666666666665,
+          0.3333333333333333,
+          0.35,
+          0.36666666666666664,
+          0.3833333333333333,
+          0.39999999999999997,
+          0.41666666666666663
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "velocities": [
+          4
+        ],
+        "facings": [
+          1
+        ]
+      },
+      "fall": {
+        "updates": 29,
+        "draws": 29,
+        "elapsed": [
+          0,
+          0.016666666666666666,
+          0.03333333333333333,
+          0.05,
+          0.06666666666666667,
+          0.08333333333333333,
+          0.09999999999999999,
+          0.11666666666666665,
+          0.13333333333333333,
+          0.15,
+          0.16666666666666666,
+          0.18333333333333332,
+          0.19999999999999998,
+          0.21666666666666665,
+          0.2333333333333333,
+          0.24999999999999997,
+          0.26666666666666666,
+          0.2833333333333333,
+          0.3,
+          0.31666666666666665,
+          0.3333333333333333,
+          0.35,
+          0.36666666666666664,
+          0.3833333333333333,
+          0.39999999999999997,
+          0.41666666666666663,
+          0.4333333333333333,
+          0.44999999999999996,
+          0.4666666666666666
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "velocities": [
+          4
+        ],
+        "facings": [
+          1
+        ]
+      },
+      "land": {
+        "updates": 7,
+        "draws": 7,
+        "elapsed": [
+          0,
+          0.016666666666666666,
+          0.03333333333333333,
+          0.05,
+          0.06666666666666667,
+          0.08333333333333333,
+          0.09999999999999999
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "velocities": [
+          4
+        ],
+        "facings": [
+          1
+        ]
+      },
+      "turn": {
+        "updates": 6,
+        "draws": 6,
+        "elapsed": [
+          0.016666666666666666,
+          0.03333333333333333,
+          0.05,
+          0.06666666666666667,
+          0.08333333333333333,
+          0.09999999999999999
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "velocities": [
+          -4
+        ],
+        "facings": [
+          -1
+        ]
+      }
+    },
+    "pause": {
+      "mechanism": "GameCanvas real sessionPaused prop through root.render; stable stage/team props and engine instance",
+      "before": {
+        "state": "idle",
+        "stateElapsed": 0.31666666666666665,
+        "x": 456,
+        "y": 350,
+        "vx": 0,
+        "vy": 0,
+        "hp": 105
+      },
+      "after": {
+        "state": "idle",
+        "stateElapsed": 0.31666666666666665,
+        "x": 456,
+        "y": 350,
+        "vx": 0,
+        "vy": 0,
+        "hp": 105
+      },
+      "durationMs": 300,
+      "unchanged": true
+    },
+    "engineUrl": "/src/game/engineSmash.js?t=1792488714830",
+    "pageErrors": [],
+    "mount": "Real React GameCanvas, isolated flat training ground, stationary P2 opponent, actual D/Space/Q key input, real animation clocks and drawImage."
+  },
+  "super": {
+    "engineUrl": "/src/game/engineSmash.js?t=1792488862096",
+    "name": "Light Speed Attack",
+    "keyboardHoldMs": 80,
+    "initialCharge": 100,
+    "impact": {
+      "start": {
+        "name": "Light Speed Attack",
+        "charge": 0,
+        "hp": 100000,
+        "elapsed": 0.016666666666666666,
+        "hitAt": 0.451
+      },
+      "hit": {
+        "name": "Light Speed Attack",
+        "charge": 0,
+        "hp": 99932,
+        "elapsed": 0.4666666666666666,
+        "hitAt": 0.451
+      },
+      "gameOver": false
+    },
+    "sameInput": {
+      "before": 99932,
+      "retriggered": false,
+      "charge": 0
+    },
+    "final": {
+      "hitCount": 1,
+      "hp": 99932,
+      "charge": 0,
+      "action": null,
+      "profile": "Light Speed Attack"
+    },
+    "pageErrors": [],
+    "sourceDraws": {
+      "count": 77,
+      "sheets": [
+        "/sprites/generated/combat-character-animations-wave6/sonic_hedgehog.png"
+      ],
+      "rows": [
+        7
+      ],
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "coldBoot": "Fresh Chromium process and page; no test preload; only production GameCanvas boot prepares sprites.",
+    "firstDraw": {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/sonic_hedgehog.png",
+      "row": 7,
+      "column": 0,
+      "sourceRect": [
+        0,
+        1792,
+        256,
+        256
+      ],
+      "elapsed": 0.016666666666666666,
+      "hitAt": 0.451,
+      "phase": null,
+      "actionId": "super",
+      "state": "special",
+      "imageComplete": true,
+      "naturalWidth": 1024
+    },
+    "screenshot": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-super.png"
+  },
+  "initialHarnessFailures": [],
+  "externalRequestLimitation": "Only the Google Fonts CSS request was blocked by the proxy (ERR_TUNNEL_CONNECTION_FAILED). No application JavaScript exception or internal asset load failure occurred.",
+  "visualReview": {
+    "movementAndGripsAndSuperReviewed": true,
+    "spinBodyCropReviewed": true,
+    "native32CropReviewed": true,
+    "notes": [
+      "Sonic retains base cobalt-blue Adventure identity, green eyes, white gloves, red shoes with white straps/gold buckles; no SOAP shoes, gold Super Sonic or Shadow power.",
+      "Core jumpRise/jumpApex/crouchCharge frames visibly use native quilled rolled bodies, with different glove/shoe/quill orientations. These are not procedural circle effects.",
+      "Motion standing calibration is190px, shared with combat and native32. Compact motion-body heights are121–140px, preserving native projection instead of fitting each row.",
+      "The eight-grip image overlays four frame drawings at each side of the platform; individual world contact points are verified in the trace.",
+      "The dedicated Light Speed Attack presentation wins from the first cold-page super draw, using row7 columns0/1/2/3. Its target chain is an adapted single gameplay impact.",
+      "The movement fixture uses isolated flat ground; canonical stage scenery is outside this animation check. Native artwork and timings are adaptations, not official source frames."
+    ],
+    "canonicalAnimationVerified": false,
+    "canon1to1Verified": false
+  },
+  "motionValidation": {
+    "passed": true,
+    "states": 24,
+    "frames": 96,
+    "uniqueFrameHashes": 96,
+    "standingBodyHeight": 190,
+    "compactBodyHeights": {
+      "min": 121,
+      "max": 140
+    },
+    "nativeCalls": 5
+  },
+  "sourceImages": [
+    {
+      "path": "public/sprites/generated/melee-sonic-wave6/sonic-motion-a.png",
+      "sha256": "32a3ece479a9cdc74ca5e53d768a1fc033da0199272276ba9fb72588addcdced"
+    },
+    {
+      "path": "public/sprites/generated/melee-sonic-wave6/sonic-motion-b.png",
+      "sha256": "3a98ed00d57fb009fb49d401c3ed82516311c187a0f6f1331c3658572e42a6e6"
+    },
+    {
+      "path": "public/sprites/generated/melee-sonic-wave6/sonic-defense.png",
+      "sha256": "22380435ba5e40c6ce39fa52293dee661f4391b6f90f20e8962a6f7da3f4c367"
+    },
+    {
+      "path": "public/sprites/generated/melee-sonic-wave6/sonic-combat-a.png",
+      "sha256": "bf26d9439d1c876f50bea8cb3e032551a8f955143e8543cf18e3ae0690740800"
+    },
+    {
+      "path": "public/sprites/generated/melee-sonic-wave6/sonic-combat-b.png",
+      "sha256": "c3d698842c81f58ff6b2ed2fcf7b8cd4f06e51b06828518ef55a3d8e58e567ee"
+    },
+    {
+      "path": "public/sprites/generated/melee-sonic-wave6/sonic-ledge.png",
+      "sha256": "20b57a3ceaeb111a1a4afd2db92927b9b81c32b178bc80a9285e48664efee8da"
+    }
+  ],
+  "presentationSource": {
+    "path": "public/sprites/generated/combat-character-animations-wave6/sonic_hedgehog.png",
+    "sha256": "9dad280e47782fbea27d8f06209b656b892297c4e3f99d5c8d97c27c04ad76c1"
+  },
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-core-browser.mjs",
+      "sha256": "13feac3257dcee2383d8d8faa237ffab6b9c761dcbbf72d14036a8c3dd4731b9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-core-result.json",
+      "sha256": "4fb0c4064f2ce7991dcc31d445ede4d6b43295ff623fe6e1d26d4099f05cc08f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-core-spin-crop.png",
+      "sha256": "1fde9c04e74de8672f01263697eb60c402af1fe08105a0fcc810ce99254b8675"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-core-trace.json",
+      "sha256": "311ba388b2f6cb6d914ff63b6b374b8a0d5cc551cb28b65d2a1989c4ae6f7140"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-core.png",
+      "sha256": "705edea81c60dae88f86a81a7705491674eebd4ba2e1fff21ef040bec68f7084"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-grips.png",
+      "sha256": "5ab1524aebe8713a1b0e4001761fa971c90d432f8dfcb19c0d44a2091699f6cc"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-light-speed-attack-native32-crop.png",
+      "sha256": "da25b3c0c406f1cffca7b86450e67f0d500d954cd005ce0facd6f036f40b3b73"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-movement-browser.mjs",
+      "sha256": "5f3839828ff157191ecad9afa278dc9ea20e38a0a4fab830f81e40fa5fa787ec"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-movement-result.json",
+      "sha256": "c27a973f538dcac79e19b5884970401a1ef9898c39dd76dd7c7dc119d1417087"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-movement-trace.json",
+      "sha256": "f167959296ee95e2708b68f17199cfb1ef2683eb4a8be6d430e5427053271f79"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-movement.png",
+      "sha256": "2e41b39e65c6b161b7d05d5d67b49741edb54e7e16999007fd643a211e745368"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-pause.png",
+      "sha256": "634f83aa07a6691d5c256535b0d2779cce98454d1f895e109697667a8a08c7ab"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-super-browser.mjs",
+      "sha256": "a9297d465d2961f41eeede546df72bb0d53145260c4c85ca9927f0fd236ee607"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-super-draws.json",
+      "sha256": "cef459e73e88ffe5626b4d2cf99e8ddf822756767654b8f25da0053bfb7a696d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-super-result.json",
+      "sha256": "32d931b21fed7747092a52152a6b969ce746d83719de43efa64f44b8964fa5da"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-super-trace.json",
+      "sha256": "e8aee6b683a457231d95dd46fcdb376e4d621eef2bacd1d2246398eca66c591b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/sonic-super.png",
+      "sha256": "552f203d2368756278fc1e4bb38f3e3a00b35a2a3d5893367a50d777f64df189"
+    }
+  ],
+  "browserChecksChangedProductionSources": false
+}

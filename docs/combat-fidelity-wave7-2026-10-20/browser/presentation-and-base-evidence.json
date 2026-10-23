@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-20T11:20:39.164Z",
+  "passed": true,
+  "method": "Chromium real CanvasRenderingContext2D.drawImage through the renderer imported by the served GameCanvas module. Real PNGs loaded via HTTP; controlled actors sampled on P1/P2 without bypassing source selection. RPG context is used for base corrections, so the dedicated Ragna45 melee manifest does not hide its base.",
+  "native": {
+    "heroes": 80,
+    "phases": 640,
+    "draws": 5120,
+    "geometryChecks": 5120,
+    "immutableActors": 5120,
+    "immutableAssetRegistry": true,
+    "rejectedCrossedIdentities": 160,
+    "fixedAuthoritativeProgressCases": 5120,
+    "sourceRectangles": "256x256 at registry row and selected column",
+    "baseline": 244
+  },
+  "bases": {
+    "heroes": 27,
+    "newWave7Heroes": 14,
+    "newWave7Draws": 448,
+    "priorHeroes": 13,
+    "priorDraws": 416,
+    "totalDraws": 864,
+    "immutableActors": 864,
+    "calibratedWave6And7Heroes": 20,
+    "calibratedBaseline": 244,
+    "preWave6Heroes": 7,
+    "preWave6Baseline": 232,
+    "preWave6Draws": 224,
+    "legacyGeometryUnchanged": true,
+    "missingNewBaseHeroIds": [
+      "leia_organa"
+    ]
+  },
+  "appErrors": [],
+  "knownEnvironmentRequests": {
+    "kind": "external-font-blocked-by-proxy",
+    "requests": [
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+        "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+        "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      }
+    ],
+    "affectsSpriteAssetRequests": false
+  },
+  "sources": [
+    {
+      "path": "src/game/renderer.js",
+      "sha256": "ef8934b7e05b7d67228c825e8099f3846cf1c784821e5e5c8187331dd71f18a1"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "sha256": "c7c60e1c57259939ab093deb720aef4f23f354dbe326e08b05e06fe7c659a711"
+    },
+    {
+      "path": "src/game/combat/characterAnimationCatalog.js",
+      "sha256": "3c7febff4b8df5a95d40a5173db6adbc15911ec8a1f8fbe5c1619043f7ced4f0"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave7PartA.generated.json",
+      "sha256": "abc22a616f1fa2a79762150c104a32918ae96be656c20d2c0e55ec1b1103ba39"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave7PartA.generated.json",
+      "sha256": "68844a72791078c11b33f961fd1951e9f8a693c13fa6fa281535ba63e4229828"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave7PartB.generated.json",
+      "sha256": "385eac5d0378c9439cd5bdfb1d6e54b1acc64d7ad27fb1289982d43618929aab"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave7PartB.generated.json",
+      "sha256": "17ea25fe4bf69c62cc06a5f178d79a2903c1990fa73ff613eb2d1ae68a535246"
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave7PartC.generated.json",
+      "sha256": "24e646613bcb7b88478d37046a9335dd0b42884cbd6c21a2e22f4c2b78c0f8f8"
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave7PartC.generated.json",
+      "sha256": "fe1bc64c1f2ec950278157d46cc98f997819455270d1e0310ac3379075e9a7ad"
+    }
+  ],
+  "harnesses": [
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations.mjs",
+      "sha256": "a5aab9d68eb1b808c562e7da0a91aab92bbaae0a5882ddd69b32c2503365a05c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/base-corrections.mjs",
+      "sha256": "db0a36f966397de2ad0b5d7d422b2645ce63323a00c43133c2bfee83e9a99b3b"
+    }
+  ],
+  "traces": [
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-trace.json",
+      "sha256": "0eea0ec9bce23bc22a2aa514d843beb9d48e26028e9d7d0ebbcf53fc8d1a517a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/base-corrections-trace.json",
+      "sha256": "e5c72a284e1f1ccf2b257a6b9172b93b4aeae6e8df454f697ede48fbf298c0ed"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-ragna.png",
+      "sha256": "c04fdf294a0897eb4216be52fdee74c0bdc65b53e6509593e9c2ec70eec07315"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-jin.png",
+      "sha256": "fcedf1569b95d98b89c47a5e18373d758974a42a2057e1c77f48ec85ca4a1603"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-noel.png",
+      "sha256": "ca59ec7585a428af7a93ccad0fa3ce36a3639f0b397efc242650e96df84bd874"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-rachel_bb.png",
+      "sha256": "e53809d662cd2ce9a7a237958c83c5e5fab7cda64b6580e54d3d27798b116069"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-hazama_bb.png",
+      "sha256": "dd563e850683908c88454548549916e92352575e2981d6f5d3c44fada5d79872"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-han_solo.png",
+      "sha256": "e6dc96cc7ddd4f540bffcff927d3554ca85f375272feb141924bfc468643420c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-leia_organa.png",
+      "sha256": "6290664c91c7d21b0b8fb4cde8281caae76c011d47daa19e2271d580eee6f80d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-kenshin_himura.png",
+      "sha256": "91a3d9462fcc1bc2df80fe138d39e5e27d614288b6decc219fa59f0a71a7ce43"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-sanosuke_sagara.png",
+      "sha256": "e90a4f6da38591a2dc750541215b26846b5bc20fd80464607fecbf23864582c6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-kaoru_kamiya.png",
+      "sha256": "d9a7224b691e762a3a498cf0ee21200727d54e24e91c4243f48bd3547a10b6bb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-may_gg.png",
+      "sha256": "70f1e1a0475915067b2c897be765b0ed7b430ce38c43363cec1144d60c79ba53"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-dizzy_gg.png",
+      "sha256": "1c145eb9aae2cfbf2c0546d991d5ef1e60beaf05b909d89dd651573004c51f58"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-millia_gg.png",
+      "sha256": "dee95743d914bc28f9d271642190a152e90e46b838923aabb222aa5bcf648e2e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-axl_gg.png",
+      "sha256": "40abac87d93f2b6073af831b2a4c5562d0b9debbd094e77ce446638e18218e4c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-baiken_gg.png",
+      "sha256": "a11a920fbb25cf7e387f034ae8a717ee3a109195c61527076e778ae814780465"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/base-corrections.png",
+      "sha256": "538c00322d183afd04745a4e8c5b9c0074882c070350f57e733dc953d5136e87"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-part-a-review.png",
+      "sha256": "445f35bd32a6bb0080a86cc23822931050f38a4cf833334cfd8e7b69920ca8b5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/base-corrections-part-a-review.png",
+      "sha256": "7d1f2a6620c1510375fd2d364b674393a807a1c9377fdf3f90b11b97671227c6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-part-b-review.png",
+      "sha256": "c8e774404752b786b8cd98110ea9e2c31b133c35194a4b6ae8ed598107130e7d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/base-corrections-part-b-review.png",
+      "sha256": "39d3eac2d3a4bdd9da0dd2863b215cd6bc018f29e0724a84d9bdeaaf00bf31a9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/native-presentations-part-c-review.png",
+      "sha256": "511fd3937326e0a73e5cdd9c83e46b021741e0cff5ffab38ae91aad074cb231e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/base-corrections-part-c-review.png",
+      "sha256": "88a81f60ccdf9510238e0e61d00844ba668e365c0155d243ab470e8bff128187"
+    }
+  ],
+  "visualReview": {
+    "reviewed": true,
+    "scope": "The three montage images cover intro/fatality/super for all15 new presentation heroes, including P1/P2. Three base montages cover all14 new heroes and their four coarse states. Full15 presentation captures and full27-base capture are retained.",
+    "sourceGameVisual1to1Verified": false
+  },
+  "limits": [
+    "Leia has no approved new base correction; she is absent from the fourteen-base Wave7 set and was not substituted with a different character.",
+    "The dedicated character-only phase harness does not draw the separate native super VFX/projectile layer. A separate travelling Yamada body or Thor projectile is therefore not expected inside these character-only captures. Engine projectile, Ragna45 and invocation tests are covered by their separate harnesses.",
+    "Fixed-progress checks validate authoritative presentation progress against render-time drift; they do not claim a full AI battle or pause-menu playthrough.",
+    "These checks establish real asset selection, geometry and actor immutability, not certified frame-for-frame source-game appearance."
+  ]
+}

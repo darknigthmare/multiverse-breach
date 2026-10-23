@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/workspace/multiverse-breach/scripts/auditCharacterReferenceQuality.py", line 780, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/multiverse-breach/scripts/auditCharacterReferenceQuality.py", line 738, in main
+    assert_report_invariants(report)
+  File "/workspace/multiverse-breach/scripts/auditCharacterReferenceQuality.py", line 709, in assert_report_invariants
+    raise ValueError(
+ValueError: Known-case classification mismatch: {"/sprites/generated/heroes/resident-evil/leon.png": {"actual": null, "expected": "approved"}}

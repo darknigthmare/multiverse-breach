@@ -1,0 +1,4879 @@
+{
+  "passed": true,
+  "method": "Chromium actual engines imported from exact compiled component URLs, controlled authoritative stepping and real native/base PNG drawing. No keyboard UI flow claim.",
+  "urls": {
+    "rpg": "/src/game/engineRpg.js?t=1792499272821",
+    "melee": "/src/game/engineSmash.js?t=1792499272821",
+    "fighter": "/src/game/engineFighter.js?t=1792499273565",
+    "renderer": "/src/game/renderer.js?t=1792499272821",
+    "meleeRuntime": "/src/game/melee/meleeCombatRuntime.js?t=1792499208538",
+    "identity": "/src/game/combatIdentity.js?t=1792499208538",
+    "catalog": "/src/game/combat/characterAnimationCatalog.js?t=1792499207940"
+  },
+  "sources": [
+    "/sprites/generated/heroes/teen-titans/robin-tt.png",
+    "/sprites/generated/combat-character-animations-wave8/cyborg_tt.png",
+    "/sprites/generated/combat-character-corrections-wave8-part-a/cyborg_tt.png",
+    "/sprites/generated/heroes/teen-titans/raven-tt.png",
+    "/sprites/generated/heroes/teen-titans/starfire-tt.png",
+    "/sprites/generated/combat-character-animations-wave8/beast_boy_tt.png",
+    "/sprites/generated/combat-character-corrections-wave8-part-a/beast_boy_tt.png",
+    "/sprites/generated/combat-character-animations-wave8/kiryu_yakuza.png",
+    "/sprites/generated/melee-kiryu-wave8/kiryu-motion-a.png",
+    "/sprites/generated/combat-character-animations-wave8/majima_yakuza.png",
+    "/sprites/generated/combat-character-corrections-wave8/majima_yakuza.png",
+    "/sprites/generated/combat-character-animations-wave8/ichiban_yakuza.png",
+    "/sprites/generated/combat-character-corrections-wave8/ichiban_yakuza.png",
+    "/sprites/generated/combat-character-animations-wave8/saejima_yakuza.png",
+    "/sprites/generated/combat-character-corrections-wave8/saejima_yakuza.png",
+    "/sprites/generated/combat-character-animations-wave8/akiyama_yakuza.png",
+    "/sprites/generated/combat-character-corrections-wave8/akiyama_yakuza.png",
+    "/sprites/generated/combat-character-animations-wave8/blade_wolf_mgr.png",
+    "/sprites/generated/combat-character-corrections-wave8/blade_wolf_mgr.png",
+    "/sprites/generated/combat-character-animations-wave8/jetstream_sam.png",
+    "/sprites/generated/combat-character-corrections-wave8/jetstream_sam.png",
+    "/sprites/generated/combat-character-animations-wave8/armstrong_mgr.png",
+    "/sprites/generated/combat-character-corrections-wave8/armstrong_mgr.png",
+    "/sprites/generated/combat-character-animations-wave8/mistral_mgr.png",
+    "/sprites/generated/combat-character-corrections-wave8/mistral_mgr.png",
+    "/sprites/generated/combat-character-animations-wave8/monsoon_mgr.png",
+    "/sprites/generated/combat-character-corrections-wave8/monsoon_mgr.png",
+    "/sprites/generated/combat-character-animations-wave8/laios_meshi.png",
+    "/sprites/generated/combat-character-corrections-wave8/laios_meshi.png",
+    "/sprites/generated/combat-character-animations-wave8/marcille_meshi.png",
+    "/sprites/generated/combat-character-corrections-wave8/marcille_meshi.png",
+    "/sprites/generated/combat-character-animations-wave8/senshi_meshi.png",
+    "/sprites/generated/combat-character-corrections-wave8/senshi_meshi.png",
+    "/sprites/generated/combat-character-animations-wave8/chilchuck_meshi.png",
+    "/sprites/generated/combat-character-corrections-wave8/chilchuck_meshi.png",
+    "/sprites/generated/combat-character-animations-wave8/falin_meshi.png",
+    "/sprites/generated/combat-character-corrections-wave8/falin_meshi.png"
+  ],
+  "results": [
+    {
+      "id": "robin_tt",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Enchaînement au bâton de Robin",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/robin-tt.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        -38,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "robin_tt",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Enchaînement au bâton de Robin",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/robin-tt.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -38,
+        -41,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "robin_tt",
+      "mode": "melee",
+      "side": "player",
+      "name": "Enchaînement au bâton de Robin",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/robin-tt.png",
+      "bodyCell": [
+        768,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -38,
+        -38,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "robin_tt",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Enchaînement au bâton de Robin",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/robin-tt.png",
+      "bodyCell": [
+        768,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        -39,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "robin_tt",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Enchaînement au bâton de Robin",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/robin-tt.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -78.5,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "robin_tt",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Enchaînement au bâton de Robin",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/robin-tt.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -78.5,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "cyborg_tt",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Sonic Cannon de Cyborg",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/cyborg_tt.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        -41,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "cyborg_tt",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Sonic Cannon de Cyborg",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/cyborg_tt.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        -39,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "cyborg_tt",
+      "mode": "melee",
+      "side": "player",
+      "name": "Sonic Cannon de Cyborg",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/cyborg_tt.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        -41,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "cyborg_tt",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Sonic Cannon de Cyborg",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/cyborg_tt.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        -43,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "cyborg_tt",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Sonic Cannon de Cyborg",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/cyborg_tt.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82.10000000000002,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "cyborg_tt",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Sonic Cannon de Cyborg",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/cyborg_tt.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82.10000000000002,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "raven_tt",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Azarath Metrion Zinthos — barrière",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/raven-tt.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        298,
+        298
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "raven_tt",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Azarath Metrion Zinthos — barrière",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/raven-tt.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        298,
+        298
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "raven_tt",
+      "mode": "melee",
+      "side": "player",
+      "name": "Azarath Metrion Zinthos — barrière",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/raven-tt.png",
+      "bodyCell": [
+        768,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        4.9799999999999995,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "raven_tt",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Azarath Metrion Zinthos — barrière",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/raven-tt.png",
+      "bodyCell": [
+        768,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        4.9799999999999995,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "raven_tt",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Azarath Metrion Zinthos — barrière",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/raven-tt.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        5,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "raven_tt",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Azarath Metrion Zinthos — barrière",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/raven-tt.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        5,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "starfire_tt",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Salve de starbolts de Starfire",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/starfire-tt.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "starfire_tt",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Salve de starbolts de Starfire",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/starfire-tt.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -68,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "starfire_tt",
+      "mode": "melee",
+      "side": "player",
+      "name": "Salve de starbolts de Starfire",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/starfire-tt.png",
+      "bodyCell": [
+        512,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "starfire_tt",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Salve de starbolts de Starfire",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/starfire-tt.png",
+      "bodyCell": [
+        512,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -67,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "starfire_tt",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Salve de starbolts de Starfire",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/starfire-tt.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.70000000000005,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "starfire_tt",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Salve de starbolts de Starfire",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "existing-base-fallback",
+      "bodySheet": "/sprites/generated/heroes/teen-titans/starfire-tt.png",
+      "bodyCell": [
+        0,
+        512,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 0,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.70000000000005,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "beast_boy_tt",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Charge du T-Rex vert",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "partial-native8",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/beast_boy_tt.png",
+      "bodyCell": [
+        512,
+        256,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 228.34561157226562,
+        "f": 218
+      },
+      "declaredNativePoses": 8,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -53,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "beast_boy_tt",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Charge du T-Rex vert",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "partial-native8",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/beast_boy_tt.png",
+      "bodyCell": [
+        512,
+        256,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 228.3455810546875,
+        "f": 218
+      },
+      "declaredNativePoses": 8,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -55,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "beast_boy_tt",
+      "mode": "melee",
+      "side": "player",
+      "name": "Charge du T-Rex vert",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "partial-native8",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/beast_boy_tt.png",
+      "bodyCell": [
+        512,
+        256,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 229.5387420654297,
+        "f": 218
+      },
+      "declaredNativePoses": 8,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -58,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "beast_boy_tt",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Charge du T-Rex vert",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "partial-native8",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/beast_boy_tt.png",
+      "bodyCell": [
+        512,
+        256,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 190.4613037109375,
+        "f": 218
+      },
+      "declaredNativePoses": 8,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -53,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "beast_boy_tt",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Charge du T-Rex vert",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "partial-native8",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/beast_boy_tt.png",
+      "bodyCell": [
+        512,
+        256,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 248.53472900390625,
+        "f": 218
+      },
+      "declaredNativePoses": 8,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -96.29999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "beast_boy_tt",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Charge du T-Rex vert",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "partial-native8",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/beast_boy_tt.png",
+      "bodyCell": [
+        512,
+        256,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 171.4652099609375,
+        "f": 218
+      },
+      "declaredNativePoses": 8,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -96.29999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "kiryu_yakuza",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Coup du Dragon de Dojima",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/kiryu_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 224.0447998046875,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -54,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "kiryu_yakuza",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Coup du Dragon de Dojima",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/kiryu_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 224.0447998046875,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "kiryu_yakuza",
+      "mode": "melee",
+      "side": "player",
+      "name": "Coup du Dragon de Dojima",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/kiryu_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 225.3526153564453,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "kiryu_yakuza",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Coup du Dragon de Dojima",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/kiryu_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 194.6473388671875,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "kiryu_yakuza",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Coup du Dragon de Dojima",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/kiryu_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 240.2787628173828,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -83,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "kiryu_yakuza",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Coup du Dragon de Dojima",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/kiryu_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 179.72119140625,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -83,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "majima_yakuza",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Style Mad Dog — coupe au tantō",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/majima_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 227.23678588867188,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -35,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "majima_yakuza",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Style Mad Dog — coupe au tantō",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/majima_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 227.23681640625,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "majima_yakuza",
+      "mode": "melee",
+      "side": "player",
+      "name": "Style Mad Dog — coupe au tantō",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/majima_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 228.8418426513672,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -35,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "majima_yakuza",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Style Mad Dog — coupe au tantō",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/majima_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 191.158203125,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "majima_yakuza",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Style Mad Dog — coupe au tantō",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/majima_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 247.16030883789062,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72.79999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "majima_yakuza",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Style Mad Dog — coupe au tantō",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/majima_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 172.8397216796875,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72.79999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "ichiban_yakuza",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Giga Swing",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/ichiban_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -32,
+        -31,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "ichiban_yakuza",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Giga Swing",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/ichiban_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -34,
+        -32,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "ichiban_yakuza",
+      "mode": "melee",
+      "side": "player",
+      "name": "Giga Swing",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/ichiban_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -36,
+        -31,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "ichiban_yakuza",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Giga Swing",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/ichiban_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -31,
+        -33,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "ichiban_yakuza",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Giga Swing",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/ichiban_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -63.200000000000045,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "ichiban_yakuza",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Giga Swing",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/ichiban_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -63.200000000000045,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "saejima_yakuza",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Herculean Spirit",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/saejima_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        238,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "saejima_yakuza",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Herculean Spirit",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/saejima_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        238,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "saejima_yakuza",
+      "mode": "melee",
+      "side": "player",
+      "name": "Herculean Spirit",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/saejima_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        3.9966666666666666,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "saejima_yakuza",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Herculean Spirit",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/saejima_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        3.9966666666666666,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "saejima_yakuza",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Herculean Spirit",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/saejima_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        4,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "saejima_yakuza",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Herculean Spirit",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/saejima_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        4,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "akiyama_yakuza",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Launch Strike",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/akiyama_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 225.95999145507812,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "akiyama_yakuza",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Launch Strike",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/akiyama_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 225.9599609375,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "akiyama_yakuza",
+      "mode": "melee",
+      "side": "player",
+      "name": "Launch Strike",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/akiyama_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 227.44615173339844,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -38,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "akiyama_yakuza",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Launch Strike",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/akiyama_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 192.5538330078125,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "akiyama_yakuza",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Launch Strike",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/akiyama_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 244.40769958496094,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72.79999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "akiyama_yakuza",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Launch Strike",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/akiyama_yakuza.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 175.59228515625,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72.79999999999995,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "blade_wolf_mgr",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Coupe de la scie caudale",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/blade_wolf_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 224.68319702148438,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -30,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "blade_wolf_mgr",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Coupe de la scie caudale",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/blade_wolf_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 224.6832275390625,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -34,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "blade_wolf_mgr",
+      "mode": "melee",
+      "side": "player",
+      "name": "Coupe de la scie caudale",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/blade_wolf_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 226.0504608154297,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -31,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "blade_wolf_mgr",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Coupe de la scie caudale",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/blade_wolf_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 193.9495849609375,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -29,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "blade_wolf_mgr",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Coupe de la scie caudale",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/blade_wolf_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 241.6550750732422,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61.299999999999955,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "blade_wolf_mgr",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Coupe de la scie caudale",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/blade_wolf_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 178.344970703125,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61.299999999999955,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "jetstream_sam",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Iai de Murasama",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/jetstream_sam.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 230.42880249023438,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -54,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "jetstream_sam",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Iai de Murasama",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/jetstream_sam.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 230.4288330078125,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "jetstream_sam",
+      "mode": "melee",
+      "side": "player",
+      "name": "Iai de Murasama",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/jetstream_sam.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 232.33106994628906,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "jetstream_sam",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Iai de Murasama",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/jetstream_sam.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 187.6689453125,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "jetstream_sam",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Iai de Murasama",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/jetstream_sam.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 254.04183959960938,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -83,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "jetstream_sam",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Iai de Murasama",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/jetstream_sam.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 165.9581298828125,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -83,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "armstrong_mgr",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Frappe sismique d’Armstrong",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/armstrong_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        -43,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "armstrong_mgr",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Frappe sismique d’Armstrong",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/armstrong_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        -43,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "armstrong_mgr",
+      "mode": "melee",
+      "side": "player",
+      "name": "Frappe sismique d’Armstrong",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/armstrong_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        -48,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "armstrong_mgr",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Frappe sismique d’Armstrong",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/armstrong_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        -43,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "armstrong_mgr",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Frappe sismique d’Armstrong",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/armstrong_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -89.39999999999998,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "armstrong_mgr",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Frappe sismique d’Armstrong",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/armstrong_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -89.39999999999998,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "mistral_mgr",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Spirale de L’Étranger",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/mistral_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 221.79360961914062,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "mistral_mgr",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Spirale de L’Étranger",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/mistral_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 221.7935791015625,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "mistral_mgr",
+      "mode": "melee",
+      "side": "player",
+      "name": "Spirale de L’Étranger",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/mistral_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 222.5606231689453,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "mistral_mgr",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Spirale de L’Étranger",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/mistral_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 197.4393310546875,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "mistral_mgr",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Spirale de L’Étranger",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/mistral_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 234.77232360839844,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -88.10000000000002,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "mistral_mgr",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Spirale de L’Étranger",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/mistral_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 185.2276611328125,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -88.10000000000002,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "monsoon_mgr",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Assaut magnétique de Monsoon",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/monsoon_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        -52,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "monsoon_mgr",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Assaut magnétique de Monsoon",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/monsoon_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        -48,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "monsoon_mgr",
+      "mode": "melee",
+      "side": "player",
+      "name": "Assaut magnétique de Monsoon",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/monsoon_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        -54,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "monsoon_mgr",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Assaut magnétique de Monsoon",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/monsoon_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -55,
+        -48,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "monsoon_mgr",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Assaut magnétique de Monsoon",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/monsoon_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -94.20000000000005,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "monsoon_mgr",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Assaut magnétique de Monsoon",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/monsoon_mgr.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -94.20000000000005,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "laios_meshi",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Coupe de Kensuke",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/laios_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 222.76800537109375,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -30,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "laios_meshi",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Coupe de Kensuke",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/laios_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 222.7679443359375,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -31,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "laios_meshi",
+      "mode": "melee",
+      "side": "player",
+      "name": "Coupe de Kensuke",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/laios_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 223.95692443847656,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -29,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "laios_meshi",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Coupe de Kensuke",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/laios_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 196.0430908203125,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -34,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "laios_meshi",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Coupe de Kensuke",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/laios_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 237.52615356445312,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61.299999999999955,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "laios_meshi",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Coupe de Kensuke",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/laios_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 182.473876953125,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61.299999999999955,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "marcille_meshi",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Explosion magique de Marcille",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/marcille_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -36,
+        -36,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "marcille_meshi",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Explosion magique de Marcille",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/marcille_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -35,
+        -36,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "marcille_meshi",
+      "mode": "melee",
+      "side": "player",
+      "name": "Explosion magique de Marcille",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/marcille_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -33,
+        -33,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "marcille_meshi",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Explosion magique de Marcille",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/marcille_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 2,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -36,
+        -36,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "marcille_meshi",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Explosion magique de Marcille",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/marcille_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66.20000000000005,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "marcille_meshi",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Explosion magique de Marcille",
+      "effect": "damage",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/marcille_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 1,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66.20000000000005,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "senshi_meshi",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Repas équilibré du donjon",
+      "effect": "heal",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/senshi_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "senshi_meshi",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Repas équilibré du donjon",
+      "effect": "heal",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/senshi_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "senshi_meshi",
+      "mode": "melee",
+      "side": "player",
+      "name": "Repas équilibré du donjon",
+      "effect": "heal",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/senshi_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "senshi_meshi",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Repas équilibré du donjon",
+      "effect": "heal",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/senshi_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "senshi_meshi",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Repas équilibré du donjon",
+      "effect": "heal",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/senshi_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        340,
+        340
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "senshi_meshi",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Repas équilibré du donjon",
+      "effect": "heal",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/senshi_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        340,
+        340
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "chilchuck_meshi",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Désamorçage des pièges de Chilchuck",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/chilchuck_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        298,
+        298
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "chilchuck_meshi",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Désamorçage des pièges de Chilchuck",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/chilchuck_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        298,
+        298
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "chilchuck_meshi",
+      "mode": "melee",
+      "side": "player",
+      "name": "Désamorçage des pièges de Chilchuck",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/chilchuck_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        4.996666666666667,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "chilchuck_meshi",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Désamorçage des pièges de Chilchuck",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/chilchuck_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        4.996666666666667,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "chilchuck_meshi",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Désamorçage des pièges de Chilchuck",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/chilchuck_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        5,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "chilchuck_meshi",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Désamorçage des pièges de Chilchuck",
+      "effect": "guard",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/chilchuck_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        5,
+        5
+      ],
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "falin_meshi",
+      "mode": "rpg",
+      "side": "player",
+      "name": "Magie de soin de Falin",
+      "effect": "heal",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/falin_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "falin_meshi",
+      "mode": "rpg",
+      "side": "opponent",
+      "name": "Magie de soin de Falin",
+      "effect": "heal",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/falin_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        null,
+        null
+      ],
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "falin_meshi",
+      "mode": "melee",
+      "side": "player",
+      "name": "Magie de soin de Falin",
+      "effect": "heal",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/falin_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "falin_meshi",
+      "mode": "melee",
+      "side": "opponent",
+      "name": "Magie de soin de Falin",
+      "effect": "heal",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/falin_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "falin_meshi",
+      "mode": "fighter",
+      "side": "player",
+      "name": "Magie de soin de Falin",
+      "effect": "heal",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/falin_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": 1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        340,
+        340
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    },
+    {
+      "id": "falin_meshi",
+      "mode": "fighter",
+      "side": "opponent",
+      "name": "Magie de soin de Falin",
+      "effect": "heal",
+      "cost": 100,
+      "pauseStable": true,
+      "renderReadOnly": true,
+      "bodyKind": "native32",
+      "bodySheet": "/sprites/generated/combat-character-animations-wave8/falin_meshi.png",
+      "bodyCell": [
+        512,
+        1792,
+        256,
+        256
+      ],
+      "bodyTransform": {
+        "a": -1,
+        "d": 1,
+        "e": 210,
+        "f": 218
+      },
+      "declaredNativePoses": 32,
+      "acceptedDamageEvents": 0,
+      "guardAtImpact": [
+        0,
+        0
+      ],
+      "allyHpDelta": [
+        340,
+        340
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "impactUnique": true
+    }
+  ],
+  "bodyKinds": {
+    "existing-base-fallback": 18,
+    "native32": 96,
+    "partial-native8": 6
+  },
+  "beastBoyPartial": {
+    "sheet": "/sprites/generated/combat-character-animations-wave8/beast_boy_tt.png",
+    "poses": 8,
+    "phases": [
+      "fatality",
+      "super"
+    ],
+    "calmPhasesFallback": 6
+  },
+  "errors": [],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "source1to1Verified": false
+}

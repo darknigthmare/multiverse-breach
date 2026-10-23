@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "frozen": true,
+  "acceptedRuntimePngs": 4,
+  "retainedPoses": 72,
+  "full32Count": 1,
+  "partialCount": 1,
+  "partialPoses": 8,
+  "newBases": 2,
+  "missingVisualHeroIds": [
+    "robin_tt",
+    "raven_tt",
+    "starfire_tt"
+  ],
+  "beastBoyMissingPhases": [
+    "intro",
+    "outro",
+    "roundVictory",
+    "roundDefeat",
+    "victory",
+    "defeat"
+  ],
+  "actualNativeCalls": 11,
+  "acceptedNativeImages": 5,
+  "rejectedNativeCalls": 6,
+  "canonical1to1Verified": false,
+  "artifacts": [
+    {
+      "path": "src/game/combat/characterAnimationsWave8PartA.generated.json",
+      "sha256": "078760fbac906d2dcfacd3de5c7754e864b34274c2d9ee3e32dd88614249b93c",
+      "entries": [
+        {
+          "heroId": "cyborg_tt",
+          "sheet": "/sprites/generated/combat-character-animations-wave8/cyborg_tt.png",
+          "sha256": "f93ba0f8c7d8b9766dfb5daaec65116cbb356aa0e2b51f7feb6e01db656d6501",
+          "frames": 32,
+          "phases": [
+            "intro",
+            "outro",
+            "roundVictory",
+            "roundDefeat",
+            "fatality",
+            "victory",
+            "defeat",
+            "super"
+          ],
+          "partial": false
+        },
+        {
+          "heroId": "beast_boy_tt",
+          "sheet": "/sprites/generated/combat-character-animations-wave8/beast_boy_tt.png",
+          "sha256": "1893a789e44721282189ab35f5d5cd99c39cc6de5e46e4b104a6e21a2fe5af9a",
+          "frames": 8,
+          "phases": [
+            "fatality",
+            "super"
+          ],
+          "partial": true
+        }
+      ]
+    },
+    {
+      "path": "src/game/combat/characterSpriteCorrectionsWave8PartA.generated.json",
+      "sha256": "1663881bf616d7d7fb31bb6e8a176ce5cc9d644fb1b9930a573381bd1eaa9ae2",
+      "entries": [
+        {
+          "heroId": "cyborg_tt",
+          "sheet": "/sprites/generated/combat-character-corrections-wave8-part-a/cyborg_tt.png",
+          "sha256": "29c01ffb9c25a25e355bdd8bcb0df3d604be44c472321e57b0c1d168e0c2ec71",
+          "frames": 16,
+          "phases": [
+            "idle",
+            "run",
+            "attack",
+            "hit"
+          ],
+          "partial": false
+        },
+        {
+          "heroId": "beast_boy_tt",
+          "sheet": "/sprites/generated/combat-character-corrections-wave8-part-a/beast_boy_tt.png",
+          "sha256": "78334573a154a16e0c4a4f1d7f2d7a379f8c92f8838343b81ed7fea3be4a3df4",
+          "frames": 16,
+          "phases": [
+            "idle",
+            "run",
+            "attack",
+            "hit"
+          ],
+          "partial": false
+        }
+      ]
+    }
+  ]
+}

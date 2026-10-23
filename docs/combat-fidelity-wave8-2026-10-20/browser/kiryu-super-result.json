@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "engineUrl": "/src/game/engineSmash.js?t=1792498370845",
+  "sourceDraws": {
+    "count": 74,
+    "sheets": [
+      "/sprites/generated/combat-character-animations-wave8/kiryu_yakuza.png"
+    ],
+    "rows": [
+      7
+    ],
+    "columns": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "coldBoot": "Fresh Chromium process and page; no test preload; only production GameCanvas boot prepares sprites.",
+  "flow": "GameCanvas Smash → Kiryu Kiwami2016 → panneau Coup du Dragon de Dojima 100 % → clavier L → startup sans dégât → impact après hitAt → charge 0 % → aucun second impact",
+  "impact": {
+    "start": {
+      "name": "Coup du Dragon de Dojima",
+      "charge": 0,
+      "hp": 100000,
+      "elapsed": 0.016666666666666666,
+      "hitAt": 0.45
+    },
+    "hit": {
+      "name": "Coup du Dragon de Dojima",
+      "charge": 0,
+      "hp": 99953,
+      "elapsed": 0.4666666666666666,
+      "hitAt": 0.45
+    },
+    "gameOver": false
+  },
+  "sameInput": {
+    "before": 99953,
+    "retriggered": false,
+    "charge": 0
+  },
+  "final": {
+    "hitCount": 1,
+    "hp": 99953,
+    "charge": 0,
+    "action": null,
+    "profile": "Coup du Dragon de Dojima"
+  },
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "screenshot": "docs/combat-fidelity-wave8-2026-10-20/browser/kiryu-super.png"
+}

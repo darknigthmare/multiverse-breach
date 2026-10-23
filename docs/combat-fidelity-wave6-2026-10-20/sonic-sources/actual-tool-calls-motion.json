@@ -1,0 +1,189 @@
+{
+  "calls": [
+    {
+      "atlas": "sonic-motion-a",
+      "tool": "image_gen.imagegen",
+      "provider": "OpenAI",
+      "model": null,
+      "jobId": null,
+      "toolCallId": null,
+      "date": "2026-10-20",
+      "arguments": {
+        "prompt": "Create NEW original native pixel-art animation drawings for Sonic the Hedgehog, keeping the attached reference's exact Sonic Adventure (1998/1999) identity. The reference is a design reference only: redraw every pose for this new sheet, do not copy or repeat its frames.\nIdentity lock: cobalt-blue Sonic, six long backward quills in the Adventure silhouette, joined white eye area with GREEN irises, small black nose, peach muzzle/arms/oval chest patch, slim short iconic hedgehog body with oversized head and shoes, white gloves with cuffs, red shoes with a broad WHITE strap and small GOLD buckle. No SOAP shoes, extra clothes, human torso proportions, armor, weapon, gold Super Sonic, seven Emerald transformation, black/red Shadow colors, giant power aura, or Chaos Control.\nNative-art output: one transparent RGBA PNG, vertical 1:2 aspect, EXACTLY FOUR COLUMNS and EIGHT SEPARATE ROWS, exactly THIRTY-TWO complete single-character drawings. Eight states below each get their own full row in the listed order; four columns are four genuinely different sequential anatomical poses. Do not combine states into a row or omit the last row. No labels, numbers, grid lines, background, ground plane, shadow, text, watermark, or duplicate bodies. Every full body/rolled body and complete shoes/quills/gloves stays inside its own cell with visible transparent margin on every side.\nStyle: crisp highly readable 32-bit pixel clusters, clean dark-blue contour, limited cobalt/peach/red/white palette and consistent lighting. Match the icon proportions of this Sonic rather than a human fighter. Face RIGHT except the deliberate turning row. Keep one consistent physical body size and pixel density throughout the entire sheet: rolling, kneeling, leaning or crouching lowers the silhouette naturally but must not shrink the head, gloves or shoes. Standing recovery and idle have equal bodily stature. No large effects that force a small character.\nSpin-ball rule: where a row calls for a curl, draw Sonic's ACTUAL COMPACT ROLLED BLUE SPIKY BODY as the character, with changing anatomical/quill rotation and occasional tucked red shoe or glove details. Four separately drawn rotational poses are required. Never replace Sonic with a smooth glowing circle, outline, speed effect, a body inside an energy sphere, a procedural disk, or four copies of the same ball. No ghost afterimages. All motion must be visible in the actual body drawings.\nAll guards here are physical evasion or gloved body protection adapted for this fighting-game context, with no magical shield and no claim that these are exact official source-game frames. Clean non-gory knockouts, no wounds and no opponent.\n\nRow 1 / idle: four relaxed Sonic standing poses, weight shift, heel/toe tap, subtle glove/wrist adjustment and head angle. Same full bodily stature, readable calm personality.\nRow 2 / walk: a real four-pose alternating footfall cycle: leading right shoe heel plant, centered passing step, opposite shoe heel plant, opposite passing step; arms counter-swing. Body does not slide in four identical drawings.\nRow 3 / run: four genuine Adventure Sonic sprint body poses, low forward lean and alternating bent/extended legs with readable red shoes, back quills trailing; no circular leg effect or dust replacing the legs.\nRow 4 / turn: start facing LEFT, rotate through back-facing and right three-quarter poses, and FINISH FACING RIGHT. Four different body orientations, not four frontal poses.\nRow 5 / jumpStart: standing spring preparation, compressed knees with hands close, feet pushing off with torso folding, then Sonic fully tucked into his actual quilled spin body. Preserve body size through the curl.\nRow 6 / jumpRise: four separate compact quilled Sonic spin-ball body drawings with genuinely rotated quill anatomy, tucked shoes/gloves glimpsed in changing positions. No open-legged upright Sonic and no VFX sphere.\nRow 7 / jumpApex: four native spin-ball rotations near the apex, slightly loosening the body through quill and shoe/glove positions, still Sonic's actual compact rolled body. No blue circle around a standing Sonic.\nRow 8 / fall: Sonic's rolled body begins to unfold, next quills and shoes emerge, next arms/legs extend for landing, final airborne landing-preparation crouch facing right. Four distinct body poses in this eighth row; keep the complete final shoes inside the canvas.\nCount audit before finishing: 8 populated horizontal rows × 4 columns = 32 different native drawings. Do not stop at seven rows.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/public/sprites/generated/heroes/sonic/sonic-hedgehog.png"
+        ],
+        "transparent_background": true
+      },
+      "sourceImage": "/workspace/generated_images/exec-34700450-4040-42a5-aa29-3f0417826f47.png",
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "archivedSourceImage": "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-motion-a.native.png",
+      "sourceSha256": "138627da6257f77c36bf3a114e06aa02c3ba7cf459fb45880becb93adcd53ab1",
+      "sourceDimensions": {
+        "width": 887,
+        "height": 1774
+      },
+      "promptPath": "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-motion-a.prompt.txt",
+      "exactToolPromptSha256": "2dced593280cd82ef4a0ae78f0552b9ba8f30740876373633e3ffbc85675acc2",
+      "savedPromptSha256": "275ed7e6ff9b0fdb2e887f9e6564a0b080566238e32ce3a3164e2fbf66451612",
+      "referencedImageHashes": [
+        {
+          "path": "/workspace/multiverse-breach/public/sprites/generated/heroes/sonic/sonic-hedgehog.png",
+          "sha256": "b0632fbff4b8a7d9868aa40793079df88155c40b621ac7f003b33b8d14048108"
+        }
+      ]
+    },
+    {
+      "atlas": "sonic-motion-b",
+      "tool": "image_gen.imagegen",
+      "provider": "OpenAI",
+      "model": null,
+      "jobId": null,
+      "toolCallId": null,
+      "date": "2026-10-20",
+      "arguments": {
+        "prompt": "Create NEW original native pixel-art animation drawings for Sonic the Hedgehog, keeping the attached reference's exact Sonic Adventure (1998/1999) identity. The reference is a design reference only: redraw every pose for this new sheet, do not copy or repeat its frames.\nIdentity lock: cobalt-blue Sonic, six long backward quills in the Adventure silhouette, joined white eye area with GREEN irises, small black nose, peach muzzle/arms/oval chest patch, slim short iconic hedgehog body with oversized head and shoes, white gloves with cuffs, red shoes with a broad WHITE strap and small GOLD buckle. No SOAP shoes, extra clothes, human torso proportions, armor, weapon, gold Super Sonic, seven Emerald transformation, black/red Shadow colors, giant power aura, or Chaos Control.\nNative-art output: one transparent RGBA PNG, vertical 1:2 aspect, EXACTLY FOUR COLUMNS and EIGHT SEPARATE ROWS, exactly THIRTY-TWO complete single-character drawings. Eight states below each get their own full row in the listed order; four columns are four genuinely different sequential anatomical poses. Do not combine states into a row or omit the last row. No labels, numbers, grid lines, background, ground plane, shadow, text, watermark, or duplicate bodies. Every full body/rolled body and complete shoes/quills/gloves stays inside its own cell with visible transparent margin on every side.\nStyle: crisp highly readable 32-bit pixel clusters, clean dark-blue contour, limited cobalt/peach/red/white palette and consistent lighting. Match the icon proportions of this Sonic rather than a human fighter. Face RIGHT except the deliberate turning row. Keep one consistent physical body size and pixel density throughout the entire sheet: rolling, kneeling, leaning or crouching lowers the silhouette naturally but must not shrink the head, gloves or shoes. Standing recovery and idle have equal bodily stature. No large effects that force a small character.\nSpin-ball rule: where a row calls for a curl, draw Sonic's ACTUAL COMPACT ROLLED BLUE SPIKY BODY as the character, with changing anatomical/quill rotation and occasional tucked red shoe or glove details. Four separately drawn rotational poses are required. Never replace Sonic with a smooth glowing circle, outline, speed effect, a body inside an energy sphere, a procedural disk, or four copies of the same ball. No ghost afterimages. All motion must be visible in the actual body drawings.\nAll guards here are physical evasion or gloved body protection adapted for this fighting-game context, with no magical shield and no claim that these are exact official source-game frames. Clean non-gory knockouts, no wounds and no opponent.\n\nRow 1 / fastFall: four tight descending curled Sonic body rotations, compact real quilled ball with changing tucked shoe/glove positions, progressively preparing to unroll. No arrows, streaks or glowing sphere.\nRow 2 / land: four physical landing poses: feet extending from curl, both red shoes contacting with bent knees, compressed impact crouch with one glove low, then rising ready stance. Keep body/head/shoes at a consistent scale.\nRow 3 / crouchEnter: four stages from standing alert posture down into Sonic's low crouch, hands drawing close and backward quills tilting, body compressing rather than shrinking.\nRow 4 / crouchIdle: four different low crouching anatomical poses with subtle weight, hand and head shifts; shoes remain planted and body size unchanged. This is not four identical cutouts.\nRow 5 / crouchExit: four stages opening the low crouch, lifting head/chest, extending the knees and finishing fully standing ready to run, with the same stature as the initial standing character.\nRow 6 / crouchCharge: four genuinely different charging Spin Dash poses of Sonic's ACTUAL COMPACT ROLLED QUILLED BLUE BODY on the spot, with quill rotation, tucked red shoe and glove details changing position. The complete body is a natural rolled ball, no aura and no upright Sonic in a bubble.\nRow 7 / taunt1: four Sonic-like confident impatient poses: glove to hip, raised single index finger, a playful finger wag/head tilt, then relaxed confident stance. Keep all five-finger gloves readable, no rude gesture.\nRow 8 / hitStun: four non-gory physical recoil poses with startled face, body pushed backward, limbs bracing, then low recovery; no blood, duplicate ghost body or impact effects replacing anatomy.\nCount audit before finishing: 8 populated horizontal rows × 4 columns = 32 different native drawings. Row6 Spin Dash charge and Row8 hit recoil must both be present.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/public/sprites/generated/heroes/sonic/sonic-hedgehog.png"
+        ],
+        "transparent_background": true
+      },
+      "sourceImage": "/workspace/generated_images/exec-34ead15c-2d58-4b55-9433-f85fde2fa936.png",
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "archivedSourceImage": "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-motion-b.native.png",
+      "sourceSha256": "e2cead5999a93813f9a6dbda348c2ef00a66fc89cc5b5fcb5fa3b93424eb1fa9",
+      "sourceDimensions": {
+        "width": 887,
+        "height": 1774
+      },
+      "promptPath": "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-motion-b.prompt.txt",
+      "exactToolPromptSha256": "b3b1d2215f7dc69b7f5cbf8190d9ec095c1289e1caedfe6d71dfd24730b48203",
+      "savedPromptSha256": "319df7ac06bcbf04c2bcc7338cc0d74f526e9b0a5a3ca0b24e8b8c5a7d940072",
+      "referencedImageHashes": [
+        {
+          "path": "/workspace/multiverse-breach/public/sprites/generated/heroes/sonic/sonic-hedgehog.png",
+          "sha256": "b0632fbff4b8a7d9868aa40793079df88155c40b621ac7f003b33b8d14048108"
+        }
+      ]
+    },
+    {
+      "atlas": "sonic-defense",
+      "tool": "image_gen.imagegen",
+      "provider": "OpenAI",
+      "model": null,
+      "jobId": null,
+      "toolCallId": null,
+      "date": "2026-10-20",
+      "arguments": {
+        "prompt": "Create NEW original native pixel-art animation drawings for Sonic the Hedgehog, keeping the attached reference's exact Sonic Adventure (1998/1999) identity. The reference is a design reference only: redraw every pose for this new sheet, do not copy or repeat its frames.\nIdentity lock: cobalt-blue Sonic, six long backward quills in the Adventure silhouette, joined white eye area with GREEN irises, small black nose, peach muzzle/arms/oval chest patch, slim short iconic hedgehog body with oversized head and shoes, white gloves with cuffs, red shoes with a broad WHITE strap and small GOLD buckle. No SOAP shoes, extra clothes, human torso proportions, armor, weapon, gold Super Sonic, seven Emerald transformation, black/red Shadow colors, giant power aura, or Chaos Control.\nNative-art output: one transparent RGBA PNG, vertical 1:2 aspect, EXACTLY FOUR COLUMNS and EIGHT SEPARATE ROWS, exactly THIRTY-TWO complete single-character drawings. Eight states below each get their own full row in the listed order; four columns are four genuinely different sequential anatomical poses. Do not combine states into a row or omit the last row. No labels, numbers, grid lines, background, ground plane, shadow, text, watermark, or duplicate bodies. Every full body/rolled body and complete shoes/quills/gloves stays inside its own cell with visible transparent margin on every side.\nStyle: crisp highly readable 32-bit pixel clusters, clean dark-blue contour, limited cobalt/peach/red/white palette and consistent lighting. Match the icon proportions of this Sonic rather than a human fighter. Face RIGHT except the deliberate turning row. Keep one consistent physical body size and pixel density throughout the entire sheet: rolling, kneeling, leaning or crouching lowers the silhouette naturally but must not shrink the head, gloves or shoes. Standing recovery and idle have equal bodily stature. No large effects that force a small character.\nSpin-ball rule: where a row calls for a curl, draw Sonic's ACTUAL COMPACT ROLLED BLUE SPIKY BODY as the character, with changing anatomical/quill rotation and occasional tucked red shoe or glove details. Four separately drawn rotational poses are required. Never replace Sonic with a smooth glowing circle, outline, speed effect, a body inside an energy sphere, a procedural disk, or four copies of the same ball. No ghost afterimages. All motion must be visible in the actual body drawings.\nAll guards here are physical evasion or gloved body protection adapted for this fighting-game context, with no magical shield and no claim that these are exact official source-game frames. Clean non-gory knockouts, no wounds and no opponent.\n\nRow 1 / shieldEnter: four physical guarding transitions: alert stance, bent knees, gloved hands rising before chest/face, protective compact crouch. No energy field, shield prop or armor.\nRow 2 / shieldHold: four different braced Sonic crouch/guard poses, gloved forearms protecting muzzle and chest, slight weight and head-angle changes. Actual Sonic anatomy remains visible; no bubble.\nRow 3 / shieldHit: four physical blocked-hit recoils: gloves braced, shoulders pushed back, one shoe sliding/bracing, then recovered compact guard. No attacker, sparkle shield or blood.\nRow 4 / perfectShield: four quick physical evasive slips/deflections with white gloves: windup crouch, sideways body slip with one open glove, recovery foot plant, then guarded stance. No teleport, glowing barrier or supernatural parry.\nRow 5 / shieldBreak: four startled guard-collapse poses: forearms open, torso recoils, quills lean back and knees buckle, then wide unsteady low brace. Remain Sonic, no shattered magical shield.\nRow 6 / shieldExit: four stages leaving physical guard, lowering gloves, opening knees and standing up, finishing a relaxed full-height Sonic facing right. Match this standing bodily scale to the reference and other standing rows.\nRow 7 / dead: four clean non-gory knockout poses: weak knee buckle, lowering onto one side, side-lying body settling with quills/shoes visible, final still side-lying KO with relaxed closed eyes. Do not return to a fighting stance; no wounds or dismemberment.\nRow 8 / defeat: four defeated/exhausted Sonic body poses: shoulders dropped, one knee lowering, seated/slumped posture looking down, then quiet low seated exhaustion with gloves resting. No victory gesture, no disappearing body and no lethal injury.\nCount audit before finishing: 8 populated horizontal rows × 4 columns = 32 different native drawings. Both last rows must contain all four complete Sonic poses.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/public/sprites/generated/heroes/sonic/sonic-hedgehog.png"
+        ],
+        "transparent_background": true
+      },
+      "sourceImage": "/workspace/generated_images/exec-a831b458-2494-4443-bd98-c6cd983a4902.png",
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "archivedSourceImage": "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-defense.native.png",
+      "sourceSha256": "7fb0489f744ddef790c802f919100bd9ba02778722948ceec3a9454d0267ce3a",
+      "sourceDimensions": {
+        "width": 887,
+        "height": 1774
+      },
+      "promptPath": "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-defense.prompt.txt",
+      "exactToolPromptSha256": "66d1c56e5e52c75ddfd8453848155c2b242cd51ba1035054c034e56ddbf415dc",
+      "savedPromptSha256": "fa96a11941d1be30c4d26fa3d3f89092f4b7785a0ab5f75e1bce145308ff0676",
+      "referencedImageHashes": [
+        {
+          "path": "/workspace/multiverse-breach/public/sprites/generated/heroes/sonic/sonic-hedgehog.png",
+          "sha256": "b0632fbff4b8a7d9868aa40793079df88155c40b621ac7f003b33b8d14048108"
+        }
+      ]
+    },
+    {
+      "atlas": "sonic-motion-corrections",
+      "tool": "image_gen.imagegen",
+      "provider": "OpenAI",
+      "model": null,
+      "jobId": null,
+      "toolCallId": null,
+      "date": "2026-10-20",
+      "arguments": {
+        "prompt": "Create a NEW genuine pixel-art correction strip of exactly EIGHT separate Sonic Adventure (1998/1999) body drawings: precisely FOUR COLUMNS and TWO ROWS, horizontal 2:1 sheet, transparent RGBA.\nUse the attached Sonic references for identity and pixel style only, redrawing all eight poses. Cobalt blue, six long back quills, joined white eye area with GREEN irises, peach arms/muzzle/oval chest, slim iconic Adventure body with large head, white gloves, red shoes with broad white strap and gold buckle. No SOAP shoes, gold Super Sonic, transformation, weapon, shield prop or aura.\nExactly four drawings in the top row, exactly four in the bottom row. One complete Sonic per cell. Absolutely NO fifth turning pose, extra head/body, crowded silhouettes, merged rows, cropped quills/glove/shoe or missing character. Give every cell broad TRANSPARENT breathing room so no two characters touch. Keep constant native body/head/shoe scale across both rows; a crouched torso projects lower without shrinking the head or shoes.\nTOP ROW = turn: 1) complete Sonic fully facing LEFT, 2) back-left three-quarter rotation, 3) back-right three-quarter rotation, 4) complete Sonic fully facing RIGHT ready to move. Four different ANATOMICAL orientations, finish RIGHT. Do not insert a fifth back-facing Sonic or repeated right-facing pose.\nBOTTOM ROW = perfectShield physical evasion: 1) low ready crouch with both shoes planted and gloves near chest, 2) quick compact sideways body slip with torso tilted away and one open glove deflecting, 3) opposite weight transfer and a recovery shoe plant, 4) right-facing compact ready guard. Four clearly different full-body physical evasive stages, never four identical standing guards. No falling backward/KO in this row, no glowing field, bubble, teleport or duplicate afterimage.\nPolished crisp 32-bit pixel clusters, dark-blue outlines and restrained cel highlights like the references. No background, ground plane, shadow, grids, labels, numbers, text, watermark or decorative effects. Both rows must be present; count exactly 8 complete, isolated, native drawings before finishing. These are original adapted game poses, not copied official frames.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/public/sprites/generated/heroes/sonic/sonic-hedgehog.png",
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-motion-a.native.png",
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-defense.native.png"
+        ],
+        "transparent_background": true
+      },
+      "sourceImage": "/workspace/generated_images/exec-a986627e-d2ce-4a68-8849-c18a5db16af4.png",
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "archivedSourceImage": "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-motion-corrections.native.png",
+      "sourceSha256": "5b8048bd97a9aabc39060db947dffb39a051f4c2733d4c776da907e5aae5d76a",
+      "sourceDimensions": {
+        "width": 1774,
+        "height": 887
+      },
+      "promptPath": "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-motion-corrections.prompt.txt",
+      "exactToolPromptSha256": "4b46baa51e8353821162a11e12c101dd696c43090fff3eb5dbb757d4a1d3bc14",
+      "savedPromptSha256": "46d648d74c4e1587c3bc4074070776f2fae67ebd522306b195d493f5c5f0c622",
+      "referencedImageHashes": [
+        {
+          "path": "/workspace/multiverse-breach/public/sprites/generated/heroes/sonic/sonic-hedgehog.png",
+          "sha256": "b0632fbff4b8a7d9868aa40793079df88155c40b621ac7f003b33b8d14048108"
+        },
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-motion-a.native.png",
+          "sha256": "138627da6257f77c36bf3a114e06aa02c3ba7cf459fb45880becb93adcd53ab1"
+        },
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-defense.native.png",
+          "sha256": "7fb0489f744ddef790c802f919100bd9ba02778722948ceec3a9454d0267ce3a"
+        }
+      ]
+    },
+    {
+      "atlas": "sonic-motion-ko-correction",
+      "tool": "image_gen.imagegen",
+      "provider": "OpenAI",
+      "model": null,
+      "jobId": null,
+      "toolCallId": null,
+      "date": "2026-10-20",
+      "arguments": {
+        "prompt": "Create exactly FOUR NEW native pixel-art Sonic Adventure (1998/1999) knockout body poses in ONE HORIZONTAL ROW of FOUR isolated cells on a transparent RGBA sheet. These replace the clipped KO row in the attached full sheet. Design stays exactly the same cobalt Sonic with green eyes, long six-quill Adventure silhouette, peach arms/muzzle/chest, white gloves, and red shoes with broad white strap/gold buckle. No SOAP shoes, gold form, weapon, shield, ring, spell, aura, motion circles or other character.\nPOSE 1: weak knee buckle with Sonic lowered toward the ground, head down and one gloved hand low; match the first weak-buckle pose of the reference KO row, with about 80 percent of his standing head-to-toe projection. This first pose is the body-scale calibration: keep the same oversized head/shoes and slim Adventure torso, not a smaller Sonic.\nPOSE 2: lowering onto his side, eyes closing, both complete red shoes and white gloves visible.\nPOSE 3: side-lying body settling with curled quills behind the head and gloved hand under the muzzle, knees relaxed, eyes closed.\nPOSE 4: final STILL SIDE-LYING KNOCKOUT, eyes CLOSED, whole head/quills, both gloves and BOTH COMPLETE RED SHOES fully visible inside the cell. No cropped toe, no straight canvas-edge cut, no return to guard or sitting recovery.\nFour separate genuinely different anatomical stages, one Sonic body per cell, all at the same body/head/shoe pixel scale. The lying poses are naturally low and horizontally long: never stretch them to standing height. Preserve correct shoes/limbs even where one is physically hidden behind the body; do not duplicate limbs.\nCritical containment: keep at least 35 pixels of fully transparent padding on EVERY side of EVERY pose, especially beyond the rightmost shoe in the last cell. Prefer generous unused transparent room over a clipped shoe. No two bodies may touch. No backdrop, floor plane, cast shadow, grid lines, text or labels. Crisp 32-bit pixel clusters and clean outline like the reference. Clean non-gory KO only, no wounds or attacker. Exactly four drawings in one row, no fifth pose.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/public/sprites/generated/heroes/sonic/sonic-hedgehog.png",
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-defense.native.png"
+        ],
+        "transparent_background": true
+      },
+      "sourceImage": "/workspace/generated_images/exec-e70e7e10-2178-4598-a0fd-bbe81485a95d.png",
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "archivedSourceImage": "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-motion-ko-correction.native.png",
+      "sourceSha256": "2f7277ca61c143d9bd46b3f77c3a0822b0381e1326aeebad724d30f2b0b31207",
+      "sourceDimensions": {
+        "width": 2172,
+        "height": 724
+      },
+      "promptPath": "docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-motion-ko-correction.prompt.txt",
+      "exactToolPromptSha256": "e5e5d5da495fcf59ea30c00346fc32c39994d94b3526e45b6b1ecace2f40757f",
+      "savedPromptSha256": "354932b3b599a5ef229c8b585c5d858961e48965b65ac4bc92f2c3e08ea93c1d",
+      "referencedImageHashes": [
+        {
+          "path": "/workspace/multiverse-breach/public/sprites/generated/heroes/sonic/sonic-hedgehog.png",
+          "sha256": "b0632fbff4b8a7d9868aa40793079df88155c40b621ac7f003b33b8d14048108"
+        },
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave6-2026-10-20/sonic-sources/sonic-defense.native.png",
+          "sha256": "7fb0489f744ddef790c802f919100bd9ba02778722948ceec3a9454d0267ce3a"
+        }
+      ]
+    }
+  ]
+}

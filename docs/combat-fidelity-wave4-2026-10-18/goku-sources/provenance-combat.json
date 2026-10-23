@@ -1,0 +1,2859 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "provider": "OpenAI",
+  "tool": "image_gen",
+  "model": null,
+  "generationId": null,
+  "plannedGenerations": 3,
+  "correctiveGenerations": 1,
+  "canonicalAnimationVerified": false,
+  "networkVerified": false,
+  "generationClaim": "Three native image_gen calls produced the initial atlases. A fourth native call supplied missing chargeLoop and corrected ledgeCatch poses. No model or generation ID is inferred from local filenames.",
+  "nativeSources": [
+    {
+      "id": "goku-combat-a",
+      "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-a-source.png",
+      "sha256": "da155ddbcb8cc6358d1f690337e748f6ddd99fcae4d13eb7fe9efc319c5277b2",
+      "bytes": 1559800,
+      "dimensions": [
+        887,
+        1774
+      ],
+      "sourceRows": 7,
+      "originalGeneratedPath": "/workspace/generated_images/exec-34395728-581c-4b70-9a52-b08c850da5c5.png"
+    },
+    {
+      "id": "goku-combat-b",
+      "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-b-source.png",
+      "sha256": "3bccd56d4aabec5793512b62df42d943c63ed467242346f90e2e5db9c8d3defe",
+      "bytes": 1750948,
+      "dimensions": [
+        887,
+        1774
+      ],
+      "sourceRows": 8,
+      "originalGeneratedPath": "/workspace/generated_images/exec-affdf021-86ca-41ec-8e44-972c0f428834.png"
+    },
+    {
+      "id": "goku-ledge",
+      "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-ledge-source.png",
+      "sha256": "b48bb711ec06ed8e3a63e734791697c981f964cfbbd6d8b04663e3df813c6dc2",
+      "bytes": 1545101,
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "sourceRows": 5,
+      "originalGeneratedPath": "/workspace/generated_images/exec-75020e94-dbc5-4ec4-b5f2-4253880f3de0.png"
+    },
+    {
+      "id": "goku-missing-and-catch-correction",
+      "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-missing-and-catch-correction-source.png",
+      "sha256": "d503ec4548027664e169f7ba7920d232709a490354e35f9823806a976eb6dcd9",
+      "bytes": 1148274,
+      "dimensions": [
+        1774,
+        887
+      ],
+      "sourceRows": 2,
+      "originalGeneratedPath": "/workspace/generated_images/exec-bfa314df-6931-45fa-997e-f9884248fda5.png"
+    }
+  ],
+  "references": [
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-reference.png",
+      "sha256": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd",
+      "originalAsset": "/sprites/generated/heroes/dragon-ball-z/goku-dbz.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-previous-presentation-reference.png",
+      "sha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+      "originalAsset": "/sprites/generated/combat-character-animations/goku_dbz.png"
+    }
+  ],
+  "entries": [
+    {
+      "id": "goku-combat-a",
+      "heroId": "goku_dbz",
+      "universe": "Dragon Ball Z",
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-combat-a.png",
+      "states": {
+        "attackLight1": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "attackLight2": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "attackLight3": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "crouchLight": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "chargeStart": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "chargeLoop": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "chargeRelease": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "chargeRecovery": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "stateOrder": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 8,
+      "frames": 32,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "alpha": true,
+      "sha256": "85730a037c5ebc8653c4bfb9d7a8974c0e670a438684a6c648998912f09787f8",
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-a-source.png",
+      "sourceImageSha256": "da155ddbcb8cc6358d1f690337e748f6ddd99fcae4d13eb7fe9efc319c5277b2",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "originalSourceRows": 7,
+      "referenceAsset": "/sprites/generated/heroes/dragon-ball-z/goku-dbz.png",
+      "referenceAssetSha256": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-reference.png",
+      "previousAtlasReference": "/sprites/generated/combat-character-animations/goku_dbz.png",
+      "previousAtlasReferenceSha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+      "sourceWork": "Dragon Ball Z — adult black-haired Son Goku",
+      "sourceReference": "Current simple slot Enchaînement de poings de Son Goku and secondary Kikoha de Son Goku were resolved before prompts. special and chargeRelease use one-handed round palm projectiles. The distinct 100% Kamehameha super is not redrawn or substituted.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "frameSize": 256,
+        "padding": 12,
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "attackLight1",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-a-source.png",
+            "sourceImageSha256": "da155ddbcb8cc6358d1f690337e748f6ddd99fcae4d13eb7fe9efc319c5277b2",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 227
+            },
+            "scale": 0.8226950354609929,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 31,
+                  "top": 8,
+                  "width": 177,
+                  "height": 207,
+                  "pixels": 15517
+                },
+                "output": {
+                  "left": 62,
+                  "top": 74,
+                  "width": 146,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 235,
+                  "top": 9,
+                  "width": 215,
+                  "height": 206,
+                  "pixels": 17344
+                },
+                "output": {
+                  "left": 48,
+                  "top": 75,
+                  "width": 177,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 460,
+                  "top": 8,
+                  "width": 235,
+                  "height": 206,
+                  "pixels": 17134
+                },
+                "output": {
+                  "left": 50,
+                  "top": 74,
+                  "width": 193,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 686,
+                  "top": 8,
+                  "width": 191,
+                  "height": 207,
+                  "pixels": 16304
+                },
+                "output": {
+                  "left": 54,
+                  "top": 74,
+                  "width": 157,
+                  "height": 170
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Bent guard, partly extended jab, full straight punch with shoulder turn, retracted guard; no weapon or ki effect."
+            }
+          },
+          {
+            "state": "attackLight2",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-a-source.png",
+            "sourceImageSha256": "da155ddbcb8cc6358d1f690337e748f6ddd99fcae4d13eb7fe9efc319c5277b2",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 223,
+              "bottom": 452
+            },
+            "scale": 0.7581699346405228,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 22,
+                  "top": 10,
+                  "width": 191,
+                  "height": 211,
+                  "pixels": 17231
+                },
+                "output": {
+                  "left": 61,
+                  "top": 80,
+                  "width": 145,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 241,
+                  "top": 17,
+                  "width": 191,
+                  "height": 206,
+                  "pixels": 17572
+                },
+                "output": {
+                  "left": 59,
+                  "top": 86,
+                  "width": 145,
+                  "height": 156
+                }
+              },
+              {
+                "source": {
+                  "left": 454,
+                  "top": 17,
+                  "width": 253,
+                  "height": 209,
+                  "pixels": 17916
+                },
+                "output": {
+                  "left": 52,
+                  "top": 86,
+                  "width": 192,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 15,
+                  "width": 180,
+                  "height": 210,
+                  "pixels": 16416
+                },
+                "output": {
+                  "left": 66,
+                  "top": 84,
+                  "width": 136,
+                  "height": 159
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Rear fist chamber, forward shoulder/knee drive, full cross and retracted stance; real hip and elbow changes."
+            }
+          },
+          {
+            "state": "attackLight3",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-a-source.png",
+            "sourceImageSha256": "da155ddbcb8cc6358d1f690337e748f6ddd99fcae4d13eb7fe9efc319c5277b2",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 442,
+              "bottom": 718
+            },
+            "scale": 0.8923076923076924,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 14,
+                  "top": 1,
+                  "width": 183,
+                  "height": 259,
+                  "pixels": 14759
+                },
+                "output": {
+                  "left": 42,
+                  "top": 12,
+                  "width": 163,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 239,
+                  "top": 3,
+                  "width": 191,
+                  "height": 258,
+                  "pixels": 16643
+                },
+                "output": {
+                  "left": 44,
+                  "top": 14,
+                  "width": 170,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 478,
+                  "top": 5,
+                  "width": 179,
+                  "height": 256,
+                  "pixels": 19575
+                },
+                "output": {
+                  "left": 60,
+                  "top": 16,
+                  "width": 160,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 1,
+                  "width": 175,
+                  "height": 260,
+                  "pixels": 17137
+                },
+                "output": {
+                  "left": 57,
+                  "top": 12,
+                  "width": 156,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Low bent knees and fist, rising elbow, high uppercut with straightened torso and settled high guard."
+            }
+          },
+          {
+            "state": "crouchLight",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-a-source.png",
+            "sourceImageSha256": "da155ddbcb8cc6358d1f690337e748f6ddd99fcae4d13eb7fe9efc319c5277b2",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 717,
+              "bottom": 950
+            },
+            "scale": 1.0175438596491229,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 16,
+                  "top": 16,
+                  "width": 176,
+                  "height": 210,
+                  "pixels": 15975
+                },
+                "output": {
+                  "left": 31,
+                  "top": 30,
+                  "width": 179,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 239,
+                  "top": 18,
+                  "width": 203,
+                  "height": 208,
+                  "pixels": 17704
+                },
+                "output": {
+                  "left": 33,
+                  "top": 32,
+                  "width": 207,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 468,
+                  "top": 24,
+                  "width": 200,
+                  "height": 202,
+                  "pixels": 18502
+                },
+                "output": {
+                  "left": 40,
+                  "top": 38,
+                  "width": 204,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 39,
+                  "width": 178,
+                  "height": 187,
+                  "pixels": 15438
+                },
+                "output": {
+                  "left": 47,
+                  "top": 54,
+                  "width": 181,
+                  "height": 190
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Wide low martial guard, body-level straight, rotated compact low punch and retracted crouched posture."
+            }
+          },
+          {
+            "state": "chargeStart",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-a-source.png",
+            "sourceImageSha256": "da155ddbcb8cc6358d1f690337e748f6ddd99fcae4d13eb7fe9efc319c5277b2",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 947,
+              "bottom": 1189
+            },
+            "scale": 1.0497737556561086,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 20,
+                  "top": 9,
+                  "width": 161,
+                  "height": 217,
+                  "pixels": 15962
+                },
+                "output": {
+                  "left": 33,
+                  "top": 15,
+                  "width": 169,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 242,
+                  "top": 14,
+                  "width": 197,
+                  "height": 213,
+                  "pixels": 18379
+                },
+                "output": {
+                  "left": 33,
+                  "top": 20,
+                  "width": 207,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 461,
+                  "top": 6,
+                  "width": 194,
+                  "height": 220,
+                  "pixels": 19010
+                },
+                "output": {
+                  "left": 30,
+                  "top": 12,
+                  "width": 204,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 683,
+                  "top": 34,
+                  "width": 192,
+                  "height": 193,
+                  "pixels": 16797
+                },
+                "output": {
+                  "left": 30,
+                  "top": 41,
+                  "width": 202,
+                  "height": 203
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Guard, open palm beside chest, coiled torso with palm drawn back, low open-palm readiness. No cupped hip charge or beam."
+            }
+          },
+          {
+            "state": "chargeLoop",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-missing-and-catch-correction-source.png",
+            "sourceImageSha256": "d503ec4548027664e169f7ba7920d232709a490354e35f9823806a976eb6dcd9",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 417
+            },
+            "scale": 0.5110132158590308,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 35,
+                  "top": 31,
+                  "width": 362,
+                  "height": 370,
+                  "pixels": 60467
+                },
+                "output": {
+                  "left": 33,
+                  "top": 52,
+                  "width": 185,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 526,
+                  "top": 65,
+                  "width": 366,
+                  "height": 336,
+                  "pixels": 57968
+                },
+                "output": {
+                  "left": 57,
+                  "top": 69,
+                  "width": 187,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 890,
+                  "top": 31,
+                  "width": 420,
+                  "height": 376,
+                  "pixels": 62615
+                },
+                "output": {
+                  "left": 16,
+                  "top": 52,
+                  "width": 215,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 1413,
+                  "top": 14,
+                  "width": 330,
+                  "height": 393,
+                  "pixels": 57126
+                },
+                "output": {
+                  "left": 57,
+                  "top": 43,
+                  "width": 169,
+                  "height": 201
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Corrective row: rear-weighted folded palm, deep symmetric squat, bent-elbow shoulder palm with hip turn, compact raised guard. Held postures without orb or release punch."
+            }
+          },
+          {
+            "state": "chargeRelease",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-a-source.png",
+            "sourceImageSha256": "da155ddbcb8cc6358d1f690337e748f6ddd99fcae4d13eb7fe9efc319c5277b2",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1188,
+              "bottom": 1437
+            },
+            "scale": 0.7682119205298014,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 19,
+                  "top": 13,
+                  "width": 193,
+                  "height": 216,
+                  "pixels": 17944
+                },
+                "output": {
+                  "left": 57,
+                  "top": 78,
+                  "width": 148,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 233,
+                  "top": 16,
+                  "width": 201,
+                  "height": 213,
+                  "pixels": 17626
+                },
+                "output": {
+                  "left": 51,
+                  "top": 80,
+                  "width": 154,
+                  "height": 164
+                }
+              },
+              {
+                "source": {
+                  "left": 458,
+                  "top": 25,
+                  "width": 247,
+                  "height": 202,
+                  "pixels": 18280
+                },
+                "output": {
+                  "left": 54,
+                  "top": 87,
+                  "width": 190,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 699,
+                  "top": 15,
+                  "width": 179,
+                  "height": 214,
+                  "pixels": 16349
+                },
+                "output": {
+                  "left": 69,
+                  "top": 80,
+                  "width": 138,
+                  "height": 164
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": {
+              "method": "native-detached-component-alpha-ownership",
+              "operation": "Assign existing gold orb and fringe from the following recovery cell to the preceding open-palm release cell.",
+              "moved": [
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 698,
+                  "top": 86,
+                  "width": 1,
+                  "height": 1,
+                  "nativePixelsTransferred": 1
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 700,
+                  "top": 88,
+                  "width": 1,
+                  "height": 1,
+                  "nativePixelsTransferred": 1
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 701,
+                  "top": 89,
+                  "width": 1,
+                  "height": 1,
+                  "nativePixelsTransferred": 1
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 702,
+                  "top": 90,
+                  "width": 1,
+                  "height": 2,
+                  "nativePixelsTransferred": 2
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 703,
+                  "top": 92,
+                  "width": 1,
+                  "height": 3,
+                  "nativePixelsTransferred": 3
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 704,
+                  "top": 95,
+                  "width": 1,
+                  "height": 12,
+                  "nativePixelsTransferred": 12
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 703,
+                  "top": 108,
+                  "width": 1,
+                  "height": 2,
+                  "nativePixelsTransferred": 2
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 697,
+                  "top": 87,
+                  "width": 14,
+                  "height": 25,
+                  "nativePixelsTransferred": 114,
+                  "operation": "Native projectile outer-alpha ownership ROI; no anatomy pixels in region."
+                }
+              ],
+              "nativeRowRgbaSha256Before": "8474495e2bda2bfcab60657b963d4ba1cfa2856336801a997d35ad57b9f6a117",
+              "nativeRowRgbaSha256After": "8474495e2bda2bfcab60657b963d4ba1cfa2856336801a997d35ad57b9f6a117",
+              "nativePixelsConserved": true,
+              "artworkRedrawn": false
+            },
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Kikoha: rear open palm, partial one-palm extension with small gold orb, full open palm and detached round orb, bent-elbow recovery. No Kamehameha posture or beam."
+            }
+          },
+          {
+            "state": "chargeRecovery",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-a-source.png",
+            "sourceImageSha256": "da155ddbcb8cc6358d1f690337e748f6ddd99fcae4d13eb7fe9efc319c5277b2",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1436,
+              "bottom": 1774
+            },
+            "scale": 0.9469387755102041,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 15,
+                  "top": 74,
+                  "width": 218,
+                  "height": 188,
+                  "pixels": 16717
+                },
+                "output": {
+                  "left": 37,
+                  "top": 66,
+                  "width": 206,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 240,
+                  "top": 59,
+                  "width": 183,
+                  "height": 201,
+                  "pixels": 17356
+                },
+                "output": {
+                  "left": 40,
+                  "top": 52,
+                  "width": 173,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 472,
+                  "top": 18,
+                  "width": 175,
+                  "height": 244,
+                  "pixels": 19072
+                },
+                "output": {
+                  "left": 50,
+                  "top": 13,
+                  "width": 166,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 692,
+                  "top": 22,
+                  "width": 190,
+                  "height": 240,
+                  "pixels": 19255
+                },
+                "output": {
+                  "left": 48,
+                  "top": 17,
+                  "width": 180,
+                  "height": 227
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Low forward follow-through, retracted low elbow, rising torso and stable two-fist martial guard."
+            }
+          }
+        ],
+        "emptyRows": [],
+        "contactAnchorMeasurements": {}
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "All 21 normalized rows, three final atlases and all 20 individual ledge crops were visually inspected. Missing chargeLoop and three-arm ledgeCatch source row were replaced by native corrective poses. Kikoha is an open-palm orb; the separate Kamehameha super is preserved. Palm coordinates are measured project anchors, not certified source-game contacts."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "sourceGameAsset": false,
+        "nativeGeneratedArtwork": true,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-34395728-581c-4b70-9a52-b08c850da5c5.png",
+        "promptFile": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/native-prompts.json",
+        "prompt": "Create a production native PIXEL-ART animation sprite atlas of ADULT SON GOKU from DRAGON BALL Z, matching the attached existing game reference for identity and costume. Black spiky hair, adult athletic martial artist proportions, orange gi over blue undershirt, blue waist sash, blue wristbands, blue boots with yellow/red trim. Same adult size and costume in EVERY cell. No child Goku, no yellow hair, no Super Saiyan, no Kaioken red body, no Ultra Instinct, no Saiyan armor, no tail, no staff, no sword, no gun. Unarmed martial-arts fists, kicks and one-handed palm ki projectiles only. Crisp detailed game pixel art, not a painted illustration. All figures face RIGHT, with natural hip and torso rotation. EXACTLY FOUR equally spaced columns; every row contains FOUR different full-body sequential poses, not shifted copies or glow-only variants. Keep entire black hair spikes, fingers and both boot tips inside their own cell with generous transparent gutters. No sprites overlap cells. Use consistent adult head/body scale between rows. Transparent RGBA background; NO floor, shadow, ground line, painted ledge, scenery, grid lines, labels, numbers, text or borders. No aura around body, no huge energy streaks crossing cells. These are newly drawn project adaptations, not official DBZ animation frames.\nPortrait 1:2 canvas, ideally1024x2048. EXACTLY EIGHT ROWS by FOUR COLUMNS, 32 full sprites total. Reserve all eight rows; make each figure compact enough that row8 is fully visible. Four poses in each row, grounded soles at a common row baseline.\nROW1 attackLight1: left straight jab. Guard with left fist near cheek and rear fist tucked → partially extended left arm, lead knee bends → full left punch with hip twist and right fist guarding → elbow retraction and staggered recovery. Four real arm/leg angles.\nROW2 attackLight2: right cross. Rear right fist drawn back and torso rotated left → right shoulder drives forward and rear heel lifts → full right cross at chest height, left fist at cheek, knee lunges → torso counter-rotates and right elbow folds back into guard.\nROW3 attackLight3: rising uppercut. Deep knees and rear fist low at hip → elbow rises in front of chest as legs push upward → right fist high over shoulder with torso straightened → high elbow retracts and weight settles back. No energy blast.\nROW4 crouchLight: low body punch. Deep low guard → left fist strikes forward at waist level with bent knees → opposite shoulder turns into a compact lower body punch, rear fist guards → elbow retracts into a low crouch. All four remain crouched.\nROW5 chargeStart: one-palm Kikoha physical windup, NOT Kamehameha. Upright guard → knees spread and REAR RIGHT HAND OPENS beside chest while other fist guards cheek → body coils back and open right palm draws behind shoulder, elbow bent → deep braced rear stance with open right palm at chest height. Never cup two hands at a hip. No beam or energy sphere yet.\nROW6 chargeLoop: HELD BRACING, not a strike. ALL FOUR keep elbows bent and right palm pulled beside shoulder/chest. Frame1 rear-weighted wide knees, left fist at cheek and right open palm pulled back → frame2 deeper symmetric squat, left forearm guards chest and right elbow tucks → frame3 torso twists further back, lead knee opens and right palm angles up slightly → frame4 elbows rise into compact held guard while rear heel plants. Four distinct anatomical holding poses. No extended punch, projectile or release.\nROW7 chargeRelease: KIKOHA OF SON GOKU, one-handed palm orb, NOT Kamehameha. Frame1 open right palm cocked beside shoulder, knees coiled → frame2 right arm pushes halfway forward, small pale gold orb touching the palm, other fist protects cheek → frame3 full single right palm extended forward with one small round orb just20pixels ahead, hips rotated and front knee lunging → frame4 open palm recoils, elbow bends, torso draws back and legs brace. NO beam, NO two hands together, NO giant aura, NO charging at the hip. Only a small contained orb, no trails outside cell.\nROW8 chargeRecovery: actual recovery after that palm shot. Forward lean and low bent shooting elbow → lead knee bends and open hand closes while feet step inward → torso rises and both fists return before chest → balanced wide boxing guard with relaxed knees. Four different shoulder, elbow and stance positions. Do not omit row6 or merge recovery into release.",
+        "promptSha256": "6e13cad9c18dbf59185a1c52708bcb72c3800350961d5a6dde89b65eb01f122e",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [
+          {
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-missing-and-catch-correction-source.png",
+            "sourceImageSha256": "d503ec4548027664e169f7ba7920d232709a490354e35f9823806a976eb6dcd9",
+            "generatedSourcePath": "/workspace/generated_images/exec-bfa314df-6931-45fa-997e-f9884248fda5.png",
+            "sourceRow": 0,
+            "selectedState": "chargeLoop",
+            "promptFile": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-missing-and-catch-correction-prompt.json",
+            "prompt": "Create a native pixel-art corrective animation sheet of adult Son Goku from DRAGON BALL Z, using the attached game sprite as identity/style reference. Adult athletic build, BLACK spiky hair, ORANGE gi with BLUE undershirt, BLUE sash and wristbands, BLUE boots with yellow trim. Exactly TWO ARMS and TWO HANDS per person, attached naturally to their two shoulders. No extra hand near the face, no doubled forearm. No transformation, aura, weapon, ground, scenery, grid, labels or text. Transparent RGBA background. Landscape2:1 canvas, ideally1024x512. EXACTLY TWO ROWS and FOUR COLUMNS =EIGHT complete full-body sprites, four different anatomical poses per row, equally spaced with generous gutters. Keep both boots, all skin fingers and hair fully inside each cell. Adult proportions and consistent body size.\nROW1 is the missing CHARGE LOOP, FOUR HELD BRACING POSES, not an attack. Every elbow stays BENT and the right open palm stays beside shoulder/chest. No projectile and no orb in this row. Frame1 deep rear-weighted stance, right palm OPEN pulled beside shoulder, left fist by cheek → Frame2 deeper symmetric squat, left forearm protects chest while right open palm lowers beside ribs, elbow still bent → Frame3 lead knee opens and hips twist back, right palm angles upward beside shoulder with elbow folded and left fist stays close to jaw → Frame4 rear heel plants, torso becomes more upright, right forearm folds nearer chest and left elbow rises into compact guard. Four very different knee/hip/elbow postures, sustained charge without any full arm extension or release. NOT Kamehameha: never cup both hands together at a hip.\nROW2 is corrected LEDGE CATCH, using exactly two bare hands and blue wrists against an INVISIBLE ledge, no physical edge painted. Frame1 one right arm reaches upper-right with fingers open, LEFT arm bends down beside ribs, body airborne with knees trailing → Frame2 RIGHT fingers hook edge overhead with that arm stretched, LEFT hand reaches upward toward the same edge with its arm bent IN FRONT of the chest; show ONLY those2arms and NO additional down-hanging fist or forearm → Frame3 BOTH hands grip the invisible edge side by side overhead, TWO arms connect to their shoulders, torso swings inward and knees tuck → Frame4 both gripping elbows bend slightly, torso settles lower and both boots dangle beneath. Exactly two arms in all four figures. Hands visibly gripping and skin fingers readable; not two fists punching the air. Shoulder rotation and knee posture must differ per pose. No ki flight or cloud. This is new generated adapted game art, not official source animation.",
+            "reason": "The initial combat-a source has seven rows and omits chargeLoop. Initial ledgeCatch frame1 visibly contains a third arm/hand; that row is replaced natively, not erased or repainted by code. Nineteen original state rows remain selected and two corrective rows complete the21-state package."
+          }
+        ],
+        "conditioning": "Exported entity-builder alpha segmentation and nearest-neighbor normalization, transparent atlas assembly and technical crop/contact output. Detached native gold orb components are reassigned to their preceding palm-release cell; source RGBA pixel hashes prove no artwork added or erased. No procedural poses, copied frames or code-redrawn limbs."
+      }
+    },
+    {
+      "id": "goku-combat-b",
+      "heroId": "goku_dbz",
+      "universe": "Dragon Ball Z",
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-combat-b.png",
+      "states": {
+        "attackRecovery": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "special": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "aerialNeutral": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "aerialForward": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "aerialDown": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "intro": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": true
+        },
+        "ledgeAttack": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "stateOrder": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 8,
+      "frames": 32,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "alpha": true,
+      "sha256": "065601ef7bd816b5a258369a2ac39d0fccbf1513a8836d6630b9569f7de175fe",
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-b-source.png",
+      "sourceImageSha256": "3bccd56d4aabec5793512b62df42d943c63ed467242346f90e2e5db9c8d3defe",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "originalSourceRows": 8,
+      "referenceAsset": "/sprites/generated/heroes/dragon-ball-z/goku-dbz.png",
+      "referenceAssetSha256": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-reference.png",
+      "previousAtlasReference": "/sprites/generated/combat-character-animations/goku_dbz.png",
+      "previousAtlasReferenceSha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+      "sourceWork": "Dragon Ball Z — adult black-haired Son Goku",
+      "sourceReference": "Current simple slot Enchaînement de poings de Son Goku and secondary Kikoha de Son Goku were resolved before prompts. special and chargeRelease use one-handed round palm projectiles. The distinct 100% Kamehameha super is not redrawn or substituted.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "frameSize": 256,
+        "padding": 12,
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "attackRecovery",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-b-source.png",
+            "sourceImageSha256": "3bccd56d4aabec5793512b62df42d943c63ed467242346f90e2e5db9c8d3defe",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 235
+            },
+            "scale": 0.9469387755102041,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 22,
+                  "width": 221,
+                  "height": 206,
+                  "pixels": 17867
+                },
+                "output": {
+                  "left": 34,
+                  "top": 48,
+                  "width": 209,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 232,
+                  "top": 17,
+                  "width": 212,
+                  "height": 210,
+                  "pixels": 18396
+                },
+                "output": {
+                  "left": 33,
+                  "top": 43,
+                  "width": 201,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 445,
+                  "top": 11,
+                  "width": 209,
+                  "height": 218,
+                  "pixels": 18008
+                },
+                "output": {
+                  "left": 24,
+                  "top": 38,
+                  "width": 198,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 705,
+                  "top": 22,
+                  "width": 166,
+                  "height": 206,
+                  "pixels": 16802
+                },
+                "output": {
+                  "left": 61,
+                  "top": 48,
+                  "width": 157,
+                  "height": 195
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Forward punch follow-through, rotated retracting elbow, rising fists and compact recovered guard."
+            }
+          },
+          {
+            "state": "special",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-b-source.png",
+            "sourceImageSha256": "3bccd56d4aabec5793512b62df42d943c63ed467242346f90e2e5db9c8d3defe",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 234,
+              "bottom": 456
+            },
+            "scale": 0.7483870967741936,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 9,
+                  "top": 8,
+                  "width": 210,
+                  "height": 207,
+                  "pixels": 18478
+                },
+                "output": {
+                  "left": 52,
+                  "top": 88,
+                  "width": 157,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 240,
+                  "top": 10,
+                  "width": 193,
+                  "height": 206,
+                  "pixels": 18962
+                },
+                "output": {
+                  "left": 59,
+                  "top": 90,
+                  "width": 144,
+                  "height": 154
+                }
+              },
+              {
+                "source": {
+                  "left": 453,
+                  "top": 16,
+                  "width": 256,
+                  "height": 199,
+                  "pixels": 19227
+                },
+                "output": {
+                  "left": 52,
+                  "top": 94,
+                  "width": 192,
+                  "height": 149
+                }
+              },
+              {
+                "source": {
+                  "left": 705,
+                  "top": 10,
+                  "width": 168,
+                  "height": 203,
+                  "pixels": 16972
+                },
+                "output": {
+                  "left": 75,
+                  "top": 90,
+                  "width": 126,
+                  "height": 152
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": {
+              "method": "native-detached-component-alpha-ownership",
+              "operation": "Assign existing gold orb and fringe from the following recovery cell to the preceding open-palm release cell.",
+              "moved": [
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 686,
+                  "top": 65,
+                  "width": 9,
+                  "height": 1,
+                  "nativePixelsTransferred": 9
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 696,
+                  "top": 66,
+                  "width": 1,
+                  "height": 1,
+                  "nativePixelsTransferred": 1
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 670,
+                  "top": 67,
+                  "width": 38,
+                  "height": 35,
+                  "nativePixelsTransferred": 1003
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 676,
+                  "top": 71,
+                  "width": 1,
+                  "height": 1,
+                  "nativePixelsTransferred": 1
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 674,
+                  "top": 74,
+                  "width": 1,
+                  "height": 1,
+                  "nativePixelsTransferred": 1
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 674,
+                  "top": 93,
+                  "width": 1,
+                  "height": 2,
+                  "nativePixelsTransferred": 2
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 706,
+                  "top": 94,
+                  "width": 1,
+                  "height": 1,
+                  "nativePixelsTransferred": 1
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 676,
+                  "top": 96,
+                  "width": 1,
+                  "height": 1,
+                  "nativePixelsTransferred": 1
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 677,
+                  "top": 97,
+                  "width": 1,
+                  "height": 1,
+                  "nativePixelsTransferred": 1
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 680,
+                  "top": 100,
+                  "width": 1,
+                  "height": 1,
+                  "nativePixelsTransferred": 1
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 682,
+                  "top": 101,
+                  "width": 3,
+                  "height": 1,
+                  "nativePixelsTransferred": 3
+                },
+                {
+                  "sourceColumn": 3,
+                  "destinationColumn": 2,
+                  "left": 660,
+                  "top": 55,
+                  "width": 58,
+                  "height": 61,
+                  "nativePixelsTransferred": 950,
+                  "operation": "Native projectile outer-alpha ownership ROI; no anatomy pixels in region."
+                }
+              ],
+              "nativeRowRgbaSha256Before": "2bf3587a52a4e851c6a683a7f097461f29ceeb3d2c12122ae62beb32476023ee",
+              "nativeRowRgbaSha256After": "2bf3587a52a4e851c6a683a7f097461f29ceeb3d2c12122ae62beb32476023ee",
+              "nativePixelsConserved": true,
+              "artworkRedrawn": false
+            },
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "One-handed Kikoha: prepared palm, orb touching one open palm, extended palm with separate small round projectile, retracted guard. Kamehameha remains the distinct 100% super."
+            }
+          },
+          {
+            "state": "aerialNeutral",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-b-source.png",
+            "sourceImageSha256": "3bccd56d4aabec5793512b62df42d943c63ed467242346f90e2e5db9c8d3defe",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 455,
+              "bottom": 667
+            },
+            "scale": 0.7891156462585034,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 32,
+                  "top": 6,
+                  "width": 128,
+                  "height": 187,
+                  "pixels": 14797
+                },
+                "output": {
+                  "left": 66,
+                  "top": 83,
+                  "width": 101,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 230,
+                  "top": 8,
+                  "width": 236,
+                  "height": 184,
+                  "pixels": 17389
+                },
+                "output": {
+                  "left": 47,
+                  "top": 85,
+                  "width": 186,
+                  "height": 145
+                }
+              },
+              {
+                "source": {
+                  "left": 454,
+                  "top": 17,
+                  "width": 247,
+                  "height": 193,
+                  "pixels": 16861
+                },
+                "output": {
+                  "left": 49,
+                  "top": 92,
+                  "width": 195,
+                  "height": 152
+                }
+              },
+              {
+                "source": {
+                  "left": 697,
+                  "top": 9,
+                  "width": 156,
+                  "height": 194,
+                  "pixels": 14372
+                },
+                "output": {
+                  "left": 66,
+                  "top": 85,
+                  "width": 123,
+                  "height": 153
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Airborne knee tuck, horizontal kick, higher diagonal kick and re-tucked falling guard."
+            }
+          },
+          {
+            "state": "aerialForward",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-b-source.png",
+            "sourceImageSha256": "3bccd56d4aabec5793512b62df42d943c63ed467242346f90e2e5db9c8d3defe",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 662,
+              "bottom": 887
+            },
+            "scale": 0.7581699346405228,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 3,
+                  "width": 168,
+                  "height": 219,
+                  "pixels": 16622
+                },
+                "output": {
+                  "left": 61,
+                  "top": 78,
+                  "width": 127,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 229,
+                  "top": 10,
+                  "width": 240,
+                  "height": 205,
+                  "pixels": 16593
+                },
+                "output": {
+                  "left": 49,
+                  "top": 83,
+                  "width": 182,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 439,
+                  "top": 14,
+                  "width": 268,
+                  "height": 194,
+                  "pixels": 18838
+                },
+                "output": {
+                  "left": 41,
+                  "top": 86,
+                  "width": 203,
+                  "height": 147
+                }
+              },
+              {
+                "source": {
+                  "left": 701,
+                  "top": 9,
+                  "width": 154,
+                  "height": 198,
+                  "pixels": 15223
+                },
+                "output": {
+                  "left": 71,
+                  "top": 83,
+                  "width": 117,
+                  "height": 150
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Tucked flying windup, partial extending fist, full airborne straight punch and recovered knee tuck."
+            }
+          },
+          {
+            "state": "aerialDown",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-b-source.png",
+            "sourceImageSha256": "3bccd56d4aabec5793512b62df42d943c63ed467242346f90e2e5db9c8d3defe",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 868,
+              "bottom": 1087
+            },
+            "scale": 0.928,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 29,
+                  "top": 3,
+                  "width": 188,
+                  "height": 207,
+                  "pixels": 15775
+                },
+                "output": {
+                  "left": 52,
+                  "top": 48,
+                  "width": 174,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 218,
+                  "top": 29,
+                  "width": 191,
+                  "height": 172,
+                  "pixels": 14937
+                },
+                "output": {
+                  "left": 22,
+                  "top": 72,
+                  "width": 177,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 447,
+                  "top": 38,
+                  "width": 232,
+                  "height": 176,
+                  "pixels": 16540
+                },
+                "output": {
+                  "left": 28,
+                  "top": 81,
+                  "width": 215,
+                  "height": 163
+                }
+              },
+              {
+                "source": {
+                  "left": 671,
+                  "top": 24,
+                  "width": 180,
+                  "height": 177,
+                  "pixels": 14130
+                },
+                "output": {
+                  "left": 30,
+                  "top": 68,
+                  "width": 167,
+                  "height": 164
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Raised paired fists with tucked legs, folded downward elbows, extended downward hammer fists and re-tucked falling guard."
+            }
+          },
+          {
+            "state": "intro",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-b-source.png",
+            "sourceImageSha256": "3bccd56d4aabec5793512b62df42d943c63ed467242346f90e2e5db9c8d3defe",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1062,
+              "bottom": 1313
+            },
+            "scale": 0.9317269076305221,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 1,
+                  "width": 116,
+                  "height": 244,
+                  "pixels": 18719
+                },
+                "output": {
+                  "left": 67,
+                  "top": 12,
+                  "width": 108,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 271,
+                  "top": 27,
+                  "width": 128,
+                  "height": 223,
+                  "pixels": 13419
+                },
+                "output": {
+                  "left": 71,
+                  "top": 36,
+                  "width": 119,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 453,
+                  "top": 27,
+                  "width": 202,
+                  "height": 215,
+                  "pixels": 20331
+                },
+                "output": {
+                  "left": 34,
+                  "top": 36,
+                  "width": 188,
+                  "height": 200
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 32,
+                  "width": 180,
+                  "height": 209,
+                  "pixels": 17563
+                },
+                "output": {
+                  "left": 52,
+                  "top": 41,
+                  "width": 168,
+                  "height": 195
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Relaxed hands, respectful forward bow, open-handed readiness and staggered martial guard."
+            }
+          },
+          {
+            "state": "victory",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-b-source.png",
+            "sourceImageSha256": "3bccd56d4aabec5793512b62df42d943c63ed467242346f90e2e5db9c8d3defe",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1305,
+              "bottom": 1552
+            },
+            "scale": 0.9666666666666667,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 42,
+                  "top": 2,
+                  "width": 124,
+                  "height": 238,
+                  "pixels": 18175
+                },
+                "output": {
+                  "left": 61,
+                  "top": 12,
+                  "width": 120,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 266,
+                  "top": 4,
+                  "width": 134,
+                  "height": 236,
+                  "pixels": 18145
+                },
+                "output": {
+                  "left": 64,
+                  "top": 14,
+                  "width": 130,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 496,
+                  "top": 6,
+                  "width": 131,
+                  "height": 236,
+                  "pixels": 17786
+                },
+                "output": {
+                  "left": 72,
+                  "top": 16,
+                  "width": 127,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 6,
+                  "width": 147,
+                  "height": 226,
+                  "pixels": 17994
+                },
+                "output": {
+                  "left": 66,
+                  "top": 16,
+                  "width": 142,
+                  "height": 218
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Relaxed stance, hand scratching behind head, high open-hand wave and settled waist guard."
+            }
+          },
+          {
+            "state": "ledgeAttack",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-combat-b-source.png",
+            "sourceImageSha256": "3bccd56d4aabec5793512b62df42d943c63ed467242346f90e2e5db9c8d3defe",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1545,
+              "bottom": 1774
+            },
+            "scale": 1.0545454545454545,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 61,
+                  "top": 4,
+                  "width": 133,
+                  "height": 219,
+                  "pixels": 16138
+                },
+                "output": {
+                  "left": 75,
+                  "top": 13,
+                  "width": 140,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 287,
+                  "top": 3,
+                  "width": 138,
+                  "height": 218,
+                  "pixels": 16966
+                },
+                "output": {
+                  "left": 80,
+                  "top": 12,
+                  "width": 146,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 472,
+                  "top": 20,
+                  "width": 191,
+                  "height": 162,
+                  "pixels": 16690
+                },
+                "output": {
+                  "left": 41,
+                  "top": 30,
+                  "width": 201,
+                  "height": 171
+                }
+              },
+              {
+                "source": {
+                  "left": 728,
+                  "top": 7,
+                  "width": 118,
+                  "height": 177,
+                  "pixels": 14850
+                },
+                "output": {
+                  "left": 77,
+                  "top": 16,
+                  "width": 124,
+                  "height": 187
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "One-hand overhead hang, bent supporting elbow with raised knee, free forward punch while lower palm braces, crouched two-fist recovery."
+            }
+          }
+        ],
+        "emptyRows": [],
+        "contactAnchorMeasurements": {}
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "All 21 normalized rows, three final atlases and all 20 individual ledge crops were visually inspected. Missing chargeLoop and three-arm ledgeCatch source row were replaced by native corrective poses. Kikoha is an open-palm orb; the separate Kamehameha super is preserved. Palm coordinates are measured project anchors, not certified source-game contacts."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "sourceGameAsset": false,
+        "nativeGeneratedArtwork": true,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-affdf021-86ca-41ec-8e44-972c0f428834.png",
+        "promptFile": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/native-prompts.json",
+        "prompt": "Create a production native PIXEL-ART animation sprite atlas of ADULT SON GOKU from DRAGON BALL Z, matching the attached existing game reference for identity and costume. Black spiky hair, adult athletic martial artist proportions, orange gi over blue undershirt, blue waist sash, blue wristbands, blue boots with yellow/red trim. Same adult size and costume in EVERY cell. No child Goku, no yellow hair, no Super Saiyan, no Kaioken red body, no Ultra Instinct, no Saiyan armor, no tail, no staff, no sword, no gun. Unarmed martial-arts fists, kicks and one-handed palm ki projectiles only. Crisp detailed game pixel art, not a painted illustration. All figures face RIGHT, with natural hip and torso rotation. EXACTLY FOUR equally spaced columns; every row contains FOUR different full-body sequential poses, not shifted copies or glow-only variants. Keep entire black hair spikes, fingers and both boot tips inside their own cell with generous transparent gutters. No sprites overlap cells. Use consistent adult head/body scale between rows. Transparent RGBA background; NO floor, shadow, ground line, painted ledge, scenery, grid lines, labels, numbers, text or borders. No aura around body, no huge energy streaks crossing cells. These are newly drawn project adaptations, not official DBZ animation frames.\nPortrait 1:2 canvas, ideally1024x2048. EXACTLY EIGHT ROWS by FOUR COLUMNS =32 full sprites. Reserve eight full rows with transparent gutters. Kamehameha belongs to another super atlas and MUST NOT appear here.\nROW1 attackRecovery: deep forward punch follow-through with fist low → punching elbow pulls back while hips rotate → body rises with fists coming to chest → compact steady unarmed guard. Four different postures.\nROW2 special: KIKOHA OF SON GOKU, actual SECONDARY projectile. Frame1 rear RIGHT palm open beside chest and left fist guarding cheek in low stance → frame2 open right palm thrusts halfway toward right with tiny gold orb against palm, elbow still bent → frame3 right arm fully extends to right, fingers open and one small ROUND pale-gold orb just in front of palm, left fist still at cheek, hip rotated → frame4 right elbow folds back and front knee softens into guard. One-hand palm shot, NOT two cupped hands at hip, NOT blue horizontal beam, NOT Kamehameha. No body aura or transformation. Orb stays within its cell.\nROW3 aerialNeutral: airborne roundhouse kick. Tucked knees and both fists guarding → right leg extends horizontally right, left knee tucked, torso turns → extended right boot sweeps higher diagonally while left leg bends beneath hips and arms balance → kicking leg retracts and knees tuck into airborne guard. No standing/contact foot.\nROW4 aerialForward: flying forward punch. Both knees raised with right fist chambered → one knee opens backward as torso thrusts forward and elbow begins extending → full forward right fist, rear knee bent behind and opposite fist protecting jaw, body truly airborne → elbow retracts as knees tuck and torso rotates back. Four airborne anatomical poses.\nROW5 aerialDown: downward two-fist hammer blow. Knees tucked and both fists raised over forehead → torso pitches down and bent elbows drive fists before chest → fists extend downward below shoulders while legs spread back in airborne balance → knees re-tuck and arms fold into falling guard. No projectile, no floor, no transformed outfit.\nROW6 intro: martial readiness. Relaxed arms by sides → respectful small forward bow with hands beside thighs → body straightens and hands spread open at chest height, feet widen → one fist forward and one guarding jaw in confident martial stance. Four distinct body angles, not four idle copies.\nROW7 victory: friendly Goku gesture. Fists lowered and body relaxed → one hand lifts behind head to scratch while other rests at hip → open right hand waves high with elbow extended and torso turned → both hands return to a relaxed waist guard and knees settle, small smile. Keep fingers and hair inside cell.\nROW8 ledgeAttack: unarmed counter from invisible ledge, no painted platform. Right hand grips overhead, body and bent legs hanging beneath and other fist at chest → gripping elbow pulls chest upward and free left fist cocks back → free fist punches forward-right while support palm braces at imaginary edge near waist, front knee lifts above it → crouched two-fist guard above the former edge level. No weapon and no energy effect. Four real pulling/striking postures.",
+        "promptSha256": "a38a8cfc45014d02cc5c4408bafd00c53b454d0c4b84bd570e59d0bd06264e4e",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [],
+        "conditioning": "Exported entity-builder alpha segmentation and nearest-neighbor normalization, transparent atlas assembly and technical crop/contact output. Detached native gold orb components are reassigned to their preceding palm-release cell; source RGBA pixel hashes prove no artwork added or erased. No procedural poses, copied frames or code-redrawn limbs."
+      }
+    },
+    {
+      "id": "goku-ledge",
+      "heroId": "goku_dbz",
+      "universe": "Dragon Ball Z",
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-ledge.png",
+      "states": {
+        "ledgeCatch": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ledgeHang": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "ledgeClimb": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ledgeDrop": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ledgeJump": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "stateOrder": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 5,
+      "frames": 20,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "alpha": true,
+      "sha256": "4bf47f2fcafaddf71bfde028d968633a52c074f6af6f9bf2c72dfa52f5352b9e",
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-ledge-source.png",
+      "sourceImageSha256": "b48bb711ec06ed8e3a63e734791697c981f964cfbbd6d8b04663e3df813c6dc2",
+      "sourceDimensions": [
+        1122,
+        1402
+      ],
+      "originalSourceRows": 5,
+      "referenceAsset": "/sprites/generated/heroes/dragon-ball-z/goku-dbz.png",
+      "referenceAssetSha256": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-reference.png",
+      "previousAtlasReference": "/sprites/generated/combat-character-animations/goku_dbz.png",
+      "previousAtlasReferenceSha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+      "sourceWork": "Dragon Ball Z — adult black-haired Son Goku",
+      "sourceReference": "Adult DBZ Goku identity with five explicit project ledge-traversal adaptations, not canonical source-game movement frames. Bare hands, blue wrists and no painted platform.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "frameSize": 256,
+        "padding": 12,
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "ledgeCatch",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-missing-and-catch-correction-source.png",
+            "sourceImageSha256": "d503ec4548027664e169f7ba7920d232709a490354e35f9823806a976eb6dcd9",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 412,
+              "bottom": 887
+            },
+            "scale": 0.5098901098901099,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 84,
+                  "top": 4,
+                  "width": 365,
+                  "height": 443,
+                  "pixels": 49930
+                },
+                "output": {
+                  "left": 58,
+                  "top": 13,
+                  "width": 186,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 448,
+                  "top": 16,
+                  "width": 408,
+                  "height": 407,
+                  "pixels": 53504
+                },
+                "output": {
+                  "left": 17,
+                  "top": 19,
+                  "width": 208,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 1030,
+                  "top": 24,
+                  "width": 211,
+                  "height": 381,
+                  "pixels": 48483
+                },
+                "output": {
+                  "left": 88,
+                  "top": 23,
+                  "width": 108,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 1485,
+                  "top": 25,
+                  "width": 179,
+                  "height": 432,
+                  "pixels": 51629
+                },
+                "output": {
+                  "left": 94,
+                  "top": 24,
+                  "width": 91,
+                  "height": 220
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Corrective native row: reaching hand, one overhead grip plus the other reaching, two overhead grips with knee tuck, settled bent-elbow hang. Exactly two arms in each pose."
+            }
+          },
+          {
+            "state": "ledgeHang",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-ledge-source.png",
+            "sourceImageSha256": "b48bb711ec06ed8e3a63e734791697c981f964cfbbd6d8b04663e3df813c6dc2",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 302,
+              "bottom": 599
+            },
+            "scale": 0.8083623693379791,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 80,
+                  "top": 5,
+                  "width": 140,
+                  "height": 286,
+                  "pixels": 24108
+                },
+                "output": {
+                  "left": 79,
+                  "top": 12,
+                  "width": 113,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 319,
+                  "top": 5,
+                  "width": 216,
+                  "height": 287,
+                  "pixels": 24921
+                },
+                "output": {
+                  "left": 46,
+                  "top": 12,
+                  "width": 175,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 637,
+                  "top": 5,
+                  "width": 166,
+                  "height": 287,
+                  "pixels": 26344
+                },
+                "output": {
+                  "left": 76,
+                  "top": 12,
+                  "width": 134,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 903,
+                  "top": 5,
+                  "width": 152,
+                  "height": 287,
+                  "pixels": 23954
+                },
+                "output": {
+                  "left": 64,
+                  "top": 12,
+                  "width": 123,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Two-hand suspension, one bent elbow and swinging legs, high tucked knee with extended hands, settled suspended legs."
+            }
+          },
+          {
+            "state": "ledgeClimb",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-ledge-source.png",
+            "sourceImageSha256": "b48bb711ec06ed8e3a63e734791697c981f964cfbbd6d8b04663e3df813c6dc2",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 592,
+              "bottom": 841
+            },
+            "scale": 0.8923076923076924,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 68,
+                  "top": 12,
+                  "width": 157,
+                  "height": 223,
+                  "pixels": 25115
+                },
+                "output": {
+                  "left": 64,
+                  "top": 38,
+                  "width": 140,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 349,
+                  "top": 2,
+                  "width": 170,
+                  "height": 241,
+                  "pixels": 24597
+                },
+                "output": {
+                  "left": 64,
+                  "top": 29,
+                  "width": 152,
+                  "height": 215
+                }
+              },
+              {
+                "source": {
+                  "left": 611,
+                  "top": 3,
+                  "width": 220,
+                  "height": 198,
+                  "pixels": 24601
+                },
+                "output": {
+                  "left": 47,
+                  "top": 30,
+                  "width": 196,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 886,
+                  "top": 12,
+                  "width": 209,
+                  "height": 194,
+                  "pixels": 25755
+                },
+                "output": {
+                  "left": 43,
+                  "top": 38,
+                  "width": 186,
+                  "height": 173
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Raised bent supporting hands, chest-high pull with raised knee, palms pressing below torso and low crouch above inferred edge."
+            }
+          },
+          {
+            "state": "ledgeDrop",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-ledge-source.png",
+            "sourceImageSha256": "b48bb711ec06ed8e3a63e734791697c981f964cfbbd6d8b04663e3df813c6dc2",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 835,
+              "bottom": 1129
+            },
+            "scale": 0.8140350877192982,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 77,
+                  "top": 5,
+                  "width": 157,
+                  "height": 267,
+                  "pixels": 24256
+                },
+                "output": {
+                  "left": 77,
+                  "top": 13,
+                  "width": 128,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 357,
+                  "top": 4,
+                  "width": 191,
+                  "height": 285,
+                  "pixels": 26850
+                },
+                "output": {
+                  "left": 76,
+                  "top": 12,
+                  "width": 155,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 610,
+                  "top": 5,
+                  "width": 220,
+                  "height": 268,
+                  "pixels": 28311
+                },
+                "output": {
+                  "left": 54,
+                  "top": 13,
+                  "width": 179,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 876,
+                  "top": 23,
+                  "width": 214,
+                  "height": 261,
+                  "pixels": 24641
+                },
+                "output": {
+                  "left": 42,
+                  "top": 27,
+                  "width": 174,
+                  "height": 212
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Two overhead grips, one remaining grip with open free hand, both released open hands, lowered freefalling arms."
+            }
+          },
+          {
+            "state": "ledgeJump",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-ledge-source.png",
+            "sourceImageSha256": "b48bb711ec06ed8e3a63e734791697c981f964cfbbd6d8b04663e3df813c6dc2",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 1125,
+              "bottom": 1402
+            },
+            "scale": 0.8992248062015504,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 80,
+                  "top": 5,
+                  "width": 135,
+                  "height": 248,
+                  "pixels": 21101
+                },
+                "output": {
+                  "left": 74,
+                  "top": 14,
+                  "width": 121,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 298,
+                  "top": 3,
+                  "width": 199,
+                  "height": 258,
+                  "pixels": 24089
+                },
+                "output": {
+                  "left": 18,
+                  "top": 12,
+                  "width": 179,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 580,
+                  "top": 6,
+                  "width": 234,
+                  "height": 253,
+                  "pixels": 24773
+                },
+                "output": {
+                  "left": 19,
+                  "top": 15,
+                  "width": 210,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 855,
+                  "top": 7,
+                  "width": 232,
+                  "height": 230,
+                  "pixels": 22592
+                },
+                "output": {
+                  "left": 14,
+                  "top": 16,
+                  "width": 209,
+                  "height": 207
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Tucked two-hand hang, braced upward push, released upward launch and recovering airborne arc."
+            }
+          }
+        ],
+        "emptyRows": [
+          5,
+          6,
+          7
+        ],
+        "contactAnchorMeasurements": {
+          "ledgeCatch": [
+            {
+              "frame": 0,
+              "x": 227,
+              "y": 29,
+              "normalizedX": 0.88671875,
+              "normalizedY": 0.11328125,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 139,
+                  "y": 128,
+                  "normalizedX": 0.54296875,
+                  "normalizedY": 0.5,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 1,
+              "x": 198,
+              "y": 32,
+              "normalizedX": 0.7734375,
+              "normalizedY": 0.125,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 211,
+                  "y": 62,
+                  "normalizedX": 0.82421875,
+                  "normalizedY": 0.2421875,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 2,
+              "x": 154,
+              "y": 33,
+              "normalizedX": 0.6015625,
+              "normalizedY": 0.12890625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 108,
+                  "y": 33,
+                  "normalizedX": 0.421875,
+                  "normalizedY": 0.12890625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 3,
+              "x": 159,
+              "y": 34,
+              "normalizedX": 0.62109375,
+              "normalizedY": 0.1328125,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 113,
+                  "y": 34,
+                  "normalizedX": 0.44140625,
+                  "normalizedY": 0.1328125,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            }
+          ],
+          "ledgeHang": [
+            {
+              "frame": 0,
+              "x": 150,
+              "y": 25,
+              "normalizedX": 0.5859375,
+              "normalizedY": 0.09765625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 94,
+                  "y": 25,
+                  "normalizedX": 0.3671875,
+                  "normalizedY": 0.09765625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 1,
+              "x": 102,
+              "y": 24,
+              "normalizedX": 0.3984375,
+              "normalizedY": 0.09375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 193,
+                  "y": 50,
+                  "normalizedX": 0.75390625,
+                  "normalizedY": 0.1953125,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 2,
+              "x": 173,
+              "y": 25,
+              "normalizedX": 0.67578125,
+              "normalizedY": 0.09765625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 98,
+                  "y": 25,
+                  "normalizedX": 0.3828125,
+                  "normalizedY": 0.09765625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 3,
+              "x": 172,
+              "y": 25,
+              "normalizedX": 0.671875,
+              "normalizedY": 0.09765625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 111,
+                  "y": 25,
+                  "normalizedX": 0.43359375,
+                  "normalizedY": 0.09765625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            }
+          ],
+          "ledgeClimb": [
+            {
+              "frame": 0,
+              "x": 183,
+              "y": 54,
+              "normalizedX": 0.71484375,
+              "normalizedY": 0.2109375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 92,
+                  "y": 54,
+                  "normalizedX": 0.359375,
+                  "normalizedY": 0.2109375,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 1,
+              "x": 88,
+              "y": 56,
+              "normalizedX": 0.34375,
+              "normalizedY": 0.21875,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 2,
+              "x": 218,
+              "y": 198,
+              "normalizedX": 0.8515625,
+              "normalizedY": 0.7734375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 139,
+                  "y": 196,
+                  "normalizedX": 0.54296875,
+                  "normalizedY": 0.765625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 3,
+              "x": 202,
+              "y": 199,
+              "normalizedX": 0.7890625,
+              "normalizedY": 0.77734375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 101,
+                  "y": 199,
+                  "normalizedX": 0.39453125,
+                  "normalizedY": 0.77734375,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            }
+          ],
+          "ledgeDrop": [
+            {
+              "frame": 0,
+              "x": 155,
+              "y": 24,
+              "normalizedX": 0.60546875,
+              "normalizedY": 0.09375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 94,
+                  "y": 24,
+                  "normalizedX": 0.3671875,
+                  "normalizedY": 0.09375,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 1,
+              "x": 92,
+              "y": 24,
+              "normalizedX": 0.359375,
+              "normalizedY": 0.09375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 218,
+                  "y": 71,
+                  "normalizedX": 0.8515625,
+                  "normalizedY": 0.27734375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 2,
+              "x": 92,
+              "y": 24,
+              "normalizedX": 0.359375,
+              "normalizedY": 0.09375,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 191,
+                  "y": 36,
+                  "normalizedX": 0.74609375,
+                  "normalizedY": 0.140625,
+                  "contact": false
+                },
+                {
+                  "x": 73,
+                  "y": 34,
+                  "normalizedX": 0.28515625,
+                  "normalizedY": 0.1328125,
+                  "contact": false
+                }
+              ],
+              "measurement": "Carried edge reference after release, not an invented hand contact; free palms listed separately."
+            },
+            {
+              "frame": 3,
+              "x": 92,
+              "y": 24,
+              "normalizedX": 0.359375,
+              "normalizedY": 0.09375,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 204,
+                  "y": 141,
+                  "normalizedX": 0.796875,
+                  "normalizedY": 0.55078125,
+                  "contact": false
+                },
+                {
+                  "x": 59,
+                  "y": 128,
+                  "normalizedX": 0.23046875,
+                  "normalizedY": 0.5,
+                  "contact": false
+                }
+              ],
+              "measurement": "Carried edge reference after release, not an invented hand contact; free palms listed separately."
+            }
+          ],
+          "ledgeJump": [
+            {
+              "frame": 0,
+              "x": 155,
+              "y": 26,
+              "normalizedX": 0.60546875,
+              "normalizedY": 0.1015625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 91,
+                  "y": 26,
+                  "normalizedX": 0.35546875,
+                  "normalizedY": 0.1015625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 1,
+              "x": 165,
+              "y": 25,
+              "normalizedX": 0.64453125,
+              "normalizedY": 0.09765625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 88,
+                  "y": 25,
+                  "normalizedX": 0.34375,
+                  "normalizedY": 0.09765625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in normalized native pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 2,
+              "x": 165,
+              "y": 25,
+              "normalizedX": 0.64453125,
+              "normalizedY": 0.09765625,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 212,
+                  "y": 35,
+                  "normalizedX": 0.828125,
+                  "normalizedY": 0.13671875,
+                  "contact": false
+                },
+                {
+                  "x": 34,
+                  "y": 113,
+                  "normalizedX": 0.1328125,
+                  "normalizedY": 0.44140625,
+                  "contact": false
+                }
+              ],
+              "measurement": "Carried edge reference after release, not an invented hand contact; free palms listed separately."
+            },
+            {
+              "frame": 3,
+              "x": 165,
+              "y": 25,
+              "normalizedX": 0.64453125,
+              "normalizedY": 0.09765625,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 207,
+                  "y": 111,
+                  "normalizedX": 0.80859375,
+                  "normalizedY": 0.43359375,
+                  "contact": false
+                },
+                {
+                  "x": 33,
+                  "y": 103,
+                  "normalizedX": 0.12890625,
+                  "normalizedY": 0.40234375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Carried edge reference after release, not an invented hand contact; free palms listed separately."
+            }
+          ]
+        }
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "All 21 normalized rows, three final atlases and all 20 individual ledge crops were visually inspected. Missing chargeLoop and three-arm ledgeCatch source row were replaced by native corrective poses. Kikoha is an open-palm orb; the separate Kamehameha super is preserved. Palm coordinates are measured project anchors, not certified source-game contacts."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "sourceGameAsset": false,
+        "nativeGeneratedArtwork": true,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-75020e94-dbc5-4ec4-b5f2-4253880f3de0.png",
+        "promptFile": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/native-prompts.json",
+        "prompt": "Create a production native PIXEL-ART animation sprite atlas of ADULT SON GOKU from DRAGON BALL Z, matching the attached existing game reference for identity and costume. Black spiky hair, adult athletic martial artist proportions, orange gi over blue undershirt, blue waist sash, blue wristbands, blue boots with yellow/red trim. Same adult size and costume in EVERY cell. No child Goku, no yellow hair, no Super Saiyan, no Kaioken red body, no Ultra Instinct, no Saiyan armor, no tail, no staff, no sword, no gun. Unarmed martial-arts fists, kicks and one-handed palm ki projectiles only. Crisp detailed game pixel art, not a painted illustration. All figures face RIGHT, with natural hip and torso rotation. EXACTLY FOUR equally spaced columns; every row contains FOUR different full-body sequential poses, not shifted copies or glow-only variants. Keep entire black hair spikes, fingers and both boot tips inside their own cell with generous transparent gutters. No sprites overlap cells. Use consistent adult head/body scale between rows. Transparent RGBA background; NO floor, shadow, ground line, painted ledge, scenery, grid lines, labels, numbers, text or borders. No aura around body, no huge energy streaks crossing cells. These are newly drawn project adaptations, not official DBZ animation frames.\nPortrait4:5 canvas, ideally1024x1280. EXACTLY FIVE ROWS by FOUR COLUMNS =20 complete full-body sprites. All are actual LEDGE movements using BARE HANDS with BLUE wristbands; no ki flight, cloud, rope, weapon or painted ledge. Imagine a horizontal edge above and to the right of the hanging torso. Make the skin fingers and blue wrist grip very clear; shoulders and boots dangle below the support. Complete adult body in every cell, transparent margins.\nROW1 ledgeCatch: reaches right bare hand upward-right, knees trail airborne → right fingers hook invisible ledge with elbow straight and left hand reaches up → both hands grip overhead, torso swings inward and knees tuck → elbows flex a little as body settles beneath grip, feet dangling. Not fists punching upward; show gripping fingers.\nROW2 ledgeHang: both hands grasp overhead, arms extended, knees loosely bent → right hand stays hooked while left elbow bends and knees swing backward → both elbows lengthen and lead knee draws up, torso shifts inward → right elbow bends slightly and left hand still holds above as feet swing down. Four genuinely hanging anatomies with different shoulders, elbows and legs.\nROW3 ledgeClimb: both arms pull chest toward grip and knees tuck → elbows flex strongly, chin reaches edge height and front knee lifts close to chest → right palm presses down near waist while hips lift above edge, other hand helps balance → low crouch above old edge level with one bare palm planted down beside boot and other hand free. Four complete stages of pull-up; no floor drawn.\nROW4 ledgeDrop: both hands holding overhead → left hand releases while right hand still hooks, torso rotates away → both hands open and release, arms raised while knees open into falling pose → both arms lower sideways, boots point down in freefall. No landing or support prop.\nROW5 ledgeJump: hanging with knees drawn up → arms push from invisible edge as torso coils upward → fingers release and body launches upward-left with one knee high and the other leg trailing → upward airborne arc with both hands free and knees recovering. No ki aura or grounded jump start. Exactly20sprites, no duplicate row.",
+        "promptSha256": "db8209a80b05ed5480e46cf0507753fb1c519e2fa688edca5e2b8e985d3fefcb",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [
+          {
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-missing-and-catch-correction-source.png",
+            "sourceImageSha256": "d503ec4548027664e169f7ba7920d232709a490354e35f9823806a976eb6dcd9",
+            "generatedSourcePath": "/workspace/generated_images/exec-bfa314df-6931-45fa-997e-f9884248fda5.png",
+            "sourceRow": 1,
+            "selectedState": "ledgeCatch",
+            "promptFile": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-missing-and-catch-correction-prompt.json",
+            "prompt": "Create a native pixel-art corrective animation sheet of adult Son Goku from DRAGON BALL Z, using the attached game sprite as identity/style reference. Adult athletic build, BLACK spiky hair, ORANGE gi with BLUE undershirt, BLUE sash and wristbands, BLUE boots with yellow trim. Exactly TWO ARMS and TWO HANDS per person, attached naturally to their two shoulders. No extra hand near the face, no doubled forearm. No transformation, aura, weapon, ground, scenery, grid, labels or text. Transparent RGBA background. Landscape2:1 canvas, ideally1024x512. EXACTLY TWO ROWS and FOUR COLUMNS =EIGHT complete full-body sprites, four different anatomical poses per row, equally spaced with generous gutters. Keep both boots, all skin fingers and hair fully inside each cell. Adult proportions and consistent body size.\nROW1 is the missing CHARGE LOOP, FOUR HELD BRACING POSES, not an attack. Every elbow stays BENT and the right open palm stays beside shoulder/chest. No projectile and no orb in this row. Frame1 deep rear-weighted stance, right palm OPEN pulled beside shoulder, left fist by cheek → Frame2 deeper symmetric squat, left forearm protects chest while right open palm lowers beside ribs, elbow still bent → Frame3 lead knee opens and hips twist back, right palm angles upward beside shoulder with elbow folded and left fist stays close to jaw → Frame4 rear heel plants, torso becomes more upright, right forearm folds nearer chest and left elbow rises into compact guard. Four very different knee/hip/elbow postures, sustained charge without any full arm extension or release. NOT Kamehameha: never cup both hands together at a hip.\nROW2 is corrected LEDGE CATCH, using exactly two bare hands and blue wrists against an INVISIBLE ledge, no physical edge painted. Frame1 one right arm reaches upper-right with fingers open, LEFT arm bends down beside ribs, body airborne with knees trailing → Frame2 RIGHT fingers hook edge overhead with that arm stretched, LEFT hand reaches upward toward the same edge with its arm bent IN FRONT of the chest; show ONLY those2arms and NO additional down-hanging fist or forearm → Frame3 BOTH hands grip the invisible edge side by side overhead, TWO arms connect to their shoulders, torso swings inward and knees tuck → Frame4 both gripping elbows bend slightly, torso settles lower and both boots dangle beneath. Exactly two arms in all four figures. Hands visibly gripping and skin fingers readable; not two fists punching the air. Shoulder rotation and knee posture must differ per pose. No ki flight or cloud. This is new generated adapted game art, not official source animation.",
+            "reason": "The initial combat-a source has seven rows and omits chargeLoop. Initial ledgeCatch frame1 visibly contains a third arm/hand; that row is replaced natively, not erased or repainted by code. Nineteen original state rows remain selected and two corrective rows complete the21-state package."
+          }
+        ],
+        "conditioning": "Exported entity-builder alpha segmentation and nearest-neighbor normalization, transparent atlas assembly and technical crop/contact output. Detached native gold orb components are reassigned to their preceding palm-release cell; source RGBA pixel hashes prove no artwork added or erased. No procedural poses, copied frames or code-redrawn limbs."
+      }
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "date": "2026-10-20",
+  "method": "Real Vite SSR engines, accepted HP changes and canvas commands; Node Image shim uses actual PNG metadata, no browser or official fidelity claim.",
+  "coverage": {
+    "nativeIdentities": 18,
+    "offensiveSupers": 17,
+    "modes": [
+      "rpg",
+      "melee",
+      "fighter"
+    ],
+    "sides": [
+      "player",
+      "opponent"
+    ],
+    "contactSupers": 9,
+    "trackedPhysicalProjectilesFighter": [
+      "noel",
+      "han_solo",
+      "leia_organa",
+      "may_gg"
+    ],
+    "newStarWarsOrdinaryKits": [
+      "luke",
+      "vader",
+      "han_solo"
+    ],
+    "personalSoresu": "obi_wan"
+  },
+  "sources": [
+    {
+      "path": "scripts/nativeSuperRuntimeWave7.test.mjs",
+      "sha256": "03c68379bfb35fa04212634c3b94faf6bfaf289d6969db631ff34ce92f295c74"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "0a45eae9044251b3ba5b6a394bd70ebc2333d7c1e134c94186b95563f4a1a67c"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "sha256": "f98d96ee1b01e0c9c5670b9899b12e04f2c5f6b28afc1dd66505e99043c434ea"
+    },
+    {
+      "path": "src/game/engineFighter.js",
+      "sha256": "d3548775bf67b59d339e156a0c81a0d1f3bace3bdd3698481298a7f4335eafe3"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave7.js",
+      "sha256": "269cbeba3fb732c024503e2866fb0b6746acdd6edddac2822cccafdf093ff635"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "sha256": "228f462e3f01a348091280ddfa18fdd8e73d5575d90f82022e48b12677cabac3"
+    }
+  ],
+  "observations": [
+    {
+      "case": "Native Yamada PNG",
+      "path": "public/sprites/generated/summon-animations-wave7/yamada.png",
+      "sha256": "7cdb90732038e8ce497db67acc365c76bf838ca4ce5fdd29246c58237ae51adf",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "case": "Tracked physical projectile",
+      "id": "noel",
+      "side": "player",
+      "nativePng": false,
+      "damage": 87.60000000000002,
+      "impactPoint": {
+        "x": 700,
+        "y": 354
+      }
+    },
+    {
+      "case": "Tracked physical projectile",
+      "id": "han_solo",
+      "side": "player",
+      "nativePng": false,
+      "damage": 88.10000000000002,
+      "impactPoint": {
+        "x": 700,
+        "y": 354
+      }
+    },
+    {
+      "case": "Tracked physical projectile",
+      "id": "leia_organa",
+      "side": "player",
+      "nativePng": false,
+      "damage": 59.39999999999998,
+      "impactPoint": {
+        "x": 700,
+        "y": 354
+      }
+    },
+    {
+      "case": "Tracked physical projectile",
+      "id": "may_gg",
+      "side": "player",
+      "nativePng": true,
+      "damage": 87.60000000000002,
+      "impactPoint": {
+        "x": 700,
+        "y": 354
+      }
+    },
+    {
+      "case": "Tracked physical projectile",
+      "id": "noel",
+      "side": "opponent",
+      "nativePng": false,
+      "damage": 87.60000000000002,
+      "impactPoint": {
+        "x": 1000,
+        "y": 354
+      }
+    },
+    {
+      "case": "Tracked physical projectile",
+      "id": "han_solo",
+      "side": "opponent",
+      "nativePng": false,
+      "damage": 88.10000000000002,
+      "impactPoint": {
+        "x": 1000,
+        "y": 354
+      }
+    },
+    {
+      "case": "Tracked physical projectile",
+      "id": "leia_organa",
+      "side": "opponent",
+      "nativePng": false,
+      "damage": 59.39999999999998,
+      "impactPoint": {
+        "x": 1000,
+        "y": 354
+      }
+    },
+    {
+      "case": "Tracked physical projectile",
+      "id": "may_gg",
+      "side": "opponent",
+      "nativePng": true,
+      "damage": 87.60000000000002,
+      "impactPoint": {
+        "x": 1000,
+        "y": 354
+      }
+    }
+  ]
+}

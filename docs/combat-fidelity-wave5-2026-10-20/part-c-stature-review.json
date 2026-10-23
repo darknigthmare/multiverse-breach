@@ -1,0 +1,449 @@
+{
+  "date": "2026-10-20",
+  "scope": "PartC renderer-only stature compensation; native PNG and pose hashes remain unchanged.",
+  "method": "Approximate visual head-to-feet ROI, excluding weapon/effect overhang. Native body heights come from source frame bbox with proportional native trimming of the explicitly identified Ky/Sol effect overhang. Formula preserves native projection. All references share the exact source PNG with their comparison; Bastion uses original outro and Boruto fatality uses matching corrective roundDefeat.",
+  "reviews": [
+    {
+      "heroId": "leon",
+      "part": "C",
+      "phase": "fatality",
+      "row": 4,
+      "sourceComparableColumn": 3,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "normalizedBodyHeight": 167,
+      "bodyBounds": [
+        65,
+        77,
+        127,
+        167
+      ],
+      "referenceBodyBounds": [
+        61,
+        13,
+        138,
+        228
+      ],
+      "sourceBodyHeightApprox": 217,
+      "referenceSourceBodyHeightApprox": 210,
+      "normalizationScale": 0.7682119205298014,
+      "referenceNormalizationScale": 1.0841121495327102,
+      "suggestedRenderScale": 1.4172797262617625,
+      "compensatedBodyHeightApprox": 236.68571428571434,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+      "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+      "nativeComparableBodyHeight": 218,
+      "nativeReferenceBodyHeight": 210,
+      "nativeComparableBodyBounds": [
+        694,
+        5,
+        165,
+        218
+      ],
+      "nativeReferenceBodyBounds": [
+        49,
+        11,
+        127,
+        210
+      ],
+      "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+      "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+      "nativeComparableRow": 4,
+      "nativeReferenceRow": 0,
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+    },
+    {
+      "heroId": "leon",
+      "part": "C",
+      "phase": "super",
+      "row": 7,
+      "sourceComparableColumn": 3,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "normalizedBodyHeight": 150,
+      "bodyBounds": [
+        76,
+        94,
+        112,
+        150
+      ],
+      "referenceBodyBounds": [
+        61,
+        13,
+        138,
+        228
+      ],
+      "sourceBodyHeightApprox": 211,
+      "referenceSourceBodyHeightApprox": 210,
+      "normalizationScale": 0.7116564417177914,
+      "referenceNormalizationScale": 1.0841121495327102,
+      "suggestedRenderScale": 1.5272380952380953,
+      "compensatedBodyHeightApprox": 229.0857142857143,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+      "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+      "nativeComparableBodyHeight": 211,
+      "nativeReferenceBodyHeight": 210,
+      "nativeComparableBodyBounds": [
+        703,
+        10,
+        157,
+        211
+      ],
+      "nativeReferenceBodyBounds": [
+        49,
+        11,
+        127,
+        210
+      ],
+      "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+      "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+      "nativeComparableRow": 7,
+      "nativeReferenceRow": 0,
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+    },
+    {
+      "heroId": "jill",
+      "part": "C",
+      "phase": "fatality",
+      "row": 4,
+      "sourceComparableColumn": 3,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "normalizedBodyHeight": 139,
+      "bodyBounds": [
+        63,
+        103,
+        134,
+        139
+      ],
+      "referenceBodyBounds": [
+        51,
+        14,
+        146,
+        228
+      ],
+      "sourceBodyHeightApprox": 211,
+      "referenceSourceBodyHeightApprox": 221,
+      "normalizationScale": 0.6590909090909091,
+      "referenceNormalizationScale": 1.031111111111111,
+      "suggestedRenderScale": 1.5660666037305904,
+      "compensatedBodyHeightApprox": 217.68325791855207,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+      "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+      "nativeComparableBodyHeight": 211,
+      "nativeReferenceBodyHeight": 221,
+      "nativeComparableBodyBounds": [
+        677,
+        11,
+        204,
+        211
+      ],
+      "nativeReferenceBodyBounds": [
+        36,
+        2,
+        142,
+        221
+      ],
+      "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+      "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+      "nativeComparableRow": 4,
+      "nativeReferenceRow": 0,
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+    },
+    {
+      "heroId": "jill",
+      "part": "C",
+      "phase": "super",
+      "row": 7,
+      "sourceComparableColumn": 3,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 228,
+      "normalizedBodyHeight": 159,
+      "bodyBounds": [
+        57,
+        81,
+        144,
+        159
+      ],
+      "referenceBodyBounds": [
+        51,
+        14,
+        146,
+        228
+      ],
+      "sourceBodyHeightApprox": 218,
+      "referenceSourceBodyHeightApprox": 221,
+      "normalizationScale": 0.7295597484276729,
+      "referenceNormalizationScale": 1.031111111111111,
+      "suggestedRenderScale": 1.4144967130538717,
+      "compensatedBodyHeightApprox": 224.9049773755656,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+      "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+      "nativeComparableBodyHeight": 218,
+      "nativeReferenceBodyHeight": 221,
+      "nativeComparableBodyBounds": [
+        679,
+        2,
+        197,
+        218
+      ],
+      "nativeReferenceBodyBounds": [
+        36,
+        2,
+        142,
+        221
+      ],
+      "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+      "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+      "nativeComparableRow": 7,
+      "nativeReferenceRow": 0,
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+    },
+    {
+      "heroId": "rebecca_chambers",
+      "part": "C",
+      "compensate": false,
+      "reason": "Medical support is genuinely kneeling. Source standing height 241px; support 175–193px. Intro normalization .947 and support .959/.983 are close: do not force support back to standing height.",
+      "phases": [
+        "fatality",
+        "super"
+      ]
+    },
+    {
+      "heroId": "arca_mirelle",
+      "part": "C",
+      "phase": "fatality",
+      "row": 4,
+      "sourceComparableColumn": 3,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "normalizedBodyHeight": 157,
+      "bodyBounds": [
+        46,
+        79,
+        155,
+        157
+      ],
+      "referenceBodyBounds": [
+        56,
+        12,
+        166,
+        231
+      ],
+      "sourceBodyHeightApprox": 188,
+      "referenceSourceBodyHeightApprox": 210,
+      "normalizationScale": 0.8345323741007195,
+      "referenceNormalizationScale": 1.099526066350711,
+      "suggestedRenderScale": 1.3171974522292993,
+      "compensatedBodyHeightApprox": 206.79999999999998,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": true,
+      "reason": "There is intentional flexion/forward lean. Suggested multiplier reverses only the differing row normalization, retaining the shorter source-body projection; do not divide standing height by crouched height.",
+      "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+      "nativeComparableBodyHeight": 188,
+      "nativeReferenceBodyHeight": 210,
+      "nativeComparableBodyBounds": [
+        678,
+        22,
+        186,
+        188
+      ],
+      "nativeReferenceBodyBounds": [
+        45,
+        10,
+        151,
+        210
+      ],
+      "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+      "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+      "nativeComparableRow": 4,
+      "nativeReferenceRow": 0,
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+    },
+    {
+      "heroId": "arca_mirelle",
+      "part": "C",
+      "phase": "super",
+      "row": 7,
+      "sourceComparableColumn": 3,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 231,
+      "normalizedBodyHeight": 197,
+      "bodyBounds": [
+        48,
+        47,
+        160,
+        197
+      ],
+      "referenceBodyBounds": [
+        56,
+        12,
+        166,
+        231
+      ],
+      "sourceBodyHeightApprox": 207,
+      "referenceSourceBodyHeightApprox": 210,
+      "normalizationScale": 0.9508196721311475,
+      "referenceNormalizationScale": 1.099526066350711,
+      "suggestedRenderScale": 1.1558375634517768,
+      "compensatedBodyHeightApprox": 227.70000000000002,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+      "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+      "nativeComparableBodyHeight": 207,
+      "nativeReferenceBodyHeight": 210,
+      "nativeComparableBodyBounds": [
+        692,
+        12,
+        168,
+        207
+      ],
+      "nativeReferenceBodyBounds": [
+        45,
+        10,
+        151,
+        210
+      ],
+      "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+      "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+      "nativeComparableRow": 7,
+      "nativeReferenceRow": 0,
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+    },
+    {
+      "heroId": "arca_bastion",
+      "part": "C",
+      "phase": "fatality",
+      "row": 4,
+      "sourceComparableColumn": 3,
+      "referencePhase": "outro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "normalizedBodyHeight": 152,
+      "bodyBounds": [
+        79,
+        92,
+        124,
+        152
+      ],
+      "referenceBodyBounds": [
+        45,
+        14,
+        168,
+        229
+      ],
+      "sourceBodyHeightApprox": 212,
+      "referenceSourceBodyHeightApprox": 213,
+      "normalizationScale": 0.7160493827160493,
+      "referenceNormalizationScale": 1.0740740740740742,
+      "suggestedRenderScale": 1.4995058067704472,
+      "compensatedBodyHeightApprox": 227.92488262910797,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+      "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+      "nativeComparableBodyHeight": 212,
+      "nativeReferenceBodyHeight": 213,
+      "nativeComparableBodyBounds": [
+        707,
+        8,
+        173,
+        212
+      ],
+      "nativeReferenceBodyBounds": [
+        34,
+        7,
+        156,
+        213
+      ],
+      "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+      "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+      "nativeComparableRow": 4,
+      "nativeReferenceRow": 1,
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+    },
+    {
+      "heroId": "arca_bastion",
+      "part": "C",
+      "phase": "super",
+      "row": 7,
+      "sourceComparableColumn": 3,
+      "referencePhase": "outro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "normalizedBodyHeight": 154,
+      "bodyBounds": [
+        69,
+        90,
+        126,
+        154
+      ],
+      "referenceBodyBounds": [
+        45,
+        14,
+        168,
+        229
+      ],
+      "sourceBodyHeightApprox": 211,
+      "referenceSourceBodyHeightApprox": 213,
+      "normalizationScale": 0.7295597484276729,
+      "referenceNormalizationScale": 1.0740740740740742,
+      "suggestedRenderScale": 1.4730504237546491,
+      "compensatedBodyHeightApprox": 226.84976525821597,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+      "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+      "nativeComparableBodyHeight": 211,
+      "nativeReferenceBodyHeight": 213,
+      "nativeComparableBodyBounds": [
+        695,
+        8,
+        173,
+        211
+      ],
+      "nativeReferenceBodyBounds": [
+        34,
+        7,
+        156,
+        213
+      ],
+      "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+      "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+      "nativeComparableRow": 7,
+      "nativeReferenceRow": 1,
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+    }
+  ]
+}

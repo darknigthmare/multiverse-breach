@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-20",
+  "entityKey": "Final Fantasy VII::Bahamut::Megaflare",
+  "phase": "attack",
+  "frameIndex": 10,
+  "tick": 114,
+  "image": "summon-wave7-bahamut-before-anchor-fix.png",
+  "finding": "Manual inspection after successful functional checks found a detached procedural Megaflare overlay above the native mouth-beam. The native beam starts approximately at (240,295) while the procedural overlay starts around (337,241) in the 1040x460 capture.",
+  "scope": "Visual origin mismatch only. Cost, impact count and native cell selection tests passed; they did not certify visual attachment or source fidelity.",
+  "statusAtCapture": "reported-to-production-owner-for-correction",
+  "source1to1Verified": false,
+  "resolution": "Production renderer suppresses duplicate Megaflare mouth charge/beam only when the exact native Bahamut asset is used; target-contact rings and procedural fallback remain. A new W7 regression and repeated Chromium flow passed; final capture is summon-wave7-bahamut-impact.png.",
+  "status": "corrected-and-recaptured"
+}

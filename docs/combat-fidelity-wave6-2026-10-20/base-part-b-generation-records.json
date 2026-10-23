@@ -1,0 +1,443 @@
+{
+  "records": [
+    {
+      "heroId": "devil_may_cry_nero",
+      "universe": "Devil May Cry",
+      "name": "Nero",
+      "referenceAsset": "/sprites/generated/heroes/devil-may-cry/devil-may-cry-nero.png",
+      "sourceWork": "Devil May Cry5, final-mission Nero after regaining his right arm",
+      "sourceReference": "Devil Trigger — Showdown: Nero's late-DMC5 Devil Trigger body performs a Red Queen close-range sword combination assisted by his luminous spectral wing-arms. His ordinary right arm is regenerated flesh; no Devil Breaker attachment is substituted for that form.",
+      "notes": [
+        "Old inspected reference contains a mechanical arm and a generic blue blade; the new native design corrects these to post-game human right arm and Red Queen/Blue Rose.",
+        "Showdown is drawn in Nero's own DMC5 Devil Trigger, with spectral blue wing-arms, not Dante/Vergil or a humanoid Goku aura.",
+        "Visible slashes are presentation poses and do not add gameplay hits."
+      ],
+      "prompt": "Create ONE NATIVE 4columns by4rows SPRITE ATLAS, EXACTLY16 distinct fully illustrated poses. Transparent alpha background, NO text/grid/labels/shadowfloor/solid panel. Each row contains exactly4 isolated fullbody characters, equal cellspacing. Finalnative image square, target1024x1024; each cell has at least20pixels clear transparent margin on ALL sides. NO cropping any limb/weapon/hair. All characters face generally RIGHT in profile/3quarter right. Samebodyheight in comparable standing poses, body visible around180px per cell, effects small; true crouches remain crouched. Crisp richly detailed 2D game illustration matching the provided native presentation reference. Every cell is a freshly drawn pose, not repeated/recolored/mirrored. ONLY16poses in4rows, never3/5rows.\nNERO, Devil May Cry5 final mission/post-game HUMAN Nero, short white hair, young adult, blue hooded long jacket, dark trousers, brown boots. His regenerated RIGHT ARM IS HUMAN FLESH and HAND, sleeve and normal cloth/leather glove allowed but NO metal forearm, NO robot joints, NO Devil Breaker, NO glowing demon arm, NO transformation. RED QUEEN is the physical silver mechanical greatsword with red channels/hilt, BLUE ROSE the big double-barrel revolver holstered. Keep this exact human version throughout all16cells.\nROW0 IDLE: four distinct breathing/weightshifting guard poses carrying RedQueen with different natural hand/shoulder positions. ROW1 RUN: four distinct full running strides to the right, both feet visible, coat tails naturally differ. ROW2 ATTACK: four distinct RED QUEEN sword attack beats: windup, advancing slash, follow-through, reset. NO enormous effects. ROW3 HIT: four distinct recoil/bracing/stumble/recovery human hit reactions, no gore.\nThe old local sprite may be wrong: use the newly generated reference for face/costume continuity but enforce corrections described here, particularly Nero human rightarm. No reference canvas or panel copied into the output.",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-b-references/devil_may_cry_nero.png",
+      "file": "/workspace/generated_images/exec-7590a863-68d1-4f6a-af71-e3ef81c2face.png",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ability": "Taille de Red Queen",
+      "version": "Devil May Cry5, final-mission Nero after regaining his right arm",
+      "correction": {
+        "heroId": "devil_may_cry_nero",
+        "rows": 1,
+        "targetRows": [
+          2
+        ],
+        "referenceImages": [
+          "docs/combat-fidelity-wave6-2026-10-20/base-part-b-sources/devil_may_cry_nero-original.png"
+        ],
+        "reason": "Opaque RedQueen blade overlaps an adjacent native basic-attack cell (8 seam pixels); replace only four attack poses with compact fully separated sword poses.",
+        "prompt": "ONE NATIVE horizontal SPRITE STRIP,4COLUMNS and1ROW, exactly4newdistinct fullbody NERO DevilMayCry5 human sword-attack poses, transparentalpha. Each cell square256; wholeideal1024x256. >=25px empty gutters around all body/coat/blade pixels; no celltouching. Sourcebasicattack rowhas overlapping blades; correct ONLY this row with compact attack poses, not copied referencecells. Keep sameyoung adult white short hair/bluecoat, rolledsleeves and HUMAN FLESH FOREARMS botharms/normalblackgloves, darktrousers/boots. NO mechanicalarm/DT/aura/wings. RED QUEEN real mechanical silver/red sword with red Exceed hilt, BlueRose holstered. Four chronological right-facing attacks: 1 blade held almostvertical close behind shoulder in compact windup, bothkneesbent;2 short diagonal down-forward slash, arms bent, silverblade remains insidecell;3 low followthrough RedQueen angled diagonally back beside body, no horizontal long extension;4 relaxedkneebent reset swordvertical downclose beside boots. All4fullbodies with allfeet/weapon fullydrawn and separated, consistent actualbodyheight ~180px. No slashtrail/no laser/no background/floor/text/UI. Artmatchesprovidedref but fourgenuinely new poses. Never extend a sword into next cell.",
+        "file": "/workspace/generated_images/exec-669173bb-dd35-4e79-9fa8-8fa992fb01d4.png",
+        "sourceRows": [
+          0
+        ],
+        "originalReferenceImages": [
+          "/workspace/generated_images/exec-7590a863-68d1-4f6a-af71-e3ef81c2face.png"
+        ]
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              76,
+              15,
+              128,
+              225
+            ],
+            "normalizedBodyHeight": 225,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              76,
+              15,
+              128,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "nativeComparableBodyHeight": 285.1293103448276,
+            "nativeReferenceBodyHeight": 285.1293103448276,
+            "sourceDensityRatio": 1,
+            "reason": "Basic source stance scale restored without flattening native running/crouching body-height ratios or changing pixels; excludes sword/umbrella/launcher and muzzle effects."
+          }
+        },
+        "run": {
+          "renderScale": 1.159864,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              42,
+              48,
+              173,
+              178
+            ],
+            "normalizedBodyHeight": 178,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              76,
+              15,
+              128,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "nativeComparableBodyHeight": 261.6293103448276,
+            "nativeReferenceBodyHeight": 285.1293103448276,
+            "sourceDensityRatio": 1,
+            "reason": "Basic source stance scale restored without flattening native running/crouching body-height ratios or changing pixels; excludes sword/umbrella/launcher and muzzle effects."
+          }
+        },
+        "attack": {
+          "renderScale": 1.300015,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              51,
+              97,
+              151,
+              146
+            ],
+            "normalizedBodyHeight": 146,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              76,
+              15,
+              128,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "nativeComparableBodyHeight": 240.5251952752905,
+            "nativeReferenceBodyHeight": 285.1293103448276,
+            "sourceDensityRatio": 0.5773480662983426,
+            "reason": "Basic source stance scale restored without flattening native running/crouching body-height ratios or changing pixels; excludes sword/umbrella/launcher and muzzle effects."
+          }
+        },
+        "hit": {
+          "renderScale": 1.166667,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              53,
+              65,
+              161,
+              176
+            ],
+            "normalizedBodyHeight": 176,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              76,
+              15,
+              128,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "nativeComparableBodyHeight": 260.2068965517241,
+            "nativeReferenceBodyHeight": 285.1293103448276,
+            "sourceDensityRatio": 1,
+            "reason": "Basic source stance scale restored without flattening native running/crouching body-height ratios or changing pixels; excludes sword/umbrella/launcher and muzzle effects."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "devil_may_cry_lady",
+      "universe": "Devil May Cry",
+      "name": "Lady",
+      "referenceAsset": "/sprites/generated/heroes/devil-may-cry/devil-may-cry-lady.png",
+      "sourceWork": "Devil May Cry3, Lady with original Kalina Ann",
+      "sourceReference": "Lady's DMC3 original Kalina Ann launcher: heavy shoulder-fired rocket weapon with its characteristic bayonet/hook assembly. Lady remains human and uses a braced mechanical launch, not Devil Trigger or magical rays.",
+      "notes": [
+        "Inspected old all-black generic outfit is an identity counterexample. Native DMC3 white blouse, short plaid skirt, tall combat boots and original Kalina Ann correct it.",
+        "Lady stays human; no Devil Trigger, demon transformation, laser cannon or invented healing.",
+        "Non-gory weapon showcase, no target execution."
+      ],
+      "prompt": "Create ONE NATIVE 4columns by4rows SPRITE ATLAS, EXACTLY16 distinct fully illustrated poses. Transparent alpha background, NO text/grid/labels/shadowfloor/solid panel. Each row contains exactly4 isolated fullbody characters, equal cellspacing. Finalnative image square, target1024x1024; each cell has at least20pixels clear transparent margin on ALL sides. NO cropping any limb/weapon/hair. All characters face generally RIGHT in profile/3quarter right. Samebodyheight in comparable standing poses, body visible around180px per cell, effects small; true crouches remain crouched. Crisp richly detailed 2D game illustration matching the provided native presentation reference. Every cell is a freshly drawn pose, not repeated/recolored/mirrored. ONLY16poses in4rows, never3/5rows.\nLADY from Devil May Cry3, original DMC3 costume: short black bob, heterochromia if visible, WHITE buttoned blouse with rolled sleeves, black straps, short RED/BLACK PLAID skirt, tall brown/black lace-up combat boots. A real green ORIGINAL KALINA ANN rocket launcher with bayonet/hook is carried securely on back when using pistols. Keep launcher and costume consistent; NO DMC4 black outfit, NO black pants, NO demon form.\nROW0 IDLE four distinct grounded alert pistol-ready/rest poses. ROW1 RUN four distinct full strides moving right, actual boots and skirt move, KalinaAnn secured on back. ROW2 ATTACK four distinct firearm beats with her actual HANDGUNS, controlled aim/recoil/second shot/recovery, tiny ballistic muzzle flash only in appropriate cell, KalinaAnn remains securely carried, no laser. ROW3 HIT four distinct brace/recoil/stumble/recover poses, human with no gore.\nThe old local sprite may be wrong: use the newly generated reference for face/costume continuity but enforce corrections described here, particularly Nero human rightarm. No reference canvas or panel copied into the output.",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-b-references/devil_may_cry_lady.png",
+      "file": "/workspace/generated_images/exec-55516e9a-370a-4e19-bb01-726f08e0b159.png",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ability": "Tir des pistolets de Lady",
+      "version": "Devil May Cry3, Lady with original Kalina Ann",
+      "statureByState": {
+        "idle": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              75,
+              22,
+              110,
+              218
+            ],
+            "normalizedBodyHeight": 218,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              75,
+              22,
+              110,
+              218
+            ],
+            "referenceBodyHeight": 218,
+            "nativeComparableBodyHeight": 298.8103448275862,
+            "nativeReferenceBodyHeight": 298.8103448275862,
+            "sourceDensityRatio": 1,
+            "reason": "Basic source stance scale restored without flattening native running/crouching body-height ratios or changing pixels; excludes sword/umbrella/launcher and muzzle effects."
+          }
+        },
+        "run": {
+          "renderScale": 0.918239,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              39,
+              41,
+              178,
+              201
+            ],
+            "normalizedBodyHeight": 201,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              75,
+              22,
+              110,
+              218
+            ],
+            "referenceBodyHeight": 218,
+            "nativeComparableBodyHeight": 252.98275862068968,
+            "nativeReferenceBodyHeight": 298.8103448275862,
+            "sourceDensityRatio": 1,
+            "reason": "Basic source stance scale restored without flattening native running/crouching body-height ratios or changing pixels; excludes sword/umbrella/launcher and muzzle effects."
+          }
+        },
+        "attack": {
+          "renderScale": 1.188679,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              58,
+              68,
+              130,
+              175
+            ],
+            "normalizedBodyHeight": 175,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              75,
+              22,
+              110,
+              218
+            ],
+            "referenceBodyHeight": 218,
+            "nativeComparableBodyHeight": 285.1293103448276,
+            "nativeReferenceBodyHeight": 298.8103448275862,
+            "sourceDensityRatio": 1,
+            "reason": "Basic source stance scale restored without flattening native running/crouching body-height ratios or changing pixels; excludes sword/umbrella/launcher and muzzle effects."
+          }
+        },
+        "hit": {
+          "renderScale": 0.896226,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              45,
+              56,
+              167,
+              186
+            ],
+            "normalizedBodyHeight": 186,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              75,
+              22,
+              110,
+              218
+            ],
+            "referenceBodyHeight": 218,
+            "nativeComparableBodyHeight": 228.49137931034483,
+            "nativeReferenceBodyHeight": 298.8103448275862,
+            "sourceDensityRatio": 1,
+            "reason": "Basic source stance scale restored without flattening native running/crouching body-height ratios or changing pixels; excludes sword/umbrella/launcher and muzzle effects."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "skullgirls_parasoul",
+      "universe": "Skullgirls",
+      "name": "Parasoul",
+      "referenceAsset": "/sprites/generated/heroes/skullgirls/skullgirls-parasoul.png",
+      "sourceWork": "Skullgirls2nd Encore, Parasoul with Krieg and Black Egrets",
+      "sourceReference": "Inferno Brigade: Parasoul signals a coordinated Black Egret firing squad while carrying the living umbrella Krieg. She does not replace Krieg with a generic rifle or summon a fantasy creature.",
+      "notes": [
+        "Old local crown/military coat/rifle reference is corrected to Parasoul's black dress/turtleneck silhouette and living umbrella Krieg; no crown.",
+        "Two compact helmeted Black Egrets appear natively only in finale/super cells; they are physical soldiers, not magical copies.",
+        "Gunfire is depicted as compact ballistic flashes and formation changes; timing/impact count is an engine adaptation."
+      ],
+      "prompt": "Create ONE NATIVE 4columns by4rows SPRITE ATLAS, EXACTLY16 distinct fully illustrated poses. Transparent alpha background, NO text/grid/labels/shadowfloor/solid panel. Each row contains exactly4 isolated fullbody characters, equal cellspacing. Finalnative image square, target1024x1024; each cell has at least20pixels clear transparent margin on ALL sides. NO cropping any limb/weapon/hair. All characters face generally RIGHT in profile/3quarter right. Samebodyheight in comparable standing poses, body visible around180px per cell, effects small; true crouches remain crouched. Crisp richly detailed 2D game illustration matching the provided native presentation reference. Every cell is a freshly drawn pose, not repeated/recolored/mirrored. ONLY16poses in4rows, never3/5rows.\nPARASOUL, adult red-haired Skullgirls2ndEncore princess, NO crown. Long flowing red hair, fitted BLACK TURTLENECK top/very short black skirt dress silhouette, black tights and highheeled black boots, subtlegold buttons only. KRIEG is her real LIVING BLACK UMBRELLA with red eye and brass/gold frame and pointedtip; NEVER give her a rifle or soldiercoat. Keep proportions and umbrella consistent with the inspected corrected reference.\nROW0 IDLE four distinct elegant guard/readiness poses holding closed Krieg in natural hand positions. ROW1 RUN four distinct running strides to right with hair/skirt movement, keep umbrella fully in cell. ROW2 ATTACK four distinct physical KRIEG umbrella-sweep beats: windup, forward sweep, followthrough, reset. No magical beam or firing squad in basicattack. ROW3 HIT four distinct brace/recoil/kneelingstumble/recovery poses, no gore.\nThe old local sprite may be wrong: use the newly generated reference for face/costume continuity but enforce corrections described here, particularly Nero human rightarm. No reference canvas or panel copied into the output.",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-b-references/skullgirls_parasoul.png",
+      "file": "/workspace/generated_images/exec-8aae19fe-7558-4d1b-a757-402f604343b8.png",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ability": "Taille du parapluie Krieg",
+      "version": "Skullgirls2nd Encore, Parasoul with Krieg and Black Egrets",
+      "statureByState": {
+        "idle": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              80,
+              30,
+              120,
+              211
+            ],
+            "normalizedBodyHeight": 211,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              30,
+              120,
+              211
+            ],
+            "referenceBodyHeight": 211,
+            "nativeComparableBodyHeight": 297.4008620689655,
+            "nativeReferenceBodyHeight": 297.4008620689655,
+            "sourceDensityRatio": 1,
+            "reason": "Basic source stance scale restored without flattening native running/crouching body-height ratios or changing pixels; excludes sword/umbrella/launcher and muzzle effects."
+          }
+        },
+        "run": {
+          "renderScale": 1.085627,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              44,
+              64,
+              175,
+              177
+            ],
+            "normalizedBodyHeight": 177,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              30,
+              120,
+              211
+            ],
+            "referenceBodyHeight": 211,
+            "nativeComparableBodyHeight": 270.8405172413793,
+            "nativeReferenceBodyHeight": 297.4008620689655,
+            "sourceDensityRatio": 1,
+            "reason": "Basic source stance scale restored without flattening native running/crouching body-height ratios or changing pixels; excludes sword/umbrella/launcher and muzzle effects."
+          }
+        },
+        "attack": {
+          "renderScale": 1.415902,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              43,
+              77,
+              173,
+              166
+            ],
+            "normalizedBodyHeight": 166,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              30,
+              120,
+              211
+            ],
+            "referenceBodyHeight": 211,
+            "nativeComparableBodyHeight": 331.2844827586207,
+            "nativeReferenceBodyHeight": 297.4008620689655,
+            "sourceDensityRatio": 1,
+            "reason": "Basic source stance scale restored without flattening native running/crouching body-height ratios or changing pixels; excludes sword/umbrella/launcher and muzzle effects."
+          }
+        },
+        "hit": {
+          "renderScale": 1.217125,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              44,
+              56,
+              172,
+              186
+            ],
+            "normalizedBodyHeight": 186,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              30,
+              120,
+              211
+            ],
+            "referenceBodyHeight": 211,
+            "nativeComparableBodyHeight": 319.08620689655174,
+            "nativeReferenceBodyHeight": 297.4008620689655,
+            "sourceDensityRatio": 1,
+            "reason": "Basic source stance scale restored without flattening native running/crouching body-height ratios or changing pixels; excludes sword/umbrella/launcher and muzzle effects."
+          }
+        }
+      }
+    }
+  ]
+}

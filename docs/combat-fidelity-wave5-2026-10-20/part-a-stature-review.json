@@ -1,0 +1,560 @@
+{
+  "method": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+  "date": "2026-10-20",
+  "source1to1Verified": false,
+  "modifiesBitmap": false,
+  "rendererAnchorBaseline": 244,
+  "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+  "measuredRows": [
+    {
+      "heroId": "masterchief",
+      "phase": "fatality",
+      "renderScale": 1.818639,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 217,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 114,
+      "nativeComparableBodyHeight": 150,
+      "nativeReferenceBodyHeight": 157,
+      "reason": "Compare the visible helmet-to-boots recovery body with the intro guard. Omit the launcher muzzle and smoke above the helmet; retain the lower kneeling charge/fire poses in fatality columns1–2.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        66,
+        130,
+        116,
+        114
+      ],
+      "referenceBodyBounds": [
+        54,
+        27,
+        145,
+        217
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        695,
+        895,
+        153,
+        150
+      ],
+      "nativeReferenceBodyBounds": [
+        57,
+        68,
+        105,
+        157
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/masterchief-corrected.png",
+      "nativeSourceImageSha256": "4f8561892ab126f7aab0eff37e673e44ad9598f34dc60bccec6fd7bb4f73b58d",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/masterchief-corrected.png",
+      "nativeReferenceSourceImageSha256": "4f8561892ab126f7aab0eff37e673e44ad9598f34dc60bccec6fd7bb4f73b58d",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "expectedBodyHeight": 207.324841,
+      "correctedBodyHeight": 207.324846,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "masterchief",
+      "phase": "super",
+      "renderScale": 1.80938,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 217,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 110,
+      "nativeComparableBodyHeight": 144,
+      "nativeReferenceBodyHeight": 157,
+      "reason": "Compare the visible helmet-to-boots recovery body with the intro guard. Omit the launcher muzzle and smoke above the helmet; retain the lower kneeling charge/fire poses in fatality columns1–2.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        68,
+        131,
+        119,
+        110
+      ],
+      "referenceBodyBounds": [
+        54,
+        27,
+        145,
+        217
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        697,
+        1526,
+        156,
+        144
+      ],
+      "nativeReferenceBodyBounds": [
+        57,
+        68,
+        105,
+        157
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/masterchief-corrected.png",
+      "nativeSourceImageSha256": "4f8561892ab126f7aab0eff37e673e44ad9598f34dc60bccec6fd7bb4f73b58d",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/masterchief-corrected.png",
+      "nativeReferenceSourceImageSha256": "4f8561892ab126f7aab0eff37e673e44ad9598f34dc60bccec6fd7bb4f73b58d",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "expectedBodyHeight": 199.031847,
+      "correctedBodyHeight": 199.0318,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "arbiter",
+      "phase": "fatality",
+      "renderScale": 1.684333,
+      "referencePhase": "intro",
+      "referenceColumn": 3,
+      "referenceBodyHeight": 217,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 120,
+      "nativeComparableBodyHeight": 163,
+      "nativeReferenceBodyHeight": 175,
+      "reason": "Compare ceremonial helmet, torso and digitigrade feet in the forward sword guards; exclude both projecting plasma prongs. Preserve the naturally lower native fatality recovery (163px versus175px), and the much lower extended lunge in column2.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        70,
+        124,
+        96,
+        120
+      ],
+      "referenceBodyBounds": [
+        12,
+        26,
+        156,
+        217
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        698,
+        915,
+        130,
+        163
+      ],
+      "nativeReferenceBodyBounds": [
+        683,
+        65,
+        126,
+        175
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/arbiter-corrected.png",
+      "nativeSourceImageSha256": "93495cf2d48941b05715fbdc19a9a543d4866d84bad2fe5a406093ad905116f3",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/arbiter-corrected.png",
+      "nativeReferenceSourceImageSha256": "93495cf2d48941b05715fbdc19a9a543d4866d84bad2fe5a406093ad905116f3",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "expectedBodyHeight": 202.12,
+      "correctedBodyHeight": 202.11996,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "arbiter",
+      "phase": "super",
+      "renderScale": 1.577353,
+      "referencePhase": "intro",
+      "referenceColumn": 3,
+      "referenceBodyHeight": 217,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 136,
+      "nativeComparableBodyHeight": 173,
+      "nativeReferenceBodyHeight": 175,
+      "reason": "Compare ceremonial helmet, torso and digitigrade feet in the forward sword guards; exclude both projecting plasma prongs. Preserve the naturally lower native fatality recovery (163px versus175px), and the much lower extended lunge in column2.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        63,
+        104,
+        101,
+        136
+      ],
+      "referenceBodyBounds": [
+        12,
+        26,
+        156,
+        217
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        693,
+        1551,
+        129,
+        173
+      ],
+      "nativeReferenceBodyBounds": [
+        683,
+        65,
+        126,
+        175
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/arbiter-corrected.png",
+      "nativeSourceImageSha256": "93495cf2d48941b05715fbdc19a9a543d4866d84bad2fe5a406093ad905116f3",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/arbiter-corrected.png",
+      "nativeReferenceSourceImageSha256": "93495cf2d48941b05715fbdc19a9a543d4866d84bad2fe5a406093ad905116f3",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "expectedBodyHeight": 214.52,
+      "correctedBodyHeight": 214.520008,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "johnson",
+      "phase": "fatality",
+      "renderScale": 1.587768,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 134,
+      "nativeComparableBodyHeight": 188,
+      "nativeReferenceBodyHeight": 205,
+      "reason": "Use the uncovered gray-haired head, Marine torso and boots in recovery, not the elevated laser launcher obscuring the face in the first charge pose. Keep the 188px native lowered recovery relative to the205px intro; do not lift a kneeling pose to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        73,
+        110,
+        101,
+        134
+      ],
+      "referenceBodyBounds": [
+        67,
+        12,
+        134,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        819,
+        865,
+        142,
+        188
+      ],
+      "nativeReferenceBodyBounds": [
+        74,
+        34,
+        118,
+        205
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/johnson-original.png",
+      "nativeSourceImageSha256": "3f6c26f633dc3d03a0746c56235c5ee428a13e75b550daa916859a72a908b054",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/johnson-original.png",
+      "nativeReferenceSourceImageSha256": "3f6c26f633dc3d03a0746c56235c5ee428a13e75b550daa916859a72a908b054",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "expectedBodyHeight": 212.760976,
+      "correctedBodyHeight": 212.760912,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "johnson",
+      "phase": "super",
+      "renderScale": 1.800443,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 132,
+      "nativeComparableBodyHeight": 210,
+      "nativeReferenceBodyHeight": 205,
+      "reason": "Use the uncovered gray-haired head, Marine torso and boots in recovery, not the elevated laser launcher obscuring the face in the first charge pose. Keep the 188px native lowered recovery relative to the205px intro; do not lift a kneeling pose to standing height.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        79,
+        110,
+        86,
+        132
+      ],
+      "referenceBodyBounds": [
+        67,
+        12,
+        134,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        818,
+        1275,
+        136,
+        210
+      ],
+      "nativeReferenceBodyBounds": [
+        74,
+        34,
+        118,
+        205
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/johnson-original.png",
+      "nativeSourceImageSha256": "3f6c26f633dc3d03a0746c56235c5ee428a13e75b550daa916859a72a908b054",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/johnson-original.png",
+      "nativeReferenceSourceImageSha256": "3f6c26f633dc3d03a0746c56235c5ee428a13e75b550daa916859a72a908b054",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "expectedBodyHeight": 237.658537,
+      "correctedBodyHeight": 237.658476,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "doomslayer",
+      "phase": "fatality",
+      "renderScale": 1.603175,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 202,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 126,
+      "nativeComparableBodyHeight": 167,
+      "nativeReferenceBodyHeight": 167,
+      "reason": "Both samples stand with the heavy gun at the waist. Measure the Praetor helmet/shoulder equipment down to the boots, excluding the gun aperture and green orb. The161px native super posture remains shorter than the167px intro, rather than being forced upright.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        66,
+        117,
+        113,
+        126
+      ],
+      "referenceBodyBounds": [
+        50,
+        42,
+        151,
+        202
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        28,
+        911,
+        150,
+        167
+      ],
+      "nativeReferenceBodyBounds": [
+        46,
+        56,
+        125,
+        167
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/doomslayer-corrected.png",
+      "nativeSourceImageSha256": "53ccbb156f4060608f2d3e5811e71a98f07019e81a4bde3ccf2f72404811b77c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/doomslayer-corrected.png",
+      "nativeReferenceSourceImageSha256": "53ccbb156f4060608f2d3e5811e71a98f07019e81a4bde3ccf2f72404811b77c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "expectedBodyHeight": 202,
+      "correctedBodyHeight": 202.00005,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "doomslayer",
+      "phase": "super",
+      "renderScale": 1.583272,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 202,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 123,
+      "nativeComparableBodyHeight": 161,
+      "nativeReferenceBodyHeight": 167,
+      "reason": "Both samples stand with the heavy gun at the waist. Measure the Praetor helmet/shoulder equipment down to the boots, excluding the gun aperture and green orb. The161px native super posture remains shorter than the167px intro, rather than being forced upright.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        60,
+        121,
+        122,
+        123
+      ],
+      "referenceBodyBounds": [
+        50,
+        42,
+        151,
+        202
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        22,
+        1543,
+        160,
+        161
+      ],
+      "nativeReferenceBodyBounds": [
+        46,
+        56,
+        125,
+        167
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/doomslayer-corrected.png",
+      "nativeSourceImageSha256": "53ccbb156f4060608f2d3e5811e71a98f07019e81a4bde3ccf2f72404811b77c",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/doomslayer-corrected.png",
+      "nativeReferenceSourceImageSha256": "53ccbb156f4060608f2d3e5811e71a98f07019e81a4bde3ccf2f72404811b77c",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "expectedBodyHeight": 194.742515,
+      "correctedBodyHeight": 194.742456,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "doom_marine_classic",
+      "phase": "fatality",
+      "renderScale": 1.582996,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 152,
+      "nativeComparableBodyHeight": 204,
+      "nativeReferenceBodyHeight": 195,
+      "reason": "The gray helmet, bare arms and boots are visible in all three standing samples. The original BFG stays at the waist; its muzzle and third-column projectile do not determine the measured body height. Preserve the small native stance-height differences (195/204/197px).",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        60,
+        92,
+        112,
+        152
+      ],
+      "referenceBodyBounds": [
+        43,
+        14,
+        157,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        19,
+        901,
+        151,
+        204
+      ],
+      "nativeReferenceBodyBounds": [
+        39,
+        17,
+        133,
+        195
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/doom_marine_classic-original.png",
+      "nativeSourceImageSha256": "2e7bd3b513baf83615ab5cab811d69186a73ec9df69bba50f6d482ec971ff9a0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/doom_marine_classic-original.png",
+      "nativeReferenceSourceImageSha256": "2e7bd3b513baf83615ab5cab811d69186a73ec9df69bba50f6d482ec971ff9a0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "expectedBodyHeight": 240.615385,
+      "correctedBodyHeight": 240.615392,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "doom_marine_classic",
+      "phase": "super",
+      "renderScale": 1.613604,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 144,
+      "nativeComparableBodyHeight": 197,
+      "nativeReferenceBodyHeight": 195,
+      "reason": "The gray helmet, bare arms and boots are visible in all three standing samples. The original BFG stays at the waist; its muzzle and third-column projectile do not determine the measured body height. Preserve the small native stance-height differences (195/204/197px).",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        61,
+        100,
+        101,
+        144
+      ],
+      "referenceBodyBounds": [
+        43,
+        14,
+        157,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        19,
+        1564,
+        139,
+        197
+      ],
+      "nativeReferenceBodyBounds": [
+        39,
+        17,
+        133,
+        195
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/doom_marine_classic-original.png",
+      "nativeSourceImageSha256": "2e7bd3b513baf83615ab5cab811d69186a73ec9df69bba50f6d482ec971ff9a0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-a-sources/doom_marine_classic-original.png",
+      "nativeReferenceSourceImageSha256": "2e7bd3b513baf83615ab5cab811d69186a73ec9df69bba50f6d482ec971ff9a0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "expectedBodyHeight": 232.358974,
+      "correctedBodyHeight": 232.358976,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    }
+  ]
+}

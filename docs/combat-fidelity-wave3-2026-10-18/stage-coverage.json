@@ -1,0 +1,8535 @@
+{
+  "date": "2026-10-18",
+  "scope": "525 HEROES_DB universes, mode probes without a concrete scene; exact source scenes and continuity exclusions are tested separately",
+  "baselineProfiles": 41,
+  "addedProfiles": 24,
+  "totalProfiles": 65,
+  "addedUniverses": [
+    "Metal Gear",
+    "Guilty Gear",
+    "Mass Effect",
+    "Dead Space",
+    "Metal Gear Rising",
+    "Tekken",
+    "Rayman",
+    "Soul Calibur",
+    "NieR",
+    "Dark Souls",
+    "Devil May Cry",
+    "Final Fantasy VIII"
+  ],
+  "before": {
+    "universes": 525,
+    "withAnyModeMechanism": 24,
+    "withEveryModeMechanism": 20,
+    "baseAtmosphereOnly": 501,
+    "byMode": {
+      "Combat": {
+        "mechanisms": 23,
+        "baseAtmosphereOnly": 502
+      },
+      "Melee": {
+        "mechanisms": 24,
+        "baseAtmosphereOnly": 501
+      },
+      "RPG": {
+        "mechanisms": 20,
+        "baseAtmosphereOnly": 505
+      },
+      "Tactics": {
+        "mechanisms": 21,
+        "baseAtmosphereOnly": 504
+      }
+    }
+  },
+  "after": {
+    "universes": 525,
+    "withAnyModeMechanism": 36,
+    "withEveryModeMechanism": 32,
+    "baseAtmosphereOnly": 489,
+    "byMode": {
+      "Combat": {
+        "mechanisms": 35,
+        "baseAtmosphereOnly": 490
+      },
+      "Melee": {
+        "mechanisms": 36,
+        "baseAtmosphereOnly": 489
+      },
+      "RPG": {
+        "mechanisms": 32,
+        "baseAtmosphereOnly": 493
+      },
+      "Tactics": {
+        "mechanisms": 33,
+        "baseAtmosphereOnly": 492
+      }
+    }
+  },
+  "newOfficialAnimationFrames": 0,
+  "newEffectAtlases": 0,
+  "newStaticBackdropRegions": 0,
+  "source1to1Validated": 0,
+  "mechanismGeometry": "authored scene-specific procedural geometry; physical function and timing are adaptations",
+  "timeSource": "simulation-elapsed-seconds",
+  "reducedMotion": "freeze-at-time-zero",
+  "gameplayEffect": "none",
+  "preservationEvidence": "stage-baseline.json contains all41 previous definitions and two recorder hashes per profile",
+  "sourceChecks": "stage-source-checks.json",
+  "browserEvidence": "stage-browser.json",
+  "profiles": [
+    {
+      "id": "metal-gear-shadow-moses-heliport-searchlights",
+      "universes": [
+        "Metal Gear"
+      ],
+      "scenePattern": "/shadow moses.*(?:heliport|h[eé]liport)|(?:heliport|h[eé]liport).*shadow moses/i",
+      "excludedScenePattern": "/rising|revengeance|ground zeroes|phantom pain|camp omega/i",
+      "sourceWork": "Metal Gear Solid (1998) — Shadow Moses heliport",
+      "sourceReference": "https://www.konami.com/mg/",
+      "sourceScene": "Shadow Moses — héliport, projecteurs du périmètre de MGS 1998",
+      "continuity": "Metal Gear Solid (1998)",
+      "mechanism": "shadow-moses-heliport-searchlights",
+      "color": "#b6c9cf",
+      "periodSeconds": 27,
+      "sceneEvidence": "The heliport infiltration has moving searchlights. Two fixed-height lighting fixtures scan only their distant backdrop sectors; they never detect actors, raise an alert or deal damage.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "metal-gear-shadow-moses-cargo-lift",
+      "universes": [
+        "Metal Gear"
+      ],
+      "scenePattern": "/shadow moses.*(?:cargo|dock|quai|ascenseur)|(?:cargo dock|quai).*shadow moses/i",
+      "excludedScenePattern": "/rising|revengeance|ground zeroes|phantom pain|camp omega/i",
+      "sourceWork": "Metal Gear Solid (1998) — Shadow Moses cargo dock",
+      "sourceReference": "https://www.konami.com/mg/",
+      "sourceScene": "Shadow Moses — quai de chargement, ascenseur à câbles de l’introduction",
+      "continuity": "Metal Gear Solid (1998)",
+      "mechanism": "shadow-moses-cargo-lift",
+      "color": "#acbbb7",
+      "periodSeconds": 34,
+      "sceneEvidence": "Snake reaches the heliport by the cargo-dock elevator in the opening infiltration. An empty distant freight platform moves on its guides; it is not a playable platform or route.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "guilty-gear-zepp-airship-propellers",
+      "universes": [
+        "Guilty Gear"
+      ],
+      "scenePattern": "/\\bzepp\\b.*(?:airship|dirigeable|h[eé]lice|propell)|(?:airship|dirigeable).*\\bzepp\\b/i",
+      "excludedScenePattern": "/strive|xrd|l.oro|illyria|jellyfish skyarium/i",
+      "sourceWork": "Guilty Gear XX — Zepp military airship setting",
+      "sourceReference": "https://www.guiltygear.com/",
+      "sourceScene": "Zepp — dirigeable militaire de Guilty Gear XX, hélices latérales",
+      "continuity": "Guilty Gear XX setting",
+      "mechanism": "zepp-airship-propellers",
+      "color": "#b9b4a0",
+      "periodSeconds": 15,
+      "sceneEvidence": "Zepp is the airborne military nation associated with Potemkin. The propeller housings interpret its airship machinery; this is authored mechanical staging, not a verified original stage loop.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "guilty-gear-may-ship-anchor-winch",
+      "universes": [
+        "Guilty Gear"
+      ],
+      "scenePattern": "/may.?ship|navire.*may|jellyfish.*(?:anchor|ancre|winch|treuil)/i",
+      "excludedScenePattern": "/strive|xrd|l.oro|illyria|jellyfish skyarium/i",
+      "sourceWork": "Guilty Gear XX — May Ship, Jellyfish Pirates",
+      "sourceReference": "https://www.guiltygear.com/",
+      "sourceScene": "May Ship — treuil d’ancre du navire des Jellyfish Pirates, version XX",
+      "continuity": "Guilty Gear XX setting",
+      "mechanism": "may-ship-anchor-winch",
+      "color": "#c6b48d",
+      "periodSeconds": 23,
+      "sceneEvidence": "May belongs to the Jellyfish Pirates and uses an anchor. The shipboard drum, rope and suspended anchor are an explicit mechanical adaptation of that nautical setting; no anchor attacks actors.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "mass-effect-normandy-sr1-galaxy-map",
+      "universes": [
+        "Mass Effect"
+      ],
+      "scenePattern": "/normandy.*(?:sr.?1|galaxy|galaxie|carte)|(?:galaxy map|carte.*galaxie).*normandy/i",
+      "excludedScenePattern": "/andromeda|tempest|sr.?2|mass effect\\s*[23]|normandy.*(?:2165|2185|2186)/i",
+      "sourceWork": "Mass Effect (2007) — Normandy SR-1 galaxy map",
+      "sourceReference": "https://www.ea.com/games/mass-effect/mass-effect-legendary-edition",
+      "sourceScene": "Normandy SR-1 — carte galactique holographique du pont de navigation",
+      "continuity": "Mass Effect (2007), SR-1",
+      "mechanism": "normandy-sr1-galaxy-map",
+      "color": "#9dbed6",
+      "periodSeconds": 38,
+      "sceneEvidence": "The SR-1 navigation deck has a projected galaxy map. Fixed star clusters rotate above its projector; the display changes no destination, mission, squad state or simulation clock.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "mass-effect-presidium-skycar-lanes",
+      "universes": [
+        "Mass Effect"
+      ],
+      "scenePattern": "/presidium|pr[eé]sidium|citadel.*skycar|citadelle.*a[eé]rocar/i",
+      "excludedScenePattern": "/andromeda|nexus|tempest|citadel.*(?:destroyed|d[eé]truite)|citadelle.*d[eé]truite/i",
+      "sourceWork": "Mass Effect (2007) — Citadel Presidium transit",
+      "sourceReference": "https://www.ea.com/games/mass-effect/mass-effect-legendary-edition",
+      "sourceScene": "Citadelle — Presidium, voies aériennes des skycars sous le ciel artificiel",
+      "continuity": "Mass Effect (2007), Citadel Presidium",
+      "mechanism": "presidium-skycar-lanes",
+      "color": "#b0ced5",
+      "periodSeconds": 48,
+      "sceneEvidence": "Skycars travel through the Citadel’s urban space beneath the artificial sky. Small cars follow two background transit lanes without becoming targets, vehicles or collision objects.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "dead-space-ishimura-centrifuge",
+      "universes": [
+        "Dead Space"
+      ],
+      "scenePattern": "/ishimura.*(?:centrifuge|centrifugeuse|engineering|ing[eé]nierie)|(?:centrifuge|centrifugeuse).*ishimura/i",
+      "excludedScenePattern": "/titan station|sprawl|tau volantis|dead space\\s*[23]/i",
+      "sourceWork": "Dead Space (2008) — USG Ishimura engineering centrifuge",
+      "sourceReference": "https://www.ea.com/games/dead-space",
+      "sourceScene": "USG Ishimura — ingénierie, bras de la centrifugeuse",
+      "continuity": "Dead Space (2008), Ishimura",
+      "mechanism": "ishimura-engineering-centrifuge",
+      "color": "#b3b9ac",
+      "periodSeconds": 18,
+      "sceneEvidence": "The engineering chapter includes a large rotating centrifuge. Its projected arms remain inside a distant circular housing; the game receives no zero-gravity field, sweep hazard or collision.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "dead-space-ishimura-tram-coupling",
+      "universes": [
+        "Dead Space"
+      ],
+      "scenePattern": "/ishimura.*tram|tram.*ishimura/i",
+      "excludedScenePattern": "/titan station|sprawl|tau volantis|dead space\\s*[23]/i",
+      "sourceWork": "Dead Space (2008) — USG Ishimura tram repair and transit",
+      "sourceReference": "https://www.ea.com/games/dead-space",
+      "sourceScene": "USG Ishimura — station du tram, voiture et bras d’arrimage",
+      "continuity": "Dead Space (2008), Ishimura",
+      "mechanism": "ishimura-tram-coupling",
+      "color": "#a2c0c3",
+      "periodSeconds": 31,
+      "sceneEvidence": "The opening repair sequence reconnects the Ishimura tram using mechanical arms. A background car approaches a stop and the coupling arms pivot; no repair objective or ride is added.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "metal-gear-rising-world-marshal-freight-lift",
+      "universes": [
+        "Metal Gear Rising"
+      ],
+      "scenePattern": "/world marshal.*(?:lift|elevator|ascenseur|freight|monte.charge)|denver.*(?:lift|ascenseur|monte.charge)/i",
+      "excludedScenePattern": "/shadow moses|big shell|groznyj|mother base/i",
+      "sourceWork": "Metal Gear Rising: Revengeance (2013) — R-04 World Marshal headquarters",
+      "sourceReference": "https://store.steampowered.com/app/235460/METAL_GEAR_RISING_REVENGEANCE/",
+      "sourceScene": "Denver — World Marshal R-04, monte-charge du siège",
+      "continuity": "Metal Gear Rising: Revengeance (2013)",
+      "mechanism": "world-marshal-freight-lift",
+      "color": "#b7c1be",
+      "periodSeconds": 29,
+      "sceneEvidence": "Raiden traverses the World Marshal headquarters and rides freight elevators in R-04. This empty shaft’s counterweight and platform move only in the background, with no combat spawning.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "metal-gear-rising-abkhazia-refinery-compressor",
+      "universes": [
+        "Metal Gear Rising"
+      ],
+      "scenePattern": "/abkhazia.*(?:refinery|raffinerie|compress)|(?:refinery|raffinerie).*abkhaz|mistral.*refinery/i",
+      "excludedScenePattern": "/shadow moses|big shell|groznyj|mother base/i",
+      "sourceWork": "Metal Gear Rising: Revengeance (2013) — R-01 Abkhazia refinery",
+      "sourceReference": "https://store.steampowered.com/app/235460/METAL_GEAR_RISING_REVENGEANCE/",
+      "sourceScene": "Abkhazia — raffinerie R-01, compresseurs sur les conduites",
+      "continuity": "Metal Gear Rising: Revengeance (2013)",
+      "mechanism": "abkhazia-refinery-compressor",
+      "color": "#b9b19d",
+      "periodSeconds": 17,
+      "sceneEvidence": "The R-01 refinery is the industrial setting of the Mistral encounter. Crank-driven compressors are an authored interpretation of its process machinery, not a claim that these exact pistons appear in a source frame.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "tekken8-urban-square-taxi-traffic",
+      "universes": [
+        "Tekken"
+      ],
+      "scenePattern": "/urban square|times square.*tekken/i",
+      "excludedScenePattern": "/tekken\\s*(?:[1-7]|tag)|yakushima|moonlit wilderness/i",
+      "sourceWork": "Tekken 8 — Urban Square",
+      "sourceReference": "https://tekken.com/",
+      "sourceScene": "Urban Square — taxis derrière les barrières de la place de Tekken 8",
+      "continuity": "Tekken 8",
+      "mechanism": "urban-square-taxi-traffic",
+      "color": "#c6b88a",
+      "periodSeconds": 35,
+      "sceneEvidence": "Urban Square is a New York-inspired street stage with urban traffic. Yellow-cab silhouettes and rotating wheels follow the fenced backdrop road; no vehicle enters or strikes the combat lane.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "tekken4-airport-parked-airliner-turbine",
+      "universes": [
+        "Tekken"
+      ],
+      "scenePattern": "/tekken\\s*4.*airport|airport.*tekken\\s*4|a[eé]roport.*tekken\\s*4/i",
+      "excludedScenePattern": "/tekken\\s*(?:[1235678]|tag)|urban square/i",
+      "sourceWork": "Tekken 4 — Airport",
+      "sourceReference": "https://www.bandainamcoent.co.jp/cs/list/tekken4/stages/index.html",
+      "sourceScene": "Airport de Tekken 4 — turbine d’un avion stationné sur le parking arrière",
+      "continuity": "Tekken 4",
+      "mechanism": "airport-parked-airliner-turbine",
+      "color": "#b8c2c9",
+      "periodSeconds": 55,
+      "sceneEvidence": "The official Tekken 4 stage page describes parked aircraft and their wheels. The fuselage and wheels stay fixed here; only the engine fan turns as an authored mechanical interpretation, not a verified original idle loop.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "rayman3-hoodlum-headquarters-conveyor",
+      "universes": [
+        "Rayman"
+      ],
+      "scenePattern": "/hoodlum.*headquarter|rayman\\s*3.*(?:usine|convoyeur)|quartier.*g[eé]n[eé]ral.*hoodlum/i",
+      "excludedScenePattern": "/rayman\\s*[12](?!\\d)|legends|origins|band land/i",
+      "sourceWork": "Rayman 3: Hoodlum Havoc (2003) — Hoodlum Headquarters",
+      "sourceReference": "https://www.ubisoft.com/en-us/game/rayman",
+      "sourceScene": "Rayman 3 — Hoodlum Headquarters, convoyeur de l’usine",
+      "continuity": "Rayman 3: Hoodlum Havoc (2003)",
+      "mechanism": "hoodlum-headquarters-conveyor",
+      "color": "#baa581",
+      "periodSeconds": 21,
+      "sceneEvidence": "Hoodlum Headquarters is the industrial Hoodlum factory. Small closed crates advance around a chain conveyor behind a fixed guard; the belt cannot carry characters or create enemies.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "rayman-legends-undersea-security-scanner",
+      "universes": [
+        "Rayman"
+      ],
+      "scenePattern": "/20.?000.*(?:lums|lieues)|rayman legends.*(?:undersea|sous.marin)|under the sea/i",
+      "excludedScenePattern": "/rayman\\s*[123](?!\\d)|origins|hoodlum/i",
+      "sourceWork": "Rayman Legends (2013) — 20,000 Lums Under the Sea",
+      "sourceReference": "https://www.ubisoft.com/en-us/game/rayman/legends",
+      "sourceScene": "Rayman Legends — 20 000 Lums Under the Sea, scanner de la base sous-marine",
+      "continuity": "Rayman Legends (2013)",
+      "mechanism": "undersea-security-scanner",
+      "color": "#9cbbc8",
+      "periodSeconds": 19,
+      "sceneEvidence": "The undersea world uses stealth, underwater bases and security searchlights. A sealed window scanner sweeps a backdrop chamber only; it has no detection callback, alarm or attack.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "soul-calibur2-village-wind-mill",
+      "universes": [
+        "Soul Calibur"
+      ],
+      "scenePattern": "/village.*(?:wind|vent)|(?:windmill|moulin).*soul.?calibur\\s*(?:ii|2)\\b/i",
+      "excludedScenePattern": "/soul.?calibur\\s*(?:iii|iv|vi|v|[3456])\\b|grand labyrinth|sealed corridor/i",
+      "sourceWork": "Soulcalibur II (2002/2003) — Village of the Wind",
+      "sourceReference": "https://www.piggyback.com/en/wp-content/uploads/sites/7/2020/04/SCII_E_SamplePages.pdf",
+      "sourceScene": "Village of the Wind — moulin de Talim dans Soulcalibur II",
+      "continuity": "Soulcalibur II",
+      "mechanism": "village-of-wind-mill",
+      "color": "#c5b18c",
+      "periodSeconds": 24,
+      "sceneEvidence": "The licensed Piggyback guide identifies Chapter 4-2 Windmill as the Village of the Wind stage. Rotating wooden sails drive the small hub gear; their timing and dimensions are authored, with no change to arena bounds.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "soul-calibur6-indian-port-moored-boats",
+      "universes": [
+        "Soul Calibur"
+      ],
+      "scenePattern": "/indian port|port indien|impending storm/i",
+      "excludedScenePattern": "/soul.?calibur\\s*(?:ii(?!i)|iii|iv|v(?!i)|[2345])\\b|village.*wind/i",
+      "sourceWork": "Soulcalibur VI — Indian Port: Impending Storm",
+      "sourceReference": "https://www.bandainamcoent.com/games/soulcalibur-vi",
+      "sourceScene": "Indian Port — Impending Storm de Soulcalibur VI, embarcations amarrées",
+      "continuity": "Soulcalibur VI",
+      "mechanism": "indian-port-moored-boats",
+      "color": "#b7b6a0",
+      "periodSeconds": 28,
+      "sceneEvidence": "Indian Port is a coastal harbor stage with boats and moorings. Tethered hulls rock on the background water while their lines remain attached; no storm hazard or moving combat floor is introduced.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "nier-automata-amusement-carousel",
+      "universes": [
+        "NieR"
+      ],
+      "scenePattern": "/automata.*(?:amusement|parc)|amusement park|parc.*attraction/i",
+      "excludedScenePattern": "/replicant|gestalt|seafront|fa[çc]ade|nier.*(?:2010|2011)/i",
+      "sourceWork": "NieR:Automata (2017) — Amusement Park",
+      "sourceReference": "https://nierautomata.square-enix-games.com/",
+      "sourceScene": "NieR Automata — Amusement Park, manège circulaire des machines",
+      "continuity": "NieR:Automata (2017)",
+      "mechanism": "automata-amusement-carousel",
+      "color": "#c3b393",
+      "periodSeconds": 30,
+      "sceneEvidence": "Automata’s amusement park contains mechanical rides and a carousel. Rotating seats, suspension rods and the canopy refer to that location, without summoning machine enemies or importing Replicant locations.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "nier-automata-abandoned-factory-conveyor",
+      "universes": [
+        "NieR"
+      ],
+      "scenePattern": "/automata.*(?:factory|usine)|(?:factory|usine).*automata/i",
+      "excludedScenePattern": "/replicant|gestalt|seafront|fa[çc]ade|nier.*(?:2010|2011)/i",
+      "sourceWork": "NieR:Automata (2017) — Abandoned Factory",
+      "sourceReference": "https://nierautomata.square-enix-games.com/",
+      "sourceScene": "NieR Automata — usine abandonnée, chaîne de production du plan arrière",
+      "continuity": "NieR:Automata (2017)",
+      "mechanism": "automata-factory-production-line",
+      "color": "#b6ac94",
+      "periodSeconds": 22,
+      "sceneEvidence": "The abandoned factory contains industrial production lines and robotic machinery. Workpieces move beneath a synchronized mechanical arm on a distant belt, without spawning units or altering collision.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "dark-souls-firelink-parish-elevator",
+      "universes": [
+        "Dark Souls"
+      ],
+      "scenePattern": "/firelink.*(?:parish|elevator|lift)|lige.feu.*(?:paroisse|ascenseur)|undead parish.*(?:lift|elevator)/i",
+      "excludedScenePattern": "/dark souls\\s*(?:iii|ii|[23])\\b|lothric|drangleic|majula|firelink.*2016/i",
+      "sourceWork": "Dark Souls (2011) — Firelink Shrine / Undead Parish elevator",
+      "sourceReference": "https://en.bandainamcoent.eu/dark-souls/dark-souls-remastered",
+      "sourceScene": "Firelink Shrine de Dark Souls 2011 — ascenseur du raccourci vers Undead Parish",
+      "continuity": "Dark Souls (2011), Lordran",
+      "mechanism": "firelink-parish-elevator",
+      "color": "#b7b09c",
+      "periodSeconds": 33,
+      "sceneEvidence": "The original Firelink Shrine connects to Undead Parish by paired elevators. Counterbalanced empty platforms move inside the distant stone shaft; no shortcut is unlocked and actors cannot ride them.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "dark-souls-anor-londo-rotating-staircase",
+      "universes": [
+        "Dark Souls"
+      ],
+      "scenePattern": "/anor londo.*(?:stair|escalier|rotat|tour)|(?:rotating staircase|escalier tournant).*anor londo/i",
+      "excludedScenePattern": "/dark souls\\s*(?:iii|ii|[23])\\b|lothric|drangleic|majula|anor londo.*2016/i",
+      "sourceWork": "Dark Souls (2011) — Anor Londo rotating staircase tower",
+      "sourceReference": "https://en.bandainamcoent.eu/dark-souls/dark-souls-remastered",
+      "sourceScene": "Anor Londo de Dark Souls 2011 — tour de l’escalier tournant",
+      "continuity": "Dark Souls (2011), Lordran",
+      "mechanism": "anor-londo-rotating-staircase",
+      "color": "#c4b69c",
+      "periodSeconds": 44,
+      "sceneEvidence": "The Anor Londo tower changes the orientation and height of its spiral stairway. A small architectural model turns behind the arena; the playable topology and bridges never move.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "devil-may-cry3-temen-ni-gru-gears",
+      "universes": [
+        "Devil May Cry"
+      ],
+      "scenePattern": "/temen.?ni.?gru.*(?:gear|rouage|engrenage)|gears of madness/i",
+      "excludedScenePattern": "/devil may cry\\s*[1245]\\b|dmc\\s*[1245]\\b|limbo city|red grave/i",
+      "sourceWork": "Devil May Cry 3 (2005) — Temen-ni-gru, Gears of Madness",
+      "sourceReference": "https://www.gamespot.com/articles/devil-may-cry-3-dantes-awakening-walkthrough/1100-6120168/",
+      "sourceScene": "Temen-ni-gru — Gears of Madness de Devil May Cry 3, train d’engrenages",
+      "continuity": "Devil May Cry 3 (2005)",
+      "mechanism": "temen-ni-gru-gear-train",
+      "color": "#baa995",
+      "periodSeconds": 26,
+      "sceneEvidence": "Gears of Madness is a mechanical room of Temen-ni-gru. Three different-size gears counter-rotate on the back wall, with no platform, trap, enemy or progression effect.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "devil-may-cry4-fortuna-gyro-blade",
+      "universes": [
+        "Devil May Cry"
+      ],
+      "scenePattern": "/fortuna.*gyro|gyro.?blade.*(?:fortuna|devil may cry 4|dmc4)/i",
+      "excludedScenePattern": "/devil may cry\\s*[1235]\\b|dmc\\s*[1235]\\b|temen|limbo city|red grave/i",
+      "sourceWork": "Devil May Cry 4 (2008) — Fortuna Gyro Blade mechanism",
+      "sourceReference": "https://www.devilmaycry.com/",
+      "sourceScene": "Fortuna — Gyro Blade de Devil May Cry 4 dans son support arrière",
+      "continuity": "Devil May Cry 4 (2008)",
+      "mechanism": "fortuna-gyro-blade",
+      "color": "#a5bec0",
+      "periodSeconds": 20,
+      "sceneEvidence": "Nero activates Gyro Blades as rotating mechanical puzzle objects in Fortuna. This decorative specimen stays inside its background support: it never launches, cuts, collides or interacts with a character.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "ff8-balamb-garden-flight-ring",
+      "universes": [
+        "Final Fantasy VIII"
+      ],
+      "scenePattern": "/balamb.*(?:garden|fac|flight|vol)|(?:garden|fac).*balamb/i",
+      "excludedScenePattern": "/galbadia|trabia|lunar base|base lunaire|final fantasy vii\\b/i",
+      "sourceWork": "Final Fantasy VIII (1999) — mobile Balamb Garden",
+      "sourceReference": "https://ffviiiremastered.square-enix-games.com/",
+      "sourceScene": "Balamb Garden — anneaux et stabilisateurs du Garden en vol",
+      "continuity": "Final Fantasy VIII (1999)",
+      "mechanism": "balamb-garden-flight-ring",
+      "color": "#b3c8c5",
+      "periodSeconds": 40,
+      "sceneEvidence": "Balamb Garden becomes mobile after its MD-level systems activate. A distant architectural silhouette and rotating ring describe that mode; neither the scene camera nor any combat platform flies.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    },
+    {
+      "id": "ff8-d-district-prison-screw-tower",
+      "universes": [
+        "Final Fantasy VIII"
+      ],
+      "scenePattern": "/d.?district.*prison|prison.*d.?district|prison.*d[eé]sert.*ffviii/i",
+      "excludedScenePattern": "/balamb|galbadia garden|final fantasy vii\\b/i",
+      "sourceWork": "Final Fantasy VIII (1999) — D-District Prison",
+      "sourceReference": "https://ffviiiremastered.square-enix-games.com/",
+      "sourceScene": "D-District Prison — tour à vis et niveaux du bloc cellulaire",
+      "continuity": "Final Fantasy VIII (1999)",
+      "mechanism": "d-district-prison-screw-tower",
+      "color": "#b9b39e",
+      "periodSeconds": 37,
+      "sceneEvidence": "D-District Prison has cylindrical towers and a screw-like raising mechanism. Window bands orbit a distant tower while its base moves slightly on the helix; no cell, prisoner or gameplay floor moves.",
+      "animationWave": 3,
+      "animationProvenance": "authored-scene-mechanism-geometry-and-timing",
+      "renderingKind": "authored-mechanism",
+      "localBackdrops": {},
+      "timeSource": "simulation-elapsed-seconds",
+      "reducedMotionBehavior": "freeze-at-time-zero",
+      "sourceVisualValidation": "not-validated-1:1",
+      "gameplayEffect": "none"
+    }
+  ],
+  "rows": [
+    {
+      "universe": "28 Days Later",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "A Nightmare on Elm Street",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Absolver: Downfall",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ado",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Adoprixtoxis",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Aegea: War of the Moirai",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Aetherion: Seven Laws of Magic",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Aevum Fracture",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Agony",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Alien",
+      "before": {
+        "Combat": "alien-nostromo-mother-relay-panels",
+        "Melee": "alien-nostromo-airlock-pressure-cycle",
+        "RPG": "alien-nostromo-mother-relay-panels",
+        "Tactics": "alien-nostromo-airlock-pressure-cycle"
+      },
+      "after": {
+        "Combat": "alien-nostromo-mother-relay-panels",
+        "Melee": "alien-nostromo-airlock-pressure-cycle",
+        "RPG": "alien-nostromo-mother-relay-panels",
+        "Tactics": "alien-nostromo-airlock-pressure-cycle"
+      }
+    },
+    {
+      "universe": "Alien 3",
+      "before": {
+        "Combat": "alien3-fiorina-leadworks-ladle-hoist",
+        "Melee": "alien3-fiorina-leadworks-ladle-hoist",
+        "RPG": "alien3-fiorina-leadworks-ladle-hoist",
+        "Tactics": "alien3-fiorina-leadworks-ladle-hoist"
+      },
+      "after": {
+        "Combat": "alien3-fiorina-leadworks-ladle-hoist",
+        "Melee": "alien3-fiorina-leadworks-ladle-hoist",
+        "RPG": "alien3-fiorina-leadworks-ladle-hoist",
+        "Tactics": "alien3-fiorina-leadworks-ladle-hoist"
+      }
+    },
+    {
+      "universe": "Alien Resurrection",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Alien vs Predator",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Alien: Covenant",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Alien: Romulus",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Aliens",
+      "before": {
+        "Combat": "aliens-atmosphere-processor-pressure-valves",
+        "Melee": "aliens-atmosphere-processor-pressure-valves",
+        "RPG": "aliens-atmosphere-processor-pressure-valves",
+        "Tactics": "aliens-atmosphere-processor-pressure-valves"
+      },
+      "after": {
+        "Combat": "aliens-atmosphere-processor-pressure-valves",
+        "Melee": "aliens-atmosphere-processor-pressure-valves",
+        "RPG": "aliens-atmosphere-processor-pressure-valves",
+        "Tactics": "aliens-atmosphere-processor-pressure-valves"
+      }
+    },
+    {
+      "universe": "Aliens vs Predator: Requiem",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Altered Beast",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "American Dad",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Angels Fall First",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Another",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ash vs Evil Dead",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "ASMRZ",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Assassin's Creed",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Asterix & Obelix",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Atarashii Gakko",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Atomic Heart",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Attack on Titan",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Aural Vampire",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Avatar (Na'vi)",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Baby Cart",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Babymetal",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Back to the Future",
+      "before": {
+        "Combat": "back-future-1955-clocktower-escapement",
+        "Melee": "back-future-doc-garage-flux-capacitor",
+        "RPG": "back-future-1955-clocktower-escapement",
+        "Tactics": "back-future-doc-garage-flux-capacitor"
+      },
+      "after": {
+        "Combat": "back-future-1955-clocktower-escapement",
+        "Melee": "back-future-doc-garage-flux-capacitor",
+        "RPG": "back-future-1955-clocktower-escapement",
+        "Tactics": "back-future-doc-garage-flux-capacitor"
+      }
+    },
+    {
+      "universe": "Band-Maid",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Banlieue 13",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Battle Royale",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Beat Banger — Safe Rhythm Studio",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Bella Poarch",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ben 10",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Bendy and the Ink Machine",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Beyond Good & Evil",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Bible Black",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Big Mouth",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Bigflo & Oli",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Billie Eilish",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "BioShock",
+      "before": {
+        "Combat": "bioshock-bathysphere-pressure-winch",
+        "Melee": "bioshock-bathysphere-pressure-winch",
+        "RPG": "bioshock-bathysphere-pressure-winch",
+        "Tactics": "bioshock-hephaestus-core-regulators"
+      },
+      "after": {
+        "Combat": "bioshock-bathysphere-pressure-winch",
+        "Melee": "bioshock-bathysphere-pressure-winch",
+        "RPG": "bioshock-bathysphere-pressure-winch",
+        "Tactics": "bioshock-hephaestus-core-regulators"
+      }
+    },
+    {
+      "universe": "BIT.TRIP",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Black Eyed Peas",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Blackpink",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Blade Runner",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "BlazBlue",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Borderlands",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Borderlands 2",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Boruto: Naruto Next Generations",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Boruto: Two Blue Vortex",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Breaking Bad",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Bring Me the Horizon",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "BRINK",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Brütal Legend",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Buckethead",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Buckshot Roulette",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Buffy the Vampire Slayer",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Camera Cafe",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Cells at Work!",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Chainsaw Man",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Chappie",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Charmed",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Chicken Run",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Choo-Choo Charles",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Chucky",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Cloverfield",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Commando",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Cool Spot",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Counter-Strike",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Cowboy Bebop",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Crash Bandicoot",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Croc",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Croc: Legend of the Gobbos",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Crypt of the NecroDancer",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Crysis",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Cthulhu",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Cuphead",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Cyberpunk",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Cyberpunk: Edgerunners",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Daft Punk",
+      "before": {
+        "Combat": "daft-punk-alive-led-sequencer",
+        "Melee": "daft-punk-alive-led-sequencer",
+        "RPG": "daft-punk-alive-led-sequencer",
+        "Tactics": "daft-punk-alive-led-sequencer"
+      },
+      "after": {
+        "Combat": "daft-punk-alive-led-sequencer",
+        "Melee": "daft-punk-alive-led-sequencer",
+        "RPG": "daft-punk-alive-led-sequencer",
+        "Tactics": "daft-punk-alive-led-sequencer"
+      }
+    },
+    {
+      "universe": "Daikatana",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Dandadan",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Dante's Inferno",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Dark Souls",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "dark-souls-firelink-parish-elevator",
+        "Melee": "dark-souls-anor-londo-rotating-staircase",
+        "RPG": "dark-souls-firelink-parish-elevator",
+        "Tactics": "dark-souls-anor-londo-rotating-staircase"
+      }
+    },
+    {
+      "universe": "Day of the Dead",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Dead by Daylight",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Dead Rising",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Dead Space",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "dead-space-ishimura-centrifuge",
+        "Melee": "dead-space-ishimura-tram-coupling",
+        "RPG": "dead-space-ishimura-tram-coupling",
+        "Tactics": "dead-space-ishimura-centrifuge"
+      }
+    },
+    {
+      "universe": "Deadman Wonderland",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Deadmau5",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Death Note",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Defiance",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Demon Slayer",
+      "before": {
+        "Combat": "demon-slayer-infinity-background-screens",
+        "Melee": "demon-slayer-infinity-background-screens",
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "demon-slayer-infinity-background-screens",
+        "Melee": "demon-slayer-infinity-background-screens",
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Deponia",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Despicer",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Deus Ex",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Devil May Cry",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "devil-may-cry3-temen-ni-gru-gears",
+        "Melee": "devil-may-cry4-fortuna-gyro-blade",
+        "RPG": "devil-may-cry3-temen-ni-gru-gears",
+        "Tactics": "devil-may-cry4-fortuna-gyro-blade"
+      }
+    },
+    {
+      "universe": "Devilman",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Die Antwoord",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Digimon",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Digimon Celestial Rift",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Digital Circus",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Dino Crisis",
+      "before": {
+        "Combat": "dino-crisis-ibis-reactor-regulation",
+        "Melee": "dino-crisis-ibis-perimeter-beacons",
+        "RPG": "dino-crisis-ibis-reactor-regulation",
+        "Tactics": "dino-crisis-ibis-reactor-regulation"
+      },
+      "after": {
+        "Combat": "dino-crisis-ibis-reactor-regulation",
+        "Melee": "dino-crisis-ibis-perimeter-beacons",
+        "RPG": "dino-crisis-ibis-reactor-regulation",
+        "Tactics": "dino-crisis-ibis-reactor-regulation"
+      }
+    },
+    {
+      "universe": "Discipline: The Record of a Crusade",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Discworld",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Disenchantment",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Doom",
+      "before": {
+        "Combat": "doom-uac-mars-cooling-cycle",
+        "Melee": "doom-uac-mars-cooling-cycle",
+        "RPG": "doom-uac-mars-cooling-cycle",
+        "Tactics": "doom-uac-mars-cooling-cycle"
+      },
+      "after": {
+        "Combat": "doom-uac-mars-cooling-cycle",
+        "Melee": "doom-uac-mars-cooling-cycle",
+        "RPG": "doom-uac-mars-cooling-cycle",
+        "Tactics": "doom-uac-mars-cooling-cycle"
+      }
+    },
+    {
+      "universe": "Doom Sweeper — Safe Apocalypse",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Dragon Ball Z",
+      "before": {
+        "Combat": "dbz-cell-games-cloud-drift",
+        "Melee": "dbz-namek-water-refraction",
+        "RPG": "dbz-time-chamber-hourglasses",
+        "Tactics": "dbz-cell-games-cloud-drift"
+      },
+      "after": {
+        "Combat": "dbz-cell-games-cloud-drift",
+        "Melee": "dbz-namek-water-refraction",
+        "RPG": "dbz-time-chamber-hourglasses",
+        "Tactics": "dbz-cell-games-cloud-drift"
+      }
+    },
+    {
+      "universe": "Duke Nukem",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Dungeon Meshi",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Dynamite Duke",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "E.Y.E: Divine Cybermancy",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Early Edition",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Earthworm Jim",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ecco the Dolphin",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Elfen Lied",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Elvira",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Eminem",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Evil Dead",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Evil Dead (2013)",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Evolution",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Evolution: The Animated Series",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Evolve",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Exit 8",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Extreme Ghostbusters",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "F.E.A.R.",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Fallout",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Famille Pirate",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Family Guy",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Fantomas",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Final Fantasy VII",
+      "before": {
+        "Combat": "ff7-reactor-mako-circulation",
+        "Melee": "ff7-reactor-mako-circulation",
+        "RPG": "ff7-reactor-mako-circulation",
+        "Tactics": "ff7-reactor-mako-circulation"
+      },
+      "after": {
+        "Combat": "ff7-reactor-mako-circulation",
+        "Melee": "ff7-reactor-mako-circulation",
+        "RPG": "ff7-reactor-mako-circulation",
+        "Tactics": "ff7-reactor-mako-circulation"
+      }
+    },
+    {
+      "universe": "Final Fantasy VIII",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "ff8-balamb-garden-flight-ring",
+        "Melee": "ff8-d-district-prison-screw-tower",
+        "RPG": "ff8-balamb-garden-flight-ring",
+        "Tactics": "ff8-d-district-prison-screw-tower"
+      }
+    },
+    {
+      "universe": "Final Fantasy XIII",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Final Fantasy XV",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Finding Frankie",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Flashback",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Freddi Fish",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Friday the 13th",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Frieren: Beyond Journeys End",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "From",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Fullmetal Alchemist",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Futurama",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Gantz",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Gears of War",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Gex",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ghost",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ghost in the Shell",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ghostbusters",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ghosts of Mars",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Goat Simulator",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Godzilla",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Godzilla The Animated Series",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Goemon's Great Adventure",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Gorillaz",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Gremlins",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "GTFO",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Guilty Gear",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "guilty-gear-zepp-airship-propellers",
+        "Melee": "guilty-gear-may-ship-anchor-winch",
+        "RPG": "guilty-gear-may-ship-anchor-winch",
+        "Tactics": "guilty-gear-zepp-airship-propellers"
+      }
+    },
+    {
+      "universe": "Guitar Hero",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Gunnm",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Guns N Roses",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Gushing over Magical Girls — Safe Adult Reinterpretation",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "H2G2",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Half-Life",
+      "before": {
+        "Combat": "half-life-sector-c-spectrometer-rotor",
+        "Melee": "half-life-sector-c-spectrometer-rotor",
+        "RPG": "half-life-black-mesa-transit-tram",
+        "Tactics": "half-life-black-mesa-transit-tram"
+      },
+      "after": {
+        "Combat": "half-life-sector-c-spectrometer-rotor",
+        "Melee": "half-life-sector-c-spectrometer-rotor",
+        "RPG": "half-life-black-mesa-transit-tram",
+        "Tactics": "half-life-black-mesa-transit-tram"
+      }
+    },
+    {
+      "universe": "Halloween",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Halo",
+      "before": {
+        "Combat": "halo-truth-and-reconciliation-gravity-lift",
+        "Melee": "halo-truth-and-reconciliation-gravity-lift",
+        "RPG": "halo-truth-and-reconciliation-gravity-lift",
+        "Tactics": "halo-installation04-forerunner-beacons"
+      },
+      "after": {
+        "Combat": "halo-truth-and-reconciliation-gravity-lift",
+        "Melee": "halo-truth-and-reconciliation-gravity-lift",
+        "RPG": "halo-truth-and-reconciliation-gravity-lift",
+        "Tactics": "halo-installation04-forerunner-beacons"
+      }
+    },
+    {
+      "universe": "Happy Wheels",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Harry Potter",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "HAWKEN",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Haydee — Safe Adaptation",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Hazbin Hotel",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Heart Eyes",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Heart of Darkness",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Heavy Metal 2000",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Helios 56",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Hell House LLC",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Hellblade: Senua’s Sacrifice",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Hello Neighbor",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Hellraiser",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Helluva Boss",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Hexen",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "HITMAN — World of Assassination",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Home Alone",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Horizon Zero Dawn",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Hoshi",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Hotline Miami",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "House of 1000 Corpses",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "House of the Dead",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "House of the Dead 2",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "House of the Dead 3",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "How to Make a Monster",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ice Age",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ilyr Concordat",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Imperium Aeternum",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Indila",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Infernum: Nine Pits",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Inside Out",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Insidious",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Interstellar Marines",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Inuyashiki",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Invincible",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Iron Sky",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Iron Tempest",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Italian Brainrot",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Jersey Devil",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Jet Set Radio",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "John Wick",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "JoJo's Bizarre Adventure",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Joker New 52",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Kaamelott",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Karune Cal",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Kazaam",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Kemet: The Devoured Sun",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Kill Bill",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Killer Instinct",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Killer Tomatoes from Outer Space",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Killing Floor 2",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Killzone",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Korn",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Kung Pow",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Kyary Pamyu Pamyu",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "La Casa de Papel",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "La Cite de la Peur",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "La Petite Histoire de France",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Lady Gaga",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ladybaby",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Land of the Dead",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Last Action Hero",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Le Cinquième Element",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Le Donjon de Naheulbeuk",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Left 4 Dead",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Legacy of Kain",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Les Aventures de Saturnin",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Les Aventuriers du Survivaure",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Les Chevaliers du Fiel",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Les Inconnus",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Les Kassos",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Les Tuche",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Les Visiteurs",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Les Visiteurs du Futur",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Les Zinzins de l’espace",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Like a Dragon",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Lil Nas X",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Lilo & Stitch",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Linkin Park",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Little Big",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "LittleBigPlanet",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Lost Planet 2",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "M3GAN",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Mad Max",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Mad Max: Fury Road",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "MagiC JacK",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Magicka",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Malcolm in the Middle",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Man with a Mission",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Mandate of Nine Heavens",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Marathon",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Marble Hornets",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Marilyn Manson",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Mars Attacks",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Marvel Zombies — MCU Animation",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Mashle",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Mass Effect",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "mass-effect-normandy-sr1-galaxy-map",
+        "Melee": "mass-effect-presidium-skycar-lanes",
+        "RPG": "mass-effect-normandy-sr1-galaxy-map",
+        "Tactics": "mass-effect-presidium-skycar-lanes"
+      }
+    },
+    {
+      "universe": "Max Payne 2",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "MDK",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "MediEvil",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Meet the Feebles",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Men in Black",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Meridian Clockwork",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Méridien Creux",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Metal Gear",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "metal-gear-shadow-moses-heliport-searchlights",
+        "Melee": "metal-gear-shadow-moses-cargo-lift",
+        "RPG": "metal-gear-shadow-moses-heliport-searchlights",
+        "Tactics": "metal-gear-shadow-moses-cargo-lift"
+      }
+    },
+    {
+      "universe": "Metal Gear Rising",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "metal-gear-rising-world-marshal-freight-lift",
+        "Melee": "metal-gear-rising-abkhazia-refinery-compressor",
+        "RPG": "metal-gear-rising-world-marshal-freight-lift",
+        "Tactics": "metal-gear-rising-abkhazia-refinery-compressor"
+      }
+    },
+    {
+      "universe": "Metal Slug",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Metal: Hellsinger",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Michael Jackson",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Minecraft",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Minions",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Mirror's Edge",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Moonwalker",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Mr. Bean",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Murder Drones",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Mythos Primordia",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Naruto",
+      "before": {
+        "Combat": "naruto-forest-canopy-wind",
+        "Melee": "naruto-valley-waterfall-current",
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "naruto-forest-canopy-wind",
+        "Melee": "naruto-valley-waterfall-current",
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Naruto Shippuden",
+      "before": {
+        "Combat": null,
+        "Melee": "naruto-valley-waterfall-current",
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": "naruto-valley-waterfall-current",
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Natural Selection 2",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Necronomicon",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Negima",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Nemesis — Awaken Realms",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Neon Genesis Evangelion",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Neon Requiem",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Nexus de Convergence",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Nicolas et Pimprenelle",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "NieR",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "nier-automata-amusement-carousel",
+        "Melee": "nier-automata-abandoned-factory-conveyor",
+        "RPG": "nier-automata-amusement-carousel",
+        "Tactics": "nier-automata-abandoned-factory-conveyor"
+      }
+    },
+    {
+      "universe": "Night of the Living Dead",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Nightwish",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Nine Realms: Last Twilight",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "No Man's Sky",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Noelle Perna",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Noob",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Nyan Cat",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Oddworld",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Oggy et les Cafards",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Oliver Tree",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "One Punch Man",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Onechanbara",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Overgrowth",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Overlord Anime",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Palworld",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Parasite Eve",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Parasyte",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Payday",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Pee-wee",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Peepoodo — Safe Educational Adaptation",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Phantasmagoria",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Pingu",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Pirates of the Caribbean",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Planete Hurlante",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Plants vs. Zombies",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Police Squad",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Poppy Playtime",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Portal",
+      "before": {
+        "Combat": "portal-aperture-wall-aperture-phases",
+        "Melee": "portal-aperture-wall-aperture-phases",
+        "RPG": "portal-aperture-wall-aperture-phases",
+        "Tactics": "portal-aperture-wall-aperture-phases"
+      },
+      "after": {
+        "Combat": "portal-aperture-wall-aperture-phases",
+        "Melee": "portal-aperture-wall-aperture-phases",
+        "RPG": "portal-aperture-wall-aperture-phases",
+        "Tactics": "portal-aperture-wall-aperture-phases"
+      }
+    },
+    {
+      "universe": "Postal",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Predator",
+      "before": {
+        "Combat": "predator-dutch-counterweight-ropes",
+        "Melee": "predator-jungle-waterfall-vines",
+        "RPG": "predator-jungle-waterfall-vines",
+        "Tactics": "predator-dutch-counterweight-ropes"
+      },
+      "after": {
+        "Combat": "predator-dutch-counterweight-ropes",
+        "Melee": "predator-jungle-waterfall-vines",
+        "RPG": "predator-jungle-waterfall-vines",
+        "Tactics": "predator-dutch-counterweight-ropes"
+      }
+    },
+    {
+      "universe": "Predator 2",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Predator: Badlands",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Predator: Killer of Killers",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Predators",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Prey",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Prey (2006)",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Prometheus",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "PSY",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Psycho-Pass",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "PUBG",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Puppet Master",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Putt-Putt",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Quake",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Queen Bee",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "R.E.P.O.",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rambo",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rammstein",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rayman",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "rayman3-hoodlum-headquarters-conveyor",
+        "Melee": "rayman-legends-undersea-security-scanner",
+        "RPG": "rayman3-hoodlum-headquarters-conveyor",
+        "Tactics": "rayman-legends-undersea-security-scanner"
+      }
+    },
+    {
+      "universe": "Re-Animator",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "REC",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Red Faction",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Redneck Rampage",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Reflets d’Acide",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Remember Me",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Repo! The Genetic Opera",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Resident Evil",
+      "before": {
+        "Combat": "resident-evil-spencer-dining-clock",
+        "Melee": "resident-evil-spencer-dining-clock",
+        "RPG": "resident-evil-spencer-dining-clock",
+        "Tactics": "resident-evil-rpd-reception-console"
+      },
+      "after": {
+        "Combat": "resident-evil-spencer-dining-clock",
+        "Melee": "resident-evil-spencer-dining-clock",
+        "RPG": "resident-evil-spencer-dining-clock",
+        "Tactics": "resident-evil-rpd-reception-console"
+      }
+    },
+    {
+      "universe": "Richard au pays des livres magiques",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rick & Morty",
+      "before": {
+        "Combat": "rick-morty-garage-portal-phases",
+        "Melee": "rick-morty-garage-portal-phases",
+        "RPG": "rick-morty-garage-portal-phases",
+        "Tactics": "rick-morty-garage-portal-phases"
+      },
+      "after": {
+        "Combat": "rick-morty-garage-portal-phases",
+        "Melee": "rick-morty-garage-portal-phases",
+        "RPG": "rick-morty-garage-portal-phases",
+        "Tactics": "rick-morty-garage-portal-phases"
+      }
+    },
+    {
+      "universe": "Rick Astley",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ristar",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rival Schools",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rob Zombie",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "RoboCop",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rock of Ages",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rocky",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rocky Horror Picture Show",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Roger Rabbit",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rosario + Vampire",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "RRRrrrr!!!",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rubber",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rugrats",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Rurouni Kenshin",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Sam & Max",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Samantha Oups!",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Sanctum",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Sartorius Stedim Biotech",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Sausage Party",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Saw",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Scary Movie",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "SCP Foundation",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Seaman",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Secret of Monkey Island",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Serious Sam",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Shadow Man",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Shaka Ponk",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Shakira",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Sharknado",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Shaun of the Dead",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Silent Hill",
+      "before": {
+        "Combat": "silent-hill-toluca-rowboat-wake",
+        "Melee": "silent-hill-lakeside-carousel",
+        "RPG": null,
+        "Tactics": "silent-hill-toluca-rowboat-wake"
+      },
+      "after": {
+        "Combat": "silent-hill-toluca-rowboat-wake",
+        "Melee": "silent-hill-lakeside-carousel",
+        "RPG": null,
+        "Tactics": "silent-hill-toluca-rowboat-wake"
+      }
+    },
+    {
+      "universe": "Silent Hill f",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Sinister",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Siren Head",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Skibidi",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Skrillex",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Skullgirls",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Skyline",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Slender Man",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Small Soldiers",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Solar Opposites",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Soldier of Fortune",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Solo Leveling",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Sonic",
+      "before": {
+        "Combat": "sonic-green-hill-sunflowers",
+        "Melee": "sonic-green-hill-sunflowers",
+        "RPG": "sonic-green-hill-sunflowers",
+        "Tactics": "sonic-scrap-brain-conveyor-gears"
+      },
+      "after": {
+        "Combat": "sonic-green-hill-sunflowers",
+        "Melee": "sonic-green-hill-sunflowers",
+        "RPG": "sonic-green-hill-sunflowers",
+        "Tactics": "sonic-scrap-brain-conveyor-gears"
+      }
+    },
+    {
+      "universe": "Soul Calibur",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "soul-calibur2-village-wind-mill",
+        "Melee": "soul-calibur6-indian-port-moored-boats",
+        "RPG": "soul-calibur2-village-wind-mill",
+        "Tactics": "soul-calibur6-indian-port-moored-boats"
+      }
+    },
+    {
+      "universe": "Spawn",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Spermageddon",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Spider: The Video Game",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Splatterhouse",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Splice",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Spoof Movie",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Spy Fox",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Spy Kids",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Spy x Family",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Spyro",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Squid Game",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Squirrel with a Gun",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Stan Helsing",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Star Wars",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Stargate",
+      "before": {
+        "Combat": "stargate-sgc-four-phase-event-horizon",
+        "Melee": "stargate-sgc-four-phase-event-horizon",
+        "RPG": "stargate-sgc-four-phase-event-horizon",
+        "Tactics": "stargate-sgc-four-phase-event-horizon"
+      },
+      "after": {
+        "Combat": "stargate-sgc-four-phase-event-horizon",
+        "Melee": "stargate-sgc-four-phase-event-horizon",
+        "RPG": "stargate-sgc-four-phase-event-horizon",
+        "Tactics": "stargate-sgc-four-phase-event-horizon"
+      }
+    },
+    {
+      "universe": "Stargate Atlantis",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Stargate Infinity",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Stargate Universe",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Starship Troopers",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Steins;Gate",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Stellar Dream — Safe Colony Mission",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Stranger Things",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Streets of Rage",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Sub Urban",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Subverse — Safe Galactic Rebellion",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Super Meat Boy",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Superhero Movie",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "SUPERHOT",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Sword Art Online",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Sword Art Online: Gun Gale Online",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "System of a Down",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Tail Concerto",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Tanya the Evil",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Tawantinsuyu: The Split Sun",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Team Fortress 2",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Teen Titans",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Tekken",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": "tekken8-urban-square-taxi-traffic",
+        "Melee": "tekken4-airport-parked-airliner-turbine",
+        "RPG": "tekken8-urban-square-taxi-traffic",
+        "Tactics": "tekken4-airport-parked-airliner-turbine"
+      }
+    },
+    {
+      "universe": "Téléchat",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Tenacious D",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Terminator",
+      "before": {
+        "Combat": "terminator-2029-hk-searchlight",
+        "Melee": "terminator-factory-hydraulic-press",
+        "RPG": "terminator-2029-hk-searchlight",
+        "Tactics": "terminator-factory-hydraulic-press"
+      },
+      "after": {
+        "Combat": "terminator-2029-hk-searchlight",
+        "Melee": "terminator-factory-hydraulic-press",
+        "RPG": "terminator-2029-hk-searchlight",
+        "Tactics": "terminator-factory-hydraulic-press"
+      }
+    },
+    {
+      "universe": "Terrifier",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Thalassa Mnémique",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Aether Crown",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Amazing Patate Show",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Backrooms — Kane Pixels",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Ball",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Batman Who Laughs",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Big Bang Theory",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Binding of Isaac: Rebirth",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Brave Little Toaster",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Collector",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Conjuring",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Creator",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Crownless Sea",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Da Vinci Code",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Dark Knight",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Darkness",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Drowned Testament",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Expendables",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Forest",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Grudge",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Horribly Slow Murderer",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Last of Us",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Lord of the Rings",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Matrix",
+      "before": {
+        "Combat": "matrix-operator-terminal-refresh",
+        "Melee": "matrix-operator-terminal-refresh",
+        "RPG": "matrix-operator-terminal-refresh",
+        "Tactics": "matrix-operator-terminal-refresh"
+      },
+      "after": {
+        "Combat": "matrix-operator-terminal-refresh",
+        "Melee": "matrix-operator-terminal-refresh",
+        "RPG": "matrix-operator-terminal-refresh",
+        "Tactics": "matrix-operator-terminal-refresh"
+      }
+    },
+    {
+      "universe": "The Mummy",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Predator",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Purge",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Ring",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Silence of the Lambs",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Simpsons",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Smurfs",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Surge",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Texas Chain Saw Massacre",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Thing",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Truman Show",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Walking Dead — Telltale",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Weeknd",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "The Wild Thornberrys",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Them!",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Tintin",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Titanfall 2",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Tokyo Ghoul",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Tom Clancy’s Splinter Cell",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Tomb Raider",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Tomba",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Tommy Heavenly6",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Torbahead",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Toxic Avenger",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Toy Soldiers",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Tremors",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Trololo",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Turok",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Twisted Metal",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Ultra Vomit",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Universal Soldier",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Unreal",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Unreal Tournament",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Unreal Tournament 2004",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Uzumaki",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Valedor: The Shattered Crown",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "VelociPastor",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Viridienne Ultime",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Virus",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Vocaloid",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Voyage de Chihiro",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Wakfu",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Wallace & Gromit",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "War of the Worlds",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Warhammer 40,000: Space Marine",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Within Temptation",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Wolfenstein",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Woodruff",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Worms",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Wrong Turn",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Yakuza",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Yomi no Kage",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Yu-Gi-Oh",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Zak et Crysta",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Zero Escape: The Nonary Games",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Zombi",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Zombies Ate My Neighbors",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Zootopia",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    },
+    {
+      "universe": "Zorro",
+      "before": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      },
+      "after": {
+        "Combat": null,
+        "Melee": null,
+        "RPG": null,
+        "Tactics": null
+      }
+    }
+  ]
+}

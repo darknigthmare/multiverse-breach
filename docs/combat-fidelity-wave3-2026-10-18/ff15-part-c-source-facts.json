@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "universe": "Final Fantasy XV",
+  "sourceWork": "Final Fantasy XV (2016)",
+  "sourceAccess": {
+    "localReferencesInspected": true,
+    "effectiveProjectKitsRead": true,
+    "webReadAttempted": true,
+    "webToolReadableResult": false,
+    "directReads": [
+      { "url": "https://finalfantasy.fandom.com/wiki/Trigger_Happy_(Final_Fantasy_XV)", "status": "HTTP402: no content read" },
+      { "url": "https://finalfantasy.fandom.com/wiki/Overwhelm", "status": "HTTP402: no content read" },
+      { "url": "https://www.ign.com/wikis/final-fantasy-15/Techniques", "status": "HTTP403 tunnel: no content read" }
+    ],
+    "networkVerified": false,
+    "note": "These failed reads are access records, not citations supporting claims. No source access restriction was bypassed. Artwork follows inspected local identities, effective project abilities and known-work equipment, with adaptations described below."
+  },
+  "facts": [
+    { "heroId": "noctis_ff15", "version": "Young Noctis before the10-year time skip, black Crownsguard fatigues", "equipment": "Engine Blade and blue spectral Royal Arms", "projectSuper": "Armiger", "adaptation": "Royal Arms count, orbit, compact aerial cuts, four-pose timing and pose scale are authored. No older king costume, beard, throne, Ring beam or Cloud weapon is introduced.", "sourceReference": "src/game/canonicalCombatOverrides.js#noctis_ff15;src/game/combat/abilities/abilitiesCanonical.js#noctis_ff15;public/sprites/generated/heroes/final-fantasy-xv/noctis-ff15.png", "networkVerified": false, "canon1to1Verified": false },
+    { "heroId": "gladiolus_ff15", "version": "Adult Gladiolus, open black Crownsguard shirt and arm tattoos", "equipment": "Physical two-handed greatsword", "projectSuper": "Dawnhammer", "adaptation": "The technique is represented by a heavy downward sword strike, not a literal summoned hammer. Jump height, impact ripple and four-pose timing are authored.", "sourceReference": "src/game/canonicalCombatOverrides.js#gladiolus_ff15;src/game/combat/abilities/abilitiesCanonical.js#gladiolus_ff15;public/sprites/generated/heroes/final-fantasy-xv/gladiolus-ff15.png", "networkVerified": false, "canon1to1Verified": false },
+    { "heroId": "ignis_ff15", "version": "Sighted Ignis before Altissia, clear spectacles and original Crownsguard suit", "equipment": "Paired short steel daggers", "projectSuper": "Overwhelm", "adaptation": "Overwhelm is a coordinated assault command. The solo atlas shows Ignis directing and performing his own dagger portion; it does not invent summoned teammates or certify that the entire source technique is a solo attack. Green-white motion strokes are illustration, not a new elemental power.", "sourceReference": "src/game/canonicalCombatOverrides.js#ignis_ff15;src/game/combat/abilities/abilitiesCanonical.js#ignis_ff15;public/sprites/generated/heroes/final-fantasy-xv/ignis-ff15.png", "networkVerified": false, "canon1to1Verified": false },
+    { "heroId": "prompto_ff15", "version": "Young Prompto, sleeveless black vest, blond hair and red hip plaid", "equipment": "A compact handgun", "projectSuper": "Trigger Happy", "adaptation": "Rapid ballistic pistol fire is condensed to four native poses. Exact firearm model, round count, group targeting and timing are not externally verified. The art does not invent laser fire, a camera weapon, dual weapons or another character’s sword.", "sourceReference": "src/game/canonicalCombatOverrides.js#prompto_ff15;src/game/combat/abilities/abilitiesCanonical.js#prompto_ff15;public/sprites/generated/heroes/final-fantasy-xv/prompto-ff15.png", "networkVerified": false, "canon1to1Verified": false },
+    { "heroId": "lunafreya_ff15", "version": "Young adult Lunafreya, braided blond updo and flowing off-shoulder white gown matching the local reference", "equipment": "Empty hands and gentle blessing gestures", "projectSuper": "Oracle’s Blessing", "adaptation": "Oracle’s Blessing is the project’s authored group-healing name. The atlas shows healing, prayer, reassurance and nonviolent final flourish. It never converts support into a projectile, execution, weapon attack or source-certified offensive power.", "sourceReference": "src/game/canonicalCombatOverrides.js#lunafreya_ff15;src/game/combat/abilities/abilitiesCanonical.js#lunafreya_ff15;public/sprites/generated/heroes/final-fantasy-xv/lunafreya-ff15.png", "networkVerified": false, "canon1to1Verified": false }
+  ],
+  "knownLocalDebtOutsideThisArtBatch": [
+    "HEROES_DB still has weaponType gun and old generic attack slots for Gladiolus and Ignis. Effective authored abilities already use their greatsword/daggers. This art batch did not modify roster, kits or runtime."
+  ],
+  "visualReview": {
+    "allFiveLocalReferencesSeenBeforeGeneration": true,
+    "allSevenNativeSourcesSeen": true,
+    "allFiveNormalizedContactsSeen": true,
+    "reviewedPoses": 160,
+    "acceptedCorrections": [
+      { "heroId": "noctis_ff15", "targetRows": [4, 7], "reason": "Replace connected/oversized Armiger effect and2opaque seam pixels with new separated compact native sword poses. Six other rows remain from the original source." },
+      { "heroId": "gladiolus_ff15", "targetRows": [3], "reason": "The original rightmost roundDefeat sword was cropped at the native source edge. The four replacement poses contain the full blade;28other poses remain from the original source." }
+    ],
+    "limits": [
+      "Gladiolus original fatality row retains2semi-transparent effect pixels intersected by adaptive column seams, zero opaque silhouette pixels. This minor VFX fringe is documented and is not certified source-identical.",
+      "Native pose drawings, body scale between phases, effects, precise weapon details and choreography are authored adaptations. Pixel uniqueness and source hashes do not establish fidelity to official animation."
+    ]
+  },
+  "canonicalAnimationVerified": false,
+  "canon1to1Verified": false,
+  "networkVerified": false
+}

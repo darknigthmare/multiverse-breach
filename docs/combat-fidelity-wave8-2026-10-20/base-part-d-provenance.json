@@ -1,0 +1,3564 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "part": "D",
+  "provider": "OpenAI",
+  "tool": "image_gen",
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "source1to1Verified": false,
+  "canon1to1Verified": false,
+  "networkVerified": false,
+  "method": "Genuine native image_gen drawings only. Sharp segments alpha seams, applies a single measured body-density scale per source, pads and packs. No drawing, duplicated pose, procedural anatomy or mirrored replacement is synthesized. Supporting actions retain their resolved role.",
+  "sourceAccess": "docs/combat-fidelity-wave8-2026-10-20/part-d-source-access.json",
+  "nativeToolArgumentsFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-native-tool-calls.json",
+  "generationRecords": [
+    {
+      "heroId": "laios_meshi",
+      "version": "Laios Touden, Dungeon Meshi anime2024, ordinary human adventurer: short pale blond hair, amber eyes, silver steel breastplate/shoulder/forearm armor over pale tan long sleeves, brown belt and leather boots. One real Kensuke longsword, steel blade/gold crossguard; compact practical equipment, no energy cannon.",
+      "useOldReference": true,
+      "rows": [
+        "INTRO: arriving adventurer. 1 standing with sheathed sword and hand raised to shade eyes, 2 leaning forward to examine a tiny harmless dungeon specimen held in open palm, 3 straightening and gripping sword hilt, 4 drawing Kensuke into a low ready guard.",
+        "OUTRO: thoughtful departure. 1 lowering Kensuke, 2 wiping/checking blade carefully, 3 sheathing sword with both hands, 4 turning shoulders away while giving a final curious glance.",
+        "ROUND VICTORY: earned confidence. 1 breathing out with sword lowered, 2 straightening chest and resting sword against shoulder, 3 small pleased fist held near chest with sword safely down, 4 returning to an alert low sword guard.",
+        "ROUND DEFEAT: regrouping alive. 1 recoiling with knees bent and arms guarding, 2 dropping to one knee with Kensuke tip down, 3 supporting torso with sword hand low, 4 rising into a careful crouched guard.",
+        "FINALE ADAPTATION: decisive non-gory Kensuke sword finish; no victim drawn. 1 planting rear foot with blade drawn back, 2 deep step forward beginning diagonal cut, 3 complete low-to-high follow-through with real sword held in hands, 4 grounded recovery blade lowered. Entire sword must stay inside its cell.",
+        "MATCH VICTORY: monster enthusiast at ease. 1 exhaling relieved, 2 kneeling beside a tiny harmless specimen in his palm, 3 upright showing it with delighted expression, 4 offering the viewer a sincere modest raised-hand farewell with sword sheathed.",
+        "MATCH DEFEAT: exhausted but living. 1 shoulders drooping while sword lowered, 2 kneeling with hand to chest, 3 sitting on heel head bowed, 4 lifting head and starting to get up. No death, blood or dismemberment.",
+        "SUPER Coupe de Kensuke: one physical committed sword sequence. 1 two-handed guard with sword back, 2 forward driving step and horizontal steel blade cut, 3 deeper follow-through shoulders rotated and front knee bent, 4 withdrawing blade to safe ready guard. No monster beam or magic transformation."
+      ],
+      "universe": "Dungeon Meshi",
+      "name": "Laios Touden",
+      "sourceWork": "Dungeon Meshi / Delicious in Dungeon, TV anime2024",
+      "sourceReference": {
+        "simple": "Laios porte Kensuke et étudie les monstres ; sa connaissance de leurs traits fournit le soutien plutôt qu’un sort nouveau.",
+        "secondary": "Laios porte Kensuke et étudie les monstres ; sa connaissance de leurs traits fournit le soutien plutôt qu’un sort nouveau.",
+        "defense": "Laios porte Kensuke et étudie les monstres ; sa connaissance de leurs traits fournit le soutien plutôt qu’un sort nouveau.",
+        "special": "Dungeon Meshi : Laios manie l'épée vivante Kensuke au cours de l'exploration du donjon ; ni fusil ni attaque d'énergie personnelle."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Taille de Kensuke",
+          "effect": "damage",
+          "delivery": "melee",
+          "targetSide": "enemy",
+          "range": 85
+        },
+        "secondary": {
+          "name": "Laios identifie le monstre du donjon",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "defense": {
+          "name": "Parade du chevalier Laios",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Coupe de Kensuke",
+          "effect": "damage",
+          "delivery": "melee",
+          "targetSide": "enemy",
+          "range": 170
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dungeon-meshi/laios-meshi.png",
+      "referenceArchive": "docs/combat-fidelity-wave8-2026-10-20/part-d-references/laios_meshi-old-base.png",
+      "referenceAssetSha256": "89155cb889212a79c6d7cf6cbe7c5de5d2a0db975e1126070bb70802fa1d60c0",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/laios_meshi-original.png",
+      "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Laios Touden from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Laios Touden, Dungeon Meshi anime2024, ordinary human adventurer: short pale blond hair, amber eyes, silver steel breastplate/shoulder/forearm armor over pale tan long sleeves, brown belt and leather boots. One real Kensuke longsword, steel blade/gold crossguard; compact practical equipment, no energy cannon. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: one hand resting on sheathed Kensuke, shift weight, glance ahead and adjust guard; four different shoulder/hand/leg placements.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Taille de Kensuke: (1) real steel sword drawn back with rear leg bent, (2) planted forward step starting diagonal cut, (3) extended physical follow-through with both hands on hilt, (4) recoiling blade to low guard. Whole sword contained; no food cooking or magical beam.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/laios_meshi-original.txt",
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed": true,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "source1to1Verified": false,
+      "networkVerified": false,
+      "sources": [
+        {
+          "generatedPath": "/workspace/generated_images/exec-e5c46cc7-1695-4465-837c-228d7f950669.png",
+          "archivedPath": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/laios_meshi-original.png",
+          "sha256": "4b9d9065228d49e90a85021e9fb11107d4ae2956aaa9ab4ca5abfd62dd8f0545",
+          "rows": 4,
+          "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Laios Touden from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Laios Touden, Dungeon Meshi anime2024, ordinary human adventurer: short pale blond hair, amber eyes, silver steel breastplate/shoulder/forearm armor over pale tan long sleeves, brown belt and leather boots. One real Kensuke longsword, steel blade/gold crossguard; compact practical equipment, no energy cannon. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: one hand resting on sheathed Kensuke, shift weight, glance ahead and adjust guard; four different shoulder/hand/leg placements.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Taille de Kensuke: (1) real steel sword drawn back with rear leg bent, (2) planted forward step starting diagonal cut, (3) extended physical follow-through with both hands on hilt, (4) recoiling blade to low guard. Whole sword contained; no food cooking or magical beam.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+          "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/laios_meshi-original.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/laios_meshi-original.png"
+          ],
+          "operation": "native-imagegen",
+          "calibration": {
+            "kind": "anatomical-head-to-sole-visible-alpha-roi",
+            "row": 0,
+            "col": 0,
+            "measurementRoi": [
+              85,
+              0,
+              200,
+              360
+            ],
+            "bodyBounds": {
+              "left": 85,
+              "top": 11,
+              "width": 172,
+              "height": 340
+            },
+            "bodyHeight": 340,
+            "alphaThreshold": 24,
+            "headAndFeetVisuallyReviewed": true,
+            "excludesWeaponEffects": true,
+            "proofImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-contacts/laios_meshi-calibration.png",
+            "notes": "Standing body from first cell, source-wide calibration; props/effects excluded from head-to-sole height. Same documented species stature as native32.",
+            "visibleBodyPixels": 36702,
+            "nativeAlphaSegmentationUsedForMeasurement": true
+          }
+        }
+      ],
+      "rowSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        }
+      ],
+      "targetBodyHeight": 190
+    },
+    {
+      "heroId": "marcille_meshi",
+      "version": "Marcille Donato, Dungeon Meshi anime2024: adult blond elf mage, long pointed ears, green eyes, long blond hair with twin front braids and small red hair ties, dark blue ankle-length robe with pale beige trim, blue shoulder capelet, red neck ribbon, brown belt pouch, brown sandals over pale leg wraps. Her real Ambrosia wooden staff has a looped natural branch head with small green leaves; no gun, no human Falin likeness.",
+      "useOldReference": true,
+      "rows": [
+        "INTRO: mage preparing. 1 holding wooden loop staff upright, 2 brushing hair back with free hand while shifting weight, 3 opening free palm near chest in quiet incantation, 4 bracing feet with staff in forward ready position.",
+        "OUTRO: dismissing spell. 1 lowering staff after action, 2 checking its leafy loop with free hand, 3 hugging staff upright close to shoulder, 4 turning away with a small restrained wave.",
+        "ROUND VICTORY: relief. 1 staff lowered with chest heaving, 2 free hand wiping brow, 3 small proud raised fist with staff grounded, 4 recovering calm upright mage stance.",
+        "ROUND DEFEAT: stagger and regroup. 1 flinching with free arm up, 2 dropping into bent-knee crouch leaning on staff, 3 kneeling head lowered and staff vertical, 4 rising halfway with determined face.",
+        "FINALE ADAPTATION of Explosion magique: no execution or victim. 1 staff held forward with free hand forming a precise casting gesture, 2 torso leaning into incantation and hands closer to loop, 3 planted feet and staff fully extended with a compact gold-orange magical bloom at loop, 4 recoil into bent elbows and settling sparks. Bloom is local, entire anatomy and staff visible.",
+        "MATCH VICTORY: composed mage. 1 releasing a long relieved breath, 2 putting free hand on hip and tilting staff, 3 looking upward with a tiny satisfied smile, 4 modest wave with staff vertical.",
+        "MATCH DEFEAT: living exhaustion. 1 shoulders falling and staff slack, 2 sinking onto both knees, 3 sitting back and clasping staff to chest, 4 looking up tired but alert. No corpse.",
+        "SUPER Explosion magique de Marcille: 1 both hands braced on staff with knees flexed, 2 sweeping staff forward while opening stance, 3 full extension and compact orange-gold explosive magical flare around staff loop, 4 arms recoil and robe settles. Four different anatomical poses; not only four glow variations."
+      ],
+      "universe": "Dungeon Meshi",
+      "name": "Marcille",
+      "sourceWork": "Dungeon Meshi / Delicious in Dungeon, TV anime2024",
+      "sourceReference": {
+        "simple": "Marcille pratique la magie et ses explosions dans Dungeon Meshi ; l’incantation d’attaque est stylisée sans attribuer à tous ses soins de Falin.",
+        "secondary": "Marcille pratique la magie et ses explosions dans Dungeon Meshi ; l’incantation d’attaque est stylisée sans attribuer à tous ses soins de Falin.",
+        "defense": "Marcille pratique la magie et ses explosions dans Dungeon Meshi ; l’incantation d’attaque est stylisée sans attribuer à tous ses soins de Falin.",
+        "special": "Dungeon Meshi : Marcille utilise sa magie offensive d'explosion au bâton pendant les affrontements du donjon."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Marcille prépare l’incantation",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "secondary": {
+          "name": "Explosion magique de Marcille",
+          "effect": "damage",
+          "delivery": "area",
+          "targetSide": "enemy",
+          "range": 380
+        },
+        "defense": {
+          "name": "Retrait de la mage derrière l’escouade",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Explosion magique de Marcille",
+          "effect": "damage",
+          "delivery": "area",
+          "targetSide": "enemy",
+          "range": 420
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dungeon-meshi/marcille-meshi.png",
+      "referenceArchive": "docs/combat-fidelity-wave8-2026-10-20/part-d-references/marcille_meshi-old-base.png",
+      "referenceAssetSha256": "b2b63711627348a350db6b07201f747147bcb5134cf54b697dcd880d71ecae39",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/marcille_meshi-original.png",
+      "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Marcille from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Marcille Donato, Dungeon Meshi anime2024: adult blond elf mage, long pointed ears, green eyes, long blond hair with twin front braids and small red hair ties, dark blue ankle-length robe with pale beige trim, blue shoulder capelet, red neck ribbon, brown belt pouch, brown sandals over pale leg wraps. Her real Ambrosia wooden staff has a looped natural branch head with small green leaves; no gun, no human Falin likeness. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: holding leafy loop Ambrosia staff upright, shifting weight, touching braid, then alert open palm; four different hand/shoulder/leg positions.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Marcille prépare l’incantation = BUFF SUPPORT: (1) staff upright and open free hand near chest, (2) knees flexed and free palm pointing to staff loop, (3) torso straightening with raised incantation fingers and calm concentrated eyes, (4) staff lowered slightly and reassuring open palm offered toward allies. Tiny local gold spark at palm only. No explosion, attack strike, beam or stab in this basic action.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/marcille_meshi-original.txt",
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed": true,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "source1to1Verified": false,
+      "networkVerified": false,
+      "sources": [
+        {
+          "generatedPath": "/workspace/generated_images/exec-51ac5ac1-d22a-44db-a6b5-6ab5407a8990.png",
+          "archivedPath": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/marcille_meshi-original.png",
+          "sha256": "ca6dae85665d20a0fc3d3dbde96c85011d82b7e4b27931fa7bf277541d528197",
+          "rows": 4,
+          "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Marcille from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Marcille Donato, Dungeon Meshi anime2024: adult blond elf mage, long pointed ears, green eyes, long blond hair with twin front braids and small red hair ties, dark blue ankle-length robe with pale beige trim, blue shoulder capelet, red neck ribbon, brown belt pouch, brown sandals over pale leg wraps. Her real Ambrosia wooden staff has a looped natural branch head with small green leaves; no gun, no human Falin likeness. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: holding leafy loop Ambrosia staff upright, shifting weight, touching braid, then alert open palm; four different hand/shoulder/leg positions.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Marcille prépare l’incantation = BUFF SUPPORT: (1) staff upright and open free hand near chest, (2) knees flexed and free palm pointing to staff loop, (3) torso straightening with raised incantation fingers and calm concentrated eyes, (4) staff lowered slightly and reassuring open palm offered toward allies. Tiny local gold spark at palm only. No explosion, attack strike, beam or stab in this basic action.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+          "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/marcille_meshi-original.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/marcille_meshi-original.png"
+          ],
+          "operation": "native-imagegen",
+          "calibration": {
+            "kind": "anatomical-head-to-sole-visible-alpha-roi",
+            "row": 0,
+            "col": 0,
+            "measurementRoi": [
+              60,
+              0,
+              130,
+              330
+            ],
+            "bodyBounds": {
+              "left": 68,
+              "top": 30,
+              "width": 122,
+              "height": 290
+            },
+            "bodyHeight": 290,
+            "alphaThreshold": 24,
+            "headAndFeetVisuallyReviewed": true,
+            "excludesWeaponEffects": true,
+            "proofImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-contacts/marcille_meshi-calibration.png",
+            "notes": "Standing body from first cell, source-wide calibration; props/effects excluded from head-to-sole height. Same documented species stature as native32.",
+            "visibleBodyPixels": 26162,
+            "nativeAlphaSegmentationUsedForMeasurement": true
+          }
+        }
+      ],
+      "rowSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        }
+      ],
+      "targetBodyHeight": 165
+    },
+    {
+      "heroId": "senshi_meshi",
+      "version": "Senshi, Dungeon Meshi anime2024 dwarf cook: very stocky muscular adult dwarf, huge dense black beard and moustache, round nose, steel helmet with two short brown horns and cheek guards, bare muscular upper arms, dark sleeveless tunic/leather apron, brown fur-trimmed lower clothes, leather wrist guards, sturdy brown/steel boots. Practical single-headed steel axe carried for ordinary attacks; iron pot and ladle only when actually cooking. No gun, magic wand or elemental attack.",
+      "useOldReference": true,
+      "rows": [
+        "INTRO: cook adventurer. 1 standing axe held down safely, 2 setting compact cooking pot beside boot while kneeling, 3 inspecting a vegetable in free hand, 4 upright ready stance axe low. No stage or floor painted.",
+        "OUTRO: packing up. 1 putting ladle back in pot, 2 lifting pot with both hands, 3 slinging pot securely behind torso, 4 turning to leave with free hand raised.",
+        "ROUND VICTORY: practical satisfaction. 1 resting lowered axe beside body, 2 one hand on hip and deep breath, 3 approving nod and thumb up, 4 returning to balanced ready stance.",
+        "ROUND DEFEAT: living regroup. 1 bracing forearms in recoil, 2 crouching low on bent legs, 3 one knee down hand steadying helmet, 4 straightening with axe held low. No blood.",
+        "FINALE SUPPORT ADAPTATION: restorative cooking, NEVER an execution. 1 kneeling stirring small iron pot with ladle, 2 leaning to inspect a steaming spoonful, 3 standing and extending a bowl of cooked stew to an offscreen ally, 4 contentedly lowering ladle with empty hand inviting ally to eat. Warm steam only, no magic beam, no offensive axe swing.",
+        "MATCH VICTORY: proud nourishing cook. 1 lifting a bowl from pot, 2 inspecting its aroma close to nose, 3 holding out serving with warm proud expression, 4 satisfied arms folded with pot beside feet.",
+        "MATCH DEFEAT: tired but living. 1 shoulders dropping with pot held low, 2 sitting heavily on bent knees, 3 resting one elbow on knee and cheek in fist, 4 looking up prepared to recover. No corpse.",
+        "SUPER Repas équilibré du donjon = HEAL SUPPORT: 1 bending knees and stirring an actual iron pot, 2 leaning forward to scoop stew with ladle, 3 upright extending a full bowl outward to a teammate, 4 lowering bowl and offering a second open-palm serving gesture. Every cell has one whole Senshi body; food/steam do not replace anatomy. No axe attack in this row."
+      ],
+      "universe": "Dungeon Meshi",
+      "name": "Senshi",
+      "sourceWork": "Dungeon Meshi / Delicious in Dungeon, TV anime2024",
+      "sourceReference": {
+        "simple": "Senshi sait manier la hache et cuisine pour le groupe ; la récupération alimentaire est une adaptation de ses repas.",
+        "secondary": "Senshi sait manier la hache et cuisine pour le groupe ; la récupération alimentaire est une adaptation de ses repas.",
+        "defense": "Senshi sait manier la hache et cuisine pour le groupe ; la récupération alimentaire est une adaptation de ses repas.",
+        "special": "Dungeon Meshi : Senshi prépare des repas de monstres nutritifs pour le groupe ; récupération adaptée de la cuisine, sans arme à feu."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Coup de hache de Senshi",
+          "effect": "damage",
+          "delivery": "melee",
+          "targetSide": "enemy",
+          "range": 85
+        },
+        "secondary": {
+          "name": "Servir le repas préparé du donjon",
+          "effect": "heal",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "defense": {
+          "name": "Protection derrière le matériel de Senshi",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Repas équilibré du donjon",
+          "effect": "heal",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dungeon-meshi/senshi-meshi.png",
+      "referenceArchive": "docs/combat-fidelity-wave8-2026-10-20/part-d-references/senshi_meshi-old-base.png",
+      "referenceAssetSha256": "58a9ffe6142d7535547064ee7f4d62c24a98cdcdcfd0620ce37634769ee3975c",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/senshi_meshi-original.png",
+      "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Senshi from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Senshi, Dungeon Meshi anime2024 dwarf cook: very stocky muscular adult dwarf, huge dense black beard and moustache, round nose, steel helmet with two short brown horns and cheek guards, bare muscular upper arms, dark sleeveless tunic/leather apron, brown fur-trimmed lower clothes, leather wrist guards, sturdy brown/steel boots. Practical single-headed steel axe carried for ordinary attacks; iron pot and ladle only when actually cooking. No gun, magic wand or elemental attack. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: stocky dwarf with actual single-headed steel axe held safely low; shift weight, adjust helmet, settle feet, balanced ready stance.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Coup de hache de Senshi = physical axe attack: (1) gripping compact axe behind torso with knees bent, (2) stepping forward with axe beginning diagonal downstroke, (3) deep forward cut with steel axe gripped in both hands, (4) drawing axe back to low ready position. Each is a different body/arm pose, full axe stays inside cell. No cooking-heal row here.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/senshi_meshi-original.txt",
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed": true,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "source1to1Verified": false,
+      "networkVerified": false,
+      "sources": [
+        {
+          "generatedPath": "/workspace/generated_images/exec-cefb453f-587b-4af6-8297-d87bd870eb1d.png",
+          "archivedPath": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/senshi_meshi-original.png",
+          "sha256": "e22407aaf40bbdd3fe29350a3f4eaa2571b1a037a38dfd8e4fb16a353865a47f",
+          "rows": 4,
+          "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Senshi from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Senshi, Dungeon Meshi anime2024 dwarf cook: very stocky muscular adult dwarf, huge dense black beard and moustache, round nose, steel helmet with two short brown horns and cheek guards, bare muscular upper arms, dark sleeveless tunic/leather apron, brown fur-trimmed lower clothes, leather wrist guards, sturdy brown/steel boots. Practical single-headed steel axe carried for ordinary attacks; iron pot and ladle only when actually cooking. No gun, magic wand or elemental attack. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: stocky dwarf with actual single-headed steel axe held safely low; shift weight, adjust helmet, settle feet, balanced ready stance.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Coup de hache de Senshi = physical axe attack: (1) gripping compact axe behind torso with knees bent, (2) stepping forward with axe beginning diagonal downstroke, (3) deep forward cut with steel axe gripped in both hands, (4) drawing axe back to low ready position. Each is a different body/arm pose, full axe stays inside cell. No cooking-heal row here.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+          "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/senshi_meshi-original.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/senshi_meshi-original.png"
+          ],
+          "operation": "native-imagegen",
+          "calibration": {
+            "kind": "anatomical-head-to-sole-visible-alpha-roi",
+            "row": 0,
+            "col": 0,
+            "measurementRoi": [
+              65,
+              0,
+              245,
+              330
+            ],
+            "bodyBounds": {
+              "left": 65,
+              "top": 14,
+              "width": 231,
+              "height": 310
+            },
+            "bodyHeight": 310,
+            "alphaThreshold": 24,
+            "headAndFeetVisuallyReviewed": true,
+            "excludesWeaponEffects": true,
+            "proofImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-contacts/senshi_meshi-calibration.png",
+            "notes": "Standing body from first cell, source-wide calibration; props/effects excluded from head-to-sole height. Same documented species stature as native32.",
+            "visibleBodyPixels": 50848,
+            "nativeAlphaSegmentationUsedForMeasurement": true
+          }
+        }
+      ],
+      "rowSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        }
+      ],
+      "targetBodyHeight": 145
+    },
+    {
+      "heroId": "chilchuck_meshi",
+      "version": "Chilchuck Tims, Dungeon Meshi anime2024, a 29-year-old ADULT male half-foot locksmith, short adult with a slim wiry body and mature narrow face, short reddish auburn hair, brown eyes, rounded protruding half-foot ears, brown quilted sleeveless tunic/vest over cream long-sleeve shirt, brown belt with many small tool pouches, dark brown trousers and brown lace boots. Tiny lock picks and probe tools only, compact brass lock mechanism as work prop. No pistol, rifle, crossbow, dagger attack, child styling or assassin fantasy.",
+      "useOldReference": false,
+      "rejectedReference": "Old local atlas contains a fabricated firearm and offensive shooting poses; inspected but deliberately excluded from generation inputs.",
+      "rows": [
+        "INTRO: careful professional. 1 upright checking belt pouch, 2 drawing a tiny lock pick while looking down, 3 leaning forward to listen intently with raised palm, 4 alert ready stance palms open and tool held safely close.",
+        "OUTRO: secure passage. 1 closing tiny lock mechanism held in hands, 2 returning pick to pouch, 3 brushing hands off and straightening, 4 turning shoulders away while gesturing others to follow.",
+        "ROUND VICTORY: understated approval. 1 dropping tense shoulders, 2 looking sideways with one raised eyebrow, 3 crossing arms with small satisfied smirk, 4 uncrossing into alert stance.",
+        "ROUND DEFEAT: regroup alive. 1 startled backward lean with empty palms up, 2 ducking into low crouch, 3 one knee down checking tool pouch, 4 rising carefully behind raised forearm. No weapon attack.",
+        "FINALE GUARD SUPPORT ADAPTATION: securing a trap, never assassination. 1 kneeling and inspecting a compact brass trap mechanism near knee, 2 leaning close using two tiny picks to disengage spring, 3 turning mechanism outward to show released harmless latch, 4 standing and giving clear stop/then-safe open-palm signal to offscreen allies. No blood, blade or trap firing.",
+        "MATCH VICTORY: passage safe. 1 wiping brow with sleeve, 2 holding repaired tiny lock up proudly, 3 putting it away with a restrained smile, 4 hands on hips professional relaxed stance.",
+        "MATCH DEFEAT: living exhaustion. 1 sighing with shoulders slumped, 2 sitting on one heel with hand at brow, 3 inspecting a bent tiny lock pick with annoyed expression, 4 looking up and putting it back in pouch. No dead body.",
+        "SUPER Désamorçage des pièges de Chilchuck = GUARD SUPPORT: 1 kneeling with two tiny locksmith picks and compact exposed brass spring latch, 2 torso leaning forward and both hands adjusting separate pins, 3 shifting one knee and pulling harmless released pin out, 4 upright open palm indicating safe passage while latch remains inactive. Physical specialist gestures; no magic force field, no firearm or stabbing."
+      ],
+      "universe": "Dungeon Meshi",
+      "name": "Chilchuck",
+      "sourceWork": "Dungeon Meshi / Delicious in Dungeon, TV anime2024",
+      "sourceReference": {
+        "simple": "Chilchuck est serrurier et spécialiste des pièges ; les gestes apportent information et protection sans attaque d’assassin inventée.",
+        "secondary": "Chilchuck est serrurier et spécialiste des pièges ; les gestes apportent information et protection sans attaque d’assassin inventée.",
+        "defense": "Chilchuck est serrurier et spécialiste des pièges ; les gestes apportent information et protection sans attaque d’assassin inventée.",
+        "special": "Dungeon Meshi : Chilchuck utilise ses compétences de serrurier et de détecteur de pièges pour sécuriser le passage du groupe."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Chilchuck examine la serrure",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "secondary": {
+          "name": "Désamorcer le passage piégé",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "defense": {
+          "name": "Se retirer hors de la zone du piège",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Désamorçage des pièges de Chilchuck",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dungeon-meshi/chilchuck-meshi.png",
+      "referenceArchive": "docs/combat-fidelity-wave8-2026-10-20/part-d-references/chilchuck_meshi-old-base.png",
+      "referenceAssetSha256": "1869e94650582bcab44105fb1f321d76787a94b8c450761e0db04964ddd7b99c",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/chilchuck_meshi-original.png",
+      "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Chilchuck from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Chilchuck Tims, Dungeon Meshi anime2024, a 29-year-old ADULT male half-foot locksmith, short adult with a slim wiry body and mature narrow face, short reddish auburn hair, brown eyes, rounded protruding half-foot ears, brown quilted sleeveless tunic/vest over cream long-sleeve shirt, brown belt with many small tool pouches, dark brown trousers and brown lace boots. Tiny lock picks and probe tools only, compact brass lock mechanism as work prop. No pistol, rifle, crossbow, dagger attack, child styling or assassin fantasy. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: adult half-foot professional checking tiny lockpick pouch, shift feet, listen, open alert palms; no weapons.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Chilchuck examine la serrure = BUFF SUPPORT: (1) standing inspecting a small brass lock in left hand, (2) kneeling and inserting a tiny lockpick with right hand, (3) leaning close with ear tilted to listen and both hands carefully adjusting mechanism, (4) standing while raising the now safely opened lock and signalling information to allies. Absolutely no pistol, rifle, dagger, offensive strike or magic force field.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/chilchuck_meshi-original.txt",
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed": true,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "source1to1Verified": false,
+      "networkVerified": false,
+      "sources": [
+        {
+          "generatedPath": "/workspace/generated_images/exec-5ce5ddfd-48aa-46d6-8025-c3ad8fd3e5e5.png",
+          "archivedPath": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/chilchuck_meshi-original.png",
+          "sha256": "6c77bfc3a5c273e0c02b9ca846ec6e88df258c854562c280d5840759ca476fd8",
+          "rows": 4,
+          "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Chilchuck from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Chilchuck Tims, Dungeon Meshi anime2024, a 29-year-old ADULT male half-foot locksmith, short adult with a slim wiry body and mature narrow face, short reddish auburn hair, brown eyes, rounded protruding half-foot ears, brown quilted sleeveless tunic/vest over cream long-sleeve shirt, brown belt with many small tool pouches, dark brown trousers and brown lace boots. Tiny lock picks and probe tools only, compact brass lock mechanism as work prop. No pistol, rifle, crossbow, dagger attack, child styling or assassin fantasy. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: adult half-foot professional checking tiny lockpick pouch, shift feet, listen, open alert palms; no weapons.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Chilchuck examine la serrure = BUFF SUPPORT: (1) standing inspecting a small brass lock in left hand, (2) kneeling and inserting a tiny lockpick with right hand, (3) leaning close with ear tilted to listen and both hands carefully adjusting mechanism, (4) standing while raising the now safely opened lock and signalling information to allies. Absolutely no pistol, rifle, dagger, offensive strike or magic force field.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+          "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/chilchuck_meshi-original.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/chilchuck_meshi-original.png"
+          ],
+          "operation": "native-imagegen",
+          "calibration": {
+            "kind": "anatomical-head-to-sole-visible-alpha-roi",
+            "row": 0,
+            "col": 0,
+            "measurementRoi": [
+              75,
+              0,
+              190,
+              360
+            ],
+            "bodyBounds": {
+              "left": 79,
+              "top": 7,
+              "width": 164,
+              "height": 340
+            },
+            "bodyHeight": 340,
+            "alphaThreshold": 24,
+            "headAndFeetVisuallyReviewed": true,
+            "excludesWeaponEffects": true,
+            "proofImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-contacts/chilchuck_meshi-calibration.png",
+            "notes": "Standing body from first cell, source-wide calibration; props/effects excluded from head-to-sole height. Same documented species stature as native32.",
+            "visibleBodyPixels": 33136,
+            "nativeAlphaSegmentationUsedForMeasurement": true
+          }
+        }
+      ],
+      "rowSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        }
+      ],
+      "targetBodyHeight": 115
+    },
+    {
+      "heroId": "falin_meshi",
+      "version": "Falin Touden in her ordinary HUMAN form from Dungeon Meshi anime2024: young adult human woman with short chin-length tousled pale ash-blond bob, soft round face, small HUMAN rounded ears, gentle usually closed/slightly opened eyes, white high-collared long-sleeved ankle-length tunic/robe, simple medium green shoulder cloak/cape secured at neck, brown leather belt and brown boots. No long blond elf braids, pointed elf ears, red ribbon, blue Marcille robe, feathers, dragon body, chimera, tail, wings or transformation. Healer with empty caring hands, no beam cannon or offensive spell weapon.",
+      "useOldReference": false,
+      "rejectedReference": "Old Falin atlas is a long-haired pointed-ear Marcille clone with offensive staff beam; inspected but excluded from generation inputs.",
+      "rows": [
+        "INTRO: gentle human healer. 1 hands folded loosely near waist and eyes softly closed, 2 opening eyes slightly and tilting head attentively, 3 opening one palm toward companion, 4 poised standing with both palms held near chest.",
+        "OUTRO: tending group. 1 letting healing hands settle, 2 looking at a companion offscreen with slight concerned tilt, 3 closing hands together gratefully near collar, 4 turning away with a small gentle wave.",
+        "ROUND VICTORY: grateful relief. 1 exhaling with hands at waist, 2 one palm on chest and smile, 3 bowing head with folded hands, 4 straightening into calm supportive stance.",
+        "ROUND DEFEAT: alive and recovering. 1 flinching and shielding face with forearm, 2 lowering onto one knee with free palm braced near knee, 3 breathing with hand over chest, 4 rising halfway with reassuring open palm. No transformation.",
+        "FINALE HEAL SUPPORT ADAPTATION: caring recovery, never execution. 1 kneeling with both empty palms cupped low as if assessing a companion offscreen, 2 leaning forward with one palm extended and other near chest, 3 widening both arms in a soft pale-green healing shimmer, 4 relaxing palms downward with relieved smile. Small local light only; no beam, enemy or suffering victim.",
+        "MATCH VICTORY: peaceful healer. 1 putting hand to heart, 2 gentle forward bow with eyes closed, 3 lifting chin and opening arms in welcome, 4 warm quiet wave. All four poses anatomically different.",
+        "MATCH DEFEAT: living fatigue. 1 shoulders sagging with eyes half closed, 2 kneeling with hands on thighs, 3 sitting back on heels and head bowed, 4 lifting eyes with determined gentle smile. No death, blood or monster form.",
+        "SUPER Magie de soin de Falin = HEAL SUPPORT: 1 both hands gathered near chest while knees soften, 2 shifting weight forward and extending right open palm, 3 opening both arms with soft white/pale-green recovery glow around hands and cloak, 4 drawing hands down to relaxed waist with relieved expression. Four real body gestures; no staff beam, chimera or offensive attack."
+      ],
+      "universe": "Dungeon Meshi",
+      "name": "Falin",
+      "sourceWork": "Dungeon Meshi / Delicious in Dungeon, TV anime2024",
+      "sourceReference": {
+        "simple": "La Falin humaine pratique soin et protection ; ces actions n’importent pas sa transformation imposée.",
+        "secondary": "La Falin humaine pratique soin et protection ; ces actions n’importent pas sa transformation imposée.",
+        "defense": "La Falin humaine pratique soin et protection ; ces actions n’importent pas sa transformation imposée.",
+        "special": "Dungeon Meshi : Falin est une utilisatrice de magie de soin et de protection ; action fondée sur ses soins, pas sur sa transformation forcée."
+      },
+      "profiles": {
+        "simple": {
+          "name": "Falin évalue l’altération d’un compagnon",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "secondary": {
+          "name": "Magie de soin de Falin",
+          "effect": "heal",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        },
+        "defense": {
+          "name": "Protection de la soigneuse Falin",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "range": 1
+        },
+        "special": {
+          "name": "Magie de soin de Falin",
+          "effect": "heal",
+          "delivery": "support",
+          "targetSide": "ally",
+          "range": 760
+        }
+      },
+      "referenceAsset": "/sprites/generated/heroes/dungeon-meshi/falin-meshi.png",
+      "referenceArchive": "docs/combat-fidelity-wave8-2026-10-20/part-d-references/falin_meshi-old-base.png",
+      "referenceAssetSha256": "8a50d8a63e3585ceba570f9346cf5ac794b78c6120251438176125b01a7916c9",
+      "referenceImage": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/falin_meshi-original.png",
+      "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Falin from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Falin Touden in her ordinary HUMAN form from Dungeon Meshi anime2024: young adult human woman with short chin-length tousled pale ash-blond bob, soft round face, small HUMAN rounded ears, gentle usually closed/slightly opened eyes, white high-collared long-sleeved ankle-length tunic/robe, simple medium green shoulder cloak/cape secured at neck, brown leather belt and brown boots. No long blond elf braids, pointed elf ears, red ribbon, blue Marcille robe, feathers, dragon body, chimera, tail, wings or transformation. Healer with empty caring hands, no beam cannon or offensive spell weapon. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: human healer in short ash-blond bob/white robe/green cloak, softly closed eyes, loose folded hands, weight shift and gentle open-palm readiness.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Falin évalue l’altération d’un compagnon = BUFF SUPPORT: (1) hand to chest and attentive head tilt, (2) one knee down with right open palm low as if examining an offscreen companion, (3) leaning forward with both caring hands open and eyes gently focused, (4) standing again with reassuring palm offered toward teammate. No explosion, attacking staff, beam, punch, monster or transformation.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/falin_meshi-original.txt",
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed": true,
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "source1to1Verified": false,
+      "networkVerified": false,
+      "sources": [
+        {
+          "generatedPath": "/workspace/generated_images/exec-3f0cc1c5-61cb-4ee8-ae5d-463b7b799c1e.png",
+          "archivedPath": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/falin_meshi-original.png",
+          "sha256": "a33850e3cddb8dcb5ce5b00317da9c5860ae1ee64a7c3e914af78e1abbea4b8a",
+          "rows": 4,
+          "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Falin from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Falin Touden in her ordinary HUMAN form from Dungeon Meshi anime2024: young adult human woman with short chin-length tousled pale ash-blond bob, soft round face, small HUMAN rounded ears, gentle usually closed/slightly opened eyes, white high-collared long-sleeved ankle-length tunic/robe, simple medium green shoulder cloak/cape secured at neck, brown leather belt and brown boots. No long blond elf braids, pointed elf ears, red ribbon, blue Marcille robe, feathers, dragon body, chimera, tail, wings or transformation. Healer with empty caring hands, no beam cannon or offensive spell weapon. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: human healer in short ash-blond bob/white robe/green cloak, softly closed eyes, loose folded hands, weight shift and gentle open-palm readiness.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Falin évalue l’altération d’un compagnon = BUFF SUPPORT: (1) hand to chest and attentive head tilt, (2) one knee down with right open palm low as if examining an offscreen companion, (3) leaning forward with both caring hands open and eyes gently focused, (4) standing again with reassuring palm offered toward teammate. No explosion, attacking staff, beam, punch, monster or transformation.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+          "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/falin_meshi-original.txt",
+          "referenceInputs": [
+            "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/falin_meshi-original.png"
+          ],
+          "operation": "native-imagegen",
+          "calibration": {
+            "kind": "anatomical-head-to-sole-visible-alpha-roi",
+            "row": 0,
+            "col": 0,
+            "measurementRoi": [
+              45,
+              0,
+              220,
+              345
+            ],
+            "bodyBounds": {
+              "left": 54,
+              "top": 13,
+              "width": 201,
+              "height": 327
+            },
+            "bodyHeight": 327,
+            "alphaThreshold": 24,
+            "headAndFeetVisuallyReviewed": true,
+            "excludesWeaponEffects": true,
+            "proofImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-contacts/falin_meshi-calibration.png",
+            "notes": "Standing body from first cell, source-wide calibration; props/effects excluded from head-to-sole height. Same documented species stature as native32.",
+            "visibleBodyPixels": 38901,
+            "nativeAlphaSegmentationUsedForMeasurement": true
+          }
+        }
+      ],
+      "rowSelections": [
+        {
+          "source": 0,
+          "row": 0
+        },
+        {
+          "source": 0,
+          "row": 1
+        },
+        {
+          "source": 0,
+          "row": 2
+        },
+        {
+          "source": 0,
+          "row": 3
+        }
+      ],
+      "targetBodyHeight": 175
+    }
+  ],
+  "sources": [
+    {
+      "heroId": "laios_meshi",
+      "archivedPath": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/laios_meshi-original.png",
+      "sha256": "4b9d9065228d49e90a85021e9fb11107d4ae2956aaa9ab4ca5abfd62dd8f0545",
+      "sourceDimensions": [
+        1246,
+        1263
+      ],
+      "originalGeneratedPath": "/workspace/generated_images/exec-e5c46cc7-1695-4465-837c-228d7f950669.png",
+      "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Laios Touden from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Laios Touden, Dungeon Meshi anime2024, ordinary human adventurer: short pale blond hair, amber eyes, silver steel breastplate/shoulder/forearm armor over pale tan long sleeves, brown belt and leather boots. One real Kensuke longsword, steel blade/gold crossguard; compact practical equipment, no energy cannon. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: one hand resting on sheathed Kensuke, shift weight, glance ahead and adjust guard; four different shoulder/hand/leg placements.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Taille de Kensuke: (1) real steel sword drawn back with rear leg bent, (2) planted forward step starting diagonal cut, (3) extended physical follow-through with both hands on hilt, (4) recoiling blade to low guard. Whole sword contained; no food cooking or magical beam.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/laios_meshi-original.txt",
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "transparentBackgroundRequested": true,
+      "nativeRowCount": 4,
+      "imagegenReferenceInputs": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/laios_meshi-original.png",
+          "sha256": "6d36a57e850d080d5dafe2a9a829c50ed207111f131c32ebc4f45ad0fcbc8be0"
+        }
+      ],
+      "operation": "native-imagegen",
+      "accepted": true,
+      "reason": null,
+      "selectedSourceRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "unusedSourceRows": [],
+      "calibration": {
+        "kind": "anatomical-head-to-sole-visible-alpha-roi",
+        "row": 0,
+        "col": 0,
+        "measurementRoi": [
+          85,
+          0,
+          200,
+          360
+        ],
+        "bodyBounds": {
+          "left": 85,
+          "top": 11,
+          "width": 172,
+          "height": 340
+        },
+        "bodyHeight": 340,
+        "alphaThreshold": 24,
+        "headAndFeetVisuallyReviewed": true,
+        "excludesWeaponEffects": true,
+        "proofImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-contacts/laios_meshi-calibration.png",
+        "notes": "Standing body from first cell, source-wide calibration; props/effects excluded from head-to-sole height. Same documented species stature as native32.",
+        "visibleBodyPixels": 36702,
+        "nativeAlphaSegmentationUsedForMeasurement": true
+      },
+      "sharedPixelScale": 0.45986124876114964,
+      "targetBodyHeight": 190,
+      "source1to1Verified": false,
+      "networkVerified": false
+    },
+    {
+      "heroId": "marcille_meshi",
+      "archivedPath": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/marcille_meshi-original.png",
+      "sha256": "ca6dae85665d20a0fc3d3dbde96c85011d82b7e4b27931fa7bf277541d528197",
+      "sourceDimensions": [
+        1248,
+        1260
+      ],
+      "originalGeneratedPath": "/workspace/generated_images/exec-51ac5ac1-d22a-44db-a6b5-6ab5407a8990.png",
+      "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Marcille from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Marcille Donato, Dungeon Meshi anime2024: adult blond elf mage, long pointed ears, green eyes, long blond hair with twin front braids and small red hair ties, dark blue ankle-length robe with pale beige trim, blue shoulder capelet, red neck ribbon, brown belt pouch, brown sandals over pale leg wraps. Her real Ambrosia wooden staff has a looped natural branch head with small green leaves; no gun, no human Falin likeness. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: holding leafy loop Ambrosia staff upright, shifting weight, touching braid, then alert open palm; four different hand/shoulder/leg positions.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Marcille prépare l’incantation = BUFF SUPPORT: (1) staff upright and open free hand near chest, (2) knees flexed and free palm pointing to staff loop, (3) torso straightening with raised incantation fingers and calm concentrated eyes, (4) staff lowered slightly and reassuring open palm offered toward allies. Tiny local gold spark at palm only. No explosion, attack strike, beam or stab in this basic action.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/marcille_meshi-original.txt",
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "transparentBackgroundRequested": true,
+      "nativeRowCount": 4,
+      "imagegenReferenceInputs": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/marcille_meshi-original.png",
+          "sha256": "f80b6108f3e8a193a7325c7a294d5bd8df48df3c6f0a4024ef121bbcdf223519"
+        }
+      ],
+      "operation": "native-imagegen",
+      "accepted": true,
+      "reason": null,
+      "selectedSourceRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "unusedSourceRows": [],
+      "calibration": {
+        "kind": "anatomical-head-to-sole-visible-alpha-roi",
+        "row": 0,
+        "col": 0,
+        "measurementRoi": [
+          60,
+          0,
+          130,
+          330
+        ],
+        "bodyBounds": {
+          "left": 68,
+          "top": 30,
+          "width": 122,
+          "height": 290
+        },
+        "bodyHeight": 290,
+        "alphaThreshold": 24,
+        "headAndFeetVisuallyReviewed": true,
+        "excludesWeaponEffects": true,
+        "proofImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-contacts/marcille_meshi-calibration.png",
+        "notes": "Standing body from first cell, source-wide calibration; props/effects excluded from head-to-sole height. Same documented species stature as native32.",
+        "visibleBodyPixels": 26162,
+        "nativeAlphaSegmentationUsedForMeasurement": true
+      },
+      "sharedPixelScale": 0.5689655172413793,
+      "targetBodyHeight": 165,
+      "source1to1Verified": false,
+      "networkVerified": false
+    },
+    {
+      "heroId": "senshi_meshi",
+      "archivedPath": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/senshi_meshi-original.png",
+      "sha256": "e22407aaf40bbdd3fe29350a3f4eaa2571b1a037a38dfd8e4fb16a353865a47f",
+      "sourceDimensions": [
+        1330,
+        1182
+      ],
+      "originalGeneratedPath": "/workspace/generated_images/exec-cefb453f-587b-4af6-8297-d87bd870eb1d.png",
+      "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Senshi from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Senshi, Dungeon Meshi anime2024 dwarf cook: very stocky muscular adult dwarf, huge dense black beard and moustache, round nose, steel helmet with two short brown horns and cheek guards, bare muscular upper arms, dark sleeveless tunic/leather apron, brown fur-trimmed lower clothes, leather wrist guards, sturdy brown/steel boots. Practical single-headed steel axe carried for ordinary attacks; iron pot and ladle only when actually cooking. No gun, magic wand or elemental attack. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: stocky dwarf with actual single-headed steel axe held safely low; shift weight, adjust helmet, settle feet, balanced ready stance.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Coup de hache de Senshi = physical axe attack: (1) gripping compact axe behind torso with knees bent, (2) stepping forward with axe beginning diagonal downstroke, (3) deep forward cut with steel axe gripped in both hands, (4) drawing axe back to low ready position. Each is a different body/arm pose, full axe stays inside cell. No cooking-heal row here.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/senshi_meshi-original.txt",
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "transparentBackgroundRequested": true,
+      "nativeRowCount": 4,
+      "imagegenReferenceInputs": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/senshi_meshi-original.png",
+          "sha256": "a1504ec9e8edebebd4c17e2571751627f3a281e8d82ccd78c40b1aac4ed74bc2"
+        }
+      ],
+      "operation": "native-imagegen",
+      "accepted": true,
+      "reason": null,
+      "selectedSourceRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "unusedSourceRows": [],
+      "calibration": {
+        "kind": "anatomical-head-to-sole-visible-alpha-roi",
+        "row": 0,
+        "col": 0,
+        "measurementRoi": [
+          65,
+          0,
+          245,
+          330
+        ],
+        "bodyBounds": {
+          "left": 65,
+          "top": 14,
+          "width": 231,
+          "height": 310
+        },
+        "bodyHeight": 310,
+        "alphaThreshold": 24,
+        "headAndFeetVisuallyReviewed": true,
+        "excludesWeaponEffects": true,
+        "proofImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-contacts/senshi_meshi-calibration.png",
+        "notes": "Standing body from first cell, source-wide calibration; props/effects excluded from head-to-sole height. Same documented species stature as native32.",
+        "visibleBodyPixels": 50848,
+        "nativeAlphaSegmentationUsedForMeasurement": true
+      },
+      "sharedPixelScale": 0.46774193548387094,
+      "targetBodyHeight": 145,
+      "source1to1Verified": false,
+      "networkVerified": false
+    },
+    {
+      "heroId": "chilchuck_meshi",
+      "archivedPath": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/chilchuck_meshi-original.png",
+      "sha256": "6c77bfc3a5c273e0c02b9ca846ec6e88df258c854562c280d5840759ca476fd8",
+      "sourceDimensions": [
+        1312,
+        1199
+      ],
+      "originalGeneratedPath": "/workspace/generated_images/exec-5ce5ddfd-48aa-46d6-8025-c3ad8fd3e5e5.png",
+      "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Chilchuck from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Chilchuck Tims, Dungeon Meshi anime2024, a 29-year-old ADULT male half-foot locksmith, short adult with a slim wiry body and mature narrow face, short reddish auburn hair, brown eyes, rounded protruding half-foot ears, brown quilted sleeveless tunic/vest over cream long-sleeve shirt, brown belt with many small tool pouches, dark brown trousers and brown lace boots. Tiny lock picks and probe tools only, compact brass lock mechanism as work prop. No pistol, rifle, crossbow, dagger attack, child styling or assassin fantasy. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: adult half-foot professional checking tiny lockpick pouch, shift feet, listen, open alert palms; no weapons.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Chilchuck examine la serrure = BUFF SUPPORT: (1) standing inspecting a small brass lock in left hand, (2) kneeling and inserting a tiny lockpick with right hand, (3) leaning close with ear tilted to listen and both hands carefully adjusting mechanism, (4) standing while raising the now safely opened lock and signalling information to allies. Absolutely no pistol, rifle, dagger, offensive strike or magic force field.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/chilchuck_meshi-original.txt",
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "transparentBackgroundRequested": true,
+      "nativeRowCount": 4,
+      "imagegenReferenceInputs": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/chilchuck_meshi-original.png",
+          "sha256": "b054821a3ff5f4c315b5e2c423b4a07bd346a330508b06eedecc537ed021dfc4"
+        }
+      ],
+      "operation": "native-imagegen",
+      "accepted": true,
+      "reason": null,
+      "selectedSourceRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "unusedSourceRows": [],
+      "calibration": {
+        "kind": "anatomical-head-to-sole-visible-alpha-roi",
+        "row": 0,
+        "col": 0,
+        "measurementRoi": [
+          75,
+          0,
+          190,
+          360
+        ],
+        "bodyBounds": {
+          "left": 79,
+          "top": 7,
+          "width": 164,
+          "height": 340
+        },
+        "bodyHeight": 340,
+        "alphaThreshold": 24,
+        "headAndFeetVisuallyReviewed": true,
+        "excludesWeaponEffects": true,
+        "proofImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-contacts/chilchuck_meshi-calibration.png",
+        "notes": "Standing body from first cell, source-wide calibration; props/effects excluded from head-to-sole height. Same documented species stature as native32.",
+        "visibleBodyPixels": 33136,
+        "nativeAlphaSegmentationUsedForMeasurement": true
+      },
+      "sharedPixelScale": 0.3382352941176471,
+      "targetBodyHeight": 115,
+      "source1to1Verified": false,
+      "networkVerified": false
+    },
+    {
+      "heroId": "falin_meshi",
+      "archivedPath": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/falin_meshi-original.png",
+      "sha256": "a33850e3cddb8dcb5ce5b00317da9c5860ae1ee64a7c3e914af78e1abbea4b8a",
+      "sourceDimensions": [
+        1241,
+        1267
+      ],
+      "originalGeneratedPath": "/workspace/generated_images/exec-3f0cc1c5-61cb-4ee8-ae5d-463b7b799c1e.png",
+      "prompt": "Draw an EXACT FOUR-BY-FOUR transparent sprite atlas: 4 columns x4 rows, SIXTEEN complete newly drawn anatomical poses of Falin from Dungeon Meshi anime2024. Crisp detailed anime pixel-art. Attached NEW32-pose atlas is the sole appearance reference: use its corrected identity consistently but draw16 NEW poses for this base set. Falin Touden in her ordinary HUMAN form from Dungeon Meshi anime2024: young adult human woman with short chin-length tousled pale ash-blond bob, soft round face, small HUMAN rounded ears, gentle usually closed/slightly opened eyes, white high-collared long-sleeved ankle-length tunic/robe, simple medium green shoulder cloak/cape secured at neck, brown leather belt and brown boots. No long blond elf braids, pointed elf ears, red ribbon, blue Marcille robe, feathers, dragon body, chimera, tail, wings or transformation. Healer with empty caring hands, no beam cannon or offensive spell weapon. All figures side/three-quarter facing RIGHT. Keep one common body scale throughout, so kneeling/crouching figures remain naturally shorter. Leave15% transparent gap around the entire body AND every prop within each cell. Entire anatomy and props including hands, boots, staff/axe/sword stay visible. No scenery, floor, shadow disk, text, numbers, grids, labels or borders. Four distinct body poses per row, never mere face/light edits.\\nROW1 IDLE: four different quiet ready poses: human healer in short ash-blond bob/white robe/green cloak, softly closed eyes, loose folded hands, weight shift and gentle open-palm readiness.\\nROW2 RUN: four genuine cycle positions, (1) right foot forward and opposite arm forward, (2) compressed passing pose with feet near torso, (3) left foot forward and right arm forward, (4) airborne stride with legs separating and torso leaning. Held equipment safely controlled, no severed or extra limbs.\\nROW3 BASIC ACTION: Falin évalue l’altération d’un compagnon = BUFF SUPPORT: (1) hand to chest and attentive head tilt, (2) one knee down with right open palm low as if examining an offscreen companion, (3) leaning forward with both caring hands open and eyes gently focused, (4) standing again with reassuring palm offered toward teammate. No explosion, attacking staff, beam, punch, monster or transformation.\\nROW4 HIT/RECOVERY, alive: (1) startled recoil with knees bent and forearms guarding, (2) deeper backward lean with one foot lifted, (3) low crouched recovery with shoulders forward, (4) getting back into standing alert stance. No blood, corpse or execution.\\nFinal check: exactly4 full rows x4 genuine complete drawings=16; no missing row, empty cell, duplicate pose or cut prop. Character costume matches attached corrected appearance.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-prompts/falin_meshi-original.txt",
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "transparentBackgroundRequested": true,
+      "nativeRowCount": 4,
+      "imagegenReferenceInputs": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/falin_meshi-original.png",
+          "sha256": "3a8d486e5bc3a3f4f1fd7425627d0a44472ba674d854e7108290b23f3fc0cb08"
+        }
+      ],
+      "operation": "native-imagegen",
+      "accepted": true,
+      "reason": null,
+      "selectedSourceRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "unusedSourceRows": [],
+      "calibration": {
+        "kind": "anatomical-head-to-sole-visible-alpha-roi",
+        "row": 0,
+        "col": 0,
+        "measurementRoi": [
+          45,
+          0,
+          220,
+          345
+        ],
+        "bodyBounds": {
+          "left": 54,
+          "top": 13,
+          "width": 201,
+          "height": 327
+        },
+        "bodyHeight": 327,
+        "alphaThreshold": 24,
+        "headAndFeetVisuallyReviewed": true,
+        "excludesWeaponEffects": true,
+        "proofImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-contacts/falin_meshi-calibration.png",
+        "notes": "Standing body from first cell, source-wide calibration; props/effects excluded from head-to-sole height. Same documented species stature as native32.",
+        "visibleBodyPixels": 38901,
+        "nativeAlphaSegmentationUsedForMeasurement": true
+      },
+      "sharedPixelScale": 0.5351681957186545,
+      "targetBodyHeight": 175,
+      "source1to1Verified": false,
+      "networkVerified": false
+    }
+  ],
+  "entries": [
+    {
+      "id": "laios_meshi",
+      "heroId": "laios_meshi",
+      "universe": "Dungeon Meshi",
+      "name": "Laios Touden",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/laios_meshi.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "5a22ada78067ff1187401d3b5446f265dca06e1615b2ee5a7bd483604dd174ef",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/laios_meshi-original.png",
+      "sourceImageSha256": "4b9d9065228d49e90a85021e9fb11107d4ae2956aaa9ab4ca5abfd62dd8f0545",
+      "sourceDimensions": [
+        1246,
+        1263
+      ],
+      "referenceAsset": "/sprites/generated/heroes/dungeon-meshi/laios-meshi.png",
+      "referenceAssetSha256": "89155cb889212a79c6d7cf6cbe7c5de5d2a0db975e1126070bb70802fa1d60c0",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/part-d-references/laios_meshi-old-base.png",
+      "referenceUse": "Old mapping inspected; generation references the accepted new native32 appearance",
+      "nativeReferences": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/laios_meshi-original.png",
+          "sha256": "6d36a57e850d080d5dafe2a9a829c50ed207111f131c32ebc4f45ad0fcbc8be0"
+        }
+      ],
+      "sourceWork": "Dungeon Meshi / Delicious in Dungeon, TV anime2024",
+      "sourceReference": "Laios porte Kensuke et étudie les monstres ; sa connaissance de leurs traits fournit le soutien plutôt qu’un sort nouveau.",
+      "abilityName": "Taille de Kensuke",
+      "abilityEffect": "damage",
+      "characterVersion": "Laios Touden, Dungeon Meshi anime2024, ordinary human adventurer: short pale blond hair, amber eyes, silver steel breastplate/shoulder/forearm armor over pale tan long sleeves, brown belt and leather boots. One real Kensuke longsword, steel blade/gold crossguard; compact practical equipment, no energy cannon.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-segmentation-one-body-calibration-per-native-source",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/laios_meshi-original.png",
+            "sourceImageSha256": "4b9d9065228d49e90a85021e9fb11107d4ae2956aaa9ab4ca5abfd62dd8f0545",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 359
+            },
+            "scale": 0.45986124876114964,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 73,
+                  "top": 10,
+                  "width": 185,
+                  "height": 343,
+                  "pixels": 38104
+                },
+                "output": {
+                  "left": 90,
+                  "top": 86,
+                  "width": 85,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 380,
+                  "top": 7,
+                  "width": 221,
+                  "height": 346,
+                  "pixels": 40152
+                },
+                "output": {
+                  "left": 88,
+                  "top": 85,
+                  "width": 102,
+                  "height": 159
+                }
+              },
+              {
+                "source": {
+                  "left": 682,
+                  "top": 13,
+                  "width": 178,
+                  "height": 344,
+                  "pixels": 34560
+                },
+                "output": {
+                  "left": 84,
+                  "top": 86,
+                  "width": 82,
+                  "height": 158
+                }
+              },
+              {
+                "source": {
+                  "left": 984,
+                  "top": 19,
+                  "width": 206,
+                  "height": 335,
+                  "pixels": 38695
+                },
+                "output": {
+                  "left": 79,
+                  "top": 90,
+                  "width": 95,
+                  "height": 154
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.2152003042596349,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 340,
+              "normalizedBodyHeight": 156.3528245787909,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 85,
+                "top": 11,
+                "width": 172,
+                "height": 340
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/laios_meshi-original.png",
+            "sourceImageSha256": "4b9d9065228d49e90a85021e9fb11107d4ae2956aaa9ab4ca5abfd62dd8f0545",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 344,
+              "bottom": 658
+            },
+            "scale": 0.45986124876114964,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 36,
+                  "top": 345,
+                  "width": 260,
+                  "height": 310,
+                  "pixels": 37109
+                },
+                "output": {
+                  "left": 73,
+                  "top": 101,
+                  "width": 120,
+                  "height": 143
+                }
+              },
+              {
+                "source": {
+                  "left": 387,
+                  "top": 380,
+                  "width": 194,
+                  "height": 268,
+                  "pixels": 27202
+                },
+                "output": {
+                  "left": 91,
+                  "top": 121,
+                  "width": 89,
+                  "height": 123
+                }
+              },
+              {
+                "source": {
+                  "left": 651,
+                  "top": 353,
+                  "width": 256,
+                  "height": 303,
+                  "pixels": 37449
+                },
+                "output": {
+                  "left": 69,
+                  "top": 105,
+                  "width": 118,
+                  "height": 139
+                }
+              },
+              {
+                "source": {
+                  "left": 957,
+                  "top": 350,
+                  "width": 289,
+                  "height": 291,
+                  "pixels": 38597
+                },
+                "output": {
+                  "left": 67,
+                  "top": 110,
+                  "width": 133,
+                  "height": 134
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.2152003042596349,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 340,
+              "normalizedBodyHeight": 156.3528245787909,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 85,
+                "top": 11,
+                "width": 172,
+                "height": 340
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/laios_meshi-original.png",
+            "sourceImageSha256": "4b9d9065228d49e90a85021e9fb11107d4ae2956aaa9ab4ca5abfd62dd8f0545",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 631,
+              "bottom": 959
+            },
+            "scale": 0.45986124876114964,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 13,
+                  "top": 634,
+                  "width": 279,
+                  "height": 319,
+                  "pixels": 36310
+                },
+                "output": {
+                  "left": 62,
+                  "top": 97,
+                  "width": 128,
+                  "height": 147
+                }
+              },
+              {
+                "source": {
+                  "left": 314,
+                  "top": 662,
+                  "width": 308,
+                  "height": 293,
+                  "pixels": 35793
+                },
+                "output": {
+                  "left": 58,
+                  "top": 109,
+                  "width": 142,
+                  "height": 135
+                }
+              },
+              {
+                "source": {
+                  "left": 584,
+                  "top": 684,
+                  "width": 447,
+                  "height": 270,
+                  "pixels": 37834
+                },
+                "output": {
+                  "left": 38,
+                  "top": 120,
+                  "width": 206,
+                  "height": 124
+                }
+              },
+              {
+                "source": {
+                  "left": 981,
+                  "top": 667,
+                  "width": 263,
+                  "height": 289,
+                  "pixels": 33181
+                },
+                "output": {
+                  "left": 78,
+                  "top": 111,
+                  "width": 121,
+                  "height": 133
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.2152003042596349,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 340,
+              "normalizedBodyHeight": 156.3528245787909,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 85,
+                "top": 11,
+                "width": 172,
+                "height": 340
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/laios_meshi-original.png",
+            "sourceImageSha256": "4b9d9065228d49e90a85021e9fb11107d4ae2956aaa9ab4ca5abfd62dd8f0545",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 949,
+              "bottom": 1263
+            },
+            "scale": 0.45986124876114964,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 50,
+                  "top": 956,
+                  "width": 241,
+                  "height": 289,
+                  "pixels": 35087
+                },
+                "output": {
+                  "left": 79,
+                  "top": 111,
+                  "width": 111,
+                  "height": 133
+                }
+              },
+              {
+                "source": {
+                  "left": 322,
+                  "top": 963,
+                  "width": 303,
+                  "height": 284,
+                  "pixels": 35239
+                },
+                "output": {
+                  "left": 61,
+                  "top": 113,
+                  "width": 139,
+                  "height": 131
+                }
+              },
+              {
+                "source": {
+                  "left": 651,
+                  "top": 1008,
+                  "width": 257,
+                  "height": 226,
+                  "pixels": 35518
+                },
+                "output": {
+                  "left": 69,
+                  "top": 140,
+                  "width": 118,
+                  "height": 104
+                }
+              },
+              {
+                "source": {
+                  "left": 994,
+                  "top": 951,
+                  "width": 216,
+                  "height": 296,
+                  "pixels": 33236
+                },
+                "output": {
+                  "left": 84,
+                  "top": 108,
+                  "width": 99,
+                  "height": 136
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1.2152003042596349,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 190,
+              "sourceBodyHeight": 340,
+              "normalizedBodyHeight": 156.3528245787909,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 85,
+                "top": 11,
+                "width": 172,
+                "height": 340
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": false,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "02cf4e37a6549ef3f64c84f20ae9dec9c7cbd1b24e81746d399f17adc017f6fc",
+              "a0f62f1c3d27143026749be35f536664e901c43ab5aececd2487e9cce5ef9e19",
+              "6e9ab150a97f2c31bec1d12a9448ff47c66c95397072561dd42dce6a163d8933",
+              "d514e2a6da50559618c0f4b90597b4fc76a5b84218a84bd21343d172c3f940a6"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "236e0b90e191da059d160b78ae4b97abe96bcc0a80ee9baf45c01cb89aedd510",
+              "7e8cf7f9e07fa22d126cd9321ed084f678fe11915523eed109a099ddb23d5ef0",
+              "9038a063ac88f16bd4302185b03aeaec489d4a883aa7f03ff6794c1c75d0a7c2",
+              "37e0249369ae4f79b42d16c5d67329304ae317632219056234cb31ad8a0232ad"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b1e7e20924962fe6a5c7a937d9f793f243a8110118b5371c58e15d2178b68a5f",
+              "4d6501cafd5a111ec3b2609074dcd8a4762a05e84adf67913e0b7e4e34b4a8a6",
+              "6998b37cff35fd91d45e8540204a7b21c8498c6fa906814adb4ffc4846fa1a42",
+              "9e96dcb8ce6756ab07d05f537009508ee32922de148d7a1b5aa869acdf05f6a1"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "89dc528b0fe90611fd24d4fcda5556db52492c1ca78accf2768c8d90e7030674",
+              "82a4b4000bce2fd056969d41806ef96de03d1a28b84174a635f8db7505facb41",
+              "43b2eb6c72abcd2653480dea4c490c88a24a00698f4988c4fde10c9364f76be2",
+              "fcdd87129ddc75b6d1200d2b459e15f2afb4be9d51df6816190e6f6200ddcb46"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "Purpose-drawn anime2024 role-consistent adaptation. Supporting finales are safe-passage/food/healing gestures, never execution. No official animation-frame, exact source timing or1:1 certification."
+      }
+    },
+    {
+      "id": "marcille_meshi",
+      "heroId": "marcille_meshi",
+      "universe": "Dungeon Meshi",
+      "name": "Marcille",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/marcille_meshi.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "2e7e263a98991b07a18296caae0e8992300079b0f4f88de9d4d04ce1e6f6f0d3",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/marcille_meshi-original.png",
+      "sourceImageSha256": "ca6dae85665d20a0fc3d3dbde96c85011d82b7e4b27931fa7bf277541d528197",
+      "sourceDimensions": [
+        1248,
+        1260
+      ],
+      "referenceAsset": "/sprites/generated/heroes/dungeon-meshi/marcille-meshi.png",
+      "referenceAssetSha256": "b2b63711627348a350db6b07201f747147bcb5134cf54b697dcd880d71ecae39",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/part-d-references/marcille_meshi-old-base.png",
+      "referenceUse": "Old mapping inspected; generation references the accepted new native32 appearance",
+      "nativeReferences": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/marcille_meshi-original.png",
+          "sha256": "f80b6108f3e8a193a7325c7a294d5bd8df48df3c6f0a4024ef121bbcdf223519"
+        }
+      ],
+      "sourceWork": "Dungeon Meshi / Delicious in Dungeon, TV anime2024",
+      "sourceReference": "Marcille pratique la magie et ses explosions dans Dungeon Meshi ; l’incantation d’attaque est stylisée sans attribuer à tous ses soins de Falin.",
+      "abilityName": "Marcille prépare l’incantation",
+      "abilityEffect": "buff",
+      "characterVersion": "Marcille Donato, Dungeon Meshi anime2024: adult blond elf mage, long pointed ears, green eyes, long blond hair with twin front braids and small red hair ties, dark blue ankle-length robe with pale beige trim, blue shoulder capelet, red neck ribbon, brown belt pouch, brown sandals over pale leg wraps. Her real Ambrosia wooden staff has a looped natural branch head with small green leaves; no gun, no human Falin likeness.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-segmentation-one-body-calibration-per-native-source",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/marcille_meshi-original.png",
+            "sourceImageSha256": "ca6dae85665d20a0fc3d3dbde96c85011d82b7e4b27931fa7bf277541d528197",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 328
+            },
+            "scale": 0.5689655172413793,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 67,
+                  "top": 8,
+                  "width": 199,
+                  "height": 314,
+                  "pixels": 33438
+                },
+                "output": {
+                  "left": 77,
+                  "top": 65,
+                  "width": 113,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 370,
+                  "top": 25,
+                  "width": 235,
+                  "height": 296,
+                  "pixels": 34543
+                },
+                "output": {
+                  "left": 72,
+                  "top": 76,
+                  "width": 134,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 661,
+                  "top": 17,
+                  "width": 184,
+                  "height": 304,
+                  "pixels": 31950
+                },
+                "output": {
+                  "left": 60,
+                  "top": 71,
+                  "width": 105,
+                  "height": 173
+                }
+              },
+              {
+                "source": {
+                  "left": 958,
+                  "top": 21,
+                  "width": 267,
+                  "height": 301,
+                  "pixels": 41743
+                },
+                "output": {
+                  "left": 52,
+                  "top": 73,
+                  "width": 152,
+                  "height": 171
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 165,
+              "sourceBodyHeight": 290,
+              "normalizedBodyHeight": 165,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 68,
+                "top": 30,
+                "width": 122,
+                "height": 290
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/marcille_meshi-original.png",
+            "sourceImageSha256": "ca6dae85665d20a0fc3d3dbde96c85011d82b7e4b27931fa7bf277541d528197",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 324,
+              "bottom": 609
+            },
+            "scale": 0.5689655172413793,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 25,
+                  "top": 333,
+                  "width": 275,
+                  "height": 274,
+                  "pixels": 36375
+                },
+                "output": {
+                  "left": 53,
+                  "top": 88,
+                  "width": 156,
+                  "height": 156
+                }
+              },
+              {
+                "source": {
+                  "left": 370,
+                  "top": 341,
+                  "width": 242,
+                  "height": 251,
+                  "pixels": 29251
+                },
+                "output": {
+                  "left": 72,
+                  "top": 101,
+                  "width": 138,
+                  "height": 143
+                }
+              },
+              {
+                "source": {
+                  "left": 648,
+                  "top": 335,
+                  "width": 262,
+                  "height": 269,
+                  "pixels": 36742
+                },
+                "output": {
+                  "left": 53,
+                  "top": 91,
+                  "width": 149,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 969,
+                  "top": 330,
+                  "width": 263,
+                  "height": 261,
+                  "pixels": 33041
+                },
+                "output": {
+                  "left": 58,
+                  "top": 95,
+                  "width": 150,
+                  "height": 149
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 165,
+              "sourceBodyHeight": 290,
+              "normalizedBodyHeight": 165,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 68,
+                "top": 30,
+                "width": 122,
+                "height": 290
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/marcille_meshi-original.png",
+            "sourceImageSha256": "ca6dae85665d20a0fc3d3dbde96c85011d82b7e4b27931fa7bf277541d528197",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 598,
+              "bottom": 922
+            },
+            "scale": 0.5689655172413793,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 48,
+                  "top": 603,
+                  "width": 237,
+                  "height": 312,
+                  "pixels": 39256
+                },
+                "output": {
+                  "left": 67,
+                  "top": 66,
+                  "width": 135,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 368,
+                  "top": 625,
+                  "width": 233,
+                  "height": 282,
+                  "pixels": 35893
+                },
+                "output": {
+                  "left": 71,
+                  "top": 84,
+                  "width": 133,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 673,
+                  "top": 599,
+                  "width": 241,
+                  "height": 313,
+                  "pixels": 41413
+                },
+                "output": {
+                  "left": 67,
+                  "top": 66,
+                  "width": 137,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 968,
+                  "top": 633,
+                  "width": 263,
+                  "height": 279,
+                  "pixels": 37196
+                },
+                "output": {
+                  "left": 57,
+                  "top": 85,
+                  "width": 150,
+                  "height": 159
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 165,
+              "sourceBodyHeight": 290,
+              "normalizedBodyHeight": 165,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 68,
+                "top": 30,
+                "width": 122,
+                "height": 290
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/marcille_meshi-original.png",
+            "sourceImageSha256": "ca6dae85665d20a0fc3d3dbde96c85011d82b7e4b27931fa7bf277541d528197",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 915,
+              "bottom": 1260
+            },
+            "scale": 0.5689655172413793,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 39,
+                  "top": 921,
+                  "width": 259,
+                  "height": 292,
+                  "pixels": 36463
+                },
+                "output": {
+                  "left": 61,
+                  "top": 78,
+                  "width": 147,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 317,
+                  "top": 918,
+                  "width": 291,
+                  "height": 295,
+                  "pixels": 39881
+                },
+                "output": {
+                  "left": 42,
+                  "top": 76,
+                  "width": 166,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 669,
+                  "top": 924,
+                  "width": 247,
+                  "height": 286,
+                  "pixels": 37718
+                },
+                "output": {
+                  "left": 65,
+                  "top": 81,
+                  "width": 141,
+                  "height": 163
+                }
+              },
+              {
+                "source": {
+                  "left": 973,
+                  "top": 919,
+                  "width": 239,
+                  "height": 296,
+                  "pixels": 38671
+                },
+                "output": {
+                  "left": 60,
+                  "top": 76,
+                  "width": 136,
+                  "height": 168
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 165,
+              "sourceBodyHeight": 290,
+              "normalizedBodyHeight": 165,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 68,
+                "top": 30,
+                "width": 122,
+                "height": 290
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": false,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ef1c3fcc6dba6bebe55df50f271054dd382a9649e8257b3f15a23fd6561b787b",
+              "9cdda5514ba021100ccace113ba6ff5d2f4e129f98ce89e873c614e82d303866",
+              "95ba56147b79e17ea9095a6b4c14afaf8ecf2bdd281f4f87ffa7b8db6eb549a0",
+              "04d0ed968ba886052c6f7eb73652e2524845dfdc8ad9c8fded7df1033585d223"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "caa680713c6e20b0ba9ad598529c6d4358efde336c8dfc6820bc9b10ddfc109e",
+              "bfe70e05fdfe7f1511d050c51b1dade11a7f8707cd9cda0842049eb32915c512",
+              "d36bde502b293f91084e23b987df7b34457f47822b507f4e4649bceb28c0ed9b",
+              "09f13a5b665dfebcf679cd13a49b97edef5cc0c9c90722c8b37cd45ee4c7edbe"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "41154205a3bc2fdcca2e161e89aa12221a000ddb3b655b175c3133fd686475ad",
+              "1b87780e569f979b84b5f038b13af9be49a7e44b792218c58d5820e02cbbe6ae",
+              "1e480a2663ad950df4bec8995a5370786bd3c109b72b9c6fbd84cdd2c66561dc",
+              "afa3f551462eb22baa69e8e4ccd6097cc72c1a4319463961e9f3a9b711b537d0"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "366ab14ae95fa2885054144230fb20b7766a96a7d3496a99422416139551243d",
+              "e58218fdcd86e7435aca4714ef77cb70d3aa3d2916bd336371b52c5196fae199",
+              "be063eaf8a51ab148ae89c8a0806020b3ff8bd99a2eafdd97d8cb8b9dd4ff236",
+              "237a4b28aec42b078adba465667a611d9d11e908278a2f93ca3bf8fd3eb3b17d"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "Purpose-drawn anime2024 role-consistent adaptation. Supporting finales are safe-passage/food/healing gestures, never execution. No official animation-frame, exact source timing or1:1 certification."
+      }
+    },
+    {
+      "id": "senshi_meshi",
+      "heroId": "senshi_meshi",
+      "universe": "Dungeon Meshi",
+      "name": "Senshi",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/senshi_meshi.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "584611c5a177c04b2355fb7e29cf5421f32b2bc0367fbc40e6ece68bbc46cf3c",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/senshi_meshi-original.png",
+      "sourceImageSha256": "e22407aaf40bbdd3fe29350a3f4eaa2571b1a037a38dfd8e4fb16a353865a47f",
+      "sourceDimensions": [
+        1330,
+        1182
+      ],
+      "referenceAsset": "/sprites/generated/heroes/dungeon-meshi/senshi-meshi.png",
+      "referenceAssetSha256": "58a9ffe6142d7535547064ee7f4d62c24a98cdcdcfd0620ce37634769ee3975c",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/part-d-references/senshi_meshi-old-base.png",
+      "referenceUse": "Old mapping inspected; generation references the accepted new native32 appearance",
+      "nativeReferences": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/senshi_meshi-original.png",
+          "sha256": "a1504ec9e8edebebd4c17e2571751627f3a281e8d82ccd78c40b1aac4ed74bc2"
+        }
+      ],
+      "sourceWork": "Dungeon Meshi / Delicious in Dungeon, TV anime2024",
+      "sourceReference": "Senshi sait manier la hache et cuisine pour le groupe ; la récupération alimentaire est une adaptation de ses repas.",
+      "abilityName": "Coup de hache de Senshi",
+      "abilityEffect": "damage",
+      "characterVersion": "Senshi, Dungeon Meshi anime2024 dwarf cook: very stocky muscular adult dwarf, huge dense black beard and moustache, round nose, steel helmet with two short brown horns and cheek guards, bare muscular upper arms, dark sleeveless tunic/leather apron, brown fur-trimmed lower clothes, leather wrist guards, sturdy brown/steel boots. Practical single-headed steel axe carried for ordinary attacks; iron pot and ladle only when actually cooking. No gun, magic wand or elemental attack.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-segmentation-one-body-calibration-per-native-source",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/senshi_meshi-original.png",
+            "sourceImageSha256": "e22407aaf40bbdd3fe29350a3f4eaa2571b1a037a38dfd8e4fb16a353865a47f",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 333
+            },
+            "scale": 0.46774193548387094,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 24,
+                  "top": 12,
+                  "width": 274,
+                  "height": 313,
+                  "pixels": 53289
+                },
+                "output": {
+                  "left": 61,
+                  "top": 98,
+                  "width": 128,
+                  "height": 146
+                }
+              },
+              {
+                "source": {
+                  "left": 362,
+                  "top": 17,
+                  "width": 276,
+                  "height": 308,
+                  "pixels": 53235
+                },
+                "output": {
+                  "left": 64,
+                  "top": 100,
+                  "width": 129,
+                  "height": 144
+                }
+              },
+              {
+                "source": {
+                  "left": 722,
+                  "top": 32,
+                  "width": 289,
+                  "height": 294,
+                  "pixels": 54877
+                },
+                "output": {
+                  "left": 77,
+                  "top": 106,
+                  "width": 135,
+                  "height": 138
+                }
+              },
+              {
+                "source": {
+                  "left": 1002,
+                  "top": 12,
+                  "width": 267,
+                  "height": 315,
+                  "pixels": 46181
+                },
+                "output": {
+                  "left": 52,
+                  "top": 97,
+                  "width": 125,
+                  "height": 147
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 145,
+              "sourceBodyHeight": 310,
+              "normalizedBodyHeight": 145,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 65,
+                "top": 14,
+                "width": 231,
+                "height": 310
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/senshi_meshi-original.png",
+            "sourceImageSha256": "e22407aaf40bbdd3fe29350a3f4eaa2571b1a037a38dfd8e4fb16a353865a47f",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 332,
+              "bottom": 628
+            },
+            "scale": 0.46774193548387094,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 340,
+                  "width": 316,
+                  "height": 278,
+                  "pixels": 51990
+                },
+                "output": {
+                  "left": 66,
+                  "top": 114,
+                  "width": 148,
+                  "height": 130
+                }
+              },
+              {
+                "source": {
+                  "left": 336,
+                  "top": 340,
+                  "width": 313,
+                  "height": 287,
+                  "pixels": 42687
+                },
+                "output": {
+                  "left": 52,
+                  "top": 110,
+                  "width": 146,
+                  "height": 134
+                }
+              },
+              {
+                "source": {
+                  "left": 686,
+                  "top": 341,
+                  "width": 289,
+                  "height": 282,
+                  "pixels": 49963
+                },
+                "output": {
+                  "left": 60,
+                  "top": 112,
+                  "width": 135,
+                  "height": 132
+                }
+              },
+              {
+                "source": {
+                  "left": 1024,
+                  "top": 340,
+                  "width": 292,
+                  "height": 275,
+                  "pixels": 47925
+                },
+                "output": {
+                  "left": 63,
+                  "top": 115,
+                  "width": 137,
+                  "height": 129
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 145,
+              "sourceBodyHeight": 310,
+              "normalizedBodyHeight": 145,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 65,
+                "top": 14,
+                "width": 231,
+                "height": 310
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/senshi_meshi-original.png",
+            "sourceImageSha256": "e22407aaf40bbdd3fe29350a3f4eaa2571b1a037a38dfd8e4fb16a353865a47f",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 614,
+              "bottom": 910
+            },
+            "scale": 0.46774193548387094,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 616,
+                  "width": 298,
+                  "height": 282,
+                  "pixels": 47262
+                },
+                "output": {
+                  "left": 61,
+                  "top": 112,
+                  "width": 139,
+                  "height": 132
+                }
+              },
+              {
+                "source": {
+                  "left": 357,
+                  "top": 626,
+                  "width": 342,
+                  "height": 280,
+                  "pixels": 50568
+                },
+                "output": {
+                  "left": 62,
+                  "top": 113,
+                  "width": 160,
+                  "height": 131
+                }
+              },
+              {
+                "source": {
+                  "left": 688,
+                  "top": 620,
+                  "width": 329,
+                  "height": 289,
+                  "pixels": 44765
+                },
+                "output": {
+                  "left": 61,
+                  "top": 109,
+                  "width": 154,
+                  "height": 135
+                }
+              },
+              {
+                "source": {
+                  "left": 1008,
+                  "top": 615,
+                  "width": 315,
+                  "height": 291,
+                  "pixels": 50412
+                },
+                "output": {
+                  "left": 55,
+                  "top": 108,
+                  "width": 147,
+                  "height": 136
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 145,
+              "sourceBodyHeight": 310,
+              "normalizedBodyHeight": 145,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 65,
+                "top": 14,
+                "width": 231,
+                "height": 310
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/senshi_meshi-original.png",
+            "sourceImageSha256": "e22407aaf40bbdd3fe29350a3f4eaa2571b1a037a38dfd8e4fb16a353865a47f",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 903,
+              "bottom": 1182
+            },
+            "scale": 0.46774193548387094,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 915,
+                  "width": 302,
+                  "height": 253,
+                  "pixels": 45932
+                },
+                "output": {
+                  "left": 61,
+                  "top": 126,
+                  "width": 141,
+                  "height": 118
+                }
+              },
+              {
+                "source": {
+                  "left": 344,
+                  "top": 908,
+                  "width": 331,
+                  "height": 260,
+                  "pixels": 47397
+                },
+                "output": {
+                  "left": 56,
+                  "top": 122,
+                  "width": 155,
+                  "height": 122
+                }
+              },
+              {
+                "source": {
+                  "left": 701,
+                  "top": 909,
+                  "width": 294,
+                  "height": 256,
+                  "pixels": 41784
+                },
+                "output": {
+                  "left": 67,
+                  "top": 124,
+                  "width": 138,
+                  "height": 120
+                }
+              },
+              {
+                "source": {
+                  "left": 996,
+                  "top": 905,
+                  "width": 315,
+                  "height": 263,
+                  "pixels": 46985
+                },
+                "output": {
+                  "left": 50,
+                  "top": 121,
+                  "width": 147,
+                  "height": 123
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 145,
+              "sourceBodyHeight": 310,
+              "normalizedBodyHeight": 145,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 65,
+                "top": 14,
+                "width": 231,
+                "height": 310
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": false,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1d0683302eb5463b7def0d900bdeb1408a96f32d33e76694d2414a299e51597f",
+              "67e1f488a3562b47d602c3c7d291198fc0053603e1fc229958ae516ace26d80f",
+              "c9b1e4945319d32b50bc8253315a1c3bac15f4034a61c8da2c9d0a5cf563faaa",
+              "ff237e3956acce3e76e91cd1af6f453c895d6400320b572eedb5d0c7b6c5ea89"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "cd1758d53d80a70d70f6e26daf03899574f9ef699d4ca0addf65acea3fe04097",
+              "67fbfa8a8e4192568f7803dd820390f8a019e19a429c9ec73190951052e11113",
+              "bad054b8febefd3c05057dd43dc3fe4cfb72ca7a30dfcdbdd6fc5d58bea379dd",
+              "c80a692cabd6b6a7f6cf92250c9e90f2410fccd4e632bbcd2cb27c57fabda1e2"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c47e9eadd7031429ae305e0d7b823bef3eb4680ffa3dc1b34954d791e3b414db",
+              "6bbbe40028c69783ead6642fdfe21803e4a38719aa0cb84bd10ce439dd398b8e",
+              "fe3a4a61c276a0759d753e4cc668b53af67f40c6da605714db6cca82b0db541d",
+              "f1c975205817c50957f8284ab5f11a81b0d2e2cf02608d00a8802cb8919a369d"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5993f10d3bf71af89c19526fa48ad8f5b3121c40f1da6f883a6762396b98d770",
+              "df1d2428231bfaa5a00da57c9f8e28b718e20aad1f61275248919a6f403a5bb4",
+              "9b717990637ac438a5e2b000c3355e836d1ddf0a1638254b5ca28afb005f9609",
+              "06a2b39ce75d697284fb275d150d3b00ce189b1888af3f8d4ac34f496c367e76"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "Purpose-drawn anime2024 role-consistent adaptation. Supporting finales are safe-passage/food/healing gestures, never execution. No official animation-frame, exact source timing or1:1 certification."
+      }
+    },
+    {
+      "id": "chilchuck_meshi",
+      "heroId": "chilchuck_meshi",
+      "universe": "Dungeon Meshi",
+      "name": "Chilchuck",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/chilchuck_meshi.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "73f62b88c681d087e4f1cb2597bfc67404d891ff50eafc8ff8ad36f95c426770",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/chilchuck_meshi-original.png",
+      "sourceImageSha256": "6c77bfc3a5c273e0c02b9ca846ec6e88df258c854562c280d5840759ca476fd8",
+      "sourceDimensions": [
+        1312,
+        1199
+      ],
+      "referenceAsset": "/sprites/generated/heroes/dungeon-meshi/chilchuck-meshi.png",
+      "referenceAssetSha256": "1869e94650582bcab44105fb1f321d76787a94b8c450761e0db04964ddd7b99c",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/part-d-references/chilchuck_meshi-old-base.png",
+      "referenceUse": "Old mapping inspected; generation references the accepted new native32 appearance",
+      "nativeReferences": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/chilchuck_meshi-original.png",
+          "sha256": "b054821a3ff5f4c315b5e2c423b4a07bd346a330508b06eedecc537ed021dfc4"
+        }
+      ],
+      "sourceWork": "Dungeon Meshi / Delicious in Dungeon, TV anime2024",
+      "sourceReference": "Chilchuck est serrurier et spécialiste des pièges ; les gestes apportent information et protection sans attaque d’assassin inventée.",
+      "abilityName": "Chilchuck examine la serrure",
+      "abilityEffect": "buff",
+      "characterVersion": "Chilchuck Tims, Dungeon Meshi anime2024, a 29-year-old ADULT male half-foot locksmith, short adult with a slim wiry body and mature narrow face, short reddish auburn hair, brown eyes, rounded protruding half-foot ears, brown quilted sleeveless tunic/vest over cream long-sleeve shirt, brown belt with many small tool pouches, dark brown trousers and brown lace boots. Tiny lock picks and probe tools only, compact brass lock mechanism as work prop. No pistol, rifle, crossbow, dagger attack, child styling or assassin fantasy.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-segmentation-one-body-calibration-per-native-source",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/chilchuck_meshi-original.png",
+            "sourceImageSha256": "6c77bfc3a5c273e0c02b9ca846ec6e88df258c854562c280d5840759ca476fd8",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 356
+            },
+            "scale": 0.3382352941176471,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 78,
+                  "top": 0,
+                  "width": 165,
+                  "height": 355,
+                  "pixels": 34264
+                },
+                "output": {
+                  "left": 99,
+                  "top": 124,
+                  "width": 56,
+                  "height": 120
+                }
+              },
+              {
+                "source": {
+                  "left": 409,
+                  "top": 11,
+                  "width": 171,
+                  "height": 336,
+                  "pixels": 34246
+                },
+                "output": {
+                  "left": 100,
+                  "top": 130,
+                  "width": 58,
+                  "height": 114
+                }
+              },
+              {
+                "source": {
+                  "left": 709,
+                  "top": 35,
+                  "width": 232,
+                  "height": 312,
+                  "pixels": 37498
+                },
+                "output": {
+                  "left": 90,
+                  "top": 138,
+                  "width": 78,
+                  "height": 106
+                }
+              },
+              {
+                "source": {
+                  "left": 1046,
+                  "top": 14,
+                  "width": 250,
+                  "height": 333,
+                  "pixels": 37325
+                },
+                "output": {
+                  "left": 94,
+                  "top": 131,
+                  "width": 85,
+                  "height": 113
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 115,
+              "sourceBodyHeight": 340,
+              "normalizedBodyHeight": 115,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 79,
+                "top": 7,
+                "width": 164,
+                "height": 340
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/chilchuck_meshi-original.png",
+            "sourceImageSha256": "6c77bfc3a5c273e0c02b9ca846ec6e88df258c854562c280d5840759ca476fd8",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 346,
+              "bottom": 648
+            },
+            "scale": 0.3382352941176471,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 36,
+                  "top": 348,
+                  "width": 246,
+                  "height": 293,
+                  "pixels": 35580
+                },
+                "output": {
+                  "left": 85,
+                  "top": 145,
+                  "width": 83,
+                  "height": 99
+                }
+              },
+              {
+                "source": {
+                  "left": 415,
+                  "top": 348,
+                  "width": 189,
+                  "height": 295,
+                  "pixels": 29120
+                },
+                "output": {
+                  "left": 102,
+                  "top": 144,
+                  "width": 64,
+                  "height": 100
+                }
+              },
+              {
+                "source": {
+                  "left": 706,
+                  "top": 348,
+                  "width": 247,
+                  "height": 297,
+                  "pixels": 34505
+                },
+                "output": {
+                  "left": 89,
+                  "top": 144,
+                  "width": 84,
+                  "height": 100
+                }
+              },
+              {
+                "source": {
+                  "left": 1016,
+                  "top": 348,
+                  "width": 287,
+                  "height": 274,
+                  "pixels": 34446
+                },
+                "output": {
+                  "left": 83,
+                  "top": 151,
+                  "width": 97,
+                  "height": 93
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 115,
+              "sourceBodyHeight": 340,
+              "normalizedBodyHeight": 115,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 79,
+                "top": 7,
+                "width": 164,
+                "height": 340
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/chilchuck_meshi-original.png",
+            "sourceImageSha256": "6c77bfc3a5c273e0c02b9ca846ec6e88df258c854562c280d5840759ca476fd8",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 626,
+              "bottom": 943
+            },
+            "scale": 0.3382352941176471,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 83,
+                  "top": 632,
+                  "width": 185,
+                  "height": 309,
+                  "pixels": 33687
+                },
+                "output": {
+                  "left": 101,
+                  "top": 139,
+                  "width": 63,
+                  "height": 105
+                }
+              },
+              {
+                "source": {
+                  "left": 385,
+                  "top": 670,
+                  "width": 218,
+                  "height": 258,
+                  "pixels": 36120
+                },
+                "output": {
+                  "left": 92,
+                  "top": 157,
+                  "width": 74,
+                  "height": 87
+                }
+              },
+              {
+                "source": {
+                  "left": 676,
+                  "top": 683,
+                  "width": 258,
+                  "height": 247,
+                  "pixels": 38740
+                },
+                "output": {
+                  "left": 79,
+                  "top": 160,
+                  "width": 87,
+                  "height": 84
+                }
+              },
+              {
+                "source": {
+                  "left": 1052,
+                  "top": 629,
+                  "width": 222,
+                  "height": 310,
+                  "pixels": 36851
+                },
+                "output": {
+                  "left": 96,
+                  "top": 139,
+                  "width": 75,
+                  "height": 105
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 115,
+              "sourceBodyHeight": 340,
+              "normalizedBodyHeight": 115,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 79,
+                "top": 7,
+                "width": 164,
+                "height": 340
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/chilchuck_meshi-original.png",
+            "sourceImageSha256": "6c77bfc3a5c273e0c02b9ca846ec6e88df258c854562c280d5840759ca476fd8",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 930,
+              "bottom": 1199
+            },
+            "scale": 0.3382352941176471,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 73,
+                  "top": 938,
+                  "width": 224,
+                  "height": 261,
+                  "pixels": 30821
+                },
+                "output": {
+                  "left": 97,
+                  "top": 156,
+                  "width": 76,
+                  "height": 88
+                }
+              },
+              {
+                "source": {
+                  "left": 366,
+                  "top": 940,
+                  "width": 278,
+                  "height": 259,
+                  "pixels": 31343
+                },
+                "output": {
+                  "left": 85,
+                  "top": 156,
+                  "width": 94,
+                  "height": 88
+                }
+              },
+              {
+                "source": {
+                  "left": 710,
+                  "top": 991,
+                  "width": 229,
+                  "height": 208,
+                  "pixels": 29487
+                },
+                "output": {
+                  "left": 91,
+                  "top": 174,
+                  "width": 77,
+                  "height": 70
+                }
+              },
+              {
+                "source": {
+                  "left": 1062,
+                  "top": 931,
+                  "width": 200,
+                  "height": 265,
+                  "pixels": 29019
+                },
+                "output": {
+                  "left": 99,
+                  "top": 154,
+                  "width": 68,
+                  "height": 90
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 1,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 115,
+              "sourceBodyHeight": 340,
+              "normalizedBodyHeight": 115,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 79,
+                "top": 7,
+                "width": 164,
+                "height": 340
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": false,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "30714fb8d3d185aac88b6faf13a279aa55be108599dfcf51f8df721cb6a1405f",
+              "5ddfe607bab47d8f2d4a81881ef168650102aa9406ed20e63d6f51b0aa7244b6",
+              "22f1a8b9d6966f33fbe09d371ae529c0602522d8409188562f893eacf51969b6",
+              "8cbc5502483e55e5f48b40a7273fa1f15c6f36dde733f9791136a4311e5ab91d"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8deb0122e3344221bbfb254c0dd58436fade18b41c177d87f05c3d7d77158341",
+              "26ea24c534517d86c163e41f872709db19e1e54a49d357e0aa863a456b29f6ed",
+              "e4ef061dbf5390c61cfd22aa2e750bd74874914f4b7f5a2dcd1f39e0abed7a23",
+              "eeab186a90c4ae40f77c4aca1bc2bec206db19c68255a81886ce2d4a367e3f79"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b5acdbb6a711c81757fb4e3269cbc30169b3537d75ee1e796efa353983b7e41c",
+              "f20edbf6d2b747c326b9a0e150bb5474ff3fddb0d83ed6fc23876ed64cdddc30",
+              "8381d2f94c4955e25f81875afb74e8fa9c2af99b6aa6878a790797da6b488eac",
+              "f20846095be7aff8962fcaef77ff153995c0d9841dc6c6192a50e7ab2a043e27"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1defa1ca40d6b1e9e5e90c0ca0ee9f33071fecddb2354479c3a3021efa65d9b7",
+              "36a8c961143e6eea5658f428210562381f160332af527cedac42997401e703a0",
+              "3f1624eedb104e8c0711f9a254e3c214740ef6952552292c4f1ef72350767c33",
+              "244615b27b5547e55e8f883ecaacf71365cf3a5e481535774121ec6da5142590"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "Purpose-drawn anime2024 role-consistent adaptation. Supporting finales are safe-passage/food/healing gestures, never execution. No official animation-frame, exact source timing or1:1 certification."
+      }
+    },
+    {
+      "id": "falin_meshi",
+      "heroId": "falin_meshi",
+      "universe": "Dungeon Meshi",
+      "name": "Falin",
+      "sheet": "/sprites/generated/combat-character-corrections-wave8/falin_meshi.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "d0701738122f666a3410bae004e96f19c28df3745ddb55a494d71af25f897f1f",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/falin_meshi-original.png",
+      "sourceImageSha256": "a33850e3cddb8dcb5ce5b00317da9c5860ae1ee64a7c3e914af78e1abbea4b8a",
+      "sourceDimensions": [
+        1241,
+        1267
+      ],
+      "referenceAsset": "/sprites/generated/heroes/dungeon-meshi/falin-meshi.png",
+      "referenceAssetSha256": "8a50d8a63e3585ceba570f9346cf5ac794b78c6120251438176125b01a7916c9",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/part-d-references/falin_meshi-old-base.png",
+      "referenceUse": "Old mapping inspected; generation references the accepted new native32 appearance",
+      "nativeReferences": [
+        {
+          "path": "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/falin_meshi-original.png",
+          "sha256": "3a8d486e5bc3a3f4f1fd7425627d0a44472ba674d854e7108290b23f3fc0cb08"
+        }
+      ],
+      "sourceWork": "Dungeon Meshi / Delicious in Dungeon, TV anime2024",
+      "sourceReference": "La Falin humaine pratique soin et protection ; ces actions n’importent pas sa transformation imposée.",
+      "abilityName": "Falin évalue l’altération d’un compagnon",
+      "abilityEffect": "buff",
+      "characterVersion": "Falin Touden in her ordinary HUMAN form from Dungeon Meshi anime2024: young adult human woman with short chin-length tousled pale ash-blond bob, soft round face, small HUMAN rounded ears, gentle usually closed/slightly opened eyes, white high-collared long-sleeved ankle-length tunic/robe, simple medium green shoulder cloak/cape secured at neck, brown leather belt and brown boots. No long blond elf braids, pointed elf ears, red ribbon, blue Marcille robe, feathers, dragon body, chimera, tail, wings or transformation. Healer with empty caring hands, no beam cannon or offensive spell weapon.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "nativeCorrection": false,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "normalization": {
+        "method": "alpha-segmentation-one-body-calibration-per-native-source",
+        "sharedScalePerSource": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/falin_meshi-original.png",
+            "sourceImageSha256": "a33850e3cddb8dcb5ce5b00317da9c5860ae1ee64a7c3e914af78e1abbea4b8a",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 344
+            },
+            "scale": 0.5351681957186545,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 12,
+                  "width": 205,
+                  "height": 328,
+                  "pixels": 39912
+                },
+                "output": {
+                  "left": 73,
+                  "top": 68,
+                  "width": 110,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 343,
+                  "top": 11,
+                  "width": 213,
+                  "height": 325,
+                  "pixels": 41111
+                },
+                "output": {
+                  "left": 63,
+                  "top": 70,
+                  "width": 114,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 644,
+                  "top": 11,
+                  "width": 302,
+                  "height": 327,
+                  "pixels": 47020
+                },
+                "output": {
+                  "left": 58,
+                  "top": 69,
+                  "width": 162,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 987,
+                  "top": 11,
+                  "width": 198,
+                  "height": 327,
+                  "pixels": 38744
+                },
+                "output": {
+                  "left": 75,
+                  "top": 69,
+                  "width": 106,
+                  "height": 175
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.9999999999999999,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 175,
+              "sourceBodyHeight": 327,
+              "normalizedBodyHeight": 175.00000000000003,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 54,
+                "top": 13,
+                "width": 201,
+                "height": 327
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/falin_meshi-original.png",
+            "sourceImageSha256": "a33850e3cddb8dcb5ce5b00317da9c5860ae1ee64a7c3e914af78e1abbea4b8a",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 339,
+              "bottom": 636
+            },
+            "scale": 0.5351681957186545,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 26,
+                  "top": 341,
+                  "width": 267,
+                  "height": 288,
+                  "pixels": 40759
+                },
+                "output": {
+                  "left": 59,
+                  "top": 90,
+                  "width": 143,
+                  "height": 154
+                }
+              },
+              {
+                "source": {
+                  "left": 369,
+                  "top": 348,
+                  "width": 219,
+                  "height": 282,
+                  "pixels": 32171
+                },
+                "output": {
+                  "left": 76,
+                  "top": 93,
+                  "width": 117,
+                  "height": 151
+                }
+              },
+              {
+                "source": {
+                  "left": 644,
+                  "top": 342,
+                  "width": 266,
+                  "height": 292,
+                  "pixels": 39474
+                },
+                "output": {
+                  "left": 58,
+                  "top": 88,
+                  "width": 142,
+                  "height": 156
+                }
+              },
+              {
+                "source": {
+                  "left": 948,
+                  "top": 343,
+                  "width": 276,
+                  "height": 288,
+                  "pixels": 42233
+                },
+                "output": {
+                  "left": 54,
+                  "top": 90,
+                  "width": 148,
+                  "height": 154
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.9999999999999999,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 175,
+              "sourceBodyHeight": 327,
+              "normalizedBodyHeight": 175.00000000000003,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 54,
+                "top": 13,
+                "width": 201,
+                "height": 327
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/falin_meshi-original.png",
+            "sourceImageSha256": "a33850e3cddb8dcb5ce5b00317da9c5860ae1ee64a7c3e914af78e1abbea4b8a",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 626,
+              "bottom": 941
+            },
+            "scale": 0.5351681957186545,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 56,
+                  "top": 629,
+                  "width": 187,
+                  "height": 308,
+                  "pixels": 35918
+                },
+                "output": {
+                  "left": 75,
+                  "top": 79,
+                  "width": 100,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 313,
+                  "top": 630,
+                  "width": 317,
+                  "height": 301,
+                  "pixels": 37866
+                },
+                "output": {
+                  "left": 46,
+                  "top": 83,
+                  "width": 170,
+                  "height": 161
+                }
+              },
+              {
+                "source": {
+                  "left": 629,
+                  "top": 633,
+                  "width": 319,
+                  "height": 303,
+                  "pixels": 43413
+                },
+                "output": {
+                  "left": 50,
+                  "top": 82,
+                  "width": 171,
+                  "height": 162
+                }
+              },
+              {
+                "source": {
+                  "left": 972,
+                  "top": 629,
+                  "width": 252,
+                  "height": 310,
+                  "pixels": 39674
+                },
+                "output": {
+                  "left": 67,
+                  "top": 78,
+                  "width": 135,
+                  "height": 166
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.9999999999999999,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 175,
+              "sourceBodyHeight": 327,
+              "normalizedBodyHeight": 175.00000000000003,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 54,
+                "top": 13,
+                "width": 201,
+                "height": 327
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-d-sources/falin_meshi-original.png",
+            "sourceImageSha256": "a33850e3cddb8dcb5ce5b00317da9c5860ae1ee64a7c3e914af78e1abbea4b8a",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 934,
+              "bottom": 1267
+            },
+            "scale": 0.5351681957186545,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 36,
+                  "top": 944,
+                  "width": 255,
+                  "height": 298,
+                  "pixels": 43793
+                },
+                "output": {
+                  "left": 64,
+                  "top": 85,
+                  "width": 136,
+                  "height": 159
+                }
+              },
+              {
+                "source": {
+                  "left": 352,
+                  "top": 942,
+                  "width": 285,
+                  "height": 298,
+                  "pixels": 43921
+                },
+                "output": {
+                  "left": 67,
+                  "top": 85,
+                  "width": 153,
+                  "height": 159
+                }
+              },
+              {
+                "source": {
+                  "left": 636,
+                  "top": 1007,
+                  "width": 242,
+                  "height": 229,
+                  "pixels": 35119
+                },
+                "output": {
+                  "left": 53,
+                  "top": 121,
+                  "width": 130,
+                  "height": 123
+                }
+              },
+              {
+                "source": {
+                  "left": 968,
+                  "top": 935,
+                  "width": 238,
+                  "height": 308,
+                  "pixels": 41001
+                },
+                "output": {
+                  "left": 65,
+                  "top": 79,
+                  "width": 127,
+                  "height": 165
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "renderScale": 0.9999999999999999,
+            "statureReview": {
+              "measurementKind": "source-body-calibration",
+              "targetBodyHeight": 175,
+              "sourceBodyHeight": 327,
+              "normalizedBodyHeight": 175.00000000000003,
+              "sharedAcrossSource": true,
+              "excludesWeaponEffects": true,
+              "bodyBounds": {
+                "left": 54,
+                "top": 13,
+                "width": 201,
+                "height": 327
+              },
+              "notes": "Single pixel scale for this whole source. Naturally crouched, kneeling, seated and lunging bodies retain native projection ratios."
+            }
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": false,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f23ab5a686325eab2155ea10a22c23fb526d7fb4bae6d02893d893700ea7a6eb",
+              "78161c582ee01d894d63d1ddb7ee05fb9699740a8e69304d8048af1eee35255a",
+              "c4efd5c6da0011e58048d6b2cefa84658688b04acc52a5764b4f7def433cda6e",
+              "a1cbc46e64d910a573bf6f7a9b664a1cafb085d9efe36bc18bd3c7c9333c6634"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f2e6d5b2b30fe44f2b9a94f439c766b73484e52cfa13e1173bc86b88e47c1f70",
+              "6d3fb9805777ee0c06b4ab899eef17a231d9757e8108d339695002e4793a247b",
+              "aed90076ba6c7b2033963f75d89ea68e0744bbf1f08a7f30973dcf7d0780e5f2",
+              "84b1bfa9f02d8fae6a3c69e4534de5de986853e84bfce74bfef3f92a5bd8a2de"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "49e586e3136e344c3770422b55cd3399d37438324b367d1a4ec8c48f43bf82c7",
+              "a4c9ff593b18bd1c90d6581abca2c899ae6afc495da2b319cd1cf54cd0310457",
+              "1c24f8b07ba5546cded5d9fe5147f3440fcc38f1602e9c1f44f66937a39e1fa1",
+              "59d46b720aa6b4758374a6406510f13bf70221a253083951b8ef79c3a8f28e91"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e67aac85ad1f9b3dca9b50840b552c92ac9cffd98c4cf175772a1b6d98f75ea2",
+              "91d99f7a7a1f94b7952f0ad67cef8b5d50045b2a778ca4087dd66db5a47faa29",
+              "8ffe706c5468849a9c38c4f7c35f3d13c9f461f71fc9a8570e8b6442b0634142",
+              "973d2e556f5c8d7c288ab4869f556abe5462961c6d062f84debfeafbfdd24fb6"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "source1to1Verified": false,
+        "sourceGameAsset": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "notes": "Purpose-drawn anime2024 role-consistent adaptation. Supporting finales are safe-passage/food/healing gestures, never execution. No official animation-frame, exact source timing or1:1 certification."
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+# Vague 7 — projectiles dans le vrai mode Fighter
+
+Les huit parcours Chromium passent : Noel, Han Solo, Leia et May, chacun déclenché au clavier côté J1 (`R`) et côté J2 local (`O`). Le composant `FighterMode` et son moteur utilisent exactement les mêmes URL Vite versionnées ; le moteur observé est `/src/game/engineFighter.js?t=1792494784005`. Le montage prépare seulement les positions, une jauge à 100 % et une cible résistante ; les touches, mises à jour, collisions et dessins sont ceux du jeu. Exécution : `node docs/combat-fidelity-wave7-2026-10-20/browser/fighter-projectiles-wave7.browser.mjs`.
+
+| Personnage | Super effectif | Parcours | Variation de PV par collision | Poses natives du corps |
+| --- | --- | --- | --- | --- |
+| Noel | Thor | J1 et J2 : PASS | −87,6 | colonnes 0, 1, 2, 3 |
+| Han Solo | Tir précis au DL-44 | J1 et J2 : PASS | −88,1 | colonnes 0, 1, 2, 3 |
+| Leia | Tir au blaster de Leia | J1 et J2 : PASS | −59,4 | colonnes 0, 1, 2, 3 |
+| May | Great Yamada Attack | J1 et J2 : PASS | −87,6 | colonnes 0, 1, 2, 3 |
+
+Chaque parcours observe une préparation sans projectile dessiné, puis un vol aux coordonnées physiques et dans le sens engagé. Une pause réelle de 250 ms conserve exactement l'état de simulation et le contenu du canvas ; la reprise produit une seule variation des PV et un seul objet d'impact visuel. Les PV restent intacts pendant le vol. À cette distance de 600 px, le corps a terminé son super avant la collision : le projectile continue avec sa propre horloge, puis projectile et impact expirent. May utilise réellement le PNG natif Yamada de seize poses : rangée de préparation pendant le vol et cellule d'attaque rangée 2, colonne 2 au contact confirmé. Le corps natif de May reste séparé de ce projectile.
+
+La revue visuelle porte sur les quatre captures May (vol/contact, J1/J2), Noel J1 en vol et J2 au contact, Han J1 en vol et Leia J2 en vol. Les sprites sont lisibles, les projectiles suivent le bon côté, et le PNG Yamada n'est pas dupliqué sur May. Les huit traces et seize captures sont conservées ; le [résultat JSON](fighter-projectiles-result.json) relie chaque parcours à ses fichiers et recopie les métadonnées des atlas effectivement dessinés. Aucune erreur JavaScript de page ; l'unique requête échouée et son message console concernent Google Fonts, refusé par le proxy. Ces vérifications établissent le comportement observé de cette adaptation, sans certification graphique ou mécanique canonique 1:1.
+
+Un défaut de préparation avait été reproduit avant le correctif : à `elapsed=0.1`, avant `hitAt≈0.45` et sans projectile physique, Noel/Han/Leia dessinaient un trait au niveau du sol. Les six observations J1/J2 sont archivées dans [fighter-launch-before-fix.json](fighter-launch-before-fix.json). Le SHA antérieur reste explicitement `null`, car il n'avait pas été enregistré avant la correction du helper par l'agent principal. Les huit parcours finaux vérifient désormais l'absence de trait ou de PNG Yamada avant la création du projectile. Aucun moteur ni helper de production n'a été modifié par ce harness. Après le passage réussi, seule sa sortie console a été raccourcie ; les assertions et les preuves archivées sont inchangées.

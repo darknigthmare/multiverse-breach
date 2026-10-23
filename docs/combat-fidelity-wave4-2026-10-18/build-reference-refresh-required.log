@@ -1,0 +1,4178 @@
+
+> lively-darwin@0.0.0 prebuild
+> npm run test:combat-fidelity && npm run test:combat-presentation && npm run test:deployment-inputs && npm run test:conversation && npm run test:custom && npm run test:boosters && npm run boosters:audit && npm run test:extension && npm run test:polish && npm run test:cg && npm run cg:manifest:check && npm run test:melee && npm run test:stages && npm run test:noncombat-trials && npm run melee:sprites:audit && npm run sprites:provenance:audit && npm run portals:audit && npm run portals:prompts -- --check && npm run cosmetics:audit && npm run test:cosmetics && npm run rift:audit && npm run test:rift && npm run music:audit && npm run test:campaign && npm run test:oc-dlc && npm run test:original-universes && npm run audit:oc-dlc && npm run audit:original-universes && npm run check:progression
+
+
+> lively-darwin@0.0.0 test:combat-fidelity
+> node --test --test-concurrency=1 scripts/combatFidelity.test.mjs scripts/combatAbilityRuntime.test.mjs scripts/fighterAuthoredActions.test.mjs scripts/combatFidelityWave2.test.mjs scripts/ff8SuperRuntimeWave2.test.mjs scripts/combatFidelityWave3.test.mjs scripts/partySuperRuntimeWave3.test.mjs scripts/combatFidelityWave4.test.mjs scripts/characterFormsWave4.test.mjs && node scripts/combatFidelityAudit.mjs --check && node scripts/buildCombatCharacterAnimations.mjs --check && node scripts/buildCombatCharacterSpriteCorrections.mjs --check && node scripts/buildCombatCharacterAnimationsWave2PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave3PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave3PartC.mjs --check && node scripts/buildCombatCharacterAnimationsWave4PartA.mjs --check && node scripts/buildCombatCharacterAnimationsWave4PartC.mjs --check && node scripts/buildCombatCharacterFormsWave4.mjs --check && node scripts/buildCombatCharacterSpriteCorrectionsWave4.mjs --check
+
+✔ Part I techniques retain their authored identity and Sakura supports only herself (4171.972959ms)
+✔ rpg player Rasengan and Chidori spend100 once and strike one selected close opponent once (9.08455ms)
+✔ rpg player Bunshin creates only the source self buff with no ally healing or hostile impact (3.082859ms)
+✔ rpg player Chaos starts at its single source impact, pauses and expires on the existing buff clock (4.466396ms)
+✔ rpg player Chaos cannot survive a knockout or an interrupted startup (1.770008ms)
+✔ rpg opponent Rasengan and Chidori spend100 once and strike one selected close opponent once (2.765927ms)
+✔ rpg opponent Bunshin creates only the source self buff with no ally healing or hostile impact (1.343508ms)
+✔ rpg opponent Chaos starts at its single source impact, pauses and expires on the existing buff clock (3.124355ms)
+✔ rpg opponent Chaos cannot survive a knockout or an interrupted startup (1.055169ms)
+✔ melee player Rasengan and Chidori spend100 once and strike one selected close opponent once (8.033281ms)
+✔ melee player Bunshin creates only the source self buff with no ally healing or hostile impact (1.312488ms)
+✔ melee player Chaos starts at its single source impact, pauses and expires on the existing buff clock (2.765613ms)
+✔ melee player Chaos cannot survive a knockout or an interrupted startup (1.028491ms)
+✔ melee opponent Rasengan and Chidori spend100 once and strike one selected close opponent once (2.993776ms)
+✔ melee opponent Bunshin creates only the source self buff with no ally healing or hostile impact (1.051158ms)
+✔ melee opponent Chaos starts at its single source impact, pauses and expires on the existing buff clock (2.325454ms)
+✔ melee opponent Chaos cannot survive a knockout or an interrupted startup (0.603262ms)
+✔ fighter player Rasengan and Chidori spend100 once and strike one selected close opponent once (3.457575ms)
+✔ fighter player Bunshin creates only the source self buff with no ally healing or hostile impact (1.031403ms)
+✔ fighter player Chaos starts at its single source impact, pauses and expires on the existing buff clock (4.227086ms)
+✔ fighter player Chaos cannot survive a knockout or an interrupted startup (0.796979ms)
+✔ fighter opponent Rasengan and Chidori spend100 once and strike one selected close opponent once (1.329412ms)
+✔ fighter opponent Bunshin creates only the source self buff with no ally healing or hostile impact (0.507487ms)
+✔ fighter opponent Chaos starts at its single source impact, pauses and expires on the existing buff clock (3.224158ms)
+✔ fighter opponent Chaos cannot survive a knockout or an interrupted startup (0.462865ms)
+✔ melee player Part I contact supers preserve their committed facing, finite range and vertical reach (2.966829ms)
+✔ melee opponent Part I contact supers preserve their committed facing, finite range and vertical reach (2.469592ms)
+✔ fighter player Part I contact supers preserve their committed facing, finite range and vertical reach (0.998924ms)
+✔ fighter opponent Part I contact supers preserve their committed facing, finite range and vertical reach (1.072795ms)
+✔ Chaos form accepts only its exact actor, source, special slot and living buff clock (0.807582ms)
+✔ Chaos finale projects four attack poses only inside its finite interval without applying a buff or changing any clock (0.609035ms)
+✔ all8 native Wave4 identities require their exact source and preserve canvas, clocks, HP and deterministic paused geometry (8.166353ms)
+✔ Rasengan and Chidori stay attached to the hand while Bunshin smoke and Chaos aura stay beside their own actor (1.042674ms)
+✔ Kamui distortion stays on the target with no eye-to-target ray; Piccolo keeps a finite beam and spiral (0.778261ms)
+✔ Chaos native body player uses its actual four state rows in all3 modes, with pure finite finale projection (18.807228ms)
+✔ Chaos native body opponent uses its actual four state rows in all3 modes, with pure finite finale projection (4.484706ms)
+✔ Melee player Wave4 target visuals use the actual foe and retain their confirmed impact after movement or death (9.783876ms)
+✔ Melee opponent Wave4 target visuals use the actual foe and retain their confirmed impact after movement or death (6.614933ms)
+✔ RPG player Chaos uses its stable real actor clock through idle and fresh support projections without mutating combat state (2.1526ms)
+✔ RPG opponent Chaos uses its stable real actor clock through idle and fresh support projections without mutating combat state (1.903823ms)
+✔ redxiii_ff7 Wave4 base correction has16 native transparent poses and draws all4 states/columns in both facings (69.829688ms)
+✔ vincent_ff7 Wave4 base correction has16 native transparent poses and draws all4 states/columns in both facings (56.195573ms)
+✔ Melee player civilian basic attack performs its authored support and cannot punch an opponent (4355.220882ms)
+✔ Melee player basic firearm reaches a distant target within its actual range once (2.489076ms)
+✔ Melee player medical secondary heals an ally and shares the legacy command path (1.708861ms)
+✔ Melee enemy civilian basic attack performs its authored support and cannot punch an opponent (1.398755ms)
+✔ Melee enemy basic firearm reaches a distant target within its actual range once (1.030697ms)
+✔ Melee enemy medical secondary heals an ally and shares the legacy command path (0.994118ms)
+✔ Melee authored support snapshots its action and interruption prevents a late heal (1.002045ms)
+✔ RPG authored basic melee approaches the real target and follows its declared impact tick (4.022067ms)
+✔ RPG custom healing defense keeps healing semantics and does not damage opponents (0.849839ms)
+✔ Melee player Mei Zhen's ancestor guides allies without attacking as a soldier (1.653355ms)
+✔ Melee player Leo's secondary and super heal others while excluding the wounded caster (2.228147ms)
+✔ RPG player Leo cannot select or heal himself with his secondary or super (2.563304ms)
+✔ Melee enemy Mei Zhen's ancestor guides allies without attacking as a soldier (0.907594ms)
+✔ Melee enemy Leo's secondary and super heal others while excluding the wounded caster (1.304284ms)
+✔ RPG enemy Leo cannot select or heal himself with his secondary or super (1.123291ms)
+✔ the independent baseline preserves 4252 exact original slots and the original shared animations (5817.027798ms)
+✔ the authored union separates1365 complete kits,72 original partial records and one lore correction (60.324575ms)
+✔ Mei Zhen’s ancestor message remains nonviolent in both the secondary and entity descriptors (8.983725ms)
+✔ Mei Zhen’s ordinary and cinematic ancestor support changes buffs without harming either team (15.035994ms)
+✔ ability runtime copies preserve sourceHeroId and isolate unrelated universes and caller mutation (15.94012ms)
+✔ medical abilities preserve who and what their source technique can actually help (0.298894ms)
+✔ 45 engine states select bounded coarse poses and declare reuse instead of dedicated animation (0.695778ms)
+✔ every character script has seven real frame-selection sequences and bounded interpolation (72.148396ms)
+✔ named finales select distinct preparation/contact poses and support retains its own visual (0.335433ms)
+✔ all28 exact entities have four sampled phases and changing choreography beyond pose labels (10.593325ms)
+✔ P2 choreography mirrors P1 geometry and keeps ally support visually distinct from explosions (2.634292ms)
+✔ scene-specific mechanisms use the concrete source scene, preserve universe and advance the draw (43.671894ms)
+✔ real player summon exposes the choreography clock, freezes on pause and hits exactly once (2.707266ms)
+✔ real enemy summon exposes the choreography clock, freezes on pause and hits exactly once (1.005961ms)
+✔ RPG native-super progress uses the simulation timer and does not replace the invocation actor (0.405643ms)
+✔ real player RPG super selects its contact bitmap on the authoritative impact tick (1.14246ms)
+✔ real enemy RPG super selects its contact bitmap on the authoritative impact tick (0.765241ms)
+✔ renderer presentationFrame overrides the actual source rectangle rather than only the label (1.783145ms)
+✔ eight exact character atlases contain256 nonempty native poses with real alpha and retained provenance hashes (1296.835377ms)
+✔ dedicated atlas phase and impact frames are selected by exact identity and the real renderer (7.252356ms)
+✔ Aria has a separately sourced dagger correction with16 actual base poses and exact-universe routing (143.222196ms)
+✔ the audit distinguishes raw names, effective names, missing dedicated art and unverified fidelity (2313.734912ms)
+✔ the pre-integration snapshot and the first eight generated atlases remain immutable (4358.855826ms)
+✔ eight new FF8 identities join the runtime union with256 actual distinct poses and exact sources (789.695112ms)
+✔ all FF8 phases draw the new native source rectangles on both sides and synchronize super contact (9.536123ms)
+✔ five missing FF8 presentations preserve the41 existing profiles and use their own source techniques (2.528081ms)
+✔ new FF8 presentation rendering never changes HP, meter, outcome or projectiles (13.043785ms)
+✔ Seifer’s corrected base costume has16 real poses and is routed separately from his32 presentation poses (46.737473ms)
+✔ Cloud’s complete manifest binds45 distinct native rows and180 genuinely different visible cells (604.514039ms)
+✔ all45 Cloud states reach the real renderer; explicit presentations and full Omnislash remain separate (3.145624ms)
+✔ Cloud clocks loop, complete transitions and hold attack preparation until the actual impact (0.474237ms)
+✔ Cloud’s measured hanging hands contain real pixels and attach to either physical platform edge (21.735114ms)
+✔ real P1 and P2 climbing keeps measured hands on a horizontally or vertically moving ledge without moving physics during drawing (7.780869ms)
+✔ real P1 and P2 horizontal movement preserves airborne state clocks and advances the native poses (4.205569ms)
+✔ real P1 and P2 landing keeps all four native landing poses while horizontal motion remains responsive (2.031708ms)
+✔ real P1 and P2 turns emit a complete native transition without delaying velocity or facing (1.409134ms)
+✔ the next scene mechanisms preserve the first17 and animate real draw geometry/styles on simulation time (74.390714ms)
+✔ the wave2 audit counts actual runtime assets and a real full manifest while retaining unverified status (2119.448773ms)
+✔ wave3 baselines,16 preceding native atlases and the complete Cloud runtime manifest remain immutable (4569.335408ms)
+✔ eleven new FF13/15 atlases contain352 independently hashed native poses and exact identity/provenance bindings (1098.000013ms)
+✔ all88 new presentation phases reach the real drawImage rectangles on both sides and hold clocks during pause (75.783538ms)
+✔ four new wave3 identities add28 phases while all47 earlier character profiles are preserved exactly (4.012056ms)
+✔ new FF13/15 result scenes freeze on zero simulation time and never replay combat effects (19.331519ms)
+✔ Cloud,Tifa and Snow presentation samples identify exactly the native rectangles actually drawn by EngineFighter (6.413984ms)
+✔ Tifa has45 exclusive native states,180 distinct poses, source hashes and no unused-row fiction (587.16015ms)
+✔ Tifa ordinary Beat Rush rows stay separate from full-meter Final Heaven and simulation impacts (2.946013ms)
+✔ all45 Tifa states draw their actual atlas rectangles on both sides and obey native state clocks (4.869525ms)
+✔ Tifa measured ledge anchors contain real red glove pixels and attach on both physical edges (20.106334ms)
+✔ Tifa P1/P2 climbing follows moving platforms and drawing never changes its physical coordinates (9.930347ms)
+✔ Tifa P1/P2 held movement preserves airborne, landing and turning animation clocks (8.056882ms)
+✔ the65 stage mechanisms preserve all41 prior definitions and their independently recorded draw geometry (56.738823ms)
+✔ the audit preserves wave3 native presentations and both complete45-state heroes without certifying source animation fidelity (2176.220828ms)
+✔ the wave3 snapshot,27 existing native assets and both prior45-state manifests remain immutable (4473.436604ms)
+✔ the runtime union contains35 exact heroes and the eight new atlases have256 real distinct native poses (846.573046ms)
+✔ every new native phase draws all four actual cells on P1/P2 and freezes when only wall time advances (42.543248ms)
+✔ prior character recipes stay immutable except the two explicitly documented provenance corrections (6.360471ms)
+✔ new Fighter scenes freeze on zero simulation time and drawing never changes match resources or outcome (34.154525ms)
+✔ Goku has six real native atlases with45 exclusive rows,180 distinct poses and no unused-row fiction (507.181495ms)
+✔ all45 Goku states draw actual cells on both sides, keep loop/transition clocks and freeze on pause (12.919373ms)
+✔ Goku ordinary Kikoha and physical charge contact follow runtime impacts while full Kamehameha uses its separate atlas (2.3765ms)
+✔ Goku ledge anchors sit on actual hand pixels and the real renderer attaches them to both edges (24.144174ms)
+✔ Goku P1/P2 climbing follows moving platforms and live movement preserves air,land and turn clocks (16.57797ms)
+✔ Chaos is16 genuinely different pixels poses and its strict buff sources select the body before ordinary sprite routing (82.747758ms)
+✔ Vincent finale renders every human preparation cell then Chaos only in its exact cosmetic window (1.784115ms)
+✔ the89 stage mechanisms preserve all65 previous definitions and their exact recorded render operations (39.584162ms)
+✔ Hyper Shot uses Pulse Ammo and one enemy while retaining its existing power, timing and cost (4463.344586ms)
+✔ RPG Hyper Shot player commits once, pauses and hits only the selected close opponent (5.584018ms)
+✔ RPG Hyper Shot enemy commits once, pauses and hits only the selected close opponent (1.075865ms)
+✔ Melee Hyper Shot player hits one forward opponent once and freezes on zero simulation delta (5.959109ms)
+✔ Melee Hyper Shot cpu hits one forward opponent once and freezes on zero simulation delta (1.724726ms)
+✔ Melee Hyper Shot player rejects targets behind, beyond range and outside its projectile height (2.546538ms)
+✔ Melee Hyper Shot cpu rejects targets behind, beyond range and outside its projectile height (2.082531ms)
+✔ Fighter Hyper Shot player launches one timed projectile, hits the active opponent and preserves the close bench (3.098595ms)
+✔ Fighter Hyper Shot cpu launches one timed projectile, hits the active opponent and preserves the close bench (0.961744ms)
+✔ Fighter Hyper Shot player keeps its committed facing and finite projectile range (1.31612ms)
+✔ Fighter Hyper Shot cpu keeps its committed facing and finite projectile range (0.756089ms)
+✔ Laguna native super motion rises, hangs and returns without moving gameplay coordinates (1.766648ms)
+✔ The End renders flower petals and short stems without a ray or a beneficial gameplay effect (1.703743ms)
+✔ Hyper Shot Pulse tracer is finite, mirrored and cosmetic, with no sustained ray after arrival (0.907993ms)
+✔ Fighter player civilian light/heavy actions preserve support effects without damage (4647.398878ms)
+✔ Fighter cpu civilian light/heavy actions preserve support effects without damage (18.04354ms)
+✔ authored simple firearms travel to their target and stop at the actual source range (5.14258ms)
+✔ continuous authored defense uses its actual reduction instead of the legacy universal block (1.063969ms)
+✔ native presentations take priority while legacy Naruto retains its explicit charge and release frames (4.338591ms)
+✔ Player Anchor consumes its existing dedicated phase sheets, and support fallbacks never swing (1.191922ms)
+✔ scripted finishers draw distinct action shapes and never change battle state (2.889235ms)
+✔ Barret Catastrophe holds an airborne firing position before landing, with mirrored downward ray geometry (1.118273ms)
+✔ Barret super lifts the rendered body and fires downward at its real impact time without moving gameplay coordinates (2.816984ms)
+✔ Barret finale keeps its beam cosmetic after the match is confirmed and completes once (3.077982ms)
+✔ Leo heals another living ally and never himself through either command and either player side (8.101778ms)
+✔ Mei Zhen secondary commands buff living allies without damage and share a six-second cooldown for both sides (29.398427ms)
+✔ Melee Barret renders an airborne body and a descending committed beam for P1 and P2 without physical mutation (6.357326ms)
+✔ source targeting separates Army of One and Death from Highwind and Sovereign Fist (5172.524979ms)
+✔ RPG Army of One preview retains its real single or area target rule (3.880287ms)
+✔ RPG Death preview retains its real single or area target rule (0.653492ms)
+✔ RPG Highwind preview retains its real single or area target rule (0.717081ms)
+✔ rpg Cold Blood player spends one full gauge and hits one close opponent once through pause (3.450875ms)
+✔ rpg Cold Blood player cannot finish an interrupted startup (0.898153ms)
+✔ rpg Sovereign Fist player covers both nearby foes where that mode fields multiple active opponents (1.241818ms)
+✔ rpg Lunafreya player restores a living ally with one charge and no hostile damage (2.527189ms)
+✔ rpg Cold Blood opponent spends one full gauge and hits one close opponent once through pause (1.731589ms)
+✔ rpg Cold Blood opponent cannot finish an interrupted startup (0.626214ms)
+✔ rpg Sovereign Fist opponent covers both nearby foes where that mode fields multiple active opponents (1.157389ms)
+✔ rpg Lunafreya opponent restores a living ally with one charge and no hostile damage (1.379023ms)
+✔ melee Cold Blood player spends one full gauge and hits one close opponent once through pause (5.997295ms)
+✔ melee Cold Blood player cannot finish an interrupted startup (1.259391ms)
+✔ melee Sovereign Fist player covers both nearby foes where that mode fields multiple active opponents (2.441702ms)
+✔ melee Lunafreya player restores a living ally with one charge and no hostile damage (1.571358ms)
+✔ melee Cold Blood opponent spends one full gauge and hits one close opponent once through pause (2.778181ms)
+✔ melee Cold Blood opponent cannot finish an interrupted startup (0.998521ms)
+✔ melee Sovereign Fist opponent covers both nearby foes where that mode fields multiple active opponents (1.630514ms)
+✔ melee Lunafreya opponent restores a living ally with one charge and no hostile damage (1.046871ms)
+✔ fighter Cold Blood player spends one full gauge and hits one close opponent once through pause (2.816454ms)
+✔ fighter Cold Blood player cannot finish an interrupted startup (0.581147ms)
+✔ fighter Sovereign Fist player covers both nearby foes where that mode fields multiple active opponents (0.627807ms)
+✔ fighter Lunafreya player restores a living ally with one charge and no hostile damage (0.925459ms)
+✔ fighter Cold Blood opponent spends one full gauge and hits one close opponent once through pause (0.613626ms)
+✔ fighter Cold Blood opponent cannot finish an interrupted startup (1.076281ms)
+✔ fighter Sovereign Fist opponent covers both nearby foes where that mode fields multiple active opponents (0.363367ms)
+✔ fighter Lunafreya opponent restores a living ally with one charge and no hostile damage (0.405289ms)
+✔ melee Cold Blood player preserves committed facing, finite range and projectile height (3.786435ms)
+✔ melee Cold Blood opponent preserves committed facing, finite range and projectile height (1.523706ms)
+✔ fighter Cold Blood player preserves committed facing, finite range and projectile height (1.065208ms)
+✔ fighter Cold Blood opponent preserves committed facing, finite range and projectile height (0.505881ms)
+✔ all eleven party visual identities require matching source ID, universe and technique and leave canvas/gameplay unchanged (3.942605ms)
+✔ Snow and Fang body motion peaks in flight and lands exactly on hitAt without modifying a combatant (3.035046ms)
+✔ Cold Blood and Army of One show all17 and11 finite visual events, including the final one, without extra gameplay hits (5.664252ms)
+✔ Last Resort has eight distinct rising/falling orbs and finite impact rings, never an Eidolon or gameplay mutation (1.52889ms)
+✔ Armiger orbits weapon silhouettes while Oracle blessing remains a cosmetic allied support motif (3.13102ms)
+✔ RPG decisive Snow and Fang impacts player project a grounded native recovery while the ended simulation stays frozen (4.846411ms)
+✔ RPG decisive Snow and Fang impacts opponent project a grounded native recovery while the ended simulation stays frozen (3.217791ms)
+✔ Melee Cold Blood player keeps its confirmed visual impact point after a kill while another opponent survives (1.620979ms)
+✔ Melee Cold Blood opponent keeps its confirmed visual impact point after a kill while another opponent survives (0.902725ms)
+✔ Fighter Sazh, Prompto and Irvine player keep finite forward visual aim after the opponent crosses or leaves range (4.772961ms)
+✔ Fighter Sazh, Prompto and Irvine opponent keep finite forward visual aim after the opponent crosses or leaves range (2.611586ms)
+ℹ tests 192
+ℹ suites 0
+ℹ pass 192
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 60365.134734
+{
+  "output": "docs/combat-fidelity-wave4-2026-10-18/current.json",
+  "scope": {
+    "heroes": 1911,
+    "universes": 525,
+    "abilitySlots": 5733,
+    "meleeStates": 45
+  },
+  "abilities": {
+    "baselineHeuristicCandidateSlots": 4252,
+    "rawHeuristicCandidateSlots": 4252,
+    "heuristicNote": "The original broad Guard suffix includes 118 concrete defense names requiring review, not 118 confirmed generic actions.",
+    "strictDefinition": "simple/secondary: original placeholder expressions; defense: Signature Guard|defensive action or exact hero.name + \" Guard\".",
+    "rawStrictGenericSlots": 4134,
+    "rawStrictCounts": {
+      "simple": 1330,
+      "secondary": 1387,
+      "defense": 1417
+    },
+    "rawConcreteDefenseCandidatesForReview": 118,
+    "rawCandidateCounts": {
+      "defense": 1535,
+      "simple": 1330,
+      "secondary": 1387
+    },
+    "authoredHeroes": 1438,
+    "completeThreeSlotKits": 1365,
+    "partialSlotKits": 73,
+    "originalResidualCohort": {
+      "heroes": 72,
+      "slots": 114,
+      "baselineSha256": "08a800360a0ed30c41a3d8e68375ed564b9b634fa20170635f0d75692929095a"
+    },
+    "separateLoreCorrections": {
+      "heroes": 1,
+      "slots": 1,
+      "entries": [
+        {
+          "id": "mei_zhen",
+          "universe": "Mandate of Nine Heavens",
+          "sourceWork": "Mandate of Nine Heavens — original project canon",
+          "sourceReference": "src/game/originalUniversesManifest.json, mei_zhen: ancêtres / soutien ; la gardienne aide les morts à transmettre un message sans devenir des soldats. L’apparition guide les alliés et n’attaque personne.",
+          "slots": [
+            {
+              "slot": "secondary",
+              "name": "Pas de l’Ancêtre",
+              "effect": "buff",
+              "damage": 0,
+              "targetSide": "ally"
+            }
+          ],
+          "source1to1Verified": false
+        }
+      ]
+    },
+    "authoredSlots": 4210,
+    "baselineCandidateSlotsReplaced": 4142,
+    "effectiveHeuristicCandidateSlots": 110,
+    "effectiveCandidateCounts": {
+      "defense": 110
+    },
+    "effectiveStrictGenericSlots": 0,
+    "effectiveStrictCounts": {},
+    "effectiveConcreteDefenseCandidatesForReview": 110,
+    "unresolvedSlots": 0,
+    "verifiedSourceAbilities": 0,
+    "source1to1UnverifiedSlots": 5733
+  },
+  "meleeBindings": {
+    "total": 85995,
+    "counts": {
+      "explicit-sheet-row": 41,
+      "adapted-existing-pose": 80128,
+      "legacy-coarse-row": 5691,
+      "dedicated-melee-manifest": 135
+    },
+    "adaptedPoseSourceStates": {
+      "run": 15261,
+      "idle": 30462,
+      "defense": 66,
+      "attack": 26682,
+      "hit": 7632,
+      "support": 20,
+      "special": 5
+    },
+    "adaptedPoseBindingsAtIdle": 30462,
+    "dedicatedManifestHeroes": [
+      "cloud_ff7",
+      "tifa_ff7",
+      "goku_dbz"
+    ],
+    "nativePresentationHeroIds": [
+      "cloud_ff7",
+      "tifa_ff7",
+      "aerith_ff7",
+      "barret_ff7",
+      "goku_dbz",
+      "vegeta_dbz",
+      "naruto_six_paths",
+      "sasuke_rinnegan",
+      "squall_ff8",
+      "rinoa_ff8",
+      "quistis_ff8",
+      "seifer_ff8",
+      "laguna_ff8",
+      "zell_ff8",
+      "selphie_ff8",
+      "irvine_ff8",
+      "lightning_ff13",
+      "fang_ff13",
+      "vanille_ff13",
+      "snow_ff13",
+      "sazh_ff13",
+      "hope_ff13",
+      "noctis_ff15",
+      "gladiolus_ff15",
+      "ignis_ff15",
+      "prompto_ff15",
+      "lunafreya_ff15",
+      "redxiii_ff7",
+      "yuffie_ff7",
+      "vincent_ff7",
+      "naruto_uzumaki_young",
+      "sasuke_uchiha_young",
+      "sakura_haruno_young",
+      "piccolo_dbz",
+      "kakashi_war"
+    ],
+    "nativePresentationHeroes": 35,
+    "detailedManifestCoverage": [
+      {
+        "id": "cloud_ff7",
+        "states": 45,
+        "uniqueSheetRows": 45,
+        "missingStates": [],
+        "statesWithoutNativeFile": [],
+        "rowBoundsValid": true,
+        "boundFrames": 180,
+        "sheets": [
+          "/sprites/generated/melee-cloud-wave2/cloud-motion-a.png",
+          "/sprites/generated/melee-cloud-wave2/cloud-motion-b.png",
+          "/sprites/generated/melee-cloud-wave2/cloud-combat-a.png",
+          "/sprites/generated/melee-cloud-wave2/cloud-combat-b.png",
+          "/sprites/generated/melee-cloud-wave2/cloud-defense.png",
+          "/sprites/generated/melee-cloud-wave2/cloud-ledge.png"
+        ],
+        "complete": true,
+        "source1to1Verified": false
+      },
+      {
+        "id": "tifa_ff7",
+        "states": 45,
+        "uniqueSheetRows": 45,
+        "missingStates": [],
+        "statesWithoutNativeFile": [],
+        "rowBoundsValid": true,
+        "boundFrames": 180,
+        "sheets": [
+          "/sprites/generated/melee-tifa-wave3/tifa-motion-a.png",
+          "/sprites/generated/melee-tifa-wave3/tifa-motion-b.png",
+          "/sprites/generated/melee-tifa-wave3/tifa-combat-a.png",
+          "/sprites/generated/melee-tifa-wave3/tifa-combat-b.png",
+          "/sprites/generated/melee-tifa-wave3/tifa-defense.png",
+          "/sprites/generated/melee-tifa-wave3/tifa-ledge.png"
+        ],
+        "complete": true,
+        "source1to1Verified": false
+      },
+      {
+        "id": "goku_dbz",
+        "states": 45,
+        "uniqueSheetRows": 45,
+        "missingStates": [],
+        "statesWithoutNativeFile": [],
+        "rowBoundsValid": true,
+        "boundFrames": 180,
+        "sheets": [
+          "/sprites/generated/melee-goku-wave4/goku-motion-a.png",
+          "/sprites/generated/melee-goku-wave4/goku-motion-b.png",
+          "/sprites/generated/melee-goku-wave4/goku-combat-a.png",
+          "/sprites/generated/melee-goku-wave4/goku-combat-b.png",
+          "/sprites/generated/melee-goku-wave4/goku-defense.png",
+          "/sprites/generated/melee-goku-wave4/goku-ledge.png"
+        ],
+        "complete": true,
+        "source1to1Verified": false
+      }
+    ],
+    "fullDetailedMeleeManifestHeroes": [
+      "cloud_ff7",
+      "tifa_ff7",
+      "goku_dbz"
+    ],
+    "heroesWithoutFullDetailedMeleeManifest": 1908,
+    "nativePresentationDeclaredHeroes": 35,
+    "nativePresentationPendingFiles": [],
+    "nativePresentationPhases": 280,
+    "nativePresentationPoses": 1120,
+    "heroesWithoutDedicatedPresentationAtlas": 1876,
+    "sourceAnimationSequencesVerified": 0,
+    "source1to1UnverifiedHeroes": 1911,
+    "nativeAtlasStatus": {
+      "missing": 1876,
+      "adapted": 35,
+      "source1to1Verified": 0
+    }
+  },
+  "characterPixelBaseline": {
+    "rosterHeroes": 1911,
+    "rosterUniverses": 525,
+    "dedicatedMeleeManifestHeroes": 0,
+    "completeContextPackHeroes": 11,
+    "uniqueResolvedSheets": 1914,
+    "decodedSheets": 1914,
+    "missingSheets": 0,
+    "invalidSheets": 0,
+    "heroesWithMissingOrInvalidSheet": 0,
+    "heroesWithExactRepeatedTiles": 0,
+    "sheetsWithExactRepeatedTiles": 0,
+    "sheetsWithSingleUniqueVisibleFrame": 0,
+    "sheetsWithStaticRows": 0,
+    "playerAnchorIsOutsideRoster": true,
+    "pixelHashedSheets": 1905,
+    "nonIntegralGridSheets": 9
+  },
+  "baseSpriteCorrections": {
+    "heroes": 4,
+    "declaredHeroes": 4,
+    "pendingFiles": [],
+    "poses": 64,
+    "countedAsDedicatedPresentationAtlases": false
+  },
+  "presentations": {
+    "scriptedHeroes": 50,
+    "scriptedPairs": 350,
+    "sharedTemplatePairs": 13027,
+    "sourceSequencesVerified": 0,
+    "source1to1UnverifiedRosterPairs": 13377
+  },
+  "entities": {
+    "sheets": 28,
+    "callerProfiles": 82,
+    "scriptedEntities": 28,
+    "distinctPathLabels": 27,
+    "distinctSampledTrajectories": 28,
+    "sourceSequencesVerified": 0,
+    "source1to1UnverifiedEntitySequences": 28
+  },
+  "stages": {
+    "configuredUniverses": 525,
+    "sceneMechanismDefinitions": 89,
+    "rosterUniversesWithSceneMechanismDefinition": 48,
+    "rosterUniversesWithoutSpecificSceneMechanism": 477,
+    "localFourFrameAtlasMechanisms": 4,
+    "staticBackdropCompositingMechanisms": 7,
+    "sharedEffectFamilies": 28,
+    "sourceScenesVerified": 0,
+    "source1to1UnverifiedRosterUniverses": 525
+  },
+  "source1to1Verified": false
+}
+{"heroes":8,"phases":64,"frames":256,"alphaAndMargins":true,"sourceHashes":true,"fourDistinctFramesPerPhase":true}
+{"heroes":1,"states":4,"frames":16,"alphaAndMargins":true,"hashesVerified":true}
+{"heroes":4,"phases":32,"frames":128,"correctedBaseHeroes":1,"correctedBaseFrames":16,"alphaAndMargins":true,"fourDistinctFramesPerPhase":true,"sourceAndReferenceHashes":true,"nativeSources":5}
+{"heroes":3,"phases":24,"frames":96,"alphaAndMargins":true,"sourceAndReferenceHashes":true,"fourDistinctFramesPerPhase":true,"namedSupers":true,"nativeSources":3}
+{"heroes":5,"phases":40,"poses":160,"nativeSources":7,"correctedPhaseRows":3,"distinctRgbaPoses":160,"alphaAndMargins":true,"sourceAndReferenceHashes":true,"nativeRowReconstructionMatches":true,"visualReviewComplete":true,"canon1to1Verified":false,"networkVerified":false}
+{"heroes":3,"phases":24,"frames":96,"alphaAndMargins":true,"sourceAndReferenceHashes":true,"fourDistinctFramesPerPhase":true,"namedSupers":true,"nativeSources":6}
+{"heroes":2,"phases":16,"poses":64,"nativeSources":4,"newlyDrawnMissingPhaseRows":1,"correctedPhaseRows":2,"distinctRgbaPoses":64,"alphaAndMargins":true,"sourceAndReferenceHashes":true,"nativeRowReconstructionMatches":true,"visualReviewComplete":true,"canon1to1Verified":false,"networkVerified":false}
+{"forms":1,"frames":16,"states":4,"alphaAndMargins":true,"distinctNativeCells":true,"actualNativeSources":1,"sourceHashes":true}
+{"heroes":2,"states":8,"frames":32,"alphaAndMargins":true,"actualNativeSources":3,"activeNativeSources":2,"sourceHashes":true}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 test:combat-presentation
+> node --test --test-concurrency=1 scripts/combatIdentity.test.mjs scripts/combatCompletion.test.mjs scripts/engineSmashSuper.test.mjs scripts/rpgSummon.test.mjs scripts/rpgAuthoredSpecial.test.mjs scripts/fighterPresentationRuntime.test.mjs scripts/stageAtmosphere.test.mjs scripts/combatModesIntegration.test.mjs && node scripts/combatCompletionAudit.mjs --check
+
+✔ completion covers every exact identity in the independent 1089-character baseline (6.053148ms)
+✔ the 191 additional decisive-action identities are tracked separately and fill the remaining catalog exactly (1.80467ms)
+✔ every completed action carries an explicit identity basis and source scene (20.137275ms)
+✔ support completion never carries damage and offensive completion has positive damage (13.062969ms)
+✔ independent character roles retain beneficial semantics after their generic super is replaced (0.342047ms)
+✔ completed startup, impact, range and resource values are finite and ordered (16.650941ms)
+✔ resolved completion profiles cannot mutate the source hero, catalog, or another resolution (71.970807ms)
+✔ battle-prefixed identities preserve the exact source ID while foreign universes cannot borrow completion (50.897867ms)
+✔ all 1911 runtime heroes have a non-generic super, including outside the 1089 baseline (16.544926ms)
+✔ the 28 entity sheets cover the exact 82 caller profiles from the independent missing-assets baseline (0.794955ms)
+✔ every baseline caller resolves its actual entity sheet instead of a substitute character (87.043637ms)
+✔ the 28 entity PNGs contain four distinct visible poses with real alpha and uncropped margins (213.407312ms)
+✔ normalized entity sheets retain byte-verifiable archived native sources and honest provenance (55.060265ms)
+✔ an unrelated universe, entity or action never borrows an existing entity bitmap (0.64797ms)
+✔ entity poses follow simulation arrival, preparation, one impact and return without advancing during pause (4.013518ms)
+✔ adversarial hero sprites preserve battle state while resolving exact source artwork (4.730831ms)
+✔ monsters, same-name shells and wrong universes never borrow roster hero artwork (0.257605ms)
+✔ every roster hero has a finite super sourced from its own universe (158.142043ms)
+✔ all authored overrides identify existing heroes in the exact source universe (1.288357ms)
+✔ famous techniques have their own delivery and support semantics (0.353588ms)
+✔ empty enemy shells and unrelated universe names never borrow a hero super (4.333731ms)
+✔ every universe uses its own real performer or an explicitly authored entity (139.835747ms)
+✔ FFVII materia entities never impersonate a party-member sprite (0.52485ms)
+✔ technical and realistic equipment stays a reinforcement instead of a magical summon (0.521373ms)
+✔ medical and barricade drones preserve healing and guard without damage targeting (0.327879ms)
+✔ explicit support metadata and localized names survive without classifying by genre or name (0.898723ms)
+✔ separate calls return independent profile and performer metadata (0.510528ms)
+✔ presentation phases preserve hero identity and state that finales are adaptations (0.590739ms)
+✔ Fighter authored Rebecca super heals the correct player team once (4457.247517ms)
+✔ Fighter authored Rebecca super heals the correct cpu team once (0.962237ms)
+✔ Fighter P2 canonical super respects facing guard and spends one activation (1.769481ms)
+✔ Fighter counter-hit cancels an uncommitted super and dispose blocks impacts (0.575908ms)
+✔ Fighter canonical projectile preserves launch direction and its finite launch range (1.341589ms)
+✔ Fighter timeout final omits fatality and reports a P2 win once after outro (1.62779ms)
+✔ authored Rebecca support is preserved by the Melee runtime and its HP cap (5.016799ms)
+✔ RPG P2 Pelican impact waits through pause and respects guard plus item shield once (5.897974ms)
+✔ RPG P2 medical invocation keeps ally healing, radiation cap and dead-unit exclusion (2.597487ms)
+✔ RPG canonical Stand keeps the confirmed identity when that target dies during arrival (1.366269ms)
+✔ RPG disposal before an invocation impact cancels the scene and all delayed damage (0.586295ms)
+✔ keyboard/touch special and legacy ability dispatch share one timed super and one meter spend (5396.189161ms)
+✔ beam respects facing, finite range and height while projectile hits the nearest target (2.498983ms)
+✔ authored heal restores nearby living allies without damaging enemies or reviving (0.838029ms)
+✔ guard, buff, cleanse and revive retain their support effects and expire during simulation (2.437896ms)
+✔ interruption, pause input reset and outcome cannot produce a delayed second impact (1.408358ms)
+✔ perfect guard works on supers; missing abilities spend no meter for P2 or CPU (1.380151ms)
+✔ CPU and local P2 can activate their own authored super with the same runtime (0.918567ms)
+✔ every fighter keeps its own intro duration and outcome while pending attacks are cleared (2.665842ms)
+✔ character introductions freeze combat, controls and the round timer before the countdown (4791.892675ms)
+✔ the first round shows both outcomes without completing or rewarding the match (3.020584ms)
+✔ round restart restores both rosters and resources with the score preserved (1.406928ms)
+✔ a lost opening round does not finish the match and the player can win the next two (1.659674ms)
+✔ finale, victory and outro use the winner identity and cannot deal further damage (15.664214ms)
+✔ support supers heal their intended team without damaging the opponent (1.932581ms)
+✔ the presentation renderer displays the character, universe and real source ability through every phase (6.940188ms)
+✔ RPG all authored catalog specials resolve the same identity and effect as their source capability (5304.8622ms)
+✔ RPG custom actors retain exact action objects and authored IDs cannot cross universes (1.269931ms)
+✔ RPG side-prefixed P2 actors resolve authored abilities through exact source identity (0.495469ms)
+✔ RPG authored melee special approaches the selected opponent and applies real damage for player (7.234438ms)
+✔ RPG authored melee special approaches the selected opponent and applies real damage for enemy (1.18783ms)
+✔ RPG authored medical special heals its own eligible squad without damaging opponents for player (1.508093ms)
+✔ RPG authored medical special heals its own eligible squad without damaging opponents for enemy (1.125172ms)
+✔ RPG authored performer support buffs allies and never becomes an offensive generic burst (1.305038ms)
+✔ RPG Mei Zhen ancestor invocation uses the authored support correction and retains its exact entity and choreography (2.124221ms)
+✔ RPG Mei Zhen invocation applies one allied buff through a paused complete cinematic for player (4.550849ms)
+✔ RPG Mei Zhen invocation applies one allied buff through a paused complete cinematic for enemy (2.769339ms)
+✔ RPG authored cleansing and revival retain their eligible target rules and apply their real effect (1.800636ms)
+✔ GameCanvas RPG command labels use the same authored ability helper as targeting (0.693954ms)
+✔ RPG summon selection and cancellation never spend resources for player (5062.590111ms)
+✔ RPG summon selection and cancellation never spend resources for enemy (2.358025ms)
+✔ RPG summon requires both full gauges, commits once and remains separate from the special (8.271962ms)
+✔ RPG cinematic has one impact at the exact simulation tick and a completed return (2.585004ms)
+✔ RPG summon pause freezes the scene and queued attacks without late wall-time effects (5.767549ms)
+✔ RPG summon cancels safely on dispose (0.668266ms)
+✔ RPG summon cancels safely on gameOver (0.716578ms)
+✔ RPG summon cancels safely on dead-caller (0.717422ms)
+✔ RPG invocation cannot silently acquire a replacement for an invalidated target (9.229834ms)
+✔ RPG catalog deployment preserves arca_loom support semantics (6.20491ms)
+✔ RPG catalog deployment preserves arca_bastion support semantics (2.170198ms)
+✔ RPG explicit revival, buff and cleansing deployments keep their declared effect (7.505174ms)
+✔ RPG automatic sides use the same invocation resolver and keep manual targeting closed (3.257968ms)
+✔ RPG auto falls back to the original special when a healing invocation has no eligible ally (2.2305ms)
+✔ RPG every catalog invocation can resolve its authored effect from the combat formation (471.062122ms)
+✔ RPG reinforcement uses its existing partner identity and matches buffed damage preview (3.534966ms)
+✔ authored atmosphere identifies the actual location, with transparent adaptation provenance (2.572613ms)
+✔ different places in one universe do not inherit unrelated canonical set pieces (1.68781ms)
+✔ physical profiles use authored surfaces and never genre, faction or stage hashes (0.976156ms)
+✔ every authored rendering branch draws finite, deterministic, low-opacity background geometry (17.37387ms)
+✔ reduced motion freezes animation, invalid clocks cannot poison drawing and stage options disable the layer (1.37257ms)
+✔ lore and crossover registry entries resolve without pretending visual validation (21.01054ms)
+✔ all 255 formerly missing universes have explicit reference scenes, local motifs and placements (97.741081ms)
+✔ all 525 roster universes resolve without a scene name and unknown universes stay unconfigured (7.622154ms)
+✔ caller scenes always beat universe defaults, including unknown scenes and ordinary rooms (0.671696ms)
+ℹ tests 92
+ℹ suites 0
+ℹ pass 92
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 29823.403292
+{
+  "heroes": 1911,
+  "universes": 525,
+  "supers": 1911,
+  "authored": 1365,
+  "genericCapabilities": 0,
+  "profilesWithEntityAssets": 82,
+  "uniqueEntityAssets": 28,
+  "missingEntityProfiles": 0,
+  "unconfiguredAtmospheres": 0,
+  "identityBasis": {
+    "existing-catalog": 546,
+    "authored-source-adaptation": 85,
+    "canonical-role": 927,
+    "canonical-technique": 172,
+    "authored-universe-canon": 181
+  }
+}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 test:deployment-inputs
+> node --test scripts/vercelUploadManifest.test.mjs
+
+✔ accepts every tracked public path plus unrelated upload files (1.832378ms)
+✔ an omitted backgrounds junction reports each missing tracked file (4.820434ms)
+✔ coverage is case-sensitive exactly as on the Linux build host (0.271637ms)
+✔ rejects absolute paths, traversal and ambiguous separators anywhere in the upload (0.814619ms)
+✔ rejects malformed manifest objects and invalid file sizes (0.41216ms)
+✔ rejects unsafe or empty Git path inputs instead of a vacuous pass (0.433745ms)
+✔ rejects duplicate upload or Git paths rather than hiding ambiguity (0.208203ms)
+✔ the pure validator preserves frozen inputs, metadata, Unicode and spaces (0.646064ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 82.882025
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 test:conversation
+> node --test --test-concurrency=1 scripts/fixedStepClock.test.mjs scripts/rpgTargetingPresentation.test.mjs scripts/rpgTargeting.test.mjs scripts/tacticalFighterFacing.test.mjs scripts/tacticsEscort.test.mjs scripts/fighterRaceGameplayAudit.test.mjs scripts/portalCatalogView.test.mjs scripts/portalRotationReroll.test.mjs scripts/catalogPagination.test.mjs scripts/anchorCustomization.test.mjs scripts/localSaveGuard.test.mjs scripts/conversationIntegration.test.mjs scripts/squadPreparation.test.mjs scripts/universeArchiveView.test.mjs scripts/mosaicCityRuntime.test.mjs scripts/extinctionTiming.test.mjs scripts/battleItemShield.test.mjs scripts/battlePickupSemantics.test.mjs scripts/cloudReconciliationRace.test.mjs scripts/ocCampaignUiProgress.test.mjs scripts/combatStatPreparation.test.mjs
+
+✔ moving customization keeps saved ownership, loadouts and gameplay support separate (0.865522ms)
+✔ a shield protects future hits and never restores health (0.768185ms)
+✔ repeated shield grants refresh a bounded pool without stacking or resurrection (0.193312ms)
+✔ RPG preview and real damage consume item protection exactly once after DEF and guard (0.282167ms)
+✔ green herb and Silent Hill health drink heal without offensive side effects (4886.889115ms)
+✔ Halo bubble and MJOLNIR cell provide real shield metadata, never healing or attack (0.510657ms)
+✔ Naquadah cell recharges while Ancient Drone, plasma grenade and incendiary rounds attack (0.748813ms)
+✔ tuple permutations never change identity-based effects (0.926509ms)
+✔ relic association uses exact identity or authored source id, never array position (0.394294ms)
+✔ authored metadata outranks identity rules and survives without mutation (0.256437ms)
+✔ unsupported narrative controls and ambiguous mixed-use items are explicitly neutral (0.542778ms)
+✔ controlled fallback is disclosed, identity-based and does not infer effects from equip stat boosts (0.413039ms)
+✔ generated fallback archetypes explicitly name their role and keep stable ids (0.470209ms)
+✔ source identity links in generated pickups point to the same named prop (16.879651ms)
+✔ authored original-world items and summon/ultimate effects are unchanged (0.498858ms)
+✔ runtime pickup builders no longer rotate role or effect arrays by index (0.401105ms)
+✔ neutral props remain in the archive but never enter usable battle pools (0.282851ms)
+✔ catalog pages default to 24 and offer only bounded 12/24/48 sizes (1884.242796ms)
+✔ search sees the full catalog before pagination, including its final entry (1.343173ms)
+✔ query normalizes accents and case across localized names, universes and abilities (0.466269ms)
+✔ filters are applied before page size so complete matching pages stay reachable (0.375021ms)
+✔ page bounds survive empty/shrinking catalogs and invalid saved cursors (0.472843ms)
+✔ changing a catalog only resets its page and never another view or selected details (0.409826ms)
+✔ catalog slicing preserves source identity and order (0.263182ms)
+✔ pagination renders labeled search, page size, explicit ranges and bounded buttons (7.7234ms)
+✔ Hub wires independent roster/reserve/armory/shop pagination without replacing selected details (531.868193ms)
+✔ another tab saving during cloud load aborts reconciliation without rebasing or overwriting (2.40674ms)
+✔ local gameplay updated while cloud load awaits is uploaded from the fresh ref, not the old render (0.905114ms)
+✔ new local progress made during load prevents automatic replacement by a previously eligible cloud trace (18.123558ms)
+✔ automatic cloud restoration succeeds with an unchanged baseline and never rebases (0.661059ms)
+✔ applySave refuses implicit external changes but an explicitly authorized adoption succeeds (0.431527ms)
+✔ confirmed divergent cloud choice is explicitly authorized and remains usable (1.491881ms)
+✔ storage becoming inaccessible during cloud load fails closed without touching player state (0.426943ms)
+✔ missing guard cannot authorize even an explicit application (0.395919ms)
+✔ archetype helper is immutable, category-specific and preserves unrelated stats (4591.875719ms)
+✔ RPG actual GameCanvas preparation matches Hub and applies each category synergy once (5.75006ms)
+✔ RPG raw constructor callers still receive the matching category bonus once (1.661242ms)
+✔ Tactics actual GameCanvas preparation matches Hub and applies each category synergy once (5.924733ms)
+✔ Tactics raw constructor callers still receive the matching category bonus once (2.502822ms)
+✔ Smash actual GameCanvas preparation matches Hub and applies each category synergy once (10.53592ms)
+✔ Smash raw constructor callers still receive the matching category bonus once (2.68202ms)
+✔ real Bastion/Sable/Nova preparation DEF remains 13/11/6 inside RPG (0.467887ms)
+✔ Hub relic plus collection order matches battle, including upgrades and disabled gear (1.349967ms)
+✔ Critical Edge ATK boost is prepared once and DEF penetration has no other side effects (1.11229ms)
+✔ RPG direct-hit penetration keeps guard, cover, shield and variance exactly once for both camps (1.035012ms)
+✔ Tactics direct-hit penetration keeps guard, cover, shield and variance exactly once for both camps (1.167559ms)
+✔ Smash direct-hit penetration keeps guard, cover, shield and variance exactly once for both camps (2.086883ms)
+✔ RPG target preview uses the same penetration and shield-aware variance as its actual hit (3.331119ms)
+✔ App and all changed runtime screens compile together (5988.313741ms)
+✔ RPG targeting exposes selection, confirmation, cancellation and wait controls (8.295305ms)
+✔ personalization is owned by Anchor record and never by booster acquisition (28.131456ms)
+✔ OC prologue uses existing Nexus art for ARCA, Anchor and its first squad (0.767895ms)
+✔ duel and race use shared fixed simulation, freeze hidden tabs and ignore typing shortcuts (0.509423ms)
+✔ rotation persistence completes before React publishes currency and selection (0.69223ms)
+✔ actual Extinction movement, zone and cooldowns are identical at 30/60/120/144 Hz (7.402258ms)
+✔ pause and tab visibility reset never advance Extinction damage or cooldowns (0.45751ms)
+✔ simultaneous lethal damage and last-enemy death resolves defeat, with no extra catch-up ticks (0.30183ms)
+✔ dead enemies remain fixed and visibility/focus loss releases movement and aim (1.655912ms)
+✔ Fighter fait entrer un tag derriere le partenaire sur les camps initiaux (1.203179ms)
+✔ Fighter fait entrer un tag derriere le partenaire et face au rival apres croisement (0.143327ms)
+✔ Race applique enfin la penalite hors-piste propre au circuit (4.42007ms)
+✔ Race verrouille le bas de la route sous le kart et courbe vers l horizon (0.523193ms)
+✔ Race dessine toujours une chaussee continue et aligne le HUD a gauche (1.696845ms)
+✔ Race expose un vrai frein tactile sans turbo gratuit et une sortie de resultat (8.277608ms)
+✔ combat advances equally on 30, 60, 120 and 144 Hz displays (3.909439ms)
+✔ pause and background suspension never produce catch-up attacks (0.27635ms)
+✔ invalid time, clock rollback and lag remain bounded (0.118221ms)
+✔ GameCanvas visibility transitions discard hidden time even when no RAF runs (1.451836ms)
+✔ GameCanvas shell pause and resume reset elapsed time without reconstructing the engine (1.021232ms)
+✔ FighterMode visibility transitions discard hidden time even when no RAF runs (0.49512ms)
+✔ FighterMode shell pause and resume reset elapsed time without reconstructing the engine (0.431115ms)
+✔ RaceMode visibility transitions discard hidden time even when no RAF runs (0.248952ms)
+✔ RaceMode shell pause and resume reset elapsed time without reconstructing the engine (0.961902ms)
+✔ RPG targeting wait transitions also reset the clock independently of the shell pause (1.189319ms)
+✔ two guards cannot sequentially overwrite a save from a stale baseline (1.697167ms)
+✔ check never silently adopts a newer save; rebase must explicitly accept it (0.345493ms)
+✔ quota failure does not advance baseline and a later write can retry (1.195608ms)
+✔ raw baseline is opaque even when corrupt or differently formatted JSON (0.189452ms)
+✔ identical writes are successful no-ops, including while storage quota is exhausted (0.161674ms)
+✔ storage removal is a conflicting raw change until an explicit rebase (0.143616ms)
+✔ construction and checks fail closed without throwing when storage cannot be read (0.298578ms)
+✔ transient read and rebase failures preserve the previous accepted baseline (0.227546ms)
+✔ serialization errors never escape or advance the save baseline (0.44426ms)
+✔ a toJSON side effect cannot overwrite a storage change during serialization (3.528353ms)
+✔ walking speed is identical at 30, 60, 120 and 144 Hz (2.444521ms)
+✔ diagonal walking is normalized and AZERTY keys work (0.210514ms)
+✔ vertical movement and blocked walking preserve horizontal facing (0.128487ms)
+✔ click destinations are clamped and never overshot (0.964809ms)
+✔ collision substeps prevent tunneling through NPC bodies and allow escaping overlaps (0.407374ms)
+✔ collision slides along an NPC instead of canceling the whole movement (0.157633ms)
+✔ idle and delayed frames cannot invent movement or huge catch-up travel (0.18036ms)
+✔ interactions require actual proximity; a whole room is not an interaction radius (0.488872ms)
+✔ clicking a distant target never substitutes a nearer unrelated interaction (0.234229ms)
+✔ passive talk scenery is not exposed as a conflicting terminal (3.679859ms)
+✔ onboarding advances through walking, interaction and freely selected objective (0.297732ms)
+✔ walking to the Atrium guide reaches stage two before automatic conversation (0.376767ms)
+✔ Nexus banner and anchor sprite refer to existing project bitmaps (44.926839ms)
+✔ city controls retain proximity validation, focus loss cleanup and cancellable touch controls (0.313216ms)
+✔ leaving a universe room preserves context without starting an arbitrary mission (0.408794ms)
+✔ all 525 owned authorized universe destinations remain indexed beyond former hero and room limits (15.519543ms)
+✔ destination authorization never opens unowned or filtered worlds through a fallback list (0.296856ms)
+✔ destination search is accent-insensitive, includes late entries and clamps filtered page indices (0.6141ms)
+✔ tutorial pause persists and resumes the actual partial walking checkpoint (0.234026ms)
+✔ skipping is not completing; replay resets only city checkpoints and grants no gameplay rewards (0.119936ms)
+✔ welcome replay or reading cannot validate movement, interactions, equipment or combat (0.257278ms)
+✔ tutorial normalization rejects impossible order and unrelated completion flags (0.145872ms)
+✔ actual recording callback persists real movement checkpoints and stops when guide is paused (0.217504ms)
+✔ actual catalog button only queues walking to an authorized visible portal (0.295202ms)
+✔ city persists only its tutorial field and exposes pause, resume, skip, restart and welcome replay (0.510665ms)
+✔ franchise victories and consulted scenes cannot unlock OC acts (1.665007ms)
+✔ each canonical prefix opens exactly the same next operation regardless of unrelated victories (1.061214ms)
+✔ six Origin Locks open Act V but do not complete the campaign (0.242469ms)
+✔ all operations and chapters without a chosen ending remain awaiting conclusion (1.289258ms)
+✔ only a valid ending plus all canonical operations marks the final act complete (0.468251ms)
+✔ non-contiguous legacy clears do not skip missing operations or unlock a future act (0.231953ms)
+✔ missing or disabled canonical stage is blocked without a fallback to DLC or a later operation (0.191916ms)
+✔ resume returns the exact runtime projection and normalizes string save IDs without mutation (0.171204ms)
+✔ Hub uses one canonical projection while historical timeline is explicitly separate (4.700133ms)
+✔ original universes and Nexus core are separated from franchise boosters (1.498545ms)
+✔ all three standalone original universes belong to the OC drawer (6.128845ms)
+✔ search includes every hero rather than only the first three teaser names (0.487827ms)
+✔ catalog search covers both localizations and normalizes accents without modifying source data (0.153358ms)
+✔ all rewards are reachable exactly once over pages, including cards beyond the former 12-item cap (0.560558ms)
+✔ reward queries inspect the entire catalog before pagination and work in both languages (1.34715ms)
+✔ filters clamp stale pages and report empty selections coherently (0.463919ms)
+✔ opening the dossier is separate from selecting or purchasing a booster (2.234358ms)
+✔ drawers open during global search and history starts closed (1.816705ms)
+✔ dossier traps keyboard focus and restores outer focus/scroll without economic writes (1.127315ms)
+✔ paid rotation UI preserves the confirmation request for retries and blocks repeated submission (1.197524ms)
+✔ reroll replaces only temporary selection and costs exactly the displayed gold (1.663078ms)
+✔ same confirmation after double click or reload never debits again (0.213528ms)
+✔ unaffordable, obsolete, invalid or no-op requests preserve every resource (0.164774ms)
+✔ personal rotation expires at the ordinary daily boundary (0.151714ms)
+✔ RPG explicit single target previews and hits only the selected identity for player (5127.737115ms)
+✔ RPG explicit single target previews and hits only the selected identity for enemy (1.337583ms)
+✔ RPG invalid cooldown, charge, dead target and cancellation spend nothing (0.628885ms)
+✔ RPG Patch de Trame heals a wounded ally and cannot target a hostile unit (1.970433ms)
+✔ RPG Ligne de Vie Nexus heals the eligible squad, not enemies or dead allies (1.434561ms)
+✔ RPG medical summons, buffs and revive keep their support semantics (1.508366ms)
+✔ RPG single resolves identical preview and impact sets (0.807754ms)
+✔ RPG multi resolves identical preview and impact sets (0.578348ms)
+✔ RPG group resolves identical preview and impact sets (0.651455ms)
+✔ RPG area resolves identical preview and impact sets (0.655445ms)
+✔ RPG line resolves identical preview and impact sets (0.551142ms)
+✔ RPG cone resolves identical preview and impact sets (0.36439ms)
+✔ RPG finite multi-target selection enforces its authored maximum (0.487956ms)
+✔ RPG never retargets a queued action after target death and stops dead casters (0.427353ms)
+✔ RPG wait/active mode freezes or advances all simulation action clocks explicitly (0.484709ms)
+✔ RPG pause holds impacts at the exact simulation tick and dispose clears them (0.519639ms)
+✔ RPG ranged FX aims toward the selected target from either camp and never lunges (0.320993ms)
+✔ RPG clamps sprite and HP/ATB envelopes, including huge authored bosses (0.282734ms)
+✔ RPG DEF and guard reduce damage exactly once and identically for both camps (0.25006ms)
+✔ RPG auto support eligibility falls back to an attack without spending an unusable heal (0.763388ms)
+✔ canvas picks only an eligible runtime target, never empty space (0.859626ms)
+✔ GameCanvas manual RPG commands preview and confirm instead of firing immediately (1.767978ms)
+✔ readiness is exactly the pre-existing displayed ARCA formula, including faction eligibility (975.431684ms)
+✔ relic proposal retains old priority but never touches reserve, inventory, or caller state (1.442252ms)
+✔ relic locks, unknown references, partial inventory and equal scores do not strip current gear (0.220073ms)
+✔ random proposals are unique, owned, eligible and keep the Anchor when legal (2.585755ms)
+✔ universe preparation needs only two owned same-world partners around the Anchor (0.90606ms)
+✔ universe insufficiency explains the missing partner count without falling back to foreign heroes (0.223113ms)
+✔ canonical exact trio takes precedence over Anchor and excludes every foreign identity (0.682246ms)
+✔ required character and explicit locked heroes remain present (0.652473ms)
+✔ mission universe allowAnchor and minCount determine Anchor compatibility faithfully (2.958307ms)
+✔ three source universes do not preserve the Anchor at the cost of an impossible mission (0.917974ms)
+✔ two source universes plus a locked foreign hero do not overfill three slots with the Anchor (0.516669ms)
+✔ completed narrative arc replays permit the existing free-team policy (0.494046ms)
+✔ exact optimizer matches exhaustive enumeration below 100 with strict equivalence reduction (13.213671ms)
+✔ 100 is an explicit upper bound and a legal current maximum is retained without search (0.565627ms)
+✔ optimizer cancellation never yields a partial optimum as a confirmable proposal (0.442898ms)
+✔ small owned rosters remain unique legal partial teams outside universe requests (0.191302ms)
+✔ proposal panel shows before/after and stale previews cannot be confirmed (7.563716ms)
+✔ Hub shares readiness, gates mutations behind confirmation and compiles all proposal controls (1341.625457ms)
+✔ Tactics distinguishes front/back/flank for heading 1,0 (4767.163758ms)
+✔ Tactics distinguishes front/back/flank for heading 1,1 (0.392686ms)
+✔ Tactics distinguishes front/back/flank for heading 0,1 (0.24527ms)
+✔ Tactics distinguishes front/back/flank for heading -1,1 (0.195622ms)
+✔ Tactics distinguishes front/back/flank for heading -1,0 (0.263433ms)
+✔ Tactics distinguishes front/back/flank for heading -1,-1 (0.161699ms)
+✔ Tactics distinguishes front/back/flank for heading 0,-1 (0.109557ms)
+✔ Tactics distinguishes front/back/flank for heading 1,-1 (0.090749ms)
+✔ Tactics does not award back/flank bonuses on objects or zero-length attacks (0.17052ms)
+✔ Tactics vertical moves and attacks record north/south without arbitrary sprite flips (5.15162ms)
+✔ Tactics P2 movements use the same two-dimensional heading as P1 (0.738577ms)
+✔ Tactics turn entry and reinforcements face the actual opposing squad (0.701316ms)
+✔ Tactics escort preserves vertical travel heading (0.578808ms)
+✔ Tactics forced movement stops before terrain and occupants, preserving facing (0.422631ms)
+✔ Tactics forced movement checks the whole boss footprint (0.278907ms)
+✔ Fighter commits toward the rival after crossing and does not turn mid-swing (1.665982ms)
+✔ Fighter refreshes guard facing before same-frame hit resolution (0.449536ms)
+✔ Fighter projectile guard and knockback follow incoming travel with defender facing -1 (0.726031ms)
+✔ Fighter projectile guard and knockback follow incoming travel with defender facing 1 (0.24911ms)
+✔ Fighter projectile K.O. direction survives an owner turn (0.39435ms)
+✔ Smash campaign enemies keep their committed attack pose and facing through recovery (4.484558ms)
+✔ universe role is an explicit provisional representation, not a renamed canon identity (4428.805519ms)
+✔ mission hero and origin universe override keep the actual canonical name by default (1.104211ms)
+✔ mission-local identities and unknown hero ids preserve explicit provisional provenance (0.733966ms)
+✔ mapped universe roles only reuse existing bitmap files (2.983116ms)
+✔ escort uses its real sprite identity and joins the actor depth order (3.792052ms)
+✔ escort routes around cover even when the first step moves away from extraction (1.679922ms)
+✔ escort waits without a nearby hero and without an open route (0.730133ms)
+✔ clearing hostiles does not replace the escort extraction objective (1.000139ms)
+✔ escort hurt pose recovers and extraction falls back only to an authored sprite row (1.184833ms)
+✔ automatic heroes continue following the escort after clearing hostiles (1.387326ms)
+✔ escort renderer no longer substitutes a generic N rectangle and displays the provenance warning (0.424201ms)
+✔ a visible universe dossier can be consulted without unlocking its missions (7387.615487ms)
+✔ previous/next dossier navigation respects its filtered catalogue and bounds (0.351573ms)
+✔ incomplete optional living worlds normalize safely without inventing lore (0.674981ms)
+✔ all registered living worlds support every optional array read used by the dossier (1.626344ms)
+✔ universe dialog SSR has one labeled internal dialog and preserves supplied content (6.755222ms)
+✔ OC chronicle initially renders only acts, with explicit section controls and live progress (4.196004ms)
+✔ OC chronicle resolves a missing current chapter from the canonical campaign without crashing (1.832707ms)
+✔ Codex and collection use one modal with live counts and no stale encrypted duplicate dossier (6.233269ms)
+✔ OC chronicle resume after six locks targets Act V and not a completed mission (1.755396ms)
+✔ OC chronicle distinguishes twelve operations from a chosen ending (3.412575ms)
+ℹ tests 215
+ℹ suites 0
+ℹ pass 215
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 47917.165762
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 test:custom
+> node --test scripts/customBattle.test.mjs
+
+✔ hero resonance belongs to Arsenal and keeps shared hero cross-links (5188.651695ms)
+✔ Custom Battle and Mosaic City use the dedicated session contract (1.885193ms)
+✔ Mosaic City freezes its loop and only leaves through controlled transitions (1.012141ms)
+✔ dedicated custom runtime freezes input and hides its direct setup exit (1.014873ms)
+✔ RPG and Tactics scheduled actions wait until the dedicated pause resumes (242.15405ms)
+✔ custom battle preset keeps unique bounded teams and valid rules (1.308971ms)
+✔ enemy catalog filters hidden universes and disabled enemy assets (6.72171ms)
+✔ custom enemy roster resolves exact selected monster, boss, and world boss (3.259344ms)
+✔ runtime custom stage carries selected content and never grants campaign currency (0.54703ms)
+✔ Fighter P2 controls the cpu side without running opponent AI (3.553363ms)
+✔ Fighter consumes cosmetic events and keeps P2 assists independent (1.714707ms)
+✔ Fighter CPU spends the same flat assist loadout when ready (0.574252ms)
+✔ RPG P2 waits at full ATB and attacks only after a manual command (3.664297ms)
+✔ Tactics gives the first fast enemy P2 a move and a targeted action (5.676854ms)
+✔ Tactics simple melee lines stop on the first character (1.22354ms)
+✔ Tactics ranged lines can select behind a unit but stay single-target (0.58535ms)
+✔ Tactics powerful piercing lines can hit two aligned characters (0.831666ms)
+✔ Tactics attack toggle returns to movement without refunding spent AP (0.626422ms)
+✔ Tactics camera pan and zoom preserve grid hit-testing (0.761878ms)
+✔ RPG anchors every custom combatant on the perspective floor (0.374746ms)
+✔ RPG and Tactics keep source hero stats immutable across synergy runtime copies (0.844229ms)
+✔ Tactics projects a widening floor board and round-trips every cell after camera changes (1.321653ms)
+✔ Tactics profiles expose diagonal, multi-axis and area footprints (0.857801ms)
+✔ Tactics finite area attacks prioritize the valid clicked target deterministically (0.550474ms)
+✔ Tactics finite target budgets remove unreachable fringe cells from enemy threats (1.472976ms)
+✔ Tactics directional footprints honor minRange before exposing ray cells (0.593304ms)
+✔ Tactics even cone and multi-axis counts normalize to symmetric aimed footprints (0.510334ms)
+✔ Tactics hero AI resolves an area target on the attack fringe through a splash anchor (1.978028ms)
+✔ Tactics hero AI accepts only targets resolved by a cardinal directional profile (1.340651ms)
+✔ Tactics enemy threat maps include complete overlapping area footprints (1.32591ms)
+✔ Tactics enemy threats and AI respect directional attack profiles (1.010417ms)
+✔ Tactics mirrors P2 pickups and keeps unknown effects neutral (0.879186ms)
+✔ Tactics shield-only and charge-only pickups never add implicit healing or enemy damage (0.308694ms)
+✔ RPG, Tactics and Smash direct hits spend pickup shields before HP (3.215476ms)
+✔ Smash P2 moves and lands a manual opponent attack (2.618129ms)
+✔ Smash semantic P4 charge resolves one hit and one mastery metric (7.609009ms)
+✔ Smash P5 PRE_MATCH_LOCK freezes every gameplay clock without Player Anchor (2.409516ms)
+✔ Smash P5 damage respects telegraph, safe zone and no-auto-KO contract (1.035639ms)
+✔ Smash P5 Competitive Full disables authored events and legacy hazards (12.428396ms)
+✔ Smash P5 dynamic topologies move riders deterministically and transform safely (2.372757ms)
+✔ Smash objective defeat preserves its result and advances the authored pose (1.946605ms)
+✔ singleRoster CPU modes spawn each selected threat exactly once (0.951393ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 42
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5890.964157
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 test:boosters
+> node --test scripts/portalBoosterEngine.test.mjs scripts/portalBoosterCatalog.test.mjs scripts/portalBoosterEconomy.test.mjs scripts/universeUnlockables.test.mjs scripts/canonRosterBoosterArt.test.mjs scripts/canonRosterBoosterCatalogCoverage.test.mjs scripts/portalBoosterEditorialWaves.test.mjs scripts/portalBoosterRuntimeStandard.test.mjs
+
+✔ the canon-roster builder cannot recreate derived sprite-composite placeholders (459.614751ms)
+✔ the canon-roster builder validates the complete 172-universe wave before filtering (454.112204ms)
+✔ every canon roster universe owns one validated unique runtime booster (288.063067ms)
+✔ rotation exposes a unique temporary selection and a precise deadline (1.367328ms)
+✔ the next cycle advances the temporary booster selection (1.127798ms)
+✔ rotation tolerates duplicate, short and empty catalogues (0.266204ms)
+✔ five permanent OC editions have unique art and targeted pools (0.362209ms)
+✔ every permanent OC edition exposes an exclusive frozen content update (1.072249ms)
+✔ the three standalone OC boosters expose their first exclusive content wave (0.997453ms)
+✔ broad and targeted packs use the transparent price grid (0.811772ms)
+✔ five anomaly echoes on a broad pack refund 56 and never create currency (0.43389ms)
+✔ largest-remainder apportionment is deterministic and preserves non-echoes (1.059561ms)
+✔ a raw refund below the cap remains unchanged (0.175516ms)
+✔ a free booster credit awards no duplicate fragments (0.223454ms)
+✔ settlement does not alter selected card IDs, order or guarantees (0.884548ms)
+✔ editorial waves deterministically select five existing exclusive cards (3.144772ms)
+✔ editorial waves preserve the five complementary reward lanes (0.338717ms)
+✔ authored updates take priority and undersized pools are not fabricated (0.270653ms)
+✔ creates five indexed cards with a hero and a rare-or-better reward (3.309464ms)
+✔ uses every unique candidate before repeating a reward (0.486309ms)
+✔ pity prioritizes an unowned hero from the supplied scope (1.530235ms)
+✔ a mixed booster spreads rewards across two universes when possible (0.429966ms)
+✔ never selects a reward outside the candidates received by the engine (0.546501ms)
+✔ a targeted OC pack guarantees a rare non-character reward (0.312333ms)
+✔ free draws choose a rarity tier before sharing odds inside that tier (0.573897ms)
+✔ all 524 universe boosters use unique 640x960 WebP runtime assets (947.540781ms)
+✔ the 20 original booster masters remain provenance-backed PNG sources (301.692141ms)
+✔ builds one complete unlockable of every new kind for all runtime universes (4837.544477ms)
+✔ catalog generation is deterministic (68.847576ms)
+✔ karts remain cosmetic, procedural, and style-bounded (0.970111ms)
+✔ battle and stage music are distinct original procedural plans for every universe (84.429087ms)
+✔ field supers reuse the existing universe ultimate and stay within balance bounds (1.272086ms)
+✔ custom cosmetic rewards are complete, bounded and contain no mission or mode unlock (3.369371ms)
+✔ registered universe packs replace legacy masters without changing reward ids (0.824593ms)
+✔ HUD theme layer accepts exactly the seven in-game interfaces (0.928997ms)
+✔ save migration preserves legacy portal collections and validates active loadouts (8.229139ms)
+✔ field super has a separate one-use charge and applies its balanced arena effect (3.300767ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6530.64995
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 boosters:audit
+> node scripts/buildOriginalUniverseRuntimeBoosters.mjs --check && node scripts/portalBoosterAudit.mjs && node scripts/portalBoosterRemediationAudit.mjs && node scripts/portalBoosterEditorialAudit.mjs
+
+{
+  "mode": "check",
+  "sourcesPreserved": 20,
+  "runtimeBoosters": 20,
+  "format": "WebP",
+  "dimensions": "640x960",
+  "manifest": "public/boosters/original-worlds/runtime-manifest.json"
+}
+{
+  "runtimeUniverses": 525,
+  "catalogUniverses": 524,
+  "permanentOcBoosters": 5,
+  "uniqueAssets": 530,
+  "totalBytes": 84507212,
+  "missingUniverses": [],
+  "orphanUniverses": [],
+  "contentTotals": {
+    "universes": 525,
+    "hero": 1911,
+    "equipment": 1587,
+    "event": 525,
+    "skin": 1966,
+    "archive": 525,
+    "kart": 525,
+    "battleMusic": 525,
+    "stageMusic": 525,
+    "fieldSuper": 525,
+    "npcAssist": 525,
+    "koEffect": 525,
+    "portalEffect": 525,
+    "introPose": 525,
+    "victoryPose": 525,
+    "profileBanner": 525,
+    "profileTitle": 525,
+    "hud": 525,
+    "ocContentUpdate": 140,
+    "total": 12954
+  },
+  "contentMinimums": {
+    "hero": 3,
+    "equipment": 3,
+    "event": 1,
+    "skin": 3,
+    "archive": 1,
+    "kart": 1,
+    "battleMusic": 1,
+    "stageMusic": 1,
+    "fieldSuper": 1,
+    "npcAssist": 1,
+    "koEffect": 1,
+    "portalEffect": 1,
+    "introPose": 1,
+    "victoryPose": 1,
+    "profileBanner": 1,
+    "profileTitle": 1,
+    "hud": 1
+  },
+  "contentGaps": [],
+  "contentErrors": [],
+  "errors": []
+}
+{
+  "contractId": "multiverse-breach-portal-booster-openai-remediation-v1",
+  "entries": 53,
+  "uniqueUniverses": 53,
+  "uniqueRuntimePaths": 53,
+  "uniqueRuntimeHashes": 53,
+  "uniqueCurrentRuntimePaths": 53,
+  "uniqueCurrentRuntimeHashes": 53,
+  "originalRuntimeDerivatives": 20,
+  "verifiedBytes": 69116698,
+  "verifiedDerivativeBytes": 4006372,
+  "errors": []
+}
+{
+  "runtimeUniverses": 524,
+  "authoredWaves": 23,
+  "deterministicWaves": 501,
+  "completeWaves": 524,
+  "featuredCards": 2620,
+  "missingWaves": 0,
+  "errors": []
+}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 test:extension
+> node --test scripts/cardCatalog.test.mjs scripts/cardCollectionEngine.test.mjs scripts/cardSaveMigration.test.mjs scripts/missionAccessRules.test.mjs scripts/missionStageProjection.test.mjs scripts/missionReplayPolicy.test.mjs scripts/arcReplayMigration.test.mjs scripts/portalVisualManifest.test.mjs scripts/portalVisualCatalog.test.mjs scripts/featuredVisualProvenance.test.mjs scripts/gameCanvasCosmeticPresentation.test.mjs
+
+✔ an empty or legacy save gains both replay arrays without mutation (2.297568ms)
+✔ raw character, trio, and fusion-style stageId arcs migrate from completedStages (1.204218ms)
+✔ a staged arc is completed only by its final stage, not an intermediate stage (0.764061ms)
+✔ explicit alternative final IDs unlock the same arc when either route is complete (0.293455ms)
+✔ marked boss/final stages are preferred to catalog position (0.281186ms)
+✔ projected Hub stages use their explicit runtime ID and nested arc identity (0.172885ms)
+✔ named collections and maps normalize in deterministic supplied order (0.264118ms)
+✔ existing IDs are preserved, de-duplicated, and completed arcs always unlock replay (0.171663ms)
+✔ migration is idempotent for empty, partial, and fully completed saves (0.616515ms)
+✔ migration never rewrites completed stages, rewards, inventory, or unrelated state (0.598278ms)
+✔ arcs with no explicit final ID are skipped rather than assigned an index ID (0.341314ms)
+✔ the compatibility migration export is the same pure implementation (0.301466ms)
+✔ portal candidates become separate card, art and unlockable catalogs (10.427429ms)
+✔ a true card identity collision is diagnosed without inventing a suffix (0.289376ms)
+✔ Neon Requiem custom archive and HUD rewards receive universe-aware card definitions (0.444613ms)
+✔ copies 2-4 increase mastery and copy 5+ auto-converts only to thread dust (7.561321ms)
+✔ keep mode retains up to nine copies and converts the tenth (0.323193ms)
+✔ set milestones 10/25/50/75/90/100 can each be claimed once (1.581046ms)
+✔ opening history is compact, external to collection, and capped at 100 (0.559566ms)
+✔ legacy portal rewards create cards retroactively without removing gameplay ownership (6.010293ms)
+✔ ambiguous duplicated legacy hero ids are diagnosed instead of guessed (0.581497ms)
+✔ featured OpenAI icon ledger matches exact prompts and installed sRGB PNGs (34.249955ms)
+✔ cosmetic atlas presentations stay scoped to GameCanvas RPG, Tactics and Smash (1.235285ms)
+✔ intro, KO and victory resolve only their production atlas payload (0.340124ms)
+✔ atlas frames advance once across the configured cosmetic duration (0.506239ms)
+✔ presentation duration and facing reuse the equipped cosmetic metadata (0.158815ms)
+✔ derives the four required-team rule types without mutating source metadata (3.132348ms)
+✔ derives fusion/source rules and does not manufacture missing metadata (0.350671ms)
+✔ an explicit requiredTeam is authoritative and policy flags are normalized (0.262319ms)
+✔ base access remains authoritative for ownership, level, and clear checks (1.207333ms)
+✔ a required character in reserve is refused and reported precisely (0.912587ms)
+✔ a trio accepts any order but requires exactly its three signatures (0.682175ms)
+✔ oversized or malformed exact teams are blocked structurally (0.875951ms)
+✔ universe rules enforce minCount and reject every foreign signature (14.237904ms)
+✔ the Anchor is accepted only by an explicit universe rule and never counts as its signature (0.727837ms)
+✔ universe evaluation blocks rather than inventing a roster when none is known (0.387075ms)
+✔ source rules require one active hero per source and permit unrelated allies (0.763389ms)
+✔ source rules ignore under-level representatives and auto-compose eligible reserves (1.063909ms)
+✔ completedArcIds and arcReplayUnlockedIds grant free replay with any team (0.714462ms)
+✔ missions without a canonical rule remain available after base access (0.224509ms)
+✔ auto-compose is deterministic and preserves an explicitly allowed Anchor (0.475172ms)
+✔ auto-compose reports impossible ownership and Anchor-capacity conflicts (0.326797ms)
+✔ character auto-compose replaces a non-Anchor slot when the Anchor is allowed (0.329814ms)
+✔ an invalid prepared deployment cannot bypass the App guard (0.680649ms)
+✔ free replay goes straight to battle and returns straight to the Hub (1.15373ms)
+✔ special mission rewards are granted only on first clear (0.109968ms)
+✔ legacy completed arcs bypass newly projected phase progression (0.353969ms)
+✔ free replay victories never regain first-clear bonuses (0.13455ms)
+✔ optional trials never inflate campaign first-clear progression (0.08414ms)
+✔ source partitioning is balanced, deterministic, and never exceeds the squad (1.379155ms)
+✔ every real universe arc projects playable rules and retains its legacy final ID (4693.171241ms)
+✔ portal manifest exposes approved immutable exact universe records (1.020921ms)
+✔ unknown universe resolves to the immutable Nexus production fallback (0.173771ms)
+✔ portal phases select the four progressive atlas cells (0.212982ms)
+✔ portal catalog rejects mutation attempts (0.720313ms)
+✔ the P3 manifest exposes exactly four approved production pilots (5.894901ms)
+✔ catalog lookup and resolver distinguish approved assets from the Nexus production fallback (0.271654ms)
+✔ portal reveal phases map to the sealed four-frame contract (0.262385ms)
+✔ reference dossiers preserve the required rights and portal approvals (15.471929ms)
+✔ the checked-in portal prompt manifest is deterministic (13.339481ms)
+ℹ tests 60
+ℹ suites 0
+ℹ pass 60
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5253.934607
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 test:polish
+> node --test scripts/audioPreferences.test.mjs scripts/soundEngineGesture.test.mjs scripts/cloudSaveConflictPolicy.test.mjs scripts/titleNavigation.test.mjs scripts/titlePresentation.test.mjs scripts/kartCareerSave.test.mjs scripts/factionProgression.test.mjs scripts/specialEvents.test.mjs scripts/progressionRuntimeIntegration.test.mjs
+
+✔ audio preferences clamp independent buses and normalize mute (1.524979ms)
+✔ audio preferences survive storage round trips (0.448441ms)
+✔ corrupt storage falls back to safe defaults (0.239141ms)
+✔ no meaningful trace is a no-op (2.297236ms)
+✔ a local trace without a cloud trace is uploaded (0.243954ms)
+✔ a cloud trace without a local trace is loaded (0.229349ms)
+✔ trace flags distinguish a default payload from meaningful progress (1.351499ms)
+✔ equivalent traces are a no-op regardless of object key order (0.471342ms)
+✔ array order remains meaningful during equivalence checks (0.216816ms)
+✔ two divergent meaningful traces require confirmation (0.214224ms)
+✔ the policy does not mutate either payload (0.288813ms)
+✔ all 22 exposed faction labels own a unique mechanical contract (1.111569ms)
+✔ every runtime Thread owns an explicit lore-authored base affinity (3.613971ms)
+✔ the five reputation tracks gain ranks and apply real passive bonuses (0.426544ms)
+✔ base and narrative faction rules resolve and modify combat stats (0.533758ms)
+✔ mission outcomes award deterministic, migrated reputation xp (1.092085ms)
+✔ legacy kart career migrates inside the save-v9 portal collection (2.746312ms)
+✔ integrated career wins over stale legacy storage and is normalized (0.251074ms)
+✔ race results preserve the best time and accumulate rewards once (0.418041ms)
+✔ real combat consumes all 22 faction contracts and saved reputation passives (3.470832ms)
+✔ curated legacy affinities activate only their explicit base rule (1.264793ms)
+✔ every seasonal reward resolves to a mechanical item rendered by Hub inventory (0.898006ms)
+✔ season selection and launch share the titleDayKey-derived date at boundaries (0.966602ms)
+✔ save migration removes the legacy kart key only after the integrated save is written (0.730342ms)
+✔ seasonal mission narrative consumes its authored intro, outro and defeat fallback (0.197261ms)
+✔ sound engine creates AudioContext only after an explicit gesture unlock (2.235388ms)
+✔ the three seasonal events expose deterministic annual windows and playable stages (0.924889ms)
+✔ Yautja Hunt is active inside its window and closed outside it (16.922828ms)
+✔ a stage carries a season-specific completion id and deployment lock (0.566569ms)
+✔ season progress records attempts, victories, first clear and best grade (1.560332ms)
+✔ a missing trace opens profile creation and cannot continue (0.964258ms)
+✔ an incomplete prologue resumes without rewriting its step (0.171429ms)
+✔ a completed trace continues to the hub (0.164057ms)
+✔ title rotation exposes only owned, visible, enabled universes (12.354426ms)
+✔ title rotation is deterministic, bounded and groups owned heroes (0.496776ms)
+✔ attract cards never leak history entries that are not still owned (1.382154ms)
+✔ attract stages expose only completed victories or explicit unlocked fallbacks (0.406781ms)
+✔ attract stages exclude disabled stages and any hidden source universe (0.233418ms)
+✔ local title day key uses calendar components and rejects invalid values (0.236332ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 527.226518
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 test:cg
+> node --test scripts/cgCatalog.test.mjs scripts/cgAssets.test.mjs scripts/cgManifest.test.mjs
+
+✔ all eighty-three OpenAI PNG sources are non-empty exact 3:4 RGB portraits (113.249212ms)
+✔ all eighty-three CG masters are 1536x2048 RGB WebP images (278.441639ms)
+✔ all eighty-three CG thumbnails are 384x512 RGB WebP images (67.68599ms)
+✔ all eighty-three PNG sources have unique SHA-256 digests (288.564724ms)
+✔ the previous Continue ledger remains locked to CG06-CG08 (1.507567ms)
+✔ the latest Continue ledger opens exactly thirty-five applicable CG09-CG15 variants (1.391718ms)
+✔ the six approved CG01 identity anchors still match their locked hashes (34.975205ms)
+✔ CG production contains the exact approved CG01-CG15 applicability matrix (2.628112ms)
+✔ A.R.C.A. regulation hides reserved universes and disabled heroes without mutation (0.653196ms)
+✔ every CG satisfies mandatory schema, provenance, age and consent gates (2.609883ms)
+✔ catalog identities, prompts and asset paths are unique and variants cite exact CG01 (0.742548ms)
+✔ all released asset families follow the immutable OpenAI production path contract (1.370357ms)
+✔ family tabs distinguish Canon, Nexus, Fan Art and What If without false canon claims (0.650775ms)
+✔ only unlockedHeroes ownership unlocks every CG tied to that hero (0.735226ms)
+✔ locked media returns null paths so the UI makes no image request (0.29136ms)
+✔ schema rejects unsafe fan-service, false family status and non-contract paths (0.818587ms)
+✔ the generated manifest covers the exact eighty-three-entry CG01-CG15 catalog (14.188398ms)
+✔ all 249 manifest fingerprints match delivered bytes and remain unique (862.703137ms)
+✔ manifest variants retain exact production dimensions and RGB delivery formats (3.254496ms)
+✔ manifest provenance preserves prompts, gates and explicit variant reference identities (2.523944ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 992.18287
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 cg:manifest:check
+> node scripts/buildCgManifest.mjs --check
+
+Manifeste CG valide: 83 entrees.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 test:melee
+> node --test scripts/meleeInputMap.test.mjs scripts/meleeStateMachine.test.mjs scripts/meleeAnimationManifest.test.mjs scripts/meleeCombatRuntime.test.mjs scripts/smashObjectiveResolution.test.mjs
+
+✔ player_anchor manifest declares strict P4 atlas identity and geometry (2.804089ms)
+✔ all 45 melee states have complete bounded metadata and a baseline (1.029173ms)
+✔ frame resolution honors variable counts, loops, clamps and start columns (0.612912ms)
+✔ five unique sources resolve from character id or object and expose 256 layouts (1.028659ms)
+✔ resolved frames expose state-specific feet and ledgeGrip anchors (0.294925ms)
+✔ manifest validator reports malformed state geometry and metadata (0.725203ms)
+✔ runtime initialization clamps mutable state and normalizes all metrics (1.553404ms)
+✔ light combo advances light1, light2 and light3 through cancel windows (0.936979ms)
+✔ charge enters hold loop, clamps, releases with scale and resolves one charged hit (0.492855ms)
+✔ crouched charge keeps a low hurtbox until release restores standing hurtbox (0.340323ms)
+✔ guard entry keeps its full simulation interval before the hold pose (0.250352ms)
+✔ perfect guard, regular reduction, finite break and delayed regeneration are deterministic (0.452962ms)
+✔ shield release and passive drain break obey finite transitions (0.263429ms)
+✔ crouch enter, idle and exit complete and block conflicting actions (0.153136ms)
+✔ descending actors catch ledges while upward, remote and regrab-locked actors do not (0.717211ms)
+✔ ledge climb, drop, jump and attack detach with finite locks and correct facing (0.648337ms)
+✔ taunt and runtime metrics remain finite across tracked actions (0.199548ms)
+✔ storage fallback returns independent defaults for missing and invalid data (6.096659ms)
+✔ legacy opponent storage migrates to cpu and invalid slots fall back safely (0.329281ms)
+✔ save and remap normalize data without mutating the source map (2.6841ms)
+✔ keyboard input resolves axes, shared bindings and engine held input (1.843328ms)
+✔ gamepad supports analog axes, deadzone fallback, buttons and ledge actions (0.850274ms)
+✔ snapshot merge and action edges report presses and releases once (0.547298ms)
+✔ input code formatting remains readable for keyboard labels (0.28381ms)
+✔ P4 exposes the complete unique 45-state roster (1.293707ms)
+✔ state priorities enforce dead, hit stun, shield break and recovery ordering (0.23921ms)
+✔ transition validation handles invalid states, action locks, force and restart (1.096578ms)
+✔ finite transition states complete at their declared boundaries (0.404155ms)
+✔ cancel windows include boundaries and reject unrelated or late transitions (0.420576ms)
+✔ action definitions and charged attack contract remain complete and clone-safe (0.402804ms)
+✔ protect objective gives artifact destruction priority on a simultaneous terminal frame (5113.917528ms)
+✔ party wipe resolves before a protect objective can win the same update (1.593277ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5674.597821
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 test:stages
+> node --test scripts/stageTopologyCatalog.test.mjs scripts/stageEventEngine.test.mjs scripts/stageAnimationCatalog.test.mjs scripts/stageAnimationWave3.test.mjs scripts/stageAnimationWave4.test.mjs
+
+✔ scene mechanisms are explicit and retain source and rendering provenance (16.539433ms)
+✔ mode reference scenes follow the actual distinct local environments (0.599442ms)
+✔ a concrete scene prevents unrelated mode defaults or foreign-universe assets (0.777456ms)
+✔ scene mechanisms render deterministic finite geometry behind the combat lane (78.31154ms)
+✔ pause, reduced motion and animation-off keep the scene state stable (60.990338ms)
+✔ four-phase local effect atlases are played from their real distinct transparent cells (418.425666ms)
+✔ actual bitmaps are decoded and cropped by source cell or backdrop region (5.915678ms)
+✔ the second wave adds 24 sourced mechanisms in 12 new universes without inventing animation frames (12.237166ms)
+✔ new mechanisms keep physical geometry, backdrop coordinates and fighter mirror independence (16.897376ms)
+✔ the battle background entrypoint actually dispatches the selected scene mechanism (1.029866ms)
+✔ wave3 preserves all 41 previous definitions and their recorded drawing geometry (26.435367ms)
+✔ 24 scene mechanisms cover exactly 12 real, previously uncovered roster universes (6.941329ms)
+✔ strict universe and continuity constraints win over reference defaults (1.24772ms)
+✔ all 24 additions move real coordinates, rather than changing color or opacity alone (33.690108ms)
+✔ simulation pause, both reduced-motion paths, disabled stages and fighter mirrors are respected (26.673999ms)
+✔ cargo machinery, opposite counterweights and projected centrifuge arms follow their physical constraints (0.857629ms)
+✔ wave4 preserves all 65 previous definitions and their recorded drawing geometry (82.27549ms)
+✔ 24 scene mechanisms cover exactly 12 real, previously uncovered roster universes (6.577372ms)
+✔ strict universe and continuity constraints win over reference defaults (1.070868ms)
+✔ all 24 additions move real coordinates, rather than changing color or opacity alone (98.85332ms)
+✔ simulation pause, both reduced-motion paths, disabled stages and fighter mirrors are respected (58.886408ms)
+✔ doors, grounded props, hydraulic towers, wings and rail frames retain physical constraints (1.878599ms)
+✔ every authored event has a major telegraph, safe zones and bilingual counterplay (5.316669ms)
+✔ same seed reproduces the exact event sequence independently of Math.random (26.755743ms)
+✔ different seeds produce a different but valid deterministic schedule (0.915398ms)
+✔ authoritative StageEvent snapshots restore mid-telegraph and reject stale revisions (2.204102ms)
+✔ event lifecycle has no activation before the exact telegraph boundary (0.334769ms)
+✔ Off and Competitive remain silent while Light is a subset of Full (1.402932ms)
+✔ layout transformations advertise the real main-line counterplay without a fake damage third (0.421547ms)
+✔ maxOccurrences is finite and stops the runtime after authored events complete (2.374133ms)
+✔ PRE_MATCH_LOCK follows localized 3-second cues and unlocks once (2.448517ms)
+✔ pre-match skip is training-only and server elapsed time is authoritative (0.826063ms)
+✔ PRE_MATCH_LOCK uses elapsed milliseconds rather than assuming a display refresh rate (0.746299ms)
+✔ P5 exposes exactly the six required bounded topology definitions (1.804156ms)
+✔ canonical topologies preserve their distinct gameplay semantics (1.546131ms)
+✔ mobile platform rails are slow, bounded and deterministic (0.250554ms)
+✔ three P5 pilots resolve exact Lore and Competitive topology variants (0.349429ms)
+✔ explicit options stay normalized while Competitive always disables events (0.133988ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1237.614298
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 test:noncombat-trials
+> node --test scripts/nonCombatTrial.test.mjs scripts/canonRosterWave.test.mjs scripts/canonRosterWaveExpansion.test.mjs scripts/canonRosterNewBatch.test.mjs scripts/enemyRosterIdentityContracts.test.mjs scripts/spriteCatalogContracts.test.mjs scripts/wave6NonCombatObjectives.test.mjs scripts/saturninEscortContract.test.mjs
+
+✔ the deduplicated new batch exposes exactly 102 canon packs in requested order (2.944435ms)
+✔ every new pack keeps the complete 3/3/3/1 content contract (5.478144ms)
+✔ non-combat entities are objective-only and never disguised fighters (3.628021ms)
+✔ sensitive-source adaptations encode the project safety locks (0.852428ms)
+✔ ambiguous continuities are locked and duplicate requests stay outside this batch (0.391453ms)
+✔ canon roster wave exposes exactly the 172 deduplicated requested runtime universes (5.400392ms)
+✔ every universe owns three heroes, three enemies, three bosses, one world boss, stages, gear and event (21.774107ms)
+✔ every URL encoded by the wave uses HTTPS (34.691451ms)
+✔ sensitive canon and safety invariants remain explicit (2.184173ms)
+✔ wave C locks the researched continuity and noncombat finales (1.283046ms)
+✔ legacy hero identities stay compatible while corrected canon anchors remain locked (0.517486ms)
+✔ derived character and threat output identities never collide (1.791472ms)
+✔ the final expanded runtime keeps one complete fidelity-aware entry per requested universe (3.862317ms)
+✔ noncombat roster entries are trial stages and never combat actors (38.551979ms)
+✔ canon noncombat directives keep their authored French objective (0.707298ms)
+✔ expanded music universes use performance trials instead of invented enemies (16.917021ms)
+✔ global hero and enemy catalogs cannot append legacy extras to canon rosters (25.125042ms)
+✔ legacy puzzle and pursuit worlds expose trials instead of fake combat rosters (14.289463ms)
+✔ a finale policy is never rendered as a boss label (17.216403ms)
+✔ hybrid set pieces preserve a hostile stage before their neutral finale (12.353719ms)
+✔ dedicated trial IDs are stable and globally unique (15.86108ms)
+✔ every authored noncombat stage variant becomes a playable trial without a fake boss (14.771314ms)
+✔ waves D, E and F expose the exact thirty-nine requested universes (2.05313ms)
+✔ every expansion pack keeps the complete 3/3/3/1 stage, gear and event contract (0.783858ms)
+✔ all authored noncombat entities are objective-only and never disguised fighters (1.152863ms)
+✔ the two adult-source packs remain strictly nonsexual nonviolent trials (0.738874ms)
+✔ ambiguous titles lock the researched continuity instead of importing namesakes (0.690423ms)
+✔ every universe gives each threat one authoritative runtime role (16.342136ms)
+✔ known ambiguous threats keep the lore-authoritative role (0.198063ms)
+✔ punctuation variants cannot create a second sprite identity (0.145056ms)
+✔ the runtime hero and threat catalog has only the two declared visual aliases (35.359878ms)
+✔ pure resolver recognizes every supported neutral trial family (3.01955ms)
+✔ cure inference recognizes complete medical verbs with punctuation and mixed case (0.423372ms)
+✔ secure and procure wording never becomes a cure-based rescue (0.409565ms)
+✔ other rescue terms and the composite and authored type priorities remain unchanged (0.587733ms)
+✔ Fourth Warhead Transfer resolves through the real threat adapter to switches, not a person to rescue (46.250843ms)
+✔ Carpathian Train keeps its evidence objective instead of a secure substring rescue (33.343971ms)
+✔ Renato Manchas remains a real cure rescue encounter after word-boundary matching (23.749964ms)
+✔ all historical finale policies resolve to interactive objects without combat stats (2.112139ms)
+✔ legacy performers and pursuit abstractions no longer appear in the enemy catalog (0.274878ms)
+✔ explicit composite evidence extraction and custom neutral objects stay deterministic (1.502514ms)
+✔ threat adapter copies objective identity but strips combat statistics (0.480885ms)
+✔ threat adapter creates distinct actionable FR/EN objectives without recycling lore (0.347197ms)
+✔ break-object engine is interactive, has no opponents, and reports integrity victory (3.132721ms)
+✔ hit-targets accepts ranged abilities while collect and ordered escape use contact (0.540425ms)
+✔ abilities cannot activate or destroy neutral objectives from arbitrary distance (0.505159ms)
+✔ survive uses safety progress instead of damage and can end in victory or defeat (0.734627ms)
+✔ trial HUD guidance exposes range, order, mistakes, and gated objectives (0.707077ms)
+✔ Extinction Zone contracts keep real objectives, bounded resources, aiming, and undistorted mobile canvas (1.666142ms)
+✔ survive fails without active-zone participation even while guarding (0.624124ms)
+✔ pause and dispose halt simulation (0.354947ms)
+✔ canvas renderer works with the minimal neutral drawing surface (0.890905ms)
+✔ Hub projects 10654 with its preserved identity and rewards and an explicit Saturnin escort (3849.345214ms)
+✔ first clear rejects a second Saturnin and composes an existing eligible companion (3.029393ms)
+✔ missing ownership or eligibility never invents or grants a replacement companion (0.650524ms)
+✔ replay frees other crew composition but not the protected identity or base unlock rules (0.448033ms)
+✔ French and English briefings describe a disclosed rescue, not Mirror Strategy combat (0.637946ms)
+✔ the same Hub projector preserves the fields and character deployment rules of other arcs (42.712373ms)
+✔ the actual tactics engine has one Saturnin NPC and cannot replace extraction with a rout (3.271118ms)
+✔ projection and deployment evaluation leave the authored arc and caller context unchanged (0.83435ms)
+✔ declared playable/encounter visual aliases remain explicit and stable (1.604436ms)
+✔ duplicate identities and undeclared output owners fail the build contract (0.691385ms)
+✔ legacy lower-role identities resolve to their authoritative owner (1.064375ms)
+✔ exactly ten stage objectives override heuristic language and boss-index routing (3.183062ms)
+✔ delivery and luggage routes require three pickup/destination pairs, not shooting (1.810009ms)
+✔ the vertical route, artifacts, court protocol and traps respect their full order (0.705205ms)
+✔ hidden passages use mechanisms and the slalom uses ordered neutral gates (0.73241ms)
+✔ cover and quiet pursuit reject every attack entrypoint but allow defense and jumping (1.251869ms)
+✔ quiet pursuit detects an unguarded runner, throttles repeat detection and allows quiet completion (0.597096ms)
+✔ the survival objective needs time spent in actual cover, never attack progress (11.549122ms)
+✔ the upper Shard passage is reachable by jumping, without attacking a checkpoint (2.016077ms)
+✔ automated quiet pursuit guards and completes through actual frame updates (3.937793ms)
+✔ automated cover traversal cannot substitute interactions for survival time (11.487993ms)
+✔ all ten authored routes finish with ordinary movement at both canvas resolutions (56.267334ms)
+ℹ tests 74
+ℹ suites 0
+ℹ pass 74
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5150.311006
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 melee:sprites:audit
+> node scripts/meleeSpriteAudit.mjs
+
+{
+  "characterId": "player_anchor",
+  "status": "approved",
+  "sheets": [
+    {
+      "sheetId": "movement",
+      "publicPath": "/sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m1-movement-openai-v1.webp",
+      "minimumMargin": 12,
+      "uniqueCells": 16
+    },
+    {
+      "sheetId": "crouchDefense",
+      "publicPath": "/sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m2-crouch-defense-openai-v1.webp",
+      "minimumMargin": 10,
+      "uniqueCells": 16
+    },
+    {
+      "sheetId": "chargeTaunt",
+      "publicPath": "/sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m3-charge-taunt-openai-v1.webp",
+      "minimumMargin": 12,
+      "uniqueCells": 16
+    },
+    {
+      "sheetId": "ledge",
+      "publicPath": "/sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m4-ledge-openai-v1.webp",
+      "minimumMargin": 12,
+      "uniqueCells": 16
+    },
+    {
+      "sheetId": "introOutro",
+      "publicPath": "/sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m5-intro-outro-openai-v1.webp",
+      "minimumMargin": 12,
+      "uniqueCells": 16
+    }
+  ]
+}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 sprites:provenance:audit
+> node scripts/openAiSpriteProvenanceAudit.mjs
+
+{
+  "ledgerAssets": 2015,
+  "verifiedAssets": 2015,
+  "generationPromptsRecorded": 2008,
+  "generationPromptsCatalogOnly": 7,
+  "issues": []
+}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 portals:audit
+> node scripts/portalVisualAudit.mjs
+
+{
+  "status": "ok",
+  "auditedPortals": 4,
+  "portals": [
+    {
+      "universe": "28 Days Later",
+      "sheet": "/visuals/cosmetics/openai/universes/28-days-later/portal-effects-atlas-p3.webp",
+      "dossier": "/visuals/cosmetics/openai/universes/28-days-later/reference-dossier.json",
+      "dimensions": "1024x256",
+      "frames": [
+        {
+          "frame": 0,
+          "visiblePercent": 15.09,
+          "chromaFringePercent": 0,
+          "pixelSha256": "d1510da4685c7fe473d77fc299f641efa7c341e9798fada7fc3980ab8a0910b9"
+        },
+        {
+          "frame": 1,
+          "visiblePercent": 28.05,
+          "chromaFringePercent": 0,
+          "pixelSha256": "dd9ee6f1a4fcea64ba214c3b8d0fd15d32a4b9ec5375c1b205130de34f1469da"
+        },
+        {
+          "frame": 2,
+          "visiblePercent": 28.21,
+          "chromaFringePercent": 0,
+          "pixelSha256": "1b18fcc79fc93f623b8ed6031c4fa60b3c95eea7e78fb70dbd3b549e72b071bd"
+        },
+        {
+          "frame": 3,
+          "visiblePercent": 28.73,
+          "chromaFringePercent": 0,
+          "pixelSha256": "423c1d7184edf97c3601370cb45dbdd2605293d708029a54fb7e784db4cdc5c8"
+        }
+      ]
+    },
+    {
+      "universe": "A Nightmare on Elm Street",
+      "sheet": "/visuals/cosmetics/openai/universes/a-nightmare-on-elm-street/portal-effects-atlas-p3.webp",
+      "dossier": "/visuals/cosmetics/openai/universes/a-nightmare-on-elm-street/reference-dossier.json",
+      "dimensions": "1024x256",
+      "frames": [
+        {
+          "frame": 0,
+          "visiblePercent": 36.24,
+          "chromaFringePercent": 0,
+          "pixelSha256": "f2ea95e37ffd14683bdd4ecc2296c39d6e70d0ce31aa9a22ff3fc32d267a5dfc"
+        },
+        {
+          "frame": 1,
+          "visiblePercent": 22.35,
+          "chromaFringePercent": 0,
+          "pixelSha256": "f95ae7df02079e65810cca42b2cf461f391739f6d57162adcbd2ca61e09ae6dc"
+        },
+        {
+          "frame": 2,
+          "visiblePercent": 51.82,
+          "chromaFringePercent": 0,
+          "pixelSha256": "9e1b36827b71e4eb5befd5768739620dbc327ef2574721a864fefcb2f09c4d66"
+        },
+        {
+          "frame": 3,
+          "visiblePercent": 40.93,
+          "chromaFringePercent": 0,
+          "pixelSha256": "097a64a2b78bbb4e16722cd5705100cbeda7d4b572a5f1cc1ef318e58dfc8fb5"
+        }
+      ]
+    },
+    {
+      "universe": "Ado",
+      "sheet": "/visuals/cosmetics/openai/universes/ado/portal-effects-atlas-p3.webp",
+      "dossier": "/visuals/cosmetics/openai/universes/ado/reference-dossier.json",
+      "dimensions": "1024x256",
+      "frames": [
+        {
+          "frame": 0,
+          "visiblePercent": 24.05,
+          "chromaFringePercent": 0,
+          "pixelSha256": "115c80cf4769ff6e1706d9dc72a852492b5a6425f053230a44ba96f21d98562e"
+        },
+        {
+          "frame": 1,
+          "visiblePercent": 36.23,
+          "chromaFringePercent": 0,
+          "pixelSha256": "4c6471ac8a80f48ac5d53bf2da81e237f7976d88a968159e7a569eb037c12b8e"
+        },
+        {
+          "frame": 2,
+          "visiblePercent": 42.27,
+          "chromaFringePercent": 0,
+          "pixelSha256": "e657ca48bca9280499027274e8e039d024a8909ddbe4a1ac6dcf83f462e530fb"
+        },
+        {
+          "frame": 3,
+          "visiblePercent": 52.5,
+          "chromaFringePercent": 0,
+          "pixelSha256": "551ff5d17397f523877ccc62e5a8a76100f5c7e0efe6652605f25236f8606afa"
+        }
+      ]
+    },
+    {
+      "universe": "Aegea: War of the Moirai",
+      "sheet": "/visuals/cosmetics/openai/universes/aegea-war-of-the-moirai/portal-effects-atlas-p3.webp",
+      "dossier": "/visuals/cosmetics/openai/universes/aegea-war-of-the-moirai/reference-dossier.json",
+      "dimensions": "1024x256",
+      "frames": [
+        {
+          "frame": 0,
+          "visiblePercent": 42.58,
+          "chromaFringePercent": 0,
+          "pixelSha256": "a46a071e110fc9eb9b7a02751921d17f928b32f4dcde36340e51d0907e583286"
+        },
+        {
+          "frame": 1,
+          "visiblePercent": 42.82,
+          "chromaFringePercent": 0,
+          "pixelSha256": "2c7cdde1e75a3044731fa31383b9f5191ea6fa70ed9fbfa9d3d6ff93c9393850"
+        },
+        {
+          "frame": 2,
+          "visiblePercent": 42.74,
+          "chromaFringePercent": 0,
+          "pixelSha256": "45a332c6f151fc27ec3963e7536b007315d53befc526ba358a709d13cc7ca9df"
+        },
+        {
+          "frame": 3,
+          "visiblePercent": 43.28,
+          "chromaFringePercent": 0,
+          "pixelSha256": "9bc8013c7a5891b05db26bf041290a14eb403db1273eac70d9efc7b156e7983d"
+        }
+      ]
+    }
+  ]
+}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 portals:prompts
+> node scripts/buildPortalPromptManifest.mjs --check
+
+Portal prompt manifest is current: docs/portal-visuals/portal-prompt-manifest.json
+
+> lively-darwin@0.0.0 cosmetics:audit
+> node scripts/cosmeticVisualAudit.mjs
+
+{
+  "status": "ok",
+  "requiredCompleteCount": null,
+  "masters": [
+    {
+      "kind": "hudTheme",
+      "file": "public/visuals/cosmetics/openai/hud-theme-frame-v1.png",
+      "dimensions": "1536x1024",
+      "visiblePercent": 19.78
+    },
+    {
+      "kind": "profileTitle",
+      "file": "public/visuals/cosmetics/openai/profile-title-badge-v1.png",
+      "dimensions": "1536x1024",
+      "visiblePercent": 32.1
+    },
+    {
+      "kind": "profileBanner",
+      "file": "public/visuals/cosmetics/openai/profile-banner-frame-v1.png",
+      "dimensions": "1536x1024",
+      "visiblePercent": 19.48
+    },
+    {
+      "kind": "portalEffect",
+      "file": "public/visuals/cosmetics/openai/portal-effects-atlas-v1.png",
+      "dimensions": "1024x1024",
+      "visiblePercent": 33.5
+    },
+    {
+      "kind": "koEffect",
+      "file": "public/visuals/cosmetics/openai/ko-effects-atlas-v1.png",
+      "dimensions": "1024x1024",
+      "visiblePercent": 22.98
+    },
+    {
+      "kind": "introPose",
+      "file": "public/visuals/cosmetics/openai/intro-poses-atlas-v1.png",
+      "dimensions": "1024x1024",
+      "visiblePercent": 20.22
+    },
+    {
+      "kind": "victoryPose",
+      "file": "public/visuals/cosmetics/openai/victory-poses-atlas-v1.png",
+      "dimensions": "1024x1024",
+      "visiblePercent": 21.33
+    }
+  ],
+  "universePacks": [
+    {
+      "universe": "28 Days Later",
+      "dossier": "public/visuals/cosmetics/openai/universes/28-days-later/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/28-days-later/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 110590
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/28-days-later/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 41544
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/28-days-later/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 54494
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/28-days-later/portal-effects-atlas-p3.webp",
+          "dimensions": "1024x256",
+          "bytes": 55716
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/28-days-later/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 61092
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/28-days-later/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 30116
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/28-days-later/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 31528
+        }
+      ]
+    },
+    {
+      "universe": "A Nightmare on Elm Street",
+      "dossier": "public/visuals/cosmetics/openai/universes/a-nightmare-on-elm-street/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/a-nightmare-on-elm-street/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 78832
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/a-nightmare-on-elm-street/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 35072
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/a-nightmare-on-elm-street/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 34084
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/a-nightmare-on-elm-street/portal-effects-atlas-p3.webp",
+          "dimensions": "1024x256",
+          "bytes": 54446
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/a-nightmare-on-elm-street/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 56108
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/a-nightmare-on-elm-street/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 27424
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/a-nightmare-on-elm-street/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 25430
+        }
+      ]
+    },
+    {
+      "universe": "Ado",
+      "dossier": "public/visuals/cosmetics/openai/universes/ado/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/ado/hud-theme.webp",
+          "dimensions": "1024x256",
+          "bytes": 43138
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/ado/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 36016
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/ado/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 33112
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/ado/portal-effects-atlas-p3.webp",
+          "dimensions": "1024x256",
+          "bytes": 60974
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/ado/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 52698
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/ado/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 51850
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/ado/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 65722
+        }
+      ]
+    },
+    {
+      "universe": "Aegea: War of the Moirai",
+      "dossier": "public/visuals/cosmetics/openai/universes/aegea-war-of-the-moirai/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/aegea-war-of-the-moirai/hud-theme.webp",
+          "dimensions": "1024x256",
+          "bytes": 61890
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/aegea-war-of-the-moirai/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 51802
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/aegea-war-of-the-moirai/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 56340
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/aegea-war-of-the-moirai/portal-effects-atlas-p3.webp",
+          "dimensions": "1024x256",
+          "bytes": 67304
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/aegea-war-of-the-moirai/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 67236
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/aegea-war-of-the-moirai/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 64990
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/aegea-war-of-the-moirai/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 69418
+        }
+      ]
+    },
+    {
+      "universe": "Alien",
+      "dossier": "public/visuals/cosmetics/openai/universes/alien/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/alien/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 80114
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/alien/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 33992
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/alien/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 35488
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/alien/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 52512
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/alien/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 40386
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/alien/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 33364
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/alien/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 30768
+        }
+      ]
+    },
+    {
+      "universe": "BlazBlue",
+      "dossier": "public/visuals/cosmetics/openai/universes/blazblue/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/blazblue/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 119792
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/blazblue/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 43838
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/blazblue/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 64230
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/blazblue/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 69446
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/blazblue/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 77178
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/blazblue/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 46386
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/blazblue/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 58598
+        }
+      ]
+    },
+    {
+      "universe": "Cells at Work!",
+      "dossier": "public/visuals/cosmetics/openai/universes/cells-at-work/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/cells-at-work/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 108170
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/cells-at-work/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 45862
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/cells-at-work/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 59192
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/cells-at-work/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 73180
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/cells-at-work/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 67656
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/cells-at-work/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 41896
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/cells-at-work/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 48762
+        }
+      ]
+    },
+    {
+      "universe": "Chucky",
+      "dossier": "public/visuals/cosmetics/openai/universes/chucky/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/chucky/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 96726
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/chucky/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 44634
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/chucky/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 45398
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/chucky/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 65884
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/chucky/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 66090
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/chucky/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 46196
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/chucky/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 55270
+        }
+      ]
+    },
+    {
+      "universe": "Crash Bandicoot",
+      "dossier": "public/visuals/cosmetics/openai/universes/crash-bandicoot/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/crash-bandicoot/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 161886
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/crash-bandicoot/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 82118
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/crash-bandicoot/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 80024
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/crash-bandicoot/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 51932
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/crash-bandicoot/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 55032
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/crash-bandicoot/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 42334
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/crash-bandicoot/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 38012
+        }
+      ]
+    },
+    {
+      "universe": "Dead Space",
+      "dossier": "public/visuals/cosmetics/openai/universes/dead-space/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/dead-space/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 68472
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/dead-space/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 28766
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/dead-space/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 33086
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/dead-space/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 84302
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/dead-space/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 76256
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/dead-space/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 41302
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/dead-space/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 38860
+        }
+      ]
+    },
+    {
+      "universe": "Digimon",
+      "dossier": "public/visuals/cosmetics/openai/universes/digimon/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/digimon/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 181448
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/digimon/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 73852
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/digimon/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 87284
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/digimon/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 81402
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/digimon/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 67576
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/digimon/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 58670
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/digimon/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 64614
+        }
+      ]
+    },
+    {
+      "universe": "Digital Circus",
+      "dossier": "public/visuals/cosmetics/openai/universes/digital-circus/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/digital-circus/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 78798
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/digital-circus/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 32658
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/digital-circus/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 39226
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/digital-circus/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 59558
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/digital-circus/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 58884
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/digital-circus/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 40322
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/digital-circus/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 42770
+        }
+      ]
+    },
+    {
+      "universe": "Dino Crisis",
+      "dossier": "public/visuals/cosmetics/openai/universes/dino-crisis/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/dino-crisis/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 54496
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/dino-crisis/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 19438
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/dino-crisis/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 31984
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/dino-crisis/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 61078
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/dino-crisis/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 51128
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/dino-crisis/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 25148
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/dino-crisis/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 24512
+        }
+      ]
+    },
+    {
+      "universe": "Doom",
+      "dossier": "public/visuals/cosmetics/openai/universes/doom/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/doom/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 99560
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/doom/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 35214
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/doom/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 41890
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/doom/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 55426
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/doom/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 51586
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/doom/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 33854
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/doom/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 32372
+        }
+      ]
+    },
+    {
+      "universe": "Exit 8",
+      "dossier": "public/visuals/cosmetics/openai/universes/exit-8/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/exit-8/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 42744
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/exit-8/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 21362
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/exit-8/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 16790
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/exit-8/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 38560
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/exit-8/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 38886
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/exit-8/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 19498
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/exit-8/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 20798
+        }
+      ]
+    },
+    {
+      "universe": "Fallout",
+      "dossier": "public/visuals/cosmetics/openai/universes/fallout/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/fallout/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 69314
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/fallout/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 31936
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/fallout/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 32848
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/fallout/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 56756
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/fallout/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 54268
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/fallout/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 25786
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/fallout/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 29842
+        }
+      ]
+    },
+    {
+      "universe": "Gears of War",
+      "dossier": "public/visuals/cosmetics/openai/universes/gears-of-war/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/gears-of-war/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 70254
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/gears-of-war/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 29046
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/gears-of-war/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 31614
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/gears-of-war/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 52060
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/gears-of-war/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 54242
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/gears-of-war/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 37212
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/gears-of-war/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 37378
+        }
+      ]
+    },
+    {
+      "universe": "Ghost in the Shell",
+      "dossier": "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 85816
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 37502
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 42276
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 69954
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 58956
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 30504
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/ghost-in-the-shell/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 43988
+        }
+      ]
+    },
+    {
+      "universe": "Guilty Gear",
+      "dossier": "public/visuals/cosmetics/openai/universes/guilty-gear/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/guilty-gear/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 83380
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/guilty-gear/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 41284
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/guilty-gear/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 35590
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/guilty-gear/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 47086
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/guilty-gear/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 47548
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/guilty-gear/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 34838
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/guilty-gear/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 31848
+        }
+      ]
+    },
+    {
+      "universe": "Half-Life",
+      "dossier": "public/visuals/cosmetics/openai/universes/half-life/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/half-life/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 92692
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/half-life/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 41890
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/half-life/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 40160
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/half-life/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 68386
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/half-life/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 56412
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/half-life/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 35400
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/half-life/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 35266
+        }
+      ]
+    },
+    {
+      "universe": "Halo",
+      "dossier": "public/visuals/cosmetics/openai/universes/halo/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/halo/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 46166
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/halo/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 21736
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/halo/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 19892
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/halo/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 46454
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/halo/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 55320
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/halo/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 53876
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/halo/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 44386
+        }
+      ]
+    },
+    {
+      "universe": "Harry Potter",
+      "dossier": "public/visuals/cosmetics/openai/universes/harry-potter/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/harry-potter/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 85718
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/harry-potter/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 41604
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/harry-potter/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 35478
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/harry-potter/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 60104
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/harry-potter/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 66552
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/harry-potter/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 28416
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/harry-potter/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 46808
+        }
+      ]
+    },
+    {
+      "universe": "Hazbin Hotel",
+      "dossier": "public/visuals/cosmetics/openai/universes/hazbin-hotel/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/hazbin-hotel/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 90130
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/hazbin-hotel/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 44760
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/hazbin-hotel/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 35950
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/hazbin-hotel/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 70576
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/hazbin-hotel/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 65328
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/hazbin-hotel/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 32580
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/hazbin-hotel/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 111626
+        }
+      ]
+    },
+    {
+      "universe": "Hellraiser",
+      "dossier": "public/visuals/cosmetics/openai/universes/hellraiser/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/hellraiser/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 91996
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/hellraiser/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 38776
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/hellraiser/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 42428
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/hellraiser/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 65786
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/hellraiser/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 67976
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/hellraiser/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 29972
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/hellraiser/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 36476
+        }
+      ]
+    },
+    {
+      "universe": "Le Cinquième Element",
+      "dossier": "public/visuals/cosmetics/openai/universes/le-cinquieme-element/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/le-cinquieme-element/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 97272
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/le-cinquieme-element/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 38832
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/le-cinquieme-element/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 51764
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/le-cinquieme-element/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 71192
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/le-cinquieme-element/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 94974
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/le-cinquieme-element/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 40202
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/le-cinquieme-element/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 34588
+        }
+      ]
+    },
+    {
+      "universe": "Mass Effect",
+      "dossier": "public/visuals/cosmetics/openai/universes/mass-effect/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/mass-effect/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 93170
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/mass-effect/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 40174
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/mass-effect/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 41156
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/mass-effect/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 51976
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/mass-effect/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 43722
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/mass-effect/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 27914
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/mass-effect/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 28366
+        }
+      ]
+    },
+    {
+      "universe": "Metal Gear",
+      "dossier": "public/visuals/cosmetics/openai/universes/metal-gear/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/metal-gear/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 83720
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/metal-gear/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 37596
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/metal-gear/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 44714
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/metal-gear/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 88342
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/metal-gear/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 77458
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/metal-gear/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 26604
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/metal-gear/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 24562
+        }
+      ]
+    },
+    {
+      "universe": "Méridien Creux",
+      "dossier": "public/visuals/cosmetics/openai/universes/meridien-creux/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/meridien-creux/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 92698
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/meridien-creux/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 40602
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/meridien-creux/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 40130
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/meridien-creux/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 104338
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/meridien-creux/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 88114
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/meridien-creux/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 50546
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/meridien-creux/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 57442
+        }
+      ]
+    },
+    {
+      "universe": "Negima",
+      "dossier": "public/visuals/cosmetics/openai/universes/negima/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/negima/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 101790
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/negima/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 43320
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/negima/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 49922
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/negima/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 91644
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/negima/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 78642
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/negima/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 49058
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/negima/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 85748
+        }
+      ]
+    },
+    {
+      "universe": "Nexus de Convergence",
+      "dossier": "public/visuals/cosmetics/openai/universes/nexus-de-convergence/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/nexus-de-convergence/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 86056
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/nexus-de-convergence/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 28876
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/nexus-de-convergence/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 54720
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/nexus-de-convergence/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 71170
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/nexus-de-convergence/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 72916
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/nexus-de-convergence/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 49526
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/nexus-de-convergence/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 49274
+        }
+      ]
+    },
+    {
+      "universe": "Payday",
+      "dossier": "public/visuals/cosmetics/openai/universes/payday/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/payday/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 58064
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/payday/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 24442
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/payday/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 30992
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/payday/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 66682
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/payday/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 55346
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/payday/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 27680
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/payday/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 29420
+        }
+      ]
+    },
+    {
+      "universe": "Portal",
+      "dossier": "public/visuals/cosmetics/openai/universes/portal/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/portal/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 77724
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/portal/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 35834
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/portal/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 33360
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/portal/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 39364
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/portal/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 54122
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/portal/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 35582
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/portal/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 33732
+        }
+      ]
+    },
+    {
+      "universe": "Predator",
+      "dossier": "public/visuals/cosmetics/openai/universes/predator/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/predator/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 133896
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/predator/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 63160
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/predator/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 58012
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/predator/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 108856
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/predator/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 69834
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/predator/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 52256
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/predator/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 58308
+        }
+      ]
+    },
+    {
+      "universe": "Rayman",
+      "dossier": "public/visuals/cosmetics/openai/universes/rayman/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/rayman/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 102920
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/rayman/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 45450
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/rayman/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 50142
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/rayman/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 64770
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/rayman/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 59142
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/rayman/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 38388
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/rayman/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 47796
+        }
+      ]
+    },
+    {
+      "universe": "Resident Evil",
+      "dossier": "public/visuals/cosmetics/openai/universes/resident-evil/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/resident-evil/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 92248
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/resident-evil/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 49810
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/resident-evil/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 38244
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/resident-evil/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 73702
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/resident-evil/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 43458
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/resident-evil/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 22088
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/resident-evil/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 23582
+        }
+      ]
+    },
+    {
+      "universe": "Rick & Morty",
+      "dossier": "public/visuals/cosmetics/openai/universes/rick-morty/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/rick-morty/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 66464
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/rick-morty/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 36216
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/rick-morty/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 22832
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/rick-morty/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 72508
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/rick-morty/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 45866
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/rick-morty/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 34116
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/rick-morty/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 33026
+        }
+      ]
+    },
+    {
+      "universe": "Rosario + Vampire",
+      "dossier": "public/visuals/cosmetics/openai/universes/rosario-vampire/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/rosario-vampire/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 94994
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/rosario-vampire/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 37282
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/rosario-vampire/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 51974
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/rosario-vampire/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 80354
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/rosario-vampire/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 63820
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/rosario-vampire/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 35120
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/rosario-vampire/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 41684
+        }
+      ]
+    },
+    {
+      "universe": "Rubber",
+      "dossier": "public/visuals/cosmetics/openai/universes/rubber/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/rubber/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 79504
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/rubber/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 35330
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/rubber/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 35792
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/rubber/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 82470
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/rubber/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 76284
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/rubber/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 49084
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/rubber/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 50054
+        }
+      ]
+    },
+    {
+      "universe": "Sausage Party",
+      "dossier": "public/visuals/cosmetics/openai/universes/sausage-party/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/sausage-party/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 47308
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/sausage-party/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 20678
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/sausage-party/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 23414
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/sausage-party/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 73182
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/sausage-party/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 57544
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/sausage-party/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 27564
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/sausage-party/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 29564
+        }
+      ]
+    },
+    {
+      "universe": "Saw",
+      "dossier": "public/visuals/cosmetics/openai/universes/saw/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/saw/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 89474
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/saw/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 44052
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/saw/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 34884
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/saw/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 92124
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/saw/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 80294
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/saw/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 30370
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/saw/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 30556
+        }
+      ]
+    },
+    {
+      "universe": "Scary Movie",
+      "dossier": "public/visuals/cosmetics/openai/universes/scary-movie/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/scary-movie/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 81072
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/scary-movie/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 37404
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/scary-movie/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 42260
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/scary-movie/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 48516
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/scary-movie/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 52600
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/scary-movie/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 37656
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/scary-movie/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 37990
+        }
+      ]
+    },
+    {
+      "universe": "Silent Hill",
+      "dossier": "public/visuals/cosmetics/openai/universes/silent-hill/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/silent-hill/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 98346
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/silent-hill/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 39708
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/silent-hill/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 47432
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/silent-hill/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 55938
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/silent-hill/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 57058
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/silent-hill/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 34084
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/silent-hill/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 38210
+        }
+      ]
+    },
+    {
+      "universe": "Spyro",
+      "dossier": "public/visuals/cosmetics/openai/universes/spyro/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/spyro/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 66272
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/spyro/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 30436
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/spyro/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 30844
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/spyro/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 72278
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/spyro/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 59334
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/spyro/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 46422
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/spyro/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 50602
+        }
+      ]
+    },
+    {
+      "universe": "Star Wars",
+      "dossier": "public/visuals/cosmetics/openai/universes/star-wars/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/star-wars/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 64198
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/star-wars/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 33418
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/star-wars/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 26904
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/star-wars/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 67076
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/star-wars/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 59098
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/star-wars/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 38376
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/star-wars/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 41770
+        }
+      ]
+    },
+    {
+      "universe": "Stargate",
+      "dossier": "public/visuals/cosmetics/openai/universes/stargate/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/stargate/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 60184
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/stargate/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 28040
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/stargate/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 25866
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/stargate/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 52604
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/stargate/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 58144
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/stargate/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 24704
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/stargate/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 22842
+        }
+      ]
+    },
+    {
+      "universe": "Thalassa Mnémique",
+      "dossier": "public/visuals/cosmetics/openai/universes/thalassa-mnemique/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/thalassa-mnemique/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 100140
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/thalassa-mnemique/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 48150
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/thalassa-mnemique/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 42252
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/thalassa-mnemique/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 107354
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/thalassa-mnemique/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 81424
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/thalassa-mnemique/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 58236
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/thalassa-mnemique/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 79372
+        }
+      ]
+    },
+    {
+      "universe": "The Brave Little Toaster",
+      "dossier": "public/visuals/cosmetics/openai/universes/the-brave-little-toaster/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/the-brave-little-toaster/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 71044
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/the-brave-little-toaster/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 31252
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/the-brave-little-toaster/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 33092
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/the-brave-little-toaster/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 59148
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/the-brave-little-toaster/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 61232
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/the-brave-little-toaster/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 29474
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/the-brave-little-toaster/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 31666
+        }
+      ]
+    },
+    {
+      "universe": "The Matrix",
+      "dossier": "public/visuals/cosmetics/openai/universes/the-matrix/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/the-matrix/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 117620
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/the-matrix/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 38704
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/the-matrix/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 64644
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/the-matrix/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 113904
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/the-matrix/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 76410
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/the-matrix/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 28668
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/the-matrix/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 29820
+        }
+      ]
+    },
+    {
+      "universe": "Viridienne Ultime",
+      "dossier": "public/visuals/cosmetics/openai/universes/viridienne-ultime/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/viridienne-ultime/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 196406
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/viridienne-ultime/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 83006
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/viridienne-ultime/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 88472
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/viridienne-ultime/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 115468
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/viridienne-ultime/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 105472
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/viridienne-ultime/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 91108
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/viridienne-ultime/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 119236
+        }
+      ]
+    },
+    {
+      "universe": "Yu-Gi-Oh",
+      "dossier": "public/visuals/cosmetics/openai/universes/yu-gi-oh/reference-dossier.json",
+      "assets": [
+        {
+          "kind": "hudTheme",
+          "file": "public/visuals/cosmetics/openai/universes/yu-gi-oh/hud-theme.webp",
+          "dimensions": "1024x512",
+          "bytes": 97868
+        },
+        {
+          "kind": "profileTitle",
+          "file": "public/visuals/cosmetics/openai/universes/yu-gi-oh/profile-title.webp",
+          "dimensions": "1024x256",
+          "bytes": 46776
+        },
+        {
+          "kind": "profileBanner",
+          "file": "public/visuals/cosmetics/openai/universes/yu-gi-oh/profile-banner.webp",
+          "dimensions": "1024x256",
+          "bytes": 43906
+        },
+        {
+          "kind": "portalEffect",
+          "file": "public/visuals/cosmetics/openai/universes/yu-gi-oh/portal-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 52502
+        },
+        {
+          "kind": "koEffect",
+          "file": "public/visuals/cosmetics/openai/universes/yu-gi-oh/ko-effects-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 59420
+        },
+        {
+          "kind": "introPose",
+          "file": "public/visuals/cosmetics/openai/universes/yu-gi-oh/intro-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 39098
+        },
+        {
+          "kind": "victoryPose",
+          "file": "public/visuals/cosmetics/openai/universes/yu-gi-oh/victory-poses-atlas.webp",
+          "dimensions": "1024x256",
+          "bytes": 40572
+        }
+      ]
+    }
+  ]
+}
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 test:cosmetics
+> node --test scripts/cosmeticVisualCatalog.test.mjs
+
+✔ generated runtime catalog matches visually accepted packs on disk (50.269307ms)
+✔ scanner excludes unreviewed packs and retains an accepted pilot P3 override (3.679236ms)
+✔ scanner rejects a stale visual acceptance fingerprint (2.797407ms)
+✔ catalog check does not require 380 packs unless explicitly requested (91.48713ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 223.227107
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+> lively-darwin@0.0.0 rift:audit
+> node scripts/buildRiftDossierCatalog.mjs --check && node scripts/buildRiftDossierAssetRegistry.mjs --check
+
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Character arc 10092 local-reference candidates drifted; refresh the quality audit
++ actual - expected
+
+  [
++   '/sprites/generated/heroes/final-fantasy-vii/redxiii-ff7.png'
+-   '/sprites/generated/combat-character-corrections-wave4/redxiii_ff7.png'
+  ]
+
+    at file:///workspace/multiverse-breach/scripts/buildRiftDossierCatalog.mjs:1099:18
+    at Array.map (<anonymous>)
+    at buildCatalog (file:///workspace/multiverse-breach/scripts/buildRiftDossierCatalog.mjs:1076:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async file:///workspace/multiverse-breach/scripts/buildRiftDossierCatalog.mjs:1417:33 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [ '/sprites/generated/heroes/final-fantasy-vii/redxiii-ff7.png' ],
+  expected: [
+    '/sprites/generated/combat-character-corrections-wave4/redxiii_ff7.png'
+  ],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

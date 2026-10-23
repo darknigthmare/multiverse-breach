@@ -1,0 +1,345 @@
+{
+  "date": "2026-10-18",
+  "passed": true,
+  "environment": {
+    "browser": "Chromium /usr/bin/chromium",
+    "origin": "http://127.0.0.1:5188/",
+    "actor": "goku_dbz",
+    "opponent": "cloud_ff7"
+  },
+  "core": {
+    "passed": true,
+    "character": "goku_dbz",
+    "states": 45,
+    "distinctCorePoses": 180,
+    "coreFrameDraws": 360,
+    "gripFrameDraws": 8,
+    "physicsUnchanged": true,
+    "rendererUrl": "/src/game/renderer.js?t=1792308834183",
+    "sources": [
+      "/sprites/generated/melee-goku-wave4/goku-motion-a.png",
+      "/sprites/generated/melee-goku-wave4/goku-motion-b.png",
+      "/sprites/generated/melee-goku-wave4/goku-defense.png",
+      "/sprites/generated/melee-goku-wave4/goku-combat-a.png",
+      "/sprites/generated/melee-goku-wave4/goku-combat-b.png",
+      "/sprites/generated/melee-goku-wave4/goku-ledge.png"
+    ],
+    "pageErrors": [],
+    "coreCapture": "/tmp/goku-wave4-core.png",
+    "gripCapture": "/tmp/goku-wave4-grips.png"
+  },
+  "movement": {
+    "summary": {
+      "jumpRise": {
+        "updates": 24,
+        "draws": 23,
+        "elapsed": [
+          0,
+          0.016666666666666666,
+          0.03333333333333333,
+          0.05,
+          0.06666666666666667,
+          0.08333333333333333,
+          0.09999999999999999,
+          0.11666666666666665,
+          0.13333333333333333,
+          0.15,
+          0.16666666666666666,
+          0.18333333333333332,
+          0.19999999999999998,
+          0.21666666666666665,
+          0.2333333333333333,
+          0.24999999999999997,
+          0.26666666666666666,
+          0.2833333333333333,
+          0.3,
+          0.31666666666666665,
+          0.3333333333333333,
+          0.35,
+          0.36666666666666664,
+          0.3833333333333333
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "velocities": [
+          4
+        ],
+        "facings": [
+          1
+        ]
+      },
+      "fall": {
+        "updates": 26,
+        "draws": 26,
+        "elapsed": [
+          0,
+          0.016666666666666666,
+          0.03333333333333333,
+          0.05,
+          0.06666666666666667,
+          0.08333333333333333,
+          0.09999999999999999,
+          0.11666666666666665,
+          0.13333333333333333,
+          0.15,
+          0.16666666666666666,
+          0.18333333333333332,
+          0.19999999999999998,
+          0.21666666666666665,
+          0.2333333333333333,
+          0.24999999999999997,
+          0.26666666666666666,
+          0.2833333333333333,
+          0.3,
+          0.31666666666666665,
+          0.3333333333333333,
+          0.35,
+          0.36666666666666664,
+          0.3833333333333333,
+          0.39999999999999997,
+          0.41666666666666663
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "velocities": [
+          4
+        ],
+        "facings": [
+          1
+        ]
+      },
+      "land": {
+        "updates": 7,
+        "draws": 5,
+        "elapsed": [
+          0,
+          0.016666666666666666,
+          0.03333333333333333,
+          0.05,
+          0.06666666666666667,
+          0.08333333333333333,
+          0.09999999999999999
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "velocities": [
+          4
+        ],
+        "facings": [
+          1
+        ]
+      },
+      "turn": {
+        "updates": 6,
+        "draws": 6,
+        "elapsed": [
+          0.016666666666666666,
+          0.03333333333333333,
+          0.05,
+          0.06666666666666667,
+          0.08333333333333333,
+          0.09999999999999999
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "velocities": [
+          -4
+        ],
+        "facings": [
+          -1
+        ]
+      }
+    },
+    "pause": {
+      "mechanism": "GameCanvas real sessionPaused prop through root.render; stable stage/team props and engine instance",
+      "before": {
+        "state": "idle",
+        "stateElapsed": 0.44999999999999996,
+        "x": 432,
+        "y": 359,
+        "vx": 0,
+        "vy": 0,
+        "hp": 105
+      },
+      "after": {
+        "state": "idle",
+        "stateElapsed": 0.44999999999999996,
+        "x": 432,
+        "y": 359,
+        "vx": 0,
+        "vy": 0,
+        "hp": 105
+      },
+      "durationMs": 300,
+      "unchanged": true
+    },
+    "engineUrl": "/src/game/engineSmash.js?t=1792308865830",
+    "pageErrors": [],
+    "mount": "Real React GameCanvas; flat isolated ground and stationary P2 opponent; actual keyboard, movement clocks and drawImage."
+  },
+  "super": {
+    "engineUrl": "/src/game/engineSmash.js?t=1792308834183",
+    "name": "Kamehameha",
+    "keyboardHoldMs": 80,
+    "initialCharge": 100,
+    "impact": {
+      "start": {
+        "name": "Kamehameha",
+        "charge": 0,
+        "hp": 100000,
+        "elapsed": 0.016666666666666666,
+        "hitAt": 0.451
+      },
+      "hit": {
+        "name": "Kamehameha",
+        "charge": 0,
+        "hp": 99941,
+        "elapsed": 0.4666666666666666,
+        "hitAt": 0.451
+      },
+      "gameOver": false
+    },
+    "sameInput": {
+      "before": 99941,
+      "retriggered": false,
+      "charge": 0
+    },
+    "final": {
+      "hitCount": 1,
+      "hp": 99941,
+      "charge": 0,
+      "action": null,
+      "profile": "Kamehameha"
+    },
+    "pageErrors": []
+  },
+  "initialHarnessFailure": {
+    "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement-initial-failure.json",
+    "error": "Initial wrapper mount did not reach idle; no keyboard commands were sent.",
+    "resolution": "Retried using direct GameCanvas mounting already used by prior browser proofs, and controlled the real sessionPaused prop through root.render with stable stage/team props. No production change."
+  },
+  "externalRequestLimitation": "All scenarios reported only the blocked Google Fonts CSS request (ERR_TUNNEL_CONNECTION_FAILED), with no application JavaScript exception.",
+  "visualReview": {
+    "superAndGripsAndSpecialCropReviewed": true,
+    "notes": [
+      "Base black-haired Goku and orange/blue outfit persist.",
+      "Special frame2 retains its projectile in the correct cell.",
+      "Guard and movement remain adapted artwork; running uses suspended dash-like leg positions.",
+      "The eight-grip image overlays four verified frame draws at each side of one platform; the projected anchor positions are recorded individually in the trace."
+    ],
+    "canon1to1Verified": false
+  },
+  "sourceImages": [
+    {
+      "path": "public/sprites/generated/melee-goku-wave4/goku-motion-a.png",
+      "sha256": "9bed1d1097b0273cd43df592636e9cbbdb7cf6b921b81e125f6d06271924a9c9"
+    },
+    {
+      "path": "public/sprites/generated/melee-goku-wave4/goku-motion-b.png",
+      "sha256": "6e83dab1b8b85c64dddbdd60ceeece56dd9c47fcd55fd21a26a6b3e70ffeace8"
+    },
+    {
+      "path": "public/sprites/generated/melee-goku-wave4/goku-defense.png",
+      "sha256": "f7ab7296a08b5d468de2e5a0a0e3feb5d9916089a7806267171ec2519e3a5df2"
+    },
+    {
+      "path": "public/sprites/generated/melee-goku-wave4/goku-combat-a.png",
+      "sha256": "85730a037c5ebc8653c4bfb9d7a8974c0e670a438684a6c648998912f09787f8"
+    },
+    {
+      "path": "public/sprites/generated/melee-goku-wave4/goku-combat-b.png",
+      "sha256": "065601ef7bd816b5a258369a2ac39d0fccbf1513a8836d6630b9569f7de175fe"
+    },
+    {
+      "path": "public/sprites/generated/melee-goku-wave4/goku-ledge.png",
+      "sha256": "4bf47f2fcafaddf71bfde028d968633a52c074f6af6f9bf2c72dfa52f5352b9e"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-core-browser.mjs",
+      "sha256": "faa216a07c21bd4559e052e377db9c22af4620782d35266117958291a75062db"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-core-result.json",
+      "sha256": "9d9b2fafce160571d09594d618e9dfbe738a14a89bf776f41ed6730d04ee9415"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-core-trace.json",
+      "sha256": "ecfeede57641230a7c84e34de5f1a1cb2191effe7a5d867adc820e0064edb286"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-core.png",
+      "sha256": "a4e3d87a6aac23979cdb80dda6d55a1bcb07f834d20616e52f3bc230ad86073c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-grips.png",
+      "sha256": "2c93c45d55ded8fc6aeee131a6dc1c15178ebc10c9d36389cdb0be3cff557927"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-core-special-crop.png",
+      "sha256": "1bd77c9e3ddbbb15adbe31518c578e65aa8abe13ea16180026d9a65ada791aca"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement-browser.mjs",
+      "sha256": "0e30ea92010e9fddfe8ae5c36761d1835ba31dd9f505c110c50bcbd4ef3fb992"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement-result.json",
+      "sha256": "fec200f5f32e2770e0100a5cf076859f2e63431fabfe3468546e9265a03ab088"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement-trace.json",
+      "sha256": "99f0783785032d4c18145e2a68ae460cf366477f5740419eeb2d3ffed71c24a4"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement.png",
+      "sha256": "5ae89dc131a153ff6c7e24aa2f76c6c7c67c135f40456eeb2e7899f1a80060ba"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-pause.png",
+      "sha256": "0ba68ab4b728ad19e5c67ac013e37fd4b48aeb9cca08cafa3459cec207586e75"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement-initial-wrapper.mjs",
+      "sha256": "31bb9ce8d3da21cc68680119501f06df1cf265e77e1dc8e1663702e5fe9ec312"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement-initial-failure.json",
+      "sha256": "8d9cbb013b31be35b0c9a2d2fe858b70cc1bc2cfe292d6075cef0411122e2cd9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-super-browser.mjs",
+      "sha256": "284feb019f475e8db231da6c1426b86426470fc68dc69583235065d21a4de2ec"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-super-result.json",
+      "sha256": "5bdf8a7b48eadf9222f2ecfd00e04978c88e7ea0513f32926cdc19cff87ddf7c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-super-trace.json",
+      "sha256": "8ebd3d5d4b4f36efc96be73e218de7ff226b8580315cc6a6e8367a0d48f53cb0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-super.png",
+      "sha256": "63a81b6f366a3e8251542e50436de7e6464e019dc28fb18486888d3241f3d42e"
+    }
+  ],
+  "productionSourcesEdited": false
+}

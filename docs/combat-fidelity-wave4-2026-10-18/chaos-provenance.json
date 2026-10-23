@@ -1,0 +1,519 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "provider": "OpenAI",
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "generationRecord": {
+    "kind": "form",
+    "id": "vincent-chaos",
+    "heroId": "vincent_ff7",
+    "universe": "Final Fantasy VII",
+    "prompt": "Create a NEW native detailed pixel-art FULL-BODY FORM sprite atlas for CHAOS, Vincent Valentine's Level4 LIMIT TRANSFORMATION in ORIGINAL FINAL FANTASY VII (1997 PlayStation battle model), NOT the Dirge of Cerberus redesign. EXACT4 COLUMNS ×4 ROWS,16 genuinely DISTINCT poses, about1024x1024, true TRANSPARENT background. ORIGINAL1997 CHAOS is an UNARMED muscular western DEMON: DARK CHARCOAL/GRAY-BROWN skin, BALD demonic head with long pointed ears and curved horns, solid demonic face (not Vincent's human face), clawed hands, digitigrade/hoof-like feet, TWO large normal BAT WINGS with dark structure and dark RED/BROWN inner wing membranes. Two arms and two legs, consistent anatomy. No hair, headband, cape, clothes, boots, human military outfit, gun, Death Penalty, sword, gold human gauntlet, mechanical armor, cables, feathers, bright white skin or technological Dirge design. The red/brown is mainly WING MEMBRANES; body remains a dark classical demon. Human Vincent is NOT present on this atlas. Readable detailed16/32bit pixel clusters matching an RPG creature sprite, side/slight-three-quarter consistently facing RIGHT. WIDE20percent transparent margins inside EVERY cell: both ENTIRE wings, every membrane tip, horn, hand and hoof fully inside the same cell. Intentionally draw character/wings SMALL, no more65percent of cell footprint. No cropped wing tips, no overlapping neighboring cells. Shared body scale throughout a row. ROW1 IDLE: neutral low hover/stand with wings half-spread; small chest rise and wrists lowering; different shoulder/wing angle; settled winged ready stance. ROW2 RUN/MOVE: four distinct forward-right bounding steps with different tucked/open legs and a natural wingbeat, both complete wings remain readable and contained. Do not make four duplicate hovering poses. ROW3 ATTACK, adapted CHAOS SABER physical motif: draw clawed arm back while bracing; sweep an unarmed claw forward; fully extended claw slash with ONE SMALL SILVER-VIOLET crescent just ahead; retract claw and recover. Chaos Saber is the named ATTACK, not a literal held saber. No sword, gun, mouth beam, skull, Satan Slam execution or enemy. ROW4 HIT: modest flinch; brace a shoulder with wings flexing; dip torso and bend knees; regain stance. Alive, no wounds/gore. All16 poses fully redrawn, true changes in limbs/wing positions, no duplicates, shifted copies or mirrored fake frames. No landscape, floor/shadow, background, text, labels, numbers, grid, borders, logo or watermark. This is an original generated adaptation of the1997 transformation silhouette, not certified official source-game pixels or canonical timing.",
+    "sourceWork": "Final Fantasy VII (1997), Vincent's Chaos Limit transformation",
+    "sourceReference": "The original FFVII transformation is a classical winged demon, distinct from the humanoid technological Dirge of Cerberus redesign. Attack poses use an adapted unarmed Chaos Saber motif, not Satan/Stan Slam or a newly invented Killmove technique.",
+    "contextReference": "/workspace/multiverse-breach/public/sprites/generated/heroes/final-fantasy-vii/vincent-ff7.png",
+    "referencedImages": [],
+    "abilityName": "Chaos",
+    "formAttackName": "Chaos Saber",
+    "states": [
+      "idle",
+      "run",
+      "attack",
+      "hit"
+    ],
+    "file": "/workspace/generated_images/exec-bfa2136e-d1bc-441a-b508-819266c34e5b.png"
+  },
+  "networkVerified": false,
+  "canon1to1Verified": false,
+  "method": "One actual new native image_gen creature atlas with no reference-image input. Sharp only extracts alpha-separated genuine poses, normalizes shared scale/baseline per state and packs the delivered PNG.",
+  "sources": [
+    {
+      "id": "vincent-chaos",
+      "archivedPath": "docs/combat-fidelity-wave4-2026-10-18/chaos-source.png",
+      "sha256": "9ff4d9e4c947c624d38543f8d2073bdf49074c187fc35877ac8048c5b5727e7e",
+      "originalGeneratedPath": "/workspace/generated_images/exec-bfa2136e-d1bc-441a-b508-819266c34e5b.png",
+      "prompt": "Create a NEW native detailed pixel-art FULL-BODY FORM sprite atlas for CHAOS, Vincent Valentine's Level4 LIMIT TRANSFORMATION in ORIGINAL FINAL FANTASY VII (1997 PlayStation battle model), NOT the Dirge of Cerberus redesign. EXACT4 COLUMNS ×4 ROWS,16 genuinely DISTINCT poses, about1024x1024, true TRANSPARENT background. ORIGINAL1997 CHAOS is an UNARMED muscular western DEMON: DARK CHARCOAL/GRAY-BROWN skin, BALD demonic head with long pointed ears and curved horns, solid demonic face (not Vincent's human face), clawed hands, digitigrade/hoof-like feet, TWO large normal BAT WINGS with dark structure and dark RED/BROWN inner wing membranes. Two arms and two legs, consistent anatomy. No hair, headband, cape, clothes, boots, human military outfit, gun, Death Penalty, sword, gold human gauntlet, mechanical armor, cables, feathers, bright white skin or technological Dirge design. The red/brown is mainly WING MEMBRANES; body remains a dark classical demon. Human Vincent is NOT present on this atlas. Readable detailed16/32bit pixel clusters matching an RPG creature sprite, side/slight-three-quarter consistently facing RIGHT. WIDE20percent transparent margins inside EVERY cell: both ENTIRE wings, every membrane tip, horn, hand and hoof fully inside the same cell. Intentionally draw character/wings SMALL, no more65percent of cell footprint. No cropped wing tips, no overlapping neighboring cells. Shared body scale throughout a row. ROW1 IDLE: neutral low hover/stand with wings half-spread; small chest rise and wrists lowering; different shoulder/wing angle; settled winged ready stance. ROW2 RUN/MOVE: four distinct forward-right bounding steps with different tucked/open legs and a natural wingbeat, both complete wings remain readable and contained. Do not make four duplicate hovering poses. ROW3 ATTACK, adapted CHAOS SABER physical motif: draw clawed arm back while bracing; sweep an unarmed claw forward; fully extended claw slash with ONE SMALL SILVER-VIOLET crescent just ahead; retract claw and recover. Chaos Saber is the named ATTACK, not a literal held saber. No sword, gun, mouth beam, skull, Satan Slam execution or enemy. ROW4 HIT: modest flinch; brace a shoulder with wings flexing; dip torso and bend knees; regain stance. Alive, no wounds/gore. All16 poses fully redrawn, true changes in limbs/wing positions, no duplicates, shifted copies or mirrored fake frames. No landscape, floor/shadow, background, text, labels, numbers, grid, borders, logo or watermark. This is an original generated adaptation of the1997 transformation silhouette, not certified official source-game pixels or canonical timing.",
+      "promptFile": "docs/combat-fidelity-wave4-2026-10-18/chaos-prompt.txt",
+      "promptSha256": "536672e83fb289aa8c583540b8c490e8f1aefb2213eb5eecebb82eb824dc7d0e",
+      "referencedImages": [],
+      "reviewedContextImage": "docs/combat-fidelity-wave4-2026-10-18/chaos-context-vincent-reference.png",
+      "reviewedContextImageSha256": "820bb71204dd4f00f4c1fc791114595a50ea04e7d3b3fbb0c8322141ce07ee87",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-new-form",
+      "accepted": true
+    }
+  ],
+  "entries": [
+    {
+      "id": "vincent-chaos",
+      "heroId": "vincent_ff7",
+      "universe": "Final Fantasy VII",
+      "name": "Chaos",
+      "sheet": "/sprites/generated/combat-character-forms-wave4/vincent-chaos.png",
+      "width": 1024,
+      "height": 1024,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "10801b05b9ad4589405f03f79c9e976708df552b40291ce788fe4106d2e0798f",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/chaos-source.png",
+      "sourceImageSha256": "9ff4d9e4c947c624d38543f8d2073bdf49074c187fc35877ac8048c5b5727e7e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-vii/vincent-ff7.png",
+      "referenceImage": "docs/combat-fidelity-wave4-2026-10-18/chaos-context-vincent-reference.png",
+      "referenceAssetSha256": "820bb71204dd4f00f4c1fc791114595a50ea04e7d3b3fbb0c8322141ce07ee87",
+      "referenceUsage": "The local human Vincent bitmap was inspected as continuity context only. No reference image was passed to this brand-new Chaos image_gen call; its original1997 demon silhouette was specified in the prompt.",
+      "sourceWork": "Final Fantasy VII (1997), Vincent's Chaos Limit transformation",
+      "sourceReference": "The original FFVII transformation is a classical winged demon, distinct from the humanoid technological Dirge of Cerberus redesign. Attack poses use an adapted unarmed Chaos Saber motif, not Satan/Stan Slam or a newly invented Killmove technique.",
+      "formAttackName": "Chaos Saber",
+      "abilityName": "Chaos",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/chaos-source.png",
+            "sourceImageSha256": "9ff4d9e4c947c624d38543f8d2073bdf49074c187fc35877ac8048c5b5727e7e",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 314
+            },
+            "scale": 0.7532467532467533,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 16,
+                  "top": 11,
+                  "width": 271,
+                  "height": 292,
+                  "pixels": 36898
+                },
+                "output": {
+                  "left": 22,
+                  "top": 23,
+                  "width": 204,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 333,
+                  "top": 9,
+                  "width": 257,
+                  "height": 293,
+                  "pixels": 37350
+                },
+                "output": {
+                  "left": 25,
+                  "top": 22,
+                  "width": 194,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 630,
+                  "top": 47,
+                  "width": 283,
+                  "height": 256,
+                  "pixels": 33737
+                },
+                "output": {
+                  "left": 12,
+                  "top": 50,
+                  "width": 213,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 952,
+                  "top": 23,
+                  "width": 265,
+                  "height": 281,
+                  "pixels": 34676
+                },
+                "output": {
+                  "left": 19,
+                  "top": 32,
+                  "width": 200,
+                  "height": 212
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "run",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/chaos-source.png",
+            "sourceImageSha256": "9ff4d9e4c947c624d38543f8d2073bdf49074c187fc35877ac8048c5b5727e7e",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 313,
+              "bottom": 620
+            },
+            "scale": 0.7412140575079872,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 16,
+                  "top": 26,
+                  "width": 291,
+                  "height": 271,
+                  "pixels": 36756
+                },
+                "output": {
+                  "left": 24,
+                  "top": 42,
+                  "width": 216,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 368,
+                  "top": 8,
+                  "width": 258,
+                  "height": 281,
+                  "pixels": 34825
+                },
+                "output": {
+                  "left": 52,
+                  "top": 29,
+                  "width": 191,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 643,
+                  "top": 20,
+                  "width": 297,
+                  "height": 278,
+                  "pixels": 33470
+                },
+                "output": {
+                  "left": 24,
+                  "top": 38,
+                  "width": 220,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 974,
+                  "top": 32,
+                  "width": 264,
+                  "height": 266,
+                  "pixels": 35854
+                },
+                "output": {
+                  "left": 37,
+                  "top": 47,
+                  "width": 196,
+                  "height": 197
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "attack",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/chaos-source.png",
+            "sourceImageSha256": "9ff4d9e4c947c624d38543f8d2073bdf49074c187fc35877ac8048c5b5727e7e",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 619,
+              "bottom": 921
+            },
+            "scale": 0.5284738041002278,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 16,
+                  "top": 10,
+                  "width": 296,
+                  "height": 285,
+                  "pixels": 34530
+                },
+                "output": {
+                  "left": 54,
+                  "top": 93,
+                  "width": 156,
+                  "height": 151
+                }
+              },
+              {
+                "source": {
+                  "left": 325,
+                  "top": 10,
+                  "width": 349,
+                  "height": 282,
+                  "pixels": 38042
+                },
+                "output": {
+                  "left": 51,
+                  "top": 93,
+                  "width": 184,
+                  "height": 149
+                }
+              },
+              {
+                "source": {
+                  "left": 625,
+                  "top": 13,
+                  "width": 378,
+                  "height": 273,
+                  "pixels": 42682
+                },
+                "output": {
+                  "left": 44,
+                  "top": 95,
+                  "width": 200,
+                  "height": 144
+                }
+              },
+              {
+                "source": {
+                  "left": 969,
+                  "top": 13,
+                  "width": 268,
+                  "height": 282,
+                  "pixels": 31650
+                },
+                "output": {
+                  "left": 60,
+                  "top": 95,
+                  "width": 142,
+                  "height": 149
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 4
+          },
+          {
+            "state": "hit",
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/chaos-source.png",
+            "sourceImageSha256": "9ff4d9e4c947c624d38543f8d2073bdf49074c187fc35877ac8048c5b5727e7e",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 916,
+              "bottom": 1254
+            },
+            "scale": 0.7051671732522796,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 21,
+                  "top": 8,
+                  "width": 300,
+                  "height": 303,
+                  "pixels": 37613
+                },
+                "output": {
+                  "left": 32,
+                  "top": 30,
+                  "width": 212,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 378,
+                  "top": 43,
+                  "width": 222,
+                  "height": 261,
+                  "pixels": 32786
+                },
+                "output": {
+                  "left": 63,
+                  "top": 55,
+                  "width": 157,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 674,
+                  "top": 66,
+                  "width": 240,
+                  "height": 240,
+                  "pixels": 30104
+                },
+                "output": {
+                  "left": 51,
+                  "top": 71,
+                  "width": 169,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 956,
+                  "top": 18,
+                  "width": 279,
+                  "height": 285,
+                  "pixels": 34073
+                },
+                "output": {
+                  "left": 28,
+                  "top": 37,
+                  "width": 197,
+                  "height": 201
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "wingsFullyContained": true,
+        "demonBodyRatherThanHumanOverlay": true,
+        "originalGameVersion": "Final Fantasy VII (1997)",
+        "noDirgeOfCerberusWeaponOrCostume": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "ea526434c49f4bdf5eac491c5ab1dc901f92e1814a42ddde2c3ba418596a3041",
+              "9f79bf3726a569000d77aab4511d9ee1da3596ffbf19e483a8de294ea199eaeb",
+              "139ea60ac9e619dd408e4c792b65de3e9e3f456d744e2218aa89bbf8a3ecd1ad",
+              "21158e149b93bd775b9671cce06016b3cfa0914517ff8cc66c15fdd06e2f5ed3"
+            ],
+            "visiblePixels": [
+              20917,
+              21279,
+              19172,
+              19719
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "fa5ee982b19935375ce648f149f85aaba3da52c63f70007cd1f837327dec7094",
+              "74963c7a895bea31ff93d97452871ba17bcd9198d47dba3f0c4787f4f6994057",
+              "a5edb9acfbb655f1a247d0f3c14edc9234622e4123b5b48db776f2239fb7e7b3",
+              "30b33537175c73720f16c076c7ab8c303adca64f8d2d2cc5b95fa4cc19d6b1ab"
+            ],
+            "visiblePixels": [
+              20227,
+              19089,
+              18394,
+              19740
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "d0e061c3baff135e5ba7d9193730938833e095289515c570e59d18d1ef09117c",
+              "02b43316b9593a91292d9f66d93f8a13c2c35bee217b34117ed644f2f3e41b59",
+              "9d5412f96506e7fa45829736a29b90d4d36ccd5e51720f2e4f244d10664048b2",
+              "7c0a4670f09394912e000feeb2215ca85d9164d44e7bce1eb0f876d801872b6e"
+            ],
+            "visiblePixels": [
+              9644,
+              10585,
+              11981,
+              8874
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c1bbbeaa51723307d09b366c3bf30c48544251dab022485fee3f8609e790c173",
+              "a05c5baad0c301ac00f6ee8925ab17ca1dc5e965160fbeb036a21282f4f6910c",
+              "308356bf0e56439cdbd4a0f71845232085a7ccca8d8af3961eaad0d2e2ce9ba7",
+              "89002e00594086007cbc6a19dd5858fa419e359f2673fb9f1d24bbd3b2c16f82"
+            ],
+            "visiblePixels": [
+              18791,
+              16418,
+              14957,
+              16960
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "notes": "Classical bald horned dark demon with hoof-like feet, unarmed claws and complete red-brown bat wings. No human Vincent costume, pistol, cape or technological Dirge redesign. The attack row is an adapted Chaos Saber claw-sweep motif; no separate Killmove technique, Satan/Stan Slam or instant-death gameplay is invented."
+      }
+    }
+  ]
+}

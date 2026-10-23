@@ -1,0 +1,151 @@
+{
+  "date": "2026-10-20",
+  "part": "B",
+  "stable": true,
+  "presentationPoses": 160,
+  "basicPoses": 64,
+  "totalFinalAtlases": 9,
+  "totalAcceptedDistinctCells": 224,
+  "actualToolInvocations": 24,
+  "returnedArchivedNativeImages": 11,
+  "acceptedInitialNativeImages": 9,
+  "acceptedNativeCorrectionImages": 2,
+  "bodyRoiReviews": 56,
+  "baseline": 244,
+  "transparentCellMargin": 10,
+  "unavailablePresentations": [
+    "luke",
+    "vader",
+    "obi_wan"
+  ],
+  "unavailableBases": [
+    "luke",
+    "vader",
+    "obi_wan",
+    "leia_organa"
+  ],
+  "unlaunchedBases": [
+    "luke",
+    "vader"
+  ],
+  "canon1to1Verified": false,
+  "networkVerified": false,
+  "globalFidelity1to1": false,
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "attemptArchive": "docs/combat-fidelity-wave7-2026-10-20/part-b-attempts.json",
+  "assets": [
+    {
+      "manifest": "src/game/combat/characterAnimationsWave7PartB.generated.json",
+      "manifestSha256": "385eac5d0378c9439cd5bdfb1d6e54b1acc64d7ad27fb1289982d43618929aab",
+      "entries": [
+        {
+          "heroId": "han_solo",
+          "sheet": "/sprites/generated/combat-character-animations-wave7/han_solo.png",
+          "sha256": "2ca105124606a7f9d8841034a5af004f21bff1f48eef68b34f0a2ad3c588e6c4",
+          "frames": 32,
+          "dimensions": [
+            1024,
+            2048
+          ],
+          "contact": "docs/combat-fidelity-wave7-2026-10-20/part-b-contacts/han_solo.png"
+        },
+        {
+          "heroId": "leia_organa",
+          "sheet": "/sprites/generated/combat-character-animations-wave7/leia_organa.png",
+          "sha256": "17238d142cc248bf6c77d50ccf9b42167a304cdc065bdae4ce165118ab9d546c",
+          "frames": 32,
+          "dimensions": [
+            1024,
+            2048
+          ],
+          "contact": "docs/combat-fidelity-wave7-2026-10-20/part-b-contacts/leia_organa.png"
+        },
+        {
+          "heroId": "kenshin_himura",
+          "sheet": "/sprites/generated/combat-character-animations-wave7/kenshin_himura.png",
+          "sha256": "8e22ed9a18de9bd4cfc5647f37443f1ed30f59126428808f8bf95df428d501f1",
+          "frames": 32,
+          "dimensions": [
+            1024,
+            2048
+          ],
+          "contact": "docs/combat-fidelity-wave7-2026-10-20/part-b-contacts/kenshin_himura.png"
+        },
+        {
+          "heroId": "sanosuke_sagara",
+          "sheet": "/sprites/generated/combat-character-animations-wave7/sanosuke_sagara.png",
+          "sha256": "51072225dfa01cd5de302b96d68497988f1128fa4a9f451bcced2808e391dc5b",
+          "frames": 32,
+          "dimensions": [
+            1024,
+            2048
+          ],
+          "contact": "docs/combat-fidelity-wave7-2026-10-20/part-b-contacts/sanosuke_sagara.png"
+        },
+        {
+          "heroId": "kaoru_kamiya",
+          "sheet": "/sprites/generated/combat-character-animations-wave7/kaoru_kamiya.png",
+          "sha256": "c7920c1310cd84d721a30d82ed14e107cdff95c43a6eac80cef67465aeb3c7a8",
+          "frames": 32,
+          "dimensions": [
+            1024,
+            2048
+          ],
+          "contact": "docs/combat-fidelity-wave7-2026-10-20/part-b-contacts/kaoru_kamiya.png"
+        }
+      ]
+    },
+    {
+      "manifest": "src/game/combat/characterSpriteCorrectionsWave7PartB.generated.json",
+      "manifestSha256": "17ea25fe4bf69c62cc06a5f178d79a2903c1990fa73ff613eb2d1ae68a535246",
+      "entries": [
+        {
+          "heroId": "han_solo",
+          "sheet": "/sprites/generated/combat-character-corrections-wave7/han_solo.png",
+          "sha256": "422985c683664f21278d6e5698346450502479c050c93392199ed5e1ff916be1",
+          "frames": 16,
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "contact": "docs/combat-fidelity-wave7-2026-10-20/base-part-b-contacts/han_solo.png"
+        },
+        {
+          "heroId": "kenshin_himura",
+          "sheet": "/sprites/generated/combat-character-corrections-wave7/kenshin_himura.png",
+          "sha256": "ce5c5fd1836244e9c6ab89d13e2762e95fba2bc31032b00b450f8148781888c5",
+          "frames": 16,
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "contact": "docs/combat-fidelity-wave7-2026-10-20/base-part-b-contacts/kenshin_himura.png"
+        },
+        {
+          "heroId": "sanosuke_sagara",
+          "sheet": "/sprites/generated/combat-character-corrections-wave7/sanosuke_sagara.png",
+          "sha256": "3fe3f8d46870a03b97b42be4adfe79ad2c1cced9983f281f9a5fe67296ade4e3",
+          "frames": 16,
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "contact": "docs/combat-fidelity-wave7-2026-10-20/base-part-b-contacts/sanosuke_sagara.png"
+        },
+        {
+          "heroId": "kaoru_kamiya",
+          "sheet": "/sprites/generated/combat-character-corrections-wave7/kaoru_kamiya.png",
+          "sha256": "07c991397f27124435aadc4b67e2e7bed1ee125413d4a3a1f942f34ef820eae7",
+          "frames": 16,
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "contact": "docs/combat-fidelity-wave7-2026-10-20/base-part-b-contacts/kaoru_kamiya.png"
+        }
+      ]
+    }
+  ]
+}

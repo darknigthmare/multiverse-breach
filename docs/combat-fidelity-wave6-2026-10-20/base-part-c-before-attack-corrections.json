@@ -1,0 +1,892 @@
+{
+  "schemaVersion": 1,
+  "source": "OpenAI",
+  "entries": [
+    {
+      "id": "joseph_joestar",
+      "heroId": "joseph_joestar",
+      "universe": "JoJo's Bizarre Adventure",
+      "name": "Joseph Joestar",
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/joseph_joestar.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "2fb664636e008abb8b3654d842f1941dce2ab34dff766656136d38806f11abde",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/joseph_joestar-original.png",
+      "sourceImageSha256": "3bca5a47651b41737b8d65e05ecdcb9a60c82a2b40f18e12bcef3ff3078b69a6",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/jojo-s-bizarre-adventure/joseph-joestar.png",
+      "referenceAssetSha256": "03fdc956f1a85b180aa457a09b13a5b1574d7e7c1aac7135044c37c84cd701a5",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-references/joseph_joestar-old-base.png",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-references/joseph_joestar.png",
+          "sha256": "7e3590d0ee0feb134aef2275fda17f4da58fc9f03165edc1ea46131b42635895"
+        }
+      ],
+      "sourceWork": "JoJo Stardust Crusaders (Part3)",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#joseph_joestar; https://jojowiki.com/Joseph_Joestar#Stardust_Crusaders and https://jojowiki.com/Hermit_Purple read2026-10-20 for age67/costume, thorny vine manifestation and Ripple conduction. New art remains unverified1:1.",
+      "abilityName": "Liane d’Hermit Purple",
+      "characterVersion": "Joseph aged67 in Stardust Crusaders: gray hair/beard, beige fedora and light short-sleeved shirt/khaki trousers/white gloves, purple thorny vine Stand with conducted Hamon. No young Part2 scarf.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/joseph_joestar-original.png",
+            "sourceImageSha256": "3bca5a47651b41737b8d65e05ecdcb9a60c82a2b40f18e12bcef3ff3078b69a6",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 355
+            },
+            "scale": 0.6925373134328359,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 66,
+                  "top": 11,
+                  "width": 193,
+                  "height": 335,
+                  "pixels": 37179
+                },
+                "output": {
+                  "left": 65,
+                  "top": 12,
+                  "width": 134,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 381,
+                  "top": 11,
+                  "width": 190,
+                  "height": 335,
+                  "pixels": 39704
+                },
+                "output": {
+                  "left": 66,
+                  "top": 12,
+                  "width": 132,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 684,
+                  "top": 13,
+                  "width": 213,
+                  "height": 333,
+                  "pixels": 39061
+                },
+                "output": {
+                  "left": 59,
+                  "top": 13,
+                  "width": 148,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 984,
+                  "top": 14,
+                  "width": 236,
+                  "height": 331,
+                  "pixels": 38841
+                },
+                "output": {
+                  "left": 50,
+                  "top": 14,
+                  "width": 163,
+                  "height": 229
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/joseph_joestar-original.png",
+            "sourceImageSha256": "3bca5a47651b41737b8d65e05ecdcb9a60c82a2b40f18e12bcef3ff3078b69a6",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 348,
+              "bottom": 636
+            },
+            "scale": 0.7682119205298014,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 8,
+                  "width": 271,
+                  "height": 272,
+                  "pixels": 33506
+                },
+                "output": {
+                  "left": 33,
+                  "top": 34,
+                  "width": 208,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 323,
+                  "top": 8,
+                  "width": 277,
+                  "height": 274,
+                  "pixels": 31025
+                },
+                "output": {
+                  "left": 15,
+                  "top": 34,
+                  "width": 213,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 633,
+                  "top": 8,
+                  "width": 298,
+                  "height": 272,
+                  "pixels": 31804
+                },
+                "output": {
+                  "left": 12,
+                  "top": 34,
+                  "width": 229,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 974,
+                  "top": 11,
+                  "width": 245,
+                  "height": 269,
+                  "pixels": 30448
+                },
+                "output": {
+                  "left": 33,
+                  "top": 36,
+                  "width": 188,
+                  "height": 207
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/joseph_joestar-original.png",
+            "sourceImageSha256": "3bca5a47651b41737b8d65e05ecdcb9a60c82a2b40f18e12bcef3ff3078b69a6",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 635,
+              "bottom": 943
+            },
+            "scale": 0.4725050916496945,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 6,
+                  "width": 264,
+                  "height": 301,
+                  "pixels": 39530
+                },
+                "output": {
+                  "left": 65,
+                  "top": 102,
+                  "width": 125,
+                  "height": 142
+                }
+              },
+              {
+                "source": {
+                  "left": 324,
+                  "top": 9,
+                  "width": 297,
+                  "height": 286,
+                  "pixels": 41839
+                },
+                "output": {
+                  "left": 59,
+                  "top": 103,
+                  "width": 140,
+                  "height": 135
+                }
+              },
+              {
+                "source": {
+                  "left": 612,
+                  "top": 8,
+                  "width": 417,
+                  "height": 288,
+                  "pixels": 41576
+                },
+                "output": {
+                  "left": 47,
+                  "top": 103,
+                  "width": 197,
+                  "height": 136
+                }
+              },
+              {
+                "source": {
+                  "left": 1002,
+                  "top": 7,
+                  "width": 231,
+                  "height": 289,
+                  "pixels": 34628
+                },
+                "output": {
+                  "left": 83,
+                  "top": 102,
+                  "width": 109,
+                  "height": 137
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/joseph_joestar-original.png",
+            "sourceImageSha256": "3bca5a47651b41737b8d65e05ecdcb9a60c82a2b40f18e12bcef3ff3078b69a6",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 932,
+              "bottom": 1254
+            },
+            "scale": 0.6426592797783933,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 41,
+                  "top": 9,
+                  "width": 296,
+                  "height": 293,
+                  "pixels": 40314
+                },
+                "output": {
+                  "left": 54,
+                  "top": 55,
+                  "width": 190,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 332,
+                  "top": 14,
+                  "width": 260,
+                  "height": 284,
+                  "pixels": 35472
+                },
+                "output": {
+                  "left": 39,
+                  "top": 58,
+                  "width": 167,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 647,
+                  "top": 69,
+                  "width": 267,
+                  "height": 224,
+                  "pixels": 33626
+                },
+                "output": {
+                  "left": 40,
+                  "top": 94,
+                  "width": 172,
+                  "height": 144
+                }
+              },
+              {
+                "source": {
+                  "left": 988,
+                  "top": 6,
+                  "width": 234,
+                  "height": 297,
+                  "pixels": 35110
+                },
+                "output": {
+                  "left": 58,
+                  "top": 53,
+                  "width": 150,
+                  "height": 191
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": false,
+        "allFramesReviewed": false,
+        "technicalAlphaReviewed": true,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "639d8fe1780b97ce02e01ab795221125c9097e21146774aa57137d6b51861b54",
+              "9c1b2a5840b07c8084e685c2e4cef9c5a73df250a33ca0046007e6bbe546771f",
+              "e813b08a53bb0b681f15bce02f91c26eeaed33b7c07ce5b172d0f88a14c0a7fc",
+              "70077a3b2e8c9a084e7d4cc83eabd61ad4970c598826efd062041dc290404e36"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8c8b50950f0b65940d0204818e05853e36d6be4648ace05b986d6d2aca1694c2",
+              "ec0a81c2a0a6769bf70c9b2fbecb46428b1333c5de76e153053e877c55c79451",
+              "5878117e3fa1e4bf86ecc9ffd6dd7a3c7f1e1aa6819014cad066dd0ce234b543",
+              "a24a9d8aeb212cf9c0cc95e6ad5e0b41211d5a7a644aea4b47aad9aae452da1f"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "90e28d52526d5c6ea3c83362bc1f0f5ff13acbade34b21e2d02bf0dacf16f6bd",
+              "9518fc09742565fcf40cd14f17a27a95843eba97ac3b95663e6fec242f1716a3",
+              "288047ea25d2e0635a22399abe01915e4572c6075a49bd231be51ed0e3227507",
+              "271d9f9307390b7ef8534be424c3a2de483f72a1019e2d970581beae13638a47"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "f94c375a47055b977e192c841d8689330cdf8b85871dbbf52f678ced6818ad76",
+              "2fd39f101b801f43879adb3d11c0fd7818d91c9646fb6bf3a00c585995c10360",
+              "f9f866f7f382b20098bc817cc5ec059108b137b066d4ffa5e319403068e23965",
+              "aab8db0b36b1b58f98a61d9abc525b49d234ba252f47ba0acc6d903be26a4e5f"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Joseph aged67 in Stardust Crusaders: gray hair/beard, beige fedora and light short-sleeved shirt/khaki trousers/white gloves, purple thorny vine Stand with conducted Hamon. No young Part2 scarf. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "skullgirls_beowulf",
+      "heroId": "skullgirls_beowulf",
+      "universe": "Skullgirls",
+      "name": "Beowulf",
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/skullgirls_beowulf.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 16,
+      "states": {
+        "idle": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "run": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 10,
+          "loop": true
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "hit": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "f94d9628009bcea13d2059db0683c16226a843536bed6a28d6ef4610f1462b4d",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/skullgirls_beowulf-original.png",
+      "sourceImageSha256": "c50a132700f4bcb5ed1ff31b6586600c526b0b668a0b304c7381bd39f7f1f462",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/heroes/skullgirls/skullgirls-beowulf.png",
+      "referenceAssetSha256": "7623c562b3d319ec31d0913c279cddba0a5fe521918adc33b1e3ef2bb0b6f6e3",
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-references/skullgirls_beowulf-old-base.png",
+      "nativeReferences": [
+        {
+          "path": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-references/skullgirls_beowulf.png",
+          "sha256": "d3c1383b7b83bcaf9c5faef022ba2fea2c671c2aeb3e22d246f22e5668801233"
+        }
+      ],
+      "sourceWork": "Skullgirls2ndEncore",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#skullgirls_beowulf and src/game/combatCanonExtensions.js#skullgirls_beowulf: TheHurting/HurtingHurl, single-target ThreeWulfMoonsault. Local old hunter-like outfit is not costume authority; official/wiki pages were blocked403, so no newly network-verified costume claim or official-frame fidelity.",
+      "abilityName": "Direct de Beowulf",
+      "characterVersion": "Beowulf the human professional wrestler, muscular build and wolf-pelt identity, physical folding-chair TheHurting; new wrestler costume supersedes old closed green hunter-coat depiction.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": null,
+      "originalSourceImageSha256": null,
+      "nativeCorrection": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "idle",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/skullgirls_beowulf-original.png",
+            "sourceImageSha256": "c50a132700f4bcb5ed1ff31b6586600c526b0b668a0b304c7381bd39f7f1f462",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 337
+            },
+            "scale": 0.7009063444108762,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 0,
+                  "width": 247,
+                  "height": 330,
+                  "pixels": 50571
+                },
+                "output": {
+                  "left": 37,
+                  "top": 12,
+                  "width": 173,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 365,
+                  "top": 0,
+                  "width": 230,
+                  "height": 331,
+                  "pixels": 50396
+                },
+                "output": {
+                  "left": 54,
+                  "top": 12,
+                  "width": 161,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 646,
+                  "top": 9,
+                  "width": 284,
+                  "height": 320,
+                  "pixels": 53316
+                },
+                "output": {
+                  "left": 31,
+                  "top": 18,
+                  "width": 199,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 952,
+                  "top": 42,
+                  "width": 282,
+                  "height": 286,
+                  "pixels": 48518
+                },
+                "output": {
+                  "left": 26,
+                  "top": 41,
+                  "width": 198,
+                  "height": 200
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "run",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/skullgirls_beowulf-original.png",
+            "sourceImageSha256": "c50a132700f4bcb5ed1ff31b6586600c526b0b668a0b304c7381bd39f7f1f462",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 329,
+              "bottom": 628
+            },
+            "scale": 0.755700325732899,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 7,
+                  "top": 13,
+                  "width": 291,
+                  "height": 282,
+                  "pixels": 42140
+                },
+                "output": {
+                  "left": 15,
+                  "top": 31,
+                  "width": 220,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 317,
+                  "top": 1,
+                  "width": 286,
+                  "height": 287,
+                  "pixels": 44043
+                },
+                "output": {
+                  "left": 12,
+                  "top": 22,
+                  "width": 216,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 632,
+                  "top": 8,
+                  "width": 297,
+                  "height": 282,
+                  "pixels": 43273
+                },
+                "output": {
+                  "left": 13,
+                  "top": 27,
+                  "width": 224,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 946,
+                  "top": 11,
+                  "width": 299,
+                  "height": 277,
+                  "pixels": 46317
+                },
+                "output": {
+                  "left": 14,
+                  "top": 29,
+                  "width": 226,
+                  "height": 209
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "attack",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/skullgirls_beowulf-original.png",
+            "sourceImageSha256": "c50a132700f4bcb5ed1ff31b6586600c526b0b668a0b304c7381bd39f7f1f462",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 627,
+              "bottom": 935
+            },
+            "scale": 0.5728395061728395,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 7,
+                  "top": 11,
+                  "width": 311,
+                  "height": 292,
+                  "pixels": 51930
+                },
+                "output": {
+                  "left": 42,
+                  "top": 77,
+                  "width": 178,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 312,
+                  "top": 18,
+                  "width": 319,
+                  "height": 284,
+                  "pixels": 45055
+                },
+                "output": {
+                  "left": 37,
+                  "top": 81,
+                  "width": 183,
+                  "height": 163
+                }
+              },
+              {
+                "source": {
+                  "left": 623,
+                  "top": 13,
+                  "width": 363,
+                  "height": 289,
+                  "pixels": 50494
+                },
+                "output": {
+                  "left": 36,
+                  "top": 78,
+                  "width": 208,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 967,
+                  "top": 6,
+                  "width": 268,
+                  "height": 297,
+                  "pixels": 48515
+                },
+                "output": {
+                  "left": 53,
+                  "top": 74,
+                  "width": 154,
+                  "height": 170
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "state": "hit",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/skullgirls_beowulf-original.png",
+            "sourceImageSha256": "c50a132700f4bcb5ed1ff31b6586600c526b0b668a0b304c7381bd39f7f1f462",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 923,
+              "bottom": 1254
+            },
+            "scale": 0.718266253869969,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 21,
+                  "top": 19,
+                  "width": 297,
+                  "height": 290,
+                  "pixels": 51527
+                },
+                "output": {
+                  "left": 30,
+                  "top": 30,
+                  "width": 213,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 317,
+                  "top": 17,
+                  "width": 304,
+                  "height": 296,
+                  "pixels": 50977
+                },
+                "output": {
+                  "left": 18,
+                  "top": 29,
+                  "width": 218,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 635,
+                  "top": 6,
+                  "width": 298,
+                  "height": 308,
+                  "pixels": 44193
+                },
+                "output": {
+                  "left": 21,
+                  "top": 21,
+                  "width": 214,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 965,
+                  "top": 2,
+                  "width": 255,
+                  "height": 315,
+                  "pixels": 49022
+                },
+                "output": {
+                  "left": 33,
+                  "top": 18,
+                  "width": 183,
+                  "height": 226
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": false,
+        "allFramesReviewed": false,
+        "technicalAlphaReviewed": true,
+        "fourStatesDistinct": true,
+        "distinctCells": 16,
+        "stateReviews": [
+          {
+            "state": "idle",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "3a82456ceab78dab0db76275f248e8af28cbf7fd76bcc2eba3784c0bc8925215",
+              "5ba2a41a3d918caff1366243af482d133496de26cba1b449a877eb0bbc4fca2a",
+              "087665bbb4338f8a2204f19a4f67ef41ca386a0a70fbde44f4662a9650f85a99",
+              "549cdec8ccce7ed9e89b7959b34c1cb535426878e4db5c1a49885359bc99a22d"
+            ]
+          },
+          {
+            "state": "run",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "5647bff9be7f195b76511356082ccf786c1bf42ca9a92c24b0ddefad20738057",
+              "fc7f783db4c42486694bd2485e3c096738a37828b34f4ae6f14e8098bf0b4edf",
+              "e6b54c19dd7c151ebce520653c293ac1a2ae0e68314e7fec1b05affa92c2b96a",
+              "d13842ef0666adf7c572bb57f8b2ae9f710e70589d2af4cbead7ff10fb542245"
+            ]
+          },
+          {
+            "state": "attack",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "42017b42a49b8bccce5ec3e40a9b4c065ca9df4b246129bf02cfcb979cfa9a94",
+              "296ad5303a036267b1d67c7aa6e4d56b897086224eb69d8fabaa38940301df37",
+              "42131fa3477ef20059e2dea8017784f0ea7661a1d2d6220600df7703ff996c66",
+              "4036bf9ba4bc2a5aa07feaccc181bde9a0684787420df64fc143be90d2c5afa6"
+            ]
+          },
+          {
+            "state": "hit",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "1427a068a56b6123c8481e5772f77fd9f8206ec8107b6e105cfcd9bfa88dd01c",
+              "51115fe480e0bae43e8692d718c132391c444badfb49b2636ca1786a6366e637",
+              "30372c3765636d38a79c02b119ad864c7de1f40e254c902aaf964a9a87876baf",
+              "3069d3a94cd30574c98d033fcbceb94042228211113ce8ca815223efe270ab4c"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Beowulf the human professional wrestler, muscular build and wolf-pelt identity, physical folding-chair TheHurting; new wrestler costume supersedes old closed green hunter-coat depiction. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    }
+  ]
+}

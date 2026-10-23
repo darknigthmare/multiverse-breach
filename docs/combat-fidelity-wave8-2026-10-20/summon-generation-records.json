@@ -1,0 +1,223 @@
+{
+  "records": [
+    {
+      "slug": "cyborg",
+      "id": "teen-titans-cyborg",
+      "key": "Teen Titans::Cyborg::Sonic Cannon de Cyborg",
+      "universe": "Teen Titans",
+      "entityName": "Cyborg",
+      "actionName": "Sonic Cannon de Cyborg",
+      "performerHeroId": "cyborg_tt",
+      "sourceWork": "Teen Titans (2003 animated series), Victor Stone/Cyborg",
+      "referenced_image_paths": [
+        "/workspace/generated_images/exec-c9885a52-b1a4-4d71-9525-1033a2c21583.png"
+      ],
+      "prompt": "Create a native transparent 4 columns by 4 rows game sprite atlas, exactly sixteen DIFFERENT complete full-body poses, one performer only in each cell. Fixed equal cell grid, big transparent gutters, no subject, weapon or glow touching any cell edge. Crisp colored pixel-art suitable for a side-view crossover game. Uniform body proportions, costume and scale across all rows; do not enlarge crouches. All poses face right, feet use a common baseline. Entire feet and all equipment visible. No text, labels, grid lines, scenery, enemy, injuries or victims. Four rows in this exact order: arrival (four distinct entrance poses), preparation (four distinct readying poses), attack (four distinct technique poses), recovery (four distinct settling/withdrawal poses). These are new sixteen authored poses, not a transformation of a repeated standing cell. Effects must remain local to the own cell and never conceal anatomy. Use the attached image solely as the identity/costume reference for Cyborg from the 2003 Teen Titans animated series. This must be a NEW FOUR ROW atlas, not the seven-row reference. Brown human right facial half, close black hair, silver cybernetic left facial plate with red eye, clean white/silver broad shoulder and limb armor, black undersuit, circular cyan-blue lights, heavy white armored boots. Preserve the distinctive animated costume and friendly serious expression, not realistic live-action armor. Action is his own integrated Sonic Cannon in one forearm, other arm stays a normal hand. Arrival: steps into place and raises the cannon; preparation: levels integrated cannon and braces with small cyan muzzle light; attack: four evolving firing poses, tiny cyan concentric sonic rings right at the muzzle ONLY, no long detached beam (game renderer supplies that); recovery: cannon lowers, vents a tiny glow, turns and walks back. Four clearly different poses in every row, exactly4x4.",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "file": "/workspace/generated_images/exec-5d790a9f-8540-4a57-ba53-71293eb92d17.png",
+      "reviewed": true,
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/cyborg-prompt.txt",
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/cyborg-original.png",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/cyborg-reference.png",
+      "toolArguments": {
+        "prompt": "Create a native transparent 4 columns by 4 rows game sprite atlas, exactly sixteen DIFFERENT complete full-body poses, one performer only in each cell. Fixed equal cell grid, big transparent gutters, no subject, weapon or glow touching any cell edge. Crisp colored pixel-art suitable for a side-view crossover game. Uniform body proportions, costume and scale across all rows; do not enlarge crouches. All poses face right, feet use a common baseline. Entire feet and all equipment visible. No text, labels, grid lines, scenery, enemy, injuries or victims. Four rows in this exact order: arrival (four distinct entrance poses), preparation (four distinct readying poses), attack (four distinct technique poses), recovery (four distinct settling/withdrawal poses). These are new sixteen authored poses, not a transformation of a repeated standing cell. Effects must remain local to the own cell and never conceal anatomy. Use the attached image solely as the identity/costume reference for Cyborg from the 2003 Teen Titans animated series. This must be a NEW FOUR ROW atlas, not the seven-row reference. Brown human right facial half, close black hair, silver cybernetic left facial plate with red eye, clean white/silver broad shoulder and limb armor, black undersuit, circular cyan-blue lights, heavy white armored boots. Preserve the distinctive animated costume and friendly serious expression, not realistic live-action armor. Action is his own integrated Sonic Cannon in one forearm, other arm stays a normal hand. Arrival: steps into place and raises the cannon; preparation: levels integrated cannon and braces with small cyan muzzle light; attack: four evolving firing poses, tiny cyan concentric sonic rings right at the muzzle ONLY, no long detached beam (game renderer supplies that); recovery: cannon lowers, vents a tiny glow, turns and walks back. Four clearly different poses in every row, exactly4x4.",
+        "referenced_image_paths": [
+          "/workspace/generated_images/exec-c9885a52-b1a4-4d71-9525-1033a2c21583.png"
+        ],
+        "transparent_background": true
+      },
+      "calibration": {
+        "row": 0,
+        "column": 3,
+        "targetBodyHeight": 190,
+        "method": "visually-selected-standing-body-reference"
+      },
+      "reviewNotes": "All sixteen full subjects visually inspected. Local cyan rings only for Cyborg, free-hand physical Kiryu combo, non-graphic silver/blue-white HF blade for Raiden and physical Kensuke for Laios. All transparent source seams pass. Wide 512x256 destination cells preserve weapon reach and body height without per-pose resizing.",
+      "effectAnchors": {
+        "arrival": [
+          null,
+          null,
+          {
+            "x": 333,
+            "y": 97
+          },
+          {
+            "x": 330,
+            "y": 83
+          }
+        ],
+        "preparation": [
+          null,
+          {
+            "x": 299,
+            "y": 137
+          },
+          {
+            "x": 348,
+            "y": 120
+          },
+          {
+            "x": 340,
+            "y": 123
+          }
+        ],
+        "attack": [
+          {
+            "x": 351,
+            "y": 121
+          },
+          {
+            "x": 337,
+            "y": 125
+          },
+          {
+            "x": 333,
+            "y": 124
+          },
+          {
+            "x": 341,
+            "y": 125
+          }
+        ],
+        "recovery": [
+          {
+            "x": 350,
+            "y": 115
+          },
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "slug": "raiden",
+      "id": "mgr-raiden-zandatsu",
+      "key": "Metal Gear Rising::Raiden::Mode lame — Zandatsu",
+      "universe": "Metal Gear Rising",
+      "entityName": "Raiden",
+      "actionName": "Mode lame — Zandatsu",
+      "performerHeroId": "raiden_mgr",
+      "sourceWork": "Metal Gear Rising: Revengeance (2013), upgraded Raiden body after prologue",
+      "prompt": "Create a native transparent 4 columns by 4 rows game sprite atlas, exactly sixteen DIFFERENT complete full-body poses, one performer only in each cell. Fixed equal cell grid, big transparent gutters, no subject, weapon or glow touching any cell edge. Crisp colored pixel-art suitable for a side-view crossover game. Uniform body proportions, costume and scale across all rows; do not enlarge crouches. All poses face right, feet use a common baseline. Entire feet and all equipment visible. No text, labels, grid lines, scenery, enemy, injuries or victims. Four rows in this exact order: arrival (four distinct entrance poses), preparation (four distinct readying poses), attack (four distinct technique poses), recovery (four distinct settling/withdrawal poses). These are new sixteen authored poses, not a transformation of a repeated standing cell. Effects must remain local to the own cell and never conceal anatomy. Performer is Raiden from Metal Gear Rising: Revengeance (2013), upgraded post-prologue black and silver cyborg body, medium pale blond hair swept back with bangs, cybernetic lower jaw/chin, dark visor/left eye covering, angular black armor with silver segmented mechanical limbs, high-heeled cyborg feet. He carries HIS OWN straight silver high-frequency katana with a subtle blue-white edge, not Jetstream Sam's red Murasama or red powered sheath. No red cybernetic eye, no human business suit, no long coat. Arrival: low cyborg sprint and controlled landing, preparation: grasps high-frequency blade and aligns a cutting stance, attack: four distinct non-graphic precision sword cuts in empty air with short thin blue-white blade trails wholly in the cell, recovery: stops the blade and returns to his own guard. Zandatsu is a project label here; do not depict body extraction, severed body parts, opponent, organs, blood, healing, or materialized targets. This atlas only illustrates Raiden's non-graphic precision blade movement. Exactly4x4.",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "file": "/workspace/generated_images/exec-dd9a94d1-f9f5-4cd7-9770-200811d8948a.png",
+      "reviewed": true,
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/raiden-prompt.txt",
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/raiden-original.png",
+      "referenceImage": null,
+      "toolArguments": {
+        "prompt": "Create a native transparent 4 columns by 4 rows game sprite atlas, exactly sixteen DIFFERENT complete full-body poses, one performer only in each cell. Fixed equal cell grid, big transparent gutters, no subject, weapon or glow touching any cell edge. Crisp colored pixel-art suitable for a side-view crossover game. Uniform body proportions, costume and scale across all rows; do not enlarge crouches. All poses face right, feet use a common baseline. Entire feet and all equipment visible. No text, labels, grid lines, scenery, enemy, injuries or victims. Four rows in this exact order: arrival (four distinct entrance poses), preparation (four distinct readying poses), attack (four distinct technique poses), recovery (four distinct settling/withdrawal poses). These are new sixteen authored poses, not a transformation of a repeated standing cell. Effects must remain local to the own cell and never conceal anatomy. Performer is Raiden from Metal Gear Rising: Revengeance (2013), upgraded post-prologue black and silver cyborg body, medium pale blond hair swept back with bangs, cybernetic lower jaw/chin, dark visor/left eye covering, angular black armor with silver segmented mechanical limbs, high-heeled cyborg feet. He carries HIS OWN straight silver high-frequency katana with a subtle blue-white edge, not Jetstream Sam's red Murasama or red powered sheath. No red cybernetic eye, no human business suit, no long coat. Arrival: low cyborg sprint and controlled landing, preparation: grasps high-frequency blade and aligns a cutting stance, attack: four distinct non-graphic precision sword cuts in empty air with short thin blue-white blade trails wholly in the cell, recovery: stops the blade and returns to his own guard. Zandatsu is a project label here; do not depict body extraction, severed body parts, opponent, organs, blood, healing, or materialized targets. This atlas only illustrates Raiden's non-graphic precision blade movement. Exactly4x4.",
+        "transparent_background": true
+      },
+      "calibration": {
+        "row": 1,
+        "column": 0,
+        "targetBodyHeight": 190,
+        "method": "visually-selected-standing-body-reference"
+      },
+      "reviewNotes": "All sixteen full subjects visually inspected. Local cyan rings only for Cyborg, free-hand physical Kiryu combo, non-graphic silver/blue-white HF blade for Raiden and physical Kensuke for Laios. All transparent source seams pass. Wide 512x256 destination cells preserve weapon reach and body height without per-pose resizing."
+    },
+    {
+      "slug": "kiryu",
+      "id": "yakuza-kiryu-dragon",
+      "key": "Yakuza::Kazuma Kiryu::Coup du Dragon de Dojima",
+      "universe": "Yakuza",
+      "entityName": "Kazuma Kiryu",
+      "actionName": "Coup du Dragon de Dojima",
+      "performerHeroId": "kiryu_yakuza",
+      "sourceWork": "Yakuza Kiwami (2016), unarmed Dragon of Dojima style",
+      "referenced_image_paths": [
+        "/workspace/generated_images/exec-921e263b-4eeb-4286-837c-eecbfe147b66.png"
+      ],
+      "prompt": "Create a native transparent four columns by four rows sprite atlas, exactly sixteen DIFFERENT complete full-body poses of the ONE same character, one per cell, crisp colored pixel-art for a side-view game. The attachment is an identity and costume reference only; the output MUST be a NEW FOUR ROW atlas, not an eight-row copy. Uniform costume and body scale across all16poses, crouches stay naturally shorter. Big transparent gutters on all sides of every cell; no body, weapon or effect touches a cell edge. All face right with whole head, hands, weapon and feet visible. No labels, text, grid lines, scenery, opponent or injuries. Four rows in exact order: arrival four different steps into view; preparation four different readying poses; attack four different technique poses; recovery four different settling and return poses. All equipment native drawn, no disembodied hands. Kazuma Kiryu in Yakuza Kiwami2016: light-gray suit, burgundy open-collar shirt, black belt, gray suit trousers and white/slate shoes, combed black hair, stern face. Both hands free, no weapon, gun, katana, dragon creature or magical fire. Arrival is a firm grounded walk, preparation raises his unarmed Dragon of Dojima boxing guard, attack row is four genuine physical combo poses (forward step, straight punch, turning body blow, settling uppercut), recovery lowers his free hands and takes steps back. Small brief warm-red cosmetic speed arcs allowed only very close to the moving fists, never dragon-shaped or around the whole body. This project action condenses a physical combo; no victim or source Heat Action recreation. Exactly4x4.",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "file": "/workspace/generated_images/exec-64a6d7db-e8ea-4a4c-a16c-9ef7ea66bb98.png",
+      "reviewed": true,
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/kiryu-prompt.txt",
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/kiryu-original.png",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/kiryu-reference.png",
+      "toolArguments": {
+        "prompt": "Create a native transparent four columns by four rows sprite atlas, exactly sixteen DIFFERENT complete full-body poses of the ONE same character, one per cell, crisp colored pixel-art for a side-view game. The attachment is an identity and costume reference only; the output MUST be a NEW FOUR ROW atlas, not an eight-row copy. Uniform costume and body scale across all16poses, crouches stay naturally shorter. Big transparent gutters on all sides of every cell; no body, weapon or effect touches a cell edge. All face right with whole head, hands, weapon and feet visible. No labels, text, grid lines, scenery, opponent or injuries. Four rows in exact order: arrival four different steps into view; preparation four different readying poses; attack four different technique poses; recovery four different settling and return poses. All equipment native drawn, no disembodied hands. Kazuma Kiryu in Yakuza Kiwami2016: light-gray suit, burgundy open-collar shirt, black belt, gray suit trousers and white/slate shoes, combed black hair, stern face. Both hands free, no weapon, gun, katana, dragon creature or magical fire. Arrival is a firm grounded walk, preparation raises his unarmed Dragon of Dojima boxing guard, attack row is four genuine physical combo poses (forward step, straight punch, turning body blow, settling uppercut), recovery lowers his free hands and takes steps back. Small brief warm-red cosmetic speed arcs allowed only very close to the moving fists, never dragon-shaped or around the whole body. This project action condenses a physical combo; no victim or source Heat Action recreation. Exactly4x4.",
+        "referenced_image_paths": [
+          "/workspace/generated_images/exec-921e263b-4eeb-4286-837c-eecbfe147b66.png"
+        ],
+        "transparent_background": true
+      },
+      "calibration": {
+        "row": 0,
+        "column": 3,
+        "targetBodyHeight": 190,
+        "method": "visually-selected-standing-body-reference"
+      },
+      "reviewNotes": "All sixteen full subjects visually inspected. Local cyan rings only for Cyborg, free-hand physical Kiryu combo, non-graphic silver/blue-white HF blade for Raiden and physical Kensuke for Laios. All transparent source seams pass. Wide 512x256 destination cells preserve weapon reach and body height without per-pose resizing."
+    },
+    {
+      "slug": "laios",
+      "id": "dungeon-meshi-laios-kensuke",
+      "key": "Dungeon Meshi::Laios Touden::Coupe de Kensuke",
+      "universe": "Dungeon Meshi",
+      "entityName": "Laios Touden",
+      "actionName": "Coupe de Kensuke",
+      "performerHeroId": "laios_meshi",
+      "sourceWork": "Dungeon Meshi (2024 animated series), human exploration party, Kensuke sword",
+      "referenced_image_paths": [
+        "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/laios_meshi-original.png"
+      ],
+      "prompt": "Create a native transparent four columns by four rows sprite atlas, exactly sixteen DIFFERENT complete full-body poses of the ONE same character, one per cell, crisp colored pixel-art for a side-view game. The attachment is an identity and costume reference only; the output MUST be a NEW FOUR ROW atlas, not an eight-row copy. Uniform costume and body scale across all16poses, crouches stay naturally shorter. Big transparent gutters on all sides of every cell; no body, weapon or effect touches a cell edge. All face right with whole head, hands, weapon and feet visible. No labels, text, grid lines, scenery, opponent or injuries. Four rows in exact order: arrival four different steps into view; preparation four different readying poses; attack four different technique poses; recovery four different settling and return poses. All equipment native drawn, no disembodied hands. Laios Touden, adult human tall-man from the2024 Dungeon Meshi anime: short light-blond hair, practical steel breastplate and pauldrons, chainmail at waist, beige/tan cloth, brown belt, brown boots, his own living sword Kensuke shown as a normal steel blade with golden crossguard. Preserve this specific armor and face from the reference, not another fantasy swordsman. Arrival strides and checks the route, preparation raises Kensuke in a two-handed physical guard, attack four distinct non-graphic sword cuts in empty air with the whole Kensuke inside the cell, recovery lowers Kensuke and returns to ready stance. No food, cooking gag, eating, ranged laser, exploding monster, magical projectile, extra limbs or human transformation. A tiny steel-colored blade trail within the cell is acceptable. Exactly4x4.",
+      "kind": "reinforcement",
+      "bodySource": "roster-performer",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "file": "/workspace/generated_images/exec-ae7cb152-e322-4975-8f68-711ea2647206.png",
+      "reviewed": true,
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/laios-prompt.txt",
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/laios-original.png",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/summon-sources/laios-reference.png",
+      "toolArguments": {
+        "prompt": "Create a native transparent four columns by four rows sprite atlas, exactly sixteen DIFFERENT complete full-body poses of the ONE same character, one per cell, crisp colored pixel-art for a side-view game. The attachment is an identity and costume reference only; the output MUST be a NEW FOUR ROW atlas, not an eight-row copy. Uniform costume and body scale across all16poses, crouches stay naturally shorter. Big transparent gutters on all sides of every cell; no body, weapon or effect touches a cell edge. All face right with whole head, hands, weapon and feet visible. No labels, text, grid lines, scenery, opponent or injuries. Four rows in exact order: arrival four different steps into view; preparation four different readying poses; attack four different technique poses; recovery four different settling and return poses. All equipment native drawn, no disembodied hands. Laios Touden, adult human tall-man from the2024 Dungeon Meshi anime: short light-blond hair, practical steel breastplate and pauldrons, chainmail at waist, beige/tan cloth, brown belt, brown boots, his own living sword Kensuke shown as a normal steel blade with golden crossguard. Preserve this specific armor and face from the reference, not another fantasy swordsman. Arrival strides and checks the route, preparation raises Kensuke in a two-handed physical guard, attack four distinct non-graphic sword cuts in empty air with the whole Kensuke inside the cell, recovery lowers Kensuke and returns to ready stance. No food, cooking gag, eating, ranged laser, exploding monster, magical projectile, extra limbs or human transformation. A tiny steel-colored blade trail within the cell is acceptable. Exactly4x4.",
+        "referenced_image_paths": [
+          "/workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/part-d-sources/laios_meshi-original.png"
+        ],
+        "transparent_background": true
+      },
+      "calibration": {
+        "row": 3,
+        "column": 2,
+        "targetBodyHeight": 190,
+        "method": "visually-selected-standing-body-reference"
+      },
+      "reviewNotes": "All sixteen full subjects visually inspected. Local cyan rings only for Cyborg, free-hand physical Kiryu combo, non-graphic silver/blue-white HF blade for Raiden and physical Kensuke for Laios. All transparent source seams pass. Wide 512x256 destination cells preserve weapon reach and body height without per-pose resizing."
+    }
+  ],
+  "source1to1Verified": false
+}

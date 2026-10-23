@@ -1,0 +1,2627 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "provider": "OpenAI",
+  "tool": "image_gen",
+  "model": null,
+  "generationId": null,
+  "plannedGenerations": 3,
+  "correctiveGenerations": 1,
+  "canonicalAnimationVerified": false,
+  "networkVerified": false,
+  "generationClaim": "Three native image_gen calls produced the initial atlases; a fourth native call supplied the missing four chargeLoop poses. No generation IDs or model names are inferred from output filenames.",
+  "nativeSources": [
+    {
+      "id": "tifa-combat-a",
+      "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-a-source.png",
+      "sha256": "9ef7e77273fec64a05c1e2515f0d25207f87a2e5ce34a3c162802611f0cfd7bf",
+      "bytes": 1787847,
+      "dimensions": [
+        887,
+        1774
+      ],
+      "sourceRows": 7,
+      "originalGeneratedPath": "/workspace/generated_images/exec-679a055d-80a4-429a-a8b4-5142efd5be97.png"
+    },
+    {
+      "id": "tifa-combat-b",
+      "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-b-source.png",
+      "sha256": "f73f03025bb7dc5604edeaae38d375271153522386526690e6b1712978665993",
+      "bytes": 1812094,
+      "dimensions": [
+        887,
+        1774
+      ],
+      "sourceRows": 8,
+      "originalGeneratedPath": "/workspace/generated_images/exec-46e5e717-864b-4c22-bc1a-5233b7e8ff57.png"
+    },
+    {
+      "id": "tifa-ledge",
+      "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-ledge-source.png",
+      "sha256": "d0ed6a871d255a13ba92dbf3484ae3b70be43837e09f6bd0dad99e4c83148e24",
+      "bytes": 1441769,
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "sourceRows": 5,
+      "originalGeneratedPath": "/workspace/generated_images/exec-503ccb81-5dd8-43f1-8f49-049c4be0d5c1.png"
+    },
+    {
+      "id": "tifa-charge-loop-correction",
+      "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-charge-loop-correction-source.png",
+      "sha256": "9b3c2b4c4f753b2456534dbf446053d242b2b9caaf3ef7062e8644e18ee92643",
+      "bytes": 1049161,
+      "dimensions": [
+        2172,
+        724
+      ],
+      "sourceRows": 1,
+      "originalGeneratedPath": "/workspace/generated_images/exec-227e6ab5-da89-4900-b996-12a6d5e2e0e4.png"
+    }
+  ],
+  "references": [
+    {
+      "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-reference.png",
+      "sha256": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab",
+      "originalAsset": "/sprites/generated/heroes/final-fantasy-vii/tifa-ff7.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-previous-presentation-reference.png",
+      "sha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+      "originalAsset": "/sprites/generated/combat-character-animations/tifa_ff7.png"
+    }
+  ],
+  "entries": [
+    {
+      "id": "tifa-combat-a",
+      "heroId": "tifa_ff7",
+      "universe": "Final Fantasy VII",
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-combat-a.png",
+      "states": {
+        "attackLight1": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "attackLight2": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "attackLight3": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "crouchLight": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "chargeStart": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "chargeLoop": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "chargeRelease": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "chargeRecovery": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "stateOrder": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 8,
+      "frames": 32,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "alpha": true,
+      "sha256": "f34b01774196673e44701e31a691b8a30c8ceb668d44b4e31264b0a047cd978a",
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-a-source.png",
+      "sourceImageSha256": "9ef7e77273fec64a05c1e2515f0d25207f87a2e5ce34a3c162802611f0cfd7bf",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "originalSourceRows": 7,
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-vii/tifa-ff7.png",
+      "referenceAssetSha256": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-reference.png",
+      "previousAtlasReference": "/sprites/generated/combat-character-animations/tifa_ff7.png",
+      "previousAtlasReferenceSha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+      "sourceWork": "Final Fantasy VII (1997)",
+      "sourceReference": "Tifa fights unarmed in FFVII; Direct de Tifa is the current simple slot and Beat Rush is the current secondary. special and chargeRelease preserve physical alternating Beat Rush punches. Final Heaven remains the separate prioritized 100% super.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "frameSize": 256,
+        "padding": 12,
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "attackLight1",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-a-source.png",
+            "sourceImageSha256": "9ef7e77273fec64a05c1e2515f0d25207f87a2e5ce34a3c162802611f0cfd7bf",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 243
+            },
+            "scale": 0.8656716417910447,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 55,
+                  "top": 13,
+                  "width": 148,
+                  "height": 220,
+                  "pixels": 16694
+                },
+                "output": {
+                  "left": 80,
+                  "top": 54,
+                  "width": 128,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 272,
+                  "top": 15,
+                  "width": 193,
+                  "height": 218,
+                  "pixels": 17621
+                },
+                "output": {
+                  "left": 76,
+                  "top": 55,
+                  "width": 167,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 458,
+                  "top": 15,
+                  "width": 230,
+                  "height": 218,
+                  "pixels": 17887
+                },
+                "output": {
+                  "left": 45,
+                  "top": 55,
+                  "width": 199,
+                  "height": 189
+                }
+              },
+              {
+                "source": {
+                  "left": 680,
+                  "top": 14,
+                  "width": 185,
+                  "height": 219,
+                  "pixels": 17101
+                },
+                "output": {
+                  "left": 45,
+                  "top": 54,
+                  "width": 160,
+                  "height": 190
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Guard, partial jab, full jab with rotated shoulder, retracted guard; unarmed red gloves and different elbow/hip postures."
+            }
+          },
+          {
+            "state": "attackLight2",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-a-source.png",
+            "sourceImageSha256": "9ef7e77273fec64a05c1e2515f0d25207f87a2e5ce34a3c162802611f0cfd7bf",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 240,
+              "bottom": 459
+            },
+            "scale": 0.7483870967741936,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 26,
+                  "top": 10,
+                  "width": 190,
+                  "height": 205,
+                  "pixels": 17681
+                },
+                "output": {
+                  "left": 64,
+                  "top": 90,
+                  "width": 142,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 258,
+                  "top": 10,
+                  "width": 190,
+                  "height": 206,
+                  "pixels": 18538
+                },
+                "output": {
+                  "left": 72,
+                  "top": 90,
+                  "width": 142,
+                  "height": 154
+                }
+              },
+              {
+                "source": {
+                  "left": 471,
+                  "top": 13,
+                  "width": 238,
+                  "height": 202,
+                  "pixels": 18079
+                },
+                "output": {
+                  "left": 66,
+                  "top": 92,
+                  "width": 178,
+                  "height": 151
+                }
+              },
+              {
+                "source": {
+                  "left": 698,
+                  "top": 10,
+                  "width": 167,
+                  "height": 205,
+                  "pixels": 16135
+                },
+                "output": {
+                  "left": 70,
+                  "top": 90,
+                  "width": 125,
+                  "height": 153
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Rear fist chamber, forward coil, extended cross with changed shoulder alignment, compact guard."
+            }
+          },
+          {
+            "state": "attackLight3",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-a-source.png",
+            "sourceImageSha256": "9ef7e77273fec64a05c1e2515f0d25207f87a2e5ce34a3c162802611f0cfd7bf",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 457,
+              "bottom": 718
+            },
+            "scale": 0.943089430894309,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 38,
+                  "top": 40,
+                  "width": 172,
+                  "height": 205,
+                  "pixels": 19942
+                },
+                "output": {
+                  "left": 59,
+                  "top": 45,
+                  "width": 162,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 262,
+                  "top": 40,
+                  "width": 175,
+                  "height": 205,
+                  "pixels": 18586
+                },
+                "output": {
+                  "left": 61,
+                  "top": 45,
+                  "width": 165,
+                  "height": 193
+                }
+              },
+              {
+                "source": {
+                  "left": 470,
+                  "top": 5,
+                  "width": 200,
+                  "height": 246,
+                  "pixels": 19627
+                },
+                "output": {
+                  "left": 48,
+                  "top": 12,
+                  "width": 189,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 39,
+                  "width": 193,
+                  "height": 212,
+                  "pixels": 17623
+                },
+                "output": {
+                  "left": 28,
+                  "top": 44,
+                  "width": 182,
+                  "height": 200
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Low fist and deep knee bend, rising elbow, high uppercut with straightened torso, recovered high guard."
+            }
+          },
+          {
+            "state": "crouchLight",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-a-source.png",
+            "sourceImageSha256": "9ef7e77273fec64a05c1e2515f0d25207f87a2e5ce34a3c162802611f0cfd7bf",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 717,
+              "bottom": 922
+            },
+            "scale": 0.8888888888888888,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 26,
+                  "top": 11,
+                  "width": 177,
+                  "height": 188,
+                  "pixels": 17107
+                },
+                "output": {
+                  "left": 53,
+                  "top": 76,
+                  "width": 157,
+                  "height": 167
+                }
+              },
+              {
+                "source": {
+                  "left": 239,
+                  "top": 19,
+                  "width": 224,
+                  "height": 180,
+                  "pixels": 18282
+                },
+                "output": {
+                  "left": 45,
+                  "top": 83,
+                  "width": 199,
+                  "height": 160
+                }
+              },
+              {
+                "source": {
+                  "left": 459,
+                  "top": 19,
+                  "width": 211,
+                  "height": 181,
+                  "pixels": 19343
+                },
+                "output": {
+                  "left": 43,
+                  "top": 83,
+                  "width": 188,
+                  "height": 161
+                }
+              },
+              {
+                "source": {
+                  "left": 709,
+                  "top": 18,
+                  "width": 157,
+                  "height": 176,
+                  "pixels": 16370
+                },
+                "output": {
+                  "left": 68,
+                  "top": 82,
+                  "width": 140,
+                  "height": 156
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Low guard, horizontal body punch, opposite bent-arm low strike and crouched recovery, with real bent knees."
+            }
+          },
+          {
+            "state": "chargeStart",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-a-source.png",
+            "sourceImageSha256": "9ef7e77273fec64a05c1e2515f0d25207f87a2e5ce34a3c162802611f0cfd7bf",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 919,
+              "bottom": 1168
+            },
+            "scale": 0.9830508474576272,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 38,
+                  "top": 4,
+                  "width": 161,
+                  "height": 236,
+                  "pixels": 18832
+                },
+                "output": {
+                  "left": 56,
+                  "top": 12,
+                  "width": 158,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 249,
+                  "top": 14,
+                  "width": 196,
+                  "height": 222,
+                  "pixels": 20297
+                },
+                "output": {
+                  "left": 46,
+                  "top": 22,
+                  "width": 193,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 446,
+                  "top": 22,
+                  "width": 224,
+                  "height": 214,
+                  "pixels": 19294
+                },
+                "output": {
+                  "left": 21,
+                  "top": 30,
+                  "width": 220,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 668,
+                  "top": 20,
+                  "width": 214,
+                  "height": 219,
+                  "pixels": 18836
+                },
+                "output": {
+                  "left": 22,
+                  "top": 28,
+                  "width": 210,
+                  "height": 215
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Upright guard, wide rear-fist chamber, deeper torso coil and low prepared stance; no projectile or glow."
+            }
+          },
+          {
+            "state": "chargeLoop",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-charge-loop-correction-source.png",
+            "sourceImageSha256": "9b3c2b4c4f753b2456534dbf446053d242b2b9caaf3ef7062e8644e18ee92643",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 724
+            },
+            "scale": 0.4344569288389513,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 57,
+                  "top": 140,
+                  "width": 475,
+                  "height": 518,
+                  "pixels": 123734
+                },
+                "output": {
+                  "left": 35,
+                  "top": 19,
+                  "width": 206,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 600,
+                  "top": 167,
+                  "width": 450,
+                  "height": 485,
+                  "pixels": 114951
+                },
+                "output": {
+                  "left": 35,
+                  "top": 31,
+                  "width": 196,
+                  "height": 211
+                }
+              },
+              {
+                "source": {
+                  "left": 1111,
+                  "top": 144,
+                  "width": 498,
+                  "height": 514,
+                  "pixels": 112599
+                },
+                "output": {
+                  "left": 21,
+                  "top": 21,
+                  "width": 216,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 1729,
+                  "top": 124,
+                  "width": 389,
+                  "height": 534,
+                  "pixels": 110526
+                },
+                "output": {
+                  "left": 53,
+                  "top": 12,
+                  "width": 169,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Corrective native row: rear-weighted chamber, deep symmetric squat, crossed bent forearms and staggered high guard. All arms stay bent; no release punch or duplicated pose."
+            }
+          },
+          {
+            "state": "chargeRelease",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-a-source.png",
+            "sourceImageSha256": "9ef7e77273fec64a05c1e2515f0d25207f87a2e5ce34a3c162802611f0cfd7bf",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1167,
+              "bottom": 1437
+            },
+            "scale": 0.9243027888446215,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 10,
+                  "width": 186,
+                  "height": 218,
+                  "pixels": 19519
+                },
+                "output": {
+                  "left": 47,
+                  "top": 36,
+                  "width": 172,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 225,
+                  "top": 24,
+                  "width": 233,
+                  "height": 208,
+                  "pixels": 21396
+                },
+                "output": {
+                  "left": 29,
+                  "top": 49,
+                  "width": 215,
+                  "height": 192
+                }
+              },
+              {
+                "source": {
+                  "left": 457,
+                  "top": 17,
+                  "width": 213,
+                  "height": 218,
+                  "pixels": 19555
+                },
+                "output": {
+                  "left": 38,
+                  "top": 43,
+                  "width": 197,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 17,
+                  "width": 203,
+                  "height": 216,
+                  "pixels": 19844
+                },
+                "output": {
+                  "left": 30,
+                  "top": 43,
+                  "width": 188,
+                  "height": 200
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Beat Rush: low prepared guard, extended first punch, opposite shoulder cross and retracted low follow-through. Physical fists, not Final Heaven energy."
+            }
+          },
+          {
+            "state": "chargeRecovery",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-a-source.png",
+            "sourceImageSha256": "9ef7e77273fec64a05c1e2515f0d25207f87a2e5ce34a3c162802611f0cfd7bf",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1436,
+              "bottom": 1774
+            },
+            "scale": 0.9547325102880658,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 62,
+                  "width": 186,
+                  "height": 210,
+                  "pixels": 21071
+                },
+                "output": {
+                  "left": 44,
+                  "top": 43,
+                  "width": 178,
+                  "height": 200
+                }
+              },
+              {
+                "source": {
+                  "left": 262,
+                  "top": 30,
+                  "width": 168,
+                  "height": 243,
+                  "pixels": 21148
+                },
+                "output": {
+                  "left": 61,
+                  "top": 12,
+                  "width": 160,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 484,
+                  "top": 30,
+                  "width": 162,
+                  "height": 243,
+                  "pixels": 19837
+                },
+                "output": {
+                  "left": 61,
+                  "top": 12,
+                  "width": 155,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 701,
+                  "top": 30,
+                  "width": 168,
+                  "height": 243,
+                  "pixels": 20407
+                },
+                "output": {
+                  "left": 56,
+                  "top": 12,
+                  "width": 160,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Low forward follow-through, rising torso with gloves at waist, compact chest guard, stabilized boxing guard."
+            }
+          }
+        ],
+        "emptyRows": [],
+        "contactAnchorMeasurements": {}
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "Base and previous presentation references inspected before generation. All normalized state rows and 20 individual ledge crops reviewed. Missing chargeLoop supplied by four genuinely held native poses. Per-frame palm anchors for catch/hang/climb, release contacts marked false. No inactive row counted as art."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "sourceGameAsset": false,
+        "nativeGeneratedArtwork": true,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-679a055d-80a4-429a-a8b4-5142efd5be97.png",
+        "promptFile": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/native-prompts.json",
+        "prompt": "Create a native pixel-art game animation sprite atlas for adult TIFA LOCKHART from ORIGINAL FINAL FANTASY VII (1997), matching the attached existing game references exactly for identity/style: long dark brown hair with a tied flowing end, white sleeveless crop top, black suspenders, short black skirt, belt, red leather martial-arts gloves/wrist guards, red-brown combat boots and socks. Keep the same outfit and consistent adult proportions in every frame. Original 1997 outfit, no Remake black under-top redesign. She fights UNARMED using real fists, elbows, knees and kicks: absolutely no sword, staff, gun, shield, summoned creature, laser, magic orb or copied Cloud pose. Compact detailed crisp pixel sprite rendering with readable face and limbs, not a photorealistic painting. All subjects face right, with natural torso rotation. Transparent RGBA background, no scenery, floor, horizon, shadows on ground, painted ledge, grid lines, labels, text, borders or decoration. Exactly FOUR equal columns, four sequential full-body poses per row, no fifth figure or duplicate. All hair, glove, fingers and boot tips must stay inside their own cell with transparent gutters, at least 24 transparent pixels between the complete subject and each cell boundary. Keep head/body size consistent between rows; allow room for long hair without overlap. Each frame must change limb anatomy, torso bend, hand position and balance visibly: not a translated duplicate and not a pose changed only by color or glow. NO energy effects, punch trails, detached white flecks or blue swooshes anywhere. Every row is a different named state, not a continuation of the previous row. This is newly generated 2D adapted animation, not traced official game frames.\nPortrait 1:2 canvas, ideally 1024x2048, EXACTLY EIGHT ROWS by FOUR COLUMNS = 32 full sprites. Grounded soles share a common row baseline. Choreography:\nRow1 attackLight1: quick left straight jab. Frame1 left fist at cheek and rear right fist protecting jaw → frame2 lead left arm extending with knee bend → frame3 full forward jab with hip twist and right fist kept by cheek → frame4 left fist retracts and weight returns. Four distinct arm and leg postures.\nRow2 attackLight2: right cross punch. Rear right fist chambers by ribs, left glove forward → right shoulder and hip drive forward with rear heel lifting → right arm fully extended and left glove protecting face, legs in forward lunge → right fist draws back as torso counter-rotates. No kick in this punch row.\nRow3 attackLight3: short rising uppercut finisher. Lowered rear fist and deeply bent knees → elbow lifts and fist passes in front of chest → rising right fist above shoulder while body straightens and lead knee opens → high-fist follow-through and controlled step back into guard. Keep both boots visible.\nRow4 crouchLight: low body punch from a crouch. Squat with fists tucked → low left fist punches right at waist level, hips turn while knees remain bent → full low extension with rear elbow guarding → low retracted glove and crouch guard. Never stand upright in this row.\nRow5 chargeStart: physical punch windup. Upright boxing guard → lead boot plants wider and knees flex while rear fist pulls back → deep hip coil with rear elbow behind ribs and lead palm guarding face → tight low braced stance, rear fist cocked beside hip, torso fully wound. Four unmistakable levels of preparation, no glowing ball.\nRow6 chargeLoop: held physical readiness, NOT attacks. Rear fist stays chambered and elbows remain bent in all four. Frame1 deep rear-weighted stance with left glove forward → frame2 lower knees and elbows draw closer while weight centers → frame3 head turns slightly with torso twist and lead knee opens, glove still unextended → frame4 wider stance, rear heel braces and elbows lift into compact guard. Four distinct held bracing anatomies, no extended strike.\nRow7 chargeRelease: powered BEAT RUSH punch sequence, the actual secondary technique. Frame1 low cocked fists and torso driving forward → frame2 deep lunging left straight punch while right fist guards → frame3 opposite right cross at chest height, hips fully rotate and left fist retracts → frame4 both elbows bent after the final punch with weight far forward and knees absorbing momentum. Real rapid punches, not Final Heaven energy blast, not uppercut-only.\nRow8 chargeRecovery: recover from Beat Rush. Low forward follow-through, lead arm bent down → rear foot steps under hips, fists draw inward → torso rises and forearms move before chest → fully balanced boxing guard with knees softly bent. Four clearly different body positions.",
+        "promptSha256": "ecf889462b70b6132a0a9c200f1d8c3c573b4d17f8c18d0f7bdc50d363cca342",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [
+          {
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-charge-loop-correction-source.png",
+            "sourceImageSha256": "9b3c2b4c4f753b2456534dbf446053d242b2b9caaf3ef7062e8644e18ee92643",
+            "generatedSourcePath": "/workspace/generated_images/exec-227e6ab5-da89-4900-b996-12a6d5e2e0e4.png",
+            "sourceRow": 0,
+            "selectedState": "chargeLoop",
+            "promptFile": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-charge-loop-correction-prompt.json",
+            "prompt": "Native pixel-art sprite correction, TIFA LOCKHART original FINAL FANTASY VII (1997), matching the attached sprite reference exactly: long flowing dark brown hair tied at end, white sleeveless top, black suspenders and short black skirt, red martial-arts gloves and red boots. Adult proportions, same crisp detailed pixel rendering. UNARMED, no sword, gun or props. Transparent RGBA background, no floor, shadow, labels, grid, text or effects.\nONE HORIZONTAL ROW of EXACTLY FOUR full-body sprites, equally spaced in FOUR equal cells. Wide landscape 4:1 canvas if possible, ideally1024x256. Every hair tip, glove and boot stays inside its cell with transparent margins. This is the missing chargeLoop state, a SUSTAINED PHYSICAL WINDUP, NOT an attack. In ALL FOUR poses both elbows MUST stay visibly bent; neither fist may extend into a punch. NO strike, NO punching, NO kick, NO magic, NO glowing ball, NO energy aura, NO identical or shifted copies. Four different body silhouettes:\nFRAME1: low broad boxing stance, most weight on deeply bent back knee, rear right fist tightly chambered at hip and lead left glove protecting cheek, torso coiled back.\nFRAME2: visibly deeper symmetric squat, both knees bend far outward, both fists pulled into a compact guard against the ribs with elbows tucked, head lower than frame1.\nFRAME3: forward knee strongly bent and rear leg stretched diagonally back, torso twisted inward and both forearms crossed tightly before chest, fists near opposite shoulders. Entirely held coiled preparation, NOT a punched arm.\nFRAME4: weight draws back again, knees staggered at different heights, elbows rise outward while both fists stay next to cheeks, torso more upright, ready to cycle to frame1.\nUse actual anatomical changes of hips, shoulders, bent elbows and knees. All four poses are DISTINCT HOLDING/BRACING postures, not four stages of releasing a punch. Long hair follows the different torso angles. Keep consistent character size and sole baseline. No motion trail fragments and no disconnected pixels between sprites. These are newly drawn adapted game poses, not official FFVII frames.",
+            "reason": "The initial combat-a native source contains only seven state rows; chargeLoop was omitted. Its valid chargeStart, Beat Rush release and recovery rows are retained; this new source supplies the missing four held poses."
+          }
+        ],
+        "conditioning": "Only exported entity-builder alpha segmentation and nearest-neighbor normalization, transparent atlas assembly and technical crop/contact output. No procedural poses, copied frames, limbs or equipment redrawn by code."
+      }
+    },
+    {
+      "id": "tifa-combat-b",
+      "heroId": "tifa_ff7",
+      "universe": "Final Fantasy VII",
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-combat-b.png",
+      "states": {
+        "attackRecovery": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "special": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "aerialNeutral": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "aerialForward": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "aerialDown": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "intro": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": true
+        },
+        "ledgeAttack": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "stateOrder": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 8,
+      "frames": 32,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "alpha": true,
+      "sha256": "4f88276e0293eaa2d05796c96bbae56693d620d995ec51d8c28d5ff6f9cb7d74",
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-b-source.png",
+      "sourceImageSha256": "f73f03025bb7dc5604edeaae38d375271153522386526690e6b1712978665993",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "originalSourceRows": 8,
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-vii/tifa-ff7.png",
+      "referenceAssetSha256": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-reference.png",
+      "previousAtlasReference": "/sprites/generated/combat-character-animations/tifa_ff7.png",
+      "previousAtlasReferenceSha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+      "sourceWork": "Final Fantasy VII (1997)",
+      "sourceReference": "Tifa fights unarmed in FFVII; Direct de Tifa is the current simple slot and Beat Rush is the current secondary. special and chargeRelease preserve physical alternating Beat Rush punches. Final Heaven remains the separate prioritized 100% super.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "frameSize": 256,
+        "padding": 12,
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "attackRecovery",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-b-source.png",
+            "sourceImageSha256": "f73f03025bb7dc5604edeaae38d375271153522386526690e6b1712978665993",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 233
+            },
+            "scale": 0.8027681660899654,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 30,
+                  "top": 10,
+                  "width": 225,
+                  "height": 207,
+                  "pixels": 18549
+                },
+                "output": {
+                  "left": 63,
+                  "top": 74,
+                  "width": 181,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 247,
+                  "top": 16,
+                  "width": 181,
+                  "height": 205,
+                  "pixels": 16871
+                },
+                "output": {
+                  "left": 59,
+                  "top": 79,
+                  "width": 145,
+                  "height": 165
+                }
+              },
+              {
+                "source": {
+                  "left": 484,
+                  "top": 10,
+                  "width": 144,
+                  "height": 212,
+                  "pixels": 16137
+                },
+                "output": {
+                  "left": 72,
+                  "top": 74,
+                  "width": 116,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 711,
+                  "top": 10,
+                  "width": 137,
+                  "height": 212,
+                  "pixels": 15414
+                },
+                "output": {
+                  "left": 76,
+                  "top": 74,
+                  "width": 110,
+                  "height": 170
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Extended follow-through, retracting elbow and hip, low guard, compact raised guard."
+            }
+          },
+          {
+            "state": "special",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-b-source.png",
+            "sourceImageSha256": "f73f03025bb7dc5604edeaae38d375271153522386526690e6b1712978665993",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 232,
+              "bottom": 442
+            },
+            "scale": 0.9169960474308301,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 26,
+                  "top": 12,
+                  "width": 171,
+                  "height": 188,
+                  "pixels": 17279
+                },
+                "output": {
+                  "left": 50,
+                  "top": 71,
+                  "width": 157,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 237,
+                  "top": 16,
+                  "width": 222,
+                  "height": 185,
+                  "pixels": 18150
+                },
+                "output": {
+                  "left": 40,
+                  "top": 74,
+                  "width": 204,
+                  "height": 170
+                }
+              },
+              {
+                "source": {
+                  "left": 455,
+                  "top": 17,
+                  "width": 224,
+                  "height": 184,
+                  "pixels": 17833
+                },
+                "output": {
+                  "left": 37,
+                  "top": 75,
+                  "width": 205,
+                  "height": 169
+                }
+              },
+              {
+                "source": {
+                  "left": 672,
+                  "top": 28,
+                  "width": 187,
+                  "height": 173,
+                  "pixels": 16324
+                },
+                "output": {
+                  "left": 33,
+                  "top": 85,
+                  "width": 171,
+                  "height": 159
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Beat Rush physical alternating punch sequence: low guard, first extended straight, torso-rotated cross, low final body-punch posture. No weapon, energy blast or Final Heaven substitution."
+            }
+          },
+          {
+            "state": "aerialNeutral",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-b-source.png",
+            "sourceImageSha256": "f73f03025bb7dc5604edeaae38d375271153522386526690e6b1712978665993",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 441,
+              "bottom": 669
+            },
+            "scale": 0.9027237354085603,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 20,
+                  "top": 10,
+                  "width": 154,
+                  "height": 191,
+                  "pixels": 15289
+                },
+                "output": {
+                  "left": 46,
+                  "top": 48,
+                  "width": 139,
+                  "height": 172
+                }
+              },
+              {
+                "source": {
+                  "left": 217,
+                  "top": 21,
+                  "width": 244,
+                  "height": 168,
+                  "pixels": 17286
+                },
+                "output": {
+                  "left": 24,
+                  "top": 58,
+                  "width": 220,
+                  "height": 152
+                }
+              },
+              {
+                "source": {
+                  "left": 457,
+                  "top": 12,
+                  "width": 218,
+                  "height": 215,
+                  "pixels": 18181
+                },
+                "output": {
+                  "left": 40,
+                  "top": 50,
+                  "width": 197,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 691,
+                  "top": 15,
+                  "width": 163,
+                  "height": 185,
+                  "pixels": 15540
+                },
+                "output": {
+                  "left": 51,
+                  "top": 53,
+                  "width": 147,
+                  "height": 167
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Tucked airborne guard, horizontal roundhouse, higher diagonal kick and re-tucked falling guard; different leg anatomies without painted ground."
+            }
+          },
+          {
+            "state": "aerialForward",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-b-source.png",
+            "sourceImageSha256": "f73f03025bb7dc5604edeaae38d375271153522386526690e6b1712978665993",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 661,
+              "bottom": 897
+            },
+            "scale": 0.8656716417910447,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 19,
+                  "top": 3,
+                  "width": 148,
+                  "height": 210,
+                  "pixels": 16506
+                },
+                "output": {
+                  "left": 48,
+                  "top": 43,
+                  "width": 128,
+                  "height": 182
+                }
+              },
+              {
+                "source": {
+                  "left": 208,
+                  "top": 13,
+                  "width": 234,
+                  "height": 163,
+                  "pixels": 15885
+                },
+                "output": {
+                  "left": 20,
+                  "top": 52,
+                  "width": 203,
+                  "height": 141
+                }
+              },
+              {
+                "source": {
+                  "left": 442,
+                  "top": 20,
+                  "width": 246,
+                  "height": 215,
+                  "pixels": 17739
+                },
+                "output": {
+                  "left": 31,
+                  "top": 58,
+                  "width": 213,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 681,
+                  "top": 10,
+                  "width": 172,
+                  "height": 183,
+                  "pixels": 15789
+                },
+                "output": {
+                  "left": 46,
+                  "top": 49,
+                  "width": 149,
+                  "height": 158
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Raised airborne knee, extending forward boot with rear leg tucked, full forward kick and retracted airborne guard."
+            }
+          },
+          {
+            "state": "aerialDown",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-b-source.png",
+            "sourceImageSha256": "f73f03025bb7dc5604edeaae38d375271153522386526690e6b1712978665993",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 875,
+              "bottom": 1123
+            },
+            "scale": 0.9914529914529915,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 23,
+                  "top": 18,
+                  "width": 146,
+                  "height": 185,
+                  "pixels": 15025
+                },
+                "output": {
+                  "left": 41,
+                  "top": 17,
+                  "width": 145,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 239,
+                  "top": 18,
+                  "width": 195,
+                  "height": 200,
+                  "pixels": 17322
+                },
+                "output": {
+                  "left": 35,
+                  "top": 17,
+                  "width": 193,
+                  "height": 198
+                }
+              },
+              {
+                "source": {
+                  "left": 470,
+                  "top": 16,
+                  "width": 201,
+                  "height": 231,
+                  "pixels": 16936
+                },
+                "output": {
+                  "left": 44,
+                  "top": 15,
+                  "width": 199,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 707,
+                  "top": 23,
+                  "width": 145,
+                  "height": 169,
+                  "pixels": 14670
+                },
+                "output": {
+                  "left": 59,
+                  "top": 22,
+                  "width": 144,
+                  "height": 168
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Knees tucked, descending boot extended, lower heel with forward torso and re-tucked falling guard."
+            }
+          },
+          {
+            "state": "intro",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-b-source.png",
+            "sourceImageSha256": "f73f03025bb7dc5604edeaae38d375271153522386526690e6b1712978665993",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1107,
+              "bottom": 1340
+            },
+            "scale": 1.0497737556561086,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 51,
+                  "top": 4,
+                  "width": 124,
+                  "height": 220,
+                  "pixels": 16664
+                },
+                "output": {
+                  "left": 65,
+                  "top": 13,
+                  "width": 130,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 276,
+                  "top": 3,
+                  "width": 127,
+                  "height": 221,
+                  "pixels": 17592
+                },
+                "output": {
+                  "left": 69,
+                  "top": 12,
+                  "width": 133,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 498,
+                  "top": 5,
+                  "width": 131,
+                  "height": 219,
+                  "pixels": 16094
+                },
+                "output": {
+                  "left": 69,
+                  "top": 14,
+                  "width": 138,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 701,
+                  "top": 4,
+                  "width": 157,
+                  "height": 220,
+                  "pixels": 17230
+                },
+                "output": {
+                  "left": 49,
+                  "top": 13,
+                  "width": 165,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Relaxed hands, first glove adjustment, opposite glove adjustment with raised elbow, widened boxing stance."
+            }
+          },
+          {
+            "state": "victory",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-b-source.png",
+            "sourceImageSha256": "f73f03025bb7dc5604edeaae38d375271153522386526690e6b1712978665993",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1328,
+              "bottom": 1576
+            },
+            "scale": 0.9469387755102041,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 44,
+                  "top": 13,
+                  "width": 131,
+                  "height": 233,
+                  "pixels": 18499
+                },
+                "output": {
+                  "left": 65,
+                  "top": 23,
+                  "width": 124,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 265,
+                  "top": 1,
+                  "width": 146,
+                  "height": 240,
+                  "pixels": 19408
+                },
+                "output": {
+                  "left": 64,
+                  "top": 12,
+                  "width": 138,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 492,
+                  "top": 2,
+                  "width": 137,
+                  "height": 241,
+                  "pixels": 18836
+                },
+                "output": {
+                  "left": 69,
+                  "top": 13,
+                  "width": 130,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 712,
+                  "top": 24,
+                  "width": 138,
+                  "height": 219,
+                  "pixels": 17694
+                },
+                "output": {
+                  "left": 67,
+                  "top": 34,
+                  "width": 131,
+                  "height": 207
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Relaxed low hands, raised bent elbows, full overhead celebration, single raised glove and other hand at waist."
+            }
+          },
+          {
+            "state": "ledgeAttack",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-combat-b-source.png",
+            "sourceImageSha256": "f73f03025bb7dc5604edeaae38d375271153522386526690e6b1712978665993",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1568,
+              "bottom": 1774
+            },
+            "scale": 0.9666666666666667,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 41,
+                  "top": 0,
+                  "width": 143,
+                  "height": 206,
+                  "pixels": 14915
+                },
+                "output": {
+                  "left": 60,
+                  "top": 45,
+                  "width": 138,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 242,
+                  "top": 15,
+                  "width": 163,
+                  "height": 190,
+                  "pixels": 16169
+                },
+                "output": {
+                  "left": 40,
+                  "top": 59,
+                  "width": 158,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 467,
+                  "top": 2,
+                  "width": 207,
+                  "height": 181,
+                  "pixels": 17827
+                },
+                "output": {
+                  "left": 44,
+                  "top": 47,
+                  "width": 200,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 673,
+                  "top": 38,
+                  "width": 184,
+                  "height": 145,
+                  "pixels": 14390
+                },
+                "output": {
+                  "left": 28,
+                  "top": 82,
+                  "width": 178,
+                  "height": 140
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "One-hand overhead suspension, pulling elbow and raised knee, free punch while lower palm braces, crouched two-fist recovery above the inferred edge."
+            }
+          }
+        ],
+        "emptyRows": [],
+        "contactAnchorMeasurements": {}
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "Base and previous presentation references inspected before generation. All normalized state rows and 20 individual ledge crops reviewed. Missing chargeLoop supplied by four genuinely held native poses. Per-frame palm anchors for catch/hang/climb, release contacts marked false. No inactive row counted as art."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "sourceGameAsset": false,
+        "nativeGeneratedArtwork": true,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-46e5e717-864b-4c22-bc1a-5233b7e8ff57.png",
+        "promptFile": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/native-prompts.json",
+        "prompt": "Create a native pixel-art game animation sprite atlas for adult TIFA LOCKHART from ORIGINAL FINAL FANTASY VII (1997), matching the attached existing game references exactly for identity/style: long dark brown hair with a tied flowing end, white sleeveless crop top, black suspenders, short black skirt, belt, red leather martial-arts gloves/wrist guards, red-brown combat boots and socks. Keep the same outfit and consistent adult proportions in every frame. Original 1997 outfit, no Remake black under-top redesign. She fights UNARMED using real fists, elbows, knees and kicks: absolutely no sword, staff, gun, shield, summoned creature, laser, magic orb or copied Cloud pose. Compact detailed crisp pixel sprite rendering with readable face and limbs, not a photorealistic painting. All subjects face right, with natural torso rotation. Transparent RGBA background, no scenery, floor, horizon, shadows on ground, painted ledge, grid lines, labels, text, borders or decoration. Exactly FOUR equal columns, four sequential full-body poses per row, no fifth figure or duplicate. All hair, glove, fingers and boot tips must stay inside their own cell with transparent gutters, at least 24 transparent pixels between the complete subject and each cell boundary. Keep head/body size consistent between rows; allow room for long hair without overlap. Each frame must change limb anatomy, torso bend, hand position and balance visibly: not a translated duplicate and not a pose changed only by color or glow. NO energy effects, punch trails, detached white flecks or blue swooshes anywhere. Every row is a different named state, not a continuation of the previous row. This is newly generated 2D adapted animation, not traced official game frames.\nPortrait 1:2 canvas, ideally 1024x2048, EXACTLY EIGHT ROWS by FOUR COLUMNS = 32 full sprites. Four distinct poses in every row. Choreography:\nRow1 attackRecovery: low forward punch follow-through with lead glove extended → elbow bends as torso twists back → both gloves rise while front foot pulls in → balanced unarmed guard. Make fist and shoulder positions differ in all four.\nRow2 special: BEAT RUSH, Tifa's actual FFVII first Limit Break used here as a secondary technique; not Final Heaven. Frame1 close low guard preparing rapid fists → frame2 left straight punch at chest height with deep hip turn → frame3 right straight cross at chest height while left elbow retracts, different lead foot bend → frame4 compact final body punch at lower chest height with right elbow bent, torso lower and left glove guarding. Four real alternating punch actions. No laser, no aura circle, no single glowing Final Heaven strike, no weapon.\nRow3 aerialNeutral: airborne spinning roundhouse kick. Frame1 both knees tucked and forearms guarding while torso coils → frame2 right leg extends sideways toward right, left knee tucked, torso twisting → frame3 kick sweeps higher at a diagonal with arms rebalancing and back hair moving → frame4 kicking leg retracts, both knees tuck for falling guard. All four genuinely airborne, never a standing spread-leg pose.\nRow4 aerialForward: flying forward kick. Frame1 front knee raised in midair with rear knee bent → frame2 front boot extends horizontally right, torso leans back slightly and rear knee tucks → frame3 full forward kick with heel leading and arms counterbalancing, rear leg still bent → frame4 boot retracts toward hips, body rotates into an airborne guard. Both boots remain off an invisible floor.\nRow5 aerialDown: downward heel attack. Frame1 knees tucked high and hands guard face → frame2 lead leg unfolds sharply downward with heel below hips, rear knee bent → frame3 downward leg extends lower while torso leans forward and both hands spread for balance → frame4 both knees re-tuck and forearms draw back into a falling guard. Show actual downward boot motion, no ground impact scene or magic beam.\nRow6 intro: Tifa prepares her gloves. Frame1 relaxed hands near hips → frame2 one hand pulls the opposite red wrist glove strap in front of chest → frame3 she tightens the other glove, torso turned and elbow higher → frame4 both fists rise into a staggered boxing stance, feet widen. Four distinct hand actions, not the same pose with a twitch.\nRow7 victory: recognizable unarmed victory gesture. Frame1 fists lowered while she straightens → frame2 elbows bend and fists rise beside head → frame3 both arms fully lifted overhead in a cheerful restrained celebration → frame4 one fist lowers to hip and the other remains raised by shoulder with a small confident smile. Keep all arms in cell, no text.\nRow8 ledgeAttack: an unarmed counterattack pulling from an invisible ledge, no painted platform. Frame1 right red-gloved hand grips overhead upper-right, body and both bent legs hang beneath, other glove by chest → frame2 gripping elbow pulls chest upward, free fist cocks back and one knee rises → frame3 free left fist punches forward-right while support palm braces at imaginary edge beside waist and hips rise above it → frame4 crouched low guarded recovery above the old edge level with both fists before chest. No sword or baton; real hands supporting the pull-up.",
+        "promptSha256": "0964c23de37c2ac2936dcddc0c74a0ff0763c8593a54ac416bcc93cf2f8bae15",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [],
+        "conditioning": "Only exported entity-builder alpha segmentation and nearest-neighbor normalization, transparent atlas assembly and technical crop/contact output. No procedural poses, copied frames, limbs or equipment redrawn by code."
+      }
+    },
+    {
+      "id": "tifa-ledge",
+      "heroId": "tifa_ff7",
+      "universe": "Final Fantasy VII",
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-ledge.png",
+      "states": {
+        "ledgeCatch": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ledgeHang": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "ledgeClimb": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ledgeDrop": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ledgeJump": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "stateOrder": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 5,
+      "frames": 20,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "alpha": true,
+      "sha256": "9bf31fb2211f68b07c39757230f6b944f704ab3661b4b5dab3ef4d263cac26bd",
+      "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-ledge-source.png",
+      "sourceImageSha256": "d0ed6a871d255a13ba92dbf3484ae3b70be43837e09f6bd0dad99e4c83148e24",
+      "sourceDimensions": [
+        1122,
+        1402
+      ],
+      "originalSourceRows": 5,
+      "referenceAsset": "/sprites/generated/heroes/final-fantasy-vii/tifa-ff7.png",
+      "referenceAssetSha256": "07b429a62b61570943e85b4788cb839a80b38bdc8b81be40845e335ee5621cab",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-reference.png",
+      "previousAtlasReference": "/sprites/generated/combat-character-animations/tifa_ff7.png",
+      "previousAtlasReferenceSha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+      "sourceWork": "Final Fantasy VII (1997)",
+      "sourceReference": "Tifa original outfit and unarmed identity from FFVII; five ledge states are explicit project traversal adaptations, not canonical FFVII gameplay animations.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "frameSize": 256,
+        "padding": 12,
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "ledgeCatch",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-ledge-source.png",
+            "sourceImageSha256": "d0ed6a871d255a13ba92dbf3484ae3b70be43837e09f6bd0dad99e4c83148e24",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 304
+            },
+            "scale": 0.7837837837837838,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 40,
+                  "top": 9,
+                  "width": 248,
+                  "height": 288,
+                  "pixels": 25448
+                },
+                "output": {
+                  "left": 49,
+                  "top": 18,
+                  "width": 194,
+                  "height": 226
+                }
+              },
+              {
+                "source": {
+                  "left": 341,
+                  "top": 9,
+                  "width": 191,
+                  "height": 278,
+                  "pixels": 21383
+                },
+                "output": {
+                  "left": 65,
+                  "top": 18,
+                  "width": 150,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 645,
+                  "top": 11,
+                  "width": 146,
+                  "height": 251,
+                  "pixels": 21248
+                },
+                "output": {
+                  "left": 84,
+                  "top": 20,
+                  "width": 114,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 923,
+                  "top": 10,
+                  "width": 131,
+                  "height": 277,
+                  "pixels": 20865
+                },
+                "output": {
+                  "left": 82,
+                  "top": 19,
+                  "width": 103,
+                  "height": 217
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Reach, one-glove hook, two-glove catch with tucked knees, settled hanging pose; both red gloves and complete boots inspected in individual crops."
+            }
+          },
+          {
+            "state": "ledgeHang",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-ledge-source.png",
+            "sourceImageSha256": "d0ed6a871d255a13ba92dbf3484ae3b70be43837e09f6bd0dad99e4c83148e24",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 303,
+              "bottom": 598
+            },
+            "scale": 0.8140350877192982,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 65,
+                  "top": 5,
+                  "width": 136,
+                  "height": 270,
+                  "pixels": 21759
+                },
+                "output": {
+                  "left": 67,
+                  "top": 12,
+                  "width": 111,
+                  "height": 220
+                }
+              },
+              {
+                "source": {
+                  "left": 332,
+                  "top": 5,
+                  "width": 175,
+                  "height": 265,
+                  "pixels": 21384
+                },
+                "output": {
+                  "left": 56,
+                  "top": 12,
+                  "width": 142,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 643,
+                  "top": 5,
+                  "width": 149,
+                  "height": 285,
+                  "pixels": 21525
+                },
+                "output": {
+                  "left": 81,
+                  "top": 12,
+                  "width": 121,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 900,
+                  "top": 5,
+                  "width": 156,
+                  "height": 279,
+                  "pixels": 21915
+                },
+                "output": {
+                  "left": 61,
+                  "top": 12,
+                  "width": 127,
+                  "height": 227
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Two-hand hang, one-hand supported inward shift, two-hand knee tuck, one-hand supported leg swing; each pose genuinely suspended."
+            }
+          },
+          {
+            "state": "ledgeClimb",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-ledge-source.png",
+            "sourceImageSha256": "d0ed6a871d255a13ba92dbf3484ae3b70be43837e09f6bd0dad99e4c83148e24",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 594,
+              "bottom": 828
+            },
+            "scale": 0.9469387755102041,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 54,
+                  "top": 13,
+                  "width": 170,
+                  "height": 213,
+                  "pixels": 19547
+                },
+                "output": {
+                  "left": 46,
+                  "top": 42,
+                  "width": 161,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 356,
+                  "top": 8,
+                  "width": 168,
+                  "height": 212,
+                  "pixels": 18831
+                },
+                "output": {
+                  "left": 67,
+                  "top": 38,
+                  "width": 159,
+                  "height": 201
+                }
+              },
+              {
+                "source": {
+                  "left": 635,
+                  "top": 14,
+                  "width": 182,
+                  "height": 210,
+                  "pixels": 22440
+                },
+                "output": {
+                  "left": 65,
+                  "top": 43,
+                  "width": 172,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 900,
+                  "top": 35,
+                  "width": 204,
+                  "height": 165,
+                  "pixels": 19695
+                },
+                "output": {
+                  "left": 51,
+                  "top": 63,
+                  "width": 193,
+                  "height": 156
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Raised bent supporting hand, forward pressing palms, low planted palm lifting hips, two planted palms below crouched torso. Contacts measured per frame."
+            }
+          },
+          {
+            "state": "ledgeDrop",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-ledge-source.png",
+            "sourceImageSha256": "d0ed6a871d255a13ba92dbf3484ae3b70be43837e09f6bd0dad99e4c83148e24",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 825,
+              "bottom": 1111
+            },
+            "scale": 0.8375451263537906,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 78,
+                  "top": 12,
+                  "width": 134,
+                  "height": 260,
+                  "pixels": 20265
+                },
+                "output": {
+                  "left": 76,
+                  "top": 19,
+                  "width": 112,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 346,
+                  "top": 8,
+                  "width": 213,
+                  "height": 249,
+                  "pixels": 22912
+                },
+                "output": {
+                  "left": 65,
+                  "top": 15,
+                  "width": 178,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 629,
+                  "top": 18,
+                  "width": 206,
+                  "height": 248,
+                  "pixels": 24596
+                },
+                "output": {
+                  "left": 67,
+                  "top": 24,
+                  "width": 173,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 921,
+                  "top": 9,
+                  "width": 176,
+                  "height": 272,
+                  "pixels": 23088
+                },
+                "output": {
+                  "left": 77,
+                  "top": 16,
+                  "width": 147,
+                  "height": 228
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Two-hand hang, one remaining upper grip, two released open hands, lowering arms and freefall with hair rising."
+            }
+          },
+          {
+            "state": "ledgeJump",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/tifa-ledge-source.png",
+            "sourceImageSha256": "d0ed6a871d255a13ba92dbf3484ae3b70be43837e09f6bd0dad99e4c83148e24",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 1109,
+              "bottom": 1402
+            },
+            "scale": 0.8754716981132076,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 78,
+                  "top": 7,
+                  "width": 128,
+                  "height": 244,
+                  "pixels": 19845
+                },
+                "output": {
+                  "left": 74,
+                  "top": 13,
+                  "width": 112,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 340,
+                  "top": 12,
+                  "width": 206,
+                  "height": 259,
+                  "pixels": 23058
+                },
+                "output": {
+                  "left": 57,
+                  "top": 17,
+                  "width": 180,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 596,
+                  "top": 6,
+                  "width": 202,
+                  "height": 263,
+                  "pixels": 23505
+                },
+                "output": {
+                  "left": 36,
+                  "top": 12,
+                  "width": 177,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 887,
+                  "top": 17,
+                  "width": 197,
+                  "height": 220,
+                  "pixels": 22168
+                },
+                "output": {
+                  "left": 45,
+                  "top": 22,
+                  "width": 172,
+                  "height": 193
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Tucked hang, braced push with one remaining grip, released upward launch and tucked airborne recovery."
+            }
+          }
+        ],
+        "emptyRows": [
+          5,
+          6,
+          7
+        ],
+        "contactAnchorMeasurements": {
+          "ledgeCatch": [
+            {
+              "frame": 0,
+              "x": 228,
+              "y": 35,
+              "normalizedX": 0.890625,
+              "normalizedY": 0.13671875,
+              "baseline": "ledgeGrip",
+              "contact": false,
+              "supportHands": [
+                {
+                  "x": 135,
+                  "y": 126,
+                  "normalizedX": 0.52734375,
+                  "normalizedY": 0.4921875,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 1,
+              "x": 188,
+              "y": 31,
+              "normalizedX": 0.734375,
+              "normalizedY": 0.12109375,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 200,
+                  "y": 88,
+                  "normalizedX": 0.78125,
+                  "normalizedY": 0.34375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 2,
+              "x": 176,
+              "y": 31,
+              "normalizedX": 0.6875,
+              "normalizedY": 0.12109375,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 153,
+                  "y": 31,
+                  "normalizedX": 0.59765625,
+                  "normalizedY": 0.12109375,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 3,
+              "x": 165,
+              "y": 32,
+              "normalizedX": 0.64453125,
+              "normalizedY": 0.125,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 141,
+                  "y": 33,
+                  "normalizedX": 0.55078125,
+                  "normalizedY": 0.12890625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            }
+          ],
+          "ledgeHang": [
+            {
+              "frame": 0,
+              "x": 156,
+              "y": 24,
+              "normalizedX": 0.609375,
+              "normalizedY": 0.09375,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 130,
+                  "y": 24,
+                  "normalizedX": 0.5078125,
+                  "normalizedY": 0.09375,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 1,
+              "x": 162,
+              "y": 25,
+              "normalizedX": 0.6328125,
+              "normalizedY": 0.09765625,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 182,
+                  "y": 92,
+                  "normalizedX": 0.7109375,
+                  "normalizedY": 0.359375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 2,
+              "x": 171,
+              "y": 25,
+              "normalizedX": 0.66796875,
+              "normalizedY": 0.09765625,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 146,
+                  "y": 25,
+                  "normalizedX": 0.5703125,
+                  "normalizedY": 0.09765625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 3,
+              "x": 171,
+              "y": 24,
+              "normalizedX": 0.66796875,
+              "normalizedY": 0.09375,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            }
+          ],
+          "ledgeClimb": [
+            {
+              "frame": 0,
+              "x": 192,
+              "y": 76,
+              "normalizedX": 0.75,
+              "normalizedY": 0.296875,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 126,
+                  "y": 114,
+                  "normalizedX": 0.4921875,
+                  "normalizedY": 0.4453125,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 1,
+              "x": 210,
+              "y": 103,
+              "normalizedX": 0.8203125,
+              "normalizedY": 0.40234375,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 172,
+                  "y": 103,
+                  "normalizedX": 0.671875,
+                  "normalizedY": 0.40234375,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 2,
+              "x": 212,
+              "y": 205,
+              "normalizedX": 0.828125,
+              "normalizedY": 0.80078125,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 153,
+                  "y": 131,
+                  "normalizedX": 0.59765625,
+                  "normalizedY": 0.51171875,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 3,
+              "x": 229,
+              "y": 205,
+              "normalizedX": 0.89453125,
+              "normalizedY": 0.80078125,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 145,
+                  "y": 209,
+                  "normalizedX": 0.56640625,
+                  "normalizedY": 0.81640625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            }
+          ],
+          "ledgeDrop": [
+            {
+              "frame": 0,
+              "x": 158,
+              "y": 31,
+              "normalizedX": 0.6171875,
+              "normalizedY": 0.12109375,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 131,
+                  "y": 31,
+                  "normalizedX": 0.51171875,
+                  "normalizedY": 0.12109375,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 1,
+              "x": 159,
+              "y": 28,
+              "normalizedX": 0.62109375,
+              "normalizedY": 0.109375,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 227,
+                  "y": 52,
+                  "normalizedX": 0.88671875,
+                  "normalizedY": 0.203125,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 2,
+              "x": 159,
+              "y": 28,
+              "normalizedX": 0.62109375,
+              "normalizedY": 0.109375,
+              "baseline": "ledgeGrip",
+              "contact": false,
+              "supportHands": [
+                {
+                  "x": 190,
+                  "y": 41,
+                  "normalizedX": 0.7421875,
+                  "normalizedY": 0.16015625,
+                  "contact": false
+                },
+                {
+                  "x": 90,
+                  "y": 41,
+                  "normalizedX": 0.3515625,
+                  "normalizedY": 0.16015625,
+                  "contact": false
+                }
+              ],
+              "measurement": "Carried edge reference after release, not an invented hand contact; free hands listed separately."
+            },
+            {
+              "frame": 3,
+              "x": 159,
+              "y": 28,
+              "normalizedX": 0.62109375,
+              "normalizedY": 0.109375,
+              "baseline": "ledgeGrip",
+              "contact": false,
+              "supportHands": [
+                {
+                  "x": 210,
+                  "y": 139,
+                  "normalizedX": 0.8203125,
+                  "normalizedY": 0.54296875,
+                  "contact": false
+                },
+                {
+                  "x": 95,
+                  "y": 149,
+                  "normalizedX": 0.37109375,
+                  "normalizedY": 0.58203125,
+                  "contact": false
+                }
+              ],
+              "measurement": "Carried edge reference after release, not an invented hand contact; free hands listed separately."
+            }
+          ],
+          "ledgeJump": [
+            {
+              "frame": 0,
+              "x": 160,
+              "y": 25,
+              "normalizedX": 0.625,
+              "normalizedY": 0.09765625,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 132,
+                  "y": 25,
+                  "normalizedX": 0.515625,
+                  "normalizedY": 0.09765625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 1,
+              "x": 177,
+              "y": 35,
+              "normalizedX": 0.69140625,
+              "normalizedY": 0.13671875,
+              "baseline": "ledgeGrip",
+              "contact": true,
+              "supportHands": [
+                {
+                  "x": 224,
+                  "y": 53,
+                  "normalizedX": 0.875,
+                  "normalizedY": 0.20703125,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually inspected approximate palm center in native normalized pixels, not a canonical source-game anchor."
+            },
+            {
+              "frame": 2,
+              "x": 177,
+              "y": 35,
+              "normalizedX": 0.69140625,
+              "normalizedY": 0.13671875,
+              "baseline": "ledgeGrip",
+              "contact": false,
+              "supportHands": [
+                {
+                  "x": 194,
+                  "y": 31,
+                  "normalizedX": 0.7578125,
+                  "normalizedY": 0.12109375,
+                  "contact": false
+                },
+                {
+                  "x": 93,
+                  "y": 114,
+                  "normalizedX": 0.36328125,
+                  "normalizedY": 0.4453125,
+                  "contact": false
+                }
+              ],
+              "measurement": "Carried edge reference after release, not an invented hand contact; free hands listed separately."
+            },
+            {
+              "frame": 3,
+              "x": 177,
+              "y": 35,
+              "normalizedX": 0.69140625,
+              "normalizedY": 0.13671875,
+              "baseline": "ledgeGrip",
+              "contact": false,
+              "supportHands": [
+                {
+                  "x": 199,
+                  "y": 39,
+                  "normalizedX": 0.77734375,
+                  "normalizedY": 0.15234375,
+                  "contact": false
+                },
+                {
+                  "x": 76,
+                  "y": 113,
+                  "normalizedX": 0.296875,
+                  "normalizedY": 0.44140625,
+                  "contact": false
+                }
+              ],
+              "measurement": "Carried edge reference after release, not an invented hand contact; free hands listed separately."
+            }
+          ]
+        }
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "Base and previous presentation references inspected before generation. All normalized state rows and 20 individual ledge crops reviewed. Missing chargeLoop supplied by four genuinely held native poses. Per-frame palm anchors for catch/hang/climb, release contacts marked false. No inactive row counted as art."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "sourceGameAsset": false,
+        "nativeGeneratedArtwork": true,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-503ccb81-5dd8-43f1-8f49-049c4be0d5c1.png",
+        "promptFile": "docs/combat-fidelity-wave3-2026-10-18/tifa-sources/native-prompts.json",
+        "prompt": "Create a native pixel-art game animation sprite atlas for adult TIFA LOCKHART from ORIGINAL FINAL FANTASY VII (1997), matching the attached existing game references exactly for identity/style: long dark brown hair with a tied flowing end, white sleeveless crop top, black suspenders, short black skirt, belt, red leather martial-arts gloves/wrist guards, red-brown combat boots and socks. Keep the same outfit and consistent adult proportions in every frame. Original 1997 outfit, no Remake black under-top redesign. She fights UNARMED using real fists, elbows, knees and kicks: absolutely no sword, staff, gun, shield, summoned creature, laser, magic orb or copied Cloud pose. Compact detailed crisp pixel sprite rendering with readable face and limbs, not a photorealistic painting. All subjects face right, with natural torso rotation. Transparent RGBA background, no scenery, floor, horizon, shadows on ground, painted ledge, grid lines, labels, text, borders or decoration. Exactly FOUR equal columns, four sequential full-body poses per row, no fifth figure or duplicate. All hair, glove, fingers and boot tips must stay inside their own cell with transparent gutters, at least 24 transparent pixels between the complete subject and each cell boundary. Keep head/body size consistent between rows; allow room for long hair without overlap. Each frame must change limb anatomy, torso bend, hand position and balance visibly: not a translated duplicate and not a pose changed only by color or glow. NO energy effects, punch trails, detached white flecks or blue swooshes anywhere. Every row is a different named state, not a continuation of the previous row. This is newly generated 2D adapted animation, not traced official game frames.\nPortrait 4:5 canvas, ideally 1024x1280. EXACTLY FIVE ROWS by FOUR COLUMNS = 20 full sprites. Dedicated ledge traversal states. NO painted ledge, floor, rock, platform, edge line or prop. Use her red GLOVED HANDS to grasp an invisible horizontal ledge. Keep a clear grip point near the upper right of each cell, roughly x65% y20%, and a complete suspended body below it, with long hair and both boots visible. Four actual anatomical poses per row; fingers and support hands must read clearly. Long hair flows naturally below shoulders without crossing cell boundaries. Choreography:\nRow1 ledgeCatch: frame1 she reaches right hand upward-right with body airborne and knees trailing → frame2 red right glove hooks invisible edge, arm stretched overhead and left hand reaching up → frame3 both gloves grip overhead, chest swings inward and knees tuck → frame4 both elbows flex slightly and boots dangle as she settles beneath the grip. Not holding a weapon or punching skyward.\nRow2 ledgeHang: frame1 both hands grip overhead, shoulders well below hands, knees loosely bent → frame2 left elbow bends and legs swing back while right glove stays at fixed edge → frame3 both elbows extend, front knee draws up and torso shifts inward → frame4 right elbow bends slightly while legs swing down and left glove still holds overhead. Each pose remains genuinely hanging and differs in shoulders, elbows and legs. No standing pose.\nRow3 ledgeClimb: frame1 both arms bend pulling chest toward edge, knees tucked below → frame2 chin reaches invisible edge, one knee raised close to chest, wrists rotate to press down → frame3 right palm presses down near waist while torso and hips lift above edge, left knee hooks over imaginary top → frame4 low crouch above the former edge, one palm braced down near boot and other hand free for balance. Four steps of real pull-up; keep entire body inside cell even above the grip.\nRow4 ledgeDrop: frame1 two-handed hang, knees tucked → frame2 one glove releases while the other still hooks above, torso turns away → frame3 both open hands release, arms still raised as body falls, one knee opens → frame4 arms lower sideways and both boots point downward in freefall, hair streaming upward slightly. No ground or landing.\nRow5 ledgeJump: frame1 hanging with both knees sharply tucked → frame2 arms push away from invisible edge, torso coils up and front knee rises → frame3 both gloves release, body launches upward-left with one knee raised and other leg trailing → frame4 upward airborne arc, both hands free and knees recovering under hips. Not a grounded jump-start pose. No sword, rope, floating ledge or copied Cloud anatomy.",
+        "promptSha256": "16e36044be271c480be1bc12e76641a1f44734b802246e070b139baabd0ee4c5",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [],
+        "conditioning": "Only exported entity-builder alpha segmentation and nearest-neighbor normalization, transparent atlas assembly and technical crop/contact output. No procedural poses, copied frames, limbs or equipment redrawn by code."
+      }
+    }
+  ]
+}

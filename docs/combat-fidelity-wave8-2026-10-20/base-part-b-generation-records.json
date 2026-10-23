@@ -1,0 +1,1190 @@
+{
+  "schemaVersion": 1,
+  "provider": "OpenAI",
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "canon1to1Verified": false,
+  "records": [
+    {
+      "heroId": "kiryu_yakuza",
+      "name": "Kazuma Kiryu",
+      "universe": "Yakuza",
+      "sourceWork": "Yakuza Kiwami (2016)",
+      "sourceReference": "Kiryu Kiwami 2016 costume and physical Dragon style; project special is an authored physical combination, not a claim to a uniquely named original technique.",
+      "version": "Yakuza Kiwami (2016)",
+      "ability": "Direct du Dragon de Dojima",
+      "prompt": "Create ONE new native detailed 2D pixel-art fighting-game BASIC sprite atlas of the SAME fictional game character as the attached accepted 32-pose reference. This is new native drawing, not procedural reuse, not a real actor portrait.\nIDENTITY/VERSION: Kazuma Kiryu in Yakuza Kiwami 2016: mature Japanese game character, short black slicked-back hair, light grey suit with matching grey trousers, open-collar burgundy shirt and light shoes. Broad athletic adult build. Empty hands, compact Dragon of Dojima boxing/brawling stance. No weapon.\nUse the accepted reference costume and face exactly. Physical body scale must remain consistent across all16cells: standing about190px body in a256pxcell, grounded baseline244; preserve shorter crouching/recoil height. All bodies face RIGHT.\nMANDATORY GRID: EXACTLY FOUR COLUMNS by FOUR ROWS, 16 visibly DIFFERENT poses, square1024x1024 transparent RGBA canvas. Four equal independent cells per row. Fully isolated transparent gutters at least18px, every head, weapon, hair, hand and shoe fully contained inside its cell. No limb or bat tip touches a cell boundary. No labels, text, counters, floor, boxes or background.\nROW1 IDLE: four different subtle ready stances: relaxed ready, breathing shoulder lift, slight forward weight transfer, ready stance reset; arms/head/torso genuinely change, not repeated translations.\nROW2 RUN: four different phases of a real run: left foot lead/right arm forward, airborne passing step, right foot lead/left arm forward, back leg gathering. Props stay in hand.\nROW3 ATTACK: Compact physical Dragon of Dojima straight punch: guard, hip turn and extended lead straight punch, body hook chamber, recover. Empty hands, no weapon.\nROW4 HIT: four non-graphic recoil poses: shoulder flinch, torso twists back, low stagger with one arm protecting head, crouched recovery. No cuts/blood, no weapon stabbing the owner.\nSixteen distinct native full-body poses, all same costume, original game identity, all limbs and equipment hand drawn. Compact motion lines may trace the actual limb/weapon but no rays, energy sphere or summoned animal. Render only the sprite art, true alpha background.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-prompts/kiryu_yakuza.txt",
+      "referenceAsset": "/sprites/generated/heroes/yakuza/kiryu-yakuza.png",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-references/kiryu_yakuza.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave8-2026-10-20/part-b-sources/kiryu_yakuza-initial.png",
+      "referenceContextSha256": "62886e62129fe0c955924e0a9940d0175009abe3f99660c49b3ed3551a073d02",
+      "oldReferenceArchive": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-references/kiryu_yakuza-old-base.png",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-41a2bbaa-9789-4b9c-9b0e-ba6410115d5d.png",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave8-2026-10-20/part-b-source-facts.json"
+      ],
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          62,
+          15,
+          143,
+          226
+        ],
+        "referenceNormalizedBodyHeight": 226,
+        "referencePackingScale": 0.703030303030303,
+        "nativeReferenceBodyHeight": 321.4655172413793,
+        "sourceWideRenderPixelsPerNativePixel": 0.5910431751139716,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Different native grid aspect and raster dimensions; ratio explicitly reported. Each original source is independently calibrated once from its idle standing body to190, not calibrated per state. No row-specific pose equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.84070796460177,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              62,
+              15,
+              143,
+              226
+            ],
+            "normalizedBodyHeight": 226,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              62,
+              15,
+              143,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 321.4655172413793,
+            "nativeReferenceBodyHeight": 321.4655172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8407079646017699,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              62.8448275862069,
+              26.267241379310345,
+              203.4051724137931,
+              321.4655172413793
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              62.8448275862069,
+              26.267241379310345,
+              203.4051724137931,
+              321.4655172413793
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.7668275677125235,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              31,
+              22,
+              210,
+              219
+            ],
+            "normalizedBodyHeight": 219,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              62,
+              15,
+              143,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 284.1336206896552,
+            "nativeReferenceBodyHeight": 321.4655172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8407079646017699,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              30.594827586206897,
+              10.297413793103448,
+              272.4568965517241,
+              284.1336206896552
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              62.8448275862069,
+              26.267241379310345,
+              203.4051724137931,
+              321.4655172413793
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 1.0699919549477073,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              63,
+              81,
+              137,
+              162
+            ],
+            "normalizedBodyHeight": 162,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              62,
+              15,
+              143,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 293.2758620689655,
+            "nativeReferenceBodyHeight": 321.4655172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8407079646017699,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              39.62068965517241,
+              15.672413793103447,
+              248.01724137931032,
+              293.2758620689655
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              62.8448275862069,
+              26.267241379310345,
+              203.4051724137931,
+              321.4655172413793
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.8712791633145617,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              49,
+              65,
+              176,
+              177
+            ],
+            "normalizedBodyHeight": 177,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              62,
+              15,
+              143,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 260.9224137931035,
+            "nativeReferenceBodyHeight": 321.4655172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8407079646017699,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              39.94827586206897,
+              15.422413793103448,
+              259.44827586206895,
+              260.9224137931035
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              62.8448275862069,
+              26.267241379310345,
+              203.4051724137931,
+              321.4655172413793
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "majima_yakuza",
+      "name": "Goro Majima",
+      "universe": "Yakuza",
+      "sourceWork": "Yakuza Kiwami (2016)",
+      "sourceReference": "Kiwami 2016 signature snakeskin outfit and Mad Dog knife fighting; adaptation of the combat style rather than literal original animation frames.",
+      "version": "Yakuza Kiwami (2016)",
+      "ability": "Tantō du Mad Dog",
+      "prompt": "Create ONE new native detailed 2D pixel-art fighting-game BASIC sprite atlas of the SAME fictional game character as the attached accepted 32-pose reference. This is new native drawing, not procedural reuse, not a real actor portrait.\nIDENTITY/VERSION: Goro Majima in Yakuza Kiwami 2016: adult Japanese game character, lean wiry build, black undercut slicked back, black patch covering his LEFT eye, open yellow-tan snakeskin jacket showing chest tattoos, black leather trousers, black gloves, gold chain, dark shoes. A short steel tanto knife held in his right hand; actual small blade, not a katana or bat.\nUse the accepted reference costume and face exactly. Physical body scale must remain consistent across all16cells: standing about190px body in a256pxcell, grounded baseline244; preserve shorter crouching/recoil height. All bodies face RIGHT.\nMANDATORY GRID: EXACTLY FOUR COLUMNS by FOUR ROWS, 16 visibly DIFFERENT poses, square1024x1024 transparent RGBA canvas. Four equal independent cells per row. Fully isolated transparent gutters at least18px, every head, weapon, hair, hand and shoe fully contained inside its cell. No limb or bat tip touches a cell boundary. No labels, text, counters, floor, boxes or background.\nROW1 IDLE: four different subtle ready stances: relaxed ready, breathing shoulder lift, slight forward weight transfer, ready stance reset; arms/head/torso genuinely change, not repeated translations.\nROW2 RUN: four different phases of a real run: left foot lead/right arm forward, airborne passing step, right foot lead/left arm forward, back leg gathering. Props stay in hand.\nROW3 ATTACK: Right hand small tanto slash: chamber low, step and extend a short horizontal knife cut, turn for a second compact cut, recover to low guard. No longsword.\nROW4 HIT: four non-graphic recoil poses: shoulder flinch, torso twists back, low stagger with one arm protecting head, crouched recovery. No cuts/blood, no weapon stabbing the owner.\nSixteen distinct native full-body poses, all same costume, original game identity, all limbs and equipment hand drawn. Compact motion lines may trace the actual limb/weapon but no rays, energy sphere or summoned animal. Render only the sprite art, true alpha background.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-prompts/majima_yakuza.txt",
+      "referenceAsset": "/sprites/generated/heroes/yakuza/majima-yakuza.png",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-references/majima_yakuza.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave8-2026-10-20/part-b-sources/majima_yakuza-initial.png",
+      "referenceContextSha256": "f0254da259df79de5919eb9b9fb36f7e3a20f745bd13d09f3f242a72d7516146",
+      "oldReferenceArchive": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-references/majima_yakuza-old-base.png",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-349edfc2-cd00-4d6a-9c60-f4d78147959e.png",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave8-2026-10-20/part-b-source-facts.json"
+      ],
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          54,
+          14,
+          155,
+          227
+        ],
+        "referenceNormalizedBodyHeight": 227,
+        "referencePackingScale": 0.6863905325443787,
+        "nativeReferenceBodyHeight": 330.71551724137936,
+        "sourceWideRenderPixelsPerNativePixel": 0.5745118994864843,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Different native grid aspect and raster dimensions; ratio explicitly reported. Each original source is independently calibrated once from its idle standing body to190, not calibrated per state. No row-specific pose equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.8370044052863436,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              54,
+              14,
+              155,
+              227
+            ],
+            "normalizedBodyHeight": 227,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              54,
+              14,
+              155,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 330.71551724137936,
+            "nativeReferenceBodyHeight": 330.71551724137936,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8370044052863436,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              48.37068965517241,
+              13.913793103448276,
+              225.8189655172414,
+              330.71551724137936
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              48.37068965517241,
+              13.913793103448276,
+              225.8189655172414,
+              330.71551724137936
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.8518624716523733,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              57,
+              45,
+              177,
+              193
+            ],
+            "normalizedBodyHeight": 193,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              54,
+              14,
+              155,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 286.17241379310343,
+            "nativeReferenceBodyHeight": 330.71551724137936,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8370044052863436,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              51.48275862068966,
+              19.482758620689655,
+              262.44827586206895,
+              286.17241379310343
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              48.37068965517241,
+              13.913793103448276,
+              225.8189655172414,
+              330.71551724137936
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 1.0648280895654665,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              58,
+              105,
+              145,
+              137
+            ],
+            "normalizedBodyHeight": 137,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              54,
+              14,
+              155,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 253.92241379310343,
+            "nativeReferenceBodyHeight": 330.71551724137936,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8370044052863436,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              27.70689655172414,
+              21.853448275862068,
+              268.75,
+              253.92241379310343
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              48.37068965517241,
+              13.913793103448276,
+              225.8189655172414,
+              330.71551724137936
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.7528086958788415,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              64,
+              27,
+              162,
+              214
+            ],
+            "normalizedBodyHeight": 214,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              54,
+              14,
+              155,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 280.41379310344826,
+            "nativeReferenceBodyHeight": 330.71551724137936,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8370044052863436,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              72.93103448275862,
+              20.310344827586206,
+              212.2758620689655,
+              280.41379310344826
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              48.37068965517241,
+              13.913793103448276,
+              225.8189655172414,
+              330.71551724137936
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "ichiban_yakuza",
+      "name": "Ichiban Kasuga",
+      "universe": "Yakuza",
+      "sourceWork": "Yakuza: Like a Dragon (2020)",
+      "sourceReference": "Hero job uses a bat; Giga Swing damages a target and surrounding enemies. 2020 original version, no Infinite Wealth outfit or invented transformation.",
+      "version": "Yakuza: Like a Dragon (2020)",
+      "ability": "Batte du métier Hero d’Ichiban",
+      "prompt": "Create ONE new native detailed 2D pixel-art fighting-game BASIC sprite atlas of the SAME fictional game character as the attached accepted 32-pose reference. This is new native drawing, not procedural reuse, not a real actor portrait.\nIDENTITY/VERSION: Ichiban Kasuga from Yakuza Like a Dragon 2020: adult Japanese game character, broad expressive face, messy black afro and short goatee/stubble, burgundy-red suit and matching trousers, open white shirt with broad collar, gold chain, dark shoes. Carry a visibly physical plain rugged metal Hero baseball bat with wrapped grip. Not a glowing sword, not the Infinite Wealth costume.\nUse the accepted reference costume and face exactly. Physical body scale must remain consistent across all16cells: standing about190px body in a256pxcell, grounded baseline244; preserve shorter crouching/recoil height. All bodies face RIGHT.\nMANDATORY GRID: EXACTLY FOUR COLUMNS by FOUR ROWS, 16 visibly DIFFERENT poses, square1024x1024 transparent RGBA canvas. Four equal independent cells per row. Fully isolated transparent gutters at least18px, every head, weapon, hair, hand and shoe fully contained inside its cell. No limb or bat tip touches a cell boundary. No labels, text, counters, floor, boxes or background.\nROW1 IDLE: four different subtle ready stances: relaxed ready, breathing shoulder lift, slight forward weight transfer, ready stance reset; arms/head/torso genuinely change, not repeated translations.\nROW2 RUN: four different phases of a real run: left foot lead/right arm forward, airborne passing step, right foot lead/left arm forward, back leg gathering. Props stay in hand.\nROW3 ATTACK: Two-hand physical Hero baseball bat strike: wind up beside the shoulder, swing the actual bat across the front, follow through with hips and feet, settle into ready grip. Never a gun or glowing sword.\nROW4 HIT: four non-graphic recoil poses: shoulder flinch, torso twists back, low stagger with one arm protecting head, crouched recovery. No cuts/blood, no weapon stabbing the owner.\nSixteen distinct native full-body poses, all same costume, original game identity, all limbs and equipment hand drawn. Compact motion lines may trace the actual limb/weapon but no rays, energy sphere or summoned animal. Render only the sprite art, true alpha background.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-prompts/ichiban_yakuza.txt",
+      "referenceAsset": "/sprites/generated/heroes/yakuza/ichiban-yakuza.png",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-references/ichiban_yakuza.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave8-2026-10-20/part-b-sources/ichiban_yakuza-initial.png",
+      "referenceContextSha256": "97d4030b02c7bbd0b50e54ea16fc10cf45bd4d5c92d0914298e0610e2de128fe",
+      "oldReferenceArchive": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-references/ichiban_yakuza-old-base.png",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-c7f9b6ac-f6df-4b88-8d2d-60203aa4f089.png",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave8-2026-10-20/part-b-source-facts.json"
+      ],
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          55,
+          14,
+          159,
+          227
+        ],
+        "referenceNormalizedBodyHeight": 227,
+        "referencePackingScale": 0.6987951807228916,
+        "nativeReferenceBodyHeight": 324.84482758620686,
+        "sourceWideRenderPixelsPerNativePixel": 0.584894644657927,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Different native grid aspect and raster dimensions; ratio explicitly reported. Each original source is independently calibrated once from its idle standing body to190, not calibrated per state. No row-specific pose equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.8370044052863437,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              55,
+              14,
+              159,
+              227
+            ],
+            "normalizedBodyHeight": 227,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              55,
+              14,
+              159,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 324.84482758620686,
+            "nativeReferenceBodyHeight": 324.84482758620686,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8370044052863436,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              52.86206896551724,
+              16,
+              227.53448275862067,
+              324.84482758620686
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              52.86206896551724,
+              16,
+              227.53448275862067,
+              324.84482758620686
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.7941457459795128,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              37,
+              44,
+              198,
+              199
+            ],
+            "normalizedBodyHeight": 199,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              55,
+              14,
+              159,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 270.19396551724134,
+            "nativeReferenceBodyHeight": 324.84482758620686,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8370044052863436,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              32.71551724137931,
+              13.357758620689655,
+              268.8362068965517,
+              270.19396551724134
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              52.86206896551724,
+              16,
+              227.53448275862067,
+              324.84482758620686
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 1.1420572156467281,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              62,
+              104,
+              135,
+              139
+            ],
+            "normalizedBodyHeight": 139,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              55,
+              14,
+              159,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 271.4094827586207,
+            "nativeReferenceBodyHeight": 324.84482758620686,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8370044052863436,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              26.905172413793103,
+              47.9094827586207,
+              263.59913793103453,
+              271.4094827586207
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              52.86206896551724,
+              16,
+              227.53448275862067,
+              324.84482758620686
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.7991879411920813,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              41,
+              40,
+              189,
+              200
+            ],
+            "normalizedBodyHeight": 200,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              55,
+              14,
+              159,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 273.2758620689655,
+            "nativeReferenceBodyHeight": 324.84482758620686,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8370044052863436,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              37.73275862068966,
+              9.46551724137931,
+              258.24568965517244,
+              273.2758620689655
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              52.86206896551724,
+              16,
+              227.53448275862067,
+              324.84482758620686
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "saejima_yakuza",
+      "name": "Taiga Saejima",
+      "universe": "Yakuza",
+      "sourceWork": "Yakuza 5 (2012)",
+      "sourceReference": "Yakuza 5 Herculean Spirit prevents flinching in Heat; this project adapts it as bounded self guard with zero enemy damage, not resurrection or healing.",
+      "version": "Yakuza 5 (2012)",
+      "ability": "Poing de Saejima",
+      "prompt": "Create ONE new native detailed 2D pixel-art fighting-game BASIC sprite atlas of the SAME fictional game character as the attached accepted 32-pose reference. This is new native drawing, not procedural reuse, not a real actor portrait.\nIDENTITY/VERSION: Taiga Saejima in Yakuza 5 after the prison escape: very broad heavily built adult Japanese game character, SHORT close-cropped black BUZZ CUT, olive-green heavy parka with tan fur hood trim over black shirt, grey-green camouflage cargo trousers and heavy black boots. Empty fists. Do not preserve the old reference long hair or ponytail.\nUse the accepted reference costume and face exactly. Physical body scale must remain consistent across all16cells: standing about190px body in a256pxcell, grounded baseline244; preserve shorter crouching/recoil height. All bodies face RIGHT.\nMANDATORY GRID: EXACTLY FOUR COLUMNS by FOUR ROWS, 16 visibly DIFFERENT poses, square1024x1024 transparent RGBA canvas. Four equal independent cells per row. Fully isolated transparent gutters at least18px, every head, weapon, hair, hand and shoe fully contained inside its cell. No limb or bat tip touches a cell boundary. No labels, text, counters, floor, boxes or background.\nROW1 IDLE: four different subtle ready stances: relaxed ready, breathing shoulder lift, slight forward weight transfer, ready stance reset; arms/head/torso genuinely change, not repeated translations.\nROW2 RUN: four different phases of a real run: left foot lead/right arm forward, airborne passing step, right foot lead/left arm forward, back leg gathering. Props stay in hand.\nROW3 ATTACK: A short heavy physical punch: hands up, shoulder turn, extend a grounded straight punch, retract to guard. This BASIC attack is distinct from his purely defensive special. No gun or tiger.\nROW4 HIT: four non-graphic recoil poses: shoulder flinch, torso twists back, low stagger with one arm protecting head, crouched recovery. No cuts/blood, no weapon stabbing the owner.\nSixteen distinct native full-body poses, all same costume, original game identity, all limbs and equipment hand drawn. Compact motion lines may trace the actual limb/weapon but no rays, energy sphere or summoned animal. Render only the sprite art, true alpha background.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-prompts/saejima_yakuza.txt",
+      "referenceAsset": "/sprites/generated/heroes/yakuza/saejima-yakuza.png",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-references/saejima_yakuza.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave8-2026-10-20/part-b-sources/saejima_yakuza-initial.png",
+      "referenceContextSha256": "1b62a09a027fcc4386bf2c8821df61b0bb99ab38438d63fec211fe73bda083d3",
+      "oldReferenceArchive": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-references/saejima_yakuza-old-base.png",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-1dd99781-e350-47b6-8154-791231cb6371.png",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave8-2026-10-20/part-b-source-facts.json"
+      ],
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          58,
+          16,
+          152,
+          226
+        ],
+        "referenceNormalizedBodyHeight": 226,
+        "referencePackingScale": 0.6744186046511628,
+        "nativeReferenceBodyHeight": 335.1034482758621,
+        "sourceWideRenderPixelsPerNativePixel": 0.5669890924058448,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Different native grid aspect and raster dimensions; ratio explicitly reported. Each original source is independently calibrated once from its idle standing body to190, not calibrated per state. No row-specific pose equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.84070796460177,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              58,
+              16,
+              152,
+              226
+            ],
+            "normalizedBodyHeight": 226,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              58,
+              16,
+              152,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 335.1034482758621,
+            "nativeReferenceBodyHeight": 335.1034482758621,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8407079646017699,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              52.96551724137931,
+              17.482758620689655,
+              225.3793103448276,
+              335.1034482758621
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              52.96551724137931,
+              17.482758620689655,
+              225.3793103448276,
+              335.1034482758621
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.7429512245317966,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              33,
+              36,
+              205,
+              204
+            ],
+            "normalizedBodyHeight": 204,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              58,
+              16,
+              152,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 267.3103448275862,
+            "nativeReferenceBodyHeight": 335.1034482758621,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8407079646017699,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              31.620689655172413,
+              20.620689655172413,
+              268.6206896551724,
+              267.3103448275862
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              52.96551724137931,
+              17.482758620689655,
+              225.3793103448276,
+              335.1034482758621
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 1.0631045482609591,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              61,
+              82,
+              136,
+              160
+            ],
+            "normalizedBodyHeight": 160,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              58,
+              16,
+              152,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 300,
+            "nativeReferenceBodyHeight": 335.1034482758621,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8407079646017699,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              31.75,
+              9.75,
+              255,
+              300
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              52.96551724137931,
+              17.482758620689655,
+              225.3793103448276,
+              335.1034482758621
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.708736365507306,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              41,
+              27,
+              182,
+              213
+            ],
+            "normalizedBodyHeight": 213,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              58,
+              16,
+              152,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 266.25,
+            "nativeReferenceBodyHeight": 335.1034482758621,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8407079646017699,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              47.75,
+              5.75,
+              227.5,
+              266.25
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              52.96551724137931,
+              17.482758620689655,
+              225.3793103448276,
+              335.1034482758621
+            ]
+          }
+        }
+      }
+    },
+    {
+      "heroId": "akiyama_yakuza",
+      "name": "Shun Akiyama",
+      "universe": "Yakuza",
+      "sourceWork": "Yakuza 5 (2012)",
+      "sourceReference": "Yakuza 5 Launch Strike launches with kicks and follows up in the air; actual physical kick choreography, no gun or magical force. Dark trousers have a lit charcoal-grey palette, documented adaptation rather than certified original color.",
+      "version": "Yakuza 5 (2012)",
+      "ability": "Coup de pied d’Akiyama",
+      "prompt": "Create ONE new native detailed 2D pixel-art fighting-game BASIC sprite atlas of the SAME fictional game character as the attached accepted 32-pose reference. This is new native drawing, not procedural reuse, not a real actor portrait.\nIDENTITY/VERSION: Shun Akiyama in Yakuza 5 2012: lean adult Japanese game character, medium tousled dark hair swept back, subtle stubble, burgundy blazer over dark charcoal open-collar shirt, distinctly GREY trousers, black belt and dark leather shoes. Slim relaxed shoulders and long agile legs. Empty hands. Correct the old reference burgundy trousers to grey.\nUse the accepted reference costume and face exactly. Physical body scale must remain consistent across all16cells: standing about190px body in a256pxcell, grounded baseline244; preserve shorter crouching/recoil height. All bodies face RIGHT.\nMANDATORY GRID: EXACTLY FOUR COLUMNS by FOUR ROWS, 16 visibly DIFFERENT poses, square1024x1024 transparent RGBA canvas. Four equal independent cells per row. Fully isolated transparent gutters at least18px, every head, weapon, hair, hand and shoe fully contained inside its cell. No limb or bat tip touches a cell boundary. No labels, text, counters, floor, boxes or background.\nROW1 IDLE: four different subtle ready stances: relaxed ready, breathing shoulder lift, slight forward weight transfer, ready stance reset; arms/head/torso genuinely change, not repeated translations.\nROW2 RUN: four different phases of a real run: left foot lead/right arm forward, airborne passing step, right foot lead/left arm forward, back leg gathering. Props stay in hand.\nROW3 ATTACK: Akiyama fights with kicks: knee chamber, extend a side kick, turn hips into a second high kick, retract leg and land balanced. No punch substitute or gun.\nROW4 HIT: four non-graphic recoil poses: shoulder flinch, torso twists back, low stagger with one arm protecting head, crouched recovery. No cuts/blood, no weapon stabbing the owner.\nSixteen distinct native full-body poses, all same costume, original game identity, all limbs and equipment hand drawn. Compact motion lines may trace the actual limb/weapon but no rays, energy sphere or summoned animal. Render only the sprite art, true alpha background.",
+      "promptFile": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-prompts/akiyama_yakuza.txt",
+      "referenceAsset": "/sprites/generated/heroes/yakuza/akiyama-yakuza.png",
+      "referenceImage": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-references/akiyama_yakuza.png",
+      "referenceOriginalImage": "docs/combat-fidelity-wave8-2026-10-20/part-b-sources/akiyama_yakuza-initial.png",
+      "referenceContextSha256": "982d4e0e6338ba5f95a9182031f64a75314d5f1e65472106a6863ae52ff850a6",
+      "oldReferenceArchive": "docs/combat-fidelity-wave8-2026-10-20/base-part-b-references/akiyama_yakuza-old-base.png",
+      "reviewed": true,
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "file": "/workspace/generated_images/exec-536c6181-bb65-4413-9cb9-a804048cc1c7.png",
+      "sourceFacts": [
+        "docs/combat-fidelity-wave8-2026-10-20/part-b-source-facts.json"
+      ],
+      "sourceWideBodyCalibration": {
+        "method": "single-source-wide-body-scale",
+        "calibrationTargetBodyHeight": 190,
+        "referenceState": "idle",
+        "referenceCell": 0,
+        "referenceBodyBounds": [
+          73,
+          13,
+          132,
+          226
+        ],
+        "referenceNormalizedBodyHeight": 226,
+        "referencePackingScale": 0.6904761904761905,
+        "nativeReferenceBodyHeight": 327.3103448275862,
+        "sourceWideRenderPixelsPerNativePixel": 0.5804888327012221,
+        "sourceDensityRatio": 1,
+        "bodyOnlyRoi": true,
+        "preservesNativePoseHeightRatio": true,
+        "normalizationNeverRedrawsBody": true,
+        "referenceAtlasDensityComparison": {
+          "presentationNativeWidth": 887,
+          "basicNativeWidth": 1254,
+          "basicToPresentationPixelDensityRatio": 0.7073365231259968,
+          "note": "Different native grid aspect and raster dimensions; ratio explicitly reported. Each original source is independently calibrated once from its idle standing body to190, not calibrated per state. No row-specific pose equalization."
+        }
+      },
+      "statureByState": {
+        "idle": {
+          "renderScale": 0.8407079646017699,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              73,
+              13,
+              132,
+              226
+            ],
+            "normalizedBodyHeight": 226,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              73,
+              13,
+              132,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 327.3103448275862,
+            "nativeReferenceBodyHeight": 327.3103448275862,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8407079646017699,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              76.89655172413794,
+              11.448275862068966,
+              191.17241379310346,
+              327.3103448275862
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              76.89655172413794,
+              11.448275862068966,
+              191.17241379310346,
+              327.3103448275862
+            ]
+          }
+        },
+        "run": {
+          "renderScale": 0.7781552886641383,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              42,
+              22,
+              183,
+              221
+            ],
+            "normalizedBodyHeight": 221,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              73,
+              13,
+              132,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 296.2543103448276,
+            "nativeReferenceBodyHeight": 327.3103448275862,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8407079646017699,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              41.68103448275862,
+              14.405172413793103,
+              245.3146551724138,
+              296.2543103448276
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              76.89655172413794,
+              11.448275862068966,
+              191.17241379310346,
+              327.3103448275862
+            ]
+          }
+        },
+        "attack": {
+          "renderScale": 1.0383744205646859,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              73,
+              64,
+              107,
+              172
+            ],
+            "normalizedBodyHeight": 172,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              73,
+              13,
+              132,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 307.67241379310343,
+            "nativeReferenceBodyHeight": 327.3103448275862,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8407079646017699,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              57.78879310344828,
+              5.788793103448276,
+              191.4008620689655,
+              307.67241379310343
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              76.89655172413794,
+              11.448275862068966,
+              191.17241379310346,
+              327.3103448275862
+            ]
+          }
+        },
+        "hit": {
+          "renderScale": 0.7706489675516224,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              54,
+              50,
+              172,
+              192
+            ],
+            "normalizedBodyHeight": 192,
+            "referencePhase": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              73,
+              13,
+              132,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "calibrationTargetBodyHeight": 190,
+            "nativeComparableBodyHeight": 254.8965517241379,
+            "nativeReferenceBodyHeight": 327.3103448275862,
+            "sourceDensityRatio": 1,
+            "reason": "Inspected true head-to-boots body ROI; excluded bat raised above hair, weapon trails and raised hand above head. A single source-wide factor based on idle body190 preserves run/crouch/attack/recoil proportions and base244.",
+            "referenceRenderScale": 0.8407079646017699,
+            "sourceComparableColumn": 0,
+            "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * referenceRenderScale",
+            "nativeBodyBounds": [
+              57.98275862068965,
+              20.93103448275862,
+              228.3448275862069,
+              254.8965517241379
+            ],
+            "nativeMeasurementMapping": "Visual normalized head-to-boots ROI mapped through recorded row scale into original native-row pixels; nearest sampling precision about1 normalized pixel.",
+            "nativeReferenceBodyBounds": [
+              76.89655172413794,
+              11.448275862068966,
+              191.17241379310346,
+              327.3103448275862
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

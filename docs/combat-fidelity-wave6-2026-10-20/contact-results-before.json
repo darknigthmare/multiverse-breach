@@ -1,0 +1,170 @@
+[
+  {
+    "case": "RPG edge approach",
+    "id": "snake",
+    "side": "player",
+    "ok": true,
+    "start": {
+      "actorX": 50.588,
+      "targetX": 55
+    },
+    "afterApproach": {
+      "actorX": 145.81,
+      "bodyFacing": -1,
+      "visualFacing": 1
+    },
+    "contactEligible": false,
+    "visualTarget": {
+      "x": 315.81,
+      "y": 330
+    },
+    "actualDamage": 79
+  },
+  {
+    "case": "RPG edge approach",
+    "id": "snake",
+    "side": "enemy",
+    "ok": true,
+    "start": {
+      "actorX": 48.222,
+      "targetX": 55
+    },
+    "afterApproach": {
+      "actorX": 145.81,
+      "bodyFacing": -1,
+      "visualFacing": 1
+    },
+    "contactEligible": false,
+    "visualTarget": {
+      "x": 315.81,
+      "y": 330
+    },
+    "actualDamage": 76
+  },
+  {
+    "case": "RPG edge approach",
+    "id": "raiden",
+    "side": "player",
+    "ok": true,
+    "start": {
+      "actorX": 50.588,
+      "targetX": 55
+    },
+    "afterApproach": {
+      "actorX": 145.81,
+      "bodyFacing": -1,
+      "visualFacing": 1
+    },
+    "contactEligible": false,
+    "visualTarget": {
+      "x": 315.81,
+      "y": 330
+    },
+    "actualDamage": 63
+  },
+  {
+    "case": "RPG edge approach",
+    "id": "raiden",
+    "side": "enemy",
+    "ok": true,
+    "start": {
+      "actorX": 48.222,
+      "targetX": 55
+    },
+    "afterApproach": {
+      "actorX": 145.81,
+      "bodyFacing": -1,
+      "visualFacing": 1
+    },
+    "contactEligible": false,
+    "visualTarget": {
+      "x": 315.81,
+      "y": 330
+    },
+    "actualDamage": 65
+  },
+  {
+    "case": "Fighter airborne near-miss",
+    "id": "snake",
+    "side": "player",
+    "ok": true,
+    "dy": -94,
+    "contactEligible": true,
+    "actualDamage": 0,
+    "targetContactMarks": [
+      [
+        "ellipse",
+        300,
+        256.36,
+        10.669448724533469,
+        10.669448724533469,
+        0,
+        0,
+        6.283185307179586
+      ]
+    ]
+  },
+  {
+    "case": "Fighter airborne near-miss",
+    "id": "snake",
+    "side": "cpu",
+    "ok": true,
+    "dy": -94,
+    "contactEligible": true,
+    "actualDamage": 0,
+    "targetContactMarks": [
+      [
+        "ellipse",
+        700,
+        256.36,
+        10.669448724533469,
+        10.669448724533469,
+        0,
+        0,
+        6.283185307179586
+      ]
+    ]
+  },
+  {
+    "case": "Fighter airborne near-miss",
+    "id": "raiden",
+    "side": "player",
+    "ok": true,
+    "dy": -94,
+    "contactEligible": true,
+    "actualDamage": 0,
+    "targetContactMarks": [
+      [
+        "lineTo",
+        337.47222222222223,
+        297.7766666666667
+      ],
+      [
+        "lineTo",
+        337.47222222222223,
+        281.99888888888887
+      ]
+    ]
+  },
+  {
+    "case": "Fighter airborne near-miss",
+    "id": "raiden",
+    "side": "cpu",
+    "ok": true,
+    "dy": -94,
+    "contactEligible": true,
+    "actualDamage": 0,
+    "targetContactMarks": [
+      [
+        "lineTo",
+        662.5277777777778,
+        297.7766666666667
+      ],
+      [
+        "lineTo",
+        662.5277777777778,
+        281.99888888888887
+      ]
+    ]
+  }
+]

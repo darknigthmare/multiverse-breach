@@ -1,0 +1,2992 @@
+{
+  "date": "2026-10-20",
+  "heroId": "kiryu_yakuza",
+  "sourceWork": "Yakuza Kiwami (2016)",
+  "nativeGenerationCalls": 6,
+  "nativeSourceDrawings": 180,
+  "selectedNativePoses": 180,
+  "states": 45,
+  "atlases": 6,
+  "standingBodyHeight": 190,
+  "sourceWideScaleOnly": true,
+  "calibratedSources": [
+    {
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-motion-a.native.png",
+      "state": "idle",
+      "nativeRow": 0,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 58,
+        "y": 19,
+        "width": 134,
+        "height": 208
+      },
+      "sourceBodyHeight": 208,
+      "targetBodyHeight": 190,
+      "sourceRoi": {
+        "x": 58,
+        "y": 19,
+        "width": 134,
+        "height": 208
+      },
+      "sourceStandingBodyHeight": 208,
+      "normalizedBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.9134615384615384,
+      "renderScale": 1,
+      "requestedScale": 0.9134615384615384,
+      "safetyScale": 1.0308370044052864,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete native upright head-crown to shoe-sole body. One scale per source; all lower projections keep their native ratios."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-motion-b.native.png",
+      "state": "taunt1",
+      "nativeRow": 6,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 45,
+        "y": 1347,
+        "width": 115,
+        "height": 236
+      },
+      "sourceBodyHeight": 236,
+      "targetBodyHeight": 190,
+      "sourceRoi": {
+        "x": 45,
+        "y": 1347,
+        "width": 115,
+        "height": 236
+      },
+      "sourceStandingBodyHeight": 236,
+      "normalizedBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.8050847457627118,
+      "renderScale": 1,
+      "requestedScale": 0.8050847457627118,
+      "safetyScale": 0.975,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete native upright head-crown to shoe-sole body. One scale per source; all lower projections keep their native ratios."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-defense.native.png",
+      "state": "shieldExit",
+      "nativeRow": 5,
+      "nativeColumn": 3,
+      "sourceBodyBounds": {
+        "x": 717,
+        "y": 1156,
+        "width": 122,
+        "height": 251
+      },
+      "sourceBodyHeight": 251,
+      "targetBodyHeight": 190,
+      "sourceRoi": {
+        "x": 717,
+        "y": 1156,
+        "width": 122,
+        "height": 251
+      },
+      "sourceStandingBodyHeight": 251,
+      "normalizedBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.7569721115537849,
+      "renderScale": 1,
+      "requestedScale": 0.7569721115537849,
+      "safetyScale": 0.9322709163346613,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete native upright head-crown to shoe-sole body. One scale per source; all lower projections keep their native ratios."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-combat-a.native.png",
+      "state": "chargeStart",
+      "nativeRow": 4,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 40,
+        "y": 889,
+        "width": 146,
+        "height": 240
+      },
+      "sourceBodyHeight": 240,
+      "targetBodyHeight": 190,
+      "sourceRoi": {
+        "x": 40,
+        "y": 889,
+        "width": 146,
+        "height": 240
+      },
+      "sourceStandingBodyHeight": 240,
+      "normalizedBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.7916666666666666,
+      "renderScale": 1,
+      "requestedScale": 0.7916666666666666,
+      "safetyScale": 0.9076923076923077,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete native upright head-crown to shoe-sole body. One scale per source; all lower projections keep their native ratios."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-combat-b.native.png",
+      "state": "intro",
+      "nativeRow": 5,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 56,
+        "y": 1091,
+        "width": 107,
+        "height": 231
+      },
+      "sourceBodyHeight": 231,
+      "targetBodyHeight": 190,
+      "sourceRoi": {
+        "x": 56,
+        "y": 1091,
+        "width": 107,
+        "height": 231
+      },
+      "sourceStandingBodyHeight": 231,
+      "normalizedBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.8225108225108225,
+      "renderScale": 1,
+      "requestedScale": 0.8225108225108225,
+      "safetyScale": 0.9590163934426229,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete native upright head-crown to shoe-sole body. One scale per source; all lower projections keep their native ratios."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-ledge.native.png",
+      "state": "ledgeHang",
+      "nativeRow": 1,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 86,
+        "y": 351,
+        "width": 154,
+        "height": 242
+      },
+      "sourceBodyHeight": 242,
+      "targetBodyHeight": 190,
+      "sourceRoi": {
+        "x": 86,
+        "y": 351,
+        "width": 154,
+        "height": 242
+      },
+      "sourceStandingBodyHeight": 242,
+      "normalizedBodyHeight": 188.76000000000002,
+      "effectiveBodyHeight": 190,
+      "normalizedStandingBodyHeight": 188.76000000000002,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.78,
+      "renderScale": 1.0065691883873702,
+      "requestedScale": 0.7851239669421488,
+      "safetyScale": 0.78,
+      "raisedArmsExcluded": true,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Native hanging head-crown to shoe-sole interval excludes raised arms. A source-wide safety scale and shared render factor preserve all crouches and hanging projections."
+    }
+  ],
+  "uniqueRawCells": 180,
+  "transparentMargins10": true,
+  "reservedEmptyCells": 12,
+  "source1to1Verified": false,
+  "handMeasurements": {
+    "requiredPalms": 12,
+    "requiredWrists": 12,
+    "rgbaRois": 24,
+    "acceptedContacts": 11,
+    "precontact": "ledgeCatch/0",
+    "allVisible81of81": true,
+    "contacts": [
+      {
+        "state": "ledgeCatch",
+        "frame": 0,
+        "x": 192,
+        "y": 45,
+        "contact": false,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-0-wrist.png",
+          "sha256": "8d4366ea9b567605c7c1c790b36c92570c0ca1fc17daf9cf560d1ee9efde5716",
+          "rgbaSha256": "44b3bd72f559d27a0fd10693f6b59f81ebdd8d6516c06f2694e3be3e2552796a",
+          "visiblePixels": 81,
+          "skinPixels": 1,
+          "suitCuffPixels": 76
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-0-palm.png",
+          "sha256": "0178d2f582afcc46415e61c8c706028fa8ee5f40371d7d9b8368fc587200b103",
+          "rgbaSha256": "7db912be4a840da39e6695ed73137b41057eb0fed36bb5ab43b16a2d99e02901",
+          "visiblePixels": 81,
+          "skinPixels": 81,
+          "suitCuffPixels": 0
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 1,
+        "x": 110,
+        "y": 40,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-1-wrist.png",
+          "sha256": "8aba31389784d045f5f42c6ab7b0952eee298df1a37f2b88cb9c3d119c6736d1",
+          "rgbaSha256": "5b5b3cc9cc13b5c8fdff47e9b72dcc739855d64e8a8faaedb1c63246ea4616aa",
+          "visiblePixels": 81,
+          "skinPixels": 22,
+          "suitCuffPixels": 53
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-1-palm.png",
+          "sha256": "19296aef1edee7f01a94859d0901fc39644a179f338d75c2dc234eb3421fb2df",
+          "rgbaSha256": "56de7cb92b6e1fb295a8f274e33722cc3889a7000c67ad8ae3a24f0c06d401aa",
+          "visiblePixels": 81,
+          "skinPixels": 81,
+          "suitCuffPixels": 15
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 2,
+        "x": 95,
+        "y": 42,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-2-wrist.png",
+          "sha256": "e74ac3550084f739e83637cbd1a3e006ff3d316a0978aa858c9fde49266ed82a",
+          "rgbaSha256": "a94f82241b778da0de4cd562f057a1991418865b29e70d23d900373fc5529f98",
+          "visiblePixels": 81,
+          "skinPixels": 24,
+          "suitCuffPixels": 53
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-2-palm.png",
+          "sha256": "aaf5551cd1f90dd705bf1fb8101316c29318cf89be557c0b921111fe6ba8d0bb",
+          "rgbaSha256": "8458ae8b12851e82bcd0f1e5c35d959fb87e88cdd7b06978ae3b5257d412a053",
+          "visiblePixels": 81,
+          "skinPixels": 81,
+          "suitCuffPixels": 9
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeCatch",
+        "frame": 3,
+        "x": 99,
+        "y": 62,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-3-wrist.png",
+          "sha256": "0e7c6dbb7ddd619798a161cd85c3031d8dffa8c00c7b442b48b769408ecca106",
+          "rgbaSha256": "2f4a2ec199a22e25f291cc9f0bf851674052d0abec3d1754ab39b2f0393c2574",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "suitCuffPixels": 66
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-3-palm.png",
+          "sha256": "1e2d123c5fa5e1bcc4009776020070b37fe32c868cefc7fbf869389161b78d2f",
+          "rgbaSha256": "5ded9e0becab99f816ecea24f93df6f6d99c86c1b18467403dd231a23c675011",
+          "visiblePixels": 81,
+          "skinPixels": 81,
+          "suitCuffPixels": 17
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 0,
+        "x": 90,
+        "y": 29,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-0-wrist.png",
+          "sha256": "62907347b416f0c5329f7d575f163fb91117b9738b93eab326324f3037bf4493",
+          "rgbaSha256": "2aaf559e2714c393b23a4378e095cd363f195dd4cc5fe09bdf97fc0db8fb5e53",
+          "visiblePixels": 81,
+          "skinPixels": 1,
+          "suitCuffPixels": 67
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-0-palm.png",
+          "sha256": "04dd9abd0c938510be3a7709f28341aa6b2e11aca0cab163e45858cbe6de08c0",
+          "rgbaSha256": "16c45333923a29aaf67b06f191b73189a8009218fcd3ac09e0d51fdef58eb420",
+          "visiblePixels": 81,
+          "skinPixels": 81,
+          "suitCuffPixels": 13
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 1,
+        "x": 114,
+        "y": 23,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-1-wrist.png",
+          "sha256": "4fa7c1b2fccd057212abc8d0be5d2d45dc719834c640e8b067be04ae73bb2b55",
+          "rgbaSha256": "3fc4dee1e876dfaa4df217ad66ec7db3361a53541fdc2fbcd659f0736d67a100",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "suitCuffPixels": 76
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-1-palm.png",
+          "sha256": "0629bb92e61f7004b721207d8ed0ea5b9c593750c82f1de9f06aaf130f1edff5",
+          "rgbaSha256": "f6d6195d938f395c897355fcc115dc777bffeb87ca01f851a57a0c9af847acf3",
+          "visiblePixels": 81,
+          "skinPixels": 81,
+          "suitCuffPixels": 11
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 2,
+        "x": 100,
+        "y": 33,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-2-wrist.png",
+          "sha256": "9d0a91fa4d77619401e25cc3230ae31156cc3d7d44b319a09de44032e68b3d1a",
+          "rgbaSha256": "6a67154d9395a26aeb3b3c628c29d53534d60ccabfdbb9598dc2a8eb728c90c1",
+          "visiblePixels": 81,
+          "skinPixels": 4,
+          "suitCuffPixels": 80
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-2-palm.png",
+          "sha256": "cbf3a7ec7af39b40090dc2ad07a6aee506bf3ee2717f90c0f63113f5fff2c4fa",
+          "rgbaSha256": "880fb201001835b6c44bbd72acd8258664d0a1537cc2f4ee8726c66687a73962",
+          "visiblePixels": 81,
+          "skinPixels": 81,
+          "suitCuffPixels": 7
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeHang",
+        "frame": 3,
+        "x": 90,
+        "y": 44,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-3-wrist.png",
+          "sha256": "e995897834c460b425aedf005987abd55e981b946700ff43a95fced84c95bc4c",
+          "rgbaSha256": "85f9f2d76dcba47c1bb87f5dbc5a21c16ab26870a1a8279f2305c6837ca960fc",
+          "visiblePixels": 81,
+          "skinPixels": 1,
+          "suitCuffPixels": 57
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-3-palm.png",
+          "sha256": "11eaab9a6946f10acfe8d1f5465ff0e96dc033d6862a763fc4c7bd459277c6f2",
+          "rgbaSha256": "11af5ec338859039c47a6cb3e9cca7674e7b588312309331e7a4984c2c9f3f4f",
+          "visiblePixels": 81,
+          "skinPixels": 81,
+          "suitCuffPixels": 10
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 0,
+        "x": 94,
+        "y": 73,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-0-wrist.png",
+          "sha256": "7b76d80ac53c9b39233dc7752ff991509b44cc0a199b59614f7e7e40b82c643d",
+          "rgbaSha256": "222c4961da4afdcc9a6abd8f0a48a550d1cb627f77d3528c5ce6410ff01817df",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "suitCuffPixels": 66
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-0-palm.png",
+          "sha256": "a78702899fb7b0eb3cfc412422818b3e1dc53d0b914b53cd3786409c3501f913",
+          "rgbaSha256": "2661f806564c4769132c69a43ccadb44afd8f884f377256604607af72e6f9d0d",
+          "visiblePixels": 81,
+          "skinPixels": 81,
+          "suitCuffPixels": 15
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 1,
+        "x": 89,
+        "y": 67,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-1-wrist.png",
+          "sha256": "8de094670ecb3a214ef53c1a5c85c3bff46956d896cad19bfd30837c4880349c",
+          "rgbaSha256": "f721904a6cfd6fbdee93e920063ae15bfaf15f61658f86a520532e62d448cec1",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "suitCuffPixels": 61
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-1-palm.png",
+          "sha256": "7485236fb177c05dc5ef489aded245426cfa3fd12747bdc83465e616b00d3c3a",
+          "rgbaSha256": "bb18d154bdb9b4b9168ef1a8cbe73fe5460bd50d9401c41ec764ce3bc630c551",
+          "visiblePixels": 81,
+          "skinPixels": 81,
+          "suitCuffPixels": 6
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 2,
+        "x": 75,
+        "y": 122,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-2-wrist.png",
+          "sha256": "2a2c860eb5204b160cd96f60288a7316692cfac953ad97fd62ef6f6dd8beb591",
+          "rgbaSha256": "77fcb2fe9eeae1e096addd18dcfbc7629786b83ab2918dcfb0c217c520c05cb0",
+          "visiblePixels": 81,
+          "skinPixels": 0,
+          "suitCuffPixels": 72
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-2-palm.png",
+          "sha256": "182e188f5ecb58dad14dee62ca3705a4ee4102db1af9790b60ad52e6a87dee4a",
+          "rgbaSha256": "434475417b89baee1c5b3f380f2f14c8057fbcdea3d6605c3f7bd260a00413d6",
+          "visiblePixels": 81,
+          "skinPixels": 69,
+          "suitCuffPixels": 10
+        },
+        "passed": true
+      },
+      {
+        "state": "ledgeClimb",
+        "frame": 3,
+        "x": 73,
+        "y": 237,
+        "contact": true,
+        "wrist": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-3-wrist.png",
+          "sha256": "3df74b707096fb2ea342ea701d4d0bedbcf2cfb7f9443a860a95b76ddc42efaf",
+          "rgbaSha256": "5b1525878072798e7177d27cd54a952d8c19ebd8a9fd4337343d92e5e0760a43",
+          "visiblePixels": 81,
+          "skinPixels": 16,
+          "suitCuffPixels": 59
+        },
+        "palm": {
+          "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-3-palm.png",
+          "sha256": "f8eb91b218725fd385569616ecc53d03dfc687722fce8aea1e4134087f9e2b52",
+          "rgbaSha256": "eecdc60b401c51762f092f04bc3eaf6894477a356890781f5bc014c603c56704",
+          "visiblePixels": 81,
+          "skinPixels": 81,
+          "suitCuffPixels": 12
+        },
+        "passed": true
+      }
+    ]
+  },
+  "projections": [
+    {
+      "state": "crouchIdle",
+      "column": 0,
+      "nativeHeight": 159,
+      "normalizedHeight": 128,
+      "effectiveHeight": 128.00847457627117,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchIdle",
+      "column": 1,
+      "nativeHeight": 147,
+      "normalizedHeight": 118,
+      "effectiveHeight": 118.34745762711864,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchIdle",
+      "column": 2,
+      "nativeHeight": 180,
+      "normalizedHeight": 145,
+      "effectiveHeight": 144.91525423728814,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchIdle",
+      "column": 3,
+      "nativeHeight": 180,
+      "normalizedHeight": 145,
+      "effectiveHeight": 144.91525423728814,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchCharge",
+      "column": 0,
+      "nativeHeight": 200,
+      "normalizedHeight": 161,
+      "effectiveHeight": 161.01694915254237,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchCharge",
+      "column": 1,
+      "nativeHeight": 210,
+      "normalizedHeight": 169,
+      "effectiveHeight": 169.0677966101695,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchCharge",
+      "column": 2,
+      "nativeHeight": 213,
+      "normalizedHeight": 171,
+      "effectiveHeight": 171.48305084745763,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchCharge",
+      "column": 3,
+      "nativeHeight": 208,
+      "normalizedHeight": 167,
+      "effectiveHeight": 167.45762711864407,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchLight",
+      "column": 0,
+      "nativeHeight": 156,
+      "normalizedHeight": 124,
+      "effectiveHeight": 123.5,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchLight",
+      "column": 1,
+      "nativeHeight": 158,
+      "normalizedHeight": 125,
+      "effectiveHeight": 125.08333333333333,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchLight",
+      "column": 2,
+      "nativeHeight": 156,
+      "normalizedHeight": 124,
+      "effectiveHeight": 123.5,
+      "standingHeight": 190
+    },
+    {
+      "state": "crouchLight",
+      "column": 3,
+      "nativeHeight": 160,
+      "normalizedHeight": 127,
+      "effectiveHeight": 126.66666666666666,
+      "standingHeight": 190
+    },
+    {
+      "state": "chargeLoop",
+      "column": 0,
+      "nativeHeight": 181,
+      "normalizedHeight": 143,
+      "effectiveHeight": 143.29166666666666,
+      "standingHeight": 190
+    },
+    {
+      "state": "chargeLoop",
+      "column": 1,
+      "nativeHeight": 182,
+      "normalizedHeight": 144,
+      "effectiveHeight": 144.08333333333331,
+      "standingHeight": 190
+    },
+    {
+      "state": "chargeLoop",
+      "column": 2,
+      "nativeHeight": 186,
+      "normalizedHeight": 147,
+      "effectiveHeight": 147.25,
+      "standingHeight": 190
+    },
+    {
+      "state": "chargeLoop",
+      "column": 3,
+      "nativeHeight": 182,
+      "normalizedHeight": 144,
+      "effectiveHeight": 144.08333333333331,
+      "standingHeight": 190
+    }
+  ],
+  "cells": [
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "idle",
+      "column": 0,
+      "visiblePixels": 11660,
+      "alphaBounds": {
+        "x": 67,
+        "y": 54,
+        "width": 122,
+        "height": 190
+      },
+      "sha256": "a01aa45b7f9377b479a94e9344b155e709a13d0e48247802fc53cedd6e8c587c"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "idle",
+      "column": 1,
+      "visiblePixels": 11354,
+      "alphaBounds": {
+        "x": 72,
+        "y": 54,
+        "width": 112,
+        "height": 190
+      },
+      "sha256": "9a4644403f3e15cbf12f4a3cb2676adbfa1886981891e1f0c2b5e04e51b0fcb5"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "idle",
+      "column": 2,
+      "visiblePixels": 11083,
+      "alphaBounds": {
+        "x": 69,
+        "y": 54,
+        "width": 117,
+        "height": 190
+      },
+      "sha256": "7eda4a56629956f45be8cfc277612fe5d1b5c4a8d443e884fdb749f06e671563"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "idle",
+      "column": 3,
+      "visiblePixels": 11805,
+      "alphaBounds": {
+        "x": 69,
+        "y": 54,
+        "width": 118,
+        "height": 190
+      },
+      "sha256": "b008d4e682f04aabe95b3422f19318ff5fbba2c7fc77eeded0d817dc8972f3c7"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "walk",
+      "column": 0,
+      "visiblePixels": 10132,
+      "alphaBounds": {
+        "x": 63,
+        "y": 53,
+        "width": 129,
+        "height": 191
+      },
+      "sha256": "f16e28a74f50ff03994849a5588eaadf76ff277d11cccebe5584939d905df7b0"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "walk",
+      "column": 1,
+      "visiblePixels": 11264,
+      "alphaBounds": {
+        "x": 58,
+        "y": 53,
+        "width": 139,
+        "height": 191
+      },
+      "sha256": "6e3c2225b4570e7310f235fee3ac6b12c9b08ca55bf6c65680a0db99bd77f875"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "walk",
+      "column": 2,
+      "visiblePixels": 10344,
+      "alphaBounds": {
+        "x": 63,
+        "y": 53,
+        "width": 129,
+        "height": 191
+      },
+      "sha256": "fc822d68a32d988d32300910183f8f25ad41bbb50338d0e41c91664b931e5296"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "walk",
+      "column": 3,
+      "visiblePixels": 9854,
+      "alphaBounds": {
+        "x": 51,
+        "y": 53,
+        "width": 153,
+        "height": 191
+      },
+      "sha256": "01b0e4dbbe2fe77f7e321bedbe9aa3257e2270f4d8f6943ccc72ab14c9c1f4fe"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "run",
+      "column": 0,
+      "visiblePixels": 12034,
+      "alphaBounds": {
+        "x": 44,
+        "y": 61,
+        "width": 168,
+        "height": 183
+      },
+      "sha256": "b3d328661fb2f6862f2a2043762c81fa6daf3a1e0a6479af7bf3241cdf61f7c6"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "run",
+      "column": 1,
+      "visiblePixels": 12493,
+      "alphaBounds": {
+        "x": 34,
+        "y": 68,
+        "width": 187,
+        "height": 176
+      },
+      "sha256": "e1d54a0e9a4b5880ca3547063926598d64d940823a5fc4fbd5ac41be471cfcd3"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "run",
+      "column": 2,
+      "visiblePixels": 13522,
+      "alphaBounds": {
+        "x": 45,
+        "y": 65,
+        "width": 166,
+        "height": 179
+      },
+      "sha256": "d2de98829e826131b1d0629b7d5aca1ad0e5e2dd299b70c68a7fe4e427aa8982"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "run",
+      "column": 3,
+      "visiblePixels": 12820,
+      "alphaBounds": {
+        "x": 35,
+        "y": 61,
+        "width": 186,
+        "height": 183
+      },
+      "sha256": "23b518129122e870eb131c862fff81f9597e9a347c80928b514492b7716febb4"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "turn",
+      "column": 0,
+      "visiblePixels": 12152,
+      "alphaBounds": {
+        "x": 62,
+        "y": 51,
+        "width": 132,
+        "height": 193
+      },
+      "sha256": "75bd2100fb2969f00087a107e1d945c5794d354e620190d93505470709f458c9"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "turn",
+      "column": 1,
+      "visiblePixels": 12536,
+      "alphaBounds": {
+        "x": 61,
+        "y": 51,
+        "width": 134,
+        "height": 193
+      },
+      "sha256": "921646642540d7b2a0aabfcf6e246d860aeb7701ac86ea1353797952696a6699"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "turn",
+      "column": 2,
+      "visiblePixels": 12311,
+      "alphaBounds": {
+        "x": 61,
+        "y": 51,
+        "width": 133,
+        "height": 193
+      },
+      "sha256": "68b7a6769fb4cacbdade470e435b83ba5d8662bde83c3e4c7470439163c8ce80"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "turn",
+      "column": 3,
+      "visiblePixels": 12239,
+      "alphaBounds": {
+        "x": 62,
+        "y": 51,
+        "width": 131,
+        "height": 193
+      },
+      "sha256": "8c777bc34372e7e1e07339249cb5260e26a9826c47bf40b8e84516cc6301bdca"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "jumpStart",
+      "column": 0,
+      "visiblePixels": 11877,
+      "alphaBounds": {
+        "x": 64,
+        "y": 63,
+        "width": 128,
+        "height": 181
+      },
+      "sha256": "b1f54027aff4941e3a9b86255071c79c1ebd1cf6d0a2d430e1dad5bdd8aad609"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "jumpStart",
+      "column": 1,
+      "visiblePixels": 11549,
+      "alphaBounds": {
+        "x": 62,
+        "y": 97,
+        "width": 132,
+        "height": 147
+      },
+      "sha256": "65cc911d6aa56b0378f04bd4428778ac14561e502f761d17e08112861b288b89"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "jumpStart",
+      "column": 2,
+      "visiblePixels": 13098,
+      "alphaBounds": {
+        "x": 56,
+        "y": 61,
+        "width": 144,
+        "height": 183
+      },
+      "sha256": "c83d1e0487382733e8ef24a54ba6beae5ed88b1f10208390d28498d5497f0895"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "jumpStart",
+      "column": 3,
+      "visiblePixels": 11699,
+      "alphaBounds": {
+        "x": 51,
+        "y": 51,
+        "width": 154,
+        "height": 193
+      },
+      "sha256": "afcf937fdcebc505000bdae112c3f8f67273bbcb5a5b088f48e223de164e8f9b"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "jumpRise",
+      "column": 0,
+      "visiblePixels": 12930,
+      "alphaBounds": {
+        "x": 51,
+        "y": 45,
+        "width": 153,
+        "height": 199
+      },
+      "sha256": "f5cdc5b1666bb824d52a1e66b76583926ae80e44788c158b1f280bc4b892f5f0"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "jumpRise",
+      "column": 1,
+      "visiblePixels": 11246,
+      "alphaBounds": {
+        "x": 61,
+        "y": 101,
+        "width": 133,
+        "height": 143
+      },
+      "sha256": "f040cd43fff4ff5a8b4ad5c4519b9b7078fe1730abc16c49baa854c958b9fb91"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "jumpRise",
+      "column": 2,
+      "visiblePixels": 12999,
+      "alphaBounds": {
+        "x": 35,
+        "y": 50,
+        "width": 186,
+        "height": 194
+      },
+      "sha256": "e8e89c61fe2f68cbd5e35ff4d388cca03620861f941379de45d9b920ad9c69d2"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "jumpRise",
+      "column": 3,
+      "visiblePixels": 12040,
+      "alphaBounds": {
+        "x": 66,
+        "y": 37,
+        "width": 123,
+        "height": 207
+      },
+      "sha256": "aff285a6f254c0184a541beef8e7454c28a57904f4ada2f2cbb8452bf319f525"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "jumpApex",
+      "column": 0,
+      "visiblePixels": 13513,
+      "alphaBounds": {
+        "x": 50,
+        "y": 49,
+        "width": 155,
+        "height": 195
+      },
+      "sha256": "4df7a2384fefe33a1adae8afee9f35835115b0b87d90b7609f2f80236d9c47ab"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "jumpApex",
+      "column": 1,
+      "visiblePixels": 12354,
+      "alphaBounds": {
+        "x": 43,
+        "y": 88,
+        "width": 170,
+        "height": 156
+      },
+      "sha256": "ae626dfda0d913365c144dcf3f58846af5c2023a2135d5cb47fd83ae20d4a031"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "jumpApex",
+      "column": 2,
+      "visiblePixels": 13285,
+      "alphaBounds": {
+        "x": 38,
+        "y": 50,
+        "width": 179,
+        "height": 194
+      },
+      "sha256": "a15229e083389a5b5b41bdb0e032d62fe57b165e3bed646cd94c77eb1ddbcfce"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "jumpApex",
+      "column": 3,
+      "visiblePixels": 11720,
+      "alphaBounds": {
+        "x": 58,
+        "y": 60,
+        "width": 139,
+        "height": 184
+      },
+      "sha256": "451579b02cef05d04d6e1b94fd35c3ebb92c0c29b769f26d0e7616fcac1ea402"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "fall",
+      "column": 0,
+      "visiblePixels": 11639,
+      "alphaBounds": {
+        "x": 62,
+        "y": 58,
+        "width": 132,
+        "height": 186
+      },
+      "sha256": "fae93e882b985b2fdb2bfe33ca603810dfe9fa53e801b7d03d3d5c73395b1f08"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "fall",
+      "column": 1,
+      "visiblePixels": 11282,
+      "alphaBounds": {
+        "x": 58,
+        "y": 70,
+        "width": 139,
+        "height": 174
+      },
+      "sha256": "d2184effa138b29e46c103d1c1cf6c6da281a2f957a0acc90ea442c29b706b02"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "fall",
+      "column": 2,
+      "visiblePixels": 12067,
+      "alphaBounds": {
+        "x": 45,
+        "y": 90,
+        "width": 166,
+        "height": 154
+      },
+      "sha256": "502acd64b1f3d7e296152d32849b958479b269fb2c9d4e20ac62db3f8fb87ccf"
+    },
+    {
+      "atlas": "kiryu-motion-a",
+      "state": "fall",
+      "column": 3,
+      "visiblePixels": 11614,
+      "alphaBounds": {
+        "x": 55,
+        "y": 101,
+        "width": 145,
+        "height": 143
+      },
+      "sha256": "0cafedac51272a740d551aae73d3c7a2c5a98cfc24f9abaf0313c53668c129d1"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "fastFall",
+      "column": 0,
+      "visiblePixels": 9242,
+      "alphaBounds": {
+        "x": 61,
+        "y": 106,
+        "width": 134,
+        "height": 138
+      },
+      "sha256": "ca92888f4151a344aca8dd638276cc4fe424437fd01b1f7a3d99eba9841904f9"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "fastFall",
+      "column": 1,
+      "visiblePixels": 8808,
+      "alphaBounds": {
+        "x": 63,
+        "y": 109,
+        "width": 129,
+        "height": 135
+      },
+      "sha256": "86f08795a523db09feb5243cb0a23e0140af27ca8b345cac8b403e8b8aadb6e4"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "fastFall",
+      "column": 2,
+      "visiblePixels": 9842,
+      "alphaBounds": {
+        "x": 59,
+        "y": 78,
+        "width": 138,
+        "height": 166
+      },
+      "sha256": "1029337d8f6f1567db72e8f8e0b34d52094c4b10bf6036afea8234139282907e"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "fastFall",
+      "column": 3,
+      "visiblePixels": 10912,
+      "alphaBounds": {
+        "x": 54,
+        "y": 74,
+        "width": 148,
+        "height": 170
+      },
+      "sha256": "09a9d4854c4adf22d776428b724bc329a42f6aaa55b423cef64052d2cf82ee69"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "land",
+      "column": 0,
+      "visiblePixels": 8990,
+      "alphaBounds": {
+        "x": 68,
+        "y": 135,
+        "width": 120,
+        "height": 109
+      },
+      "sha256": "d55421a87e0697d9cb9275172a86b1b1c39b4e6002a1d1a8a8bba0a5dfc637dd"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "land",
+      "column": 1,
+      "visiblePixels": 8813,
+      "alphaBounds": {
+        "x": 61,
+        "y": 132,
+        "width": 134,
+        "height": 112
+      },
+      "sha256": "a53a1007c62a2103616b9e879e7e49c27069fd10fde05cce873713dae908474d"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "land",
+      "column": 2,
+      "visiblePixels": 10337,
+      "alphaBounds": {
+        "x": 56,
+        "y": 110,
+        "width": 143,
+        "height": 134
+      },
+      "sha256": "7a6a4bd10d0d465e190432b6ecf715e9b13ad0c4e607c3a8af1fedfe91739aba"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "land",
+      "column": 3,
+      "visiblePixels": 9564,
+      "alphaBounds": {
+        "x": 65,
+        "y": 79,
+        "width": 126,
+        "height": 165
+      },
+      "sha256": "6cdeea58f378e7838a0bf8db5c76e587795bf781b652a2d783bf589d2df68c6d"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchEnter",
+      "column": 0,
+      "visiblePixels": 10680,
+      "alphaBounds": {
+        "x": 62,
+        "y": 67,
+        "width": 131,
+        "height": 177
+      },
+      "sha256": "13aab9268298204ac22a13de711fdb3eb69be5c25ebc09bb2b2a3798d4787659"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchEnter",
+      "column": 1,
+      "visiblePixels": 9787,
+      "alphaBounds": {
+        "x": 68,
+        "y": 89,
+        "width": 120,
+        "height": 155
+      },
+      "sha256": "335c8d688f76985cc02a38de1f146d57d6323e98f58fa7d3364ac1e91a937d70"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchEnter",
+      "column": 2,
+      "visiblePixels": 10154,
+      "alphaBounds": {
+        "x": 66,
+        "y": 110,
+        "width": 123,
+        "height": 134
+      },
+      "sha256": "44f5caab93d636d964660239d693ebaea962e01169f244c1be4e0e70cd48d194"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchEnter",
+      "column": 3,
+      "visiblePixels": 8554,
+      "alphaBounds": {
+        "x": 72,
+        "y": 122,
+        "width": 111,
+        "height": 122
+      },
+      "sha256": "23fa0198e69754d619d19ca40ef31cdfb78171fc1a90e51d5430d780d167e483"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchIdle",
+      "column": 0,
+      "visiblePixels": 9319,
+      "alphaBounds": {
+        "x": 74,
+        "y": 116,
+        "width": 108,
+        "height": 128
+      },
+      "sha256": "2e178d3b88bccb5aad624ac1a7535f7a7c0027db583b12a8d5e9abafc4baa57f"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchIdle",
+      "column": 1,
+      "visiblePixels": 10126,
+      "alphaBounds": {
+        "x": 68,
+        "y": 126,
+        "width": 120,
+        "height": 118
+      },
+      "sha256": "f828b28a134d4217ea826c3b32104629d1f36ee4aa9c48a0e043feda5903517f"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchIdle",
+      "column": 2,
+      "visiblePixels": 9756,
+      "alphaBounds": {
+        "x": 69,
+        "y": 99,
+        "width": 117,
+        "height": 145
+      },
+      "sha256": "def3f067836057d171f07603962adf895bb2ef5e1881234b648d5c4200c18790"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchIdle",
+      "column": 3,
+      "visiblePixels": 10698,
+      "alphaBounds": {
+        "x": 67,
+        "y": 99,
+        "width": 121,
+        "height": 145
+      },
+      "sha256": "5a64ccee125cf6b6e1c2b2061969593c0a1a1a8494dc96e21701dc8b29ad4348"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchExit",
+      "column": 0,
+      "visiblePixels": 9978,
+      "alphaBounds": {
+        "x": 66,
+        "y": 121,
+        "width": 124,
+        "height": 123
+      },
+      "sha256": "08a72567b376759c8c44be784755cd7fcf5e6c89baca1f8dfb2d7779c0f45585"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchExit",
+      "column": 1,
+      "visiblePixels": 10536,
+      "alphaBounds": {
+        "x": 56,
+        "y": 94,
+        "width": 144,
+        "height": 150
+      },
+      "sha256": "15ae62d890c4e10c12d5add0b174a9ad4637ece5c76758e0928ae3bfe158963f"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchExit",
+      "column": 2,
+      "visiblePixels": 11351,
+      "alphaBounds": {
+        "x": 64,
+        "y": 68,
+        "width": 128,
+        "height": 176
+      },
+      "sha256": "e091fefb81b8068d58f51dedf74a27ec6aa5fbb798c4da24b4de548318d28557"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchExit",
+      "column": 3,
+      "visiblePixels": 11506,
+      "alphaBounds": {
+        "x": 65,
+        "y": 56,
+        "width": 125,
+        "height": 188
+      },
+      "sha256": "5044519eeeff07a0074258925c80784bf33f1fcd30edaced206d87427d14e260"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchCharge",
+      "column": 0,
+      "visiblePixels": 12261,
+      "alphaBounds": {
+        "x": 45,
+        "y": 83,
+        "width": 166,
+        "height": 161
+      },
+      "sha256": "0ad538275a3cc2df7ed9c131605491c3494bb610a3d854583ae33632fdbccfd6"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchCharge",
+      "column": 1,
+      "visiblePixels": 12057,
+      "alphaBounds": {
+        "x": 56,
+        "y": 75,
+        "width": 143,
+        "height": 169
+      },
+      "sha256": "2244dcf63f6ef92912f010fd967d8bb777c2ea5410d7e53b8c8d7b76a875a5d0"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchCharge",
+      "column": 2,
+      "visiblePixels": 11785,
+      "alphaBounds": {
+        "x": 54,
+        "y": 73,
+        "width": 148,
+        "height": 171
+      },
+      "sha256": "c3d2f9da0138d5e52ea9543a905f0eab0259ae26de64aa0d1065a91f8a970264"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "crouchCharge",
+      "column": 3,
+      "visiblePixels": 11094,
+      "alphaBounds": {
+        "x": 60,
+        "y": 77,
+        "width": 136,
+        "height": 167
+      },
+      "sha256": "3bbf101aec6381455a46504ccf061f7c4413393e2eb5611ecd745219acc83328"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "taunt1",
+      "column": 0,
+      "visiblePixels": 11057,
+      "alphaBounds": {
+        "x": 81,
+        "y": 54,
+        "width": 93,
+        "height": 190
+      },
+      "sha256": "c3274f3db73f7e68e13115464aaf4b99570c9f1e2ab2cce061ab7f23cf2b5b7e"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "taunt1",
+      "column": 1,
+      "visiblePixels": 11508,
+      "alphaBounds": {
+        "x": 80,
+        "y": 51,
+        "width": 96,
+        "height": 193
+      },
+      "sha256": "a46e670aa2bd5a537ae61ab654e8911f1928720422e3646436ef474b8947a599"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "taunt1",
+      "column": 2,
+      "visiblePixels": 11159,
+      "alphaBounds": {
+        "x": 70,
+        "y": 52,
+        "width": 115,
+        "height": 192
+      },
+      "sha256": "343fb6e0375b677cd1a81cffd10f2e947fdc840bff1d2aa1f19dd680724f2fc3"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "taunt1",
+      "column": 3,
+      "visiblePixels": 11043,
+      "alphaBounds": {
+        "x": 61,
+        "y": 64,
+        "width": 133,
+        "height": 180
+      },
+      "sha256": "6b00dd1a659a22e8342866942c9338ec052fcc8305298ce81ee7470ff7edab64"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "hitStun",
+      "column": 0,
+      "visiblePixels": 9783,
+      "alphaBounds": {
+        "x": 63,
+        "y": 101,
+        "width": 130,
+        "height": 143
+      },
+      "sha256": "64fd1a5609c98b8dd1ce575193a746486622462318e45da0513b5eeb417094b3"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "hitStun",
+      "column": 1,
+      "visiblePixels": 10466,
+      "alphaBounds": {
+        "x": 65,
+        "y": 103,
+        "width": 126,
+        "height": 141
+      },
+      "sha256": "4ce5b8c6bed3d36664cc7d7a2d3ff597d32c0cb6722322c43a66a0ce83d9ff60"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "hitStun",
+      "column": 2,
+      "visiblePixels": 7629,
+      "alphaBounds": {
+        "x": 75,
+        "y": 122,
+        "width": 105,
+        "height": 122
+      },
+      "sha256": "ff10debba2c903e84defd0941167eeab2890ce53d070e1712733082d33931328"
+    },
+    {
+      "atlas": "kiryu-motion-b",
+      "state": "hitStun",
+      "column": 3,
+      "visiblePixels": 8755,
+      "alphaBounds": {
+        "x": 61,
+        "y": 119,
+        "width": 134,
+        "height": 125
+      },
+      "sha256": "f1673e94e35136ddf609e6c0df2438c904268a6e774ffc11100b1cf9c9cc8807"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldEnter",
+      "column": 0,
+      "visiblePixels": 9596,
+      "alphaBounds": {
+        "x": 76,
+        "y": 78,
+        "width": 104,
+        "height": 166
+      },
+      "sha256": "7a30f6ed98e20951710556f450dde1ac4c631a6e10de9842b1325fe4ec2cff8a"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldEnter",
+      "column": 1,
+      "visiblePixels": 9020,
+      "alphaBounds": {
+        "x": 69,
+        "y": 77,
+        "width": 118,
+        "height": 167
+      },
+      "sha256": "203f19d1f240b4df00f5050df9ec6e3bd8e1020876f252ed045203d8475abe13"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldEnter",
+      "column": 2,
+      "visiblePixels": 8756,
+      "alphaBounds": {
+        "x": 77,
+        "y": 77,
+        "width": 102,
+        "height": 167
+      },
+      "sha256": "17797ad2fbd1bbf61e8537022ef8eda4aa2d6d24d65d815398c4a97238644b92"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldEnter",
+      "column": 3,
+      "visiblePixels": 8657,
+      "alphaBounds": {
+        "x": 75,
+        "y": 77,
+        "width": 106,
+        "height": 167
+      },
+      "sha256": "9998c18ecfca03b176e061c9516dad85dcdebe1f2bf74a076c52cebc7f0314a2"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldHold",
+      "column": 0,
+      "visiblePixels": 9401,
+      "alphaBounds": {
+        "x": 56,
+        "y": 84,
+        "width": 144,
+        "height": 160
+      },
+      "sha256": "6de8be6d51cd8e7ba1e19e8d44c18fca209f78155e8e236d1b50bff7005be3be"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldHold",
+      "column": 1,
+      "visiblePixels": 8658,
+      "alphaBounds": {
+        "x": 72,
+        "y": 83,
+        "width": 112,
+        "height": 161
+      },
+      "sha256": "824637abc702219fccf3bdcc39f2c173eab0c6a87b004b120c240685ececf972"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldHold",
+      "column": 2,
+      "visiblePixels": 8613,
+      "alphaBounds": {
+        "x": 70,
+        "y": 105,
+        "width": 115,
+        "height": 139
+      },
+      "sha256": "dc00ff30a4c692cd212dc2bcea9040b98c6ec8de4d63ea5bf989d1d47cb30e91"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldHold",
+      "column": 3,
+      "visiblePixels": 9295,
+      "alphaBounds": {
+        "x": 61,
+        "y": 85,
+        "width": 134,
+        "height": 159
+      },
+      "sha256": "fce37b0728118c36bd77a71531184785391d54431f04fd6dd0cae5fe73d7e8e4"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldHit",
+      "column": 0,
+      "visiblePixels": 9076,
+      "alphaBounds": {
+        "x": 67,
+        "y": 78,
+        "width": 122,
+        "height": 166
+      },
+      "sha256": "7229ecc3b95828cf4dc645bb62c3b1f7f25f857154112e33edd352ba68f74fcc"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldHit",
+      "column": 1,
+      "visiblePixels": 9161,
+      "alphaBounds": {
+        "x": 70,
+        "y": 87,
+        "width": 116,
+        "height": 157
+      },
+      "sha256": "c792e2e7306b87fdf2f58ca248babe81f810a0af5b48db778ca1dfeee986bab9"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldHit",
+      "column": 2,
+      "visiblePixels": 8749,
+      "alphaBounds": {
+        "x": 71,
+        "y": 98,
+        "width": 114,
+        "height": 146
+      },
+      "sha256": "260490075f745a80bf3a12cc56f91c72a8a647d251c69fcbd4b7ae749ce5a595"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldHit",
+      "column": 3,
+      "visiblePixels": 9071,
+      "alphaBounds": {
+        "x": 68,
+        "y": 80,
+        "width": 119,
+        "height": 164
+      },
+      "sha256": "be6d4b250721229ca410f1384fef383f5a2ca44b6f78f6ec0992c2cbd4c7d7a9"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "perfectShield",
+      "column": 0,
+      "visiblePixels": 10380,
+      "alphaBounds": {
+        "x": 60,
+        "y": 74,
+        "width": 135,
+        "height": 170
+      },
+      "sha256": "b79523f97dac26242aa90647385391e590f3499d77250b565136604360060bcb"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "perfectShield",
+      "column": 1,
+      "visiblePixels": 11176,
+      "alphaBounds": {
+        "x": 63,
+        "y": 79,
+        "width": 130,
+        "height": 165
+      },
+      "sha256": "fb2e338d032317694bcb60842d4423ab2c18fac746004059f97d83869b47edd2"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "perfectShield",
+      "column": 2,
+      "visiblePixels": 11246,
+      "alphaBounds": {
+        "x": 60,
+        "y": 72,
+        "width": 135,
+        "height": 172
+      },
+      "sha256": "a9b23fa3ac0986790f96620452e35a0a7c1f3628723de804e65aea33a6f7e464"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "perfectShield",
+      "column": 3,
+      "visiblePixels": 9465,
+      "alphaBounds": {
+        "x": 66,
+        "y": 75,
+        "width": 123,
+        "height": 169
+      },
+      "sha256": "28fc4b07621cc3a0309eb559af98103260c2238a6767b6ede5beb9cd7e5c2b15"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldBreak",
+      "column": 0,
+      "visiblePixels": 10507,
+      "alphaBounds": {
+        "x": 65,
+        "y": 71,
+        "width": 126,
+        "height": 173
+      },
+      "sha256": "c8c38adf135ee645a49e9e9e9d529597d2e4c0ccde603e72d2cb13e85e13765e"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldBreak",
+      "column": 1,
+      "visiblePixels": 11824,
+      "alphaBounds": {
+        "x": 60,
+        "y": 75,
+        "width": 136,
+        "height": 169
+      },
+      "sha256": "49561f5d8921be9c5fbb52b09199af084437f73aba8f55ec8c5cc7bc52c200ad"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldBreak",
+      "column": 2,
+      "visiblePixels": 10825,
+      "alphaBounds": {
+        "x": 66,
+        "y": 84,
+        "width": 124,
+        "height": 160
+      },
+      "sha256": "32329d8d4afd2e844d086912f965c67981aaf62d2764eb5a64d09932074accc2"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldBreak",
+      "column": 3,
+      "visiblePixels": 8891,
+      "alphaBounds": {
+        "x": 78,
+        "y": 92,
+        "width": 99,
+        "height": 152
+      },
+      "sha256": "429eff395eaa15114021a59ae92dc1e80acd35617ece6964d7b31bdf9a7e09d9"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldExit",
+      "column": 0,
+      "visiblePixels": 9642,
+      "alphaBounds": {
+        "x": 71,
+        "y": 67,
+        "width": 113,
+        "height": 177
+      },
+      "sha256": "a404f2cf3bde3718490a8819c17bc6e62d3d67a50c3055e2c4e38458c3f98b3b"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldExit",
+      "column": 1,
+      "visiblePixels": 9616,
+      "alphaBounds": {
+        "x": 76,
+        "y": 67,
+        "width": 104,
+        "height": 177
+      },
+      "sha256": "919ebbcdc1fbda4782582fe218cb2a1dbfc1c1be17fc991340e1cb0d79fe4f3c"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldExit",
+      "column": 2,
+      "visiblePixels": 10052,
+      "alphaBounds": {
+        "x": 72,
+        "y": 68,
+        "width": 111,
+        "height": 176
+      },
+      "sha256": "3986010893a456f2dc2c4f660ef296f40dcf9d184b4813f53b0cdc087cee1053"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "shieldExit",
+      "column": 3,
+      "visiblePixels": 10861,
+      "alphaBounds": {
+        "x": 82,
+        "y": 54,
+        "width": 92,
+        "height": 190
+      },
+      "sha256": "e4dc369957424b0ae0ba9b317606496f783a20f7b0376b0323ef041d2386b05e"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "dead",
+      "column": 0,
+      "visiblePixels": 7760,
+      "alphaBounds": {
+        "x": 74,
+        "y": 132,
+        "width": 108,
+        "height": 112
+      },
+      "sha256": "c7f66c1eeb9ca10dc7ae2a52a7bff2debe59019db69b4988fe3bde232a50177d"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "dead",
+      "column": 1,
+      "visiblePixels": 7670,
+      "alphaBounds": {
+        "x": 62,
+        "y": 154,
+        "width": 132,
+        "height": 90
+      },
+      "sha256": "743f62aabacb54c2f017761635cc3b466ab478e8738bb10bfc695ebd52df3e30"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "dead",
+      "column": 2,
+      "visiblePixels": 7261,
+      "alphaBounds": {
+        "x": 35,
+        "y": 174,
+        "width": 186,
+        "height": 70
+      },
+      "sha256": "e354c4a1131f6d475b27c961af9749465d9f2d9754f046752e3846d227b0c3a7"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "dead",
+      "column": 3,
+      "visiblePixels": 5989,
+      "alphaBounds": {
+        "x": 44,
+        "y": 198,
+        "width": 167,
+        "height": 46
+      },
+      "sha256": "61773aae2720dbae3b2a02628ab598f5fcffbaf58e7ef25cac75fa014ff2bfbc"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "defeat",
+      "column": 0,
+      "visiblePixels": 8925,
+      "alphaBounds": {
+        "x": 75,
+        "y": 118,
+        "width": 105,
+        "height": 126
+      },
+      "sha256": "b531b20bc98b08044993b15d75016462566ad1b233d47484d812098717b62f63"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "defeat",
+      "column": 1,
+      "visiblePixels": 7909,
+      "alphaBounds": {
+        "x": 79,
+        "y": 127,
+        "width": 98,
+        "height": 117
+      },
+      "sha256": "63373a93ddaea3d2556b18ee95d6ab18f11f7e55ae3e9e99ea250be1323b9c62"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "defeat",
+      "column": 2,
+      "visiblePixels": 9080,
+      "alphaBounds": {
+        "x": 59,
+        "y": 130,
+        "width": 137,
+        "height": 114
+      },
+      "sha256": "d8a77a3f9ce53b8112da8a08b55822ce80563d47f983166058bdcc06b5e6d298"
+    },
+    {
+      "atlas": "kiryu-defense",
+      "state": "defeat",
+      "column": 3,
+      "visiblePixels": 9427,
+      "alphaBounds": {
+        "x": 46,
+        "y": 137,
+        "width": 164,
+        "height": 107
+      },
+      "sha256": "e0024bba2becedf8b0907562d3cd3ca412dde76d376ff16fb03db81d0acd52a2"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "attackLight1",
+      "column": 0,
+      "visiblePixels": 10067,
+      "alphaBounds": {
+        "x": 62,
+        "y": 81,
+        "width": 131,
+        "height": 163
+      },
+      "sha256": "c1472841a44909e7dcfa56ac49e6d5652e79ce6a43f5b2cd0b30607c26352e0e"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "attackLight1",
+      "column": 1,
+      "visiblePixels": 10215,
+      "alphaBounds": {
+        "x": 47,
+        "y": 81,
+        "width": 162,
+        "height": 163
+      },
+      "sha256": "bf9fec25f099a061a8c9380ac5a2562ce72f991a38e55b4aef3d2335bac3f110"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "attackLight1",
+      "column": 2,
+      "visiblePixels": 9884,
+      "alphaBounds": {
+        "x": 63,
+        "y": 81,
+        "width": 129,
+        "height": 163
+      },
+      "sha256": "121a1ace88b6a02ac671cae2d44d1f27a8f1bc24c4c50ff5b04c44c1743560a4"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "attackLight1",
+      "column": 3,
+      "visiblePixels": 9803,
+      "alphaBounds": {
+        "x": 68,
+        "y": 81,
+        "width": 119,
+        "height": 163
+      },
+      "sha256": "68c35e80104aa0cf5101a4ca34cd5e21da5482ed92e2a881421f8ec3b5c0d29e"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "attackLight2",
+      "column": 0,
+      "visiblePixels": 11133,
+      "alphaBounds": {
+        "x": 61,
+        "y": 75,
+        "width": 134,
+        "height": 169
+      },
+      "sha256": "5c6f0df16fd7c0db8d5d01a65837665395f35a2279f14003582111c519b64815"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "attackLight2",
+      "column": 1,
+      "visiblePixels": 11280,
+      "alphaBounds": {
+        "x": 36,
+        "y": 75,
+        "width": 184,
+        "height": 169
+      },
+      "sha256": "a5f43367ca3625eb6b6c9086b318065d66ae7ad04ef8e872f2ea21a3cf5d9b8b"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "attackLight2",
+      "column": 2,
+      "visiblePixels": 10786,
+      "alphaBounds": {
+        "x": 63,
+        "y": 75,
+        "width": 129,
+        "height": 169
+      },
+      "sha256": "1434f13ab11e3041d352196978dcc9626d0cf123062b768ca1b5b0ecbd8fba00"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "attackLight2",
+      "column": 3,
+      "visiblePixels": 10221,
+      "alphaBounds": {
+        "x": 66,
+        "y": 75,
+        "width": 124,
+        "height": 169
+      },
+      "sha256": "641dab4a31cc65d0c73d8dc9436d5ce2a1d57c94f7a905880f28cfaf5835a6f3"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "attackLight3",
+      "column": 0,
+      "visiblePixels": 11581,
+      "alphaBounds": {
+        "x": 65,
+        "y": 93,
+        "width": 125,
+        "height": 151
+      },
+      "sha256": "98e70aad75947c3198da73debd8dec636cea027f4b7b205c2aa0289e01233e2e"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "attackLight3",
+      "column": 1,
+      "visiblePixels": 12352,
+      "alphaBounds": {
+        "x": 60,
+        "y": 69,
+        "width": 135,
+        "height": 175
+      },
+      "sha256": "ba151dc764584acfe8194666cc130c1b5fbba883a42c916a93700721e4b15f29"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "attackLight3",
+      "column": 2,
+      "visiblePixels": 11034,
+      "alphaBounds": {
+        "x": 46,
+        "y": 62,
+        "width": 164,
+        "height": 182
+      },
+      "sha256": "2c82b9acf483c49ffe84aa375b0d1ad456c33c6e6205c4566b01d1f9973219ad"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "attackLight3",
+      "column": 3,
+      "visiblePixels": 10560,
+      "alphaBounds": {
+        "x": 58,
+        "y": 74,
+        "width": 139,
+        "height": 170
+      },
+      "sha256": "a57ff19657026cc97268c61789ae91ae3b85a8567742c86f68e75330aa459650"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "crouchLight",
+      "column": 0,
+      "visiblePixels": 8995,
+      "alphaBounds": {
+        "x": 69,
+        "y": 120,
+        "width": 118,
+        "height": 124
+      },
+      "sha256": "a5f96c6d2cf0ea75a891d8b8c3110ec174e02f72ee31f0402c72ae608701d3b6"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "crouchLight",
+      "column": 1,
+      "visiblePixels": 9722,
+      "alphaBounds": {
+        "x": 41,
+        "y": 119,
+        "width": 174,
+        "height": 125
+      },
+      "sha256": "2e54e2fcb6f52b6ce5987595fdb0c7eb0058b3820c2667390e8325938259b0c9"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "crouchLight",
+      "column": 2,
+      "visiblePixels": 9201,
+      "alphaBounds": {
+        "x": 70,
+        "y": 120,
+        "width": 116,
+        "height": 124
+      },
+      "sha256": "845603971539a7baecbc0ccea04122d7971e5f19d8434333327b811df5f62b0e"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "crouchLight",
+      "column": 3,
+      "visiblePixels": 8599,
+      "alphaBounds": {
+        "x": 74,
+        "y": 117,
+        "width": 107,
+        "height": 127
+      },
+      "sha256": "9a05bf73ada27ba3e74e4b1295c9c473011a56cff42461b2b2472bbb9878a9c3"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeStart",
+      "column": 0,
+      "visiblePixels": 11451,
+      "alphaBounds": {
+        "x": 70,
+        "y": 54,
+        "width": 116,
+        "height": 190
+      },
+      "sha256": "8ffc95a732193efb78e4db68c913166db1c4e71f0277dacf1f8f42410c996efb"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeStart",
+      "column": 1,
+      "visiblePixels": 12641,
+      "alphaBounds": {
+        "x": 51,
+        "y": 76,
+        "width": 153,
+        "height": 168
+      },
+      "sha256": "ace8309e3fe978f9898b3feea2a549c1f4a4fca970b9e2bf9a70269d40c09add"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeStart",
+      "column": 2,
+      "visiblePixels": 11795,
+      "alphaBounds": {
+        "x": 52,
+        "y": 83,
+        "width": 152,
+        "height": 161
+      },
+      "sha256": "2de50eaa84b6c37213607ec3eb61031e06953c2ba08c847ab46b2802958bc600"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeStart",
+      "column": 3,
+      "visiblePixels": 11524,
+      "alphaBounds": {
+        "x": 53,
+        "y": 73,
+        "width": 150,
+        "height": 171
+      },
+      "sha256": "b85a67449ea81460db2cf4a7326120deb7fd2639c484f9d086e6e5825b0d3596"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeLoop",
+      "column": 0,
+      "visiblePixels": 9611,
+      "alphaBounds": {
+        "x": 57,
+        "y": 101,
+        "width": 142,
+        "height": 143
+      },
+      "sha256": "d2cd6e67203937be79adfa8b1936c3290e5e27a6efd7b3419f5c30bc682f3ae9"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeLoop",
+      "column": 1,
+      "visiblePixels": 12192,
+      "alphaBounds": {
+        "x": 53,
+        "y": 100,
+        "width": 150,
+        "height": 144
+      },
+      "sha256": "c60784945e596cb579a5271e7a5e7d149964f41b956ca54edd0ad1d78a91c41b"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeLoop",
+      "column": 2,
+      "visiblePixels": 10436,
+      "alphaBounds": {
+        "x": 47,
+        "y": 97,
+        "width": 162,
+        "height": 147
+      },
+      "sha256": "f10e109cd5035b761fdfb33722f9dad074f0245f5c693335ada0b376d13d52f0"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeLoop",
+      "column": 3,
+      "visiblePixels": 9341,
+      "alphaBounds": {
+        "x": 60,
+        "y": 100,
+        "width": 136,
+        "height": 144
+      },
+      "sha256": "abcebfac38a8c19e86e20c376a17eb2617853e2e0b123137cfda420e94cdb34f"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeRelease",
+      "column": 0,
+      "visiblePixels": 10654,
+      "alphaBounds": {
+        "x": 57,
+        "y": 76,
+        "width": 141,
+        "height": 168
+      },
+      "sha256": "c99d207f70abac944fe61a84de4935a24cc5bebb20a6cbda9b00808114d3e15a"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeRelease",
+      "column": 1,
+      "visiblePixels": 12247,
+      "alphaBounds": {
+        "x": 25,
+        "y": 78,
+        "width": 206,
+        "height": 166
+      },
+      "sha256": "9f07811fc7223d9ed735ea801986c5ffe7fc83ae85c81d7746213f94fdc3d6f3"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeRelease",
+      "column": 2,
+      "visiblePixels": 11379,
+      "alphaBounds": {
+        "x": 41,
+        "y": 78,
+        "width": 173,
+        "height": 166
+      },
+      "sha256": "0f4010f8d1a0cb1720ed659ed385106edfdb445736504657c778970edcca2e85"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeRelease",
+      "column": 3,
+      "visiblePixels": 9998,
+      "alphaBounds": {
+        "x": 68,
+        "y": 78,
+        "width": 119,
+        "height": 166
+      },
+      "sha256": "7d4f8e6775ea5a0246bddcc1362f22106e02bc254bd910765bbaf1e639a0b09c"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeRecovery",
+      "column": 0,
+      "visiblePixels": 10907,
+      "alphaBounds": {
+        "x": 37,
+        "y": 92,
+        "width": 182,
+        "height": 152
+      },
+      "sha256": "916ff356129af627e73e5ea63ae39ece04624cf1e6d3d9c767a3562c62bce0b4"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeRecovery",
+      "column": 1,
+      "visiblePixels": 9852,
+      "alphaBounds": {
+        "x": 62,
+        "y": 85,
+        "width": 132,
+        "height": 159
+      },
+      "sha256": "88d0ad236b7661a28b229d03514d4a5bf771d6e65c840161c0203d60b04511a4"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeRecovery",
+      "column": 2,
+      "visiblePixels": 9654,
+      "alphaBounds": {
+        "x": 64,
+        "y": 86,
+        "width": 127,
+        "height": 158
+      },
+      "sha256": "f791488789960c47b538ad13e6095145a5d34a33193e1e2643fbfe8f7054d5b2"
+    },
+    {
+      "atlas": "kiryu-combat-a",
+      "state": "chargeRecovery",
+      "column": 3,
+      "visiblePixels": 9427,
+      "alphaBounds": {
+        "x": 74,
+        "y": 81,
+        "width": 107,
+        "height": 163
+      },
+      "sha256": "3da92fe170f7d7dd017df58ef7766fbf3b5703e94e701fab46e93b853d7b15aa"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "attackRecovery",
+      "column": 0,
+      "visiblePixels": 9250,
+      "alphaBounds": {
+        "x": 42,
+        "y": 89,
+        "width": 172,
+        "height": 155
+      },
+      "sha256": "43da3708c03464bbbc98c3cc60200cd64bc2cf23f5aa24ac9d49fc129b84b734"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "attackRecovery",
+      "column": 1,
+      "visiblePixels": 8870,
+      "alphaBounds": {
+        "x": 64,
+        "y": 85,
+        "width": 127,
+        "height": 159
+      },
+      "sha256": "3b1acf00866e1661c8570e7ad81eb76c4c73ae53637e795502915b10101b3efd"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "attackRecovery",
+      "column": 2,
+      "visiblePixels": 9251,
+      "alphaBounds": {
+        "x": 68,
+        "y": 84,
+        "width": 120,
+        "height": 160
+      },
+      "sha256": "ed273b9e77f822709c64183f9f15b45e23a2992a148a82aa7fc4aab4ab770319"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "attackRecovery",
+      "column": 3,
+      "visiblePixels": 8608,
+      "alphaBounds": {
+        "x": 74,
+        "y": 84,
+        "width": 108,
+        "height": 160
+      },
+      "sha256": "598bcb61a84235da09bc9a4f3a3edecc0f6ec597a56a95205066d5dfe6b3e837"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "special",
+      "column": 0,
+      "visiblePixels": 10199,
+      "alphaBounds": {
+        "x": 39,
+        "y": 86,
+        "width": 177,
+        "height": 158
+      },
+      "sha256": "99844c826752ddfea4a91c71057f1801b61be0d53d8c2c017afc15ab1d663059"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "special",
+      "column": 1,
+      "visiblePixels": 9944,
+      "alphaBounds": {
+        "x": 41,
+        "y": 86,
+        "width": 173,
+        "height": 158
+      },
+      "sha256": "481b6370814933ee1299fd71cfe62ccd9df4a089a57323f999fd57b8b774f33f"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "special",
+      "column": 2,
+      "visiblePixels": 8878,
+      "alphaBounds": {
+        "x": 83,
+        "y": 80,
+        "width": 89,
+        "height": 164
+      },
+      "sha256": "6ad9e43c614f9d311b134b1451253a8cc3d535e0362e9a51c75acd22d3857327"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "special",
+      "column": 3,
+      "visiblePixels": 8676,
+      "alphaBounds": {
+        "x": 74,
+        "y": 84,
+        "width": 107,
+        "height": 160
+      },
+      "sha256": "6a7f60d3ac40ca0e8e4b887eb52a57816d840a86fd07c9f36ac4021663a5d95a"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "aerialNeutral",
+      "column": 0,
+      "visiblePixels": 8054,
+      "alphaBounds": {
+        "x": 77,
+        "y": 107,
+        "width": 101,
+        "height": 137
+      },
+      "sha256": "cf37238409e4773c8a842a62a063472128e8b17ecade167de7c766db6319b6bf"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "aerialNeutral",
+      "column": 1,
+      "visiblePixels": 9901,
+      "alphaBounds": {
+        "x": 39,
+        "y": 125,
+        "width": 177,
+        "height": 119
+      },
+      "sha256": "a8b5694f07a37ebef0dafc63f1cee758ce4e8faf32a7c252848759b44289a887"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "aerialNeutral",
+      "column": 2,
+      "visiblePixels": 10742,
+      "alphaBounds": {
+        "x": 64,
+        "y": 100,
+        "width": 127,
+        "height": 144
+      },
+      "sha256": "57236c3760480c2141add83669ecf6b1009c79f1de6e63a6fa10aefc79b7251a"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "aerialNeutral",
+      "column": 3,
+      "visiblePixels": 9609,
+      "alphaBounds": {
+        "x": 66,
+        "y": 78,
+        "width": 123,
+        "height": 166
+      },
+      "sha256": "d7cd4d274ba378d4c5dbd9a9d1c1cb51fcabbaaf9701b87b08cefa13d1615595"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "aerialForward",
+      "column": 0,
+      "visiblePixels": 11337,
+      "alphaBounds": {
+        "x": 64,
+        "y": 66,
+        "width": 127,
+        "height": 178
+      },
+      "sha256": "f2230ef9070c8fa1f176a4dfeb4d6d21b27bb114ad4396a9063f6fa95c6e3269"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "aerialForward",
+      "column": 1,
+      "visiblePixels": 10532,
+      "alphaBounds": {
+        "x": 28,
+        "y": 69,
+        "width": 200,
+        "height": 175
+      },
+      "sha256": "883e45a8dd7fd9fc0887e2354431656459c23bdd1ef8fb3ee9b123ae6c8eafb8"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "aerialForward",
+      "column": 2,
+      "visiblePixels": 9924,
+      "alphaBounds": {
+        "x": 43,
+        "y": 126,
+        "width": 169,
+        "height": 118
+      },
+      "sha256": "2a22aec23b63ea925f83f3a57f08d7fac2f0d142e82035dc2f156289e933b8df"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "aerialForward",
+      "column": 3,
+      "visiblePixels": 8830,
+      "alphaBounds": {
+        "x": 73,
+        "y": 107,
+        "width": 109,
+        "height": 137
+      },
+      "sha256": "47d1fbb955871272de680a602663160d998e6928a1e119c4e98694b5d38bf730"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "aerialDown",
+      "column": 0,
+      "visiblePixels": 7631,
+      "alphaBounds": {
+        "x": 76,
+        "y": 113,
+        "width": 103,
+        "height": 131
+      },
+      "sha256": "f0fca99004c11e531ee3b16eb7c0bb8950a055917f59e49ff65cb4ece40130e8"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "aerialDown",
+      "column": 1,
+      "visiblePixels": 8473,
+      "alphaBounds": {
+        "x": 85,
+        "y": 43,
+        "width": 86,
+        "height": 201
+      },
+      "sha256": "8b953f284d810618674043e7a81f9422c78045c015c378f01288666260e23021"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "aerialDown",
+      "column": 2,
+      "visiblePixels": 9392,
+      "alphaBounds": {
+        "x": 76,
+        "y": 84,
+        "width": 104,
+        "height": 160
+      },
+      "sha256": "08c14b4065d279dfa2da2d9e9dfa8d584d29336318bda2d5ef6f4c33729c943c"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "aerialDown",
+      "column": 3,
+      "visiblePixels": 10172,
+      "alphaBounds": {
+        "x": 58,
+        "y": 113,
+        "width": 140,
+        "height": 131
+      },
+      "sha256": "628a720b84b37c1740e3936b825a9be46ac3556426bb2ab6a66c2724b76b104c"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "intro",
+      "column": 0,
+      "visiblePixels": 10800,
+      "alphaBounds": {
+        "x": 84,
+        "y": 54,
+        "width": 88,
+        "height": 190
+      },
+      "sha256": "08a6db13d6d4a52a952dcfed573e985d36ebf1d441cba336611b4114cb85552e"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "intro",
+      "column": 1,
+      "visiblePixels": 10885,
+      "alphaBounds": {
+        "x": 78,
+        "y": 61,
+        "width": 100,
+        "height": 183
+      },
+      "sha256": "c615a495f9785ac596214bc894abc3f209b9a4a91a94c2d1038b3eb20b2b2ddf"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "intro",
+      "column": 2,
+      "visiblePixels": 10370,
+      "alphaBounds": {
+        "x": 66,
+        "y": 65,
+        "width": 123,
+        "height": 179
+      },
+      "sha256": "0a6edf036cdb55f1cbdb7df1179c891e612a91c8d0b2fee76a101e059cd50cbd"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "intro",
+      "column": 3,
+      "visiblePixels": 10125,
+      "alphaBounds": {
+        "x": 70,
+        "y": 66,
+        "width": 115,
+        "height": 178
+      },
+      "sha256": "f01db3e6ac497c6ccd5756a0bc9b3c794e68232760d46e0ec400ded16a8865a8"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "victory",
+      "column": 0,
+      "visiblePixels": 11157,
+      "alphaBounds": {
+        "x": 84,
+        "y": 50,
+        "width": 88,
+        "height": 194
+      },
+      "sha256": "1da4b1aff2fd01753e378d38150b0353853697f524533a82b96fb80fc196950c"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "victory",
+      "column": 1,
+      "visiblePixels": 11275,
+      "alphaBounds": {
+        "x": 80,
+        "y": 50,
+        "width": 96,
+        "height": 194
+      },
+      "sha256": "f1dd5dcf5e41f121a027a2653a7e502ec48949dacb42f2cb022872c29afb81a4"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "victory",
+      "column": 2,
+      "visiblePixels": 11800,
+      "alphaBounds": {
+        "x": 76,
+        "y": 52,
+        "width": 104,
+        "height": 192
+      },
+      "sha256": "48afb30d17a0b301f1968a3a76a07de073f87813aecd75a7da7a683fa13d6b42"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "victory",
+      "column": 3,
+      "visiblePixels": 11632,
+      "alphaBounds": {
+        "x": 83,
+        "y": 46,
+        "width": 90,
+        "height": 198
+      },
+      "sha256": "0b4ca53164601a7e452529a56358723205e166b00bcee24781e83ff9ecc236b4"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "ledgeAttack",
+      "column": 0,
+      "visiblePixels": 9042,
+      "alphaBounds": {
+        "x": 57,
+        "y": 125,
+        "width": 141,
+        "height": 119
+      },
+      "sha256": "076498355e28fa4fab6847f51f58988087339ec16f2b10b95f78a7c379137363"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "ledgeAttack",
+      "column": 1,
+      "visiblePixels": 8725,
+      "alphaBounds": {
+        "x": 69,
+        "y": 117,
+        "width": 117,
+        "height": 127
+      },
+      "sha256": "449288b7fb97fc8b03a73aff6e0908318d8e9d8f81e12a934102cd7c0620d513"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "ledgeAttack",
+      "column": 2,
+      "visiblePixels": 10072,
+      "alphaBounds": {
+        "x": 32,
+        "y": 107,
+        "width": 192,
+        "height": 137
+      },
+      "sha256": "24320836f87ca53b2b02cacc330e85902f0fe6947ef43f5721782b252344177a"
+    },
+    {
+      "atlas": "kiryu-combat-b",
+      "state": "ledgeAttack",
+      "column": 3,
+      "visiblePixels": 8449,
+      "alphaBounds": {
+        "x": 68,
+        "y": 107,
+        "width": 120,
+        "height": 137
+      },
+      "sha256": "cb09cea7887cc429dd7e52b999b39e1a8fac2c2ac6778af82c8fb26c090e6a80"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeCatch",
+      "column": 0,
+      "visiblePixels": 12220,
+      "alphaBounds": {
+        "x": 45,
+        "y": 25,
+        "width": 167,
+        "height": 219
+      },
+      "sha256": "f5895b3be5b4199bab681d17ed3fbe45a51c4c6c9b9b8800c586a24393fb668a"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeCatch",
+      "column": 1,
+      "visiblePixels": 11795,
+      "alphaBounds": {
+        "x": 54,
+        "y": 25,
+        "width": 147,
+        "height": 219
+      },
+      "sha256": "9cabe9362b5cece28162ffff9fd68df2529eba8cca9ff8e61d396fa205381c68"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeCatch",
+      "column": 2,
+      "visiblePixels": 13562,
+      "alphaBounds": {
+        "x": 79,
+        "y": 26,
+        "width": 98,
+        "height": 218
+      },
+      "sha256": "3b6718fb84ed0b47aec1cd82197f241a3483df16db9cefcae195c07e443234fd"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeCatch",
+      "column": 3,
+      "visiblePixels": 12753,
+      "alphaBounds": {
+        "x": 74,
+        "y": 47,
+        "width": 108,
+        "height": 197
+      },
+      "sha256": "5ca9a7290ab96eea1bf6fea6bde93300c6353c58e84beda9d3f64c47ecb84f4a"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeHang",
+      "column": 0,
+      "visiblePixels": 13192,
+      "alphaBounds": {
+        "x": 68,
+        "y": 15,
+        "width": 120,
+        "height": 229
+      },
+      "sha256": "e0ab6f5fbeff37d935e6a74e4031c9cec8585b8427c67bdce9873d3f1eea18be"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeHang",
+      "column": 1,
+      "visiblePixels": 13046,
+      "alphaBounds": {
+        "x": 68,
+        "y": 10,
+        "width": 119,
+        "height": 234
+      },
+      "sha256": "bde0a8a46ae70873616d1e5cc4af7ea6b2d0d89d17c16c0a60d7310bd9f29dcd"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeHang",
+      "column": 2,
+      "visiblePixels": 12880,
+      "alphaBounds": {
+        "x": 81,
+        "y": 19,
+        "width": 94,
+        "height": 225
+      },
+      "sha256": "10dbddf2c282040405e777037abb211df243a76d817e8c6e79f0ef1cb252c396"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeHang",
+      "column": 3,
+      "visiblePixels": 13042,
+      "alphaBounds": {
+        "x": 57,
+        "y": 30,
+        "width": 141,
+        "height": 214
+      },
+      "sha256": "53f5175d072065a4a7ac59d12af1c17b733f3fa900cf2a6e743ad904e67bb498"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeClimb",
+      "column": 0,
+      "visiblePixels": 12806,
+      "alphaBounds": {
+        "x": 72,
+        "y": 58,
+        "width": 111,
+        "height": 186
+      },
+      "sha256": "a7a9e95c5bb994c76a6e0ec34726662cf538d92c44bbf82d988bedca920545b3"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeClimb",
+      "column": 1,
+      "visiblePixels": 12447,
+      "alphaBounds": {
+        "x": 72,
+        "y": 51,
+        "width": 112,
+        "height": 193
+      },
+      "sha256": "f7ad29bfd1ae0467f0ddadafd599ead58098ccb3d54a15ebcb2e6533eb8b8d4c"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeClimb",
+      "column": 2,
+      "visiblePixels": 11145,
+      "alphaBounds": {
+        "x": 54,
+        "y": 53,
+        "width": 148,
+        "height": 191
+      },
+      "sha256": "7869ed07d619c31a351fb57fb7d6ccb7bd9d48d2747f34e5356b7b4794a5c0a1"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeClimb",
+      "column": 3,
+      "visiblePixels": 10434,
+      "alphaBounds": {
+        "x": 55,
+        "y": 125,
+        "width": 146,
+        "height": 119
+      },
+      "sha256": "d6a0f06f5ad0f124433ee2f65b9842335bafb78585715385e8c6e5762fb97a5f"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeDrop",
+      "column": 0,
+      "visiblePixels": 12981,
+      "alphaBounds": {
+        "x": 75,
+        "y": 39,
+        "width": 105,
+        "height": 205
+      },
+      "sha256": "22b09287d45f8f2edc17f3425497da5d9667a33c1e3aac3845b615cb0219f853"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeDrop",
+      "column": 1,
+      "visiblePixels": 12486,
+      "alphaBounds": {
+        "x": 61,
+        "y": 40,
+        "width": 133,
+        "height": 204
+      },
+      "sha256": "0ca9e81ab4cfbbb69e58033bb1e0dc7d3a0c62c86e9e64cd13a9624b6cb8cc49"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeDrop",
+      "column": 2,
+      "visiblePixels": 13066,
+      "alphaBounds": {
+        "x": 44,
+        "y": 51,
+        "width": 167,
+        "height": 193
+      },
+      "sha256": "83873feca6d15aa4dc58b18631bcba8bf598911bb3c234f99cba2938df540f85"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeDrop",
+      "column": 3,
+      "visiblePixels": 12700,
+      "alphaBounds": {
+        "x": 40,
+        "y": 82,
+        "width": 175,
+        "height": 162
+      },
+      "sha256": "248cb28faf6621da99546080a874e099f691274e13d620b2b259c4bbbe9863d9"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeJump",
+      "column": 0,
+      "visiblePixels": 11220,
+      "alphaBounds": {
+        "x": 77,
+        "y": 60,
+        "width": 101,
+        "height": 184
+      },
+      "sha256": "3d8a00f68e938ff1b53cd9c8426b73d6316a98674db3ad749463f60eca3f922d"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeJump",
+      "column": 1,
+      "visiblePixels": 12367,
+      "alphaBounds": {
+        "x": 61,
+        "y": 42,
+        "width": 133,
+        "height": 202
+      },
+      "sha256": "fee9156f96048df4aef51c0ef914d5aefc9ce00d6127f39c1f82fd8d0d234a76"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeJump",
+      "column": 2,
+      "visiblePixels": 11339,
+      "alphaBounds": {
+        "x": 47,
+        "y": 90,
+        "width": 162,
+        "height": 154
+      },
+      "sha256": "f57ed884bace528759eb585a0d75794f5b15347e0f002d47ae3565e41842059a"
+    },
+    {
+      "atlas": "kiryu-ledge",
+      "state": "ledgeJump",
+      "column": 3,
+      "visiblePixels": 14126,
+      "alphaBounds": {
+        "x": 26,
+        "y": 68,
+        "width": 204,
+        "height": 176
+      },
+      "sha256": "f8edaa04d62ae680a21f2729437660d6836a650f6ab28f9cd5329cdcd5c11cb2"
+    }
+  ]
+}

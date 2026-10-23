@@ -1,0 +1,2709 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "heroId": "vegeta_dbz",
+  "universe": "Dragon Ball Z",
+  "canonicalVerified": false,
+  "networkVerified": false,
+  "canon1to1Verified": false,
+  "entries": [
+    {
+      "id": "vegeta-motion-a",
+      "heroId": "vegeta_dbz",
+      "universe": "Dragon Ball Z",
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-motion-a.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "stateOrder": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "0f0768cfcf9dfbc21072f0841b9c2751a59df1ef347ea03e210e6746e9a620e6",
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+      "sourceHash": "d35f4801b19c4c4a0870a7e653739cf6ff509883b220ea7d35b0cb6539bcff30",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+          "sha256": "d35f4801b19c4c4a0870a7e653739cf6ff509883b220ea7d35b0cb6539bcff30",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          },
+          "columns": 4,
+          "rows": 8
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/dragon-ball-z/vegeta-dbz.png",
+      "referenceHash": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/dragon-ball-z/vegeta-dbz.png",
+          "sha256": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4",
+          "savedImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-original.png"
+        },
+        {
+          "asset": "public/sprites/generated/combat-character-animations/vegeta_dbz.png",
+          "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+          "savedImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-presentation.png"
+        }
+      ],
+      "frameOrderByState": {
+        "idle": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "run": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "turn": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "jumpStart": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "jumpRise": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "jumpApex": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "fall": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "normalization": {
+        "method": "Alpha-connected segmentation of genuine native drawings; uniform per-source nearest-neighbor scaling and transparent packing.",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive alpha-bounds anchor in each 256px cell",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Near-transparent background noise below threshold excluded; all original PNG sources remain unchanged.",
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png": 1
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "idle",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 56,
+              "y": 6,
+              "width": 146,
+              "height": 220
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 55,
+              "y": 24,
+              "width": 146,
+              "height": 220
+            },
+            "sha256": "5b186a9c0017bc2b46a197941a06034cabf888089b5959211b2ab9bae4781aa3"
+          },
+          {
+            "state": "idle",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 281,
+              "y": 7,
+              "width": 136,
+              "height": 218
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 60,
+              "y": 26,
+              "width": 136,
+              "height": 218
+            },
+            "sha256": "0095136ac226102afe09b1289f785153877dd159572265fb4cadd7ed6e3170fe"
+          },
+          {
+            "state": "idle",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 495,
+              "y": 6,
+              "width": 155,
+              "height": 220
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 50,
+              "y": 24,
+              "width": 155,
+              "height": 220
+            },
+            "sha256": "334d7b9d7c1f46069083aeeed7bf0f7e9ecf230d45f565bccb12cd70eaec6d93"
+          },
+          {
+            "state": "idle",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 721,
+              "y": 6,
+              "width": 122,
+              "height": 220
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 67,
+              "y": 24,
+              "width": 122,
+              "height": 220
+            },
+            "sha256": "8ffb7bccc4b37d84d92c849e6e866f680d9355af1bdaed3c13f80bce3cc5a67d"
+          },
+          {
+            "state": "walk",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 61,
+              "y": 233,
+              "width": 130,
+              "height": 218
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 63,
+              "y": 26,
+              "width": 130,
+              "height": 218
+            },
+            "sha256": "58c70f7420c9879f3606e1275a1da0bbede6c69a0dbe39a931b4439a55c857ab"
+          },
+          {
+            "state": "walk",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 291,
+              "y": 232,
+              "width": 128,
+              "height": 219
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 64,
+              "y": 25,
+              "width": 128,
+              "height": 219
+            },
+            "sha256": "f4476a4eaf00af28989907ecdcda63382e8ec0d01d510f96dc3dda6054945fb9"
+          },
+          {
+            "state": "walk",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 500,
+              "y": 235,
+              "width": 131,
+              "height": 216
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 62,
+              "y": 28,
+              "width": 131,
+              "height": 216
+            },
+            "sha256": "5f8f7803670b94c21cafcdf1d7e116258aa5ace6bf2c8c463750eed469fdf551"
+          },
+          {
+            "state": "walk",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 722,
+              "y": 235,
+              "width": 129,
+              "height": 217
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 63,
+              "y": 27,
+              "width": 129,
+              "height": 217
+            },
+            "sha256": "c8a0c4293df4cd74c29b0dfef6dfaba565c977a7a86773755ccc9375d1bab949"
+          },
+          {
+            "state": "run",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 27,
+              "y": 463,
+              "width": 193,
+              "height": 201
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 31,
+              "y": 43,
+              "width": 193,
+              "height": 201
+            },
+            "sha256": "35f1a18ac824455c67cad16f0c0b1cb599ca3903af79085083f9c50d0c123086"
+          },
+          {
+            "state": "run",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 258,
+              "y": 459,
+              "width": 171,
+              "height": 203
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 42,
+              "y": 41,
+              "width": 171,
+              "height": 203
+            },
+            "sha256": "87a0ed8572826a15810e675fc5d7f6b2121f8927cdbe5d955b1baab38027b4a0"
+          },
+          {
+            "state": "run",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 479,
+              "y": 467,
+              "width": 172,
+              "height": 198
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 42,
+              "y": 46,
+              "width": 172,
+              "height": 198
+            },
+            "sha256": "ae8c24df8b14459cd326cee9539a4a4287a2ec5ddef8278cab2b075107ef35dd"
+          },
+          {
+            "state": "run",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 687,
+              "y": 464,
+              "width": 184,
+              "height": 202
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 36,
+              "y": 42,
+              "width": 184,
+              "height": 202
+            },
+            "sha256": "06ee165283c94551dce3b1c31ebb1b2aaadcf669907f65e2fa600468031b9b60"
+          },
+          {
+            "state": "turn",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 57,
+              "y": 670,
+              "width": 88,
+              "height": 234
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 84,
+              "y": 10,
+              "width": 88,
+              "height": 234
+            },
+            "sha256": "3b631c7340953dfa49415e4cb06811c90094d1b974fe813772e2b39144e6544d"
+          },
+          {
+            "state": "turn",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 273,
+              "y": 670,
+              "width": 125,
+              "height": 234
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 65,
+              "y": 10,
+              "width": 125,
+              "height": 234
+            },
+            "sha256": "df1c0a67dd4709297fc3c9e0430a72505b6a6390e264747a2f7f76b2c97d8ed4"
+          },
+          {
+            "state": "turn",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 474,
+              "y": 672,
+              "width": 156,
+              "height": 232
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 50,
+              "y": 12,
+              "width": 156,
+              "height": 232
+            },
+            "sha256": "f9a2233737f233e47352f2ce8db573b6665558997326e7c4ac3d511aa31943d5"
+          },
+          {
+            "state": "turn",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 697,
+              "y": 676,
+              "width": 162,
+              "height": 226
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 47,
+              "y": 18,
+              "width": 162,
+              "height": 226
+            },
+            "sha256": "388cf6ab4a1a4f1028eceb2fa0cbd52c8b9eb98416d2f745a7a5b20cb12c6081"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 46,
+              "y": 915,
+              "width": 135,
+              "height": 198
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 60,
+              "y": 46,
+              "width": 135,
+              "height": 198
+            },
+            "sha256": "b135c569c554fc536499672f21bb667ba222eda6abfef9f8abccd99e329888c2"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 263,
+              "y": 951,
+              "width": 133,
+              "height": 157
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 61,
+              "y": 87,
+              "width": 133,
+              "height": 157
+            },
+            "sha256": "cdb3c07309be597808779a1885993e247ef0b321121c5581f96b58aafc43b842"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 485,
+              "y": 914,
+              "width": 158,
+              "height": 200
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 49,
+              "y": 44,
+              "width": 158,
+              "height": 200
+            },
+            "sha256": "2f17f97d28205f418a9c9260bdc96a3b4839f5c372f1e37cc1895f3ed2f6e022"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 707,
+              "y": 908,
+              "width": 149,
+              "height": 210
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 53,
+              "y": 34,
+              "width": 149,
+              "height": 210
+            },
+            "sha256": "f4728680f5b337799484b1a507d06f7bba895c785518eda30a6dadf9680888f7"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 63,
+              "y": 1114,
+              "width": 98,
+              "height": 196
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 79,
+              "y": 48,
+              "width": 98,
+              "height": 196
+            },
+            "sha256": "9471b3249dff0c92338e9dc929173b13d30bc48bfbde3b955727a0e9c7191237"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 267,
+              "y": 1112,
+              "width": 164,
+              "height": 212
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 46,
+              "y": 32,
+              "width": 164,
+              "height": 212
+            },
+            "sha256": "55cfbfe7b20f2565c57c7ea44501001eb8ea24dc673aa49585abd9090a128d42"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 504,
+              "y": 1127,
+              "width": 131,
+              "height": 179
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 62,
+              "y": 65,
+              "width": 131,
+              "height": 179
+            },
+            "sha256": "a7389300410d39dc5c1bd040cc943d15f0e31ce6ca50591002a7edcbe424d29d"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 692,
+              "y": 1112,
+              "width": 171,
+              "height": 224
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 42,
+              "y": 20,
+              "width": 171,
+              "height": 224
+            },
+            "sha256": "d1ec59004d821bf53f7bd3a955588e97da70702e715726aebf6fdb31dde8175d"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 65,
+              "y": 1329,
+              "width": 105,
+              "height": 183
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 75,
+              "y": 61,
+              "width": 105,
+              "height": 183
+            },
+            "sha256": "5247d51aba0d8e3037e273c1b2abeb957f3e278e63241a1a6a56b7f96d6c65ea"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 247,
+              "y": 1336,
+              "width": 194,
+              "height": 196
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 31,
+              "y": 48,
+              "width": 194,
+              "height": 196
+            },
+            "sha256": "b238e3f7bbd13d41f3b6134ce86cdef3cd7bed41daf0b98f4c880590f14bf661"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 485,
+              "y": 1338,
+              "width": 159,
+              "height": 213
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 48,
+              "y": 31,
+              "width": 159,
+              "height": 213
+            },
+            "sha256": "c944be5814d3d08a50403860825da4c69b1c546ed781699ff4f2ca09e4592dc0"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 718,
+              "y": 1330,
+              "width": 119,
+              "height": 233
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 68,
+              "y": 11,
+              "width": 119,
+              "height": 233
+            },
+            "sha256": "f4fcb52265685af5c6753b6bd2729f83eeb8a53740376cc42141ecda1d68e13d"
+          },
+          {
+            "state": "fall",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 30,
+              "y": 1563,
+              "width": 158,
+              "height": 197
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 49,
+              "y": 47,
+              "width": 158,
+              "height": 197
+            },
+            "sha256": "1c246d8bb266f3e9575bbbcfa593183b88b8bc0abf78070405db55191b2e03f2"
+          },
+          {
+            "state": "fall",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 260,
+              "y": 1565,
+              "width": 155,
+              "height": 194
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 50,
+              "y": 50,
+              "width": 155,
+              "height": 194
+            },
+            "sha256": "3a521b0689585c60b6ffc3e0d917d2d80acff156b41202437faa4fa75d78e01e"
+          },
+          {
+            "state": "fall",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 478,
+              "y": 1589,
+              "width": 147,
+              "height": 170
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 54,
+              "y": 74,
+              "width": 147,
+              "height": 170
+            },
+            "sha256": "98ffeceacc338653284d81ed836a9add829fad566d09b97df4a1df150cb92633"
+          },
+          {
+            "state": "fall",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 681,
+              "y": 1592,
+              "width": 177,
+              "height": 167
+            },
+            "scale": 1,
+            "destinationRect": {
+              "x": 39,
+              "y": 77,
+              "width": 177,
+              "height": 167
+            },
+            "sha256": "7bd3ad23eacf1d85b06d6665a5297b884b3b0aba8df5b9aa7d1db0324697d780"
+          }
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0,
+        "nativeSourceStateOrder": [
+          "idle",
+          "walk",
+          "run",
+          "turn",
+          "jumpStart",
+          "jumpRise",
+          "jumpApex",
+          "fall"
+        ],
+        "correctionRowsByState": {},
+        "discardedNativeRows": []
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "completeRows": 8,
+        "distinctNativePoses": 32,
+        "wholeCharacterContained": true,
+        "facing": "right; turn starts left, includes back/three-quarter body rotation and ends facing right",
+        "outfit": "Adult base-form DBZ Vegeta: black upright hair and widow's peak, plain sleeveless blue training suit without chest armor, white gloves, white boots with gold toe caps.",
+        "weapons": "none; unarmed physical martial movements and forearm/palm guards",
+        "transformations": "none; base black-haired form throughout, no SSJ/UI/aura",
+        "correction": "The complete initial source supplies all32 native poses.",
+        "limitations": [
+          "Original generated fan art and adapted movement, not official frames.",
+          "Minor perspective, anatomy and apparent scale variations remain between the native sources; running uses suspended DBZ dash-like leg positions.",
+          "Timing and pixel identity are not certified 1:1 with official Dragon Ball Z animation frames."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-10-20",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.prompt.txt",
+            "sha256": "da5daab1d509364f1e1f3807640e0ec8ea7948758309b1f131479d3f084d0150"
+          }
+        ],
+        "normalizationScript": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/normalize-vegeta-motion-atlases.mjs"
+      }
+    },
+    {
+      "id": "vegeta-motion-b",
+      "heroId": "vegeta_dbz",
+      "universe": "Dragon Ball Z",
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-motion-b.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "stateOrder": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "bc2d8066456be8278385bb6bcfd383a74f6f8b113c4a9dacea8a9905867c814c",
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+      "sourceHash": "088038a1a4b103d0d2656b0ae05a7f62c04c0f0ccbf9471dd573848652d6d478",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+          "sha256": "088038a1a4b103d0d2656b0ae05a7f62c04c0f0ccbf9471dd573848652d6d478",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          },
+          "columns": 4,
+          "rows": 7
+        },
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-crouch-charge.native.png",
+          "sha256": "6031dc6d5aeec5be4e316def09780aa09cb08dd25f35e3990bedc01216360df8",
+          "dimensions": {
+            "width": 2172,
+            "height": 724
+          },
+          "columns": 4,
+          "rows": 1
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/dragon-ball-z/vegeta-dbz.png",
+      "referenceHash": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/dragon-ball-z/vegeta-dbz.png",
+          "sha256": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4",
+          "savedImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-original.png"
+        },
+        {
+          "asset": "public/sprites/generated/combat-character-animations/vegeta_dbz.png",
+          "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+          "savedImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-presentation.png"
+        }
+      ],
+      "frameOrderByState": {
+        "fastFall": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "land": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchEnter": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchIdle": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchExit": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchCharge": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "taunt1": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "hitStun": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "normalization": {
+        "method": "Alpha-connected segmentation of genuine native drawings; uniform per-source nearest-neighbor scaling and transparent packing.",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive alpha-bounds anchor in each 256px cell",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Near-transparent background noise below threshold excluded; all original PNG sources remain unchanged.",
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png": 0.9034749034749034,
+          "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-crouch-charge.native.png": 0.45703125
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "fastFall",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 78,
+              "y": 6,
+              "width": 131,
+              "height": 220
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 69,
+              "y": 45,
+              "width": 118,
+              "height": 199
+            },
+            "sha256": "973664b2cf7ffe2f3a01840316b3df17420bd5c5037dc35842e6624a8934f504"
+          },
+          {
+            "state": "fastFall",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 290,
+              "y": 19,
+              "width": 124,
+              "height": 201
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 72,
+              "y": 62,
+              "width": 112,
+              "height": 182
+            },
+            "sha256": "6f1b458b0e7fcdd06268bd215014a12d2e55700d945f56b629c161e01886755f"
+          },
+          {
+            "state": "fastFall",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 511,
+              "y": 26,
+              "width": 101,
+              "height": 194
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 82,
+              "y": 69,
+              "width": 91,
+              "height": 175
+            },
+            "sha256": "a8718c489b5d69163dff6689d9bb981494cc564027e3b512ac84b43950cfe2bc"
+          },
+          {
+            "state": "fastFall",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 696,
+              "y": 6,
+              "width": 156,
+              "height": 240
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 57,
+              "y": 27,
+              "width": 141,
+              "height": 217
+            },
+            "sha256": "d2db3c858440c7ff1721cab28c216568786dff5cd88b3142751beab1214e3728"
+          },
+          {
+            "state": "land",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 35,
+              "y": 242,
+              "width": 176,
+              "height": 198
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 48,
+              "y": 65,
+              "width": 159,
+              "height": 179
+            },
+            "sha256": "c8f0f9e23410d645bcab68070b06889dba3789933accc23dc25ec9ecc7feb648"
+          },
+          {
+            "state": "land",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 267,
+              "y": 283,
+              "width": 164,
+              "height": 167
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 54,
+              "y": 93,
+              "width": 148,
+              "height": 151
+            },
+            "sha256": "26dbdf2764fb586ad4cd15f73c62a97fdddd40a8ba25cc825f33fc8208aec6e9"
+          },
+          {
+            "state": "land",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 482,
+              "y": 246,
+              "width": 157,
+              "height": 204
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 57,
+              "y": 60,
+              "width": 142,
+              "height": 184
+            },
+            "sha256": "bf446a91e644eeda08ae6569e4db9be154f7c918409f4dbac4996f72ddfa9ece"
+          },
+          {
+            "state": "land",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 707,
+              "y": 223,
+              "width": 147,
+              "height": 228
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 61,
+              "y": 38,
+              "width": 133,
+              "height": 206
+            },
+            "sha256": "f5798b0d5caa92509decfada8bc536546140fc703537d73de3bf08ac087003c7"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 49,
+              "y": 444,
+              "width": 144,
+              "height": 238
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 63,
+              "y": 29,
+              "width": 130,
+              "height": 215
+            },
+            "sha256": "8564e5a3f00287eb8d0aa70b3bc0214979068fd4062a4fc3045759616f12e00f"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 260,
+              "y": 463,
+              "width": 161,
+              "height": 215
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 55,
+              "y": 50,
+              "width": 145,
+              "height": 194
+            },
+            "sha256": "14401bf39cdb20c62ecc39efca93494bc8d848dff0e461dee6f3b998d3ffacc8"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 468,
+              "y": 494,
+              "width": 168,
+              "height": 185
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 52,
+              "y": 77,
+              "width": 152,
+              "height": 167
+            },
+            "sha256": "0052d17c92f9f4f7ccf3cec6e4d9cd8ec0e2916be7163272f6aa660a0167be59"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 699,
+              "y": 495,
+              "width": 150,
+              "height": 184
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 60,
+              "y": 78,
+              "width": 136,
+              "height": 166
+            },
+            "sha256": "a971b98628cb040f96c38bf6781bdec5d6029a90427478c65f1279e252323f26"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 44,
+              "y": 699,
+              "width": 145,
+              "height": 202
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 62,
+              "y": 61,
+              "width": 131,
+              "height": 183
+            },
+            "sha256": "6baecf6c0a4a5cb2749618d9451af8f29cd8872845f1682a158ee1913edb502d"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 252,
+              "y": 713,
+              "width": 154,
+              "height": 186
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 58,
+              "y": 76,
+              "width": 139,
+              "height": 168
+            },
+            "sha256": "d9bcb3a29f7691330d3aaaad295af883fe8979063c1ac5847529f05118155741"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 473,
+              "y": 705,
+              "width": 156,
+              "height": 199
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 57,
+              "y": 64,
+              "width": 141,
+              "height": 180
+            },
+            "sha256": "9d5660ba12f7d532b10fe8f1f74806cb9d5f107ebde07e41fd6f10589ab69518"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 696,
+              "y": 699,
+              "width": 163,
+              "height": 209
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 54,
+              "y": 55,
+              "width": 147,
+              "height": 189
+            },
+            "sha256": "9c022812602ee3f941f63047009b757f2f80ba49c947a1bb8faffdf956c5976c"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 32,
+              "y": 935,
+              "width": 166,
+              "height": 201
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 53,
+              "y": 62,
+              "width": 150,
+              "height": 182
+            },
+            "sha256": "e61fa183e44946c84c6bc8bff0807d151a4a2a5e98417a3c5ec2a506c14adf8c"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 254,
+              "y": 935,
+              "width": 160,
+              "height": 197
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 55,
+              "y": 66,
+              "width": 145,
+              "height": 178
+            },
+            "sha256": "0bd636b59e1426ff77617a91d66f683c3fe8e6a3bbe312c92d8f809c56a4a1cf"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 462,
+              "y": 920,
+              "width": 177,
+              "height": 218
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 48,
+              "y": 47,
+              "width": 160,
+              "height": 197
+            },
+            "sha256": "0e2abc0419616d64dffc484aab4b3496cb91e839e92a89376c043e5ba0306988"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 704,
+              "y": 905,
+              "width": 155,
+              "height": 235
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 58,
+              "y": 32,
+              "width": 140,
+              "height": 212
+            },
+            "sha256": "82653c2169119294e5369448eb528142af5ca37b5212bdfe9cceeea779ae73e1"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-crouch-charge.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 28,
+              "y": 123,
+              "width": 468,
+              "height": 512
+            },
+            "scale": 0.45703125,
+            "destinationRect": {
+              "x": 21,
+              "y": 10,
+              "width": 214,
+              "height": 234
+            },
+            "sha256": "83c94c7c00b0b39972b871166e51d77bef1de7102ad9d0900eabb5e9200e9a29"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-crouch-charge.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 610,
+              "y": 160,
+              "width": 461,
+              "height": 470
+            },
+            "scale": 0.45703125,
+            "destinationRect": {
+              "x": 22,
+              "y": 29,
+              "width": 211,
+              "height": 215
+            },
+            "sha256": "2081121713599f59c268a7e879dc221a656465d8b87d12d95b3bea5b73637e09"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-crouch-charge.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 1155,
+              "y": 190,
+              "width": 425,
+              "height": 447
+            },
+            "scale": 0.45703125,
+            "destinationRect": {
+              "x": 31,
+              "y": 40,
+              "width": 194,
+              "height": 204
+            },
+            "sha256": "4865d02850ccbd5e6ce7531e57384ff3a47af6f74988be01c2e6dbb456611492"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-crouch-charge.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 1727,
+              "y": 218,
+              "width": 411,
+              "height": 419
+            },
+            "scale": 0.45703125,
+            "destinationRect": {
+              "x": 34,
+              "y": 53,
+              "width": 188,
+              "height": 191
+            },
+            "sha256": "aefc79014a3b6f3d7ee31dacea245e516b9e3b028bb956a5e7abdd23f6055bea"
+          },
+          {
+            "state": "taunt1",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 41,
+              "y": 1160,
+              "width": 170,
+              "height": 255
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 51,
+              "y": 14,
+              "width": 154,
+              "height": 230
+            },
+            "sha256": "74ae6ebc87a80cdc53f8046f21d9233fbb79f90ca7f41724d51ea7338b884b55"
+          },
+          {
+            "state": "taunt1",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 283,
+              "y": 1160,
+              "width": 126,
+              "height": 255
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 71,
+              "y": 14,
+              "width": 114,
+              "height": 230
+            },
+            "sha256": "bee3b790f620b9750d00ce29bd422e7630f575b5c669988acf900ebbbebb6803"
+          },
+          {
+            "state": "taunt1",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 497,
+              "y": 1160,
+              "width": 144,
+              "height": 256
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 63,
+              "y": 13,
+              "width": 130,
+              "height": 231
+            },
+            "sha256": "ed261af0dc38ff1537ba1c3dcbb9979091b0183ca23248538f14b8c6b37263d1"
+          },
+          {
+            "state": "taunt1",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 713,
+              "y": 1175,
+              "width": 131,
+              "height": 241
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 69,
+              "y": 26,
+              "width": 118,
+              "height": 218
+            },
+            "sha256": "7c7d86cae5fdae4e418936147a4a14f5cb13ec74847c3f40eda2beb1edd0e24c"
+          },
+          {
+            "state": "hitStun",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 42,
+              "y": 1454,
+              "width": 192,
+              "height": 259
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 41,
+              "y": 10,
+              "width": 173,
+              "height": 234
+            },
+            "sha256": "fb91d3f25719e2c25fdb799b8248fbe69e1238d91a468e335bb84d8a6c54e6e9"
+          },
+          {
+            "state": "hitStun",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 254,
+              "y": 1481,
+              "width": 182,
+              "height": 237
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 46,
+              "y": 30,
+              "width": 164,
+              "height": 214
+            },
+            "sha256": "de4aaebd3ac87043a29c5d923d01388e2eaca01528c36d971cea2c732b97f310"
+          },
+          {
+            "state": "hitStun",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 445,
+              "y": 1480,
+              "width": 196,
+              "height": 239
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 39,
+              "y": 28,
+              "width": 177,
+              "height": 216
+            },
+            "sha256": "881f286ab3e20588fdd2b7c31307fc09469e8224e2722d12f7258ba6a18c1601"
+          },
+          {
+            "state": "hitStun",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 680,
+              "y": 1503,
+              "width": 174,
+              "height": 216
+            },
+            "scale": 0.9034749034749034,
+            "destinationRect": {
+              "x": 49,
+              "y": 49,
+              "width": 157,
+              "height": 195
+            },
+            "sha256": "83f7b80f671958be1f4df2652e9b32f3a6970bafd1cab353c86c5eda2f43d55c"
+          }
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0,
+        "nativeSourceStateOrder": [
+          "fastFall",
+          "land",
+          "crouchEnter",
+          "crouchIdle",
+          "crouchExit",
+          "taunt1",
+          "hitStun"
+        ],
+        "correctionRowsByState": {
+          "crouchCharge": 0
+        },
+        "discardedNativeRows": []
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "completeRows": 8,
+        "distinctNativePoses": 32,
+        "wholeCharacterContained": true,
+        "facing": "right; dead ends in side-lying KO",
+        "outfit": "Adult base-form DBZ Vegeta: black upright hair and widow's peak, plain sleeveless blue training suit without chest armor, white gloves, white boots with gold toe caps.",
+        "weapons": "none; unarmed physical martial movements and forearm/palm guards",
+        "transformations": "none; base black-haired form throughout, no SSJ/UI/aura",
+        "correction": "Initial source has28 poses and omits crouchCharge; four new native anatomical drawings from a separate one-row strip fill that state.",
+        "limitations": [
+          "Original generated fan art and adapted movement, not official frames.",
+          "Minor perspective, anatomy and apparent scale variations remain between the native sources; running uses suspended DBZ dash-like leg positions.",
+          "Timing and pixel identity are not certified 1:1 with official Dragon Ball Z animation frames."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-10-20",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.prompt.txt",
+            "sha256": "d868d30d74d61d0a497dbe2b89bb27ceb3f1b0e35df9cbf73b51bccc7c16b22c"
+          },
+          {
+            "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-crouch-charge.prompt.txt",
+            "sha256": "1a9c5ceba44f2db77caea452898609edac9d5a01265483e281e6d073b3047b58"
+          }
+        ],
+        "normalizationScript": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/normalize-vegeta-motion-atlases.mjs"
+      }
+    },
+    {
+      "id": "vegeta-defense",
+      "heroId": "vegeta_dbz",
+      "universe": "Dragon Ball Z",
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-defense.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "stateOrder": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "dff4c90f5aff0aea0ed9522fa1ca482c8c07755a19b97ad6743a15a05cb3f5c9",
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+      "sourceHash": "3d91a25642e7d6f3564df97c2353090b8a9c9ec431a3cc75cc96fc59e02df5f7",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+          "sha256": "3d91a25642e7d6f3564df97c2353090b8a9c9ec431a3cc75cc96fc59e02df5f7",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          },
+          "columns": 4,
+          "rows": 8
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/dragon-ball-z/vegeta-dbz.png",
+      "referenceHash": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/dragon-ball-z/vegeta-dbz.png",
+          "sha256": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4",
+          "savedImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-original.png"
+        },
+        {
+          "asset": "public/sprites/generated/combat-character-animations/vegeta_dbz.png",
+          "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+          "savedImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-presentation.png"
+        }
+      ],
+      "frameOrderByState": {
+        "shieldEnter": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldHold": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldHit": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "perfectShield": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldBreak": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldExit": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "dead": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "defeat": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "normalization": {
+        "method": "Alpha-connected segmentation of genuine native drawings; uniform per-source nearest-neighbor scaling and transparent packing.",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive alpha-bounds anchor in each 256px cell",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Near-transparent background noise below threshold excluded; all original PNG sources remain unchanged.",
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png": 1.0442477876106195
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "shieldEnter",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 37,
+              "y": 10,
+              "width": 169,
+              "height": 219
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 40,
+              "y": 15,
+              "width": 176,
+              "height": 229
+            },
+            "sha256": "332b38c8c8f33c392d22957a83607311ce41d1ed06725de2cf5e7c998ff1bcec"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 253,
+              "y": 22,
+              "width": 162,
+              "height": 207
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 43,
+              "y": 28,
+              "width": 169,
+              "height": 216
+            },
+            "sha256": "8fc70efb0b761c968e979620d4a958e1c0215162aff7d512c07d5d6311cfc7bf"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 481,
+              "y": 10,
+              "width": 172,
+              "height": 219
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 38,
+              "y": 15,
+              "width": 180,
+              "height": 229
+            },
+            "sha256": "c46d8f778158b4ba845ea37edb48c3617213fa7b266933434eda9ae87e26aeaa"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 710,
+              "y": 22,
+              "width": 146,
+              "height": 207
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 52,
+              "y": 28,
+              "width": 152,
+              "height": 216
+            },
+            "sha256": "df4c29b94df13762d6d4515b221e4d49a9d480d04c7b10125645c8f4a0a57e6a"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 25,
+              "y": 251,
+              "width": 193,
+              "height": 213
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 27,
+              "y": 22,
+              "width": 202,
+              "height": 222
+            },
+            "sha256": "fc4122182870276c5b87865b9c34429271fc1afe4d47eb32f4cf93c6702c9e6a"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 257,
+              "y": 264,
+              "width": 155,
+              "height": 201
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 47,
+              "y": 34,
+              "width": 162,
+              "height": 210
+            },
+            "sha256": "3c487c9cfb11ab47063f30bc2263636ddf1b9a2c49471c82eef96e66a484ac66"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 482,
+              "y": 251,
+              "width": 156,
+              "height": 214
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 46,
+              "y": 21,
+              "width": 163,
+              "height": 223
+            },
+            "sha256": "c209d822b78602548924a3bb81fa2a759d524ea163cfe537fe7deb018a3dad5d"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 711,
+              "y": 252,
+              "width": 153,
+              "height": 213
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 48,
+              "y": 22,
+              "width": 160,
+              "height": 222
+            },
+            "sha256": "9b238b24acc1e0dd5dc451dc0f15855b0212de75583634495021bfa46c2d35d8"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 27,
+              "y": 477,
+              "width": 167,
+              "height": 212
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 41,
+              "y": 23,
+              "width": 174,
+              "height": 221
+            },
+            "sha256": "cfe6f055fc83c648acec91c6b66a75348ed52f1ca3cc67c7594f49e619460212"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 261,
+              "y": 488,
+              "width": 183,
+              "height": 201
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 32,
+              "y": 34,
+              "width": 191,
+              "height": 210
+            },
+            "sha256": "5fce25da856606eeb6c8b62f9046954cbbf34431ae9d401cccb56f6f3d2a110d"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 479,
+              "y": 496,
+              "width": 167,
+              "height": 194
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 41,
+              "y": 41,
+              "width": 174,
+              "height": 203
+            },
+            "sha256": "8296bae9d0b196921cead5adeb6033e83014a585f14b6d961f9c108da1821a90"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 695,
+              "y": 489,
+              "width": 165,
+              "height": 200
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 42,
+              "y": 35,
+              "width": 172,
+              "height": 209
+            },
+            "sha256": "81b48fb05d4c781fc9d26b44bdd77d995122d0ddea0af5cbba6fc23a9484cebf"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 33,
+              "y": 709,
+              "width": 156,
+              "height": 216
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 46,
+              "y": 18,
+              "width": 163,
+              "height": 226
+            },
+            "sha256": "496ac77873e5a1942f4b0d0103acbacc107d735d64240d78588061b71e323a7d"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 242,
+              "y": 710,
+              "width": 200,
+              "height": 215
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 23,
+              "y": 19,
+              "width": 209,
+              "height": 225
+            },
+            "sha256": "1a443e36a29334c2c7ac2a2882ca3db80d022a4475b6a18a0a351e706ce62041"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 461,
+              "y": 722,
+              "width": 215,
+              "height": 203
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 15,
+              "y": 32,
+              "width": 225,
+              "height": 212
+            },
+            "sha256": "de418a46e4a6b5a73e9eeeccf38effb7ec8b31dce54f534b14924dd1ae624625"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 707,
+              "y": 711,
+              "width": 153,
+              "height": 214
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 48,
+              "y": 21,
+              "width": 160,
+              "height": 223
+            },
+            "sha256": "fdfa8a1bf60ae16da7f1b89f38431c7b0d10c74e7ddee4ac2cbccdd70f2f6323"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 30,
+              "y": 940,
+              "width": 156,
+              "height": 214
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 46,
+              "y": 21,
+              "width": 163,
+              "height": 223
+            },
+            "sha256": "3145b1e834c93355dbdabd78db6dd509d6eafb2dce9c81fe88468d056976887b"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 250,
+              "y": 946,
+              "width": 183,
+              "height": 207
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 32,
+              "y": 28,
+              "width": 191,
+              "height": 216
+            },
+            "sha256": "66c8fb4afe44d8a2f8cc058a4e77d8f9938c2cabd2356a5bce42a9fa79d13443"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 467,
+              "y": 965,
+              "width": 205,
+              "height": 189
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 21,
+              "y": 47,
+              "width": 214,
+              "height": 197
+            },
+            "sha256": "804294817b87188a18f567b9634ea86f07462903a2e5c0042003fba1a93ad4e8"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 722,
+              "y": 944,
+              "width": 139,
+              "height": 211
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 55,
+              "y": 24,
+              "width": 145,
+              "height": 220
+            },
+            "sha256": "88ddb1981761039f22e4c3f8489360c784e2696ad9a56f3e4fced96b6d50a51d"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 30,
+              "y": 1174,
+              "width": 157,
+              "height": 205
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 46,
+              "y": 30,
+              "width": 164,
+              "height": 214
+            },
+            "sha256": "8d9cf71677b8be11ac23cee7777525ed5d13ea122a8afa41f6a881048688d255"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 259,
+              "y": 1168,
+              "width": 151,
+              "height": 210
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 49,
+              "y": 25,
+              "width": 158,
+              "height": 219
+            },
+            "sha256": "1dc9da725bdd0f296a10ecc4ec57cb6159b32e9207df7be0a082baf65e704285"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 483,
+              "y": 1165,
+              "width": 138,
+              "height": 213
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 56,
+              "y": 22,
+              "width": 144,
+              "height": 222
+            },
+            "sha256": "bf6d28eb2fe205a7ac7375f91bec4651f0a1b894ecb1effb7a5f1eb693d361cb"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 700,
+              "y": 1183,
+              "width": 157,
+              "height": 195
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 46,
+              "y": 40,
+              "width": 164,
+              "height": 204
+            },
+            "sha256": "6abd432f8d3daac7b7d5c979c0e054179c4b91d527b7f4e76a63d64d9da16d1d"
+          },
+          {
+            "state": "dead",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 23,
+              "y": 1400,
+              "width": 168,
+              "height": 149
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 40,
+              "y": 88,
+              "width": 175,
+              "height": 156
+            },
+            "sha256": "782e3ef955983c41279dd143e4b1a569061ba7a9120bf5ae87a30840ba2b63dc"
+          },
+          {
+            "state": "dead",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 224,
+              "y": 1396,
+              "width": 171,
+              "height": 153
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 38,
+              "y": 84,
+              "width": 179,
+              "height": 160
+            },
+            "sha256": "8fea9a3816488a6b74e83b8e9dae8b3de59d586394de0bf6ed3f53e2c7bd321e"
+          },
+          {
+            "state": "dead",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 427,
+              "y": 1461,
+              "width": 226,
+              "height": 80
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 10,
+              "y": 160,
+              "width": 236,
+              "height": 84
+            },
+            "sha256": "7d1b395735714e58e787c41e4e5650401b9e13f349ba5314842dddaacc818fba"
+          },
+          {
+            "state": "dead",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 675,
+              "y": 1475,
+              "width": 206,
+              "height": 71
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 20,
+              "y": 170,
+              "width": 215,
+              "height": 74
+            },
+            "sha256": "ff43979468aafa356119caabdee7a1f4fae3ad8de20b0119bb1bc4c7c2b80bfd"
+          },
+          {
+            "state": "defeat",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 21,
+              "y": 1562,
+              "width": 165,
+              "height": 198
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 42,
+              "y": 37,
+              "width": 172,
+              "height": 207
+            },
+            "sha256": "40fc9f67b23b6fa4dec237b5b567a747b842b1eed063a2850d819c01cecf12f9"
+          },
+          {
+            "state": "defeat",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 257,
+              "y": 1570,
+              "width": 167,
+              "height": 188
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 41,
+              "y": 48,
+              "width": 174,
+              "height": 196
+            },
+            "sha256": "eb15f79a939762cb5ef0eda15100cf0064fc8e1530b65e1dd640f947cb2e4345"
+          },
+          {
+            "state": "defeat",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 494,
+              "y": 1578,
+              "width": 118,
+              "height": 182
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 66,
+              "y": 54,
+              "width": 123,
+              "height": 190
+            },
+            "sha256": "5535ccbe451b2314a37c1384658c2a4fd7c4f8aded861ceae13de8c080344496"
+          },
+          {
+            "state": "defeat",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 715,
+              "y": 1584,
+              "width": 124,
+              "height": 175
+            },
+            "scale": 1.0442477876106195,
+            "destinationRect": {
+              "x": 63,
+              "y": 61,
+              "width": 129,
+              "height": 183
+            },
+            "sha256": "3570ab13a5dec57cb226972d8fe83bffea748a2a77e054e0d662ac56c12e0432"
+          }
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0,
+        "nativeSourceStateOrder": [
+          "shieldEnter",
+          "shieldHold",
+          "shieldHit",
+          "perfectShield",
+          "shieldBreak",
+          "shieldExit",
+          "dead",
+          "defeat"
+        ],
+        "correctionRowsByState": {},
+        "discardedNativeRows": []
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "completeRows": 8,
+        "distinctNativePoses": 32,
+        "wholeCharacterContained": true,
+        "facing": "right; dead ends in side-lying KO",
+        "outfit": "Adult base-form DBZ Vegeta: black upright hair and widow's peak, plain sleeveless blue training suit without chest armor, white gloves, white boots with gold toe caps.",
+        "weapons": "none; unarmed physical martial movements and forearm/palm guards",
+        "transformations": "none; base black-haired form throughout, no SSJ/UI/aura",
+        "correction": "The complete initial source supplies all32 native poses.",
+        "limitations": [
+          "Original generated fan art and adapted movement, not official frames.",
+          "Minor perspective, anatomy and apparent scale variations remain between the native sources; running uses suspended DBZ dash-like leg positions.",
+          "Timing and pixel identity are not certified 1:1 with official Dragon Ball Z animation frames."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-10-20",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.prompt.txt",
+            "sha256": "77b4149529c27bf1656ccefe826037e893a475b9f30ebac6133207c3cd9564d9"
+          }
+        ],
+        "normalizationScript": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/normalize-vegeta-motion-atlases.mjs"
+      }
+    }
+  ],
+  "generations": [
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.native.png",
+      "sha256": "d35f4801b19c4c4a0870a7e653739cf6ff509883b220ea7d35b0cb6539bcff30",
+      "prompt": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-a.prompt.txt",
+      "promptSha256": "da5daab1d509364f1e1f3807640e0ec8ea7948758309b1f131479d3f084d0150",
+      "retainedPoses": 32,
+      "sourcePoses": 32,
+      "discardedNativeRows": [],
+      "missingState": null,
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-original.png",
+          "sha256": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4"
+        },
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-presentation.png",
+          "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20"
+        }
+      ],
+      "rejected": false
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+      "sha256": "088038a1a4b103d0d2656b0ae05a7f62c04c0f0ccbf9471dd573848652d6d478",
+      "prompt": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.prompt.txt",
+      "promptSha256": "d868d30d74d61d0a497dbe2b89bb27ceb3f1b0e35df9cbf73b51bccc7c16b22c",
+      "retainedPoses": 28,
+      "sourcePoses": 28,
+      "discardedNativeRows": [],
+      "missingState": "crouchCharge",
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-original.png",
+          "sha256": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4"
+        },
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-presentation.png",
+          "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20"
+        }
+      ],
+      "rejected": false
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.native.png",
+      "sha256": "3d91a25642e7d6f3564df97c2353090b8a9c9ec431a3cc75cc96fc59e02df5f7",
+      "prompt": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-defense.prompt.txt",
+      "promptSha256": "77b4149529c27bf1656ccefe826037e893a475b9f30ebac6133207c3cd9564d9",
+      "retainedPoses": 32,
+      "sourcePoses": 32,
+      "discardedNativeRows": [],
+      "missingState": null,
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-original.png",
+          "sha256": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4"
+        },
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-presentation.png",
+          "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20"
+        }
+      ],
+      "rejected": false
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-crouch-charge.native.png",
+      "sha256": "6031dc6d5aeec5be4e316def09780aa09cb08dd25f35e3990bedc01216360df8",
+      "prompt": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-crouch-charge.prompt.txt",
+      "promptSha256": "1a9c5ceba44f2db77caea452898609edac9d5a01265483e281e6d073b3047b58",
+      "retainedPoses": 4,
+      "sourcePoses": 4,
+      "discardedNativeRows": [],
+      "missingState": null,
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-original.png",
+          "sha256": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4"
+        },
+        {
+          "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-reference-presentation.png",
+          "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20"
+        }
+      ],
+      "rejected": false
+    }
+  ],
+  "nativeGenerationCalls": 4,
+  "deliveredNativePoses": 96,
+  "incompleteInitialSources": [
+    {
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-motion-b.native.png",
+      "expectedPoses": 32,
+      "actualPoses": 28,
+      "retainedPoses": 28,
+      "missingState": "crouchCharge",
+      "resolution": "All28 initial drawings retained; four new native drawings supply crouchCharge."
+    }
+  ],
+  "discardedFrames": [],
+  "rejectedSources": []
+}

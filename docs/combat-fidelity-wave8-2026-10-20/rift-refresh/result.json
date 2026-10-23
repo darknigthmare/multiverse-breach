@@ -1,0 +1,88 @@
+{
+  "startedAt": "2026-10-20T12:28:17.900496+00:00",
+  "authorization": "Parent signal toutes bases enregistrées; exact five-command sequence.",
+  "sourceSha256Before": {
+    "scripts/buildRiftDossierCatalog.mjs": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+    "scripts/auditCharacterReferenceQuality.py": "421b20d86cc2c3d4388e36d209b03b01b480dee08bebe2b8c6a43b4f23ad2912",
+    "scripts/buildRiftDossierAssetRegistry.mjs": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+    "package.json": "24b97a4b509c9dc1220e5ae8382e8def9bbf1d4f06dd0a0dbac69a5dcdf7e147"
+  },
+  "steps": [
+    {
+      "id": "01-catalog-refresh",
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs",
+        "--refresh-character-reference-audit"
+      ],
+      "startedAt": "2026-10-20T12:28:17.901194+00:00",
+      "log": "01-catalog-refresh.log",
+      "exitCode": 0,
+      "finishedAt": "2026-10-20T12:28:22.237293+00:00",
+      "elapsedSeconds": 4.336,
+      "logSha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "id": "02-character-reference-audit",
+      "argv": [
+        "python",
+        "scripts/auditCharacterReferenceQuality.py"
+      ],
+      "startedAt": "2026-10-20T12:28:22.238288+00:00",
+      "log": "02-character-reference-audit.log",
+      "exitCode": 0,
+      "finishedAt": "2026-10-20T12:33:26.910429+00:00",
+      "elapsedSeconds": 304.672,
+      "logSha256": "cc4213f4000b1d22e61d187bf3fafd97589f45d967562cafeaf3fc85d9055485"
+    },
+    {
+      "id": "03-catalog-build",
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierCatalog.mjs"
+      ],
+      "startedAt": "2026-10-20T12:33:26.915071+00:00",
+      "log": "03-catalog-build.log",
+      "exitCode": 0,
+      "finishedAt": "2026-10-20T12:33:31.351575+00:00",
+      "elapsedSeconds": 4.437,
+      "logSha256": "3819d9cdc2318ff5c2761e1f8b8bae4d9c8d98aebacef6f01a3900ea3543aea4"
+    },
+    {
+      "id": "04-asset-registry-build",
+      "argv": [
+        "node",
+        "scripts/buildRiftDossierAssetRegistry.mjs"
+      ],
+      "startedAt": "2026-10-20T12:33:31.352209+00:00",
+      "log": "04-asset-registry-build.log",
+      "exitCode": 0,
+      "finishedAt": "2026-10-20T12:33:32.519556+00:00",
+      "elapsedSeconds": 1.167,
+      "logSha256": "9cf974e6e697feb274d7259404a7fe3bdee014a54ebd8ea36fa4bc712b8efe92"
+    },
+    {
+      "id": "05-rift-audit",
+      "argv": [
+        "npm",
+        "run",
+        "rift:audit"
+      ],
+      "startedAt": "2026-10-20T12:33:32.520310+00:00",
+      "log": "05-rift-audit.log",
+      "exitCode": 0,
+      "finishedAt": "2026-10-20T12:33:37.403326+00:00",
+      "elapsedSeconds": 4.883,
+      "logSha256": "a59a505895f49f53f010447182dc7541c3f52af6b0e8f9843883d074d92d9572"
+    }
+  ],
+  "finishedAt": "2026-10-20T12:33:37.403898+00:00",
+  "success": true,
+  "sourceSha256After": {
+    "scripts/buildRiftDossierCatalog.mjs": "10222e4de2aae1ef91ee3f0de5f2ccff187ef80bfe84abf0ac46f311afa6b143",
+    "scripts/auditCharacterReferenceQuality.py": "421b20d86cc2c3d4388e36d209b03b01b480dee08bebe2b8c6a43b4f23ad2912",
+    "scripts/buildRiftDossierAssetRegistry.mjs": "de79a46b3b9393f37b01a6fadeaaade7c96aaab97662316235eaa6ad0b5db19d",
+    "package.json": "24b97a4b509c9dc1220e5ae8382e8def9bbf1d4f06dd0a0dbac69a5dcdf7e147"
+  },
+  "sourceFilesUnchanged": true
+}

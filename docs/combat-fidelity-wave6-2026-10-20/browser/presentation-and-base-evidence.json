@@ -1,0 +1,476 @@
+{
+  "date": "2026-10-20",
+  "passed": true,
+  "environment": {
+    "browser": "Chromium /usr/bin/chromium",
+    "origin": "http://127.0.0.1:5188/"
+  },
+  "presentations": {
+    "characters": 65,
+    "phases": 520,
+    "drawImageCalls": 4160,
+    "immutableActors": 4160,
+    "players": {
+      "P1": 2080,
+      "P2": 2080
+    },
+    "sourceCell": [
+      256,
+      256
+    ],
+    "rendererUrl": "/src/game/renderer.js?t=1792489370855",
+    "catalogUrl": "/src/game/combat/characterAnimationCatalog.js?t=1792489370397",
+    "captures": [
+      {
+        "heroId": "giorno_giovanna",
+        "part": "a",
+        "path": "docs/combat-fidelity-wave6-2026-10-20/browser/native-presentations-part-a.png"
+      },
+      {
+        "heroId": "skullgirls_big_band",
+        "part": "b",
+        "path": "docs/combat-fidelity-wave6-2026-10-20/browser/native-presentations-part-b.png"
+      },
+      {
+        "heroId": "skullgirls_beowulf",
+        "part": "c",
+        "path": "docs/combat-fidelity-wave6-2026-10-20/browser/native-presentations-part-c.png"
+      }
+    ]
+  },
+  "bases": {
+    "newCharacters": 6,
+    "newFrameDraws": 192,
+    "newIds": [
+      "miles_tails_prower",
+      "devil_may_cry_nero",
+      "devil_may_cry_lady",
+      "skullgirls_parasoul",
+      "joseph_joestar",
+      "skullgirls_beowulf"
+    ],
+    "states": [
+      "idle",
+      "run",
+      "attack",
+      "hit"
+    ],
+    "columns": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "facings": [
+      1,
+      -1
+    ],
+    "baseline": 244,
+    "rowScales": [
+      0.896226,
+      0.918239,
+      0.983235,
+      1,
+      1.085627,
+      1.098176,
+      1.142783,
+      1.159864,
+      1.166667,
+      1.188679,
+      1.20125786163522,
+      1.217125,
+      1.300015,
+      1.415902
+    ],
+    "legacyCharacters": 7,
+    "legacyFrameDraws": 224,
+    "legacyIds": [
+      "crypt_necrodancer_aria",
+      "seifer_ff8",
+      "redxiii_ff7",
+      "vincent_ff7",
+      "leon",
+      "solbadguy",
+      "ky"
+    ],
+    "legacyBaseline": 232,
+    "legacyGeometryUnchanged": true,
+    "immutableActors": 416,
+    "rendererUrl": "/src/game/renderer.js?t=1792489370855",
+    "spriteAssetsUrl": "/src/game/spriteAssets.js?t=1792489370855"
+  },
+  "pageErrors": [],
+  "externalRequestLimitation": "Each scenario only reported the Google Fonts CSS request blocked by the proxy (ERR_TUNNEL_CONNECTION_FAILED); no internal sprite load failed.",
+  "visualReview": {
+    "reviewed": true,
+    "presentationSamples": [
+      "giorno_giovanna",
+      "skullgirls_big_band",
+      "skullgirls_beowulf"
+    ],
+    "allSixCorrectedBaseAttackRowsReviewed": true,
+    "sourceCanonicalAnimationVerified": false,
+    "canon1to1Verified": false
+  },
+  "scope": "Actual drawPixelSprite calls use the live compiled GameCanvas renderer module, preload genuine PNGs, select expected cells and facings, and preserve actor JSON. Base checks additionally verify applied row scale and world feet geometry; no production source or asset was changed.",
+  "sourceImages": [
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave2/irvine_ff8.png",
+      "sha256": "064308772fc61429c177563b039dab5a9da945804ca2d193e31620241378a33c"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave2/laguna_ff8.png",
+      "sha256": "c022526b92bd7985ffa3e4501eb37821b9de312f94aa98b1576f5d2d2f6e5fcb"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave2/quistis_ff8.png",
+      "sha256": "1eefeca016e5d2fa993d03882d113c7ab03e01184f00f8ffce9b5fcefb036c25"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave2/rinoa_ff8.png",
+      "sha256": "2589272c9c766b83d2ea86e8f5b51b36c6f3c0e35e81036109a683848c97b853"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave2/seifer_ff8.png",
+      "sha256": "72097c01854fa71cc166f25109b2e413b9a19bb51a9ce088a5f940dff830328b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave2/selphie_ff8.png",
+      "sha256": "b4ac604ae9d18c72c08076adc58fe7558d0b0aa75f694401789bd9cd438975be"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave2/squall_ff8.png",
+      "sha256": "839e0d51fe615d7788816dd6f36dc36ca26fcc4e7cc687e4bec1e1b4ad12cabb"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave2/zell_ff8.png",
+      "sha256": "3818151ef2246f026056d81710cae23ab4c3d385019b09a584cbb15298bcc0ee"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave3/fang_ff13.png",
+      "sha256": "102ac05748354c165ec3d2707b22d0a5f563424f9f9dcb02a9c5408654295d93"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave3/gladiolus_ff15.png",
+      "sha256": "f94988b1528985533aaceee7039924776639ed068d051a9900d156eee4ff6127"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave3/hope_ff13.png",
+      "sha256": "a9921fdba10102099aa318ea6776f4ff1406e1859256e5da9c353b1217ea641a"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave3/ignis_ff15.png",
+      "sha256": "380787327cb9eaa38b5c9fe1afeb13beab472d0ac9ad341568d056e22f1ac883"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave3/lightning_ff13.png",
+      "sha256": "b8ca305d65183453f88aee29a7c545622c88fcc5b5282877d165d92b96785e62"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave3/lunafreya_ff15.png",
+      "sha256": "53ce58cb316a62ef08888266b25866e65318c1d0fb7e8d8437cbfbd9c1fd73c7"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave3/noctis_ff15.png",
+      "sha256": "da867e153444edcf9d5df4fc9d7ff6c02eb8ff8801ffdcb633da4f259101f077"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave3/prompto_ff15.png",
+      "sha256": "b42429e872f617749b6bd7a8042ede3a67a17e892170f1fbecbcfadeac763bdd"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave3/sazh_ff13.png",
+      "sha256": "7de32f03f97b38c9f0d02d58a19f43721e6ac58ae1b3076ef2146732a1323fd3"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave3/snow_ff13.png",
+      "sha256": "7a7c5de69cb73a1c49b366f905ff90e29cfe764d4e514a6e97bf84d7ab6724ec"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave3/vanille_ff13.png",
+      "sha256": "4a8fddae11e99512a85736c16f4235178cb57a807cfc019deff392230966b16d"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave4/kakashi_war.png",
+      "sha256": "b248d7d2868139f601ad7d29e11ae013d094ef229e5f9a7fb39d8ba77c37f34f"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave4/naruto_uzumaki_young.png",
+      "sha256": "2b5f506ec3eb24532389632bf7b65ca96310260a5f6f83569ee3610b01f816ac"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave4/piccolo_dbz.png",
+      "sha256": "94c6a68f6862aa8490cda63637935863012299aab7faabb5074c72cf399a0bec"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave4/redxiii_ff7.png",
+      "sha256": "69178309ce19444fbedf269d9ce8ec94572c6d2eb8e0832f81764b407bf93d88"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave4/sakura_haruno_young.png",
+      "sha256": "cf619b5d8d2797a44be03a5e84096128de311463014bc75416a888923ce6bcba"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave4/sasuke_uchiha_young.png",
+      "sha256": "9c9c7807ccd0ed8fbcc68f0a23c06020ba0e3f32c69ba6cc04abb5723346f6b3"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave4/vincent_ff7.png",
+      "sha256": "e8397c23f9524de57e6782c6cfc54212beecc3e286c100d408caa307edd874f1"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave4/yuffie_ff7.png",
+      "sha256": "74257a86ac17f220de451f778d1c89d69c87368ce13ba806a9e6d94a8ab7d2e3"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/arbiter.png",
+      "sha256": "9a682e0afbab5ace71ccc2ff2863bde5a96f43ae9d168c7006cffc81e946bc8a"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/arca_bastion.png",
+      "sha256": "0be893d4c9f2e4dde62ba0e9359eb62d07be7f54c5d10372a43411a76d6018cf"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/arca_mirelle.png",
+      "sha256": "9308ab582c37f7c3421e7ef2264ced506d280dbfdda7128376b62b47b9341632"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/boruto_uzumaki.png",
+      "sha256": "f1f6599b3d921a6bd69c6e9044f9e73ec9bed4eee79ba7bacf0cf534552f7448"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/doom_marine_classic.png",
+      "sha256": "ddce61163eaf6702179dfedc316263ff3911b3ecc333b4c72e2573b75c7cb8f4"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/doomslayer.png",
+      "sha256": "4186857c67f46a7039e630d62e1ba46c3712f023a8c9e2dc5cd795d175fcf54a"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/jill.png",
+      "sha256": "afe84d8904b9e530ae11f24626641af36727eb82aebf98a7581e665e7a1d46f7"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/johnson.png",
+      "sha256": "b533dcd4e743e522d7691a47404605b0b6f3c11e024ad56788b10c2fbe9bdfb2"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/ky.png",
+      "sha256": "7bf02e808319f6749cc151a8839c5da948b22af6f6a4998a9ecddabb8fe832e1"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/leon.png",
+      "sha256": "4371ef37814dc1e38d0efcb29f74b6394ec2b350892e3ccd0e7ced5c1eafed9b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/masterchief.png",
+      "sha256": "a739f192adc3029323e8996df9abf78a352c3e44f8635f7c8e7632662cdfb709"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/mitsuki_boruto.png",
+      "sha256": "ed1bd8fbbb60bed4f9b1a2cf8bfe718572c28055e52946b79bb79903bfa184d3"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/rebecca_chambers.png",
+      "sha256": "22b69378ac4840fbced1c7d38f82d36c48906dfe14f63863f7350ff73fbc7bf5"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/sarada_uchiha.png",
+      "sha256": "b97000fa58928ceb214b624655909211bf380b24a79ef1158c6856beedf89ea3"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave5/solbadguy.png",
+      "sha256": "aac2118b28f8cebff1d600a61f2229bc35886c3e0ae271f95804e715b81e9489"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/devil_may_cry_dante.png",
+      "sha256": "cfc95536688d393c14038d38c6a6f67cf56c97e09878810735ffbdc5996843bd"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/devil_may_cry_lady.png",
+      "sha256": "44ff222970ccaba684692b31e12700ad59a84b7827ca89240b0c1dd35935fa69"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/devil_may_cry_nero.png",
+      "sha256": "b9a5189854abf1437b35ee54f0c3ee886122d7a1660b772669220c6a519e6eae"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/giorno_giovanna.png",
+      "sha256": "b69805c29123c73d8ea814e2f9924ba19376632ec774df9b6fbcd0e03b95efb2"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/joseph_joestar.png",
+      "sha256": "9e380d793f8f542c90434a195e30506422738b119e9ec1e8b10558491c7edea6"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/jotaro_kujo.png",
+      "sha256": "6df167646f1844177e43712604f66f1159bea2e5d53dee8f351bf46c9dc5cb73"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/knuckles_echidna.png",
+      "sha256": "07597a67f2fa87db21d13e69805740b6fdc229e237f2e215271d47c41cb0c742"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/miles_tails_prower.png",
+      "sha256": "1850f52435f9f782d08fcb1dfb9535737498489066b9c9c6f1abbc3ab66bc47e"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/otacon.png",
+      "sha256": "63155b329429d680734f625443ae088070eb4ae27c97a8e597522444e37e2ac4"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/raiden.png",
+      "sha256": "dc9d3c5118397dd0f497e32e32e4ba1cdb3c0b54a953573f06ad2e2a11cee797"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/skullgirls_beowulf.png",
+      "sha256": "3b53c4368db33a73fac3aa09b4178b52dfbfd88b90d9354907e106f7572830b0"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/skullgirls_big_band.png",
+      "sha256": "09fdcf2057b4cda84cfc6cea582249fe7315f86e0b309e644bbb9fdf3857da93"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/skullgirls_parasoul.png",
+      "sha256": "08bec276feff6d9731c93dbedf1910ebf15bbccbed7c0f5d26a1350430602e90"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/snake.png",
+      "sha256": "9b0b69c12a6a3bd3c3890edaca01987884997f7085c6297bdf3eb187ef81c76a"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave6/sonic_hedgehog.png",
+      "sha256": "9dad280e47782fbea27d8f06209b656b892297c4e3f99d5c8d97c27c04ad76c1"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations/aerith_ff7.png",
+      "sha256": "93fd1b9497a90f4735d1be125bade917c0c2d4e5f966ae7654144b9435c0bce1"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations/barret_ff7.png",
+      "sha256": "4971f2477742549d70c9e16c9f00ff059d1dae5120da42a5b511541bc23b3809"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations/cloud_ff7.png",
+      "sha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations/goku_dbz.png",
+      "sha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations/naruto_six_paths.png",
+      "sha256": "96880a08de46edd1cfb0493947892aaf9498e370cf6ffead729d53a4df3d57b4"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations/sasuke_rinnegan.png",
+      "sha256": "ca4b21e4c5eef89bdab0d3d8f9471f7b5906641f4b70fb7f1feab6c470376f09"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations/tifa_ff7.png",
+      "sha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations/vegeta_dbz.png",
+      "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave2/seifer_ff8.png",
+      "sha256": "9a68806007ea498a870a6ae0bbdb5c53f8e022df9cdee872006b144e27abee85"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave4/redxiii_ff7.png",
+      "sha256": "7865cc3c4a9a5ccafcb50386ca992e5c481ac8e1d4e6bd492c6fac95f7ceef95"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave4/vincent_ff7.png",
+      "sha256": "ce28744f43ce226f4ba850530505ad678e70d9f1bee2f245fbe9f79640ae5d40"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave5/ky.png",
+      "sha256": "714fba60e60fdc5695bca3d9a99ddec0ec7f8a94806a8ce3bc59821e5ce1e563"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave5/leon.png",
+      "sha256": "04b07d43bf6344cea7da00f2bc39234979a066c190d4f634f0bf73802011583b"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave5/solbadguy.png",
+      "sha256": "c0d578bece894bf8f82ecc845e0955a7bc1ad8b633f3e1ac5a40e3e84bc056d9"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave6-part-a/miles_tails_prower.png",
+      "sha256": "337ecdf19e9111e0b249b3f28d7c42bb277108a7ac1a77b21f48ecad786518b7"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave6/devil_may_cry_lady.png",
+      "sha256": "b5b5efe91eda7af8fc800e5ea53f4249b1899453c90f3f75a94fc4b91dbf8c79"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave6/devil_may_cry_nero.png",
+      "sha256": "0a041d60ba10d081c2a6118f9ecba20b014e9fb2ee505fd59db7bd50cb64f69f"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave6/joseph_joestar.png",
+      "sha256": "b334852a756a6e1871c8c2a0a96acbe91af80b839d03b9804f4b49b4b6d3c2cb"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave6/skullgirls_beowulf.png",
+      "sha256": "bb19b6cf6b1965b685197b94b21fb8e65e306bd472f2d6f4eeb06f41978b3540"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections-wave6/skullgirls_parasoul.png",
+      "sha256": "d805a91d14b3cc4d6fbf5dcd80399192228da5621074d0f46d24ee6b4ae7b2be"
+    },
+    {
+      "path": "public/sprites/generated/combat-character-corrections/crypt_necrodancer_aria.png",
+      "sha256": "c5c9f4f1459b263074855ce06d746f0d4941d51f8a869acee2e7c1be9e0bc4a5"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/native-presentations.mjs",
+      "sha256": "b4063641d8331ee11fc6ccca343f9bcbf71707ed8490225dde7e2ffd36af8fa5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/native-presentations.json",
+      "sha256": "763b04b76104f19e38befae2305082f1ab9080a997b987bb941473c13945c443"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/native-presentations-trace.json",
+      "sha256": "fc70b0b69437ac0847d9bed0f72f84f0913ffc733cf843b8db112899a50ae34b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/native-presentations-part-a.png",
+      "sha256": "feffdaecdf9018aec2776210eb84a71ace4b1503cbe68ee1f3899a6ffde0862f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/native-presentations-part-b.png",
+      "sha256": "4a7ec2c839aab4f0a4d3ab41185a2f1b832344856339297baefd7376ab9a3a22"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/native-presentations-part-c.png",
+      "sha256": "24c29b28dbaa7db752c9654daa476e89edcf8da81259f4a51418d7413a8ee4bd"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/base-corrections.mjs",
+      "sha256": "40d4a2897c58378eb20ea96bb315b49e8079d9b3490f6f5a4f6f6f49fa57039b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/base-corrections.json",
+      "sha256": "75b0d007134653be3d25334d061745ef8ca6596ceaaab3d485db565ff321e2ec"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/base-corrections-trace.json",
+      "sha256": "5849dd9c4e3def46a882771c7348cff8356b93249486837dc623602cf65c1041"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/base-corrections.png",
+      "sha256": "5395bcd3a2fe4758b637e51aa6a87483f9bfef71405d509beed785232eb10430"
+    },
+    {
+      "path": "docs/combat-fidelity-wave6-2026-10-20/browser/base-corrections-new-attack-crop.png",
+      "sha256": "3f1e9812e8cad9e29667e1b86cc4551cb07d365f537b32b4577d01a511b8af9d"
+    }
+  ]
+}

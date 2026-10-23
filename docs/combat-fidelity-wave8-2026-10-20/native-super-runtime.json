@@ -1,0 +1,2668 @@
+{
+  "date": "2026-10-20",
+  "method": "Real Vite SSR engines, accepted gameplay changes and recorded canvas commands. Native decoding and real browser drawing are verified separately.",
+  "coverage": {
+    "identities": 20,
+    "modes": [
+      "rpg",
+      "melee",
+      "fighter"
+    ],
+    "sides": [
+      "player",
+      "opponent"
+    ],
+    "supports": [
+      "raven_tt",
+      "saejima_yakuza",
+      "senshi_meshi",
+      "chilchuck_meshi",
+      "falin_meshi"
+    ],
+    "contactSupers": [
+      "robin_tt",
+      "beast_boy_tt",
+      "kiryu_yakuza",
+      "majima_yakuza",
+      "ichiban_yakuza",
+      "akiyama_yakuza",
+      "blade_wolf_mgr",
+      "jetstream_sam",
+      "mistral_mgr",
+      "laios_meshi"
+    ],
+    "trackedFighter": [
+      "starfire_tt"
+    ]
+  },
+  "sources": [
+    {
+      "path": "scripts/nativeSuperRuntimeWave8.test.mjs",
+      "sha256": "b3de9a6d7198cb2a0ade4737d7bdde7a136101e68513b4a58a98e504898ec784"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "abab05cb73cd4f1065d9bdc8b7a3edda4a7a72fc85a570d5eb23549aeaa8eb94"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "sha256": "f98d96ee1b01e0c9c5670b9899b12e04f2c5f6b28afc1dd66505e99043c434ea"
+    },
+    {
+      "path": "src/game/engineFighter.js",
+      "sha256": "501d24a3ab46a0dc771bc1a0b7de0e742e8817e06c229f467d2b03004c78e35a"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave8.js",
+      "sha256": "2bdf9fd26e7946f8ca87a57a2be162f62f1b3960a71880e16805d6018d449015"
+    },
+    {
+      "path": "src/game/combat/characterSuperVisuals.js",
+      "sha256": "93aee5d91e819773f05b1ce4f56ed6ad46d481f1e68f992a0b63acfdaec7ba2f"
+    }
+  ],
+  "observations": [
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "robin_tt",
+      "name": "Enchaînement au bâton de Robin",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -41,
+        -40,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "cyborg_tt",
+      "name": "Sonic Cannon de Cyborg",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        -45,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "raven_tt",
+      "name": "Azarath Metrion Zinthos — barrière",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "starfire_tt",
+      "name": "Salve de starbolts de Starfire",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -65,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "beast_boy_tt",
+      "name": "Charge du T-Rex vert",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "kiryu_yakuza",
+      "name": "Coup du Dragon de Dojima",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "majima_yakuza",
+      "name": "Style Mad Dog — coupe au tantō",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "ichiban_yakuza",
+      "name": "Giga Swing",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -35,
+        -34,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "saejima_yakuza",
+      "name": "Herculean Spirit",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "akiyama_yakuza",
+      "name": "Launch Strike",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "blade_wolf_mgr",
+      "name": "Coupe de la scie caudale",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -35,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "jetstream_sam",
+      "name": "Iai de Murasama",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -51,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "armstrong_mgr",
+      "name": "Frappe sismique d’Armstrong",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        -43,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "mistral_mgr",
+      "name": "Spirale de L’Étranger",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "monsoon_mgr",
+      "name": "Assaut magnétique de Monsoon",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -48,
+        -53,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "laios_meshi",
+      "name": "Coupe de Kensuke",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -31,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "marcille_meshi",
+      "name": "Explosion magique de Marcille",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -33,
+        -35,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "senshi_meshi",
+      "name": "Repas équilibré du donjon",
+      "effect": "heal",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "chilchuck_meshi",
+      "name": "Désamorçage des pièges de Chilchuck",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "player",
+      "id": "falin_meshi",
+      "name": "Magie de soin de Falin",
+      "effect": "heal",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "robin_tt",
+      "name": "Enchaînement au bâton de Robin",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        -45,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "cyborg_tt",
+      "name": "Sonic Cannon de Cyborg",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        -38,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "raven_tt",
+      "name": "Azarath Metrion Zinthos — barrière",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "starfire_tt",
+      "name": "Salve de starbolts de Starfire",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -64,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "beast_boy_tt",
+      "name": "Charge du T-Rex vert",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -52,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "kiryu_yakuza",
+      "name": "Coup du Dragon de Dojima",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "majima_yakuza",
+      "name": "Style Mad Dog — coupe au tantō",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -37,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "ichiban_yakuza",
+      "name": "Giga Swing",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -34,
+        -37,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "saejima_yakuza",
+      "name": "Herculean Spirit",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "akiyama_yakuza",
+      "name": "Launch Strike",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -37,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "blade_wolf_mgr",
+      "name": "Coupe de la scie caudale",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -35,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "jetstream_sam",
+      "name": "Iai de Murasama",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -54,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "armstrong_mgr",
+      "name": "Frappe sismique d’Armstrong",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        -47,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "mistral_mgr",
+      "name": "Spirale de L’Étranger",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "monsoon_mgr",
+      "name": "Assaut magnétique de Monsoon",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -47,
+        -50,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "laios_meshi",
+      "name": "Coupe de Kensuke",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -31,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "marcille_meshi",
+      "name": "Explosion magique de Marcille",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -34,
+        -38,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "senshi_meshi",
+      "name": "Repas équilibré du donjon",
+      "effect": "heal",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "chilchuck_meshi",
+      "name": "Désamorçage des pièges de Chilchuck",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "rpg",
+      "side": "opponent",
+      "id": "falin_meshi",
+      "name": "Magie de soin de Falin",
+      "effect": "heal",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "robin_tt",
+      "name": "Enchaînement au bâton de Robin",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -38,
+        -44,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "cyborg_tt",
+      "name": "Sonic Cannon de Cyborg",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        -41,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "raven_tt",
+      "name": "Azarath Metrion Zinthos — barrière",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "starfire_tt",
+      "name": "Salve de starbolts de Starfire",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -58,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "beast_boy_tt",
+      "name": "Charge du T-Rex vert",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -51,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "kiryu_yakuza",
+      "name": "Coup du Dragon de Dojima",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -45,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "majima_yakuza",
+      "name": "Style Mad Dog — coupe au tantō",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -42,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "ichiban_yakuza",
+      "name": "Giga Swing",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -33,
+        -33,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "saejima_yakuza",
+      "name": "Herculean Spirit",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "akiyama_yakuza",
+      "name": "Launch Strike",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "blade_wolf_mgr",
+      "name": "Coupe de la scie caudale",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -34,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "jetstream_sam",
+      "name": "Iai de Murasama",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -51,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "armstrong_mgr",
+      "name": "Frappe sismique d’Armstrong",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        -41,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "mistral_mgr",
+      "name": "Spirale de L’Étranger",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -43,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "monsoon_mgr",
+      "name": "Assaut magnétique de Monsoon",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        -48,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "laios_meshi",
+      "name": "Coupe de Kensuke",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -31,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "marcille_meshi",
+      "name": "Explosion magique de Marcille",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        -37,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "senshi_meshi",
+      "name": "Repas équilibré du donjon",
+      "effect": "heal",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "chilchuck_meshi",
+      "name": "Désamorçage des pièges de Chilchuck",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "player",
+      "id": "falin_meshi",
+      "name": "Magie de soin de Falin",
+      "effect": "heal",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "robin_tt",
+      "name": "Enchaînement au bâton de Robin",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -46,
+        -40,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "cyborg_tt",
+      "name": "Sonic Cannon de Cyborg",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -40,
+        -45,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "raven_tt",
+      "name": "Azarath Metrion Zinthos — barrière",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "starfire_tt",
+      "name": "Salve de starbolts de Starfire",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "beast_boy_tt",
+      "name": "Charge du T-Rex vert",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -57,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "kiryu_yakuza",
+      "name": "Coup du Dragon de Dojima",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -50,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "majima_yakuza",
+      "name": "Style Mad Dog — coupe au tantō",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -39,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "ichiban_yakuza",
+      "name": "Giga Swing",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -31,
+        -36,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "saejima_yakuza",
+      "name": "Herculean Spirit",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "akiyama_yakuza",
+      "name": "Launch Strike",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -38,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "blade_wolf_mgr",
+      "name": "Coupe de la scie caudale",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -30,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "jetstream_sam",
+      "name": "Iai de Murasama",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -52,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "armstrong_mgr",
+      "name": "Frappe sismique d’Armstrong",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        -47,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "mistral_mgr",
+      "name": "Spirale de L’Étranger",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -44,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "monsoon_mgr",
+      "name": "Assaut magnétique de Monsoon",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -49,
+        -55,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "laios_meshi",
+      "name": "Coupe de Kensuke",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -34,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "marcille_meshi",
+      "name": "Explosion magique de Marcille",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 2,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -35,
+        -34,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "senshi_meshi",
+      "name": "Repas équilibré du donjon",
+      "effect": "heal",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "chilchuck_meshi",
+      "name": "Désamorçage des pièges de Chilchuck",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "melee",
+      "side": "opponent",
+      "id": "falin_meshi",
+      "name": "Magie de soin de Falin",
+      "effect": "heal",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        340,
+        1700
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "robin_tt",
+      "name": "Enchaînement au bâton de Robin",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -78.5,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "cyborg_tt",
+      "name": "Sonic Cannon de Cyborg",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "raven_tt",
+      "name": "Azarath Metrion Zinthos — barrière",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "starfire_tt",
+      "name": "Salve de starbolts de Starfire",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "beast_boy_tt",
+      "name": "Charge du T-Rex vert",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -96.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "kiryu_yakuza",
+      "name": "Coup du Dragon de Dojima",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -83,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "majima_yakuza",
+      "name": "Style Mad Dog — coupe au tantō",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "ichiban_yakuza",
+      "name": "Giga Swing",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -63.200000000000045,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "saejima_yakuza",
+      "name": "Herculean Spirit",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "akiyama_yakuza",
+      "name": "Launch Strike",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "blade_wolf_mgr",
+      "name": "Coupe de la scie caudale",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61.299999999999955,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "jetstream_sam",
+      "name": "Iai de Murasama",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -83,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "armstrong_mgr",
+      "name": "Frappe sismique d’Armstrong",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -89.39999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "mistral_mgr",
+      "name": "Spirale de L’Étranger",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -88.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "monsoon_mgr",
+      "name": "Assaut magnétique de Monsoon",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -94.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "laios_meshi",
+      "name": "Coupe de Kensuke",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61.299999999999955,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "marcille_meshi",
+      "name": "Explosion magique de Marcille",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "senshi_meshi",
+      "name": "Repas équilibré du donjon",
+      "effect": "heal",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        340,
+        340
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "chilchuck_meshi",
+      "name": "Désamorçage des pièges de Chilchuck",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "player",
+      "id": "falin_meshi",
+      "name": "Magie de soin de Falin",
+      "effect": "heal",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        340,
+        340
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "robin_tt",
+      "name": "Enchaînement au bâton de Robin",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -78.5,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "cyborg_tt",
+      "name": "Sonic Cannon de Cyborg",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -82.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "raven_tt",
+      "name": "Azarath Metrion Zinthos — barrière",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "starfire_tt",
+      "name": "Salve de starbolts de Starfire",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -104.70000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "beast_boy_tt",
+      "name": "Charge du T-Rex vert",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -96.29999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "kiryu_yakuza",
+      "name": "Coup du Dragon de Dojima",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -83,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "majima_yakuza",
+      "name": "Style Mad Dog — coupe au tantō",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "ichiban_yakuza",
+      "name": "Giga Swing",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -63.200000000000045,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "saejima_yakuza",
+      "name": "Herculean Spirit",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "akiyama_yakuza",
+      "name": "Launch Strike",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -72.79999999999995,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "blade_wolf_mgr",
+      "name": "Coupe de la scie caudale",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61.299999999999955,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "jetstream_sam",
+      "name": "Iai de Murasama",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -83,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "armstrong_mgr",
+      "name": "Frappe sismique d’Armstrong",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -89.39999999999998,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "mistral_mgr",
+      "name": "Spirale de L’Étranger",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -88.10000000000002,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "monsoon_mgr",
+      "name": "Assaut magnétique de Monsoon",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -94.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "laios_meshi",
+      "name": "Coupe de Kensuke",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -61.299999999999955,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "marcille_meshi",
+      "name": "Explosion magique de Marcille",
+      "effect": "damage",
+      "cost": 100,
+      "acceptedDamageTargets": 1,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        -66.20000000000005,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "senshi_meshi",
+      "name": "Repas équilibré du donjon",
+      "effect": "heal",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        340,
+        340
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "chilchuck_meshi",
+      "name": "Désamorçage des pièges de Chilchuck",
+      "effect": "guard",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        0,
+        0
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Real super",
+      "mode": "fighter",
+      "side": "opponent",
+      "id": "falin_meshi",
+      "name": "Magie de soin de Falin",
+      "effect": "heal",
+      "cost": 100,
+      "acceptedDamageTargets": 0,
+      "allyHpDelta": [
+        340,
+        340
+      ],
+      "enemyHpDelta": [
+        0,
+        0,
+        0
+      ],
+      "uniqueImpact": true
+    },
+    {
+      "case": "Physical Starfire projectile",
+      "side": "player",
+      "committedFacing": 1,
+      "damage": 104.70000000000005,
+      "impact": {
+        "x": 700,
+        "y": 354
+      }
+    },
+    {
+      "case": "Physical Starfire projectile",
+      "side": "opponent",
+      "committedFacing": -1,
+      "damage": 104.70000000000005,
+      "impact": {
+        "x": 1000,
+        "y": 354
+      }
+    },
+    {
+      "case": "Clocked Starfire cosmetic flight",
+      "mode": "rpg",
+      "side": "player",
+      "boltCenterX": 237.83757142857144,
+      "casterX": 252,
+      "targetX": 260,
+      "hpUnchanged": true
+    },
+    {
+      "case": "Clocked Starfire cosmetic flight",
+      "mode": "rpg",
+      "side": "opponent",
+      "boltCenterX": 1462.1624285714288,
+      "casterX": 1332,
+      "targetX": 1440,
+      "hpUnchanged": true
+    },
+    {
+      "case": "Clocked Starfire cosmetic flight",
+      "mode": "melee",
+      "side": "player",
+      "boltCenterX": 236.92933333333332,
+      "casterX": 200,
+      "targetX": 260,
+      "hpUnchanged": true
+    },
+    {
+      "case": "Clocked Starfire cosmetic flight",
+      "mode": "melee",
+      "side": "opponent",
+      "boltCenterX": 1463.0706666666667,
+      "casterX": 1500,
+      "targetX": 1440,
+      "hpUnchanged": true
+    },
+    {
+      "case": "Native Cyborg muzzle projection",
+      "probes": [
+        {
+          "phase": "super",
+          "col": 0,
+          "facing": 1,
+          "opaquePixels9x9": 81,
+          "pixel": {
+            "x": 202,
+            "y": 118
+          },
+          "projectedOrigin": {
+            "x": 550.228609421875,
+            "y": 264.475610984375
+          }
+        },
+        {
+          "phase": "super",
+          "col": 1,
+          "facing": 1,
+          "opaquePixels9x9": 81,
+          "pixel": {
+            "x": 164,
+            "y": 117
+          },
+          "projectedOrigin": {
+            "x": 524.43553971875,
+            "y": 263.7968459921875
+          }
+        },
+        {
+          "phase": "super",
+          "col": 2,
+          "facing": 1,
+          "opaquePixels9x9": 81,
+          "pixel": {
+            "x": 158,
+            "y": 119
+          },
+          "projectedOrigin": {
+            "x": 520.362949765625,
+            "y": 265.1543759765625
+          }
+        },
+        {
+          "phase": "super",
+          "col": 0,
+          "facing": -1,
+          "opaquePixels9x9": 81,
+          "pixel": {
+            "x": 202,
+            "y": 118
+          },
+          "projectedOrigin": {
+            "x": 449.771390578125,
+            "y": 264.475610984375
+          }
+        },
+        {
+          "phase": "super",
+          "col": 1,
+          "facing": -1,
+          "opaquePixels9x9": 81,
+          "pixel": {
+            "x": 164,
+            "y": 117
+          },
+          "projectedOrigin": {
+            "x": 475.56446028125,
+            "y": 263.7968459921875
+          }
+        },
+        {
+          "phase": "super",
+          "col": 2,
+          "facing": -1,
+          "opaquePixels9x9": 81,
+          "pixel": {
+            "x": 158,
+            "y": 119
+          },
+          "projectedOrigin": {
+            "x": 479.637050234375,
+            "y": 265.1543759765625
+          }
+        },
+        {
+          "phase": "fatality",
+          "col": 1,
+          "facing": 1,
+          "opaquePixels9x9": 81,
+          "pixel": {
+            "x": 189,
+            "y": 121
+          },
+          "projectedOrigin": {
+            "x": 540.2415880078125,
+            "y": 268.8571258203125
+          }
+        },
+        {
+          "phase": "fatality",
+          "col": 2,
+          "facing": 1,
+          "opaquePixels9x9": 81,
+          "pixel": {
+            "x": 160,
+            "y": 120
+          },
+          "projectedOrigin": {
+            "x": 521.11034125,
+            "y": 268.19742765625
+          }
+        },
+        {
+          "phase": "fatality",
+          "col": 1,
+          "facing": -1,
+          "opaquePixels9x9": 81,
+          "pixel": {
+            "x": 189,
+            "y": 121
+          },
+          "projectedOrigin": {
+            "x": 459.7584119921875,
+            "y": 268.8571258203125
+          }
+        },
+        {
+          "phase": "fatality",
+          "col": 2,
+          "facing": -1,
+          "opaquePixels9x9": 81,
+          "pixel": {
+            "x": 160,
+            "y": 120
+          },
+          "projectedOrigin": {
+            "x": 478.88965875,
+            "y": 268.19742765625
+          }
+        }
+      ]
+    }
+  ],
+  "source1to1Verified": false
+}

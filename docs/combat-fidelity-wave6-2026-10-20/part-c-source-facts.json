@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "scope": "Five authored native presentation atlases and their version/role decisions; source quotations and exact animation timing are not certified.",
+  "networkVerified": false,
+  "canon1to1Verified": false,
+  "secondarySourcesActuallyRead": [
+    {
+      "url": "https://jojowiki.com/Joseph_Joestar",
+      "archive": "docs/combat-fidelity-wave6-2026-10-20/part-c-source-access/joseph-jojo.html",
+      "scope": "Secondary reference explicitly describes StardustCrusaders Joseph aged67, gray hair/beard, fedora/light short-sleeved shirt/khaki pants and gloves concealing the left prosthetic hand.",
+      "sha256": "6ff15179a69f45349707b5cf7b36d09ecf9fcd604b5b43a6872893d2acba522f",
+      "httpStatus": 200,
+      "readDate": "2026-10-20",
+      "officialSource": false
+    },
+    {
+      "url": "https://jojowiki.com/Hermit_Purple",
+      "archive": "docs/combat-fidelity-wave6-2026-10-20/part-c-source-access/hermit-purple.html",
+      "scope": "Secondary reference describes purple thorn-covered vines from hands, physical support/binding and Ripple conduction. HermitPurple is not a humanoid Stand.",
+      "sha256": "8e867f469ec12d6d8ba815bf798783204bedd11574172e15933a9a66985e69b1",
+      "httpStatus": 200,
+      "readDate": "2026-10-20",
+      "officialSource": false
+    }
+  ],
+  "localSources": [
+    {
+      "path": "src/game/heroes.js",
+      "sha256": "1f464f9c7d1f8082602c32de53a77d2b58c70fc4f6355b81f8ed7a591fb0d4d2"
+    },
+    {
+      "path": "src/game/loreAccuratePacks.js",
+      "sha256": "4b2fa5c668a5cf12375257272d179e7d76e0b3f0a81af2db884ba7faed75b1a8"
+    },
+    {
+      "path": "src/game/combatCanonExtensions.js",
+      "sha256": "ac0815a37ab0032bdb4f57eb2e70b9e38eea5ca254d377b649ea7a799ef93402"
+    },
+    {
+      "path": "src/game/combat/abilities/abilitiesWave6.js",
+      "sha256": "d44df95f941d63ba6129d5fb0d463998d1fbbe7a248cb44137cde73e78b8635d"
+    },
+    {
+      "path": "src/game/combat/abilities/abilitiesCanonical.js",
+      "sha256": "102ae65730dea04b050108fa721a1a39b03c8164556bc58018d9f9fde0cf9564"
+    }
+  ],
+  "kits": [
+    {
+      "heroId": "snake",
+      "universe": "Metal Gear",
+      "version": "Adult Solid Snake from MetalGearSolid1998, dark blue-gray sneaking suit/bandana/SOCOM, barehand punch-punch-kick adaptation; no advanced BigBoss CQC or damaging chaff.",
+      "sourceWork": "Metal Gear Solid (1998)",
+      "sourceReference": "src/game/heroes.js#snake and parent-corrected effective kit: MetalGearSolid1998 punch-punch-kick sequence, ordinary grab-free physical strikes. Legacy Chaff&CQC name superseded; chaff is not a damaging attack and no advanced BigBoss/OldSnake mechanics are depicted.",
+      "effectiveAbilities": {
+        "simple": {
+          "name": "Tir du SOCOM Mk23",
+          "effect": "damage",
+          "delivery": "projectile",
+          "targetSide": "enemy",
+          "shape": "single"
+        },
+        "secondary": {
+          "name": "Nikita Missile",
+          "effect": "damage",
+          "delivery": "projectile",
+          "targetSide": "enemy",
+          "shape": "area"
+        },
+        "defense": {
+          "name": "Cardboard Box",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "shape": "single"
+        },
+        "special": {
+          "name": "Combo de coups de Snake",
+          "effect": "damage",
+          "delivery": "melee",
+          "targetSide": "enemy",
+          "shape": "single"
+        }
+      }
+    },
+    {
+      "heroId": "raiden",
+      "universe": "Metal Gear",
+      "version": "MGR cyborg Raiden, white spiky hair, black/gray cybernetic body and tactical visor, real HF katana/scabbard; non-graphic authored Zandatsu.",
+      "sourceWork": "Metal Gear Rising: Revengeance",
+      "sourceReference": "src/game/loreAccuratePacks.js#raiden and effective HFBlade/NinjaRun/Zandatsu kit. MGR Zandatsu is blade-mode cutting and extraction of cyborg fuel cells; solo presentation omits victim anatomy and gore and does not certify an identical damage/heal mechanic.",
+      "effectiveAbilities": {
+        "simple": {
+          "name": "Taille de la lame haute fréquence",
+          "effect": "damage",
+          "delivery": "melee",
+          "targetSide": "enemy",
+          "shape": "single"
+        },
+        "secondary": {
+          "name": "Ninja Run Slash",
+          "effect": "damage",
+          "delivery": "melee",
+          "targetSide": "enemy",
+          "shape": "single"
+        },
+        "defense": {
+          "name": "Parry Stance",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "shape": "single"
+        },
+        "special": {
+          "name": "Zandatsu Overdrive",
+          "effect": "damage",
+          "delivery": "melee",
+          "targetSide": "enemy",
+          "shape": "single"
+        }
+      }
+    },
+    {
+      "heroId": "otacon",
+      "universe": "Metal Gear",
+      "version": "Hal Otacon Emmerich, adult scientist from local lab-coat reference: brown hair, glasses, pale lab coat, dark shirt/trousers and portable terminal; support only.",
+      "sourceWork": "Metal Gear Solid support scientist / project Philanthropy command adaptation",
+      "sourceReference": "src/game/loreAccuratePacks.js#otacon; local scientist bitmap and effective parent-corrected support kit. Philanthropy Upload is a project command/terminal support adaptation, not an offensive canonical laser or a source-exact MGS1 power.",
+      "effectiveAbilities": {
+        "simple": {
+          "name": "Codec Support Ping",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "shape": "single"
+        },
+        "secondary": {
+          "name": "Metal Gear Data Hack",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "shape": "group"
+        },
+        "defense": {
+          "name": "Stealth Lab Guard",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "shape": "single"
+        },
+        "special": {
+          "name": "Philanthropy Upload",
+          "effect": "buff",
+          "delivery": "support",
+          "targetSide": "ally",
+          "shape": "group"
+        }
+      }
+    },
+    {
+      "heroId": "joseph_joestar",
+      "universe": "JoJo's Bizarre Adventure",
+      "version": "Joseph aged67 in Stardust Crusaders: gray hair/beard, beige fedora and light short-sleeved shirt/khaki trousers/white gloves, purple thorny vine Stand with conducted Hamon. No young Part2 scarf.",
+      "sourceWork": "JoJo Stardust Crusaders (Part3)",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#joseph_joestar; https://jojowiki.com/Joseph_Joestar#Stardust_Crusaders and https://jojowiki.com/Hermit_Purple read2026-10-20 for age67/costume, thorny vine manifestation and Ripple conduction. New art remains unverified1:1.",
+      "effectiveAbilities": {
+        "simple": {
+          "name": "Liane d’Hermit Purple",
+          "effect": "damage",
+          "delivery": "melee",
+          "targetSide": "enemy",
+          "shape": "single"
+        },
+        "secondary": {
+          "name": "Hamon dans Hermit Purple",
+          "effect": "damage",
+          "delivery": "melee",
+          "targetSide": "enemy",
+          "shape": "single"
+        },
+        "defense": {
+          "name": "Appui d’Hermit Purple",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "shape": "single"
+        },
+        "special": {
+          "name": "Hermit Purple — Hamon",
+          "effect": "damage",
+          "delivery": "melee",
+          "targetSide": "enemy",
+          "shape": "single"
+        }
+      }
+    },
+    {
+      "heroId": "skullgirls_beowulf",
+      "universe": "Skullgirls",
+      "version": "Beowulf the human professional wrestler, muscular build and wolf-pelt identity, physical folding-chair TheHurting; new wrestler costume supersedes old closed green hunter-coat depiction.",
+      "sourceWork": "Skullgirls2ndEncore",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#skullgirls_beowulf and src/game/combatCanonExtensions.js#skullgirls_beowulf: TheHurting/HurtingHurl, single-target ThreeWulfMoonsault. Local old hunter-like outfit is not costume authority; official/wiki pages were blocked403, so no newly network-verified costume claim or official-frame fidelity.",
+      "effectiveAbilities": {
+        "simple": {
+          "name": "Direct de Beowulf",
+          "effect": "damage",
+          "delivery": "melee",
+          "targetSide": "enemy",
+          "shape": "single"
+        },
+        "secondary": {
+          "name": "Hurting Hurl",
+          "effect": "damage",
+          "delivery": "projectile",
+          "targetSide": "enemy",
+          "shape": "single"
+        },
+        "defense": {
+          "name": "Garde du catcheur Beowulf",
+          "effect": "guard",
+          "delivery": "support",
+          "targetSide": "self",
+          "shape": "single"
+        },
+        "special": {
+          "name": "Three Wulf Moonsault",
+          "effect": "damage",
+          "delivery": "melee",
+          "targetSide": "enemy",
+          "shape": "single"
+        }
+      }
+    }
+  ],
+  "correctionsBeforeGeneration": [
+    "Snake is MGS1 adult, so legacy Chaff&CQC was corrected by parent to physical punch-punch-kick ComboDeCoupsDeSnake. Chaff is not a damaging attack and advanced BigBoss/OldSnake CQC is absent.",
+    "Otacon effective simple/secondary/special now command buffs. His terminal never emits an offensive ray. PhilanthropyUpload remains an authored project support name.",
+    "Raiden effective NinjaRunSlash and ZandatsuOverdrive are single-target physical blade contact. The shown mechanical core prop does not implement stolen HP, instant-kill or dismemberment."
+  ],
+  "continuityDebtsResolvedSeparately": [
+    {
+      "heroId": "joseph_joestar",
+      "oldBitmap": "YoungPart2 appearance inconsistent with agedPart3 HermitPurple kit.",
+      "newBase": "characterSpriteCorrectionsWave6PartC.generated.json aged67 version; old PNG unchanged."
+    },
+    {
+      "heroId": "skullgirls_beowulf",
+      "oldBitmap": "Closed green hunter-like coat and missing chair obscure wrestler identity.",
+      "newBase": "characterSpriteCorrectionsWave6PartC.generated.json bare-chested wolf-pelt wrestler/TheHurting; old PNG unchanged."
+    }
+  ],
+  "limitations": [
+    "No official source-game animation frames are reproduced or verified1:1.",
+    "Beowulf solo spring/backflip/body-press keyframes are an authored summary, not the entire three moonsault opponent-interaction sequence.",
+    "Raiden keeps a non-graphic mechanical fuel-cell prop, omitting organic anatomy and full Zandatsu game mechanics.",
+    "Otacon lab-coat design is the local scientist reference; project PhilanthropyUpload support is not claimed to be an identical MGS1 power.",
+    "Skullgirls official/wiki accesses were blocked403. Steam responses did not provide usable character details and are not cited as costume evidence.",
+    "Stature compensation is renderer-only and body-ROI based. Actual kneeling support, wrestling crouches and native rotations remain shorter than standing."
+  ],
+  "nativeGenerationCount": 5,
+  "nativePresentationPoses": 160
+}

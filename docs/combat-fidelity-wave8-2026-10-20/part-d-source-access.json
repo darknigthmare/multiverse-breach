@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-20",
+  "localSpritesInspectedBeforeGeneration": true,
+  "resolvedProfileSource": "docs/combat-fidelity-wave8-2026-10-20/batch-plan-before.json",
+  "source1to1Verified": false,
+  "networkVerified": false,
+  "requests": [
+    {
+      "url": "https://delicious-in-dungeon.com/character.html",
+      "result": "URLError: Tunnel connection failed: 403 Forbidden",
+      "contentRead": false
+    }
+  ],
+  "rejectedReferences": [
+    {
+      "heroId": "chilchuck_meshi",
+      "path": "docs/combat-fidelity-wave8-2026-10-20/part-d-references/chilchuck_meshi-old-base.png",
+      "sha256": "1869e94650582bcab44105fb1f321d76787a94b8c450761e0db04964ddd7b99c",
+      "reason": "Old local atlas contains a fabricated firearm and offensive shooting poses; inspected but deliberately excluded from generation inputs."
+    },
+    {
+      "heroId": "falin_meshi",
+      "path": "docs/combat-fidelity-wave8-2026-10-20/part-d-references/falin_meshi-old-base.png",
+      "sha256": "8a50d8a63e3585ceba570f9346cf5ac794b78c6120251438176125b01a7916c9",
+      "reason": "Old Falin atlas is a long-haired pointed-ear Marcille clone with offensive staff beam; inspected but excluded from generation inputs."
+    }
+  ]
+}

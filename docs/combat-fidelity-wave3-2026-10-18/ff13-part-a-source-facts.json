@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "dateUTC": "2026-10-18T05:33:57.465767+00:00",
+  "scope": "Final Fantasy XIII wave3 Part A: Army of One, Highwind, Death",
+  "verificationAvailable": true,
+  "networkVerified": true,
+  "canon1to1Verified": false,
+  "method": "Read the exact Gamer Corner Guides ability and weapon pages through the web tool, then the Steam Full ATB Skills Guide. Direct shell HTTP403 failures are separate historical attempts. Only the quoted fields and narrowly described facts below are externally checked; art, balance and engine mechanics are not certified1:1.",
+  "attempts": [
+    {
+      "source": "GameCorner",
+      "url": "https://gamecorner.pl/",
+      "pageBodyRead": false,
+      "httpStatus": null,
+      "connectionError": "Tunnel connection failed: 403 Forbidden",
+      "exactQuote": null,
+      "candidateRejected": true,
+      "reason": "Wrong domain; retained as history only"
+    },
+    {
+      "source": "GameCorner",
+      "url": "https://www.gamecorner.pl/",
+      "pageBodyRead": false,
+      "httpStatus": null,
+      "connectionError": "Tunnel connection failed: 403 Forbidden",
+      "exactQuote": null,
+      "candidateRejected": true,
+      "reason": "Wrong domain; retained as history only"
+    },
+    {
+      "source": "Gamer Corner Guides",
+      "url": "https://guides.gamercorner.net/ffxiii/abilities/highwind",
+      "method": "shell-urllib",
+      "pageBodyRead": false,
+      "httpStatus": 403,
+      "error": "HTTP Error403: Forbidden"
+    },
+    {
+      "source": "Gamer Corner Guides",
+      "url": "https://guides.gamercorner.net/ffxiii/abilities/army-of-one",
+      "method": "shell-urllib",
+      "pageBodyRead": false,
+      "httpStatus": 403,
+      "error": "HTTP Error403: Forbidden"
+    },
+    {
+      "source": "Gamer Corner Guides",
+      "url": "https://guides.gamercorner.net/ffxiii/abilities/death",
+      "method": "shell-urllib",
+      "pageBodyRead": false,
+      "httpStatus": 403,
+      "error": "HTTP Error403: Forbidden"
+    }
+  ],
+  "techniques": [
+    {
+      "heroId": "lightning_ff13",
+      "name": "Army of One",
+      "projectWeapon": "Blazefire Saber",
+      "currentRuntimeType": "melee_aoe",
+      "currentRuntimeTargeting": "enemy area",
+      "sourceWork": "Final Fantasy XIII (2009)",
+      "projectSourceReference": "src/game/canonicalCombatOverrides.js; src/game/combat/abilities/abilitiesCanonical.js",
+      "externalWeaponVerified": true,
+      "externalTargetingVerified": true,
+      "exactQuotes": [],
+      "proposedTargetingChange": {
+        "shape": "single",
+        "targetSide": "enemy",
+        "maxTargets": 1
+      },
+      "verifiedHitCount": 11,
+      "targetingVerificationSource": "steam-full-atb-guide",
+      "verifiedFieldsOnly": true,
+      "sources": [
+        "gamer-corner-army-of-one",
+        "gamer-corner-blazefire-saber",
+        "steam-full-atb-guide"
+      ],
+      "verifiedTargeting": "One selected enemy; repeated attacks on that target, not an area-targeting claim."
+    },
+    {
+      "heroId": "fang_ff13",
+      "name": "Highwind",
+      "projectWeapon": "Bladed Lance / lance de Fang",
+      "currentRuntimeType": "melee",
+      "currentRuntimeTargeting": "one enemy",
+      "sourceWork": "Final Fantasy XIII (2009)",
+      "projectSourceReference": "src/game/canonicalCombatOverrides.js; src/game/combat/abilities/abilitiesCanonical.js",
+      "externalWeaponVerified": true,
+      "externalTargetingVerified": true,
+      "exactQuotes": [],
+      "proposedTargetingChange": {
+        "shape": "area",
+        "targetSide": "enemy",
+        "note": "An area attack condenses the source spear contact/landing eruption; exact source radius is not verified."
+      },
+      "verifiedHitCount": 2,
+      "targetingVerificationSource": "steam-full-atb-guide",
+      "verifiedFieldsOnly": true,
+      "sources": [
+        "gamer-corner-highwind",
+        "gamer-corner-bladed-lance",
+        "steam-full-atb-guide"
+      ],
+      "verifiedTargeting": "Selected spear target plus an area eruption on landing."
+    },
+    {
+      "heroId": "vanille_ff13",
+      "name": "Death",
+      "projectWeapon": "Binding Rod",
+      "currentRuntimeType": "dark_aoe",
+      "currentRuntimeTargeting": "enemy area",
+      "sourceWork": "Final Fantasy XIII (2009)",
+      "projectSourceReference": "src/game/canonicalCombatOverrides.js; src/game/combat/abilities/abilitiesCanonical.js",
+      "externalWeaponVerified": true,
+      "externalTargetingVerified": true,
+      "exactQuotes": [],
+      "proposedTargetingChange": {
+        "shape": "single",
+        "targetSide": "enemy",
+        "maxTargets": 1,
+        "note": "Keep damage-only gameplay adaptation; do not add guaranteed instant death."
+      },
+      "verifiedHitCount": null,
+      "targetingVerificationSource": "steam-full-atb-guide",
+      "verifiedFieldsOnly": true,
+      "sources": [
+        "gamer-corner-death",
+        "gamer-corner-binding-rod",
+        "steam-full-atb-guide"
+      ],
+      "verifiedTargeting": "One selected target; conditional death and magic damage on failure."
+    }
+  ],
+  "limits": [
+    "Quoted and observed fields above were actually read on the correct websites. The old .pl and shell failures remain historical records.",
+    "No runtime, targeting, damage or hit-schedule implementation was changed by this art/source task.",
+    "Source hit counts are documentation, not a claim that the runtime applies11,2or17 separate impacts.",
+    "Four drawn frames per super are animation poses, not four damage events.",
+    "Weapon ownership/textual function verification does not certify generated pixels, full costumes or source cinematic sequences1:1."
+  ],
+  "siteCorrection": "The earlier gamecorner.pl origins were mistaken candidates, not the Gamer Corner Guides site. Their failed connection history is preserved below.",
+  "sources": [
+    {
+      "id": "gamer-corner-highwind",
+      "url": "https://guides.gamercorner.net/ffxiii/abilities/highwind",
+      "title": "Gamer Corner Guides: Highwind",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read-via-web-tool",
+      "verified": true,
+      "locator": "FFXIII ability section, lines74–80; character line94",
+      "exactQuote": "Release a catastrophic blast, clearing chain gauges. Damage varies by situation.",
+      "observedFields": {
+        "type": "Physical Attack",
+        "role": "Commando",
+        "character": "Fang"
+      },
+      "limits": "The ability page itself gives neither radius nor hit count."
+    },
+    {
+      "id": "gamer-corner-army-of-one",
+      "url": "https://guides.gamercorner.net/ffxiii/abilities/army-of-one",
+      "title": "Gamer Corner Guides: Army of One",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read-via-web-tool",
+      "verified": true,
+      "locator": "FFXIII ability section, lines74–80; character line94",
+      "exactQuote": "Unleash a devastating flurry of blows. Chain bonus effect varies by situation.",
+      "observedFields": {
+        "type": "Physical Attack",
+        "role": "Ravager",
+        "character": "Lightning"
+      },
+      "limits": "The ability page itself gives neither radius nor hit count."
+    },
+    {
+      "id": "gamer-corner-death",
+      "url": "https://guides.gamercorner.net/ffxiii/abilities/death",
+      "title": "Gamer Corner Guides: Death",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read-via-web-tool",
+      "verified": true,
+      "locator": "FFXIII ability section, lines74–82; character line96",
+      "exactQuote": "Slay target instantly, dealing magic damage instead if unsuccessful.",
+      "observedFields": {
+        "type": "Status Ailment",
+        "role": "Saboteur",
+        "character": "Vanille"
+      },
+      "limits": "Only the FFXIII section is used. Related sections below line98 concern other Final Fantasy games and must not supply FFXIII target fields."
+    },
+    {
+      "id": "gamer-corner-blazefire-saber",
+      "url": "https://guides.gamercorner.net/ffxiii/weapons/blazefire-saber",
+      "title": "Gamer Corner Guides: Blazefire Saber",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read-via-web-tool",
+      "verified": true,
+      "locator": "Character/Description, lines74–76",
+      "exactQuote": "A weapon new to the Sanctum army, this gunblade is only issued to highly trained soldiers.",
+      "observedFields": {
+        "character": "Lightning"
+      }
+    },
+    {
+      "id": "gamer-corner-bladed-lance",
+      "url": "https://guides.gamercorner.net/ffxiii/weapons/bladed-lance",
+      "title": "Gamer Corner Guides: Bladed Lance",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read-via-web-tool",
+      "verified": true,
+      "locator": "Character/Description, lines74–76",
+      "exactQuote": "This weapon is used for hunting as well as traditional martial arts.",
+      "observedFields": {
+        "character": "Fang"
+      }
+    },
+    {
+      "id": "gamer-corner-binding-rod",
+      "url": "https://guides.gamercorner.net/ffxiii/weapons/binding-rod",
+      "title": "Gamer Corner Guides: Binding Rod",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read-via-web-tool",
+      "verified": true,
+      "locator": "Character/Description, lines74–76",
+      "exactQuote": "By casting high-tensile wires, this unusual weapon can be used to attack opponents from a moderate distance.",
+      "observedFields": {
+        "character": "Vanille"
+      }
+    },
+    {
+      "id": "steam-full-atb-guide",
+      "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=327306716",
+      "title": "Steam Community: Final Fantasy XIII Full ATB Skills Guide, Deathlink",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read; sections located via web find",
+      "verified": true,
+      "excerpts": [
+        {
+          "locator": "Lightning Army of One, line101",
+          "text": "deals an 11 hit combo."
+        },
+        {
+          "locator": "Fang Highwind, line144",
+          "text": "this ability hits twice"
+        },
+        {
+          "locator": "Fang Highwind, line144",
+          "text": "eruption that does area damage."
+        },
+        {
+          "locator": "Vanille Death, line133",
+          "text": "instantly kills a target"
+        }
+      ],
+      "paraphrase": "Lightning rushes and repeatedly attacks her selected target. Fang has a spear contact followed by a landing eruption affecting an area. Vanille attempts Death on a susceptible target and deals magic damage when it fails. The guide is community documentation, not a certified combat-engine specification."
+    }
+  ]
+}

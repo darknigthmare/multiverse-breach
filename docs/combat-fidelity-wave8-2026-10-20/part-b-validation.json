@@ -1,0 +1,21 @@
+{
+  "checks": [
+    {
+      "command": "node scripts/buildCombatCharacterAnimationsWave8PartB.mjs --check",
+      "exitCode": 0,
+      "output": "{\"checked\":true,\"atlases\":5,\"phases\":40,\"nativeDistinctPoses\":160,\"width\":1024,\"height\":2048,\"baseline\":244,\"transparentMarginPixels\":10,\"canon1to1Verified\":false}\n"
+    },
+    {
+      "command": "node scripts/buildCombatCharacterSpriteCorrectionsWave8PartB.mjs --check",
+      "exitCode": 0,
+      "output": "{\"heroes\":5,\"states\":20,\"poses\":80,\"nativeSources\":5,\"newlyDrawnMissingStateRows\":0,\"correctedStateRows\":0,\"distinctRgbaPoses\":80,\"alphaAndMargins\":true,\"sourceAndReferenceHashes\":true,\"nativeRowReconstructionMatches\":true,\"visualReviewComplete\":true,\"canon1to1Verified\":false,\"networkVerified\":false}\n"
+    },
+    {
+      "command": "npm run lint -- scripts/buildCombatCharacterAnimationsWave8PartB.mjs scripts/buildCombatCharacterSpriteCorrectionsWave8PartB.mjs",
+      "exitCode": 0,
+      "output": "\n> lively-darwin@0.0.0 lint\n> oxlint scripts/buildCombatCharacterAnimationsWave8PartB.mjs scripts/buildCombatCharacterSpriteCorrectionsWave8PartB.mjs\n\n"
+    }
+  ],
+  "canon1to1Verified": false,
+  "productionBuildNotRunByThisAgent": true
+}

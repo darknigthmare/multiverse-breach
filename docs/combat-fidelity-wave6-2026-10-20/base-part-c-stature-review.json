@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-20",
+  "method": "Explicit same-density native pose bridge to an existing normalized flexed guard, never cross-resolution raw height division. These display decisions do not certify source anatomy.",
+  "reviews": [
+    {
+      "heroId": "joseph_joestar",
+      "state": "attack",
+      "renderScale": 1.20125786163522,
+      "statureReview": {
+        "referencePhase": "hit",
+        "referenceColumn": 3,
+        "referenceBodyHeight": 191,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 159,
+        "bodyBounds": [
+          62,
+          85,
+          133,
+          159
+        ],
+        "referenceBodyBounds": [
+          58,
+          53,
+          150,
+          191
+        ],
+        "nativeComparableBodyHeight": 552,
+        "nativeReferenceBodyHeight": 552,
+        "nativeComparableBodyBounds": [
+          43,
+          138,
+          463,
+          552
+        ],
+        "nativeReferenceBodyBounds": [
+          1713,
+          138,
+          443,
+          552
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/joseph_joestar-correction.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/joseph_joestar-correction.png",
+        "nativeComparableState": "attack",
+        "nativeReferenceState": "attack",
+        "nativeReferenceColumn": 3,
+        "displayReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/joseph_joestar-original.png",
+        "displayReferenceSourceDiffers": true,
+        "sourceResolutionComparable": true,
+        "poseBridge": {
+          "type": "same-native-guard-to-normalized-guard",
+          "normalizedReferenceState": "hit",
+          "normalizedReferenceColumn": 3,
+          "nativeReferenceState": "attack",
+          "nativeReferenceColumn": 3,
+          "reason": "The corrective4x1 strip has different pixel density from the original4x4 source. Compare attack to the final guard pose WITHIN the same corrective strip, then anchor that guard to the actual already-normalized flexed guard reference. Do not compare raw pixel heights across image resolutions, and do not anchor to the fully upright idle0."
+        },
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "poseHasIntentionalFlexion": true,
+        "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+        "reason": "Compact wrist vines still expand the fixed-cell packing. Anchor to the existing flexed hit3 guard191px, preserving a shorter attack projection than idle0 standing232px. The correction does not force a crouch upright.",
+        "measurementCaveat": "Authored visual pose bridge, not an official anatomical or source-game proportion. Horizontal ROI includes clothing and can overlap held props; measured vertical endpoints represent the full dressed body. Guard matching across the two illustrated sources is a project adaptation."
+      }
+    },
+    {
+      "heroId": "skullgirls_beowulf",
+      "state": "attack",
+      "renderScale": 1,
+      "statureReview": {
+        "referencePhase": "idle",
+        "referenceColumn": 3,
+        "referenceBodyHeight": 200,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 200,
+        "bodyBounds": [
+          45,
+          44,
+          164,
+          200
+        ],
+        "referenceBodyBounds": [
+          26,
+          41,
+          198,
+          200
+        ],
+        "nativeComparableBodyHeight": 538,
+        "nativeReferenceBodyHeight": 538,
+        "nativeComparableBodyBounds": [
+          47,
+          110,
+          443,
+          538
+        ],
+        "nativeReferenceBodyBounds": [
+          1654,
+          110,
+          467,
+          538
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/skullgirls_beowulf-correction.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/skullgirls_beowulf-correction.png",
+        "nativeComparableState": "attack",
+        "nativeReferenceState": "attack",
+        "nativeReferenceColumn": 3,
+        "displayReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/skullgirls_beowulf-original.png",
+        "displayReferenceSourceDiffers": true,
+        "sourceResolutionComparable": true,
+        "poseBridge": {
+          "type": "same-native-guard-to-normalized-guard",
+          "normalizedReferenceState": "idle",
+          "normalizedReferenceColumn": 3,
+          "nativeReferenceState": "attack",
+          "nativeReferenceColumn": 3,
+          "reason": "The corrective4x1 strip has different pixel density from the original4x4 source. Compare attack to the final guard pose WITHIN the same corrective strip, then anchor that guard to the actual already-normalized flexed guard reference. Do not compare raw pixel heights across image resolutions, and do not anchor to the fully upright idle0."
+        },
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "poseHasIntentionalFlexion": true,
+        "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+        "reason": "The newly drawn compact attack is already200px, matching the bent idle3 guard200px. Keep renderScale1; do not force it up to upright idle0 height231px.",
+        "measurementCaveat": "Authored visual pose bridge, not an official anatomical or source-game proportion. Horizontal ROI includes clothing and can overlap held props; measured vertical endpoints represent the full dressed body. Guard matching across the two illustrated sources is a project adaptation."
+      }
+    }
+  ]
+}

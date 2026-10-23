@@ -1,0 +1,19 @@
+{
+  "resolved": true,
+  "scope": "test-harness-only",
+  "reason": "Numeric signed-zero -0/0 does not change the canvas geometry; the final comparator preserves all real geometry checks and treats signed zeros as the same number.",
+  "originalFailure": {
+    "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ -0\n- 0\n",
+    "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ -0\n- 0\n\n    at file:///workspace/multiverse-breach/docs/combat-fidelity-wave8-2026-10-20/browser/base-corrections.mjs:102:386\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:502:9)",
+    "errors": [],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "failedRequests": [
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+        "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      }
+    ]
+  }
+}

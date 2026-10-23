@@ -1,0 +1,1468 @@
+{
+  "date": "2026-10-18",
+  "nativePresentations": {
+    "characters": 35,
+    "phases": 280,
+    "actualFrameDraws": 2240,
+    "errors": []
+  },
+  "goku": {
+    "date": "2026-10-18",
+    "passed": true,
+    "environment": {
+      "browser": "Chromium /usr/bin/chromium",
+      "origin": "http://127.0.0.1:5188/",
+      "actor": "goku_dbz",
+      "opponent": "cloud_ff7"
+    },
+    "core": {
+      "passed": true,
+      "character": "goku_dbz",
+      "states": 45,
+      "distinctCorePoses": 180,
+      "coreFrameDraws": 360,
+      "gripFrameDraws": 8,
+      "physicsUnchanged": true,
+      "rendererUrl": "/src/game/renderer.js?t=1792308834183",
+      "sources": [
+        "/sprites/generated/melee-goku-wave4/goku-motion-a.png",
+        "/sprites/generated/melee-goku-wave4/goku-motion-b.png",
+        "/sprites/generated/melee-goku-wave4/goku-defense.png",
+        "/sprites/generated/melee-goku-wave4/goku-combat-a.png",
+        "/sprites/generated/melee-goku-wave4/goku-combat-b.png",
+        "/sprites/generated/melee-goku-wave4/goku-ledge.png"
+      ],
+      "pageErrors": [],
+      "coreCapture": "/tmp/goku-wave4-core.png",
+      "gripCapture": "/tmp/goku-wave4-grips.png"
+    },
+    "movement": {
+      "summary": {
+        "jumpRise": {
+          "updates": 24,
+          "draws": 23,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999,
+            0.11666666666666665,
+            0.13333333333333333,
+            0.15,
+            0.16666666666666666,
+            0.18333333333333332,
+            0.19999999999999998,
+            0.21666666666666665,
+            0.2333333333333333,
+            0.24999999999999997,
+            0.26666666666666666,
+            0.2833333333333333,
+            0.3,
+            0.31666666666666665,
+            0.3333333333333333,
+            0.35,
+            0.36666666666666664,
+            0.3833333333333333
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "fall": {
+          "updates": 26,
+          "draws": 26,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999,
+            0.11666666666666665,
+            0.13333333333333333,
+            0.15,
+            0.16666666666666666,
+            0.18333333333333332,
+            0.19999999999999998,
+            0.21666666666666665,
+            0.2333333333333333,
+            0.24999999999999997,
+            0.26666666666666666,
+            0.2833333333333333,
+            0.3,
+            0.31666666666666665,
+            0.3333333333333333,
+            0.35,
+            0.36666666666666664,
+            0.3833333333333333,
+            0.39999999999999997,
+            0.41666666666666663
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "land": {
+          "updates": 7,
+          "draws": 5,
+          "elapsed": [
+            0,
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            4
+          ],
+          "facings": [
+            1
+          ]
+        },
+        "turn": {
+          "updates": 6,
+          "draws": 6,
+          "elapsed": [
+            0.016666666666666666,
+            0.03333333333333333,
+            0.05,
+            0.06666666666666667,
+            0.08333333333333333,
+            0.09999999999999999
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "velocities": [
+            -4
+          ],
+          "facings": [
+            -1
+          ]
+        }
+      },
+      "pause": {
+        "mechanism": "GameCanvas real sessionPaused prop through root.render; stable stage/team props and engine instance",
+        "before": {
+          "state": "idle",
+          "stateElapsed": 0.44999999999999996,
+          "x": 432,
+          "y": 359,
+          "vx": 0,
+          "vy": 0,
+          "hp": 105
+        },
+        "after": {
+          "state": "idle",
+          "stateElapsed": 0.44999999999999996,
+          "x": 432,
+          "y": 359,
+          "vx": 0,
+          "vy": 0,
+          "hp": 105
+        },
+        "durationMs": 300,
+        "unchanged": true
+      },
+      "engineUrl": "/src/game/engineSmash.js?t=1792308865830",
+      "pageErrors": [],
+      "mount": "Real React GameCanvas; flat isolated ground and stationary P2 opponent; actual keyboard, movement clocks and drawImage."
+    },
+    "super": {
+      "engineUrl": "/src/game/engineSmash.js?t=1792308834183",
+      "name": "Kamehameha",
+      "keyboardHoldMs": 80,
+      "initialCharge": 100,
+      "impact": {
+        "start": {
+          "name": "Kamehameha",
+          "charge": 0,
+          "hp": 100000,
+          "elapsed": 0.016666666666666666,
+          "hitAt": 0.451
+        },
+        "hit": {
+          "name": "Kamehameha",
+          "charge": 0,
+          "hp": 99941,
+          "elapsed": 0.4666666666666666,
+          "hitAt": 0.451
+        },
+        "gameOver": false
+      },
+      "sameInput": {
+        "before": 99941,
+        "retriggered": false,
+        "charge": 0
+      },
+      "final": {
+        "hitCount": 1,
+        "hp": 99941,
+        "charge": 0,
+        "action": null,
+        "profile": "Kamehameha"
+      },
+      "pageErrors": []
+    },
+    "initialHarnessFailure": {
+      "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement-initial-failure.json",
+      "error": "Initial wrapper mount did not reach idle; no keyboard commands were sent.",
+      "resolution": "Retried using direct GameCanvas mounting already used by prior browser proofs, and controlled the real sessionPaused prop through root.render with stable stage/team props. No production change."
+    },
+    "externalRequestLimitation": "All scenarios reported only the blocked Google Fonts CSS request (ERR_TUNNEL_CONNECTION_FAILED), with no application JavaScript exception.",
+    "visualReview": {
+      "superAndGripsAndSpecialCropReviewed": true,
+      "notes": [
+        "Base black-haired Goku and orange/blue outfit persist.",
+        "Special frame2 retains its projectile in the correct cell.",
+        "Guard and movement remain adapted artwork; running uses suspended dash-like leg positions.",
+        "The eight-grip image overlays four verified frame draws at each side of one platform; the projected anchor positions are recorded individually in the trace."
+      ],
+      "canon1to1Verified": false
+    },
+    "sourceImages": [
+      {
+        "path": "public/sprites/generated/melee-goku-wave4/goku-motion-a.png",
+        "sha256": "9bed1d1097b0273cd43df592636e9cbbdb7cf6b921b81e125f6d06271924a9c9"
+      },
+      {
+        "path": "public/sprites/generated/melee-goku-wave4/goku-motion-b.png",
+        "sha256": "6e83dab1b8b85c64dddbdd60ceeece56dd9c47fcd55fd21a26a6b3e70ffeace8"
+      },
+      {
+        "path": "public/sprites/generated/melee-goku-wave4/goku-defense.png",
+        "sha256": "f7ab7296a08b5d468de2e5a0a0e3feb5d9916089a7806267171ec2519e3a5df2"
+      },
+      {
+        "path": "public/sprites/generated/melee-goku-wave4/goku-combat-a.png",
+        "sha256": "85730a037c5ebc8653c4bfb9d7a8974c0e670a438684a6c648998912f09787f8"
+      },
+      {
+        "path": "public/sprites/generated/melee-goku-wave4/goku-combat-b.png",
+        "sha256": "065601ef7bd816b5a258369a2ac39d0fccbf1513a8836d6630b9569f7de175fe"
+      },
+      {
+        "path": "public/sprites/generated/melee-goku-wave4/goku-ledge.png",
+        "sha256": "4bf47f2fcafaddf71bfde028d968633a52c074f6af6f9bf2c72dfa52f5352b9e"
+      }
+    ],
+    "artifacts": [
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-core-browser.mjs",
+        "sha256": "faa216a07c21bd4559e052e377db9c22af4620782d35266117958291a75062db"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-core-result.json",
+        "sha256": "9d9b2fafce160571d09594d618e9dfbe738a14a89bf776f41ed6730d04ee9415"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-core-trace.json",
+        "sha256": "ecfeede57641230a7c84e34de5f1a1cb2191effe7a5d867adc820e0064edb286"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-core.png",
+        "sha256": "a4e3d87a6aac23979cdb80dda6d55a1bcb07f834d20616e52f3bc230ad86073c"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-grips.png",
+        "sha256": "2c93c45d55ded8fc6aeee131a6dc1c15178ebc10c9d36389cdb0be3cff557927"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-core-special-crop.png",
+        "sha256": "1bd77c9e3ddbbb15adbe31518c578e65aa8abe13ea16180026d9a65ada791aca"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement-browser.mjs",
+        "sha256": "0e30ea92010e9fddfe8ae5c36761d1835ba31dd9f505c110c50bcbd4ef3fb992"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement-result.json",
+        "sha256": "fec200f5f32e2770e0100a5cf076859f2e63431fabfe3468546e9265a03ab088"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement-trace.json",
+        "sha256": "99f0783785032d4c18145e2a68ae460cf366477f5740419eeb2d3ffed71c24a4"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement.png",
+        "sha256": "5ae89dc131a153ff6c7e24aa2f76c6c7c67c135f40456eeb2e7899f1a80060ba"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-pause.png",
+        "sha256": "0ba68ab4b728ad19e5c67ac013e37fd4b48aeb9cca08cafa3459cec207586e75"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement-initial-wrapper.mjs",
+        "sha256": "31bb9ce8d3da21cc68680119501f06df1cf265e77e1dc8e1663702e5fe9ec312"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-movement-initial-failure.json",
+        "sha256": "8d9cbb013b31be35b0c9a2d2fe858b70cc1bc2cfe292d6075cef0411122e2cd9"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-super-browser.mjs",
+        "sha256": "284feb019f475e8db231da6c1426b86426470fc68dc69583235065d21a4de2ec"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-super-result.json",
+        "sha256": "5bdf8a7b48eadf9222f2ecfd00e04978c88e7ea0513f32926cdc19cff87ddf7c"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-super-trace.json",
+        "sha256": "8ebd3d5d4b4f36efc96be73e218de7ff226b8580315cc6a6e8367a0d48f53cb0"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/goku-super.png",
+        "sha256": "63a81b6f366a3e8251542e50436de7e6464e019dc28fb18486888d3241f3d42e"
+      }
+    ],
+    "productionSourcesEdited": false
+  },
+  "vincentChaos": {
+    "passed": true,
+    "engineUrl": "/src/game/engineSmash.js?t=1792309239258",
+    "flow": "GameCanvas Smash → Vincent FFVII → panneau Chaos 100 % → clavier L → startup sans dégât → impact après hitAt → charge 0 % → aucun second impact",
+    "impact": {
+      "start": {
+        "name": "Chaos",
+        "charge": 0,
+        "hp": 100000,
+        "elapsed": 0.016666666666666666,
+        "hitAt": 0.451
+      },
+      "hit": {
+        "name": "Chaos",
+        "charge": 0,
+        "hp": 100000,
+        "elapsed": 0.4666666666666666,
+        "hitAt": 0.451
+      },
+      "gameOver": false
+    },
+    "bodyProof": {
+      "body": {
+        "sheet": "/sprites/generated/combat-character-forms-wave4/vincent-chaos.png",
+        "source": [
+          768,
+          0,
+          256,
+          256
+        ],
+        "facing": 1
+      },
+      "support": {
+        "source": {
+          "sourceHeroId": "vincent_ff7",
+          "universe": "Final Fantasy VII",
+          "name": "Chaos",
+          "slot": "special"
+        },
+        "effect": "buff",
+        "color": "#d96887",
+        "remaining": 5,
+        "guardReduce": 0.4,
+        "buffMultiplier": 1.5
+      },
+      "actor": {
+        "x": 260,
+        "y": 359,
+        "stateElapsed": 0.4666666666666666
+      }
+    },
+    "frozenBody": {
+      "body": {
+        "sheet": "/sprites/generated/combat-character-forms-wave4/vincent-chaos.png",
+        "source": [
+          768,
+          0,
+          256,
+          256
+        ],
+        "facing": 1
+      },
+      "support": {
+        "source": {
+          "sourceHeroId": "vincent_ff7",
+          "universe": "Final Fantasy VII",
+          "name": "Chaos",
+          "slot": "special"
+        },
+        "effect": "buff",
+        "color": "#d96887",
+        "remaining": 5,
+        "guardReduce": 0.4,
+        "buffMultiplier": 1.5
+      },
+      "actor": {
+        "x": 260,
+        "y": 359,
+        "stateElapsed": 0.4666666666666666
+      }
+    },
+    "recoveryProof": {
+      "support": null,
+      "body": {
+        "sheet": "/sprites/generated/combat-character-corrections-wave4/vincent_ff7.png",
+        "source": [
+          512,
+          0,
+          256,
+          256
+        ],
+        "facing": 1
+      }
+    },
+    "sameInput": {
+      "before": 100000,
+      "retriggered": false,
+      "charge": 0
+    },
+    "final": {
+      "hitCount": 0,
+      "hp": 100000,
+      "charge": 0,
+      "action": null,
+      "profile": "Chaos"
+    },
+    "pageErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "failedRequests": [
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+        "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      }
+    ],
+    "screenshot": "/workspace/multiverse-breach/docs/combat-fidelity-wave4-2026-10-18/browser/vincent-super.png",
+    "recoveryScreenshot": "/workspace/multiverse-breach/docs/combat-fidelity-wave4-2026-10-18/browser/vincent-recovery.png"
+  },
+  "regression": {
+    "schemaVersion": 1,
+    "date": "2026-10-18",
+    "browser": "Chromium /usr/bin/chromium via Playwright",
+    "baseUrl": "http://127.0.0.1:5188/",
+    "harness": "docs/combat-fidelity-wave4-2026-10-18/browser/regression-harness.mjs",
+    "harnessSha256": "cd31b5c32b750d36413ffa4d6582c5025a1c71210137feaceeaf365f3577442e",
+    "originalHarness": "docs/combat-fidelity-wave4-2026-10-18/browser/regression-original-harness.mjs",
+    "originalHarnessSha256": "2b2a90b885ac023cae32a40e5f23c8ee14f9ed5a91b41577e28a031b9213f78d",
+    "harnessChanges": [
+      "Capture destinations moved into this archive.",
+      "Wait for the existing React data-fighter-phase and live score to synchronize after synthetic engine stepping, before taking Fighter screenshots.",
+      "No production source changed; original HMR-aware component imports, UI interactions and gameplay assertions retained."
+    ],
+    "components": [
+      "GameCanvas.jsx",
+      "FighterMode.jsx"
+    ],
+    "passed": true,
+    "pageErrors": [],
+    "pageErrorCount": 0,
+    "concreteDefectsObserved": [],
+    "flows": [
+      {
+        "flow": "GameCanvas → bouton invocation → annulation → clavier U → confirmation → scène FF7 → impact → verrou une utilisation",
+        "early": {
+          "before": 3,
+          "after": 3,
+          "scene": {
+            "active": true,
+            "actorId": "hero:0:cloud_ff7",
+            "side": "player",
+            "name": "Ifrit — Hellfire",
+            "entityName": "Ifrit",
+            "actionName": "Hellfire",
+            "kind": "summon",
+            "universe": "Final Fantasy VII",
+            "color": "#ff8645",
+            "tick": 3,
+            "durationTicks": 216,
+            "impactTick": 114,
+            "impacted": false,
+            "phase": "arrival",
+            "targetIds": [
+              "enemy:custom:0:tifa_ff7"
+            ],
+            "performerId": null,
+            "entityAssetId": "ff7-ifrit",
+            "entityFrame": {
+              "index": 0,
+              "phase": "arrival"
+            },
+            "choreography": {
+              "id": "ff7-ifrit",
+              "fidelity": "authored-motion-adaptation",
+              "path": "ifrit-manifest",
+              "phase": "arrival",
+              "poseIndex": 0,
+              "tick": 3,
+              "durationTicks": 216,
+              "impactTick": 114,
+              "arrivalEndTick": 36,
+              "attackStartTick": 84,
+              "returnStartTick": 149,
+              "arrivalProgress": 0.08333333333333333,
+              "preparationProgress": 0,
+              "travelProgress": 0,
+              "attackProgress": 0,
+              "returnProgress": 0,
+              "effect": "damage",
+              "color": "#ff8645",
+              "side": 1,
+              "width": 1040,
+              "height": 460,
+              "performer": {
+                "x": 250,
+                "y": 365.6203703703704,
+                "scale": 0.9386666666666666,
+                "size": 214.016,
+                "alpha": 0.16666666666666666,
+                "facing": 1,
+                "rotation": 0
+              },
+              "origin": {
+                "x": 314.2048,
+                "y": 273.5934903703704
+              },
+              "caller": {
+                "x": 146,
+                "y": 304
+              },
+              "target": {
+                "x": 770,
+                "y": 304
+              },
+              "targets": [
+                {
+                  "id": "enemy:custom:0:tifa_ff7",
+                  "x": 770,
+                  "y": 304,
+                  "centerY": 260.3
+                }
+              ],
+              "visuals": []
+            },
+            "assetMissing": false
+          },
+          "charge": 0,
+          "atb": 0,
+          "used": true
+        },
+        "final": {
+          "active": false,
+          "hp": 99944,
+          "summon": {
+            "available": true,
+            "ready": false,
+            "actorId": "hero:0:cloud_ff7",
+            "side": "player",
+            "id": "cloud_ff7:summon:Ifrit",
+            "name": "Ifrit — Hellfire",
+            "entityName": "Ifrit",
+            "actionName": "Hellfire",
+            "universe": "Final Fantasy VII",
+            "kind": "summon",
+            "entityAssetId": "ff7-ifrit",
+            "used": true,
+            "atb": 86.4000000000003,
+            "charge": 0,
+            "cost": {
+              "atb": 100,
+              "charge": 100
+            },
+            "assetMissing": false,
+            "reason": "used"
+          },
+          "canSummonAgain": false
+        },
+        "errors": []
+      },
+      {
+        "flow": "FighterMode → intro → KO manche 1 → victoire/défaite → reprise manche 2 → KO → finale → victoire → outro → résultat unique",
+        "firstRound": {
+          "phase": "roundResult",
+          "roundWins": {
+            "player": 1,
+            "cpu": 0
+          },
+          "finished": false,
+          "completions": 0,
+          "browserHud": {
+            "phase": "roundResult",
+            "round": "1",
+            "status": "Manche 1. RÉSULTAT DE MANCHE. Score 1 à 0. 99 secondes.Cloud Strife : Cloud Strife — Manche gagnée. Final Fantasy VII · Omnislash Tifa Lockhart : Tifa Lockhart — Manche perdue. Final Fantasy VII"
+          }
+        },
+        "finisher": {
+          "phase": "fatality",
+          "roundWins": {
+            "player": 2,
+            "cpu": 0
+          },
+          "completions": 0,
+          "browserHud": {
+            "phase": "fatality",
+            "round": "2",
+            "status": "Manche 2. FINALE. Score 2 à 0. 98 secondes.Cloud Strife : Cloud Strife — Finale. Final Fantasy VII · Finale adaptée : Omnislash"
+          }
+        },
+        "complete": {
+          "phase": "victory",
+          "result": "victory",
+          "completions": 1,
+          "roundWins": {
+            "player": 2,
+            "cpu": 0
+          }
+        },
+        "errors": []
+      }
+    ],
+    "captures": [
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/regression-rpg-ifrit.png",
+        "sha256": "242eada11b93549a2a2f650e6f7d32fb73f14752063f9f4af53bb78dab26b11a"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/regression-fighter-intro.png",
+        "sha256": "e50f5b918699db868126e0871c58ce7ce1ffc5a8f03e2184ee8e1d41ddd9dac9"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/regression-fighter-round-one.png",
+        "sha256": "e84d95a1ffa32c0490fa0f9ffa5bc5dd04c3d3cfe19cdf3c53abaef90b926b4e"
+      },
+      {
+        "path": "docs/combat-fidelity-wave4-2026-10-18/browser/regression-fighter-finisher.png",
+        "sha256": "c42a124d6de1b736fcab5b4ef908abaa817d7f6714aebf65eebaaae9ebd4f59b"
+      }
+    ],
+    "limitations": [
+      "Engine prototype setup and manual simulation stepping are isolated to this browser page to make the two UI flows deterministic.",
+      "No code path for Chaos,Goku or newly generated character sprites is certified by these Cloud/Tifa/Ifrit component-flow checks.",
+      "These checks do not establish original-source visual1:1 fidelity."
+    ]
+  },
+  "stages": {
+    "date": "2026-10-18",
+    "browser": "local Chromium",
+    "mechanisms": 24,
+    "universes": 12,
+    "additionalViewportChecks": 72,
+    "newOfficialFrames": 0,
+    "newEffectAtlasFrames": 0,
+    "bitmapRegionComposites": 0,
+    "source1to1Validated": 0,
+    "rows": [
+      {
+        "id": "star-wars-death-star1-blast-doors",
+        "universe": "Star Wars",
+        "changedChannels": 7192,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.00035385704175513094,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "star-wars-cloud-city-carbon-lift",
+        "universe": "Star Wars",
+        "changedChannels": 6316,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.001978653648955069,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "ghost-shell-sac-tachikoma-maintenance",
+        "universe": "Ghost in the Shell",
+        "changedChannels": 533,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0064988730277986476,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "ghost-shell-sac-cyberbrain-dive-room",
+        "universe": "Ghost in the Shell",
+        "changedChannels": 3474,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0023126248291811206,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "mad-max-mfp-interceptor-blower",
+        "universe": "Mad Max",
+        "changedChannels": 358,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0004950144968531221,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "mad-max2-refinery-process-pump",
+        "universe": "Mad Max",
+        "changedChannels": 2232,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0018545831568802114,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "fury-road-citadel-water-actuators",
+        "universe": "Mad Max: Fury Road",
+        "changedChannels": 2506,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0021975740167154054,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "fury-road-war-rig-tanker-coupling",
+        "universe": "Mad Max: Fury Road",
+        "changedChannels": 8310,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.001431066059031475,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "cyberpunk2077-ncart-viaduct-train",
+        "universe": "Cyberpunk",
+        "changedChannels": 8576,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0017947028224506107,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "cyberpunk2077-h10-apartment-door",
+        "universe": "Cyberpunk",
+        "changedChannels": 3160,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0002744281401843511,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "edgerunners-david-ncart-platform",
+        "universe": "Cyberpunk: Edgerunners",
+        "changedChannels": 4586,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0003799247748945709,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "edgerunners-doc-clinic-chair",
+        "universe": "Cyberpunk: Edgerunners",
+        "changedChannels": 2382,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.003878005454227026,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "robocop1987-ocp-ed209-diagnostic",
+        "universe": "RoboCop",
+        "changedChannels": 3435,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0012779870873512473,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "robocop1987-metro-west-maintenance",
+        "universe": "RoboCop",
+        "changedChannels": 5297,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0051001068265619075,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "blade-runner1982-spinner-vtol",
+        "universe": "Blade Runner",
+        "changedChannels": 10514,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0013934426229508198,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "blade-runner1982-bradbury-cage-lift",
+        "universe": "Blade Runner",
+        "changedChannels": 7301,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.004802556409136933,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "bebop-swordfish-hangar-folding-wings",
+        "universe": "Cowboy Bebop",
+        "changedChannels": 5733,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.000727457170124869,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "bebop-swordfish-service-monopod",
+        "universe": "Cowboy Bebop",
+        "changedChannels": 1117,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0007518136283306808,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "eva1995-tokyo3-retracting-buildings",
+        "universe": "Neon Genesis Evangelion",
+        "changedChannels": 9890,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0003724142600805769,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "eva1995-nerv-launch-frame",
+        "universe": "Neon Genesis Evangelion",
+        "changedChannels": 4048,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0005782290055805823,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "fifth-element2263-taxi-lanes",
+        "universe": "Le Cinquième Element",
+        "changedChannels": 10676,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0004999260672717415,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "fifth-element-fhloston-opera-curtains",
+        "universe": "Le Cinquième Element",
+        "changedChannels": 18251,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0015944832154633024,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "futurama-new-new-york-tubes",
+        "universe": "Futurama",
+        "changedChannels": 1116,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0015022857856030174,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      },
+      {
+        "id": "futurama-planet-express-roof",
+        "universe": "Futurama",
+        "changedChannels": 2748,
+        "pausedTimeStable": true,
+        "reducedMotionFrozen": true,
+        "stageReducedMotionFrozen": true,
+        "mirroredTransformPreserved": true,
+        "mirrorAlphaErrorRatio": 0.0018174601516639161,
+        "viewportChecks": 3,
+        "combatLaneClear": true,
+        "stageStateUnchanged": true,
+        "disableFlagsPassed": 2
+      }
+    ],
+    "pageErrors": []
+  },
+  "source1to1Verified": false,
+  "production": {
+    "title": "Multiverse Breach - Retro Smash Crossover",
+    "rootMounted": true,
+    "bodyTextLength": 342,
+    "imageCount": 86,
+    "images": [
+      {
+        "sheet": "/sprites/generated/combat-entities/nexus-barricade.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/nexus-suture-drone.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/nexus-tessera-reflection.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/nexus-return-probe.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/halo-pelican.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/half-life-dog.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/portal-turret.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/payday-sentry.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/slender-pages.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/doom-bfg9000.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/guilty-gear-yamada.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/ff7-ifrit.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/ff7-shiva.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/ff7-bahamut.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/sonic-tornado.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/jojo-star-platinum.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/jojo-hermit-purple.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/jojo-gold-experience.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/neon-ghostline.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/aether-sky-mutineers.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/aether-valve-drone.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/meridian-clockwork-falcon.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/aegea-shield-forge.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/tawantinsuyu-relay.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/yomi-yokai-parade.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/mandate-ancestor.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/ilyr-nym-choir.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-entities/skullgirls-black-egrets.png",
+        "width": 1024,
+        "height": 256
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations/cloud_ff7.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations/tifa_ff7.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations/aerith_ff7.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations/barret_ff7.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations/goku_dbz.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations/vegeta_dbz.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations/naruto_six_paths.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations/sasuke_rinnegan.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-corrections/crypt_necrodancer_aria.png",
+        "width": 1024,
+        "height": 1024
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave2/squall_ff8.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave2/rinoa_ff8.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave2/quistis_ff8.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave2/seifer_ff8.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave2/laguna_ff8.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave2/zell_ff8.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave2/selphie_ff8.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave2/irvine_ff8.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-cloud-wave2/cloud-motion-a.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-cloud-wave2/cloud-motion-b.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-cloud-wave2/cloud-defense.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-cloud-wave2/cloud-combat-a.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-cloud-wave2/cloud-combat-b.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-cloud-wave2/cloud-ledge.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-corrections-wave2/seifer_ff8.png",
+        "width": 1024,
+        "height": 1024
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave3/lightning_ff13.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave3/fang_ff13.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave3/vanille_ff13.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave3/snow_ff13.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave3/sazh_ff13.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave3/hope_ff13.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave3/noctis_ff15.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave3/gladiolus_ff15.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave3/ignis_ff15.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave3/prompto_ff15.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave3/lunafreya_ff15.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-tifa-wave3/tifa-motion-a.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-tifa-wave3/tifa-motion-b.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-tifa-wave3/tifa-defense.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-tifa-wave3/tifa-combat-a.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-tifa-wave3/tifa-combat-b.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-tifa-wave3/tifa-ledge.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave4/redxiii_ff7.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave4/yuffie_ff7.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave4/vincent_ff7.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave4/naruto_uzumaki_young.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave4/sasuke_uchiha_young.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave4/sakura_haruno_young.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave4/piccolo_dbz.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-animations-wave4/kakashi_war.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-goku-wave4/goku-motion-a.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-goku-wave4/goku-motion-b.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-goku-wave4/goku-defense.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-goku-wave4/goku-combat-a.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-goku-wave4/goku-combat-b.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/melee-goku-wave4/goku-ledge.png",
+        "width": 1024,
+        "height": 2048
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-forms-wave4/vincent-chaos.png",
+        "width": 1024,
+        "height": 1024
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-corrections-wave4/redxiii_ff7.png",
+        "width": 1024,
+        "height": 1024
+      },
+      {
+        "sheet": "/sprites/generated/combat-character-corrections-wave4/vincent_ff7.png",
+        "width": 1024,
+        "height": 1024
+      }
+    ],
+    "errors": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "error": "locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('canvas[aria-label=\"Arene de combat A.R.C.A. jouable\"]') to be visible\u001b[22m\n",
+  "stack": "locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('canvas[aria-label=\"Arene de combat A.R.C.A. jouable\"]') to be visible\u001b[22m\n\n    at /workspace/multiverse-breach/docs/combat-fidelity-wave5-2026-10-20/browser/fighter-projectile-runtime.browser.mjs:114:81",
+  "diagnostic": {
+    "id": "boruto_uzumaki",
+    "side": "player",
+    "hits": 0,
+    "trace": [],
+    "engineFound": false
+  },
+  "results": [],
+  "pageErrors": [
+    "Cannot read properties of null (reading 'useState')"
+  ],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+    "Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:\n1. You might have mismatching versions of React and the renderer (such as React DOM)\n2. You might be breaking the Rules of Hooks\n3. You might have more than one copy of React in the same app\nSee https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem.",
+    "Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:\n1. You might have mismatching versions of React and the renderer (such as React DOM)\n2. You might be breaking the Rules of Hooks\n3. You might have more than one copy of React in the same app\nSee https://react.dev/link/invalid-hook-call for tips about how to debug and fix this problem."
+  ],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ]
+}

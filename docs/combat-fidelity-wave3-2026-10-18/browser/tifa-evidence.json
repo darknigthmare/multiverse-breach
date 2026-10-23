@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-18",
+  "environment": {
+    "browser": "Chromium /usr/bin/chromium",
+    "origin": "http://127.0.0.1:5188/",
+    "ui": "React GameCanvas mounted from actual Vite module",
+    "actor": "tifa_ff7",
+    "opponent": "cloud_ff7"
+  },
+  "passed": true,
+  "movement": {
+    "observedDrawColumns": {
+      "jumpRise": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "fall": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "land": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "turn": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "landVx": 4,
+    "turnVx": -4,
+    "turnFacing": -1,
+    "setup": "Isolated flat ground, stationary P2 opponent; real keyboard, physics, state clocks and drawImage source rectangles."
+  },
+  "super": {
+    "name": "Final Heaven",
+    "keyHoldMs": 80,
+    "initialCharge": 100,
+    "consumedCharge": 0,
+    "startupHp": 100000,
+    "startupElapsed": 0.016666666666666666,
+    "hitAt": 0.451,
+    "impactElapsed": 0.4666666666666666,
+    "finalHp": 99936,
+    "impactCount": 1,
+    "secondInputAccepted": false
+  },
+  "pageErrors": [],
+  "externalRequestLimitation": "The Google Fonts CSS request is blocked by the environment proxy (ERR_TUNNEL_CONNECTION_FAILED); no application JavaScript exception.",
+  "runtimeSourceEdited": false,
+  "canon1to1Verified": false,
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave3-2026-10-18/browser/tifa-movement-browser.mjs",
+      "sha256": "2e109d4c55627584b5c632379aa3d96bbd0609024fc44d9db3edae714446178e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave3-2026-10-18/browser/tifa-movement-result.json",
+      "sha256": "efd759df1f7a90dbbc46663ce865df9764f89c43d185261a8e1c895d09335eee"
+    },
+    {
+      "path": "docs/combat-fidelity-wave3-2026-10-18/browser/tifa-movement-trace.json",
+      "sha256": "3cb2a25c01194bc5fba22c479ffc365005364c13c13d24c56a70e7344a2cfeb6"
+    },
+    {
+      "path": "docs/combat-fidelity-wave3-2026-10-18/browser/tifa-movement.png",
+      "sha256": "1990c77370839dce90353828664e0dc5c66ebd0f4c00c7fba75ce27e41085085"
+    },
+    {
+      "path": "docs/combat-fidelity-wave3-2026-10-18/browser/tifa-super-browser.mjs",
+      "sha256": "a734447fb6b2c63b3087ec4d6a689ddeb9f1f881c45e5922310ef2d20fb685e0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave3-2026-10-18/browser/tifa-super-result.json",
+      "sha256": "2ae3bfba2de246095b0dd2a385b1dcff7d62371de672193f6e7f3f225397b0ac"
+    },
+    {
+      "path": "docs/combat-fidelity-wave3-2026-10-18/browser/tifa-super-trace.json",
+      "sha256": "4f6f778977297d5bb10ed266c7250420c641b8547cc7e8ef32b37ccbd43a88c8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave3-2026-10-18/browser/tifa-super.png",
+      "sha256": "501d2a1d72ca7eefbe2cd2a7dda91a8ad734e33904198d41310b43e4ffea3763"
+    }
+  ]
+}

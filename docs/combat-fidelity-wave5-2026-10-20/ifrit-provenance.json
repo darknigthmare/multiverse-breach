@@ -1,0 +1,510 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "provider": "OpenAI",
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "generationRecord": {
+    "id": "ifrit-ff7-hellfire",
+    "key": "Final Fantasy VII::Ifrit::Hellfire",
+    "universe": "Final Fantasy VII",
+    "entityName": "Ifrit",
+    "actionName": "Hellfire",
+    "file": "/workspace/generated_images/exec-3cf9a04c-d81b-4242-a1c7-c2dc7312c5bb.png",
+    "prompt": "Create a new detailed production pixel-art summon animation spritesheet of IFRIT as he appears in FINAL FANTASY VII ORIGINAL 1997, matching the attached existing Ifrit pixel design. Exactly FOUR COLUMNS by FOUR ROWS, 16 separate complete FULL BODY Ifrit poses, square atlas, transparent RGBA. No labels, no grid, no background or ground/platform, no other characters, no victims, no text.\nIDENTITY: powerful muscular hunched demon beast, RED-BROWN skin, DARK BROWN/BLACK wild mane, two large PALE CREAM backward-curving horns, beastly face, pointed ears, strong clawed hands and feet, gold wrist bands as reference. Red/orange flames around shoulders/hands and mane. This is the classic FFVII1997 Ifrit: NOT Final Fantasy XVI towering black molten kaiju, NOT FFXIV curved black armored god, not horned human with swords. No armor costume, no wings, no weapons. Preserve same recognizable horns, mane, skin and claws in all16 cells.\nEach cell must show his entire body including all horn tips, fingers, toes, mane and full contained flame plume, at MOST60% of cell width and65% of height, surrounded by wide transparent margins, including all outside edges. FOUR truly distinct consecutive full-body poses per row, clear limb/anatomy changes; do not produce four duplicates.\nRow1 ARRIVAL: crouched small emerging stance with contained embers; rises with head/horns forward; spreads clawed hands and plants feet; settles hunched ready stance.\nRow2 PREPARATION: draws arms inward and knees bend; shoulders tense and head tilts back; chest expands and jaw opens glowing orange; leans forward with breath gathered, claws braced.\nRow3 HELLFIRE ATTACK: rears back with mouth glowing; throws head forward and emits a short orange flame breath; full forward breath becomes a broad compact rightward HELLFIRE WAVE from the mouth/chest with body clearly visible; flames taper and arms lower. Breath/flame-wave summon action, NOT punching as the only attack and not an energy laser.\nRow4 RECOVERY / WITHDRAWAL: fiery breath fades, mouth closes; body straightens and claws relax; lowers into departing crouch with embers; turns slightly right and folds toward low crouch for disappearance. All four drawings remain full bodies with genuine different poses (do not simply erase or alpha-fade the same sprite).\nFacing screen RIGHT, consistent anatomy/proportions/identity, clean crisp pixel detail. No cropping. No black painted background. All flames stay within each cell and do not touch neighbors.",
+    "referenceAsset": "/sprites/generated/combat-entities/ff7-ifrit.png",
+    "sourceWork": "Final Fantasy VII (1997)",
+    "sourceReference": "Final Fantasy VII (1997) — Ifrit summon / Hellfire, red-brown horned beast with dark mane; flame manifestation choreography adapted into arrival/preparation/attack/recovery."
+  },
+  "networkVerified": false,
+  "canon1to1Verified": false,
+  "method": "One actual new native image_gen summon atlas referenced to the existing four-pose Ifrit design. Sharp only segments alpha-separated genuine poses, normalizes shared scale/baseline per phase and packs the delivered PNG. All earlier sources and the original four-frame Ifrit PNG remain unchanged.",
+  "sources": [
+    {
+      "id": "ifrit-ff7-hellfire",
+      "archivedPath": "docs/combat-fidelity-wave5-2026-10-20/ifrit-source.png",
+      "sha256": "303bbd357ec1ab409bd1780839da7e5a624835a8217999ed603a58e5641aed94",
+      "originalGeneratedPath": "/workspace/generated_images/exec-3cf9a04c-d81b-4242-a1c7-c2dc7312c5bb.png",
+      "prompt": "Create a new detailed production pixel-art summon animation spritesheet of IFRIT as he appears in FINAL FANTASY VII ORIGINAL 1997, matching the attached existing Ifrit pixel design. Exactly FOUR COLUMNS by FOUR ROWS, 16 separate complete FULL BODY Ifrit poses, square atlas, transparent RGBA. No labels, no grid, no background or ground/platform, no other characters, no victims, no text.\nIDENTITY: powerful muscular hunched demon beast, RED-BROWN skin, DARK BROWN/BLACK wild mane, two large PALE CREAM backward-curving horns, beastly face, pointed ears, strong clawed hands and feet, gold wrist bands as reference. Red/orange flames around shoulders/hands and mane. This is the classic FFVII1997 Ifrit: NOT Final Fantasy XVI towering black molten kaiju, NOT FFXIV curved black armored god, not horned human with swords. No armor costume, no wings, no weapons. Preserve same recognizable horns, mane, skin and claws in all16 cells.\nEach cell must show his entire body including all horn tips, fingers, toes, mane and full contained flame plume, at MOST60% of cell width and65% of height, surrounded by wide transparent margins, including all outside edges. FOUR truly distinct consecutive full-body poses per row, clear limb/anatomy changes; do not produce four duplicates.\nRow1 ARRIVAL: crouched small emerging stance with contained embers; rises with head/horns forward; spreads clawed hands and plants feet; settles hunched ready stance.\nRow2 PREPARATION: draws arms inward and knees bend; shoulders tense and head tilts back; chest expands and jaw opens glowing orange; leans forward with breath gathered, claws braced.\nRow3 HELLFIRE ATTACK: rears back with mouth glowing; throws head forward and emits a short orange flame breath; full forward breath becomes a broad compact rightward HELLFIRE WAVE from the mouth/chest with body clearly visible; flames taper and arms lower. Breath/flame-wave summon action, NOT punching as the only attack and not an energy laser.\nRow4 RECOVERY / WITHDRAWAL: fiery breath fades, mouth closes; body straightens and claws relax; lowers into departing crouch with embers; turns slightly right and folds toward low crouch for disappearance. All four drawings remain full bodies with genuine different poses (do not simply erase or alpha-fade the same sprite).\nFacing screen RIGHT, consistent anatomy/proportions/identity, clean crisp pixel detail. No cropping. No black painted background. All flames stay within each cell and do not touch neighbors.",
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/ifrit-prompt.txt",
+      "promptSha256": "2786e011244c9445daf447d0232705e5a85e79467009d1b0c4b935dab996e869",
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/ifrit-reference.png",
+      "referencedSourceSha256": "dc25d37ea481a3caf527d20e30ebdf84a6ac1af73504aa48a49f1e7557d5bf25",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-summon",
+      "accepted": true
+    }
+  ],
+  "entries": [
+    {
+      "id": "ifrit-ff7-hellfire",
+      "key": "Final Fantasy VII::Ifrit::Hellfire",
+      "universe": "Final Fantasy VII",
+      "entityName": "Ifrit",
+      "actionName": "Hellfire",
+      "sourceHeroId": "cloud_ff7",
+      "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+      "width": 1024,
+      "height": 1024,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "phases": {
+        "arrival": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "preparation": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "attack": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "recovery": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        }
+      },
+      "sha256": "db0753da04e298b95d4d7ade559c24bc58cf10449f27530a17893be81f3f7583",
+      "alpha": true,
+      "assetMissing": false,
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/ifrit-source.png",
+      "sourceImageSha256": "303bbd357ec1ab409bd1780839da7e5a624835a8217999ed603a58e5641aed94",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "referenceAsset": "/sprites/generated/combat-entities/ff7-ifrit.png",
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/ifrit-reference.png",
+      "referenceAssetSha256": "dc25d37ea481a3caf527d20e30ebdf84a6ac1af73504aa48a49f1e7557d5bf25",
+      "sourceWork": "Final Fantasy VII (1997)",
+      "sourceReference": "Final Fantasy VII (1997) — Ifrit summon / Hellfire, red-brown horned beast with dark mane; flame manifestation choreography adapted into arrival/preparation/attack/recovery.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "canonicalVerified": false,
+      "canon1to1Verified": false,
+      "networkVerified": false,
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "arrival",
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/ifrit-source.png",
+            "sourceImageSha256": "303bbd357ec1ab409bd1780839da7e5a624835a8217999ed603a58e5641aed94",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 329
+            },
+            "scale": 0.8256227758007118,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 43,
+                  "top": 151,
+                  "width": 254,
+                  "height": 163,
+                  "pixels": 30405
+                },
+                "output": {
+                  "left": 34,
+                  "top": 109,
+                  "width": 210,
+                  "height": 135
+                }
+              },
+              {
+                "source": {
+                  "left": 364,
+                  "top": 75,
+                  "width": 241,
+                  "height": 239,
+                  "pixels": 40572
+                },
+                "output": {
+                  "left": 40,
+                  "top": 47,
+                  "width": 199,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 651,
+                  "top": 57,
+                  "width": 273,
+                  "height": 257,
+                  "pixels": 46141
+                },
+                "output": {
+                  "left": 18,
+                  "top": 32,
+                  "width": 225,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 987,
+                  "top": 83,
+                  "width": 233,
+                  "height": 231,
+                  "pixels": 38976
+                },
+                "output": {
+                  "left": 37,
+                  "top": 53,
+                  "width": 192,
+                  "height": 191
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "preparation",
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/ifrit-source.png",
+            "sourceImageSha256": "303bbd357ec1ab409bd1780839da7e5a624835a8217999ed603a58e5641aed94",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 328,
+              "bottom": 640
+            },
+            "scale": 0.7483870967741936,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 49,
+                  "top": 61,
+                  "width": 216,
+                  "height": 236,
+                  "pixels": 38931
+                },
+                "output": {
+                  "left": 47,
+                  "top": 67,
+                  "width": 162,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 338,
+                  "top": 13,
+                  "width": 275,
+                  "height": 283,
+                  "pixels": 51601
+                },
+                "output": {
+                  "left": 29,
+                  "top": 31,
+                  "width": 206,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 629,
+                  "top": 14,
+                  "width": 284,
+                  "height": 283,
+                  "pixels": 56237
+                },
+                "output": {
+                  "left": 12,
+                  "top": 32,
+                  "width": 213,
+                  "height": 212
+                }
+              },
+              {
+                "source": {
+                  "left": 965,
+                  "top": 61,
+                  "width": 260,
+                  "height": 236,
+                  "pixels": 47482
+                },
+                "output": {
+                  "left": 29,
+                  "top": 67,
+                  "width": 195,
+                  "height": 177
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "attack",
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/ifrit-source.png",
+            "sourceImageSha256": "303bbd357ec1ab409bd1780839da7e5a624835a8217999ed603a58e5641aed94",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 639,
+              "bottom": 944
+            },
+            "scale": 0.5728395061728395,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 28,
+                  "top": 13,
+                  "width": 263,
+                  "height": 284,
+                  "pixels": 50396
+                },
+                "output": {
+                  "left": 54,
+                  "top": 81,
+                  "width": 151,
+                  "height": 163
+                }
+              },
+              {
+                "source": {
+                  "left": 309,
+                  "top": 54,
+                  "width": 313,
+                  "height": 242,
+                  "pixels": 44144
+                },
+                "output": {
+                  "left": 36,
+                  "top": 105,
+                  "width": 179,
+                  "height": 139
+                }
+              },
+              {
+                "source": {
+                  "left": 582,
+                  "top": 28,
+                  "width": 404,
+                  "height": 265,
+                  "pixels": 72837
+                },
+                "output": {
+                  "left": 12,
+                  "top": 90,
+                  "width": 231,
+                  "height": 152
+                }
+              },
+              {
+                "source": {
+                  "left": 954,
+                  "top": 71,
+                  "width": 290,
+                  "height": 222,
+                  "pixels": 40256
+                },
+                "output": {
+                  "left": 46,
+                  "top": 115,
+                  "width": 166,
+                  "height": 127
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "recovery",
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/ifrit-source.png",
+            "sourceImageSha256": "303bbd357ec1ab409bd1780839da7e5a624835a8217999ed603a58e5641aed94",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 942,
+              "bottom": 1254
+            },
+            "scale": 0.8529411764705882,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 51,
+                  "top": 36,
+                  "width": 236,
+                  "height": 233,
+                  "pixels": 39767
+                },
+                "output": {
+                  "left": 38,
+                  "top": 39,
+                  "width": 201,
+                  "height": 199
+                }
+              },
+              {
+                "source": {
+                  "left": 370,
+                  "top": 8,
+                  "width": 236,
+                  "height": 262,
+                  "pixels": 44881
+                },
+                "output": {
+                  "left": 42,
+                  "top": 15,
+                  "width": 201,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 651,
+                  "top": 76,
+                  "width": 262,
+                  "height": 200,
+                  "pixels": 35718
+                },
+                "output": {
+                  "left": 15,
+                  "top": 73,
+                  "width": 223,
+                  "height": 171
+                }
+              },
+              {
+                "source": {
+                  "left": 985,
+                  "top": 101,
+                  "width": 236,
+                  "height": 170,
+                  "pixels": 29007
+                },
+                "output": {
+                  "left": 32,
+                  "top": 95,
+                  "width": 201,
+                  "height": 145
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "fullBodyAndHornsContained": true,
+        "clawsAndManeReviewed": true,
+        "originalGameVersion": "Final Fantasy VII (1997)",
+        "noFinalFantasyXIVOrXVIRedesign": true,
+        "defaultFacing": "right",
+        "distinctCells": 16,
+        "phaseReviews": [
+          {
+            "phase": "arrival",
+            "row": 0,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "c7f4885bdaa99b87c03e02584eefb6f648c9d8e316e64de31b86ab005270f040",
+              "dd69255acbb459e67e3930ba2eb9cc0d0ab1e81c57f91b5b94c755522a28e9fc",
+              "deff31691b2ddfba91666b6c68f60d94914ccfc8374b199650f8af6b755f1492",
+              "98c099d70a9728c9cb9f3addcebc31c9cc5e931ee1552c90d3df1556ab9d97cc"
+            ],
+            "visiblePixels": [
+              20904,
+              27684,
+              31382,
+              26665
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "preparation",
+            "row": 1,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "bf347c77a938b22f004229582d2a9b7c066e279745599338df0b9ab065925862",
+              "501112fea5620d21d9fdc6d5918b1f400d191bf7b38e6ea61dd276e49272502b",
+              "7a619f51d5d194001584876dee126b9bdae3e8d33bd3e7044972b5808198e7b2",
+              "edd7d5f541dd1be84dc5207d46545cc76b40ba6b187c74aac9ba9f97d83a3dde"
+            ],
+            "visiblePixels": [
+              21833,
+              29012,
+              31633,
+              26662
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "attack",
+            "row": 2,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "eba89a09441683c39fc2f81b6d99489c06d7cd646d761ff619aba924e04163a9",
+              "3ce9ab459e118d0200fa050e72abcaa86e42eed2b114e264c37471b4f5453549",
+              "e86d8b33de3fb1a88e0ab6beac874f2383591d1453c7a14e20479dbff824bf11",
+              "856d05b89c64cc52be700fe15a74f4eab014e0dda43d72cd51ccf1cc254d369d"
+            ],
+            "visiblePixels": [
+              16623,
+              14557,
+              23981,
+              13169
+            ],
+            "transparentMarginPixels": 10
+          },
+          {
+            "phase": "recovery",
+            "row": 3,
+            "distinctFrames": 4,
+            "frameHashes": [
+              "e9e684db597c9e2aac407cc4bff52a90ec441909bf0b6aa842324de681076d2c",
+              "3473cf3967ca96f9c0c43143bb9fde51562ee17b83148df416a5ab2453782763",
+              "67cbdc1d4dfd414482f370c3de504b34ce4126401213ba6c087becabd66eed74",
+              "aef5cee739f964361a7b0cfb4b29888ec21742949d8c1b1ddde332ea540c3eb3"
+            ],
+            "visiblePixels": [
+              28959,
+              32520,
+              26093,
+              21094
+            ],
+            "transparentMarginPixels": 10
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "adaptedChoreography": true,
+        "notes": "Sixteen genuine native drawings of the red-brown horned, dark-maned FFVII Ifrit interpretation. Preparation opens the glowing mouth; attack emits a contained fire breath/flame-wave; recovery lowers the body. No official source-game frame fidelity, punch-only Hellfire replacement or extra gameplay hit is claimed."
+      }
+    }
+  ]
+}

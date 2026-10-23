@@ -1,0 +1,208 @@
+{
+  "records": [
+    {
+      "heroId": "joseph_joestar",
+      "universe": "JoJo's Bizarre Adventure",
+      "referenceAsset": "/sprites/generated/heroes/jojo-s-bizarre-adventure/joseph-joestar.png",
+      "sourceWork": "JoJo Stardust Crusaders (Part3)",
+      "ability": "Liane d’Hermit Purple",
+      "version": "Joseph aged67 in Stardust Crusaders: gray hair/beard, beige fedora and light short-sleeved shirt/khaki trousers/white gloves, purple thorny vine Stand with conducted Hamon. No young Part2 scarf.",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#joseph_joestar; https://jojowiki.com/Joseph_Joestar#Stardust_Crusaders and https://jojowiki.com/Hermit_Purple read2026-10-20 for age67/costume, thorny vine manifestation and Ripple conduction. New art remains unverified1:1.",
+      "ref": "jojo-s-bizarre-adventure/joseph-joestar.png",
+      "identity": "JOSEPH JOESTAR AGED67 from JOJO PART3 STARDUST CRUSADERS. The supplied OLD local crop incorrectly depicts young Part2 Joseph: DO NOT copy young brown spiky hair, green sleeveless top, yellow scarf or jeans. Correct to sturdy muscular OLDER man, short GRAY hair, well-trimmed GRAY BEARD, BEIGE FEDORA with brown band, light beige short-sleeved plain shirt, khaki trousers/belt, brown dress shoes, WHITE GLOVES with dark wristbands concealing prosthetic left hand. Still energetic adult build, NOT frail Part4 old man. Stand HERMIT PURPLE is actual PURPLE THORN-COVERED VINES emerging from HANDS, no humanoid ghost/guardian/body. HAMON is a small GOLDEN current conducted ALONG purple vines, not an energy gun or huge beam. NO Tommygun, clackers, youngPart2 scarf, swords or cameras as attack weapons.",
+      "rows": [
+        "IDLE: 1 older Joseph with gray beard/fedora in calm alert stance, hands near belt; 2 shifts weight and raises gloved wrist slightly; 3 adjusts fedora brim and checks right; 4 returns guard with tiny short purple thorn vine curl at hand. Four different anatomies, no youngPart2 clothing.",
+        "RUN: four consecutive different running stride beats to right, alternating leg extension/passing poses, mature muscular build, beige shirt/khaki pants/whitegloves/fedora steady; no gun/clackers, no giant magic effects or cropping.",
+        "ATTACK Liane dHermitPurple: 1 gathers a short PURPLE THORNY VINE at right wrist with elbow bent; 2 extends left gloved palm while right vine coils forward; 3 firm forward lashing/contact gesture with compact visible violet thorn strand toward right, no goldenbeam, no humanoid Stand; 4 pulls vine back into guarded hands and steady footing. Four fresh physical body poses.",
+        "HIT: 1 surprised lean backward with hands raised; 2 torso twists and one hand steadies fedora; 3 drops into bent-knee recovery with glove near ground; 4 regains guarded stance with vine curled small at wrist. No blood, no fall onto hat, no young brown-haired face."
+      ],
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-references/joseph_joestar.png",
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed": true,
+      "prompt": "Draw a NEW detailed32-bit PIXEL-ART production sprite atlas, exactly4COLUMNS x4ROWS=16 genuinely distinct full-body poses.1024x1024 transparent RGBA, one independent character per256px cell, SAME BODY SCALE and ONE VERSION throughout. Full body, hat, cape, vines, folding chair and boots must be entirely inside each cell with at least15% transparent gutters. Right-facing3/4side view, no duplicated/mirrored cells, no text/labels/grid/background/scenery/other characters/gore. Supplied reference is the approved NEW character version from this project; preserve costume/identity/equipment, draw new anatomy/poses. Four poses per row in exact order below. Keep effects and vines compact.\nCHARACTER:\nJOSEPH JOESTAR AGE67, STARDUSTCRUSADERS PART3. Sturdy muscular older man, short gray hair and gray beard, beige fedora/brown band, light beige short-sleeved shirt, khaki trousers, brown dress shoes, white gloves/dark wristbands concealing left prosthetic hand. EXACT new version shown, not youngJoseph and not frailPart4. Stand HERMITPURPLE is purple thorn-covered VINES from hands, never a humanoid spirit. No gun/clacker/scarf.\nEXACT FOUR ROWS:\nROW1 IDLE: 1 older Joseph with gray beard/fedora in calm alert stance, hands near belt; 2 shifts weight and raises gloved wrist slightly; 3 adjusts fedora brim and checks right; 4 returns guard with tiny short purple thorn vine curl at hand. Four different anatomies, no youngPart2 clothing.\nROW2 RUN: four consecutive different running stride beats to right, alternating leg extension/passing poses, mature muscular build, beige shirt/khaki pants/whitegloves/fedora steady; no gun/clackers, no giant magic effects or cropping.\nROW3 ATTACK Liane dHermitPurple: 1 gathers a short PURPLE THORNY VINE at right wrist with elbow bent; 2 extends left gloved palm while right vine coils forward; 3 firm forward lashing/contact gesture with compact visible violet thorn strand toward right, no goldenbeam, no humanoid Stand; 4 pulls vine back into guarded hands and steady footing. Four fresh physical body poses.\nROW4 HIT: 1 surprised lean backward with hands raised; 2 torso twists and one hand steadies fedora; 3 drops into bent-knee recovery with glove near ground; 4 regains guarded stance with vine curled small at wrist. No blood, no fall onto hat, no young brown-haired face.",
+      "file": "/workspace/generated_images/exec-ceb5f860-db23-477a-8f62-12ea4a48bcbd.png",
+      "correction": {
+        "file": "/workspace/generated_images/exec-54da66c4-da06-48f9-87c8-07e64fc56864.png",
+        "targetRows": [
+          2
+        ],
+        "sourceRows": [
+          0
+        ],
+        "reason": "The original attack row used overwide vines or cape/impact VFX and shrank the body during fixed-cell packing. Replace only attack with four genuinely new compact native poses; preserve idle/run/hit byte-identically.",
+        "prompt": "Draw a NEW native replacement attack row for the exact OLD JOSEPH JOESTAR shown in supplied project atlas: StardustCrusaders AGE67 gray beard/hair, beige fedora/light short-sleeved shirt/khaki trousers/white gloves. EXACTLY ONE ROW OF FOUR new full-body pixel-art poses on a wide transparent4:1canvas. Fix the old third-row overlong vines: all purple thorny HermitPurple vines MUST remain tightly COILED around WRIST/FOREARM, at most one palm-length beyond the fingertips, NEVER a long whip or loop across the cell. Runtime draws the actual reaching vine. Keep BODY LARGE, four characters each upright or only slightly knee-bent, occupying similar torso/leg scale as the idle row; no shrinking body to fit effects. Four consecutive attack beats:1 draws right fist back with compact purple thorn coil around wrist;2 extends gloved open palm with compact forearm vine ring;3 steps forward and punches right with one SHORT thorn vine tip beside knuckles, contact with NO flash/beam;4 draws arms back into guard with vine curled near elbow. ALL four full-body figures and hat/shoes/vines fully contained in individual quarters, generous20%alpha gap. No huge VFX, no Hamon yellowbeam, no humanoidStand, no YoungJoseph costume, no text/grid/scenery/opponent. Actual four new native poses only, preserve exact face/costume from reference.",
+        "referenceImages": [
+          "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/joseph_joestar-original.png"
+        ]
+      },
+      "statureByState": {
+        "attack": {
+          "renderScale": 1.20125786163522,
+          "statureReview": {
+            "referencePhase": "hit",
+            "referenceColumn": 3,
+            "referenceBodyHeight": 191,
+            "sourceComparableColumn": 0,
+            "normalizedBodyHeight": 159,
+            "bodyBounds": [
+              62,
+              85,
+              133,
+              159
+            ],
+            "referenceBodyBounds": [
+              58,
+              53,
+              150,
+              191
+            ],
+            "nativeComparableBodyHeight": 552,
+            "nativeReferenceBodyHeight": 552,
+            "nativeComparableBodyBounds": [
+              43,
+              138,
+              463,
+              552
+            ],
+            "nativeReferenceBodyBounds": [
+              1713,
+              138,
+              443,
+              552
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/joseph_joestar-correction.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/joseph_joestar-correction.png",
+            "nativeComparableState": "attack",
+            "nativeReferenceState": "attack",
+            "nativeReferenceColumn": 3,
+            "displayReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/joseph_joestar-original.png",
+            "displayReferenceSourceDiffers": true,
+            "sourceResolutionComparable": true,
+            "poseBridge": {
+              "type": "same-native-guard-to-normalized-guard",
+              "normalizedReferenceState": "hit",
+              "normalizedReferenceColumn": 3,
+              "nativeReferenceState": "attack",
+              "nativeReferenceColumn": 3,
+              "reason": "The corrective4x1 strip has different pixel density from the original4x4 source. Compare attack to the final guard pose WITHIN the same corrective strip, then anchor that guard to the actual already-normalized flexed guard reference. Do not compare raw pixel heights across image resolutions, and do not anchor to the fully upright idle0."
+            },
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+            "reason": "Compact wrist vines still expand the fixed-cell packing. Anchor to the existing flexed hit3 guard191px, preserving a shorter attack projection than idle0 standing232px. The correction does not force a crouch upright.",
+            "measurementCaveat": "Authored visual pose bridge, not an official anatomical or source-game proportion. Horizontal ROI includes clothing and can overlap held props; measured vertical endpoints represent the full dressed body. Guard matching across the two illustrated sources is a project adaptation."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "skullgirls_beowulf",
+      "universe": "Skullgirls",
+      "referenceAsset": "/sprites/generated/heroes/skullgirls/skullgirls-beowulf.png",
+      "sourceWork": "Skullgirls2ndEncore",
+      "ability": "Direct de Beowulf",
+      "version": "Beowulf the human professional wrestler, muscular build and wolf-pelt identity, physical folding-chair TheHurting; new wrestler costume supersedes old closed green hunter-coat depiction.",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#skullgirls_beowulf and src/game/combatCanonExtensions.js#skullgirls_beowulf: TheHurting/HurtingHurl, single-target ThreeWulfMoonsault. Local old hunter-like outfit is not costume authority; official/wiki pages were blocked403, so no newly network-verified costume claim or official-frame fidelity.",
+      "ref": "skullgirls/skullgirls-beowulf.png",
+      "identity": "BEOWULF from SKULLGIRLS2NDENCORE, the HUMAN PROFESSIONAL WRESTLER, tall heavily muscular man with rugged dark brown hair and stubble, expressive square face and GRAY WOLF-PELT CAPE/HOOD, wrestling gear and heavy boots. Correct supplied flawed old green hunter-style long-sleeved coat: depict actual recognizable WRESTLER costume with BARE MUSCULAR CHEST/ARMS and dark straps, dark/olive wrestling trousers with knee pads, brown wrestling boots, shaggy pale wolf-pelt cape and wolf-head hood pushed back to reveal face. Not medieval warrior, Viking knight, werewolf form or actual animal head. Signature weapon THE HURTING is a REAL GRAY METAL FOLDING CHAIR with dark seat/back and tubular legs, held properly when shown, never a sword or gun. THREE WULF MOONSAULT is physical wrestling backflip/body-press, NO beam, magic moon orb, summoned wolf army or gore. Solo animation beats, no opponent/victim or ring scenery.",
+      "rows": [
+        "IDLE: 1 confident muscular wrestler stance with real folded metal chair THEHURTING at left side; 2 shifts weight and rests folded chair close to shoulder; 3 lowers chair near thigh and flexes free fingers; 4 alert fists ready with chair held safely low. Barechest/straps, wolfpelt draped back, full boots and chair inside every cell.",
+        "RUN: four distinct consecutive grounded running stride beats right, alternating legs and passing poses, folded chair held close diagonally against torso, wolfpelt moving naturally but entirely inside cell. No huge cape expansion or medieval weapon.",
+        "ATTACK DirectdeBeowulf: 1 tucks folded chair close behind left hip and raises right fist windup; 2 steps in throwing a strong straight right punch; 3 weight fully forward with extended fist at contact and a TINY pale contact tick, real human physical punch; 4 recovers boxer/wrestler guard with chair kept low at side. No chair throw as the simple attack, no beam or moon spell.",
+        "HIT: 1 broad shoulders recoil and hands brace; 2 twists away keeping chair lowered; 3 crouches to catch balance with free palm near ground; 4 returns toward wrestler stance, wolfpelt and boots intact. No gore, no duplicates and no actual wolf creature."
+      ],
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-references/skullgirls_beowulf.png",
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed": true,
+      "prompt": "Draw a NEW detailed32-bit PIXEL-ART production sprite atlas, exactly4COLUMNS x4ROWS=16 genuinely distinct full-body poses.1024x1024 transparent RGBA, one independent character per256px cell, SAME BODY SCALE and ONE VERSION throughout. Full body, hat, cape, vines, folding chair and boots must be entirely inside each cell with at least15% transparent gutters. Right-facing3/4side view, no duplicated/mirrored cells, no text/labels/grid/background/scenery/other characters/gore. Supplied reference is the approved NEW character version from this project; preserve costume/identity/equipment, draw new anatomy/poses. Four poses per row in exact order below. Keep effects and vines compact.\nCHARACTER:\nBEOWULF, SKULLGIRLS2NDENCORE HUMAN PROFESSIONAL WRESTLER, muscular BARECHEST and bare arms with black suspenders/straps, rugged dark brown hair/stubble, dark wrestling trousers/kneepads/brownboots, pale-gray shaggy WOLFPELT cape/hood draped BACK revealing face. Match supplied approved wrestler, not oldgreenhuntercoat or actualwolf. THEHURTING is a gray metal FOLDING CHAIR with dark seat/back, entire prop safely inside cell, no sword or gun.\nEXACT FOUR ROWS:\nROW1 IDLE: 1 confident muscular wrestler stance with real folded metal chair THEHURTING at left side; 2 shifts weight and rests folded chair close to shoulder; 3 lowers chair near thigh and flexes free fingers; 4 alert fists ready with chair held safely low. Barechest/straps, wolfpelt draped back, full boots and chair inside every cell.\nROW2 RUN: four distinct consecutive grounded running stride beats right, alternating legs and passing poses, folded chair held close diagonally against torso, wolfpelt moving naturally but entirely inside cell. No huge cape expansion or medieval weapon.\nROW3 ATTACK DirectdeBeowulf: 1 tucks folded chair close behind left hip and raises right fist windup; 2 steps in throwing a strong straight right punch; 3 weight fully forward with extended fist at contact and a TINY pale contact tick, real human physical punch; 4 recovers boxer/wrestler guard with chair kept low at side. No chair throw as the simple attack, no beam or moon spell.\nROW4 HIT: 1 broad shoulders recoil and hands brace; 2 twists away keeping chair lowered; 3 crouches to catch balance with free palm near ground; 4 returns toward wrestler stance, wolfpelt and boots intact. No gore, no duplicates and no actual wolf creature.",
+      "file": "/workspace/generated_images/exec-daea604d-d0bd-4052-beb8-fd979f2f5dec.png",
+      "correction": {
+        "file": "/workspace/generated_images/exec-f37a90f1-2778-4cbd-bbd4-05ef7cacdcdc.png",
+        "targetRows": [
+          2
+        ],
+        "sourceRows": [
+          0
+        ],
+        "reason": "The original attack row used overwide vines or cape/impact VFX and shrank the body during fixed-cell packing. Replace only attack with four genuinely new compact native poses; preserve idle/run/hit byte-identically.",
+        "prompt": "Draw a NEW native replacement attack row for exact BEOWULF WRESTLER from supplied project atlas: bare muscular chest/arms, black suspenders, gray wolf-pelt cape, dark trousers/kneepads/brown boots, dark brown hair/stubble, real gray folding-chair TheHurting. EXACTLY ONE ROW OF FOUR new full-body pixel-art poses, wide transparent4:1canvas. Fix old attack packing: keep BODY LARGE like idle, cape hanging CLOSE BEHIND TORSO rather than fanned out sideways; chair FOLDED and VERTICAL close to LEFT THIGH, never broad diagonal. NO IMPACTFLASH/SPARK/TRAIL, no huge extended cape, no magic. Four close-range punch beats:1 shoulder/fist winding up with compact bent elbow;2 short right straight punch with small forward step;3 right fist at contact and torso rotation, controlled COMPACT arm reach while entire body/feet/left-hand-chair remain clear;4 fist retracts and shoulders recover to guard. All four are different genuine anatomy poses, only modest knee bend, not deeply crouched/shrunken. Keep each silhouette width LESS THAN its standing height; entire head/cape/chair/boots inside its own quarter with20%alpha margin. One character per cell, no opponent, no scenery/text/grid/crop, no actual animal head or full green huntercoat.",
+        "referenceImages": [
+          "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/skullgirls_beowulf-original.png"
+        ]
+      },
+      "statureByState": {
+        "attack": {
+          "renderScale": 1,
+          "statureReview": {
+            "referencePhase": "idle",
+            "referenceColumn": 3,
+            "referenceBodyHeight": 200,
+            "sourceComparableColumn": 0,
+            "normalizedBodyHeight": 200,
+            "bodyBounds": [
+              45,
+              44,
+              164,
+              200
+            ],
+            "referenceBodyBounds": [
+              26,
+              41,
+              198,
+              200
+            ],
+            "nativeComparableBodyHeight": 538,
+            "nativeReferenceBodyHeight": 538,
+            "nativeComparableBodyBounds": [
+              47,
+              110,
+              443,
+              538
+            ],
+            "nativeReferenceBodyBounds": [
+              1654,
+              110,
+              467,
+              538
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/skullgirls_beowulf-correction.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/skullgirls_beowulf-correction.png",
+            "nativeComparableState": "attack",
+            "nativeReferenceState": "attack",
+            "nativeReferenceColumn": 3,
+            "displayReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/base-part-c-sources/skullgirls_beowulf-original.png",
+            "displayReferenceSourceDiffers": true,
+            "sourceResolutionComparable": true,
+            "poseBridge": {
+              "type": "same-native-guard-to-normalized-guard",
+              "normalizedReferenceState": "idle",
+              "normalizedReferenceColumn": 3,
+              "nativeReferenceState": "attack",
+              "nativeReferenceColumn": 3,
+              "reason": "The corrective4x1 strip has different pixel density from the original4x4 source. Compare attack to the final guard pose WITHIN the same corrective strip, then anchor that guard to the actual already-normalized flexed guard reference. Do not compare raw pixel heights across image resolutions, and do not anchor to the fully upright idle0."
+            },
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+            "reason": "The newly drawn compact attack is already200px, matching the bent idle3 guard200px. Keep renderScale1; do not force it up to upright idle0 height231px.",
+            "measurementCaveat": "Authored visual pose bridge, not an official anatomical or source-game proportion. Horizontal ROI includes clothing and can overlap held props; measured vertical endpoints represent the full dressed body. Guard matching across the two illustrated sources is a project adaptation."
+          }
+        }
+      }
+    }
+  ]
+}

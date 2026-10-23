@@ -1,0 +1,147 @@
+{
+  "date": "2026-10-20",
+  "browser": "local Chromium",
+  "status": "retained-browser-checks-frozen",
+  "passed": true,
+  "countsAreSeparate": "Draw calls, cells, mirror comparisons, poses and flows are separate measurements; the same native files or Ragna component reports are not summed as extra delivered images.",
+  "officialSourceFramesImported": 0,
+  "source1to1Verified": false,
+  "observedInternalRuntimeErrors": 0,
+  "observedExternalFailure": "Some linked harnesses record the Google Fonts CSS request blocked by the session proxy. This is retained as an observed external request failure, not suppressed or presented as a successful font load.",
+  "validationScope": "Retained browser observations only. Compilation and the complete automated suite are recorded separately by the integration owner.",
+  "checks": [
+    {
+      "path": "browser/native-presentations.json",
+      "sha256": "bcd33fd3885526cbc6733da064e8ea6a3bf0bff0205a1aa5bc4a9252e37122a1",
+      "domain": "native32-presentations",
+      "observedPassed": true,
+      "metrics": {
+        "characters": 80,
+        "phases": 640,
+        "actualFrameDraws": 5120,
+        "geometryChecks": 5120,
+        "immutableActors": 5120,
+        "rejectedCrossedIdentities": 160,
+        "fixedProgressFrames": 5120
+      },
+      "scope": "All declared delivered presentation atlases, eight phases, four columns and both facings; not45-state coverage.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 1,
+      "consoleFailureRecording": "recorded-in-linked-proof",
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/base-corrections.json",
+      "sha256": "312c8cc7bb3fe40280041cd9f034c4ea90241233051a26bc554d69dc5e41d34a",
+      "domain": "base16-corrections",
+      "observedPassed": true,
+      "metrics": {
+        "newCharacters": 14,
+        "newFrameDraws": 448,
+        "previousCharacters": 13,
+        "previousFrameDraws": 416,
+        "totalFrameDraws": 864,
+        "immutableActors": 864
+      },
+      "missingNewBaseHeroIds": [
+        "leia_organa"
+      ],
+      "legacyGeometryUnchanged": true,
+      "scope": "New and historical base poses, both facings, actual renderer geometry. The refused Leia base is absent.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 1,
+      "consoleFailureRecording": "recorded-in-linked-proof",
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/ragna-evidence.json",
+      "sha256": "b224dc4a2b2e5eab455352def2025322a62d38d123d217229c1cb8b420613985",
+      "domain": "ragna45-state-gamecanvas",
+      "observedPassed": true,
+      "metrics": {
+        "states": 45,
+        "nativePoses": 180,
+        "actualFrameDraws": 360,
+        "gripCalls": 8,
+        "superDraws": 72,
+        "acceptedSuperImpacts": 1
+      },
+      "realKeys": [
+        "D",
+        "Space",
+        "Q"
+      ],
+      "pauseUnchanged": true,
+      "coldSuperBoot": true,
+      "scope": "Consolidated Ragna core, physical ledge grips, actual keyboard movement/pause and cold-boot Carnage Scissors; its three component reports are not summed a second time.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "consoleFailureRecording": "not-recorded-in-this-proof",
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/fighter-projectiles-result.json",
+      "sha256": "999edff75ae65448237e73513e8703dcb50f0d4faa5928ab8e5fe3405e49547a",
+      "domain": "fighter-real-projectile-gamecanvas",
+      "observedPassed": true,
+      "metrics": {
+        "flows": 8,
+        "heroIds": [
+          "noel",
+          "han_solo",
+          "leia_organa",
+          "may_gg"
+        ],
+        "acceptedImpacts": 8,
+        "actualBodyDrawFrames": 981
+      },
+      "scope": "Noel, Han, Leia and May in P1/P2 FighterMode, actual R/O supers, physical projectile flight/impact, pause and expiry. Distinct from RPG summons.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 1,
+      "consoleFailureRecording": "recorded-in-linked-proof",
+      "source1to1Verified": false
+    },
+    {
+      "path": "browser/summon-wave7-result.json",
+      "sha256": "72933b71b1197a71beef2a9ea1acb7adb9a1aa12e5a37eed16d137719069cde5",
+      "domain": "rpg-native16-entities-gamecanvas",
+      "observedPassed": true,
+      "metrics": {
+        "flows": 3,
+        "nativePlayerCells": 48,
+        "nativeOpponentCells": 48,
+        "exactRgbaMirrorChecks": 48,
+        "acceptedImpacts": 3
+      },
+      "scope": "Aerith/Bahamut, May/Yamada and Parasoul/BlackEgrets; button, free cancel, U, target confirmation, real sessionPaused and used-command lock. Recaptured after the native Bahamut overlay fix.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "consoleFailureRecording": "not-recorded-in-this-proof",
+      "source1to1Verified": false
+    },
+    {
+      "path": "stage-browser.json",
+      "sha256": "ba078f8f8caf08f4a696c9f759794f36c513e942cbc53acd5ff8ee44b68aa9cb",
+      "domain": "stage-scene-mechanisms",
+      "observedPassed": true,
+      "metrics": {
+        "mechanisms": 24,
+        "universes": 12,
+        "fourModeDraws": 96,
+        "additionalViewportChecks": 72,
+        "worstMirrorAlphaErrorRatio": 0.007669502449084815
+      },
+      "scope": "24new procedural scene mechanisms, four modes, three additional aspect ratios, simulation pause, reduced motion, actual mirrored Canvas and safe clipping; no official frames.",
+      "freezeStatus": "frozen-observation",
+      "errors": [],
+      "externalFontRequestFailures": 0,
+      "consoleFailureRecording": "not-recorded-in-this-proof",
+      "source1to1Verified": false
+    }
+  ]
+}

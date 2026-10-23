@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "engineUrl": "/src/game/engineSmash.js",
+  "flow": "GameCanvas Smash → Vegeta DBZ → panneau Final Flash 100 % → clavier L → startup sans dégât → impact après hitAt → charge 0 % → aucun second impact",
+  "impact": {
+    "start": {
+      "name": "Final Flash",
+      "charge": 0,
+      "hp": 100000,
+      "elapsed": 0.016666666666666666,
+      "hitAt": 0.451
+    },
+    "hit": {
+      "name": "Final Flash",
+      "charge": 0,
+      "hp": 99936,
+      "elapsed": 0.4666666666666666,
+      "hitAt": 0.451
+    },
+    "gameOver": false
+  },
+  "sameInput": {
+    "before": 99936,
+    "retriggered": false,
+    "charge": 0
+  },
+  "final": {
+    "hitCount": 1,
+    "hp": 99936,
+    "charge": 0,
+    "action": null,
+    "profile": "Final Flash"
+  },
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "screenshot": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super.png"
+}

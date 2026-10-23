@@ -1,0 +1,1797 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "part": "B",
+  "provider": "OpenAI",
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "globalFidelity1to1": false,
+  "networkVerified": false,
+  "nativeSources": [
+    {
+      "heroId": "devil_may_cry_dante",
+      "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_dante-initial.png",
+      "sha256": "6ffc1b161a05828a9c96860997045fdfbf732131c761d8039a5247c3a0070b7e",
+      "originalGeneratedPath": "/workspace/generated_images/exec-0a11326a-5f26-4b82-bb24-165442576218.png",
+      "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/devil_may_cry_dante-initial.txt",
+      "promptSha256": "9619d0fbe30f4b69fa270e628c9649d6b835f5ec2b88cf0f84929f37bac0d9c1",
+      "operation": "native-imagegen-initial",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 8,
+      "accepted": true,
+      "referenceInputs": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-references/devil_may_cry_dante-local.png",
+          "sha256": "6b45e4263a8ba47313b93d466a1a623918c86dc36c91e45e4f509aff7e3a7511"
+        }
+      ]
+    },
+    {
+      "heroId": "devil_may_cry_nero",
+      "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-initial.png",
+      "sha256": "747b2e0e4252170cb5f49e207d49b3cfa283649f047b0360c0d8bdf8ca067e7e",
+      "originalGeneratedPath": "/workspace/generated_images/exec-cd9d1c6a-6cf8-415c-8e47-32f1b966743a.png",
+      "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/devil_may_cry_nero-initial.txt",
+      "promptSha256": "9fe22e81851b4be0877cf1a0cd8a3054b886e9670779f275caed75bc86648113",
+      "operation": "native-imagegen-initial",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 8,
+      "accepted": true,
+      "referenceInputs": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-references/devil_may_cry_nero-local.png",
+          "sha256": "32347d17bcf8a9783115909f82d135a2f3aac2272254162818bbbb320add5416"
+        }
+      ]
+    },
+    {
+      "heroId": "devil_may_cry_nero",
+      "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-correction.png",
+      "sha256": "0e4f35c70d4ec733e27da75c59c1b602a26e22c74f2b0068cb651c2868995b9b",
+      "originalGeneratedPath": "/workspace/generated_images/exec-1aa7a677-a3b6-4a17-a584-8a260bd5038a.png",
+      "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/devil_may_cry_nero-correction.txt",
+      "promptSha256": "837641c42885bd5559bb3607797e01e4ef6ad049551d4b3d6bd8c0e813b92db5",
+      "operation": "native-imagegen-correction",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 8,
+      "accepted": true,
+      "targetRows": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "reason": "Human normal-phase forearms incorrectly remain mechanically armored in several native cells; super cells touch across their alpha seam. Replace only affected six human rows and super row, preserving the original four finale poses.",
+      "excludedNativeRows": [
+        4
+      ],
+      "referenceInputs": [
+        {
+          "originalPath": "/workspace/generated_images/exec-cd9d1c6a-6cf8-415c-8e47-32f1b966743a.png",
+          "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-initial.png",
+          "sha256": "747b2e0e4252170cb5f49e207d49b3cfa283649f047b0360c0d8bdf8ca067e7e"
+        }
+      ]
+    },
+    {
+      "heroId": "devil_may_cry_lady",
+      "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_lady-initial.png",
+      "sha256": "14bc616044a5500a0abaa17c6a47054374a0375413e0519ee0ea29ec0173cb1a",
+      "originalGeneratedPath": "/workspace/generated_images/exec-c496c6cd-968d-41a1-a699-126c001d72eb.png",
+      "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/devil_may_cry_lady-initial.txt",
+      "promptSha256": "d9b9bc93457504570448233882d1d5e62c8d7e189f95f2a177145935ec350955",
+      "operation": "native-imagegen-initial",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 8,
+      "accepted": true,
+      "referenceInputs": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-references/devil_may_cry_lady-local.png",
+          "sha256": "4b247cae2a2fdb54b5857e3c3423ecddf4cce4c3404c4936062c39132972986f"
+        }
+      ]
+    },
+    {
+      "heroId": "skullgirls_parasoul",
+      "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_parasoul-initial.png",
+      "sha256": "eaa655274f0ab722e2a4393fd04c315e32716facd031a48092d4b9eac3737a49",
+      "originalGeneratedPath": "/workspace/generated_images/exec-971f03bb-b988-4847-8792-6522db46f02e.png",
+      "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/skullgirls_parasoul-initial.txt",
+      "promptSha256": "bc232bcfc7b558bcaa5934d49beb3271988a7f757f13acf0565409b0918498d9",
+      "operation": "native-imagegen-initial",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 8,
+      "accepted": true,
+      "referenceInputs": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-references/skullgirls_parasoul-local.png",
+          "sha256": "f433fe18b4d398357572cb0ed1f04bc2f75af121fc06681ec0a48105f0594295"
+        }
+      ]
+    },
+    {
+      "heroId": "skullgirls_big_band",
+      "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-initial.png",
+      "sha256": "43050aecf5c32c03f3cf176961208198dcae5f188a6ef9a50eede4b9d35c711d",
+      "originalGeneratedPath": "/workspace/generated_images/exec-fbe968ad-e31c-42f3-a11b-23350c9fca05.png",
+      "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/skullgirls_big_band-initial.txt",
+      "promptSha256": "c9f7e8665da23d667944d50d3a0fe954d51a86d0fad6b4f10e0b0b34b947b617",
+      "operation": "native-imagegen-initial",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 8,
+      "accepted": true,
+      "referenceInputs": [
+        {
+          "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-references/skullgirls_big_band-local.png",
+          "sha256": "9d4c937c3ac0dc1733346db529cf5639124d8d067bdc30564780ebc02f78d313"
+        }
+      ]
+    },
+    {
+      "heroId": "skullgirls_big_band",
+      "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-correction.png",
+      "sha256": "c7c8d413d16a5d42ad12a474c52139b0759f3d7773f9f5f313fc2d98152868d8",
+      "originalGeneratedPath": "/workspace/generated_images/exec-ff39b8fc-c4d5-4287-9ec9-1bbbb53388f1.png",
+      "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/skullgirls_big_band-correction.txt",
+      "promptSha256": "28f267f7d7e3f32c62f39c6648901f8f765949f4cd26dcf988a9bb17dbf73637",
+      "operation": "native-imagegen-correction",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 1,
+      "accepted": true,
+      "targetRows": [
+        7
+      ],
+      "reason": "The original super row crosses two neighbouring native cells with opaque brass/sonic trails, and overwide effects mechanically shrink the enormous machine body. Four fresh compact super poses correct that row only.",
+      "excludedNativeRows": [],
+      "referenceInputs": [
+        {
+          "originalPath": "/workspace/generated_images/exec-fbe968ad-e31c-42f3-a11b-23350c9fca05.png",
+          "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-initial.png",
+          "sha256": "43050aecf5c32c03f3cf176961208198dcae5f188a6ef9a50eede4b9d35c711d"
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "heroId": "devil_may_cry_dante",
+      "universe": "Devil May Cry",
+      "name": "Dante",
+      "referenceAsset": "/sprites/generated/heroes/devil-may-cry/devil-may-cry-dante.png",
+      "sourceWork": "Devil May Cry5, late-game Dante",
+      "sourceReference": "Sin Devil Trigger — Judgement: Dante's original DMC5 Sin Devil Trigger body performs close sweeping arm-blade slashes and a finishing eruption. Human phases keep late-game Dante; the demon is actually drawn, not substituted by a silhouette or ordinary Devil Trigger.",
+      "notes": [
+        "Human DMC5 red-coat reference inspected. Sin Devil Trigger is a newly drawn native DMC5 form in finale/super cells.",
+        "The transformed body, horns, wings and arm blades are native pixels. No claim of exact original hit count or frame reproduction.",
+        "Judgement's effects and transformation interval are adapted presentation choreography; no instant kill or persistent form mechanic implied."
+      ],
+      "prompt": "Original native detailed2D pixel-art ANIMATION ATLAS, transparent PNG. EXACTLY FOUR COLUMNS and EIGHT ROWS =32 genuinely different complete full-body poses. Desired1024x2048, every cell256x256 with at least18px EMPTY transparent margin and separated gutters. No clipping of body, horn, wing, sword, umbrella, cannon or instrument, no text/grid/background/panels/floor/UI/watermark. Consistent proportions and character identity, expressive readable silhouettes, predominantly facing RIGHT. Draw every pose natively, never mirror/repeat/recolor a pose or replace the body by an effect silhouette. Body itself must remain large and legible; compact props/effects around it, never tiny hero under enormous effects. COUNT EIGHT DISTINCT ROWS:1INTRO;2OUTRO;3ROUNDWIN;4ROUNDLOSS-RECOVER;5TECHNIQUE-FINALE;6FULLVICTORY;7FULLDEFEAT-REST;8SUPER. Each row EXACTLY four chronological cells. Row4 briefly loses a ROUND and RISES, row7 EXHAUSTEDLY RESTS; BOTH rows must exist, do NOT merge them. Row5 and8 use eight different poses of the same specified technique. No enemy/victim, no blood/wound/gore; “fatality” is only a non-gory technique showcase. DANTE from DEVIL MAY CRY5 late game. Human identity from attached local reference: adult older white/silver medium hair, stubble, worn long DARK RED leather coat over dark shirt, black leather trousers, black boots and gloves. Human equipment is DEVIL SWORD DANTE, the large organic demonic spined broadsword with dark/red organic guard, plus Ebony/Ivory holstered, NOT Vergil's Yamato or a normal medieval silver cross sword. Rows5/8 MUST DRAW authentic DMC5 SIN DEVIL TRIGGER DANTE: towering powerful charcoal/dark crimson DEMONIC ARMOR BODY with glowing red/orange seams, distinct horned armored demonic head without human face, sculpted blade-like forearms and compact folded/spread demonic wings. Recognizable original SinDT silhouette, not ordinary human red aura, not standardDT, notVergil, no blue katana clone. Keep horn/wings compact to fit while torso and legs stay large. R1 INTRO:1 walk in blade low,2 shoulder devil broadsword,3 confident free-hand gesture,4 grounded ready guard. R2 OUTRO:1 lower guard,2 relax blade to side,3 turn showing coat sweep,4 depart with backwards glance. R3 ROUNDWIN:1 straighten after lunge,2 brief confident fist gesture,3 brush coat shoulder,4 relaxed sword guard. R4 ROUNDLOSS-RECOVER:1 recoil backwards holding blade close,2 stumble onto bent knee,3 supporting palm ground,4 determined half-rise. R5 TECHNIQUE FINALE Judgement:1 human deep crouch with compact red energy and early horn/armor transition,2 FULL NATIVE SinDT body upright winding blade-arm back,3 FULL SinDT body wide sweeping arm-blade slash with tight red crescent,4 FULL SinDT body planted finishing burst of small red/orange ground sparks and wings drawing in. R6 FULLVICTORY:1 HUMAN Dante lowers broadsword,2 confident half-smile with hand on hip,3 shoulders sword again,4 loose casual salute. R7 FULLDEFEAT-REST:1 human exhausted kneel,2 seated leaning on palm,3 recline supported by forearm with sword close beside,4 safe curled side rest with whole boots and weapon INSIDEcell. R8 SUPER Judgement DISTINCT:1 full SinDT body compressed stance wings folded (form fully real and drawn),2 tall SinDT body with both arm blades opened and red seams bright,3 SinDT lunging multi-slash body pose with two compact curved red trails,4 SinDT lowered braced final eruption pose with demonic body unobscured and small fading red motes. Do NOT draw human Dante with a generic fireball as the super.",
+      "file": "/workspace/generated_images/exec-0a11326a-5f26-4b82-bb24-165442576218.png",
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_dante-initial.png",
+      "sourceImageSha256": "6ffc1b161a05828a9c96860997045fdfbf732131c761d8039a5247c3a0070b7e",
+      "originalGeneratedPath": "/workspace/generated_images/exec-0a11326a-5f26-4b82-bb24-165442576218.png",
+      "originalSourceRows": 8,
+      "referenceArchive": "docs/combat-fidelity-wave6-2026-10-20/part-b-references/devil_may_cry_dante-local.png",
+      "referenceAssetSha256": "6b45e4263a8ba47313b93d466a1a623918c86dc36c91e45e4f509aff7e3a7511",
+      "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/devil_may_cry_dante-initial.txt",
+      "promptSha256": "9619d0fbe30f4b69fa270e628c9649d6b835f5ec2b88cf0f84929f37bac0d9c1",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "referenceUsage": "Local project sprite inspected with view_image before native generation. Original project bitmap is immutable; identity discrepancies are explicitly corrected in native art.",
+      "nativeCorrection": false,
+      "correctionDetails": null,
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_dante-initial.png",
+          "sourceImageSha256": "6ffc1b161a05828a9c96860997045fdfbf732131c761d8039a5247c3a0070b7e",
+          "sourceRows": 8,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_dante-initial.png",
+          "sourceImageSha256": "6ffc1b161a05828a9c96860997045fdfbf732131c761d8039a5247c3a0070b7e",
+          "sourceRows": 8,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_dante-initial.png",
+          "sourceImageSha256": "6ffc1b161a05828a9c96860997045fdfbf732131c761d8039a5247c3a0070b7e",
+          "sourceRows": 8,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_dante-initial.png",
+          "sourceImageSha256": "6ffc1b161a05828a9c96860997045fdfbf732131c761d8039a5247c3a0070b7e",
+          "sourceRows": 8,
+          "sourceRow": 3
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_dante-initial.png",
+          "sourceImageSha256": "6ffc1b161a05828a9c96860997045fdfbf732131c761d8039a5247c3a0070b7e",
+          "sourceRows": 8,
+          "sourceRow": 4
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_dante-initial.png",
+          "sourceImageSha256": "6ffc1b161a05828a9c96860997045fdfbf732131c761d8039a5247c3a0070b7e",
+          "sourceRows": 8,
+          "sourceRow": 5
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_dante-initial.png",
+          "sourceImageSha256": "6ffc1b161a05828a9c96860997045fdfbf732131c761d8039a5247c3a0070b7e",
+          "sourceRows": 8,
+          "sourceRow": 6
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_dante-initial.png",
+          "sourceImageSha256": "6ffc1b161a05828a9c96860997045fdfbf732131c761d8039a5247c3a0070b7e",
+          "sourceRows": 8,
+          "sourceRow": 7
+        }
+      ],
+      "statureByPhase": {
+        "intro": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              88,
+              42,
+              124,
+              198
+            ],
+            "normalizedBodyHeight": 198,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              88,
+              42,
+              124,
+              198
+            ],
+            "referenceBodyHeight": 198,
+            "nativeComparableBodyHeight": 203.97413793103448,
+            "nativeReferenceBodyHeight": 203.97413793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "outro": {
+          "renderScale": 0.945607,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              76,
+              15,
+              107,
+              220
+            ],
+            "normalizedBodyHeight": 220,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              88,
+              42,
+              124,
+              198
+            ],
+            "referenceBodyHeight": 198,
+            "nativeComparableBodyHeight": 214.3103448275862,
+            "nativeReferenceBodyHeight": 203.97413793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "roundVictory": {
+          "renderScale": 0.903766,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              77,
+              17,
+              127,
+              224
+            ],
+            "normalizedBodyHeight": 224,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              88,
+              42,
+              124,
+              198
+            ],
+            "referenceBodyHeight": 198,
+            "nativeComparableBodyHeight": 208.55172413793102,
+            "nativeReferenceBodyHeight": 203.97413793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "roundDefeat": {
+          "renderScale": 0.857741,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              55,
+              57,
+              174,
+              183
+            ],
+            "normalizedBodyHeight": 183,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              88,
+              42,
+              124,
+              198
+            ],
+            "referenceBodyHeight": 198,
+            "nativeComparableBodyHeight": 161.70258620689657,
+            "nativeReferenceBodyHeight": 203.97413793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "fatality": {
+          "renderScale": 1.079498,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              79,
+              100,
+              117,
+              139
+            ],
+            "normalizedBodyHeight": 139,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              88,
+              42,
+              124,
+              198
+            ],
+            "referenceBodyHeight": 198,
+            "nativeComparableBodyHeight": 154.57758620689654,
+            "nativeReferenceBodyHeight": 203.97413793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "victory": {
+          "renderScale": 0.983264,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              76,
+              18,
+              101,
+              219
+            ],
+            "normalizedBodyHeight": 219,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              88,
+              42,
+              124,
+              198
+            ],
+            "referenceBodyHeight": 198,
+            "nativeComparableBodyHeight": 221.83189655172413,
+            "nativeReferenceBodyHeight": 203.97413793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "defeat": {
+          "renderScale": 0.995816,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              55,
+              112,
+              135,
+              128
+            ],
+            "normalizedBodyHeight": 128,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              88,
+              42,
+              124,
+              198
+            ],
+            "referenceBodyHeight": 198,
+            "nativeComparableBodyHeight": 131.31034482758622,
+            "nativeReferenceBodyHeight": 203.97413793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "super": {
+          "renderScale": 1.079498,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              75,
+              74,
+              123,
+              165
+            ],
+            "normalizedBodyHeight": 165,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              88,
+              42,
+              124,
+              198
+            ],
+            "referenceBodyHeight": 198,
+            "nativeComparableBodyHeight": 183.49137931034483,
+            "nativeReferenceBodyHeight": 203.97413793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "devil_may_cry_nero",
+      "universe": "Devil May Cry",
+      "name": "Nero",
+      "referenceAsset": "/sprites/generated/heroes/devil-may-cry/devil-may-cry-nero.png",
+      "sourceWork": "Devil May Cry5, final-mission Nero after regaining his right arm",
+      "sourceReference": "Devil Trigger — Showdown: Nero's late-DMC5 Devil Trigger body performs a Red Queen close-range sword combination assisted by his luminous spectral wing-arms. His ordinary right arm is regenerated flesh; no Devil Breaker attachment is substituted for that form.",
+      "notes": [
+        "Old inspected reference contains a mechanical arm and a generic blue blade; the new native design corrects these to post-game human right arm and Red Queen/Blue Rose.",
+        "Showdown is drawn in Nero's own DMC5 Devil Trigger, with spectral blue wing-arms, not Dante/Vergil or a humanoid Goku aura.",
+        "Visible slashes are presentation poses and do not add gameplay hits."
+      ],
+      "prompt": "Original native detailed2D pixel-art ANIMATION ATLAS, transparent PNG. EXACTLY FOUR COLUMNS and EIGHT ROWS =32 genuinely different complete full-body poses. Desired1024x2048, every cell256x256 with at least18px EMPTY transparent margin and separated gutters. No clipping of body, horn, wing, sword, umbrella, cannon or instrument, no text/grid/background/panels/floor/UI/watermark. Consistent proportions and character identity, expressive readable silhouettes, predominantly facing RIGHT. Draw every pose natively, never mirror/repeat/recolor a pose or replace the body by an effect silhouette. Body itself must remain large and legible; compact props/effects around it, never tiny hero under enormous effects. COUNT EIGHT DISTINCT ROWS:1INTRO;2OUTRO;3ROUNDWIN;4ROUNDLOSS-RECOVER;5TECHNIQUE-FINALE;6FULLVICTORY;7FULLDEFEAT-REST;8SUPER. Each row EXACTLY four chronological cells. Row4 briefly loses a ROUND and RISES, row7 EXHAUSTEDLY RESTS; BOTH rows must exist, do NOT merge them. Row5 and8 use eight different poses of the same specified technique. No enemy/victim, no blood/wound/gore; “fatality” is only a non-gory technique showcase. NERO from final-mission DEVIL MAY CRY5, youthful ADULT white short-haired demon hunter in dark BLUE long coat with red interior over dark maroon shirt, black trousers and boots. Attached reference is identity/coat context ONLY: replace its mechanical right arm with the REGENERATED HUMAN RIGHT ARM, ordinary flesh hand/glove. His sword RED QUEEN has unmistakable mechanical red/orange motorcycle throttle/Exceed hilt and broad SILVER blade with RED accents, NOT a glowing blue generic sword. BLUE ROSE is a heavy double-barrel revolver holstered at hip. Late-game Nero has own genuine DMC5 DEVIL TRIGGER for rows5/8: blue-charcoal demonic armored body, white hair crest, horns, and characteristic luminous CYAN/BLUE SPECTRAL WING-ARMS behind shoulders, still holding RED QUEEN. Use authentic Nero DT anatomy; NOT Dante SinDT red demon, NOT Vergil shadow or katana, not Goku energy pose. Native fully drawn body, compact wing-arms fitcells and remain distinct from extra physical human arms. R1 INTRO:1 enter RedQueen low,2 rotate sword/throttle wrist,3 draw free regenerated right fist near chest,4 prepared blade guard. R2 OUTRO:1 lower blade,2 check BlueRose holster,3 turn blue coat trailing,4 measured exiting step. R3 ROUNDWIN:1 recover upright,2 quick youthful fist pump with flesh right hand,3 rest RedQueen on shoulder,4 cocky ready stance. R4 ROUNDLOSS-RECOVER:1 recoil sword low,2 bent-knee stumble,3 one knee/palm ground,4 resilient half-rise. R5 TECHNIQUE FINALE Showdown:1 human loads sword and gathers compact blue DT energy,2 FULL genuine Nero DT with spectral wing-arms coiling and RedQueen drawn back,3 FULL Nero DT crouched sweeping sword cut with one compact blue trail and wing-arm follow-through,4 FULL Nero DT planted finishing RedQueen strike and wing-arms relaxing. R6 FULLVICTORY:1 HUMAN relaxed sigh,2 raise regenerated right hand to inspect it,3 confident small grin blade shouldered,4 casual nod. R7 FULLDEFEAT-REST:1 exhausted kneel,2 sit with sword close beside and both arms real,3 lean supported by forearm knees bent,4 safe compact side-rest full boots/sword visible no injury. R8 SUPER Showdown DISTINCT:1 FULL Nero DT low sword-ready stance wing-arms close,2 FULL DT shoulder-turn loads RedQueen and spectral arms stretch compactly behind,3 FULL DT advancing two-handed sword combination pose with two short curved blue slash trails,4 FULL DT wide planted downward RedQueen finish spectral arms folding back. Eight different show-off/super poses. No mechanical prosthetic appears in the normal human phases.",
+      "file": "/workspace/generated_images/exec-cd9d1c6a-6cf8-415c-8e47-32f1b966743a.png",
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-initial.png",
+      "sourceImageSha256": "747b2e0e4252170cb5f49e207d49b3cfa283649f047b0360c0d8bdf8ca067e7e",
+      "originalGeneratedPath": "/workspace/generated_images/exec-cd9d1c6a-6cf8-415c-8e47-32f1b966743a.png",
+      "originalSourceRows": 8,
+      "referenceArchive": "docs/combat-fidelity-wave6-2026-10-20/part-b-references/devil_may_cry_nero-local.png",
+      "referenceAssetSha256": "32347d17bcf8a9783115909f82d135a2f3aac2272254162818bbbb320add5416",
+      "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/devil_may_cry_nero-initial.txt",
+      "promptSha256": "9fe22e81851b4be0877cf1a0cd8a3054b886e9670779f275caed75bc86648113",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "referenceUsage": "Local project sprite inspected with view_image before native generation. Original project bitmap is immutable; identity discrepancies are explicitly corrected in native art.",
+      "nativeCorrection": true,
+      "correctionDetails": {
+        "path": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-correction.png",
+        "sha256": "0e4f35c70d4ec733e27da75c59c1b602a26e22c74f2b0068cb651c2868995b9b",
+        "sourceRows": 8,
+        "targetRows": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          7
+        ],
+        "reason": "Human normal-phase forearms incorrectly remain mechanically armored in several native cells; super cells touch across their alpha seam. Replace only affected six human rows and super row, preserving the original four finale poses.",
+        "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/devil_may_cry_nero-correction.txt",
+        "promptSha256": "837641c42885bd5559bb3607797e01e4ef6ad049551d4b3d6bd8c0e813b92db5",
+        "referenceInputs": [
+          {
+            "originalPath": "/workspace/generated_images/exec-cd9d1c6a-6cf8-415c-8e47-32f1b966743a.png",
+            "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-initial.png",
+            "sha256": "747b2e0e4252170cb5f49e207d49b3cfa283649f047b0360c0d8bdf8ca067e7e"
+          }
+        ]
+      },
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-correction.png",
+          "sourceImageSha256": "0e4f35c70d4ec733e27da75c59c1b602a26e22c74f2b0068cb651c2868995b9b",
+          "sourceRows": 8,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-correction.png",
+          "sourceImageSha256": "0e4f35c70d4ec733e27da75c59c1b602a26e22c74f2b0068cb651c2868995b9b",
+          "sourceRows": 8,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-correction.png",
+          "sourceImageSha256": "0e4f35c70d4ec733e27da75c59c1b602a26e22c74f2b0068cb651c2868995b9b",
+          "sourceRows": 8,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-correction.png",
+          "sourceImageSha256": "0e4f35c70d4ec733e27da75c59c1b602a26e22c74f2b0068cb651c2868995b9b",
+          "sourceRows": 8,
+          "sourceRow": 3
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-initial.png",
+          "sourceImageSha256": "747b2e0e4252170cb5f49e207d49b3cfa283649f047b0360c0d8bdf8ca067e7e",
+          "sourceRows": 8,
+          "sourceRow": 4
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-correction.png",
+          "sourceImageSha256": "0e4f35c70d4ec733e27da75c59c1b602a26e22c74f2b0068cb651c2868995b9b",
+          "sourceRows": 8,
+          "sourceRow": 5
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-correction.png",
+          "sourceImageSha256": "0e4f35c70d4ec733e27da75c59c1b602a26e22c74f2b0068cb651c2868995b9b",
+          "sourceRows": 8,
+          "sourceRow": 6
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_nero-correction.png",
+          "sourceImageSha256": "0e4f35c70d4ec733e27da75c59c1b602a26e22c74f2b0068cb651c2868995b9b",
+          "sourceRows": 8,
+          "sourceRow": 7
+        }
+      ],
+      "statureByPhase": {
+        "intro": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              91,
+              46,
+              129,
+              195
+            ],
+            "normalizedBodyHeight": 195,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              91,
+              46,
+              129,
+              195
+            ],
+            "referenceBodyHeight": 195,
+            "nativeComparableBodyHeight": 195.8405172413793,
+            "nativeReferenceBodyHeight": 195.8405172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "outro": {
+          "renderScale": 1.017167,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              78,
+              13,
+              97,
+              226
+            ],
+            "normalizedBodyHeight": 226,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              91,
+              46,
+              129,
+              195
+            ],
+            "referenceBodyHeight": 195,
+            "nativeComparableBodyHeight": 230.8706896551724,
+            "nativeReferenceBodyHeight": 195.8405172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "roundVictory": {
+          "renderScale": 1.021459,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              73,
+              15,
+              130,
+              225
+            ],
+            "normalizedBodyHeight": 225,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              91,
+              46,
+              129,
+              195
+            ],
+            "referenceBodyHeight": 195,
+            "nativeComparableBodyHeight": 230.8189655172414,
+            "nativeReferenceBodyHeight": 195.8405172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "roundDefeat": {
+          "renderScale": 1.060086,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              57,
+              57,
+              158,
+              181
+            ],
+            "normalizedBodyHeight": 181,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              91,
+              46,
+              129,
+              195
+            ],
+            "referenceBodyHeight": 195,
+            "nativeComparableBodyHeight": 192.70258620689657,
+            "nativeReferenceBodyHeight": 195.8405172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "fatality": {
+          "renderScale": 0.987124,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              83,
+              47,
+              118,
+              194
+            ],
+            "normalizedBodyHeight": 194,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              91,
+              46,
+              129,
+              195
+            ],
+            "referenceBodyHeight": 195,
+            "nativeComparableBodyHeight": 192.32758620689657,
+            "nativeReferenceBodyHeight": 195.8405172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "victory": {
+          "renderScale": 1.060086,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              67,
+              14,
+              122,
+              225
+            ],
+            "normalizedBodyHeight": 225,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              91,
+              46,
+              129,
+              195
+            ],
+            "referenceBodyHeight": 195,
+            "nativeComparableBodyHeight": 239.54741379310346,
+            "nativeReferenceBodyHeight": 195.8405172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "defeat": {
+          "renderScale": 1.004292,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              50,
+              81,
+              136,
+              158
+            ],
+            "normalizedBodyHeight": 158,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              91,
+              46,
+              129,
+              195
+            ],
+            "referenceBodyHeight": 195,
+            "nativeComparableBodyHeight": 159.36206896551724,
+            "nativeReferenceBodyHeight": 195.8405172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "super": {
+          "renderScale": 1.227468,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              82,
+              92,
+              111,
+              149
+            ],
+            "normalizedBodyHeight": 149,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              91,
+              46,
+              129,
+              195
+            ],
+            "referenceBodyHeight": 195,
+            "nativeComparableBodyHeight": 183.68103448275863,
+            "nativeReferenceBodyHeight": 195.8405172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "devil_may_cry_lady",
+      "universe": "Devil May Cry",
+      "name": "Lady",
+      "referenceAsset": "/sprites/generated/heroes/devil-may-cry/devil-may-cry-lady.png",
+      "sourceWork": "Devil May Cry3, Lady with original Kalina Ann",
+      "sourceReference": "Lady's DMC3 original Kalina Ann launcher: heavy shoulder-fired rocket weapon with its characteristic bayonet/hook assembly. Lady remains human and uses a braced mechanical launch, not Devil Trigger or magical rays.",
+      "notes": [
+        "Inspected old all-black generic outfit is an identity counterexample. Native DMC3 white blouse, short plaid skirt, tall combat boots and original Kalina Ann correct it.",
+        "Lady stays human; no Devil Trigger, demon transformation, laser cannon or invented healing.",
+        "Non-gory weapon showcase, no target execution."
+      ],
+      "prompt": "Original native detailed2D pixel-art ANIMATION ATLAS, transparent PNG. EXACTLY FOUR COLUMNS and EIGHT ROWS =32 genuinely different complete full-body poses. Desired1024x2048, every cell256x256 with at least18px EMPTY transparent margin and separated gutters. No clipping of body, horn, wing, sword, umbrella, cannon or instrument, no text/grid/background/panels/floor/UI/watermark. Consistent proportions and character identity, expressive readable silhouettes, predominantly facing RIGHT. Draw every pose natively, never mirror/repeat/recolor a pose or replace the body by an effect silhouette. Body itself must remain large and legible; compact props/effects around it, never tiny hero under enormous effects. COUNT EIGHT DISTINCT ROWS:1INTRO;2OUTRO;3ROUNDWIN;4ROUNDLOSS-RECOVER;5TECHNIQUE-FINALE;6FULLVICTORY;7FULLDEFEAT-REST;8SUPER. Each row EXACTLY four chronological cells. Row4 briefly loses a ROUND and RISES, row7 EXHAUSTEDLY RESTS; BOTH rows must exist, do NOT merge them. Row5 and8 use eight different poses of the same specified technique. No enemy/victim, no blood/wound/gore; “fatality” is only a non-gory technique showcase. LADY from DEVIL MAY CRY3, in her ORIGINAL modest practical DMC3 outfit, not the generic all-black jacket/pants of supplied old reference. Young dark short bob, heterochromia red/blue eyes if readable, focused face. WHITE button-front short-sleeved blouse with sleeves rolled and hem short at waist, dark straps/holsters, RED/BLACK PLAID short combat skirt over practical shorts, tall BLACK lace-up combat boots with buckles, black gloves. Functional action costume, no sexualized pose. Same proportions and identity all32cells. Her unmistakable ORIGINAL KALINA ANN is a HUGE dark military-green shoulder rocket launcher with broad barrel, optical/mechanical details and underslung front BLADE/HOOK BAYONET, not a simple featureless tube, laser gun, or double KalinaAnnII. One whole launcher perpose, same shape, all edges insidecell. Lady is HUMAN, no DevilTrigger, glowing skin, demon horns or magical hand attack. R1 INTRO:1 enter carrying heavy launcher low,2 plant feet and lift launcher by grip,3 settle launcher on shoulder,4 alert aiming guard. R2 OUTRO:1 lower muzzle safely,2 return launcher to carry position,3 turn with short glance,4 walk away with weapon balanced beside shoulder. R3 ROUNDWIN:1 lower from firing stance,2 nod with free fist near chest,3 adjust launcher strap,4 confident resting guard. R4 ROUNDLOSS-RECOVER:1 recoil while keeping muzzle safe,2 bent-knee stagger,3 one knee/palm down weapon upright close beside,4 rise halfway restoring grip. R5 TECHNIQUE FINALE KalinaAnn:1 wide braced kneel preparing launcher,2 shoulder aim to right,3 actual mechanical rocket launch with ONE SMALL orange muzzle flash and a small departing rocket compactly withincell,4 recoil recovery with dissipating pale smoke, no beam. R6 FULLVICTORY:1 stand and lower barrel,2 check launcher mechanism,3 hand on hip with weapon balanced,4 composed slight smile. R7 FULLDEFEAT-REST:1 exhausted one-knee pose launcher safely close,2 seated leaning on palm,3 compact forearm-supported side rest weapon flat beside,4 peaceful exhausted curled side-lying full boots/launcher visible insidecell. R8 SUPER DISTINCT KalinaAnn:1 stand feet wide with launcher lifted diagonally,2 lock shoulder sightline with both hands gripping,3 low leaning braced firing pose with compact orange-white flash and ONE small missile,4 long planted recovery step lowering muzzle with thin white smoke. No giant explosion obscures human body.",
+      "file": "/workspace/generated_images/exec-c496c6cd-968d-41a1-a699-126c001d72eb.png",
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_lady-initial.png",
+      "sourceImageSha256": "14bc616044a5500a0abaa17c6a47054374a0375413e0519ee0ea29ec0173cb1a",
+      "originalGeneratedPath": "/workspace/generated_images/exec-c496c6cd-968d-41a1-a699-126c001d72eb.png",
+      "originalSourceRows": 8,
+      "referenceArchive": "docs/combat-fidelity-wave6-2026-10-20/part-b-references/devil_may_cry_lady-local.png",
+      "referenceAssetSha256": "4b247cae2a2fdb54b5857e3c3423ecddf4cce4c3404c4936062c39132972986f",
+      "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/devil_may_cry_lady-initial.txt",
+      "promptSha256": "d9b9bc93457504570448233882d1d5e62c8d7e189f95f2a177145935ec350955",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "referenceUsage": "Local project sprite inspected with view_image before native generation. Original project bitmap is immutable; identity discrepancies are explicitly corrected in native art.",
+      "nativeCorrection": false,
+      "correctionDetails": null,
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_lady-initial.png",
+          "sourceImageSha256": "14bc616044a5500a0abaa17c6a47054374a0375413e0519ee0ea29ec0173cb1a",
+          "sourceRows": 8,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_lady-initial.png",
+          "sourceImageSha256": "14bc616044a5500a0abaa17c6a47054374a0375413e0519ee0ea29ec0173cb1a",
+          "sourceRows": 8,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_lady-initial.png",
+          "sourceImageSha256": "14bc616044a5500a0abaa17c6a47054374a0375413e0519ee0ea29ec0173cb1a",
+          "sourceRows": 8,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_lady-initial.png",
+          "sourceImageSha256": "14bc616044a5500a0abaa17c6a47054374a0375413e0519ee0ea29ec0173cb1a",
+          "sourceRows": 8,
+          "sourceRow": 3
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_lady-initial.png",
+          "sourceImageSha256": "14bc616044a5500a0abaa17c6a47054374a0375413e0519ee0ea29ec0173cb1a",
+          "sourceRows": 8,
+          "sourceRow": 4
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_lady-initial.png",
+          "sourceImageSha256": "14bc616044a5500a0abaa17c6a47054374a0375413e0519ee0ea29ec0173cb1a",
+          "sourceRows": 8,
+          "sourceRow": 5
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_lady-initial.png",
+          "sourceImageSha256": "14bc616044a5500a0abaa17c6a47054374a0375413e0519ee0ea29ec0173cb1a",
+          "sourceRows": 8,
+          "sourceRow": 6
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/devil_may_cry_lady-initial.png",
+          "sourceImageSha256": "14bc616044a5500a0abaa17c6a47054374a0375413e0519ee0ea29ec0173cb1a",
+          "sourceRows": 8,
+          "sourceRow": 7
+        }
+      ],
+      "statureByPhase": {
+        "intro": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              77,
+              15,
+              140,
+              227
+            ],
+            "normalizedBodyHeight": 227,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              15,
+              140,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 209.3879310344828,
+            "nativeReferenceBodyHeight": 209.3879310344828,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "outro": {
+          "renderScale": 1.018692,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              79,
+              16,
+              108,
+              224
+            ],
+            "normalizedBodyHeight": 224,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              15,
+              140,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 210.48275862068965,
+            "nativeReferenceBodyHeight": 209.3879310344828,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "roundVictory": {
+          "renderScale": 1.079439,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              85,
+              13,
+              107,
+              226
+            ],
+            "normalizedBodyHeight": 226,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              15,
+              140,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 225.02586206896552,
+            "nativeReferenceBodyHeight": 209.3879310344828,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "roundDefeat": {
+          "renderScale": 0.971963,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              65,
+              27,
+              153,
+              214
+            ],
+            "normalizedBodyHeight": 214,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              15,
+              140,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 191.86206896551724,
+            "nativeReferenceBodyHeight": 209.3879310344828,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "fatality": {
+          "renderScale": 1.327103,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              79,
+              118,
+              107,
+              120
+            ],
+            "normalizedBodyHeight": 120,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              15,
+              140,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 146.89655172413794,
+            "nativeReferenceBodyHeight": 209.3879310344828,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "victory": {
+          "renderScale": 1.154206,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              92,
+              14,
+              106,
+              222
+            ],
+            "normalizedBodyHeight": 222,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              15,
+              140,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 236.35344827586206,
+            "nativeReferenceBodyHeight": 209.3879310344828,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "defeat": {
+          "renderScale": 1.093458,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              50,
+              92,
+              129,
+              150
+            ],
+            "normalizedBodyHeight": 150,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              15,
+              140,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 151.29310344827584,
+            "nativeReferenceBodyHeight": 209.3879310344828,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "super": {
+          "renderScale": 1.514019,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              61,
+              86,
+              133,
+              157
+            ],
+            "normalizedBodyHeight": 157,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              15,
+              140,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 219.25862068965517,
+            "nativeReferenceBodyHeight": 209.3879310344828,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "skullgirls_parasoul",
+      "universe": "Skullgirls",
+      "name": "Parasoul",
+      "referenceAsset": "/sprites/generated/heroes/skullgirls/skullgirls-parasoul.png",
+      "sourceWork": "Skullgirls2nd Encore, Parasoul with Krieg and Black Egrets",
+      "sourceReference": "Inferno Brigade: Parasoul signals a coordinated Black Egret firing squad while carrying the living umbrella Krieg. She does not replace Krieg with a generic rifle or summon a fantasy creature.",
+      "notes": [
+        "Old local crown/military coat/rifle reference is corrected to Parasoul's black dress/turtleneck silhouette and living umbrella Krieg; no crown.",
+        "Two compact helmeted Black Egrets appear natively only in finale/super cells; they are physical soldiers, not magical copies.",
+        "Gunfire is depicted as compact ballistic flashes and formation changes; timing/impact count is an engine adaptation."
+      ],
+      "prompt": "Original native detailed2D pixel-art ANIMATION ATLAS, transparent PNG. EXACTLY FOUR COLUMNS and EIGHT ROWS =32 genuinely different complete full-body poses. Desired1024x2048, every cell256x256 with at least18px EMPTY transparent margin and separated gutters. No clipping of body, horn, wing, sword, umbrella, cannon or instrument, no text/grid/background/panels/floor/UI/watermark. Consistent proportions and character identity, expressive readable silhouettes, predominantly facing RIGHT. Draw every pose natively, never mirror/repeat/recolor a pose or replace the body by an effect silhouette. Body itself must remain large and legible; compact props/effects around it, never tiny hero under enormous effects. COUNT EIGHT DISTINCT ROWS:1INTRO;2OUTRO;3ROUNDWIN;4ROUNDLOSS-RECOVER;5TECHNIQUE-FINALE;6FULLVICTORY;7FULLDEFEAT-REST;8SUPER. Each row EXACTLY four chronological cells. Row4 briefly loses a ROUND and RISES, row7 EXHAUSTEDLY RESTS; BOTH rows must exist, do NOT merge them. Row5 and8 use eight different poses of the same specified technique. No enemy/victim, no blood/wound/gore; “fatality” is only a non-gory technique showcase. PARASOUL from SKULLGIRLS2ND ENCORE, tall adult princess with very long deep RED hair and a side-swept bang, composed pale face. Attached old local sprite is rough palette/identity context ONLY: REMOVE CROWN, royal tiara and gold-button military coat, and REMOVE GENERIC RIFLE. Use recognizable canonical fitted BLACK high-neck/turtleneck dress/top with short BLACK skirt, dark legwear and black heeled boots/shoes, gloved hands, elegant combat silhouette, not childlike proportions. Her ONLY personal weapon is KRIEG, living BLACK umbrella with gold shaft and distinct RED EYE in the canopy; closed during guard/carry, can open compactly. Same Krieg in everypose. Super INFERNO BRIGADE: she COMMANDS real BLACK EGRET SOLDIERS (dark uniforms, helmets/goggles, compact rifles) to coordinated ballistic fire. She never aims a generic rifle herself, no laser, magic clone, huge cannon or fantasy animal. At most2compact Egrets drawn beside/behind her only in rows5/8; keep main Parasoul full-size with all whole soldiers insidecell. R1 INTRO:1 enter umbrella closed atside,2 lift Krieg to shoulder,3 composed hand signal,4 umbrella guarding stance. R2 OUTRO:1 lower Krieg,2 orderly dismissive hand gesture,3 turn longhair trailing,4 walk out umbrella low. R3 ROUNDWIN:1 straighten umbrella guard,2 small approving nod,3 free hand at waist,4 reset ready stance. R4 ROUNDLOSS-RECOVER:1 stepback shielding with closed Krieg,2 stumble into bent knee,3 one knee/palm ground with umbrella close,4 determined half-rise. R5 TECHNIQUE FINALE InfernoBrigade:1 Parasoul points command hand ahead Krieg heldotherhand,2 TWO small helmeted Egrets kneel/stand in compact formation behind her,3 she holds firm signal as Egrets aim rifles to right and tiny orange muzzle flashes show one coordinated volley,4 she lowers command hand and Egrets lower rifles/prepare departure. R6 FULLVICTORY:1 Parasoul lower umbrella,2 inspect red-eye Krieg with small smile,3 close umbrella and turn shoulder,4 composed free-hand-on-hip stance. R7 FULLDEFEAT-REST:1 exhausted one-knee pose umbrella ground beside,2 seated supported on forearm longhair gathered,3 turn to compact resting side,4 safe exhausted side rest with full hair/boots/umbrella INSIDEcell. R8 SUPER DISTINCT InfernoBrigade:1 Parasoul raises open palm sharply while Krieg pointsdown,2 two Egrets move into different compact firing formation around her,3 Parasoul points forward as both soldiers fire tiny ballistic muzzle flashes,4 Parasoul relaxed closed umbrella guard as soldiers turn to leave with rifles lowered. No crown anywhere. All people complete insidecell.",
+      "file": "/workspace/generated_images/exec-971f03bb-b988-4847-8792-6522db46f02e.png",
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_parasoul-initial.png",
+      "sourceImageSha256": "eaa655274f0ab722e2a4393fd04c315e32716facd031a48092d4b9eac3737a49",
+      "originalGeneratedPath": "/workspace/generated_images/exec-971f03bb-b988-4847-8792-6522db46f02e.png",
+      "originalSourceRows": 8,
+      "referenceArchive": "docs/combat-fidelity-wave6-2026-10-20/part-b-references/skullgirls_parasoul-local.png",
+      "referenceAssetSha256": "f433fe18b4d398357572cb0ed1f04bc2f75af121fc06681ec0a48105f0594295",
+      "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/skullgirls_parasoul-initial.txt",
+      "promptSha256": "bc232bcfc7b558bcaa5934d49beb3271988a7f757f13acf0565409b0918498d9",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "referenceUsage": "Local project sprite inspected with view_image before native generation. Original project bitmap is immutable; identity discrepancies are explicitly corrected in native art.",
+      "nativeCorrection": false,
+      "correctionDetails": null,
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_parasoul-initial.png",
+          "sourceImageSha256": "eaa655274f0ab722e2a4393fd04c315e32716facd031a48092d4b9eac3737a49",
+          "sourceRows": 8,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_parasoul-initial.png",
+          "sourceImageSha256": "eaa655274f0ab722e2a4393fd04c315e32716facd031a48092d4b9eac3737a49",
+          "sourceRows": 8,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_parasoul-initial.png",
+          "sourceImageSha256": "eaa655274f0ab722e2a4393fd04c315e32716facd031a48092d4b9eac3737a49",
+          "sourceRows": 8,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_parasoul-initial.png",
+          "sourceImageSha256": "eaa655274f0ab722e2a4393fd04c315e32716facd031a48092d4b9eac3737a49",
+          "sourceRows": 8,
+          "sourceRow": 3
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_parasoul-initial.png",
+          "sourceImageSha256": "eaa655274f0ab722e2a4393fd04c315e32716facd031a48092d4b9eac3737a49",
+          "sourceRows": 8,
+          "sourceRow": 4
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_parasoul-initial.png",
+          "sourceImageSha256": "eaa655274f0ab722e2a4393fd04c315e32716facd031a48092d4b9eac3737a49",
+          "sourceRows": 8,
+          "sourceRow": 5
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_parasoul-initial.png",
+          "sourceImageSha256": "eaa655274f0ab722e2a4393fd04c315e32716facd031a48092d4b9eac3737a49",
+          "sourceRows": 8,
+          "sourceRow": 6
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_parasoul-initial.png",
+          "sourceImageSha256": "eaa655274f0ab722e2a4393fd04c315e32716facd031a48092d4b9eac3737a49",
+          "sourceRows": 8,
+          "sourceRow": 7
+        }
+      ],
+      "statureByPhase": {
+        "intro": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              82,
+              21,
+              104,
+              219
+            ],
+            "normalizedBodyHeight": 219,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              82,
+              21,
+              104,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 192.5689655172414,
+            "nativeReferenceBodyHeight": 192.5689655172414,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "outro": {
+          "renderScale": 1.034314,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              77,
+              15,
+              99,
+              225
+            ],
+            "normalizedBodyHeight": 225,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              82,
+              21,
+              104,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 204.63362068965517,
+            "nativeReferenceBodyHeight": 192.5689655172414,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "roundVictory": {
+          "renderScale": 1.107843,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              94,
+              14,
+              91,
+              228
+            ],
+            "normalizedBodyHeight": 228,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              82,
+              21,
+              104,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 222.10344827586206,
+            "nativeReferenceBodyHeight": 192.5689655172414,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "roundDefeat": {
+          "renderScale": 1.401961,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              69,
+              103,
+              113,
+              138
+            ],
+            "normalizedBodyHeight": 138,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              82,
+              21,
+              104,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 170.1206896551724,
+            "nativeReferenceBodyHeight": 192.5689655172414,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "fatality": {
+          "renderScale": 1.284314,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              78,
+              59,
+              99,
+              173
+            ],
+            "normalizedBodyHeight": 173,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              82,
+              21,
+              104,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 195.3706896551724,
+            "nativeReferenceBodyHeight": 192.5689655172414,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "victory": {
+          "renderScale": 1.196078,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              87,
+              20,
+              96,
+              215
+            ],
+            "normalizedBodyHeight": 215,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              82,
+              21,
+              104,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 226.1206896551724,
+            "nativeReferenceBodyHeight": 192.5689655172414,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "defeat": {
+          "renderScale": 1.088235,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              48,
+              103,
+              129,
+              136
+            ],
+            "normalizedBodyHeight": 136,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              82,
+              21,
+              104,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 130.13793103448276,
+            "nativeReferenceBodyHeight": 192.5689655172414,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "super": {
+          "renderScale": 1.27451,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              78,
+              63,
+              112,
+              180
+            ],
+            "normalizedBodyHeight": 180,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              82,
+              21,
+              104,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 201.72413793103448,
+            "nativeReferenceBodyHeight": 192.5689655172414,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "skullgirls_big_band",
+      "universe": "Skullgirls",
+      "name": "Big Band",
+      "referenceAsset": "/sprites/generated/heroes/skullgirls/skullgirls-big-band.png",
+      "sourceWork": "Skullgirls2nd Encore, Big Band; local navy/brass palette adaptation",
+      "sourceReference": "Super-Sonic Jazz: Big Band's enormous instrumental cyborg body lunges forward as brass horns/trombones telescope from its housing. His real machine body remains visible; no generic music aura substitutes for the transformation of his instruments.",
+      "notes": [
+        "Inspected large navy-coated/brass-instrument cyborg reference is preserved as the project's palette; no official palette number or default-color fidelity is claimed.",
+        "Body, brass mechanisms, extending horns and mechanical contact poses are natively drawn.",
+        "Instrument/recovery transitions are authored presentation adaptations, not exact source hit counts."
+      ],
+      "prompt": "Original native detailed2D pixel-art ANIMATION ATLAS, transparent PNG. EXACTLY FOUR COLUMNS and EIGHT ROWS =32 genuinely different complete full-body poses. Desired1024x2048, every cell256x256 with at least18px EMPTY transparent margin and separated gutters. No clipping of body, horn, wing, sword, umbrella, cannon or instrument, no text/grid/background/panels/floor/UI/watermark. Consistent proportions and character identity, expressive readable silhouettes, predominantly facing RIGHT. Draw every pose natively, never mirror/repeat/recolor a pose or replace the body by an effect silhouette. Body itself must remain large and legible; compact props/effects around it, never tiny hero under enormous effects. COUNT EIGHT DISTINCT ROWS:1INTRO;2OUTRO;3ROUNDWIN;4ROUNDLOSS-RECOVER;5TECHNIQUE-FINALE;6FULLVICTORY;7FULLDEFEAT-REST;8SUPER. Each row EXACTLY four chronological cells. Row4 briefly loses a ROUND and RISES, row7 EXHAUSTEDLY RESTS; BOTH rows must exist, do NOT merge them. Row5 and8 use eight different poses of the same specified technique. No enemy/victim, no blood/wound/gore; “fatality” is only a non-gory technique showcase. BIG BAND from SKULLGIRLS2ND ENCORE, enormous bulky HUMAN CYBORG INSTRUMENT BODY, exactly recognizable attached silhouette/palette: huge rounded DARK NAVY coat/housing with brass/gold circular fittings, giant brass TUBA/HORN bell rising over shoulder, small human face/respirator beneath dark FEDORA, broad mechanical fists and chunky short feet, pale cuff bands. Preserve the supplied NAVY/BRASS palette consistently; do not convert into a skinny human musician or robot invented from scratch. His real machine torso must stay very large and readable in everycell, comparable main body height across allrows, not a tiny figure under instruments. Compact horns horizontally so the body does not need shrinking. All extended trombones, fists and tubing are REAL NATIVE DRAWN machine parts connected to housing, not procedural outlines or disembodied musicnotes. SUPER-SONIC JAZZ is a forward BODY LUNGE/CHARGE with telescoping brass trumpet/trombone weapons, then braced stop; not a ranged energy beam, DJ turntable, saxophone player, magic orb or giant circular explosion. R1 INTRO:1 heavy entering step,2 square huge body and adjust fedora with mechanical hand,3 open one brass valve mechanism,4 broad stable guard. R2 OUTRO:1 lower huge fists,2 tuck horn assembly compact,3 turn with heavy coat housing twist,4 heavy departing stride. R3 ROUNDWIN:1 straighten from charge,2 small triumphant brassfist raise,3 tip fedora,4 grounded confident wide stance. R4 ROUNDLOSS-RECOVER:1 heavy backward recoil,2 low bent mechanical stance,3 brace one giant fist ground while housing remains upright,4 reset upright guard. R5 TECHNIQUE FINALE SuperSonicJazz:1 compress whole body low with brass sections folding,2 telescoping short brass horns extend attached forward as torsoleans,3 powerful forward wholebody lunge with extended compact horn bells and fist,4 wide heavy planted stop retracting horns with little white mechanical steam. R6 FULLVICTORY:1 pull brasssections backinto torso,2 tip fedora subtly,3 relaxed fist at hip and one valve open,4 imposing balanced brassguard. R7 FULLDEFEAT-REST:1 mechanical knees lower and housing leans,2 settle safely seated on broad base,3 slump to compact sideways resting torso,4 exhausted inert-looking rest still intact with fedora/feet/tuba whole withincell, no explosion or broken parts. R8 SUPER DISTINCT SuperSonicJazz:1 low forward-loading squat hugehousing real,2 slide forward with two attached brassinstrumentbells extending from forearms/housing,3 largest forward lunging body pose with telescoping brass horns and compact blue-white speed wisps BEHIND,4 low wide braced final contact pose with horns retracting and visiblefists. Main BigBand body remains approximately same large size across8rows, no huge effectball.",
+      "file": "/workspace/generated_images/exec-fbe968ad-e31c-42f3-a11b-23350c9fca05.png",
+      "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-initial.png",
+      "sourceImageSha256": "43050aecf5c32c03f3cf176961208198dcae5f188a6ef9a50eede4b9d35c711d",
+      "originalGeneratedPath": "/workspace/generated_images/exec-fbe968ad-e31c-42f3-a11b-23350c9fca05.png",
+      "originalSourceRows": 8,
+      "referenceArchive": "docs/combat-fidelity-wave6-2026-10-20/part-b-references/skullgirls_big_band-local.png",
+      "referenceAssetSha256": "9d4c937c3ac0dc1733346db529cf5639124d8d067bdc30564780ebc02f78d313",
+      "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/skullgirls_big_band-initial.txt",
+      "promptSha256": "c9f7e8665da23d667944d50d3a0fe954d51a86d0fad6b4f10e0b0b34b947b617",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "referenceUsage": "Local project sprite inspected with view_image before native generation. Original project bitmap is immutable; identity discrepancies are explicitly corrected in native art.",
+      "nativeCorrection": true,
+      "correctionDetails": {
+        "path": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-correction.png",
+        "sha256": "c7c8d413d16a5d42ad12a474c52139b0759f3d7773f9f5f313fc2d98152868d8",
+        "sourceRows": 1,
+        "targetRows": [
+          7
+        ],
+        "reason": "The original super row crosses two neighbouring native cells with opaque brass/sonic trails, and overwide effects mechanically shrink the enormous machine body. Four fresh compact super poses correct that row only.",
+        "promptFile": "docs/combat-fidelity-wave6-2026-10-20/part-b-prompts/skullgirls_big_band-correction.txt",
+        "promptSha256": "28f267f7d7e3f32c62f39c6648901f8f765949f4cd26dcf988a9bb17dbf73637",
+        "referenceInputs": [
+          {
+            "originalPath": "/workspace/generated_images/exec-fbe968ad-e31c-42f3-a11b-23350c9fca05.png",
+            "archivedPath": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-initial.png",
+            "sha256": "43050aecf5c32c03f3cf176961208198dcae5f188a6ef9a50eede4b9d35c711d"
+          }
+        ]
+      },
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-initial.png",
+          "sourceImageSha256": "43050aecf5c32c03f3cf176961208198dcae5f188a6ef9a50eede4b9d35c711d",
+          "sourceRows": 8,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-initial.png",
+          "sourceImageSha256": "43050aecf5c32c03f3cf176961208198dcae5f188a6ef9a50eede4b9d35c711d",
+          "sourceRows": 8,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-initial.png",
+          "sourceImageSha256": "43050aecf5c32c03f3cf176961208198dcae5f188a6ef9a50eede4b9d35c711d",
+          "sourceRows": 8,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-initial.png",
+          "sourceImageSha256": "43050aecf5c32c03f3cf176961208198dcae5f188a6ef9a50eede4b9d35c711d",
+          "sourceRows": 8,
+          "sourceRow": 3
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-initial.png",
+          "sourceImageSha256": "43050aecf5c32c03f3cf176961208198dcae5f188a6ef9a50eede4b9d35c711d",
+          "sourceRows": 8,
+          "sourceRow": 4
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-initial.png",
+          "sourceImageSha256": "43050aecf5c32c03f3cf176961208198dcae5f188a6ef9a50eede4b9d35c711d",
+          "sourceRows": 8,
+          "sourceRow": 5
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-initial.png",
+          "sourceImageSha256": "43050aecf5c32c03f3cf176961208198dcae5f188a6ef9a50eede4b9d35c711d",
+          "sourceRows": 8,
+          "sourceRow": 6
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-b-sources/skullgirls_big_band-correction.png",
+          "sourceImageSha256": "c7c8d413d16a5d42ad12a474c52139b0759f3d7773f9f5f313fc2d98152868d8",
+          "sourceRows": 1,
+          "sourceRow": 0
+        }
+      ],
+      "statureByPhase": {
+        "intro": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              52,
+              75,
+              180,
+              168
+            ],
+            "normalizedBodyHeight": 168,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              52,
+              75,
+              180,
+              168
+            ],
+            "referenceBodyHeight": 168,
+            "nativeComparableBodyHeight": 165.82758620689657,
+            "nativeReferenceBodyHeight": 165.82758620689657,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "outro": {
+          "renderScale": 0.956332,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              47,
+              58,
+              183,
+              176
+            ],
+            "normalizedBodyHeight": 176,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              52,
+              75,
+              180,
+              168
+            ],
+            "referenceBodyHeight": 168,
+            "nativeComparableBodyHeight": 166.13793103448276,
+            "nativeReferenceBodyHeight": 165.82758620689657,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "roundVictory": {
+          "renderScale": 0.956332,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              36,
+              53,
+              197,
+              187
+            ],
+            "normalizedBodyHeight": 187,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              52,
+              75,
+              180,
+              168
+            ],
+            "referenceBodyHeight": 168,
+            "nativeComparableBodyHeight": 176.52155172413794,
+            "nativeReferenceBodyHeight": 165.82758620689657,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "roundDefeat": {
+          "renderScale": 1.122271,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              62,
+              93,
+              174,
+              149
+            ],
+            "normalizedBodyHeight": 149,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              52,
+              75,
+              180,
+              168
+            ],
+            "referenceBodyHeight": 168,
+            "nativeComparableBodyHeight": 165.0560344827586,
+            "nativeReferenceBodyHeight": 165.82758620689657,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "fatality": {
+          "renderScale": 1.331878,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              62,
+              124,
+              137,
+              117
+            ],
+            "normalizedBodyHeight": 117,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              52,
+              75,
+              180,
+              168
+            ],
+            "referenceBodyHeight": 168,
+            "nativeComparableBodyHeight": 153.8146551724138,
+            "nativeReferenceBodyHeight": 165.82758620689657,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "victory": {
+          "renderScale": 0.930131,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              41,
+              59,
+              185,
+              181
+            ],
+            "normalizedBodyHeight": 181,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              52,
+              75,
+              180,
+              168
+            ],
+            "referenceBodyHeight": 168,
+            "nativeComparableBodyHeight": 166.17672413793105,
+            "nativeReferenceBodyHeight": 165.82758620689657,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "defeat": {
+          "renderScale": 1.09607,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              55,
+              104,
+              161,
+              138
+            ],
+            "normalizedBodyHeight": 138,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              52,
+              75,
+              180,
+              168
+            ],
+            "referenceBodyHeight": 168,
+            "nativeComparableBodyHeight": 149.30172413793105,
+            "nativeReferenceBodyHeight": 165.82758620689657,
+            "sourceDensityRatio": 1,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        },
+        "super": {
+          "renderScale": 1.225138,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              47,
+              119,
+              151,
+              124
+            ],
+            "normalizedBodyHeight": 124,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              52,
+              75,
+              180,
+              168
+            ],
+            "referenceBodyHeight": 168,
+            "nativeComparableBodyHeight": 149.95268146313583,
+            "nativeReferenceBodyHeight": 165.82758620689657,
+            "sourceDensityRatio": 0.4083793738489871,
+            "reason": "Restore this native row to the reference body scale using measured body-only ROIs. Source canvas density is accounted for; the native height ratio and all intentional crouching, leaning, transformation anatomy and baseline244 remain intact. This is renderer metadata only, never PNG repainting."
+          }
+        }
+      }
+    }
+  ]
+}

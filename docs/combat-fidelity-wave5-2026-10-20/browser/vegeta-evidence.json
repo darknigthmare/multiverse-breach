@@ -1,0 +1,554 @@
+{
+  "date": "2026-10-20",
+  "passed": true,
+  "environment": {
+    "browser": "Chromium /usr/bin/chromium",
+    "origin": "http://127.0.0.1:5188/",
+    "actor": "vegeta_dbz",
+    "opponent": "cloud_ff7"
+  },
+  "core": {
+    "passed": true,
+    "character": "vegeta_dbz",
+    "states": 45,
+    "distinctCorePoses": 180,
+    "coreFrameDraws": 360,
+    "gripFrameDraws": 8,
+    "physicsUnchanged": true,
+    "rendererUrl": "/src/game/renderer.js?t=1792484762264",
+    "sources": [
+      "/sprites/generated/melee-vegeta-wave5/vegeta-motion-a.png",
+      "/sprites/generated/melee-vegeta-wave5/vegeta-motion-b.png",
+      "/sprites/generated/melee-vegeta-wave5/vegeta-defense.png",
+      "/sprites/generated/melee-vegeta-wave5/vegeta-combat-a.png",
+      "/sprites/generated/melee-vegeta-wave5/vegeta-combat-b.png",
+      "/sprites/generated/melee-vegeta-wave5/vegeta-ledge.png"
+    ],
+    "pageErrors": [],
+    "coreCapture": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-core.png",
+    "gripCapture": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-grips.png"
+  },
+  "movement": {
+    "summary": {
+      "jumpRise": {
+        "updates": 24,
+        "draws": 24,
+        "elapsed": [
+          0,
+          0.016666666666666666,
+          0.03333333333333333,
+          0.05,
+          0.06666666666666667,
+          0.08333333333333333,
+          0.09999999999999999,
+          0.11666666666666665,
+          0.13333333333333333,
+          0.15,
+          0.16666666666666666,
+          0.18333333333333332,
+          0.19999999999999998,
+          0.21666666666666665,
+          0.2333333333333333,
+          0.24999999999999997,
+          0.26666666666666666,
+          0.2833333333333333,
+          0.3,
+          0.31666666666666665,
+          0.3333333333333333,
+          0.35,
+          0.36666666666666664,
+          0.3833333333333333
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "velocities": [
+          4
+        ],
+        "facings": [
+          1
+        ]
+      },
+      "fall": {
+        "updates": 26,
+        "draws": 26,
+        "elapsed": [
+          0,
+          0.016666666666666666,
+          0.03333333333333333,
+          0.05,
+          0.06666666666666667,
+          0.08333333333333333,
+          0.09999999999999999,
+          0.11666666666666665,
+          0.13333333333333333,
+          0.15,
+          0.16666666666666666,
+          0.18333333333333332,
+          0.19999999999999998,
+          0.21666666666666665,
+          0.2333333333333333,
+          0.24999999999999997,
+          0.26666666666666666,
+          0.2833333333333333,
+          0.3,
+          0.31666666666666665,
+          0.3333333333333333,
+          0.35,
+          0.36666666666666664,
+          0.3833333333333333,
+          0.39999999999999997,
+          0.41666666666666663
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "velocities": [
+          4
+        ],
+        "facings": [
+          1
+        ]
+      },
+      "land": {
+        "updates": 7,
+        "draws": 7,
+        "elapsed": [
+          0,
+          0.016666666666666666,
+          0.03333333333333333,
+          0.05,
+          0.06666666666666667,
+          0.08333333333333333,
+          0.09999999999999999
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "velocities": [
+          4
+        ],
+        "facings": [
+          1
+        ]
+      },
+      "turn": {
+        "updates": 6,
+        "draws": 6,
+        "elapsed": [
+          0.016666666666666666,
+          0.03333333333333333,
+          0.05,
+          0.06666666666666667,
+          0.08333333333333333,
+          0.09999999999999999
+        ],
+        "columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "velocities": [
+          -4
+        ],
+        "facings": [
+          -1
+        ]
+      }
+    },
+    "pause": {
+      "mechanism": "GameCanvas real sessionPaused prop through root.render; stable stage/team props and engine instance",
+      "before": {
+        "state": "idle",
+        "stateElapsed": 0.36666666666666664,
+        "x": 436,
+        "y": 359,
+        "vx": 0,
+        "vy": 0,
+        "hp": 105
+      },
+      "after": {
+        "state": "idle",
+        "stateElapsed": 0.36666666666666664,
+        "x": 436,
+        "y": 359,
+        "vx": 0,
+        "vy": 0,
+        "hp": 105
+      },
+      "durationMs": 300,
+      "unchanged": true
+    },
+    "engineUrl": "/src/game/engineSmash.js",
+    "pageErrors": [],
+    "mount": "Real React GameCanvas; isolated flat ground, stationary P2 opponent, actual D/Space/Q key events and real animation clocks/drawImage."
+  },
+  "super": {
+    "engineUrl": "/src/game/engineSmash.js?t=1792484974635",
+    "name": "Final Flash",
+    "keyboardHoldMs": 80,
+    "initialCharge": 100,
+    "impact": {
+      "start": {
+        "name": "Final Flash",
+        "charge": 0,
+        "hp": 100000,
+        "elapsed": 0.016666666666666666,
+        "hitAt": 0.451
+      },
+      "hit": {
+        "name": "Final Flash",
+        "charge": 0,
+        "hp": 99934,
+        "elapsed": 0.4666666666666666,
+        "hitAt": 0.451
+      },
+      "gameOver": false
+    },
+    "sameInput": {
+      "before": 99934,
+      "retriggered": false,
+      "charge": 0
+    },
+    "final": {
+      "hitCount": 1,
+      "hp": 99934,
+      "charge": 0,
+      "action": null,
+      "profile": "Final Flash"
+    },
+    "pageErrors": [],
+    "sourceDraws": {
+      "count": 81,
+      "sheets": [
+        "/sprites/generated/combat-character-animations/vegeta_dbz.png"
+      ],
+      "rows": [
+        7
+      ],
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "coldBoot": "Fresh Chromium process and page; no test preload; only production GameCanvas boot prepares sprites.",
+    "drawTrace": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-cold-after-preload-draws.json",
+    "screenshot": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-cold-after-preload.png"
+  },
+  "initialHarnessFailures": [],
+  "externalRequestLimitation": "Every scenario reported only the Google Fonts CSS request blocked by the proxy (ERR_TUNNEL_CONNECTION_FAILED). No application JavaScript exception or internal asset load failure.",
+  "visualReview": {
+    "superMovementGripsReviewed": true,
+    "specialCropReviewed": true,
+    "finalFlashNative32CropReviewed": true,
+    "notes": [
+      "Base black-haired Vegeta uses the sleeveless blue training outfit of the local reference: white gloves and boots with gold toes, no chest armor, Majin mark, Super Saiyan hair or added weapon.",
+      "The core special-state montage is Galick Gun. An actual Final Flash action takes priority and uses the original dedicated presentation atlas row 7, with wide-arm preparation, forward two-handed yellow release and recovery.",
+      "After the production boot preload fix, every traced cold-page super draw uses the dedicated Final Flash row, including the first draw; the initial short core fallback is resolved.",
+      "The eight-grip image overlays four native frame draws at each side of one platform. Individual projected contact points are recorded in the trace.",
+      "Native artwork is an adaptation with minor perspective/anatomy/scale variation and DBZ dash-like running leg positions; official source-frame fidelity is not certified."
+    ],
+    "canonicalAnimationVerified": false,
+    "canon1to1Verified": false
+  },
+  "sourceImages": [
+    {
+      "path": "public/sprites/generated/melee-vegeta-wave5/vegeta-motion-a.png",
+      "sha256": "0f0768cfcf9dfbc21072f0841b9c2751a59df1ef347ea03e210e6746e9a620e6"
+    },
+    {
+      "path": "public/sprites/generated/melee-vegeta-wave5/vegeta-motion-b.png",
+      "sha256": "bc2d8066456be8278385bb6bcfd383a74f6f8b113c4a9dacea8a9905867c814c"
+    },
+    {
+      "path": "public/sprites/generated/melee-vegeta-wave5/vegeta-defense.png",
+      "sha256": "dff4c90f5aff0aea0ed9522fa1ca482c8c07755a19b97ad6743a15a05cb3f5c9"
+    },
+    {
+      "path": "public/sprites/generated/melee-vegeta-wave5/vegeta-combat-a.png",
+      "sha256": "aaa2646277a63adc1736cdff21d1271f1fdc3f520a35abd24a4b0505a04be95e"
+    },
+    {
+      "path": "public/sprites/generated/melee-vegeta-wave5/vegeta-combat-b.png",
+      "sha256": "f39c1a4005618d03773537d9eb7b6cc9f7b76c0014473042ce2a1c086d056bda"
+    },
+    {
+      "path": "public/sprites/generated/melee-vegeta-wave5/vegeta-ledge.png",
+      "sha256": "e30de6b87287208271ff1b62d5aca66da3caf432e7ac2599ff9ebf385f58e363"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-core-browser.mjs",
+      "sha256": "74e2fb3d4d85555be48bdbd741367973c4cf1de0957cdf6f20fdb660692a4586"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-core-result.json",
+      "sha256": "e59789c298973c2c40af04ad5c8c85c3d1d1f560767d2966d6ed3a2362bcfdde"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-core-special-crop.png",
+      "sha256": "8b56898fdd8364dee3155dc55609d0d6c8ee65ccfb7c3a1d511f811f4836b302"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-core-trace.json",
+      "sha256": "4678c81be602bbf1d0dd376d19e8fcc03e5873b0bc7896f4b168460bdd99b655"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-core.png",
+      "sha256": "b160ca7673134931b2cb0286057b2368922c55f517ce9a9a275911ebf1d2ed20"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-final-flash-native32-crop.png",
+      "sha256": "522992350b23c16d483d78df1b58aeb95a3573c91f65e630fbf6fde97096d3d3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-grips.png",
+      "sha256": "416aaeaa2dae0fd8a09ea01f8f3886bc195497fe035d1592ac524098b84c3705"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-movement-browser.mjs",
+      "sha256": "1e4785e1e84ab9d382cdfe3fbebd28f0bb806e2d97c8e39899ae726e58ed9f3c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-movement-result.json",
+      "sha256": "54a741a2692c6970195ee21d7b3df38298df7b8d05eac6970edd141ec21f16d0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-movement-trace.json",
+      "sha256": "09735bdc156921ee03444c4f3f216b40549c717038df3c7b2e928c0a35869d2e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-movement.png",
+      "sha256": "eabdf07e3940270f9a85b96bf7b1f079544b1104c20087ea7cd3189efc131813"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-pause.png",
+      "sha256": "28fdddd18e1df73ba5c66f6bb13e530f375d24cb052748f3720e81c804f5e58a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-browser.mjs",
+      "sha256": "eaacad6614a294111d763be7658f6ec0170de2dee7cddc5bfb473041a994b70f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-cold-after-preload-browser.mjs",
+      "sha256": "d0dbd95e9762dabca380158195dca470fea617e2389e98c75205fca606f5061a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-cold-after-preload-draws.json",
+      "sha256": "095684dbdf114b1c09da7e31c8de72e95d13070153c346d5e11c72518d0364e3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-cold-after-preload-result.json",
+      "sha256": "e5a43cf584887b79420ac7545b17a7a2ad46297a20cb5622dc2cec8c8ee6dd50"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-cold-after-preload-trace.json",
+      "sha256": "5538621a7669506bbafd01d169720b4cef01b28bd2bae8532ef371f978dca750"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-cold-after-preload.png",
+      "sha256": "bbb4447d1d360ed3fd969dec47058804727d33fd1ae74878912a60557f349929"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-preloaded-browser.mjs",
+      "sha256": "4bbcde3946814c4453fac321ea009a3f8957a9435c70f1b717ce841457a72072"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-preloaded-draws.json",
+      "sha256": "b8f42978577a311d2536cc66574f42109ac95112b8d518806d95ecac5e67ba07"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-preloaded-result.json",
+      "sha256": "69d8c78295cb04725d9268bfb5ee7da60a23b1a261eacfe4e9a34dec4edbf2f7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-preloaded-trace.json",
+      "sha256": "1e2201f39ee3066b0e8e05d78bb21bdca659328ede32012ba9adb6efdbbee341"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-preloaded.png",
+      "sha256": "1154013908ddcc667f2e891cf699e5cc544a08097b84e4ef45ef6d024c7a984b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-render-browser.mjs",
+      "sha256": "a7e5b780c52acb07f8a78a9e19a61b858e6805ad28822f09c7063ae9519db11e"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-render-draws.json",
+      "sha256": "2cea6442c71b609988a0461b496c20efd53eaacab175f60c32734b7c8fda6ea8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-render-result.json",
+      "sha256": "4be074da951b2ba2206242f6f222c94ed533d42421c050333355ccd09b558166"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-render-trace.json",
+      "sha256": "56dc5a9fa59719f59772e5aacb85abd833d6982e6069404f296ffcba21cd8091"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-render.png",
+      "sha256": "187212fe6351a3e01877ce680603ff3f3caff1447886822a1ebed2224db6a90a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-result.json",
+      "sha256": "1591d561b94a8d9738f1f3d82635c53632aa94b2a5ab8fb4f3377da943c68686"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-trace.json",
+      "sha256": "df364a84f65f2627adb98368eda6ac44bf1ba0bf55e309543bee55c4af8aa8a8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super.png",
+      "sha256": "a76e490931c1fa468f46d89b459e9a04cd6aab1b3129d6b787d0bb6e14deafe7"
+    }
+  ],
+  "browserChecksChangedProductionSources": false,
+  "superRenderPriority": {
+    "dedicatedSource": "/sprites/generated/combat-character-animations/vegeta_dbz.png",
+    "row": 7,
+    "columns": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "resolvedColdLoadFallback": {
+      "before": {
+        "sourceDraws": {
+          "count": 60,
+          "sheets": [
+            "/sprites/generated/melee-vegeta-wave5/vegeta-combat-b.png",
+            "/sprites/generated/combat-character-animations/vegeta_dbz.png"
+          ],
+          "rows": [
+            1,
+            7
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "fallbackFrames": [
+          {
+            "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-combat-b.png",
+            "row": 1,
+            "column": 0,
+            "sourceRect": [
+              0,
+              256,
+              256,
+              256
+            ],
+            "elapsed": 0.016666666666666666,
+            "hitAt": 0.451,
+            "phase": null,
+            "actionId": "super",
+            "state": "special",
+            "imageComplete": true,
+            "naturalWidth": 1024
+          },
+          {
+            "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-combat-b.png",
+            "row": 1,
+            "column": 0,
+            "sourceRect": [
+              0,
+              256,
+              256,
+              256
+            ],
+            "elapsed": 0.08333333333333333,
+            "hitAt": 0.451,
+            "phase": null,
+            "actionId": "super",
+            "state": "special",
+            "imageComplete": true,
+            "naturalWidth": 1024
+          }
+        ],
+        "trace": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-render-draws.json"
+      },
+      "diagnosis": "The dedicated Final Flash row already existed and had rendering priority. The first cold-load frames could fall back to core special while the presentation PNG loaded. Core-only state sampling does not determine rendering priority for a real super action.",
+      "warmDiagnostic": {
+        "testOnlyPreload": "Warm dedicated native32 atlas before mounting GameCanvas; no production source change.",
+        "sourceDraws": {
+          "count": 76,
+          "sheets": [
+            "/sprites/generated/combat-character-animations/vegeta_dbz.png"
+          ],
+          "rows": [
+            7
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "trace": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-preloaded-draws.json"
+      },
+      "fix": "Parent added presentation atlas sources to production combat boot preloading for allied and opposing actors.",
+      "after": {
+        "coldBoot": "Fresh Chromium process and page; no test preload; only production GameCanvas boot prepares sprites.",
+        "sourceDraws": {
+          "count": 81,
+          "sheets": [
+            "/sprites/generated/combat-character-animations/vegeta_dbz.png"
+          ],
+          "rows": [
+            7
+          ],
+          "columns": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "firstDraw": {
+          "sheet": "/sprites/generated/combat-character-animations/vegeta_dbz.png",
+          "row": 7,
+          "column": 0,
+          "sourceRect": [
+            0,
+            1792,
+            256,
+            256
+          ],
+          "elapsed": 0.016666666666666666,
+          "hitAt": 0.451,
+          "phase": null,
+          "actionId": "super",
+          "state": "special",
+          "imageComplete": true,
+          "naturalWidth": 1024
+        },
+        "fallbackFrames": 0,
+        "trace": "docs/combat-fidelity-wave5-2026-10-20/browser/vegeta-super-cold-after-preload-draws.json"
+      },
+      "resolved": true
+    }
+  },
+  "presentationSource": {
+    "path": "public/sprites/generated/combat-character-animations/vegeta_dbz.png",
+    "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+    "modified": false
+  }
+}

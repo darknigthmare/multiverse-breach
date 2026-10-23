@@ -1,0 +1,633 @@
+{
+  "method": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+  "date": "2026-10-20",
+  "source1to1Verified": false,
+  "modifiesBitmap": false,
+  "rendererAnchorBaseline": 244,
+  "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+  "measuredRows": [
+    {
+      "heroId": "cyborg_tt",
+      "phase": "intro",
+      "renderScale": 1.009174,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 218,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 218,
+      "nativeComparableBodyHeight": 159,
+      "nativeReferenceBodyHeight": 159,
+      "referenceRenderScale": 1.0091743119266054,
+      "referenceRenderedBodyHeight": 220,
+      "calibrationTargetBodyHeight": 220,
+      "bodyForm": "cyborg-2003",
+      "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        36,
+        26,
+        196,
+        218
+      ],
+      "referenceBodyBounds": [
+        36,
+        26,
+        196,
+        218
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        237,
+        10,
+        143,
+        159
+      ],
+      "nativeReferenceBodyBounds": [
+        237,
+        10,
+        143,
+        159
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "nativeSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "nativeReferenceSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 220,
+      "correctedBodyHeight": 219.999932,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "cyborg_tt",
+      "phase": "outro",
+      "renderScale": 1.024924,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 218,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 216,
+      "nativeComparableBodyHeight": 160,
+      "nativeReferenceBodyHeight": 159,
+      "referenceRenderScale": 1.0091743119266054,
+      "referenceRenderedBodyHeight": 220,
+      "calibrationTargetBodyHeight": 220,
+      "bodyForm": "cyborg-2003",
+      "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        38,
+        15,
+        169,
+        216
+      ],
+      "referenceBodyBounds": [
+        36,
+        26,
+        196,
+        218
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        237,
+        174,
+        125,
+        160
+      ],
+      "nativeReferenceBodyBounds": [
+        237,
+        10,
+        143,
+        159
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "nativeSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "nativeReferenceSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 221.383648,
+      "correctedBodyHeight": 221.383584,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "cyborg_tt",
+      "phase": "roundVictory",
+      "renderScale": 1.020519,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 218,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 221,
+      "nativeComparableBodyHeight": 163,
+      "nativeReferenceBodyHeight": 159,
+      "referenceRenderScale": 1.0091743119266054,
+      "referenceRenderedBodyHeight": 220,
+      "calibrationTargetBodyHeight": 220,
+      "bodyForm": "cyborg-2003",
+      "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        23,
+        21,
+        174,
+        221
+      ],
+      "referenceBodyBounds": [
+        36,
+        26,
+        196,
+        218
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        939,
+        346,
+        128,
+        163
+      ],
+      "nativeReferenceBodyBounds": [
+        237,
+        10,
+        143,
+        159
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "nativeSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "nativeReferenceSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 225.534591,
+      "correctedBodyHeight": 225.534699,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "cyborg_tt",
+      "phase": "roundDefeat",
+      "renderScale": 1.013376,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 218,
+      "sourceComparableColumn": 1,
+      "normalizedBodyHeight": 213,
+      "nativeComparableBodyHeight": 156,
+      "nativeReferenceBodyHeight": 159,
+      "referenceRenderScale": 1.0091743119266054,
+      "referenceRenderedBodyHeight": 220,
+      "calibrationTargetBodyHeight": 220,
+      "bodyForm": "cyborg-2003",
+      "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        27,
+        24,
+        187,
+        213
+      ],
+      "referenceBodyBounds": [
+        36,
+        26,
+        196,
+        218
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        467,
+        506,
+        137,
+        156
+      ],
+      "nativeReferenceBodyBounds": [
+        237,
+        10,
+        143,
+        159
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "nativeSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "nativeReferenceSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 215.849057,
+      "correctedBodyHeight": 215.849088,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "cyborg_tt",
+      "phase": "fatality",
+      "renderScale": 1.189315,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 218,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 178,
+      "nativeComparableBodyHeight": 153,
+      "nativeReferenceBodyHeight": 159,
+      "referenceRenderScale": 1.0091743119266054,
+      "referenceRenderedBodyHeight": 220,
+      "calibrationTargetBodyHeight": 220,
+      "bodyForm": "cyborg-2003",
+      "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        47,
+        64,
+        157,
+        178
+      ],
+      "referenceBodyBounds": [
+        36,
+        26,
+        196,
+        218
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        947,
+        664,
+        135,
+        153
+      ],
+      "nativeReferenceBodyBounds": [
+        237,
+        10,
+        143,
+        159
+      ],
+      "nativeReferenceColumn": 0,
+      "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "nativeSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "nativeReferenceSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 211.698113,
+      "correctedBodyHeight": 211.69807,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "cyborg_tt",
+      "phase": "victory",
+      "renderScale": 0.952381,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 218,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 413,
+      "nativeReferenceBodyHeight": 413,
+      "referenceRenderScale": 1.0091743119266054,
+      "referenceRenderedBodyHeight": 220,
+      "calibrationTargetBodyHeight": 220,
+      "bodyForm": "cyborg-2003",
+      "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        41,
+        13,
+        187,
+        231
+      ],
+      "referenceBodyBounds": [
+        36,
+        26,
+        196,
+        218
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        67,
+        27,
+        333,
+        413
+      ],
+      "nativeReferenceBodyBounds": [
+        67,
+        27,
+        333,
+        413
+      ],
+      "nativeReferenceColumn": 0,
+      "sourceDensityCalibration": {
+        "kind": "independent-native-correction-source",
+        "referenceSourcePhase": "victory",
+        "referenceColumn": 0,
+        "note": "The two-row native correction has a different pixel density from the seven-row original. Its own 413px standing reference maps to the same reviewed 220px Cyborg stature; the 304px kneel remains shorter."
+      },
+      "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-technique-rows-corrected.png",
+      "nativeSourceImageSha256": "a4b3d93e84d9cdb388e48b71a66dd0c5b85b9dff178d936c3ea1dcaa7dd3e367",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-technique-rows-corrected.png",
+      "nativeReferenceSourceImageSha256": "a4b3d93e84d9cdb388e48b71a66dd0c5b85b9dff178d936c3ea1dcaa7dd3e367",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 220,
+      "correctedBodyHeight": 220.000011,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "cyborg_tt",
+      "phase": "defeat",
+      "renderScale": 0.839052,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 218,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 193,
+      "nativeComparableBodyHeight": 304,
+      "nativeReferenceBodyHeight": 413,
+      "referenceRenderScale": 1.0091743119266054,
+      "referenceRenderedBodyHeight": 220,
+      "calibrationTargetBodyHeight": 220,
+      "bodyForm": "cyborg-2003",
+      "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        34,
+        49,
+        202,
+        193
+      ],
+      "referenceBodyBounds": [
+        36,
+        26,
+        196,
+        218
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        1405,
+        538,
+        318,
+        304
+      ],
+      "nativeReferenceBodyBounds": [
+        67,
+        27,
+        333,
+        413
+      ],
+      "nativeReferenceColumn": 0,
+      "sourceDensityCalibration": {
+        "kind": "independent-native-correction-source",
+        "referenceSourcePhase": "victory",
+        "referenceColumn": 0,
+        "note": "The two-row native correction has a different pixel density from the seven-row original. Its own 413px standing reference maps to the same reviewed 220px Cyborg stature; the 304px kneel remains shorter."
+      },
+      "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-technique-rows-corrected.png",
+      "nativeSourceImageSha256": "a4b3d93e84d9cdb388e48b71a66dd0c5b85b9dff178d936c3ea1dcaa7dd3e367",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-technique-rows-corrected.png",
+      "nativeReferenceSourceImageSha256": "a4b3d93e84d9cdb388e48b71a66dd0c5b85b9dff178d936c3ea1dcaa7dd3e367",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 161.937046,
+      "correctedBodyHeight": 161.937036,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "cyborg_tt",
+      "phase": "super",
+      "renderScale": 1.223689,
+      "referencePhase": "super",
+      "referenceColumn": 3,
+      "referenceBodyHeight": 173,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 173,
+      "nativeComparableBodyHeight": 177,
+      "nativeReferenceBodyHeight": 177,
+      "referenceRenderScale": 1.2236885156505617,
+      "referenceRenderedBodyHeight": 211.698113,
+      "calibrationTargetBodyHeight": 211.698113,
+      "bodyForm": "cyborg-2003",
+      "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        37,
+        71,
+        172,
+        173
+      ],
+      "referenceBodyBounds": [
+        37,
+        71,
+        172,
+        173
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        923,
+        1008,
+        176,
+        177
+      ],
+      "nativeReferenceBodyBounds": [
+        923,
+        1008,
+        176,
+        177
+      ],
+      "nativeReferenceColumn": 3,
+      "sourceDensityCalibration": {
+        "kind": "nonuniform-source-row-density",
+        "referenceRecoveryPhase": "fatality",
+        "referenceRecoveryColumn": 3,
+        "referenceRecoveryNativeBodyHeight": 153,
+        "standingPhase": "intro",
+        "standingColumn": 0,
+        "standingNativeBodyHeight": 159,
+        "sourceRecoveryNativeBodyHeight": 177,
+        "note": "The original final row is denser than its earlier corresponding relaxed recovery stance. Its real same-row177px recovery ROI maps to the reviewed fatality recovery stature (220×153/159), rather than enlarging it into a taller character."
+      },
+      "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "nativeSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/cyborg_tt-original.png",
+      "nativeReferenceSourceImageSha256": "2f994591574626266a32840f6717438cef50900388022ae43d0d286b166f14a0",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 211.698113,
+      "correctedBodyHeight": 211.698197,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "beast_boy_tt",
+      "phase": "fatality",
+      "renderScale": 2.444444,
+      "referencePhase": "fatality",
+      "referenceColumn": 3,
+      "referenceBodyHeight": 90,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 90,
+      "nativeComparableBodyHeight": 154,
+      "nativeReferenceBodyHeight": 154,
+      "referenceRenderScale": 2.4444444444444446,
+      "referenceRenderedBodyHeight": 220,
+      "calibrationTargetBodyHeight": 220,
+      "bodyForm": "green-tyrannosaurus",
+      "reason": "Separate complete green T-Rex reference, not a human proportion comparison. The largest upright native T-Rex reference maps to an authored220px head-to-foot canvas scale; tail/body remain whole and all other native animal crouches retain their source height ratios. This does not certify canonical world size.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        32,
+        154,
+        187,
+        90
+      ],
+      "referenceBodyBounds": [
+        32,
+        154,
+        187,
+        90
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        1063,
+        583,
+        320,
+        154
+      ],
+      "nativeReferenceBodyBounds": [
+        1063,
+        583,
+        320,
+        154
+      ],
+      "nativeReferenceColumn": 3,
+      "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/beast_boy_tt-original.png",
+      "nativeSourceImageSha256": "9d5327f5afda58b64bedc34222bf819593dacdd0873dd9a397416ba4770ba35e",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/beast_boy_tt-original.png",
+      "nativeReferenceSourceImageSha256": "9d5327f5afda58b64bedc34222bf819593dacdd0873dd9a397416ba4770ba35e",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 220,
+      "correctedBodyHeight": 219.99996,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "beast_boy_tt",
+      "phase": "super",
+      "renderScale": 2.342193,
+      "referencePhase": "fatality",
+      "referenceColumn": 3,
+      "referenceBodyHeight": 90,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 86,
+      "nativeComparableBodyHeight": 141,
+      "nativeReferenceBodyHeight": 154,
+      "referenceRenderScale": 2.4444444444444446,
+      "referenceRenderedBodyHeight": 220,
+      "calibrationTargetBodyHeight": 220,
+      "bodyForm": "green-tyrannosaurus",
+      "reason": "Separate complete green T-Rex reference, not a human proportion comparison. The largest upright native T-Rex reference maps to an authored220px head-to-foot canvas scale; tail/body remain whole and all other native animal crouches retain their source height ratios. This does not certify canonical world size.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        30,
+        152,
+        194,
+        86
+      ],
+      "referenceBodyBounds": [
+        32,
+        154,
+        187,
+        90
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        1065,
+        971,
+        319,
+        141
+      ],
+      "nativeReferenceBodyBounds": [
+        1063,
+        583,
+        320,
+        154
+      ],
+      "nativeReferenceColumn": 3,
+      "nativeSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/beast_boy_tt-original.png",
+      "nativeSourceImageSha256": "9d5327f5afda58b64bedc34222bf819593dacdd0873dd9a397416ba4770ba35e",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave8-2026-10-20/part-a-sources/beast_boy_tt-original.png",
+      "nativeReferenceSourceImageSha256": "9d5327f5afda58b64bedc34222bf819593dacdd0873dd9a397416ba4770ba35e",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 201.428571,
+      "correctedBodyHeight": 201.428598,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    }
+  ]
+}

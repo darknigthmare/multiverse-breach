@@ -1,0 +1,930 @@
+{
+  "method": "explicit-visual-body-roi-with-native-posture-ratio-v1",
+  "date": "2026-10-20",
+  "source1to1Verified": false,
+  "modifiesBitmap": false,
+  "rendererAnchorBaseline": 244,
+  "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+  "measuredRows": [
+    {
+      "heroId": "sonic_hedgehog",
+      "phase": "intro",
+      "renderScale": 0.818966,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 232,
+      "nativeComparableBodyHeight": 200,
+      "nativeReferenceBodyHeight": 200,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        47,
+        12,
+        181,
+        232
+      ],
+      "referenceBodyBounds": [
+        47,
+        12,
+        181,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        41,
+        34,
+        156,
+        200
+      ],
+      "nativeReferenceBodyBounds": [
+        41,
+        34,
+        156,
+        200
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.000112,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sonic_hedgehog",
+      "phase": "outro",
+      "renderScale": 0.822727,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 209,
+      "nativeComparableBodyHeight": 181,
+      "nativeReferenceBodyHeight": 200,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        21,
+        35,
+        212,
+        209
+      ],
+      "referenceBodyBounds": [
+        47,
+        12,
+        181,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        683,
+        268,
+        184,
+        181
+      ],
+      "nativeReferenceBodyBounds": [
+        41,
+        34,
+        156,
+        200
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 171.95,
+      "correctedBodyHeight": 171.949943,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sonic_hedgehog",
+      "phase": "roundVictory",
+      "renderScale": 0.858065,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 217,
+      "nativeComparableBodyHeight": 196,
+      "nativeReferenceBodyHeight": 200,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        39,
+        23,
+        176,
+        217
+      ],
+      "referenceBodyBounds": [
+        47,
+        12,
+        181,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        696,
+        482,
+        159,
+        196
+      ],
+      "nativeReferenceBodyBounds": [
+        41,
+        34,
+        156,
+        200
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 186.2,
+      "correctedBodyHeight": 186.200105,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sonic_hedgehog",
+      "phase": "roundDefeat",
+      "renderScale": 0.970652,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 184,
+      "nativeComparableBodyHeight": 188,
+      "nativeReferenceBodyHeight": 200,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        44,
+        57,
+        173,
+        184
+      ],
+      "referenceBodyBounds": [
+        47,
+        12,
+        181,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        690,
+        710,
+        177,
+        188
+      ],
+      "nativeReferenceBodyBounds": [
+        41,
+        34,
+        156,
+        200
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 178.6,
+      "correctedBodyHeight": 178.599968,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sonic_hedgehog",
+      "phase": "fatality",
+      "renderScale": 0.944345,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 168,
+      "nativeComparableBodyHeight": 167,
+      "nativeReferenceBodyHeight": 200,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        34,
+        75,
+        185,
+        168
+      ],
+      "referenceBodyBounds": [
+        47,
+        12,
+        181,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        683,
+        937,
+        183,
+        167
+      ],
+      "nativeReferenceBodyBounds": [
+        41,
+        34,
+        156,
+        200
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 158.65,
+      "correctedBodyHeight": 158.64996,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sonic_hedgehog",
+      "phase": "victory",
+      "renderScale": 0.859524,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 231,
+      "nativeComparableBodyHeight": 209,
+      "nativeReferenceBodyHeight": 200,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        49,
+        12,
+        155,
+        231
+      ],
+      "referenceBodyBounds": [
+        47,
+        12,
+        181,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        705,
+        1130,
+        140,
+        209
+      ],
+      "nativeReferenceBodyBounds": [
+        41,
+        34,
+        156,
+        200
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 198.55,
+      "correctedBodyHeight": 198.550044,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sonic_hedgehog",
+      "phase": "defeat",
+      "renderScale": 0.896927,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 179,
+      "nativeComparableBodyHeight": 169,
+      "nativeReferenceBodyHeight": 200,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        40,
+        65,
+        180,
+        179
+      ],
+      "referenceBodyBounds": [
+        47,
+        12,
+        181,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        693,
+        1372,
+        170,
+        169
+      ],
+      "nativeReferenceBodyBounds": [
+        41,
+        34,
+        156,
+        200
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 160.55,
+      "correctedBodyHeight": 160.549933,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "sonic_hedgehog",
+      "phase": "super",
+      "renderScale": 0.945274,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 232,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 201,
+      "nativeComparableBodyHeight": 200,
+      "nativeReferenceBodyHeight": 200,
+      "referenceRenderScale": 0.8189655172413793,
+      "referenceRenderedBodyHeight": 190,
+      "calibrationTargetBodyHeight": 190,
+      "reason": "Calibrate the normal blue Adventure Sonic standing body to190px, matching the new45state melee sources. The reference source body is200px tall; preserve each pose’s natural source height, including bowed/crouched bodies and curled LightSpeedAttack balls. Do not inflate a rolled body to standing height or use the cyan speed-trail extent as body.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        50,
+        43,
+        159,
+        201
+      ],
+      "referenceBodyBounds": [
+        47,
+        12,
+        181,
+        232
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        698,
+        1560,
+        158,
+        200
+      ],
+      "nativeReferenceBodyBounds": [
+        41,
+        34,
+        156,
+        200
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/sonic_hedgehog-original.png",
+      "nativeReferenceSourceImageSha256": "094ee422612bbf5477a2bd73d8e97f37b812e794c2c56cb3e327a67c6e3d2f9b",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 190,
+      "correctedBodyHeight": 190.000074,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "miles_tails_prower",
+      "phase": "fatality",
+      "renderScale": 1.674007,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 136,
+      "nativeComparableBodyHeight": 195,
+      "nativeReferenceBodyHeight": 197,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 230,
+      "reason": "The full piloted Cyclone is the actor body, measured from Tails ear/tuft top to mechanical foot soles, with tails and cockpit included. Compare the initial braced pose without laser charge. Exclude the third-column laser beam; retain mechanical knee compression and the seated pilot rather than comparing the fox alone with the whole machine.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        66,
+        106,
+        128,
+        136
+      ],
+      "referenceBodyBounds": [
+        23,
+        14,
+        218,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        22,
+        887,
+        183,
+        195
+      ],
+      "nativeReferenceBodyBounds": [
+        21,
+        12,
+        187,
+        197
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+      "nativeSourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+      "nativeReferenceSourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 227.664975,
+      "correctedBodyHeight": 227.664952,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "miles_tails_prower",
+      "phase": "super",
+      "renderScale": 1.653266,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 0,
+      "normalizedBodyHeight": 137,
+      "nativeComparableBodyHeight": 194,
+      "nativeReferenceBodyHeight": 197,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 230,
+      "reason": "The full piloted Cyclone is the actor body, measured from Tails ear/tuft top to mechanical foot soles, with tails and cockpit included. Compare the initial braced pose without laser charge. Exclude the third-column laser beam; retain mechanical knee compression and the seated pilot rather than comparing the fox alone with the whole machine.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        69,
+        107,
+        128,
+        137
+      ],
+      "referenceBodyBounds": [
+        23,
+        14,
+        218,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        27,
+        1555,
+        181,
+        194
+      ],
+      "nativeReferenceBodyBounds": [
+        21,
+        12,
+        187,
+        197
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+      "nativeSourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/miles_tails_prower-original.png",
+      "nativeReferenceSourceImageSha256": "88f41369a5581df7d70b7cdd882b1bbb982b61f91c6efbe371446639b3cdca10",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 226.497462,
+      "correctedBodyHeight": 226.497442,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "knuckles_echidna",
+      "phase": "fatality",
+      "renderScale": 1.248067,
+      "referencePhase": "intro",
+      "referenceColumn": 3,
+      "referenceBodyHeight": 218,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 186,
+      "nativeComparableBodyHeight": 197,
+      "nativeReferenceBodyHeight": 185,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 218,
+      "reason": "Use head-quill-to-shoe body bounds in the ready/recovery guards, excluding lightning shafts and the raised glove above the head in the charge pose. Retain the real low crouch at super column0 and the compact body when knees bend; no weapon or beam sets body stature.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        62,
+        54,
+        141,
+        186
+      ],
+      "referenceBodyBounds": [
+        34,
+        26,
+        181,
+        218
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        706,
+        914,
+        149,
+        197
+      ],
+      "nativeReferenceBodyBounds": [
+        696,
+        34,
+        154,
+        185
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+      "nativeSourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+      "nativeReferenceSourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 232.140541,
+      "correctedBodyHeight": 232.140462,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "knuckles_echidna",
+      "phase": "super",
+      "renderScale": 1.379747,
+      "referencePhase": "intro",
+      "referenceColumn": 3,
+      "referenceBodyHeight": 218,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 158,
+      "nativeComparableBodyHeight": 185,
+      "nativeReferenceBodyHeight": 185,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 218,
+      "reason": "Use head-quill-to-shoe body bounds in the ready/recovery guards, excluding lightning shafts and the raised glove above the head in the charge pose. Retain the real low crouch at super column0 and the compact body when knees bend; no weapon or beam sets body stature.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        72,
+        77,
+        125,
+        158
+      ],
+      "referenceBodyBounds": [
+        34,
+        26,
+        181,
+        218
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        711,
+        1562,
+        146,
+        185
+      ],
+      "nativeReferenceBodyBounds": [
+        696,
+        34,
+        154,
+        185
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+      "nativeSourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/knuckles_echidna-original.png",
+      "nativeReferenceSourceImageSha256": "22bcb196adebc4aa73a2bd10b3b58fd755f11d5e5706122d7ab30347aad0227b",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 218,
+      "correctedBodyHeight": 218.000026,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "jotaro_kujo",
+      "phase": "fatality",
+      "renderScale": 1.26166,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 179,
+      "nativeComparableBodyHeight": 217,
+      "nativeReferenceBodyHeight": 221,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 230,
+      "reason": "Measure Jotaro alone, cap/hair top to black shoe soles, excluding the taller StarPlatinum head, purple Stand limbs, scarf and fist trails. The Stand stays complete and scales together with Jotaro; its larger silhouette does not shrink the human. Native human stance differences217/221/227px remain intact.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        43,
+        63,
+        111,
+        179
+      ],
+      "referenceBodyBounds": [
+        67,
+        12,
+        174,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        673,
+        788,
+        135,
+        217
+      ],
+      "nativeReferenceBodyBounds": [
+        52,
+        17,
+        167,
+        221
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+      "nativeSourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+      "nativeReferenceSourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 225.837104,
+      "correctedBodyHeight": 225.83714,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "jotaro_kujo",
+      "phase": "super",
+      "renderScale": 1.217754,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 230,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 194,
+      "nativeComparableBodyHeight": 227,
+      "nativeReferenceBodyHeight": 221,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 230,
+      "reason": "Measure Jotaro alone, cap/hair top to black shoe soles, excluding the taller StarPlatinum head, purple Stand limbs, scarf and fist trails. The Stand stays complete and scales together with Jotaro; its larger silhouette does not shrink the human. Native human stance differences217/221/227px remain intact.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        45,
+        50,
+        119,
+        194
+      ],
+      "referenceBodyBounds": [
+        67,
+        12,
+        174,
+        230
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        679,
+        1515,
+        139,
+        227
+      ],
+      "nativeReferenceBodyBounds": [
+        52,
+        17,
+        167,
+        221
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+      "nativeSourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/jotaro_kujo-original.png",
+      "nativeReferenceSourceImageSha256": "f23a4ec8d57706043ba6302c99b928657227777d4cfcfaf90447338d18b48378",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 236.244344,
+      "correctedBodyHeight": 236.244276,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "giorno_giovanna",
+      "phase": "fatality",
+      "renderScale": 1.217609,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 189,
+      "nativeComparableBodyHeight": 204,
+      "nativeReferenceBodyHeight": 203,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 229,
+      "reason": "Measure Giorno alone from blond forehead curls to purple shoe soles, excluding GoldExperience helmet, golden limbs and fist echoes. Both full bodies remain visible and are drawn together; no Requiem or causal effect is inferred. Preserve the small native human pose-height differences203/204/208px.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        49,
+        50,
+        117,
+        189
+      ],
+      "referenceBodyBounds": [
+        75,
+        15,
+        130,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        691,
+        912,
+        126,
+        204
+      ],
+      "nativeReferenceBodyBounds": [
+        64,
+        23,
+        115,
+        203
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+      "nativeSourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+      "nativeReferenceSourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 230.128079,
+      "correctedBodyHeight": 230.128101,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    },
+    {
+      "heroId": "giorno_giovanna",
+      "phase": "super",
+      "renderScale": 1.179097,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "referenceBodyHeight": 229,
+      "sourceComparableColumn": 3,
+      "normalizedBodyHeight": 199,
+      "nativeComparableBodyHeight": 208,
+      "nativeReferenceBodyHeight": 203,
+      "referenceRenderScale": 1,
+      "referenceRenderedBodyHeight": 229,
+      "reason": "Measure Giorno alone from blond forehead curls to purple shoe soles, excluding GoldExperience helmet, golden limbs and fist echoes. Both full bodies remain visible and are drawn together; no Requiem or causal effect is inferred. Preserve the small native human pose-height differences203/204/208px.",
+      "measurementKind": "visual-body-roi",
+      "bodyBounds": [
+        48,
+        45,
+        111,
+        199
+      ],
+      "referenceBodyBounds": [
+        75,
+        15,
+        130,
+        229
+      ],
+      "excludesWeaponEffects": true,
+      "nativeBodyBounds": [
+        693,
+        1555,
+        116,
+        208
+      ],
+      "nativeReferenceBodyBounds": [
+        64,
+        23,
+        115,
+        203
+      ],
+      "nativeSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+      "nativeSourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+      "nativeReferenceSourceImage": "docs/combat-fidelity-wave6-2026-10-20/part-a-sources/giorno_giovanna-original.png",
+      "nativeReferenceSourceImageSha256": "590f8f50e5d505400db6259e4554c2e9017b12e9c93e6ccc259f892d15164945",
+      "coordinateSpaces": {
+        "bodyBounds": "local normalized256px cell",
+        "nativeBodyBounds": "absolute archived native atlas pixels"
+      },
+      "ratioFormula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight) * (referenceRenderScale ?? 1)",
+      "expectedBodyHeight": 234.640394,
+      "correctedBodyHeight": 234.640303,
+      "posturePreserved": true,
+      "visualRoiApproximation": true,
+      "scaleAroundBaseline": 244,
+      "changesBitmap": false,
+      "source1to1Verified": false
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-20",
+  "productionFilesChangedByQa": false,
+  "source1to1Verified": false,
+  "tests": {
+    "command": "node --test scripts/summonAnimationWave8.test.mjs scripts/summonAnimationWave7.test.mjs scripts/summonAnimationWave6.test.mjs",
+    "exitCode": 0,
+    "testsPassed": 25,
+    "testsFailed": 0,
+    "newWave8Tests": 10,
+    "historicalWave6Wave7Tests": 15
+  },
+  "builder": {
+    "command": "node scripts/buildSummonAnimationsWave8.mjs --check",
+    "exitCode": 0,
+    "rosterPerformers": 4,
+    "poses": 64,
+    "reconstructedExactly": true
+  },
+  "lint": {
+    "exitCode": 0,
+    "warnings": 0
+  },
+  "pixels": {
+    "uniqueSourceCells": 64,
+    "cellWidth": 512,
+    "cellHeight": 256,
+    "bodyCalibrationHeight": 190,
+    "baseline": 244,
+    "commonScalePerPartnerAcrossAllPhases": true,
+    "transparentMargins": 10,
+    "distinctRgbaHashes": true
+  },
+  "browser": {
+    "path": "summon-wave8-result.json",
+    "actualGameCanvasFlows": 8,
+    "bothSidesThroughGameCanvasControls": true,
+    "playerCells": 64,
+    "enemyCells": 64,
+    "pixelMirrorChecksExecuted": 128,
+    "oneImpactEach": true,
+    "pageErrors": []
+  },
+  "historical": {
+    "nativeEntitiesPreserved": 7,
+    "legacySheetsPreserved": 28,
+    "oldChoreographiesPreserved": 28,
+    "sampledGeometriesPreserved": 280
+  },
+  "artifactHashes": {
+    "scripts/summonAnimationWave8.test.mjs": "bdf3e522fb1336840fe35f097e4db2851da8cba7127f65dc85540b2a037806f6",
+    "docs/combat-fidelity-wave8-2026-10-20/browser/summon-wave8-browser.mjs": "3ee4901b6e80434dbfef0ede8ccc2e5111d86214a66aaf1c3d8e9ef1610e7c69",
+    "src/game/combat/summonAnimationsWave8.generated.json": "ef39486ae998c21c173cc643f6c55fee15f0cc54a30a4cd90a587d1e35b7839d"
+  },
+  "globalBuild": "owned-by-root-not-asserted"
+}

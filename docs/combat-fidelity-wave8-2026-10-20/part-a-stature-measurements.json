@@ -1,0 +1,246 @@
+{
+  "cyborg_tt": {
+    "referencePhase": "intro",
+    "referenceColumn": 0,
+    "referenceBodyBounds": [
+      36,
+      26,
+      196,
+      218
+    ],
+    "nativeReferenceRowBodyBounds": [
+      52,
+      10,
+      143,
+      159
+    ],
+    "calibrationTargetBodyHeight": 220,
+    "bodyForm": "cyborg-2003",
+    "reason": "Visually reviewed head-to-sole body ROIs exclude the arm cannon and local sonic rings. The 220px standing body is an authored canvas calibration, not official scale. Native crouches and kneels remain lower through the native body-height ratio.",
+    "intro": {
+      "column": 0,
+      "bodyBounds": [
+        36,
+        26,
+        196,
+        218
+      ],
+      "nativeRowBodyBounds": [
+        52,
+        10,
+        143,
+        159
+      ]
+    },
+    "outro": {
+      "column": 0,
+      "bodyBounds": [
+        38,
+        15,
+        169,
+        216
+      ],
+      "nativeRowBodyBounds": [
+        52,
+        8,
+        125,
+        160
+      ]
+    },
+    "roundVictory": {
+      "column": 3,
+      "bodyBounds": [
+        23,
+        21,
+        174,
+        221
+      ],
+      "nativeRowBodyBounds": [
+        754,
+        15,
+        128,
+        163
+      ]
+    },
+    "roundDefeat": {
+      "column": 1,
+      "bodyBounds": [
+        27,
+        24,
+        187,
+        213
+      ],
+      "nativeRowBodyBounds": [
+        282,
+        2,
+        137,
+        156
+      ]
+    },
+    "fatality": {
+      "column": 3,
+      "bodyBounds": [
+        47,
+        64,
+        157,
+        178
+      ],
+      "nativeRowBodyBounds": [
+        762,
+        1,
+        135,
+        153
+      ]
+    },
+    "victory": {
+      "column": 0,
+      "bodyBounds": [
+        41,
+        13,
+        187,
+        231
+      ],
+      "nativeRowBodyBounds": [
+        67,
+        27,
+        333,
+        413
+      ],
+      "nativeReferencePhase": "victory",
+      "nativeReferenceColumn": 0,
+      "nativeReferenceRowBodyBounds": [
+        67,
+        27,
+        333,
+        413
+      ],
+      "sourceDensityCalibration": {
+        "kind": "independent-native-correction-source",
+        "referenceSourcePhase": "victory",
+        "referenceColumn": 0,
+        "note": "The two-row native correction has a different pixel density from the seven-row original. Its own 413px standing reference maps to the same reviewed 220px Cyborg stature; the 304px kneel remains shorter."
+      }
+    },
+    "defeat": {
+      "column": 3,
+      "bodyBounds": [
+        34,
+        49,
+        202,
+        193
+      ],
+      "nativeRowBodyBounds": [
+        1405,
+        69,
+        318,
+        304
+      ],
+      "nativeReferencePhase": "victory",
+      "nativeReferenceColumn": 0,
+      "nativeReferenceRowBodyBounds": [
+        67,
+        27,
+        333,
+        413
+      ],
+      "sourceDensityCalibration": {
+        "kind": "independent-native-correction-source",
+        "referenceSourcePhase": "victory",
+        "referenceColumn": 0,
+        "note": "The two-row native correction has a different pixel density from the seven-row original. Its own 413px standing reference maps to the same reviewed 220px Cyborg stature; the 304px kneel remains shorter."
+      }
+    },
+    "super": {
+      "column": 3,
+      "bodyBounds": [
+        37,
+        71,
+        172,
+        173
+      ],
+      "nativeRowBodyBounds": [
+        738,
+        10,
+        176,
+        177
+      ],
+      "referencePhase": "super",
+      "referenceColumn": 3,
+      "referenceBodyBounds": [
+        37,
+        71,
+        172,
+        173
+      ],
+      "nativeReferencePhase": "super",
+      "nativeReferenceColumn": 3,
+      "nativeReferenceRowBodyBounds": [
+        738,
+        10,
+        176,
+        177
+      ],
+      "calibrationTargetBodyHeight": 211.69811320754718,
+      "sourceDensityCalibration": {
+        "kind": "nonuniform-source-row-density",
+        "referenceRecoveryPhase": "fatality",
+        "referenceRecoveryColumn": 3,
+        "referenceRecoveryNativeBodyHeight": 153,
+        "standingPhase": "intro",
+        "standingColumn": 0,
+        "standingNativeBodyHeight": 159,
+        "sourceRecoveryNativeBodyHeight": 177,
+        "note": "The original final row is denser than its earlier corresponding relaxed recovery stance. Its real same-row177px recovery ROI maps to the reviewed fatality recovery stature (220×153/159), rather than enlarging it into a taller character."
+      }
+    }
+  },
+  "beast_boy_tt": {
+    "referencePhase": "fatality",
+    "referenceColumn": 3,
+    "referenceBodyBounds": [
+      32,
+      154,
+      187,
+      90
+    ],
+    "nativeReferenceRowBodyBounds": [
+      1063,
+      4,
+      320,
+      154
+    ],
+    "calibrationTargetBodyHeight": 220,
+    "bodyForm": "green-tyrannosaurus",
+    "reason": "Separate complete green T-Rex reference, not a human proportion comparison. The largest upright native T-Rex reference maps to an authored220px head-to-foot canvas scale; tail/body remain whole and all other native animal crouches retain their source height ratios. This does not certify canonical world size.",
+    "fatality": {
+      "column": 3,
+      "bodyBounds": [
+        32,
+        154,
+        187,
+        90
+      ],
+      "nativeRowBodyBounds": [
+        1063,
+        4,
+        320,
+        154
+      ]
+    },
+    "super": {
+      "column": 3,
+      "bodyBounds": [
+        30,
+        152,
+        194,
+        86
+      ],
+      "nativeRowBodyBounds": [
+        1065,
+        1,
+        319,
+        141
+      ]
+    }
+  }
+}

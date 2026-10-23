@@ -1,0 +1,949 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "heroId": "may_gg",
+      "universe": "Guilty Gear",
+      "sourceWork": "Guilty Gear Xrd REV2 (2017)",
+      "sourceReference": "https://guiltygear.fandom.com/wiki/Great_Yamada_Attack and https://guiltygear.fandom.com/wiki/May/Commands indexed search2026-10-20: XrdREV2 Overdrive, giant pink whale. Direct article refused; exact indexed text archived part-c-source-access/search-initial.txt. No official-frame certification.",
+      "ability": "Great Yamada Attack",
+      "version": "May in GuiltyGearXrdREV2: brown hair/orange skull pirate cap/orange sleeveless tunic and boots, steel ship anchor; GreatYamadaAttack calls pink whale, base attacks use anchor. Super row only calls/water because separate runtimeYamada body is authoritative.",
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/may-gg.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-references/may_gg.png",
+      "reviewed": true,
+      "sources": [
+        {
+          "key": "original",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+          "originalGeneratedPath": "/workspace/generated_images/exec-16070b09-0765-421d-abc6-9868be19dfb4.png",
+          "nativeRowCount": 8,
+          "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-c-prompts/may_gg.txt",
+          "referenceImages": [
+            "docs/combat-fidelity-wave7-2026-10-20/part-c-references/may_gg.png"
+          ],
+          "accepted": true,
+          "operation": "native-imagegen",
+          "sourceRowsUsed": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            6
+          ],
+          "supersededRows": [
+            4,
+            7
+          ],
+          "reason": "Initial whale blue-gray; secondary-source indexed description says pink. Preserve six correct native phase rows unchanged."
+        },
+        {
+          "key": "pink-correction",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-pink-correction.png",
+          "originalGeneratedPath": "/workspace/generated_images/exec-b913aeab-4b24-4c8f-a19e-21aabe71e5ae.png",
+          "nativeRowCount": 2,
+          "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-c-prompts/may_gg-correction.txt",
+          "referenceImages": [
+            "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+            "docs/combat-fidelity-wave7-2026-10-20/part-c-references/may_gg.png"
+          ],
+          "accepted": true,
+          "operation": "native-imagegen-correction",
+          "sourceRowsUsed": [
+            0
+          ],
+          "unusedSourceRows": [
+            1
+          ],
+          "reason": "Pink whale final/fatality correction accepted. Its super-row whale is not used because runtime separately rendersYamada, avoiding duplicate body."
+        },
+        {
+          "key": "call-correction",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-call-correction.png",
+          "originalGeneratedPath": "/workspace/generated_images/exec-52a85ad0-baf7-479a-bea0-9ff0ada23a22.png",
+          "nativeRowCount": 1,
+          "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-c-prompts/may_gg-super-correction.txt",
+          "referenceImages": [
+            "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png"
+          ],
+          "accepted": true,
+          "operation": "native-imagegen-correction",
+          "sourceRowsUsed": [
+            0
+          ],
+          "reason": "May-only super call without animal body; separate runtime entity suppliesYamada."
+        }
+      ],
+      "rows": [
+        {
+          "source": "original",
+          "sourceRow": 0
+        },
+        {
+          "source": "original",
+          "sourceRow": 1
+        },
+        {
+          "source": "original",
+          "sourceRow": 2
+        },
+        {
+          "source": "original",
+          "sourceRow": 3
+        },
+        {
+          "source": "pink-correction",
+          "sourceRow": 0
+        },
+        {
+          "source": "original",
+          "sourceRow": 5
+        },
+        {
+          "source": "original",
+          "sourceRow": 6
+        },
+        {
+          "source": "call-correction",
+          "sourceRow": 0
+        }
+      ],
+      "reviewNotes": "May in GuiltyGearXrdREV2: brown hair/orange skull pirate cap/orange sleeveless tunic and boots, steel ship anchor; GreatYamadaAttack calls pink whale, base attacks use anchor. Super row only calls/water because separate runtimeYamada body is authoritative. New native pixel art and compact authored sequence; not official game frames or certified1:1 animation.",
+      "statureByRow": {
+        "fatality": {
+          "renderScale": 1.811602173482632,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 225,
+            "sourceComparableColumn": 0,
+            "normalizedBodyHeight": 131,
+            "bodyBounds": [
+              70,
+              110,
+              103,
+              131
+            ],
+            "referenceBodyBounds": [
+              54,
+              17,
+              160,
+              225
+            ],
+            "nativeComparableBodyHeight": 366,
+            "nativeReferenceBodyHeight": 347,
+            "nativeBodyBounds": [
+              61,
+              87,
+              289,
+              366
+            ],
+            "nativeReferenceBodyBounds": [
+              1474,
+              105,
+              253,
+              347
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-pink-correction.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-pink-correction.png",
+            "nativeComparableSourceSha256": "cf828f3b1646d9652552460410870acb80767fb17b33f43ffdef59b4628e77e9",
+            "nativeReferenceSourceSha256": "cf828f3b1646d9652552460410870acb80767fb17b33f43ffdef59b4628e77e9",
+            "nativeComparableSourceRow": 0,
+            "nativeReferenceSourceRow": 0,
+            "nativeReferenceColumn": 3,
+            "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+            "displayReferenceSourceDiffers": true,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in column3 of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+            "poseBridge": {
+              "nativeReferenceLabel": "fatality",
+              "nativeReferenceColumn": 3,
+              "displayReferenceLabel": "intro",
+              "displayReferenceColumn": 0,
+              "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+              "nativeReferenceNormalizedBodyBounds": [
+                100,
+                116,
+                91,
+                124
+              ]
+            }
+          }
+        },
+        "super": {
+          "renderScale": 1.2124525055559539,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 225,
+            "sourceComparableColumn": 0,
+            "normalizedBodyHeight": 174,
+            "bodyBounds": [
+              50,
+              69,
+              165,
+              174
+            ],
+            "referenceBodyBounds": [
+              54,
+              17,
+              160,
+              225
+            ],
+            "nativeComparableBodyHeight": 451,
+            "nativeReferenceBodyHeight": 481,
+            "nativeBodyBounds": [
+              68,
+              241,
+              428,
+              451
+            ],
+            "nativeReferenceBodyBounds": [
+              1755,
+              210,
+              363,
+              481
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-call-correction.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-call-correction.png",
+            "nativeComparableSourceSha256": "3ee0fff834e0d0717b0e5490d30af22cb1dc0c22d8b96b34117a7f6c98895331",
+            "nativeReferenceSourceSha256": "3ee0fff834e0d0717b0e5490d30af22cb1dc0c22d8b96b34117a7f6c98895331",
+            "nativeComparableSourceRow": 0,
+            "nativeReferenceSourceRow": 0,
+            "nativeReferenceColumn": 3,
+            "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/may_gg-original.png",
+            "displayReferenceSourceDiffers": true,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in column3 of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+            "poseBridge": {
+              "nativeReferenceLabel": "super",
+              "nativeReferenceColumn": 3,
+              "displayReferenceLabel": "intro",
+              "displayReferenceColumn": 0,
+              "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+              "nativeReferenceNormalizedBodyBounds": [
+                72,
+                57,
+                140,
+                186
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "heroId": "dizzy_gg",
+      "universe": "Guilty Gear",
+      "sourceWork": "Guilty Gear Xrd REV2 (2017)",
+      "sourceReference": "https://guiltygear.fandom.com/wiki/Gamma_Ray and https://guiltygear.wiki.gg/wiki/Dizzy indexed2026-10-20: Xrd guardians red/blue individual beams then joint blue-purple ray, separate EmotionalGammaRayIK. Indexed summaries archived, direct pages refused. Guardian/body illustrations adapted, not verified1:1.",
+      "ability": "Gamma Ray de Dizzy",
+      "version": "Dizzy in GuiltyGearXrdREV2: blue hair/yellow ribbons, long white shirt and navy outfit, blue tail; Necro dark reaper/right wing and Undine pale water-spirit/left wing are sentient characters attached to her back, not Strive minimalist teeth-only guardians.",
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/dizzy-gg.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-references/dizzy_gg.png",
+      "reviewed": true,
+      "sources": [
+        {
+          "key": "original",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png",
+          "originalGeneratedPath": "/workspace/generated_images/exec-9fc2036b-1e3a-4ad8-b337-5c7c22e5f2b8.png",
+          "nativeRowCount": 8,
+          "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-c-prompts/dizzy_gg.txt",
+          "referenceImages": [
+            "docs/combat-fidelity-wave7-2026-10-20/part-c-references/dizzy_gg.png"
+          ],
+          "accepted": true,
+          "operation": "native-imagegen",
+          "sourceRowsUsed": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            6
+          ],
+          "supersededRows": [
+            4,
+            7
+          ],
+          "reason": "Initial red/blue-purple beams cross opaque segmentation seams in two action rows. Native8pose strip replaces only those rows; no raster trimming of beam/anatomy."
+        },
+        {
+          "key": "beam-correction",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-beam-correction.png",
+          "originalGeneratedPath": "/workspace/generated_images/exec-31de17f6-3c03-4287-994c-fef586f23190.png",
+          "nativeRowCount": 2,
+          "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-c-prompts/dizzy_gg-correction.txt",
+          "referenceImages": [
+            "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png"
+          ],
+          "accepted": true,
+          "operation": "native-imagegen-correction",
+          "sourceRowsUsed": [
+            0,
+            1
+          ],
+          "reason": "Two new compact self-contained native GammaRay action rows with large transparent gaps."
+        }
+      ],
+      "rows": [
+        {
+          "source": "original",
+          "sourceRow": 0
+        },
+        {
+          "source": "original",
+          "sourceRow": 1
+        },
+        {
+          "source": "original",
+          "sourceRow": 2
+        },
+        {
+          "source": "original",
+          "sourceRow": 3
+        },
+        {
+          "source": "beam-correction",
+          "sourceRow": 0
+        },
+        {
+          "source": "original",
+          "sourceRow": 5
+        },
+        {
+          "source": "original",
+          "sourceRow": 6
+        },
+        {
+          "source": "beam-correction",
+          "sourceRow": 1
+        }
+      ],
+      "reviewNotes": "Dizzy in GuiltyGearXrdREV2: blue hair/yellow ribbons, long white shirt and navy outfit, blue tail; Necro dark reaper/right wing and Undine pale water-spirit/left wing are sentient characters attached to her back, not Strive minimalist teeth-only guardians. New native pixel art and compact authored sequence; not official game frames or certified1:1 animation.",
+      "statureByRow": {
+        "fatality": {
+          "renderScale": 1.0743243243243243,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 159,
+            "sourceComparableColumn": 0,
+            "normalizedBodyHeight": 148,
+            "bodyBounds": [
+              108,
+              93,
+              57,
+              148
+            ],
+            "referenceBodyBounds": [
+              105,
+              80,
+              59,
+              159
+            ],
+            "nativeComparableBodyHeight": 312,
+            "nativeReferenceBodyHeight": 312,
+            "nativeBodyBounds": [
+              178,
+              127,
+              120,
+              312
+            ],
+            "nativeReferenceBodyBounds": [
+              1518,
+              131,
+              139,
+              312
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-beam-correction.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-beam-correction.png",
+            "nativeComparableSourceSha256": "e3251f304e1996d952197a8ceaacc847829e0e59b3d3a6bb8085e52f20f3d670",
+            "nativeReferenceSourceSha256": "e3251f304e1996d952197a8ceaacc847829e0e59b3d3a6bb8085e52f20f3d670",
+            "nativeComparableSourceRow": 0,
+            "nativeReferenceSourceRow": 0,
+            "nativeReferenceColumn": 3,
+            "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png",
+            "displayReferenceSourceDiffers": true,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in column3 of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+            "poseBridge": {
+              "nativeReferenceLabel": "fatality",
+              "nativeReferenceColumn": 3,
+              "displayReferenceLabel": "intro",
+              "displayReferenceColumn": 0,
+              "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+              "nativeReferenceNormalizedBodyBounds": [
+                112,
+                95,
+                66,
+                148
+              ]
+            }
+          }
+        },
+        "super": {
+          "renderScale": 1.1060430970022432,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 159,
+            "sourceComparableColumn": 0,
+            "normalizedBodyHeight": 141,
+            "bodyBounds": [
+              108,
+              100,
+              67,
+              141
+            ],
+            "referenceBodyBounds": [
+              105,
+              80,
+              59,
+              159
+            ],
+            "nativeComparableBodyHeight": 307,
+            "nativeReferenceBodyHeight": 313,
+            "nativeBodyBounds": [
+              177,
+              558,
+              146,
+              307
+            ],
+            "nativeReferenceBodyBounds": [
+              1517,
+              556,
+              143,
+              313
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-beam-correction.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-beam-correction.png",
+            "nativeComparableSourceSha256": "e3251f304e1996d952197a8ceaacc847829e0e59b3d3a6bb8085e52f20f3d670",
+            "nativeReferenceSourceSha256": "e3251f304e1996d952197a8ceaacc847829e0e59b3d3a6bb8085e52f20f3d670",
+            "nativeComparableSourceRow": 1,
+            "nativeReferenceSourceRow": 1,
+            "nativeReferenceColumn": 3,
+            "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/dizzy_gg-original.png",
+            "displayReferenceSourceDiffers": true,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in column3 of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+            "poseBridge": {
+              "nativeReferenceLabel": "super",
+              "nativeReferenceColumn": 3,
+              "displayReferenceLabel": "intro",
+              "displayReferenceColumn": 0,
+              "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+              "nativeReferenceNormalizedBodyBounds": [
+                112,
+                100,
+                66,
+                144
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "heroId": "millia_gg",
+      "universe": "Guilty Gear",
+      "sourceWork": "Guilty Gear Xrd REV2 (2017)",
+      "sourceReference": "https://guiltygear.wiki.gg/wiki/Millia_Rage and https://guiltygear.fandom.com/wiki/Winger indexed2026-10-20 distinguish Xrd yellow blouse/pillbox/leggings/peach shoes from Strive trenchcoat and describe hair-wings rising/spinning/nosedive. Search versions/details archived; no source-game frames.",
+      "ability": "Winger",
+      "version": "MilliaRage in GuiltyGearXrdREV2: yellow blouse and pillbox hat, black leggings, pale peach shoes, golden prehensile weapon hair; Winger forms hair-wings and a rising/descending attack. No Strive trenchcoat/shawl/furhat version.",
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/millia-gg.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-references/millia_gg.png",
+      "reviewed": true,
+      "sources": [
+        {
+          "key": "original",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+          "originalGeneratedPath": "/workspace/generated_images/exec-50efb42a-db00-4dfc-9be0-6cf03b22c0f0.png",
+          "nativeRowCount": 8,
+          "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-c-prompts/millia_gg.txt",
+          "referenceImages": [
+            "docs/combat-fidelity-wave7-2026-10-20/part-c-references/millia_gg.png"
+          ],
+          "accepted": true,
+          "operation": "native-imagegen"
+        }
+      ],
+      "rows": [
+        {
+          "source": "original",
+          "sourceRow": 0
+        },
+        {
+          "source": "original",
+          "sourceRow": 1
+        },
+        {
+          "source": "original",
+          "sourceRow": 2
+        },
+        {
+          "source": "original",
+          "sourceRow": 3
+        },
+        {
+          "source": "original",
+          "sourceRow": 4
+        },
+        {
+          "source": "original",
+          "sourceRow": 5
+        },
+        {
+          "source": "original",
+          "sourceRow": 6
+        },
+        {
+          "source": "original",
+          "sourceRow": 7
+        }
+      ],
+      "reviewNotes": "MilliaRage in GuiltyGearXrdREV2: yellow blouse and pillbox hat, black leggings, pale peach shoes, golden prehensile weapon hair; Winger forms hair-wings and a rising/descending attack. No Strive trenchcoat/shawl/furhat version. New native pixel art and compact authored sequence; not official game frames or certified1:1 animation.",
+      "statureByRow": {
+        "fatality": {
+          "renderScale": 1.3912005028284098,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 217,
+            "sourceComparableColumn": 0,
+            "normalizedBodyHeight": 74,
+            "bodyBounds": [
+              75,
+              163,
+              103,
+              74
+            ],
+            "referenceBodyBounds": [
+              70,
+              21,
+              150,
+              217
+            ],
+            "nativeComparableBodyHeight": 102,
+            "nativeReferenceBodyHeight": 215,
+            "nativeBodyBounds": [
+              37,
+              999,
+              142,
+              102
+            ],
+            "nativeReferenceBodyBounds": [
+              53,
+              9,
+              149,
+              215
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "nativeComparableSourceSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+            "nativeReferenceSourceSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+            "nativeComparableSourceRow": 4,
+            "nativeReferenceSourceRow": 0,
+            "nativeReferenceColumn": 0,
+            "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "displayReferenceSourceDiffers": false,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height."
+          }
+        },
+        "super": {
+          "renderScale": 1.428752642706131,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 217,
+            "sourceComparableColumn": 0,
+            "normalizedBodyHeight": 77,
+            "bodyBounds": [
+              80,
+              163,
+              110,
+              77
+            ],
+            "referenceBodyBounds": [
+              70,
+              21,
+              150,
+              217
+            ],
+            "nativeComparableBodyHeight": 109,
+            "nativeReferenceBodyHeight": 215,
+            "nativeBodyBounds": [
+              43,
+              1652,
+              156,
+              109
+            ],
+            "nativeReferenceBodyBounds": [
+              53,
+              9,
+              149,
+              215
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "nativeComparableSourceSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+            "nativeReferenceSourceSha256": "2427750463aee10891ad74efbfedf3fd597031d8c95f27c6c878c2dc9cd1c71c",
+            "nativeComparableSourceRow": 7,
+            "nativeReferenceSourceRow": 0,
+            "nativeReferenceColumn": 0,
+            "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/millia_gg-original.png",
+            "displayReferenceSourceDiffers": false,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "axl_gg",
+      "universe": "Guilty Gear",
+      "sourceWork": "Guilty Gear Xrd REV2 (2017)",
+      "sourceReference": "https://guiltygear.fandom.com/wiki/Axl_Low/Commands and https://strategywiki.org/wiki/Guilty_Gear_Xrd_Rev_2/Moves indexed2026-10-20 confirm SickleStorm as Overdrive and AxlBomber ordinary special. Flame chain choreography is adapted from known move descriptions, no exact timing claim.",
+      "ability": "Sickle Storm",
+      "version": "AxlLow in GuiltyGearXrdREV2: long blond hair, red saltire BANDANA, sleeveless blue longcoat/dark trousers, two curved sickles linked by actual chain; SickleStorm Overdrive physical flame-edged chain/sickle choreography, no firearm or time-stop mechanic.",
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/axl-gg.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-references/axl_gg.png",
+      "reviewed": true,
+      "sources": [
+        {
+          "key": "original",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+          "originalGeneratedPath": "/workspace/generated_images/exec-030ab094-9bcf-4ca9-a0f1-4043710c93c5.png",
+          "nativeRowCount": 8,
+          "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-c-prompts/axl_gg.txt",
+          "referenceImages": [
+            "docs/combat-fidelity-wave7-2026-10-20/part-c-references/axl_gg.png"
+          ],
+          "accepted": true,
+          "operation": "native-imagegen"
+        }
+      ],
+      "rows": [
+        {
+          "source": "original",
+          "sourceRow": 0
+        },
+        {
+          "source": "original",
+          "sourceRow": 1
+        },
+        {
+          "source": "original",
+          "sourceRow": 2
+        },
+        {
+          "source": "original",
+          "sourceRow": 3
+        },
+        {
+          "source": "original",
+          "sourceRow": 4
+        },
+        {
+          "source": "original",
+          "sourceRow": 5
+        },
+        {
+          "source": "original",
+          "sourceRow": 6
+        },
+        {
+          "source": "original",
+          "sourceRow": 7
+        }
+      ],
+      "reviewNotes": "AxlLow in GuiltyGearXrdREV2: long blond hair, red saltire BANDANA, sleeveless blue longcoat/dark trousers, two curved sickles linked by actual chain; SickleStorm Overdrive physical flame-edged chain/sickle choreography, no firearm or time-stop mechanic. New native pixel art and compact authored sequence; not official game frames or certified1:1 animation.",
+      "statureByRow": {
+        "fatality": {
+          "renderScale": 1.1164529914529915,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 220,
+            "sourceComparableColumn": 0,
+            "normalizedBodyHeight": 156,
+            "bodyBounds": [
+              50,
+              82,
+              173,
+              156
+            ],
+            "referenceBodyBounds": [
+              58,
+              18,
+              147,
+              220
+            ],
+            "nativeComparableBodyHeight": 171,
+            "nativeReferenceBodyHeight": 216,
+            "nativeBodyBounds": [
+              26,
+              951,
+              189,
+              171
+            ],
+            "nativeReferenceBodyBounds": [
+              42,
+              13,
+              145,
+              216
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "nativeComparableSourceSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+            "nativeReferenceSourceSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+            "nativeComparableSourceRow": 4,
+            "nativeReferenceSourceRow": 0,
+            "nativeReferenceColumn": 0,
+            "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "displayReferenceSourceDiffers": false,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height."
+          }
+        },
+        "super": {
+          "renderScale": 1.1898580823814469,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 220,
+            "sourceComparableColumn": 0,
+            "normalizedBodyHeight": 107,
+            "bodyBounds": [
+              45,
+              134,
+              180,
+              107
+            ],
+            "referenceBodyBounds": [
+              58,
+              18,
+              147,
+              220
+            ],
+            "nativeComparableBodyHeight": 125,
+            "nativeReferenceBodyHeight": 216,
+            "nativeBodyBounds": [
+              14,
+              1636,
+              211,
+              125
+            ],
+            "nativeReferenceBodyBounds": [
+              42,
+              13,
+              145,
+              216
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "nativeComparableSourceSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+            "nativeReferenceSourceSha256": "a5e3aa5af22256e464a56355780352bc2673dba804e7441453885bfd1b8c15b7",
+            "nativeComparableSourceRow": 7,
+            "nativeReferenceSourceRow": 0,
+            "nativeReferenceColumn": 0,
+            "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/axl_gg-original.png",
+            "displayReferenceSourceDiffers": false,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "baiken_gg",
+      "universe": "Guilty Gear",
+      "sourceWork": "Guilty Gear Xrd REV2 (2017)",
+      "sourceReference": "https://guiltygear.fandom.com/wiki/Baiken and https://guiltygear.fandom.com/wiki/Baiken/Commands indexed2026-10-20: right arm absent, blind left eye, Xrd goggle eyepatch/cape, TsuraneSanzuWatashi triple katana slashes with circular moon cue. Azami belongs Xrd; Hiiragi belongs Strive. Source index extracts archived, no official-frame or every-eye-pixel certification.",
+      "ability": "Tsurane Sanzu-watashi",
+      "version": "Baiken in GuiltyGearXrdREV2: pink ponytail, white/red kimono and draped black gakuran, left blind eye covered/obscured at sprite resolution, right sleeve empty and anatomical right arm absent; sole LEFT hand uses katana. Eye-side detail is not pixel-certified in all small frames.",
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/baiken-gg.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/part-c-references/baiken_gg.png",
+      "reviewed": true,
+      "sources": [
+        {
+          "key": "rejected-two-hands",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-rejected-two-hands.png",
+          "originalGeneratedPath": "/workspace/generated_images/exec-111ad02f-4cc8-4c26-8f90-aa2ba2b38bc3.png",
+          "nativeRowCount": 8,
+          "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-c-prompts/baiken_gg.txt",
+          "referenceImages": [
+            "docs/combat-fidelity-wave7-2026-10-20/part-c-references/baiken_gg.png"
+          ],
+          "accepted": false,
+          "operation": "native-imagegen-correction",
+          "sourceRowsUsed": [],
+          "reason": "Independent visual review identified extra flesh hand/fingers gripping scabbard below empty-right-sleeve region. Entire initial atlas rejected; no anatomical raster edits."
+        },
+        {
+          "key": "one-arm-replacement",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+          "originalGeneratedPath": "/workspace/generated_images/exec-510c51bd-c460-47b7-acd1-733393f2aa5c.png",
+          "nativeRowCount": 8,
+          "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-c-prompts/baiken_gg-replacement.txt",
+          "referenceImages": [],
+          "accepted": true,
+          "operation": "native-imagegen-correction",
+          "sourceRowsUsed": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "reason": "New complete native32 made without image-reference input to remove wrong two-arm bias. Independent review confirms one functional sword hand and hollow empty sleeve; eye laterality not provable in every small cell."
+        }
+      ],
+      "rows": [
+        {
+          "source": "one-arm-replacement",
+          "sourceRow": 0
+        },
+        {
+          "source": "one-arm-replacement",
+          "sourceRow": 1
+        },
+        {
+          "source": "one-arm-replacement",
+          "sourceRow": 2
+        },
+        {
+          "source": "one-arm-replacement",
+          "sourceRow": 3
+        },
+        {
+          "source": "one-arm-replacement",
+          "sourceRow": 4
+        },
+        {
+          "source": "one-arm-replacement",
+          "sourceRow": 5
+        },
+        {
+          "source": "one-arm-replacement",
+          "sourceRow": 6
+        },
+        {
+          "source": "one-arm-replacement",
+          "sourceRow": 7
+        }
+      ],
+      "reviewNotes": "Baiken in GuiltyGearXrdREV2: pink ponytail, white/red kimono and draped black gakuran, left blind eye covered/obscured at sprite resolution, right sleeve empty and anatomical right arm absent; sole LEFT hand uses katana. Eye-side detail is not pixel-certified in all small frames. New native pixel art and compact authored sequence; not official game frames or certified1:1 animation.",
+      "statureByRow": {
+        "fatality": {
+          "renderScale": 1.191206217395933,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 167,
+            "sourceComparableColumn": 0,
+            "normalizedBodyHeight": 101,
+            "bodyBounds": [
+              95,
+              137,
+              85,
+              101
+            ],
+            "referenceBodyBounds": [
+              95,
+              75,
+              110,
+              167
+            ],
+            "nativeComparableBodyHeight": 134,
+            "nativeReferenceBodyHeight": 186,
+            "nativeBodyBounds": [
+              67,
+              955,
+              113,
+              134
+            ],
+            "nativeReferenceBodyBounds": [
+              74,
+              35,
+              123,
+              186
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "nativeComparableSourceSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+            "nativeReferenceSourceSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+            "nativeComparableSourceRow": 4,
+            "nativeReferenceSourceRow": 0,
+            "nativeReferenceColumn": 0,
+            "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "displayReferenceSourceDiffers": false,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height."
+          }
+        },
+        "super": {
+          "renderScale": 1.0992362576625465,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 167,
+            "sourceComparableColumn": 0,
+            "normalizedBodyHeight": 107,
+            "bodyBounds": [
+              95,
+              117,
+              110,
+              107
+            ],
+            "referenceBodyBounds": [
+              95,
+              75,
+              110,
+              167
+            ],
+            "nativeComparableBodyHeight": 131,
+            "nativeReferenceBodyHeight": 186,
+            "nativeBodyBounds": [
+              70,
+              1611,
+              136,
+              131
+            ],
+            "nativeReferenceBodyBounds": [
+              74,
+              35,
+              123,
+              186
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "nativeComparableSourceSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+            "nativeReferenceSourceSha256": "9efa5a26cfd15f551daea5dcba1f7542564607eeeef44384c5edc28a957ccbcf",
+            "nativeComparableSourceRow": 7,
+            "nativeReferenceSourceRow": 0,
+            "nativeReferenceColumn": 0,
+            "displayReferenceSource": "docs/combat-fidelity-wave7-2026-10-20/part-c-sources/baiken_gg-one-arm-replacement.png",
+            "displayReferenceSourceDiffers": false,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height."
+          }
+        }
+      }
+    }
+  ]
+}

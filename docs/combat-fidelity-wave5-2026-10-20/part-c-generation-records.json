@@ -1,0 +1,617 @@
+{
+  "records": [
+    {
+      "heroId": "leon",
+      "universe": "Resident Evil",
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/leon.png",
+      "sourceWork": "Resident Evil 4 (2005)",
+      "ability": "Special Rocket Launcher",
+      "version": "Young adult Leon, RE4(2005) agent outfit: brown shearling flight jacket, black fitted shirt, dark tactical trousers, holsters and boots; not RPD uniform.",
+      "sourceReference": "src/game/canonicalCombatOverrides.js#leon; src/game/combat/abilities/abilitiesCanonical.js#leon; Resident Evil4(2005), special rocket launcher supplied for the final Saddler encounter. Local base RPD-looking outfit is intentionally not costume authority for this agent-version atlas.",
+      "identity": "Leon S. Kennedy in Resident Evil4 ORIGINAL2005 agent costume. Blond side-swept hair and recognizable face from local reference, but CORRECT his clothing: short brown shearling-lined leather jacket over black fitted shirt, dark-gray tactical pants, straps/holster, black boots and gloves. NO RPD police vest, NO RPD lettering. Young adult, no olderRE6 outfit. Silver Ghost pistol is holstered except ready rows. Special Rocket Launcher is a real shoulder-fired olive/black tubular launcher with red-nosed rocket, two-handed grip, not magical hand beam.",
+      "rows": [
+        "INTRO: (1) steps in looking right, hand near holster; (2) checks Silver Ghost magazine low; (3) seats magazine and turns attention forward; (4) compact two-handed low-ready pistol stance.",
+        "OUTRO: (1) lowers pistol safely; (2) holsters with right hand; (3) turns shoulder toward exit; (4) takes one deliberate departing step, body fully visible.",
+        "ROUND VICTORY: (1) exhales and lowers muzzle; (2) checks the chamber angled safely down; (3) adjusts jacket collar; (4) alert composed stance, small confident head tilt.",
+        "ROUND DEFEAT: (1) staggers back with hands up; (2) braces one knee; (3) kneels recovering breath with pistol secured; (4) pushes up into a guarded crouch.",
+        "FINALE SPECIAL ROCKET LAUNCHER: (1) lifts actual bulky tubular launcher from low; (2) shoulders it supported by both hands aimed right; (3) powerful braced launch/recoil with short yellow muzzle puff and tiny departing red rocket beside muzzle only; (4) lowers smoking spent launcher, full body stays normal scale.",
+        "VICTORY: (1) holsters and relaxes shoulders; (2) folds arms loosely; (3) brushes hair back; (4) composed RE4 agent resting hand at belt.",
+        "DEFEAT: (1) loses balance forward; (2) falls to one knee; (3) sits leaning back with bent knee; (4) non-graphic exhausted side slump, launcher absent.",
+        "SUPER SPECIAL ROCKET LAUNCHER: (1) plants feet and grips launcher upright low; (2) brings tube to shoulder, leans into aim right; (3) fires compact rocket puff with clearly held real hardware and recoil through knees; (4) moves tube off shoulder while keeping balance. Different body and hand positions from finale row."
+      ],
+      "sourceRows": 8,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed": true,
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-references/leon.png",
+      "prompt": "Create ONE new production pixel-art animation sprite atlas for a 2D game. EXACTLY 4 columns and EXACTLY 8 rows, 32 genuinely drawn different full-body poses. Transparent RGBA background. Canvas portrait 1:2, preferably1024x2048. Every cell is one independent256x256 square; keep every silhouette, equipment and small VFX fully inside its own cell with generous15% transparent gutters, no crossing row/column boundaries. Same body scale and same character identity throughout; 3/4 side-view facing RIGHT in action rows. Detailed crisp32-bit pixel art with carefully readable hands and equipment. The supplied local crop is only an identity/style reference, NOT a pose/layout to repeat. Draw new anatomical poses, no duplicated/mirrored frames or tiny pasted bodies. Eight rows MUST all be present, each exactly FOUR poses following the four beats specified below. No text, labels, letters, numbers, grid lines, background, scenery, interface, watermark, other characters or victims. Draw one coherent character version in all32 cells. Rows of defeat show fatigue or non-graphic knockdown, no blood, no gore. 'Finale' is a stylized game presentation, not an execution. Keep projectile/beam/cloth/cards compact within the character cell; runtime will draw long-range effects. Return the complete4x8 atlas only.\n\nCHARACTER IDENTITY / EQUIPMENT:\nLeon S. Kennedy in Resident Evil4 ORIGINAL2005 agent costume. Blond side-swept hair and recognizable face from local reference, but CORRECT his clothing: short brown shearling-lined leather jacket over black fitted shirt, dark-gray tactical pants, straps/holster, black boots and gloves. NO RPD police vest, NO RPD lettering. Young adult, no olderRE6 outfit. Silver Ghost pistol is holstered except ready rows. Special Rocket Launcher is a real shoulder-fired olive/black tubular launcher with red-nosed rocket, two-handed grip, not magical hand beam.\n\nEXACT ROWS TOP TO BOTTOM (FOUR POSES EACH):\nROW1 INTRO: (1) steps in looking right, hand near holster; (2) checks Silver Ghost magazine low; (3) seats magazine and turns attention forward; (4) compact two-handed low-ready pistol stance.\nROW2 OUTRO: (1) lowers pistol safely; (2) holsters with right hand; (3) turns shoulder toward exit; (4) takes one deliberate departing step, body fully visible.\nROW3 ROUND VICTORY: (1) exhales and lowers muzzle; (2) checks the chamber angled safely down; (3) adjusts jacket collar; (4) alert composed stance, small confident head tilt.\nROW4 ROUND DEFEAT: (1) staggers back with hands up; (2) braces one knee; (3) kneels recovering breath with pistol secured; (4) pushes up into a guarded crouch.\nROW5 FINALE SPECIAL ROCKET LAUNCHER: (1) lifts actual bulky tubular launcher from low; (2) shoulders it supported by both hands aimed right; (3) powerful braced launch/recoil with short yellow muzzle puff and tiny departing red rocket beside muzzle only; (4) lowers smoking spent launcher, full body stays normal scale.\nROW6 VICTORY: (1) holsters and relaxes shoulders; (2) folds arms loosely; (3) brushes hair back; (4) composed RE4 agent resting hand at belt.\nROW7 DEFEAT: (1) loses balance forward; (2) falls to one knee; (3) sits leaning back with bent knee; (4) non-graphic exhausted side slump, launcher absent.\nROW8 SUPER SPECIAL ROCKET LAUNCHER: (1) plants feet and grips launcher upright low; (2) brings tube to shoulder, leans into aim right; (3) fires compact rocket puff with clearly held real hardware and recoil through knees; (4) moves tube off shoulder while keeping balance. Different body and hand positions from finale row.",
+      "file": "/workspace/generated_images/exec-0d6807cd-d68c-42df-a8c5-e1de61e174c2.png",
+      "statureByPhase": {
+        "fatality": {
+          "renderScale": 1.4172797262617625,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 228,
+            "normalizedBodyHeight": 167,
+            "bodyBounds": [
+              65,
+              77,
+              127,
+              167
+            ],
+            "referenceBodyBounds": [
+              61,
+              13,
+              138,
+              228
+            ],
+            "sourceBodyHeightApprox": 217,
+            "referenceSourceBodyHeightApprox": 210,
+            "normalizationScale": 0.7682119205298014,
+            "referenceNormalizationScale": 1.0841121495327102,
+            "compensatedBodyHeightApprox": 236.68571428571434,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": false,
+            "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 218,
+            "nativeReferenceBodyHeight": 210,
+            "nativeComparableBodyBounds": [
+              694,
+              5,
+              165,
+              218
+            ],
+            "nativeReferenceBodyBounds": [
+              49,
+              11,
+              127,
+              210
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+            "nativeComparableRow": 4,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        },
+        "super": {
+          "renderScale": 1.5272380952380953,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 228,
+            "normalizedBodyHeight": 150,
+            "bodyBounds": [
+              76,
+              94,
+              112,
+              150
+            ],
+            "referenceBodyBounds": [
+              61,
+              13,
+              138,
+              228
+            ],
+            "sourceBodyHeightApprox": 211,
+            "referenceSourceBodyHeightApprox": 210,
+            "normalizationScale": 0.7116564417177914,
+            "referenceNormalizationScale": 1.0841121495327102,
+            "compensatedBodyHeightApprox": 229.0857142857143,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": false,
+            "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 211,
+            "nativeReferenceBodyHeight": 210,
+            "nativeComparableBodyBounds": [
+              703,
+              10,
+              157,
+              211
+            ],
+            "nativeReferenceBodyBounds": [
+              49,
+              11,
+              127,
+              210
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/leon-original.png",
+            "nativeComparableRow": 7,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        }
+      }
+    },
+    {
+      "heroId": "jill",
+      "universe": "Resident Evil",
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/jill.png",
+      "sourceWork": "Resident Evil 3 (2020)",
+      "ability": "FINGeR Railgun",
+      "version": "Jill, Resident Evil3 Remake2020: blue tank top, dark tactical trousers, shoulder holster, short brown bob; heavy experimental FINGeR hardware.",
+      "sourceReference": "src/game/canonicalCombatOverrides.js#jill; src/game/combat/abilities/abilitiesCanonical.js#jill; Resident Evil3(2020), NEST2 final Nemesis encounter using the experimental FINGeR electromagnetic cannon.",
+      "identity": "Jill Valentine, Resident Evil3 REMAKE2020 version, blue tanktop, short brown bob, dark practical trousers, harness and thigh holster, heavy brown/black boots, fingerless gloves, scuffed survivor appearance. Keep reference face and silhouette. Not1999 tube-top/miniskirt or RE5 battlesuit. Her FINGeR weapon is the MASSIVE real experimental electromagnetic cannon: large light-gray armored rectangular chassis, long broad two parallel heavy rails/barrel, black grips and an orange charging core. Jill must hold/brace this unwieldy hardware with BOTH hands and bent knees. Never substitute her handgun or a thin futuristic pistol during the railgun rows; never shoot energy from fingers. Fit entire hardware in cell by diagonal aiming slightly upward-right and ample safe margin.",
+      "rows": [
+        "INTRO: (1) enters alert with G19 lowered; (2) checks right with shoulders turned; (3) supports pistol hand with left hand; (4) settles into vigilant low-ready stance.",
+        "OUTRO: (1) eases pistol down; (2) holsters carefully; (3) looks over shoulder; (4) takes guarded exit step.",
+        "ROUND VICTORY: (1) steadies breath hands low; (2) wipes brow with free hand; (3) checks holster; (4) determined upright stance.",
+        "ROUND DEFEAT: (1) recoil in shoulders without gore; (2) drops into defensive crouch; (3) touches ground with one hand, knee bent; (4) rises cautiously from crouch.",
+        "FINALE FINGeR: (1) bends low and hauls enormous railgun chassis with both hands; (2) feet wide, cannon chest-high, heavy twin rails aimed diagonally right; (3) releases short white-cyan discharge at muzzle with orange core, entire heavy gun and her two gripping hands clearly visible; (4) lowers cannon with knees still braced and shoulders strained.",
+        "VICTORY: (1) stands relieved; (2) rolls stiff shoulder; (3) nods once with relaxed hands; (4) confident survivor pose with hand at holster.",
+        "DEFEAT: (1) stumbles reaching for balance; (2) sinks onto one knee; (3) sits with arm supporting body; (4) lies exhausted on side, non-graphic, no explosion.",
+        "SUPER FINGeR: (1) locks two hands around massive gray cannon handles, lifting from waist; (2) leans forward with staggered feet and bright orange charge inside broad rails; (3) heavy recoil down through knees, brief compact cyan muzzle flare, real long dual-rail hardware still dominant; (4) lowers inert railgun slightly with visible arm strain. New anatomy versus finale row."
+      ],
+      "sourceRows": 8,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed": true,
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-references/jill.png",
+      "prompt": "Create ONE new production pixel-art animation sprite atlas for a 2D game. EXACTLY 4 columns and EXACTLY 8 rows, 32 genuinely drawn different full-body poses. Transparent RGBA background. Canvas portrait 1:2, preferably1024x2048. Every cell is one independent256x256 square; keep every silhouette, equipment and small VFX fully inside its own cell with generous15% transparent gutters, no crossing row/column boundaries. Same body scale and same character identity throughout; 3/4 side-view facing RIGHT in action rows. Detailed crisp32-bit pixel art with carefully readable hands and equipment. The supplied local crop is only an identity/style reference, NOT a pose/layout to repeat. Draw new anatomical poses, no duplicated/mirrored frames or tiny pasted bodies. Eight rows MUST all be present, each exactly FOUR poses following the four beats specified below. No text, labels, letters, numbers, grid lines, background, scenery, interface, watermark, other characters or victims. Draw one coherent character version in all32 cells. Rows of defeat show fatigue or non-graphic knockdown, no blood, no gore. 'Finale' is a stylized game presentation, not an execution. Keep projectile/beam/cloth/cards compact within the character cell; runtime will draw long-range effects. Return the complete4x8 atlas only.\n\nCHARACTER IDENTITY / EQUIPMENT:\nJill Valentine, Resident Evil3 REMAKE2020 version, blue tanktop, short brown bob, dark practical trousers, harness and thigh holster, heavy brown/black boots, fingerless gloves, scuffed survivor appearance. Keep reference face and silhouette. Not1999 tube-top/miniskirt or RE5 battlesuit. Her FINGeR weapon is the MASSIVE real experimental electromagnetic cannon: large light-gray armored rectangular chassis, long broad two parallel heavy rails/barrel, black grips and an orange charging core. Jill must hold/brace this unwieldy hardware with BOTH hands and bent knees. Never substitute her handgun or a thin futuristic pistol during the railgun rows; never shoot energy from fingers. Fit entire hardware in cell by diagonal aiming slightly upward-right and ample safe margin.\n\nEXACT ROWS TOP TO BOTTOM (FOUR POSES EACH):\nROW1 INTRO: (1) enters alert with G19 lowered; (2) checks right with shoulders turned; (3) supports pistol hand with left hand; (4) settles into vigilant low-ready stance.\nROW2 OUTRO: (1) eases pistol down; (2) holsters carefully; (3) looks over shoulder; (4) takes guarded exit step.\nROW3 ROUND VICTORY: (1) steadies breath hands low; (2) wipes brow with free hand; (3) checks holster; (4) determined upright stance.\nROW4 ROUND DEFEAT: (1) recoil in shoulders without gore; (2) drops into defensive crouch; (3) touches ground with one hand, knee bent; (4) rises cautiously from crouch.\nROW5 FINALE FINGeR: (1) bends low and hauls enormous railgun chassis with both hands; (2) feet wide, cannon chest-high, heavy twin rails aimed diagonally right; (3) releases short white-cyan discharge at muzzle with orange core, entire heavy gun and her two gripping hands clearly visible; (4) lowers cannon with knees still braced and shoulders strained.\nROW6 VICTORY: (1) stands relieved; (2) rolls stiff shoulder; (3) nods once with relaxed hands; (4) confident survivor pose with hand at holster.\nROW7 DEFEAT: (1) stumbles reaching for balance; (2) sinks onto one knee; (3) sits with arm supporting body; (4) lies exhausted on side, non-graphic, no explosion.\nROW8 SUPER FINGeR: (1) locks two hands around massive gray cannon handles, lifting from waist; (2) leans forward with staggered feet and bright orange charge inside broad rails; (3) heavy recoil down through knees, brief compact cyan muzzle flare, real long dual-rail hardware still dominant; (4) lowers inert railgun slightly with visible arm strain. New anatomy versus finale row.",
+      "file": "/workspace/generated_images/exec-1af167e9-9f61-4330-b4f6-90a764e968d8.png",
+      "statureByPhase": {
+        "fatality": {
+          "renderScale": 1.5660666037305901,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 228,
+            "normalizedBodyHeight": 139,
+            "bodyBounds": [
+              63,
+              103,
+              134,
+              139
+            ],
+            "referenceBodyBounds": [
+              51,
+              14,
+              146,
+              228
+            ],
+            "sourceBodyHeightApprox": 211,
+            "referenceSourceBodyHeightApprox": 221,
+            "normalizationScale": 0.6590909090909091,
+            "referenceNormalizationScale": 1.031111111111111,
+            "compensatedBodyHeightApprox": 217.68325791855207,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": false,
+            "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 211,
+            "nativeReferenceBodyHeight": 221,
+            "nativeComparableBodyBounds": [
+              677,
+              11,
+              204,
+              211
+            ],
+            "nativeReferenceBodyBounds": [
+              36,
+              2,
+              142,
+              221
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+            "nativeComparableRow": 4,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        },
+        "super": {
+          "renderScale": 1.4144967130538717,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 228,
+            "normalizedBodyHeight": 159,
+            "bodyBounds": [
+              57,
+              81,
+              144,
+              159
+            ],
+            "referenceBodyBounds": [
+              51,
+              14,
+              146,
+              228
+            ],
+            "sourceBodyHeightApprox": 218,
+            "referenceSourceBodyHeightApprox": 221,
+            "normalizationScale": 0.7295597484276729,
+            "referenceNormalizationScale": 1.031111111111111,
+            "compensatedBodyHeightApprox": 224.9049773755656,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": false,
+            "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 218,
+            "nativeReferenceBodyHeight": 221,
+            "nativeComparableBodyBounds": [
+              679,
+              2,
+              197,
+              218
+            ],
+            "nativeReferenceBodyBounds": [
+              36,
+              2,
+              142,
+              221
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/jill-original.png",
+            "nativeComparableRow": 7,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        }
+      }
+    },
+    {
+      "heroId": "rebecca_chambers",
+      "universe": "Resident Evil",
+      "referenceAsset": "/sprites/generated/heroes/resident-evil/rebecca-chambers.png",
+      "sourceWork": "Resident Evil 0 (2002)",
+      "ability": "First Aid",
+      "version": "Rebecca Chambers RE0(2002), short brown hair, green short sleeves under pale medic vest, olive trousers/boots, hip medical pouch. Entire special/finale is ally support.",
+      "sourceReference": "src/game/combatCanonExtensions.js#rebecca_chambers; src/game/combat/abilities/abilitiesCanonical.js#rebecca_chambers; Resident Evil0(2002) herb mixing and first-aid identity; final support presentation is an authored adaptation of First Aid, no offensive weapon.",
+      "identity": "Rebecca Chambers, Resident Evil0(2002) young S.T.A.R.S. medic, short brown pixie hair, GREEN short-sleeve shirt underneath WHITE/PALE tactical medic vest, olive green cargo pants, brown lace boots, green hip medical pouch with a small simple cross, fingerless gloves. Preserve local reference version. Friendly alert medic, not RE5 minigun costume. Her super First Aid is strictly HEALING support: physical medical bag, dressings, herb mixture and hand-held first-aid spray. NO laser, NO beam, NO offensive blast or magical lethal aura, NO victims/other characters. Small soft green medical sparkles allowed near supplies only.",
+      "rows": [
+        "INTRO: (1) steps forward touching medical pouch; (2) checks pouch flap; (3) lifts a small spray bottle inspecting it; (4) closes pouch and waits alert.",
+        "OUTRO: (1) retrieves loose bandage; (2) packs bandage carefully; (3) closes green medical bag; (4) walks away carrying bag by handle.",
+        "ROUND VICTORY: (1) checks her hands; (2) exhales and wipes brow; (3) gives small encouraging thumbs-up; (4) straightens vest with a relieved smile.",
+        "ROUND DEFEAT: (1) recoils startled; (2) drops to one knee; (3) supports herself with hand and catches breath; (4) stands halfway, still protecting medical bag.",
+        "FINALE FIRST AID SUPPORT: (1) kneels and opens real medical bag on ground; (2) mixes visible green medicinal herbs in a shallow container; (3) holds gauze and spray ready out toward ally-space at right with only tiny local mist, healing support; (4) offers prepared dressing with reassuring open hand and bag still visible. No projectile or damage.",
+        "VICTORY: (1) relaxes with bag at side; (2) gives warm relieved smile; (3) hand to chest and small nod; (4) friendly wave with supplies safely stored.",
+        "DEFEAT: (1) wobbles unsteadily; (2) kneels clutching side without blood; (3) sits with medical bag beside knee; (4) curls exhausted on side, non-graphic.",
+        "SUPER FIRST AID SUPPORT: (1) crouches taking spray from pouch; (2) opens compact medical case and readies dressing; (3) presents dressing and applies a short white medical mist beside open bag, tiny green restorative glints; (4) rises with open reassuring palm and prepared medical kit. Four new body poses; no weapon at all."
+      ],
+      "sourceRows": 8,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed": true,
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-references/rebecca_chambers.png",
+      "prompt": "Create ONE new production pixel-art animation sprite atlas for a 2D game. EXACTLY 4 columns and EXACTLY 8 rows, 32 genuinely drawn different full-body poses. Transparent RGBA background. Canvas portrait 1:2, preferably1024x2048. Every cell is one independent256x256 square; keep every silhouette, equipment and small VFX fully inside its own cell with generous15% transparent gutters, no crossing row/column boundaries. Same body scale and same character identity throughout; 3/4 side-view facing RIGHT in action rows. Detailed crisp32-bit pixel art with carefully readable hands and equipment. The supplied local crop is only an identity/style reference, NOT a pose/layout to repeat. Draw new anatomical poses, no duplicated/mirrored frames or tiny pasted bodies. Eight rows MUST all be present, each exactly FOUR poses following the four beats specified below. No text, labels, letters, numbers, grid lines, background, scenery, interface, watermark, other characters or victims. Draw one coherent character version in all32 cells. Rows of defeat show fatigue or non-graphic knockdown, no blood, no gore. 'Finale' is a stylized game presentation, not an execution. Keep projectile/beam/cloth/cards compact within the character cell; runtime will draw long-range effects. Return the complete4x8 atlas only.\n\nCHARACTER IDENTITY / EQUIPMENT:\nRebecca Chambers, Resident Evil0(2002) young S.T.A.R.S. medic, short brown pixie hair, GREEN short-sleeve shirt underneath WHITE/PALE tactical medic vest, olive green cargo pants, brown lace boots, green hip medical pouch with a small simple cross, fingerless gloves. Preserve local reference version. Friendly alert medic, not RE5 minigun costume. Her super First Aid is strictly HEALING support: physical medical bag, dressings, herb mixture and hand-held first-aid spray. NO laser, NO beam, NO offensive blast or magical lethal aura, NO victims/other characters. Small soft green medical sparkles allowed near supplies only.\n\nEXACT ROWS TOP TO BOTTOM (FOUR POSES EACH):\nROW1 INTRO: (1) steps forward touching medical pouch; (2) checks pouch flap; (3) lifts a small spray bottle inspecting it; (4) closes pouch and waits alert.\nROW2 OUTRO: (1) retrieves loose bandage; (2) packs bandage carefully; (3) closes green medical bag; (4) walks away carrying bag by handle.\nROW3 ROUND VICTORY: (1) checks her hands; (2) exhales and wipes brow; (3) gives small encouraging thumbs-up; (4) straightens vest with a relieved smile.\nROW4 ROUND DEFEAT: (1) recoils startled; (2) drops to one knee; (3) supports herself with hand and catches breath; (4) stands halfway, still protecting medical bag.\nROW5 FINALE FIRST AID SUPPORT: (1) kneels and opens real medical bag on ground; (2) mixes visible green medicinal herbs in a shallow container; (3) holds gauze and spray ready out toward ally-space at right with only tiny local mist, healing support; (4) offers prepared dressing with reassuring open hand and bag still visible. No projectile or damage.\nROW6 VICTORY: (1) relaxes with bag at side; (2) gives warm relieved smile; (3) hand to chest and small nod; (4) friendly wave with supplies safely stored.\nROW7 DEFEAT: (1) wobbles unsteadily; (2) kneels clutching side without blood; (3) sits with medical bag beside knee; (4) curls exhausted on side, non-graphic.\nROW8 SUPER FIRST AID SUPPORT: (1) crouches taking spray from pouch; (2) opens compact medical case and readies dressing; (3) presents dressing and applies a short white medical mist beside open bag, tiny green restorative glints; (4) rises with open reassuring palm and prepared medical kit. Four new body poses; no weapon at all.",
+      "file": "/workspace/generated_images/exec-148563eb-9bf6-4476-be71-d8bd19ad48ce.png"
+    },
+    {
+      "heroId": "arca_mirelle",
+      "universe": "Nexus de Convergence",
+      "referenceAsset": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-melee-combat.png",
+      "sourceWork": "Nexus de Convergence (project authored universe)",
+      "ability": "Suture du Voile",
+      "version": "Mirelle Suture, authored A.R.C.A. hacker-healer: dark pointed hat/gold goggles, long dark gold-trimmed coat, teal lining, floating cyan cards and white-teal resonance threads.",
+      "sourceReference": "src/game/heroes.js#arca_mirelle; public/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/manifest.json#loreAnchors; src/game/ocCampaign.js names Mirelle Suture as stitcher of memories. The effective Suture du Voile damages enemies in an area while Patch de Trame heals allies; no resurrected dead or soul soldiers.",
+      "identity": "Original project character Mirelle Suture, A.R.C.A. hacker-healer from Nexus de Convergence. Match supplied local identity: long dark hair, broad crooked pointed BLACK hat with warm GOLD goggles/trim, dark long coat lavish gold seamwork, dark-teal inner skirt/lining, dark boots and gloves. Her tools are floating CYAN DATA CARDS and thin WHITE-TEAL RESONANCE THREADS, not a sword, gun, conventional necromancer staff or undead army. Her offensive super Suture du Voile weaves a compact area-snaring thread lattice against hostile breach space. Preserve cards/threads and personal agency; no ghosts, revived dead, zombies or souls turned into soldiers. Other rows may show careful protective patching, her super/finale remain offensive thread-lattice gestures, not healing substitute.",
+      "rows": [
+        "INTRO: (1) arrives adjusting hat brim; (2) draws one cyan card from coat; (3) spreads two cards with threads between fingers; (4) settles in alert card-ready stance.",
+        "OUTRO: (1) gathers hovering cards into left hand; (2) coils a fine thread around card stack; (3) tucks cards inside coat; (4) steps out with coat hem trailing safely within cell.",
+        "ROUND VICTORY: (1) releases tense hand posture; (2) checks a single glowing card; (3) tips hat slightly; (4) small composed smile with card held at hip.",
+        "ROUND DEFEAT: (1) staggers as two cards separate; (2) kneels and braces hand; (3) reaches to recover a floating card; (4) regains cautious crouch with hat still on.",
+        "FINALE SUTURE DU VOILE: (1) anchors three cards before her waist; (2) pulls both hands apart stretching thin crossing teal threads; (3) lunges one arm forward, weaving a small dense angular thread lattice immediately right of torso, attacking hostile breach space without any creature; (4) closes fingers to cinch the lattice and retrieves cards.",
+        "VICTORY: (1) suspends one card before face; (2) traces a calm small seam with finger; (3) draws cards back to chest; (4) rests with hand at hat brim and closed fan of cards.",
+        "DEFEAT: (1) loses footing and cards scatter locally; (2) falls onto one knee; (3) sits slumped with hat tipped; (4) non-graphic exhausted side collapse with two inert cards beside her.",
+        "SUPER SUTURE DU VOILE: (1) steps wide and fans four cards at shoulder height; (2) crosses forearms to gather white-teal resonance threads; (3) sweeps outward into a compact radial net of threads and cards adjacent right, no giant effect obscuring body; (4) palms draw together to seal the hostile tear, coat settling. New body positions distinct from finale."
+      ],
+      "sourceRows": 8,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed": true,
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-references/arca_mirelle.png",
+      "prompt": "Create ONE new production pixel-art animation sprite atlas for a 2D game. EXACTLY 4 columns and EXACTLY 8 rows, 32 genuinely drawn different full-body poses. Transparent RGBA background. Canvas portrait 1:2, preferably1024x2048. Every cell is one independent256x256 square; keep every silhouette, equipment and small VFX fully inside its own cell with generous15% transparent gutters, no crossing row/column boundaries. Same body scale and same character identity throughout; 3/4 side-view facing RIGHT in action rows. Detailed crisp32-bit pixel art with carefully readable hands and equipment. The supplied local crop is only an identity/style reference, NOT a pose/layout to repeat. Draw new anatomical poses, no duplicated/mirrored frames or tiny pasted bodies. Eight rows MUST all be present, each exactly FOUR poses following the four beats specified below. No text, labels, letters, numbers, grid lines, background, scenery, interface, watermark, other characters or victims. Draw one coherent character version in all32 cells. Rows of defeat show fatigue or non-graphic knockdown, no blood, no gore. 'Finale' is a stylized game presentation, not an execution. Keep projectile/beam/cloth/cards compact within the character cell; runtime will draw long-range effects. Return the complete4x8 atlas only.\n\nCHARACTER IDENTITY / EQUIPMENT:\nOriginal project character Mirelle Suture, A.R.C.A. hacker-healer from Nexus de Convergence. Match supplied local identity: long dark hair, broad crooked pointed BLACK hat with warm GOLD goggles/trim, dark long coat lavish gold seamwork, dark-teal inner skirt/lining, dark boots and gloves. Her tools are floating CYAN DATA CARDS and thin WHITE-TEAL RESONANCE THREADS, not a sword, gun, conventional necromancer staff or undead army. Her offensive super Suture du Voile weaves a compact area-snaring thread lattice against hostile breach space. Preserve cards/threads and personal agency; no ghosts, revived dead, zombies or souls turned into soldiers. Other rows may show careful protective patching, her super/finale remain offensive thread-lattice gestures, not healing substitute.\n\nEXACT ROWS TOP TO BOTTOM (FOUR POSES EACH):\nROW1 INTRO: (1) arrives adjusting hat brim; (2) draws one cyan card from coat; (3) spreads two cards with threads between fingers; (4) settles in alert card-ready stance.\nROW2 OUTRO: (1) gathers hovering cards into left hand; (2) coils a fine thread around card stack; (3) tucks cards inside coat; (4) steps out with coat hem trailing safely within cell.\nROW3 ROUND VICTORY: (1) releases tense hand posture; (2) checks a single glowing card; (3) tips hat slightly; (4) small composed smile with card held at hip.\nROW4 ROUND DEFEAT: (1) staggers as two cards separate; (2) kneels and braces hand; (3) reaches to recover a floating card; (4) regains cautious crouch with hat still on.\nROW5 FINALE SUTURE DU VOILE: (1) anchors three cards before her waist; (2) pulls both hands apart stretching thin crossing teal threads; (3) lunges one arm forward, weaving a small dense angular thread lattice immediately right of torso, attacking hostile breach space without any creature; (4) closes fingers to cinch the lattice and retrieves cards.\nROW6 VICTORY: (1) suspends one card before face; (2) traces a calm small seam with finger; (3) draws cards back to chest; (4) rests with hand at hat brim and closed fan of cards.\nROW7 DEFEAT: (1) loses footing and cards scatter locally; (2) falls onto one knee; (3) sits slumped with hat tipped; (4) non-graphic exhausted side collapse with two inert cards beside her.\nROW8 SUPER SUTURE DU VOILE: (1) steps wide and fans four cards at shoulder height; (2) crosses forearms to gather white-teal resonance threads; (3) sweeps outward into a compact radial net of threads and cards adjacent right, no giant effect obscuring body; (4) palms draw together to seal the hostile tear, coat settling. New body positions distinct from finale.",
+      "file": "/workspace/generated_images/exec-23afad77-7438-4d5b-aeae-b2d57668c816.png",
+      "statureByPhase": {
+        "fatality": {
+          "renderScale": 1.3171974522292993,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 231,
+            "normalizedBodyHeight": 157,
+            "bodyBounds": [
+              46,
+              79,
+              155,
+              157
+            ],
+            "referenceBodyBounds": [
+              56,
+              12,
+              166,
+              231
+            ],
+            "sourceBodyHeightApprox": 188,
+            "referenceSourceBodyHeightApprox": 210,
+            "normalizationScale": 0.8345323741007195,
+            "referenceNormalizationScale": 1.099526066350711,
+            "compensatedBodyHeightApprox": 206.79999999999998,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "reason": "There is intentional flexion/forward lean. Suggested multiplier reverses only the differing row normalization, retaining the shorter source-body projection; do not divide standing height by crouched height.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 188,
+            "nativeReferenceBodyHeight": 210,
+            "nativeComparableBodyBounds": [
+              678,
+              22,
+              186,
+              188
+            ],
+            "nativeReferenceBodyBounds": [
+              45,
+              10,
+              151,
+              210
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+            "nativeComparableRow": 4,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        },
+        "super": {
+          "renderScale": 1.1558375634517768,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 231,
+            "normalizedBodyHeight": 197,
+            "bodyBounds": [
+              48,
+              47,
+              160,
+              197
+            ],
+            "referenceBodyBounds": [
+              56,
+              12,
+              166,
+              231
+            ],
+            "sourceBodyHeightApprox": 207,
+            "referenceSourceBodyHeightApprox": 210,
+            "normalizationScale": 0.9508196721311475,
+            "referenceNormalizationScale": 1.099526066350711,
+            "compensatedBodyHeightApprox": 227.70000000000002,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": false,
+            "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 207,
+            "nativeReferenceBodyHeight": 210,
+            "nativeComparableBodyBounds": [
+              692,
+              12,
+              168,
+              207
+            ],
+            "nativeReferenceBodyBounds": [
+              45,
+              10,
+              151,
+              210
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_mirelle-original.png",
+            "nativeComparableRow": 7,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        }
+      }
+    },
+    {
+      "heroId": "arca_bastion",
+      "universe": "Nexus de Convergence",
+      "referenceAsset": "/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/arca-bastion-universal-v1.png",
+      "sourceWork": "Nexus de Convergence (project authored universe)",
+      "ability": "Verrou de Convergence",
+      "version": "Bastion Korr, Atrium heavy guardian: dark hair, dark gunmetal armor/long coat with gold-orange trim, Atrium rifle, orange hexagonal anchor shield; no borrowed franchise costume.",
+      "sourceReference": "src/game/characterPlaques.js#arca_bastion: Verrou de Convergence seals a deceptive passage; public/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/manifest.json#loreAnchors: Atrium rifle, hexagonal orange anchor shield and Convergence Lock. Effective project special is offensive enemy beam/line, distinct from defensive Rempart and Balise; no dead become soldiers.",
+      "identity": "Original project character BASTION KORR from Nexus de Convergence. Match local reference: stocky strong adult man, short BLACK hair, dark gunmetal heavy armor and long DARK COAT, ornate muted GOLD and ORANGE trim, heavy boots, ATRIUM tactical rifle, large hexagonal orange-lined physical anchor shield. Not Overwatch Bastion, not robot, not Halo power armor. The Convergence Lock special channels a compact ORANGE seal aperture in front of his braced forearm/shield, emitting an attacking directional line against a deceptive hostile passage. This is authorized offensive beam/line with guardian identity; not healing animation or arbitrary hand lightning. Shield, shoulder, rifle slung where not used stay physically coherent; no ghosts, undead, resurrected soldiers, summoned allies.",
+      "rows": [
+        "INTRO: (1) steps in holding Atrium rifle low; (2) checks rifle at chest; (3) shifts left arm shield forward; (4) anchors a firm guarded rifle-and-shield stance.",
+        "OUTRO: (1) lowers rifle safely; (2) secures rifle to sling; (3) folds shield closer to side; (4) leaves in deliberate heavy step.",
+        "ROUND VICTORY: (1) checks secured passage to right; (2) lowers shield slightly; (3) touches an orange beacon at belt; (4) gives sober protective nod.",
+        "ROUND DEFEAT: (1) recoils behind shield; (2) drops one knee with shield held forward; (3) braces gauntlet on ground, rifle secured; (4) rises into low protective posture.",
+        "FINALE VERROU DE CONVERGENCE: (1) plants feet and presents shield/forearm forward; (2) sets orange angular seal aperture beside shield edge, other hand braces; (3) drives shoulder forward and projects short focused orange beam from the aperture toward right, visible real body/shield, hostile-passage lockdown attack; (4) clenches fist and closes the aperture, rifle remains slung.",
+        "VICTORY: (1) relaxes shield-arm; (2) checks a small beacon in palm; (3) places beacon back at belt; (4) upright heavy guardian with rifle low and shield at side.",
+        "DEFEAT: (1) staggers under armor weight; (2) sinks to one knee leaning on shield; (3) sits exhausted with rifle secured; (4) non-graphic side slump, shield lying next to arm.",
+        "SUPER VERROU DE CONVERGENCE: (1) drops into wider braced stance and raises hexagonal shield; (2) rotates left forearm, bright small orange lock ring opens just forward; (3) presses right palm behind shield and emits compact orange line from ring toward right, no long overflow beyond cell; (4) retracts the lock and returns shield to chest, coat settling. Four fresh full-body poses distinct from finale."
+      ],
+      "sourceRows": 8,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed": true,
+      "referenceImage": "docs/combat-fidelity-wave5-2026-10-20/part-c-references/arca_bastion.png",
+      "prompt": "Create ONE new production pixel-art animation sprite atlas for a 2D game. EXACTLY 4 columns and EXACTLY 8 rows, 32 genuinely drawn different full-body poses. Transparent RGBA background. Canvas portrait 1:2, preferably1024x2048. Every cell is one independent256x256 square; keep every silhouette, equipment and small VFX fully inside its own cell with generous15% transparent gutters, no crossing row/column boundaries. Same body scale and same character identity throughout; 3/4 side-view facing RIGHT in action rows. Detailed crisp32-bit pixel art with carefully readable hands and equipment. The supplied local crop is only an identity/style reference, NOT a pose/layout to repeat. Draw new anatomical poses, no duplicated/mirrored frames or tiny pasted bodies. Eight rows MUST all be present, each exactly FOUR poses following the four beats specified below. No text, labels, letters, numbers, grid lines, background, scenery, interface, watermark, other characters or victims. Draw one coherent character version in all32 cells. Rows of defeat show fatigue or non-graphic knockdown, no blood, no gore. 'Finale' is a stylized game presentation, not an execution. Keep projectile/beam/cloth/cards compact within the character cell; runtime will draw long-range effects. Return the complete4x8 atlas only.\n\nCHARACTER IDENTITY / EQUIPMENT:\nOriginal project character BASTION KORR from Nexus de Convergence. Match local reference: stocky strong adult man, short BLACK hair, dark gunmetal heavy armor and long DARK COAT, ornate muted GOLD and ORANGE trim, heavy boots, ATRIUM tactical rifle, large hexagonal orange-lined physical anchor shield. Not Overwatch Bastion, not robot, not Halo power armor. The Convergence Lock special channels a compact ORANGE seal aperture in front of his braced forearm/shield, emitting an attacking directional line against a deceptive hostile passage. This is authorized offensive beam/line with guardian identity; not healing animation or arbitrary hand lightning. Shield, shoulder, rifle slung where not used stay physically coherent; no ghosts, undead, resurrected soldiers, summoned allies.\n\nEXACT ROWS TOP TO BOTTOM (FOUR POSES EACH):\nROW1 INTRO: (1) steps in holding Atrium rifle low; (2) checks rifle at chest; (3) shifts left arm shield forward; (4) anchors a firm guarded rifle-and-shield stance.\nROW2 OUTRO: (1) lowers rifle safely; (2) secures rifle to sling; (3) folds shield closer to side; (4) leaves in deliberate heavy step.\nROW3 ROUND VICTORY: (1) checks secured passage to right; (2) lowers shield slightly; (3) touches an orange beacon at belt; (4) gives sober protective nod.\nROW4 ROUND DEFEAT: (1) recoils behind shield; (2) drops one knee with shield held forward; (3) braces gauntlet on ground, rifle secured; (4) rises into low protective posture.\nROW5 FINALE VERROU DE CONVERGENCE: (1) plants feet and presents shield/forearm forward; (2) sets orange angular seal aperture beside shield edge, other hand braces; (3) drives shoulder forward and projects short focused orange beam from the aperture toward right, visible real body/shield, hostile-passage lockdown attack; (4) clenches fist and closes the aperture, rifle remains slung.\nROW6 VICTORY: (1) relaxes shield-arm; (2) checks a small beacon in palm; (3) places beacon back at belt; (4) upright heavy guardian with rifle low and shield at side.\nROW7 DEFEAT: (1) staggers under armor weight; (2) sinks to one knee leaning on shield; (3) sits exhausted with rifle secured; (4) non-graphic side slump, shield lying next to arm.\nROW8 SUPER VERROU DE CONVERGENCE: (1) drops into wider braced stance and raises hexagonal shield; (2) rotates left forearm, bright small orange lock ring opens just forward; (3) presses right palm behind shield and emits compact orange line from ring toward right, no long overflow beyond cell; (4) retracts the lock and returns shield to chest, coat settling. Four fresh full-body poses distinct from finale.",
+      "file": "/workspace/generated_images/exec-c009ed39-ab93-439e-98d4-7a74fe12d001.png",
+      "correction": {
+        "file": "/workspace/generated_images/exec-5717191d-c445-4f42-9fea-349e8b8f5349.png",
+        "targetRows": [
+          0
+        ],
+        "sourceRows": [
+          0
+        ],
+        "reason": "Original intro last pose clips the opaque rifle tip against the native source border; replace only intro with four newly drawn compact low-ready rifle and shield poses.",
+        "prompt": "Native replacement animation strip for Bastion Korr from the supplied original atlas. Draw EXACTLY ONE ROW OF FOUR NEW DISTINCT FULL-BODY PIXEL-ART INTRO POSES, transparent RGBA, wide4:1 canvas. Preserve the original man, black hair, heavy dark gunmetal armor, long dark gold-trimmed coat, Atrium rifle and orange hexagonal anchor shield. The old intro has a clipped rifle tip in its fourth cell. Correct that by always holding the rifle diagonally LOW across his own torso, NEVER pointing its long barrel horizontally beyond the cell. Four new consecutive beats: 1 stepping in with rifle low and shield at side, 2 checking rifle magazine angled diagonally down, 3 bringing hexagonal shield across left chest while rifle held down and safely inward, 4 feet planted in alert guardian ready stance, rifle still low diagonal, no aiming/firing. Each full-body character and entire rifle/shield must fit inside its own quarter with at least20% fully transparent gap all around. Keep feet, coat tails and barrel tips complete. Same detailed32-bit pixel-art look, proportions and outfit as supplied. No projectile, beam, effects, scenery, text, labels, grid lines or duplicate poses. Four drawings only in a single horizontal row.",
+        "referenceImages": [
+          "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png"
+        ]
+      },
+      "statureByPhase": {
+        "fatality": {
+          "renderScale": 1.4995058067704472,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "outro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 229,
+            "normalizedBodyHeight": 152,
+            "bodyBounds": [
+              79,
+              92,
+              124,
+              152
+            ],
+            "referenceBodyBounds": [
+              45,
+              14,
+              168,
+              229
+            ],
+            "sourceBodyHeightApprox": 212,
+            "referenceSourceBodyHeightApprox": 213,
+            "normalizationScale": 0.7160493827160493,
+            "referenceNormalizationScale": 1.0740740740740742,
+            "compensatedBodyHeightApprox": 227.92488262910797,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": false,
+            "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 212,
+            "nativeReferenceBodyHeight": 213,
+            "nativeComparableBodyBounds": [
+              707,
+              8,
+              173,
+              212
+            ],
+            "nativeReferenceBodyBounds": [
+              34,
+              7,
+              156,
+              213
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+            "nativeComparableRow": 4,
+            "nativeReferenceRow": 1,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        },
+        "super": {
+          "renderScale": 1.4730504237546491,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "outro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 229,
+            "normalizedBodyHeight": 154,
+            "bodyBounds": [
+              69,
+              90,
+              126,
+              154
+            ],
+            "referenceBodyBounds": [
+              45,
+              14,
+              168,
+              229
+            ],
+            "sourceBodyHeightApprox": 211,
+            "referenceSourceBodyHeightApprox": 213,
+            "normalizationScale": 0.7295597484276729,
+            "referenceNormalizationScale": 1.0740740740740742,
+            "compensatedBodyHeightApprox": 226.84976525821597,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": false,
+            "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 211,
+            "nativeReferenceBodyHeight": 213,
+            "nativeComparableBodyBounds": [
+              695,
+              8,
+              173,
+              211
+            ],
+            "nativeReferenceBodyBounds": [
+              34,
+              7,
+              156,
+              213
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-c-sources/arca_bastion-original.png",
+            "nativeComparableRow": 7,
+            "nativeReferenceRow": 1,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1888 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "part": "C",
+  "provider": "OpenAI",
+  "tool": "image_gen",
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "networkVerified": false,
+  "canon1to1Verified": false,
+  "method": "Two actual native image_gen atlases plus two separate native strips. The first Kakashi source contains seven actual rows; its missing finale is newly drawn, with explicit native row remapping to eight final phases. A second strip replaces only Piccolo finale/super with a compact paired-finger beam to preserve body scale. Sharp only extracts using adaptive alpha seams, rescales each phase uniformly with nearest-neighbor filtering, pads transparency and packs genuine source poses. No procedural anatomy, mirrored replacements or repeated cells are synthesized.",
+  "sourceAccess": "Local sprites and effective project kits inspected before generation. Known-work adaptations only; no new network verification or external quotation is claimed.",
+  "generationRecords": [
+    {
+      "heroId": "piccolo_dbz",
+      "universe": "Dragon Ball Z",
+      "sourceWork": "Dragon Ball Z, Piccolo / Makankosappo",
+      "ability": "Special Beam Cannon",
+      "referenceAsset": "/sprites/generated/heroes/dragon-ball-z/piccolo-dbz.png",
+      "version": "Dragon Ball Z Piccolo, green Namekian with two antennae, pointed ears and pink segmented arm pads; purple gi, blue sash, brown-orange pointed boots, no cape/turban or Orange transformation.",
+      "sourceReference": "Dragon Ball Z, Piccolo charges Makankosappo / Special Beam Cannon with index and middle fingertips at his forehead, then releases a narrow spiral-wrapped ki beam from those two extended fingers. Purple gi corrects the near-black local reference palette. Compact effects and timings are authored adaptation, not official frames.",
+      "prompt": "Create ONE new native PIXEL-ART CHARACTER ANIMATION ATLAS on actual transparent RGBA. Portrait4:8 grid, exactly FOUR COLUMNS and EIGHT ROWS,32 separate full-body drawings. Intended final atlas1024x2048, equal square cells. Use attached image ONLY for identity/pixel rendering, NOT cells to paste or old attacks to preserve. Every drawing needs new full-body anatomy, visibly different arms/elbows/knees/torso/hand positions; no repeated cell, translated clone or glow-only variation. Detailed crisp discrete pixel art at small-game scale, consistent face, age, body and costume. At least15% completely transparent safe padding around each sprite, weapon and compact effect: nothing cut off or touching another cell. Keep whole body and all fingers, hair, ears, antennae, toes and effects visible. Face mostly right at three-quarter side view. No background, floor, grid, panel, border, caption, labels, numbers, watermark, checkerboard or victim. Exactly these eight rows:1intro,2outro,3roundVictory,4roundDefeat,5fatality (non-gory adapted final technique flourish, not execution),6victory,7defeat,8super. Rows3/6 are different celebrations, rows4/7 different temporary/final defeat, rows5/8 separate original four-pose techniques. This is purpose-drawn generated adaptation, not official-source ripped or certified1:1 frames. Scale the whole subject with its effect compactly to fit every cell. Effects SMALL and localized, never a cloud or connected ribbon spanning cells.\n\nPICCOLO from DRAGON BALL Z, same green Namekian identity as local reference, TWO green forehead ANTENNAE, pointed long ears, bald head, stern narrow eyes, green hands, pink segmented organic arm pads. IMPORTANT COSTUME CORRECTION: wear his recognizable DEEP PURPLE sleeveless gi and baggy PURPLE trousers with BLUE waist sash and brown-orange pointed boots. The reference's nearly black gi is a local palette mismatch; make the new gi purple in all32 cells. No white cape/turban, no Orange Piccolo/DBSuper transformation. NO gun, armor cannon, mechanical arm, robotic device or weapon. Special Beam Cannon is ORGANIC KI emitted from TWO EXTENDED FINGERS (index and middle), not a literal cannon. Keep fingers and forehead contact legible.\nROW1 INTRO:1 steps in with arms hanging and gi moving;2 folds arms across chest with chin lifted;3 unfolds left arm while shifting rear foot;4 settles low wide martial guard, open left palm and right fist at ribs.\nROW2 OUTRO:1 relaxes guard and lowers open hand;2 turns torso three-quarter away;3 looks back over shoulder with one arm folded;4 takes departing step with both arms again folded and head turned aside.\nROW3 ROUND VICTORY:1 retracts fist to waist after effort;2 straightens and tightens both fists low beside hips;3 gives short satisfied nod with one boot forward;4 calmly crosses arms in a different wide stance, small stern smile.\nROW4 ROUND DEFEAT:1 recoils behind raised forearms;2 kneels on right knee with left palm touching ground;3 presses one palm on thigh and pushes up;4 regains hunched low open-palm guard, tired but ready, no bleeding or severed limb.\nROW5 SPECIAL BEAM CANNON ADAPTED FINALE:1 deep staggered stance, right INDEX AND MIDDLE fingers together touch FOREHEAD between antennae, left arm braced across waist;2 leans forward with same TWO fingertips still at forehead and tiny golden ki sparks localized around fingertips;3 thrusts right arm forward with index/middle together aimed right, emits SHORT narrow pale-yellow beam wrapped by TWO visible golden spiral coils, beam starts exactly at two fingertips and stays entirely inside cell;4 retracts right arm to side and relaxes knees as short spiral fades. No enemy/victim or huge blast.\nROW6 MATCH VICTORY:1 stands upright and releases both shoulders;2 raises one clenched fist in a reserved salute beside temple without touching forehead;3 turns chest toward viewer with arms spread briefly and open palms low;4 stands tall with arms folded and chin high, feet closer than round celebration.\nROW7 MATCH DEFEAT:1 staggers with one hand over abdomen;2 drops to both knees with head lowered;3 braces empty left palm on floor with shoulders folded;4 sits exhausted on one hip, knees bent, other forearm resting on thigh, alive non-graphic defeat.\nROW8 SUPER SPECIAL BEAM CANNON:1 low crouch, RIGHT INDEX AND MIDDLE FINGERTIPS press against forehead, other hand clenched beside hip;2 rises into broad bent-knee stance still charging with TWO fingers at forehead and very small amber sparks;3 extends right arm at SHOULDER HEIGHT, TWO joined fingers straight toward empty right, short slim golden ki lance spiraling around a pale central ray from those fingertips, left arm behind for balance;4 follows recoil into a deeper squat with right arm lowered and fingers still paired, faint tiny residual spiral. Every pose differs from row5; no palm Kamehameha, hand cannon, lightning, tech barrel or mechanical arm.",
+      "reviewed": true,
+      "file": "/workspace/generated_images/exec-275b2624-93b1-44d2-92a2-85df4000a8fd.png",
+      "sourceRows": 8,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "correction": {
+        "targetRows": [
+          4,
+          7
+        ],
+        "sourceRows": [
+          0,
+          1
+        ],
+        "reason": "Initial Special Beam Cannon rows have an overlong beam that forces the normalized body much smaller than other phases. Replace only those two action rows with native paired-finger poses and a compact coiled muzzle beam; engine VFX retain combat reach.",
+        "prompt": "Create ONE native pixel-art replacement sheet of PICCOLO from DRAGON BALL Z: FOUR COLUMNS and TWO ROWS = EIGHT distinct full-body drawings. Real transparent RGBA, landscape2:1 canvas with eight equal square cells. Use attached images only for identity/style. Green bald Namekian, TWO forehead antennae, pointed ears, pink organic segmented arm patches, DEEP PURPLE sleeveless gi and purple loose trousers, BLUE sash, brown-orange pointed boots. No cape, turban, Orange transformation, firearm, mechanical arm or literal cannon. Same crisp detailed pixel style. Every whole character should occupy about65% of cell HEIGHT and have CONSISTENT BODY SCALE in ALL8 cells, all hands/antennae/toes intact. Every subject/effect has20% transparent padding, no background, floor, panels, labels or grid.\nCRITICAL: Special Beam Cannon / Makankosappo is KI from TWO joined INDEX AND MIDDLE FINGERS. Charging has those TWO fingertips touching FOREHEAD. Releasing has TWO fingers extended forward. The coiled golden beam must be TINY, a short localized MUZZLE SPIRAL only ONE SIXTH OF BODY HEIGHT long, about a finger-length or two. Never draw a long ray across the cell. The actual game's renderer adds the long beam separately. NO long laser, no huge aura, no cloud, no energyball, no Kamehameha palm. If a short beam doesn't fit safely, make it shorter; NEVER make Piccolo's body smaller. Keep the arm and fingers close enough to fit same body scale as standing poses.\nTOP ROW is non-gory adapted finale:frame1 deep staggered stance RIGHT index/middle together pressed to forehead, other arm folded low;frame2 shifts torso and weight forward with knees bent, TWO fingertips still at forehead, tiny amber spark at contact;frame3 forward wide stance, right arm aimed at shoulder height with slightly bent elbow, TWO joined fingers straight toward right, a very SHORT pale central ki lance wrapped in two small gold SPIRAL COILS immediately at fingertips;frame4 relaxes into upright recovery with right arm lowered beside thigh, two fingers still paired, no beam. All four are distinct, no victim or execution.\nBOTTOM ROW is a DIFFERENT super sequence:frame1 low crouch left knee forward, right TWO fingertips touch forehead and free fist at ribs;frame2 rises into wide bent-knee stance with torso tilted back slightly, right TWO fingertips charge at forehead while left hand opens low;frame3 twists hips forward with front knee deeply bent, right arm at SHOULDER HEIGHT, TWO fingers pointed forward, tiny golden coiled beam from fingertips, left arm stretches behind for balance;frame4 recoils to deep crouch with right elbow bent near waist and paired fingers pointed down, no beam. Eight genuinely new anatomical drawings, no copying, mirroring or pose warping. Bodies must keep the same large scale throughout; short spiral is a muzzle cue, never a long projectile.",
+        "file": "/workspace/generated_images/exec-fd7c0a1f-e69e-49c0-bbdf-1ed9d2f7e182.png"
+      }
+    },
+    {
+      "heroId": "kakashi_war",
+      "universe": "Naruto Shippuden",
+      "sourceWork": "Naruto Shippuden, Fourth Shinobi World War Kakashi before double Mangekyo",
+      "ability": "Kamui",
+      "referenceAsset": "/sprites/generated/heroes/naruto-shippuden/kakashi-war.png",
+      "version": "War-era Kakashi before dual Mangekyo: silver spiky hair, green flak vest over navy shinobi clothes, forehead protector, black lower-face mask, gloves, white leg wraps and open-toe sandals. One left Sharingan revealed for Kamui; no Susanoo or second Sharingan.",
+      "sourceReference": "Naruto Shippuden, war-era Kakashi uses his single left Mangekyo Sharingan for Kamui space-time distortion. This is the pre-double-Mangekyo version, without Susanoo. The atlas depicts eye concentration and a compact grey space warp, not the electrical hand attack Raikiri. Gameplay area, timings and visual glyphs remain authored adaptation.",
+      "prompt": "Create ONE new native PIXEL-ART CHARACTER ANIMATION ATLAS on actual transparent RGBA. Portrait4:8 grid, exactly FOUR COLUMNS and EIGHT ROWS,32 separate full-body drawings. Intended final atlas1024x2048, equal square cells. Use attached image ONLY for identity/pixel rendering, NOT cells to paste or old attacks to preserve. Every drawing needs new full-body anatomy, visibly different arms/elbows/knees/torso/hand positions; no repeated cell, translated clone or glow-only variation. Detailed crisp discrete pixel art at small-game scale, consistent face, age, body and costume. At least15% completely transparent safe padding around each sprite, weapon and compact effect: nothing cut off or touching another cell. Keep whole body and all fingers, hair, ears, antennae, toes and effects visible. Face mostly right at three-quarter side view. No background, floor, grid, panel, border, caption, labels, numbers, watermark, checkerboard or victim. Exactly these eight rows:1intro,2outro,3roundVictory,4roundDefeat,5fatality (non-gory adapted final technique flourish, not execution),6victory,7defeat,8super. Rows3/6 are different celebrations, rows4/7 different temporary/final defeat, rows5/8 separate original four-pose techniques. This is purpose-drawn generated adaptation, not official-source ripped or certified1:1 frames. Scale the whole subject with its effect compactly to fit every cell. Effects SMALL and localized, never a cloud or connected ribbon spanning cells.\n\nKAKASHI HATAKE, NARUTO SHIPPUDEN FOURTH WAR, BEFORE DOUBLE MANGEKYO SHARINGAN. Silver-grey spiky hair, black/navy lower-face MASK covering nose and mouth in EVERY cell, green Konoha FLak VEST with rectangular pockets over dark navy long sleeves and trousers, dark fingerless gloves, white shin wraps and thigh bands, dark OPEN-TOE sandals; forehead protector with leaf symbol. Match reference proportions/costume. For Kamui he lifts/angles his forehead protector to expose ONLY HIS LEFT red Sharingan eye with the vertical scar; the other eye remains natural dark, never a second red Sharingan. Keep one red eye legible in Kamui poses, no scar added across both eyes. NO Susanoo, giant samurai, spectral armor, wings, eye transplant doubleMS, purple chakra warrior, rifle, sword or electric Raikiri/Chidori in this atlas. Kamui originates from concentrated SHARINGAN GAZE: small grey swirling spatial distortion in EMPTY AIR ahead of gaze, NOT an eye laser, hand beam, blue lightning spear or an electric attack. Use very restrained grey-blue curved distortion lines inside cell.\nROW1 INTRO:1 walks in upright with one hand near vest pocket and forehead protector lowered over left eye;2 pulls a small kunai into low safe grip;3 shifts into staggered shinobi guard with free hand raised open;4 raises two fingers of free hand in a compact preparatory hand seal, kunai lowered beside hip.\nROW2 OUTRO:1 lowers guarded hands;2 safely stows kunai in pouch;3 turns torso away and raises one hand in small departing wave;4 walks off in three-quarter back view with head tilted toward viewer, lower-face mask intact.\nROW3 ROUND VICTORY:1 withdraws empty lead hand to chest;2 gives small eye-smile and short two-finger salute away from eye;3 brushes glove against vest edge while shifting weight;4 settles relaxed with arms loosely folded, one boot forward.\nROW4 ROUND DEFEAT:1 absorbs recoil with crossed forearms;2 slides to one-knee crouch, palm on ground, mask and protector stay in place;3 pushes up with palm against front thigh;4 regains cautious low shinobi guard without lightning or weapon attack.\nROW5 KAMUI ADAPTED FINALE:1 plants feet wide and raises forehead protector with right hand to reveal ONE red LEFT Sharingan;2 bends both knees and fixes single Sharingan gaze ahead, free hand braced at waist;3 leans torso forward in a different low posture, ONE red eye remains exposed, tiny grey-blue twisting elliptical space distortion floats close ahead at EYE LEVEL on right with no ray connecting eye to it;4 lowers head and hand toward eye exhausted, small spatial curls fading. No victim, body removal, blood or second Sharingan.\nROW6 MATCH VICTORY:1 straightens from guard with open hands lowered;2 lifts free hand in friendly palm-out wave;3 places both hands behind head in relaxed stretch with elbows out;4 returns to casual one-hand-in-vest posture with a visible friendly eye-smile, different from round salute.\nROW7 MATCH DEFEAT:1 sways holding shoulder with opposite hand;2 sinks onto both knees, bowed head;3 leans forward supported on one palm, other hand pressed over left eye fatigue;4 sits exhausted against an invisible rest with knees bent and head down, lower-face mask always on, no wounds.\nROW8 SUPER KAMUI:1 drops into low staggered stance while lifting protector above ONLY LEFT eye, exposing red Sharingan and vertical scar;2 drives torso upright and raises free hand in balancing open-palm pose while staring ahead, both arms distinctly placed and one red eye visible;3 lunges only a small half-step forward with deep bent front knee and other arm swept back, tiny GRAY SPIRAL SPACE WARP ahead of the eye line, no beam and no lightning;4 recoils into one-knee recovery with one hand covering exhausted LEFT eye, mask and silver hair intact, warp dissipated. Four genuine anatomical poses different from finale row5. No eye-laser, electric aura, blue palm blast, Susanoo or double red eyes anywhere.",
+      "reviewed": true,
+      "file": "/workspace/generated_images/exec-56bd7971-7c94-4247-a359-f6903633a685.png",
+      "sourceRows": 7,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3,
+        null,
+        4,
+        5,
+        6
+      ],
+      "correction": {
+        "targetRows": [
+          4
+        ],
+        "sourceRows": [
+          0
+        ],
+        "reason": "The initial native atlas contains only seven actual rows, omitting the requested fatality row. A separate four-pose native Kamui finale fills that missing phase; no existing row is duplicated.",
+        "prompt": "Create ONE native PIXEL ART strip, exactly FOUR COLUMNS and ONE ROW of FOUR different full-body KAKASHI HATAKE poses. Wide transparent RGBA canvas, four equal square cells,20% transparent safe margin inside EACH cell. All hands, feet, hair, eye details and tiny gray spatial effect fit fully within each cell; no crop, background, floor, grid, text, border or enemy. Attached images are identity/pixel-style references only. Draw four NEW anatomical poses, do not copy a cell. KAKASHI during NARUTO SHIPPUDEN WAR BEFORE DOUBLE MANGEKYO: spiky SILVER hair, green flak vest/pockets, navy shinobi outfit, gloves, white thigh/ankle wraps and open-toe sandals. Lower-face dark mask covers NOSE AND MOUTH ALWAYS. Forehead protector is LIFTED/ANGLED UP to expose ONLY HIS LEFT RED SHARINGAN, vertical scar through that left eye. RIGHT eye stays normal DARK, not red. No Susanoo, giant samurai, wings, chakra armor, doubleMS, two Sharingan, laser, electricity, blue hand blast, Raikiri or Chidori. KAMUI is the single Sharingan's spatial distortion: tiny dark GRAY swirling elliptical folds in empty air just ahead at EYE LEVEL, no beam connecting eye to warp, never lightning.\nThese are a NON-GORY ADAPTED KAMUI FINALE after a match, no victim or execution. Four sequential poses:1 stands in deep staggered guard and uses right glove to push forehead protector above the LEFT scarred red eye, other arm crosses low at waist;2 leans torso forward with both knees bent, one left red Sharingan fixed ahead, right hand now lowered open beside cheek while left hand braces front thigh;3 straightens front leg and turns torso three-quarter right with right forearm swept back for balance, ONE RED LEFT EYE clearly visible and a SMALL GREY SPIRAL spatial warp floats a hand-width ahead of eye line toward right, no laser or electric connection;4 recoils down onto right knee, left glove covers his tired left eye while right hand touches ground, tiny gray curls fading in front. Four distinctly different body silhouettes, elbows, knees, hand positions and torso angles. All four are Kakashi in SAME war-era costume, one red eye when uncovered, mask intact. Tiny localized effect only in frame3, not a filled background cloud.",
+        "file": "/workspace/generated_images/exec-14941e78-1505-4454-ac34-b3461d0593fa.png"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "heroId": "piccolo_dbz",
+      "universe": "Dragon Ball Z",
+      "sourceWork": "Dragon Ball Z, Piccolo / Makankosappo",
+      "ability": "Special Beam Cannon",
+      "archivedPath": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+      "sha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "originalGeneratedPath": "/workspace/generated_images/exec-275b2624-93b1-44d2-92a2-85df4000a8fd.png",
+      "prompt": "Create ONE new native PIXEL-ART CHARACTER ANIMATION ATLAS on actual transparent RGBA. Portrait4:8 grid, exactly FOUR COLUMNS and EIGHT ROWS,32 separate full-body drawings. Intended final atlas1024x2048, equal square cells. Use attached image ONLY for identity/pixel rendering, NOT cells to paste or old attacks to preserve. Every drawing needs new full-body anatomy, visibly different arms/elbows/knees/torso/hand positions; no repeated cell, translated clone or glow-only variation. Detailed crisp discrete pixel art at small-game scale, consistent face, age, body and costume. At least15% completely transparent safe padding around each sprite, weapon and compact effect: nothing cut off or touching another cell. Keep whole body and all fingers, hair, ears, antennae, toes and effects visible. Face mostly right at three-quarter side view. No background, floor, grid, panel, border, caption, labels, numbers, watermark, checkerboard or victim. Exactly these eight rows:1intro,2outro,3roundVictory,4roundDefeat,5fatality (non-gory adapted final technique flourish, not execution),6victory,7defeat,8super. Rows3/6 are different celebrations, rows4/7 different temporary/final defeat, rows5/8 separate original four-pose techniques. This is purpose-drawn generated adaptation, not official-source ripped or certified1:1 frames. Scale the whole subject with its effect compactly to fit every cell. Effects SMALL and localized, never a cloud or connected ribbon spanning cells.\n\nPICCOLO from DRAGON BALL Z, same green Namekian identity as local reference, TWO green forehead ANTENNAE, pointed long ears, bald head, stern narrow eyes, green hands, pink segmented organic arm pads. IMPORTANT COSTUME CORRECTION: wear his recognizable DEEP PURPLE sleeveless gi and baggy PURPLE trousers with BLUE waist sash and brown-orange pointed boots. The reference's nearly black gi is a local palette mismatch; make the new gi purple in all32 cells. No white cape/turban, no Orange Piccolo/DBSuper transformation. NO gun, armor cannon, mechanical arm, robotic device or weapon. Special Beam Cannon is ORGANIC KI emitted from TWO EXTENDED FINGERS (index and middle), not a literal cannon. Keep fingers and forehead contact legible.\nROW1 INTRO:1 steps in with arms hanging and gi moving;2 folds arms across chest with chin lifted;3 unfolds left arm while shifting rear foot;4 settles low wide martial guard, open left palm and right fist at ribs.\nROW2 OUTRO:1 relaxes guard and lowers open hand;2 turns torso three-quarter away;3 looks back over shoulder with one arm folded;4 takes departing step with both arms again folded and head turned aside.\nROW3 ROUND VICTORY:1 retracts fist to waist after effort;2 straightens and tightens both fists low beside hips;3 gives short satisfied nod with one boot forward;4 calmly crosses arms in a different wide stance, small stern smile.\nROW4 ROUND DEFEAT:1 recoils behind raised forearms;2 kneels on right knee with left palm touching ground;3 presses one palm on thigh and pushes up;4 regains hunched low open-palm guard, tired but ready, no bleeding or severed limb.\nROW5 SPECIAL BEAM CANNON ADAPTED FINALE:1 deep staggered stance, right INDEX AND MIDDLE fingers together touch FOREHEAD between antennae, left arm braced across waist;2 leans forward with same TWO fingertips still at forehead and tiny golden ki sparks localized around fingertips;3 thrusts right arm forward with index/middle together aimed right, emits SHORT narrow pale-yellow beam wrapped by TWO visible golden spiral coils, beam starts exactly at two fingertips and stays entirely inside cell;4 retracts right arm to side and relaxes knees as short spiral fades. No enemy/victim or huge blast.\nROW6 MATCH VICTORY:1 stands upright and releases both shoulders;2 raises one clenched fist in a reserved salute beside temple without touching forehead;3 turns chest toward viewer with arms spread briefly and open palms low;4 stands tall with arms folded and chin high, feet closer than round celebration.\nROW7 MATCH DEFEAT:1 staggers with one hand over abdomen;2 drops to both knees with head lowered;3 braces empty left palm on floor with shoulders folded;4 sits exhausted on one hip, knees bent, other forearm resting on thigh, alive non-graphic defeat.\nROW8 SUPER SPECIAL BEAM CANNON:1 low crouch, RIGHT INDEX AND MIDDLE FINGERTIPS press against forehead, other hand clenched beside hip;2 rises into broad bent-knee stance still charging with TWO fingers at forehead and very small amber sparks;3 extends right arm at SHOULDER HEIGHT, TWO joined fingers straight toward empty right, short slim golden ki lance spiraling around a pale central ray from those fingertips, left arm behind for balance;4 follows recoil into a deeper squat with right arm lowered and fingers still paired, faint tiny residual spiral. Every pose differs from row5; no palm Kamehameha, hand cannon, lightning, tech barrel or mechanical arm.",
+      "promptFile": "docs/combat-fidelity-wave4-2026-10-18/part-c-prompts/piccolo_dbz.txt",
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen",
+      "accepted": true,
+      "transparentBackgroundRequested": true,
+      "referenceAsset": "/sprites/generated/heroes/dragon-ball-z/piccolo-dbz.png",
+      "referenceAssetSha256": "3e2d27222a243d8dc18956fe2be63939a458b61c142b1e382905b70946a20cc0",
+      "referenceArchive": "docs/combat-fidelity-wave4-2026-10-18/part-c-references/piccolo_dbz.png",
+      "referenceArchiveSha256": "3e2d27222a243d8dc18956fe2be63939a458b61c142b1e382905b70946a20cc0",
+      "sourceReference": "Dragon Ball Z, Piccolo charges Makankosappo / Special Beam Cannon with index and middle fingertips at his forehead, then releases a narrow spiral-wrapped ki beam from those two extended fingers. Purple gi corrects the near-black local reference palette. Compact effects and timings are authored adaptation, not official frames.",
+      "visuallyReviewed": true,
+      "networkVerified": false,
+      "canon1to1Verified": false,
+      "nativeRowCount": 8,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "supersededRows": [
+        4,
+        7
+      ],
+      "usage": "preserved-native-phase-rows"
+    },
+    {
+      "heroId": "piccolo_dbz",
+      "universe": "Dragon Ball Z",
+      "sourceWork": "Dragon Ball Z, Piccolo / Makankosappo",
+      "ability": "Special Beam Cannon",
+      "archivedPath": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-correction.png",
+      "sha256": "7e89a4d084e127d9fa1296873466926abc1f5a63e289d9562743d1977b5efa93",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "originalGeneratedPath": "/workspace/generated_images/exec-fd7c0a1f-e69e-49c0-bbdf-1ed9d2f7e182.png",
+      "prompt": "Create ONE native pixel-art replacement sheet of PICCOLO from DRAGON BALL Z: FOUR COLUMNS and TWO ROWS = EIGHT distinct full-body drawings. Real transparent RGBA, landscape2:1 canvas with eight equal square cells. Use attached images only for identity/style. Green bald Namekian, TWO forehead antennae, pointed ears, pink organic segmented arm patches, DEEP PURPLE sleeveless gi and purple loose trousers, BLUE sash, brown-orange pointed boots. No cape, turban, Orange transformation, firearm, mechanical arm or literal cannon. Same crisp detailed pixel style. Every whole character should occupy about65% of cell HEIGHT and have CONSISTENT BODY SCALE in ALL8 cells, all hands/antennae/toes intact. Every subject/effect has20% transparent padding, no background, floor, panels, labels or grid.\nCRITICAL: Special Beam Cannon / Makankosappo is KI from TWO joined INDEX AND MIDDLE FINGERS. Charging has those TWO fingertips touching FOREHEAD. Releasing has TWO fingers extended forward. The coiled golden beam must be TINY, a short localized MUZZLE SPIRAL only ONE SIXTH OF BODY HEIGHT long, about a finger-length or two. Never draw a long ray across the cell. The actual game's renderer adds the long beam separately. NO long laser, no huge aura, no cloud, no energyball, no Kamehameha palm. If a short beam doesn't fit safely, make it shorter; NEVER make Piccolo's body smaller. Keep the arm and fingers close enough to fit same body scale as standing poses.\nTOP ROW is non-gory adapted finale:frame1 deep staggered stance RIGHT index/middle together pressed to forehead, other arm folded low;frame2 shifts torso and weight forward with knees bent, TWO fingertips still at forehead, tiny amber spark at contact;frame3 forward wide stance, right arm aimed at shoulder height with slightly bent elbow, TWO joined fingers straight toward right, a very SHORT pale central ki lance wrapped in two small gold SPIRAL COILS immediately at fingertips;frame4 relaxes into upright recovery with right arm lowered beside thigh, two fingers still paired, no beam. All four are distinct, no victim or execution.\nBOTTOM ROW is a DIFFERENT super sequence:frame1 low crouch left knee forward, right TWO fingertips touch forehead and free fist at ribs;frame2 rises into wide bent-knee stance with torso tilted back slightly, right TWO fingertips charge at forehead while left hand opens low;frame3 twists hips forward with front knee deeply bent, right arm at SHOULDER HEIGHT, TWO fingers pointed forward, tiny golden coiled beam from fingertips, left arm stretches behind for balance;frame4 recoils to deep crouch with right elbow bent near waist and paired fingers pointed down, no beam. Eight genuinely new anatomical drawings, no copying, mirroring or pose warping. Bodies must keep the same large scale throughout; short spiral is a muzzle cue, never a long projectile.",
+      "promptFile": "docs/combat-fidelity-wave4-2026-10-18/part-c-prompts/piccolo_dbz-correction.txt",
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-row-correction",
+      "accepted": true,
+      "transparentBackgroundRequested": true,
+      "referenceAsset": "/sprites/generated/heroes/dragon-ball-z/piccolo-dbz.png",
+      "referenceAssetSha256": "3e2d27222a243d8dc18956fe2be63939a458b61c142b1e382905b70946a20cc0",
+      "referenceArchive": "docs/combat-fidelity-wave4-2026-10-18/part-c-references/piccolo_dbz.png",
+      "referenceArchiveSha256": "3e2d27222a243d8dc18956fe2be63939a458b61c142b1e382905b70946a20cc0",
+      "sourceReference": "Dragon Ball Z, Piccolo charges Makankosappo / Special Beam Cannon with index and middle fingertips at his forehead, then releases a narrow spiral-wrapped ki beam from those two extended fingers. Purple gi corrects the near-black local reference palette. Compact effects and timings are authored adaptation, not official frames.",
+      "visuallyReviewed": true,
+      "networkVerified": false,
+      "canon1to1Verified": false,
+      "nativeRowCount": 2,
+      "sourceRowsUsed": [
+        0,
+        1
+      ],
+      "targetRows": [
+        4,
+        7
+      ],
+      "reason": "Initial Special Beam Cannon rows have an overlong beam that forces the normalized body much smaller than other phases. Replace only those two action rows with native paired-finger poses and a compact coiled muzzle beam; engine VFX retain combat reach."
+    },
+    {
+      "heroId": "kakashi_war",
+      "universe": "Naruto Shippuden",
+      "sourceWork": "Naruto Shippuden, Fourth Shinobi World War Kakashi before double Mangekyo",
+      "ability": "Kamui",
+      "archivedPath": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+      "sha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "originalGeneratedPath": "/workspace/generated_images/exec-56bd7971-7c94-4247-a359-f6903633a685.png",
+      "prompt": "Create ONE new native PIXEL-ART CHARACTER ANIMATION ATLAS on actual transparent RGBA. Portrait4:8 grid, exactly FOUR COLUMNS and EIGHT ROWS,32 separate full-body drawings. Intended final atlas1024x2048, equal square cells. Use attached image ONLY for identity/pixel rendering, NOT cells to paste or old attacks to preserve. Every drawing needs new full-body anatomy, visibly different arms/elbows/knees/torso/hand positions; no repeated cell, translated clone or glow-only variation. Detailed crisp discrete pixel art at small-game scale, consistent face, age, body and costume. At least15% completely transparent safe padding around each sprite, weapon and compact effect: nothing cut off or touching another cell. Keep whole body and all fingers, hair, ears, antennae, toes and effects visible. Face mostly right at three-quarter side view. No background, floor, grid, panel, border, caption, labels, numbers, watermark, checkerboard or victim. Exactly these eight rows:1intro,2outro,3roundVictory,4roundDefeat,5fatality (non-gory adapted final technique flourish, not execution),6victory,7defeat,8super. Rows3/6 are different celebrations, rows4/7 different temporary/final defeat, rows5/8 separate original four-pose techniques. This is purpose-drawn generated adaptation, not official-source ripped or certified1:1 frames. Scale the whole subject with its effect compactly to fit every cell. Effects SMALL and localized, never a cloud or connected ribbon spanning cells.\n\nKAKASHI HATAKE, NARUTO SHIPPUDEN FOURTH WAR, BEFORE DOUBLE MANGEKYO SHARINGAN. Silver-grey spiky hair, black/navy lower-face MASK covering nose and mouth in EVERY cell, green Konoha FLak VEST with rectangular pockets over dark navy long sleeves and trousers, dark fingerless gloves, white shin wraps and thigh bands, dark OPEN-TOE sandals; forehead protector with leaf symbol. Match reference proportions/costume. For Kamui he lifts/angles his forehead protector to expose ONLY HIS LEFT red Sharingan eye with the vertical scar; the other eye remains natural dark, never a second red Sharingan. Keep one red eye legible in Kamui poses, no scar added across both eyes. NO Susanoo, giant samurai, spectral armor, wings, eye transplant doubleMS, purple chakra warrior, rifle, sword or electric Raikiri/Chidori in this atlas. Kamui originates from concentrated SHARINGAN GAZE: small grey swirling spatial distortion in EMPTY AIR ahead of gaze, NOT an eye laser, hand beam, blue lightning spear or an electric attack. Use very restrained grey-blue curved distortion lines inside cell.\nROW1 INTRO:1 walks in upright with one hand near vest pocket and forehead protector lowered over left eye;2 pulls a small kunai into low safe grip;3 shifts into staggered shinobi guard with free hand raised open;4 raises two fingers of free hand in a compact preparatory hand seal, kunai lowered beside hip.\nROW2 OUTRO:1 lowers guarded hands;2 safely stows kunai in pouch;3 turns torso away and raises one hand in small departing wave;4 walks off in three-quarter back view with head tilted toward viewer, lower-face mask intact.\nROW3 ROUND VICTORY:1 withdraws empty lead hand to chest;2 gives small eye-smile and short two-finger salute away from eye;3 brushes glove against vest edge while shifting weight;4 settles relaxed with arms loosely folded, one boot forward.\nROW4 ROUND DEFEAT:1 absorbs recoil with crossed forearms;2 slides to one-knee crouch, palm on ground, mask and protector stay in place;3 pushes up with palm against front thigh;4 regains cautious low shinobi guard without lightning or weapon attack.\nROW5 KAMUI ADAPTED FINALE:1 plants feet wide and raises forehead protector with right hand to reveal ONE red LEFT Sharingan;2 bends both knees and fixes single Sharingan gaze ahead, free hand braced at waist;3 leans torso forward in a different low posture, ONE red eye remains exposed, tiny grey-blue twisting elliptical space distortion floats close ahead at EYE LEVEL on right with no ray connecting eye to it;4 lowers head and hand toward eye exhausted, small spatial curls fading. No victim, body removal, blood or second Sharingan.\nROW6 MATCH VICTORY:1 straightens from guard with open hands lowered;2 lifts free hand in friendly palm-out wave;3 places both hands behind head in relaxed stretch with elbows out;4 returns to casual one-hand-in-vest posture with a visible friendly eye-smile, different from round salute.\nROW7 MATCH DEFEAT:1 sways holding shoulder with opposite hand;2 sinks onto both knees, bowed head;3 leans forward supported on one palm, other hand pressed over left eye fatigue;4 sits exhausted against an invisible rest with knees bent and head down, lower-face mask always on, no wounds.\nROW8 SUPER KAMUI:1 drops into low staggered stance while lifting protector above ONLY LEFT eye, exposing red Sharingan and vertical scar;2 drives torso upright and raises free hand in balancing open-palm pose while staring ahead, both arms distinctly placed and one red eye visible;3 lunges only a small half-step forward with deep bent front knee and other arm swept back, tiny GRAY SPIRAL SPACE WARP ahead of the eye line, no beam and no lightning;4 recoils into one-knee recovery with one hand covering exhausted LEFT eye, mask and silver hair intact, warp dissipated. Four genuine anatomical poses different from finale row5. No eye-laser, electric aura, blue palm blast, Susanoo or double red eyes anywhere.",
+      "promptFile": "docs/combat-fidelity-wave4-2026-10-18/part-c-prompts/kakashi_war.txt",
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen",
+      "accepted": true,
+      "transparentBackgroundRequested": true,
+      "referenceAsset": "/sprites/generated/heroes/naruto-shippuden/kakashi-war.png",
+      "referenceAssetSha256": "ffdbc77d110cae335aae8f594b1ca0c2d3cf7eb77a002895e1dd9d1e6140d6fb",
+      "referenceArchive": "docs/combat-fidelity-wave4-2026-10-18/part-c-references/kakashi_war.png",
+      "referenceArchiveSha256": "ffdbc77d110cae335aae8f594b1ca0c2d3cf7eb77a002895e1dd9d1e6140d6fb",
+      "sourceReference": "Naruto Shippuden, war-era Kakashi uses his single left Mangekyo Sharingan for Kamui space-time distortion. This is the pre-double-Mangekyo version, without Susanoo. The atlas depicts eye concentration and a compact grey space warp, not the electrical hand attack Raikiri. Gameplay area, timings and visual glyphs remain authored adaptation.",
+      "visuallyReviewed": true,
+      "networkVerified": false,
+      "canon1to1Verified": false,
+      "nativeRowCount": 7,
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "filledMissingTargetRows": [
+        4
+      ],
+      "usage": "seven-native-rows-preserved"
+    },
+    {
+      "heroId": "kakashi_war",
+      "universe": "Naruto Shippuden",
+      "sourceWork": "Naruto Shippuden, Fourth Shinobi World War Kakashi before double Mangekyo",
+      "ability": "Kamui",
+      "archivedPath": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-correction.png",
+      "sha256": "882f4e0a3b7f65380e7e6d3e3dc664606e3a971dc2a42c7772cb25f2798b9fae",
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "originalGeneratedPath": "/workspace/generated_images/exec-14941e78-1505-4454-ac34-b3461d0593fa.png",
+      "prompt": "Create ONE native PIXEL ART strip, exactly FOUR COLUMNS and ONE ROW of FOUR different full-body KAKASHI HATAKE poses. Wide transparent RGBA canvas, four equal square cells,20% transparent safe margin inside EACH cell. All hands, feet, hair, eye details and tiny gray spatial effect fit fully within each cell; no crop, background, floor, grid, text, border or enemy. Attached images are identity/pixel-style references only. Draw four NEW anatomical poses, do not copy a cell. KAKASHI during NARUTO SHIPPUDEN WAR BEFORE DOUBLE MANGEKYO: spiky SILVER hair, green flak vest/pockets, navy shinobi outfit, gloves, white thigh/ankle wraps and open-toe sandals. Lower-face dark mask covers NOSE AND MOUTH ALWAYS. Forehead protector is LIFTED/ANGLED UP to expose ONLY HIS LEFT RED SHARINGAN, vertical scar through that left eye. RIGHT eye stays normal DARK, not red. No Susanoo, giant samurai, wings, chakra armor, doubleMS, two Sharingan, laser, electricity, blue hand blast, Raikiri or Chidori. KAMUI is the single Sharingan's spatial distortion: tiny dark GRAY swirling elliptical folds in empty air just ahead at EYE LEVEL, no beam connecting eye to warp, never lightning.\nThese are a NON-GORY ADAPTED KAMUI FINALE after a match, no victim or execution. Four sequential poses:1 stands in deep staggered guard and uses right glove to push forehead protector above the LEFT scarred red eye, other arm crosses low at waist;2 leans torso forward with both knees bent, one left red Sharingan fixed ahead, right hand now lowered open beside cheek while left hand braces front thigh;3 straightens front leg and turns torso three-quarter right with right forearm swept back for balance, ONE RED LEFT EYE clearly visible and a SMALL GREY SPIRAL spatial warp floats a hand-width ahead of eye line toward right, no laser or electric connection;4 recoils down onto right knee, left glove covers his tired left eye while right hand touches ground, tiny gray curls fading in front. Four distinctly different body silhouettes, elbows, knees, hand positions and torso angles. All four are Kakashi in SAME war-era costume, one red eye when uncovered, mask intact. Tiny localized effect only in frame3, not a filled background cloud.",
+      "promptFile": "docs/combat-fidelity-wave4-2026-10-18/part-c-prompts/kakashi_war-correction.txt",
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-row-correction",
+      "accepted": true,
+      "transparentBackgroundRequested": true,
+      "referenceAsset": "/sprites/generated/heroes/naruto-shippuden/kakashi-war.png",
+      "referenceAssetSha256": "ffdbc77d110cae335aae8f594b1ca0c2d3cf7eb77a002895e1dd9d1e6140d6fb",
+      "referenceArchive": "docs/combat-fidelity-wave4-2026-10-18/part-c-references/kakashi_war.png",
+      "referenceArchiveSha256": "ffdbc77d110cae335aae8f594b1ca0c2d3cf7eb77a002895e1dd9d1e6140d6fb",
+      "sourceReference": "Naruto Shippuden, war-era Kakashi uses his single left Mangekyo Sharingan for Kamui space-time distortion. This is the pre-double-Mangekyo version, without Susanoo. The atlas depicts eye concentration and a compact grey space warp, not the electrical hand attack Raikiri. Gameplay area, timings and visual glyphs remain authored adaptation.",
+      "visuallyReviewed": true,
+      "networkVerified": false,
+      "canon1to1Verified": false,
+      "nativeRowCount": 1,
+      "sourceRowsUsed": [
+        0
+      ],
+      "targetRows": [
+        4
+      ],
+      "reason": "The initial native atlas contains only seven actual rows, omitting the requested fatality row. A separate four-pose native Kamui finale fills that missing phase; no existing row is duplicated."
+    }
+  ],
+  "entries": [
+    {
+      "id": "piccolo_dbz",
+      "heroId": "piccolo_dbz",
+      "universe": "Dragon Ball Z",
+      "name": "Piccolo",
+      "sheet": "/sprites/generated/combat-character-animations-wave4/piccolo_dbz.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "94c6a68f6862aa8490cda63637935863012299aab7faabb5074c72cf399a0bec",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-correction.png",
+      "sourceImageSha256": "7e89a4d084e127d9fa1296873466926abc1f5a63e289d9562743d1977b5efa93",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "referenceAsset": "/sprites/generated/heroes/dragon-ball-z/piccolo-dbz.png",
+      "referenceAssetSha256": "3e2d27222a243d8dc18956fe2be63939a458b61c142b1e382905b70946a20cc0",
+      "referenceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-references/piccolo_dbz.png",
+      "sourceWork": "Dragon Ball Z, Piccolo / Makankosappo",
+      "sourceReference": "Dragon Ball Z, Piccolo charges Makankosappo / Special Beam Cannon with index and middle fingertips at his forehead, then releases a narrow spiral-wrapped ki beam from those two extended fingers. Purple gi corrects the near-black local reference palette. Compact effects and timings are authored adaptation, not official frames.",
+      "abilityName": "Special Beam Cannon",
+      "characterVersion": "Dragon Ball Z Piccolo, green Namekian with two antennae, pointed ears and pink segmented arm pads; purple gi, blue sash, brown-orange pointed boots, no cape/turban or Orange transformation.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+      "originalSourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+      "nativeCorrection": true,
+      "nativeCorrectionReason": "Initial Special Beam Cannon rows have an overlong beam that forces the normalized body much smaller than other phases. Replace only those two action rows with native paired-finger poses and a compact coiled muzzle beam; engine VFX retain combat reach.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+            "sourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 237
+            },
+            "scale": 1.0642201834862386,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 57,
+                  "top": 15,
+                  "width": 113,
+                  "height": 216,
+                  "pixels": 15188
+                },
+                "output": {
+                  "left": 71,
+                  "top": 12,
+                  "width": 120,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 276,
+                  "top": 15,
+                  "width": 107,
+                  "height": 218,
+                  "pixels": 14033
+                },
+                "output": {
+                  "left": 68,
+                  "top": 12,
+                  "width": 114,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 457,
+                  "top": 31,
+                  "width": 188,
+                  "height": 200,
+                  "pixels": 17310
+                },
+                "output": {
+                  "left": 24,
+                  "top": 29,
+                  "width": 200,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 676,
+                  "top": 58,
+                  "width": 199,
+                  "height": 169,
+                  "pixels": 15831
+                },
+                "output": {
+                  "left": 21,
+                  "top": 58,
+                  "width": 212,
+                  "height": 180
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+            "sourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 236,
+              "bottom": 456
+            },
+            "scale": 1.0892018779342723,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 48,
+                  "top": 5,
+                  "width": 147,
+                  "height": 211,
+                  "pixels": 14552
+                },
+                "output": {
+                  "left": 60,
+                  "top": 13,
+                  "width": 160,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 277,
+                  "top": 9,
+                  "width": 123,
+                  "height": 207,
+                  "pixels": 15820
+                },
+                "output": {
+                  "left": 67,
+                  "top": 17,
+                  "width": 134,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 510,
+                  "top": 8,
+                  "width": 95,
+                  "height": 209,
+                  "pixels": 12552
+                },
+                "output": {
+                  "left": 80,
+                  "top": 16,
+                  "width": 103,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 720,
+                  "top": 4,
+                  "width": 106,
+                  "height": 208,
+                  "pixels": 11222
+                },
+                "output": {
+                  "left": 67,
+                  "top": 12,
+                  "width": 115,
+                  "height": 227
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+            "sourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 454,
+              "bottom": 696
+            },
+            "scale": 0.9872340425531915,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 18,
+                  "top": 13,
+                  "width": 181,
+                  "height": 213,
+                  "pixels": 18837
+                },
+                "output": {
+                  "left": 36,
+                  "top": 21,
+                  "width": 179,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 258,
+                  "top": 4,
+                  "width": 153,
+                  "height": 230,
+                  "pixels": 18464
+                },
+                "output": {
+                  "left": 54,
+                  "top": 12,
+                  "width": 151,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 502,
+                  "top": 12,
+                  "width": 106,
+                  "height": 227,
+                  "pixels": 14631
+                },
+                "output": {
+                  "left": 76,
+                  "top": 20,
+                  "width": 105,
+                  "height": 224
+                }
+              },
+              {
+                "source": {
+                  "left": 702,
+                  "top": 10,
+                  "width": 153,
+                  "height": 229,
+                  "pixels": 15366
+                },
+                "output": {
+                  "left": 55,
+                  "top": 18,
+                  "width": 151,
+                  "height": 226
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+            "sourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 692,
+              "bottom": 896
+            },
+            "scale": 1.0790697674418606,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 3,
+                  "width": 191,
+                  "height": 194,
+                  "pixels": 16512
+                },
+                "output": {
+                  "left": 21,
+                  "top": 33,
+                  "width": 206,
+                  "height": 209
+                }
+              },
+              {
+                "source": {
+                  "left": 246,
+                  "top": 36,
+                  "width": 168,
+                  "height": 163,
+                  "pixels": 16946
+                },
+                "output": {
+                  "left": 35,
+                  "top": 68,
+                  "width": 181,
+                  "height": 176
+                }
+              },
+              {
+                "source": {
+                  "left": 470,
+                  "top": 17,
+                  "width": 148,
+                  "height": 180,
+                  "pixels": 17548
+                },
+                "output": {
+                  "left": 37,
+                  "top": 48,
+                  "width": 160,
+                  "height": 194
+                }
+              },
+              {
+                "source": {
+                  "left": 669,
+                  "top": 33,
+                  "width": 204,
+                  "height": 163,
+                  "pixels": 17177
+                },
+                "output": {
+                  "left": 12,
+                  "top": 65,
+                  "width": 220,
+                  "height": 176
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-correction.png",
+            "sourceImageSha256": "7e89a4d084e127d9fa1296873466926abc1f5a63e289d9562743d1977b5efa93",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 462
+            },
+            "scale": 0.42568807339449544,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 33,
+                  "top": 82,
+                  "width": 390,
+                  "height": 368,
+                  "pixels": 62222
+                },
+                "output": {
+                  "left": 48,
+                  "top": 85,
+                  "width": 166,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 474,
+                  "top": 83,
+                  "width": 362,
+                  "height": 368,
+                  "pixels": 63916
+                },
+                "output": {
+                  "left": 47,
+                  "top": 86,
+                  "width": 154,
+                  "height": 157
+                }
+              },
+              {
+                "source": {
+                  "left": 902,
+                  "top": 91,
+                  "width": 479,
+                  "height": 359,
+                  "pixels": 66429
+                },
+                "output": {
+                  "left": 40,
+                  "top": 89,
+                  "width": 204,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 1353,
+                  "top": 50,
+                  "width": 316,
+                  "height": 405,
+                  "pixels": 60376
+                },
+                "output": {
+                  "left": 43,
+                  "top": 72,
+                  "width": 135,
+                  "height": 172
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+            "sourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1109,
+              "bottom": 1351
+            },
+            "scale": 0.9392712550607287,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 45,
+                  "top": 3,
+                  "width": 126,
+                  "height": 229,
+                  "pixels": 18131
+                },
+                "output": {
+                  "left": 66,
+                  "top": 25,
+                  "width": 118,
+                  "height": 215
+                }
+              },
+              {
+                "source": {
+                  "left": 262,
+                  "top": 6,
+                  "width": 174,
+                  "height": 228,
+                  "pixels": 17126
+                },
+                "output": {
+                  "left": 62,
+                  "top": 28,
+                  "width": 163,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 431,
+                  "top": 15,
+                  "width": 231,
+                  "height": 218,
+                  "pixels": 19249
+                },
+                "output": {
+                  "left": 12,
+                  "top": 36,
+                  "width": 217,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 733,
+                  "top": 7,
+                  "width": 97,
+                  "height": 229,
+                  "pixels": 14489
+                },
+                "output": {
+                  "left": 87,
+                  "top": 29,
+                  "width": 91,
+                  "height": 215
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-original.png",
+            "sourceImageSha256": "ac696096fdaeffeab311baaf129a41a0c89ce06a7e8c1c30c91c7bd5a48b5815",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1350,
+              "bottom": 1555
+            },
+            "scale": 1.0131004366812226,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 28,
+                  "top": 7,
+                  "width": 164,
+                  "height": 188,
+                  "pixels": 16476
+                },
+                "output": {
+                  "left": 44,
+                  "top": 54,
+                  "width": 166,
+                  "height": 190
+                }
+              },
+              {
+                "source": {
+                  "left": 266,
+                  "top": 42,
+                  "width": 175,
+                  "height": 146,
+                  "pixels": 13821
+                },
+                "output": {
+                  "left": 61,
+                  "top": 89,
+                  "width": 177,
+                  "height": 148
+                }
+              },
+              {
+                "source": {
+                  "left": 440,
+                  "top": 59,
+                  "width": 207,
+                  "height": 125,
+                  "pixels": 14265
+                },
+                "output": {
+                  "left": 12,
+                  "top": 106,
+                  "width": 210,
+                  "height": 127
+                }
+              },
+              {
+                "source": {
+                  "left": 690,
+                  "top": 45,
+                  "width": 186,
+                  "height": 140,
+                  "pixels": 16551
+                },
+                "output": {
+                  "left": 41,
+                  "top": 92,
+                  "width": 188,
+                  "height": 142
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/piccolo_dbz-correction.png",
+            "sourceImageSha256": "7e89a4d084e127d9fa1296873466926abc1f5a63e289d9562743d1977b5efa93",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 461,
+              "bottom": 887
+            },
+            "scale": 0.38731218697829717,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 43,
+                  "top": 89,
+                  "width": 335,
+                  "height": 315,
+                  "pixels": 58051
+                },
+                "output": {
+                  "left": 59,
+                  "top": 120,
+                  "width": 130,
+                  "height": 122
+                }
+              },
+              {
+                "source": {
+                  "left": 470,
+                  "top": 9,
+                  "width": 371,
+                  "height": 400,
+                  "pixels": 72467
+                },
+                "output": {
+                  "left": 52,
+                  "top": 89,
+                  "width": 144,
+                  "height": 155
+                }
+              },
+              {
+                "source": {
+                  "left": 875,
+                  "top": 75,
+                  "width": 533,
+                  "height": 324,
+                  "pixels": 68319
+                },
+                "output": {
+                  "left": 37,
+                  "top": 115,
+                  "width": 206,
+                  "height": 125
+                }
+              },
+              {
+                "source": {
+                  "left": 1363,
+                  "top": 110,
+                  "width": 355,
+                  "height": 291,
+                  "pixels": 49344
+                },
+                "output": {
+                  "left": 55,
+                  "top": 128,
+                  "width": 137,
+                  "height": 113
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9af58ccb77ddc14363d52856c0cf67ea87ce8a46b4a572cef7f3edb0ea088b5a",
+              "b73792bfae1103a444561a98d59f79fd14f4d983cb18adb269242be81dcd793f",
+              "79f682c417e080b8a137a4ff7d9e0b0b80a8f040b67c5f919a1c091f75d06acc",
+              "1df531c40ff4f27a0fa92b64eb44c33a3aa58b86b78662378c356a3ac849a9c9"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "4b36eb1e8af9f990c958899b789467cc7bf3398fd9fe1b658048439e5b6d8112",
+              "3eac347c157824f6a7adb7329aa6cd83cf803c392fc4741014eadc675d1a765a",
+              "4883a84dc3512a76df5c577e3959a227ac8ae21b9188d45e004f2815e5441bd1",
+              "df46ea2fd2633be4ed6f086b650e4f37705a6104ec4750886a0a032850cd6baa"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "86656e26f043d9bdad279bece890a474c5c6cc0ee9ad986b9cbe45e91450ca3a",
+              "d10bbc26261199a97a5ad8a354ae7642994624d8a2d0fc0cef17cab53de24f42",
+              "0b0f19fa56faad73e76cdba2a9601ea765b0093086930d10d3164ed7414808a0",
+              "4d8f718d4da2ad911dd93fb034dd5e53ef1ce8781d9cd47340822c6be9fa3bb9"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "8412ca5ac99aaac65dfb0160d8c19a9274ee4595582a8aadcfdd9476c910016a",
+              "867dc3fe1ab002f37c00619334c5e487532c479835dc701e8d4601ea6d5ae593",
+              "c48fa11c77a019558bbf13b7dc60cbc40aa905bd561149f03490039cf4d19214",
+              "985611f3e97adf1f45b75e41b4d5ec13814b9175b7f5f51aaf2d0a1495c7632f"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7b43ca59b481d8dab6c9ab45fa01b7cca6f55ece4c4826da33bc4f5751b0337d",
+              "0cf601bf1a82e357d46cd9f49b58351574e8c696315c856ab246d22bc480f0b2",
+              "c96729adc5d4667d6f3dc18b9a156fe107d8729c855f8128411f6f600621b426",
+              "f9e86a3ff6413453ebf5e746b81f778b4f852b3a157a97a43fe1f87e9b501613"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "129ddfdbb6071f8f34d1a8326794fbdc4d30eee05d71c92053503466cd5efb32",
+              "934460a99762ec365314bf9fd0964136ea3a30c18805c0d6006a3f1049def96f",
+              "da96feba53613debaf68b8b81e8986aff0031fb949d39c880b51eb8a94dcb182",
+              "0a257d59cd8cc62a06bedb4a1922bd9ff0feb8c2c22f7fec3611534351bd154e"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "9aa994a4609dc3e7594290eb1da24c454e53f4bddc406de02ecc0d92c119a969",
+              "d91d2bf392795dc2e8c312a41e978312a2436dc52c3ad3f5f6c5c6e3ca43e5a1",
+              "865851ce5f3ecf0ad6e5c75998997f0912426be267352083f5cb65d2deb186d3",
+              "5d367c5ecbc660d51b50ad2551c2c610612939b8a42b57f19d8212c4a0f13f75"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "be5120993d18bdb08d2ae295f9c4ec134b90beff26e7a07235f86e0a94b559c9",
+              "b0c45b08d46032f45ddb90a0a0b6b33fe42575ea34eb7d6ba8e4e5680cdcaf37",
+              "25b14ea82a426de010c0295f96036b27f0f669ad59cbdee5f090dc88c3df1b85",
+              "04744be080dc1365e6901f36acd2fc718919007acc57a56036d651f2448190e3"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "Dragon Ball Z Piccolo, green Namekian with two antennae, pointed ears and pink segmented arm pads; purple gi, blue sash, brown-orange pointed boots, no cape/turban or Orange transformation. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    },
+    {
+      "id": "kakashi_war",
+      "heroId": "kakashi_war",
+      "universe": "Naruto Shippuden",
+      "name": "Kakashi Hatake",
+      "sheet": "/sprites/generated/combat-character-animations-wave4/kakashi_war.png",
+      "width": 1024,
+      "height": 2048,
+      "columns": 4,
+      "rows": 8,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "frames": 32,
+      "phases": {
+        "intro": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "outro": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundVictory": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "roundDefeat": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "fatality": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "defeat": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": false
+        },
+        "super": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "sha256": "b248d7d2868139f601ad7d29e11ae013d094ef229e5f9a7fb39d8ba77c37f34f",
+      "alpha": true,
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-correction.png",
+      "sourceImageSha256": "882f4e0a3b7f65380e7e6d3e3dc664606e3a971dc2a42c7772cb25f2798b9fae",
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "referenceAsset": "/sprites/generated/heroes/naruto-shippuden/kakashi-war.png",
+      "referenceAssetSha256": "ffdbc77d110cae335aae8f594b1ca0c2d3cf7eb77a002895e1dd9d1e6140d6fb",
+      "referenceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-references/kakashi_war.png",
+      "sourceWork": "Naruto Shippuden, Fourth Shinobi World War Kakashi before double Mangekyo",
+      "sourceReference": "Naruto Shippuden, war-era Kakashi uses his single left Mangekyo Sharingan for Kamui space-time distortion. This is the pre-double-Mangekyo version, without Susanoo. The atlas depicts eye concentration and a compact grey space warp, not the electrical hand attack Raikiri. Gameplay area, timings and visual glyphs remain authored adaptation.",
+      "abilityName": "Kamui",
+      "characterVersion": "War-era Kakashi before dual Mangekyo: silver spiky hair, green flak vest over navy shinobi clothes, forehead protector, black lower-face mask, gloves, white leg wraps and open-toe sandals. One left Sharingan revealed for Kamui; no Susanoo or second Sharingan.",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "originalSourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+      "originalSourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+      "nativeCorrection": true,
+      "nativeCorrectionReason": "The initial native atlas contains only seven actual rows, omitting the requested fatality row. A separate four-pose native Kamui finale fills that missing phase; no existing row is duplicated.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "sharedScalePerPhase": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "phase": "intro",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 229
+            },
+            "scale": 1.0841121495327102,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 59,
+                  "top": 11,
+                  "width": 108,
+                  "height": 214,
+                  "pixels": 12585
+                },
+                "output": {
+                  "left": 72,
+                  "top": 12,
+                  "width": 117,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 250,
+                  "top": 11,
+                  "width": 150,
+                  "height": 212,
+                  "pixels": 13945
+                },
+                "output": {
+                  "left": 38,
+                  "top": 12,
+                  "width": 163,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 460,
+                  "top": 16,
+                  "width": 195,
+                  "height": 209,
+                  "pixels": 17093
+                },
+                "output": {
+                  "left": 26,
+                  "top": 17,
+                  "width": 211,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 699,
+                  "top": 11,
+                  "width": 141,
+                  "height": 213,
+                  "pixels": 15829
+                },
+                "output": {
+                  "left": 44,
+                  "top": 12,
+                  "width": 153,
+                  "height": 231
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "outro",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 218,
+              "bottom": 462
+            },
+            "scale": 0.9586776859504132,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 62,
+                  "top": 16,
+                  "width": 102,
+                  "height": 227,
+                  "pixels": 14727
+                },
+                "output": {
+                  "left": 81,
+                  "top": 26,
+                  "width": 98,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 272,
+                  "top": 16,
+                  "width": 115,
+                  "height": 223,
+                  "pixels": 14817
+                },
+                "output": {
+                  "left": 70,
+                  "top": 26,
+                  "width": 110,
+                  "height": 214
+                }
+              },
+              {
+                "source": {
+                  "left": 496,
+                  "top": 15,
+                  "width": 121,
+                  "height": 225,
+                  "pixels": 15751
+                },
+                "output": {
+                  "left": 72,
+                  "top": 25,
+                  "width": 116,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 737,
+                  "top": 1,
+                  "width": 119,
+                  "height": 235,
+                  "pixels": 13119
+                },
+                "output": {
+                  "left": 90,
+                  "top": 12,
+                  "width": 114,
+                  "height": 225
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundVictory",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 455,
+              "bottom": 708
+            },
+            "scale": 0.9469387755102041,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 36,
+                  "top": 5,
+                  "width": 153,
+                  "height": 241,
+                  "pixels": 16892
+                },
+                "output": {
+                  "left": 57,
+                  "top": 16,
+                  "width": 145,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 279,
+                  "top": 5,
+                  "width": 128,
+                  "height": 240,
+                  "pixels": 18063
+                },
+                "output": {
+                  "left": 77,
+                  "top": 16,
+                  "width": 121,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 495,
+                  "top": 1,
+                  "width": 120,
+                  "height": 245,
+                  "pixels": 15877
+                },
+                "output": {
+                  "left": 72,
+                  "top": 12,
+                  "width": 114,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 745,
+                  "top": 5,
+                  "width": 89,
+                  "height": 241,
+                  "pixels": 14015
+                },
+                "output": {
+                  "left": 99,
+                  "top": 16,
+                  "width": 84,
+                  "height": 228
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "roundDefeat",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 704,
+              "bottom": 925
+            },
+            "scale": 1.008695652173913,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 17,
+                  "top": 5,
+                  "width": 187,
+                  "height": 211,
+                  "pixels": 16545
+                },
+                "output": {
+                  "left": 33,
+                  "top": 31,
+                  "width": 189,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 248,
+                  "top": 51,
+                  "width": 170,
+                  "height": 144,
+                  "pixels": 14397
+                },
+                "output": {
+                  "left": 43,
+                  "top": 78,
+                  "width": 171,
+                  "height": 145
+                }
+              },
+              {
+                "source": {
+                  "left": 466,
+                  "top": 16,
+                  "width": 203,
+                  "height": 195,
+                  "pixels": 18541
+                },
+                "output": {
+                  "left": 39,
+                  "top": 42,
+                  "width": 205,
+                  "height": 197
+                }
+              },
+              {
+                "source": {
+                  "left": 667,
+                  "top": 13,
+                  "width": 200,
+                  "height": 199,
+                  "pixels": 15930
+                },
+                "output": {
+                  "left": 18,
+                  "top": 39,
+                  "width": 202,
+                  "height": 201
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "fatality",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-correction.png",
+            "sourceImageSha256": "882f4e0a3b7f65380e7e6d3e3dc664606e3a971dc2a42c7772cb25f2798b9fae",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 724
+            },
+            "scale": 0.38666666666666666,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 52,
+                  "top": 81,
+                  "width": 476,
+                  "height": 594,
+                  "pixels": 113711
+                },
+                "output": {
+                  "left": 43,
+                  "top": 12,
+                  "width": 184,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 603,
+                  "top": 178,
+                  "width": 428,
+                  "height": 485,
+                  "pixels": 104792
+                },
+                "output": {
+                  "left": 46,
+                  "top": 50,
+                  "width": 165,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 1091,
+                  "top": 94,
+                  "width": 545,
+                  "height": 574,
+                  "pixels": 119172
+                },
+                "output": {
+                  "left": 25,
+                  "top": 17,
+                  "width": 211,
+                  "height": 222
+                }
+              },
+              {
+                "source": {
+                  "left": 1687,
+                  "top": 259,
+                  "width": 431,
+                  "height": 422,
+                  "pixels": 93681
+                },
+                "output": {
+                  "left": 45,
+                  "top": 81,
+                  "width": 167,
+                  "height": 163
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "victory",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 923,
+              "bottom": 1188
+            },
+            "scale": 0.9133858267716536,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 53,
+                  "top": 7,
+                  "width": 110,
+                  "height": 248,
+                  "pixels": 18093
+                },
+                "output": {
+                  "left": 75,
+                  "top": 13,
+                  "width": 100,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 271,
+                  "top": 7,
+                  "width": 118,
+                  "height": 251,
+                  "pixels": 17449
+                },
+                "output": {
+                  "left": 72,
+                  "top": 13,
+                  "width": 108,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 486,
+                  "top": 6,
+                  "width": 139,
+                  "height": 254,
+                  "pixels": 18463
+                },
+                "output": {
+                  "left": 66,
+                  "top": 12,
+                  "width": 127,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 725,
+                  "top": 7,
+                  "width": 144,
+                  "height": 248,
+                  "pixels": 16302
+                },
+                "output": {
+                  "left": 81,
+                  "top": 13,
+                  "width": 132,
+                  "height": 227
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "defeat",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1186,
+              "bottom": 1454
+            },
+            "scale": 0.8923076923076924,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 40,
+                  "top": 5,
+                  "width": 126,
+                  "height": 260,
+                  "pixels": 18186
+                },
+                "output": {
+                  "left": 65,
+                  "top": 12,
+                  "width": 112,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 242,
+                  "top": 57,
+                  "width": 145,
+                  "height": 196,
+                  "pixels": 17786
+                },
+                "output": {
+                  "left": 47,
+                  "top": 58,
+                  "width": 129,
+                  "height": 175
+                }
+              },
+              {
+                "source": {
+                  "left": 453,
+                  "top": 92,
+                  "width": 181,
+                  "height": 171,
+                  "pixels": 16890
+                },
+                "output": {
+                  "left": 38,
+                  "top": 90,
+                  "width": 162,
+                  "height": 153
+                }
+              },
+              {
+                "source": {
+                  "left": 707,
+                  "top": 88,
+                  "width": 170,
+                  "height": 175,
+                  "pixels": 17837
+                },
+                "output": {
+                  "left": 66,
+                  "top": 86,
+                  "width": 152,
+                  "height": 156
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          },
+          {
+            "phase": "super",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/part-c-sources/kakashi_war-original.png",
+            "sourceImageSha256": "81cc099c5c75796c978049236cf4adf47332f1a1ba41c8bf75a0e772a368a98e",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1451,
+              "bottom": 1774
+            },
+            "scale": 0.8197879858657244,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 58,
+                  "width": 204,
+                  "height": 220,
+                  "pixels": 22425
+                },
+                "output": {
+                  "left": 47,
+                  "top": 57,
+                  "width": 167,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 238,
+                  "top": 3,
+                  "width": 205,
+                  "height": 283,
+                  "pixels": 24675
+                },
+                "output": {
+                  "left": 50,
+                  "top": 12,
+                  "width": 168,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 442,
+                  "top": 50,
+                  "width": 217,
+                  "height": 227,
+                  "pixels": 21963
+                },
+                "output": {
+                  "left": 36,
+                  "top": 51,
+                  "width": 178,
+                  "height": 186
+                }
+              },
+              {
+                "source": {
+                  "left": 644,
+                  "top": 47,
+                  "width": 237,
+                  "height": 226,
+                  "pixels": 26396
+                },
+                "output": {
+                  "left": 20,
+                  "top": 48,
+                  "width": 194,
+                  "height": 185
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0
+          }
+        ]
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "allFramesReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fourPhasesDistinct": true,
+        "distinctCells": 32,
+        "phaseReviews": [
+          {
+            "phase": "intro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "43310a191225feae50242bd10e3a7a4e59936afcff4936725337d4c80ddbf69d",
+              "e28f447fe2927e861df8c7ae272855b2d0025975308fc252ac8e6052b3d45e94",
+              "e19cf54138c3213011dad92665d0fdd91ff0dd53fb8d872946507b468723e2b3",
+              "a5978f64a50ac6f54ccb7d4e1334b5595b000fb387e938e9a9d5b53a7907ca40"
+            ]
+          },
+          {
+            "phase": "outro",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "7b6dfa3623bade6b65a8931a356160b96cbb9bd8db836da1782144990f5771be",
+              "1c3903bedbe82d08617d9a9ac56acf5987db616c1378f0d5e90a3c0a0e67e1a2",
+              "f8fcc9a6bfd5c6ba2a772c5a61d5f3525e901ec1c02bc1305888e1f95618a78d",
+              "058ff0f3ae87ed24d5b9a90886858e86a26c77b6249df1f5541c7e4e9903b95e"
+            ]
+          },
+          {
+            "phase": "roundVictory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "817b92787cca1ae5d4028d1a5d1d0d1a0e921753ef5ef9be51ef02731307ecfd",
+              "956fb25760f7a98eae20ee55a35631d0b4cf2ea6d8621ab1ca3236488b0bb42b",
+              "72b0cca4473203a72dfa55e7f5ae667cc52e96554fa7b956fffb11145493732c",
+              "2791ec8621459efa4166118ee6604ac9afbeb1ac297b41cd607bb54f0a40b8ec"
+            ]
+          },
+          {
+            "phase": "roundDefeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "bf757851f8756537e8ca7caf922d87061f76cfb2598a8ce906e8fd5b7bbc94a8",
+              "bc867d7fc694aa6e62cabe242aec297295182702d4f3d6964f346ff00090fc3c",
+              "e34f84bc9cfb4a93801cd739c8c4abb501454b4b954e80b7e60f60cc3aeed382",
+              "6edea38efc610d2888f20a6e2a0b1c8b340d6961bd802259708927e54277dae7"
+            ]
+          },
+          {
+            "phase": "fatality",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "b2c1465ca8a5dbb0730628a9a95bab0666cacf92282326f11ce747a3cfe5aa5c",
+              "a659e802616c41237016f18566e8cb744cd0ef56fbb894c30ac5dc006c087c4f",
+              "ea6b118642ce57a982ffc9fb19b92dcbd2b9856bf1b6a548d908297179a5d1c5",
+              "c6eef5e263374c88b301247a795a0b81378cb1111954a077128460d2bcba0c2d"
+            ]
+          },
+          {
+            "phase": "victory",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "231ed58aed69902647e739806ca878faf7c99c056fe0131f73c5adb54ecb875d",
+              "a61f6f4a42accca22bdeea4aeba81314ca2183b5719d42e6dc55f638e8c7b1d9",
+              "fdf740cfeba1e3828214e21a1c92ec0c7748326a75ba59fd54fe221f3f43b5b2",
+              "b4ce3a63beea1b3fe5b4f47d91652cb2152a460ad73e46f15baffa4a18920797"
+            ]
+          },
+          {
+            "phase": "defeat",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "62485e0794a821eb47dfddba0bb18ec88844f27df72c6ea962eb1516ae0fae72",
+              "fb387d77b93b39419a1fb687d64c4f898cf6ccd65d6f489cbf2ebf8d5b3a977f",
+              "32124c62fbd4eb4c7bc3b33704dfc8e9a996f45a2c081cb7914de63d045e7160",
+              "b4874e9c225bc73d9d7f9b901079762275919a9e65f6eeea8713e69cc44d1eef"
+            ]
+          },
+          {
+            "phase": "super",
+            "distinctFrames": 4,
+            "frameHashes": [
+              "97e284cf24da473d80f428e69ef187c09507fc6cea1e2c38e486e31a57a526e2",
+              "9ac8b60accfa8a314733d6b642f67d5b703d7a08bc9e67513dcf44f8c2c9be99",
+              "bfbbacddb4cf2e1cbc669f1e65a2f17081b2b68666d35e1d64e3bd4b30a9e077",
+              "502f04d9d5797935889fae57d586e86841a25eae4bc9515985a1e5621abd14b2"
+            ]
+          }
+        ],
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "canonicalVerified": false,
+        "adaptedChoreography": true,
+        "fatalityIsExecution": false,
+        "sourceGameAsset": false,
+        "notes": "War-era Kakashi before dual Mangekyo: silver spiky hair, green flak vest over navy shinobi clothes, forehead protector, black lower-face mask, gloves, white leg wraps and open-toe sandals. One left Sharingan revealed for Kamui; no Susanoo or second Sharingan. Native generated illustration and authored compact choreography. Not official-source timing or1:1 verified frames."
+      }
+    }
+  ]
+}

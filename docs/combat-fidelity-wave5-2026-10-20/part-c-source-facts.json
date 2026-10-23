@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "scope": "Five authored native presentation atlases, technical pixel and source lineage checks; no certified source-game frames.",
+  "networkVerified": false,
+  "canon1to1Verified": false,
+  "localSources": [
+    {
+      "path": "src/game/heroes.js",
+      "sha256": "032a4fe47ad7dbdd9215c7aa53b6e870cb0667bf229248ab3a5f38955ae8acb7"
+    },
+    {
+      "path": "src/game/characterPlaques.js",
+      "sha256": "a602cbca76a0c3a1fc72a45dacf5e0b15c840485c6c5157df8ccf5b3c5142e80"
+    },
+    {
+      "path": "src/game/ocCampaign.js",
+      "sha256": "03e8be2a60fbbcbef4e3f439046aa68d7f999e53b28107805dee6a114e11e2d8"
+    },
+    {
+      "path": "src/game/canonicalCombatOverrides.js",
+      "sha256": "dd1dac79e7fb2c2e71870750f0ce3520cd1295499e2ba5843093021b1fa988da"
+    },
+    {
+      "path": "src/game/combatCanonExtensions.js",
+      "sha256": "ac0815a37ab0032bdb4f57eb2e70b9e38eea5ca254d377b649ea7a799ef93402"
+    },
+    {
+      "path": "src/game/combat/abilities/abilitiesCanonical.js",
+      "sha256": "102ae65730dea04b050108fa721a1a39b03c8164556bc58018d9f9fde0cf9564"
+    },
+    {
+      "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/manifest.json",
+      "sha256": "d5679c6e95772f8d466c35876ce88d93ae19768a687bc26f67ef8f608b530731"
+    },
+    {
+      "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/manifest.json",
+      "sha256": "d90a65c13bacb0e1da9b6af94550a2aa7d4a0cbd49223daa5e22011b1614351a"
+    }
+  ],
+  "heroes": [
+    {
+      "heroId": "leon",
+      "universe": "Resident Evil",
+      "sourceWork": "Resident Evil 4 (2005)",
+      "characterVersion": "Young adult Leon, RE4(2005) agent outfit: brown shearling flight jacket, black fitted shirt, dark tactical trousers, holsters and boots; not RPD uniform.",
+      "sourceReference": "src/game/canonicalCombatOverrides.js#leon; src/game/combat/abilities/abilitiesCanonical.js#leon; Resident Evil4(2005), special rocket launcher supplied for the final Saddler encounter. Local base RPD-looking outfit is intentionally not costume authority for this agent-version atlas.",
+      "effectiveSpecial": {
+        "name": "Special Rocket Launcher",
+        "effect": "damage",
+        "delivery": "projectile",
+        "targetSide": "enemy",
+        "shape": "area",
+        "multiplier": 5.1
+      },
+      "interpretation": "Physical equipment and selected character era preserved in newly authored choreography; no exact animation timing or weapon mesh certification."
+    },
+    {
+      "heroId": "jill",
+      "universe": "Resident Evil",
+      "sourceWork": "Resident Evil 3 (2020)",
+      "characterVersion": "Jill, Resident Evil3 Remake2020: blue tank top, dark tactical trousers, shoulder holster, short brown bob; heavy experimental FINGeR hardware.",
+      "sourceReference": "src/game/canonicalCombatOverrides.js#jill; src/game/combat/abilities/abilitiesCanonical.js#jill; Resident Evil3(2020), NEST2 final Nemesis encounter using the experimental FINGeR electromagnetic cannon.",
+      "effectiveSpecial": {
+        "name": "FINGeR Railgun",
+        "effect": "damage",
+        "delivery": "beam",
+        "targetSide": "enemy",
+        "shape": "line",
+        "multiplier": 5.2
+      },
+      "interpretation": "Physical equipment and selected character era preserved in newly authored choreography; no exact animation timing or weapon mesh certification."
+    },
+    {
+      "heroId": "rebecca_chambers",
+      "universe": "Resident Evil",
+      "sourceWork": "Resident Evil 0 (2002)",
+      "characterVersion": "Rebecca Chambers RE0(2002), short brown hair, green short sleeves under pale medic vest, olive trousers/boots, hip medical pouch. Entire special/finale is ally support.",
+      "sourceReference": "src/game/combatCanonExtensions.js#rebecca_chambers; src/game/combat/abilities/abilitiesCanonical.js#rebecca_chambers; Resident Evil0(2002) herb mixing and first-aid identity; final support presentation is an authored adaptation of First Aid, no offensive weapon.",
+      "effectiveSpecial": {
+        "name": "First Aid",
+        "effect": "heal",
+        "delivery": "support",
+        "targetSide": "ally",
+        "shape": "group",
+        "multiplier": 3.1
+      },
+      "interpretation": "Medical bag, green herbs, dressings and first-aid spray. Group healing is the project gameplay adaptation, not an assertion of an identical RE0 group-heal move. No offensive super/finale."
+    },
+    {
+      "heroId": "arca_mirelle",
+      "universe": "Nexus de Convergence",
+      "sourceWork": "Nexus de Convergence (project authored universe)",
+      "characterVersion": "Mirelle Suture, authored A.R.C.A. hacker-healer: dark pointed hat/gold goggles, long dark gold-trimmed coat, teal lining, floating cyan cards and white-teal resonance threads.",
+      "sourceReference": "src/game/heroes.js#arca_mirelle; public/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/manifest.json#loreAnchors; src/game/ocCampaign.js names Mirelle Suture as stitcher of memories. The effective Suture du Voile damages enemies in an area while Patch de Trame heals allies; no resurrected dead or soul soldiers.",
+      "effectiveSpecial": {
+        "name": "Suture du Voile",
+        "effect": "damage",
+        "delivery": "area",
+        "targetSide": "enemy",
+        "shape": "area",
+        "multiplier": 3.4
+      },
+      "interpretation": "Author manifest explicitly names cyan data cards and all four techniques. Offensive Suture du Voile is a card/thread lattice; ally heal Patch de Trame is a different ability. No dead/spirits become soldiers."
+    },
+    {
+      "heroId": "arca_bastion",
+      "universe": "Nexus de Convergence",
+      "sourceWork": "Nexus de Convergence (project authored universe)",
+      "characterVersion": "Bastion Korr, Atrium heavy guardian: dark hair, dark gunmetal armor/long coat with gold-orange trim, Atrium rifle, orange hexagonal anchor shield; no borrowed franchise costume.",
+      "sourceReference": "src/game/characterPlaques.js#arca_bastion: Verrou de Convergence seals a deceptive passage; public/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/manifest.json#loreAnchors: Atrium rifle, hexagonal orange anchor shield and Convergence Lock. Effective project special is offensive enemy beam/line, distinct from defensive Rempart and Balise; no dead become soldiers.",
+      "effectiveSpecial": {
+        "name": "Verrou de Convergence",
+        "effect": "damage",
+        "delivery": "beam",
+        "targetSide": "enemy",
+        "shape": "line",
+        "multiplier": 3.8
+      },
+      "interpretation": "Author plaque says Convergence Lock seals deceptive passage. Effective special is enemy beam/line, visually channelled from an orange aperture beside anchor shield. Guard abilities remain separate. No undead troops or resurrection."
+    }
+  ],
+  "continuityDebt": [
+    {
+      "heroId": "leon",
+      "oldAsset": "public/sprites/generated/heroes/resident-evil/leon.png",
+      "finding": "Old base resembles a RPD uniform whereas effective kit and new atlas use RE4(2005) agent. Old PNG is preserved; separate new sixteen-pose base is authorized for version continuity."
+    }
+  ],
+  "nativeCorrections": [
+    {
+      "heroId": "arca_bastion",
+      "phase": "intro",
+      "reason": "Original last intro pose clipped six opaque native pixels at the source edge. Four fresh native low-ready poses replace intro only. Other seven rows reconstruct exactly from the first source."
+    }
+  ],
+  "limits": [
+    "Local references are generated project art, not official production sheets.",
+    "Illustrated poses and VFX are authored adaptations; all1:1/network claims remain false.",
+    "The source normalization fits each complete native row, including long weapons or VFX. Any measured body-stature compensation is renderer metadata around baseline244, not a PNG change or claim of official cinematic framing; naturally crouched poses remain crouched.",
+    "A few native semi-transparent fringes approach the original edge on defeat rows; no active-source opaque artwork is sliced by adaptive seams, and final cells have ten fully transparent pixels of padding."
+  ]
+}

@@ -1,0 +1,736 @@
+{
+  "schemaVersion": 1,
+  "method": "Explicit visually selected normalized body/chassis ROIs; inverse affine mapping into immutable native PNGs, then actual alpha>24 bounds measured in each native ROI. All native body ratios compare the same source image. Distinct correction-source densities use declared recovery/guard pose bridges. Weapon/guardian/VFX extents excluded; no body edits or PNG changes.",
+  "canon1to1Verified": false,
+  "networkVerified": false,
+  "measurements": [
+    {
+      "heroId": "blade_wolf_mgr",
+      "label": "fatality",
+      "renderScale": 1.1825810185185184,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 134,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 108,
+        "bodyBounds": [
+          39,
+          128,
+          177,
+          108
+        ],
+        "referenceBodyBounds": [
+          33,
+          106,
+          203,
+          134
+        ],
+        "nativeComparableBodyHeight": 122,
+        "nativeReferenceBodyHeight": 128,
+        "nativeBodyBounds": [
+          10,
+          965,
+          199,
+          122
+        ],
+        "nativeReferenceBodyBounds": [
+          20,
+          91,
+          195,
+          128
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/blade_wolf_mgr-original.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/blade_wolf_mgr-original.png",
+        "nativeComparableSourceSha256": "54b747ab0d1c02f32b49025b204b0ae34eabdf7dee0e4fc2170c12c9d9c8e627",
+        "nativeReferenceSourceSha256": "54b747ab0d1c02f32b49025b204b0ae34eabdf7dee0e4fc2170c12c9d9c8e627",
+        "nativeComparableSourceRow": 4,
+        "nativeReferenceSourceRow": 0,
+        "nativeReferenceColumn": 0,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/blade_wolf_mgr-original.png",
+        "displayReferenceSourceDiffers": false,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+      },
+      "unchangedPngSha256": "d7a81e892ddb9d17070f5773b1fb5b1325ff27afa86b1fd1ba5eb67e80f704ba"
+    },
+    {
+      "heroId": "blade_wolf_mgr",
+      "label": "super",
+      "renderScale": 1.2905441810344827,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 134,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 116,
+        "bodyBounds": [
+          56,
+          125,
+          156,
+          116
+        ],
+        "referenceBodyBounds": [
+          33,
+          106,
+          203,
+          134
+        ],
+        "nativeComparableBodyHeight": 143,
+        "nativeReferenceBodyHeight": 128,
+        "nativeBodyBounds": [
+          22,
+          1601,
+          192,
+          143
+        ],
+        "nativeReferenceBodyBounds": [
+          20,
+          91,
+          195,
+          128
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/blade_wolf_mgr-original.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/blade_wolf_mgr-original.png",
+        "nativeComparableSourceSha256": "54b747ab0d1c02f32b49025b204b0ae34eabdf7dee0e4fc2170c12c9d9c8e627",
+        "nativeReferenceSourceSha256": "54b747ab0d1c02f32b49025b204b0ae34eabdf7dee0e4fc2170c12c9d9c8e627",
+        "nativeComparableSourceRow": 7,
+        "nativeReferenceSourceRow": 0,
+        "nativeReferenceColumn": 0,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/blade_wolf_mgr-original.png",
+        "displayReferenceSourceDiffers": false,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+      },
+      "unchangedPngSha256": "d7a81e892ddb9d17070f5773b1fb5b1325ff27afa86b1fd1ba5eb67e80f704ba"
+    },
+    {
+      "heroId": "jetstream_sam",
+      "label": "fatality",
+      "renderScale": 1.495711835334477,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 218,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 110,
+        "bodyBounds": [
+          75,
+          125,
+          113,
+          110
+        ],
+        "referenceBodyBounds": [
+          72,
+          19,
+          132,
+          218
+        ],
+        "nativeComparableBodyHeight": 160,
+        "nativeReferenceBodyHeight": 212,
+        "nativeBodyBounds": [
+          34,
+          921,
+          165,
+          160
+        ],
+        "nativeReferenceBodyBounds": [
+          56,
+          7,
+          128,
+          212
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/jetstream_sam-original.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/jetstream_sam-original.png",
+        "nativeComparableSourceSha256": "f7ab1e45f03ebcaef72e4cc7b734fe58baa6f77964b805ea8df4459f6c9a118e",
+        "nativeReferenceSourceSha256": "f7ab1e45f03ebcaef72e4cc7b734fe58baa6f77964b805ea8df4459f6c9a118e",
+        "nativeComparableSourceRow": 4,
+        "nativeReferenceSourceRow": 0,
+        "nativeReferenceColumn": 0,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/jetstream_sam-original.png",
+        "displayReferenceSourceDiffers": false,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+      },
+      "unchangedPngSha256": "10b065367a0bdf505674c96541f05ba8b3197056bee09b79d5670508f39027fc"
+    },
+    {
+      "heroId": "jetstream_sam",
+      "label": "super",
+      "renderScale": 1.3762235778124556,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 218,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 133,
+        "bodyBounds": [
+          65,
+          105,
+          136,
+          133
+        ],
+        "referenceBodyBounds": [
+          72,
+          19,
+          132,
+          218
+        ],
+        "nativeComparableBodyHeight": 178,
+        "nativeReferenceBodyHeight": 212,
+        "nativeBodyBounds": [
+          26,
+          1569,
+          182,
+          178
+        ],
+        "nativeReferenceBodyBounds": [
+          56,
+          7,
+          128,
+          212
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/jetstream_sam-original.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/jetstream_sam-original.png",
+        "nativeComparableSourceSha256": "f7ab1e45f03ebcaef72e4cc7b734fe58baa6f77964b805ea8df4459f6c9a118e",
+        "nativeReferenceSourceSha256": "f7ab1e45f03ebcaef72e4cc7b734fe58baa6f77964b805ea8df4459f6c9a118e",
+        "nativeComparableSourceRow": 7,
+        "nativeReferenceSourceRow": 0,
+        "nativeReferenceColumn": 0,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/jetstream_sam-original.png",
+        "displayReferenceSourceDiffers": false,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+      },
+      "unchangedPngSha256": "10b065367a0bdf505674c96541f05ba8b3197056bee09b79d5670508f39027fc"
+    },
+    {
+      "heroId": "armstrong_mgr",
+      "label": "outro",
+      "renderScale": 1.0179372197309418,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 227,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 223,
+        "bodyBounds": [
+          56,
+          20,
+          159,
+          223
+        ],
+        "referenceBodyBounds": [
+          32,
+          15,
+          190,
+          227
+        ],
+        "nativeComparableBodyHeight": 650,
+        "nativeReferenceBodyHeight": 650,
+        "nativeBodyBounds": [
+          62,
+          43,
+          464,
+          650
+        ],
+        "nativeReferenceBodyBounds": [
+          62,
+          43,
+          464,
+          650
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-outro-correction.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-outro-correction.png",
+        "nativeComparableSourceSha256": "7aca4c53166ad55b986da2a91ef566175be28bc8d7d5e4b80f5b7a3f278a921a",
+        "nativeReferenceSourceSha256": "7aca4c53166ad55b986da2a91ef566175be28bc8d7d5e4b80f5b7a3f278a921a",
+        "nativeComparableSourceRow": 0,
+        "nativeReferenceSourceRow": 0,
+        "nativeReferenceColumn": 0,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-original.png",
+        "displayReferenceSourceDiffers": true,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in the declared column of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+        "poseBridge": {
+          "nativeReferenceLabel": "outro",
+          "nativeReferenceColumn": 0,
+          "displayReferenceLabel": "intro",
+          "displayReferenceColumn": 0,
+          "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+          "nativeReferenceNormalizedBodyBounds": [
+            56,
+            20,
+            159,
+            223
+          ]
+        }
+      },
+      "unchangedPngSha256": "4496105b7ed6a736ce64ce0738561b30ade670d69dc6a80907c510d7cc6482bb"
+    },
+    {
+      "heroId": "armstrong_mgr",
+      "label": "roundVictory",
+      "renderScale": 0.9956140350877193,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 227,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 228,
+        "bodyBounds": [
+          68,
+          15,
+          138,
+          228
+        ],
+        "referenceBodyBounds": [
+          32,
+          15,
+          190,
+          227
+        ],
+        "nativeComparableBodyHeight": 463,
+        "nativeReferenceBodyHeight": 463,
+        "nativeBodyBounds": [
+          99,
+          14,
+          281,
+          463
+        ],
+        "nativeReferenceBodyBounds": [
+          99,
+          14,
+          281,
+          463
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-correction.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-correction.png",
+        "nativeComparableSourceSha256": "dcc5bd56f2b720b6e639fb50e03cc47a3e21e655886a59af6729c37c91d09309",
+        "nativeReferenceSourceSha256": "dcc5bd56f2b720b6e639fb50e03cc47a3e21e655886a59af6729c37c91d09309",
+        "nativeComparableSourceRow": 0,
+        "nativeReferenceSourceRow": 0,
+        "nativeReferenceColumn": 0,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-original.png",
+        "displayReferenceSourceDiffers": true,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in the declared column of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+        "poseBridge": {
+          "nativeReferenceLabel": "roundVictory",
+          "nativeReferenceColumn": 0,
+          "displayReferenceLabel": "intro",
+          "displayReferenceColumn": 0,
+          "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+          "nativeReferenceNormalizedBodyBounds": [
+            68,
+            15,
+            138,
+            228
+          ]
+        }
+      },
+      "unchangedPngSha256": "4496105b7ed6a736ce64ce0738561b30ade670d69dc6a80907c510d7cc6482bb"
+    },
+    {
+      "heroId": "armstrong_mgr",
+      "label": "victory",
+      "renderScale": 1.1293532338308458,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 227,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 201,
+        "bodyBounds": [
+          40,
+          41,
+          180,
+          201
+        ],
+        "referenceBodyBounds": [
+          32,
+          15,
+          190,
+          227
+        ],
+        "nativeComparableBodyHeight": 401,
+        "nativeReferenceBodyHeight": 401,
+        "nativeBodyBounds": [
+          46,
+          482,
+          359,
+          401
+        ],
+        "nativeReferenceBodyBounds": [
+          46,
+          482,
+          359,
+          401
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-correction.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-correction.png",
+        "nativeComparableSourceSha256": "dcc5bd56f2b720b6e639fb50e03cc47a3e21e655886a59af6729c37c91d09309",
+        "nativeReferenceSourceSha256": "dcc5bd56f2b720b6e639fb50e03cc47a3e21e655886a59af6729c37c91d09309",
+        "nativeComparableSourceRow": 1,
+        "nativeReferenceSourceRow": 1,
+        "nativeReferenceColumn": 0,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-original.png",
+        "displayReferenceSourceDiffers": true,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in the declared column of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+        "poseBridge": {
+          "nativeReferenceLabel": "victory",
+          "nativeReferenceColumn": 0,
+          "displayReferenceLabel": "intro",
+          "displayReferenceColumn": 0,
+          "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+          "nativeReferenceNormalizedBodyBounds": [
+            40,
+            41,
+            180,
+            201
+          ]
+        }
+      },
+      "unchangedPngSha256": "4496105b7ed6a736ce64ce0738561b30ade670d69dc6a80907c510d7cc6482bb"
+    },
+    {
+      "heroId": "armstrong_mgr",
+      "label": "fatality",
+      "renderScale": 1.042938173567782,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 227,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 164,
+        "bodyBounds": [
+          42,
+          73,
+          185,
+          164
+        ],
+        "referenceBodyBounds": [
+          32,
+          15,
+          190,
+          227
+        ],
+        "nativeComparableBodyHeight": 162,
+        "nativeReferenceBodyHeight": 215,
+        "nativeBodyBounds": [
+          26,
+          942,
+          183,
+          162
+        ],
+        "nativeReferenceBodyBounds": [
+          20,
+          8,
+          180,
+          215
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-original.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-original.png",
+        "nativeComparableSourceSha256": "377d778b374fdf2eaedf96a790109fe58b9db59f62a135a0bf2690dc51b2c4f7",
+        "nativeReferenceSourceSha256": "377d778b374fdf2eaedf96a790109fe58b9db59f62a135a0bf2690dc51b2c4f7",
+        "nativeComparableSourceRow": 4,
+        "nativeReferenceSourceRow": 0,
+        "nativeReferenceColumn": 0,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-original.png",
+        "displayReferenceSourceDiffers": false,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+      },
+      "unchangedPngSha256": "4496105b7ed6a736ce64ce0738561b30ade670d69dc6a80907c510d7cc6482bb"
+    },
+    {
+      "heroId": "armstrong_mgr",
+      "label": "super",
+      "renderScale": 1.1955540355677154,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 227,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 136,
+        "bodyBounds": [
+          45,
+          78,
+          165,
+          136
+        ],
+        "referenceBodyBounds": [
+          32,
+          15,
+          190,
+          227
+        ],
+        "nativeComparableBodyHeight": 154,
+        "nativeReferenceBodyHeight": 215,
+        "nativeBodyBounds": [
+          17,
+          1585,
+          188,
+          154
+        ],
+        "nativeReferenceBodyBounds": [
+          20,
+          8,
+          180,
+          215
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-original.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-original.png",
+        "nativeComparableSourceSha256": "377d778b374fdf2eaedf96a790109fe58b9db59f62a135a0bf2690dc51b2c4f7",
+        "nativeReferenceSourceSha256": "377d778b374fdf2eaedf96a790109fe58b9db59f62a135a0bf2690dc51b2c4f7",
+        "nativeComparableSourceRow": 7,
+        "nativeReferenceSourceRow": 0,
+        "nativeReferenceColumn": 0,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/armstrong_mgr-original.png",
+        "displayReferenceSourceDiffers": false,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+      },
+      "unchangedPngSha256": "4496105b7ed6a736ce64ce0738561b30ade670d69dc6a80907c510d7cc6482bb"
+    },
+    {
+      "heroId": "mistral_mgr",
+      "label": "fatality",
+      "renderScale": 1.0035904419957906,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 193,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 197,
+        "bodyBounds": [
+          75,
+          45,
+          130,
+          197
+        ],
+        "referenceBodyBounds": [
+          80,
+          49,
+          91,
+          193
+        ],
+        "nativeComparableBodyHeight": 210,
+        "nativeReferenceBodyHeight": 205,
+        "nativeBodyBounds": [
+          54,
+          901,
+          139,
+          210
+        ],
+        "nativeReferenceBodyBounds": [
+          59,
+          20,
+          96,
+          205
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/mistral_mgr-original.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/mistral_mgr-original.png",
+        "nativeComparableSourceSha256": "dbdd54c11ee6705db497345d6f783aa45b7decd4d0b9849a8dd6a01a07f480be",
+        "nativeReferenceSourceSha256": "dbdd54c11ee6705db497345d6f783aa45b7decd4d0b9849a8dd6a01a07f480be",
+        "nativeComparableSourceRow": 4,
+        "nativeReferenceSourceRow": 0,
+        "nativeReferenceColumn": 0,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/mistral_mgr-original.png",
+        "displayReferenceSourceDiffers": false,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+      },
+      "unchangedPngSha256": "56bbc419de4bcc679644c7b67aa8237184b7c5b39d7db567118656d62365e262"
+    },
+    {
+      "heroId": "mistral_mgr",
+      "label": "super",
+      "renderScale": 1.2245608050486099,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 193,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 143,
+        "bodyBounds": [
+          75,
+          100,
+          129,
+          143
+        ],
+        "referenceBodyBounds": [
+          80,
+          49,
+          91,
+          193
+        ],
+        "nativeComparableBodyHeight": 186,
+        "nativeReferenceBodyHeight": 205,
+        "nativeBodyBounds": [
+          42,
+          1574,
+          168,
+          186
+        ],
+        "nativeReferenceBodyBounds": [
+          59,
+          20,
+          96,
+          205
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/mistral_mgr-original.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/mistral_mgr-original.png",
+        "nativeComparableSourceSha256": "dbdd54c11ee6705db497345d6f783aa45b7decd4d0b9849a8dd6a01a07f480be",
+        "nativeReferenceSourceSha256": "dbdd54c11ee6705db497345d6f783aa45b7decd4d0b9849a8dd6a01a07f480be",
+        "nativeComparableSourceRow": 7,
+        "nativeReferenceSourceRow": 0,
+        "nativeReferenceColumn": 0,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/mistral_mgr-original.png",
+        "displayReferenceSourceDiffers": false,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Compare body ROIs in one native image to undo only differing per-row packing scales. Preserve the actual native head-to-foot ratio of crouches, leans and diving attacks; no restoration to standing height. Blade Wolf retains a naturally low quadruped chassis, never human standing height."
+      },
+      "unchangedPngSha256": "56bbc419de4bcc679644c7b67aa8237184b7c5b39d7db567118656d62365e262"
+    },
+    {
+      "heroId": "monsoon_mgr",
+      "label": "fatality",
+      "renderScale": 1.1631011689622612,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 190,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 174,
+        "bodyBounds": [
+          85,
+          67,
+          116,
+          174
+        ],
+        "referenceBodyBounds": [
+          91,
+          50,
+          83,
+          190
+        ],
+        "nativeComparableBodyHeight": 376,
+        "nativeReferenceBodyHeight": 353,
+        "nativeBodyBounds": [
+          129,
+          98,
+          250,
+          376
+        ],
+        "nativeReferenceBodyBounds": [
+          1460,
+          123,
+          280,
+          353
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/monsoon_mgr-correction.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/monsoon_mgr-correction.png",
+        "nativeComparableSourceSha256": "8caa65f41f0bb401ba26ecde499f2838ea96814f8e572487a65986bc10f7230c",
+        "nativeReferenceSourceSha256": "8caa65f41f0bb401ba26ecde499f2838ea96814f8e572487a65986bc10f7230c",
+        "nativeComparableSourceRow": 0,
+        "nativeReferenceSourceRow": 0,
+        "nativeReferenceColumn": 3,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/monsoon_mgr-original.png",
+        "displayReferenceSourceDiffers": true,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in the declared column of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+        "poseBridge": {
+          "nativeReferenceLabel": "fatality",
+          "nativeReferenceColumn": 3,
+          "displayReferenceLabel": "intro",
+          "displayReferenceColumn": 0,
+          "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+          "nativeReferenceNormalizedBodyBounds": [
+            85,
+            79,
+            130,
+            163
+          ]
+        }
+      },
+      "unchangedPngSha256": "fc05b4d45558d70416eb0055f6e06cc286a368938e430232f34047c5d78dab69"
+    },
+    {
+      "heroId": "monsoon_mgr",
+      "label": "super",
+      "renderScale": 1.1030667304145894,
+      "statureReview": {
+        "referencePhase": "intro",
+        "referenceColumn": 0,
+        "referenceBodyHeight": 190,
+        "sourceComparableColumn": 0,
+        "normalizedBodyHeight": 121,
+        "bodyBounds": [
+          80,
+          122,
+          135,
+          121
+        ],
+        "referenceBodyBounds": [
+          91,
+          50,
+          83,
+          190
+        ],
+        "nativeComparableBodyHeight": 255,
+        "nativeReferenceBodyHeight": 363,
+        "nativeBodyBounds": [
+          121,
+          613,
+          286,
+          255
+        ],
+        "nativeReferenceBodyBounds": [
+          1461,
+          500,
+          279,
+          363
+        ],
+        "nativeComparableSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/monsoon_mgr-correction.png",
+        "nativeReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/monsoon_mgr-correction.png",
+        "nativeComparableSourceSha256": "8caa65f41f0bb401ba26ecde499f2838ea96814f8e572487a65986bc10f7230c",
+        "nativeReferenceSourceSha256": "8caa65f41f0bb401ba26ecde499f2838ea96814f8e572487a65986bc10f7230c",
+        "nativeComparableSourceRow": 1,
+        "nativeReferenceSourceRow": 1,
+        "nativeReferenceColumn": 3,
+        "displayReferenceSource": "docs/combat-fidelity-wave8-2026-10-20/part-c-sources/monsoon_mgr-original.png",
+        "displayReferenceSourceDiffers": true,
+        "measurementKind": "visual-body-roi",
+        "excludesWeaponEffects": true,
+        "reason": "Corrective source has a different pixel density. A visually comparable relaxed/guard recovery pose in the declared column of that SAME corrective row bridges its native units to the earlier displayed reference pose. The action/bridge native ratio preserves flexion; source pixel heights from two images are never directly divided.",
+        "poseBridge": {
+          "nativeReferenceLabel": "super",
+          "nativeReferenceColumn": 3,
+          "displayReferenceLabel": "intro",
+          "displayReferenceColumn": 0,
+          "meaning": "Comparable whole-body recovery/guard posture, project visual calibration; not anatomical or official1:1 measurement.",
+          "nativeReferenceNormalizedBodyBounds": [
+            85,
+            68,
+            132,
+            171
+          ]
+        }
+      },
+      "unchangedPngSha256": "fc05b4d45558d70416eb0055f6e06cc286a368938e430232f34047c5d78dab69"
+    }
+  ]
+}

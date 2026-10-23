@@ -1,0 +1,2934 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "provider": "OpenAI",
+  "tool": "image_gen",
+  "model": null,
+  "generationId": null,
+  "plannedGenerations": 3,
+  "correctiveGenerations": 2,
+  "canonicalAnimationVerified": false,
+  "networkVerified": false,
+  "generationClaim": "Three initial native image_gen atlases. Two corrective native calls supplied chargeLoop and cleanly separated chargeRelease/special. 72 initial poses plus12 corrective native poses make84 selected poses; initial sources and the12 excluded poses remain archived. No model or generation ID is inferred from filenames.",
+  "nativeSources": [
+    {
+      "id": "vegeta-combat-a",
+      "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-a-source.png",
+      "sha256": "bd35644c0cb6bae1ec26fe2070cb2be4849243d6c7a1f5c40685d0b6aa581f50",
+      "bytes": 1644049,
+      "dimensions": [
+        887,
+        1774
+      ],
+      "sourceRows": 8,
+      "originalGeneratedPath": "/workspace/generated_images/exec-dd5487f6-599e-40dd-80aa-147d717454e4.png"
+    },
+    {
+      "id": "vegeta-combat-b",
+      "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-b-source.png",
+      "sha256": "94f8fca13a486bc5992f6f149ff51d459b2d3d72cebc119c59d2016828e060f4",
+      "bytes": 1698361,
+      "dimensions": [
+        887,
+        1774
+      ],
+      "sourceRows": 8,
+      "originalGeneratedPath": "/workspace/generated_images/exec-402ebf77-29d9-47ba-9fbc-1ac04910f9ae.png"
+    },
+    {
+      "id": "vegeta-ledge",
+      "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-ledge-source.png",
+      "sha256": "ab325e7fadbf8704e9e68b77903acc9479fc4a54cfb8372086e28d904d8b32eb",
+      "bytes": 1334499,
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "sourceRows": 5,
+      "originalGeneratedPath": "/workspace/generated_images/exec-3ad45ff1-7859-4834-a631-10d0ca4709c5.png"
+    },
+    {
+      "id": "vegeta-charge-loop-correction",
+      "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-charge-loop-correction-source.png",
+      "sha256": "2572ccc29109f5ffc45c6fb55c9929cc9cae00023a8cc1cc4b55577b3260137b",
+      "bytes": 1035804,
+      "dimensions": [
+        2172,
+        724
+      ],
+      "sourceRows": 1,
+      "originalGeneratedPath": "/workspace/generated_images/exec-0bf5fe9b-4ec7-41c3-85d1-984a71559999.png"
+    },
+    {
+      "id": "vegeta-galick-spacing-correction",
+      "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-galick-spacing-correction-source.png",
+      "sha256": "46373bc68f2786f3f07837716bc07a8def11a95a0bc84b144134d82db8cc5b66",
+      "bytes": 1214198,
+      "dimensions": [
+        1774,
+        887
+      ],
+      "sourceRows": 2,
+      "originalGeneratedPath": "/workspace/generated_images/exec-d3f86f0b-7310-40eb-a1e5-f2a4f66ab0be.png"
+    }
+  ],
+  "references": [
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-reference.png",
+      "sha256": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4",
+      "originalAsset": "/sprites/generated/heroes/dragon-ball-z/vegeta-dbz.png"
+    },
+    {
+      "path": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-previous-presentation-reference.png",
+      "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+      "originalAsset": "/sprites/generated/combat-character-animations/vegeta_dbz.png"
+    }
+  ],
+  "entries": [
+    {
+      "id": "vegeta-combat-a",
+      "heroId": "vegeta_dbz",
+      "universe": "Dragon Ball Z",
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-combat-a.png",
+      "states": {
+        "attackLight1": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "attackLight2": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "attackLight3": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "crouchLight": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "chargeStart": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "chargeLoop": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "chargeRelease": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "chargeRecovery": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "stateOrder": [
+        "attackLight1",
+        "attackLight2",
+        "attackLight3",
+        "crouchLight",
+        "chargeStart",
+        "chargeLoop",
+        "chargeRelease",
+        "chargeRecovery"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 8,
+      "frames": 32,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "alpha": true,
+      "sha256": "aaa2646277a63adc1736cdff21d1271f1fdc3f520a35abd24a4b0505a04be95e",
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-a-source.png",
+      "sourceImageSha256": "bd35644c0cb6bae1ec26fe2070cb2be4849243d6c7a1f5c40685d0b6aa581f50",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "originalSourceRows": 8,
+      "referenceAsset": "/sprites/generated/heroes/dragon-ball-z/vegeta-dbz.png",
+      "referenceAssetSha256": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-reference.png",
+      "previousAtlasReference": "/sprites/generated/combat-character-animations/vegeta_dbz.png",
+      "previousAtlasReferenceSha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+      "sourceWork": "Dragon Ball Z — adult black-haired Vegeta in blue sleeveless training clothes",
+      "sourceReference": "Current simple slot Enchaînement de poings de Vegeta and secondary Galick Gun resolved before prompts. special and chargeRelease use the purple two-handed shoulder-level Galick Gun beam. Yellow Final Flash remains the separate existing 100% super animation.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "frameSize": 256,
+        "padding": 12,
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "attackLight1",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-a-source.png",
+            "sourceImageSha256": "bd35644c0cb6bae1ec26fe2070cb2be4849243d6c7a1f5c40685d0b6aa581f50",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 235
+            },
+            "scale": 0.9830508474576272,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 47,
+                  "top": 8,
+                  "width": 133,
+                  "height": 221,
+                  "pixels": 15399
+                },
+                "output": {
+                  "left": 65,
+                  "top": 26,
+                  "width": 131,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 248,
+                  "top": 18,
+                  "width": 193,
+                  "height": 211,
+                  "pixels": 16293
+                },
+                "output": {
+                  "left": 45,
+                  "top": 36,
+                  "width": 190,
+                  "height": 207
+                }
+              },
+              {
+                "source": {
+                  "left": 454,
+                  "top": 18,
+                  "width": 218,
+                  "height": 211,
+                  "pixels": 16131
+                },
+                "output": {
+                  "left": 29,
+                  "top": 36,
+                  "width": 214,
+                  "height": 207
+                }
+              },
+              {
+                "source": {
+                  "left": 672,
+                  "top": 25,
+                  "width": 186,
+                  "height": 205,
+                  "pixels": 15751
+                },
+                "output": {
+                  "left": 26,
+                  "top": 42,
+                  "width": 183,
+                  "height": 202
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "f6167f9c4f46904df042d958f7c4a5fecbf9cfec1ea99dc953baafe27573c30e",
+              "0a5a0367dc07db9c030633f81fd15bb3d8b5f900a9dda274f206a5ee54dea7c0",
+              "1f86ef1f42e7c73a850948d1839e0bff690c658f015ce56ec33d855ac4f0e2f8",
+              "2a1b0bf47cfbe4295e4bca52c3fbae7f1b8fd37cfb701560d01bb39dacb28a1c"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Guard, partly extended lead glove, full straight jab and retracted guard with distinct shoulders and knees."
+            }
+          },
+          {
+            "state": "attackLight2",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-a-source.png",
+            "sourceImageSha256": "bd35644c0cb6bae1ec26fe2070cb2be4849243d6c7a1f5c40685d0b6aa581f50",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 233,
+              "bottom": 459
+            },
+            "scale": 0.8529411764705882,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 26,
+                  "top": 5,
+                  "width": 154,
+                  "height": 219,
+                  "pixels": 16983
+                },
+                "output": {
+                  "left": 56,
+                  "top": 57,
+                  "width": 131,
+                  "height": 187
+                }
+              },
+              {
+                "source": {
+                  "left": 238,
+                  "top": 10,
+                  "width": 184,
+                  "height": 214,
+                  "pixels": 16905
+                },
+                "output": {
+                  "left": 47,
+                  "top": 61,
+                  "width": 157,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 456,
+                  "top": 10,
+                  "width": 234,
+                  "height": 214,
+                  "pixels": 16824
+                },
+                "output": {
+                  "left": 44,
+                  "top": 61,
+                  "width": 200,
+                  "height": 183
+                }
+              },
+              {
+                "source": {
+                  "left": 677,
+                  "top": 7,
+                  "width": 181,
+                  "height": 217,
+                  "pixels": 15274
+                },
+                "output": {
+                  "left": 43,
+                  "top": 59,
+                  "width": 154,
+                  "height": 185
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "c90f3cd40cac6ddfc49408ccb8f2e292c9f4a607efb940c437852bf1f01ff75e",
+              "54872bd3cb82b2c821b78409a81c436f6080e7ecaa9c90708f7201a278fe2246",
+              "c5a3b7ba38c5a2229e97f7c9a256219641de2a553caf958c7fd2dd144bb1c406",
+              "4ecc2565928d06009a2237508508fc3e5ca83b38faeac288f779e94c8b3a8c8c"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Rear fist low, rear shoulder driving forward, full cross and retracted high guard."
+            }
+          },
+          {
+            "state": "attackLight3",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-a-source.png",
+            "sourceImageSha256": "bd35644c0cb6bae1ec26fe2070cb2be4849243d6c7a1f5c40685d0b6aa581f50",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 458,
+              "bottom": 727
+            },
+            "scale": 0.8854961832061069,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 24,
+                  "top": 50,
+                  "width": 164,
+                  "height": 209,
+                  "pixels": 17836
+                },
+                "output": {
+                  "left": 51,
+                  "top": 55,
+                  "width": 145,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 245,
+                  "top": 30,
+                  "width": 189,
+                  "height": 231,
+                  "pixels": 19283
+                },
+                "output": {
+                  "left": 50,
+                  "top": 37,
+                  "width": 167,
+                  "height": 205
+                }
+              },
+              {
+                "source": {
+                  "left": 488,
+                  "top": 2,
+                  "width": 152,
+                  "height": 262,
+                  "pixels": 18760
+                },
+                "output": {
+                  "left": 69,
+                  "top": 12,
+                  "width": 135,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 42,
+                  "width": 166,
+                  "height": 219,
+                  "pixels": 16767
+                },
+                "output": {
+                  "left": 57,
+                  "top": 47,
+                  "width": 147,
+                  "height": 194
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "d9f0f0938ee77d01de554e576992d3c7a1da6e13a311e0883c7dd0370c30f0ec",
+              "8a1e2f0372fcff2cc0b1c27cf49e1ac92f6e4ef9839dc6f47adb318cdb0e2585",
+              "037b028f85cdadb1822b840cd7c3ca351290b6f202b1e913fe4bf19f65b2e8a5",
+              "137ba0f4d8c44eb8cd4393a176d7d20adc8bd4a86888c037e25d55f6c9626075"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Low fist/squat, rising bent elbow, high extended uppercut with raised torso and settled high guard."
+            }
+          },
+          {
+            "state": "crouchLight",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-a-source.png",
+            "sourceImageSha256": "bd35644c0cb6bae1ec26fe2070cb2be4849243d6c7a1f5c40685d0b6aa581f50",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 726,
+              "bottom": 922
+            },
+            "scale": 0.9789029535864979,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 25,
+                  "top": 6,
+                  "width": 153,
+                  "height": 184,
+                  "pixels": 14712
+                },
+                "output": {
+                  "left": 44,
+                  "top": 63,
+                  "width": 150,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 254,
+                  "top": 8,
+                  "width": 197,
+                  "height": 183,
+                  "pixels": 15169
+                },
+                "output": {
+                  "left": 51,
+                  "top": 65,
+                  "width": 193,
+                  "height": 179
+                }
+              },
+              {
+                "source": {
+                  "left": 451,
+                  "top": 17,
+                  "width": 218,
+                  "height": 172,
+                  "pixels": 14990
+                },
+                "output": {
+                  "left": 27,
+                  "top": 74,
+                  "width": 213,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 670,
+                  "top": 9,
+                  "width": 182,
+                  "height": 180,
+                  "pixels": 13341
+                },
+                "output": {
+                  "left": 24,
+                  "top": 66,
+                  "width": 178,
+                  "height": 176
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "e57ac80e85032daef41e3e747456ec8c7498f828636363eaaa273d272f46d5cf",
+              "1a0a8616dd46dbd401930471c1197a9fea4fce3c83c69a0717534e868d0d44b4",
+              "2a32ea1cf287698062fc455b62d8f7df9b8eaed82bd33a12ce9d7673042e4e55",
+              "60122fbd3b2c1c76a298d1c98f360ad1a8cbc9746af9e97fd97338ab5608d487"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Low two-fist guard, partial low punch, full waist-height low punch and retracted crouched guard."
+            }
+          },
+          {
+            "state": "chargeStart",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-a-source.png",
+            "sourceImageSha256": "bd35644c0cb6bae1ec26fe2070cb2be4849243d6c7a1f5c40685d0b6aa581f50",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 919,
+              "bottom": 1138
+            },
+            "scale": 1.1153846153846154,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 32,
+                  "top": 6,
+                  "width": 155,
+                  "height": 206,
+                  "pixels": 15051
+                },
+                "output": {
+                  "left": 40,
+                  "top": 12,
+                  "width": 173,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 249,
+                  "top": 12,
+                  "width": 167,
+                  "height": 200,
+                  "pixels": 15103
+                },
+                "output": {
+                  "left": 35,
+                  "top": 19,
+                  "width": 186,
+                  "height": 223
+                }
+              },
+              {
+                "source": {
+                  "left": 483,
+                  "top": 19,
+                  "width": 175,
+                  "height": 195,
+                  "pixels": 14687
+                },
+                "output": {
+                  "left": 48,
+                  "top": 27,
+                  "width": 195,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 14,
+                  "width": 171,
+                  "height": 198,
+                  "pixels": 14484
+                },
+                "output": {
+                  "left": 38,
+                  "top": 21,
+                  "width": 191,
+                  "height": 221
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "238b72e6ec230cb6f6cdc99142456f2d36851640fe6a077f7acaf3365939c5b7",
+              "de38954069a75638d89fb1f2ad989bc8bd5a0f69e6f10beb348eb26ff9231794",
+              "8b5bdef2041ba4750970d7ba752e5bc8092850c2785a5dbf02f605fc02c5e263",
+              "e271a9abdf620f789e6dbb1868ea5c8357c2a471645894a69c49280e2679ee4c"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Guard, hands open beside rear head, paired palms beside rear shoulder and deeper coiled held posture. No beam or transformation."
+            }
+          },
+          {
+            "state": "chargeLoop",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-charge-loop-correction-source.png",
+            "sourceImageSha256": "2572ccc29109f5ffc45c6fb55c9929cc9cae00023a8cc1cc4b55577b3260137b",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 724
+            },
+            "scale": 0.36477987421383645,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 36,
+                  "top": 55,
+                  "width": 482,
+                  "height": 635,
+                  "pixels": 116890
+                },
+                "output": {
+                  "left": 42,
+                  "top": 12,
+                  "width": 176,
+                  "height": 232
+                }
+              },
+              {
+                "source": {
+                  "left": 588,
+                  "top": 121,
+                  "width": 484,
+                  "height": 570,
+                  "pixels": 112023
+                },
+                "output": {
+                  "left": 45,
+                  "top": 36,
+                  "width": 177,
+                  "height": 208
+                }
+              },
+              {
+                "source": {
+                  "left": 1161,
+                  "top": 83,
+                  "width": 473,
+                  "height": 607,
+                  "pixels": 121481
+                },
+                "output": {
+                  "left": 56,
+                  "top": 22,
+                  "width": 173,
+                  "height": 221
+                }
+              },
+              {
+                "source": {
+                  "left": 1664,
+                  "top": 144,
+                  "width": 450,
+                  "height": 546,
+                  "pixels": 105648
+                },
+                "output": {
+                  "left": 42,
+                  "top": 44,
+                  "width": 164,
+                  "height": 199
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "9d5d4fd61620a02ba1707fb3c935c1398d09183e165361d7f4d8b8ea21b9c775",
+              "92f45b3d526bb1fc79a767df3fe93c33a37b3ad87f82ae4e1993a851a51e0969",
+              "3be5069b1f269f27eacf05464f8753251f478fd1718eaabc57d77f5c8709aba4",
+              "4059c16f4a49f73fbbc9eb0ad18ef85ec1ef19ba0820781b3cf0fa919bdf5ff7"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Corrective native row: paired gloves remain beside rear cheek/shoulder in all four poses; wide squat, deeper squat, lifted rear elbows and forward torso compression. No release or ordinary guard pose."
+            }
+          },
+          {
+            "state": "chargeRelease",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-galick-spacing-correction-source.png",
+            "sourceImageSha256": "46373bc68f2786f3f07837716bc07a8def11a95a0bc84b144134d82db8cc5b66",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 473
+            },
+            "scale": 0.45579567779960706,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 48,
+                  "top": 38,
+                  "width": 324,
+                  "height": 412,
+                  "pixels": 60486
+                },
+                "output": {
+                  "left": 49,
+                  "top": 53,
+                  "width": 148,
+                  "height": 188
+                }
+              },
+              {
+                "source": {
+                  "left": 465,
+                  "top": 50,
+                  "width": 354,
+                  "height": 406,
+                  "pixels": 59734
+                },
+                "output": {
+                  "left": 37,
+                  "top": 59,
+                  "width": 161,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 901,
+                  "top": 62,
+                  "width": 462,
+                  "height": 394,
+                  "pixels": 61588
+                },
+                "output": {
+                  "left": 33,
+                  "top": 64,
+                  "width": 211,
+                  "height": 180
+                }
+              },
+              {
+                "source": {
+                  "left": 1423,
+                  "top": 60,
+                  "width": 294,
+                  "height": 396,
+                  "pixels": 55381
+                },
+                "output": {
+                  "left": 69,
+                  "top": 64,
+                  "width": 134,
+                  "height": 180
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": {
+              "method": "native-beam-tip-alpha-ownership",
+              "sourceColumn": 3,
+              "destinationColumn": 2,
+              "sourceRoi": {
+                "left": 1330,
+                "top": 180,
+                "right": 1390,
+                "bottom": 265
+              },
+              "movedPixels": 335,
+              "visiblePixels": 10,
+              "nativeRowRgbaSha256Before": "7db7227384688fc078939a4467a71c43a8331e9922412df07032a9150a1f917a",
+              "nativeRowRgbaSha256After": "7db7227384688fc078939a4467a71c43a8331e9922412df07032a9150a1f917a",
+              "nativePixelsConserved": true,
+              "artworkRedrawn": false
+            },
+            "nativeFrameRgbaSha256": [
+              "4b98b5ed2dd76b952effeb484ad9713283785130911066e7f5c431592a4c91cc",
+              "4a167a9c60fb3b4bad772b183dec95cf7e687ec0a68ddd3e3005adf397c282c8",
+              "10b4e8a53ec209eb1c40464377770ce2275324d6a8a8b38c25c002e4767d2ab4",
+              "946dc7977f837260028d33243e7346130151141ea6f0cb4e5c7133493b01a880"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Galick Gun: paired palms beside rear head, halfway two-palm thrust with purple charge, fully extended paired-palm purple beam and recoiled guard. No single-palm projectile or yellow Final Flash."
+            }
+          },
+          {
+            "state": "chargeRecovery",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-a-source.png",
+            "sourceImageSha256": "bd35644c0cb6bae1ec26fe2070cb2be4849243d6c7a1f5c40685d0b6aa581f50",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1548,
+              "bottom": 1774
+            },
+            "scale": 1.1262135922330097,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 12,
+                  "top": 27,
+                  "width": 189,
+                  "height": 187,
+                  "pixels": 14434
+                },
+                "output": {
+                  "left": 17,
+                  "top": 33,
+                  "width": 213,
+                  "height": 211
+                }
+              },
+              {
+                "source": {
+                  "left": 235,
+                  "top": 31,
+                  "width": 173,
+                  "height": 183,
+                  "pixels": 13875
+                },
+                "output": {
+                  "left": 18,
+                  "top": 38,
+                  "width": 195,
+                  "height": 206
+                }
+              },
+              {
+                "source": {
+                  "left": 472,
+                  "top": 8,
+                  "width": 161,
+                  "height": 204,
+                  "pixels": 15358
+                },
+                "output": {
+                  "left": 35,
+                  "top": 12,
+                  "width": 181,
+                  "height": 230
+                }
+              },
+              {
+                "source": {
+                  "left": 696,
+                  "top": 10,
+                  "width": 163,
+                  "height": 204,
+                  "pixels": 15286
+                },
+                "output": {
+                  "left": 38,
+                  "top": 14,
+                  "width": 184,
+                  "height": 230
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "473d0cf5fc4dc2d0e210ab47a367c625d85f50e91ed4c829be624ecb0eecb3cc",
+              "2f80cfdce73c36bfefac02cd75cd06165c5c38e39c487329ad2d5a00a910d573",
+              "ceb5d45432f8d576ca4028e5f1894754ce3e31e1ff0b7c2e47b9370dd8c9b499",
+              "cc1d5d16c426846bb720adbcb5d1a41cef71217b6f268f3ae7532fc9bbea64eb"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Low paired-palm follow-through, retracted bent elbows in deeper squat, rising torso with separating fists and stable guard."
+            }
+          }
+        ],
+        "emptyRows": [],
+        "contactAnchorMeasurements": {}
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "All 21 normalized rows, three final atlases and 20 ledge crops visually inspected. White-gloved contact points measured from native pixels. Project adaptations, not certified canonical animation."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-20",
+        "sourceGameAsset": false,
+        "nativeGeneratedArtwork": true,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-dd5487f6-599e-40dd-80aa-147d717454e4.png",
+        "promptFile": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/native-prompts.json",
+        "prompt": "Create a native detailed PIXEL-ART ANIMATION SPRITE ATLAS for adult VEGETA from DRAGON BALL Z, matching the attached game references for identity and outfit. Tall upright BLACK flame-shaped spiky hair with widow's peak, adult muscular compact build, stern face. Exact costume in EVERY cell: fitted DARK BLUE SLEEVELESS training top and matching blue trousers, bare muscular upper arms, WHITE gauntlet gloves, WHITE boots with GOLD toe caps. NO chest armor, NO shoulder armor, NO brown Saiyan skirt, NO scouter, NO tail, NO Majin M, NO Super Saiyan or yellow/blue hair, NO red aura, NO weapon. The references both show this blue sleeveless training outfit with no breastplate; do not invent armor. Crisp true game pixel art. Newly drawn project animation adaptations, not official source-game frames. All bodies face RIGHT in a side/three-quarter view; natural hip/shoulder rotations allowed. EXACTLY FOUR columns. Every state must have FOUR genuinely different sequential anatomical poses, not merely recolored, scaled or shifted copies. Keep the entire black hair, all gloved fingers and both golden boot tips INSIDE the individual cell, with transparent separation gutters on every side. Full adult body in every frame. Transparent RGBA background: NO floor, shadows, stage, rock, painted ledge, grid, labels, text, numbers or border. No body aura, no long effects crossing cells. EXACTLY EIGHT ROWS × FOUR COLUMNS =32 full-body sprites. Portrait1:2 canvas ideally1024×2048. Allocate eight complete evenly spaced rows, each small enough to fit, including row8. Do not combine or omit rows. Grounded states have their soles on the same baseline within their row. GALICK GUN is the purple two-handed beam: both cupped white-gloved hands gather together BESIDE THE REAR SHOULDER/CHEEK at head height, elbows folded, torso coiled; release thrusts BOTH palms together toward the right. Purple/magenta energy, never a yellow Final Flash and never a single-palm round Kikoha orb. NO hands gathered at a hip. Final Flash belongs to a different existing super atlas and must not appear here.\nROW1 attackLight1: compact left jab. Frame1 left fist guarding chin and rear fist close to ribs; frame2 lead elbow half extends and lead knee sinks; frame3 full straight left punch to right with rotated shoulder and rear hand guarding; frame4 punching elbow retracts into wide guard. Four distinct elbow/knee postures.\nROW2 attackLight2: right cross. Rear fist pulled beside ribs and torso coils; rear shoulder turns forward and heel rises; full right cross with long forward arm, lead fist still guarding jaw, front knee lunges; torso untwists and both fists return to cheek level.\nROW3 attackLight3: rising uppercut. Deep squat with rear fist low; bent elbow rises before chest and one heel lifts; right fist rises above face with torso lengthened and front knee pushing upward; uppercut elbow folds and weight settles in high guard. No energy.\nROW4 crouchLight: four LOW crouched body-punch stages. Deep crouched guard; left glove half thrusts at waist level; glove fully extends low while opposite fist covers face and bent knees stay low; both elbows fold back into low guard. Never stand fully upright in this row.\nROW5 chargeStart: physical Galick Gun setup WITHOUT a blast. Guard with fists in front; torso rotates away as BOTH hands open beside upper rear shoulder; hands cup together beside the cheek with elbows deeply bent and knees wide; hips coil farther back, cupped hands lift slightly above shoulder and body braces. Four clearly different torso/elbow/leg angles. No glow needed.\nROW6 chargeLoop: HELD Galick Gun bracing, NOT release. All four keep BOTH cupped hands beside rear shoulder/head, elbows BENT. Frame1 wide stance with rear knee loaded and paired palms beside cheek; frame2 deeper squat with lead knee turned out and elbows tucked; frame3 torso coils farther back and elbows lift, rear heel planted; frame4 body rises slightly and both elbows fold inward while hands remain beside shoulder. Anatomically distinct holding postures; no straight arms, projectile or beam.\nROW7 chargeRelease: Galick Gun. Frame1 paired palms beside rear cheek with knees low; frame2 both elbows halfway straighten toward right, small PURPLE glow between palms; frame3 BOTH ARMS fully thrust together rightward and a SHORT PURPLE BEAM emerges from paired palms, purple core only about40pixels long contained inside cell, rear leg braces and front knee lunges; frame4 beam is completely gone, both elbows recoil toward chest and torso leans back into guard. No round projectile. No yellow blast. Full body and whole beam contained.\nROW8 chargeRecovery: recovery after paired-palm beam. Frame1 both arms low-forward and body leaning into follow-through; frame2 both elbows pull toward ribs and front knee bends deeper; frame3 torso rises and hands separate into fists; frame4 steady upright wide martial guard with both fists raised. Four actual distinct anatomy poses. Reserve all32poses, do not omit held charge row.",
+        "promptSha256": "8c3a692c54fccd371e6556687c3e80a84886186839be06d8f3d3ce34618b8937",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [
+          {
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-charge-loop-correction-source.png",
+            "sourceImageSha256": "2572ccc29109f5ffc45c6fb55c9929cc9cae00023a8cc1cc4b55577b3260137b",
+            "generatedSourcePath": "/workspace/generated_images/exec-0bf5fe9b-4ec7-41c3-85d1-984a71559999.png",
+            "sourceRow": 0,
+            "selectedState": "chargeLoop",
+            "replacedOriginalSourceRow": 5,
+            "promptFile": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-charge-loop-correction-prompt.json",
+            "prompt": "Create a native detailed PIXEL-ART ANIMATION SPRITE ATLAS for adult VEGETA from DRAGON BALL Z, matching the attached game references for identity and outfit. Tall upright BLACK flame-shaped spiky hair with widow's peak, adult muscular compact build, stern face. Exact costume in EVERY cell: fitted DARK BLUE SLEEVELESS training top and matching blue trousers, bare muscular upper arms, WHITE gauntlet gloves, WHITE boots with GOLD toe caps. NO chest armor, NO shoulder armor, NO brown Saiyan skirt, NO scouter, NO tail, NO Majin M, NO Super Saiyan or yellow/blue hair, NO red aura, NO weapon. The references both show this blue sleeveless training outfit with no breastplate; do not invent armor. Crisp true game pixel art. Newly drawn project animation adaptations, not official source-game frames. All bodies face RIGHT in a side/three-quarter view; natural hip/shoulder rotations allowed. EXACTLY FOUR columns. Every state must have FOUR genuinely different sequential anatomical poses, not merely recolored, scaled or shifted copies. Keep the entire black hair, all gloved fingers and both golden boot tips INSIDE the individual cell, with transparent separation gutters on every side. Full adult body in every frame. Transparent RGBA background: NO floor, shadows, stage, rock, painted ledge, grid, labels, text, numbers or border. No body aura, no long effects crossing cells. Create a CORRECTIVE ONE-ROW FOUR-COLUMN atlas: exactly FOUR full-body sequential HOLDING Galick Gun preparation poses. Wide landscape4:1 canvas ideally1024×256. NO other rows. All four must keep BOTH hands together cupped beside the REAR SHOULDER/CHEEK, elbows BENT, facing right. The previous chargeLoop row's final frame incorrectly returned to a two-fist ordinary guard; NONE of these four frames may be idle guard, punching, extended arms or release. No aura, glow, beam, energy sphere or projectile. Exactly two arms and two white-gloved hands per body. Preserve the blue sleeveless training outfit, white gloves and white boots/gold toe caps from the references. Frame1 wide rear-weighted stance, both bent elbows close to ribs, paired cupped gloves touching rear cheek level; frame2 knees bend much deeper, hips drop, forearms angle more upward beside ear; frame3 torso twists further backward, front knee opens and cupped hands lift just ABOVE rear shoulder with elbows spreading; frame4 upper torso leans forward while elbows FOLD closer together, front foot steps inward and both cupped hands remain pulled BACK beside rear cheek, visibly not extended and not an idle guard. Four different actual hip/shoulder/elbow/knee anatomies. White glove contact and black hair remain wholly inside cell with transparent gutters. No props/floor/text/labels/borders. Newly drawn native corrective poses, not code generated or copied.",
+            "reason": "Initial vegeta-combat-a source row5 column3 returned to a two-fist guard instead of a held paired-palm Galick Gun charge. Replace only that full state row using four native holding poses; preserve initial source."
+          },
+          {
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-galick-spacing-correction-source.png",
+            "sourceImageSha256": "46373bc68f2786f3f07837716bc07a8def11a95a0bc84b144134d82db8cc5b66",
+            "generatedSourcePath": "/workspace/generated_images/exec-d3f86f0b-7310-40eb-a1e5-f2a4f66ab0be.png",
+            "sourceRow": 0,
+            "selectedState": "chargeRelease",
+            "replacedOriginalSourceRow": 6,
+            "promptFile": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-galick-spacing-correction-prompt.json",
+            "prompt": "Create a native detailed PIXEL-ART ANIMATION SPRITE ATLAS for adult VEGETA from DRAGON BALL Z, matching the attached game references for identity and outfit. Tall upright BLACK flame-shaped spiky hair with widow's peak, adult muscular compact build, stern face. Exact costume in EVERY cell: fitted DARK BLUE SLEEVELESS training top and matching blue trousers, bare muscular upper arms, WHITE gauntlet gloves, WHITE boots with GOLD toe caps. NO chest armor, NO shoulder armor, NO brown Saiyan skirt, NO scouter, NO tail, NO Majin M, NO Super Saiyan or yellow/blue hair, NO red aura, NO weapon. The references both show this blue sleeveless training outfit with no breastplate; do not invent armor. Crisp true game pixel art. Newly drawn project animation adaptations, not official source-game frames. All bodies face RIGHT in a side/three-quarter view; natural hip/shoulder rotations allowed. EXACTLY FOUR columns. Every state must have FOUR genuinely different sequential anatomical poses, not merely recolored, scaled or shifted copies. Keep the entire black hair, all gloved fingers and both golden boot tips INSIDE the individual cell, with transparent separation gutters on every side. Full adult body in every frame. Transparent RGBA background: NO floor, shadows, stage, rock, painted ledge, grid, labels, text, numbers or border. No body aura, no long effects crossing cells. CORRECTIVE TWO-ROW FOUR-COLUMN atlas, exactly8full-bodyposes. Landscape2:1canvas ideally1536×768 or1024×512. Each cell has a VERY LARGE CLEAR TRANSPARENT GUTTER between characters. Keep each entire silhouette plus tiny contained energy inside center80%of its cell. The previous source's beam tip reached the neighboring recovery sprite; this must be corrected natively. You must draw a VERY SHORT PURPLE BEAM only10–15pixels beyond paired palms at native character height~220pixels, no flared tail, no detached shard, no glow spread. NO energy whatsoever in fourth column. No light trail between cells. The runtime supplies long-range beam continuation; atlas only needs the firing body and tiny purple beam tongue. Full heads/hair/boots in every cell. Same dark blue sleeveless training clothes, bare upper arms, white gloves, white boots with gold toes. No chest armor.\nROW1 chargeRelease: (1) BOTH hands cupped together BESIDE REAR CHEEK/SHOULDER, deeply bent elbows, knees loaded, torso rotated back; (2) paired palms thrust HALF WAY to the right with elbows still folded, tiny PURPLE light between palms, rear heel presses; (3) BOTH arms fully extend together rightward in a deep front-knee lunge, a VERY SHORT straight VIOLET/PURPLE BEAM10–15pixels beyond the paired palms, terminates INSIDE the cell leaving a large transparent gap; (4) NO beam, NO orb, NO purple glow, both elbows pull back and body straightens slightly into fighting guard. Four anatomical postures.\nROW2 special: SECONDARY Galick Gun. (1) wide stance with both paired white palms beside rear ear, elbows bent, forward shoulder dipped; (2) torso drives forward and both elbows straighten only half way, paired palms show a tiny contained magenta-purple light, not a detached orb; (3) both arms thrust fully together toward right, gloved palms adjacent, hips rotate and rear leg braces; VERY SHORT VIOLET BEAM10–15pixels at hands, fully inside cell and nowhere near next body; (4) body recovers into a low bent-knee two-fist guard, both fists physically retracted, absolutely no purple energy or detached fragment anywhere around this pose. Different body postures from row1 allowed but both are two-handed shoulder-level Galick Gun, not arms-wide yellow Final Flash, not Kikoha single-palm orb, not hip-cupped Kamehameha. EXACT8fullbodyfigures, transparent background and generous empty margins.",
+            "reason": "Initial special source has native purple/white beam fringe touching the following recovery character; chargeRelease has detached beam fringe misassigned across the nominal column boundary. Replace both complete state rows with native short-beam poses and clean no-energy recovery, without code repainting or body clipping."
+          }
+        ],
+        "conditioning": "Native image_gen artwork; exported entity-builder alpha segmentation and nearest-neighbor normalization, transparent atlas packing and technical contact crops only. Detached purple tip RGBA pixels inside an inspected empty gap are assigned to the firing cell, with identical full native-row hashes before/after. No code-redrawn body, synthetic pose, copied frame or generated substitute."
+      }
+    },
+    {
+      "id": "vegeta-combat-b",
+      "heroId": "vegeta_dbz",
+      "universe": "Dragon Ball Z",
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-combat-b.png",
+      "states": {
+        "attackRecovery": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "special": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "aerialNeutral": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "aerialForward": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "aerialDown": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "intro": {
+          "row": 5,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "victory": {
+          "row": 6,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": true
+        },
+        "ledgeAttack": {
+          "row": 7,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "stateOrder": [
+        "attackRecovery",
+        "special",
+        "aerialNeutral",
+        "aerialForward",
+        "aerialDown",
+        "intro",
+        "victory",
+        "ledgeAttack"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 8,
+      "frames": 32,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "alpha": true,
+      "sha256": "f39c1a4005618d03773537d9eb7b6cc9f7b76c0014473042ce2a1c086d056bda",
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-b-source.png",
+      "sourceImageSha256": "94f8fca13a486bc5992f6f149ff51d459b2d3d72cebc119c59d2016828e060f4",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "originalSourceRows": 8,
+      "referenceAsset": "/sprites/generated/heroes/dragon-ball-z/vegeta-dbz.png",
+      "referenceAssetSha256": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-reference.png",
+      "previousAtlasReference": "/sprites/generated/combat-character-animations/vegeta_dbz.png",
+      "previousAtlasReferenceSha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+      "sourceWork": "Dragon Ball Z — adult black-haired Vegeta in blue sleeveless training clothes",
+      "sourceReference": "Current simple slot Enchaînement de poings de Vegeta and secondary Galick Gun resolved before prompts. special and chargeRelease use the purple two-handed shoulder-level Galick Gun beam. Yellow Final Flash remains the separate existing 100% super animation.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "frameSize": 256,
+        "padding": 12,
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "attackRecovery",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-b-source.png",
+            "sourceImageSha256": "94f8fca13a486bc5992f6f149ff51d459b2d3d72cebc119c59d2016828e060f4",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 247
+            },
+            "scale": 0.7759197324414716,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 31,
+                  "top": 18,
+                  "width": 229,
+                  "height": 216,
+                  "pixels": 17538
+                },
+                "output": {
+                  "left": 66,
+                  "top": 73,
+                  "width": 178,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 266,
+                  "top": 18,
+                  "width": 177,
+                  "height": 217,
+                  "pixels": 17429
+                },
+                "output": {
+                  "left": 76,
+                  "top": 73,
+                  "width": 137,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 444,
+                  "top": 9,
+                  "width": 192,
+                  "height": 229,
+                  "pixels": 16206
+                },
+                "output": {
+                  "left": 42,
+                  "top": 66,
+                  "width": 149,
+                  "height": 178
+                }
+              },
+              {
+                "source": {
+                  "left": 703,
+                  "top": 25,
+                  "width": 159,
+                  "height": 214,
+                  "pixels": 16495
+                },
+                "output": {
+                  "left": 71,
+                  "top": 78,
+                  "width": 123,
+                  "height": 166
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "abc9c31eef5ab60ab7331a3292d5d9ac7e89a3088b067ae13a83793f14c82877",
+              "117ff07a8cabf1d92856f711b62c055d083a816a40550aaebaf622eea38300f6",
+              "108d18f2612313e4cb609607a6b58df05bdc0a63e4e9c92a31a5f63c3029390e",
+              "e4e182dbf48b2ea0cff60ea07ef6644e0a1ee9bcf005a76996d1080a9d75bd48"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Straight punch follow-through, retracting shoulder/elbow, rising compact fists and low recovered guard."
+            }
+          },
+          {
+            "state": "special",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-galick-spacing-correction-source.png",
+            "sourceImageSha256": "46373bc68f2786f3f07837716bc07a8def11a95a0bc84b144134d82db8cc5b66",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 472,
+              "bottom": 887
+            },
+            "scale": 0.45579567779960706,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 36,
+                  "top": 18,
+                  "width": 378,
+                  "height": 368,
+                  "pixels": 55778
+                },
+                "output": {
+                  "left": 43,
+                  "top": 76,
+                  "width": 172,
+                  "height": 168
+                }
+              },
+              {
+                "source": {
+                  "left": 471,
+                  "top": 32,
+                  "width": 360,
+                  "height": 353,
+                  "pixels": 54749
+                },
+                "output": {
+                  "left": 39,
+                  "top": 83,
+                  "width": 164,
+                  "height": 161
+                }
+              },
+              {
+                "source": {
+                  "left": 905,
+                  "top": 29,
+                  "width": 458,
+                  "height": 356,
+                  "pixels": 57381
+                },
+                "output": {
+                  "left": 35,
+                  "top": 81,
+                  "width": 209,
+                  "height": 162
+                }
+              },
+              {
+                "source": {
+                  "left": 1413,
+                  "top": 46,
+                  "width": 328,
+                  "height": 336,
+                  "pixels": 50610
+                },
+                "output": {
+                  "left": 65,
+                  "top": 89,
+                  "width": 150,
+                  "height": 153
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": {
+              "method": "native-beam-tip-alpha-ownership",
+              "sourceColumn": 3,
+              "destinationColumn": 2,
+              "sourceRoi": {
+                "left": 1330,
+                "top": 150,
+                "right": 1390,
+                "bottom": 230
+              },
+              "movedPixels": 433,
+              "visiblePixels": 16,
+              "nativeRowRgbaSha256Before": "7f1bbc9094d7dc53d9ecfdc7d99f2687ffb1fa1fce6efc1947fd137323e56675",
+              "nativeRowRgbaSha256After": "7f1bbc9094d7dc53d9ecfdc7d99f2687ffb1fa1fce6efc1947fd137323e56675",
+              "nativePixelsConserved": true,
+              "artworkRedrawn": false
+            },
+            "nativeFrameRgbaSha256": [
+              "bd8732bfce33bc2f6cb3768bc136bdd41c343b6e42308ab1b6f0b3461278371b",
+              "f570da171e1f440d344e00214daf6f7487e8bdfeb9e5a05b87818d656e7fd9ef",
+              "8d221d9ca55ad2f45c60623c6c4f0311b3656097c375f83659ff62b654b2e5bb",
+              "97056533db2567370ebd3cd415dadea7b3e2ed2968ce57a2e1edc4218f2f5cce"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Secondary Galick Gun: both gloves gathered beside rear cheek, two-palm thrust with purple charge, extended paired-palm purple beam and retracted guard. Existing yellow Final Flash super is separate."
+            }
+          },
+          {
+            "state": "aerialNeutral",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-b-source.png",
+            "sourceImageSha256": "94f8fca13a486bc5992f6f149ff51d459b2d3d72cebc119c59d2016828e060f4",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 468,
+              "bottom": 687
+            },
+            "scale": 0.8689138576779026,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 51,
+                  "top": 1,
+                  "width": 141,
+                  "height": 200,
+                  "pixels": 15479
+                },
+                "output": {
+                  "left": 76,
+                  "top": 59,
+                  "width": 123,
+                  "height": 174
+                }
+              },
+              {
+                "source": {
+                  "left": 236,
+                  "top": 13,
+                  "width": 230,
+                  "height": 179,
+                  "pixels": 15826
+                },
+                "output": {
+                  "left": 44,
+                  "top": 69,
+                  "width": 200,
+                  "height": 156
+                }
+              },
+              {
+                "source": {
+                  "left": 461,
+                  "top": 17,
+                  "width": 206,
+                  "height": 197,
+                  "pixels": 16059
+                },
+                "output": {
+                  "left": 47,
+                  "top": 73,
+                  "width": 179,
+                  "height": 171
+                }
+              },
+              {
+                "source": {
+                  "left": 715,
+                  "top": 9,
+                  "width": 134,
+                  "height": 200,
+                  "pixels": 14843
+                },
+                "output": {
+                  "left": 75,
+                  "top": 66,
+                  "width": 116,
+                  "height": 174
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "3c21e2003709238d97c5a21042186b60109b7451b868a4d60227a15e68020e08",
+              "bb44e1b6899e152f2fbd8c8a4aae9ed008440cd55da7fc12f3862770b5460660",
+              "aa713633f96ce0ae1d3b0fd391df8611fe5d5df849a41fd3b9e70e042d547a64",
+              "c78867fb35493249a0d2565483a6964f580510f5fbd93d473e8e58f8c5e9fa99"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Tucked knees, horizontal kick, upward diagonal extended kick and retracted airborne knees."
+            }
+          },
+          {
+            "state": "aerialForward",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-b-source.png",
+            "sourceImageSha256": "94f8fca13a486bc5992f6f149ff51d459b2d3d72cebc119c59d2016828e060f4",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 686,
+              "bottom": 897
+            },
+            "scale": 0.8529411764705882,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 27,
+                  "top": 4,
+                  "width": 142,
+                  "height": 195,
+                  "pixels": 16073
+                },
+                "output": {
+                  "left": 56,
+                  "top": 74,
+                  "width": 121,
+                  "height": 166
+                }
+              },
+              {
+                "source": {
+                  "left": 216,
+                  "top": 10,
+                  "width": 243,
+                  "height": 192,
+                  "pixels": 16849
+                },
+                "output": {
+                  "left": 29,
+                  "top": 79,
+                  "width": 207,
+                  "height": 164
+                }
+              },
+              {
+                "source": {
+                  "left": 446,
+                  "top": 14,
+                  "width": 244,
+                  "height": 189,
+                  "pixels": 16805
+                },
+                "output": {
+                  "left": 36,
+                  "top": 83,
+                  "width": 208,
+                  "height": 161
+                }
+              },
+              {
+                "source": {
+                  "left": 689,
+                  "top": 15,
+                  "width": 174,
+                  "height": 187,
+                  "pixels": 14352
+                },
+                "output": {
+                  "left": 54,
+                  "top": 84,
+                  "width": 148,
+                  "height": 160
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "3ff9a5bca7bf620ebedcc22ded271ca497b0359c8d86887a02d1436ca4149aab",
+              "8ecc661c86ad0c12ffab065cd17b3b20f79567fd24e0d986ca508e8c2498907f",
+              "88b52158c54d4b49d11804a13d35d48ead4bb0eb8956888c312c37a68d5a14de",
+              "f6ef20a52f57723cc69c7872604f9d971a7ebb0838b03482a64fe6b2b73bd685"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Chambered fist and tucked legs, partial airborne fist extension, full flying punch and curled recovery."
+            }
+          },
+          {
+            "state": "aerialDown",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-b-source.png",
+            "sourceImageSha256": "94f8fca13a486bc5992f6f149ff51d459b2d3d72cebc119c59d2016828e060f4",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 896,
+              "bottom": 1124
+            },
+            "scale": 1.031111111111111,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 49,
+                  "top": 7,
+                  "width": 111,
+                  "height": 210,
+                  "pixels": 15991
+                },
+                "output": {
+                  "left": 64,
+                  "top": 21,
+                  "width": 114,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 243,
+                  "top": 27,
+                  "width": 158,
+                  "height": 196,
+                  "pixels": 15521
+                },
+                "output": {
+                  "left": 36,
+                  "top": 42,
+                  "width": 163,
+                  "height": 202
+                }
+              },
+              {
+                "source": {
+                  "left": 442,
+                  "top": 44,
+                  "width": 224,
+                  "height": 178,
+                  "pixels": 16820
+                },
+                "output": {
+                  "left": 12,
+                  "top": 59,
+                  "width": 231,
+                  "height": 184
+                }
+              },
+              {
+                "source": {
+                  "left": 722,
+                  "top": 25,
+                  "width": 128,
+                  "height": 190,
+                  "pixels": 14227
+                },
+                "output": {
+                  "left": 72,
+                  "top": 40,
+                  "width": 132,
+                  "height": 196
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "9a149ce4ab086d0ed198e41297101a8c4a0df3c7390522c008ffd186042edaa3",
+              "dacc51f9ec53b2052dc86ef88b6a438e9cafb03900cf00751dcbdb0d8b775a9a",
+              "0812f16f8e24ef7de1f6f3ff2a5acb20e35227a2b4d2aa97e5a6d984772fbadf",
+              "df0b5e85c2542751bcf790e2ef944b261468fbc0df5751c7e675248bc7c42389"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Raised paired gloves, forward/downward elbow fold, downward paired hammer fists and tucked falling guard."
+            }
+          },
+          {
+            "state": "intro",
+            "row": 5,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-b-source.png",
+            "sourceImageSha256": "94f8fca13a486bc5992f6f149ff51d459b2d3d72cebc119c59d2016828e060f4",
+            "sourceRow": 5,
+            "sourceBounds": {
+              "top": 1121,
+              "bottom": 1348
+            },
+            "scale": 1.0403587443946187,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 54,
+                  "top": 4,
+                  "width": 107,
+                  "height": 220,
+                  "pixels": 13503
+                },
+                "output": {
+                  "left": 69,
+                  "top": 14,
+                  "width": 111,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 237,
+                  "top": 18,
+                  "width": 207,
+                  "height": 205,
+                  "pixels": 18027
+                },
+                "output": {
+                  "left": 29,
+                  "top": 29,
+                  "width": 215,
+                  "height": 213
+                }
+              },
+              {
+                "source": {
+                  "left": 503,
+                  "top": 8,
+                  "width": 126,
+                  "height": 216,
+                  "pixels": 16018
+                },
+                "output": {
+                  "left": 75,
+                  "top": 18,
+                  "width": 131,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 688,
+                  "top": 25,
+                  "width": 173,
+                  "height": 200,
+                  "pixels": 16362
+                },
+                "output": {
+                  "left": 36,
+                  "top": 36,
+                  "width": 180,
+                  "height": 208
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "3f26fbe7b198cb2bde07be21b93d6d53a567559a77303800406d87e36730c1c1",
+              "695c44ed00673ef406fa054f4504843b4a57a42800144079357ff0d5e9a73b43",
+              "8fae5933e2f1720d814baa22b257bdab31082d1a4677530fb4024a1e8160eb56",
+              "c07044640fb6abbff2d9c4841a1532513447d7a556724ffd0cc133d446f20e7e"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Arms crossed, uncrossed forward open palm, lifted proud chin and two-fist fighting stance."
+            }
+          },
+          {
+            "state": "victory",
+            "row": 6,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-b-source.png",
+            "sourceImageSha256": "94f8fca13a486bc5992f6f149ff51d459b2d3d72cebc119c59d2016828e060f4",
+            "sourceRow": 6,
+            "sourceBounds": {
+              "top": 1342,
+              "bottom": 1573
+            },
+            "scale": 1.0220264317180616,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 31,
+                  "top": 20,
+                  "width": 162,
+                  "height": 203,
+                  "pixels": 16398
+                },
+                "output": {
+                  "left": 46,
+                  "top": 31,
+                  "width": 166,
+                  "height": 207
+                }
+              },
+              {
+                "source": {
+                  "left": 281,
+                  "top": 1,
+                  "width": 135,
+                  "height": 224,
+                  "pixels": 17073
+                },
+                "output": {
+                  "left": 75,
+                  "top": 12,
+                  "width": 138,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 510,
+                  "top": 2,
+                  "width": 117,
+                  "height": 224,
+                  "pixels": 13721
+                },
+                "output": {
+                  "left": 83,
+                  "top": 13,
+                  "width": 120,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 695,
+                  "top": 3,
+                  "width": 150,
+                  "height": 225,
+                  "pixels": 15437
+                },
+                "output": {
+                  "left": 45,
+                  "top": 14,
+                  "width": 153,
+                  "height": 230
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "780af2a345251ff3637d659f3178071116365a23fd23355034a9acc1db5d5b46",
+              "6baef2ede2ec7d31632524b4f3852851b34e10366bd13784e7fd3eba97472f4f",
+              "9d419d8da9df8539c98ab1ef65b23a9e2218197d31f96864033941d16c132b6c",
+              "69673768257aa0bee6dde18ec907609d7a057479a04162e828a40ad8e2d5d17e"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Low guard, raised right fist, crossed arms with lifted chin and hand-at-hip proud recovery."
+            }
+          },
+          {
+            "state": "ledgeAttack",
+            "row": 7,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-combat-b-source.png",
+            "sourceImageSha256": "94f8fca13a486bc5992f6f149ff51d459b2d3d72cebc119c59d2016828e060f4",
+            "sourceRow": 7,
+            "sourceBounds": {
+              "top": 1565,
+              "bottom": 1774
+            },
+            "scale": 1.16,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 47,
+                  "top": 7,
+                  "width": 134,
+                  "height": 196,
+                  "pixels": 12522
+                },
+                "output": {
+                  "left": 54,
+                  "top": 17,
+                  "width": 155,
+                  "height": 227
+                }
+              },
+              {
+                "source": {
+                  "left": 275,
+                  "top": 11,
+                  "width": 128,
+                  "height": 186,
+                  "pixels": 13573
+                },
+                "output": {
+                  "left": 61,
+                  "top": 21,
+                  "width": 148,
+                  "height": 216
+                }
+              },
+              {
+                "source": {
+                  "left": 499,
+                  "top": 28,
+                  "width": 155,
+                  "height": 153,
+                  "pixels": 12115
+                },
+                "output": {
+                  "left": 64,
+                  "top": 41,
+                  "width": 180,
+                  "height": 177
+                }
+              },
+              {
+                "source": {
+                  "left": 727,
+                  "top": 25,
+                  "width": 140,
+                  "height": 153,
+                  "pixels": 13221
+                },
+                "output": {
+                  "left": 71,
+                  "top": 38,
+                  "width": 162,
+                  "height": 177
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "0aa78b509d79bab036314c3ad8e79b76d9e29924008c6230e85188023ccaf24c",
+              "4650059d08f288e903444bdacebb9b4fd429a22a6cb7fe98efdfe6d7c761111c",
+              "17156818c237ee762db5d3b1c8bdf1eb8cfd7f0c4d107cc6594cd4ad0a57250b",
+              "15351968a109eba65047e90700ab878c258d4845d317c11a3299e760e280aff6"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "One-hand overhead suspension, raised-knee pull-up, free forward punch while support glove presses below torso, crouched guard."
+            }
+          }
+        ],
+        "emptyRows": [],
+        "contactAnchorMeasurements": {}
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "All 21 normalized rows, three final atlases and 20 ledge crops visually inspected. White-gloved contact points measured from native pixels. Project adaptations, not certified canonical animation."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-20",
+        "sourceGameAsset": false,
+        "nativeGeneratedArtwork": true,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-402ebf77-29d9-47ba-9fbc-1ac04910f9ae.png",
+        "promptFile": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/native-prompts.json",
+        "prompt": "Create a native detailed PIXEL-ART ANIMATION SPRITE ATLAS for adult VEGETA from DRAGON BALL Z, matching the attached game references for identity and outfit. Tall upright BLACK flame-shaped spiky hair with widow's peak, adult muscular compact build, stern face. Exact costume in EVERY cell: fitted DARK BLUE SLEEVELESS training top and matching blue trousers, bare muscular upper arms, WHITE gauntlet gloves, WHITE boots with GOLD toe caps. NO chest armor, NO shoulder armor, NO brown Saiyan skirt, NO scouter, NO tail, NO Majin M, NO Super Saiyan or yellow/blue hair, NO red aura, NO weapon. The references both show this blue sleeveless training outfit with no breastplate; do not invent armor. Crisp true game pixel art. Newly drawn project animation adaptations, not official source-game frames. All bodies face RIGHT in a side/three-quarter view; natural hip/shoulder rotations allowed. EXACTLY FOUR columns. Every state must have FOUR genuinely different sequential anatomical poses, not merely recolored, scaled or shifted copies. Keep the entire black hair, all gloved fingers and both golden boot tips INSIDE the individual cell, with transparent separation gutters on every side. Full adult body in every frame. Transparent RGBA background: NO floor, shadows, stage, rock, painted ledge, grid, labels, text, numbers or border. No body aura, no long effects crossing cells. EXACTLY EIGHT ROWS × FOUR COLUMNS =32 full-body sprites. Portrait1:2 canvas ideally1024×2048. Allocate eight complete evenly spaced rows, each small enough to fit, including row8. Do not combine or omit rows. Grounded states have their soles on the same baseline within their row. GALICK GUN is the purple two-handed beam: both cupped white-gloved hands gather together BESIDE THE REAR SHOULDER/CHEEK at head height, elbows folded, torso coiled; release thrusts BOTH palms together toward the right. Purple/magenta energy, never a yellow Final Flash and never a single-palm round Kikoha orb. NO hands gathered at a hip. Final Flash belongs to a different existing super atlas and must not appear here.\nROW1 attackRecovery: straight-punch follow-through with shoulder extended; bent punching elbow pulls back and hips rotate; torso rises as both fists draw toward chest; compact balanced guard with knees softly bent. Four postures.\nROW2 special: the actual SECONDARY Galick Gun, not Final Flash. Frame1 both white-gloved palms cupped together beside rear shoulder/cheek, elbows bent and torso coiled; frame2 knees drive and BOTH paired palms push halfway toward right with contained purple light; frame3 two arms fully extend together rightward, front knee lunging and a SHORT PURPLE BEAM from BOTH palms only40pixels long inside the cell; frame4 no beam or orb remains, both elbows recoil and shoulders return into guard. No wide-spread charging arms, no gold energy and no one-handed shot.\nROW3 aerialNeutral: airborne rotating kick. Tucked knees and raised fists; one leg kicks horizontally to right while other knee remains folded; extended kicking boot sweeps higher diagonally with rotating torso and counterbalancing elbow; kicking knee retracts into a compact airborne guard. All four bodies airborne without a contact foot.\nROW4 aerialForward: airborne driving elbow/straight fist. Both knees tucked and rear right fist chambered; torso stretches forward and one leg trails as elbow starts extending; full forward right fist at shoulder height with other glove protecting jaw, rear knee bent back; arm retracts and legs fold into airborne recovery. No flight aura.\nROW5 aerialDown: downward double hammer strike. Both gloves locked overhead and knees tucked; torso tips downward and bent elbows descend; paired fists drive BELOW the chest with legs opened back in air; elbows fold back toward chin and knees tuck into falling guard. Full body airborne, no painted floor or blast.\nROW6 intro: Vegeta's proud readiness. Upright arms crossed at chest; chin tilts toward opponent and feet step wider; arms uncross with one open gloved palm held forward as the other fist guards; settle into deep two-fist fighting stance. Four genuinely different body/arm positions, stern expression throughout.\nROW7 victory: Vegeta's restrained proud gesture. Low fighting guard with bent knees; torso straightens and right fist raises beside shoulder; arms fold over chest and chin lifts; one hand moves to hip while other arm lowers, weight shifts onto rear leg. Four distinct poses, no cheerful Goku wave or salute.\nROW8 ledgeAttack: attack from an INVISIBLE edge, no prop. Right white glove gripping overhead and bent legs dangling, other fist near chest; supporting elbow pulls body up as free left fist cocks back and knee rises; free glove punches forward-right while support palm presses on imaginary edge beside waist; crouched guard above that edge with both fists ready. Four real hanging/pulling/striking postures, exactly two arms.",
+        "promptSha256": "2410b76344600717d7c0849acfaaedfd745d68d7594e9cd265e844fcad611afd",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [
+          {
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-galick-spacing-correction-source.png",
+            "sourceImageSha256": "46373bc68f2786f3f07837716bc07a8def11a95a0bc84b144134d82db8cc5b66",
+            "generatedSourcePath": "/workspace/generated_images/exec-d3f86f0b-7310-40eb-a1e5-f2a4f66ab0be.png",
+            "sourceRow": 1,
+            "selectedState": "special",
+            "replacedOriginalSourceRow": 1,
+            "promptFile": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-galick-spacing-correction-prompt.json",
+            "prompt": "Create a native detailed PIXEL-ART ANIMATION SPRITE ATLAS for adult VEGETA from DRAGON BALL Z, matching the attached game references for identity and outfit. Tall upright BLACK flame-shaped spiky hair with widow's peak, adult muscular compact build, stern face. Exact costume in EVERY cell: fitted DARK BLUE SLEEVELESS training top and matching blue trousers, bare muscular upper arms, WHITE gauntlet gloves, WHITE boots with GOLD toe caps. NO chest armor, NO shoulder armor, NO brown Saiyan skirt, NO scouter, NO tail, NO Majin M, NO Super Saiyan or yellow/blue hair, NO red aura, NO weapon. The references both show this blue sleeveless training outfit with no breastplate; do not invent armor. Crisp true game pixel art. Newly drawn project animation adaptations, not official source-game frames. All bodies face RIGHT in a side/three-quarter view; natural hip/shoulder rotations allowed. EXACTLY FOUR columns. Every state must have FOUR genuinely different sequential anatomical poses, not merely recolored, scaled or shifted copies. Keep the entire black hair, all gloved fingers and both golden boot tips INSIDE the individual cell, with transparent separation gutters on every side. Full adult body in every frame. Transparent RGBA background: NO floor, shadows, stage, rock, painted ledge, grid, labels, text, numbers or border. No body aura, no long effects crossing cells. CORRECTIVE TWO-ROW FOUR-COLUMN atlas, exactly8full-bodyposes. Landscape2:1canvas ideally1536×768 or1024×512. Each cell has a VERY LARGE CLEAR TRANSPARENT GUTTER between characters. Keep each entire silhouette plus tiny contained energy inside center80%of its cell. The previous source's beam tip reached the neighboring recovery sprite; this must be corrected natively. You must draw a VERY SHORT PURPLE BEAM only10–15pixels beyond paired palms at native character height~220pixels, no flared tail, no detached shard, no glow spread. NO energy whatsoever in fourth column. No light trail between cells. The runtime supplies long-range beam continuation; atlas only needs the firing body and tiny purple beam tongue. Full heads/hair/boots in every cell. Same dark blue sleeveless training clothes, bare upper arms, white gloves, white boots with gold toes. No chest armor.\nROW1 chargeRelease: (1) BOTH hands cupped together BESIDE REAR CHEEK/SHOULDER, deeply bent elbows, knees loaded, torso rotated back; (2) paired palms thrust HALF WAY to the right with elbows still folded, tiny PURPLE light between palms, rear heel presses; (3) BOTH arms fully extend together rightward in a deep front-knee lunge, a VERY SHORT straight VIOLET/PURPLE BEAM10–15pixels beyond the paired palms, terminates INSIDE the cell leaving a large transparent gap; (4) NO beam, NO orb, NO purple glow, both elbows pull back and body straightens slightly into fighting guard. Four anatomical postures.\nROW2 special: SECONDARY Galick Gun. (1) wide stance with both paired white palms beside rear ear, elbows bent, forward shoulder dipped; (2) torso drives forward and both elbows straighten only half way, paired palms show a tiny contained magenta-purple light, not a detached orb; (3) both arms thrust fully together toward right, gloved palms adjacent, hips rotate and rear leg braces; VERY SHORT VIOLET BEAM10–15pixels at hands, fully inside cell and nowhere near next body; (4) body recovers into a low bent-knee two-fist guard, both fists physically retracted, absolutely no purple energy or detached fragment anywhere around this pose. Different body postures from row1 allowed but both are two-handed shoulder-level Galick Gun, not arms-wide yellow Final Flash, not Kikoha single-palm orb, not hip-cupped Kamehameha. EXACT8fullbodyfigures, transparent background and generous empty margins.",
+            "reason": "Initial special source has native purple/white beam fringe touching the following recovery character; chargeRelease has detached beam fringe misassigned across the nominal column boundary. Replace both complete state rows with native short-beam poses and clean no-energy recovery, without code repainting or body clipping."
+          }
+        ],
+        "conditioning": "Native image_gen artwork; exported entity-builder alpha segmentation and nearest-neighbor normalization, transparent atlas packing and technical contact crops only. Detached purple tip RGBA pixels inside an inspected empty gap are assigned to the firing cell, with identical full native-row hashes before/after. No code-redrawn body, synthetic pose, copied frame or generated substitute."
+      }
+    },
+    {
+      "id": "vegeta-ledge",
+      "heroId": "vegeta_dbz",
+      "universe": "Dragon Ball Z",
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-ledge.png",
+      "states": {
+        "ledgeCatch": {
+          "row": 0,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ledgeHang": {
+          "row": 1,
+          "frames": 4,
+          "columns": 4,
+          "fps": 8,
+          "loop": true
+        },
+        "ledgeClimb": {
+          "row": 2,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ledgeDrop": {
+          "row": 3,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        },
+        "ledgeJump": {
+          "row": 4,
+          "frames": 4,
+          "columns": 4,
+          "fps": 12,
+          "loop": false
+        }
+      },
+      "stateOrder": [
+        "ledgeCatch",
+        "ledgeHang",
+        "ledgeClimb",
+        "ledgeDrop",
+        "ledgeJump"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "activeRows": 5,
+      "frames": 20,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "width": 1024,
+      "height": 2048,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "alpha": true,
+      "sha256": "e30de6b87287208271ff1b62d5aca66da3caf432e7ac2599ff9ebf385f58e363",
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-ledge-source.png",
+      "sourceImageSha256": "ab325e7fadbf8704e9e68b77903acc9479fc4a54cfb8372086e28d904d8b32eb",
+      "sourceDimensions": [
+        1122,
+        1402
+      ],
+      "originalSourceRows": 5,
+      "referenceAsset": "/sprites/generated/heroes/dragon-ball-z/vegeta-dbz.png",
+      "referenceAssetSha256": "bcaa427dd2b55cb8233228efedd15f01c001e94e3fe010ff466250f3241211a4",
+      "archivedReferenceAsset": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-reference.png",
+      "previousAtlasReference": "/sprites/generated/combat-character-animations/vegeta_dbz.png",
+      "previousAtlasReferenceSha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+      "sourceWork": "Dragon Ball Z — adult black-haired Vegeta in blue sleeveless training clothes",
+      "sourceReference": "Five project ledge-traversal adaptations using real white glove support and no painted platform. Not source-game canonical movement frames.",
+      "normalization": {
+        "method": "alpha-valley-and-adaptive-seam-v1",
+        "frameSize": 256,
+        "padding": 12,
+        "sharedScalePerState": true,
+        "baseline": 244,
+        "rows": [
+          {
+            "state": "ledgeCatch",
+            "row": 0,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-ledge-source.png",
+            "sourceImageSha256": "ab325e7fadbf8704e9e68b77903acc9479fc4a54cfb8372086e28d904d8b32eb",
+            "sourceRow": 0,
+            "sourceBounds": {
+              "top": 0,
+              "bottom": 302
+            },
+            "scale": 0.8027681660899654,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 39,
+                  "top": 14,
+                  "width": 244,
+                  "height": 271,
+                  "pixels": 21736
+                },
+                "output": {
+                  "left": 47,
+                  "top": 18,
+                  "width": 196,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 338,
+                  "top": 7,
+                  "width": 227,
+                  "height": 288,
+                  "pixels": 21461
+                },
+                "output": {
+                  "left": 62,
+                  "top": 13,
+                  "width": 182,
+                  "height": 231
+                }
+              },
+              {
+                "source": {
+                  "left": 687,
+                  "top": 13,
+                  "width": 131,
+                  "height": 273,
+                  "pixels": 20700
+                },
+                "output": {
+                  "left": 117,
+                  "top": 18,
+                  "width": 105,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 944,
+                  "top": 14,
+                  "width": 136,
+                  "height": 281,
+                  "pixels": 21116
+                },
+                "output": {
+                  "left": 98,
+                  "top": 18,
+                  "width": 109,
+                  "height": 226
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "fe1ef5766e14cd8df884a6fbfee4fef1c235a85fbb6742e6637836eb165d7539",
+              "802d68a1ff392309c5db6417a786654c50406eb7103e3d99c60b0a62195a1e9f",
+              "61442e35f24bc4e2af569581988fccf271a25ca148f0b388e371e75d6adef628",
+              "729377500ffcaf612b6e32659c1862753189e3f911513de98824138d7acb054e"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Pre-contact reaching right glove with other fist near chest, one overhead grip with other reaching glove, two overhead grips with tucked knees and settled flexed-elbow suspension. Exactly two arms."
+            }
+          },
+          {
+            "state": "ledgeHang",
+            "row": 1,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-ledge-source.png",
+            "sourceImageSha256": "ab325e7fadbf8704e9e68b77903acc9479fc4a54cfb8372086e28d904d8b32eb",
+            "sourceRow": 1,
+            "sourceBounds": {
+              "top": 301,
+              "bottom": 619
+            },
+            "scale": 0.7435897435897436,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 94,
+                  "top": 6,
+                  "width": 109,
+                  "height": 293,
+                  "pixels": 20221
+                },
+                "output": {
+                  "left": 94,
+                  "top": 13,
+                  "width": 81,
+                  "height": 218
+                }
+              },
+              {
+                "source": {
+                  "left": 327,
+                  "top": 5,
+                  "width": 209,
+                  "height": 262,
+                  "pixels": 19981
+                },
+                "output": {
+                  "left": 58,
+                  "top": 12,
+                  "width": 155,
+                  "height": 195
+                }
+              },
+              {
+                "source": {
+                  "left": 671,
+                  "top": 5,
+                  "width": 144,
+                  "height": 294,
+                  "pixels": 21244
+                },
+                "output": {
+                  "left": 106,
+                  "top": 12,
+                  "width": 107,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 944,
+                  "top": 5,
+                  "width": 134,
+                  "height": 312,
+                  "pixels": 20566
+                },
+                "output": {
+                  "left": 100,
+                  "top": 12,
+                  "width": 100,
+                  "height": 232
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "ff32ff87c0255b79b3f64a13fd4cb8f324da78fbbc72f2547e1689421904f354",
+              "b7461e4d7059fcf1d6e726b18f256688804e42f3cfa71cab37aead80539a34b9",
+              "ecd9ff02c37842a205926aebf0969bde42a88899e6174ff423a7dd01ceedef71",
+              "4dfac5e7ba5cc69756275909926ca06ac8ab3ee1f8fe6d40c771d6ab19792280"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Two overhead grips with straight legs, one-hand supported swinging legs, overhead grip with raised knee and tucked settled hang."
+            }
+          },
+          {
+            "state": "ledgeClimb",
+            "row": 2,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-ledge-source.png",
+            "sourceImageSha256": "ab325e7fadbf8704e9e68b77903acc9479fc4a54cfb8372086e28d904d8b32eb",
+            "sourceRow": 2,
+            "sourceBounds": {
+              "top": 612,
+              "bottom": 857
+            },
+            "scale": 0.943089430894309,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 70,
+                  "top": 3,
+                  "width": 159,
+                  "height": 230,
+                  "pixels": 21773
+                },
+                "output": {
+                  "left": 62,
+                  "top": 17,
+                  "width": 150,
+                  "height": 217
+                }
+              },
+              {
+                "source": {
+                  "left": 358,
+                  "top": 2,
+                  "width": 170,
+                  "height": 242,
+                  "pixels": 21176
+                },
+                "output": {
+                  "left": 69,
+                  "top": 16,
+                  "width": 160,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 612,
+                  "top": 19,
+                  "width": 212,
+                  "height": 196,
+                  "pixels": 23336
+                },
+                "output": {
+                  "left": 44,
+                  "top": 32,
+                  "width": 200,
+                  "height": 185
+                }
+              },
+              {
+                "source": {
+                  "left": 927,
+                  "top": 41,
+                  "width": 164,
+                  "height": 185,
+                  "pixels": 19649
+                },
+                "output": {
+                  "left": 76,
+                  "top": 53,
+                  "width": 155,
+                  "height": 174
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "e4b5651bf028b91bdb415cd3559eaeb19a8573002296f88b4f60cd28b4db6620",
+              "7bf2b7f82de813396b4fbbb4a583264b79eda626bd31e899a291749551b08ade",
+              "ef48cfe84aff942e778ac5d623d1e6cf289f7d61b230838bf53db2d70ebdf1d2",
+              "06bbce4b40d1272d3da9e54263515aaa4a41dcdef92bd99c96147081fb44ac95"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Hands gripping beside head with tucked knees, chest-high pull and raised knee, both palms pressing below waist with hip lifted, crouch above former edge with two low planted palms."
+            }
+          },
+          {
+            "state": "ledgeDrop",
+            "row": 3,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-ledge-source.png",
+            "sourceImageSha256": "ab325e7fadbf8704e9e68b77903acc9479fc4a54cfb8372086e28d904d8b32eb",
+            "sourceRow": 3,
+            "sourceBounds": {
+              "top": 847,
+              "bottom": 1131
+            },
+            "scale": 0.8375451263537906,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 92,
+                  "top": 9,
+                  "width": 129,
+                  "height": 262,
+                  "pixels": 19212
+                },
+                "output": {
+                  "left": 88,
+                  "top": 18,
+                  "width": 108,
+                  "height": 219
+                }
+              },
+              {
+                "source": {
+                  "left": 327,
+                  "top": 2,
+                  "width": 223,
+                  "height": 251,
+                  "pixels": 20229
+                },
+                "output": {
+                  "left": 49,
+                  "top": 12,
+                  "width": 187,
+                  "height": 210
+                }
+              },
+              {
+                "source": {
+                  "left": 635,
+                  "top": 2,
+                  "width": 164,
+                  "height": 269,
+                  "pixels": 21593
+                },
+                "output": {
+                  "left": 73,
+                  "top": 12,
+                  "width": 137,
+                  "height": 225
+                }
+              },
+              {
+                "source": {
+                  "left": 940,
+                  "top": 15,
+                  "width": 128,
+                  "height": 264,
+                  "pixels": 19085
+                },
+                "output": {
+                  "left": 93,
+                  "top": 23,
+                  "width": 107,
+                  "height": 221
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "a82d4c071699031b3a07e74ccc903e571f5a04ccb64abf5fcbfb522b3d53f77a",
+              "9a155fedf25547ab32aaa3f06430fc7def13f0de563dabdaebb0f758b0076cb5",
+              "681a5e3591260385513b6d2a7c4ebc2d4a370ea1fe5bad39cca2cfb4e984c7ca",
+              "4363dfc503f38fc4c83fbf2f5c8973b202ed998617f61bef740c6345e8c7ccce"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Two overhead grips, one remaining grip and released free palm, two open released palms with falling legs and free fall with lowered arms."
+            }
+          },
+          {
+            "state": "ledgeJump",
+            "row": 4,
+            "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/vegeta-ledge-source.png",
+            "sourceImageSha256": "ab325e7fadbf8704e9e68b77903acc9479fc4a54cfb8372086e28d904d8b32eb",
+            "sourceRow": 4,
+            "sourceBounds": {
+              "top": 1124,
+              "bottom": 1402
+            },
+            "scale": 0.928,
+            "baseline": 244,
+            "frameBounds": [
+              {
+                "source": {
+                  "left": 106,
+                  "top": 7,
+                  "width": 110,
+                  "height": 247,
+                  "pixels": 19227
+                },
+                "output": {
+                  "left": 96,
+                  "top": 15,
+                  "width": 102,
+                  "height": 229
+                }
+              },
+              {
+                "source": {
+                  "left": 356,
+                  "top": 13,
+                  "width": 165,
+                  "height": 232,
+                  "pixels": 20048
+                },
+                "output": {
+                  "left": 68,
+                  "top": 20,
+                  "width": 153,
+                  "height": 215
+                }
+              },
+              {
+                "source": {
+                  "left": 609,
+                  "top": 4,
+                  "width": 195,
+                  "height": 246,
+                  "pixels": 23249
+                },
+                "output": {
+                  "left": 42,
+                  "top": 12,
+                  "width": 181,
+                  "height": 228
+                }
+              },
+              {
+                "source": {
+                  "left": 901,
+                  "top": 16,
+                  "width": 200,
+                  "height": 238,
+                  "pixels": 20865
+                },
+                "output": {
+                  "left": 53,
+                  "top": 23,
+                  "width": 186,
+                  "height": 221
+                }
+              }
+            ],
+            "crossedOpaquePixels": 0,
+            "crossedVisiblePixels": 0,
+            "alphaOwnership": null,
+            "nativeFrameRgbaSha256": [
+              "c1940054f3df93864898e86d0224229ba3b5ef0dffc8157b2d0136073e53bca2",
+              "95fc6dff6e40ae6c0c350786cc8211d8139c1c0e488209f1c9d3cf0299f8ce07",
+              "4e9f79413e0bb940e9828b303fc1996088dc1056ac2ccc3104ba90412432a9b3",
+              "d2321e0e2d0f32f6f74d4e2b8049967e033ebfe26c16dd49b91b21e737002d98"
+            ],
+            "visualReview": {
+              "manuallyInspected": true,
+              "fourDistinctNativePoses": true,
+              "action": "Tucked two-hand hang, bent-elbow coil/push, released rising body with raised knee and released forward upward arc."
+            }
+          }
+        ],
+        "emptyRows": [
+          5,
+          6,
+          7
+        ],
+        "contactAnchorMeasurements": {
+          "ledgeCatch": [
+            {
+              "frame": 0,
+              "x": 225,
+              "y": 42,
+              "normalizedX": 0.87890625,
+              "normalizedY": 0.1640625,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 140,
+                  "y": 135,
+                  "normalizedX": 0.546875,
+                  "normalizedY": 0.52734375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement.",
+              "wrist": {
+                "x": 213,
+                "y": 61,
+                "normalizedX": 0.83203125,
+                "normalizedY": 0.23828125,
+                "measurement": "Manually inspected white-gauntlet wrist center adjacent to the supporting palm; not a skin-contact claim."
+              }
+            },
+            {
+              "frame": 1,
+              "x": 207,
+              "y": 28,
+              "normalizedX": 0.80859375,
+              "normalizedY": 0.109375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 225,
+                  "y": 103,
+                  "normalizedX": 0.87890625,
+                  "normalizedY": 0.40234375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement.",
+              "wrist": {
+                "x": 202,
+                "y": 49,
+                "normalizedX": 0.7890625,
+                "normalizedY": 0.19140625,
+                "measurement": "Manually inspected white-gauntlet wrist center adjacent to the supporting palm; not a skin-contact claim."
+              }
+            },
+            {
+              "frame": 2,
+              "x": 186,
+              "y": 32,
+              "normalizedX": 0.7265625,
+              "normalizedY": 0.125,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 141,
+                  "y": 33,
+                  "normalizedX": 0.55078125,
+                  "normalizedY": 0.12890625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement.",
+              "wrist": {
+                "x": 186,
+                "y": 52,
+                "normalizedX": 0.7265625,
+                "normalizedY": 0.203125,
+                "measurement": "Manually inspected white-gauntlet wrist center adjacent to the supporting palm; not a skin-contact claim."
+              }
+            },
+            {
+              "frame": 3,
+              "x": 162,
+              "y": 33,
+              "normalizedX": 0.6328125,
+              "normalizedY": 0.12890625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 116,
+                  "y": 33,
+                  "normalizedX": 0.453125,
+                  "normalizedY": 0.12890625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement.",
+              "wrist": {
+                "x": 162,
+                "y": 54,
+                "normalizedX": 0.6328125,
+                "normalizedY": 0.2109375,
+                "measurement": "Manually inspected white-gauntlet wrist center adjacent to the supporting palm; not a skin-contact claim."
+              }
+            }
+          ],
+          "ledgeHang": [
+            {
+              "frame": 0,
+              "x": 163,
+              "y": 25,
+              "normalizedX": 0.63671875,
+              "normalizedY": 0.09765625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 122,
+                  "y": 25,
+                  "normalizedX": 0.4765625,
+                  "normalizedY": 0.09765625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement.",
+              "wrist": {
+                "x": 163,
+                "y": 42,
+                "normalizedX": 0.63671875,
+                "normalizedY": 0.1640625,
+                "measurement": "Manually inspected white-gauntlet wrist center adjacent to the supporting palm; not a skin-contact claim."
+              }
+            },
+            {
+              "frame": 1,
+              "x": 135,
+              "y": 25,
+              "normalizedX": 0.52734375,
+              "normalizedY": 0.09765625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 200,
+                  "y": 112,
+                  "normalizedX": 0.78125,
+                  "normalizedY": 0.4375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement.",
+              "wrist": {
+                "x": 133,
+                "y": 43,
+                "normalizedX": 0.51953125,
+                "normalizedY": 0.16796875,
+                "measurement": "Manually inspected white-gauntlet wrist center adjacent to the supporting palm; not a skin-contact claim."
+              }
+            },
+            {
+              "frame": 2,
+              "x": 189,
+              "y": 25,
+              "normalizedX": 0.73828125,
+              "normalizedY": 0.09765625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 147,
+                  "y": 25,
+                  "normalizedX": 0.57421875,
+                  "normalizedY": 0.09765625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement.",
+              "wrist": {
+                "x": 189,
+                "y": 43,
+                "normalizedX": 0.73828125,
+                "normalizedY": 0.16796875,
+                "measurement": "Manually inspected white-gauntlet wrist center adjacent to the supporting palm; not a skin-contact claim."
+              }
+            },
+            {
+              "frame": 3,
+              "x": 152,
+              "y": 25,
+              "normalizedX": 0.59375,
+              "normalizedY": 0.09765625,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 114,
+                  "y": 25,
+                  "normalizedX": 0.4453125,
+                  "normalizedY": 0.09765625,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement.",
+              "wrist": {
+                "x": 153,
+                "y": 43,
+                "normalizedX": 0.59765625,
+                "normalizedY": 0.16796875,
+                "measurement": "Manually inspected white-gauntlet wrist center adjacent to the supporting palm; not a skin-contact claim."
+              }
+            }
+          ],
+          "ledgeClimb": [
+            {
+              "frame": 0,
+              "x": 193,
+              "y": 78,
+              "normalizedX": 0.75390625,
+              "normalizedY": 0.3046875,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 84,
+                  "y": 78,
+                  "normalizedX": 0.328125,
+                  "normalizedY": 0.3046875,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement.",
+              "wrist": {
+                "x": 198,
+                "y": 91,
+                "normalizedX": 0.7734375,
+                "normalizedY": 0.35546875,
+                "measurement": "Manually inspected white-gauntlet wrist center adjacent to the supporting palm; not a skin-contact claim."
+              }
+            },
+            {
+              "frame": 1,
+              "x": 210,
+              "y": 78,
+              "normalizedX": 0.8203125,
+              "normalizedY": 0.3046875,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 99,
+                  "y": 77,
+                  "normalizedX": 0.38671875,
+                  "normalizedY": 0.30078125,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement.",
+              "wrist": {
+                "x": 216,
+                "y": 93,
+                "normalizedX": 0.84375,
+                "normalizedY": 0.36328125,
+                "measurement": "Manually inspected white-gauntlet wrist center adjacent to the supporting palm; not a skin-contact claim."
+              }
+            },
+            {
+              "frame": 2,
+              "x": 223,
+              "y": 207,
+              "normalizedX": 0.87109375,
+              "normalizedY": 0.80859375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 128,
+                  "y": 207,
+                  "normalizedX": 0.5,
+                  "normalizedY": 0.80859375,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement.",
+              "wrist": {
+                "x": 212,
+                "y": 188,
+                "normalizedX": 0.828125,
+                "normalizedY": 0.734375,
+                "measurement": "Manually inspected white-gauntlet wrist center adjacent to the supporting palm; not a skin-contact claim."
+              }
+            },
+            {
+              "frame": 3,
+              "x": 197,
+              "y": 216,
+              "normalizedX": 0.76953125,
+              "normalizedY": 0.84375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 151,
+                  "y": 216,
+                  "normalizedX": 0.58984375,
+                  "normalizedY": 0.84375,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement.",
+              "wrist": {
+                "x": 184,
+                "y": 201,
+                "normalizedX": 0.71875,
+                "normalizedY": 0.78515625,
+                "measurement": "Manually inspected white-gauntlet wrist center adjacent to the supporting palm; not a skin-contact claim."
+              }
+            }
+          ],
+          "ledgeDrop": [
+            {
+              "frame": 0,
+              "x": 161,
+              "y": 31,
+              "normalizedX": 0.62890625,
+              "normalizedY": 0.12109375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 124,
+                  "y": 31,
+                  "normalizedX": 0.484375,
+                  "normalizedY": 0.12109375,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement."
+            },
+            {
+              "frame": 1,
+              "x": 126,
+              "y": 28,
+              "normalizedX": 0.4921875,
+              "normalizedY": 0.109375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 220,
+                  "y": 119,
+                  "normalizedX": 0.859375,
+                  "normalizedY": 0.46484375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement."
+            },
+            {
+              "frame": 2,
+              "x": 126,
+              "y": 28,
+              "normalizedX": 0.4921875,
+              "normalizedY": 0.109375,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 192,
+                  "y": 42,
+                  "normalizedX": 0.75,
+                  "normalizedY": 0.1640625,
+                  "contact": false
+                },
+                {
+                  "x": 98,
+                  "y": 38,
+                  "normalizedX": 0.3828125,
+                  "normalizedY": 0.1484375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Carried edge reference after release, not a hand contact; actual free gloves listed separately."
+            },
+            {
+              "frame": 3,
+              "x": 126,
+              "y": 28,
+              "normalizedX": 0.4921875,
+              "normalizedY": 0.109375,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 188,
+                  "y": 159,
+                  "normalizedX": 0.734375,
+                  "normalizedY": 0.62109375,
+                  "contact": false
+                },
+                {
+                  "x": 109,
+                  "y": 158,
+                  "normalizedX": 0.42578125,
+                  "normalizedY": 0.6171875,
+                  "contact": false
+                }
+              ],
+              "measurement": "Carried edge reference after release, not a hand contact; actual free gloves listed separately."
+            }
+          ],
+          "ledgeJump": [
+            {
+              "frame": 0,
+              "x": 172,
+              "y": 28,
+              "normalizedX": 0.671875,
+              "normalizedY": 0.109375,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 123,
+                  "y": 29,
+                  "normalizedX": 0.48046875,
+                  "normalizedY": 0.11328125,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement."
+            },
+            {
+              "frame": 1,
+              "x": 175,
+              "y": 34,
+              "normalizedX": 0.68359375,
+              "normalizedY": 0.1328125,
+              "contact": true,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 120,
+                  "y": 60,
+                  "normalizedX": 0.46875,
+                  "normalizedY": 0.234375,
+                  "contact": true
+                }
+              ],
+              "measurement": "Manually reviewed approximate white-glove palm center in normalized native pixels. Project contact anchor, not an official source-game measurement."
+            },
+            {
+              "frame": 2,
+              "x": 175,
+              "y": 34,
+              "normalizedX": 0.68359375,
+              "normalizedY": 0.1328125,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 208,
+                  "y": 33,
+                  "normalizedX": 0.8125,
+                  "normalizedY": 0.12890625,
+                  "contact": false
+                },
+                {
+                  "x": 64,
+                  "y": 58,
+                  "normalizedX": 0.25,
+                  "normalizedY": 0.2265625,
+                  "contact": false
+                }
+              ],
+              "measurement": "Carried edge reference after release, not a hand contact; actual free gloves listed separately."
+            },
+            {
+              "frame": 3,
+              "x": 175,
+              "y": 34,
+              "normalizedX": 0.68359375,
+              "normalizedY": 0.1328125,
+              "contact": false,
+              "baseline": "ledgeGrip",
+              "supportHands": [
+                {
+                  "x": 226,
+                  "y": 102,
+                  "normalizedX": 0.8828125,
+                  "normalizedY": 0.3984375,
+                  "contact": false
+                },
+                {
+                  "x": 74,
+                  "y": 92,
+                  "normalizedX": 0.2890625,
+                  "normalizedY": 0.359375,
+                  "contact": false
+                }
+              ],
+              "measurement": "Carried edge reference after release, not a hand contact; actual free gloves listed separately."
+            }
+          ]
+        }
+      },
+      "visualValidation": {
+        "identityReviewed": true,
+        "stateRowsReviewed": true,
+        "fourNativePosesPerStateReviewed": true,
+        "technicalAlphaReviewed": true,
+        "fullOutputSilhouetteContained": true,
+        "canon1to1Verified": false,
+        "networkVerified": false,
+        "notes": "All 21 normalized rows, three final atlases and 20 ledge crops visually inspected. White-gloved contact points measured from native pixels. Project adaptations, not certified canonical animation."
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "generationId": null,
+        "date": "2026-10-20",
+        "sourceGameAsset": false,
+        "nativeGeneratedArtwork": true,
+        "canonicalAnimationVerified": false,
+        "generatedSourcePath": "/workspace/generated_images/exec-3ad45ff1-7859-4834-a631-10d0ca4709c5.png",
+        "promptFile": "docs/combat-fidelity-wave5-2026-10-20/vegeta-sources/native-prompts.json",
+        "prompt": "Create a native detailed PIXEL-ART ANIMATION SPRITE ATLAS for adult VEGETA from DRAGON BALL Z, matching the attached game references for identity and outfit. Tall upright BLACK flame-shaped spiky hair with widow's peak, adult muscular compact build, stern face. Exact costume in EVERY cell: fitted DARK BLUE SLEEVELESS training top and matching blue trousers, bare muscular upper arms, WHITE gauntlet gloves, WHITE boots with GOLD toe caps. NO chest armor, NO shoulder armor, NO brown Saiyan skirt, NO scouter, NO tail, NO Majin M, NO Super Saiyan or yellow/blue hair, NO red aura, NO weapon. The references both show this blue sleeveless training outfit with no breastplate; do not invent armor. Crisp true game pixel art. Newly drawn project animation adaptations, not official source-game frames. All bodies face RIGHT in a side/three-quarter view; natural hip/shoulder rotations allowed. EXACTLY FOUR columns. Every state must have FOUR genuinely different sequential anatomical poses, not merely recolored, scaled or shifted copies. Keep the entire black hair, all gloved fingers and both golden boot tips INSIDE the individual cell, with transparent separation gutters on every side. Full adult body in every frame. Transparent RGBA background: NO floor, shadows, stage, rock, painted ledge, grid, labels, text, numbers or border. No body aura, no long effects crossing cells. EXACTLY FIVE ROWS × FOUR COLUMNS =20 complete native sprites, portrait4:5 ideally1024×1280. These are manual ledge-traversal adaptations: NO flying, levitation, ki, weapon, rope, stage or painted platform. Show the WHITE GLOVE fingers and blue-to-white wrist boundary clearly. Imagine a horizontal edge above/to right of hanging torso. Each figure has EXACTLY TWO arms and TWO hands, never an extra reaching hand. Full hair-to-boots body and transparent margins in every cell.\nROW1 ledgeCatch: frame1 one right white-gloved hand REACHES UP-right toward edge, not yet contacting, other bent arm/fist is near chest and knees trail; frame2 right white glove hooks overhead with extended elbow while other hand reaches up from chest, exactly two hands; frame3 BOTH white gloves grip overhead, torso swings inward and knees tuck; frame4 elbows flex and body settles BELOW both gripping hands, boots dangling. Fingers curled as a ledge grip, not sky punches.\nROW2 ledgeHang: frame1 both white gloves grip overhead with arms long and feet dangling; frame2 one glove remains hooked high while other elbow bends and legs swing backward; frame3 both hands still gripping with shoulders extended while lead knee tucks high; frame4 gripping hands stay above head with one elbow bent and legs swing down. Different actual elbow/torso/knee anatomy in all four poses. No standing or support under boots.\nROW3 ledgeClimb: frame1 both hands pull chest upward, elbows bending and knees tightly tucked; frame2 elbows deeply bend and chin reaches inferred edge while lead knee lifts in front of torso; frame3 both palms press DOWN near waist as hips rise above inferred edge, one knee comes over; frame4 low crouch ABOVE old edge with two white palms planted beside boot level, elbows bent. Four distinct pull-up stages, no drawn ledge. Glove contact must be clearly locatable in each pose.\nROW4 ledgeDrop: frame1 both hands hold overhead with knees loose; frame2 one glove releases open sideways and other remains hooked, torso rotates away; frame3 BOTH hands open after release, arms raised and legs unfolding into fall; frame4 both arms lower to sides with torso leaning and boots pointing down in freefall. No landing or platform.\nROW5 ledgeJump: frame1 hanging knees tightly tucked beneath two gripping gloves; frame2 elbows press and body coils upward from invisible edge; frame3 both hands release and torso launches UP-left, one knee high and other leg trails; frame4 upward airborne arc with hands free to sides and knees recovering. No aura or levitation: clear muscular push/release. Exactly20fullbodyposes.",
+        "promptSha256": "c7051dbb62253510fd93cfef41982b6f537f9c1ef7e33805d7e0c485d3f8f4f6",
+        "referenceImagesInspectedBeforeGeneration": true,
+        "nativeCorrections": [],
+        "conditioning": "Native image_gen artwork; exported entity-builder alpha segmentation and nearest-neighbor normalization, transparent atlas packing and technical contact crops only. Detached purple tip RGBA pixels inside an inspected empty gap are assigned to the firing cell, with identical full native-row hashes before/after. No code-redrawn body, synthetic pose, copied frame or generated substitute."
+      }
+    }
+  ]
+}

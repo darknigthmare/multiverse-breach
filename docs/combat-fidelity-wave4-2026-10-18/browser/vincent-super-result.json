@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "engineUrl": "/src/game/engineSmash.js?t=1792309239258",
+  "flow": "GameCanvas Smash → Vincent FFVII → panneau Chaos 100 % → clavier L → startup sans dégât → impact après hitAt → charge 0 % → aucun second impact",
+  "impact": {
+    "start": {
+      "name": "Chaos",
+      "charge": 0,
+      "hp": 100000,
+      "elapsed": 0.016666666666666666,
+      "hitAt": 0.451
+    },
+    "hit": {
+      "name": "Chaos",
+      "charge": 0,
+      "hp": 100000,
+      "elapsed": 0.4666666666666666,
+      "hitAt": 0.451
+    },
+    "gameOver": false
+  },
+  "bodyProof": {
+    "body": {
+      "sheet": "/sprites/generated/combat-character-forms-wave4/vincent-chaos.png",
+      "source": [
+        768,
+        0,
+        256,
+        256
+      ],
+      "facing": 1
+    },
+    "support": {
+      "source": {
+        "sourceHeroId": "vincent_ff7",
+        "universe": "Final Fantasy VII",
+        "name": "Chaos",
+        "slot": "special"
+      },
+      "effect": "buff",
+      "color": "#d96887",
+      "remaining": 5,
+      "guardReduce": 0.4,
+      "buffMultiplier": 1.5
+    },
+    "actor": {
+      "x": 260,
+      "y": 359,
+      "stateElapsed": 0.4666666666666666
+    }
+  },
+  "frozenBody": {
+    "body": {
+      "sheet": "/sprites/generated/combat-character-forms-wave4/vincent-chaos.png",
+      "source": [
+        768,
+        0,
+        256,
+        256
+      ],
+      "facing": 1
+    },
+    "support": {
+      "source": {
+        "sourceHeroId": "vincent_ff7",
+        "universe": "Final Fantasy VII",
+        "name": "Chaos",
+        "slot": "special"
+      },
+      "effect": "buff",
+      "color": "#d96887",
+      "remaining": 5,
+      "guardReduce": 0.4,
+      "buffMultiplier": 1.5
+    },
+    "actor": {
+      "x": 260,
+      "y": 359,
+      "stateElapsed": 0.4666666666666666
+    }
+  },
+  "recoveryProof": {
+    "support": null,
+    "body": {
+      "sheet": "/sprites/generated/combat-character-corrections-wave4/vincent_ff7.png",
+      "source": [
+        512,
+        0,
+        256,
+        256
+      ],
+      "facing": 1
+    }
+  },
+  "sameInput": {
+    "before": 100000,
+    "retriggered": false,
+    "charge": 0
+  },
+  "final": {
+    "hitCount": 0,
+    "hp": 100000,
+    "charge": 0,
+    "action": null,
+    "profile": "Chaos"
+  },
+  "pageErrors": [],
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+  ],
+  "failedRequests": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+      "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+    }
+  ],
+  "screenshot": "/workspace/multiverse-breach/docs/combat-fidelity-wave4-2026-10-18/browser/vincent-super.png",
+  "recoveryScreenshot": "/workspace/multiverse-breach/docs/combat-fidelity-wave4-2026-10-18/browser/vincent-recovery.png"
+}

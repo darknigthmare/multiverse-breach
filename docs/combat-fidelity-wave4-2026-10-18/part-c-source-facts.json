@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "part": "C",
+  "referencesInspectedBeforeGeneration": true,
+  "effectiveProjectKitsReadBeforeGeneration": true,
+  "networkVerified": false,
+  "canon1to1Verified": false,
+  "facts": [
+    {
+      "heroId": "piccolo_dbz",
+      "universe": "Dragon Ball Z",
+      "sourceWork": "Dragon Ball Z, Piccolo / Makankosappo",
+      "projectSuper": "Special Beam Cannon",
+      "identity": "Green Namekian, two forehead antennae, pointed ears, pink organic segmented arm patches, purple gi, blue sash and brown-orange boots. No mechanical arm or literal cannon.",
+      "technique": "Charge with joined index and middle fingertips against the forehead, then release spiral-wrapped ki from those two fingers. The short native beam is a muzzle cue; range and long beam remain gameplay/VFX adaptations.",
+      "localPaletteCorrection": "The inspected preceding local sprite has a nearly black gi. New native drawings use the recognizable purple gi; the old asset is archived unchanged as reference.",
+      "sourceReference": "src/game/canonicalCombatOverrides.js#piccolo_dbz;src/game/combat/abilities/abilitiesCanonical.js#piccolo_dbz;public/sprites/generated/heroes/dragon-ball-z/piccolo-dbz.png",
+      "verified1to1": false
+    },
+    {
+      "heroId": "kakashi_war",
+      "universe": "Naruto Shippuden",
+      "sourceWork": "Naruto Shippuden, Fourth Shinobi World War Kakashi before double Mangekyo",
+      "projectSuper": "Kamui",
+      "identity": "Silver spiky hair, lower-face mask, green Konoha flak vest over navy outfit, gloves, white shin wraps and open-toe sandals. One left Sharingan revealed for Kamui, other eye natural dark.",
+      "technique": "Sharingan gaze and a localized grey space-time distortion. No Susanoo, second Sharingan, eye laser or electrical Raikiri effect is introduced into the super or finale.",
+      "phaseSourceMapping": "Initial native atlas has seven actual rows, omitting finale. Target phases0/1/2/3/5/6/7 preserve source rows0/1/2/3/4/5/6; the missing finale is four separately generated native poses. No body is split into an invented eighth row or duplicated.",
+      "sourceReference": "src/game/canonicalCombatOverrides.js#kakashi_war;src/game/combat/abilities/abilitiesCanonical.js#kakashi_war;public/sprites/generated/heroes/naruto-shippuden/kakashi-war.png",
+      "verified1to1": false
+    }
+  ],
+  "visualReview": {
+    "allFourNativeSourcesSeen": true,
+    "bothNormalizedContactSheetsSeen": true,
+    "posesInspected": 64,
+    "opaqueColumnSeamCutsInUsedRows": 0,
+    "source1to1Verified": false,
+    "limits": "Anatomy, exact pose timing, palette details, compact effects and relative body scale across phases are generated adaptations. SHA hashes,64 distinct RGBA cells and inspected sources do not certify original animation fidelity."
+  },
+  "knownLocalDebtOutsideThisArtBatch": "At generation capture, raw HEROES_DB used gun defaults for Piccolo and Kakashi. Integration now corrects Piccolo to melee and Kakashi to kunai in the final heroOverrides layer. Their original base bitmaps are preserved; the dedicated native presentations and effective authored abilities are distinct from those older images."
+}

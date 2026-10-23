@@ -1,0 +1,237 @@
+{
+  "date": "2026-10-20",
+  "heroId": "ragna",
+  "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+  "passed": true,
+  "method": "Real Chromium drawPixelSprite and mounted React GameCanvas; exact HMR EngineSmash module URL extracted from compiled GameCanvas; only isolated-browser setup prepares positions/meter.",
+  "core": {
+    "states": 45,
+    "nativePoses": 180,
+    "actualDrawImageCalls": 360,
+    "facings": [
+      1,
+      -1
+    ],
+    "gripCalls": 8,
+    "rendererDidNotMutateActor": true
+  },
+  "movement": {
+    "realKeys": [
+      "D",
+      "Space",
+      "Q"
+    ],
+    "fourColumns": true,
+    "landVx": [
+      4
+    ],
+    "turnVx": [
+      -4
+    ],
+    "turnFacing": [
+      -1
+    ],
+    "pauseUnchanged": true,
+    "pauseMs": 300
+  },
+  "super": {
+    "name": "Carnage Scissors",
+    "coldBoot": true,
+    "realKeyHeldMs": 80,
+    "draws": {
+      "count": 72,
+      "sheets": [
+        "/sprites/generated/combat-character-animations-wave7/ragna.png"
+      ],
+      "rows": [
+        7
+      ],
+      "columns": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "hitAt": 0.451,
+    "acceptedElapsed": 0.4666666666666666,
+    "initialEnemyHp": 100000,
+    "finalEnemyHp": 99911,
+    "acceptedImpacts": 1,
+    "meterFinal": 0,
+    "retriggered": false
+  },
+  "pageErrors": [],
+  "toleratedExternalFailure": "Google Fonts CSS blocked by session proxy (ERR_TUNNEL_CONNECTION_FAILED); no internal asset failures.",
+  "visualReview": {
+    "capturesInspected": true,
+    "swordGuardAndCostumeCoherent": true,
+    "turnEndsLogicalFacing": true,
+    "physicalLedgeGripProjection": true,
+    "source1to1Verified": false,
+    "limitations": [
+      "Original generated/adapted choreography, not official source-game frames.",
+      "PNG comparisons and browser checks cannot certify exact canonical pixel art or timings.",
+      "P2 uses runtime facing mirroring."
+    ]
+  },
+  "sources": [
+    {
+      "path": "src/game/engineSmash.js",
+      "sha256": "f98d96ee1b01e0c9c5670b9899b12e04f2c5f6b28afc1dd66505e99043c434ea",
+      "bytes": 115250
+    },
+    {
+      "path": "src/game/renderer.js",
+      "sha256": "ef8934b7e05b7d67228c825e8099f3846cf1c784821e5e5c8187331dd71f18a1",
+      "bytes": 65842
+    },
+    {
+      "path": "src/game/melee/meleeAnimationManifest.js",
+      "sha256": "7ff40874016342510b3038dbac41c9902276ee21a08581bc28a00db349fad4a0",
+      "bytes": 14218
+    },
+    {
+      "path": "src/game/melee/ragnaMeleeManifest.js",
+      "sha256": "4ebfc2adf05e4192e6616e00970a2ef88dc3288047694d58a1664030e244a105",
+      "bytes": 508
+    },
+    {
+      "path": "src/game/combat/ragnaMeleeMotion.generated.json",
+      "sha256": "ed22bdbda69522b3e07df50576572cf2ad4b2097035d44e9b26094c0209c3598",
+      "bytes": 97188
+    },
+    {
+      "path": "src/game/combat/ragnaMeleeCombat.generated.json",
+      "sha256": "6eaefac113458caefc5ff0b691bbce1ca5346b47e86cf5c7ceacaea00a24cd5e",
+      "bytes": 169764
+    },
+    {
+      "path": "src/game/combat/characterAnimationsWave7PartA.generated.json",
+      "sha256": "abc22a616f1fa2a79762150c104a32918ae96be656c20d2c0e55ec1b1103ba39",
+      "bytes": 237893
+    },
+    {
+      "path": "public/sprites/generated/melee-ragna-wave7/ragna-motion-a.png",
+      "sha256": "bb18707e0dfb64b4b42cf07762a14992d8de20f002e6d522afbcee60873b00cd",
+      "bytes": 1654803
+    },
+    {
+      "path": "public/sprites/generated/melee-ragna-wave7/ragna-motion-b.png",
+      "sha256": "51b20d4ddbcf556637a45fb69a9168f9671f2b96a48b720e2209ac6d3529d888",
+      "bytes": 1321387
+    },
+    {
+      "path": "public/sprites/generated/melee-ragna-wave7/ragna-defense.png",
+      "sha256": "d3db1bd2b454d7a91a003dfd91b4ca9d4286317eef581a0116b42e98251e8ec9",
+      "bytes": 1420513
+    },
+    {
+      "path": "public/sprites/generated/melee-ragna-wave7/ragna-combat-a.png",
+      "sha256": "a565a7b28fa69f08f6e9c361349b5865269b37b198dd4d43354b67350a53cc7c",
+      "bytes": 1315512
+    },
+    {
+      "path": "public/sprites/generated/melee-ragna-wave7/ragna-combat-b.png",
+      "sha256": "765db1cd049c2fab54a09ec9bcd87b82be46c885d9711a7b27164e13f94314b0",
+      "bytes": 1284328
+    },
+    {
+      "path": "public/sprites/generated/melee-ragna-wave7/ragna-ledge.png",
+      "sha256": "8c7a8402d9b7f2d80252534ed0453bc6b878a001795a3aed5af7b2f1e601a640",
+      "bytes": 1044565
+    },
+    {
+      "path": "public/sprites/generated/combat-character-animations-wave7/ragna.png",
+      "sha256": "58d0072cce17860584abb36614aa2efdb7b1255127ff26be4779121f072c215e",
+      "bytes": 1321591
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-core-browser.mjs",
+      "sha256": "740ff17f2732057f1ade7ff0138419b84697a6579c6723ca5d621b9181f7bd1b",
+      "bytes": 7476
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-movement-browser.mjs",
+      "sha256": "f243526e597d949bf29f0d0dcbae3e75dc1b1223aea76329e9ce3d37cc2ae46c",
+      "bytes": 9326
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-super-browser.mjs",
+      "sha256": "923c45eb23ebf9b9944206396b0385de56e0214e7a7add89818ef637e6bc33fc",
+      "bytes": 10215
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-core-result.json",
+      "sha256": "0c5820607d3af01407d54f1aa6417c47139942a8f4cbb9f1243baf603547f4d9",
+      "bytes": 1121
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-movement-result.json",
+      "sha256": "efcadf6e6aceed94ab9bd68c8b6b60863f0e292850ebf348df687b58a704d527",
+      "bytes": 3809
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-super-result.json",
+      "sha256": "cd45bb7d4035ef63d2a93a2da1b25d56624f122d0c39fa988677e8f7da4cc930",
+      "bytes": 1583
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-core-trace.json",
+      "sha256": "8945e2a8c6f555402c739d2eb862b54d46dbf047f81c1096c413245b3f350d87",
+      "bytes": 165861
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-movement-trace.json",
+      "sha256": "7766f5cefc845d5bce54a5a1fd2cc92606a9d1b80e110cc69bed33ae44b0dae9",
+      "bytes": 60426
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-super-trace.json",
+      "sha256": "730b6e593403f3ac0ca443a3b0ae31f0b14ec078c340302a1ff71bd2276bd9bc",
+      "bytes": 17465
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-super-draws.json",
+      "sha256": "d998566f926fecc984be3924d0e95fb45d90a777f7f6513f64c8c604df2dab9f",
+      "bytes": 26198
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-core.png",
+      "sha256": "47d470a9543d7611fab07eb6f71d9bdab555813375d2e705dea3ae561e66ece1",
+      "bytes": 1591081
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-grips.png",
+      "sha256": "c1b6f1c5e428171a4d1defa6c3e39008ef5ea919e308b4d29b616c85a135b365",
+      "bytes": 26932
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-movement.png",
+      "sha256": "16e25a9ea6aef3d37ede0918218a93ed2dd5957dd7d48c17f3890cba690a329f",
+      "bytes": 460220
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-pause.png",
+      "sha256": "605a8ce7ef7cdd0aed7d186a53143ffd178ff621c4bba97d8f7c961c5f8c37ff",
+      "bytes": 459971
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-super.png",
+      "sha256": "5929920985c797f4e81642d06246e8f61ba8a26a03af01d09ca077a864fb4454",
+      "bytes": 491458
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-core-review-crop.png",
+      "sha256": "85d07a62070485d47e766619e457f958d22dae0b22b187fd7fc6a878ef77875e",
+      "bytes": 243159
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/browser/ragna-super-review-crop.png",
+      "sha256": "5a142c07b059a0b5a0f74f9f122d974322bf4bb14d2275b149ec1d3e3cf14bac",
+      "bytes": 53666
+    }
+  ]
+}

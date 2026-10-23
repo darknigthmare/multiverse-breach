@@ -1,0 +1,1237 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "part": "B",
+  "provider": "OpenAI",
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "canon1to1Verified": false,
+  "records": [
+    {
+      "heroId": "boruto_uzumaki",
+      "universe": "Boruto: Naruto Next Generations",
+      "name": "Boruto Uzumaki",
+      "referenceAsset": "/sprites/generated/heroes/boruto-naruto-next-generations/boruto-uzumaki.png",
+      "sourceWork": "Boruto: Naruto Next Generations, young pre-timeskip Boruto",
+      "sourceReference": "Vanishing Rasengan: young Boruto forms and throws a compact Rasengan that fades from sight in flight; the ordinary black-and-pink jacket continuity is retained. No Karma, Jougan showcase or Two Blue Vortex abilities.",
+      "notes": [
+        "Local young pre-timeskip black/pink jacket reference inspected and used.",
+        "Vanishing sphere fades during release; no Rasenshuriken, adult sword, Karma or Six Paths transformation.",
+        "Original timing, opacity, damage and impact counts are adaptations, not frame-by-frame source certification."
+      ],
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-initial.png",
+      "sourceImageSha256": "a67632db99fd1d0958ce2980bf9f8f892ebd7e61ab81b81424ea3138338245d1",
+      "originalSourceRows": 7,
+      "originalGeneratedPath": "/workspace/generated_images/exec-3e74fa0b-2a61-4556-a258-b3ab0a7808ee.png",
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/boruto_uzumaki-initial.txt",
+      "promptSha256": "3922820fd23872ea9109311792f58cfccd998874e9a89e45b54db71c1b3ca909",
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/boruto_uzumaki.png",
+      "referenceAssetSha256": "3dc17a9ab898f4b7aced73b4786a0df2488627675611cef9ba9a63447c79b314",
+      "referenceUsage": "The inspected local reference was passed to image_gen for identity and costume continuity.",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "nativeCorrection": true,
+      "correctionDetails": [
+        "Initial source has7rows and mixes recoil with Rasengan in row3. Replace roundDefeat and fatality with8native correction poses; retain24initial cells."
+      ],
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-initial.png",
+          "sourceImageSha256": "a67632db99fd1d0958ce2980bf9f8f892ebd7e61ab81b81424ea3138338245d1",
+          "sourceRows": 7,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-initial.png",
+          "sourceImageSha256": "a67632db99fd1d0958ce2980bf9f8f892ebd7e61ab81b81424ea3138338245d1",
+          "sourceRows": 7,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-initial.png",
+          "sourceImageSha256": "a67632db99fd1d0958ce2980bf9f8f892ebd7e61ab81b81424ea3138338245d1",
+          "sourceRows": 7,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-missing-phases.png",
+          "sourceImageSha256": "a0cd8d5d91361ca83fa11d505a2e0d01587112b41ec1d30a577439878d10641c",
+          "sourceRows": 2,
+          "sourceRow": 0
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-missing-phases.png",
+          "sourceImageSha256": "a0cd8d5d91361ca83fa11d505a2e0d01587112b41ec1d30a577439878d10641c",
+          "sourceRows": 2,
+          "sourceRow": 1
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-initial.png",
+          "sourceImageSha256": "a67632db99fd1d0958ce2980bf9f8f892ebd7e61ab81b81424ea3138338245d1",
+          "sourceRows": 7,
+          "sourceRow": 4
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-initial.png",
+          "sourceImageSha256": "a67632db99fd1d0958ce2980bf9f8f892ebd7e61ab81b81424ea3138338245d1",
+          "sourceRows": 7,
+          "sourceRow": 5
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-initial.png",
+          "sourceImageSha256": "a67632db99fd1d0958ce2980bf9f8f892ebd7e61ab81b81424ea3138338245d1",
+          "sourceRows": 7,
+          "sourceRow": 6
+        }
+      ],
+      "statureByPhase": {
+        "fatality": {
+          "renderScale": 1.2848171851140127,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "roundDefeat",
+            "referenceColumn": 3,
+            "referenceBodyHeight": 229,
+            "normalizedBodyHeight": 167,
+            "bodyBounds": [
+              28,
+              75,
+              195,
+              167
+            ],
+            "referenceBodyBounds": [
+              56,
+              13,
+              168,
+              229
+            ],
+            "sourceBodyHeightApprox": 327,
+            "referenceSourceBodyHeightApprox": 349,
+            "normalizationScale": 0.5110132158590308,
+            "referenceNormalizationScale": 0.655367231638418,
+            "compensatedBodyHeightApprox": 214.5644699140401,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "reason": "There is intentional flexion/forward lean. Suggested multiplier reverses only the differing row normalization, retaining the shorter source-body projection; do not divide standing height by crouched height.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 327,
+            "nativeReferenceBodyHeight": 349,
+            "nativeComparableBodyBounds": [
+              1357,
+              43,
+              382,
+              327
+            ],
+            "nativeReferenceBodyBounds": [
+              1443,
+              89,
+              257,
+              349
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-missing-phases.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-missing-phases.png",
+            "nativeComparableRow": 1,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        },
+        "super": {
+          "renderScale": 1.197239495006595,
+          "statureReview": {
+            "sourceComparableColumn": 0,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 230,
+            "normalizedBodyHeight": 174,
+            "bodyBounds": [
+              53,
+              70,
+              150,
+              174
+            ],
+            "referenceBodyBounds": [
+              89,
+              12,
+              119,
+              230
+            ],
+            "sourceBodyHeightApprox": 221,
+            "referenceSourceBodyHeightApprox": 244,
+            "normalizationScale": 0.7864406779661017,
+            "referenceNormalizationScale": 0.943089430894309,
+            "compensatedBodyHeightApprox": 208.31967213114754,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "reason": "There is intentional flexion/forward lean. Suggested multiplier reverses only the differing row normalization, retaining the shorter source-body projection; do not divide standing height by crouched height.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 221,
+            "nativeReferenceBodyHeight": 244,
+            "nativeComparableBodyBounds": [
+              16,
+              18,
+              191,
+              221
+            ],
+            "nativeReferenceBodyBounds": [
+              69,
+              18,
+              126,
+              244
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-initial.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-initial.png",
+            "nativeComparableRow": 6,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        }
+      }
+    },
+    {
+      "heroId": "sarada_uchiha",
+      "universe": "Boruto: Naruto Next Generations",
+      "name": "Sarada Uchiha",
+      "referenceAsset": "/sprites/generated/heroes/boruto-naruto-next-generations/sarada-uchiha.png",
+      "sourceWork": "Boruto: Naruto Next Generations, young pre-timeskip Sarada",
+      "sourceReference": "Sarada's young red-glasses continuity with Sharingan-assisted Chidori, blue lightning gathered in one hand and brought forward in a close-range charge. No adult costume, Mangekyo ability or Susanoo.",
+      "notes": [
+        "Young red glasses, sleeveless red tunic, arm warmers and shorts retained from inspected local reference.",
+        "Sharingan may focus the gaze without adding Mangekyo, Susanoo or later eye techniques.",
+        "Chidori is a hand-led contact charge, not a detached beam; no source damage count is implied."
+      ],
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-initial.png",
+      "sourceImageSha256": "6c9c681ce17445af1da48c12f494f1e1ea6717fbb93c58f258cb552248db7aec",
+      "originalSourceRows": 7,
+      "originalGeneratedPath": "/workspace/generated_images/exec-7c5d1428-9216-4a11-842d-4316d39020e7.png",
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/sarada_uchiha-initial.txt",
+      "promptSha256": "4497602bdb71715621444ed14bf93b07a90c6a742d16e92600169f1880c523e3",
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/sarada_uchiha.png",
+      "referenceAssetSha256": "aff2c181324a12dd490f0580d509bac4ddb67bb2705d6d54928d7b2afaf30d6b",
+      "referenceUsage": "The inspected local reference was passed to image_gen for identity and costume continuity.",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "nativeCorrection": true,
+      "correctionDetails": [
+        "Initial source has7rows, lacks roundDefeat and shows incomplete lower legs in its victory row. Replace these2phases with8native correction poses; retain24initial cells."
+      ],
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-initial.png",
+          "sourceImageSha256": "6c9c681ce17445af1da48c12f494f1e1ea6717fbb93c58f258cb552248db7aec",
+          "sourceRows": 7,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-initial.png",
+          "sourceImageSha256": "6c9c681ce17445af1da48c12f494f1e1ea6717fbb93c58f258cb552248db7aec",
+          "sourceRows": 7,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-initial.png",
+          "sourceImageSha256": "6c9c681ce17445af1da48c12f494f1e1ea6717fbb93c58f258cb552248db7aec",
+          "sourceRows": 7,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-missing-phases.png",
+          "sourceImageSha256": "6847485358b8ddeb306ec232bf1e106e8a58c104a1cfd7465630f24a4802c854",
+          "sourceRows": 1,
+          "sourceRow": 0
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-initial.png",
+          "sourceImageSha256": "6c9c681ce17445af1da48c12f494f1e1ea6717fbb93c58f258cb552248db7aec",
+          "sourceRows": 7,
+          "sourceRow": 3
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada-victory.png",
+          "sourceImageSha256": "4b39684c51b087034fd158573ea52bfac65aa9ec30b4f4a7502e6281a704e06c",
+          "sourceRows": 1,
+          "sourceRow": 0
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-initial.png",
+          "sourceImageSha256": "6c9c681ce17445af1da48c12f494f1e1ea6717fbb93c58f258cb552248db7aec",
+          "sourceRows": 7,
+          "sourceRow": 5
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-initial.png",
+          "sourceImageSha256": "6c9c681ce17445af1da48c12f494f1e1ea6717fbb93c58f258cb552248db7aec",
+          "sourceRows": 7,
+          "sourceRow": 6
+        }
+      ],
+      "statureByPhase": {
+        "fatality": {
+          "renderScale": 1.2975848411897182,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 231,
+            "normalizedBodyHeight": 163,
+            "bodyBounds": [
+              63,
+              81,
+              144,
+              163
+            ],
+            "referenceBodyBounds": [
+              76,
+              12,
+              124,
+              231
+            ],
+            "sourceBodyHeightApprox": 217,
+            "referenceSourceBodyHeightApprox": 237,
+            "normalizationScale": 0.7508090614886731,
+            "referenceNormalizationScale": 0.9747899159663865,
+            "compensatedBodyHeightApprox": 211.50632911392407,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "reason": "There is intentional flexion/forward lean. Suggested multiplier reverses only the differing row normalization, retaining the shorter source-body projection; do not divide standing height by crouched height.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 217,
+            "nativeReferenceBodyHeight": 237,
+            "nativeComparableBodyBounds": [
+              690,
+              15,
+              192,
+              217
+            ],
+            "nativeReferenceBodyBounds": [
+              58,
+              22,
+              127,
+              237
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-initial.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-initial.png",
+            "nativeComparableRow": 3,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        },
+        "super": {
+          "renderScale": 1.1675353685778112,
+          "statureReview": {
+            "sourceComparableColumn": 0,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 231,
+            "normalizedBodyHeight": 187,
+            "bodyBounds": [
+              52,
+              56,
+              167,
+              187
+            ],
+            "referenceBodyBounds": [
+              76,
+              12,
+              124,
+              231
+            ],
+            "sourceBodyHeightApprox": 224,
+            "referenceSourceBodyHeightApprox": 237,
+            "normalizationScale": 0.8345323741007195,
+            "referenceNormalizationScale": 0.9747899159663865,
+            "compensatedBodyHeightApprox": 218.32911392405063,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "reason": "There is intentional flexion/forward lean. Suggested multiplier reverses only the differing row normalization, retaining the shorter source-body projection; do not divide standing height by crouched height.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 224,
+            "nativeReferenceBodyHeight": 237,
+            "nativeComparableBodyBounds": [
+              20,
+              10,
+              200,
+              224
+            ],
+            "nativeReferenceBodyBounds": [
+              58,
+              22,
+              127,
+              237
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-initial.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-initial.png",
+            "nativeComparableRow": 6,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        }
+      }
+    },
+    {
+      "heroId": "mitsuki_boruto",
+      "universe": "Boruto: Naruto Next Generations",
+      "name": "Mitsuki",
+      "referenceAsset": "/sprites/generated/heroes/boruto-naruto-next-generations/mitsuki-boruto.png",
+      "sourceWork": "Boruto: Naruto Next Generations, young Mitsuki",
+      "sourceReference": "Lightning Release: Snake Lightning, electric chakra shaped as slender undulating serpents from Mitsuki's hands. Pre-timeskip blue-and-white robe; no Sage transformation or Goku-like energy beam.",
+      "notes": [
+        "Pale blue hair, pale skin, blue-and-white robe and belt from inspected local reference.",
+        "Lightning has readable serpentine heads and a finite winding body; no laser cannon, energy ball or martial-arts beam pose.",
+        "No Sage Mode horn, cloak, adult form or invented extra gameplay hit."
+      ],
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+      "sourceImageSha256": "d7a5af1bec0f3514c9603336d16f59bba26bd0b7f399d8f247966aedb3cc25a8",
+      "originalSourceRows": 8,
+      "originalGeneratedPath": "/workspace/generated_images/exec-784856ba-5cc3-43f0-a1d0-72cb9089b7a0.png",
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/mitsuki_boruto-initial.txt",
+      "promptSha256": "bbb40cd833a32dfa839fda86a01c90d481d9efbe0f512abf1e55fa52ab076f62",
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/mitsuki_boruto.png",
+      "referenceAssetSha256": "582fc1298e057bbfd939da18bb3f596640e4b08b8a8baa2a2bc12b7ee05660e7",
+      "referenceUsage": "The inspected local reference was passed to image_gen for identity and costume continuity.",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "nativeCorrection": false,
+      "correctionDetails": [],
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+          "sourceImageSha256": "d7a5af1bec0f3514c9603336d16f59bba26bd0b7f399d8f247966aedb3cc25a8",
+          "sourceRows": 8,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+          "sourceImageSha256": "d7a5af1bec0f3514c9603336d16f59bba26bd0b7f399d8f247966aedb3cc25a8",
+          "sourceRows": 8,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+          "sourceImageSha256": "d7a5af1bec0f3514c9603336d16f59bba26bd0b7f399d8f247966aedb3cc25a8",
+          "sourceRows": 8,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+          "sourceImageSha256": "d7a5af1bec0f3514c9603336d16f59bba26bd0b7f399d8f247966aedb3cc25a8",
+          "sourceRows": 8,
+          "sourceRow": 3
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+          "sourceImageSha256": "d7a5af1bec0f3514c9603336d16f59bba26bd0b7f399d8f247966aedb3cc25a8",
+          "sourceRows": 8,
+          "sourceRow": 4
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+          "sourceImageSha256": "d7a5af1bec0f3514c9603336d16f59bba26bd0b7f399d8f247966aedb3cc25a8",
+          "sourceRows": 8,
+          "sourceRow": 5
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+          "sourceImageSha256": "d7a5af1bec0f3514c9603336d16f59bba26bd0b7f399d8f247966aedb3cc25a8",
+          "sourceRows": 8,
+          "sourceRow": 6
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+          "sourceImageSha256": "d7a5af1bec0f3514c9603336d16f59bba26bd0b7f399d8f247966aedb3cc25a8",
+          "sourceRows": 8,
+          "sourceRow": 7
+        }
+      ],
+      "statureByPhase": {
+        "fatality": {
+          "renderScale": 1.3430029546065,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 225,
+            "normalizedBodyHeight": 153,
+            "bodyBounds": [
+              44,
+              91,
+              163,
+              153
+            ],
+            "referenceBodyBounds": [
+              66,
+              18,
+              139,
+              225
+            ],
+            "sourceBodyHeightApprox": 200,
+            "referenceSourceBodyHeightApprox": 219,
+            "normalizationScale": 0.7631578947368421,
+            "referenceNormalizationScale": 1.0265486725663717,
+            "compensatedBodyHeightApprox": 205.4794520547945,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "reason": "There is intentional flexion/forward lean. Suggested multiplier reverses only the differing row normalization, retaining the shorter source-body projection; do not divide standing height by crouched height.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 200,
+            "nativeReferenceBodyHeight": 219,
+            "nativeComparableBodyBounds": [
+              666,
+              30,
+              214,
+              200
+            ],
+            "nativeReferenceBodyBounds": [
+              50,
+              30,
+              135,
+              219
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+            "nativeComparableRow": 4,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        },
+        "super": {
+          "renderScale": 1.377149519090644,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 225,
+            "normalizedBodyHeight": 141,
+            "bodyBounds": [
+              60,
+              103,
+              132,
+              141
+            ],
+            "referenceBodyBounds": [
+              66,
+              18,
+              139,
+              225
+            ],
+            "sourceBodyHeightApprox": 188,
+            "referenceSourceBodyHeightApprox": 219,
+            "normalizationScale": 0.7483870967741936,
+            "referenceNormalizationScale": 1.0265486725663717,
+            "compensatedBodyHeightApprox": 194.17808219178085,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "reason": "There is intentional flexion/forward lean. Suggested multiplier reverses only the differing row normalization, retaining the shorter source-body projection; do not divide standing height by crouched height.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 189,
+            "nativeReferenceBodyHeight": 219,
+            "nativeComparableBodyBounds": [
+              685,
+              15,
+              177,
+              189
+            ],
+            "nativeReferenceBodyBounds": [
+              50,
+              30,
+              135,
+              219
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+            "nativeComparableRow": 7,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        }
+      }
+    },
+    {
+      "heroId": "solbadguy",
+      "universe": "Guilty Gear",
+      "name": "Sol Badguy",
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/solbadguy.png",
+      "sourceWork": "Guilty Gear -Strive-, Sol Badguy",
+      "sourceReference": "Strive continuity: Sol's Outrage Mk.II and red/black jacket with dark trousers. Tyrant Rave is an advancing close-range flaming fist Overdrive; no Dragon Install or unrelated full-arena ray.",
+      "notes": [
+        "Inspected older local bitmap has pale trousers/sleeveless styling and no legible sword; it is an identity context, not an exact Strive costume or weapon reference.",
+        "Native atlas explicitly corrects costume to Strive red-and-black cropped jacket, exposed torso, dark pants and Outrage Mk.II.",
+        "No Junkyard Dog Mk.III, Fireseal, XX/Xrd costume, Dragon Install, flaming ranged beam or gore."
+      ],
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/solbadguy-initial.png",
+      "sourceImageSha256": "e698bfead947722374ae67729d78201b02ba74d23e0ce67aaf71790598e45b11",
+      "originalSourceRows": 7,
+      "originalGeneratedPath": "/workspace/generated_images/exec-a70c9e43-963d-4fda-8f7f-d0d026d2f271.png",
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/solbadguy-initial.txt",
+      "promptSha256": "bb757158696cae99d629d7945114f596be584b18f8ed42b13fa3e6335b8736bc",
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/solbadguy.png",
+      "referenceAssetSha256": "2ef61c3e9725c6a53ae4f10856d2d92bf351f7c6ea030ec7ddbc3fe754f540c2",
+      "referenceUsage": "The inspected older local bitmap was passed as face/hair and palette context. Its absent weapon and approximate older costume are explicitly corrected natively to the Strive continuity named by the project. The old reference itself does not establish Strive equipment.",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "nativeCorrection": true,
+      "correctionDetails": [
+        "Initial source has7rows and lacks roundDefeat; its lying defeat pose crosses the outer right boundary. Replace these2phases with8native correction poses; retain24initial cells."
+      ],
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/solbadguy-initial.png",
+          "sourceImageSha256": "e698bfead947722374ae67729d78201b02ba74d23e0ce67aaf71790598e45b11",
+          "sourceRows": 7,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/solbadguy-initial.png",
+          "sourceImageSha256": "e698bfead947722374ae67729d78201b02ba74d23e0ce67aaf71790598e45b11",
+          "sourceRows": 7,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/solbadguy-initial.png",
+          "sourceImageSha256": "e698bfead947722374ae67729d78201b02ba74d23e0ce67aaf71790598e45b11",
+          "sourceRows": 7,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sol-round-defeat-and-defeat.png",
+          "sourceImageSha256": "6fe65be1c4c91fcfd001e76329317b391ab3c7f2fa1902b5948b0bc9de5e4ca3",
+          "sourceRows": 2,
+          "sourceRow": 0
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/solbadguy-initial.png",
+          "sourceImageSha256": "e698bfead947722374ae67729d78201b02ba74d23e0ce67aaf71790598e45b11",
+          "sourceRows": 7,
+          "sourceRow": 3
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/solbadguy-initial.png",
+          "sourceImageSha256": "e698bfead947722374ae67729d78201b02ba74d23e0ce67aaf71790598e45b11",
+          "sourceRows": 7,
+          "sourceRow": 4
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sol-round-defeat-and-defeat.png",
+          "sourceImageSha256": "6fe65be1c4c91fcfd001e76329317b391ab3c7f2fa1902b5948b0bc9de5e4ca3",
+          "sourceRows": 2,
+          "sourceRow": 1
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/solbadguy-initial.png",
+          "sourceImageSha256": "e698bfead947722374ae67729d78201b02ba74d23e0ce67aaf71790598e45b11",
+          "sourceRows": 7,
+          "sourceRow": 6
+        }
+      ],
+      "statureByPhase": {
+        "fatality": {
+          "renderScale": 1.2102803738317758,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 231,
+            "normalizedBodyHeight": 165,
+            "bodyBounds": [
+              49,
+              74,
+              178,
+              165
+            ],
+            "referenceBodyBounds": [
+              25,
+              13,
+              211,
+              231
+            ],
+            "sourceBodyHeightApprox": 186,
+            "referenceSourceBodyHeightApprox": 214,
+            "normalizationScale": 0.8888888888888888,
+            "referenceNormalizationScale": 1.0790697674418606,
+            "compensatedBodyHeightApprox": 199.696261682243,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "reason": "There is intentional flexion/forward lean. Suggested multiplier reverses only the differing row normalization, retaining the shorter source-body projection; do not divide standing height by crouched height.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 185,
+            "nativeReferenceBodyHeight": 214,
+            "nativeComparableBodyBounds": [
+              687,
+              42,
+              200,
+              185
+            ],
+            "nativeReferenceBodyBounds": [
+              15,
+              8,
+              196,
+              214
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/solbadguy-initial.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/solbadguy-initial.png",
+            "nativeComparableRow": 3,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        },
+        "super": {
+          "renderScale": 1.3323364485981308,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 231,
+            "normalizedBodyHeight": 175,
+            "bodyBounds": [
+              49,
+              69,
+              163,
+              175
+            ],
+            "referenceBodyBounds": [
+              25,
+              13,
+              211,
+              231
+            ],
+            "sourceBodyHeightApprox": 216,
+            "referenceSourceBodyHeightApprox": 214,
+            "normalizationScale": 0.8111888111888111,
+            "referenceNormalizationScale": 1.0790697674418606,
+            "compensatedBodyHeightApprox": 233.15887850467288,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "reason": "There is intentional flexion/forward lean. Suggested multiplier reverses only the differing row normalization, retaining the shorter source-body projection; do not divide standing height by crouched height.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 216,
+            "nativeReferenceBodyHeight": 214,
+            "nativeComparableBodyBounds": [
+              679,
+              27,
+              201,
+              216
+            ],
+            "nativeReferenceBodyBounds": [
+              15,
+              8,
+              196,
+              214
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/solbadguy-initial.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/solbadguy-initial.png",
+            "nativeComparableRow": 6,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        }
+      }
+    },
+    {
+      "heroId": "ky",
+      "universe": "Guilty Gear",
+      "name": "Ky Kiske",
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/ky.png",
+      "sourceWork": "Guilty Gear -Strive-, Ky Kiske",
+      "sourceReference": "Strive continuity: short blond-haired Ky, white-and-blue open jacket, dark trousers and Strive Thunderseal. Ride the Lightning carries Ky's sword-first body dash in blue electricity; no Xrd ponytail or Dragon Install.",
+      "notes": [
+        "Inspected local white/blue Ky bitmap gives short blond hair and navy trousers but contains no legible sword; it is an identity context for native Strive equipment depiction.",
+        "Use one coherent Strive Thunderseal and current white/blue jacket silhouette in all32 poses.",
+        "No Xrd ponytail, old XX uniform, Magnolia Eclair swap, red-eye Dragon Install or ranged beam replacing the dash."
+      ],
+      "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+      "sourceImageSha256": "5026944252d20eb4c60477e1588c528ce0be295b723afe4d6a706da9a7ce95ed",
+      "originalSourceRows": 8,
+      "originalGeneratedPath": "/workspace/generated_images/exec-b0604ddc-5422-4377-9f64-b7cbe3653fb6.png",
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/ky-initial.txt",
+      "promptSha256": "fcf55d8bc14439f540c65c4f54d9b7bf355b53f775935ca6553fcb4d3d10781d",
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/ky.png",
+      "referenceAssetSha256": "d52a506bc733cd6d2aaeacb942a64b5701e0a1e947c6f89ed21ff66521c21e60",
+      "referenceUsage": "The inspected older local bitmap was passed as face/hair and palette context. Its absent weapon and approximate older costume are explicitly corrected natively to the Strive continuity named by the project. The old reference itself does not establish Strive equipment.",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "nativeCorrection": true,
+      "correctionDetails": [
+        "Initial defeat row has17opaque pixels at the outer right boundary. Replace only4defeat poses; retain28initial cells."
+      ],
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+          "sourceImageSha256": "5026944252d20eb4c60477e1588c528ce0be295b723afe4d6a706da9a7ce95ed",
+          "sourceRows": 8,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+          "sourceImageSha256": "5026944252d20eb4c60477e1588c528ce0be295b723afe4d6a706da9a7ce95ed",
+          "sourceRows": 8,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+          "sourceImageSha256": "5026944252d20eb4c60477e1588c528ce0be295b723afe4d6a706da9a7ce95ed",
+          "sourceRows": 8,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+          "sourceImageSha256": "5026944252d20eb4c60477e1588c528ce0be295b723afe4d6a706da9a7ce95ed",
+          "sourceRows": 8,
+          "sourceRow": 3
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+          "sourceImageSha256": "5026944252d20eb4c60477e1588c528ce0be295b723afe4d6a706da9a7ce95ed",
+          "sourceRows": 8,
+          "sourceRow": 4
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+          "sourceImageSha256": "5026944252d20eb4c60477e1588c528ce0be295b723afe4d6a706da9a7ce95ed",
+          "sourceRows": 8,
+          "sourceRow": 5
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-defeat.png",
+          "sourceImageSha256": "4054526d6f782c0ebce5f5722bf2d5c1fa068c7c13534f449bf9f952c8b1e6e7",
+          "sourceRows": 1,
+          "sourceRow": 0
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+          "sourceImageSha256": "5026944252d20eb4c60477e1588c528ce0be295b723afe4d6a706da9a7ce95ed",
+          "sourceRows": 8,
+          "sourceRow": 7
+        }
+      ],
+      "statureByPhase": {
+        "fatality": {
+          "renderScale": 1.5324615999543196,
+          "statureReview": {
+            "sourceComparableColumn": 3,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 213,
+            "normalizedBodyHeight": 83,
+            "bodyBounds": [
+              49,
+              159,
+              151,
+              83
+            ],
+            "referenceBodyBounds": [
+              42,
+              27,
+              183,
+              213
+            ],
+            "sourceBodyHeightApprox": 127,
+            "referenceSourceBodyHeightApprox": 211,
+            "normalizationScale": 0.655367231638418,
+            "referenceNormalizationScale": 1.008695652173913,
+            "compensatedBodyHeightApprox": 127.19431279620851,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "reason": "There is intentional flexion/forward lean. Suggested multiplier reverses only the differing row normalization, retaining the shorter source-body projection; do not divide standing height by crouched height.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 126,
+            "nativeReferenceBodyHeight": 211,
+            "nativeComparableBodyBounds": [
+              656,
+              51,
+              231,
+              126
+            ],
+            "nativeReferenceBodyBounds": [
+              26,
+              11,
+              181,
+              211
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+            "nativeComparableRow": 4,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        },
+        "super": {
+          "renderScale": 1.2357411341722504,
+          "statureReview": {
+            "sourceComparableColumn": 0,
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "referenceBodyHeight": 213,
+            "normalizedBodyHeight": 174,
+            "bodyBounds": [
+              45,
+              69,
+              165,
+              174
+            ],
+            "referenceBodyBounds": [
+              42,
+              27,
+              183,
+              213
+            ],
+            "sourceBodyHeightApprox": 212,
+            "referenceSourceBodyHeightApprox": 211,
+            "normalizationScale": 0.8197879858657244,
+            "referenceNormalizationScale": 1.008695652173913,
+            "compensatedBodyHeightApprox": 215.01895734597156,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": false,
+            "reason": "Upright or recovery body is comparable; broad weapon/effect reduces the entire row. Suggested multiplier restores shared source scale around the feet baseline.",
+            "measurementCaveat": "Approximate visual body ROI. Width may overlap an arm/prop; the measured vertical endpoints exclude weapon/effect overhang. Source heights derived from the original row scale; no PNG mutation.",
+            "nativeComparableBodyHeight": 213,
+            "nativeReferenceBodyHeight": 211,
+            "nativeComparableBodyBounds": [
+              10,
+              18,
+              201,
+              213
+            ],
+            "nativeReferenceBodyBounds": [
+              26,
+              11,
+              181,
+              211
+            ],
+            "nativeComparableSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+            "nativeReferenceSource": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+            "nativeComparableRow": 7,
+            "nativeReferenceRow": 0,
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)"
+          }
+        }
+      }
+    }
+  ],
+  "nativeSources": [
+    {
+      "heroId": "boruto_uzumaki",
+      "key": "boruto_uzumaki-initial",
+      "archivedPath": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-initial.png",
+      "sha256": "a67632db99fd1d0958ce2980bf9f8f892ebd7e61ab81b81424ea3138338245d1",
+      "sourceRows": 7,
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/boruto_uzumaki-initial.txt",
+      "promptSha256": "3922820fd23872ea9109311792f58cfccd998874e9a89e45b54db71c1b3ca909",
+      "originalGeneratedPath": "/workspace/generated_images/exec-3e74fa0b-2a61-4556-a258-b3ab0a7808ee.png",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-initial",
+      "referenceAsset": "/sprites/generated/heroes/boruto-naruto-next-generations/boruto-uzumaki.png",
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "acceptedNativeCells": 24,
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/boruto_uzumaki.png",
+      "referenceArchiveSha256": "3dc17a9ab898f4b7aced73b4786a0df2488627675611cef9ba9a63447c79b314"
+    },
+    {
+      "heroId": "sarada_uchiha",
+      "key": "sarada_uchiha-initial",
+      "archivedPath": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-initial.png",
+      "sha256": "6c9c681ce17445af1da48c12f494f1e1ea6717fbb93c58f258cb552248db7aec",
+      "sourceRows": 7,
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/sarada_uchiha-initial.txt",
+      "promptSha256": "4497602bdb71715621444ed14bf93b07a90c6a742d16e92600169f1880c523e3",
+      "originalGeneratedPath": "/workspace/generated_images/exec-7c5d1428-9216-4a11-842d-4316d39020e7.png",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-initial",
+      "referenceAsset": "/sprites/generated/heroes/boruto-naruto-next-generations/sarada-uchiha.png",
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "acceptedNativeCells": 24,
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/sarada_uchiha.png",
+      "referenceArchiveSha256": "aff2c181324a12dd490f0580d509bac4ddb67bb2705d6d54928d7b2afaf30d6b"
+    },
+    {
+      "heroId": "mitsuki_boruto",
+      "key": "mitsuki_boruto-initial",
+      "archivedPath": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/mitsuki_boruto-initial.png",
+      "sha256": "d7a5af1bec0f3514c9603336d16f59bba26bd0b7f399d8f247966aedb3cc25a8",
+      "sourceRows": 8,
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/mitsuki_boruto-initial.txt",
+      "promptSha256": "bbb40cd833a32dfa839fda86a01c90d481d9efbe0f512abf1e55fa52ab076f62",
+      "originalGeneratedPath": "/workspace/generated_images/exec-784856ba-5cc3-43f0-a1d0-72cb9089b7a0.png",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-initial",
+      "referenceAsset": "/sprites/generated/heroes/boruto-naruto-next-generations/mitsuki-boruto.png",
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "acceptedNativeCells": 32,
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/mitsuki_boruto.png",
+      "referenceArchiveSha256": "582fc1298e057bbfd939da18bb3f596640e4b08b8a8baa2a2bc12b7ee05660e7"
+    },
+    {
+      "heroId": "solbadguy",
+      "key": "solbadguy-initial",
+      "archivedPath": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/solbadguy-initial.png",
+      "sha256": "e698bfead947722374ae67729d78201b02ba74d23e0ce67aaf71790598e45b11",
+      "sourceRows": 7,
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/solbadguy-initial.txt",
+      "promptSha256": "bb757158696cae99d629d7945114f596be584b18f8ed42b13fa3e6335b8736bc",
+      "originalGeneratedPath": "/workspace/generated_images/exec-a70c9e43-963d-4fda-8f7f-d0d026d2f271.png",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-initial",
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/solbadguy.png",
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "acceptedNativeCells": 24,
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/solbadguy.png",
+      "referenceArchiveSha256": "2ef61c3e9725c6a53ae4f10856d2d92bf351f7c6ea030ec7ddbc3fe754f540c2"
+    },
+    {
+      "heroId": "ky",
+      "key": "ky-initial",
+      "archivedPath": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-initial.png",
+      "sha256": "5026944252d20eb4c60477e1588c528ce0be295b723afe4d6a706da9a7ce95ed",
+      "sourceRows": 8,
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/ky-initial.txt",
+      "promptSha256": "fcf55d8bc14439f540c65c4f54d9b7bf355b53f775935ca6553fcb4d3d10781d",
+      "originalGeneratedPath": "/workspace/generated_images/exec-b0604ddc-5422-4377-9f64-b7cbe3653fb6.png",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-initial",
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/ky.png",
+      "sourceRowsUsed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "acceptedNativeCells": 28,
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/ky.png",
+      "referenceArchiveSha256": "d52a506bc733cd6d2aaeacb942a64b5701e0a1e947c6f89ed21ff66521c21e60"
+    },
+    {
+      "heroId": "boruto_uzumaki",
+      "key": "boruto_uzumaki-missing-phases",
+      "archivedPath": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/boruto_uzumaki-missing-phases.png",
+      "sha256": "a0cd8d5d91361ca83fa11d505a2e0d01587112b41ec1d30a577439878d10641c",
+      "sourceRows": 2,
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/boruto_uzumaki-missing-phases.txt",
+      "promptSha256": "9e48ecf3aaf9f8cdf5f839c0fee11f19f8a6dc8b513affa84538acf722f542e3",
+      "originalGeneratedPath": "/workspace/generated_images/exec-e0c856a7-7ebf-4de6-9a53-de879262077d.png",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-correction",
+      "referenceAsset": "/sprites/generated/heroes/boruto-naruto-next-generations/boruto-uzumaki.png",
+      "sourceRowsUsed": [
+        0,
+        1
+      ],
+      "acceptedNativeCells": 8,
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/boruto_uzumaki.png",
+      "referenceArchiveSha256": "3dc17a9ab898f4b7aced73b4786a0df2488627675611cef9ba9a63447c79b314"
+    },
+    {
+      "heroId": "sarada_uchiha",
+      "key": "sarada_uchiha-missing-phases",
+      "archivedPath": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada_uchiha-missing-phases.png",
+      "sha256": "6847485358b8ddeb306ec232bf1e106e8a58c104a1cfd7465630f24a4802c854",
+      "sourceRows": 1,
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/sarada_uchiha-missing-phases.txt",
+      "promptSha256": "a35173f842b997711eda232e076e7bb2ef9cb11993a2a878161edadcb79c395e",
+      "originalGeneratedPath": "/workspace/generated_images/exec-a82782b6-6a69-470d-9ee0-b42608a9c29d.png",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-correction",
+      "referenceAsset": "/sprites/generated/heroes/boruto-naruto-next-generations/sarada-uchiha.png",
+      "sourceRowsUsed": [
+        0
+      ],
+      "acceptedNativeCells": 4,
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/sarada_uchiha.png",
+      "referenceArchiveSha256": "aff2c181324a12dd490f0580d509bac4ddb67bb2705d6d54928d7b2afaf30d6b"
+    },
+    {
+      "heroId": "solbadguy",
+      "key": "sol-round-defeat-and-defeat",
+      "archivedPath": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sol-round-defeat-and-defeat.png",
+      "sha256": "6fe65be1c4c91fcfd001e76329317b391ab3c7f2fa1902b5948b0bc9de5e4ca3",
+      "sourceRows": 2,
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/sol-round-defeat-and-defeat.txt",
+      "promptSha256": "7f4cc2ec128db86cbfdf60ecc57fd74b6c80c35d3b26ba41ca63ee0eb5263b38",
+      "originalGeneratedPath": "/workspace/generated_images/exec-8c21f18c-f0c5-49d8-a203-e844e9c7379a.png",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-correction",
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/solbadguy.png",
+      "sourceRowsUsed": [
+        0,
+        1
+      ],
+      "acceptedNativeCells": 8,
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/solbadguy.png",
+      "referenceArchiveSha256": "2ef61c3e9725c6a53ae4f10856d2d92bf351f7c6ea030ec7ddbc3fe754f540c2"
+    },
+    {
+      "heroId": "ky",
+      "key": "ky-defeat",
+      "archivedPath": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/ky-defeat.png",
+      "sha256": "4054526d6f782c0ebce5f5722bf2d5c1fa068c7c13534f449bf9f952c8b1e6e7",
+      "sourceRows": 1,
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/ky-defeat.txt",
+      "promptSha256": "24400d131bb2ed29b71e5079969cdf656f594b2d1be75f637549d89de4c70cfa",
+      "originalGeneratedPath": "/workspace/generated_images/exec-326ed622-346d-496c-aba2-474ef903acd5.png",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-correction",
+      "referenceAsset": "/sprites/generated/heroes/guilty-gear/ky.png",
+      "sourceRowsUsed": [
+        0
+      ],
+      "acceptedNativeCells": 4,
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/ky.png",
+      "referenceArchiveSha256": "d52a506bc733cd6d2aaeacb942a64b5701e0a1e947c6f89ed21ff66521c21e60"
+    },
+    {
+      "heroId": "sarada_uchiha",
+      "key": "sarada-victory",
+      "archivedPath": "docs/combat-fidelity-wave5-2026-10-20/part-b-sources/sarada-victory.png",
+      "sha256": "4b39684c51b087034fd158573ea52bfac65aa9ec30b4f4a7502e6281a704e06c",
+      "sourceRows": 1,
+      "promptFile": "docs/combat-fidelity-wave5-2026-10-20/part-b-prompts/sarada-victory.txt",
+      "promptSha256": "0a780a4095ee8a1fa7c4249fa7f8e01d9de5251df4602aa16f5e66dc38d2788b",
+      "originalGeneratedPath": "/workspace/generated_images/exec-62a2fa48-408e-4388-b351-99891e5ab4a1.png",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "operation": "native-imagegen-correction",
+      "referenceAsset": "/sprites/generated/heroes/boruto-naruto-next-generations/sarada-uchiha.png",
+      "sourceRowsUsed": [
+        0
+      ],
+      "acceptedNativeCells": 4,
+      "referenceArchive": "docs/combat-fidelity-wave5-2026-10-20/part-b-references/sarada_uchiha.png",
+      "referenceArchiveSha256": "aff2c181324a12dd490f0580d509bac4ddb67bb2705d6d54928d7b2afaf30d6b"
+    }
+  ]
+}

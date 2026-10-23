@@ -1,0 +1,868 @@
+{
+  "date": "2026-10-20",
+  "method": "Real Vite-SSR runtime and canvas-command assertions; no browser or official source-game fidelity claim.",
+  "sources": [
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "1b52a88c2d188ce7ab663a88e3a9256bc0614c73918ae2f39106016b897021ba"
+    },
+    {
+      "path": "src/game/engineFighter.js",
+      "sha256": "2e793586c64d267ea8225044d50b2372472802c7027132018f595ee50d1b7273"
+    },
+    {
+      "path": "src/game/combat/nativeSuperVisualsWave6.js",
+      "sha256": "d01468ccc285c51e365ece8d3f6ec74620748c6d94e596da7b7e50f3e8244738"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "sha256": "165981a1fa607d8b8af902210f2614c5864d307c405836da693d45339ce24598"
+    }
+  ],
+  "observations": [
+    {
+      "case": "RPG edge approach",
+      "id": "snake",
+      "side": "player",
+      "edge": "left",
+      "actorAtImpact": {
+        "x": 145.81,
+        "y": 330
+      },
+      "targetX": 55,
+      "bodyFacing": -1,
+      "visualFacing": -1,
+      "contactEligible": true,
+      "impacts": 1,
+      "damage": 82,
+      "passed": true
+    },
+    {
+      "case": "RPG edge approach",
+      "id": "raiden",
+      "side": "player",
+      "edge": "left",
+      "actorAtImpact": {
+        "x": 145.81,
+        "y": 330
+      },
+      "targetX": 55,
+      "bodyFacing": -1,
+      "visualFacing": -1,
+      "contactEligible": true,
+      "impacts": 1,
+      "damage": 58,
+      "passed": true
+    },
+    {
+      "case": "RPG edge approach",
+      "id": "snake",
+      "side": "player",
+      "edge": "right",
+      "actorAtImpact": {
+        "x": 854.19,
+        "y": 330
+      },
+      "targetX": 945,
+      "bodyFacing": 1,
+      "visualFacing": 1,
+      "contactEligible": true,
+      "impacts": 1,
+      "damage": 82,
+      "passed": true
+    },
+    {
+      "case": "RPG edge approach",
+      "id": "raiden",
+      "side": "player",
+      "edge": "right",
+      "actorAtImpact": {
+        "x": 854.19,
+        "y": 330
+      },
+      "targetX": 945,
+      "bodyFacing": 1,
+      "visualFacing": 1,
+      "contactEligible": true,
+      "impacts": 1,
+      "damage": 58,
+      "passed": true
+    },
+    {
+      "case": "RPG edge approach",
+      "id": "snake",
+      "side": "enemy",
+      "edge": "left",
+      "actorAtImpact": {
+        "x": 145.81,
+        "y": 330
+      },
+      "targetX": 55,
+      "bodyFacing": -1,
+      "visualFacing": -1,
+      "contactEligible": true,
+      "impacts": 1,
+      "damage": 82,
+      "passed": true
+    },
+    {
+      "case": "RPG edge approach",
+      "id": "raiden",
+      "side": "enemy",
+      "edge": "left",
+      "actorAtImpact": {
+        "x": 145.81,
+        "y": 330
+      },
+      "targetX": 55,
+      "bodyFacing": -1,
+      "visualFacing": -1,
+      "contactEligible": true,
+      "impacts": 1,
+      "damage": 58,
+      "passed": true
+    },
+    {
+      "case": "RPG edge approach",
+      "id": "snake",
+      "side": "enemy",
+      "edge": "right",
+      "actorAtImpact": {
+        "x": 854.19,
+        "y": 330
+      },
+      "targetX": 945,
+      "bodyFacing": 1,
+      "visualFacing": 1,
+      "contactEligible": true,
+      "impacts": 1,
+      "damage": 74,
+      "passed": true
+    },
+    {
+      "case": "RPG edge approach",
+      "id": "raiden",
+      "side": "enemy",
+      "edge": "right",
+      "actorAtImpact": {
+        "x": 854.19,
+        "y": 330
+      },
+      "targetX": 945,
+      "bodyFacing": 1,
+      "visualFacing": 1,
+      "contactEligible": true,
+      "impacts": 1,
+      "damage": 62,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "player",
+      "scenario": "height92",
+      "dy": -92,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "player",
+      "scenario": "height94",
+      "dy": -94,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "player",
+      "scenario": "height220",
+      "dy": -220,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "player",
+      "scenario": "behind",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "player",
+      "scenario": "range",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "player",
+      "scenario": "invulnerable",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "player",
+      "scenario": "dead",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "player",
+      "scenario": "height92",
+      "dy": -92,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "player",
+      "scenario": "height94",
+      "dy": -94,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "player",
+      "scenario": "height220",
+      "dy": -220,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "player",
+      "scenario": "behind",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "player",
+      "scenario": "range",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "player",
+      "scenario": "invulnerable",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "player",
+      "scenario": "dead",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "cpu",
+      "scenario": "height92",
+      "dy": -92,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "cpu",
+      "scenario": "height94",
+      "dy": -94,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "cpu",
+      "scenario": "height220",
+      "dy": -220,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "cpu",
+      "scenario": "behind",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "cpu",
+      "scenario": "range",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "cpu",
+      "scenario": "invulnerable",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "snake",
+      "side": "cpu",
+      "scenario": "dead",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "cpu",
+      "scenario": "height92",
+      "dy": -92,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "cpu",
+      "scenario": "height94",
+      "dy": -94,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "cpu",
+      "scenario": "height220",
+      "dy": -220,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "cpu",
+      "scenario": "behind",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "cpu",
+      "scenario": "range",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "cpu",
+      "scenario": "invulnerable",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter rejected contact",
+      "id": "raiden",
+      "side": "cpu",
+      "scenario": "dead",
+      "dy": 0,
+      "contactEligible": false,
+      "damage": 0,
+      "passed": true
+    },
+    {
+      "case": "Fighter confirmed contact",
+      "id": "snake",
+      "side": "player",
+      "lethal": false,
+      "contact": {
+        "x": 400,
+        "y": 318.01
+      },
+      "damage": 120.60000000000036,
+      "contactLockedAfterTargetMove": true,
+      "passed": true
+    },
+    {
+      "case": "Fighter confirmed contact",
+      "id": "snake",
+      "side": "player",
+      "lethal": true,
+      "contact": {
+        "x": 400,
+        "y": 318.01
+      },
+      "damage": 1,
+      "contactLockedAfterTargetMove": true,
+      "passed": true
+    },
+    {
+      "case": "Fighter confirmed contact",
+      "id": "raiden",
+      "side": "player",
+      "lethal": false,
+      "contact": {
+        "x": 400,
+        "y": 318.01
+      },
+      "damage": 100.5,
+      "contactLockedAfterTargetMove": true,
+      "passed": true
+    },
+    {
+      "case": "Fighter confirmed contact",
+      "id": "raiden",
+      "side": "player",
+      "lethal": true,
+      "contact": {
+        "x": 400,
+        "y": 318.01
+      },
+      "damage": 1,
+      "contactLockedAfterTargetMove": true,
+      "passed": true
+    },
+    {
+      "case": "Fighter confirmed contact",
+      "id": "snake",
+      "side": "cpu",
+      "lethal": false,
+      "contact": {
+        "x": 1400,
+        "y": 318.01
+      },
+      "damage": 120.60000000000036,
+      "contactLockedAfterTargetMove": true,
+      "passed": true
+    },
+    {
+      "case": "Fighter confirmed contact",
+      "id": "snake",
+      "side": "cpu",
+      "lethal": true,
+      "contact": {
+        "x": 1400,
+        "y": 318.01
+      },
+      "damage": 1,
+      "contactLockedAfterTargetMove": true,
+      "passed": true
+    },
+    {
+      "case": "Fighter confirmed contact",
+      "id": "raiden",
+      "side": "cpu",
+      "lethal": false,
+      "contact": {
+        "x": 1400,
+        "y": 318.01
+      },
+      "damage": 100.5,
+      "contactLockedAfterTargetMove": true,
+      "passed": true
+    },
+    {
+      "case": "Fighter confirmed contact",
+      "id": "raiden",
+      "side": "cpu",
+      "lethal": true,
+      "contact": {
+        "x": 1400,
+        "y": 318.01
+      },
+      "damage": 1,
+      "contactLockedAfterTargetMove": true,
+      "passed": true
+    },
+    {
+      "case": "Tracked projectile",
+      "id": "devil_may_cry_lady",
+      "side": "player",
+      "impacts": 1,
+      "damage": 93.80000000000018,
+      "contactX": 800,
+      "passed": true
+    },
+    {
+      "case": "Tracked projectile",
+      "id": "skullgirls_parasoul",
+      "side": "player",
+      "impacts": 1,
+      "damage": 93.80000000000018,
+      "contactX": 800,
+      "passed": true
+    },
+    {
+      "case": "Tracked projectile",
+      "id": "devil_may_cry_lady",
+      "side": "cpu",
+      "impacts": 1,
+      "damage": 93.80000000000018,
+      "contactX": 1000,
+      "passed": true
+    },
+    {
+      "case": "Tracked projectile",
+      "id": "skullgirls_parasoul",
+      "side": "cpu",
+      "impacts": 1,
+      "damage": 93.80000000000018,
+      "contactX": 1000,
+      "passed": true
+    },
+    {
+      "case": "Legacy families and Sonic miss trails",
+      "previousFamilies": 37,
+      "pureDraw": true,
+      "passed": true
+    },
+    {
+      "case": "Smash rejected perfect shield contact",
+      "id": "snake",
+      "side": "player",
+      "damage": 0,
+      "shieldState": "perfectShield",
+      "originalShieldFeedback": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash rejected perfect shield contact",
+      "id": "raiden",
+      "side": "player",
+      "damage": 0,
+      "shieldState": "perfectShield",
+      "originalShieldFeedback": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash rejected perfect shield contact",
+      "id": "snake",
+      "side": "cpu",
+      "damage": 0,
+      "shieldState": "perfectShield",
+      "originalShieldFeedback": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash rejected perfect shield contact",
+      "id": "raiden",
+      "side": "cpu",
+      "damage": 0,
+      "shieldState": "perfectShield",
+      "originalShieldFeedback": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash miss followed by target movement",
+      "id": "snake",
+      "side": "player",
+      "reason": "range",
+      "damage": 0,
+      "impactResolved": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash miss followed by target movement",
+      "id": "snake",
+      "side": "player",
+      "reason": "behind",
+      "damage": 0,
+      "impactResolved": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash miss followed by target movement",
+      "id": "snake",
+      "side": "player",
+      "reason": "height",
+      "damage": 0,
+      "impactResolved": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash miss followed by target movement",
+      "id": "raiden",
+      "side": "player",
+      "reason": "range",
+      "damage": 0,
+      "impactResolved": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash miss followed by target movement",
+      "id": "raiden",
+      "side": "player",
+      "reason": "behind",
+      "damage": 0,
+      "impactResolved": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash miss followed by target movement",
+      "id": "raiden",
+      "side": "player",
+      "reason": "height",
+      "damage": 0,
+      "impactResolved": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash miss followed by target movement",
+      "id": "snake",
+      "side": "cpu",
+      "reason": "range",
+      "damage": 0,
+      "impactResolved": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash miss followed by target movement",
+      "id": "snake",
+      "side": "cpu",
+      "reason": "behind",
+      "damage": 0,
+      "impactResolved": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash miss followed by target movement",
+      "id": "snake",
+      "side": "cpu",
+      "reason": "height",
+      "damage": 0,
+      "impactResolved": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash miss followed by target movement",
+      "id": "raiden",
+      "side": "cpu",
+      "reason": "range",
+      "damage": 0,
+      "impactResolved": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash miss followed by target movement",
+      "id": "raiden",
+      "side": "cpu",
+      "reason": "behind",
+      "damage": 0,
+      "impactResolved": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash miss followed by target movement",
+      "id": "raiden",
+      "side": "cpu",
+      "reason": "height",
+      "damage": 0,
+      "impactResolved": true,
+      "offensiveMarks": 0,
+      "passed": true
+    },
+    {
+      "case": "Smash accepted contact locked after move",
+      "id": "snake",
+      "side": "player",
+      "lethal": false,
+      "point": {
+        "x": 400,
+        "y": 380
+      },
+      "damage": 70,
+      "pausedDraws": 100,
+      "passed": true
+    },
+    {
+      "case": "Smash accepted contact locked after move",
+      "id": "snake",
+      "side": "player",
+      "lethal": true,
+      "point": {
+        "x": 400,
+        "y": 380
+      },
+      "damage": 1,
+      "pausedDraws": 100,
+      "passed": true
+    },
+    {
+      "case": "Smash accepted contact locked after move",
+      "id": "raiden",
+      "side": "player",
+      "lethal": false,
+      "point": {
+        "x": 400,
+        "y": 380
+      },
+      "damage": 57,
+      "pausedDraws": 100,
+      "passed": true
+    },
+    {
+      "case": "Smash accepted contact locked after move",
+      "id": "raiden",
+      "side": "player",
+      "lethal": true,
+      "point": {
+        "x": 400,
+        "y": 380
+      },
+      "damage": 1,
+      "pausedDraws": 100,
+      "passed": true
+    },
+    {
+      "case": "Smash accepted contact locked after move",
+      "id": "snake",
+      "side": "cpu",
+      "lethal": false,
+      "point": {
+        "x": 600,
+        "y": 380
+      },
+      "damage": 80,
+      "pausedDraws": 100,
+      "passed": true
+    },
+    {
+      "case": "Smash accepted contact locked after move",
+      "id": "snake",
+      "side": "cpu",
+      "lethal": true,
+      "point": {
+        "x": 600,
+        "y": 380
+      },
+      "damage": 1,
+      "pausedDraws": 100,
+      "passed": true
+    },
+    {
+      "case": "Smash accepted contact locked after move",
+      "id": "raiden",
+      "side": "cpu",
+      "lethal": false,
+      "point": {
+        "x": 600,
+        "y": 380
+      },
+      "damage": 57,
+      "pausedDraws": 100,
+      "passed": true
+    },
+    {
+      "case": "Smash accepted contact locked after move",
+      "id": "raiden",
+      "side": "cpu",
+      "lethal": true,
+      "point": {
+        "x": 600,
+        "y": 380
+      },
+      "damage": 1,
+      "pausedDraws": 100,
+      "passed": true
+    },
+    {
+      "case": "Smash Sonic miss trails and paused draws",
+      "side": "player",
+      "damage": 0,
+      "speedTrails": 3,
+      "offensiveRings": 0,
+      "pausedDraws": 100,
+      "passed": true
+    },
+    {
+      "case": "Smash Sonic miss trails and paused draws",
+      "side": "cpu",
+      "damage": 0,
+      "speedTrails": 3,
+      "offensiveRings": 0,
+      "pausedDraws": 100,
+      "passed": true
+    }
+  ]
+}

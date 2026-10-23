@@ -1,0 +1,592 @@
+{
+  "records": [
+    {
+      "heroId": "han_solo",
+      "name": "Han Solo",
+      "universe": "Star Wars",
+      "referenceAsset": "/sprites/generated/heroes/star-wars/han-solo.png",
+      "sourceWork": "Star Wars: EpisodeIV — A New Hope (1977), black vest and DL-44 heavy blaster pistol",
+      "sourceReference": "Han Solo uses a DL-44 heavy blaster pistol in A New Hope. Tir précis au DL-44 is an authored single-target shot from that physical weapon; it does not manifest the MillenniumFalcon or convert a flight feat into a power.",
+      "referenceUsage": "Local black-vest Han sprite was inspected for costume context; its handheld terminal/hologram attack is explicitly replaced with the actual DL-44 blaster in the new native art.",
+      "referenceInputs": [
+        "/workspace/multiverse-breach/public/sprites/generated/heroes/star-wars/han-solo.png"
+      ],
+      "notes": [
+        "ANH adult Han: off-white shirt, black vest, navy trousers with redside stripe, holster, blackboots.",
+        "Physical DL-44 has Mauser-style silhouette, scope and muzzle attachment; no phone/hologram in combat.",
+        "Compact red blaster discharge is visual, not a Falcon call or repeating gameplay impact."
+      ],
+      "prompt": "Make an original native2D pixel-art game SPRITE ATLAS, exactly4COLUMNS×4ROWS,16distinct isolated fullbody poses on trulyTRANSPARENTalpha. Target1024×1024,eachcell256square. Fullbodyandallprops fitinsideeachcell with22pixelsclearalphaallaroundand generousgutters. Consistent readable adultbodyproportions, standingbodyaround180–200pixelshigh, clothingdetailsclear. Character mostlyfacesRIGHT. Eachpose freshlydrawn, truearticulationdiffers; four differentposes perrow andeachrowhasuniqueaction. Background is emptyalpha withoutfloororpanels, annotation-free.\nHan Solo, fictional adult A NewHope character: brownhair, offWHITEopenneckshirt,BLACKsleevelessvest,NAVYtrousers redside stripe,brownholsterbelt,blacktallboots. His physical DL-44 is scoped Mauser-like heavyblasterpistol, never the terminal in the oldsprite. Match the attached newnativeface/clothes. Row1idle:4relaxed/alert gun-lowreadinessposes. Row2run:4distinct fullstrides rightward, gunclose/pistolholstered. Row3attack:4preciseDL44shotbeats:draw,steadyphysicalaim,controlled recoilwithsmallredmuzzleflash,lowergun. Row4hitreaction:4different startledbackstep/brace/kneebend/recoveryposes with securedpistol.\nKeep allwardrobe/weaponidentityconsistent across16cells, boundedcompactprops ratherthanlong effects. Renderonly the solitary fictional gamecharacter and actualequippedprops.",
+      "referenceImages": [
+        "/workspace/generated_images/exec-7bc1bffc-72de-4d2b-9a88-0324af0f277b.png"
+      ],
+      "file": "/workspace/generated_images/exec-5efc98cf-8259-4937-9471-fbaa3e9f5edb.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-b-references/han_solo.png",
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ability": "Tir du DL-44 de Han",
+      "version": "Star Wars: EpisodeIV — A New Hope (1977), black vest and DL-44 heavy blaster pistol",
+      "reviewed": true,
+      "statureByState": {
+        "idle": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              65,
+              15,
+              126,
+              226
+            ],
+            "normalizedBodyHeight": 226,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              65,
+              15,
+              126,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "nativeComparableBodyHeight": 301.98275862068965,
+            "nativeReferenceBodyHeight": 301.98275862068965,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        },
+        "run": {
+          "renderScale": 0.954839,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              37,
+              24,
+              171,
+              216
+            ],
+            "normalizedBodyHeight": 216,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              65,
+              15,
+              126,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "nativeComparableBodyHeight": 275.58620689655174,
+            "nativeReferenceBodyHeight": 301.98275862068965,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        },
+        "attack": {
+          "renderScale": 1.170968,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              58,
+              57,
+              137,
+              182
+            ],
+            "normalizedBodyHeight": 182,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              65,
+              15,
+              126,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "nativeComparableBodyHeight": 284.76724137931035,
+            "nativeReferenceBodyHeight": 301.98275862068965,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        },
+        "hit": {
+          "renderScale": 0.990323,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              55,
+              42,
+              182,
+              194
+            ],
+            "normalizedBodyHeight": 194,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              65,
+              15,
+              126,
+              226
+            ],
+            "referenceBodyHeight": 226,
+            "nativeComparableBodyHeight": 256.7155172413793,
+            "nativeReferenceBodyHeight": 301.98275862068965,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "kenshin_himura",
+      "name": "Kenshin Himura",
+      "universe": "Rurouni Kenshin",
+      "referenceAsset": "/sprites/generated/heroes/rurouni-kenshin/kenshin-himura.png",
+      "sourceWork": "Rurouni Kenshin TVanime1996 — Kyoto arc, adult Kenshin with sakabatō",
+      "sourceReference": "Amakakeru Ryū no Hirameki is the Hiten Mitsurugi-ryū battōjutsu ultimate technique. The authored poses emphasize left-foot-forward draw, physical reverse-blade sword and rotational follow-through; not a projectile or elemental power. No original frame count or live-action likeness is claimed.",
+      "referenceUsage": "Local anime Kenshin sprite inspected; red/orange hair, tied ponytail, cheek-cross scar and sakabatō context, adapted to the1996 Kyoto pink/red kimono continuity.",
+      "referenceInputs": [
+        "/workspace/multiverse-breach/public/sprites/generated/heroes/rurouni-kenshin/kenshin-himura.png"
+      ],
+      "notes": [
+        "Adult fictional1996 anime Kenshin, orange/red tiedhair, leftcheekcrossscar, pink/redkimono/whitehakama and reverse-bladesword.",
+        "Amakakeru uses physicaldrawandrotation; no flyingdragon, elementalwave or extraauthoritative damage.",
+        "Native technique phases are compact gameplay presentation, nofilmactor or exactsourceframes."
+      ],
+      "prompt": "Draw ONE originalnative2D pixelart SPRITEATLAS, exactly4COLUMNS×4ROWS=16distinctisolated fullbodyposes. Emptytransparentalpha background, target1024square,256cells. Eachcompletecharacterandprops staysinsidecell with22pxclearalphamarginsallaroundandcleargutters. Readableadultbodyproportionsstanding180–200px, predominantlyRIGHT facing. Eachcell newlydrawn,4differentarticulatedposespereachrow, neverrepeat/mirror/recolor. Solitaryfriendlyanime martialart demonstration, annotation-free withnoenvironmentorpanels.\nKenshin Himura, fictional ADULT classic1996anime Kyotoarc. Orange-red lowpony-tailhair andfringe, smallcrossscar LEFTcheek, dustypink/deepred kimono, whitehakama, clothobi,sandals. Physicalsilverreverse-bladeSAKABATO/scabbard atleftwaist. Matchattachednativeidentity. Row1idle:4gentlebreathing/weightshift poses withhandhilt. Row2run:4differenttruefullstrides rightward withhakama/hair changing andsheathedsakabato safe. Row3sword demonstration:4physicalcompactbeats handhilt/controlledshortdiagonaldraw/boundedfollowthrough/resheathreset; silverbladeinsidecell. Row4balance reactions:4distinct backstep/brace/kneebend/recoveryposes, characterhealthyandintact. Thisrowis recoilactingonly, nobodyelsepresent.",
+      "referenceImages": [
+        "/workspace/generated_images/exec-21ade78d-2e64-41c2-a2f5-06ff299c1642.png"
+      ],
+      "file": "/workspace/generated_images/exec-0c8966bc-fab9-4783-8c0b-1d6cef7bbe40.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-b-references/kenshin_himura.png",
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ability": "Sakabatō de Kenshin",
+      "version": "Rurouni Kenshin TVanime1996 — Kyoto arc, adult Kenshin with sakabatō",
+      "reviewed": true,
+      "statureByState": {
+        "idle": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              79,
+              15,
+              122,
+              225
+            ],
+            "normalizedBodyHeight": 225,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              79,
+              15,
+              122,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "nativeComparableBodyHeight": 301.6163793103448,
+            "nativeReferenceBodyHeight": 301.6163793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        },
+        "run": {
+          "renderScale": 0.987138,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              31,
+              32,
+              184,
+              206
+            ],
+            "normalizedBodyHeight": 206,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              79,
+              15,
+              122,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "nativeComparableBodyHeight": 272.5948275862069,
+            "nativeReferenceBodyHeight": 301.6163793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        },
+        "attack": {
+          "renderScale": 1.565916,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              74,
+              108,
+              121,
+              130
+            ],
+            "normalizedBodyHeight": 130,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              79,
+              15,
+              122,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "nativeComparableBodyHeight": 272.88793103448273,
+            "nativeReferenceBodyHeight": 301.6163793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        },
+        "hit": {
+          "renderScale": 1.061093,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              32,
+              47,
+              197,
+              187
+            ],
+            "normalizedBodyHeight": 187,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              79,
+              15,
+              122,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "nativeComparableBodyHeight": 265.9913793103448,
+            "nativeReferenceBodyHeight": 301.6163793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "sanosuke_sagara",
+      "name": "Sanosuke Sagara",
+      "universe": "Rurouni Kenshin",
+      "referenceAsset": "/sprites/generated/heroes/rurouni-kenshin/sanosuke-sagara.png",
+      "sourceWork": "Rurouni Kenshin TVanime1996 — Kyoto arc, Sanosuke after learning Futae no Kiwami",
+      "sourceReference": "Sanosuke learns Futae no Kiwami from Anji; it is a two-stage physical fist impact. The native poses show fist preparation, first knuckle presentation and a committed clenched-fist follow-through, without a ranged blast or invented weapon.",
+      "referenceUsage": "Local1996-style Sanosuke sprite inspected for spiky hair, headband, white open jacket/trousers and physical brawler build. No actor likeness or early-arc zanbatō introduced.",
+      "referenceInputs": [
+        "/workspace/multiverse-breach/public/sprites/generated/heroes/rurouni-kenshin/sanosuke-sagara.png"
+      ],
+      "notes": [
+        "Kyoto1996 Sanosuke: blackspikyhair,redheadband,whiteopenjacketandtrousers/navytrim, wrappedwaist andankles; fistfighting.",
+        "Futae no Kiwami two-stage fist articulation is visualonly, not extraenginehits.",
+        "No zanbatō, Goku-aura, lightning or ranged groundshock."
+      ],
+      "prompt": "Draw ONE originalnative2D pixelart SPRITEATLAS, exactly4COLUMNS×4ROWS=16distinctisolated fullbodyposes. Emptytransparentalpha background, target1024square,256cells. Eachcompletecharacterandprops staysinsidecell with22pxclearalphamarginsallaroundandcleargutters. Readableadultbodyproportionsstanding180–200px, predominantlyRIGHT facing. Eachcell newlydrawn,4differentarticulatedposespereachrow, neverrepeat/mirror/recolor. Solitaryfriendlyanime martialart demonstration, annotation-free withnoenvironmentorpanels.\nSanosuke Sagara, fictionalADULT classic1996animeKyotoarc. Tallleanmuscularblackspiky-hairedman/redlongheadband, whiteopenjacketandwhitepantswithnavytrim, wrappedwaist, anklewraps/sandals. Body/clothesmatchattachednativeidentity. Barefistsandhands, noweapon. Row1idle:4relaxedconfidentweightshift/knucklecheck/boxerguardposes. Row2run:4distinctactualfullrunningstrides rightward withjacket/headbandmotion. Row3punchdemonstration:4compactphysicalbeats fistwindup/shortdirectpunch/followthrough/retractguard, no otherpersonorimpacteffect. Row4balance reactions:4different backstep/brace/kneebend/returnposes, fullyhealthyintactfigure.",
+      "referenceImages": [
+        "/workspace/generated_images/exec-d95fe6a7-ae79-4db5-8cdf-fb5001b0ae20.png"
+      ],
+      "file": "/workspace/generated_images/exec-11e264e9-f407-446f-992d-6c077eb26e4e.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-b-references/sanosuke_sagara.png",
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ability": "Direct de Sanosuke",
+      "version": "Rurouni Kenshin TVanime1996 — Kyoto arc, Sanosuke after learning Futae no Kiwami",
+      "reviewed": true,
+      "statureByState": {
+        "idle": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              80,
+              15,
+              126,
+              225
+            ],
+            "normalizedBodyHeight": 225,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              15,
+              126,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "nativeComparableBodyHeight": 334.5905172413793,
+            "nativeReferenceBodyHeight": 334.5905172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        },
+        "run": {
+          "renderScale": 0.93913,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              35,
+              36,
+              187,
+              205
+            ],
+            "normalizedBodyHeight": 205,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              15,
+              126,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "nativeComparableBodyHeight": 286.2931034482759,
+            "nativeReferenceBodyHeight": 334.5905172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        },
+        "attack": {
+          "renderScale": 1.22029,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              62,
+              69,
+              135,
+              170
+            ],
+            "normalizedBodyHeight": 170,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              15,
+              126,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "nativeComparableBodyHeight": 308.4913793103449,
+            "nativeReferenceBodyHeight": 334.5905172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        },
+        "hit": {
+          "renderScale": 1.057971,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              63,
+              78,
+              142,
+              161
+            ],
+            "normalizedBodyHeight": 161,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              15,
+              126,
+              225
+            ],
+            "referenceBodyHeight": 225,
+            "nativeComparableBodyHeight": 253.29741379310343,
+            "nativeReferenceBodyHeight": 334.5905172413793,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "kaoru_kamiya",
+      "name": "Kaoru Kamiya",
+      "universe": "Rurouni Kenshin",
+      "referenceAsset": "/sprites/generated/heroes/rurouni-kenshin/kaoru-kamiya.png",
+      "sourceWork": "Rurouni Kenshin TVanime1996 — Kyoto continuity, Kaoru Kamiya with bokken",
+      "sourceReference": "Kaoru teaches Kamiya Kasshin-ryū, the sword that protects life, using a wooden bokken. The named project special is a compact physical bokken sequence, a role adaptation rather than an asserted formal ultimate technique.",
+      "referenceUsage": "Local anime reference inspected: dark hair with pink ribbon, pale blue floral kimono, yellow obi and physical wooden practice sword. Same continuity retained in new native art.",
+      "referenceInputs": [
+        "/workspace/multiverse-breach/public/sprites/generated/heroes/rurouni-kenshin/kaoru-kamiya.png"
+      ],
+      "notes": [
+        "1996 anime Kyoto continuity, darkbluehair/pinkribbon/palebluefloralkimono/yellowobi; noactorreference.",
+        "Bokken remains a solidbrownwoodenpractice sword, not a metal katana or magicstaff.",
+        "Own upright KamiyaKasshin guard and twohandedwoodensword poses, no offensiveenergywave."
+      ],
+      "prompt": "ONEoriginalnative2DpixelartSPRITEATLAS, exactly4COLUMNS×4ROWS=16distinctfullbodyposes. EmptytransparentRGBAbackground,target1024square/256cells,allhair/fullfeet/woodenswordinsideeachcell with22pxclearalphaallaround,generousgutters. Comparableuprightbody180–200px, predominantlyRIGHTfacing, crispclassicanimewardrobe. Everyposefreshlydrawnandarticulated differently, no duplicates/mirrors/recolors or panels.\nKAORU KAMIYA, fictional1996anime Kyoto-continuity martialartist, originalclassicanimestyle and entirelycovered ordinarycostume: longDARKBLUE/BLACKhair tiedback withlargePINKribbon, lightBLUEfloral KIMONO withlongsleeves, YELLOWobi, whitetabi andsandals. Matchattachedanimeidentity. ActualbrownWOODEN BOKKEN with curvedpractice-blade silhouette and woodenhilt, nevermetal/energyblade/cane. HerownstyleKamiyaKasshin-ryu uses uprightbalancedtwohandeddefensiveguardandcontrolledwoodensworddemonstration; notKenshin'slowIaidraw, notSanosuke'sbarefists. Noelemental effects or othercharacters.\nROW1IDLE:4gentlebreathing/weightshiftgripchange/uprightbokkenreadyposes.\nROW2RUN:4distinctfullstridesrightwardwithkimono/hair/ribbonandvisiblefeetmotion,bokkencontrolledcompactinsidecell.\nROW3WOODENSWORDDEMONSTRATION:4distincttwohandedbeats:highguardwindup,shortforwardwoodencut,lowcontrolledfollowthrough,centeredmiddlereset. Bokkenisphysicalbrownwoodonly.\nROW4BALANCEREACTIONS:4differenthealthyintactbrace/backstep/kneebend/returnposes, gentleactingwithoutinjuryandnootherperson.",
+      "referenceImages": [
+        "/workspace/multiverse-breach/public/sprites/generated/heroes/rurouni-kenshin/kaoru-kamiya.png"
+      ],
+      "file": "/workspace/generated_images/exec-8ccb9ed7-ea84-4f4a-a8ea-517d2d4ad4b8.png",
+      "referenceImage": "docs/combat-fidelity-wave7-2026-10-20/base-part-b-references/kaoru_kamiya.png",
+      "sourceRows": 4,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ability": "Bokken de Kaoru Kamiya",
+      "version": "Rurouni Kenshin TVanime1996 — Kyoto continuity, Kaoru Kamiya with bokken",
+      "reviewed": true,
+      "statureByState": {
+        "idle": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              98,
+              17,
+              78,
+              224
+            ],
+            "normalizedBodyHeight": 224,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              98,
+              17,
+              78,
+              224
+            ],
+            "referenceBodyHeight": 224,
+            "nativeComparableBodyHeight": 301.2413793103448,
+            "nativeReferenceBodyHeight": 301.2413793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        },
+        "run": {
+          "renderScale": 1.022436,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              37,
+              43,
+              151,
+              191
+            ],
+            "normalizedBodyHeight": 191,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              98,
+              17,
+              78,
+              224
+            ],
+            "referenceBodyHeight": 224,
+            "nativeComparableBodyHeight": 262.625,
+            "nativeReferenceBodyHeight": 301.2413793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        },
+        "attack": {
+          "renderScale": 1.278846,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              75,
+              83,
+              121,
+              156
+            ],
+            "normalizedBodyHeight": 156,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              98,
+              17,
+              78,
+              224
+            ],
+            "referenceBodyHeight": 224,
+            "nativeComparableBodyHeight": 268.2931034482759,
+            "nativeReferenceBodyHeight": 301.2413793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        },
+        "hit": {
+          "renderScale": 1.112179,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              77,
+              57,
+              132,
+              182
+            ],
+            "normalizedBodyHeight": 182,
+            "referenceState": "idle",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              98,
+              17,
+              78,
+              224
+            ],
+            "referenceBodyHeight": 224,
+            "nativeComparableBodyHeight": 272.2155172413793,
+            "nativeReferenceBodyHeight": 301.2413793103448,
+            "sourceDensityRatio": 1,
+            "reason": "Measured basic pose body scale; exclude weapons/effects and retain true native running/crouching height ratios and baseline244. Renderer metadata only."
+          }
+        }
+      }
+    }
+  ]
+}

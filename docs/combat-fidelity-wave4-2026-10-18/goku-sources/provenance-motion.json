@@ -1,0 +1,2750 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "heroId": "goku_dbz",
+  "universe": "Dragon Ball Z",
+  "canonicalVerified": false,
+  "networkVerified": false,
+  "canon1to1Verified": false,
+  "entries": [
+    {
+      "id": "goku-motion-a",
+      "heroId": "goku_dbz",
+      "universe": "Dragon Ball Z",
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-motion-a.png",
+      "states": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "stateOrder": [
+        "idle",
+        "walk",
+        "run",
+        "turn",
+        "jumpStart",
+        "jumpRise",
+        "jumpApex",
+        "fall"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "9bed1d1097b0273cd43df592636e9cbbdb7cf6b921b81e125f6d06271924a9c9",
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+      "sourceHash": "10fc1caa417fcaf6c87817f54da48aeb1a77e91f0e2e19fd90bda19e7aab591f",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+          "sha256": "10fc1caa417fcaf6c87817f54da48aeb1a77e91f0e2e19fd90bda19e7aab591f",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          },
+          "columns": 4,
+          "rows": 8
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/dragon-ball-z/goku-dbz.png",
+      "referenceHash": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/dragon-ball-z/goku-dbz.png",
+          "sha256": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd",
+          "savedImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-original.png"
+        },
+        {
+          "asset": "public/sprites/generated/combat-character-animations/goku_dbz.png",
+          "sha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+          "savedImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-presentation.png"
+        }
+      ],
+      "frameOrderByState": {
+        "idle": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "walk": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "run": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "turn": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "jumpStart": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "jumpRise": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "jumpApex": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "fall": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "normalization": {
+        "method": "Alpha-connected segmentation of genuine native drawings; uniform per-source nearest-neighbor scaling and transparent packing.",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive alpha-bounds anchor in each 256px cell",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Near-transparent background noise below threshold excluded; all original PNG sources remain unchanged.",
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png": 1.04
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "idle",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 40,
+              "y": 14,
+              "width": 156,
+              "height": 208
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 47,
+              "y": 28,
+              "width": 162,
+              "height": 216
+            },
+            "sha256": "27d1ed4975e41f1a5ad87441ac4e24de1f9769161e31fc55bf82ffd8208b78aa"
+          },
+          {
+            "state": "idle",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 257,
+              "y": 14,
+              "width": 167,
+              "height": 210
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 41,
+              "y": 26,
+              "width": 174,
+              "height": 218
+            },
+            "sha256": "d9884825a3e923ace0945a852d8d96a54d00fe354f8e1ebb11cd1cc8d35e354a"
+          },
+          {
+            "state": "idle",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 477,
+              "y": 24,
+              "width": 190,
+              "height": 202
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 29,
+              "y": 34,
+              "width": 198,
+              "height": 210
+            },
+            "sha256": "26df234bbf41acc7864191c8692b505cdd1b2d569f84a30a7cfbb174055a7661"
+          },
+          {
+            "state": "idle",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 706,
+              "y": 13,
+              "width": 144,
+              "height": 212
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 53,
+              "y": 24,
+              "width": 150,
+              "height": 220
+            },
+            "sha256": "6e5b8882f914226c6e1612d35f10a566ff3c0044fa7b28c3096298ce8802b021"
+          },
+          {
+            "state": "walk",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 41,
+              "y": 232,
+              "width": 138,
+              "height": 223
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 56,
+              "y": 12,
+              "width": 144,
+              "height": 232
+            },
+            "sha256": "54fdec99771943bd6fac35045b8b3809f500479de5eff7f5c428d4abeafea2de"
+          },
+          {
+            "state": "walk",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 270,
+              "y": 230,
+              "width": 133,
+              "height": 225
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 59,
+              "y": 10,
+              "width": 138,
+              "height": 234
+            },
+            "sha256": "23bfd94e3d0ff31d8f6abda9519da8b523a29936b9e8c6ae900c7644dddaaac2"
+          },
+          {
+            "state": "walk",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 480,
+              "y": 238,
+              "width": 145,
+              "height": 220
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 52,
+              "y": 15,
+              "width": 151,
+              "height": 229
+            },
+            "sha256": "a9828fbb46ba1c5c11bf4b55efc41558ed8a1a7dd38a23f03cbcfa5ce0e952d3"
+          },
+          {
+            "state": "walk",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 710,
+              "y": 236,
+              "width": 144,
+              "height": 222
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 53,
+              "y": 13,
+              "width": 150,
+              "height": 231
+            },
+            "sha256": "66dc722610c632db479dfb3ab87c5485ae8b2f2708cf92a60f764bdeef0b5c3d"
+          },
+          {
+            "state": "run",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 18,
+              "y": 469,
+              "width": 188,
+              "height": 193
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 30,
+              "y": 43,
+              "width": 196,
+              "height": 201
+            },
+            "sha256": "3d6ce7d4427ff84e6fe519d7a15ac8b5cbd1a0b42c3e7d3665109adf54b654d9"
+          },
+          {
+            "state": "run",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 245,
+              "y": 462,
+              "width": 180,
+              "height": 204
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 34,
+              "y": 32,
+              "width": 187,
+              "height": 212
+            },
+            "sha256": "6c334796cc43ebeea7f6b6f6f70ff8e585dc8616d8dff8283f2fc500c541b09a"
+          },
+          {
+            "state": "run",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 459,
+              "y": 475,
+              "width": 194,
+              "height": 188
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 27,
+              "y": 48,
+              "width": 202,
+              "height": 196
+            },
+            "sha256": "0c9b5c774e875a468da8475f9e0548ec45a92cc3617f455776693086b4e41aec"
+          },
+          {
+            "state": "run",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 693,
+              "y": 469,
+              "width": 167,
+              "height": 200
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 41,
+              "y": 36,
+              "width": 174,
+              "height": 208
+            },
+            "sha256": "2d704167c26efab0a971332ae895961241e2c728006326908167eb4516d4a96c"
+          },
+          {
+            "state": "turn",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 64,
+              "y": 663,
+              "width": 110,
+              "height": 225
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 71,
+              "y": 10,
+              "width": 114,
+              "height": 234
+            },
+            "sha256": "bb06038e5d61d3e81399ef53b3965c53119ac661c1fd06a68ef48a2afffa9ab9"
+          },
+          {
+            "state": "turn",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 268,
+              "y": 665,
+              "width": 132,
+              "height": 223
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 59,
+              "y": 12,
+              "width": 137,
+              "height": 232
+            },
+            "sha256": "0ecc72213846a30e6190d293d75b9bd13caad8f9426736ec84419f86e4e53ca4"
+          },
+          {
+            "state": "turn",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 481,
+              "y": 671,
+              "width": 152,
+              "height": 216
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 49,
+              "y": 19,
+              "width": 158,
+              "height": 225
+            },
+            "sha256": "b8ae9ef33434dfec8ae845c822bb3c240b88847d97075af50e4f6a03edae7443"
+          },
+          {
+            "state": "turn",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 689,
+              "y": 663,
+              "width": 174,
+              "height": 220
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 37,
+              "y": 15,
+              "width": 181,
+              "height": 229
+            },
+            "sha256": "62dbdec384e1083c226c41db335e4052e40d49932701c43cf3209e9c68b3cfee"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 41,
+              "y": 903,
+              "width": 128,
+              "height": 198
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 61,
+              "y": 38,
+              "width": 133,
+              "height": 206
+            },
+            "sha256": "75784a62cabc8f208deb7e273cd9da7a95cd3e6bb9a9a9fc0ecacc04b452d92b"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 263,
+              "y": 927,
+              "width": 150,
+              "height": 173
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 50,
+              "y": 64,
+              "width": 156,
+              "height": 180
+            },
+            "sha256": "bb8078404743762c4c8122316119c4661d10179e793ff3e221371e6bd89e4715"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 489,
+              "y": 888,
+              "width": 153,
+              "height": 215
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 48,
+              "y": 20,
+              "width": 159,
+              "height": 224
+            },
+            "sha256": "c3cf9af57f1d59d5538097e51f6ee23d445e0d6e08ff1ccd3660352c95cf7817"
+          },
+          {
+            "state": "jumpStart",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 707,
+              "y": 884,
+              "width": 151,
+              "height": 215
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 49,
+              "y": 20,
+              "width": 157,
+              "height": 224
+            },
+            "sha256": "455e6afa1d212d6698e0b4a8945359ec4cb148e92d24de8ba6495bdefb145dbb"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 67,
+              "y": 1109,
+              "width": 116,
+              "height": 189
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 67,
+              "y": 47,
+              "width": 121,
+              "height": 197
+            },
+            "sha256": "a035f875b70c84b8fe1c66fdfbbe2953e6133c45243fe0e4a6810b7bb74ec32c"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 269,
+              "y": 1104,
+              "width": 149,
+              "height": 225
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 50,
+              "y": 10,
+              "width": 155,
+              "height": 234
+            },
+            "sha256": "3a640e1825a6662a6a3560c1936b63c04270635cfab09f8bcd5c677805665366"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 485,
+              "y": 1112,
+              "width": 161,
+              "height": 188
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 44,
+              "y": 48,
+              "width": 167,
+              "height": 196
+            },
+            "sha256": "6951269700d7da71d42d214043e4088f64b7b4380640dee5aa2e083d83b369e8"
+          },
+          {
+            "state": "jumpRise",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 693,
+              "y": 1103,
+              "width": 160,
+              "height": 222
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 45,
+              "y": 13,
+              "width": 166,
+              "height": 231
+            },
+            "sha256": "35d701be175d512237cfb7da4839c0b5341e4390562e3541e159d5948af1d8ae"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 63,
+              "y": 1340,
+              "width": 110,
+              "height": 176
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 71,
+              "y": 61,
+              "width": 114,
+              "height": 183
+            },
+            "sha256": "0ed4fdf0eaddcc26071b73516f6f37988822f2e8d603d358ad2d78503c8cbb95"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 264,
+              "y": 1337,
+              "width": 177,
+              "height": 203
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 36,
+              "y": 33,
+              "width": 184,
+              "height": 211
+            },
+            "sha256": "2869f89ae0cd34a0140a2a0dfe5071ed1c35e9a137984028bbe149d3071b2563"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 486,
+              "y": 1337,
+              "width": 167,
+              "height": 206
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 41,
+              "y": 30,
+              "width": 174,
+              "height": 214
+            },
+            "sha256": "1c152ce0f1d5cb80a5d2cecdd6dce8dedf5d09103c9e5b86c4474efd67cb42af"
+          },
+          {
+            "state": "jumpApex",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 709,
+              "y": 1340,
+              "width": 144,
+              "height": 196
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 53,
+              "y": 40,
+              "width": 150,
+              "height": 204
+            },
+            "sha256": "955d616b42566fcb428f209adcbf3713db73d0973701bb3c9573b283bde139b8"
+          },
+          {
+            "state": "fall",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 33,
+              "y": 1571,
+              "width": 167,
+              "height": 179
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 41,
+              "y": 58,
+              "width": 174,
+              "height": 186
+            },
+            "sha256": "2eeecb03ca5ca720954d4c4d1c05a11e0b908f537c78e7242d6aa532fefe8f14"
+          },
+          {
+            "state": "fall",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 243,
+              "y": 1580,
+              "width": 173,
+              "height": 174
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 38,
+              "y": 63,
+              "width": 180,
+              "height": 181
+            },
+            "sha256": "d6936b83edda088af7461156de3ac216c6c8f4922f4d3f15d16a56bb571d03d1"
+          },
+          {
+            "state": "fall",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 469,
+              "y": 1592,
+              "width": 167,
+              "height": 154
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 41,
+              "y": 84,
+              "width": 174,
+              "height": 160
+            },
+            "sha256": "79c5c642cd9bf0579ca91eccc2e0f2c299ace9b051694fa77fe7babeb94e887c"
+          },
+          {
+            "state": "fall",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+            "nativeRow": 7,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 696,
+              "y": 1591,
+              "width": 159,
+              "height": 161
+            },
+            "scale": 1.04,
+            "destinationRect": {
+              "x": 45,
+              "y": 77,
+              "width": 165,
+              "height": 167
+            },
+            "sha256": "4b21aeb47845263abc214686cf13d90d03aec39866208cb5c4c3fcdc0a2e7568"
+          }
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0,
+        "nativeSourceStateOrder": [
+          "idle",
+          "walk",
+          "run",
+          "turn",
+          "jumpStart",
+          "jumpRise",
+          "jumpApex",
+          "fall"
+        ],
+        "correctionRowsByState": {},
+        "discardedNativeRows": []
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "completeRows": 8,
+        "distinctNativePoses": 32,
+        "wholeCharacterContained": true,
+        "facing": "right; turn starts left, includes back/three-quarter body rotation and ends facing right",
+        "outfit": "Adult base-form DBZ Goku: black spiky hair, orange gi/trousers, blue undershirt/belt/wristbands and blue boots with yellow/red trim.",
+        "weapons": "none; unarmed physical martial movements and forearm/palm guards",
+        "transformations": "none; base black-haired form throughout, no SSJ/UI/aura",
+        "correction": "The complete initial source supplies all32 native poses.",
+        "limitations": [
+          "Original generated fan art and adapted movement, not official frames.",
+          "Minor perspective, anatomy and apparent scale variations remain between the native sources; running uses suspended DBZ dash-like leg positions, and landing retains small ordinary contact-dust accents.",
+          "Timing and pixel identity are not certified 1:1 with official Dragon Ball Z animation frames."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.prompt.txt",
+            "sha256": "0be050b0af341cb011953726111543c6dae9d7e463ecfcac43a729251d72d839"
+          }
+        ],
+        "normalizationScript": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/normalize-goku-motion-atlases.mjs"
+      }
+    },
+    {
+      "id": "goku-motion-b",
+      "heroId": "goku_dbz",
+      "universe": "Dragon Ball Z",
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-motion-b.png",
+      "states": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "stateOrder": [
+        "fastFall",
+        "land",
+        "crouchEnter",
+        "crouchIdle",
+        "crouchExit",
+        "crouchCharge",
+        "taunt1",
+        "hitStun"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "6e83dab1b8b85c64dddbdd60ceeece56dd9c47fcd55fd21a26a6b3e70ffeace8",
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+      "sourceHash": "a4bc45c7944669b6eda21f1e01f2430fe59d6d2c127995e1d3924d42b6ae6902",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+          "sha256": "a4bc45c7944669b6eda21f1e01f2430fe59d6d2c127995e1d3924d42b6ae6902",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          },
+          "columns": 4,
+          "rows": 7
+        },
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+          "sha256": "0f572f42c4f9496435cf363afd9e8513bfe0c6c9065eb34b0879c01eff1c3d52",
+          "dimensions": {
+            "width": 1448,
+            "height": 1086
+          },
+          "columns": 4,
+          "rows": 3
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/dragon-ball-z/goku-dbz.png",
+      "referenceHash": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/dragon-ball-z/goku-dbz.png",
+          "sha256": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd",
+          "savedImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-original.png"
+        },
+        {
+          "asset": "public/sprites/generated/combat-character-animations/goku_dbz.png",
+          "sha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+          "savedImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-presentation.png"
+        }
+      ],
+      "frameOrderByState": {
+        "fastFall": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "land": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchEnter": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchIdle": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchExit": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "crouchCharge": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "taunt1": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "hitStun": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "normalization": {
+        "method": "Alpha-connected segmentation of genuine native drawings; uniform per-source nearest-neighbor scaling and transparent packing.",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive alpha-bounds anchor in each 256px cell",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Near-transparent background noise below threshold excluded; all original PNG sources remain unchanged.",
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png": 1.017391304347826,
+          "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png": 0.6518105849582173
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "fastFall",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 36,
+              "y": 10,
+              "width": 163,
+              "height": 194
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 45,
+              "y": 47,
+              "width": 166,
+              "height": 197
+            },
+            "sha256": "43ccc1a219a8af06a55f7a44f205979c28f2975a151509cd81e5c4b03c486295"
+          },
+          {
+            "state": "fastFall",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 270,
+              "y": 43,
+              "width": 138,
+              "height": 176
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 58,
+              "y": 65,
+              "width": 140,
+              "height": 179
+            },
+            "sha256": "ff104aab46f3e1f4c5d9bdb6b04a1ca5beb6a15d518af00425e0e14215c55786"
+          },
+          {
+            "state": "fastFall",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 505,
+              "y": 39,
+              "width": 117,
+              "height": 179
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 68,
+              "y": 62,
+              "width": 119,
+              "height": 182
+            },
+            "sha256": "7d1f7ebba1b1b6c2bc0e4a731f7d6193e2d5bc7cd91848865c914f9b680642bb"
+          },
+          {
+            "state": "fastFall",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 704,
+              "y": 11,
+              "width": 155,
+              "height": 217
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 49,
+              "y": 23,
+              "width": 158,
+              "height": 221
+            },
+            "sha256": "4eee45a2dfe3881e21ed4d73cecb239a4c43774e9856caac885d7982fd12532f"
+          },
+          {
+            "state": "land",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 24,
+              "y": 247,
+              "width": 174,
+              "height": 193
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 39,
+              "y": 48,
+              "width": 177,
+              "height": 196
+            },
+            "sha256": "f5158a8b6c7749c528a417980f5648a9e6f0292d4e6440b468f09d0f5d0faf3e"
+          },
+          {
+            "state": "land",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 238,
+              "y": 290,
+              "width": 175,
+              "height": 150
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 39,
+              "y": 91,
+              "width": 178,
+              "height": 153
+            },
+            "sha256": "c1472d8f09dbc2a814252f0e11b95e4a61ecf40a387ed7497712ab006e56f6e8"
+          },
+          {
+            "state": "land",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 466,
+              "y": 256,
+              "width": 179,
+              "height": 184
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 37,
+              "y": 57,
+              "width": 182,
+              "height": 187
+            },
+            "sha256": "151b2b77f71823c7d7a32fa08015e464ba59b49454cce6bac87fb00412ea5de9"
+          },
+          {
+            "state": "land",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 690,
+              "y": 228,
+              "width": 178,
+              "height": 212
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 37,
+              "y": 28,
+              "width": 181,
+              "height": 216
+            },
+            "sha256": "10ab71a17759670a868030ee609a1893172c6aa23e87f0fa588370c53e1c16a4"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 27,
+              "y": 448,
+              "width": 166,
+              "height": 222
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 43,
+              "y": 18,
+              "width": 169,
+              "height": 226
+            },
+            "sha256": "6bb40e2f21816eda99986ae79815351ce52001a42cfeb2e7a17378d9fbb1dead"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 251,
+              "y": 466,
+              "width": 157,
+              "height": 204
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 48,
+              "y": 36,
+              "width": 160,
+              "height": 208
+            },
+            "sha256": "c4a29f3f64f3ea95a5f76a86a75ed27afd1c10bddb768a29ed63f5da56b1edfb"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 475,
+              "y": 501,
+              "width": 162,
+              "height": 163
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 45,
+              "y": 78,
+              "width": 165,
+              "height": 166
+            },
+            "sha256": "7effcbd21bdc9a7bb5d1c24d68cfde44d52324daf84b6d0db0ef9efa6a75bf09"
+          },
+          {
+            "state": "crouchEnter",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 702,
+              "y": 508,
+              "width": 146,
+              "height": 162
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 53,
+              "y": 79,
+              "width": 149,
+              "height": 165
+            },
+            "sha256": "6802069cd6aafadf16db0a2f07134a7d3f5d63684f993bb238e8f8e4c308cf2b"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 31,
+              "y": 714,
+              "width": 170,
+              "height": 171
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 41,
+              "y": 70,
+              "width": 173,
+              "height": 174
+            },
+            "sha256": "4b2e6f2cdc4e4c836b36f283801e912389978e449f0d05b509e8cd0d9581d848"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 259,
+              "y": 721,
+              "width": 179,
+              "height": 163
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 37,
+              "y": 78,
+              "width": 182,
+              "height": 166
+            },
+            "sha256": "0cbd6fafdb05f40ceaa44584f14cfcab65368383324e35837d648be6bb7198fc"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 477,
+              "y": 722,
+              "width": 167,
+              "height": 166
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 43,
+              "y": 75,
+              "width": 170,
+              "height": 169
+            },
+            "sha256": "2533d0cdb8d559601459a631f7d83acd12b84cbb6e1fdd51ed932a6e0ae1077e"
+          },
+          {
+            "state": "crouchIdle",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 694,
+              "y": 714,
+              "width": 160,
+              "height": 176
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 46,
+              "y": 65,
+              "width": 163,
+              "height": 179
+            },
+            "sha256": "14d1c41b8d3cc6682e9bde6e7de7f7a6d5dd9b13c5b6058e22199f4b7a2c2e7d"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 40,
+              "y": 942,
+              "width": 142,
+              "height": 176
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 56,
+              "y": 65,
+              "width": 144,
+              "height": 179
+            },
+            "sha256": "a72eda636539b8f1d623d2a6b2e70d57405ead3d4ed2fab6d0d387e8bfb4a3f9"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 251,
+              "y": 910,
+              "width": 165,
+              "height": 205
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 44,
+              "y": 35,
+              "width": 168,
+              "height": 209
+            },
+            "sha256": "52d102c63a45efa4f275824c773095a30f2eee497c5fd391af26512eeb64a0af"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 465,
+              "y": 905,
+              "width": 175,
+              "height": 210
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 39,
+              "y": 30,
+              "width": 178,
+              "height": 214
+            },
+            "sha256": "fe689b5c8e2d3837831cfc3d4790dc86b7d4fa2c399ef9eda614f0e70c920557"
+          },
+          {
+            "state": "crouchExit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 687,
+              "y": 890,
+              "width": 180,
+              "height": 223
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 36,
+              "y": 17,
+              "width": 183,
+              "height": 227
+            },
+            "sha256": "b7e53239e533dbec7560a9d4442f1b86436acd70fed828e41d5644b18b08c990"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 22,
+              "y": 76,
+              "width": 286,
+              "height": 299
+            },
+            "scale": 0.6518105849582173,
+            "destinationRect": {
+              "x": 35,
+              "y": 49,
+              "width": 186,
+              "height": 195
+            },
+            "sha256": "882e13b43766a6ed542349fb6ff82f486c298ee23ee5977c2ddde96014240355"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 375,
+              "y": 89,
+              "width": 295,
+              "height": 286
+            },
+            "scale": 0.6518105849582173,
+            "destinationRect": {
+              "x": 32,
+              "y": 58,
+              "width": 192,
+              "height": 186
+            },
+            "sha256": "fcdd56e1577479c49d3f523c3123cbf929af0ff1422c6e586b4b5bb9bfa474c7"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 724,
+              "y": 89,
+              "width": 317,
+              "height": 288
+            },
+            "scale": 0.6518105849582173,
+            "destinationRect": {
+              "x": 24,
+              "y": 56,
+              "width": 207,
+              "height": 188
+            },
+            "sha256": "11fcfc1a55abd08309c1d009fb509d80733631ddd00b1292c2782e8d8055d982"
+          },
+          {
+            "state": "crouchCharge",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 1095,
+              "y": 102,
+              "width": 322,
+              "height": 271
+            },
+            "scale": 0.6518105849582173,
+            "destinationRect": {
+              "x": 23,
+              "y": 67,
+              "width": 210,
+              "height": 177
+            },
+            "sha256": "906d63caa335f82b3aae2a8233c3bf2772b8c7baa9f2a9d4e304775cfbd025fa"
+          },
+          {
+            "state": "taunt1",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 30,
+              "y": 1158,
+              "width": 176,
+              "height": 219
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 38,
+              "y": 21,
+              "width": 179,
+              "height": 223
+            },
+            "sha256": "b7971325ada0c006f8930fa9f23b17996fe98585194ee48485579e5d06880a52"
+          },
+          {
+            "state": "taunt1",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 290,
+              "y": 1150,
+              "width": 129,
+              "height": 230
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 62,
+              "y": 10,
+              "width": 131,
+              "height": 234
+            },
+            "sha256": "053f4b1b3956ddae91c7e06c9179d5c6353ad78a8a68613706405257beca87cd"
+          },
+          {
+            "state": "taunt1",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 498,
+              "y": 1152,
+              "width": 147,
+              "height": 228
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 53,
+              "y": 12,
+              "width": 150,
+              "height": 232
+            },
+            "sha256": "c979bb1b0fc93a2a65764df93f74cff5bb2a5943e105e041e2140428d7c58af8"
+          },
+          {
+            "state": "taunt1",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 5,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 673,
+              "y": 1165,
+              "width": 196,
+              "height": 210
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 28,
+              "y": 30,
+              "width": 199,
+              "height": 214
+            },
+            "sha256": "f8f4f1b0cbbdd14fe2fbd12a577c3d2af4b8fc70d8ec526afb4a86d45c1e15a8"
+          },
+          {
+            "state": "hitStun",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 43,
+              "y": 1396,
+              "width": 178,
+              "height": 228
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 37,
+              "y": 12,
+              "width": 181,
+              "height": 232
+            },
+            "sha256": "ffb8b913b61578e7c4653883c06d9233a8e4f45ad3b20a24ee4f01432d920601"
+          },
+          {
+            "state": "hitStun",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 256,
+              "y": 1411,
+              "width": 174,
+              "height": 212
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 39,
+              "y": 28,
+              "width": 177,
+              "height": 216
+            },
+            "sha256": "9849eff3a29ab93ce6ca897464e466820915204bd516b6ad9ce1a209c051bb74"
+          },
+          {
+            "state": "hitStun",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 464,
+              "y": 1438,
+              "width": 179,
+              "height": 177
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 37,
+              "y": 64,
+              "width": 182,
+              "height": 180
+            },
+            "sha256": "93578b14c7040f06cb07f5250ea09e12cc8309c36d203e7aaf4427b8d4d5eba4"
+          },
+          {
+            "state": "hitStun",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 668,
+              "y": 1423,
+              "width": 180,
+              "height": 195
+            },
+            "scale": 1.017391304347826,
+            "destinationRect": {
+              "x": 36,
+              "y": 46,
+              "width": 183,
+              "height": 198
+            },
+            "sha256": "3c9fb912e6ed27df8015beb15d8673f5d39bfa5dec6678b4a0f7096c580cb137"
+          }
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0,
+        "nativeSourceStateOrder": [
+          "fastFall",
+          "land",
+          "crouchEnter",
+          "crouchIdle",
+          "crouchExit",
+          "taunt1",
+          "hitStun"
+        ],
+        "correctionRowsByState": {
+          "crouchCharge": 0
+        },
+        "discardedNativeRows": []
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "completeRows": 8,
+        "distinctNativePoses": 32,
+        "wholeCharacterContained": true,
+        "facing": "right; dead ends in side-lying KO",
+        "outfit": "Adult base-form DBZ Goku: black spiky hair, orange gi/trousers, blue undershirt/belt/wristbands and blue boots with yellow/red trim.",
+        "weapons": "none; unarmed physical martial movements and forearm/palm guards",
+        "transformations": "none; base black-haired form throughout, no SSJ/UI/aura",
+        "correction": "Initial source has28 poses and omits crouchCharge; four new native drawings from strip row0 fill that state.",
+        "limitations": [
+          "Original generated fan art and adapted movement, not official frames.",
+          "Minor perspective, anatomy and apparent scale variations remain between the native sources; running uses suspended DBZ dash-like leg positions, and landing retains small ordinary contact-dust accents.",
+          "Timing and pixel identity are not certified 1:1 with official Dragon Ball Z animation frames."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.prompt.txt",
+            "sha256": "0362f326eb69c58e524147865182b6824b31be2bf8044cab7028bc6c811cb82f"
+          },
+          {
+            "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.prompt.txt",
+            "sha256": "6c3ac0f68360ed2f7e2427e94fd4befbf4c90a72ff656ecdf0a86b4fa1058d9f"
+          }
+        ],
+        "normalizationScript": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/normalize-goku-motion-atlases.mjs"
+      }
+    },
+    {
+      "id": "goku-defense",
+      "heroId": "goku_dbz",
+      "universe": "Dragon Ball Z",
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-defense.png",
+      "states": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "stateOrder": [
+        "shieldEnter",
+        "shieldHold",
+        "shieldHit",
+        "perfectShield",
+        "shieldBreak",
+        "shieldExit",
+        "dead",
+        "defeat"
+      ],
+      "columns": 4,
+      "rows": 8,
+      "dimensions": {
+        "width": 1024,
+        "height": 2048,
+        "cellWidth": 256,
+        "cellHeight": 256
+      },
+      "sha256": "f7ab7296a08b5d468de2e5a0a0e3feb5d9916089a7806267171ec2519e3a5df2",
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+      "sourceHash": "78f5544667b75e36ae6cb854683d2ab27b640f885fd5b285de17bf68d1a4746b",
+      "sourceImages": [
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+          "sha256": "78f5544667b75e36ae6cb854683d2ab27b640f885fd5b285de17bf68d1a4746b",
+          "dimensions": {
+            "width": 887,
+            "height": 1774
+          },
+          "columns": 4,
+          "rows": 7
+        },
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+          "sha256": "0f572f42c4f9496435cf363afd9e8513bfe0c6c9065eb34b0879c01eff1c3d52",
+          "dimensions": {
+            "width": 1448,
+            "height": 1086
+          },
+          "columns": 4,
+          "rows": 3
+        }
+      ],
+      "referenceAsset": "public/sprites/generated/heroes/dragon-ball-z/goku-dbz.png",
+      "referenceHash": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd",
+      "referenceAssets": [
+        {
+          "asset": "public/sprites/generated/heroes/dragon-ball-z/goku-dbz.png",
+          "sha256": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd",
+          "savedImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-original.png"
+        },
+        {
+          "asset": "public/sprites/generated/combat-character-animations/goku_dbz.png",
+          "sha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+          "savedImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-presentation.png"
+        }
+      ],
+      "frameOrderByState": {
+        "shieldEnter": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldHold": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldHit": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "perfectShield": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldBreak": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "shieldExit": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "dead": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "defeat": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "normalization": {
+        "method": "Alpha-connected segmentation of genuine native drawings; uniform per-source nearest-neighbor scaling and transparent packing.",
+        "baseline": 244,
+        "baselineDefinition": "bottom-exclusive alpha-bounds anchor in each 256px cell",
+        "margins": 10,
+        "alphaSegmentationThreshold": 24,
+        "alphaCleanup": "Near-transparent background noise below threshold excluded; all original PNG sources remain unchanged.",
+        "sourceScaleFactors": {
+          "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png": 1.0493273542600896,
+          "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png": 0.6518105849582173
+        },
+        "frameOrder": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "frames": [
+          {
+            "state": "shieldEnter",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 36,
+              "y": 16,
+              "width": 166,
+              "height": 202
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 41,
+              "y": 32,
+              "width": 174,
+              "height": 212
+            },
+            "sha256": "9b9414cac411256baa028e519e7532e68df45caa3a4f56be3cc81f50498d7225"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 258,
+              "y": 15,
+              "width": 159,
+              "height": 204
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 44,
+              "y": 30,
+              "width": 167,
+              "height": 214
+            },
+            "sha256": "5855c63de1b886620fd4f0a19333118e552e51b684a3fad804af3e412bc87a66"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 467,
+              "y": 15,
+              "width": 173,
+              "height": 203
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 37,
+              "y": 31,
+              "width": 182,
+              "height": 213
+            },
+            "sha256": "0d5f5722c8f4f8c0d004a75d30486f6ab74950bde8d16e0aa3621e95bd62fa37"
+          },
+          {
+            "state": "shieldEnter",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 0,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 696,
+              "y": 15,
+              "width": 164,
+              "height": 202
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 42,
+              "y": 32,
+              "width": 172,
+              "height": 212
+            },
+            "sha256": "736cfd1d47718d3473e8813bbb776d98814ed60eb8be754a753e9ca7c984151e"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 22,
+              "y": 236,
+              "width": 190,
+              "height": 205
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 28,
+              "y": 29,
+              "width": 199,
+              "height": 215
+            },
+            "sha256": "2007b454bc695bac9b8724a971a7da2859686ed013f166fbd99fc5ea91984b18"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 256,
+              "y": 241,
+              "width": 154,
+              "height": 203
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 47,
+              "y": 31,
+              "width": 162,
+              "height": 213
+            },
+            "sha256": "88664fc133dc49314582067db8fa9d3f2796b0e04cf506cdffe81227e0805ff0"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 471,
+              "y": 239,
+              "width": 163,
+              "height": 202
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 42,
+              "y": 32,
+              "width": 171,
+              "height": 212
+            },
+            "sha256": "6680925a9367ade29d160587c1295f211755894328acf9ea8c931ef2f42ec680"
+          },
+          {
+            "state": "shieldHold",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 687,
+              "y": 238,
+              "width": 178,
+              "height": 203
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 34,
+              "y": 31,
+              "width": 187,
+              "height": 213
+            },
+            "sha256": "d13296ff6a76c544eda73ab70436c4ef4a6da1d00823d4e57106534744b0b510"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 32,
+              "y": 462,
+              "width": 168,
+              "height": 208
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 40,
+              "y": 26,
+              "width": 176,
+              "height": 218
+            },
+            "sha256": "08838a906f9df6a3d37b7dcb4d224886bc3f79bc7ba9b735409b9d06559d83b8"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 273,
+              "y": 467,
+              "width": 157,
+              "height": 206
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 45,
+              "y": 28,
+              "width": 165,
+              "height": 216
+            },
+            "sha256": "b1f9c463835c6660401c84ca4c5e6ae204c415a565fb718f77d9a802151187bf"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 479,
+              "y": 483,
+              "width": 141,
+              "height": 188
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 54,
+              "y": 47,
+              "width": 148,
+              "height": 197
+            },
+            "sha256": "2f1bcef6c6d59cb16d700507cb659ed0d374f5f7d6b541627977579ba5dba073"
+          },
+          {
+            "state": "shieldHit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 686,
+              "y": 463,
+              "width": 170,
+              "height": 208
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 39,
+              "y": 26,
+              "width": 178,
+              "height": 218
+            },
+            "sha256": "f8d0db56590beecfcce732c44ac53bd98db2ad1c0b667f98348216e5b6478628"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 22,
+              "y": 689,
+              "width": 176,
+              "height": 214
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 35,
+              "y": 19,
+              "width": 185,
+              "height": 225
+            },
+            "sha256": "a6fea3c8c3f6ebc7f492dd81d6be799dcf151656854a0bc23e978b1a3c7075b1"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 246,
+              "y": 687,
+              "width": 180,
+              "height": 216
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 33,
+              "y": 17,
+              "width": 189,
+              "height": 227
+            },
+            "sha256": "c3c2ff7c8ac47e96f2ed9d6ef868f11655dab78b365f2d506fc0ae7a37a84522"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 477,
+              "y": 697,
+              "width": 184,
+              "height": 205
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 31,
+              "y": 29,
+              "width": 193,
+              "height": 215
+            },
+            "sha256": "05048b615aade25db9462fa9642c6712307757655cbb3daad77ce61c51d6daca"
+          },
+          {
+            "state": "perfectShield",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 3,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 682,
+              "y": 687,
+              "width": 171,
+              "height": 216
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 38,
+              "y": 17,
+              "width": 179,
+              "height": 227
+            },
+            "sha256": "ad432774cdbbcbef2dc603d65b71a41f06f03acc403aeb5d3c067ac2da1aad78"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 30,
+              "y": 921,
+              "width": 162,
+              "height": 212
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 43,
+              "y": 22,
+              "width": 170,
+              "height": 222
+            },
+            "sha256": "c717f25e8d2f1cb710649e6f48ebd762efd9d3a0acb09cba61f24b8c98561bfd"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 236,
+              "y": 926,
+              "width": 219,
+              "height": 209
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 13,
+              "y": 25,
+              "width": 230,
+              "height": 219
+            },
+            "sha256": "b3c0388f2e1cc5d088e1428d66846e64d78e5e8c376a8cc141f23174b969e768"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 465,
+              "y": 966,
+              "width": 181,
+              "height": 171
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 33,
+              "y": 65,
+              "width": 190,
+              "height": 179
+            },
+            "sha256": "8b7f7933c7124811ece25a74b6c91345ef29c5e0f6811773015d47bcf50e4735"
+          },
+          {
+            "state": "shieldBreak",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 4,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 701,
+              "y": 914,
+              "width": 150,
+              "height": 223
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 49,
+              "y": 10,
+              "width": 157,
+              "height": 234
+            },
+            "sha256": "1f28ba6f25004da9d3788a576a4e201d5624d0a8043602c9de9573b80391d4ec"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 30,
+              "y": 404,
+              "width": 276,
+              "height": 359
+            },
+            "scale": 0.6518105849582173,
+            "destinationRect": {
+              "x": 38,
+              "y": 10,
+              "width": 180,
+              "height": 234
+            },
+            "sha256": "b31ec9f5262f3d969a25eebf1dc410c5dc741fa113ba51f01267c34e497d2732"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 380,
+              "y": 422,
+              "width": 289,
+              "height": 341
+            },
+            "scale": 0.6518105849582173,
+            "destinationRect": {
+              "x": 34,
+              "y": 22,
+              "width": 188,
+              "height": 222
+            },
+            "sha256": "a01084b8ac67ed06e1e8d26c219bcbd39eb3630d9e56322cc89a1400da92f2a2"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 782,
+              "y": 410,
+              "width": 243,
+              "height": 353
+            },
+            "scale": 0.6518105849582173,
+            "destinationRect": {
+              "x": 49,
+              "y": 14,
+              "width": 158,
+              "height": 230
+            },
+            "sha256": "0d5ffce1920b21f59fd38570a09a4590c557bd98f66080f5cc98a7316a658300"
+          },
+          {
+            "state": "shieldExit",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+            "nativeRow": 1,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 1094,
+              "y": 419,
+              "width": 324,
+              "height": 342
+            },
+            "scale": 0.6518105849582173,
+            "destinationRect": {
+              "x": 22,
+              "y": 21,
+              "width": 211,
+              "height": 223
+            },
+            "sha256": "7869827ab26998317c2ed183fb239f29b269f2d4402502ae9b5abf9359daaac7"
+          },
+          {
+            "state": "dead",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 19,
+              "y": 779,
+              "width": 292,
+              "height": 260
+            },
+            "scale": 0.6518105849582173,
+            "destinationRect": {
+              "x": 33,
+              "y": 75,
+              "width": 190,
+              "height": 169
+            },
+            "sha256": "b57b62892a4eb7008f89e628f2f626f4de7565b49ab0b0eb08433d1d20156447"
+          },
+          {
+            "state": "dead",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 374,
+              "y": 813,
+              "width": 293,
+              "height": 230
+            },
+            "scale": 0.6518105849582173,
+            "destinationRect": {
+              "x": 32,
+              "y": 94,
+              "width": 191,
+              "height": 150
+            },
+            "sha256": "a5beea990c168de8eda5c5799aeb9f3acfba63ddf2becfbcbf6c7f534417ab10"
+          },
+          {
+            "state": "dead",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 712,
+              "y": 897,
+              "width": 355,
+              "height": 138
+            },
+            "scale": 0.6518105849582173,
+            "destinationRect": {
+              "x": 12,
+              "y": 154,
+              "width": 231,
+              "height": 90
+            },
+            "sha256": "41fd0e7479ee69b48597340a46e151289680725d7c61dc250ebddd0277017900"
+          },
+          {
+            "state": "dead",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+            "nativeRow": 2,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 1089,
+              "y": 912,
+              "width": 345,
+              "height": 123
+            },
+            "scale": 0.6518105849582173,
+            "destinationRect": {
+              "x": 15,
+              "y": 164,
+              "width": 225,
+              "height": 80
+            },
+            "sha256": "b19c384824672ea030a60b09285f53baf7316dd5ea839fe559522ac3e5bbd7b3"
+          },
+          {
+            "state": "defeat",
+            "frame": 0,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 0,
+            "sourceRect": {
+              "x": 38,
+              "y": 1412,
+              "width": 168,
+              "height": 213
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 40,
+              "y": 20,
+              "width": 176,
+              "height": 224
+            },
+            "sha256": "f918106b5b8658cd57367d03cc885c7b94808794da1d3f014e249caceabe925d"
+          },
+          {
+            "state": "defeat",
+            "frame": 1,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 1,
+            "sourceRect": {
+              "x": 234,
+              "y": 1414,
+              "width": 170,
+              "height": 203
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 39,
+              "y": 31,
+              "width": 178,
+              "height": 213
+            },
+            "sha256": "a4cfd4f5f5d8f132de2493c2f0e0de65b742a643d2f9eb7e66d8a17abb405d5b"
+          },
+          {
+            "state": "defeat",
+            "frame": 2,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 2,
+            "sourceRect": {
+              "x": 469,
+              "y": 1441,
+              "width": 163,
+              "height": 179
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 42,
+              "y": 56,
+              "width": 171,
+              "height": 188
+            },
+            "sha256": "542e25bfe0a2404e8f63b8acb80381d72a623fbc4a17484a82643d946d000ceb"
+          },
+          {
+            "state": "defeat",
+            "frame": 3,
+            "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+            "nativeRow": 6,
+            "nativeColumn": 3,
+            "sourceRect": {
+              "x": 698,
+              "y": 1441,
+              "width": 141,
+              "height": 176
+            },
+            "scale": 1.0493273542600896,
+            "destinationRect": {
+              "x": 54,
+              "y": 59,
+              "width": 148,
+              "height": 185
+            },
+            "sha256": "b9a63b091826d1f4a92eb4d4877fc9dc5400befdcb567e83b55b6f83663dfafb"
+          }
+        ],
+        "syntheticPoses": false,
+        "duplicatedFrames": 0,
+        "mirroredFrames": 0,
+        "nativeSourceStateOrder": [
+          "shieldEnter",
+          "shieldHold",
+          "shieldHit",
+          "perfectShield",
+          "shieldBreak",
+          null,
+          "defeat"
+        ],
+        "correctionRowsByState": {
+          "shieldExit": 1,
+          "dead": 2
+        },
+        "discardedNativeRows": [
+          5
+        ]
+      },
+      "visualValidation": {
+        "reviewed": true,
+        "completeRows": 8,
+        "distinctNativePoses": 32,
+        "wholeCharacterContained": true,
+        "facing": "right; dead ends in side-lying KO",
+        "outfit": "Adult base-form DBZ Goku: black spiky hair, orange gi/trousers, blue undershirt/belt/wristbands and blue boots with yellow/red trim.",
+        "weapons": "none; unarmed physical martial movements and forearm/palm guards",
+        "transformations": "none; base black-haired form throughout, no SSJ/UI/aura",
+        "correction": "Initial source has28 poses and omits shieldExit. Its mixed KO/return-to-guard row5 is excluded; strip rows1/2 supply eight new shieldExit/dead poses.",
+        "limitations": [
+          "Original generated fan art and adapted movement, not official frames.",
+          "Minor perspective, anatomy and apparent scale variations remain between the native sources; running uses suspended DBZ dash-like leg positions, and landing retains small ordinary contact-dust accents.",
+          "Timing and pixel identity are not certified 1:1 with official Dragon Ball Z animation frames."
+        ]
+      },
+      "provenance": {
+        "provider": "OpenAI",
+        "tool": "image_gen",
+        "model": null,
+        "jobId": null,
+        "generationId": null,
+        "date": "2026-10-18",
+        "nativeArtwork": true,
+        "canonicalVerified": false,
+        "networkVerified": false,
+        "canon1to1Verified": false,
+        "prompts": [
+          {
+            "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.prompt.txt",
+            "sha256": "87c2a813e8508d12a16b77ffbb0db5aa69666a254695896c20e317640c8cb079"
+          },
+          {
+            "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.prompt.txt",
+            "sha256": "6c3ac0f68360ed2f7e2427e94fd4befbf4c90a72ff656ecdf0a86b4fa1058d9f"
+          }
+        ],
+        "normalizationScript": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/normalize-goku-motion-atlases.mjs"
+      }
+    }
+  ],
+  "generations": [
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.native.png",
+      "sha256": "10fc1caa417fcaf6c87817f54da48aeb1a77e91f0e2e19fd90bda19e7aab591f",
+      "prompt": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-a.prompt.txt",
+      "promptSha256": "0be050b0af341cb011953726111543c6dae9d7e463ecfcac43a729251d72d839",
+      "retainedPoses": 32,
+      "sourcePoses": 32,
+      "discardedNativeRows": [],
+      "missingState": null,
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-original.png",
+          "sha256": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd"
+        },
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-presentation.png",
+          "sha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e"
+        }
+      ],
+      "rejected": false
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+      "sha256": "a4bc45c7944669b6eda21f1e01f2430fe59d6d2c127995e1d3924d42b6ae6902",
+      "prompt": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.prompt.txt",
+      "promptSha256": "0362f326eb69c58e524147865182b6824b31be2bf8044cab7028bc6c811cb82f",
+      "retainedPoses": 28,
+      "sourcePoses": 28,
+      "discardedNativeRows": [],
+      "missingState": "crouchCharge",
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-original.png",
+          "sha256": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd"
+        },
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-presentation.png",
+          "sha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e"
+        }
+      ],
+      "rejected": false
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+      "sha256": "78f5544667b75e36ae6cb854683d2ab27b640f885fd5b285de17bf68d1a4746b",
+      "prompt": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.prompt.txt",
+      "promptSha256": "87c2a813e8508d12a16b77ffbb0db5aa69666a254695896c20e317640c8cb079",
+      "retainedPoses": 24,
+      "sourcePoses": 28,
+      "discardedNativeRows": [
+        5
+      ],
+      "missingState": "shieldExit",
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-original.png",
+          "sha256": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd"
+        },
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-presentation.png",
+          "sha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e"
+        }
+      ],
+      "rejected": false
+    },
+    {
+      "provider": "OpenAI",
+      "tool": "image_gen",
+      "model": null,
+      "jobId": null,
+      "generationId": null,
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.native.png",
+      "sha256": "0f572f42c4f9496435cf363afd9e8513bfe0c6c9065eb34b0879c01eff1c3d52",
+      "prompt": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-correction-rows.prompt.txt",
+      "promptSha256": "6c3ac0f68360ed2f7e2427e94fd4befbf4c90a72ff656ecdf0a86b4fa1058d9f",
+      "retainedPoses": 12,
+      "sourcePoses": 12,
+      "discardedNativeRows": [],
+      "missingState": null,
+      "referencedImages": [
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-original.png",
+          "sha256": "3fc30f7dedb152612024d3a2cb6efe8cbad42875946866e3f754614846f2c5cd"
+        },
+        {
+          "path": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-reference-presentation.png",
+          "sha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e"
+        }
+      ],
+      "rejected": false
+    }
+  ],
+  "nativeGenerationCalls": 4,
+  "deliveredNativePoses": 96,
+  "incompleteInitialSources": [
+    {
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-motion-b.native.png",
+      "expectedPoses": 32,
+      "actualPoses": 28,
+      "retainedPoses": 28,
+      "missingState": "crouchCharge",
+      "resolution": "All28 initial drawings retained; four new native drawings supply crouchCharge."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+      "expectedPoses": 32,
+      "actualPoses": 28,
+      "retainedPoses": 24,
+      "missingState": "shieldExit",
+      "resolution": "Mixed KO/return-to-guard row5 excluded. Eight new native drawings supply shieldExit and coherent dead sequence."
+    }
+  ],
+  "discardedFrames": [
+    {
+      "sourceImage": "docs/combat-fidelity-wave4-2026-10-18/goku-sources/goku-defense.native.png",
+      "nativeRow": 5,
+      "nativeColumns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reason": "Original KO row returns to fighting guard in its fourth frame; all four illustrations excluded and replaced by a coherent native KO sequence."
+    }
+  ],
+  "rejectedSources": []
+}

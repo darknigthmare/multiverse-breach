@@ -1,0 +1,1801 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "part": "B",
+  "provider": "OpenAI",
+  "model": null,
+  "generationId": null,
+  "jobId": null,
+  "globalFidelity1to1": false,
+  "networkVerified": false,
+  "nativeSources": [
+    {
+      "heroId": "han_solo",
+      "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/han_solo-initial.png",
+      "sha256": "4271545cecf55dfb06eaa0bd0f678e89d68a9bcaf8b95efe8b4c684e19d1c742",
+      "originalGeneratedPath": "/workspace/generated_images/exec-7bc1bffc-72de-4d2b-9a88-0324af0f277b.png",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/han_solo-initial.txt",
+      "promptSha256": "79d465554a573d49bbdb16250c749a7c9f58414865997c1eca79563ad8993832",
+      "operation": "native-imagegen-initial",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 8,
+      "referenceInputs": [
+        {
+          "originalPath": "/workspace/multiverse-breach/public/sprites/generated/heroes/star-wars/han-solo.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-references/context-1155787614f9d471.png",
+          "sha256": "1155787614f9d471c76709485a32f8fe0dc7f43a8244dde3d1428f8594941c3f"
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "heroId": "leia_organa",
+      "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/leia_organa-initial.png",
+      "sha256": "d22529e9c62e2e92cfcbf419155cd0befa712f9d0ac33f24e0f5fa86ecd59cd3",
+      "originalGeneratedPath": "/workspace/generated_images/exec-1aa2d909-d809-4ad2-bc41-8fa7aa6e63de.png",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/leia_organa-initial.txt",
+      "promptSha256": "a45dd3621b171e20a02e8a19e6d2b06103f55cfcc92db5484aaeb5d5d2d2eee2",
+      "operation": "native-imagegen-initial",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 8,
+      "referenceInputs": [
+        {
+          "originalPath": "/workspace/multiverse-breach/public/sprites/generated/heroes/star-wars/leia-organa.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-references/context-9ec1e1ddd8478e5d.png",
+          "sha256": "9ec1e1ddd8478e5d6354ff4bca16108d1cbb81798f53f5ccc0a59cb5be95b27f"
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "heroId": "kenshin_himura",
+      "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-initial.png",
+      "sha256": "8cf3841008e0b47d50792e4e819bb9c3721910c2b89162593e04dc059ecd97cb",
+      "originalGeneratedPath": "/workspace/generated_images/exec-21ade78d-2e64-41c2-a2f5-06ff299c1642.png",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/kenshin_himura-initial.txt",
+      "promptSha256": "8dc5aa906cec3ff7d8b688691288ef9c9c5706777955dc7e28d24c68a9f5cf3f",
+      "operation": "native-imagegen-initial",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 8,
+      "referenceInputs": [
+        {
+          "originalPath": "/workspace/multiverse-breach/public/sprites/generated/heroes/rurouni-kenshin/kenshin-himura.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-references/context-c561b21109cd1847.png",
+          "sha256": "c561b21109cd1847fe239c26b60c0c625bf920321de3005a87bb0d039ce5cb13"
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "heroId": "kenshin_himura",
+      "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-correction.png",
+      "sha256": "41d49bf395bf6b7e08831c1d7d8660b2fa305f7c8c831b96560158d3120ef246",
+      "originalGeneratedPath": "/workspace/generated_images/exec-d3210399-a409-465b-84a7-f04fdc54a816.png",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/kenshin_himura-correction.txt",
+      "promptSha256": "f3eb69beb2ae6b8089738060f3031fc6d589f7dd61152def4515f6fab84b4ea4",
+      "operation": "native-imagegen-correction",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 1,
+      "referenceInputs": [
+        {
+          "originalPath": "/workspace/generated_images/exec-21ade78d-2e64-41c2-a2f5-06ff299c1642.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-initial.png",
+          "sha256": "8cf3841008e0b47d50792e4e819bb9c3721910c2b89162593e04dc059ecd97cb"
+        }
+      ],
+      "accepted": true,
+      "targetRows": [
+        4
+      ],
+      "reason": "Four opaque pixels of the finale-row last sword tip touch the source right edge; replace only four finale poses with a fully contained physical draw demonstration."
+    },
+    {
+      "heroId": "sanosuke_sagara",
+      "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-initial.png",
+      "sha256": "ce44f0cb664cb36b7115d042c48f7475ecee156c91a004e0f9297dc11e079d98",
+      "originalGeneratedPath": "/workspace/generated_images/exec-d95fe6a7-ae79-4db5-8cdf-fb5001b0ae20.png",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/sanosuke_sagara-initial.txt",
+      "promptSha256": "939a2c2c9d143ebc379ac6004dc23dc48246711953a8657f452d43213690a308",
+      "operation": "native-imagegen-initial",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 8,
+      "referenceInputs": [
+        {
+          "originalPath": "/workspace/multiverse-breach/public/sprites/generated/heroes/rurouni-kenshin/sanosuke-sagara.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-references/context-b3070363fce60bb5.png",
+          "sha256": "b3070363fce60bb5e1cc1d6bd8fe2e33c2f2fd44d2a03b6cc8e70c88d7191dbb"
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "heroId": "sanosuke_sagara",
+      "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-correction.png",
+      "sha256": "3a5c8403837f51cb28f843d0a3f12877466b303793d0de9043f6981bc574aa4d",
+      "originalGeneratedPath": "/workspace/generated_images/exec-585ade1f-38a0-4f07-9ab7-bc15dd65f024.png",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/sanosuke_sagara-correction.txt",
+      "promptSha256": "91b2507baedacc00575d560629cd92377ef1bad801b435d55679356493810f03",
+      "operation": "native-imagegen-correction",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 1,
+      "referenceInputs": [
+        {
+          "originalPath": "/workspace/generated_images/exec-d95fe6a7-ae79-4db5-8cdf-fb5001b0ae20.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-initial.png",
+          "sha256": "ce44f0cb664cb36b7115d042c48f7475ecee156c91a004e0f9297dc11e079d98"
+        }
+      ],
+      "accepted": true,
+      "targetRows": [
+        6
+      ],
+      "reason": "The original full-rest row has14 opaque pixels crossing a neighbouring cell seam around the extended resting poses. Replace only four rest cells with compact fully isolated new poses."
+    },
+    {
+      "heroId": "kaoru_kamiya",
+      "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kaoru_kamiya-initial.png",
+      "sha256": "91cd3e0af5bad6315c7c63587320d239bb81d137170ff5a3c217bb1c30f5acf1",
+      "originalGeneratedPath": "/workspace/generated_images/exec-614102e7-2f33-4c95-b1f9-3f0c4652a088.png",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/kaoru_kamiya-initial.txt",
+      "promptSha256": "9ad52ac6cdded7324c675a8ba784d6cdd43ae953944c12c9740d74886179cdb2",
+      "operation": "native-imagegen-initial",
+      "provider": "OpenAI",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "sourceRows": 8,
+      "referenceInputs": [
+        {
+          "originalPath": "/workspace/multiverse-breach/public/sprites/generated/heroes/rurouni-kenshin/kaoru-kamiya.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-references/context-e73f51e4f5cc802b.png",
+          "sha256": "e73f51e4f5cc802b682beecfccfbe93f309cf05976d486620bcefa1bade4eb2a"
+        }
+      ],
+      "accepted": true
+    }
+  ],
+  "records": [
+    {
+      "heroId": "han_solo",
+      "name": "Han Solo",
+      "universe": "Star Wars",
+      "referenceAsset": "/sprites/generated/heroes/star-wars/han-solo.png",
+      "sourceWork": "Star Wars: EpisodeIV — A New Hope (1977), black vest and DL-44 heavy blaster pistol",
+      "sourceReference": "Han Solo uses a DL-44 heavy blaster pistol in A New Hope. Tir précis au DL-44 is an authored single-target shot from that physical weapon; it does not manifest the MillenniumFalcon or convert a flight feat into a power.",
+      "referenceUsage": "Local black-vest Han sprite was inspected for costume context; its handheld terminal/hologram attack is explicitly replaced with the actual DL-44 blaster in the new native art.",
+      "referenceInputs": [
+        "/workspace/multiverse-breach/public/sprites/generated/heroes/star-wars/han-solo.png"
+      ],
+      "notes": [
+        "ANH adult Han: off-white shirt, black vest, navy trousers with redside stripe, holster, blackboots.",
+        "Physical DL-44 has Mauser-style silhouette, scope and muzzle attachment; no phone/hologram in combat.",
+        "Compact red blaster discharge is visual, not a Falcon call or repeating gameplay impact."
+      ],
+      "prompt": "Create ONE native2D pixel-art animation atlas, exactly4COLUMNS×8ROWS=32 genuinely different full-body poses. Desired1024×2048 transparentRGBA,256-square cells. Every pose has >=22px clear transparent margins on all4sides, all weapons/hair/clothing/lightsaber tips and restrained effects stay INSIDE its owncell, no touching adjacentcells. NO grid,labels,text,background,floor,panel,blackrectangle. Crisp detailed2Dgameart with readable anatomy and expressive faces, predominantly facingRIGHT, consistent comparable bodyheight. Every pose is natively drawn, no mirrored/repeated/recolored pose. Keep body itself large (~180–200pxhigh in comparable standingposes), no enormous effect dwarfing body. EIGHT SEPARATE ROWS EXACT ORDER:1INTRO;2OUTRO;3ROUND VICTORY;4ROUND DEFEAT AND RECOVER;5NON-GORY TECHNIQUE FINALE;6FULL VICTORY;7FULL DEFEAT REST;8SUPER. Four chronological distinctposes in everyrow; row4 brief loss/recovery and row7 final exhausted rest are different rows, never merge. Row5 and8 eight different poses of prescribed real weapon/defense action. No victim, blood, death execution, dismemberment, transformation, power beam or invented weapon.\nHAN SOLO adult HARRISON FORD original A NEW HOPE costume: mediumbrown hair, OFF-WHITE long-sleeve shirt openneck rolledslightcuffs, BLACK sleevelessutilityvest, NAVY trousers with narrow RED side-stripe, brownleatherbelt andthigh HOLSTER, tallblackboots. Not whiteHothcoat or Bespinflyingjacket. Use his actual physical DL-44 heavy BLASTER PISTOL, recognizable scoped Mauser-like body/shortmuzzleattachment/brown grip. The attachedoldcostume reference has a fake terminal: REMOVE everyphone/hologram/device and replacewith DL-44. Neveradd lightsaber, Force, Falcon/starship or magical beam. Blasterbolt is a short tiny RED segment/small muzzleflash containednear gun, not a longray.\nR1INTRO:1 entryhandatemptyholster;2 compact quickdrawactualDL44;3 sightcheckgunangleddown;4 confident singlehanded ready aim.\nR2OUTRO:1 lowergun barrel safe;2 twirlswrist slightly gunsafe;3 holstersgun andturns;4 walksout jacketveststillblack.\nR3ROUNDWIN:1 lowerspistolaftershot;2 cockysmirk sideglance;3 gunlow freehandatbelt;4 rechecksrightflankwithbriefreadyguard.\nR4ROUNDLOSSRECOVER:1 surprise backwardrecoil gunclose;2 stumblesbentknees;3 kneelsonehandbrace pistolpointedsafe;4 riseswith cautious lowaim.\nR5TECHNIQUEFINALE preciseDL44:1 drawsfromholster with leftfootfront;2 extends rightarmtoaim singlephysicalpistol;3 samepersondifferent recoilpose compactRED flashatgun;4 lowersDL44 with controlledfollowthrough. No victim/injury/floatingFalcon.\nR6FULLVICTORY:1 relievedexhale andgunlow;2 smallcockysmile freehand gesture;3 gunholstered bothhandsbelt;4 relaxedquarterturn withfriendlywave.\nR7FULLDEFEATREST:1 exhaustedkneel pistolholstered;2 sitskneesbent;3 reclinesonforearm;4 compactfullbody side-rest withbootsandfacevisible.\nR8SUPER DISTINCT preciseDL44sequence:1 pivotsright footback anddraws;2 kneebent two-handedsteadyDL44aim;3 braced single recoil NEWpose tiny REDmuzzleflash;4 pistolheldclose chestguard aftershot. All4bodyposes distinctfromrow5; noextraweapon,power,lightshow.",
+      "file": "/workspace/generated_images/exec-7bc1bffc-72de-4d2b-9a88-0324af0f277b.png",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/han_solo-initial.png",
+      "sourceImageSha256": "4271545cecf55dfb06eaa0bd0f678e89d68a9bcaf8b95efe8b4c684e19d1c742",
+      "originalGeneratedPath": "/workspace/generated_images/exec-7bc1bffc-72de-4d2b-9a88-0324af0f277b.png",
+      "originalSourceRows": 8,
+      "referenceArchive": "docs/combat-fidelity-wave7-2026-10-20/part-b-references/han_solo-local.png",
+      "referenceAssetSha256": "1155787614f9d471c76709485a32f8fe0dc7f43a8244dde3d1428f8594941c3f",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/han_solo-initial.txt",
+      "promptSha256": "79d465554a573d49bbdb16250c749a7c9f58414865997c1eca79563ad8993832",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "nativeCorrection": false,
+      "correctionDetails": null,
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/han_solo-initial.png",
+          "sourceImageSha256": "4271545cecf55dfb06eaa0bd0f678e89d68a9bcaf8b95efe8b4c684e19d1c742",
+          "sourceRows": 8,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/han_solo-initial.png",
+          "sourceImageSha256": "4271545cecf55dfb06eaa0bd0f678e89d68a9bcaf8b95efe8b4c684e19d1c742",
+          "sourceRows": 8,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/han_solo-initial.png",
+          "sourceImageSha256": "4271545cecf55dfb06eaa0bd0f678e89d68a9bcaf8b95efe8b4c684e19d1c742",
+          "sourceRows": 8,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/han_solo-initial.png",
+          "sourceImageSha256": "4271545cecf55dfb06eaa0bd0f678e89d68a9bcaf8b95efe8b4c684e19d1c742",
+          "sourceRows": 8,
+          "sourceRow": 3
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/han_solo-initial.png",
+          "sourceImageSha256": "4271545cecf55dfb06eaa0bd0f678e89d68a9bcaf8b95efe8b4c684e19d1c742",
+          "sourceRows": 8,
+          "sourceRow": 4
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/han_solo-initial.png",
+          "sourceImageSha256": "4271545cecf55dfb06eaa0bd0f678e89d68a9bcaf8b95efe8b4c684e19d1c742",
+          "sourceRows": 8,
+          "sourceRow": 5
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/han_solo-initial.png",
+          "sourceImageSha256": "4271545cecf55dfb06eaa0bd0f678e89d68a9bcaf8b95efe8b4c684e19d1c742",
+          "sourceRows": 8,
+          "sourceRow": 6
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/han_solo-initial.png",
+          "sourceImageSha256": "4271545cecf55dfb06eaa0bd0f678e89d68a9bcaf8b95efe8b4c684e19d1c742",
+          "sourceRows": 8,
+          "sourceRow": 7
+        }
+      ],
+      "statureByPhase": {
+        "intro": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              84,
+              12,
+              117,
+              227
+            ],
+            "normalizedBodyHeight": 227,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              84,
+              12,
+              117,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 220.15086206896552,
+            "nativeReferenceBodyHeight": 220.15086206896552,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "outro": {
+          "renderScale": 1.044444,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              80,
+              22,
+              110,
+              221
+            ],
+            "normalizedBodyHeight": 221,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              84,
+              12,
+              117,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 223.85775862068965,
+            "nativeReferenceBodyHeight": 220.15086206896552,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "roundVictory": {
+          "renderScale": 1.053333,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              80,
+              21,
+              127,
+              222
+            ],
+            "normalizedBodyHeight": 222,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              84,
+              12,
+              117,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 226.78448275862067,
+            "nativeReferenceBodyHeight": 220.15086206896552,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "roundDefeat": {
+          "renderScale": 0.977778,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              56,
+              14,
+              173,
+              229
+            ],
+            "normalizedBodyHeight": 229,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              84,
+              12,
+              117,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 217.1551724137931,
+            "nativeReferenceBodyHeight": 220.15086206896552,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "fatality": {
+          "renderScale": 1.026667,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              57,
+              17,
+              152,
+              225
+            ],
+            "normalizedBodyHeight": 225,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              84,
+              12,
+              117,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 224.0301724137931,
+            "nativeReferenceBodyHeight": 220.15086206896552,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "victory": {
+          "renderScale": 1.088889,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              80,
+              19,
+              98,
+              220
+            ],
+            "normalizedBodyHeight": 220,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              84,
+              12,
+              117,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 232.32758620689654,
+            "nativeReferenceBodyHeight": 220.15086206896552,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "defeat": {
+          "renderScale": 1.124444,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              62,
+              94,
+              112,
+              147
+            ],
+            "normalizedBodyHeight": 147,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              84,
+              12,
+              117,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 160.3060344827586,
+            "nativeReferenceBodyHeight": 220.15086206896552,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "super": {
+          "renderScale": 0.977778,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              51,
+              14,
+              155,
+              227
+            ],
+            "normalizedBodyHeight": 227,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              84,
+              12,
+              117,
+              227
+            ],
+            "referenceBodyHeight": 227,
+            "nativeComparableBodyHeight": 215.2586206896552,
+            "nativeReferenceBodyHeight": 220.15086206896552,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "leia_organa",
+      "name": "Leia Organa",
+      "universe": "Star Wars",
+      "referenceAsset": "/sprites/generated/heroes/star-wars/leia-organa.png",
+      "sourceWork": "Star Wars: EpisodeIV — A New Hope (1977), white princess dress and blaster",
+      "sourceReference": "Leia carries and fires a blaster in A New Hope, including aboard the TantiveIV. This authored shot preserves the existing single-target blaster special without importing Force combat or an outfit from another era.",
+      "referenceUsage": "The local white ANH outfit/bun hairstyle was inspected and supplied as costume context. Existing drawn magical shield cells are explicitly excluded from the new authored blaster choreography.",
+      "referenceInputs": [
+        "/workspace/multiverse-breach/public/sprites/generated/heroes/star-wars/leia-organa.png"
+      ],
+      "notes": [
+        "ANH white highneck floorlengthdress, silverbelt, whiteboots, brown sidebuns; no slave/Hoth/Bespin/adult sequeloutfit.",
+        "Weapon is a physical ANH blaster, with a compact red shot.",
+        "No Force shield, healing halo, lightsaber or telekinetic offensive beam."
+      ],
+      "prompt": "Create ONE native2D pixel-art animation atlas, exactly4COLUMNS×8ROWS=32 genuinely different full-body poses. Desired1024×2048 transparentRGBA,256-square cells. Every pose has >=22px clear transparent margins on all4sides, all weapons/hair/clothing/lightsaber tips and restrained effects stay INSIDE its owncell, no touching adjacentcells. NO grid,labels,text,background,floor,panel,blackrectangle. Crisp detailed2Dgameart with readable anatomy and expressive faces, predominantly facingRIGHT, consistent comparable bodyheight. Every pose is natively drawn, no mirrored/repeated/recolored pose. Keep body itself large (~180–200pxhigh in comparable standingposes), no enormous effect dwarfing body. EIGHT SEPARATE ROWS EXACT ORDER:1INTRO;2OUTRO;3ROUND VICTORY;4ROUND DEFEAT AND RECOVER;5NON-GORY TECHNIQUE FINALE;6FULL VICTORY;7FULL DEFEAT REST;8SUPER. Four chronological distinctposes in everyrow; row4 brief loss/recovery and row7 final exhausted rest are different rows, never merge. Row5 and8 eight different poses of prescribed real weapon/defense action. No victim, blood, death execution, dismemberment, transformation, power beam or invented weapon.\nPRINCESS LEIA ORGANA adult CARRIE FISHER A NEW HOPE1977 costumeonly: iconic DARKBROWN SIDE BUN HAIR, floorlength WHITE long-sleeved highneck dress, SILVER belt, whiteboots underdress. Keep WHITE costumeall32frames, no Hoth/Bespin/sequel/bikinioutfit. Actual physical black ANH blaster pistol, long slender barrel like Defender sportingblaster aboardTantiveIV. Attachedreference is whitecostumecontextonly: oldblue circles/shields are WRONG, REMOVE allmagicalshield/Forcepowers, no healhalo/lightsaber. Blasterbolt is a tiny RED segmentatgun with smallmuzzleflash, not blue or giantbeam.\nR1INTRO:1 alertentry freehandgathersdressslightly;2 drawsblasterfrombesidebelt;3 scansright pistolclose;4 confidentforwardaim.\nR2OUTRO:1 lowersgun;2 safetycheckgun handclose;3 turnsrobesleevesflow;4 walkingoutcalmly.\nR3ROUNDWIN:1 controlledpistollower;2 nodofdetermination;3 compactleftpalm regroupgesture whilegunpointssafe;4 renewedrightwardreadyguard.\nR4ROUNDLOSSRECOVER:1 guardedrecoil freehandup;2 stumbleskneesbent dressfolds;3 singlekneebracegunlow;4 resilienthalf-rise aimingagain.\nR5TECHNIQUEFINALE Tir au blaster de Leia:1 pivotsdraw withrightfootfront;2 extendsonearm blacklongbarrelblastertoaim;3 tinyredmuzzleflash anddistinctbodyrecoil;4 lowerspistolintosafecloseguard. NO supernatural effects.\nR6FULLVICTORY:1 relievedbreath pistolpointeddown;2 quietsmilewithfreehandatheart;3 gunstowed handssilverbelt;4 dignifiedquarterturnandgentlewave.\nR7FULLDEFEATREST:1 tiredkneeldressfolded;2 seatedkneesbentwithfeetvisible;3 supportedforearmrestgunsecure;4 compactfullbody sidelyingrestfullycovered/noinjury.\nR8SUPER DIFFERENT blastershotsequence:1 compactkneebent lowgunwindup;2 two-handed bracedblackblasteraim;3 newredflash/recoil sleeveandbodydifferentfromrow5;4 straightensrightfootbackguncloseaftershot. No healing/shield/Forcebeam.",
+      "file": "/workspace/generated_images/exec-1aa2d909-d809-4ad2-bc41-8fa7aa6e63de.png",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/leia_organa-initial.png",
+      "sourceImageSha256": "d22529e9c62e2e92cfcbf419155cd0befa712f9d0ac33f24e0f5fa86ecd59cd3",
+      "originalGeneratedPath": "/workspace/generated_images/exec-1aa2d909-d809-4ad2-bc41-8fa7aa6e63de.png",
+      "originalSourceRows": 8,
+      "referenceArchive": "docs/combat-fidelity-wave7-2026-10-20/part-b-references/leia_organa-local.png",
+      "referenceAssetSha256": "9ec1e1ddd8478e5d6354ff4bca16108d1cbb81798f53f5ccc0a59cb5be95b27f",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/leia_organa-initial.txt",
+      "promptSha256": "a45dd3621b171e20a02e8a19e6d2b06103f55cfcc92db5484aaeb5d5d2d2eee2",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "nativeCorrection": false,
+      "correctionDetails": null,
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/leia_organa-initial.png",
+          "sourceImageSha256": "d22529e9c62e2e92cfcbf419155cd0befa712f9d0ac33f24e0f5fa86ecd59cd3",
+          "sourceRows": 8,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/leia_organa-initial.png",
+          "sourceImageSha256": "d22529e9c62e2e92cfcbf419155cd0befa712f9d0ac33f24e0f5fa86ecd59cd3",
+          "sourceRows": 8,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/leia_organa-initial.png",
+          "sourceImageSha256": "d22529e9c62e2e92cfcbf419155cd0befa712f9d0ac33f24e0f5fa86ecd59cd3",
+          "sourceRows": 8,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/leia_organa-initial.png",
+          "sourceImageSha256": "d22529e9c62e2e92cfcbf419155cd0befa712f9d0ac33f24e0f5fa86ecd59cd3",
+          "sourceRows": 8,
+          "sourceRow": 3
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/leia_organa-initial.png",
+          "sourceImageSha256": "d22529e9c62e2e92cfcbf419155cd0befa712f9d0ac33f24e0f5fa86ecd59cd3",
+          "sourceRows": 8,
+          "sourceRow": 4
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/leia_organa-initial.png",
+          "sourceImageSha256": "d22529e9c62e2e92cfcbf419155cd0befa712f9d0ac33f24e0f5fa86ecd59cd3",
+          "sourceRows": 8,
+          "sourceRow": 5
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/leia_organa-initial.png",
+          "sourceImageSha256": "d22529e9c62e2e92cfcbf419155cd0befa712f9d0ac33f24e0f5fa86ecd59cd3",
+          "sourceRows": 8,
+          "sourceRow": 6
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/leia_organa-initial.png",
+          "sourceImageSha256": "d22529e9c62e2e92cfcbf419155cd0befa712f9d0ac33f24e0f5fa86ecd59cd3",
+          "sourceRows": 8,
+          "sourceRow": 7
+        }
+      ],
+      "statureByPhase": {
+        "intro": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              51,
+              22,
+              155,
+              216
+            ],
+            "normalizedBodyHeight": 216,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              51,
+              22,
+              155,
+              216
+            ],
+            "referenceBodyHeight": 216,
+            "nativeComparableBodyHeight": 206.6896551724138,
+            "nativeReferenceBodyHeight": 206.6896551724138,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "outro": {
+          "renderScale": 1.099099,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              74,
+              27,
+              102,
+              204
+            ],
+            "normalizedBodyHeight": 204,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              51,
+              22,
+              155,
+              216
+            ],
+            "referenceBodyHeight": 216,
+            "nativeComparableBodyHeight": 214.55172413793105,
+            "nativeReferenceBodyHeight": 206.6896551724138,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "roundVictory": {
+          "renderScale": 1.040541,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              72,
+              14,
+              110,
+              224
+            ],
+            "normalizedBodyHeight": 224,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              51,
+              22,
+              155,
+              216
+            ],
+            "referenceBodyHeight": 216,
+            "nativeComparableBodyHeight": 223.0344827586207,
+            "nativeReferenceBodyHeight": 206.6896551724138,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "roundDefeat": {
+          "renderScale": 0.963964,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              43,
+              23,
+              160,
+              218
+            ],
+            "normalizedBodyHeight": 218,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              51,
+              22,
+              155,
+              216
+            ],
+            "referenceBodyHeight": 216,
+            "nativeComparableBodyHeight": 201.08620689655174,
+            "nativeReferenceBodyHeight": 206.6896551724138,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "fatality": {
+          "renderScale": 1.315315,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              59,
+              65,
+              123,
+              169
+            ],
+            "normalizedBodyHeight": 169,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              51,
+              22,
+              155,
+              216
+            ],
+            "referenceBodyHeight": 216,
+            "nativeComparableBodyHeight": 212.70689655172416,
+            "nativeReferenceBodyHeight": 206.6896551724138,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "victory": {
+          "renderScale": 1.076577,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              66,
+              24,
+              120,
+              217
+            ],
+            "normalizedBodyHeight": 217,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              51,
+              22,
+              155,
+              216
+            ],
+            "referenceBodyHeight": 216,
+            "nativeComparableBodyHeight": 223.54741379310346,
+            "nativeReferenceBodyHeight": 206.6896551724138,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "defeat": {
+          "renderScale": 1.328829,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              56,
+              112,
+              129,
+              129
+            ],
+            "normalizedBodyHeight": 129,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              51,
+              22,
+              155,
+              216
+            ],
+            "referenceBodyHeight": 216,
+            "nativeComparableBodyHeight": 164.03017241379308,
+            "nativeReferenceBodyHeight": 206.6896551724138,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "super": {
+          "renderScale": 1.144144,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              46,
+              73,
+              147,
+              164
+            ],
+            "normalizedBodyHeight": 164,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              51,
+              22,
+              155,
+              216
+            ],
+            "referenceBodyHeight": 216,
+            "nativeComparableBodyHeight": 179.55172413793102,
+            "nativeReferenceBodyHeight": 206.6896551724138,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "kenshin_himura",
+      "name": "Kenshin Himura",
+      "universe": "Rurouni Kenshin",
+      "referenceAsset": "/sprites/generated/heroes/rurouni-kenshin/kenshin-himura.png",
+      "sourceWork": "Rurouni Kenshin TVanime1996 — Kyoto arc, adult Kenshin with sakabatō",
+      "sourceReference": "Amakakeru Ryū no Hirameki is the Hiten Mitsurugi-ryū battōjutsu ultimate technique. The authored poses emphasize left-foot-forward draw, physical reverse-blade sword and rotational follow-through; not a projectile or elemental power. No original frame count or live-action likeness is claimed.",
+      "referenceUsage": "Local anime Kenshin sprite inspected; red/orange hair, tied ponytail, cheek-cross scar and sakabatō context, adapted to the1996 Kyoto pink/red kimono continuity.",
+      "referenceInputs": [
+        "/workspace/multiverse-breach/public/sprites/generated/heroes/rurouni-kenshin/kenshin-himura.png"
+      ],
+      "notes": [
+        "Adult fictional1996 anime Kenshin, orange/red tiedhair, leftcheekcrossscar, pink/redkimono/whitehakama and reverse-bladesword.",
+        "Amakakeru uses physicaldrawandrotation; no flyingdragon, elementalwave or extraauthoritative damage.",
+        "Native technique phases are compact gameplay presentation, nofilmactor or exactsourceframes."
+      ],
+      "prompt": "Make ONE NATIVE2D pixel-art ANIMATIONATLAS for a fictional ANIME1996 character,4COLUMNS×8ROWS exactly32distinctfullbodyposes. Target1024×2048 RGBA,256-squarecells,cleanemptytransparentbackground. Generous22px alphamarginseverycellandspacedgutters. Fullhair/feet/hands/clothes/physicalweaponinsidecell. Bodylarge/readablearound180–200px standing, props/effectssmall. PredominantlyRIGHT facing. Eightrows exactly:INTRO,OUTRO,ROUNDVICTORY,ROUNDDEFEAT-RECOVERY,TECHNIQUE-FINALE,VICTORY,DEFEAT-REST,SUPER;4chronologicalrealbodyposesin eachrow. Roundloss brieflyrecovers; finalrest remainsresting,do notmergethem. Eachcell is newlydrawn withdifferentarticulation, notduplicate/mirror/recolor. Solitarymartialartsdemonstration poses, intactclothingandbody, emptybackground, annotation-free.\nKENSHIN HIMURA fictional ADULT anime1996 Kyotoarc, NOTliveactionperson. Orange-red longhair tiedLOWPONYTAIL with loosefringe, smallCROSSSCARonLEFTcheek, slimadultfaceandbody, dustypink/deepred kimono, WHITE hakama, lightobi, sandalswithdarkstraps. Real SAKABATŌ reverse-bladekatana andscabbard atleftwaist, silverblade/plainhilt; compactphysicalblade only. Sourceoldanimereference foridentity, preserveadultanime proportions andwarmclassicTVpalette. Technique AMAKAKERU RYU NO HIRAMEKI: leftfootstepsforward into fastbatto draw, rightdrawhandand leftsheathhand, bodilyrotationandcontrolledfollowthrough. The cuttingedge is on reverseoutside; neverordinaryfantasypower sword.\nR1INTRO:1 calmstepin handtouchesscabbard;2 courteoussmallbow;3 righthandsettlesonhilt waist;4 lowleftfootforwardreadiness.\nR2OUTRO:1 lowersdrawnblade;2 carefullyresheathes;3 turnsponytailflowing;4 calmdepartingstride.\nR3ROUNDVICTORY:1 straightensbladelow;2 controlledresheathingdifferentangle;3 relievedsmallsmilehandchest;4 renewedhiltreadyfooting.\nR4ROUNDDEFEATRECOVERY:1 backwardbrace handsclose;2 kneebentstumblehakama folds;3 onekneebraced handground;4 riseslowwithscabbardguard.\nR5TECHNIQUEFINALE:1 crouchedIai swordSHEATHED withrighthandonhilt;2 LEFT FOOTforward andactualblade partiallydrawing;3 rotatedhip fullphysicaldrawacrossfront compactsilverbladeinsidescell;4 plantedrotationfinish bladeangleddown andfreehandstabilizing. Onlysmallneutralmotionaccent, actualbodydrawn.\nR6VICTORY:1 lowersshouldersswordstowed;2 softsmilegentlesmallwave;3 handreadjustsobi;4 peacefulquarterturn.\nR7DEFEATREST:1 kneelswearysakabatosheathed;2 sitshakama folds;3 reclinesonforearm fullsandalsvisible;4 compactside-rest ponytailsafebesidebody,intact.\nR8SUPER DIFFERENT Amakakeru sequence:1 lowhipsrightfootrear withhiltclosetorightwaist;2 newLEFT-footadvancingdraw posture torsoleansforward;3 rotationalfollowthroughrearheelpivot andcompactdiagonalsilverblade;4 re-centeringbodykneesbentbladecloseinsaferecovery. Different4posesfromrow5. No dragon, magicbeam, fire, floatingafterimage or massiveslasheffect. Keepbladesclearofneighborcells.",
+      "file": "/workspace/generated_images/exec-21ade78d-2e64-41c2-a2f5-06ff299c1642.png",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-initial.png",
+      "sourceImageSha256": "8cf3841008e0b47d50792e4e819bb9c3721910c2b89162593e04dc059ecd97cb",
+      "originalGeneratedPath": "/workspace/generated_images/exec-21ade78d-2e64-41c2-a2f5-06ff299c1642.png",
+      "originalSourceRows": 8,
+      "referenceArchive": "docs/combat-fidelity-wave7-2026-10-20/part-b-references/kenshin_himura-local.png",
+      "referenceAssetSha256": "c561b21109cd1847fe239c26b60c0c625bf920321de3005a87bb0d039ce5cb13",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/kenshin_himura-initial.txt",
+      "promptSha256": "8dc5aa906cec3ff7d8b688691288ef9c9c5706777955dc7e28d24c68a9f5cf3f",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "nativeCorrection": true,
+      "correctionDetails": {
+        "path": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-correction.png",
+        "sha256": "41d49bf395bf6b7e08831c1d7d8660b2fa305f7c8c831b96560158d3120ef246",
+        "sourceRows": 1,
+        "targetRows": [
+          4
+        ],
+        "reason": "Four opaque pixels of the finale-row last sword tip touch the source right edge; replace only four finale poses with a fully contained physical draw demonstration.",
+        "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/kenshin_himura-correction.txt",
+        "promptSha256": "f3eb69beb2ae6b8089738060f3031fc6d589f7dd61152def4515f6fab84b4ea4",
+        "referenceInputs": [
+          {
+            "originalPath": "/workspace/generated_images/exec-21ade78d-2e64-41c2-a2f5-06ff299c1642.png",
+            "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-initial.png",
+            "sha256": "8cf3841008e0b47d50792e4e819bb9c3721910c2b89162593e04dc059ecd97cb"
+          }
+        ]
+      },
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-initial.png",
+          "sourceImageSha256": "8cf3841008e0b47d50792e4e819bb9c3721910c2b89162593e04dc059ecd97cb",
+          "sourceRows": 8,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-initial.png",
+          "sourceImageSha256": "8cf3841008e0b47d50792e4e819bb9c3721910c2b89162593e04dc059ecd97cb",
+          "sourceRows": 8,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-initial.png",
+          "sourceImageSha256": "8cf3841008e0b47d50792e4e819bb9c3721910c2b89162593e04dc059ecd97cb",
+          "sourceRows": 8,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-initial.png",
+          "sourceImageSha256": "8cf3841008e0b47d50792e4e819bb9c3721910c2b89162593e04dc059ecd97cb",
+          "sourceRows": 8,
+          "sourceRow": 3
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-correction.png",
+          "sourceImageSha256": "41d49bf395bf6b7e08831c1d7d8660b2fa305f7c8c831b96560158d3120ef246",
+          "sourceRows": 1,
+          "sourceRow": 0
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-initial.png",
+          "sourceImageSha256": "8cf3841008e0b47d50792e4e819bb9c3721910c2b89162593e04dc059ecd97cb",
+          "sourceRows": 8,
+          "sourceRow": 5
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-initial.png",
+          "sourceImageSha256": "8cf3841008e0b47d50792e4e819bb9c3721910c2b89162593e04dc059ecd97cb",
+          "sourceRows": 8,
+          "sourceRow": 6
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kenshin_himura-initial.png",
+          "sourceImageSha256": "8cf3841008e0b47d50792e4e819bb9c3721910c2b89162593e04dc059ecd97cb",
+          "sourceRows": 8,
+          "sourceRow": 7
+        }
+      ],
+      "statureByPhase": {
+        "intro": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              77,
+              18,
+              128,
+              219
+            ],
+            "normalizedBodyHeight": 219,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              18,
+              128,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 212.39224137931035,
+            "nativeReferenceBodyHeight": 212.39224137931035,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "outro": {
+          "renderScale": 1.017778,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              63,
+              28,
+              127,
+              207
+            ],
+            "normalizedBodyHeight": 207,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              18,
+              128,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 204.32327586206898,
+            "nativeReferenceBodyHeight": 212.39224137931035,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "roundVictory": {
+          "renderScale": 1.337778,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              79,
+              72,
+              116,
+              169
+            ],
+            "normalizedBodyHeight": 169,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              18,
+              128,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 219.26293103448273,
+            "nativeReferenceBodyHeight": 212.39224137931035,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "roundDefeat": {
+          "renderScale": 1.022222,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              41,
+              37,
+              186,
+              190
+            ],
+            "normalizedBodyHeight": 190,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              18,
+              128,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 188.36206896551724,
+            "nativeReferenceBodyHeight": 212.39224137931035,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "fatality": {
+          "renderScale": 1.021856,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              61,
+              14,
+              128,
+              227
+            ],
+            "normalizedBodyHeight": 227,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              18,
+              128,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 224.96246705721725,
+            "nativeReferenceBodyHeight": 212.39224137931035,
+            "sourceDensityRatio": 0.4083793738489871,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "victory": {
+          "renderScale": 1.057778,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              65,
+              14,
+              122,
+              226
+            ],
+            "normalizedBodyHeight": 226,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              18,
+              128,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 231.8448275862069,
+            "nativeReferenceBodyHeight": 212.39224137931035,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "defeat": {
+          "renderScale": 1.106667,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              59,
+              100,
+              124,
+              141
+            ],
+            "normalizedBodyHeight": 141,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              18,
+              128,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 151.33189655172413,
+            "nativeReferenceBodyHeight": 212.39224137931035,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "super": {
+          "renderScale": 1.048889,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              42,
+              60,
+              165,
+              177
+            ],
+            "normalizedBodyHeight": 177,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              77,
+              18,
+              128,
+              219
+            ],
+            "referenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 180.05172413793102,
+            "nativeReferenceBodyHeight": 212.39224137931035,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "sanosuke_sagara",
+      "name": "Sanosuke Sagara",
+      "universe": "Rurouni Kenshin",
+      "referenceAsset": "/sprites/generated/heroes/rurouni-kenshin/sanosuke-sagara.png",
+      "sourceWork": "Rurouni Kenshin TVanime1996 — Kyoto arc, Sanosuke after learning Futae no Kiwami",
+      "sourceReference": "Sanosuke learns Futae no Kiwami from Anji; it is a two-stage physical fist impact. The native poses show fist preparation, first knuckle presentation and a committed clenched-fist follow-through, without a ranged blast or invented weapon.",
+      "referenceUsage": "Local1996-style Sanosuke sprite inspected for spiky hair, headband, white open jacket/trousers and physical brawler build. No actor likeness or early-arc zanbatō introduced.",
+      "referenceInputs": [
+        "/workspace/multiverse-breach/public/sprites/generated/heroes/rurouni-kenshin/sanosuke-sagara.png"
+      ],
+      "notes": [
+        "Kyoto1996 Sanosuke: blackspikyhair,redheadband,whiteopenjacketandtrousers/navytrim, wrappedwaist andankles; fistfighting.",
+        "Futae no Kiwami two-stage fist articulation is visualonly, not extraenginehits.",
+        "No zanbatō, Goku-aura, lightning or ranged groundshock."
+      ],
+      "prompt": "Make ONE NATIVE2D pixel-art ANIMATIONATLAS for a fictional ANIME1996 character,4COLUMNS×8ROWS exactly32distinctfullbodyposes. Target1024×2048 RGBA,256-squarecells,cleanemptytransparentbackground. Generous22px alphamarginseverycellandspacedgutters. Fullhair/feet/hands/clothes/physicalweaponinsidecell. Bodylarge/readablearound180–200px standing, props/effectssmall. PredominantlyRIGHT facing. Eightrows exactly:INTRO,OUTRO,ROUNDVICTORY,ROUNDDEFEAT-RECOVERY,TECHNIQUE-FINALE,VICTORY,DEFEAT-REST,SUPER;4chronologicalrealbodyposesin eachrow. Roundloss brieflyrecovers; finalrest remainsresting,do notmergethem. Eachcell is newlydrawn withdifferentarticulation, notduplicate/mirror/recolor. Solitarymartialartsdemonstration poses, intactclothingandbody, emptybackground, annotation-free.\nSANOSUKE SAGARA fictional ADULT 1996anime Kyotoarc, tallmuscularlean youngman, BLACKspikyhair, REDlongheadband, WHITEOPENJACKETnavytrim exposingwrappedmidriff/upperchest, whitepants/navywaisttie, anklewrapsandsandals. Smallactualblack'惡'garmentmark mayappearonlyonback; noexternaltext. MatchprovidedclassicTVanimeidentity, notliveaction. Barephysicalfists, NOsword/zanbato/weapon/gloves/energy. FUTAE NO KIWAMI is two-stage physical punch: articulateknucklesandclenchfingersthroughcontact, shoulder/hip/footing drive it; no magicalray/shockwave. Bodylargeandreadable withcompactfists.\nR1INTRO:1 casualentryhandpocket;2 rollsrightshoulder;3 knucklecrackwithbothhands;4 relaxedconfidentboxerguard.\nR2OUTRO:1 lowersfists;2 rubsneckwithcockysmile;3 turnsjacketback/headbandtrailing;4 walkingoutwithhandpocket.\nR3ROUNDVICTORY:1 straightenswithfistlow;2 smallrightfistpump;3 nodsgrinninghandbelt;4 guardresetnewstance.\nR4ROUNDDEFEATRECOVERY:1 bracedbackwardrecoil;2 bentkneestumble;3 onehandgroundandonekneebrace;4 riseswithleftfistnearcheek.\nR5TECHNIQUEFINALE Futae noKiwami:1 rightfistdrawnbackcompact hipwindup;2 shortforwardstep firstknucklecontactpose fingerspartlycurled;3 committedfullfist punch withnewshoulderrotation, compacttancontactaccentonly;4 low plantedfollowthroughrightarmretracts. Fourdistinctrealposes, emptyspaceahead.\nR6VICTORY:1 relievedstretchshoulder;2 broadfriendlygrin handhip;3 relaxedfistknockleftpalm;4 friendlywavequarterturn.\nR7DEFEATREST:1 exhaustedkneelhandwaist;2 sitscrossedankles;3 reclinesonforearm headbandloose;4 compactside-rest fullbodyandfeetvisible/intact.\nR8SUPER DIFFERENTFutaesequence:1 lowwidefootingbothfistsclose;2 pivotfrontfootfirstknucklesonleadingrightarm;3 newlydrawnfull-fistcontactposture leftfootdrivesandtorsoquarterturn;4 shouldersrecenter retractingfist highguard. Different8posesacrossrow5/8, anatomicalfistchangesnotduplicatepositions. No Gokuenergy, projectile, lightning, explosiveenvironment or victim.",
+      "file": "/workspace/generated_images/exec-d95fe6a7-ae79-4db5-8cdf-fb5001b0ae20.png",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-initial.png",
+      "sourceImageSha256": "ce44f0cb664cb36b7115d042c48f7475ecee156c91a004e0f9297dc11e079d98",
+      "originalGeneratedPath": "/workspace/generated_images/exec-d95fe6a7-ae79-4db5-8cdf-fb5001b0ae20.png",
+      "originalSourceRows": 8,
+      "referenceArchive": "docs/combat-fidelity-wave7-2026-10-20/part-b-references/sanosuke_sagara-local.png",
+      "referenceAssetSha256": "b3070363fce60bb5e1cc1d6bd8fe2e33c2f2fd44d2a03b6cc8e70c88d7191dbb",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/sanosuke_sagara-initial.txt",
+      "promptSha256": "939a2c2c9d143ebc379ac6004dc23dc48246711953a8657f452d43213690a308",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "nativeCorrection": true,
+      "correctionDetails": {
+        "path": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-correction.png",
+        "sha256": "3a5c8403837f51cb28f843d0a3f12877466b303793d0de9043f6981bc574aa4d",
+        "sourceRows": 1,
+        "targetRows": [
+          6
+        ],
+        "reason": "The original full-rest row has14 opaque pixels crossing a neighbouring cell seam around the extended resting poses. Replace only four rest cells with compact fully isolated new poses.",
+        "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/sanosuke_sagara-correction.txt",
+        "promptSha256": "91b2507baedacc00575d560629cd92377ef1bad801b435d55679356493810f03",
+        "referenceInputs": [
+          {
+            "originalPath": "/workspace/generated_images/exec-d95fe6a7-ae79-4db5-8cdf-fb5001b0ae20.png",
+            "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-initial.png",
+            "sha256": "ce44f0cb664cb36b7115d042c48f7475ecee156c91a004e0f9297dc11e079d98"
+          }
+        ]
+      },
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-initial.png",
+          "sourceImageSha256": "ce44f0cb664cb36b7115d042c48f7475ecee156c91a004e0f9297dc11e079d98",
+          "sourceRows": 8,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-initial.png",
+          "sourceImageSha256": "ce44f0cb664cb36b7115d042c48f7475ecee156c91a004e0f9297dc11e079d98",
+          "sourceRows": 8,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-initial.png",
+          "sourceImageSha256": "ce44f0cb664cb36b7115d042c48f7475ecee156c91a004e0f9297dc11e079d98",
+          "sourceRows": 8,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-initial.png",
+          "sourceImageSha256": "ce44f0cb664cb36b7115d042c48f7475ecee156c91a004e0f9297dc11e079d98",
+          "sourceRows": 8,
+          "sourceRow": 3
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-initial.png",
+          "sourceImageSha256": "ce44f0cb664cb36b7115d042c48f7475ecee156c91a004e0f9297dc11e079d98",
+          "sourceRows": 8,
+          "sourceRow": 4
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-initial.png",
+          "sourceImageSha256": "ce44f0cb664cb36b7115d042c48f7475ecee156c91a004e0f9297dc11e079d98",
+          "sourceRows": 8,
+          "sourceRow": 5
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-correction.png",
+          "sourceImageSha256": "3a5c8403837f51cb28f843d0a3f12877466b303793d0de9043f6981bc574aa4d",
+          "sourceRows": 1,
+          "sourceRow": 0
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/sanosuke_sagara-initial.png",
+          "sourceImageSha256": "ce44f0cb664cb36b7115d042c48f7475ecee156c91a004e0f9297dc11e079d98",
+          "sourceRows": 8,
+          "sourceRow": 7
+        }
+      ],
+      "statureByPhase": {
+        "intro": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              80,
+              18,
+              116,
+              221
+            ],
+            "normalizedBodyHeight": 221,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              18,
+              116,
+              221
+            ],
+            "referenceBodyHeight": 221,
+            "nativeComparableBodyHeight": 219.09482758620692,
+            "nativeReferenceBodyHeight": 219.09482758620692,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "outro": {
+          "renderScale": 1.026087,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              80,
+              14,
+              113,
+              228
+            ],
+            "normalizedBodyHeight": 228,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              18,
+              116,
+              221
+            ],
+            "referenceBodyHeight": 221,
+            "nativeComparableBodyHeight": 231.9310344827586,
+            "nativeReferenceBodyHeight": 219.09482758620692,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "roundVictory": {
+          "renderScale": 1.030435,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              80,
+              14,
+              118,
+              228
+            ],
+            "normalizedBodyHeight": 228,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              18,
+              116,
+              221
+            ],
+            "referenceBodyHeight": 221,
+            "nativeComparableBodyHeight": 232.91379310344826,
+            "nativeReferenceBodyHeight": 219.09482758620692,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "roundDefeat": {
+          "renderScale": 0.978261,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              39,
+              24,
+              181,
+              217
+            ],
+            "normalizedBodyHeight": 217,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              18,
+              116,
+              221
+            ],
+            "referenceBodyHeight": 221,
+            "nativeComparableBodyHeight": 210.45258620689657,
+            "nativeReferenceBodyHeight": 219.09482758620692,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "fatality": {
+          "renderScale": 1.182609,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              49,
+              65,
+              169,
+              177
+            ],
+            "normalizedBodyHeight": 177,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              18,
+              116,
+              221
+            ],
+            "referenceBodyHeight": 221,
+            "nativeComparableBodyHeight": 207.51724137931035,
+            "nativeReferenceBodyHeight": 219.09482758620692,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "victory": {
+          "renderScale": 1.043478,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              60,
+              14,
+              127,
+              226
+            ],
+            "normalizedBodyHeight": 226,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              18,
+              116,
+              221
+            ],
+            "referenceBodyHeight": 221,
+            "nativeComparableBodyHeight": 233.79310344827587,
+            "nativeReferenceBodyHeight": 219.09482758620692,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "defeat": {
+          "renderScale": 1.170096,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              59,
+              84,
+              143,
+              156
+            ],
+            "normalizedBodyHeight": 156,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              18,
+              116,
+              221
+            ],
+            "referenceBodyHeight": 221,
+            "nativeComparableBodyHeight": 180.96134978091067,
+            "nativeReferenceBodyHeight": 219.09482758620692,
+            "sourceDensityRatio": 0.4083793738489871,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "super": {
+          "renderScale": 1.191304,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              47,
+              65,
+              167,
+              175
+            ],
+            "normalizedBodyHeight": 175,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              80,
+              18,
+              116,
+              221
+            ],
+            "referenceBodyHeight": 221,
+            "nativeComparableBodyHeight": 206.68103448275863,
+            "nativeReferenceBodyHeight": 219.09482758620692,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "kaoru_kamiya",
+      "name": "Kaoru Kamiya",
+      "universe": "Rurouni Kenshin",
+      "referenceAsset": "/sprites/generated/heroes/rurouni-kenshin/kaoru-kamiya.png",
+      "sourceWork": "Rurouni Kenshin TVanime1996 — Kyoto continuity, Kaoru Kamiya with bokken",
+      "sourceReference": "Kaoru teaches Kamiya Kasshin-ryū, the sword that protects life, using a wooden bokken. The named project special is a compact physical bokken sequence, a role adaptation rather than an asserted formal ultimate technique.",
+      "referenceUsage": "Local anime reference inspected: dark hair with pink ribbon, pale blue floral kimono, yellow obi and physical wooden practice sword. Same continuity retained in new native art.",
+      "referenceInputs": [
+        "/workspace/multiverse-breach/public/sprites/generated/heroes/rurouni-kenshin/kaoru-kamiya.png"
+      ],
+      "notes": [
+        "1996 anime Kyoto continuity, darkbluehair/pinkribbon/palebluefloralkimono/yellowobi; noactorreference.",
+        "Bokken remains a solidbrownwoodenpractice sword, not a metal katana or magicstaff.",
+        "Own upright KamiyaKasshin guard and twohandedwoodensword poses, no offensiveenergywave."
+      ],
+      "prompt": "ONEoriginalnative2DpixelartANIMATIONATLAS, exactly4COLUMNS×8ROWS=32distinctfullbodyposes, transparentRGBAemptybackground, target1024×2048 with256squarecells. Every fullbodyandbokkenstaysinsidecellwith22pxclearalphaallaroundandgenerousgutters, readablebody180–200pxinstandingposes, predominantlyfacingRIGHT, crispdelicateanimeclothingandface. Eachposefreshlydrawn, no repeated/mirrored/recoloredpose. Annotation-free, isolatedhealthyfigure, nofloororpanels.\nKAORU KAMIYA, fictional1996anime Kyoto-continuity martialartist, originalclassicanimestyle and entirelycovered ordinarycostume: longDARKBLUE/BLACKhair tiedback withlargePINKribbon, lightBLUEfloral KIMONO withlongsleeves, YELLOWobi, whitetabi andsandals. Matchattachedanimeidentity. ActualbrownWOODEN BOKKEN with curvedpractice-blade silhouette and woodenhilt, nevermetal/energyblade/cane. HerownstyleKamiyaKasshin-ryu uses uprightbalancedtwohandeddefensiveguardandcontrolledwoodensworddemonstration; notKenshin'slowIaidraw, notSanosuke'sbarefists. Noelemental effects or othercharacters.\nEightSEPARATErowswith4differentchronologicalposesineach:\nR1INTRO:1approachbokkenlow,2politedojobow,3twohandedgriphiltnearwaist,4uprightmiddlechudanguard.\nR2OUTRO:1lowerbokkenpoint,2adjustsleevefreehand,3turnbluekimonoandhair,4calmdepartingstride.\nR3ROUNDVICTORY:1straightensbokkenverticalclose,2determinedheadnod,3freehandobi/bokkenlow,4resetstwohandedmiddleguard.\nR4ROUNDDEFEATRECOVERY:1controlledbackstepbrace,2kneesbendandsleevesfold,3singlekneebracedbokkensafeclose,4resilienthalfrisetoguard.\nR5TECHNIQUEFINALE Bokken duKamiyaKasshin-ryu:1uprighthighjodantwohandedwindup,2shortforwardstepverticalwoodenpracticecut,3controlleddiagonalfollowthroughnewhipangle,4recoveredmiddleprotectiveguard. Fourrealbodyandarmposes; compactwoodenbladeinsidecell, nohugeeffects.\nR6VICTORY:1gentlerelievedsmilebokkenlow,2friendlysmallfreehandwave,3reverentbokkentwohandsvertical,4dignifiedrelaxedquarterturn.\nR7DEFEATREST:1wearykneelwoodenswordbeside,2sitskimonoandsandalsfolded,3reclinesonforearmwithfullfeetvisible,4peacefulcompactside-restfullycovered/intact.\nR8SUPER DIFFERENTphysicalbokkensequence:1middleleveltwohandedwindupfeetcentered,2step/pivotintoangleddownwardwoodencut,3distinctlowparryfollowthroughkneesbent,4uprightcenteredprotectiveguardwithribbonflow. Eightuniquesuper/finalearticulations; pose2and3alterfeet,hips,elbowsandswordangles.",
+      "file": "/workspace/generated_images/exec-614102e7-2f33-4c95-b1f9-3f0c4652a088.png",
+      "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kaoru_kamiya-initial.png",
+      "sourceImageSha256": "91cd3e0af5bad6315c7c63587320d239bb81d137170ff5a3c217bb1c30f5acf1",
+      "originalGeneratedPath": "/workspace/generated_images/exec-614102e7-2f33-4c95-b1f9-3f0c4652a088.png",
+      "originalSourceRows": 8,
+      "referenceArchive": "docs/combat-fidelity-wave7-2026-10-20/part-b-references/kaoru_kamiya-local.png",
+      "referenceAssetSha256": "e73f51e4f5cc802b682beecfccfbe93f309cf05976d486620bcefa1bade4eb2a",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/part-b-prompts/kaoru_kamiya-initial.txt",
+      "promptSha256": "9ad52ac6cdded7324c675a8ba784d6cdd43ae953944c12c9740d74886179cdb2",
+      "model": null,
+      "generationId": null,
+      "jobId": null,
+      "identityReviewed": true,
+      "allFramesReviewed": true,
+      "nativeCorrection": false,
+      "correctionDetails": null,
+      "phaseSources": [
+        {
+          "phase": "intro",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kaoru_kamiya-initial.png",
+          "sourceImageSha256": "91cd3e0af5bad6315c7c63587320d239bb81d137170ff5a3c217bb1c30f5acf1",
+          "sourceRows": 8,
+          "sourceRow": 0
+        },
+        {
+          "phase": "outro",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kaoru_kamiya-initial.png",
+          "sourceImageSha256": "91cd3e0af5bad6315c7c63587320d239bb81d137170ff5a3c217bb1c30f5acf1",
+          "sourceRows": 8,
+          "sourceRow": 1
+        },
+        {
+          "phase": "roundVictory",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kaoru_kamiya-initial.png",
+          "sourceImageSha256": "91cd3e0af5bad6315c7c63587320d239bb81d137170ff5a3c217bb1c30f5acf1",
+          "sourceRows": 8,
+          "sourceRow": 2
+        },
+        {
+          "phase": "roundDefeat",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kaoru_kamiya-initial.png",
+          "sourceImageSha256": "91cd3e0af5bad6315c7c63587320d239bb81d137170ff5a3c217bb1c30f5acf1",
+          "sourceRows": 8,
+          "sourceRow": 3
+        },
+        {
+          "phase": "fatality",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kaoru_kamiya-initial.png",
+          "sourceImageSha256": "91cd3e0af5bad6315c7c63587320d239bb81d137170ff5a3c217bb1c30f5acf1",
+          "sourceRows": 8,
+          "sourceRow": 4
+        },
+        {
+          "phase": "victory",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kaoru_kamiya-initial.png",
+          "sourceImageSha256": "91cd3e0af5bad6315c7c63587320d239bb81d137170ff5a3c217bb1c30f5acf1",
+          "sourceRows": 8,
+          "sourceRow": 5
+        },
+        {
+          "phase": "defeat",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kaoru_kamiya-initial.png",
+          "sourceImageSha256": "91cd3e0af5bad6315c7c63587320d239bb81d137170ff5a3c217bb1c30f5acf1",
+          "sourceRows": 8,
+          "sourceRow": 6
+        },
+        {
+          "phase": "super",
+          "sourceImage": "docs/combat-fidelity-wave7-2026-10-20/part-b-sources/kaoru_kamiya-initial.png",
+          "sourceImageSha256": "91cd3e0af5bad6315c7c63587320d239bb81d137170ff5a3c217bb1c30f5acf1",
+          "sourceRows": 8,
+          "sourceRow": 7
+        }
+      ],
+      "statureByPhase": {
+        "intro": {
+          "renderScale": 1,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              56,
+              30,
+              148,
+              208
+            ],
+            "normalizedBodyHeight": 208,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              56,
+              30,
+              148,
+              208
+            ],
+            "referenceBodyHeight": 208,
+            "nativeComparableBodyHeight": 192.75862068965515,
+            "nativeReferenceBodyHeight": 192.75862068965515,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "outro": {
+          "renderScale": 0.948837,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              63,
+              14,
+              125,
+              225
+            ],
+            "normalizedBodyHeight": 225,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              56,
+              30,
+              148,
+              208
+            ],
+            "referenceBodyHeight": 208,
+            "nativeComparableBodyHeight": 197.84482758620692,
+            "nativeReferenceBodyHeight": 192.75862068965515,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "roundVictory": {
+          "renderScale": 0.995349,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              67,
+              16,
+              110,
+              223
+            ],
+            "normalizedBodyHeight": 223,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              56,
+              30,
+              148,
+              208
+            ],
+            "referenceBodyHeight": 208,
+            "nativeComparableBodyHeight": 205.69827586206898,
+            "nativeReferenceBodyHeight": 192.75862068965515,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "roundDefeat": {
+          "renderScale": 1.009302,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              36,
+              26,
+              158,
+              206
+            ],
+            "normalizedBodyHeight": 206,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              56,
+              30,
+              148,
+              208
+            ],
+            "referenceBodyHeight": 208,
+            "nativeComparableBodyHeight": 192.6810344827586,
+            "nativeReferenceBodyHeight": 192.75862068965515,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "fatality": {
+          "renderScale": 1.302326,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              70,
+              74,
+              121,
+              168
+            ],
+            "normalizedBodyHeight": 168,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              56,
+              30,
+              148,
+              208
+            ],
+            "referenceBodyHeight": 208,
+            "nativeComparableBodyHeight": 202.75862068965515,
+            "nativeReferenceBodyHeight": 192.75862068965515,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "victory": {
+          "renderScale": 1.037209,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              61,
+              19,
+              121,
+              216
+            ],
+            "normalizedBodyHeight": 216,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              56,
+              30,
+              148,
+              208
+            ],
+            "referenceBodyHeight": 208,
+            "nativeComparableBodyHeight": 207.62068965517244,
+            "nativeReferenceBodyHeight": 192.75862068965515,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "defeat": {
+          "renderScale": 1.381395,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              60,
+              126,
+              143,
+              115
+            ],
+            "normalizedBodyHeight": 115,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              56,
+              30,
+              148,
+              208
+            ],
+            "referenceBodyHeight": 208,
+            "nativeComparableBodyHeight": 147.2198275862069,
+            "nativeReferenceBodyHeight": 192.75862068965515,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        },
+        "super": {
+          "renderScale": 1.460465,
+          "statureReview": {
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "cell": 0,
+            "bodyBounds": [
+              72,
+              84,
+              119,
+              151
+            ],
+            "normalizedBodyHeight": 151,
+            "referencePhase": "intro",
+            "referenceCell": 0,
+            "referenceBodyBounds": [
+              56,
+              30,
+              148,
+              208
+            ],
+            "referenceBodyHeight": 208,
+            "nativeComparableBodyHeight": 204.37068965517244,
+            "nativeReferenceBodyHeight": 192.75862068965515,
+            "sourceDensityRatio": 1,
+            "reason": "Restore native body scale by measured body-only ROI and explicit source-canvas density; retain each pose native height ratio, all crouches/leans, anatomy and baseline244. No pixels are repainted or cropped."
+          }
+        }
+      }
+    }
+  ]
+}

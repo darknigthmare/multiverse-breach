@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "sourceWork": "Final Fantasy XIII (2009/2010), original game",
+  "scope": "Specific ability names, damage categories, targeting and visual action motifs checked before drawing Snow, Sazh and Hope. Excludes XIII-2 and Lightning Returns versions.",
+  "verification": {
+    "method": "Read-only web search and opening the cited Gamer Corner, Steam Community and guide pages with mcp__codex_apps__search_service_web_run.",
+    "factValidationPassed": true,
+    "globalCanon1to1Verified": false,
+    "globalVisual1to1Verified": false,
+    "animationTimingVerified": false,
+    "nativeArtworkIsAdaptation": true,
+    "runtimeChangesMadeByThisArtTask": false,
+    "note": "Verified hit counts describe the original game. They do not mean the generated four-pose sequences contain that many poses, and do not authorize extra gameplay impacts. The art task does not synthesize, duplicate or retime damage events. Unsettled numeric details are explicitly marked unverified."
+  },
+  "facts": [
+    {
+      "heroId": "snow_ff13",
+      "ability": "Sovereign Fist",
+      "verified": true,
+      "damageType": "physical",
+      "role": "Commando",
+      "targeting": "A primary descending fist blow with nearby area damage.",
+      "targetingVerified": true,
+      "visualMotif": "Rush forward, leap into the air, descend with a fist and recover from the ground impact.",
+      "hitCount": null,
+      "hitCountVerified": false,
+      "uncertainty": "The opened Gamer Corner and Steam descriptions establish a physical blow and area damage but do not establish an exact count of damage components. Indexed community sources disagree between one dominant impact and two damage components. No precise count is certified here.",
+      "sources": ["gamer-corner-sovereign-fist", "steam-full-atb-guide"]
+    },
+    {
+      "heroId": "sazh_ff13",
+      "ability": "Cold Blood",
+      "verified": true,
+      "damageType": "physical",
+      "role": "Ravager",
+      "hitCount": 17,
+      "hitCountVerified": true,
+      "targeting": "Single target, with the gunfire volley building that target's chain bonus.",
+      "targetingVerified": true,
+      "visualMotif": "Original Sazh and his two pistols fire a sustained alternating volley. No ice magic or Eidolon transformation.",
+      "sources": ["gamer-corner-cold-blood", "steam-full-atb-guide", "expansive-gameplay-guide", "jegged-sazh"]
+    },
+    {
+      "heroId": "hope_ff13",
+      "ability": "Last Resort",
+      "verified": true,
+      "damageType": "magic",
+      "role": "Ravager",
+      "hitCount": 8,
+      "hitCountVerified": true,
+      "targeting": "Multiple targets; the eight hits are distributed among enemies, and a lone enemy receives them all.",
+      "targetingVerified": true,
+      "visualMotif": "Magical blasts rise into the air and rain down. This is an offensive magic volley, not Alexander or a healing spell.",
+      "sources": ["gamer-corner-last-resort", "steam-full-atb-guide", "expansive-gameplay-guide"]
+    }
+  ],
+  "sources": [
+    {
+      "id": "gamer-corner-sovereign-fist",
+      "title": "Gamer Corner Guides — Sovereign Fist, Final Fantasy XIII",
+      "url": "https://guides.gamercorner.net/ffxiii/abilities/sovereign-fist",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read",
+      "verified": true,
+      "locator": "Type, Description and Role, extracted lines 78–84",
+      "excerpt": "Crush foes with a ruinous blow, clearing chain gauges. Damage varies by situation.",
+      "observedFields": { "type": "Physical Attack", "role": "Commando", "atbCost": "All" }
+    },
+    {
+      "id": "gamer-corner-cold-blood",
+      "title": "Gamer Corner Guides — Cold Blood, Final Fantasy XIII",
+      "url": "https://guides.gamercorner.net/ffxiii/abilities/cold-blood",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read",
+      "verified": true,
+      "locator": "Type, Description and Role, extracted lines 74–80",
+      "excerpt": "Unleash a devastating volley of gunfire. Chain bonus effect varies by situation.",
+      "observedFields": { "type": "Physical Attack", "role": "Ravager", "atbCost": "All" }
+    },
+    {
+      "id": "gamer-corner-last-resort",
+      "title": "Gamer Corner Guides — Last Resort, Final Fantasy XIII",
+      "url": "https://guides.gamercorner.net/ffxiii/abilities/last-resort",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read",
+      "verified": true,
+      "locator": "Type, Description and Role, extracted lines 74–80",
+      "excerpt": "Deal magic damage within a wide radius. Chain bonus effect varies by situation.",
+      "observedFields": { "type": "Magic Attack", "role": "Ravager", "atbCost": "All" }
+    },
+    {
+      "id": "steam-full-atb-guide",
+      "title": "Steam Community — Final Fantasy XIII Full ATB Skills Guide, by Deathlink",
+      "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=327306716",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read",
+      "verified": true,
+      "excerpts": [
+        { "locator": "Snow's Sovereign Fist, extracted line 111", "text": "while dealing some area damage." },
+        { "locator": "Sahz has Cold Blood, extracted line 119", "text": "he deals 17 hits instead of her 11." },
+        { "locator": "Hope's Last Resort, extracted line 126", "text": "dealing 8 seperate hits." }
+      ],
+      "paraphrase": "The Snow section describes approaching and jumping before the fist descends. The Hope section describes upward magic blasts raining onto targets. These are the motifs used for the purpose-drawn poses."
+    },
+    {
+      "id": "expansive-gameplay-guide",
+      "title": "An Expansive Gameplay Guide to FFXIII — readable guide text",
+      "url": "https://www.scribd.com/document/725619711/An-Expansive-Gameplay-Guide-to-FFXIII",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read; exact section located with web find",
+      "verified": true,
+      "excerpts": [
+        { "locator": "Character Unique Abilities, extracted line 1030", "text": "Cold Blood is a 17-hit, single-target physical attack" },
+        { "locator": "Character Unique Abilities, extracted line 1034", "text": "Last Resort is an 8-hit, multi-target magic attack" }
+      ],
+      "paraphrase": "The following lines 1035–1037 explain distribution among present enemies and concentration of all hits on one remaining enemy. The public Reddit guide index links its Steam, GameFAQs and Google Docs versions and credits the mechanics-guide contributors.",
+      "publicGuideIndex": "https://www.reddit.com/r/finalfantasyxiii/comments/pfcxai/a_gameplay_faq_guide_to_final_fantasy_xiii/"
+    },
+    {
+      "id": "jegged-sazh",
+      "title": "Jegged — Final Fantasy XIII Characters: Sazh Katzroy",
+      "url": "https://jegged.com/Games/Final-Fantasy-XIII/Characters/Sazh.html",
+      "accessedOn": "2026-10-18",
+      "verificationMode": "page-opened-and-read",
+      "verified": true,
+      "locator": "Weapons, extracted line 60",
+      "excerpt": "Sazh uses two pistols as his primary weapons."
+    }
+  ]
+}

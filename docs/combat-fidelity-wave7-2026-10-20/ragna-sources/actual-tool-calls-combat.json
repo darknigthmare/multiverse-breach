@@ -1,0 +1,151 @@
+{
+  "date": "2026-10-20",
+  "unknownIdentifiersRemainNull": true,
+  "calls": [
+    {
+      "internalLabel": "ragna-combat-a",
+      "executionGroup": "initial-three-parallel",
+      "prompt": "Create a native pixel-art sprite animation atlas for Ragna the Bloodedge, specifically BlazBlue Continuum Shift Extend (2011). Use the attached local reference for his costume, hair and proportions ONLY; that old reference omitted his weapon, so draw the actual Blood-Scythe in this new artwork. Adult lean male, spiky WHITE hair, heterochromatic red/green eyes when both eyes show, long vivid RED coat with black straps and silver buckles, black shirt and loose black pants, red/black boots, black gloves with silver wrist guards, Azure Grimoire associated with his RIGHT arm. Blood-Scythe is the huge solid GRAY mechanical block-shaped sword with RED grip and dark fittings, not a glowing blue katana. Keep the same man, outfit and weapon in all cells. No Black Beast transformation, no Kaioken, no Sonic, no guns. RIGHT eye red, LEFT eye green; the Azure Grimoire is the RIGHT arm. In these adapted body poses carry Blood-Scythe in the LEFT hand or in BOTH hands where needed, with the right gauntlet contributing to the cast; do not reverse the costume asymmetry. Facing RIGHT in three-quarter side view. Crisp colored pixel art with dark outline, readable anatomy, transparent RGBA background.\nExactly FOUR columns. Each row is exactly one animation state, with FOUR genuinely different hand-drawn anatomical poses ordered left to right. Draw changed arms, leg placement, torso angle and the blade position; do not duplicate a pose with only glow changes, digital rotation, mirroring or resizing. Consistent source scale across the ENTIRE atlas: standing body head-to-sole stays constant, natural crouches/lunges are shorter. Never enlarge a crouch to standing height. Fully show hair, fingers, coat tails, boots and the whole weapon in every cell. Keep the weapon compactly canted/foreshortened so the total silhouette fits within about 1.15 standing body heights in width and 1.20 in height; preserve a real large Blood-Scythe rather than making it a tiny knife. Leave generous fully transparent gutters and outer margins. No cell dividers, words, labels, numbers, text, painted ground or environment. No unrelated debris. Production target cells are256x256 at a comparable standing height190; do not crop any blade or glove.\nDraw EXACTLY 8 rows by4 columns =32 native poses, ideally a1024x2048 atlas, one state per row:\nROW0 attackLight1: physical Blood-Scythe slash; planted sword-ready stance, raised diagonal preparation, powerful compact descending diagonal sword cut, low follow-through with weight transferred. Distinct blade/arms/feet in all4.\nROW1 attackLight2: chained horizontal sword slash; low preparation with blade behind, twist with both hands near waist, full forward slash with blade foreshortened toward right, wide-footed crossed-body follow-through.\nROW2 attackLight3: rising heavy sword finish; crouched sword-low load, body beginning to rise, upward canted blade with extended torso, grounded recovery with blade lowered. No levitation or giant beam.\nROW3 crouchLight: actual low sword attack; deep bent-knee crouch, lower forward shoulder and ready blade, low sweeping gray blade near boot level, bent-knee low recovery. All4 bodies remain physically shorter than upright reference.\nROW4 chargeStart: preparatory dark power gather, NOT an attack; upright ready with sword canted, knees bending while right hand braces grip, lower rooted torso, deep loaded stance with tiny red-black energy near the right gauntlet.\nROW5 chargeLoop: FOUR genuinely distinct newly drawn held charge poses, no strike; broad stance with blade braced low, slightly deeper bent knees and elbows tucked, opposite supporting foot rotation with right shoulder drawn back, restrained torso lean with grip tightened. Keep sword near body. Red-black aura may be tiny but bodies themselves must differ. Do NOT draw the release or only4 glow variants.\nROW6 chargeRelease: actual secondary Dead Spike, NOT Carnage Scissors: crouched dark-load with sword low; weight shifting and sword drawing upward; forceful forward ground-origin energy cast with a small attached red-black fang-shaped motif by the blade; rooted recoiling stance after release. It is a projectile casting action, not a transformation or giant creature body; the runtime supplies the traveling projectile separately.\nROW7 chargeRecovery: low post-cast lean with sword near floor; blade drawn back and knees starting to straighten; relaxed torso rising and coat settling; FULL UPRIGHT standing reference with feet planted and whole Blood-Scythe canted close to body. Last pose is the stature calibration. Exactly32 drawings; no omitted row.",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/native-prompts.json",
+      "references": [
+        {
+          "toolPath": "/workspace/multiverse-breach/public/sprites/generated/heroes/blazblue/ragna.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-reference-original.png",
+          "sha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec"
+        }
+      ],
+      "provider": "OpenAI",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "generationId": null,
+      "toolCallId": null,
+      "transparentBackground": true,
+      "promptSha256": "bd546bff6ce35fbb501e3e4937d6adc58768ba0e848eaffa518f70df961574c6",
+      "output": {
+        "originalGeneratedPath": "/workspace/generated_images/exec-8e40a6e3-b124-47d8-a210-9610674f180b.png",
+        "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-a-initial-source.png",
+        "sha256": "d6b0cb8aeba067fb739cab088776a3be8f678c3886c3dff2ed575e9b276f82da"
+      },
+      "source1to1Verified": false
+    },
+    {
+      "internalLabel": "ragna-combat-b",
+      "executionGroup": "initial-three-parallel",
+      "prompt": "Create a native pixel-art sprite animation atlas for Ragna the Bloodedge, specifically BlazBlue Continuum Shift Extend (2011). Use the attached local reference for his costume, hair and proportions ONLY; that old reference omitted his weapon, so draw the actual Blood-Scythe in this new artwork. Adult lean male, spiky WHITE hair, heterochromatic red/green eyes when both eyes show, long vivid RED coat with black straps and silver buckles, black shirt and loose black pants, red/black boots, black gloves with silver wrist guards, Azure Grimoire associated with his RIGHT arm. Blood-Scythe is the huge solid GRAY mechanical block-shaped sword with RED grip and dark fittings, not a glowing blue katana. Keep the same man, outfit and weapon in all cells. No Black Beast transformation, no Kaioken, no Sonic, no guns. RIGHT eye red, LEFT eye green; the Azure Grimoire is the RIGHT arm. In these adapted body poses carry Blood-Scythe in the LEFT hand or in BOTH hands where needed, with the right gauntlet contributing to the cast; do not reverse the costume asymmetry. Facing RIGHT in three-quarter side view. Crisp colored pixel art with dark outline, readable anatomy, transparent RGBA background.\nExactly FOUR columns. Each row is exactly one animation state, with FOUR genuinely different hand-drawn anatomical poses ordered left to right. Draw changed arms, leg placement, torso angle and the blade position; do not duplicate a pose with only glow changes, digital rotation, mirroring or resizing. Consistent source scale across the ENTIRE atlas: standing body head-to-sole stays constant, natural crouches/lunges are shorter. Never enlarge a crouch to standing height. Fully show hair, fingers, coat tails, boots and the whole weapon in every cell. Keep the weapon compactly canted/foreshortened so the total silhouette fits within about 1.15 standing body heights in width and 1.20 in height; preserve a real large Blood-Scythe rather than making it a tiny knife. Leave generous fully transparent gutters and outer margins. No cell dividers, words, labels, numbers, text, painted ground or environment. No unrelated debris. Production target cells are256x256 at a comparable standing height190; do not crop any blade or glove.\nDraw EXACTLY8 rows by4 columns =32 native poses, ideally1024x2048, each row as follows:\nROW0 attackRecovery: low sword follow-through, pulling the blade inward, torso rising with a planted front foot, fully upright neutral sword-ready stance.\nROW1 special: actual SECONDARY Dead Spike; crouched preparation with gray sword low; pull the sword and right arm upward while shifting weight; complete forward casting gesture with only a small red-black fang-shaped energy curl at the floor near the blade; planted low recovery. No Gauntlet Hades, no super Carnage Scissors, no Black Beast transformation. It is a projectile casting action, with traveling projectile handled separately by the runtime.\nROW2 aerialNeutral: airborne close sword attack; knees bent and blade close; torso coiling with grip at shoulder; compact gray blade cutting diagonally forward; tucked airborne recovery, all4 feet clearly ungrounded. Preserve natural scale and whole sword.\nROW3 aerialForward: real forward airborne sword strike; forward lean with back leg bent; torso twist loading gray blade; extended forward sword cut with deliberately canted/foreshortened weapon; airborne uncoiling with both legs changed. No identical stance shifted around.\nROW4 aerialDown: descending sword attack adaptation; tucked falling load; gray blade angled down while arms brace it; descending diagonal cut below the body with both knees bent; low airborne pullback. No landing floor or painted impact smoke obscuring anatomy.\nROW5 intro: FULL UPRIGHT standing reference, gray sword held near shoulder and boots planted; right gauntlet checked with other hand; gray blade brought forward in compact readiness; firm forward-facing sword guard. Four different body/hand postures. Pose0 is the stature calibration.\nROW6 victory: blade lowered in one hand and relaxed stance; Blood-Scythe resting close at shoulder with hand at hip; restrained red-coat confident stance with free hand lowered; returning the blade to back/shoulder carrying position. No celebration copied4times.\nROW7 ledgeAttack: physical ledge counter adaptation with Blood-Scythe safely secured on back so hands are free; hanging by one high glove, pull-up with raised knee, one bracing palm plus a real forward boot kick, low planted-palm recovery with bent knees. No visible ledge, block, post or ground. Four real body poses. Exactly32 drawings.",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/native-prompts.json",
+      "references": [
+        {
+          "toolPath": "/workspace/multiverse-breach/public/sprites/generated/heroes/blazblue/ragna.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-reference-original.png",
+          "sha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec"
+        }
+      ],
+      "provider": "OpenAI",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "generationId": null,
+      "toolCallId": null,
+      "transparentBackground": true,
+      "promptSha256": "06dae25fac77aef1e83c297672c7c37f1fb407654952f392224261a93bcedcb6",
+      "output": {
+        "originalGeneratedPath": "/workspace/generated_images/exec-fa2d4b49-058a-4a36-b51c-6103d4f727b6.png",
+        "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+        "sha256": "4ba911834b9f7bb8e258ee78b5f22a00175f463957d8b3374224cdec77fc49eb"
+      },
+      "source1to1Verified": false
+    },
+    {
+      "internalLabel": "ragna-ledge",
+      "executionGroup": "initial-three-parallel",
+      "prompt": "Create a native pixel-art sprite animation atlas for Ragna the Bloodedge, specifically BlazBlue Continuum Shift Extend (2011). Use the attached local reference for his costume, hair and proportions ONLY; that old reference omitted his weapon, so draw the actual Blood-Scythe in this new artwork. Adult lean male, spiky WHITE hair, heterochromatic red/green eyes when both eyes show, long vivid RED coat with black straps and silver buckles, black shirt and loose black pants, red/black boots, black gloves with silver wrist guards, Azure Grimoire associated with his RIGHT arm. Blood-Scythe is the huge solid GRAY mechanical block-shaped sword with RED grip and dark fittings, not a glowing blue katana. Keep the same man, outfit and weapon in all cells. No Black Beast transformation, no Kaioken, no Sonic, no guns. RIGHT eye red, LEFT eye green; the Azure Grimoire is the RIGHT arm. In these adapted body poses carry Blood-Scythe in the LEFT hand or in BOTH hands where needed, with the right gauntlet contributing to the cast; do not reverse the costume asymmetry. Facing RIGHT in three-quarter side view. Crisp colored pixel art with dark outline, readable anatomy, transparent RGBA background.\nExactly FOUR columns. Each row is exactly one animation state, with FOUR genuinely different hand-drawn anatomical poses ordered left to right. Draw changed arms, leg placement, torso angle and the blade position; do not duplicate a pose with only glow changes, digital rotation, mirroring or resizing. Consistent source scale across the ENTIRE atlas: standing body head-to-sole stays constant, natural crouches/lunges are shorter. Never enlarge a crouch to standing height. Fully show hair, fingers, coat tails, boots and the whole weapon in every cell. Keep the weapon compactly canted/foreshortened so the total silhouette fits within about 1.15 standing body heights in width and 1.20 in height; preserve a real large Blood-Scythe rather than making it a tiny knife. Leave generous fully transparent gutters and outer margins. No cell dividers, words, labels, numbers, text, painted ground or environment. No unrelated debris. Production target cells are256x256 at a comparable standing height190; do not crop any blade or glove.\nDraw EXACTLY5 active rows by4 columns =20 native poses on transparent background, ideally1024x1280. Do not draw extra states or reserve false poses. Blood-Scythe is visibly secured diagonally close along his back, leaving BOTH actual gloved hands free; never place an edge or a handle in a supposed gripping hand. Raised fingers and black/silver glove cuffs must be fully drawn, with generous transparent clearance above them. No bars, posts, ledges, platforms, gray stubs, ropes, painted floor, motion debris or magic. Infer a common invisible physical edge under his hands, but DO NOT PAINT IT. His body must actually hang below the supporting hand(s), fingers visibly hooked or palms pressing. Arm anatomy and changing knees matter. Draw every glove distinctly from sword hardware.\nROW0 ledgeCatch: pose0 is a genuine reaching PRE-CONTACT moment with one OPEN forward/upward palm, body falling below it; pose1 securely hooked high glove with shoulder loaded and free hand reaching; pose2 two closed high grips and knees tucked; pose3 two grips supporting his dangling coat and lowered boots. Each native pose must show a different arm/leg configuration.\nROW1 ledgeHang: pose0 two high glove grips with legs hanging almost straight; pose1 ONE clearly hooked raised support glove and the other free hand near chest while torso swings; pose2 two grips with one knee raised; pose3 two grips with both bent knees shifted. Keep native body scale constant and allow suspended straight-leg pose0 as head-to-boot calibration excluding raised arms.\nROW2 ledgeClimb: pose0 two loaded grips with tucked knees and shoulders pulling upward; pose1 one genuinely HIGH support glove and a bent elbow pulling body up, free hand pressing nearer chest; pose2 torso above former edge with one broad gloved PALM pressing at about hip level and knee coming over; pose3 low crouch above former edge with two broad actual palms pressing downward. Show whole black/silver gloves and adjoining wrist cuffs, no sword hilt used as hand, no floor.\nROW3 ledgeDrop: pose0 settled two-hand high support; pose1 only one glove still hooked while other open palm releases; pose2 BOTH hands clearly open and released, body falling; pose3 free falling body with arms lower and legs changed. Released poses have no contact at all.\nROW4 ledgeJump: pose0 two-hand tucked hang; pose1 bent-elbow push with bent knees; pose2 BOTH hands released while body rises, one hand open overhead and front knee lifting; pose3 clear free airborne arc with arms and coat moving. No spinball, no new attack, no fake platform.\nExactly20 actual distinct drawings, 4 per named state. Complete every glove and all20 bodies.",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/native-prompts.json",
+      "references": [
+        {
+          "toolPath": "/workspace/multiverse-breach/public/sprites/generated/heroes/blazblue/ragna.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-reference-original.png",
+          "sha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec"
+        }
+      ],
+      "provider": "OpenAI",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "generationId": null,
+      "toolCallId": null,
+      "transparentBackground": true,
+      "promptSha256": "48e34f1116c8bddd7998962a3f68d874b7a2c0bd1cdc4510e0be30dec178a9cb",
+      "output": {
+        "originalGeneratedPath": "/workspace/generated_images/exec-2d48a884-4493-41c3-bec1-87071a4c163a.png",
+        "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-ledge-source.png",
+        "sha256": "639c1205fbd1cc4104943377016681b768432a2a1d342b7c2c3f7f585a034621"
+      },
+      "source1to1Verified": false
+    },
+    {
+      "internalLabel": "ragna-combat-correction",
+      "executionGroup": "corrective-after-native-seam-review",
+      "prompt": "Create ONE corrective NATIVE pixel-art atlas for Ragna the Bloodedge, BlazBlue Continuum Shift Extend (2011). The first attached image supplies costume; the next two are the newly drawn source atlases whose blade overlaps must be repaired. Red long coat, black straps/silver buckles, black trousers, red-black boots, black gloves/silver cuffs, spiky white hair, RIGHT eye red/LEFT eye green, RIGHT Azure Grimoire arm. Gray mechanical block greatsword Blood-Scythe with red grip, carried left or both hands. No transformation or Black Beast body.\nEXACTLY FOUR COLUMNS and SEVEN ROWS =28 fully drawn native poses. Transparent RGBA. Each row has four distinct anatomical poses; rows0..5 are24 selected corrective poses, row6 is four genuinely upright calibration poses that will be archived but not counted as combat states.\nCRUCIAL FIX: THE PREVIOUS SOURCES HAD TOUCHING OR CUT BLADES. Draw MUCH SMALLER full characters inside LARGE transparent cells. Standing body head-to-boot is only about60% of a cell height, NOT filling the cell. Each full figure+large sword+aura must leave at least20% transparent padding from ALL FOUR cell boundaries. Wide sword cuts may use compact diagonals and foreshortening, but must retain the whole gray Blood-Scythe with its tip and red grip. No blade, hand, boot, quiff or energy may touch the canvas border or another pose. Maintain one source-wide body scale across all seven rows; natural crouches stay shorter. Technical scale will later restore a measured190px standing body, so do NOT enlarge poses to fill their cell. No row text, labels, grid, ground or background. No tiny copied/rotated poses: draw all28 anatomically anew.\nROW0 attackLight1: planted sword-ready stance; raised diagonal preparation; forceful diagonal descending sword slash; low transferred-weight follow-through. FOUR different body/arms/blade/foot positions.\nROW1 attackLight2: low sword-behind preparation; torso twist with both hands near waist; horizontal slash represented with strongly FORESHORTENED gray blade aimed into right-front depth, whole tip visible; wide-foot crossed-body follow-through. Keep all blades within their own cell.\nROW2 attackLight3: crouched sword-low load; rising torso and sword; upward canted blade with elongated torso; grounded blade-lowered recovery. Space for the complete raised blade above the head.\nROW3 crouchLight: deep crouch with bent knees; forward low shoulder with grip ready; low complete gray sword sweep canted into depth; short low recovery with sword drawn back. Four actual crouched anatomies.\nROW4 chargeRelease: SECONDARY Dead Spike casting action, NOT super Carnage Scissors. Low dark load with blade; upward pull with right Grimoire arm and grip; forward ground-origin cast with only a SMALL red-black fang-shaped attached energy curl near the blade; recoiling rooted recovery. Full traveling projectile is handled in the runtime, so never extend a giant effect across cells.\nROW5 attackRecovery: low sword follow-through; pulling blade inward while changing planted foot; torso rising and blade drawn close; full upright neutral readiness. Four fresh poses, no overlap between cells.\nROW6 stature calibration only: FOUR FULLY UPRIGHT neutral adult Ragna poses with legs straight and heels on an inferred shared baseline. Hands and greatsword close to body or upright along shoulder. Full head tips, feet and sword all visible. No crouch, no slouch, no raised arms above head. Show four native slightly different neutral hand/stance poses at SAME body size so source head-to-sole can be measured.\nExactly28 drawings, all seven rows. Transparent gaps around every silhouette; character scale much smaller than previous sources to prevent all blade contacts. No frame is allowed to borrow artwork from its neighbor.",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-prompt.json",
+      "references": [
+        {
+          "toolPath": "/workspace/multiverse-breach/public/sprites/generated/heroes/blazblue/ragna.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-reference-original.png",
+          "sha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec"
+        },
+        {
+          "toolPath": "/workspace/generated_images/exec-8e40a6e3-b124-47d8-a210-9610674f180b.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-a-initial-source.png",
+          "sha256": "d6b0cb8aeba067fb739cab088776a3be8f678c3886c3dff2ed575e9b276f82da"
+        },
+        {
+          "toolPath": "/workspace/generated_images/exec-fa2d4b49-058a-4a36-b51c-6103d4f727b6.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+          "sha256": "4ba911834b9f7bb8e258ee78b5f22a00175f463957d8b3374224cdec77fc49eb"
+        }
+      ],
+      "provider": "OpenAI",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "generationId": null,
+      "toolCallId": null,
+      "transparentBackground": true,
+      "promptSha256": "4799dd2ffe0704ec845bf5a6525f9682547caa2842f1220a61a4ccc5647b8295",
+      "output": {
+        "originalGeneratedPath": "/workspace/generated_images/exec-8ca00fa0-6f11-4ac0-a06c-b55019d49908.png",
+        "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-correction-source.png",
+        "sha256": "373a47044101a796112081cae7f955d31d15dc291fd16c2353b9f02072da7bd2"
+      },
+      "source1to1Verified": false
+    },
+    {
+      "internalLabel": "ragna-aerial-intro-correction",
+      "executionGroup": "corrective-after-normalized-visual-review",
+      "prompt": "Create a NATIVE corrective pixel-art sheet for Ragna the Bloodedge (BlazBlue Continuum Shift Extend2011), matching the attached costume and the already drawn combat sheet. Adult spikyWHITE hair, RIGHT eye red/LEFT green, long RED coat with black straps and silverbuckles, loose black trousers, redblack boots, black gloves/silvercuffs; RIGHT AzureGrimoire arm. Exactly ONE physical Blood-Scythe per pose: huge solid GRAY mechanical blade with RED grip and darkblack mechanicalspine. No BlackBeast or second sword. FacingRIGHT three-quarter side view.\nEXACTLY FOUR COLUMNS × THREE ROWS =12 genuinely distinct native drawings. TransparentRGBA; NO painted floor, labels, boxes or grid. Same source-wide body size throughout. Standing body head-to-sole about60% of cell height, leaving generous transparent gutter for whole weapons and coat tails. EVERY complete blade tip, hand, boot and hair point must stay inside its own cell with wide transparent gaps. Do not touch another drawing or outer edge. Four changed anatomical drawings per row, not shifted/rotated/copied glow variants.\nROW0 aerialDown, four airborne descending sword poses:0 knees tucked and ONE gray sword drawn diagonally across front of torso for downward load;1 head and torso leaning into descent, BOTH hands on the red grip and ONLYONE blade now angled lower-forward;2 real descending diagonal cut below the body with bent legs, ONE COMPLETE GRAYBLADE below/infront and NO separate blade above or behind the head;3 blade withdrawn toward waist while legs uncurl in a falling recovery. ONEWEAPON ONLY; do not leave a back-mounted second blade while holding one in front. Clear silhouette at constant body scale. No sword or effect crossing into the row below. No floor/landinghit.\nROW1 intro, four native readiness poses:0 FULL UPRIGHT calibration-quality body, ONEBlood-Scythe carried close to shoulder or by his side;1 check the right gauntlet with his free left hand while ONEsword is secured at his back;2 bring THATONEgray blade forward into a low two-handed readiness with knees slightlybent;3 guarded firm stance with ONEgray blade canted near body. No floating bladefragment above his head, no secondweapon or hidden neighboring pose. Four different hand/torso/legpositions.\nROW2 CALIBRATION ONLY, excluded from combat count: four genuine FULLY UPRIGHT neutral poses with straight legs and feet on inferredsharedbaseline. Same adult body scale as rows0/1. Onegray sword close by side/back/shoulder without protruding above hair or belowboots; no slouch/no crouch/no raisedhands. Allhair points/solesvisible; preserve body head-to-solemeasurement. They are newly drawn calibrationposes, not extra selected combat states.\nExactly12drawings, 4perrow, wholeanatomy/weapons contained. Sourceonlynativeart; no duplicatedbodies, weapon ghosts or background. This correction fixes a prior two-blade aerialpose and its bladeoverlap into intro; fix actual drawing rather than hiding a tip.",
+      "promptFile": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-aerial-intro-correction-prompt.json",
+      "references": [
+        {
+          "toolPath": "/workspace/multiverse-breach/docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-reference-original.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-reference-original.png",
+          "sha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec"
+        },
+        {
+          "toolPath": "/workspace/generated_images/exec-fa2d4b49-058a-4a36-b51c-6103d4f727b6.png",
+          "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-combat-b-initial-source.png",
+          "sha256": "4ba911834b9f7bb8e258ee78b5f22a00175f463957d8b3374224cdec77fc49eb"
+        }
+      ],
+      "provider": "OpenAI",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "generationId": null,
+      "toolCallId": null,
+      "transparentBackground": true,
+      "promptSha256": "8f018f7c79e3c0c2670bca03eb567a058506ee4d4103fcf018e52c2206044fb6",
+      "output": {
+        "originalGeneratedPath": "/workspace/generated_images/exec-cfa85d51-c6b1-48e0-ab6a-d18ecd63435f.png",
+        "archivedPath": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-aerial-intro-correction-source.png",
+        "sha256": "5c68ba0520fe9d2a2f519ab0d4339933a398556d6e11eed5b0d6672efd6c20df"
+      },
+      "source1to1Verified": false
+    }
+  ]
+}

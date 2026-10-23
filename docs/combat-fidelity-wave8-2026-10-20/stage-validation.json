@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-20",
+  "stageProductionFrozen": true,
+  "source1to1Validated": false,
+  "definitions": 201,
+  "addedMechanisms": 40,
+  "coveredRosterUniverses": 104,
+  "fourModeUniverses": 100,
+  "baseOnly": 421,
+  "oldDefinitionsPreserved": 161,
+  "oldCommandHashesPreserved": 322,
+  "tests": [
+    {
+      "command": "node --test scripts/stageAnimationWave8.test.mjs",
+      "exitCode": 0,
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "command": "npm run test:stages",
+      "exitCode": 0,
+      "passed": 56,
+      "failed": 0
+    },
+    {
+      "command": "node --test scripts/stageAtmosphere.test.mjs",
+      "exitCode": 0,
+      "passed": 9,
+      "failed": 0
+    }
+  ],
+  "lintExitCode": 0,
+  "browser": {
+    "mechanisms": 40,
+    "modeRenderChecks": 160,
+    "additionalViewportChecks": 120,
+    "pageErrors": [],
+    "worstMirrorAlphaErrorRatio": 0.007000411788928761
+  },
+  "globalBuild": "owned-by-root-not-asserted"
+}

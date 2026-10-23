@@ -1,0 +1,510 @@
+{
+  "date": "2026-10-20",
+  "scope": "Independent read-only stature review of Wave6 PartC fatality/super only",
+  "sourceRegistry": "src/game/combat/characterAnimationsWave6PartC.generated.json",
+  "reviewedHeroes": 5,
+  "comparisons": 10,
+  "method": "Compare compatible source resolution and preserve source pose projection using the agreed four-height formula. Native ROI y is absolute in the original PNG; normalized ROI is local to256px cell.",
+  "reviews": [
+    {
+      "heroId": "snake",
+      "phase": "fatality",
+      "row": 4,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "sourceComparableColumn": 0,
+      "referenceBodyHeight": 228,
+      "normalizedBodyHeight": 180,
+      "nativeReferenceBodyHeight": 204,
+      "nativeComparableBodyHeight": 206,
+      "referenceBodyBounds": [
+        50,
+        16,
+        193,
+        228
+      ],
+      "bodyBounds": [
+        63,
+        63,
+        123,
+        180
+      ],
+      "nativeReferenceBodyBounds": [
+        41,
+        22,
+        173,
+        204
+      ],
+      "nativeComparableBodyBounds": [
+        37,
+        905,
+        140,
+        206
+      ],
+      "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+      "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "formulaRenderScale": 1.2790849673202613,
+      "suggestedRenderScale": 1.2790849673202613,
+      "recommendCompensation": true,
+      "compensatedBodyHeightApprox": 230.23529411764704,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Comparable ready body stays upright; the extended kick changes row bounds and reduces whole-row scale. Reference204px source, fatality206px and super203px source have almost identical projection.",
+      "recommendation": "Apply normalization compensation while preserving the native body projection.",
+      "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+    },
+    {
+      "heroId": "snake",
+      "phase": "super",
+      "row": 7,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "sourceComparableColumn": 0,
+      "referenceBodyHeight": 228,
+      "normalizedBodyHeight": 208,
+      "nativeReferenceBodyHeight": 204,
+      "nativeComparableBodyHeight": 203,
+      "referenceBodyBounds": [
+        50,
+        16,
+        193,
+        228
+      ],
+      "bodyBounds": [
+        43,
+        35,
+        161,
+        208
+      ],
+      "nativeReferenceBodyBounds": [
+        41,
+        22,
+        173,
+        204
+      ],
+      "nativeComparableBodyBounds": [
+        28,
+        1556,
+        157,
+        203
+      ],
+      "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+      "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "formulaRenderScale": 1.0907805429864255,
+      "suggestedRenderScale": 1.0907805429864255,
+      "recommendCompensation": true,
+      "compensatedBodyHeightApprox": 226.8823529411765,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Comparable ready body stays upright; the extended kick changes row bounds and reduces whole-row scale. Reference204px source, fatality206px and super203px source have almost identical projection.",
+      "recommendation": "Apply normalization compensation while preserving the native body projection.",
+      "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+    },
+    {
+      "heroId": "raiden",
+      "phase": "fatality",
+      "row": 4,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "sourceComparableColumn": 3,
+      "referenceBodyHeight": 230,
+      "normalizedBodyHeight": 232,
+      "nativeReferenceBodyHeight": 228,
+      "nativeComparableBodyHeight": 234,
+      "referenceBodyBounds": [
+        63,
+        12,
+        154,
+        230
+      ],
+      "bodyBounds": [
+        59,
+        12,
+        135,
+        232
+      ],
+      "nativeReferenceBodyBounds": [
+        46,
+        0,
+        153,
+        228
+      ],
+      "nativeComparableBodyBounds": [
+        707,
+        883,
+        136,
+        234
+      ],
+      "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+      "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "formulaRenderScale": 1.0174682395644283,
+      "suggestedRenderScale": 1.0174682395644283,
+      "recommendCompensation": false,
+      "compensatedBodyHeightApprox": 236.05263157894737,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Standing recovery with sword lowered and core held beside the face is comparable; no substantial effect overhang above the hair is used in the height measurement.",
+      "recommendation": "No large stature defect; factor below5percent is optional consistency correction.",
+      "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+    },
+    {
+      "heroId": "raiden",
+      "phase": "super",
+      "row": 7,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "sourceComparableColumn": 3,
+      "referenceBodyHeight": 230,
+      "normalizedBodyHeight": 232,
+      "nativeReferenceBodyHeight": 228,
+      "nativeComparableBodyHeight": 240,
+      "referenceBodyBounds": [
+        63,
+        12,
+        154,
+        230
+      ],
+      "bodyBounds": [
+        63,
+        12,
+        135,
+        232
+      ],
+      "nativeReferenceBodyBounds": [
+        46,
+        0,
+        153,
+        228
+      ],
+      "nativeComparableBodyBounds": [
+        709,
+        1520,
+        140,
+        240
+      ],
+      "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+      "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/raiden-original.png",
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "formulaRenderScale": 1.043557168784029,
+      "suggestedRenderScale": 1.043557168784029,
+      "recommendCompensation": false,
+      "compensatedBodyHeightApprox": 242.10526315789474,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Standing recovery with sword lowered and core held beside the face is comparable; no substantial effect overhang above the hair is used in the height measurement.",
+      "recommendation": "No large stature defect; factor below5percent is optional consistency correction.",
+      "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+    },
+    {
+      "heroId": "otacon",
+      "phase": "fatality",
+      "row": 4,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "sourceComparableColumn": 0,
+      "referenceBodyHeight": 224,
+      "normalizedBodyHeight": 232,
+      "nativeReferenceBodyHeight": 222,
+      "nativeComparableBodyHeight": 222,
+      "referenceBodyBounds": [
+        78,
+        12,
+        149,
+        224
+      ],
+      "bodyBounds": [
+        75,
+        12,
+        165,
+        232
+      ],
+      "nativeReferenceBodyBounds": [
+        61,
+        11,
+        148,
+        222
+      ],
+      "nativeComparableBodyBounds": [
+        60,
+        894,
+        158,
+        222
+      ],
+      "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+      "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "formulaRenderScale": 0.9655172413793104,
+      "suggestedRenderScale": 1,
+      "recommendCompensation": false,
+      "compensatedBodyHeightApprox": 232,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Otacon support is physically kneeling in super. Native source206px versus222px standing, with scale1.079 versus1.009; there is no weapon/effect shrink to correct. Do not equate his knee pose with standing height.",
+      "recommendation": "No enlargement: actual kneeling support, small normalization differences only.",
+      "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+    },
+    {
+      "heroId": "otacon",
+      "phase": "super",
+      "row": 7,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "sourceComparableColumn": 3,
+      "referenceBodyHeight": 224,
+      "normalizedBodyHeight": 222,
+      "nativeReferenceBodyHeight": 222,
+      "nativeComparableBodyHeight": 206,
+      "referenceBodyBounds": [
+        78,
+        12,
+        149,
+        224
+      ],
+      "bodyBounds": [
+        21,
+        22,
+        166,
+        222
+      ],
+      "nativeReferenceBodyBounds": [
+        61,
+        11,
+        148,
+        222
+      ],
+      "nativeComparableBodyBounds": [
+        677,
+        1554,
+        154,
+        206
+      ],
+      "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+      "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/otacon-original.png",
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "formulaRenderScale": 0.9362876389903416,
+      "suggestedRenderScale": 1,
+      "recommendCompensation": false,
+      "compensatedBodyHeightApprox": 222,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": true,
+      "reason": "Otacon support is physically kneeling in super. Native source206px versus222px standing, with scale1.079 versus1.009; there is no weapon/effect shrink to correct. Do not equate his knee pose with standing height.",
+      "recommendation": "No enlargement: actual kneeling support, small normalization differences only.",
+      "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+    },
+    {
+      "heroId": "joseph_joestar",
+      "phase": "fatality",
+      "row": 4,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "sourceComparableColumn": 3,
+      "referenceBodyHeight": 208,
+      "normalizedBodyHeight": 172,
+      "nativeReferenceBodyHeight": 219,
+      "nativeComparableBodyHeight": 214,
+      "referenceBodyBounds": [
+        63,
+        32,
+        144,
+        208
+      ],
+      "bodyBounds": [
+        64,
+        69,
+        137,
+        172
+      ],
+      "nativeReferenceBodyBounds": [
+        42,
+        7,
+        151,
+        219
+      ],
+      "nativeComparableBodyBounds": [
+        697,
+        902,
+        170,
+        214
+      ],
+      "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+      "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "formulaRenderScale": 1.1816926834448336,
+      "suggestedRenderScale": 1.1816926834448336,
+      "recommendCompensation": true,
+      "compensatedBodyHeightApprox": 203.25114155251137,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Hat and upright torso are comparable; Hermit Purple/Hamon width reduces entire-row scale. Preserve the modest native stance flexion instead of forcing equal output heights.",
+      "recommendation": "Apply normalization compensation while preserving the native body projection.",
+      "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+    },
+    {
+      "heroId": "joseph_joestar",
+      "phase": "super",
+      "row": 7,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "sourceComparableColumn": 3,
+      "referenceBodyHeight": 208,
+      "normalizedBodyHeight": 168,
+      "nativeReferenceBodyHeight": 219,
+      "nativeComparableBodyHeight": 199,
+      "referenceBodyBounds": [
+        63,
+        32,
+        144,
+        208
+      ],
+      "bodyBounds": [
+        64,
+        75,
+        139,
+        168
+      ],
+      "nativeReferenceBodyBounds": [
+        42,
+        7,
+        151,
+        219
+      ],
+      "nativeComparableBodyBounds": [
+        700,
+        1556,
+        164,
+        199
+      ],
+      "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+      "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "formulaRenderScale": 1.1250271798217004,
+      "suggestedRenderScale": 1.1250271798217004,
+      "recommendCompensation": true,
+      "compensatedBodyHeightApprox": 189.00456621004568,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": false,
+      "reason": "Hat and upright torso are comparable; Hermit Purple/Hamon width reduces entire-row scale. Preserve the modest native stance flexion instead of forcing equal output heights.",
+      "recommendation": "Apply normalization compensation while preserving the native body projection.",
+      "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+    },
+    {
+      "heroId": "skullgirls_beowulf",
+      "phase": "fatality",
+      "row": 4,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "sourceComparableColumn": 0,
+      "referenceBodyHeight": 215,
+      "normalizedBodyHeight": 145,
+      "nativeReferenceBodyHeight": 213,
+      "nativeComparableBodyHeight": 157,
+      "referenceBodyBounds": [
+        72,
+        24,
+        143,
+        215
+      ],
+      "bodyBounds": [
+        38,
+        99,
+        181,
+        145
+      ],
+      "nativeReferenceBodyBounds": [
+        56,
+        8,
+        142,
+        213
+      ],
+      "nativeComparableBodyBounds": [
+        13,
+        944,
+        197,
+        157
+      ],
+      "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+      "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "formulaRenderScale": 1.0929253683017646,
+      "suggestedRenderScale": 1.0929253683017646,
+      "recommendCompensation": true,
+      "compensatedBodyHeightApprox": 158.47417840375587,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": true,
+      "reason": "The selected column0 is a low wrestling windup, not an upright body. Preserve source height157/150 versus213px reference body; do not equalize the145/136px normalized low poses to215px standing. Chair overhang is excluded from the reference body ROI.",
+      "recommendation": "Apply normalization compensation while preserving the native body projection.",
+      "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+    },
+    {
+      "heroId": "skullgirls_beowulf",
+      "phase": "super",
+      "row": 7,
+      "referencePhase": "intro",
+      "referenceColumn": 0,
+      "sourceComparableColumn": 0,
+      "referenceBodyHeight": 215,
+      "normalizedBodyHeight": 136,
+      "nativeReferenceBodyHeight": 213,
+      "nativeComparableBodyHeight": 150,
+      "referenceBodyBounds": [
+        72,
+        24,
+        143,
+        215
+      ],
+      "bodyBounds": [
+        32,
+        108,
+        192,
+        136
+      ],
+      "nativeReferenceBodyBounds": [
+        56,
+        8,
+        142,
+        213
+      ],
+      "nativeComparableBodyBounds": [
+        5,
+        1613,
+        211,
+        150
+      ],
+      "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+      "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+      "sourceResolutionComparable": true,
+      "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+      "formulaRenderScale": 1.1132974316487156,
+      "suggestedRenderScale": 1.1132974316487156,
+      "recommendCompensation": true,
+      "compensatedBodyHeightApprox": 151.40845070422532,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "poseHasIntentionalFlexion": true,
+      "reason": "The selected column0 is a low wrestling windup, not an upright body. Preserve source height157/150 versus213px reference body; do not equalize the145/136px normalized low poses to215px standing. Chair overhang is excluded from the reference body ROI.",
+      "recommendation": "Apply normalization compensation while preserving the native body projection.",
+      "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+    }
+  ]
+}

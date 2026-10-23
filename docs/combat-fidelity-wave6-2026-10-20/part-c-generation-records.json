@@ -1,0 +1,484 @@
+{
+  "records": [
+    {
+      "heroId": "snake",
+      "universe": "Metal Gear",
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/snake.png",
+      "sourceWork": "Metal Gear Solid (1998)",
+      "ability": "Combo de coups de Snake",
+      "version": "Adult Solid Snake from MetalGearSolid1998, dark blue-gray sneaking suit/bandana/SOCOM, barehand punch-punch-kick adaptation; no advanced BigBoss CQC or damaging chaff.",
+      "sourceReference": "src/game/heroes.js#snake and parent-corrected effective kit: MetalGearSolid1998 punch-punch-kick sequence, ordinary grab-free physical strikes. Legacy Chaff&CQC name superseded; chaff is not a damaging attack and no advanced BigBoss/OldSnake mechanics are depicted.",
+      "ref": "metal-gear/snake.png",
+      "identity": "SOLID SNAKE ADULT from METALGEARSOLID1998, brown swept-back hair/stubble, dark bandana with two tails, dark blue-gray sneaking suit, tactical vest, gloves, dark boots and holsters, both eyes intact. Match supplied local reference. No eyepatch, no old white moustache, not BigBoss or OldSnake. Physical signature is original MGS1 PUNCH-PUNCH-KICK, fists and boot contact. SOCOM is holstered in these physical rows. NO chaff/grenade, no magical interference attack, no advanced CQC grapple/throw or knife execution. One human character only, no opponent or gore.",
+      "rows": [
+        "INTRO: 1 steps quietly forward with pistol low; 2 checks suppressed SOCOM low at chest; 3 touches Codec earpiece with free fingers; 4 settles into two-handed low-ready stance.",
+        "OUTRO: 1 lowers pistol; 2 holsters safely; 3 scans behind shoulder; 4 leaves in low deliberate step.",
+        "ROUND VICTORY: 1 eases guarded shoulders; 2 looks toward cleared route; 3 adjusts bandana; 4 quiet alert stance with one hand at belt.",
+        "ROUND DEFEAT: 1 reels with forearms raised; 2 drops to knee; 3 braces palm on ground; 4 recovers a low defensive crouch. No blood.",
+        "FINALE COMBO DE COUPS DE SNAKE: 1 compact bent-elbow fist-ready windup; 2 steps in with straight lead-hand punch right; 3 follows with rear-hand cross punch and shoulder rotation; 4 full-body grounded forward boot kick right, other leg supporting, then hands ready. Original MGS1 punch-punch-kick adaptation, no grenade or grapple.",
+        "VICTORY: 1 holsters and exhales; 2 folds arms loosely; 3 hand to Codec earpiece; 4 composed professional stance.",
+        "DEFEAT: 1 loses footing; 2 sinks to one knee; 3 sits exhausted with pistol secured; 4 non-graphic side slump, entire body stays inside cell.",
+        "SUPER COMBO DE COUPS DE SNAKE: 1 crouches slightly and raises both fists; 2 drives a short jab right with weight forward; 3 twists torso into a second cross punch; 4 completes a strong forward kick with fully visible boot and balanced arms. Four fresh full-body poses distinct from finale. No chaff, explosives, grab, BigBoss projection or knife."
+      ],
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-references/snake.png",
+      "sourceRows": 8,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed": true,
+      "prompt": "Create ONE NEW production pixel-art animation atlas. EXACTLY4COLUMNS and8ROWS =32 genuinely new distinct full-body drawings. Portrait1:2 canvas1024x2048 preferred, TRANSPARENT RGBA. Each cell is a separate256px square: body, hair, coat, boots, weapon, vine, chair and any small VFX entirely INSIDE its own cell with generous15-20% transparent gutters. No cropping, cell overlap, text, labels, grid lines, backgrounds, UI, logos, other characters, victims or humanoid ghosts. Same detailed crisp32-bit pixel-art style, body scale, identity and ONE continuity throughout. Right-facing3/4side view for actions. Supplied local crop is project context, not official art: correct the explicitly described version/weapon mistakes; do not copy old poses/layout. Draw new poses anatomically, never duplicate/mirror cells. Eight rows MUST each contain FOUR distinct full-body keyframes in the specified order. Keep effects SHORT and COMPACT, runtime draws long-range VFX separately. No blood/gore; finale is an adapted combat presentation, not an execution. Four real new poses on every row.\nCHARACTER / VERSION:\nSOLID SNAKE ADULT from METALGEARSOLID1998, brown swept-back hair/stubble, dark bandana with two tails, dark blue-gray sneaking suit, tactical vest, gloves, dark boots and holsters, both eyes intact. Match supplied local reference. No eyepatch, no old white moustache, not BigBoss or OldSnake. Physical signature is original MGS1 PUNCH-PUNCH-KICK, fists and boot contact. SOCOM is holstered in these physical rows. NO chaff/grenade, no magical interference attack, no advanced CQC grapple/throw or knife execution. One human character only, no opponent or gore.\nEXACT ROWS TOP TO BOTTOM:\nROW1 INTRO: 1 steps quietly forward with pistol low; 2 checks suppressed SOCOM low at chest; 3 touches Codec earpiece with free fingers; 4 settles into two-handed low-ready stance.\nROW2 OUTRO: 1 lowers pistol; 2 holsters safely; 3 scans behind shoulder; 4 leaves in low deliberate step.\nROW3 ROUND VICTORY: 1 eases guarded shoulders; 2 looks toward cleared route; 3 adjusts bandana; 4 quiet alert stance with one hand at belt.\nROW4 ROUND DEFEAT: 1 reels with forearms raised; 2 drops to knee; 3 braces palm on ground; 4 recovers a low defensive crouch. No blood.\nROW5 FINALE COMBO DE COUPS DE SNAKE: 1 compact bent-elbow fist-ready windup; 2 steps in with straight lead-hand punch right; 3 follows with rear-hand cross punch and shoulder rotation; 4 full-body grounded forward boot kick right, other leg supporting, then hands ready. Original MGS1 punch-punch-kick adaptation, no grenade or grapple.\nROW6 VICTORY: 1 holsters and exhales; 2 folds arms loosely; 3 hand to Codec earpiece; 4 composed professional stance.\nROW7 DEFEAT: 1 loses footing; 2 sinks to one knee; 3 sits exhausted with pistol secured; 4 non-graphic side slump, entire body stays inside cell.\nROW8 SUPER COMBO DE COUPS DE SNAKE: 1 crouches slightly and raises both fists; 2 drives a short jab right with weight forward; 3 twists torso into a second cross punch; 4 completes a strong forward kick with fully visible boot and balanced arms. Four fresh full-body poses distinct from finale. No chaff, explosives, grab, BigBoss projection or knife.",
+      "file": "/workspace/generated_images/exec-9a8a26aa-9418-4a1e-b38d-0d39de3372d3.png",
+      "statureByPhase": {
+        "fatality": {
+          "renderScale": 1.2790849673202613,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "sourceComparableColumn": 0,
+            "referenceBodyHeight": 228,
+            "normalizedBodyHeight": 180,
+            "nativeReferenceBodyHeight": 204,
+            "nativeComparableBodyHeight": 206,
+            "referenceBodyBounds": [
+              50,
+              16,
+              193,
+              228
+            ],
+            "bodyBounds": [
+              63,
+              63,
+              123,
+              180
+            ],
+            "nativeReferenceBodyBounds": [
+              41,
+              22,
+              173,
+              204
+            ],
+            "nativeComparableBodyBounds": [
+              37,
+              905,
+              140,
+              206
+            ],
+            "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+            "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+            "formulaRenderScale": 1.2790849673202613,
+            "recommendCompensation": true,
+            "compensatedBodyHeightApprox": 230.23529411764704,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": false,
+            "reason": "Comparable ready body stays upright; the extended kick changes row bounds and reduces whole-row scale. Reference204px source, fatality206px and super203px source have almost identical projection.",
+            "recommendation": "Apply normalization compensation while preserving the native body projection.",
+            "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+          }
+        },
+        "super": {
+          "renderScale": 1.0907805429864255,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "sourceComparableColumn": 0,
+            "referenceBodyHeight": 228,
+            "normalizedBodyHeight": 208,
+            "nativeReferenceBodyHeight": 204,
+            "nativeComparableBodyHeight": 203,
+            "referenceBodyBounds": [
+              50,
+              16,
+              193,
+              228
+            ],
+            "bodyBounds": [
+              43,
+              35,
+              161,
+              208
+            ],
+            "nativeReferenceBodyBounds": [
+              41,
+              22,
+              173,
+              204
+            ],
+            "nativeComparableBodyBounds": [
+              28,
+              1556,
+              157,
+              203
+            ],
+            "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+            "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/snake-original.png",
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+            "formulaRenderScale": 1.0907805429864255,
+            "recommendCompensation": true,
+            "compensatedBodyHeightApprox": 226.8823529411765,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": false,
+            "reason": "Comparable ready body stays upright; the extended kick changes row bounds and reduces whole-row scale. Reference204px source, fatality206px and super203px source have almost identical projection.",
+            "recommendation": "Apply normalization compensation while preserving the native body projection.",
+            "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "raiden",
+      "universe": "Metal Gear",
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/raiden.png",
+      "sourceWork": "Metal Gear Rising: Revengeance",
+      "ability": "Zandatsu Overdrive",
+      "version": "MGR cyborg Raiden, white spiky hair, black/gray cybernetic body and tactical visor, real HF katana/scabbard; non-graphic authored Zandatsu.",
+      "sourceReference": "src/game/loreAccuratePacks.js#raiden and effective HFBlade/NinjaRun/Zandatsu kit. MGR Zandatsu is blade-mode cutting and extraction of cyborg fuel cells; solo presentation omits victim anatomy and gore and does not certify an identical damage/heal mechanic.",
+      "ref": "metal-gear/raiden.png",
+      "identity": "RAIDEN, Metal Gear Rising REVENGEANCE CYBORG, WHITE/SILVER spiky hair, black tactical visor over eyes, silver jaw detail, complex BLACK/DARK GRAY cybernetic chest/limbs with exposed mechanical armor segments and dark boots. Same cyborg proportions as local reference, not blond human MGS2 Raiden. Crucially equip a real thin metallic HIGH-FREQUENCY KATANA with handle, narrow silver blade and dark scabbard at hip/back. Right hand grips blade properly, offhand can brace; do not replace blade with fist lightning. ZandatsuOverdrive is an authored compact blade-mode cut then grasping a SMALL CYAN MECHANICAL FUEL CELL. No organic spine, blood, gore, victim or magical soul; no giant beam.",
+      "rows": [
+        "INTRO: 1 steps in holding sheathed HF blade at hip; 2 adjusts sword grip; 3 draws blade partway with controlled shoulder turn; 4 draws into low blade-ready stance.",
+        "OUTRO: 1 lowers blade diagonally; 2 aligns blade with sheath; 3 sheathes carefully; 4 turns toward exit with white hair and body fully visible.",
+        "ROUND VICTORY: 1 relaxes shoulders and lowers tip; 2 flicks blade safely down with tiny blue edge glint; 3 checks left gauntlet; 4 composed cyborg guard with sword beside leg.",
+        "ROUND DEFEAT: 1 torso recoils; 2 one knee hits ground while sword angled inward; 3 braces free palm; 4 pushes into low sword-ready crouch. No broken body parts.",
+        "FINALE ZANDATSU: 1 raises HFkatana into precise blade-mode preparation; 2 cuts short diagonal forward with one compact cyan edge trace; 3 follows through and reaches free gauntlet toward a small mechanical cyan fuel cell close to body; 4 grips the non-organic cell at chest with sword held safely down. One character only, no gore.",
+        "VICTORY: 1 sword lowered at side; 2 rests gauntlet on sheath; 3 straightens torso with head tilted; 4 calm vigilant cyborg stance.",
+        "DEFEAT: 1 staggers on mechanical legs; 2 drops one knee holding sword low; 3 sits exhausted with blade flat nearby inside cell; 4 non-graphic side slump with intact limbs.",
+        "SUPER ZANDATSU: 1 crouches and angles HFblade up near shoulder; 2 takes forward step and controlled short horizontal katana cut; 3 compact cross-cut followthrough and offhand catch of small cyan cyborg fuel-cell prop, no victim; 4 stands with cell in left hand, blade down in right. Four new anatomies distinct from finale, no beam or organic spine."
+      ],
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-references/raiden.png",
+      "sourceRows": 8,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed": true,
+      "prompt": "Create ONE NEW production pixel-art animation atlas. EXACTLY4COLUMNS and8ROWS =32 genuinely new distinct full-body drawings. Portrait1:2 canvas1024x2048 preferred, TRANSPARENT RGBA. Each cell is a separate256px square: body, hair, coat, boots, weapon, vine, chair and any small VFX entirely INSIDE its own cell with generous15-20% transparent gutters. No cropping, cell overlap, text, labels, grid lines, backgrounds, UI, logos, other characters, victims or humanoid ghosts. Same detailed crisp32-bit pixel-art style, body scale, identity and ONE continuity throughout. Right-facing3/4side view for actions. Supplied local crop is project context, not official art: correct the explicitly described version/weapon mistakes; do not copy old poses/layout. Draw new poses anatomically, never duplicate/mirror cells. Eight rows MUST each contain FOUR distinct full-body keyframes in the specified order. Keep effects SHORT and COMPACT, runtime draws long-range VFX separately. No blood/gore; finale is an adapted combat presentation, not an execution. Four real new poses on every row.\nCHARACTER / VERSION:\nRAIDEN, Metal Gear Rising REVENGEANCE CYBORG, WHITE/SILVER spiky hair, black tactical visor over eyes, silver jaw detail, complex BLACK/DARK GRAY cybernetic chest/limbs with exposed mechanical armor segments and dark boots. Same cyborg proportions as local reference, not blond human MGS2 Raiden. Crucially equip a real thin metallic HIGH-FREQUENCY KATANA with handle, narrow silver blade and dark scabbard at hip/back. Right hand grips blade properly, offhand can brace; do not replace blade with fist lightning. ZandatsuOverdrive is an authored compact blade-mode cut then grasping a SMALL CYAN MECHANICAL FUEL CELL. No organic spine, blood, gore, victim or magical soul; no giant beam.\nEXACT ROWS TOP TO BOTTOM:\nROW1 INTRO: 1 steps in holding sheathed HF blade at hip; 2 adjusts sword grip; 3 draws blade partway with controlled shoulder turn; 4 draws into low blade-ready stance.\nROW2 OUTRO: 1 lowers blade diagonally; 2 aligns blade with sheath; 3 sheathes carefully; 4 turns toward exit with white hair and body fully visible.\nROW3 ROUND VICTORY: 1 relaxes shoulders and lowers tip; 2 flicks blade safely down with tiny blue edge glint; 3 checks left gauntlet; 4 composed cyborg guard with sword beside leg.\nROW4 ROUND DEFEAT: 1 torso recoils; 2 one knee hits ground while sword angled inward; 3 braces free palm; 4 pushes into low sword-ready crouch. No broken body parts.\nROW5 FINALE ZANDATSU: 1 raises HFkatana into precise blade-mode preparation; 2 cuts short diagonal forward with one compact cyan edge trace; 3 follows through and reaches free gauntlet toward a small mechanical cyan fuel cell close to body; 4 grips the non-organic cell at chest with sword held safely down. One character only, no gore.\nROW6 VICTORY: 1 sword lowered at side; 2 rests gauntlet on sheath; 3 straightens torso with head tilted; 4 calm vigilant cyborg stance.\nROW7 DEFEAT: 1 staggers on mechanical legs; 2 drops one knee holding sword low; 3 sits exhausted with blade flat nearby inside cell; 4 non-graphic side slump with intact limbs.\nROW8 SUPER ZANDATSU: 1 crouches and angles HFblade up near shoulder; 2 takes forward step and controlled short horizontal katana cut; 3 compact cross-cut followthrough and offhand catch of small cyan cyborg fuel-cell prop, no victim; 4 stands with cell in left hand, blade down in right. Four new anatomies distinct from finale, no beam or organic spine.",
+      "file": "/workspace/generated_images/exec-4c48c0a4-455e-4dea-a3b4-1fd907ad60da.png"
+    },
+    {
+      "heroId": "otacon",
+      "universe": "Metal Gear",
+      "referenceAsset": "/sprites/generated/heroes/metal-gear/otacon.png",
+      "sourceWork": "Metal Gear Solid support scientist / project Philanthropy command adaptation",
+      "ability": "Philanthropy Upload",
+      "version": "Hal Otacon Emmerich, adult scientist from local lab-coat reference: brown hair, glasses, pale lab coat, dark shirt/trousers and portable terminal; support only.",
+      "sourceReference": "src/game/loreAccuratePacks.js#otacon; local scientist bitmap and effective parent-corrected support kit. Philanthropy Upload is a project command/terminal support adaptation, not an offensive canonical laser or a source-exact MGS1 power.",
+      "ref": "metal-gear/otacon.png",
+      "identity": "HAL EMMERICH / OTACON, adult noncombat SCIENTIST/SUPPORT from Metal Gear. Preserve local identity: messy medium BROWN hair, rectangular GLASSES, pale WHITE/CREAM knee-length LAB COAT over dark green/teal shirt, dark olive/gray trousers, practical brown shoes, slim adult build. Tool is a physically HELD PORTABLE LAPTOP/TERMINAL and CODEC earpiece, never a gun, sword or hand beam. PhilanthropyUpload is strictly COMMAND/DATA SUPPORT buff: typing, verifying small green screen, confirming upload with tiny local status glints, directing allies with open palm. NO attack, damage blast, offensive laser, glowing cannon, humanoid hologram or drone firing. All finale/super poses are successful supporting actions.",
+      "rows": [
+        "INTRO: 1 steps in carrying closed laptop; 2 opens laptop at waist; 3 taps earpiece listening; 4 holds terminal ready with focused eyes through glasses.",
+        "OUTRO: 1 finishes typing and lowers screen; 2 closes laptop; 3 tucks laptop under arm; 4 walks away with cautious purposeful stride.",
+        "ROUND VICTORY: 1 checks screen result; 2 adjusts glasses; 3 relieved small smile and raised thumb; 4 returns hands to terminal, no celebratory weapon.",
+        "ROUND DEFEAT: 1 flinches and hugs laptop to chest; 2 kneels to protect terminal; 3 steadies glasses and catches breath; 4 rises into guarded supportive crouch, no fighting posture.",
+        "FINALE PHILANTHROPYUPLOAD SUPPORT: 1 opens terminal wide supported in left hand; 2 types rapidly with right hand and leaned shoulders; 3 confirms upload with a deliberate key press and tiny green indicator near screen; 4 gestures reassuring open palm to ally-space right while keeping terminal visible. No ray leaves screen or hands.",
+        "VICTORY: 1 closes terminal slowly; 2 wipes brow with free hand; 3 adjusts glasses smiling relieved; 4 holds laptop at side and gives small encouraging wave.",
+        "DEFEAT: 1 stumbles backward clutching terminal; 2 drops to one knee; 3 sits exhausted with closed laptop beside leg; 4 non-graphic curled side slump, glasses and body intact.",
+        "SUPER PHILANTHROPYUPLOAD SUPPORT: 1 kneels taking portable terminal from bag; 2 opens screen and supports it on bent knee; 3 precise typing/confirm key with small green local screen status; 4 rises slightly with earpiece hand listening and terminal retained. Four actual new support poses, no offensive effects or blue energy beam."
+      ],
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-references/otacon.png",
+      "sourceRows": 8,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed": true,
+      "prompt": "Create ONE NEW production pixel-art animation atlas. EXACTLY4COLUMNS and8ROWS =32 genuinely new distinct full-body drawings. Portrait1:2 canvas1024x2048 preferred, TRANSPARENT RGBA. Each cell is a separate256px square: body, hair, coat, boots, weapon, vine, chair and any small VFX entirely INSIDE its own cell with generous15-20% transparent gutters. No cropping, cell overlap, text, labels, grid lines, backgrounds, UI, logos, other characters, victims or humanoid ghosts. Same detailed crisp32-bit pixel-art style, body scale, identity and ONE continuity throughout. Right-facing3/4side view for actions. Supplied local crop is project context, not official art: correct the explicitly described version/weapon mistakes; do not copy old poses/layout. Draw new poses anatomically, never duplicate/mirror cells. Eight rows MUST each contain FOUR distinct full-body keyframes in the specified order. Keep effects SHORT and COMPACT, runtime draws long-range VFX separately. No blood/gore; finale is an adapted combat presentation, not an execution. Four real new poses on every row.\nCHARACTER / VERSION:\nHAL EMMERICH / OTACON, adult noncombat SCIENTIST/SUPPORT from Metal Gear. Preserve local identity: messy medium BROWN hair, rectangular GLASSES, pale WHITE/CREAM knee-length LAB COAT over dark green/teal shirt, dark olive/gray trousers, practical brown shoes, slim adult build. Tool is a physically HELD PORTABLE LAPTOP/TERMINAL and CODEC earpiece, never a gun, sword or hand beam. PhilanthropyUpload is strictly COMMAND/DATA SUPPORT buff: typing, verifying small green screen, confirming upload with tiny local status glints, directing allies with open palm. NO attack, damage blast, offensive laser, glowing cannon, humanoid hologram or drone firing. All finale/super poses are successful supporting actions.\nEXACT ROWS TOP TO BOTTOM:\nROW1 INTRO: 1 steps in carrying closed laptop; 2 opens laptop at waist; 3 taps earpiece listening; 4 holds terminal ready with focused eyes through glasses.\nROW2 OUTRO: 1 finishes typing and lowers screen; 2 closes laptop; 3 tucks laptop under arm; 4 walks away with cautious purposeful stride.\nROW3 ROUND VICTORY: 1 checks screen result; 2 adjusts glasses; 3 relieved small smile and raised thumb; 4 returns hands to terminal, no celebratory weapon.\nROW4 ROUND DEFEAT: 1 flinches and hugs laptop to chest; 2 kneels to protect terminal; 3 steadies glasses and catches breath; 4 rises into guarded supportive crouch, no fighting posture.\nROW5 FINALE PHILANTHROPYUPLOAD SUPPORT: 1 opens terminal wide supported in left hand; 2 types rapidly with right hand and leaned shoulders; 3 confirms upload with a deliberate key press and tiny green indicator near screen; 4 gestures reassuring open palm to ally-space right while keeping terminal visible. No ray leaves screen or hands.\nROW6 VICTORY: 1 closes terminal slowly; 2 wipes brow with free hand; 3 adjusts glasses smiling relieved; 4 holds laptop at side and gives small encouraging wave.\nROW7 DEFEAT: 1 stumbles backward clutching terminal; 2 drops to one knee; 3 sits exhausted with closed laptop beside leg; 4 non-graphic curled side slump, glasses and body intact.\nROW8 SUPER PHILANTHROPYUPLOAD SUPPORT: 1 kneels taking portable terminal from bag; 2 opens screen and supports it on bent knee; 3 precise typing/confirm key with small green local screen status; 4 rises slightly with earpiece hand listening and terminal retained. Four actual new support poses, no offensive effects or blue energy beam.",
+      "file": "/workspace/generated_images/exec-a02b1a55-4ea0-43f7-b94b-2eb00793e274.png"
+    },
+    {
+      "heroId": "joseph_joestar",
+      "universe": "JoJo's Bizarre Adventure",
+      "referenceAsset": "/sprites/generated/heroes/jojo-s-bizarre-adventure/joseph-joestar.png",
+      "sourceWork": "JoJo Stardust Crusaders (Part3)",
+      "ability": "Hermit Purple — Hamon",
+      "version": "Joseph aged67 in Stardust Crusaders: gray hair/beard, beige fedora and light short-sleeved shirt/khaki trousers/white gloves, purple thorny vine Stand with conducted Hamon. No young Part2 scarf.",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#joseph_joestar; https://jojowiki.com/Joseph_Joestar#Stardust_Crusaders and https://jojowiki.com/Hermit_Purple read2026-10-20 for age67/costume, thorny vine manifestation and Ripple conduction. New art remains unverified1:1.",
+      "ref": "jojo-s-bizarre-adventure/joseph-joestar.png",
+      "identity": "JOSEPH JOESTAR AGED67 from JOJO PART3 STARDUST CRUSADERS. The supplied OLD local crop incorrectly depicts young Part2 Joseph: DO NOT copy young brown spiky hair, green sleeveless top, yellow scarf or jeans. Correct to sturdy muscular OLDER man, short GRAY hair, well-trimmed GRAY BEARD, BEIGE FEDORA with brown band, light beige short-sleeved plain shirt, khaki trousers/belt, brown dress shoes, WHITE GLOVES with dark wristbands concealing prosthetic left hand. Still energetic adult build, NOT frail Part4 old man. Stand HERMIT PURPLE is actual PURPLE THORN-COVERED VINES emerging from HANDS, no humanoid ghost/guardian/body. HAMON is a small GOLDEN current conducted ALONG purple vines, not an energy gun or huge beam. NO Tommygun, clackers, youngPart2 scarf, swords or cameras as attack weapons.",
+      "rows": [
+        "INTRO: 1 steps in adjusting fedora brim; 2 checks a gloved hand; 3 summons a short purple thorn vine curl from right wrist; 4 settles ready with vine coiled near hand and confident elderly expression.",
+        "OUTRO: 1 relaxes hand and recalls vine; 2 smooths shirt and checks wristband; 3 turns shoulder back; 4 steps toward exit with fedora and beard visible.",
+        "ROUND VICTORY: 1 eases shoulders with vine fading; 2 tips fedora; 3 gestures playful open palm; 4 confident broad stance, one gloved hand at hip.",
+        "ROUND DEFEAT: 1 recoils startled with hand raised; 2 braces knee and free hand; 3 kneels briefly catching breath; 4 regains low wary stance with short vine for balance, no gore.",
+        "FINALE HERMITPURPLE HAMON: 1 winds a short thorny purple vine around forearm; 2 thrusts open gloved palm right stretching compact vine loop; 3 sends tiny GOLDEN HAMON sparks visibly ALONG purple thorny strand just beside body, one human body only; 4 retracts violet vine into guarded fist and plants feet. No humanoid Stand or beam.",
+        "VICTORY: 1 exhales and lowers gloved hands; 2 lifts fedora slightly; 3 gives cheeky thumbs-up; 4 settles relaxed with hat tilted and gray beard clear.",
+        "DEFEAT: 1 loses balance reaching for hat; 2 sinks onto knee; 3 sits exhausted propped on hand; 4 non-graphic side slump with fedora nearby and purple vine inert.",
+        "SUPER HERMITPURPLE HAMON: 1 lowers stance and gathers two compact thorn-vine coils between gloves; 2 extends forearm to bind empty target-space right with a short violet vine arc; 3 firm pulling gesture with small yellow-gold Hamon current crawling on vine, no giant aura; 4 draws both hands back, vines curl safely by wrists. Four fresh poses distinct from finale."
+      ],
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-references/joseph_joestar.png",
+      "sourceRows": 8,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed": true,
+      "prompt": "Create ONE NEW production pixel-art animation atlas. EXACTLY4COLUMNS and8ROWS =32 genuinely new distinct full-body drawings. Portrait1:2 canvas1024x2048 preferred, TRANSPARENT RGBA. Each cell is a separate256px square: body, hair, coat, boots, weapon, vine, chair and any small VFX entirely INSIDE its own cell with generous15-20% transparent gutters. No cropping, cell overlap, text, labels, grid lines, backgrounds, UI, logos, other characters, victims or humanoid ghosts. Same detailed crisp32-bit pixel-art style, body scale, identity and ONE continuity throughout. Right-facing3/4side view for actions. Supplied local crop is project context, not official art: correct the explicitly described version/weapon mistakes; do not copy old poses/layout. Draw new poses anatomically, never duplicate/mirror cells. Eight rows MUST each contain FOUR distinct full-body keyframes in the specified order. Keep effects SHORT and COMPACT, runtime draws long-range VFX separately. No blood/gore; finale is an adapted combat presentation, not an execution. Four real new poses on every row.\nCHARACTER / VERSION:\nJOSEPH JOESTAR AGED67 from JOJO PART3 STARDUST CRUSADERS. The supplied OLD local crop incorrectly depicts young Part2 Joseph: DO NOT copy young brown spiky hair, green sleeveless top, yellow scarf or jeans. Correct to sturdy muscular OLDER man, short GRAY hair, well-trimmed GRAY BEARD, BEIGE FEDORA with brown band, light beige short-sleeved plain shirt, khaki trousers/belt, brown dress shoes, WHITE GLOVES with dark wristbands concealing prosthetic left hand. Still energetic adult build, NOT frail Part4 old man. Stand HERMIT PURPLE is actual PURPLE THORN-COVERED VINES emerging from HANDS, no humanoid ghost/guardian/body. HAMON is a small GOLDEN current conducted ALONG purple vines, not an energy gun or huge beam. NO Tommygun, clackers, youngPart2 scarf, swords or cameras as attack weapons.\nEXACT ROWS TOP TO BOTTOM:\nROW1 INTRO: 1 steps in adjusting fedora brim; 2 checks a gloved hand; 3 summons a short purple thorn vine curl from right wrist; 4 settles ready with vine coiled near hand and confident elderly expression.\nROW2 OUTRO: 1 relaxes hand and recalls vine; 2 smooths shirt and checks wristband; 3 turns shoulder back; 4 steps toward exit with fedora and beard visible.\nROW3 ROUND VICTORY: 1 eases shoulders with vine fading; 2 tips fedora; 3 gestures playful open palm; 4 confident broad stance, one gloved hand at hip.\nROW4 ROUND DEFEAT: 1 recoils startled with hand raised; 2 braces knee and free hand; 3 kneels briefly catching breath; 4 regains low wary stance with short vine for balance, no gore.\nROW5 FINALE HERMITPURPLE HAMON: 1 winds a short thorny purple vine around forearm; 2 thrusts open gloved palm right stretching compact vine loop; 3 sends tiny GOLDEN HAMON sparks visibly ALONG purple thorny strand just beside body, one human body only; 4 retracts violet vine into guarded fist and plants feet. No humanoid Stand or beam.\nROW6 VICTORY: 1 exhales and lowers gloved hands; 2 lifts fedora slightly; 3 gives cheeky thumbs-up; 4 settles relaxed with hat tilted and gray beard clear.\nROW7 DEFEAT: 1 loses balance reaching for hat; 2 sinks onto knee; 3 sits exhausted propped on hand; 4 non-graphic side slump with fedora nearby and purple vine inert.\nROW8 SUPER HERMITPURPLE HAMON: 1 lowers stance and gathers two compact thorn-vine coils between gloves; 2 extends forearm to bind empty target-space right with a short violet vine arc; 3 firm pulling gesture with small yellow-gold Hamon current crawling on vine, no giant aura; 4 draws both hands back, vines curl safely by wrists. Four fresh poses distinct from finale.",
+      "file": "/workspace/generated_images/exec-e10ce8ed-17d7-4a23-98a9-5cc793607af6.png",
+      "statureByPhase": {
+        "fatality": {
+          "renderScale": 1.1816926834448336,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "sourceComparableColumn": 3,
+            "referenceBodyHeight": 208,
+            "normalizedBodyHeight": 172,
+            "nativeReferenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 214,
+            "referenceBodyBounds": [
+              63,
+              32,
+              144,
+              208
+            ],
+            "bodyBounds": [
+              64,
+              69,
+              137,
+              172
+            ],
+            "nativeReferenceBodyBounds": [
+              42,
+              7,
+              151,
+              219
+            ],
+            "nativeComparableBodyBounds": [
+              697,
+              902,
+              170,
+              214
+            ],
+            "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+            "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+            "formulaRenderScale": 1.1816926834448336,
+            "recommendCompensation": true,
+            "compensatedBodyHeightApprox": 203.25114155251137,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": false,
+            "reason": "Hat and upright torso are comparable; Hermit Purple/Hamon width reduces entire-row scale. Preserve the modest native stance flexion instead of forcing equal output heights.",
+            "recommendation": "Apply normalization compensation while preserving the native body projection.",
+            "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+          }
+        },
+        "super": {
+          "renderScale": 1.1250271798217004,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "sourceComparableColumn": 3,
+            "referenceBodyHeight": 208,
+            "normalizedBodyHeight": 168,
+            "nativeReferenceBodyHeight": 219,
+            "nativeComparableBodyHeight": 199,
+            "referenceBodyBounds": [
+              63,
+              32,
+              144,
+              208
+            ],
+            "bodyBounds": [
+              64,
+              75,
+              139,
+              168
+            ],
+            "nativeReferenceBodyBounds": [
+              42,
+              7,
+              151,
+              219
+            ],
+            "nativeComparableBodyBounds": [
+              700,
+              1556,
+              164,
+              199
+            ],
+            "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+            "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/joseph_joestar-original.png",
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+            "formulaRenderScale": 1.1250271798217004,
+            "recommendCompensation": true,
+            "compensatedBodyHeightApprox": 189.00456621004568,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": false,
+            "reason": "Hat and upright torso are comparable; Hermit Purple/Hamon width reduces entire-row scale. Preserve the modest native stance flexion instead of forcing equal output heights.",
+            "recommendation": "Apply normalization compensation while preserving the native body projection.",
+            "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+          }
+        }
+      }
+    },
+    {
+      "heroId": "skullgirls_beowulf",
+      "universe": "Skullgirls",
+      "referenceAsset": "/sprites/generated/heroes/skullgirls/skullgirls-beowulf.png",
+      "sourceWork": "Skullgirls2ndEncore",
+      "ability": "Three Wulf Moonsault",
+      "version": "Beowulf the human professional wrestler, muscular build and wolf-pelt identity, physical folding-chair TheHurting; new wrestler costume supersedes old closed green hunter-coat depiction.",
+      "sourceReference": "src/game/combat/abilities/abilitiesCanonical.js#skullgirls_beowulf and src/game/combatCanonExtensions.js#skullgirls_beowulf: TheHurting/HurtingHurl, single-target ThreeWulfMoonsault. Local old hunter-like outfit is not costume authority; official/wiki pages were blocked403, so no newly network-verified costume claim or official-frame fidelity.",
+      "ref": "skullgirls/skullgirls-beowulf.png",
+      "identity": "BEOWULF from SKULLGIRLS2NDENCORE, the HUMAN PROFESSIONAL WRESTLER, tall heavily muscular man with rugged dark brown hair and stubble, expressive square face and GRAY WOLF-PELT CAPE/HOOD, wrestling gear and heavy boots. Correct supplied flawed old green hunter-style long-sleeved coat: depict actual recognizable WRESTLER costume with BARE MUSCULAR CHEST/ARMS and dark straps, dark/olive wrestling trousers with knee pads, brown wrestling boots, shaggy pale wolf-pelt cape and wolf-head hood pushed back to reveal face. Not medieval warrior, Viking knight, werewolf form or actual animal head. Signature weapon THE HURTING is a REAL GRAY METAL FOLDING CHAIR with dark seat/back and tubular legs, held properly when shown, never a sword or gun. THREE WULF MOONSAULT is physical wrestling backflip/body-press, NO beam, magic moon orb, summoned wolf army or gore. Solo animation beats, no opponent/victim or ring scenery.",
+      "rows": [
+        "INTRO: 1 strides in carrying closed folding-chair at side; 2 hoists folded chair beside shoulder safely inside cell; 3 lowers chair and points confidently; 4 wrestler-ready stance with folded chair upright near leg.",
+        "OUTRO: 1 lowers folding chair; 2 closes legs of chair fully; 3 tucks folded chair under arm; 4 takes proud departing step with cape hem safely inside cell.",
+        "ROUND VICTORY: 1 catches breath and flexes arm; 2 points toward imagined crowd; 3 taps chest with proud grin; 4 stands confident with folded chair held low.",
+        "ROUND DEFEAT: 1 recoils raising open palms; 2 drops knee and braces one hand; 3 crouches deeply catching breath; 4 pushes up into guard with wolf-pelt draped back, no blood.",
+        "FINALE THREEWULFMOONSAULT: 1 deep springing wrestling crouch, chair set aside absent; 2 launches into clearly backward arched backflip with legs lifting, full human body/cape contained; 3 rotates into horizontal belly-down BODY-PRESS descent, arms spread and knees bent, no opponent; 4 lands low on one knee and palm with muscular torso forward. Four different native poses, no magic effect.",
+        "VICTORY: 1 straightens with confident grin; 2 raises one fist; 3 flexes both arms wrestler style; 4 poses proudly with folded chair resting beside leg.",
+        "DEFEAT: 1 staggers hand on chest; 2 drops onto knee; 3 sits exhausted leaning on free hand; 4 non-graphic side slump with complete cape and boots, no dismemberment.",
+        "SUPER THREEWULFMOONSAULT: 1 crouches with arms swept back ready to spring; 2 airborne BACKFLIP with knees tucked and back arched, all limbs clear; 3 rotates forward into broad body-press contact beat aimed down-right with compact pale impact ticks only, no victim; 4 finishes kneeling with fist raised to recover. Four fresh anatomies distinct from finale, no moonlight beam or wolf summon."
+      ],
+      "referenceImage": "docs/combat-fidelity-wave6-2026-10-20/part-c-references/skullgirls_beowulf.png",
+      "sourceRows": 8,
+      "sourceRowByTarget": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed": true,
+      "prompt": "Create ONE NEW production pixel-art animation atlas. EXACTLY4COLUMNS and8ROWS =32 genuinely new distinct full-body drawings. Portrait1:2 canvas1024x2048 preferred, TRANSPARENT RGBA. Each cell is a separate256px square: body, hair, coat, boots, weapon, vine, chair and any small VFX entirely INSIDE its own cell with generous15-20% transparent gutters. No cropping, cell overlap, text, labels, grid lines, backgrounds, UI, logos, other characters, victims or humanoid ghosts. Same detailed crisp32-bit pixel-art style, body scale, identity and ONE continuity throughout. Right-facing3/4side view for actions. Supplied local crop is project context, not official art: correct the explicitly described version/weapon mistakes; do not copy old poses/layout. Draw new poses anatomically, never duplicate/mirror cells. Eight rows MUST each contain FOUR distinct full-body keyframes in the specified order. Keep effects SHORT and COMPACT, runtime draws long-range VFX separately. No blood/gore; finale is an adapted combat presentation, not an execution. Four real new poses on every row.\nCHARACTER / VERSION:\nBEOWULF from SKULLGIRLS2NDENCORE, the HUMAN PROFESSIONAL WRESTLER, tall heavily muscular man with rugged dark brown hair and stubble, expressive square face and GRAY WOLF-PELT CAPE/HOOD, wrestling gear and heavy boots. Correct supplied flawed old green hunter-style long-sleeved coat: depict actual recognizable WRESTLER costume with BARE MUSCULAR CHEST/ARMS and dark straps, dark/olive wrestling trousers with knee pads, brown wrestling boots, shaggy pale wolf-pelt cape and wolf-head hood pushed back to reveal face. Not medieval warrior, Viking knight, werewolf form or actual animal head. Signature weapon THE HURTING is a REAL GRAY METAL FOLDING CHAIR with dark seat/back and tubular legs, held properly when shown, never a sword or gun. THREE WULF MOONSAULT is physical wrestling backflip/body-press, NO beam, magic moon orb, summoned wolf army or gore. Solo animation beats, no opponent/victim or ring scenery.\nEXACT ROWS TOP TO BOTTOM:\nROW1 INTRO: 1 strides in carrying closed folding-chair at side; 2 hoists folded chair beside shoulder safely inside cell; 3 lowers chair and points confidently; 4 wrestler-ready stance with folded chair upright near leg.\nROW2 OUTRO: 1 lowers folding chair; 2 closes legs of chair fully; 3 tucks folded chair under arm; 4 takes proud departing step with cape hem safely inside cell.\nROW3 ROUND VICTORY: 1 catches breath and flexes arm; 2 points toward imagined crowd; 3 taps chest with proud grin; 4 stands confident with folded chair held low.\nROW4 ROUND DEFEAT: 1 recoils raising open palms; 2 drops knee and braces one hand; 3 crouches deeply catching breath; 4 pushes up into guard with wolf-pelt draped back, no blood.\nROW5 FINALE THREEWULFMOONSAULT: 1 deep springing wrestling crouch, chair set aside absent; 2 launches into clearly backward arched backflip with legs lifting, full human body/cape contained; 3 rotates into horizontal belly-down BODY-PRESS descent, arms spread and knees bent, no opponent; 4 lands low on one knee and palm with muscular torso forward. Four different native poses, no magic effect.\nROW6 VICTORY: 1 straightens with confident grin; 2 raises one fist; 3 flexes both arms wrestler style; 4 poses proudly with folded chair resting beside leg.\nROW7 DEFEAT: 1 staggers hand on chest; 2 drops onto knee; 3 sits exhausted leaning on free hand; 4 non-graphic side slump with complete cape and boots, no dismemberment.\nROW8 SUPER THREEWULFMOONSAULT: 1 crouches with arms swept back ready to spring; 2 airborne BACKFLIP with knees tucked and back arched, all limbs clear; 3 rotates forward into broad body-press contact beat aimed down-right with compact pale impact ticks only, no victim; 4 finishes kneeling with fist raised to recover. Four fresh anatomies distinct from finale, no moonlight beam or wolf summon.",
+      "file": "/workspace/generated_images/exec-c6291ba7-87b1-4a76-8537-50dc383c0436.png",
+      "statureByPhase": {
+        "fatality": {
+          "renderScale": 1.0929253683017646,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "sourceComparableColumn": 0,
+            "referenceBodyHeight": 215,
+            "normalizedBodyHeight": 145,
+            "nativeReferenceBodyHeight": 213,
+            "nativeComparableBodyHeight": 157,
+            "referenceBodyBounds": [
+              72,
+              24,
+              143,
+              215
+            ],
+            "bodyBounds": [
+              38,
+              99,
+              181,
+              145
+            ],
+            "nativeReferenceBodyBounds": [
+              56,
+              8,
+              142,
+              213
+            ],
+            "nativeComparableBodyBounds": [
+              13,
+              944,
+              197,
+              157
+            ],
+            "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+            "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+            "formulaRenderScale": 1.0929253683017646,
+            "recommendCompensation": true,
+            "compensatedBodyHeightApprox": 158.47417840375587,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "reason": "The selected column0 is a low wrestling windup, not an upright body. Preserve source height157/150 versus213px reference body; do not equalize the145/136px normalized low poses to215px standing. Chair overhang is excluded from the reference body ROI.",
+            "recommendation": "Apply normalization compensation while preserving the native body projection.",
+            "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+          }
+        },
+        "super": {
+          "renderScale": 1.1132974316487156,
+          "statureReview": {
+            "referencePhase": "intro",
+            "referenceColumn": 0,
+            "sourceComparableColumn": 0,
+            "referenceBodyHeight": 215,
+            "normalizedBodyHeight": 136,
+            "nativeReferenceBodyHeight": 213,
+            "nativeComparableBodyHeight": 150,
+            "referenceBodyBounds": [
+              72,
+              24,
+              143,
+              215
+            ],
+            "bodyBounds": [
+              32,
+              108,
+              192,
+              136
+            ],
+            "nativeReferenceBodyBounds": [
+              56,
+              8,
+              142,
+              213
+            ],
+            "nativeComparableBodyBounds": [
+              5,
+              1613,
+              211,
+              150
+            ],
+            "nativeReferenceSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+            "nativeComparableSource": "docs/combat-fidelity-wave6-2026-10-20/part-c-sources/skullgirls_beowulf-original.png",
+            "sourceResolutionComparable": true,
+            "formula": "(referenceBodyHeight / normalizedBodyHeight) * (nativeComparableBodyHeight / nativeReferenceBodyHeight)",
+            "formulaRenderScale": 1.1132974316487156,
+            "recommendCompensation": true,
+            "compensatedBodyHeightApprox": 151.40845070422532,
+            "measurementKind": "visual-body-roi",
+            "excludesWeaponEffects": true,
+            "poseHasIntentionalFlexion": true,
+            "reason": "The selected column0 is a low wrestling windup, not an upright body. Preserve source height157/150 versus213px reference body; do not equalize the145/136px normalized low poses to215px standing. Chair overhang is excluded from the reference body ROI.",
+            "recommendation": "Apply normalization compensation while preserving the native body projection.",
+            "measurementCaveat": "Approximate independent visual head-to-shoe ROI, original outfit/pelt retained. Width can overlap a held prop, but vertical endpoints exclude its overhang. No asset or builder was changed."
+          }
+        }
+      }
+    }
+  ]
+}

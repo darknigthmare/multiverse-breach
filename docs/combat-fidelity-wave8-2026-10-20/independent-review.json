@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "kind": "independent-wave8-visual-regression-review",
+  "reviewer": "/root/review_wave8",
+  "passed": true,
+  "reproduction": "node docs/combat-fidelity-wave8-2026-10-20/independent-review.mjs --check",
+  "scope": "Read-only production review and deterministic helper/Fighter-method replay. No full browser flow, gameplay-suite result or source-frame certification is claimed here.",
+  "fixedDefects": [
+    "Missing Starfire flight outside the physical Fighter projectile path",
+    "Monsoon fragments arriving after the damage tick",
+    "Cyborg32 beam beginning away from the real native cannon orifice",
+    "Directional support guard opening not mirrored for P2"
+  ],
+  "checks": [
+    {
+      "id": "starfire-flight-clock",
+      "cases": 14,
+      "passed": true,
+      "scope": "Pure Smash/RPG action-clock projection plus exact-position priority of the Fighter physical-projectile contract; no new gameplay event."
+    },
+    {
+      "id": "monsoon-pre-impact-arrival",
+      "cases": 12,
+      "passed": true,
+      "scope": "Four pre-impact fragments, exact hit-time arrival, contact-only late scatter, and no target accents after a miss/shield rejection."
+    },
+    {
+      "id": "cyborg-native-muzzle-projection",
+      "cases": 50,
+      "passed": true,
+      "sampledOpaqueOrifices": 30,
+      "measuredNativeCellAnchors": {
+        "super": [
+          {
+            "x": 202,
+            "y": 118
+          },
+          {
+            "x": 164,
+            "y": 117
+          },
+          {
+            "x": 158,
+            "y": 119
+          },
+          null
+        ],
+        "fatality": [
+          null,
+          {
+            "x": 189,
+            "y": 121
+          },
+          {
+            "x": 160,
+            "y": 120
+          },
+          null
+        ]
+      },
+      "scope": "Both native phases, four columns, both facings and three heights; real baseline/renderScale, already-moved scene coordinates, inactive-cannon suppression, and the actual Fighter presentation method."
+    },
+    {
+      "id": "support-guard-facing",
+      "cases": 14,
+      "passed": true,
+      "scope": "Raven/Saejima arc opening mirrors exactly, with all five support roles rejecting enemy contact anchors."
+    },
+    {
+      "id": "finite-pure-and-strict-identities",
+      "cases": 410,
+      "pureVisualCases": 360,
+      "recordedCanvasCommands": 1734,
+      "exactRosterCases": 50,
+      "passed": true,
+      "scope": "Finite coordinates, balanced Canvas state, immutable inputs, exact same-universe partner identity, and separate Cyborg512x256 muzzle projection."
+    }
+  ],
+  "sourceHashes": {
+    "src/game/combat/abilities/abilitiesWave8.js": "3f5e1fb1f584502dfa95c0f372aa2055ea6258856057db44c22c2b6d0a125466",
+    "src/game/combat/abilities/catalog.js": "5775ee719212786c1c358d33433c9b74223e6ceac87264c9c5a653b6aa69f1a8",
+    "src/game/combat/presentationCatalogWave8.js": "30f999a473b35fd829ec25b76997fbbc28394e990f79e8ef4e81b3e0e842c02c",
+    "src/game/combat/nativeSuperVisualsWave8.js": "2bdf9fd26e7946f8ca87a57a2be162f62f1b3960a71880e16805d6018d449015",
+    "src/game/combat/characterSuperVisuals.js": "93aee5d91e819773f05b1ce4f56ed6ad46d481f1e68f992a0b63acfdaec7ba2f",
+    "src/game/combat/characterAnimationCatalog.js": "2385d2dd10969e1ceaa79fb32ee4857b29362dd3d0a074cd3abb6c8eda066ef4",
+    "src/game/combat/characterAnimationsWave8PartA.generated.json": "078760fbac906d2dcfacd3de5c7754e864b34274c2d9ee3e32dd88614249b93c",
+    "src/game/combat/rosterSummonChoreographyWave8.js": "16172bf7faf7f24b98086f03e5acf85e2627358bf5231a5f5d4c8dc956136a60",
+    "src/game/combat/summonAnimationCatalog.js": "3477d16a7f518cb6126e138bb1e574a2056f6176a282b1fb087f4c5168d22794",
+    "src/game/combat/summonAnimationsWave8.generated.json": "ef39486ae998c21c173cc643f6c55fee15f0cc54a30a4cd90a587d1e35b7839d",
+    "src/game/combat/summonChoreography.js": "3e04ce2d06ffec7da1f72567a74d0070e4ce0a65a862478f3b6bf0b3aca870af",
+    "src/game/engineRpg.js": "abab05cb73cd4f1065d9bdc8b7a3edda4a7a72fc85a570d5eb23549aeaa8eb94",
+    "src/game/engineFighter.js": "501d24a3ab46a0dc771bc1a0b7de0e742e8817e06c229f467d2b03004c78e35a",
+    "src/game/engineSmash.js": "f98d96ee1b01e0c9c5670b9899b12e04f2c5f6b28afc1dd66505e99043c434ea",
+    "src/game/renderer.js": "ef8934b7e05b7d67228c825e8099f3846cf1c784821e5e5c8187331dd71f18a1",
+    "docs/combat-fidelity-wave8-2026-10-20/independent-review.mjs": "a3ac8873f87bb6bbbb3d71d649379338cf560bcc15a82737e56c875e982bb158"
+  },
+  "nativeCyborgSheet": {
+    "path": "public/sprites/generated/combat-character-animations-wave8/cyborg_tt.png",
+    "sha256": "f93ba0f8c7d8b9766dfb5daaec65116cbb356aa0e2b51f7feb6e01db656d6501"
+  },
+  "modifiedProductionFiles": [],
+  "source1to1Verified": false
+}

@@ -1,0 +1,267 @@
+{
+  "method": "Local Chromium with real Canvas renderer and mounted React components; isolated fixtures prepare ATB, super gauges and enemy HP. No production save is changed.",
+  "results": {
+    "characterPresentationFrames": [
+      {
+        "characters": 8,
+        "phases": 64,
+        "actualFrameDraws": 512,
+        "errors": []
+      }
+    ],
+    "ariaBaseFrames": [
+      {
+        "character": "crypt_necrodancer_aria",
+        "states": 4,
+        "poses": 16,
+        "actualFrameDraws": 32,
+        "sourceAbility": "Dagger Beat",
+        "errors": []
+      }
+    ],
+    "meleeGameCanvas": [
+      {
+        "flow": "GameCanvas Smash → Cloud FFVII → panneau Omnislash 100 % → clavier L → startup sans dégât → impact après hitAt → charge 0 % → aucun second impact",
+        "impact": {
+          "start": {
+            "name": "Omnislash",
+            "charge": 0,
+            "hp": 100000,
+            "elapsed": 0.016666666666666666,
+            "hitAt": 0.451
+          },
+          "hit": {
+            "name": "Omnislash",
+            "charge": 0,
+            "hp": 99935,
+            "elapsed": 0.4666666666666666,
+            "hitAt": 0.451
+          },
+          "gameOver": false
+        },
+        "sameInput": {
+          "before": 99935,
+          "retriggered": false,
+          "charge": 0
+        },
+        "final": {
+          "hp": 99935,
+          "charge": 0,
+          "action": null,
+          "profile": "Omnislash"
+        },
+        "pageErrors": [],
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+        ],
+        "failedRequests": [
+          {
+            "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+            "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          }
+        ],
+        "screenshot": "/tmp/multiverse-melee-super.png"
+      }
+    ],
+    "rpgAndFighterComponents": [
+      {
+        "flow": "GameCanvas → bouton invocation → annulation → clavier U → confirmation → scène FF7 → impact → verrou une utilisation",
+        "early": {
+          "before": 7,
+          "after": 7,
+          "scene": {
+            "active": true,
+            "actorId": "hero:0:cloud_ff7",
+            "side": "player",
+            "name": "Ifrit — Hellfire",
+            "entityName": "Ifrit",
+            "actionName": "Hellfire",
+            "kind": "summon",
+            "universe": "Final Fantasy VII",
+            "color": "#ff8645",
+            "tick": 7,
+            "durationTicks": 216,
+            "impactTick": 114,
+            "impacted": false,
+            "phase": "arrival",
+            "targetIds": [
+              "enemy:custom:0:tifa_ff7"
+            ],
+            "performerId": null,
+            "entityAssetId": "ff7-ifrit",
+            "entityFrame": {
+              "index": 0,
+              "phase": "arrival"
+            },
+            "choreography": {
+              "id": "ff7-ifrit",
+              "fidelity": "authored-motion-adaptation",
+              "path": "ifrit-manifest",
+              "phase": "arrival",
+              "poseIndex": 0,
+              "tick": 7,
+              "durationTicks": 216,
+              "impactTick": 114,
+              "arrivalEndTick": 36,
+              "attackStartTick": 84,
+              "returnStartTick": 149,
+              "arrivalProgress": 0.19444444444444445,
+              "preparationProgress": 0,
+              "travelProgress": 0,
+              "attackProgress": 0,
+              "returnProgress": 0,
+              "effect": "damage",
+              "color": "#ff8645",
+              "side": 1,
+              "width": 1040,
+              "height": 460,
+              "performer": {
+                "x": 250,
+                "y": 345.8192729766804,
+                "scale": 0.9582222222222222,
+                "size": 218.47466666666665,
+                "alpha": 0.3888888888888889,
+                "facing": 1,
+                "rotation": 0
+              },
+              "origin": {
+                "x": 315.5424,
+                "y": 251.87516631001375
+              },
+              "caller": {
+                "x": 146,
+                "y": 304
+              },
+              "target": {
+                "x": 770,
+                "y": 304
+              },
+              "targets": [
+                {
+                  "id": "enemy:custom:0:tifa_ff7",
+                  "x": 770,
+                  "y": 304,
+                  "centerY": 260.3
+                }
+              ],
+              "visuals": []
+            },
+            "assetMissing": false
+          },
+          "charge": 0,
+          "atb": 0,
+          "used": true
+        },
+        "final": {
+          "active": false,
+          "hp": 99940,
+          "summon": {
+            "available": true,
+            "ready": false,
+            "actorId": "hero:0:cloud_ff7",
+            "side": "player",
+            "id": "cloud_ff7:summon:Ifrit",
+            "name": "Ifrit — Hellfire",
+            "entityName": "Ifrit",
+            "actionName": "Hellfire",
+            "universe": "Final Fantasy VII",
+            "kind": "summon",
+            "entityAssetId": "ff7-ifrit",
+            "used": true,
+            "atb": 97.20000000000037,
+            "charge": 0,
+            "cost": {
+              "atb": 100,
+              "charge": 100
+            },
+            "assetMissing": false,
+            "reason": "used"
+          },
+          "canSummonAgain": false
+        },
+        "errors": []
+      },
+      {
+        "flow": "FighterMode → intro → KO manche 1 → victoire/défaite → reprise manche 2 → KO → finale → victoire → outro → résultat unique",
+        "firstRound": {
+          "phase": "roundResult",
+          "roundWins": {
+            "player": 1,
+            "cpu": 0
+          },
+          "finished": false,
+          "completions": 0
+        },
+        "finisher": {
+          "phase": "fatality",
+          "roundWins": {
+            "player": 2,
+            "cpu": 0
+          },
+          "completions": 0
+        },
+        "complete": {
+          "phase": "victory",
+          "result": "victory",
+          "completions": 1,
+          "roundWins": {
+            "player": 2,
+            "cpu": 0
+          }
+        },
+        "errors": []
+      }
+    ],
+    "barretGameCanvas": [
+      {
+        "flight": {
+          "physicalY": 359,
+          "visualY": 295,
+          "groundY": 359,
+          "facing": 1
+        },
+        "flow": "GameCanvas Smash → Barret FFVII → panneau Catastrophe 100 % → clavier L → startup sans dégât → impact après hitAt → charge 0 % → aucun second impact",
+        "impact": {
+          "start": {
+            "name": "Catastrophe",
+            "charge": 0,
+            "hp": 100000,
+            "elapsed": 0.016666666666666666,
+            "hitAt": 0.451
+          },
+          "hit": {
+            "name": "Catastrophe",
+            "charge": 0,
+            "hp": 99955,
+            "elapsed": 0.4666666666666666,
+            "hitAt": 0.451
+          },
+          "gameOver": false
+        },
+        "sameInput": {
+          "before": 99955,
+          "retriggered": false,
+          "charge": 0
+        },
+        "final": {
+          "hp": 99955,
+          "charge": 0,
+          "action": null,
+          "profile": "Catastrophe"
+        },
+        "pageErrors": [],
+        "consoleErrors": [
+          "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+        ],
+        "failedRequests": [
+          {
+            "url": "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Inter:wght@400;500;700;900&display=swap",
+            "error": "net::ERR_TUNNEL_CONNECTION_FAILED"
+          }
+        ],
+        "screenshot": "/tmp/multiverse-barret-catastrophe.png"
+      }
+    ]
+  },
+  "limitation": "Local runtime verification does not certify source-game visual fidelity. The external Google Fonts request was blocked by the environment proxy."
+}

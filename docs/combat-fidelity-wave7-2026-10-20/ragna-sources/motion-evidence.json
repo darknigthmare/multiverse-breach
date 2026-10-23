@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-20",
+  "heroId": "ragna",
+  "sourceWork": "BlazBlue: Continuum Shift Extend (2011)",
+  "states": 24,
+  "nativePoses": 96,
+  "imageGenerationCalls": 3,
+  "standingBodyHeight": 190,
+  "normalization": "One scale per native source calibrated to an upright body excluding the sword; no row fitting.",
+  "checks": {
+    "deterministicBuilderCheck": true,
+    "unique96RGBAcells": true,
+    "RGBA1024x2048": true,
+    "safe10pxMargins": true,
+    "turnEndsRight": true,
+    "lint": true
+  },
+  "canonical1to1Verified": false,
+  "limitations": [
+    "Original generated/adapted art, no official-frame or 1:1 certification.",
+    "Profile eyes and occluded grips do not permit pixel-level proof of all anatomical sides.",
+    "Physical sword guard is an animation adaptation, not exact Barrier gameplay."
+  ],
+  "artifacts": [
+    {
+      "path": "src/game/combat/ragnaMeleeMotion.generated.json",
+      "sha256": "ed22bdbda69522b3e07df50576572cf2ad4b2097035d44e9b26094c0209c3598",
+      "bytes": 97188
+    },
+    {
+      "path": "public/sprites/generated/melee-ragna-wave7/ragna-defense.png",
+      "sha256": "d3db1bd2b454d7a91a003dfd91b4ca9d4286317eef581a0116b42e98251e8ec9",
+      "bytes": 1420513
+    },
+    {
+      "path": "public/sprites/generated/melee-ragna-wave7/ragna-motion-a.png",
+      "sha256": "bb18707e0dfb64b4b42cf07762a14992d8de20f002e6d522afbcee60873b00cd",
+      "bytes": 1654803
+    },
+    {
+      "path": "public/sprites/generated/melee-ragna-wave7/ragna-motion-b.png",
+      "sha256": "51b20d4ddbcf556637a45fb69a9168f9671f2b96a48b720e2209ac6d3529d888",
+      "bytes": 1321387
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.native.png",
+      "sha256": "5714cd7649244ead2ce7cebb14a28e100e8724054fc2ae83200a65fb2e3a37ab",
+      "bytes": 1861806
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.native.png",
+      "sha256": "20dfe19c2c68f208cc39ed9a4865adcc3a83f570b663547e64e681fdbf60899d",
+      "bytes": 1784102
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.native.png",
+      "sha256": "360bbaf6fde0638906e5b000f3e31aba27bb6a7cdd2c6854f0b014b670943f4e",
+      "bytes": 1736757
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-defense.prompt.txt",
+      "sha256": "a97ea8317a3172b4380bd0f2f62563d4bf0848613d56b081d6200264700d0d63",
+      "bytes": 4323
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-a.prompt.txt",
+      "sha256": "7d25604bfbb96479756e7b005e304781e3e0a64cffa1e6ff80828c0823256401",
+      "bytes": 4054
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-b.prompt.txt",
+      "sha256": "aec469386e4977f4026a5445424529c4916460edfa24ba8c71c4c964043585fc",
+      "bytes": 4133
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/ragna-motion-reference-original.png",
+      "sha256": "817e9ee373ad036a5ce3ffecbbd70d12717a094bc620601ab4715b77585753ec",
+      "bytes": 902638
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/actual-tool-calls-motion.json",
+      "sha256": "5f47a5b35d3becae440a9033257a3093d7efcc70f5af526ba09de3ab702ce6a5",
+      "bytes": 16437
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/normalize-ragna-motion-atlases.mjs",
+      "sha256": "0082d87edd7e10af27cec6fbc2e5c8d0284cb234f8c2076a883500ccec54e38e",
+      "bytes": 14339
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/provenance-motion.json",
+      "sha256": "ed22bdbda69522b3e07df50576572cf2ad4b2097035d44e9b26094c0209c3598",
+      "bytes": 97188
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/check-motion-result.json",
+      "sha256": "ebbf638bc475586eb4985b52b1ee8614b6763201d8c962c2f96d891e3c5abbb9",
+      "bytes": 2507
+    },
+    {
+      "path": "docs/combat-fidelity-wave7-2026-10-20/ragna-sources/validation-motion.json",
+      "sha256": "59b14ff1fa06c9a6fb6988860896d2bd0c0caca12a1a2202ff64ddbb34bf2e68",
+      "bytes": 33524
+    }
+  ]
+}

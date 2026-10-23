@@ -1,0 +1,605 @@
+{
+  "date": "2026-10-20",
+  "heroId": "kiryu_yakuza",
+  "universe": "Yakuza",
+  "sourceWork": "Yakuza Kiwami (2016)",
+  "nativeGenerationCalls": 6,
+  "nativeSourceDrawings": 180,
+  "deliveredPoses": 180,
+  "states": 45,
+  "atlases": 6,
+  "rejectedSources": [],
+  "corrections": [],
+  "model": null,
+  "jobId": null,
+  "generationId": null,
+  "canonicalVerified": false,
+  "source1to1Verified": false,
+  "sourceWideScaleOnly": true,
+  "effectiveStandingBodyHeight": 190,
+  "checks": {
+    "deterministicBuilderCheck": true,
+    "all180RawCellsUnique": true,
+    "RGBA1024x2048": true,
+    "margins10": true,
+    "measuredPalms": 12,
+    "measuredWrists": 12,
+    "all24RoisVisible81of81": true,
+    "palmSkinPixels": [
+      69,
+      81
+    ],
+    "contacts": 11,
+    "precontact": "ledgeCatch/0",
+    "explicitReleaseFlags": true,
+    "lintClean": true
+  },
+  "calibrations": [
+    {
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-motion-a.native.png",
+      "state": "idle",
+      "nativeRow": 0,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 58,
+        "y": 19,
+        "width": 134,
+        "height": 208
+      },
+      "sourceBodyHeight": 208,
+      "targetBodyHeight": 190,
+      "sourceRoi": {
+        "x": 58,
+        "y": 19,
+        "width": 134,
+        "height": 208
+      },
+      "sourceStandingBodyHeight": 208,
+      "normalizedBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.9134615384615384,
+      "renderScale": 1,
+      "requestedScale": 0.9134615384615384,
+      "safetyScale": 1.0308370044052864,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete native upright head-crown to shoe-sole body. One scale per source; all lower projections keep their native ratios."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-motion-b.native.png",
+      "state": "taunt1",
+      "nativeRow": 6,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 45,
+        "y": 1347,
+        "width": 115,
+        "height": 236
+      },
+      "sourceBodyHeight": 236,
+      "targetBodyHeight": 190,
+      "sourceRoi": {
+        "x": 45,
+        "y": 1347,
+        "width": 115,
+        "height": 236
+      },
+      "sourceStandingBodyHeight": 236,
+      "normalizedBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.8050847457627118,
+      "renderScale": 1,
+      "requestedScale": 0.8050847457627118,
+      "safetyScale": 0.975,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete native upright head-crown to shoe-sole body. One scale per source; all lower projections keep their native ratios."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-defense.native.png",
+      "state": "shieldExit",
+      "nativeRow": 5,
+      "nativeColumn": 3,
+      "sourceBodyBounds": {
+        "x": 717,
+        "y": 1156,
+        "width": 122,
+        "height": 251
+      },
+      "sourceBodyHeight": 251,
+      "targetBodyHeight": 190,
+      "sourceRoi": {
+        "x": 717,
+        "y": 1156,
+        "width": 122,
+        "height": 251
+      },
+      "sourceStandingBodyHeight": 251,
+      "normalizedBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.7569721115537849,
+      "renderScale": 1,
+      "requestedScale": 0.7569721115537849,
+      "safetyScale": 0.9322709163346613,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete native upright head-crown to shoe-sole body. One scale per source; all lower projections keep their native ratios."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-combat-a.native.png",
+      "state": "chargeStart",
+      "nativeRow": 4,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 40,
+        "y": 889,
+        "width": 146,
+        "height": 240
+      },
+      "sourceBodyHeight": 240,
+      "targetBodyHeight": 190,
+      "sourceRoi": {
+        "x": 40,
+        "y": 889,
+        "width": 146,
+        "height": 240
+      },
+      "sourceStandingBodyHeight": 240,
+      "normalizedBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.7916666666666666,
+      "renderScale": 1,
+      "requestedScale": 0.7916666666666666,
+      "safetyScale": 0.9076923076923077,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete native upright head-crown to shoe-sole body. One scale per source; all lower projections keep their native ratios."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-combat-b.native.png",
+      "state": "intro",
+      "nativeRow": 5,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 56,
+        "y": 1091,
+        "width": 107,
+        "height": 231
+      },
+      "sourceBodyHeight": 231,
+      "targetBodyHeight": 190,
+      "sourceRoi": {
+        "x": 56,
+        "y": 1091,
+        "width": 107,
+        "height": 231
+      },
+      "sourceStandingBodyHeight": 231,
+      "normalizedBodyHeight": 190,
+      "effectiveBodyHeight": 190,
+      "normalizedStandingBodyHeight": 190,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.8225108225108225,
+      "renderScale": 1,
+      "requestedScale": 0.8225108225108225,
+      "safetyScale": 0.9590163934426229,
+      "raisedArmsExcluded": false,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Complete native upright head-crown to shoe-sole body. One scale per source; all lower projections keep their native ratios."
+    },
+    {
+      "sourceImage": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-ledge.native.png",
+      "state": "ledgeHang",
+      "nativeRow": 1,
+      "nativeColumn": 0,
+      "sourceBodyBounds": {
+        "x": 86,
+        "y": 351,
+        "width": 154,
+        "height": 242
+      },
+      "sourceBodyHeight": 242,
+      "targetBodyHeight": 190,
+      "sourceRoi": {
+        "x": 86,
+        "y": 351,
+        "width": 154,
+        "height": 242
+      },
+      "sourceStandingBodyHeight": 242,
+      "normalizedBodyHeight": 188.76000000000002,
+      "effectiveBodyHeight": 190,
+      "normalizedStandingBodyHeight": 188.76000000000002,
+      "effectiveStandingBodyHeight": 190,
+      "scale": 0.78,
+      "renderScale": 1.0065691883873702,
+      "requestedScale": 0.7851239669421488,
+      "safetyScale": 0.78,
+      "raisedArmsExcluded": true,
+      "measurementKind": "visual-body-roi",
+      "excludesWeaponEffects": true,
+      "sameScaleForEveryPoseInSource": true,
+      "reason": "Native hanging head-crown to shoe-sole interval excludes raised arms. A source-wide safety scale and shared render factor preserve all crouches and hanging projections."
+    }
+  ],
+  "scope": "Only native Kiryu art, registries and documentation. No shared runtime, index or wrapper changes. Full45 special is ordinary secondary combination; the dedicated32 super stays separate.",
+  "limitations": [
+    "Original generated/adapted art and gameplay choreography; no official-frame, exact source-game timing or 1:1 certification.",
+    "Ledge traversal and palm positions are project adaptations and measurements.",
+    "Minor native anatomy/costume proportion variation remains; real low postures are deliberately not inflated."
+  ],
+  "inputs": [
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-combat-a.native.png",
+      "bytes": 1955078,
+      "sha256": "87b716200de41ee4b2d79cc5f112c8c6120d641e39d9eb166648f77b69b9477a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-combat-b.native.png",
+      "bytes": 1733213,
+      "sha256": "a03267a27de044b4329875e346a5193269a5e58787e77fb94a1511fd14b1a6eb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-defense.native.png",
+      "bytes": 1893768,
+      "sha256": "a56fd19b45e556ec4dfd3b066d9a80e2788d5f2557347d377dca3ecc25460c28"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-ledge.native.png",
+      "bytes": 1441061,
+      "sha256": "173c3e6dc95db2bd68c9b1eb55bc8715f62867e4644699a139928fc44de1813a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-motion-a.native.png",
+      "bytes": 1759806,
+      "sha256": "c062e4cb768be45edbb489a6fb131107b065a06810a9eba273f020830551d534"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-motion-b.native.png",
+      "bytes": 1860992,
+      "sha256": "bd67a254bf2d4a6cbba5257fc0a094e916e2192ac577d111b37432e14006ffc8"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-combat-a.prompt.txt",
+      "bytes": 3378,
+      "sha256": "2c4acf6995fda8b92b2dc9312912af210215dc8a93ead24869301f958c1760cb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-combat-b.prompt.txt",
+      "bytes": 3477,
+      "sha256": "2d0c5805b11d3b27036195cec5fbc7e12905c48f55118270d202162750b4e1be"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-defense.prompt.txt",
+      "bytes": 3391,
+      "sha256": "08f071aa2d41abbffd4c4c05272d69c79371e70451bbc0a8990dffe634b6a05b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-ledge.prompt.txt",
+      "bytes": 4298,
+      "sha256": "b2584e286a9bb378239f83b8b80ce2e4ad13abdc193bf885927eadbbb18eb674"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-motion-a.prompt.txt",
+      "bytes": 3186,
+      "sha256": "0d1e17b7838850c8670fcc7a15b8930a6eae7bb388ea3fa001791c60e63cc2af"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-motion-b.prompt.txt",
+      "bytes": 3238,
+      "sha256": "9777fd523bd10018d2d50c537f858947eb6db54864ca36e264b9ac2c8a0164e1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/kiryu-reference-original.png",
+      "bytes": 868142,
+      "sha256": "03d2913a84ec355577fb710dcf6cd4d3692ea0c69d111acd5ce738a65156e571"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/actual-tool-calls.json",
+      "bytes": 28872,
+      "sha256": "35bc31a924b2416e099f403cba2136278d210a8417561a3f21c48785911f24c9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/hand-measurements.json",
+      "bytes": 16958,
+      "sha256": "a4993be912708b4b6406af0791f0b5644d045e4c90b6e488dad68c902ecd648f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "public/sprites/generated/melee-kiryu-wave8/kiryu-combat-a.png",
+      "bytes": 1230679,
+      "sha256": "f40f687cf894accf150085040ca21a81d6f87d2686af54416d9b4541199934da"
+    },
+    {
+      "path": "public/sprites/generated/melee-kiryu-wave8/kiryu-combat-b.png",
+      "bytes": 1158659,
+      "sha256": "63edd578484b72da5acac2fb905e0908fb886363e5a7e8ec63dc0d7dae0206c2"
+    },
+    {
+      "path": "public/sprites/generated/melee-kiryu-wave8/kiryu-defense.png",
+      "bytes": 1083307,
+      "sha256": "6880d6a6a609a548c6ecbecce3baccccb6620d12995c4fb2b59703ad59fdee9e"
+    },
+    {
+      "path": "public/sprites/generated/melee-kiryu-wave8/kiryu-ledge.png",
+      "bytes": 912322,
+      "sha256": "df44da15f10a73aad2e2bc8012873752bf2887cc30ebfce6204b239e342e3cf9"
+    },
+    {
+      "path": "public/sprites/generated/melee-kiryu-wave8/kiryu-motion-a.png",
+      "bytes": 1402329,
+      "sha256": "621059c56b75564167aa58c069743c939cb0bbd093b776b3baf0598cfb2e1429"
+    },
+    {
+      "path": "public/sprites/generated/melee-kiryu-wave8/kiryu-motion-b.png",
+      "bytes": 1200561,
+      "sha256": "88daae21a95d3d5a3a03f7b78cc27586a54604f497f5c646a082cf57bbb66eeb"
+    },
+    {
+      "path": "src/game/combat/kiryuMeleeMotion.generated.json",
+      "bytes": 203960,
+      "sha256": "6ea084bba3e0e6f11d1011ae3b3de3539dec5ef19f21a602ff16d251b6ed4490"
+    },
+    {
+      "path": "src/game/combat/kiryuMeleeCombat.generated.json",
+      "bytes": 203256,
+      "sha256": "2b721d57e1456c572a88f782ca54a7a0d4b70d5a09679b15c6262fdc67ac53be"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/provenance-motion.json",
+      "bytes": 203960,
+      "sha256": "6ea084bba3e0e6f11d1011ae3b3de3539dec5ef19f21a602ff16d251b6ed4490"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/provenance-combat.json",
+      "bytes": 203256,
+      "sha256": "2b721d57e1456c572a88f782ca54a7a0d4b70d5a09679b15c6262fdc67ac53be"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/normalize-kiryu-atlases.mjs",
+      "bytes": 16549,
+      "sha256": "83e08c6d145c523506bcaab6d23d6eedee99f2f849dd5646724af1731d0d1e6c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/verify-kiryu-atlases.mjs",
+      "bytes": 8289,
+      "sha256": "840fd88c9bdff42f26284314cfbb46135380ced6bb317aa5fa063c9d030cbda9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/check-all-result.json",
+      "bytes": 5864,
+      "sha256": "a1fc764ba31b3330c8d410adec2714d53e8fef9db9c278b49b85d1dab185fded"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/verify-all-result.json",
+      "bytes": 221,
+      "sha256": "10c0a0da83e71380b85c9f3994ad078d5042a01a32928346053378e38741ac63"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/validation-all.json",
+      "bytes": 78585,
+      "sha256": "4e0fd268e4bc48d09f057ca9741b14635d0cdc2cee3e825a6c84e1634f63a220"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-pixel-checks.json",
+      "bytes": 10956,
+      "sha256": "bc53a80a7ef81690f27f4c68d6a67a281c5735141a22709cc01fa62f4317bf92"
+    }
+  ],
+  "contactAndReviewProofs": [
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-0-palm.png",
+      "bytes": 400,
+      "sha256": "0178d2f582afcc46415e61c8c706028fa8ee5f40371d7d9b8368fc587200b103"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-0-wrist.png",
+      "bytes": 413,
+      "sha256": "8d4366ea9b567605c7c1c790b36c92570c0ca1fc17daf9cf560d1ee9efde5716"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-1-palm.png",
+      "bytes": 422,
+      "sha256": "19296aef1edee7f01a94859d0901fc39644a179f338d75c2dc234eb3421fb2df"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-1-wrist.png",
+      "bytes": 422,
+      "sha256": "8aba31389784d045f5f42c6ab7b0952eee298df1a37f2b88cb9c3d119c6736d1"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-2-palm.png",
+      "bytes": 422,
+      "sha256": "aaf5551cd1f90dd705bf1fb8101316c29318cf89be557c0b921111fe6ba8d0bb"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-2-wrist.png",
+      "bytes": 422,
+      "sha256": "e74ac3550084f739e83637cbd1a3e006ff3d316a0978aa858c9fde49266ed82a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-3-palm.png",
+      "bytes": 422,
+      "sha256": "1e2d123c5fa5e1bcc4009776020070b37fe32c868cefc7fbf869389161b78d2f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeCatch-3-wrist.png",
+      "bytes": 422,
+      "sha256": "0e7c6dbb7ddd619798a161cd85c3031d8dffa8c00c7b442b48b769408ecca106"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-0-palm.png",
+      "bytes": 415,
+      "sha256": "a78702899fb7b0eb3cfc412422818b3e1dc53d0b914b53cd3786409c3501f913"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-0-wrist.png",
+      "bytes": 422,
+      "sha256": "7b76d80ac53c9b39233dc7752ff991509b44cc0a199b59614f7e7e40b82c643d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-1-palm.png",
+      "bytes": 422,
+      "sha256": "7485236fb177c05dc5ef489aded245426cfa3fd12747bdc83465e616b00d3c3a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-1-wrist.png",
+      "bytes": 422,
+      "sha256": "8de094670ecb3a214ef53c1a5c85c3bff46956d896cad19bfd30837c4880349c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-2-palm.png",
+      "bytes": 422,
+      "sha256": "182e188f5ecb58dad14dee62ca3705a4ee4102db1af9790b60ad52e6a87dee4a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-2-wrist.png",
+      "bytes": 396,
+      "sha256": "2a2c860eb5204b160cd96f60288a7316692cfac953ad97fd62ef6f6dd8beb591"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-3-palm.png",
+      "bytes": 422,
+      "sha256": "f8eb91b218725fd385569616ecc53d03dfc687722fce8aea1e4134087f9e2b52"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeClimb-3-wrist.png",
+      "bytes": 422,
+      "sha256": "3df74b707096fb2ea342ea701d4d0bedbcf2cfb7f9443a860a95b76ddc42efaf"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-0-palm.png",
+      "bytes": 422,
+      "sha256": "04dd9abd0c938510be3a7709f28341aa6b2e11aca0cab163e45858cbe6de08c0"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-0-wrist.png",
+      "bytes": 422,
+      "sha256": "62907347b416f0c5329f7d575f163fb91117b9738b93eab326324f3037bf4493"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-1-palm.png",
+      "bytes": 422,
+      "sha256": "0629bb92e61f7004b721207d8ed0ea5b9c593750c82f1de9f06aaf130f1edff5"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-1-wrist.png",
+      "bytes": 422,
+      "sha256": "4fa7c1b2fccd057212abc8d0be5d2d45dc719834c640e8b067be04ae73bb2b55"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-2-palm.png",
+      "bytes": 422,
+      "sha256": "cbf3a7ec7af39b40090dc2ad07a6aee506bf3ee2717f90c0f63113f5fff2c4fa"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-2-wrist.png",
+      "bytes": 409,
+      "sha256": "9d0a91fa4d77619401e25cc3230ae31156cc3d7d44b319a09de44032e68b3d1a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-3-palm.png",
+      "bytes": 422,
+      "sha256": "11eaab9a6946f10acfe8d1f5465ff0e96dc033d6862a763fc4c7bd459277c6f2"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/roi-ledgeHang-3-wrist.png",
+      "bytes": 422,
+      "sha256": "e995897834c460b425aedf005987abd55e981b946700ff43a95fced84c95bc4c"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-ledgeCatch-0-review.png",
+      "bytes": 53637,
+      "sha256": "6bdcc5fac077a5920ba04fd9e323fdc84b8c95541b7c386f0bfc321ef8a27999"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-ledgeCatch-1-review.png",
+      "bytes": 52424,
+      "sha256": "2177d6532e1a36780066ae5664809e44f2287853fabf02923ce789f6bcb70317"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-ledgeCatch-2-review.png",
+      "bytes": 58359,
+      "sha256": "4e0a1da58890b31ff5f74843fee9ed01f31f173baf52564b4ea73566bece8639"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-ledgeCatch-3-review.png",
+      "bytes": 55355,
+      "sha256": "7da4d82bb6ddb05117b4a240faba993dc6d9bb6cf51ac715f9359c48e60378d3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-ledgeClimb-0-review.png",
+      "bytes": 55782,
+      "sha256": "2384dba37819d7a1d6c0a7da40916a306a68b0fb7b6522c30d6c105e08ddf7b3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-ledgeClimb-1-review.png",
+      "bytes": 54521,
+      "sha256": "5a4f96719c543cc843a072fff63931ac24a856d2d88d6a690e36b658cffd91e3"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-ledgeClimb-2-review.png",
+      "bytes": 49688,
+      "sha256": "40b5c4358d292860b6013760fe12958c46d36bdee368b5e5b8db6d790f88402f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-ledgeClimb-3-review.png",
+      "bytes": 46566,
+      "sha256": "c343e2f613dd1acc8c2619a08fff0c6c484146363e70a8c377911fe5f898f372"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-ledgeHang-0-review.png",
+      "bytes": 57164,
+      "sha256": "3b8feab2697ccdeae0d7fd704c034f6914e8a07f75b3601bcf1e924d9edb34c7"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-ledgeHang-1-review.png",
+      "bytes": 56858,
+      "sha256": "374524d7c6f5e0c919f46f16d255299ec12d28c90c25033c54667a008a0d209a"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-ledgeHang-2-review.png",
+      "bytes": 56040,
+      "sha256": "9f7b8f81cf9f6c8ba6d73da3a6456982c79e75a299dca68e8a156d0b2c95071b"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-ledgeHang-3-review.png",
+      "bytes": 56576,
+      "sha256": "56eb88cda4d03c522e33fad8229ec7642aa90cffb397b8ab2ba85f8416a4792d"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/combat-review-montage.png",
+      "bytes": 788752,
+      "sha256": "4d9b066ea7d7a093d0d4c21a157df58af0fbd8d807f257f5397fea77221f85d9"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/grip-review-montage.png",
+      "bytes": 637959,
+      "sha256": "24af997eef24dfb61ff46f2d52b00ef2996e15377d2756492aa1b93a594e267f"
+    },
+    {
+      "path": "docs/combat-fidelity-wave8-2026-10-20/kiryu-sources/motion-review-montage.png",
+      "bytes": 871940,
+      "sha256": "15e40c7aee63bec4ab5d83c67b539dd5cfd0a8b1e206a180cea4478b5393ec17"
+    }
+  ]
+}

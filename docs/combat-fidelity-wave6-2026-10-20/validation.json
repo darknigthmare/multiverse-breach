@@ -1,0 +1,1250 @@
+{
+  "date": "2026-10-20",
+  "testSuites": 17,
+  "testsPassed": 1109,
+  "testsFailed": 0,
+  "suiteTestCounts": [
+    327,
+    92,
+    8,
+    217,
+    42,
+    37,
+    60,
+    39,
+    20,
+    32,
+    50,
+    74,
+    4,
+    71,
+    12,
+    5,
+    19
+  ],
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "log": "build.log",
+    "logSha256": "9011cea2a2bb2530936ff8396e0a1d4efa740e78b146956476dc0180f6625af4",
+    "warnings": [
+      "(!) Some chunks are larger than 1000 kB after minification. Consider:"
+    ]
+  },
+  "lint": {
+    "command": "npm run lint",
+    "exitCode": 0,
+    "log": "lint.log"
+  },
+  "diffCheck": {
+    "command": "git diff --check",
+    "exitCode": 0,
+    "log": "diff-check.log"
+  },
+  "characterReferenceAudit": {
+    "characterArcEntryCount": 1912,
+    "entriesWithLocalReferences": 1912,
+    "entriesWithoutLocalReferences": 0,
+    "uniqueReferencePathCount": 1912,
+    "missingReferenceFileCount": 0,
+    "referenceClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    },
+    "entryClassifications": {
+      "approved": 1912,
+      "rejected-placeholder": 0,
+      "needs-review": 0
+    }
+  },
+  "browserChecks": "browser-checks.json",
+  "distAssetCount": 141,
+  "distAssets": [
+    {
+      "sheet": "/sprites/generated/combat-entities/nexus-barricade.png",
+      "sha256": "ec1e7ad232026018ba4dc372ee5381515ccab4b6a14f497318f7f39218a1800a",
+      "bytes": 248835,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/nexus-suture-drone.png",
+      "sha256": "b9e6935592594e9db57fec3d922d7176324b0b146855206428f81ec28ada2baa",
+      "bytes": 204500,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/nexus-tessera-reflection.png",
+      "sha256": "0a43a6714156156b4c9daebb71be05ce61e62686ec414b8b902d48dd0b4c7042",
+      "bytes": 198702,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/nexus-return-probe.png",
+      "sha256": "4e945bbcbd8531fc8056d26134d7eb95309f52c68965d0fd297c3da88e594356",
+      "bytes": 119773,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/halo-pelican.png",
+      "sha256": "83512108af4aef0a689dec91c72da9c908bcc345a495ade374d198eca9baa614",
+      "bytes": 239123,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/half-life-dog.png",
+      "sha256": "ab1b4af724b84336ffc0724af23edab4769b3890830b6effeec2802ff0eab80a",
+      "bytes": 188179,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/portal-turret.png",
+      "sha256": "545858b675f74496cb5856ddbea240501a6aa2080493ba3a4b7bbf03250eb40b",
+      "bytes": 129337,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/payday-sentry.png",
+      "sha256": "c6fbb7280493cdecf1e37963d1b95c12c174594ec9f8c55bdda6e83fbe97072b",
+      "bytes": 135934,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/slender-pages.png",
+      "sha256": "baf2d0b9871b4d01257c16640cf646fc3fd8c44f2dcd271e9f02231fa5310a38",
+      "bytes": 289247,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/doom-bfg9000.png",
+      "sha256": "24257e6f9c367028e0af4fa0304c98a7f76225e4e06dd34f563030826466ef1c",
+      "bytes": 195043,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/guilty-gear-yamada.png",
+      "sha256": "7d5dbe695ecf455243b4a0d0779eef4ee3fb5fd7c94ec1f4d0e02b9be1471d71",
+      "bytes": 287577,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/ff7-ifrit.png",
+      "sha256": "dc25d37ea481a3caf527d20e30ebdf84a6ac1af73504aa48a49f1e7557d5bf25",
+      "bytes": 360566,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/ff7-shiva.png",
+      "sha256": "5f96a333ad2b03c42aef1b462001fb13a8eb4fae2dcdb8ff37a2249149818c01",
+      "bytes": 357430,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/ff7-bahamut.png",
+      "sha256": "ecbcd34bd73328279d14458e2f781c2e8a363ed86a093b26563a718a8e4c0ed5",
+      "bytes": 215067,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/sonic-tornado.png",
+      "sha256": "4ebd9ad1eb35922051f6e97d9ea9caf0c921a085ee47c42df139bb9d489c4d5d",
+      "bytes": 282459,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/jojo-star-platinum.png",
+      "sha256": "c5f7897fd2f18b12d948ffab5f309f2c6ba1624e3d95cbec8968c21ac0d9143f",
+      "bytes": 273860,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/jojo-hermit-purple.png",
+      "sha256": "429caf678b2eeab7ec16aa9eb2f5aacd337c6b22ad8ca333fa4bac21c388eea8",
+      "bytes": 253627,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/jojo-gold-experience.png",
+      "sha256": "2794007bd0de1dd30de70eafdb4b41d654c58e2ef4f88cc67ffdda2f0773dd28",
+      "bytes": 194609,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/neon-ghostline.png",
+      "sha256": "5760ca3c9771c86b8cde1b396457475f05810eb03f09dec3a4ceac65837d3de2",
+      "bytes": 344712,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/aether-sky-mutineers.png",
+      "sha256": "f3d0c65a752e93b9278d5da01baba7d31d7139fd02fc5fd4fb291e911c6c24d3",
+      "bytes": 217830,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/aether-valve-drone.png",
+      "sha256": "ef54ef457e94603e9e15b5367aa1215df484e3437123ad9ec4ab6bdbc0a98af1",
+      "bytes": 304487,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/meridian-clockwork-falcon.png",
+      "sha256": "b8deff5fdc9b6b548c702ab3806b99cfeb3cfdb5899ba5df61a6af9655ba387a",
+      "bytes": 271481,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/aegea-shield-forge.png",
+      "sha256": "873d20bdf4b42bea268a0bb37f25e867df3eb7d629b4e18f0df21ac65e19582e",
+      "bytes": 279445,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/tawantinsuyu-relay.png",
+      "sha256": "1822b9cad1d857ac469ffebf489bd3bea8e4807994655ad9299014d38350a80b",
+      "bytes": 239978,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/yomi-yokai-parade.png",
+      "sha256": "0041844779e7d98f21aa8cbc77a74b8bf266d916032115fc0eb3907d52965964",
+      "bytes": 334720,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/mandate-ancestor.png",
+      "sha256": "7fac8d39f299354aa6506544bf3caeb059cb6af48e9323dda8f2fcc121a05c86",
+      "bytes": 333555,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/ilyr-nym-choir.png",
+      "sha256": "23ca7c92a8466e449a6f94f93b077e70863f43c73c1828d341aa13ea7da3086a",
+      "bytes": 186449,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-entities/skullgirls-black-egrets.png",
+      "sha256": "ba88f04b9f05001250765edb2cee1f3147a26696ee7fd2664377f9ac747fe5d0",
+      "bytes": 231939,
+      "width": 1024,
+      "height": 256,
+      "registry": "entityAssets"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/cloud_ff7.png",
+      "sha256": "6ac51864c0847c4691cd7f46e7950e8f0bd83c498bd5da44e432ee75ec566ebd",
+      "bytes": 1273789,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimations"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/tifa_ff7.png",
+      "sha256": "b69a8833a5d874003474aa2a696641a465690777577fcf3f7d925c485600981c",
+      "bytes": 2031251,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimations"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/aerith_ff7.png",
+      "sha256": "93fd1b9497a90f4735d1be125bade917c0c2d4e5f966ae7654144b9435c0bce1",
+      "bytes": 2434280,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimations"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/barret_ff7.png",
+      "sha256": "4971f2477742549d70c9e16c9f00ff059d1dae5120da42a5b511541bc23b3809",
+      "bytes": 2349109,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimations"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/goku_dbz.png",
+      "sha256": "fdd9eddfa9d39a8f47accf211e3567ae724e1b2dc0abe01d5f8a57cc4c86b48e",
+      "bytes": 1614615,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimations"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/vegeta_dbz.png",
+      "sha256": "43270b828b7b4fedfd9ad2cd78dc3f38b70751933fe375853b2516aa54f1af20",
+      "bytes": 1108912,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimations"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/naruto_six_paths.png",
+      "sha256": "96880a08de46edd1cfb0493947892aaf9498e370cf6ffead729d53a4df3d57b4",
+      "bytes": 1348087,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimations"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations/sasuke_rinnegan.png",
+      "sha256": "ca4b21e4c5eef89bdab0d3d8f9471f7b5906641f4b70fb7f1feab6c470376f09",
+      "bytes": 1997453,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimations"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections/crypt_necrodancer_aria.png",
+      "sha256": "c5c9f4f1459b263074855ce06d746f0d4941d51f8a869acee2e7c1be9e0bc4a5",
+      "bytes": 1262880,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrections"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/squall_ff8.png",
+      "sha256": "839e0d51fe615d7788816dd6f36dc36ca26fcc4e7cc687e4bec1e1b4ad12cabb",
+      "bytes": 1750298,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave2PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/rinoa_ff8.png",
+      "sha256": "2589272c9c766b83d2ea86e8f5b51b36c6f3c0e35e81036109a683848c97b853",
+      "bytes": 1914445,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave2PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/quistis_ff8.png",
+      "sha256": "1eefeca016e5d2fa993d03882d113c7ab03e01184f00f8ffce9b5fcefb036c25",
+      "bytes": 1539452,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave2PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/seifer_ff8.png",
+      "sha256": "72097c01854fa71cc166f25109b2e413b9a19bb51a9ce088a5f940dff830328b",
+      "bytes": 1733683,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave2PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/laguna_ff8.png",
+      "sha256": "c022526b92bd7985ffa3e4501eb37821b9de312f94aa98b1576f5d2d2f6e5fcb",
+      "bytes": 1830115,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave2PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/zell_ff8.png",
+      "sha256": "3818151ef2246f026056d81710cae23ab4c3d385019b09a584cbb15298bcc0ee",
+      "bytes": 1588586,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave2PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/selphie_ff8.png",
+      "sha256": "b4ac604ae9d18c72c08076adc58fe7558d0b0aa75f694401789bd9cd438975be",
+      "bytes": 1970163,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave2PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave2/irvine_ff8.png",
+      "sha256": "064308772fc61429c177563b039dab5a9da945804ca2d193e31620241378a33c",
+      "bytes": 1737819,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave2PartB"
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-motion-a.png",
+      "sha256": "bdbdb9bb7927792205f4fdbc8d7f7d728a1c2511d87db04c046c0d9d9beaca81",
+      "bytes": 1639624,
+      "width": 1024,
+      "height": 2048,
+      "registry": "cloudMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-motion-b.png",
+      "sha256": "9a8c387db60ce5ccd6a9cc0b49d72e8677857058d353d8ecb17488f72d5fe1fb",
+      "bytes": 1887945,
+      "width": 1024,
+      "height": 2048,
+      "registry": "cloudMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-defense.png",
+      "sha256": "f25fafe187b8d99fc81a7d22c14c3850c2592f4a7932d1d104dcef65a8af2897",
+      "bytes": 1517196,
+      "width": 1024,
+      "height": 2048,
+      "registry": "cloudMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-combat-a.png",
+      "sha256": "69739860160bf09700f777e965b3bc8746787c6afed87e38f83bd155b28ad45e",
+      "bytes": 1283056,
+      "width": 1024,
+      "height": 2048,
+      "registry": "cloudMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-combat-b.png",
+      "sha256": "75101402b58dfb01fc99b65804c7767583eb7d799cb04cdaf67cfedb4186c9e8",
+      "bytes": 1437655,
+      "width": 1024,
+      "height": 2048,
+      "registry": "cloudMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/melee-cloud-wave2/cloud-ledge.png",
+      "sha256": "771c9ee9d5ad7410baf145b5498731467fb80af41cea30a264f654d65f641c38",
+      "bytes": 1228335,
+      "width": 1024,
+      "height": 2048,
+      "registry": "cloudMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave2/seifer_ff8.png",
+      "sha256": "9a68806007ea498a870a6ae0bbdb5c53f8e022df9cdee872006b144e27abee85",
+      "bytes": 829021,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrectionsWave2"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/lightning_ff13.png",
+      "sha256": "b8ca305d65183453f88aee29a7c545622c88fcc5b5282877d165d92b96785e62",
+      "bytes": 1637906,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave3PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/fang_ff13.png",
+      "sha256": "102ac05748354c165ec3d2707b22d0a5f563424f9f9dcb02a9c5408654295d93",
+      "bytes": 1413676,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave3PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/vanille_ff13.png",
+      "sha256": "4a8fddae11e99512a85736c16f4235178cb57a807cfc019deff392230966b16d",
+      "bytes": 1849262,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave3PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/snow_ff13.png",
+      "sha256": "7a7c5de69cb73a1c49b366f905ff90e29cfe764d4e514a6e97bf84d7ab6724ec",
+      "bytes": 2002659,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave3PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/sazh_ff13.png",
+      "sha256": "7de32f03f97b38c9f0d02d58a19f43721e6ac58ae1b3076ef2146732a1323fd3",
+      "bytes": 1877302,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave3PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/hope_ff13.png",
+      "sha256": "a9921fdba10102099aa318ea6776f4ff1406e1859256e5da9c353b1217ea641a",
+      "bytes": 1823979,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave3PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/noctis_ff15.png",
+      "sha256": "da867e153444edcf9d5df4fc9d7ff6c02eb8ff8801ffdcb633da4f259101f077",
+      "bytes": 1568117,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave3PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/gladiolus_ff15.png",
+      "sha256": "f94988b1528985533aaceee7039924776639ed068d051a9900d156eee4ff6127",
+      "bytes": 1562923,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave3PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/ignis_ff15.png",
+      "sha256": "380787327cb9eaa38b5c9fe1afeb13beab472d0ac9ad341568d056e22f1ac883",
+      "bytes": 1568403,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave3PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/prompto_ff15.png",
+      "sha256": "b42429e872f617749b6bd7a8042ede3a67a17e892170f1fbecbcfadeac763bdd",
+      "bytes": 1700202,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave3PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave3/lunafreya_ff15.png",
+      "sha256": "53ce58cb316a62ef08888266b25866e65318c1d0fb7e8d8437cbfbd9c1fd73c7",
+      "bytes": 1975381,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave3PartC"
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-motion-a.png",
+      "sha256": "80fb30a7b74db4c6ac2ae70bfcab580a216880bcb8b1a27c80a6edd674f09e82",
+      "bytes": 1911162,
+      "width": 1024,
+      "height": 2048,
+      "registry": "tifaMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-motion-b.png",
+      "sha256": "2a3583ba3c45f905f533b2a5d917e37c1dd63d5735c1c789168f2c4d8737c42e",
+      "bytes": 1868786,
+      "width": 1024,
+      "height": 2048,
+      "registry": "tifaMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-defense.png",
+      "sha256": "0e17fbe82ea8b925083f222e3a47b0b63f541cc2a8f43627ed6ab73eb9d9a6e1",
+      "bytes": 1970160,
+      "width": 1024,
+      "height": 2048,
+      "registry": "tifaMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-combat-a.png",
+      "sha256": "f34b01774196673e44701e31a691b8a30c8ceb668d44b4e31264b0a047cd978a",
+      "bytes": 1913443,
+      "width": 1024,
+      "height": 2048,
+      "registry": "tifaMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-combat-b.png",
+      "sha256": "4f88276e0293eaa2d05796c96bbae56693d620d995ec51d8c28d5ff6f9cb7d74",
+      "bytes": 1730336,
+      "width": 1024,
+      "height": 2048,
+      "registry": "tifaMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/melee-tifa-wave3/tifa-ledge.png",
+      "sha256": "9bf31fb2211f68b07c39757230f6b944f704ab3661b4b5dab3ef4d263cac26bd",
+      "bytes": 1183405,
+      "width": 1024,
+      "height": 2048,
+      "registry": "tifaMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/redxiii_ff7.png",
+      "sha256": "69178309ce19444fbedf269d9ce8ec94572c6d2eb8e0832f81764b407bf93d88",
+      "bytes": 1320972,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave4PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/yuffie_ff7.png",
+      "sha256": "74257a86ac17f220de451f778d1c89d69c87368ce13ba806a9e6d94a8ab7d2e3",
+      "bytes": 1671392,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave4PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/vincent_ff7.png",
+      "sha256": "e8397c23f9524de57e6782c6cfc54212beecc3e286c100d408caa307edd874f1",
+      "bytes": 2060334,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave4PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/naruto_uzumaki_young.png",
+      "sha256": "2b5f506ec3eb24532389632bf7b65ca96310260a5f6f83569ee3610b01f816ac",
+      "bytes": 1873579,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave4PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/sasuke_uchiha_young.png",
+      "sha256": "9c9c7807ccd0ed8fbcc68f0a23c06020ba0e3f32c69ba6cc04abb5723346f6b3",
+      "bytes": 1458048,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave4PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/sakura_haruno_young.png",
+      "sha256": "cf619b5d8d2797a44be03a5e84096128de311463014bc75416a888923ce6bcba",
+      "bytes": 1859432,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave4PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/piccolo_dbz.png",
+      "sha256": "94c6a68f6862aa8490cda63637935863012299aab7faabb5074c72cf399a0bec",
+      "bytes": 1616347,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave4PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave4/kakashi_war.png",
+      "sha256": "b248d7d2868139f601ad7d29e11ae013d094ef229e5f9a7fb39d8ba77c37f34f",
+      "bytes": 1675446,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave4PartC"
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-motion-a.png",
+      "sha256": "9bed1d1097b0273cd43df592636e9cbbdb7cf6b921b81e125f6d06271924a9c9",
+      "bytes": 1575066,
+      "width": 1024,
+      "height": 2048,
+      "registry": "gokuMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-motion-b.png",
+      "sha256": "6e83dab1b8b85c64dddbdd60ceeece56dd9c47fcd55fd21a26a6b3e70ffeace8",
+      "bytes": 1757466,
+      "width": 1024,
+      "height": 2048,
+      "registry": "gokuMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-defense.png",
+      "sha256": "f7ab7296a08b5d468de2e5a0a0e3feb5d9916089a7806267171ec2519e3a5df2",
+      "bytes": 1762164,
+      "width": 1024,
+      "height": 2048,
+      "registry": "gokuMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-combat-a.png",
+      "sha256": "85730a037c5ebc8653c4bfb9d7a8974c0e670a438684a6c648998912f09787f8",
+      "bytes": 1546362,
+      "width": 1024,
+      "height": 2048,
+      "registry": "gokuMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-combat-b.png",
+      "sha256": "065601ef7bd816b5a258369a2ac39d0fccbf1513a8836d6630b9569f7de175fe",
+      "bytes": 1480022,
+      "width": 1024,
+      "height": 2048,
+      "registry": "gokuMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/melee-goku-wave4/goku-ledge.png",
+      "sha256": "4bf47f2fcafaddf71bfde028d968633a52c074f6af6f9bf2c72dfa52f5352b9e",
+      "bytes": 1162651,
+      "width": 1024,
+      "height": 2048,
+      "registry": "gokuMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-forms-wave4/vincent-chaos.png",
+      "sha256": "10801b05b9ad4589405f03f79c9e976708df552b40291ce788fe4106d2e0798f",
+      "bytes": 936572,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterFormsWave4"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave4/redxiii_ff7.png",
+      "sha256": "7865cc3c4a9a5ccafcb50386ca992e5c481ac8e1d4e6bd492c6fac95f7ceef95",
+      "bytes": 776274,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrectionsWave4"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave4/vincent_ff7.png",
+      "sha256": "ce28744f43ce226f4ba850530505ad678e70d9f1bee2f245fbe9f79640ae5d40",
+      "bytes": 826883,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrectionsWave4"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/masterchief.png",
+      "sha256": "a739f192adc3029323e8996df9abf78a352c3e44f8635f7c8e7632662cdfb709",
+      "bytes": 1349788,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/arbiter.png",
+      "sha256": "9a682e0afbab5ace71ccc2ff2863bde5a96f43ae9d168c7006cffc81e946bc8a",
+      "bytes": 1595317,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/johnson.png",
+      "sha256": "b533dcd4e743e522d7691a47404605b0b6f3c11e024ad56788b10c2fbe9bdfb2",
+      "bytes": 1582625,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/doomslayer.png",
+      "sha256": "4186857c67f46a7039e630d62e1ba46c3712f023a8c9e2dc5cd795d175fcf54a",
+      "bytes": 1674324,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/doom_marine_classic.png",
+      "sha256": "ddce61163eaf6702179dfedc316263ff3911b3ecc333b4c72e2573b75c7cb8f4",
+      "bytes": 1822973,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/boruto_uzumaki.png",
+      "sha256": "f1f6599b3d921a6bd69c6e9044f9e73ec9bed4eee79ba7bacf0cf534552f7448",
+      "bytes": 1605130,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/sarada_uchiha.png",
+      "sha256": "b97000fa58928ceb214b624655909211bf380b24a79ef1158c6856beedf89ea3",
+      "bytes": 1551952,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/mitsuki_boruto.png",
+      "sha256": "ed1bd8fbbb60bed4f9b1a2cf8bfe718572c28055e52946b79bb79903bfa184d3",
+      "bytes": 1683083,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/solbadguy.png",
+      "sha256": "aac2118b28f8cebff1d600a61f2229bc35886c3e0ae271f95804e715b81e9489",
+      "bytes": 1869797,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/ky.png",
+      "sha256": "7bf02e808319f6749cc151a8839c5da948b22af6f6a4998a9ecddabb8fe832e1",
+      "bytes": 1874726,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/leon.png",
+      "sha256": "4371ef37814dc1e38d0efcb29f74b6394ec2b350892e3ccd0e7ced5c1eafed9b",
+      "bytes": 1517032,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/jill.png",
+      "sha256": "afe84d8904b9e530ae11f24626641af36727eb82aebf98a7581e665e7a1d46f7",
+      "bytes": 1488144,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/rebecca_chambers.png",
+      "sha256": "22b69378ac4840fbced1c7d38f82d36c48906dfe14f63863f7350ff73fbc7bf5",
+      "bytes": 1826869,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/arca_mirelle.png",
+      "sha256": "9308ab582c37f7c3421e7ef2264ced506d280dbfdda7128376b62b47b9341632",
+      "bytes": 2108525,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave5/arca_bastion.png",
+      "sha256": "0be893d4c9f2e4dde62ba0e9359eb62d07be7f54c5d10372a43411a76d6018cf",
+      "bytes": 2059030,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave5PartC"
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-motion-a.png",
+      "sha256": "0f0768cfcf9dfbc21072f0841b9c2751a59df1ef347ea03e210e6746e9a620e6",
+      "bytes": 1588801,
+      "width": 1024,
+      "height": 2048,
+      "registry": "vegetaMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-motion-b.png",
+      "sha256": "bc2d8066456be8278385bb6bcfd383a74f6f8b113c4a9dacea8a9905867c814c",
+      "bytes": 1553958,
+      "width": 1024,
+      "height": 2048,
+      "registry": "vegetaMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-defense.png",
+      "sha256": "dff4c90f5aff0aea0ed9522fa1ca482c8c07755a19b97ad6743a15a05cb3f5c9",
+      "bytes": 1680362,
+      "width": 1024,
+      "height": 2048,
+      "registry": "vegetaMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-combat-a.png",
+      "sha256": "aaa2646277a63adc1736cdff21d1271f1fdc3f520a35abd24a4b0505a04be95e",
+      "bytes": 1597062,
+      "width": 1024,
+      "height": 2048,
+      "registry": "vegetaMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-combat-b.png",
+      "sha256": "f39c1a4005618d03773537d9eb7b6cc9f7b76c0014473042ce2a1c086d056bda",
+      "bytes": 1516626,
+      "width": 1024,
+      "height": 2048,
+      "registry": "vegetaMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/melee-vegeta-wave5/vegeta-ledge.png",
+      "sha256": "e30de6b87287208271ff1b62d5aca66da3caf432e7ac2599ff9ebf385f58e363",
+      "bytes": 1088085,
+      "width": 1024,
+      "height": 2048,
+      "registry": "vegetaMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave5/ifrit.png",
+      "sha256": "db0753da04e298b95d4d7ade559c24bc58cf10449f27530a17893be81f3f7583",
+      "bytes": 1446113,
+      "width": 1024,
+      "height": 1024,
+      "registry": "summonAnimationsWave5"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave5/leon.png",
+      "sha256": "04b07d43bf6344cea7da00f2bc39234979a066c190d4f634f0bf73802011583b",
+      "bytes": 925609,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrectionsWave5"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave5/solbadguy.png",
+      "sha256": "c0d578bece894bf8f82ecc845e0955a7bc1ad8b633f3e1ac5a40e3e84bc056d9",
+      "bytes": 1055559,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrectionsWave5"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave5/ky.png",
+      "sha256": "714fba60e60fdc5695bca3d9a99ddec0ec7f8a94806a8ce3bc59821e5ce1e563",
+      "bytes": 996239,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrectionsWave5"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/sonic_hedgehog.png",
+      "sha256": "9dad280e47782fbea27d8f06209b656b892297c4e3f99d5c8d97c27c04ad76c1",
+      "bytes": 2305040,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/miles_tails_prower.png",
+      "sha256": "1850f52435f9f782d08fcb1dfb9535737498489066b9c9c6f1abbc3ab66bc47e",
+      "bytes": 2320735,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/knuckles_echidna.png",
+      "sha256": "07597a67f2fa87db21d13e69805740b6fdc229e237f2e215271d47c41cb0c742",
+      "bytes": 2260452,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/jotaro_kujo.png",
+      "sha256": "6df167646f1844177e43712604f66f1159bea2e5d53dee8f351bf46c9dc5cb73",
+      "bytes": 2174834,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/giorno_giovanna.png",
+      "sha256": "b69805c29123c73d8ea814e2f9924ba19376632ec774df9b6fbcd0e03b95efb2",
+      "bytes": 2030254,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/devil_may_cry_dante.png",
+      "sha256": "cfc95536688d393c14038d38c6a6f67cf56c97e09878810735ffbdc5996843bd",
+      "bytes": 2091095,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/devil_may_cry_nero.png",
+      "sha256": "b9a5189854abf1437b35ee54f0c3ee886122d7a1660b772669220c6a519e6eae",
+      "bytes": 2377063,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/devil_may_cry_lady.png",
+      "sha256": "44ff222970ccaba684692b31e12700ad59a84b7827ca89240b0c1dd35935fa69",
+      "bytes": 1660007,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/skullgirls_parasoul.png",
+      "sha256": "08bec276feff6d9731c93dbedf1910ebf15bbccbed7c0f5d26a1350430602e90",
+      "bytes": 1468428,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/skullgirls_big_band.png",
+      "sha256": "09fdcf2057b4cda84cfc6cea582249fe7315f86e0b309e644bbb9fdf3857da93",
+      "bytes": 2225286,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/snake.png",
+      "sha256": "9b0b69c12a6a3bd3c3890edaca01987884997f7085c6297bdf3eb187ef81c76a",
+      "bytes": 1655467,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/raiden.png",
+      "sha256": "dc9d3c5118397dd0f497e32e32e4ba1cdb3c0b54a953573f06ad2e2a11cee797",
+      "bytes": 2028235,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/otacon.png",
+      "sha256": "63155b329429d680734f625443ae088070eb4ae27c97a8e597522444e37e2ac4",
+      "bytes": 2179364,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/joseph_joestar.png",
+      "sha256": "9e380d793f8f542c90434a195e30506422738b119e9ec1e8b10558491c7edea6",
+      "bytes": 1861767,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-animations-wave6/skullgirls_beowulf.png",
+      "sha256": "3b53c4368db33a73fac3aa09b4178b52dfbfd88b90d9354907e106f7572830b0",
+      "bytes": 2185761,
+      "width": 1024,
+      "height": 2048,
+      "registry": "characterAnimationsWave6PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6-part-a/miles_tails_prower.png",
+      "sha256": "337ecdf19e9111e0b249b3f28d7c42bb277108a7ac1a77b21f48ecad786518b7",
+      "bytes": 1423476,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrectionsWave6PartA"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/devil_may_cry_nero.png",
+      "sha256": "0a041d60ba10d081c2a6118f9ecba20b014e9fb2ee505fd59db7bd50cb64f69f",
+      "bytes": 855080,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrectionsWave6PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/devil_may_cry_lady.png",
+      "sha256": "b5b5efe91eda7af8fc800e5ea53f4249b1899453c90f3f75a94fc4b91dbf8c79",
+      "bytes": 940660,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrectionsWave6PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/skullgirls_parasoul.png",
+      "sha256": "d805a91d14b3cc4d6fbf5dcd80399192228da5621074d0f46d24ee6b4ae7b2be",
+      "bytes": 667475,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrectionsWave6PartB"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/joseph_joestar.png",
+      "sha256": "b334852a756a6e1871c8c2a0a96acbe91af80b839d03b9804f4b49b4b6d3c2cb",
+      "bytes": 871074,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrectionsWave6PartC"
+    },
+    {
+      "sheet": "/sprites/generated/combat-character-corrections-wave6/skullgirls_beowulf.png",
+      "sha256": "bb19b6cf6b1965b685197b94b21fb8e65e306bd472f2d6f4eeb06f41978b3540",
+      "bytes": 1173294,
+      "width": 1024,
+      "height": 1024,
+      "registry": "characterSpriteCorrectionsWave6PartC"
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-motion-a.png",
+      "sha256": "32a3ece479a9cdc74ca5e53d768a1fc033da0199272276ba9fb72588addcdced",
+      "bytes": 1687559,
+      "width": 1024,
+      "height": 2048,
+      "registry": "sonicMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-motion-b.png",
+      "sha256": "3a98ed00d57fb009fb49d401c3ed82516311c187a0f6f1331c3658572e42a6e6",
+      "bytes": 1605832,
+      "width": 1024,
+      "height": 2048,
+      "registry": "sonicMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-defense.png",
+      "sha256": "22380435ba5e40c6ce39fa52293dee661f4391b6f90f20e8962a6f7da3f4c367",
+      "bytes": 1468064,
+      "width": 1024,
+      "height": 2048,
+      "registry": "sonicMeleeMotion"
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-combat-a.png",
+      "sha256": "bf26d9439d1c876f50bea8cb3e032551a8f955143e8543cf18e3ae0690740800",
+      "bytes": 1355914,
+      "width": 1024,
+      "height": 2048,
+      "registry": "sonicMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-combat-b.png",
+      "sha256": "c3d698842c81f58ff6b2ed2fcf7b8cd4f06e51b06828518ef55a3d8e58e567ee",
+      "bytes": 1574540,
+      "width": 1024,
+      "height": 2048,
+      "registry": "sonicMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/melee-sonic-wave6/sonic-ledge.png",
+      "sha256": "20b57a3ceaeb111a1a4afd2db92927b9b81c32b178bc80a9285e48664efee8da",
+      "bytes": 1219957,
+      "width": 1024,
+      "height": 2048,
+      "registry": "sonicMeleeCombat"
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave6/shiva.png",
+      "sha256": "d4fd23a0600e13bee61e0e24b66ea1675d4dae72321a59747eabc9e2d4343c03",
+      "bytes": 1144339,
+      "width": 1024,
+      "height": 1024,
+      "registry": "summonAnimationsWave6"
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave6/star-platinum.png",
+      "sha256": "9120946d8445d7827c98f676b1665a6f91bdd6c98e369580d97232497855644a",
+      "bytes": 880912,
+      "width": 1024,
+      "height": 1024,
+      "registry": "summonAnimationsWave6"
+    },
+    {
+      "sheet": "/sprites/generated/summon-animations-wave6/tornado.png",
+      "sha256": "d304ceee90cf317ee60efff349c7f367517b82fdc3857f07d05f9ffc8501720c",
+      "bytes": 789455,
+      "width": 1024,
+      "height": 1024,
+      "registry": "summonAnimationsWave6"
+    }
+  ],
+  "checkedInputHashCount": 185,
+  "historicalWave5AssetsPreserved": true,
+  "source1to1Verified": false,
+  "buildAttempts": [
+    {
+      "log": "build-attempt-1.log",
+      "exitCode": 1,
+      "reason": "The atmosphere test canvas recorder lacked rotate; recorder completed without changing production renderer or coverage assertions."
+    },
+    {
+      "log": "build-attempt-2.log",
+      "exitCode": 1,
+      "reason": "The generated combat-completion report still contained the prior Snake, Raiden and Otacon supers. Previous files archived; only these three hero rows changed on regeneration."
+    },
+    {
+      "log": "build.log",
+      "exitCode": 0
+    }
+  ],
+  "wave6Delivery": {
+    "nativePresentationCharacters": 15,
+    "nativePresentationPoses": 480,
+    "fullMeleeCharacters": 1,
+    "fullMeleePoses": 180,
+    "baseCharacters": 6,
+    "basePoses": 96,
+    "nativeEntityAtlases": 3,
+    "nativeEntityPoses": 48,
+    "totalNativePoses": 804,
+    "pngFiles": 30,
+    "stageMechanisms": 24,
+    "stageUniverses": 12
+  },
+  "contactRuntime": {
+    "tests": 15,
+    "observations": 75,
+    "evidence": "contact-results-after.json",
+    "review": "contact-review.md"
+  },
+  "supportCpuRuntime": {
+    "tests": 5,
+    "evidence": "independent-review.md"
+  },
+  "productionHttp": {
+    "origin": "http://127.0.0.1:5191",
+    "pngFiles": 141,
+    "dimensionsMatch": true,
+    "pageErrors": 0,
+    "evidence": "browser/production-smoke.json"
+  },
+  "browserEvidenceSha256": "25e994c555d6428ab50f140f997c25c82deb4ced0c9ae1fefc85aeced08058d2",
+  "remaining": {
+    "heroesWithoutPresentationAtlas": 1846,
+    "heroesWithoutFull45StateManifest": 1906,
+    "universesWithoutSpecificSceneMechanism": 453,
+    "unverifiedSourceHeroes": 1911
+  }
+}

@@ -1,0 +1,18 @@
+# Cloud native Melee combat atlas sources
+
+The three output atlases contain 21 explicitly selected states and 84 native poses. Each active state has four different drawn poses. `cloud-ledge` has five active rows and three fully transparent rows; those empty cells are excluded from the pose count. The separate movement/defense atlas work completes the other states outside this package.
+
+Cloud uses the original FFVII purple SOLDIER outfit and Buster Sword. The project adapts the physical cuts, aerial attacks, charges and traversal to its 2D Melee engine. These generated images are neither official game assets nor verified reproductions of FFVII animation frames. Both source-game animation verification and network verification remain false.
+
+The archived reference sprite and previous presentation atlas were visually inspected before generation. `native-prompts.json` preserves the three planned generation requests. There were two justified corrective generations:
+
+1. `cloud-combat-a-correction.png` removes detached slash trails that the initial source placed across neighboring cells. Its `chargeLoop` row changed into ordinary attacks, so that invalid replacement row is excluded and the valid original sustained-charge row is retained.
+2. `cloud-braver-correction.png` supplies only `special` (source row 0) and `chargeRelease` (source row 1). The effective Cloud secondary is Braver in `abilitiesCanonical.js`; the earlier Cross-slash request was incorrect. The original combat-b row is archived but is excluded from the assembled output. The corrective art shows a raised airborne sword, vertical cleave, low impact and recovery. It does not replace the separate Omnislash super animation.
+
+The registry records each selected row's actual source path, source hash and source row. Do not assume every output row came from the atlas's primary source image. `build-cloud-combat.mjs` rebuilds the outputs using only the entity builder's exported alpha-segmentation and normalization helpers plus transparent atlas assembly with Sharp. It performs no procedural pose synthesis or limb redrawing.
+
+All output atlases are 1024×2048 with 256×256 cells. Pixel checks assert nonempty active cells, four different native frame hashes per state, transparent output edges, and fully empty inactive rows. No opaque pixels were crossed by the selected column seams; four semi-transparent fringe pixels are crossed in combat-a. The final normalized state rows were inspected visually; their review records are in the registry and `technical-review.json`.
+
+For standing states, normalization uses a shared per-row scale and canvas baseline 244. Sword extents can lower the visible character's proportion of the cell; this baseline alone is not a measured hand anchor. `normalization.contactAnchorMeasurements` provides manually reviewed palm centers in 256px cells for the five ledge states. Contact=false means the hand is reaching or has released; the carried point records the preceding grip rather than inventing a contact. In `ledgeHang`, the measured leading grips are (168,27), (179,27), (179,27), and (117,27). A renderer must use per-frame grip anchors instead of positioning these sprites on the feet baseline. Climb poses move the supporting palm from the raised grip toward the bottom of the frame as Cloud pulls above the invisible edge. No ledge or floor is painted into any of these sprites.
+
+Generation provider is OpenAI through the native `image_gen` tool. The tool did not supply a model identifier or generation ID; those fields remain null. Files named `exec-…png` are local output paths, not claimed generation identifiers. Source images, reference images and prompt records are hashed in `source-archive-manifest.json`.

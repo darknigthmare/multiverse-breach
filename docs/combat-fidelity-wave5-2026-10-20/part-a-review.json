@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "scope": {
+    "characters": 5,
+    "characterPhases": 40,
+    "characterFrames": 160,
+    "summons": 1,
+    "summonPhases": 4,
+    "summonFrames": 16,
+    "totalNewNativeCells": 176
+  },
+  "actualNativeCalls": {
+    "characters": 10,
+    "ifrit": 1,
+    "total": 11,
+    "characterInitialAtlases": 5,
+    "fullSheetCorrections": 4,
+    "missingJohnsonRow": 1,
+    "rejectedFullSheetCorrections": 1,
+    "activeCharacterNativeSources": 6
+  },
+  "checks": {
+    "builders": [
+      "node scripts/buildCombatCharacterAnimationsWave5PartA.mjs --check",
+      "node scripts/buildSummonAnimationsWave5.mjs --check"
+    ],
+    "passed": true,
+    "rgba": true,
+    "transparentMarginPixels": 10,
+    "outputBaseline": 244,
+    "distinctRGBAEveryCell": true,
+    "fourDistinctPosesEveryPhase": true,
+    "sourceAndPromptAndReferenceSHA256": true,
+    "allFiveCharacterContactsViewed": true,
+    "allSixteenIfritPosesViewed": true,
+    "priorCharacterAtlasHashesPreserved": 35,
+    "oldIfritFourFrameSHA256Preserved": true,
+    "nodeSyntaxCheck": true
+  },
+  "toolLimitation": {
+    "eslint": "Not executed: eslint is not locally installed in this workspace and npx attempted to use an unavailable /home/agent/.npm cache. Node syntax checks and both asset-specific --check contracts pass."
+  },
+  "visualLimitations": [
+    "Long shoulder weapons and contained projectile/flame art need a smaller common scale in super/fatality rows than ordinary presentation rows. Feet remain on baseline244; complete artwork is preserved. This is disclosed for browser review, not hidden by cropping or artificial pose modification.",
+    "Native imagegen adapts the named source identities and abilities; it does not establish frame-by-frame official animation fidelity.",
+    "The Johnson output originally lacked a defeat row; 28 valid native drawings were preserved, four new native defeat drawings inserted at row6 and the original super row moved to targetrow7."
+  ],
+  "sourceGameExactnessVerified": false,
+  "networkVisualVerification": false,
+  "model": null,
+  "generationId": null,
+  "jobId": null
+}

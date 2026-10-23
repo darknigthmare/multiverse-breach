@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-18",
+  "method": "Read-only search followed by opening the cited publisher, licensed guide and walkthrough pages with the web tool.",
+  "scope": "Three narrowly scoped location or prop checks; this is not verification of all 24 mechanism designs or any source animation.",
+  "globalCanon1to1Verified": false,
+  "globalVisual1to1Verified": false,
+  "officialAnimationFramesImported": 0,
+  "checks": [
+    {
+      "profileId": "soul-calibur2-village-wind-mill",
+      "fact": "The licensed Soulcalibur II guide associates its Windmill chapter with the Village of the Wind stage.",
+      "sourceUrl": "https://www.piggyback.com/en/wp-content/uploads/sites/7/2020/04/SCII_E_SamplePages.pdf",
+      "sourceType": "licensed game guide, opened PDF",
+      "locator": "PDF page 5, printed page 147, Chapter 4-2; extracted lines 243-245 in the focused view",
+      "factVerified": true,
+      "adaptation": "The code draws a wooden windmill and rotating sails. Their dimensions, sail geometry and period are authored and not validated against source frames. No clockwork claim is made for the Soulcalibur VI training corridor."
+    },
+    {
+      "profileId": "tekken4-airport-parked-airliner-turbine",
+      "fact": "The official Tekken 4 airport description identifies aircraft parked on the apron, including their wheels as features of the original stage.",
+      "sourceUrl": "https://www.bandainamcoent.co.jp/cs/list/tekken4/stages/index.html",
+      "sourceType": "publisher stage page, opened and read",
+      "locator": "Airport section, extracted lines 1-5",
+      "factVerified": true,
+      "adaptation": "The background aircraft and wheels stay fixed. The small rotating fan is a mechanical interpretation of the engine; the page does not certify an original engine animation loop. Original stage collisions are not reproduced or added."
+    },
+    {
+      "profileId": "devil-may-cry3-temen-ni-gru-gears",
+      "fact": "The Devil May Cry 3 walkthrough describes rotating gears in Gears of Madness during mission 15.",
+      "sourceUrl": "https://www.gamespot.com/articles/devil-may-cry-3-dantes-awakening-walkthrough/1100-6120168/",
+      "sourceType": "published walkthrough, opened and read",
+      "locator": "Mission 15, Gears of Madness; extracted lines 994-1002",
+      "factVerified": true,
+      "adaptation": "Three back-wall gears rotate as decorative geometry. Their original contact damage, switches, platforms and tower progression are not simulated."
+    }
+  ],
+  "contextSearchOnly": [
+    {
+      "profiles": ["guilty-gear-zepp-airship-propellers", "guilty-gear-may-ship-anchor-winch"],
+      "sourceUrls": ["https://guiltygear.wiki.gg/wiki/Zepp", "https://guiltygear.wiki.gg/wiki/GG_World/May_Ship"],
+      "scope": "Indexed excerpts identify Zepp as an airship setting and May Ship as the Jellyfish Pirates' airship. Full-page opens returned 403 and are not recorded as successful reads.",
+      "exactPropLoopVerified": false,
+      "adaptation": "Propeller housings, the anchor winch and their cycles remain openly authored mechanical interpretations of those settings."
+    }
+  ]
+}
