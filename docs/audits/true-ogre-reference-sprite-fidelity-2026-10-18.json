@@ -1,0 +1,481 @@
+{
+  "schemaVersion": 1,
+  "scope": "New referenced PNG character sheets; historical generation records are unchanged.",
+  "policy": {
+    "privatePromptsAndIdentifiersPublished": false,
+    "canonicalFidelityApproved": false,
+    "generationIsBashCommand": false,
+    "normalization": "format packing only; no synthesized, duplicated or recolored poses"
+  },
+  "entries": [
+    {
+      "kind": "hero",
+      "id": "true_ogre_tekken",
+      "name": "True Ogre",
+      "universe": "Tekken 3",
+      "output": "/sprites/generated/heroes/tekken/true-ogre-tekken-3-fidelity-2026-10-18.png",
+      "source": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "assertion": "declared by the private input plan"
+      },
+      "sourceImage": {
+        "sha256": "833c9b544f2059bbda26932a57fa156ba69c0623845a177bfc4550bb34e9f149",
+        "bytes": 1095156,
+        "width": 1024,
+        "height": 1024,
+        "format": "png",
+        "channels": 4
+      },
+      "reference": {
+        "output": "/sprites/generated/heroes/tekken/true-ogre-tekken-3-web.png",
+        "sha256": "c6c22e2d41b20d13ed520973223b397e0d9c37dca3ca9b8fbb548e168937d480",
+        "bytes": 1230961,
+        "format": "png"
+      },
+      "image": {
+        "sha256": "5cd2d4d27120dfb3defc3d9598b51b6594852efb4aceae9b4454ffd9ff6d4c7b",
+        "bytes": 1122407,
+        "width": 1024,
+        "height": 1024,
+        "channels": 4,
+        "format": "png"
+      },
+      "privateEvidence": {
+        "sha256": "1020010a38b5561124e4d76683c50e247e3d1e3df8d48bb3aa2b71d3a6b9cf49",
+        "publiclyAvailable": false
+      },
+      "processing": {
+        "operation": "visible-alpha-bounds+4px-fringe+referenced-frame-extraction+common-nearest-scale+4x4-packing",
+        "mode": "strict-grid",
+        "sourceVisiblePixels": 310018,
+        "assignedVisiblePixels": 310018,
+        "minimumSourceGuard": 23,
+        "sourceGridCells": 16,
+        "sourceGridEdges": {
+          "x": [
+            0,
+            256,
+            512,
+            768,
+            1024
+          ],
+          "y": [
+            0,
+            256,
+            512,
+            768,
+            1024
+          ]
+        },
+        "softAlphaOutsideFrameDiscarded": 314,
+        "softAlphaPixelsPreserved": 20366,
+        "alphaBoundsThreshold": 12,
+        "sourceFringePixels": 4,
+        "softAlphaNormalization": "Keep alpha 1-12 inside each visible alpha>12 bbox expanded by 4 source pixels; discard only alpha 1-12 outside those bounds. No alpha>12 source pixel is removed before resize.",
+        "uniformScale": 1.0642201834862386,
+        "maximumSourceFrameWidth": 218,
+        "maximumSourceFrameHeight": 210,
+        "frameMeasurements": [
+          {
+            "cell": 1,
+            "sourceBounds": {
+              "left": 36,
+              "top": 27,
+              "right": 218,
+              "bottom": 233,
+              "width": 183,
+              "height": 207
+            },
+            "sourceVisibleBounds": {
+              "left": 40,
+              "top": 31,
+              "right": 214,
+              "bottom": 229,
+              "width": 175,
+              "height": 199
+            },
+            "sourceVisiblePixels": 19178,
+            "normalizedWidth": 195,
+            "normalizedHeight": 220
+          },
+          {
+            "cell": 2,
+            "sourceBounds": {
+              "left": 48,
+              "top": 28,
+              "right": 207,
+              "bottom": 233,
+              "width": 160,
+              "height": 206
+            },
+            "sourceVisibleBounds": {
+              "left": 52,
+              "top": 32,
+              "right": 203,
+              "bottom": 229,
+              "width": 152,
+              "height": 198
+            },
+            "sourceVisiblePixels": 17168,
+            "normalizedWidth": 170,
+            "normalizedHeight": 219
+          },
+          {
+            "cell": 3,
+            "sourceBounds": {
+              "left": 34,
+              "top": 40,
+              "right": 221,
+              "bottom": 233,
+              "width": 188,
+              "height": 194
+            },
+            "sourceVisibleBounds": {
+              "left": 38,
+              "top": 44,
+              "right": 217,
+              "bottom": 229,
+              "width": 180,
+              "height": 186
+            },
+            "sourceVisiblePixels": 19957,
+            "normalizedWidth": 200,
+            "normalizedHeight": 206
+          },
+          {
+            "cell": 4,
+            "sourceBounds": {
+              "left": 35,
+              "top": 28,
+              "right": 220,
+              "bottom": 233,
+              "width": 186,
+              "height": 206
+            },
+            "sourceVisibleBounds": {
+              "left": 39,
+              "top": 32,
+              "right": 216,
+              "bottom": 229,
+              "width": 178,
+              "height": 198
+            },
+            "sourceVisiblePixels": 19148,
+            "normalizedWidth": 198,
+            "normalizedHeight": 219
+          },
+          {
+            "cell": 5,
+            "sourceBounds": {
+              "left": 35,
+              "top": 35,
+              "right": 219,
+              "bottom": 233,
+              "width": 185,
+              "height": 199
+            },
+            "sourceVisibleBounds": {
+              "left": 39,
+              "top": 39,
+              "right": 215,
+              "bottom": 229,
+              "width": 177,
+              "height": 191
+            },
+            "sourceVisiblePixels": 17592,
+            "normalizedWidth": 197,
+            "normalizedHeight": 212
+          },
+          {
+            "cell": 6,
+            "sourceBounds": {
+              "left": 34,
+              "top": 28,
+              "right": 221,
+              "bottom": 233,
+              "width": 188,
+              "height": 206
+            },
+            "sourceVisibleBounds": {
+              "left": 38,
+              "top": 32,
+              "right": 217,
+              "bottom": 229,
+              "width": 180,
+              "height": 198
+            },
+            "sourceVisiblePixels": 18168,
+            "normalizedWidth": 200,
+            "normalizedHeight": 219
+          },
+          {
+            "cell": 7,
+            "sourceBounds": {
+              "left": 27,
+              "top": 27,
+              "right": 228,
+              "bottom": 233,
+              "width": 202,
+              "height": 207
+            },
+            "sourceVisibleBounds": {
+              "left": 31,
+              "top": 31,
+              "right": 224,
+              "bottom": 229,
+              "width": 194,
+              "height": 199
+            },
+            "sourceVisiblePixels": 18881,
+            "normalizedWidth": 215,
+            "normalizedHeight": 220
+          },
+          {
+            "cell": 8,
+            "sourceBounds": {
+              "left": 32,
+              "top": 30,
+              "right": 223,
+              "bottom": 233,
+              "width": 192,
+              "height": 204
+            },
+            "sourceVisibleBounds": {
+              "left": 36,
+              "top": 34,
+              "right": 219,
+              "bottom": 229,
+              "width": 184,
+              "height": 196
+            },
+            "sourceVisiblePixels": 20601,
+            "normalizedWidth": 204,
+            "normalizedHeight": 217
+          },
+          {
+            "cell": 9,
+            "sourceBounds": {
+              "left": 23,
+              "top": 37,
+              "right": 232,
+              "bottom": 233,
+              "width": 210,
+              "height": 197
+            },
+            "sourceVisibleBounds": {
+              "left": 27,
+              "top": 41,
+              "right": 228,
+              "bottom": 229,
+              "width": 202,
+              "height": 189
+            },
+            "sourceVisiblePixels": 19465,
+            "normalizedWidth": 223,
+            "normalizedHeight": 210
+          },
+          {
+            "cell": 10,
+            "sourceBounds": {
+              "left": 19,
+              "top": 44,
+              "right": 236,
+              "bottom": 233,
+              "width": 218,
+              "height": 190
+            },
+            "sourceVisibleBounds": {
+              "left": 23,
+              "top": 48,
+              "right": 232,
+              "bottom": 229,
+              "width": 210,
+              "height": 182
+            },
+            "sourceVisiblePixels": 19583,
+            "normalizedWidth": 232,
+            "normalizedHeight": 202
+          },
+          {
+            "cell": 11,
+            "sourceBounds": {
+              "left": 25,
+              "top": 40,
+              "right": 230,
+              "bottom": 233,
+              "width": 206,
+              "height": 194
+            },
+            "sourceVisibleBounds": {
+              "left": 29,
+              "top": 44,
+              "right": 226,
+              "bottom": 229,
+              "width": 198,
+              "height": 186
+            },
+            "sourceVisiblePixels": 22503,
+            "normalizedWidth": 219,
+            "normalizedHeight": 206
+          },
+          {
+            "cell": 12,
+            "sourceBounds": {
+              "left": 37,
+              "top": 26,
+              "right": 218,
+              "bottom": 233,
+              "width": 182,
+              "height": 208
+            },
+            "sourceVisibleBounds": {
+              "left": 41,
+              "top": 30,
+              "right": 214,
+              "bottom": 229,
+              "width": 174,
+              "height": 200
+            },
+            "sourceVisiblePixels": 19296,
+            "normalizedWidth": 194,
+            "normalizedHeight": 221
+          },
+          {
+            "cell": 13,
+            "sourceBounds": {
+              "left": 21,
+              "top": 29,
+              "right": 234,
+              "bottom": 233,
+              "width": 214,
+              "height": 205
+            },
+            "sourceVisibleBounds": {
+              "left": 25,
+              "top": 33,
+              "right": 230,
+              "bottom": 229,
+              "width": 206,
+              "height": 197
+            },
+            "sourceVisiblePixels": 20337,
+            "normalizedWidth": 228,
+            "normalizedHeight": 218
+          },
+          {
+            "cell": 14,
+            "sourceBounds": {
+              "left": 32,
+              "top": 62,
+              "right": 223,
+              "bottom": 233,
+              "width": 192,
+              "height": 172
+            },
+            "sourceVisibleBounds": {
+              "left": 36,
+              "top": 66,
+              "right": 219,
+              "bottom": 229,
+              "width": 184,
+              "height": 164
+            },
+            "sourceVisiblePixels": 19208,
+            "normalizedWidth": 204,
+            "normalizedHeight": 183
+          },
+          {
+            "cell": 15,
+            "sourceBounds": {
+              "left": 40,
+              "top": 24,
+              "right": 215,
+              "bottom": 233,
+              "width": 176,
+              "height": 210
+            },
+            "sourceVisibleBounds": {
+              "left": 44,
+              "top": 28,
+              "right": 211,
+              "bottom": 229,
+              "width": 168,
+              "height": 202
+            },
+            "sourceVisiblePixels": 18779,
+            "normalizedWidth": 187,
+            "normalizedHeight": 223
+          },
+          {
+            "cell": 16,
+            "sourceBounds": {
+              "left": 29,
+              "top": 37,
+              "right": 226,
+              "bottom": 233,
+              "width": 198,
+              "height": 197
+            },
+            "sourceVisibleBounds": {
+              "left": 33,
+              "top": 41,
+              "right": 222,
+              "bottom": 229,
+              "width": 190,
+              "height": 189
+            },
+            "sourceVisiblePixels": 20154,
+            "normalizedWidth": 211,
+            "normalizedHeight": 210
+          }
+        ],
+        "nonemptyCells": 16,
+        "minimumGuard": 16,
+        "visiblePixelsByCell": [
+          21706,
+          19386,
+          22566,
+          21682,
+          19936,
+          20542,
+          21358,
+          23319,
+          22007,
+          22163,
+          25379,
+          21858,
+          23018,
+          21735,
+          21195,
+          22881
+        ],
+        "visibleFootBaselinesByCell": [
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239
+        ]
+      },
+      "fileAvailable": true,
+      "provenanceStatus": "private-evidence-recorded",
+      "visualReview": {
+        "status": "close-to-reference",
+        "canonicalFidelityApproved": false
+      },
+      "canonicalFidelityApproved": false
+    }
+  ]
+}

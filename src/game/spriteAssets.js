@@ -34,13 +34,121 @@ export const HALO_COMPLETE_SPRITE_BASES = {
 
 export const ROI_BURGONDE_BOSS_SPRITE = '/sprites/generated/bosses/kaamelott/roi-burgonde.png';
 
-// Corrected incarnations have their own audited sheets. Historical PNGs remain
-// available for their original provenance records, not for these runtime heroes.
+// Reviewed sprite corrections have their own audited sheets. Historical PNGs
+// remain available with their original provenance and as documented variants.
 export const CORRECTED_CANON_HERO_SPRITES = Object.freeze({
+  brann_crow: '/sprites/generated/heroes/the-crownless-sea/brann-crow-v2-fidelity-wave6-2026-10-23.png',
+  lyra_hexwind: '/sprites/generated/heroes/aetherion-seven-laws-of-magic/lyra-hexwind-v2-fidelity-wave6-2026-10-23.png',
+  mercy_ash: '/sprites/generated/heroes/infernum-nine-pits/mercy-ash-v2-fidelity-wave6-2026-10-23.png',
+  mara_ell: '/sprites/generated/heroes/the-drowned-testament/mara-ell-v2-fidelity-wave6-2026-10-23.png',
+  orin_vale: '/sprites/generated/heroes/aetherion-seven-laws-of-magic/orin-vale-v2-fidelity-wave6-2026-10-23.png',
+  crash_bandicoot: '/sprites/generated/heroes/crash-bandicoot/crash-bandicoot-crash4-fidelity-wave5-2026-10-22.png',
+  jax_rook: '/sprites/generated/heroes/neon-requiem/jax-rook-v2-fidelity-wave5-2026-10-22.png',
+  seraphine_meridius: '/sprites/generated/heroes/meridian-clockwork/seraphine-meridius-v2-fidelity-wave5-2026-10-22.png',
+  mara_veylan: '/sprites/generated/heroes/iron-tempest/mara-veylan-v2-fidelity-wave5-2026-10-22.png',
+  celeste_ray: '/sprites/generated/heroes/helios-56/celeste-ray-v2-fidelity-wave5-2026-10-22.png',
+  nefra_balance: '/sprites/generated/heroes/kemet-the-devoured-sun/nefra-balance-v2-fidelity-wave5-2026-10-22.png',
+  arca_elyra: '/sprites/generated/heroes/nexus-de-convergence/arca-elyra-frame-packing-2026-10-20.png',
+  chris_redfield: '/sprites/generated/heroes/resident-evil/chris-redfield-re1-1996-fidelity-2026-10-18.png',
+  devil_may_cry_dante: '/sprites/generated/heroes/devil-may-cry/dante-dmc5-2019-fidelity-2026-10-18.png',
+  doomslayer: '/sprites/generated/heroes/doom/doomslayer-eternal-2020-fidelity-2026-10-18.png',
+  elara_voss: '/sprites/generated/heroes/the-aether-crown/elara-voss-v2-fidelity-wave4-2026-10-20.png',
   liquid_snake: '/sprites/generated/heroes/metal-gear/liquid-snake-mgs-1998-final-web.png',
-  mistral_mgr: '/sprites/generated/heroes/metal-gear-rising/mistral-revengeance-2013-web.png',
+  mistral_mgr: '/sprites/generated/heroes/metal-gear-rising/mistral-revengeance-2013-fidelity-2026-10-18.png',
+  nyra_vale: '/sprites/generated/heroes/neon-requiem/nyra-vale-v2-fidelity-wave4-2026-10-20.png',
   saturnin_duck: '/sprites/generated/heroes/les-aventures-de-saturnin/saturnin-ortf-web.png',
-  true_ogre_tekken: '/sprites/generated/heroes/tekken/true-ogre-tekken-3-web.png'
+  true_ogre_tekken: '/sprites/generated/heroes/tekken/true-ogre-tekken-3-fidelity-2026-10-18.png'
+});
+
+export const CORRECTED_HERO_SPRITE_VARIANTS = Object.freeze({
+  brann_crow: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave6-2026-10-23', label: "Portrait V2 — barbe, tresses et hache gauche", src: CORRECTED_CANON_HERO_SPRITES.brann_crow, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/the-crownless-sea/brann-crow.png', current: false })
+  ]),
+  lyra_hexwind: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave6-2026-10-23', label: "Portrait V2 — focus gauche et trois fioles droites", src: CORRECTED_CANON_HERO_SPRITES.lyra_hexwind, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/aetherion-seven-laws-of-magic/lyra-hexwind.png', current: false })
+  ]),
+  mercy_ash: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave6-2026-10-23', label: "Portrait V2 — manteau prune et faucille à chaîne", src: CORRECTED_CANON_HERO_SPRITES.mercy_ash, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/infernum-nine-pits/mercy-ash.png', current: false })
+  ]),
+  mara_ell: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave6-2026-10-23', label: "Portrait V2 — lunettes cyan, lampe gauche et cristal", src: CORRECTED_CANON_HERO_SPRITES.mara_ell, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/the-drowned-testament/mara-ell.png', current: false })
+  ]),
+  orin_vale: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave6-2026-10-23', label: "Portrait V2 — manteau marine et gantelet droit", src: CORRECTED_CANON_HERO_SPRITES.orin_vale, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/aetherion-seven-laws-of-magic/orin-vale.png', current: false })
+  ]),
+  crash_bandicoot: Object.freeze([
+    Object.freeze({ id: 'crash4-fidelity-wave5-2026-10-22', label: "Crash 4 (2020) — modèle référencé", src: CORRECTED_CANON_HERO_SPRITES.crash_bandicoot, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/crash-bandicoot/crash-bandicoot.png', current: false })
+  ]),
+  jax_rook: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave5-2026-10-22', label: "Portrait V2 — exosquelette graphite et monofilament", src: CORRECTED_CANON_HERO_SPRITES.jax_rook, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/neon-requiem/jax-rook.png', current: false })
+  ]),
+  seraphine_meridius: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave5-2026-10-22', label: "Portrait V2 — manteau bleu et rapière", src: CORRECTED_CANON_HERO_SPRITES.seraphine_meridius, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/meridian-clockwork/seraphine-meridius.png', current: false })
+  ]),
+  mara_veylan: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave5-2026-10-22', label: "Portrait V2 — uniforme olive et étoffe rouge", src: CORRECTED_CANON_HERO_SPRITES.mara_veylan, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/iron-tempest/mara-veylan.png', current: false })
+  ]),
+  celeste_ray: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave5-2026-10-22', label: "Portrait V2 — lunettes turquoise et émetteur", src: CORRECTED_CANON_HERO_SPRITES.celeste_ray, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/helios-56/celeste-ray.png', current: false })
+  ]),
+  nefra_balance: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave5-2026-10-22', label: "Portrait V2 — drapé ivoire et khopesh", src: CORRECTED_CANON_HERO_SPRITES.nefra_balance, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas du projet conservé', src: '/sprites/generated/heroes/kemet-the-devoured-sun/nefra-balance.png', current: false })
+  ]),
+  arca_elyra: Object.freeze([
+    Object.freeze({ id: 'frame-packing-2026-10-20', label: 'Cadrage corrigé — 16 poses existantes complètes', src: CORRECTED_CANON_HERO_SPRITES.arca_elyra, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas — découpes initiales du projet', src: '/sprites/generated/heroes/nexus-de-convergence/arca-elyra.png', current: false })
+  ]),
+  chris_redfield: Object.freeze([
+    Object.freeze({ id: 'fidelity-2026-10-18', label: 'RE1 1996 corrigé — gilet vert et manches blanches', src: CORRECTED_CANON_HERO_SPRITES.chris_redfield, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancienne variante — gilet MOLLE moderne', src: '/sprites/generated/heroes/resident-evil/chris-redfield.png', current: false })
+  ]),
+  devil_may_cry_dante: Object.freeze([
+    Object.freeze({ id: 'fidelity-2026-10-18', label: 'DMC5 2019 corrigé — henley et équipement source', src: CORRECTED_CANON_HERO_SPRITES.devil_may_cry_dante, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancienne variante — chemise rouge du projet', src: '/sprites/generated/heroes/devil-may-cry/devil-may-cry-dante.png', current: false })
+  ]),
+  doomslayer: Object.freeze([
+    Object.freeze({ id: 'fidelity-2026-10-18', label: 'Eternal 2020 corrigé — lame et lanceur à gauche', src: CORRECTED_CANON_HERO_SPRITES.doomslayer, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancienne variante Doom Slayer du projet', src: '/sprites/generated/heroes/doom/doomslayer.png', current: false })
+  ]),
+  elara_voss: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave4-2026-10-20', label: 'Portrait V2 — manteau bordeaux, rapière et pistolet', src: CORRECTED_CANON_HERO_SPRITES.elara_voss, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancienne variante — manteau bleu et queue de cheval', src: '/sprites/generated/heroes/the-aether-crown/elara-voss.png', current: false })
+  ]),
+  liquid_snake: Object.freeze([
+    Object.freeze({ id: 'web-2026-10-03', label: 'Version courante — duel final MGS 1998', src: CORRECTED_CANON_HERO_SPRITES.liquid_snake, current: true }),
+    Object.freeze({ id: 'mgs-1998-previous', label: 'Étude antérieure — duel final MGS 1998', src: '/sprites/generated/heroes/metal-gear/liquid-snake-mgs-1998-final.png', current: false }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas Liquid Snake du projet', src: '/sprites/generated/heroes/metal-gear/liquid-snake.png', current: false })
+  ]),
+  mistral_mgr: Object.freeze([
+    Object.freeze({ id: 'fidelity-2026-10-18', label: 'Référence corrigée — jambe rouge et double lame', src: CORRECTED_CANON_HERO_SPRITES.mistral_mgr, current: true }),
+    Object.freeze({ id: 'web-2026-10-03', label: 'Ancienne variante — modèle du 3 octobre', src: '/sprites/generated/heroes/metal-gear-rising/mistral-revengeance-2013-web.png', current: false }),
+    Object.freeze({ id: 'original', label: 'Variante initiale du projet', src: '/sprites/generated/heroes/metal-gear-rising/mistral-mgr.png', current: false })
+  ]),
+  nyra_vale: Object.freeze([
+    Object.freeze({ id: 'v2-fidelity-wave4-2026-10-20', label: 'Portrait V2 — cheveux turquoise et long manteau magenta', src: CORRECTED_CANON_HERO_SPRITES.nyra_vale, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancienne variante — cheveux violets et veste courte', src: '/sprites/generated/heroes/neon-requiem/nyra-vale.png', current: false })
+  ]),
+  saturnin_duck: Object.freeze([
+    Object.freeze({ id: 'web-2026-10-03', label: 'Version courante — caneton ORTF', src: CORRECTED_CANON_HERO_SPRITES.saturnin_duck, current: true }),
+    Object.freeze({ id: 'original', label: 'Ancien atlas Saturnin du projet', src: '/sprites/generated/heroes/les-aventures-de-saturnin/saturnin-duck.png', current: false })
+  ]),
+  true_ogre_tekken: Object.freeze([
+    Object.freeze({ id: 'fidelity-2026-10-18', label: 'Anatomie corrigée — serpent droit et griffe gauche', src: CORRECTED_CANON_HERO_SPRITES.true_ogre_tekken, current: true }),
+    Object.freeze({ id: 'web-2026-10-03', label: 'Ancienne variante web — modèle du 3 octobre', src: '/sprites/generated/heroes/tekken/true-ogre-tekken-3-web.png', current: false }),
+    Object.freeze({ id: 'tekken-3-previous', label: 'Ancienne variante Tekken 3 du projet', src: '/sprites/generated/heroes/tekken/true-ogre-tekken-3.png', current: false }),
+    Object.freeze({ id: 'original', label: 'Variante initiale du projet', src: '/sprites/generated/heroes/tekken/true-ogre-tekken.png', current: false })
+  ])
 });
 
 export const MIRELLE_COMPLETE_SPRITES = {
@@ -469,6 +577,7 @@ export const SPRITE_SHEET_LAYOUTS = {
 };
 
 export const getHeroCompleteSpritePack = (hero) => {
+  if (CORRECTED_HERO_SPRITE_VARIANTS[hero?.id]) return CORRECTED_HERO_SPRITE_VARIANTS[hero.id];
   if (hero?.id === 'arca_mirelle') return MIRELLE_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'arca_bastion') return BASTION_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'arca_nova') return NOVA_COMPLETE_SPRITE_PACK;

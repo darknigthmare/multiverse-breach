@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "characterId": "neris_vale",
+  "heroId": "neris_vale",
+  "reviewedAt": "2026-10-20",
+  "incarnation": "Neris Vale — Thalassa Mnémique, canon original du DLC Drowned Dawn, atlas courant4×4 et dossier individuel10671",
+  "sourceScope": "original-project-canon",
+  "status": "current-original-project-source-actually-inspected",
+  "canonicalFidelityApproved": false,
+  "perfectVisualFidelityCertified": false,
+  "runtimeSelection": {
+    "function": "getHeroSpriteSheetSrc(HEROES_DB.find(id=neris_vale))",
+    "path": "/sprites/generated/heroes/thalassa-mnemique/neris-vale.png",
+    "layout": {
+      "columns": 4,
+      "rows": 4
+    },
+    "selectedInRuntime": true,
+    "heroHasProductionAudiovisualPortrait": false,
+    "portraitV2FoundUnderPublic": false,
+    "sourceSelectionReason": "Current hero has no production/audiovisual portrait or V2 Neris asset; selected actual current atlas with original DLC lore, no authority inferred from another hero."
+  },
+  "references": [
+    {
+      "path": "/sprites/generated/heroes/thalassa-mnemique/neris-vale.png",
+      "sha256": "b13b1b831ff243e21f7664bc5cb4b535c81d002f0f23b82ac8d5a17e5356725f",
+      "bytes": 1018423,
+      "viewed": true,
+      "viewedAt": "2026-10-20",
+      "usedForIdentity": true,
+      "referencePurpose": "identity-equipment",
+      "role": "current-canonical-original-project-sprite-pack",
+      "canonicalProjectReference": true,
+      "sourceScope": "original-project-canon"
+    },
+    {
+      "path": "docs/cg/references/wave4-2026-10-20/neris-vale/current-atlas-source-copy.png",
+      "sha256": "b13b1b831ff243e21f7664bc5cb4b535c81d002f0f23b82ac8d5a17e5356725f",
+      "bytes": 1018423,
+      "viewed": false,
+      "usedForIdentity": false,
+      "usedAsIndependentReference": false,
+      "role": "same-source-copy",
+      "derivedFrom": "/sprites/generated/heroes/thalassa-mnemique/neris-vale.png",
+      "contentViewedViaByteIdenticalOriginal": true
+    },
+    {
+      "path": "docs/cg/references/wave4-2026-10-20/neris-vale/frame00-identity-inspection-nearest.png",
+      "sha256": "12cd7b07c89326d241da9258316c0ee0260b308b2c5b4ee6f6b618cd3dcd042d",
+      "bytes": 88482,
+      "viewed": true,
+      "usedForIdentity": false,
+      "usedAsIndependentReference": false,
+      "role": "derived-inspection-crop-only",
+      "derivedFrom": "/sprites/generated/heroes/thalassa-mnemique/neris-vale.png",
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 256,
+        "height": 256
+      },
+      "resize": {
+        "width": 1024,
+        "height": 1024,
+        "kernel": "nearest"
+      }
+    },
+    {
+      "path": "docs/cg/references/wave4-2026-10-20/neris-vale/frame08-harpoon-inspection-nearest.png",
+      "sha256": "91846e52eedd319180a0e6a8887a8e7c4a89801a2e024eb959cac2b88d1eeef4",
+      "bytes": 86499,
+      "viewed": true,
+      "usedForIdentity": false,
+      "usedAsIndependentReference": false,
+      "role": "derived-inspection-crop-only",
+      "derivedFrom": "/sprites/generated/heroes/thalassa-mnemique/neris-vale.png",
+      "crop": {
+        "left": 0,
+        "top": 512,
+        "width": 256,
+        "height": 256
+      },
+      "resize": {
+        "width": 1024,
+        "height": 1024,
+        "kernel": "nearest"
+      }
+    }
+  ],
+  "visualLocks": {
+    "face": "Light warm skin, dark low-resolution eyes, blue-black/teal hair with cheek locks and small tied-back bun, open uncovered face; iris microdetail not established.",
+    "costume": "Closed teal pressure cloth suit, brass piping/fasteners and harness, dark practical gloves, brown tool belt and dark mid-calf boots.",
+    "silhouette": "Lean human woman, translucent diving mantle with long cream/dark-blue map ribbons, physical brass sonar ring behind head/back mounted to harness.",
+    "equipment": "Compact brass/dark-shaft mnemonic harpoon with silver triangular barbed arrow tip and golden-brown short tether loop, directly visible frame08.",
+    "forbiddenMixes": "No Nadir reel/drone/pistol, Anchor gauntlet, Nexus staff/crystal sword/medical cross, Elara crown, Crash four-digit hands or franchise identity."
+  },
+  "loreEvidence": {
+    "file": "src/game/ocDlcPacks.js",
+    "lines": "203–224",
+    "individualDossier": "docs/rift-dossiers/catalog.json#10671",
+    "identity": "Cartographe abyssale portant la dernière carte honnête de Thalassa, refusant d’effacer un nom même si s’en souvenir fait monter la mer.",
+    "techniques": [
+      "Balise d’écho",
+      "Courant sûr",
+      "Nom véritable"
+    ],
+    "environment": "Récif des Registres sous les Archives de Sel; corail mémoire perle, serrures de pression en laiton, cartes de verre et rubans de témoignage.",
+    "worldPropsNotAssignedAsPersonalGear": [
+      "Compas mnémique universel",
+      "Cloche de pression universelle",
+      "Encre des vivants universelle"
+    ]
+  },
+  "sourceRefs": [
+    "src/game/ocDlcPacks.js#neris_vale",
+    "docs/rift-dossiers/catalog.json#10671",
+    "src/game/spriteAssets.js#getHeroSpriteSheetSrc",
+    "/sprites/generated/heroes/thalassa-mnemique/neris-vale.png"
+  ],
+  "ageStatus": "unknown-family-safe-only",
+  "consentStatus": "no-romance",
+  "limitations": [
+    "Canon original interne du DLC Thalassa Mnémique, pas référence d’une franchise tierce.",
+    "Le héros courant ne fournit aucun champ production.audiovisual.portrait ni portrait V2 Neris dans public; atlas courant sélectionné explicitement, aucune V2 inventée.",
+    "Détails d’iris, visage, coutures et géométrie cachée du harpon interprétés à la résolution CG depuis un atlas pixelart; aucune certification parfaite1:1.",
+    "Scènes composées selon le dossier individuel10671 et ocDlcPacks, pas des lieux photographiés ou reproductions exactes.",
+    "Âge chiffré inconnu; contenu familial sans romance. CG12–15 explicitement WhatIf, dont futur inventé."
+  ]
+}

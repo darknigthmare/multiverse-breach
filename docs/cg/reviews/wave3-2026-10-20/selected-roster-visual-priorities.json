@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-20",
+  "reviewer": "referentiel_canon",
+  "scope": "Source-qualified findings for the exact currently selected sprite; previous waves remain in their original files.",
+  "canonicalFidelityApproved": false,
+  "findings": [
+    {
+      "characterId": "stitch_626",
+      "incarnation": "Lilo & Stitch animated Disney2002, terrestrial two-arm form",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/lilo-stitch/stitch-626.png",
+        "sha256": "8660d59d99e3b65ffcd48b1b555d45c3bc9992edc419d8cff67f0c27731009b9",
+        "viewed": true,
+        "independentlyViewed": true
+      },
+      "status": "current-selected-sprite-too-far-from-terrestrial-target-no-atlas-attempt",
+      "observed": [
+        "Current generated atlas visibly has four arms, a tall cyan-tipped antenna and permanent red space harness/vest.",
+        "These attributes disagree with the explicitly chosen terrestrial two-arm character shown in the inspected final2002 poster and animated hula still.",
+        "This is a mismatch to the selected target form, not a claim that every four-arm Stitch incarnation is noncanonical."
+      ],
+      "sourceComparison": [
+        {
+          "path": "docs/cg/references/wave3-2026-10-20/stitch/official-2002-animated-poster.jpeg",
+          "sha256": "9fc95af50e006c5e1fe65c7a8bd070eadb80411908cfa485d8f5e4042058bf18",
+          "viewed": true,
+          "scope": "identity terrestrial form; optional promotional dog collar is not a mandatory costume lock"
+        },
+        {
+          "path": "docs/cg/references/wave3-2026-10-20/stitch/official-2002-hero.jpeg",
+          "sha256": "9904ce62f1cf390c223d912c6083a217ab52105e0c74f7b26cf4086cecda3342",
+          "viewed": true,
+          "scope": "final animated2002 identity and hula costume"
+        }
+      ],
+      "sourceCoverageDecision": {
+        "status": "terrestrial-identity-visually-qualified-selected-sprite-correction-still-required",
+        "limitations": [
+          "No new sprite atlas was requested or produced during this wave.",
+          "Three body-CG requests were refused; those are CG generation failures, not evidence of a refused atlas request."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "not-attempted-for-sprite-atlas",
+        "generatedSpriteImages": 0
+      },
+      "correctionAttemptEvidence": "docs/cg/reviews/wave3-2026-10-20/stitch-generation-attempts.json",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "characterId": "raven_tt",
+      "incarnation": "Teen Titans animated WarnerBros2003 main model",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/teen-titans/raven-tt.png",
+        "sha256": "f7e41b655e3e6a3110aef1231c2917400729eb27b381d25ca8eb3323e8c7ffce",
+        "viewed": true,
+        "independentlyViewed": true
+      },
+      "status": "current-selected-sprite-too-far-source-qualified-no-atlas-attempt",
+      "observed": [
+        "Current atlas has an ornate purple/gold mage cloak, trousers and tabard, unlike the plain black leotard, grey limbs and solid blue-violet cape/boots in the WB2003 body-turn sheet.",
+        "Several current frame borders visibly cut boots/head; this technical issue is separate from source likeness."
+      ],
+      "sourceComparison": [
+        {
+          "path": "docs/cg/references/wave3-2026-10-20/raven/Ravenmodel1.jpg",
+          "sha256": "c13733db2c6ff47b1dd30f3224065f50d23571d88ad6ec35c2b780b3720b8339",
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "provenance": "WarnerBros Animation2003 MAINMODEL RAVENBODYTURNS MM00405 FINAL12/9/02, studio sheet hosted via Wiki mirror."
+        }
+      ],
+      "comparisonReviewers": [
+        "excel_fidelite",
+        "referentiel_canon"
+      ],
+      "comparisonEvidenceFile": "docs/cg/reviews/wave3-2026-10-20/raven-current-sprite-review.json",
+      "sourceCoverageDecision": {
+        "status": "source-identity-qualified-selected-sprite-needs-source-correction",
+        "limitations": [
+          "No sprite atlas was requested or generated in this wave.",
+          "Refused body-CG requests are recorded separately and must not become atlas service refusals."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "not-attempted-for-sprite-atlas",
+        "serviceRefusalForAtlas": false
+      },
+      "correctionAttemptEvidence": "docs/cg/reviews/wave3-2026-10-20/raven-current-sprite-review.json",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "characterId": "starfire_tt",
+      "incarnation": "Teen Titans animated WarnerBros2003 main model",
+      "selectedAsset": {
+        "path": "/sprites/generated/heroes/teen-titans/starfire-tt.png",
+        "sha256": "1f90eff8352ce94ccf4d569728e9bfbe357f96a07e8c94c8bc4f68363361115d",
+        "viewed": true,
+        "independentlyViewed": true
+      },
+      "status": "current-selected-sprite-too-far-source-qualified-no-atlas-attempt",
+      "observed": [
+        "Current atlas wears an ornate long purple/gold mage coat, dark trousers and plated silver knee/boot armor with stars.",
+        "WB2003 body-turn model has a short purple top/skirt, tall purple boots with broad silver-blue cuffs, collar and bracers; the current full coat/trousers/armored knees materially change the selected target."
+      ],
+      "sourceComparison": [
+        {
+          "path": "docs/cg/references/wave3-2026-10-20/starfire/starmodel1.jpg",
+          "sha256": "7450713fcb87e7b02d166ebb9d97d9bc30a575c1d2eb75f18413e2764fad8376",
+          "role": "independent-canon-reference",
+          "referencePurpose": "identity",
+          "viewed": true,
+          "provenance": "WarnerBros Animation2003 MAINMODEL BODYTURNS, FINAL11/19/02, studio sheet hosted via Wiki mirror, not a new DCpublisher-host download."
+        }
+      ],
+      "comparisonReviewers": [
+        "excel_fidelite",
+        "referentiel_canon"
+      ],
+      "comparisonEvidenceFile": "docs/cg/reviews/wave3-2026-10-20/starfire-current-sprite-review.json",
+      "sourceCoverageDecision": {
+        "status": "source-identity-qualified-selected-sprite-needs-source-correction",
+        "limitations": [
+          "No sprite atlas was requested or generated in this wave.",
+          "Refused body-CG requests are recorded separately and must not become atlas service refusals."
+        ]
+      },
+      "correctionAttempt": {
+        "status": "not-attempted-for-sprite-atlas",
+        "serviceRefusalForAtlas": false
+      },
+      "correctionAttemptEvidence": "docs/cg/reviews/wave3-2026-10-20/starfire-current-sprite-review.json",
+      "canonicalFidelityApproved": false
+    }
+  ]
+}

@@ -1,0 +1,548 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "characterId": "lyra_hexwind",
+  "characterName": "Lyra Hexwind",
+  "operationKind": "genuine-v2-reference-imagegen-sixteen-pose-redraw",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/aetherion_seven_laws/heroes/lyra_hexwind.png",
+    "sha256": "ed446cb1fe7ca4694985c06a19866f78e522b3257f8f6c512d04665deb636940",
+    "bytes": 2586994,
+    "format": "png"
+  },
+  "image": {
+    "sha256": "d70a36f9ffb390a0fece6c24a2399a692335688c0444a0101259bed50c23e944",
+    "bytes": 1209740,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png",
+    "path": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/lyra-hexwind-v2-fidelity-wave6-2026-10-23.png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/lyra-hexwind-v2-reference-sprite-fidelity-wave6-2026-10-23.json",
+    "sha256": "813474d7fd69e7a6a224139a2b141c86c3004a7bab63918142dcc164a1c90269"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-sprite-independent-review.json",
+    "sha256": "f73094c5c4b4d62f29c9cad86becacf90c60d1c459750b063e8924dcb3f3e8e7",
+    "accepted": true,
+    "framesActuallyReviewed": 16,
+    "reviewer": "/root/cg_brann_wave6"
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/lyra-hexwind.png",
+    "sha256": "ba2de411f810bc944c9030aa2026ac831b2a12e5233903b1fb6614e731c156b6",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "pendingRootRuntimeIntegration": false
+  },
+  "sourceNative": {
+    "singleGenuineImagegenNative": false,
+    "selectedImagegenNativeInputs": 3,
+    "successfulNativeOutputs": 4,
+    "whollyUnselectedNativeOutputs": 1,
+    "contributingNatives": [
+      {
+        "sha256": "1e62ee8daa9d915c02821288518379e18639f5a5da4773923f6a9a8bd8f05b48",
+        "contributesFrames": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          10,
+          11,
+          13,
+          14,
+          15,
+          16
+        ],
+        "promptFile": "docs/cg/prompts/wave6-2026-10-23/lyra-hexwind/atlas16-v2-clearance-laterality.txt"
+      },
+      {
+        "sha256": "d4bf319b0c09e362dc66831bda0dcfb8cd0474ae43f25c1df02b3e08148c2ee0",
+        "contributesFrames": [
+          9,
+          12
+        ],
+        "promptFile": "docs/cg/prompts/wave6-2026-10-23/lyra-hexwind/atlas16-v3-frames09-12.txt"
+      },
+      {
+        "sha256": "b14e96ec9e89d9fea5488946a17d652a9a2a2f4f42bdece3bda5e4667fd5d9d4",
+        "contributesFrames": [
+          2
+        ],
+        "promptFile": "docs/cg/prompts/wave6-2026-10-23/lyra-hexwind/atlas16-v4-frame02-frontal.txt"
+      }
+    ],
+    "technicalCompositeSha256": "de748c5cf7f7ba22ff2e3ae64c63fbd6a77dc41b29dd2ace38ed8fb27b1c3a2f",
+    "technicalCompositeDescription": "Technical composite of13wholeV2atlas poses,2whole genuine09/12pairposes and1genuine02frontalpose; not a single native image.",
+    "semanticEditsInTechnicalPacking": false
+  },
+  "processing": {
+    "operation": "visible-alpha-bounds+4px-fringe+referenced-frame-extraction+common-nearest-scale+4x4-packing",
+    "mode": "strict-grid",
+    "sourceVisiblePixels": 303906,
+    "assignedVisiblePixels": 303906,
+    "minimumSourceGuard": 16,
+    "sourceGridCells": 16,
+    "sourceGridEdges": {
+      "x": [
+        0,
+        256,
+        512,
+        768,
+        1024
+      ],
+      "y": [
+        0,
+        256,
+        512,
+        768,
+        1024
+      ]
+    },
+    "softAlphaOutsideFrameDiscarded": 0,
+    "softAlphaPixelsPreserved": 90960,
+    "alphaBoundsThreshold": 12,
+    "sourceFringePixels": 4,
+    "softAlphaNormalization": "Keep alpha 1-12 inside each visible alpha>12 bbox expanded by 4 source pixels; discard only alpha 1-12 outside those bounds. No alpha>12 source pixel is removed before resize.",
+    "uniformScale": 1,
+    "maximumSourceFrameWidth": 231,
+    "maximumSourceFrameHeight": 232,
+    "frameMeasurements": [
+      {
+        "cell": 1,
+        "sourceBounds": {
+          "left": 19,
+          "top": 12,
+          "right": 235,
+          "bottom": 243,
+          "width": 217,
+          "height": 232
+        },
+        "sourceVisibleBounds": {
+          "left": 23,
+          "top": 16,
+          "right": 231,
+          "bottom": 239,
+          "width": 209,
+          "height": 224
+        },
+        "sourceVisiblePixels": 20113,
+        "normalizedWidth": 217,
+        "normalizedHeight": 232
+      },
+      {
+        "cell": 2,
+        "sourceBounds": {
+          "left": 55,
+          "top": 13,
+          "right": 200,
+          "bottom": 243,
+          "width": 146,
+          "height": 231
+        },
+        "sourceVisibleBounds": {
+          "left": 59,
+          "top": 17,
+          "right": 196,
+          "bottom": 239,
+          "width": 138,
+          "height": 223
+        },
+        "sourceVisiblePixels": 15579,
+        "normalizedWidth": 146,
+        "normalizedHeight": 231
+      },
+      {
+        "cell": 3,
+        "sourceBounds": {
+          "left": 32,
+          "top": 13,
+          "right": 223,
+          "bottom": 243,
+          "width": 192,
+          "height": 231
+        },
+        "sourceVisibleBounds": {
+          "left": 36,
+          "top": 17,
+          "right": 219,
+          "bottom": 239,
+          "width": 184,
+          "height": 223
+        },
+        "sourceVisiblePixels": 19811,
+        "normalizedWidth": 192,
+        "normalizedHeight": 231
+      },
+      {
+        "cell": 4,
+        "sourceBounds": {
+          "left": 25,
+          "top": 13,
+          "right": 230,
+          "bottom": 243,
+          "width": 206,
+          "height": 231
+        },
+        "sourceVisibleBounds": {
+          "left": 29,
+          "top": 17,
+          "right": 226,
+          "bottom": 239,
+          "width": 198,
+          "height": 223
+        },
+        "sourceVisiblePixels": 21131,
+        "normalizedWidth": 206,
+        "normalizedHeight": 231
+      },
+      {
+        "cell": 5,
+        "sourceBounds": {
+          "left": 42,
+          "top": 18,
+          "right": 212,
+          "bottom": 243,
+          "width": 171,
+          "height": 226
+        },
+        "sourceVisibleBounds": {
+          "left": 46,
+          "top": 22,
+          "right": 208,
+          "bottom": 239,
+          "width": 163,
+          "height": 218
+        },
+        "sourceVisiblePixels": 18383,
+        "normalizedWidth": 171,
+        "normalizedHeight": 226
+      },
+      {
+        "cell": 6,
+        "sourceBounds": {
+          "left": 39,
+          "top": 16,
+          "right": 215,
+          "bottom": 243,
+          "width": 177,
+          "height": 228
+        },
+        "sourceVisibleBounds": {
+          "left": 43,
+          "top": 20,
+          "right": 211,
+          "bottom": 239,
+          "width": 169,
+          "height": 220
+        },
+        "sourceVisiblePixels": 17545,
+        "normalizedWidth": 177,
+        "normalizedHeight": 228
+      },
+      {
+        "cell": 7,
+        "sourceBounds": {
+          "left": 31,
+          "top": 27,
+          "right": 224,
+          "bottom": 243,
+          "width": 194,
+          "height": 217
+        },
+        "sourceVisibleBounds": {
+          "left": 35,
+          "top": 31,
+          "right": 220,
+          "bottom": 239,
+          "width": 186,
+          "height": 209
+        },
+        "sourceVisiblePixels": 18301,
+        "normalizedWidth": 194,
+        "normalizedHeight": 217
+      },
+      {
+        "cell": 8,
+        "sourceBounds": {
+          "left": 29,
+          "top": 20,
+          "right": 225,
+          "bottom": 243,
+          "width": 197,
+          "height": 224
+        },
+        "sourceVisibleBounds": {
+          "left": 33,
+          "top": 24,
+          "right": 221,
+          "bottom": 239,
+          "width": 189,
+          "height": 216
+        },
+        "sourceVisiblePixels": 16709,
+        "normalizedWidth": 197,
+        "normalizedHeight": 224
+      },
+      {
+        "cell": 9,
+        "sourceBounds": {
+          "left": 40,
+          "top": 13,
+          "right": 215,
+          "bottom": 243,
+          "width": 176,
+          "height": 231
+        },
+        "sourceVisibleBounds": {
+          "left": 44,
+          "top": 17,
+          "right": 211,
+          "bottom": 239,
+          "width": 168,
+          "height": 223
+        },
+        "sourceVisiblePixels": 20068,
+        "normalizedWidth": 176,
+        "normalizedHeight": 231
+      },
+      {
+        "cell": 10,
+        "sourceBounds": {
+          "left": 21,
+          "top": 50,
+          "right": 233,
+          "bottom": 243,
+          "width": 213,
+          "height": 194
+        },
+        "sourceVisibleBounds": {
+          "left": 25,
+          "top": 54,
+          "right": 229,
+          "bottom": 239,
+          "width": 205,
+          "height": 186
+        },
+        "sourceVisiblePixels": 17690,
+        "normalizedWidth": 213,
+        "normalizedHeight": 194
+      },
+      {
+        "cell": 11,
+        "sourceBounds": {
+          "left": 29,
+          "top": 56,
+          "right": 226,
+          "bottom": 243,
+          "width": 198,
+          "height": 188
+        },
+        "sourceVisibleBounds": {
+          "left": 33,
+          "top": 60,
+          "right": 222,
+          "bottom": 239,
+          "width": 190,
+          "height": 180
+        },
+        "sourceVisiblePixels": 19140,
+        "normalizedWidth": 198,
+        "normalizedHeight": 188
+      },
+      {
+        "cell": 12,
+        "sourceBounds": {
+          "left": 12,
+          "top": 33,
+          "right": 242,
+          "bottom": 243,
+          "width": 231,
+          "height": 211
+        },
+        "sourceVisibleBounds": {
+          "left": 16,
+          "top": 37,
+          "right": 238,
+          "bottom": 239,
+          "width": 223,
+          "height": 203
+        },
+        "sourceVisiblePixels": 22939,
+        "normalizedWidth": 231,
+        "normalizedHeight": 211
+      },
+      {
+        "cell": 13,
+        "sourceBounds": {
+          "left": 21,
+          "top": 28,
+          "right": 233,
+          "bottom": 243,
+          "width": 213,
+          "height": 216
+        },
+        "sourceVisibleBounds": {
+          "left": 25,
+          "top": 32,
+          "right": 229,
+          "bottom": 239,
+          "width": 205,
+          "height": 208
+        },
+        "sourceVisiblePixels": 20383,
+        "normalizedWidth": 213,
+        "normalizedHeight": 216
+      },
+      {
+        "cell": 14,
+        "sourceBounds": {
+          "left": 22,
+          "top": 70,
+          "right": 232,
+          "bottom": 243,
+          "width": 211,
+          "height": 174
+        },
+        "sourceVisibleBounds": {
+          "left": 26,
+          "top": 74,
+          "right": 228,
+          "bottom": 239,
+          "width": 203,
+          "height": 166
+        },
+        "sourceVisiblePixels": 16200,
+        "normalizedWidth": 211,
+        "normalizedHeight": 174
+      },
+      {
+        "cell": 15,
+        "sourceBounds": {
+          "left": 26,
+          "top": 29,
+          "right": 228,
+          "bottom": 243,
+          "width": 203,
+          "height": 215
+        },
+        "sourceVisibleBounds": {
+          "left": 30,
+          "top": 33,
+          "right": 224,
+          "bottom": 239,
+          "width": 195,
+          "height": 207
+        },
+        "sourceVisiblePixels": 19818,
+        "normalizedWidth": 203,
+        "normalizedHeight": 215
+      },
+      {
+        "cell": 16,
+        "sourceBounds": {
+          "left": 25,
+          "top": 15,
+          "right": 230,
+          "bottom": 243,
+          "width": 206,
+          "height": 229
+        },
+        "sourceVisibleBounds": {
+          "left": 29,
+          "top": 19,
+          "right": 226,
+          "bottom": 239,
+          "width": 198,
+          "height": 221
+        },
+        "sourceVisiblePixels": 20096,
+        "normalizedWidth": 206,
+        "normalizedHeight": 229
+      }
+    ],
+    "nonemptyCells": 16,
+    "minimumGuard": 16,
+    "visiblePixelsByCell": [
+      20113,
+      15579,
+      19811,
+      21131,
+      18383,
+      17545,
+      18301,
+      16709,
+      20068,
+      17690,
+      19140,
+      22939,
+      20383,
+      16200,
+      19818,
+      20096
+    ],
+    "visibleFootBaselinesByCell": [
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239
+    ]
+  },
+  "successfulAtlasGenerationAttempts": 4,
+  "retainedUnselectedWholeOrIndividualAttempts": 1,
+  "refusals": 0,
+  "sourceReviewFile": "docs/cg/lyra-hexwind-reference-evidence-wave6-2026-10-23.json",
+  "sourceReviewSha256": "38a0f69107da43b0d225e231812470c0e2cdf48965b9b838b9dab3df5a95de92",
+  "packingProof": {
+    "sha256": "cfd7c8ad332de2bab6aca7db072a6333ff948a16272ea1b49722609dcf8f8cac",
+    "publiclyAvailable": false
+  },
+  "limitations": [
+    "Original project character: actual selected HEROES_DB V2 portrait and production.audiovisual portrait agree; internal visual authority, not external franchise canon.",
+    "One visible source view cannot certify hidden back construction, exact tiny ornament, unseen staff details or numerical age; conservative continuation only, no perfect1:1 certification.",
+    "Reference spell-focus visible architecture is locked; glyph effects are abstract cyan geometric diagrams, not readable text.",
+    "Old navy/black-haired unarmed atlas remains unchanged as a variant and does not qualify current identity.",
+    "CG05 is Nexus gameplay adaptation; CG09-11 Fan Art; CG12-15 What If. CG13 is clearly a gender interpretation; CG15 first study at same apparent age, no invented childhood.",
+    "Sixteen actual final poses reviewed by producer and independent reviewer; source microdetails and unseen reverse construction remain interpretations at sprite scale.",
+    "Atlas uses13whole V2 native poses, two whole genuine09/12 corrective poses and one whole genuine02 corrective pose; technical packing performs no semantic painting, mirroring or recoloring.",
+    "Public audit sourceImage identifies the technical composite of three genuine contributing ImageGen outputs; it does not identify a single native generation."
+  ],
+  "selectedInRuntime": true,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-23",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-sprite-independent-review.json",
+  "independentReviewSha256": "f73094c5c4b4d62f29c9cad86becacf90c60d1c459750b063e8924dcb3f3e8e7"
+}

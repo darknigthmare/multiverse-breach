@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "characterId": "crash_bandicoot",
+  "characterName": "Crash Bandicoot",
+  "incarnation": "Crash Bandicoot4 It’s About Time(2020), base Toys for Bob design, official Activision screenshot reference",
+  "operationKind": "genuine-official-crash4-reference-imagegen-redraw-with-individual-four-digit-hand-correction",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "official-Activision-Crash4-reference; same qualified screenshot as wave4; no project atlas used as identity authority",
+  "sourceEvidenceFile": "docs/cg/crash-bandicoot-reference-evidence-wave4-2026-10-20.json",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/references/crash-bandicoot/crash4-official-reveal01-wave5-2026-10-22.png",
+    "sha256": "7e047643f8e329264f6b02df490b98557b5eb36f594de676379874fedcdf06f8",
+    "bytes": 2803997,
+    "format": "png",
+    "sameQualifiedOfficialBitmapCopiedForInstaller": true,
+    "newIndependentSource": false
+  },
+  "image": {
+    "sha256": "0a6dffec19b217cc8b8e1358c6f879dfc85db8a21f09a3a780467613ae7ab567",
+    "bytes": 837593,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png",
+    "path": "/sprites/generated/heroes/crash-bandicoot/crash-bandicoot-crash4-fidelity-wave5-2026-10-22.png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/crash-bandicoot-crash4-reference-sprite-fidelity-wave5-2026-10-22.json",
+    "sha256": "02ec5fd1cb206f9119b06f741765b68e86890c994dc67bce6ce90e01aa80d2ac"
+  },
+  "producerReview": {
+    "path": "docs/cg/reviews/wave5-2026-10-22/crash-bandicoot-sprite-producer-review.json",
+    "sha256": "ec4ab51304767c981809d3d9062db5cb30f26072389d0b6fc9bbb47f5f801609",
+    "framesActuallyReviewed": 16
+  },
+  "independentReview": {
+    "accepted": false,
+    "status": "pending-root-review"
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/crash-bandicoot/crash-bandicoot.png",
+    "sha256": "b5436a3c3256a012527c6fbb225f89a0b0cb9bd560360634ef54d90cd9b1a2c2",
+    "bytes": 1029115,
+    "preserved": true
+  },
+  "sourceAssembly": {
+    "sha256": "ddcc882b60688235ed2dcd1f7c327d51b02b25d122bc7f581a25f421c1680450",
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "selectedImagegenNativeInputs": 2,
+    "selectedFramesFromWholeAtlasNative": 15,
+    "individualCorrectedFrames": [
+      13
+    ],
+    "fifteenRgbaCellsUnchangedBeforeFinalNormalization": true,
+    "wholeAtlasComponentExtraction": {
+      "sourceVisiblePixels": 409119,
+      "assignedVisiblePixels": 409119,
+      "dominantBodies": 16,
+      "crossesVirtualNativeBoundaries": [
+        1,
+        2,
+        3,
+        4,
+        10,
+        11
+      ],
+      "visibleSourcePixelsRemovedBeforeNearest": 0
+    },
+    "finalCommonNearestScale": 0.9914529914529915,
+    "minimumGuard": 16,
+    "baselines": [
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239
+    ],
+    "privateEvidenceSha256": "1375095db926c34b659599219ba923105c5ed153f4058ea69be039edf0879ec0",
+    "semanticEditsInTechnicalPacking": false,
+    "fullReproductionActuallyPassed": true
+  },
+  "frame13ActualPose": "startled backwardlean with corrected four-digit raised hand",
+  "successfulAtlasGenerationAttempts": 3,
+  "retainedUnselectedWholeOrIndividualAttempts": 1,
+  "refusals": 0,
+  "runtimeSelectionChanged": true,
+  "existingCrashCgWave4Changed": false,
+  "limitations": [
+    "Pixel clusters interpret tiny fur/cloth seams and laces; no claim that screenshot pixels or exact 3D geometry are reproduced.",
+    "Rear/underneath details hidden by the qualified screenshot remain conservative interpretations.",
+    "Individual reaction frame13 has a genuinely corrected hand, not a manually painted or masked palm.",
+    "All sixteen poses are new game keyframes, not official game animation-frame captures.",
+    "Final independent review and runtime selection remain root-owned; no perfect1:1 certification."
+  ],
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "independentReviewFile": "docs/cg/reviews/wave5-2026-10-22/crash-bandicoot-sprite-independent-review.json",
+  "independentReviewSha256": "0d9d7702e350d3b58c5cd7b6aaf03c13dda9f3426372339a12049510f39ad0e9"
+}

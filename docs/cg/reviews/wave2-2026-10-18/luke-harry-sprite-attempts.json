@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "scope": "Additional selected sprite correction attempt and source-coverage decision; no deliverable",
+  "records": [
+    {
+      "characterId": "luke",
+      "incarnation": "Return of the Jedi(1983), black Jedi outfit",
+      "status": "blocked-output-moderation",
+      "requestId": "d9c5936e-9ce2-477f-b507-a1db1e1a95f1",
+      "moderationStage": "output",
+      "moderationCategories": [
+        "other"
+      ],
+      "attemptCount": 1,
+      "outputProduced": false,
+      "normalizationPerformed": false,
+      "canonicalFidelityApproved": false,
+      "oldAsset": {
+        "path": "/sprites/generated/heroes/star-wars/luke.png",
+        "sha256": "e7c5dc6bdf10918c7c5d63c31a27f5c6c799fe04c0aba35160edd55021e3e650",
+        "currentSha256": "e7c5dc6bdf10918c7c5d63c31a27f5c6c799fe04c0aba35160edd55021e3e650",
+        "unchanged": true
+      },
+      "promptSha256": "c1038a9987bb28782e7d19ef84125cbcfe0850a6b14a5753659acdb387f2c419",
+      "referenceEvidenceFile": "docs/cg/luke-rotj-reference-evidence-wave2-2026-10-18.json",
+      "sourceRefs": [
+        "https://www.starwars.com/databank/luke-skywalker/",
+        "src/game/heroes.js",
+        "https://tamashiiweb.com/item/10990/?wovn=en"
+      ],
+      "sourceReferences": [
+        {
+          "path": "docs/cg/references/wave2-2026-10-18/additional-selected/luke-rotj-sail-barge.jpeg",
+          "sha256": "090b8d1eadf2defef4d02bfba0421239119a3b19d7b82a73c9ec02462bee8370",
+          "width": 1200,
+          "height": 675,
+          "viewed": true,
+          "purpose": "film-identity"
+        },
+        {
+          "path": "docs/cg/references/wave2-2026-10-18/additional-selected/luke-rotj-jedi-quote.jpeg",
+          "sha256": "6d37cdd1a8d99d6d70e2677bdcc4420a265d5c3996f7e3e8bde77df8f52a2fa0",
+          "width": 414,
+          "height": 413,
+          "viewed": true,
+          "purpose": "film-identity"
+        },
+        {
+          "path": "docs/cg/references/wave2-2026-10-18/additional-selected/luke-rotj-shfiguarts-01.jpg",
+          "sha256": "fc366854a149222dafb33ca18806581402977c0385b5fa5076f1753e4d33e4cd",
+          "width": 509,
+          "height": 712,
+          "viewed": true,
+          "purpose": "licensed-body-costume-support"
+        }
+      ],
+      "notes": [
+        "One legitimate4×4 atlas request after source inspection; rejected at output with categoryother.",
+        "No image final, normalization, follow-up generation, runtime selection or global registry change.",
+        "Old layout remains visually incorrect and is preserved; the refusal does not fix it."
+      ]
+    },
+    {
+      "characterId": "harry",
+      "incarnation": "Harry Potter and the Order of the Phoenix(2007), fifth-year film incarnation",
+      "status": "not-attempted-insufficient-full-body-reference",
+      "attemptCount": 0,
+      "outputProduced": false,
+      "normalizationPerformed": false,
+      "canonicalFidelityApproved": false,
+      "ageStatus": "minor-family-safe-only",
+      "consentStatus": "no-romance",
+      "contentRating": "family",
+      "oldAsset": {
+        "path": "/sprites/generated/heroes/harry-potter/harry.png",
+        "sha256": "bef3cd1d8f6751c1ca1094b14aca466f506772f5c7bcbb222ad8091407a26243",
+        "unchanged": true
+      },
+      "referenceEvidenceFile": "docs/cg/harry-ootp-reference-evidence-wave2-2026-10-18.json",
+      "specificMissingCoverage": [
+        "No complete shoe/boot/ankle silhouette in the three viewed stills.",
+        "Third still reaches mid-thigh, so full trousers and standing/running leg silhouette are not visually locked.",
+        "Wand/hilt shape and length absent from the viewed images; no generic substitute is generated."
+      ],
+      "notes": [
+        "No ImageGen request made on these incomplete full-body references, following the explicit source-coverage condition.",
+        "No generated asset or runtime edit; source research may be completed separately."
+      ]
+    }
+  ],
+  "summary": {
+    "generationRequests": 1,
+    "outputRefusals": 1,
+    "notAttemptedForMissingReference": 1,
+    "deliveredSprites": 0,
+    "oldAssetsPreserved": true,
+    "runtimeRegistryChanged": false
+  },
+  "canonicalFidelityApproved": false
+}

@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "heroId": "liquid_snake",
+  "incarnation": "metal-gear-solid-1998-final-duel",
+  "existingCg01": "cg:metal-gear:liquid-snake:characterSolo:openai-v1",
+  "slots": [
+    {
+      "slot": 1,
+      "type": "characterSolo",
+      "label": "Portrait du duel",
+      "theme": "Liquid Snake adulte, incarnation torse nu du duel final de Metal Gear Solid1998.",
+      "pose": "Garde de boxe haute trois-quarts, un poing près du visage et un près de la hanche.",
+      "backgroundId": "cg-liquid-snake-shadow-moses-snow-deck-2026-10-18",
+      "backgroundDescription": "Plateforme métallique enneigée de Shadow Moses à minuit, montagnes arctiques, projecteurs bleus et structures industrielles.",
+      "existing": true,
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-character-solo-complete-2026-10-18"
+    },
+    {
+      "slot": 2,
+      "type": "weaponSolo",
+      "label": "Équipement du duel",
+      "theme": "Objet/équipement attesté de l’incarnation sans arme à feu : ceinture noire à boucle rectangulaire et bottes noires; aucun FAMAS attribué sans preuve.",
+      "pose": "Équipement complet posé seul : ceinture en boucle ouverte au premier plan et paire de bottes verticales sur banc, sans mains ni corps détachés.",
+      "backgroundId": "cg-liquid-equipment-barracks-locker-room",
+      "backgroundDescription": "Vestiaire militaire de Shadow Moses, banc de bois usé, casiers verts ouverts, lumière froide de néons.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-weapon-solo-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/02-weaponSolo.txt"
+    },
+    {
+      "slot": 3,
+      "type": "decorSolo",
+      "label": "Hangar de l’affrontement",
+      "theme": "Décor cohérent Metal Gear Solid1998 : architecture industrielle arctique de Shadow Moses, sans personnage dominant.",
+      "pose": "Vue environnementale verticale à forte profondeur, aucune silhouette humaine centrale.",
+      "backgroundId": "cg-liquid-empty-arctic-hangar-catwalks",
+      "backgroundDescription": "Grand hangar souterrain vide, pont roulant, passerelles jaunes, dalle centrale et porte arctique lointaine.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-decor-solo-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/03-decorSolo.txt"
+    },
+    {
+      "slot": 4,
+      "type": "coherentScene",
+      "label": "Préparation calme",
+      "theme": "Liquid se prépare à un affrontement à mains nues, identité et tenue du duel conservées.",
+      "pose": "Assis de profil sur une caisse, il serre un simple bandage au poignet, coudes proches du torse et regard vers ses mains.",
+      "backgroundId": "cg-liquid-medical-storage-wrist-preparation",
+      "backgroundDescription": "Réserve médicale militaire étroite, carreaux pâles, étagères de bandages et petite lampe ambre.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-coherent-scene-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/04-coherentScene.txt"
+    },
+    {
+      "slot": 5,
+      "type": "actionScene",
+      "label": "Assaut Nexus",
+      "theme": "Adaptation Nexus explicite : technique de combat à mains nues, sans arme ou pouvoir canonique inventé.",
+      "pose": "Saut latéral avec une jambe tendue en coup de pied, l’autre pliée, bras ouverts pour l’équilibre.",
+      "backgroundId": "cg-liquid-nexus-breach-service-canyon",
+      "backgroundDescription": "Passerelle extérieure fracturée au-dessus d’un ravin rocheux, mince brèche cyan et projecteurs blancs.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-action-scene-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/05-actionScene.txt"
+    },
+    {
+      "slot": 6,
+      "type": "introPose",
+      "label": "Arrivée contrôlée",
+      "theme": "Arrivée cohérente de Liquid dans une installation militaire, tenue du duel maintenue.",
+      "pose": "Descend un escalier métallique, une main sur la rampe et l’autre basse, jambe avant vers la marche inférieure.",
+      "backgroundId": "cg-liquid-sodium-elevator-stairwell-arrival",
+      "backgroundDescription": "Puits d’ascenseur de service en béton, escalier grillagé, conduites et lampes sodium orange.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-intro-pose-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/06-introPose.txt"
+    },
+    {
+      "slot": 7,
+      "type": "victoryPose",
+      "label": "Victoire provocatrice",
+      "theme": "Victoire sobre et fière, sans trophée, victime ou arme ajoutée.",
+      "pose": "Vu de profil en contre-plongée, un bras tendu paume ouverte vers l’horizon et l’autre main à la hanche.",
+      "backgroundId": "cg-liquid-dawn-coastal-observation-tower",
+      "backgroundDescription": "Tour d’observation côtière à l’aube, rambarde rouge, mer arctique dorée et montagnes basses.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-victory-pose-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/07-victoryPose.txt"
+    },
+    {
+      "slot": 8,
+      "type": "defeatPose",
+      "label": "Repli digne",
+      "theme": "Repli vivant après combat, épuisement sans mort, gore ou humiliation.",
+      "pose": "Un genou au sol et une paume appuyée au sol, buste bas, autre main au genou relevé.",
+      "backgroundId": "cg-liquid-concrete-drain-retreat",
+      "backgroundDescription": "Tunnel de drainage en béton humide, eau peu profonde, éclairage de secours rouge et sortie blanchie de neige.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-defeat-pose-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/08-defeatPose.txt"
+    },
+    {
+      "slot": 9,
+      "type": "beachFamily",
+      "label": "Plage familiale",
+      "theme": "Fan Art familial séparé : Liquid adulte en tenue estivale olive, activité calme sans romance ni sexualisation.",
+      "pose": "Accroupi près d’un petit château de sable, les deux mains sculptent une arche.",
+      "backgroundId": "cg-liquid-summer-bay-sandcastle",
+      "backgroundDescription": "Petite baie de sable en été, dunes herbeuses, pinède et cabane de plage au loin.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-beach-family-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/09-beachFamily.txt"
+    },
+    {
+      "slot": 10,
+      "type": "maidService",
+      "label": "Service professionnel",
+      "theme": "Fan Art familial : tenue de maître d’hôtel fonctionnelle et service du thé; aucune mise en scène fétichiste ou humiliante.",
+      "pose": "Debout en marche diagonale, plateau de thé tenu à deux mains au niveau de la poitrine.",
+      "backgroundId": "cg-liquid-officers-mess-tea-service",
+      "backgroundDescription": "Mess d’officiers boisé, grandes fenêtres enneigées, vaisselle claire et lumière chaude de midi.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-maid-service-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/10-maidService.txt"
+    },
+    {
+      "slot": 11,
+      "type": "goofy",
+      "label": "Gag de cheveux",
+      "theme": "Gag fidèle familial : les longues mèches de Liquid gênent sa lecture, sans expression humiliée ou texte lisible.",
+      "pose": "Torse penché assis sur le bord d’un banc, une main tient un plan plié et l’autre repousse une mèche.",
+      "backgroundId": "cg-liquid-windy-security-kiosk-map",
+      "backgroundDescription": "Kiosque de contrôle vitré ouvert au vent, plan de site neutre plié, banc et lampes vert pâle.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-goofy-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/11-goofy.txt"
+    },
+    {
+      "slot": 12,
+      "type": "alignmentSwap",
+      "label": "Allié du refuge",
+      "theme": "What If non canon : Liquid choisit d’aider des civils, conserve sa détermination et son identité.",
+      "pose": "Grande fente de côté, deux mains poussent une lourde porte de refuge, épaule engagée.",
+      "backgroundId": "cg-liquid-whatif-rescue-shelter-door",
+      "backgroundDescription": "Entrée d’un refuge de secours dans une gorge neigeuse, porte lourde rouillée et couvertures rangées.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-alignment-swap-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/12-alignmentSwap.txt"
+    },
+    {
+      "slot": 13,
+      "type": "genderSwap",
+      "label": "Genre inversé",
+      "theme": "What If séparé : interprétation féminine adulte de Liquid, même chevelure et silhouette tactique; haut couvrant olive, aucune sexualisation.",
+      "pose": "Semi-accroupie de trois-quarts devant une console radio, une main à la molette et l’autre sur une rambarde basse.",
+      "backgroundId": "cg-liquid-whatif-female-radio-antenna-room",
+      "backgroundDescription": "Local de télécommunications arctique, antenne parabolique visible derrière une verrière et lumière turquoise.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-gender-swap-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/13-genderSwap.txt"
+    },
+    {
+      "slot": 14,
+      "type": "zombieVersion",
+      "label": "Corruption non graphique",
+      "theme": "What If non canon : contamination artificielle précoce, identité encore lisible, aucune affirmation d’état zombie officiel.",
+      "pose": "Debout de biais, épaules affaissées et bras pendants, tête légèrement inclinée, un pied traînant.",
+      "backgroundId": "cg-liquid-whatif-sealed-quarantine-cell",
+      "backgroundDescription": "Cellule de quarantaine en verre opaque, rangée de lampes blanches et brouillard vert très contenu.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-zombie-version-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/14-zombieVersion.txt"
+    },
+    {
+      "slot": 15,
+      "type": "futureExperienced",
+      "label": "Futur hypothétique",
+      "theme": "What If non canon : Liquid survit et vieillit, ne devient ni Liquid Ocelot ni Solid Snake; même identité vieillie.",
+      "pose": "Assis de biais à un établi, deux mains règlent une radio de campagne, chevilles croisées.",
+      "backgroundId": "cg-liquid-whatif-older-coastal-radio-workshop",
+      "backgroundDescription": "Atelier côtier calme, fenêtre sur des éoliennes en mer, établi de bois et matin vert-gris.",
+      "themeSource": "docs/cg/CG_VARIANT_WAVE_AUDIT.md (CG01–CG15 slot semantics)",
+      "poseId": "liquid-future-experienced-complete-2026-10-18",
+      "promptFile": "docs/cg/prompts/complete-2026-10-18/liquid/15-futureExperienced.txt"
+    }
+  ],
+  "limitations": [
+    "Pas de référence indépendante plein corps du duel torse nu; précision du tatouage non certifiée."
+  ]
+}

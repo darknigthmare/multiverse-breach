@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "heroId": "arca_elyra",
+  "characterId": "arca_elyra",
+  "reviewer": "excel_fidelite",
+  "independentOfProducer": true,
+  "status": "accepted-for-runtime-installation-technical-packing-only",
+  "canonicalFidelityApproved": false,
+  "referenceKind": "retained-original-project-pixels",
+  "source": {
+    "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-elyra.png",
+    "sha256": "626d237ff5841f06f5b159799be7ed546588624ce9ac8632e95a3f8f98a630e2",
+    "snapshotPath": "docs/cg/references/wave3-2026-10-20/elyra/canonical-selected-atlas.png",
+    "sourceAndSnapshotShaEqual": true,
+    "unchanged": true
+  },
+  "output": {
+    "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-elyra-frame-packing-2026-10-20.png",
+    "sha256": "d3d9a4825029297f2189f592a28c73bb08b043778e99b58c660e5f83512c9aaa",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "mode": "RGBA"
+  },
+  "technicalReceipt": {
+    "path": "docs/audits/elyra-frame-packing-2026-10-20.json",
+    "sha256AtReview": "93d1d1211d0dc2dda54d8d0fbed70b781e8eed550ecba5224fcf61f7e6e3fdd7"
+  },
+  "verification": {
+    "exactPackingReproduction": true,
+    "all16FramePixelHashesMatchTechnicalReport": true,
+    "minimumGuard": 15,
+    "baselines": [
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240
+    ],
+    "nonemptyCells": 16,
+    "sourceVisiblePixels": 293836,
+    "assignedVisiblePixels": 293836,
+    "softAlphaPixelsPreserved": 1397,
+    "softAlphaOutsideFrameDiscarded": 0,
+    "softAlphaAmbiguitiesForReview": 0,
+    "dominantBodies": 16,
+    "satellites": 105,
+    "independentOutputRgbaPaletteSubsetOfSource": true,
+    "sourceRgbaColorCount": 208406,
+    "outputRgbaColorCount": 121633,
+    "inventedRgbaColors": 0
+  },
+  "comparison": {
+    "path": "docs/cg/reviews/wave3-2026-10-20/elyra-frame-packing-before-after.webp",
+    "independentlyViewed": true,
+    "scope": "32before/after cells, actual runtime slicing BEFORE versus whole-body/components packed AFTER."
+  },
+  "entries": [
+    {
+      "frame": 1,
+      "packedFrameSha256": "01ecd6e249ee5a3c1056d63c24b5e780160b812a296ca899ecb1f402a061bcf2",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Idle card held upright, full short bob/coat/both boots preserved."
+    },
+    {
+      "frame": 2,
+      "packedFrameSha256": "4b951fde322facbea6c1e8b8ff49da5c5bb83550bb3797724d3c8d46a290f605",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Reading two violet cards, hand separation and boot contours retained."
+    },
+    {
+      "frame": 3,
+      "packedFrameSha256": "2cc6da2e902ee9ae9ee47cd8178612d1e43729f64dee8af6868677c80710fdf8",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Looking to wrist with other hand at hip, no pose substitution."
+    },
+    {
+      "frame": 4,
+      "packedFrameSha256": "96db33513e3f9e969b975719e6540138ba802c9ae0c7c83531621b04ac161004",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Open left palm with floating rectangular card, detached card assigned to same frame."
+    },
+    {
+      "frame": 5,
+      "packedFrameSha256": "07dfc0245e51c91ee7cb0e98b38bc423f7c5ccee84efe3fa53be019e89034856",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Run phase1, coat tails and two legs retained."
+    },
+    {
+      "frame": 6,
+      "packedFrameSha256": "3325939bd08e30fda49010c5289e730427066657305f60ef57ea5a50e4d068b0",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Run phase2, both elbows/feet distinct from phase1."
+    },
+    {
+      "frame": 7,
+      "packedFrameSha256": "0df6890f27165369050f1a84276c35af71cb03950b6331e94e03eef96d835d81",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Run phase3, full stride and coat tails retained."
+    },
+    {
+      "frame": 8,
+      "packedFrameSha256": "2207d29a27f18b9447d77b6c7dbb75ed93d3f24a8a479a5d721467fd34f1997a",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Run phase4, both limbs/boots contained with no neighbor fragments."
+    },
+    {
+      "frame": 9,
+      "packedFrameSha256": "ea5893e5393936d982737edad7910a7e948d53bf406d1d9f0e722fea2c07ef60",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Projectile/refusal glyph: complete body, outstretched arm and violet projectile inside cell, no frame10 card transferred."
+    },
+    {
+      "frame": 10,
+      "packedFrameSha256": "ba6e1545b947f98c45b18556e36f5c793186a47f9b11f6b2abbc7ab811561700",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Orbiting-card support pose: violet rectangular cards and circular trajectory retained together."
+    },
+    {
+      "frame": 11,
+      "packedFrameSha256": "cccd1630f2bfe0477577b818b004350b6b5a88e904b2cd42123a0bf6f166db38",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Dash: source violet/teal afterimage trail follows same body inside cell; no extra separate live identity inferred."
+    },
+    {
+      "frame": 12,
+      "packedFrameSha256": "a8144549e7f0855a520a1bcdf0ad0473e452e1e38df0058db31f0df5769d2445",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Wide card dome/circle: source satellites/effect assigned around same body, no intrusion in adjacent cell."
+    },
+    {
+      "frame": 13,
+      "packedFrameSha256": "13fc7bd7394e071c37710f783084a89895f522608397e722f9b353508984ce5e",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "First recoil pose with floating loose cards, limbs contained."
+    },
+    {
+      "frame": 14,
+      "packedFrameSha256": "b3857e71ed0b54a1f3f3df70b40fda709e948d1a26a76fe1e5c42ebf30e9b085",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Second recoil pose distinct from13, loose cards retained with same body."
+    },
+    {
+      "frame": 15,
+      "packedFrameSha256": "d6fbb3b933a7312da51f1a0e2688650658f0687b8732bac13576788f1cb9905c",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Kneeling/falling recovery: planted hand, knees and surrounding cards contained."
+    },
+    {
+      "frame": 16,
+      "packedFrameSha256": "415c000689ecaedbb334e25c8afc4790e699da99e45e17c89ba4d729a6a32def",
+      "visibleBaseline": 240,
+      "decision": "accepted-technical-packing-with-source-limitations",
+      "independentlyViewed": true,
+      "observation": "Final falling/prone pose: body, extended arm/boot and loose card satellites contained, no piece assigned to neighbor15."
+    }
+  ],
+  "summary": {
+    "framesReviewed": 16,
+    "framesAccepted": 16,
+    "openIssues": 0,
+    "newDrawings": 0,
+    "perfectVisualFidelityCertified": false
+  },
+  "limitations": [
+    "Technical segmentation/repacking and common nearest downsampling of existing artwork only. No source character, pose, hue or animation is newly generated.",
+    "All visible and weak-alpha source pixels assigned before resampling, but nearest downsampling may remove subpixel detail. No perfect pixel count equality after resizing is claimed.",
+    "Visual source identity limitations of the original retained project atlas remain; this is a frame-boundary correction, not independent franchise likeness approval.",
+    "Runtime selection is root integration work; this review accepts the separate candidate, not proof it is already selected.",
+    "Technical receipt SHA is pinned to its creation status; keep it unchanged and use this separate acceptance record."
+  ],
+  "reviewedAt": "2026-10-20T09:15:05.269210+00:00"
+}

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "characterId": "mercy_ash",
+  "heroId": "mercy_ash",
+  "characterName": "Mercy Ash",
+  "operationKind": "genuine-selected-V2-reference-ImageGen-redraw-with-two-true-weapon-pose-corrections",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/infernum_nine_pits/heroes/mercy_ash.png",
+    "sha256": "2c78d2844181d02dab26c7cd07de88c10f8c59c40ab40cbbb48aeb410b699dc5",
+    "bytes": 2416616,
+    "format": "png"
+  },
+  "image": {
+    "sha256": "73b4187c5cf7e46865c8550d899093cef8a8f8486baab8d92ea6e49f20dccef0",
+    "bytes": 1017036,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png",
+    "path": "/sprites/generated/heroes/infernum-nine-pits/mercy-ash-v2-fidelity-wave6-2026-10-23.png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/mercy-ash-v2-reference-sprite-fidelity-wave6-2026-10-23.json",
+    "sha256": "a3e78b41c53b099b6290c8c2a297a51a23831746a1ab86ff1ac672e0d5cce792"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave6-2026-10-23/mercy-ash-sprite-independent-review.json",
+    "sha256": "ff403d7ff9d8ef2583c56e80b5bd6ab7237603d78d24772831b70147ea0ec328",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/infernum-nine-pits/mercy-ash.png",
+    "sha256": "98d14fc54fcd0a06bba8eca9f496f4d76c8b14aabce10f49d9bb932028b03922",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "runtimeSelectionIntegrationPending": false
+  },
+  "sourceAssembly": {
+    "sha256": "dfe5298ec27390f61f83e146b0d70dd9e24ef1079fe9d2e232567946ca9614b4",
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "selectedImagegenNativeInputs": 2,
+    "selectedFramesFromWholeAtlasNative": 14,
+    "individualCorrectedFrames": [
+      14,
+      15
+    ],
+    "fourteenWholeRgbaComponentsUnchangedBeforeFinalNormalization": true,
+    "fiveFinalCellsUnchangedComparedWithPreviousCandidate": true,
+    "commonPairNearestPixelDensityConditioning": 0.36,
+    "finalCommonNearestScale": 0.8111888111888111,
+    "minimumGuard": 15,
+    "baselines": [
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240,
+      240
+    ],
+    "privateEvidenceSha256": "5939451e5b734b6880f8535eabe63f33faa1f97f698cb706e36cae077f0b3a48",
+    "semanticEditsInTechnicalPacking": false
+  },
+  "successfulAtlasGenerationAttempts": 3,
+  "retainedUnselectedWholeOrIndividualAttempts": 1,
+  "retainedWhollyUnselectedNativeAttempts": 1,
+  "refusals": 0,
+  "sourceReviewFile": "docs/cg/mercy-ash-reference-evidence-wave6-2026-10-23.json",
+  "limitations": [
+    "Selected V2 is original internal project canon, not an external franchise source.",
+    "One true ImageGen pair restores the complete source crescent in pose14 and RIGHT-hand control in pose15. Fourteen whole RGBA components remain unchanged before common final normalization; five final cell PNGs remain identical to the previous candidate.",
+    "The initial displayed pair appeared near an edge; actual pixel bounds and grey compositing proved complete equipment and77px right guard. The proposed further framing prompt was never executed and is not counted as a generation.",
+    "Exact unseen coat/gear geometry and tiny facial details remain interpreted at gameplay resolution.",
+    "The producer installer left runtime maps unchanged; root subsequently selected the new path and exposed the old atlas as a variant.",
+    "A frame count, matching hash or independent acceptance does not certify perfect1:1 visual fidelity."
+  ],
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-23",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave6-2026-10-23/mercy-ash-sprite-independent-review.json",
+  "independentReviewSha256": "ff403d7ff9d8ef2583c56e80b5bd6ab7237603d78d24772831b70147ea0ec328"
+}

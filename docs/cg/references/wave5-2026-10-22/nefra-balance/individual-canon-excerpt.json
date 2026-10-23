@@ -1,0 +1,847 @@
+{
+  "source": "src/game/originalUniversesManifest.json",
+  "world": {
+    "key": "kemet_devoured_sun",
+    "universe": "Kemet: The Devoured Sun",
+    "title": {
+      "fr": "Kemet — Le Soleil Dévoré",
+      "en": "Kemet: The Devoured Sun"
+    },
+    "sourceType": "original",
+    "mediaType": "game",
+    "isOriginal": true,
+    "faction": "arcane",
+    "subgenreTags": [
+      "mythology",
+      "egyptian",
+      "duat",
+      "maat",
+      "solar-cycle"
+    ],
+    "mode": "RPG",
+    "difficulty": "Very Hard",
+    "visual": {
+      "motif": "desert-temple",
+      "colors": {
+        "sky": [
+          "#120b22",
+          "#020105"
+        ],
+        "floor": "#6b3e1f",
+        "grid": "#f4d35e",
+        "accent": "#22a6b3"
+      }
+    },
+    "lore": {
+      "origin": {
+        "fr": "Cette Trame originale s’inspire de la cosmologie funéraire de l’Égypte ancienne : Kemet vit au rythme de la course solaire, des noms conservés et de l’équilibre entre Maât et Isfet."
+      },
+      "breach": {
+        "fr": "Le Sans-Auteur fracture la Douât, falsifie les cartouches et immobilise la Barque solaire afin que chaque âme devienne un dossier sans identité."
+      },
+      "coreConflict": {
+        "fr": "Maintenir la course du soleil, préserver les noms et restaurer un jugement fondé sur la vérité plutôt que sur l’effacement."
+      }
+    },
+    "heroes": [
+      {
+        "id": "nefra_balance",
+        "name": "Nefra de la Balance",
+        "category": "tactical",
+        "combatRole": "soutien / jugement",
+        "loreRole": "Scribe-guerrière du Tribunal des Deux Vérités, chargée de protéger les noms et les cœurs.",
+        "primaryColor": "#ead8a6",
+        "secondaryColor": "#1f75a8",
+        "weaponType": "khopesh",
+        "stats": {
+          "hp": 126,
+          "atk": 12,
+          "def": 9,
+          "spd": 7
+        },
+        "simple": {
+          "name": "Trait de Maât",
+          "type": "projectile",
+          "dmg": 0.95
+        },
+        "secondary": {
+          "name": "Plume du Verdict",
+          "type": "magic",
+          "cd": 6,
+          "dmg": 1.75
+        },
+        "defense": {
+          "name": "Parole Véritable",
+          "type": "shield",
+          "dur": 2.4,
+          "reduce": 0.82
+        },
+        "special": {
+          "name": "Pesée des Mille Cœurs",
+          "type": "magic_aoe",
+          "dmg": 4.5,
+          "color": "#f4d35e"
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceType": "original",
+        "weaponColor": "#1f75a8"
+      },
+      {
+        "id": "khepri_sen",
+        "name": "Khepri-Sen",
+        "category": "hacker",
+        "combatRole": "contrôle solaire / mobilité",
+        "loreRole": "Gardien de la Barque solaire capable de lire les chemins mouvants de la Douât.",
+        "primaryColor": "#1f6b72",
+        "secondaryColor": "#ffbf3f",
+        "weaponType": "sun_staff",
+        "stats": {
+          "hp": 116,
+          "atk": 14,
+          "def": 7,
+          "spd": 9
+        },
+        "simple": {
+          "name": "Scarabée d’Aube",
+          "type": "bullet",
+          "dmg": 0.9
+        },
+        "secondary": {
+          "name": "Cycle de Khepri",
+          "type": "beam",
+          "cd": 5,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Disque de Renaissance",
+          "type": "dodge",
+          "dur": 2.0,
+          "reduce": 0.86
+        },
+        "special": {
+          "name": "Lever du Soleil dans la Douât",
+          "type": "beam_aoe",
+          "dmg": 4.8,
+          "color": "#ff9f1c"
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceType": "original",
+        "weaponColor": "#ffbf3f"
+      },
+      {
+        "id": "taset_lioness",
+        "name": "Taset la Lionne",
+        "category": "slayer",
+        "combatRole": "assaut / rupture de garde",
+        "loreRole": "Protectrice d’un nome désertique qui combat l’Isfet sans prétendre parler au nom des dieux.",
+        "primaryColor": "#9b4b2b",
+        "secondaryColor": "#f4d35e",
+        "weaponType": "spear",
+        "stats": {
+          "hp": 148,
+          "atk": 18,
+          "def": 9,
+          "spd": 6
+        },
+        "simple": {
+          "name": "Pointe du Désert",
+          "type": "melee",
+          "dmg": 1.15
+        },
+        "secondary": {
+          "name": "Bond de la Lionne",
+          "type": "melee",
+          "cd": 6,
+          "dmg": 2.05
+        },
+        "defense": {
+          "name": "Bouclier de Cuivre",
+          "type": "shield",
+          "dur": 2.2,
+          "reduce": 0.78
+        },
+        "special": {
+          "name": "Rugissement du Midi",
+          "type": "fire_aoe",
+          "dmg": 5.0,
+          "color": "#e85d04"
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceType": "original",
+        "weaponColor": "#f4d35e"
+      }
+    ],
+    "enemies": [
+      {
+        "name": "Shabti corrompu",
+        "combatRole": "tank",
+        "signature": {
+          "fr": "Statue servile animée par un ordre falsifié; elle protège le scribe qui l’a réveillée."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "hp": 118,
+        "atk": 10,
+        "def": 8,
+        "spd": 3,
+        "color": "#22a6b3",
+        "weapon": "shield_bash"
+      },
+      {
+        "name": "Serpent des dunes",
+        "combatRole": "assassin",
+        "signature": {
+          "fr": "S’enfouit puis frappe la cible isolée depuis une case de sable."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "hp": 80,
+        "atk": 16,
+        "def": 3,
+        "spd": 8,
+        "color": "#22a6b3",
+        "weapon": "claws"
+      },
+      {
+        "name": "Ombre de Ba",
+        "combatRole": "controller",
+        "signature": {
+          "fr": "Vole une portion de jauge spéciale et crée un double spectral."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "hp": 102,
+        "atk": 11,
+        "def": 5,
+        "spd": 5,
+        "color": "#22a6b3",
+        "weapon": "magic"
+      },
+      {
+        "name": "Chacal de tombe",
+        "combatRole": "skirmisher",
+        "signature": {
+          "fr": "Marque les héros blessés et accélère à chaque porte funéraire ouverte."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "hp": 96,
+        "atk": 13,
+        "def": 4,
+        "spd": 7,
+        "color": "#22a6b3",
+        "weapon": "blade"
+      },
+      {
+        "name": "Prêtre d’Isfet",
+        "combatRole": "support",
+        "signature": {
+          "fr": "Inverse temporairement les bonus de Maât et renforce les créatures du chaos."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "hp": 104,
+        "atk": 9,
+        "def": 5,
+        "spd": 5,
+        "color": "#22a6b3",
+        "weapon": "staff"
+      }
+    ],
+    "bosses": [
+      {
+        "name": "Ammit aux Balances Brisées",
+        "combatRole": "controller",
+        "special": {
+          "fr": "Dévore les buffs des cibles dont le « poids » de corruption est trop élevé."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "hp": 500,
+        "atk": 19,
+        "def": 12,
+        "spd": 5,
+        "color": "#22a6b3",
+        "weapon": "magic"
+      },
+      {
+        "name": "Tempête Rouge, Avatar d’Isfet",
+        "combatRole": "bruiser",
+        "special": {
+          "fr": "Recouvre l’arène de sable et transforme les lignes sûres en zones de chaos."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "hp": 570,
+        "atk": 21,
+        "def": 13,
+        "spd": 4,
+        "color": "#22a6b3",
+        "weapon": "heavy_melee"
+      },
+      {
+        "name": "Pharaon Usurpateur Sans-Nom",
+        "combatRole": "commander",
+        "special": {
+          "fr": "Efface les noms des alliés et invoque des shabtis portant de faux cartouches."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "hp": 640,
+        "atk": 23,
+        "def": 14,
+        "spd": 5,
+        "color": "#22a6b3",
+        "weapon": "command_staff"
+      }
+    ],
+    "worldBoss": {
+      "name": "Apep, Dévoreur de l’Aube",
+      "combatRole": "worldBoss",
+      "special": {
+        "fr": "Enroule la Barque solaire, plonge les phases dans l’obscurité et doit être repoussé avant la fin de la douzième heure."
+      },
+      "universe": "Kemet: The Devoured Sun",
+      "hp": 1550,
+      "atk": 34,
+      "def": 18,
+      "spd": 3,
+      "color": "#22a6b3",
+      "weapon": "world_power"
+    },
+    "gear": [
+      {
+        "id": "kemet_feather_maat",
+        "name": {
+          "fr": "Plume de Maât",
+          "en": "Feather of Ma'at"
+        },
+        "boost": {
+          "def": 7,
+          "spd": 1
+        },
+        "desc": {
+          "fr": "Stabilise les effets de vérité et réduit la durée des altérations de contrôle."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceType": "original"
+      },
+      {
+        "id": "kemet_solar_scarab",
+        "name": {
+          "fr": "Scarabée solaire",
+          "en": "Solar Scarab"
+        },
+        "boost": {
+          "atk": 8,
+          "hp": 40
+        },
+        "desc": {
+          "fr": "Conserve une étincelle d’aube qui renforce la première compétence spéciale."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceType": "original"
+      },
+      {
+        "id": "kemet_ceremonial_khopesh",
+        "name": {
+          "fr": "Khopesh cérémoniel",
+          "en": "Ceremonial Khopesh"
+        },
+        "boost": {
+          "atk": 10,
+          "def": 3
+        },
+        "desc": {
+          "fr": "Lame rituelle qui inflige davantage de dégâts aux créatures d’Isfet."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceType": "original"
+      }
+    ],
+    "battleItems": [
+      {
+        "id": "kemet_heart_scarab",
+        "tier": "pickup",
+        "role": "defense",
+        "name": {
+          "fr": "Scarabée du cœur",
+          "en": "Heart Scarab"
+        },
+        "desc": {
+          "fr": "Protège l’identité du porteur et retire une marque de condamnation."
+        },
+        "effect": {
+          "heal": 45,
+          "shield": 18
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceType": "original",
+        "color": "#22a6b3",
+        "melee": {
+          "fr": "Objet ramassable avec effet immédiat."
+        },
+        "rpg": {
+          "fr": "Commande consommant l’ATB du héros actif."
+        },
+        "tactics": {
+          "fr": "Ressource ou case bonus à sécuriser."
+        }
+      },
+      {
+        "id": "kemet_natrum_vial",
+        "tier": "pickup",
+        "role": "tempo",
+        "name": {
+          "fr": "Fiole de natron",
+          "en": "Natron Vial"
+        },
+        "desc": {
+          "fr": "Purifie une altération et accélère la prochaine action."
+        },
+        "effect": {
+          "charge": 30,
+          "heal": 16
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceType": "original",
+        "color": "#22a6b3",
+        "melee": {
+          "fr": "Objet ramassable avec effet immédiat."
+        },
+        "rpg": {
+          "fr": "Commande consommant l’ATB du héros actif."
+        },
+        "tactics": {
+          "fr": "Ressource ou case bonus à sécuriser."
+        }
+      },
+      {
+        "id": "kemet_sun_disk",
+        "tier": "pickup",
+        "role": "offense",
+        "name": {
+          "fr": "Disque solaire",
+          "en": "Solar Disk"
+        },
+        "desc": {
+          "fr": "Projette une ligne de lumière contre les ennemis du chaos."
+        },
+        "effect": {
+          "damage": 42,
+          "charge": 8
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceType": "original",
+        "color": "#22a6b3",
+        "melee": {
+          "fr": "Objet ramassable avec effet immédiat."
+        },
+        "rpg": {
+          "fr": "Commande consommant l’ATB du héros actif."
+        },
+        "tactics": {
+          "fr": "Ressource ou case bonus à sécuriser."
+        }
+      },
+      {
+        "id": "kemet_jackal_guard",
+        "tier": "summon",
+        "role": "summon",
+        "name": {
+          "fr": "Gardien du seuil chacal",
+          "en": "Jackal Threshold Guard"
+        },
+        "desc": {
+          "fr": "Un gardien funéraire temporaire scelle une porte et frappe le boss prioritaire."
+        },
+        "effect": {
+          "summonDamage": 98,
+          "charge": 12
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceType": "original",
+        "color": "#22a6b3",
+        "melee": {
+          "fr": "Assist temporaire qui traverse l’arène et frappe la cible prioritaire."
+        },
+        "rpg": {
+          "fr": "Renfort déclenché entre deux tours ennemis."
+        },
+        "tactics": {
+          "fr": "Marqueur allié temporaire placé sur la grille."
+        }
+      },
+      {
+        "id": "kemet_barque_of_dawn",
+        "tier": "ultimate",
+        "role": "ultimate",
+        "name": {
+          "fr": "Barque de l’Aube",
+          "en": "Barque of Dawn"
+        },
+        "desc": {
+          "fr": "La Barque traverse tout l’écran, rallume les balises solaires et repousse les ténèbres."
+        },
+        "effect": {
+          "ultimateDamage": 190,
+          "charge": 18
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceType": "original",
+        "color": "#22a6b3",
+        "melee": {
+          "fr": "Super de terrain plein écran; fenêtre rare et décisive."
+        },
+        "rpg": {
+          "fr": "Commande d’artefact ultime lorsque l’ATB du héros actif est pleine."
+        },
+        "tactics": {
+          "fr": "Carte opérationnelle à usage unique affectant plusieurs cases."
+        }
+      }
+    ],
+    "stages": [
+      {
+        "id": "kemet_hall_two_truths",
+        "name": {
+          "fr": "Salle des Deux Vérités",
+          "en": "Hall of Two Truths"
+        },
+        "mode": "Tactics",
+        "difficulty": "Hard",
+        "objectiveType": "protect",
+        "boss": "Ammit aux Balances Brisées",
+        "setting": {
+          "fr": "Grille funéraire où la plume, le cœur et le registre doivent rester intacts pendant le jugement."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceUniverses": [
+          "Kemet: The Devoured Sun"
+        ],
+        "sourceType": "original",
+        "stageKey": "kemet_hall_two_truths"
+      },
+      {
+        "id": "kemet_temple_eclipse",
+        "name": {
+          "fr": "Temple de l’Éclipse Rouge",
+          "en": "Temple of the Red Eclipse"
+        },
+        "mode": "Smash",
+        "difficulty": "Hard",
+        "objectiveType": "portals",
+        "boss": "Tempête Rouge, Avatar d’Isfet",
+        "setting": {
+          "fr": "Pylônes, colonnes brisées et tempête de sable qui modifie les plateformes."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceUniverses": [
+          "Kemet: The Devoured Sun"
+        ],
+        "sourceType": "original",
+        "stageKey": "kemet_temple_eclipse"
+      },
+      {
+        "id": "kemet_solar_barque_duat",
+        "name": {
+          "fr": "Barque solaire dans la Douât",
+          "en": "Solar Barque in the Duat"
+        },
+        "mode": "RPG",
+        "difficulty": "Very Hard",
+        "objectiveType": "survive",
+        "boss": "Apep, Dévoreur de l’Aube",
+        "setting": {
+          "fr": "Voyage nocturne en douze phases; chaque heure possède un danger et un sceau différent."
+        },
+        "universe": "Kemet: The Devoured Sun",
+        "sourceUniverses": [
+          "Kemet: The Devoured Sun"
+        ],
+        "sourceType": "original",
+        "stageKey": "kemet_solar_barque_duat"
+      }
+    ],
+    "narrativeArc": {
+      "id": "arc_kemet_keep_sun_moving",
+      "title": {
+        "fr": "Arc Univers — Que le Soleil continue sa course"
+      },
+      "intro": {
+        "fr": "La Brèche a coincé la Barque solaire entre deux heures de la Douât; l’aube ne peut plus atteindre Kemet."
+      },
+      "missions": [
+        {
+          "fr": "Restaurer les noms effacés dans la Salle des Deux Vérités."
+        },
+        {
+          "fr": "Dissiper l’éclipse fabriquée par le Pharaon Usurpateur."
+        },
+        {
+          "fr": "Escorter la Barque et repousser Apep avant la douzième heure."
+        }
+      ],
+      "outro": {
+        "fr": "L’aube revient, mais A.R.C.A. archive une règle essentielle : préserver l’ordre ne signifie pas figer les vivants."
+      },
+      "reward": {
+        "fr": "Relique « Plume d’Aube » + HUD « Pesée du Cœur »"
+      }
+    },
+    "booster": {
+      "id": "oc-world:kemet-devoured-sun",
+      "label": {
+        "fr": "Booster Kemet — Soleil Dévoré"
+      },
+      "art": "/boosters/oc-kemet-devoured-sun.webp",
+      "backdrop": "/images/oc-worlds/kemet-devoured-sun/solar-barque-duat.png",
+      "color": "#f4d35e",
+      "priceTier": "targeted",
+      "heroIds": [
+        "nefra_balance",
+        "khepri_sen",
+        "taset_lioness"
+      ],
+      "rewardKinds": [
+        "hero",
+        "equipment",
+        "event",
+        "skin",
+        "archive",
+        "kart",
+        "battleMusic",
+        "stageMusic",
+        "fieldSuper",
+        "npcAssist",
+        "koEffect",
+        "portalEffect",
+        "introPose",
+        "victoryPose",
+        "profileBanner",
+        "profileTitle",
+        "hud"
+      ],
+      "chaseRewardId": "hud:kemet_weighing_heart",
+      "guaranteeNonHeroRare": true
+    },
+    "sensitivityNotes": [
+      "Faire relire noms, symboles, hiérarchie divine et architecture par un consultant en égyptologie.",
+      "Les dieux ne sont pas de simples boss : privilégier avatars corrompus, monstres cosmiques et usurpateurs mortels."
+    ],
+    "skins": [
+      {
+        "id": "skin:nefra_balance:kemet_devoured_sun",
+        "heroId": "nefra_balance",
+        "universe": "Kemet: The Devoured Sun",
+        "name": {
+          "fr": "Nefra de la Balance — Barque d’Aube",
+          "en": "Nefra de la Balance — Barque d’Aube"
+        },
+        "colors": {
+          "primaryColor": "#1f75a8",
+          "secondaryColor": "#ead8a6"
+        },
+        "rarityId": "epic"
+      },
+      {
+        "id": "skin:khepri_sen:kemet_devoured_sun",
+        "heroId": "khepri_sen",
+        "universe": "Kemet: The Devoured Sun",
+        "name": {
+          "fr": "Khepri-Sen — Barque d’Aube",
+          "en": "Khepri-Sen — Barque d’Aube"
+        },
+        "colors": {
+          "primaryColor": "#ffbf3f",
+          "secondaryColor": "#1f6b72"
+        },
+        "rarityId": "rare"
+      },
+      {
+        "id": "skin:taset_lioness:kemet_devoured_sun",
+        "heroId": "taset_lioness",
+        "universe": "Kemet: The Devoured Sun",
+        "name": {
+          "fr": "Taset la Lionne — Barque d’Aube",
+          "en": "Taset la Lionne — Barque d’Aube"
+        },
+        "colors": {
+          "primaryColor": "#f4d35e",
+          "secondaryColor": "#9b4b2b"
+        },
+        "rarityId": "rare"
+      }
+    ],
+    "customUnlockables": [
+      {
+        "id": "archive:kemet_devoured_sun:kemet_solar_barque_duat",
+        "kind": "archive",
+        "rarityId": "epic",
+        "universe": "Kemet: The Devoured Sun",
+        "name": {
+          "fr": "Stage custom — Barque solaire dans la Douât"
+        },
+        "data": {
+          "mode": "RPG",
+          "stageKey": "kemet_solar_barque_duat",
+          "desc": {
+            "fr": "Voyage nocturne en douze phases; chaque heure possède un danger et un sceau différent."
+          }
+        }
+      },
+      {
+        "id": "hud:kemet_devoured_sun",
+        "kind": "hud",
+        "rarityId": "epic",
+        "universe": "Kemet: The Devoured Sun",
+        "name": {
+          "fr": "HUD Pesée du Cœur"
+        },
+        "data": {
+          "mode": "RPG",
+          "mechanics": [
+            "survive",
+            "Apep, Dévoreur de l’Aube",
+            "arc_kemet_keep_sun_moving"
+          ],
+          "desc": {
+            "fr": "Interface dédiée aux mécaniques de Kemet — Le Soleil Dévoré."
+          }
+        }
+      },
+      {
+        "id": "hud:kemet_weighing_heart",
+        "kind": "hud",
+        "rarityId": "anomaly",
+        "universe": "Kemet: The Devoured Sun",
+        "name": {
+          "fr": "Pesée du Cœur"
+        },
+        "data": {
+          "desc": {
+            "fr": "Récompense de chasse Anomalie du booster Booster Kemet — Soleil Dévoré."
+          },
+          "sourceArc": "arc_kemet_keep_sun_moving"
+        }
+      }
+    ],
+    "boosterPoolPlan": {
+      "cardsPerOpenedBooster": 5,
+      "minimumUniqueCandidates": 24,
+      "composition": {
+        "heroes": 3,
+        "equipment": 3,
+        "event": 1,
+        "skins": 3,
+        "customArchive": 1,
+        "customHud": 1,
+        "automaticUniverseUnlockables": 11,
+        "customAnomalyChase": 1
+      },
+      "recommendedRarityDistribution": {
+        "common": 6,
+        "rare": 9,
+        "epic": 8,
+        "anomaly": 1
+      },
+      "anomalyChaseRewardId": "hud:kemet_weighing_heart"
+    },
+    "legacyPack": {
+      "key": "kemet_devoured_sun",
+      "universe": "Kemet: The Devoured Sun",
+      "mediaType": "game",
+      "sourceType": "original",
+      "isOriginal": true,
+      "faction": "arcane",
+      "mode": "Tactics",
+      "difficulty": "Hard",
+      "titleFr": "Kemet — Le Soleil Dévoré",
+      "stage": "Salle des Deux Vérités",
+      "boss": "Ammit aux Balances Brisées",
+      "worldBoss": "Apep, Dévoreur de l’Aube",
+      "hero": [
+        "nefra_balance",
+        "Nefra de la Balance",
+        "tactical"
+      ],
+      "allies": [
+        [
+          "khepri_sen",
+          "Khepri-Sen",
+          "hacker"
+        ],
+        [
+          "taset_lioness",
+          "Taset la Lionne",
+          "slayer"
+        ]
+      ],
+      "monsters": [
+        "Shabti corrompu",
+        "Serpent des dunes",
+        "Ombre de Ba",
+        "Chacal de tombe",
+        "Prêtre d’Isfet"
+      ],
+      "bosses": [
+        "Ammit aux Balances Brisées",
+        "Tempête Rouge, Avatar d’Isfet",
+        "Pharaon Usurpateur Sans-Nom"
+      ],
+      "gear": [
+        [
+          "kemet_feather_maat",
+          "Feather of Ma'at",
+          "Plume de Maât",
+          {
+            "def": 7,
+            "spd": 1
+          }
+        ],
+        [
+          "kemet_solar_scarab",
+          "Solar Scarab",
+          "Scarabée solaire",
+          {
+            "atk": 8,
+            "hp": 40
+          }
+        ],
+        [
+          "kemet_ceremonial_khopesh",
+          "Ceremonial Khopesh",
+          "Khopesh cérémoniel",
+          {
+            "atk": 10,
+            "def": 3
+          }
+        ]
+      ],
+      "event": [
+        "evt_kemet_devoured_sun",
+        "Barque of Dawn",
+        "Barque de l’Aube",
+        "La Barque traverse tout l’écran, rallume les balises solaires et repousse les ténèbres.",
+        "La Barque traverse tout l’écran, rallume les balises solaires et repousse les ténèbres."
+      ],
+      "theme": "Cette Trame originale s’inspire de la cosmologie funéraire de l’Égypte ancienne : Kemet vit au rythme de la course solaire, des noms conservés et de l’équilibre entre Maât et Isfet.",
+      "desc": {
+        "fr": "Cette Trame originale s’inspire de la cosmologie funéraire de l’Égypte ancienne : Kemet vit au rythme de la course solaire, des noms conservés et de l’équilibre entre Maât et Isfet. Dans Multiverse Breach, Le Sans-Auteur fracture la Douât, falsifie les cartouches et immobilise la Barque solaire afin que chaque âme devienne un dossier sans identité.",
+        "en": "Original Thread: Kemet: The Devoured Sun."
+      },
+      "motif": "desert-temple",
+      "colors": [
+        "#120b22",
+        "#020105",
+        "#22a6b3"
+      ],
+      "stageVariants": [
+        [
+          "Smash",
+          "Temple de l’Éclipse Rouge",
+          "Hard",
+          "Tempête Rouge, Avatar d’Isfet"
+        ],
+        [
+          "RPG",
+          "Barque solaire dans la Douât",
+          "Very Hard",
+          "Apep, Dévoreur de l’Aube"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "reviewer": "independent-agent-referentiel-canon",
+  "status": "accepted-with-source-limitations",
+  "accepted": true,
+  "canonicalFidelityApproved": false,
+  "contactSheet": {
+    "path": "docs/cg/reviews/wave2-2026-10-18/sprite-before-after.webp",
+    "sha256": "ced2f92cb5b17c192c45603dc96954f8cba510aef88505644910d167f730b1ee",
+    "bytes": 575572,
+    "width": 1528,
+    "height": 1826,
+    "format": "webp",
+    "lossless": true
+  },
+  "sidecar": "docs/cg/reviews/wave2-2026-10-18/sprite-before-after.json",
+  "summary": {
+    "genuineSourceImages": 3,
+    "exactHistoricalOrCurrentFrames": 6,
+    "verifiedFileHashes": 10,
+    "visuallyInspectedRows": 3,
+    "openBlockingFindings": 0,
+    "perfect1to1Approvals": 0
+  },
+  "checks": [
+    {
+      "characterId": "devil_may_cry_dante",
+      "column": 0,
+      "path": "docs/cg/references/wave2-2026-10-18/dante/dante-dmc5-official-render-mirror.png",
+      "sha256Verified": true,
+      "exactFrameZeroVerified": false
+    },
+    {
+      "characterId": "devil_may_cry_dante",
+      "column": 1,
+      "path": "public/sprites/generated/heroes/devil-may-cry/devil-may-cry-dante.png",
+      "sha256Verified": true,
+      "exactFrameZeroVerified": true
+    },
+    {
+      "characterId": "devil_may_cry_dante",
+      "column": 2,
+      "path": "public/sprites/generated/heroes/devil-may-cry/dante-dmc5-2019-fidelity-2026-10-18.png",
+      "sha256Verified": true,
+      "exactFrameZeroVerified": true
+    },
+    {
+      "characterId": "doomslayer",
+      "column": 0,
+      "path": "docs/cg/references/wave2-2026-10-18/doomslayer/eternal-hires-full-body-82s.jpg",
+      "sha256Verified": true,
+      "exactFrameZeroVerified": false
+    },
+    {
+      "characterId": "doomslayer",
+      "column": 1,
+      "path": "public/sprites/generated/heroes/doom/doomslayer.png",
+      "sha256Verified": true,
+      "exactFrameZeroVerified": true
+    },
+    {
+      "characterId": "doomslayer",
+      "column": 2,
+      "path": "public/sprites/generated/heroes/doom/doomslayer-eternal-2020-fidelity-2026-10-18.png",
+      "sha256Verified": true,
+      "exactFrameZeroVerified": true
+    },
+    {
+      "characterId": "chris_redfield",
+      "column": 0,
+      "path": "docs/cg/references/chris-redfield-re1-1996/RE1ChrisConceptArtwork.png",
+      "sha256Verified": true,
+      "exactFrameZeroVerified": false
+    },
+    {
+      "characterId": "chris_redfield",
+      "column": 1,
+      "path": "public/sprites/generated/heroes/resident-evil/chris-redfield.png",
+      "sha256Verified": true,
+      "exactFrameZeroVerified": true
+    },
+    {
+      "characterId": "chris_redfield",
+      "column": 2,
+      "path": "public/sprites/generated/heroes/resident-evil/chris-redfield-re1-1996-fidelity-2026-10-18.png",
+      "sha256Verified": true,
+      "exactFrameZeroVerified": true
+    }
+  ],
+  "observations": [
+    "Dante source is the inspected official promotional render mirror. Blue-gray shirt is restored in current frame, burgundy coat and crossed boot straps retained; no complete unqualified blade newly exposed.",
+    "Doom source is the inspected official Eternal trailer82s promotional body image, not generatedCG. Source red lighting and existing foreground occlusions are retained. New visor is green, bare biceps retained, left shoulder launcher and visible Meathook language restored.",
+    "Chris source is the inspected finalized1996concept mirror. Current frame restores smooth green vest/white sleeves/gray trousers and anatomical left sheath/patch, avoiding old modern MOLLE styling.",
+    "Entire source figures or their originally visible outlines fit the displayed cells. All six sprite crops are actual frame0 and display resizing/composition only."
+  ],
+  "limitations": [
+    "Single frame0 comparison does not replace the separate16frame sprite reviews.",
+    "Source mirrors, original occlusions, low-resolution sprite interpretation and detailed geometry remain limits; this contact sheet does not certify perfect visual1:1."
+  ]
+}

@@ -1,0 +1,455 @@
+{
+  "schemaVersion": 1,
+  "characterId": "sonic_hedgehog",
+  "characterName": "Sonic",
+  "incarnation": "Sonic moderne — profil officiel SEGA Sonic Channel, jeu vidéo",
+  "reviewer": "excel_fidelite",
+  "independentOfProducer": true,
+  "reviewStartedAt": "2026-10-18T04:46:57.379817+00:00",
+  "status": "complete-with-source-limitations",
+  "scope": "Individual native image comparison against inspected source references; composition and continuity review, not perfect resemblance certification.",
+  "axes": [
+    "identity-and-incarnation",
+    "silhouette-and-anatomy",
+    "face-and-hair",
+    "costume-and-palette",
+    "equipment-and-laterality",
+    "pose-distinctness",
+    "universe-and-background",
+    "special-theme-readability"
+  ],
+  "sourceReferences": [
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/sonic/official-modern-profile.jpg",
+      "url": "https://sonic.sega.jp/SonicChannel/upload_images/character-sonic.jpg",
+      "role": "primary-official-modern-character-art",
+      "referenceScope": "identity-and-base-costume",
+      "sourceScope": "external-reference",
+      "inspectedBy": "excel_fidelite",
+      "viewed": true,
+      "sha256": "e8fbfe1530684d67aabb0ccaeeee9aae28c1a85c11ace76f0c9a906b7d235ed8",
+      "dimensions": [
+        1200,
+        630
+      ]
+    },
+    {
+      "path": ".tmp/cg-wave2-2026-10-18/sonic/references/official-riders-letterpaper.png",
+      "url": "https://sonic.sega.jp/SonicChannel/upload_images/etc_letterpaper_05_riders.pdf",
+      "role": "official-document-rendered-for-inspection",
+      "referenceScope": "CG13-riders-outfit-and-board-only",
+      "sourceScope": "external-reference",
+      "inspectedBy": "excel_fidelite",
+      "viewed": true,
+      "sha256": "44e88420dd4532f16e605a47bb4400bf5b79cfed655440f8049682e6ee3100a3",
+      "dimensions": [
+        1132,
+        1600
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "slot": "CG01",
+      "type": "characterSolo",
+      "nativePath": "/workspace/generated_images/exec-8ea99ec3-49a8-4f33-81ae-51c57ff9ed74.png",
+      "sha256": "0d50139b218265657ce11651e70852f4c2a4f2605dfeb5d41d0dbf6de86d4e0b",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:52:44.936060+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "identity": "Modern green-eyed long-legged Sonic; blue quills/body/legs, peach arms/muzzle/belly, white gloves, red/white shoes.",
+        "anatomy": "Two arms/two legs visible, connected white eye field, complete feet; no duplicate limb observed.",
+        "pose": "One elbow rests on rock; other hand at hip, one foot raised onto a second stone; clear relaxed asymmetry.",
+        "background": "Original checkerboard coastal landscape with ocean, palms and waterfalls; coherent Sonic motifs.",
+        "theme": "Reference character, no transformation."
+      },
+      "findings": [],
+      "limitations": [
+        "Single official front/three-quarter reference does not verify exact hidden back, tail or sole geometry."
+      ]
+    },
+    {
+      "slot": "CG02",
+      "type": "weaponSolo",
+      "nativePath": "/workspace/generated_images/exec-dfa7a474-4620-4ad6-ae62-b2f86db54dbf.png",
+      "sha256": "1bedcb6228b004443d126c0fe4563e08f077ad2eec62527bb6216ed53976e82c",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:52:44.938699+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "equipment": "Exactly two empty red shoes with broad white bands, folded white ankle cuffs and gray soles; no hands, legs or wearer.",
+        "composition": "One shoe upright and one tilted to reveal the sole on a locker-room bench.",
+        "background": "Original locker room facing checkerboard green hills through a round window; no character."
+      },
+      "findings": [],
+      "limitations": [
+        "Gray sole grooves are visible in the artwork but are not verified by the supplied official reference view.",
+        "CG02 is equipment-only, not an invented Sonic weapon."
+      ]
+    },
+    {
+      "slot": "CG03",
+      "type": "decorSolo",
+      "nativePath": "/workspace/generated_images/exec-13f94cfa-f154-4b93-b5ed-221c4ee18073.png",
+      "sha256": "37d0ad035c6aaa87e4fd339c571dbc9949dbd0d13c10a12dfacafe15a948ac4f",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:52:44.942386+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "composition": "Entirely empty landscape; large grass-covered loop, wooden bridge, waterfalls, checkered cliffs and palms.",
+        "background": "Original Sonic-compatible valley at sunset, composition distinct from daylight coast CG01 and interior CG02.",
+        "theme": "Environment-only, no character or character-shaped foreground silhouette observed."
+      },
+      "findings": [],
+      "limitations": [
+        "Original fan-art stage composition, not a verified recreation of a named official game map."
+      ]
+    },
+    {
+      "slot": "CG04",
+      "type": "coherentScene",
+      "nativePath": "/workspace/generated_images/exec-16fa8864-3300-46d6-9068-722f14233c48.png",
+      "sha256": "07289ff1e3d57f9044ca22481f60ab5fcb53180288cda3d32a18ba8cee30ae32",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:55:23.800773+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Modern Sonic seated sideways adjusting his raised glove: two hands and five readable raised digits, long blue legs, peach arms/belly, green eyes, complete red shoes. Original watermill/canal terrace differs from prior scenes."
+      },
+      "findings": [],
+      "limitations": [
+        "Hidden back and shoe-sole details remain outside the single official character reference view."
+      ]
+    },
+    {
+      "slot": "CG05",
+      "type": "actionScene",
+      "nativePath": "/workspace/generated_images/exec-3e388b0a-1b75-46fb-917e-dc60d043f588.png",
+      "sha256": "66d28ba969fde9d3e8e8da399404a0a0384c342de0b3ce0dd35f98c7dfc896ee",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:55:23.808827+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Modern Sonic in a complete airborne diagonal jump between two mechanical cliff platforms; two arms/two legs, complete shoes, green iris and peach bare arms stable. Cyan Nexus landmark and floating terrain distinguish the action setting."
+      },
+      "findings": [],
+      "limitations": [
+        "Original crossover/Nexus composition, not a canon game-stage recreation; sole grooves not source-verified."
+      ]
+    },
+    {
+      "slot": "CG06",
+      "type": "introPose",
+      "nativePath": "/workspace/generated_images/exec-7e9a2f85-4ff4-4cad-81aa-517e4b1aa5ec.png",
+      "sha256": "bf596a1eefccd7df1b6797001e4dc8b62534bb1f20d55cfcbfa4b7cccaa5822a",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:55:23.815416+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Modern Sonic steps down wooden tram-platform stairs while waving with a clearly readable five-digit gloved hand. Other arm lowered, both shoes whole, green eyes and peach arms stable; coastal tram setting distinct from seated mill and jump."
+      },
+      "findings": [],
+      "limitations": [
+        "Shoe-sole detail remains interpreted; station is an original Sonic-compatible location."
+      ]
+    },
+    {
+      "slot": "CG07",
+      "type": "victoryPose",
+      "nativePath": "/workspace/generated_images/exec-9292710f-5639-4627-9b59-dc2ff00a484b.png",
+      "sha256": "f61e768fa9f34e5114614216ea421d3b820ac969e87a4063f478916066523c75",
+      "dimensions": [
+        1087,
+        1447
+      ],
+      "reviewedAt": "2026-10-18T05:04:38.949566+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Corrected open glove now clearly shows thumb and four separate fingers. One-foot balance on a post, raised fist, Modern green eyes/long limbs/costume and mountain-sunset scene preserved."
+      },
+      "findings": [],
+      "limitations": [
+        "Previous four-digit hand corrected by ImageGen; fine hidden-model details still not certified."
+      ],
+      "supersededReviews": [
+        {
+          "slot": "CG07",
+          "type": "victoryPose",
+          "nativePath": "/workspace/generated_images/exec-71563303-273a-4f52-a1ed-d22cf3865ef8.png",
+          "sha256": "3a9e80937f8e02fcecbcca78dda51201b7dc8148f9b96853b9d45bf52823d68a",
+          "dimensions": [
+            1087,
+            1447
+          ],
+          "reviewedAt": "2026-10-18T04:59:33.332649+00:00",
+          "decision": "clarification-required-before-packaging",
+          "canonicalFidelityApproved": false,
+          "observations": {
+            "individualReview": "Victory pose on a wooden post, one raised fist and other open hand; Modern identity, complete silhouette and mountain sunset coherent."
+          },
+          "findings": [
+            "The open hand on image right does not clearly resolve five separate digits at inspection; producer asked to verify before packaging."
+          ],
+          "limitations": [
+            "Source has standard five-digit Sonic gloves; no perfect approval pending clear finger count."
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "CG08",
+      "type": "defeatPose",
+      "nativePath": "/workspace/generated_images/exec-9ba8d65e-1cf0-4d35-9f8d-2519e3192069.png",
+      "sha256": "6805d65883e0297802377c4ce55e566ad0dbf391a9f5fac856895b418ccf8886",
+      "dimensions": [
+        1087,
+        1447
+      ],
+      "reviewedAt": "2026-10-18T04:59:33.340515+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Alive and uninjured Modern Sonic rests low under a rainy urban flyover; one hand with five readable digits on wet ground and other hand over raised knee. Two arms/two legs, green eyes, peach arms and normal costume stable."
+      },
+      "findings": [],
+      "limitations": [
+        "Original urban Sonic-compatible environment; hidden back and shoe-sole accuracy not independently certified."
+      ]
+    },
+    {
+      "slot": "CG09",
+      "type": "beachFamily",
+      "nativePath": "/workspace/generated_images/exec-02e5d859-2bb9-4fa2-b887-8c865c7a5de6.png",
+      "sha256": "4d0784e73e03ab1e936d52329df79cb1658c6298a7df8a486febeec2ec119365",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T04:59:33.348032+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Fully standard-costumed Modern Sonic kneels with both legs folded and both gloved hands forming a sand loop. Family beach with huts, pier and lighthouse; no adult age invented or romance introduced."
+      },
+      "findings": [],
+      "limitations": [
+        "Leisure scene is fan art, not a verified official Sonic event; rear shoe details not exhaustively source-verified."
+      ]
+    },
+    {
+      "slot": "CG10",
+      "type": "maidService",
+      "nativePath": "/workspace/generated_images/exec-9c4c0b7e-d458-4786-b2b7-8a7beba34037.png",
+      "sha256": "8a1b6465cf4cb53b4c9ed460c15d339e2a54c6d598a69af267007680acdd7fb2",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:04:38.956620+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Modern Sonic walks carrying a fruit-juice tray with both gloved hands; modest turquoise service apron over unchanged character body, white cuffs and red shoes. Clear family-service theme, original cafe/pergola different from previous settings."
+      },
+      "findings": [],
+      "limitations": [
+        "Original fan-art costume and cafe, not an official Sonic outfit/event; no adult age assertion."
+      ]
+    },
+    {
+      "slot": "CG11",
+      "type": "goofy",
+      "nativePath": "/workspace/generated_images/exec-0ed78784-3767-43f6-9db3-98a169d541a8.png",
+      "sha256": "499df174db93514fd4b9fe3d7e28ae1bc03383285a67ebb91dca09a7387023b0",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:57.012782+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Corrected shelf star is plain neutral wood without eyes; unrequested Mario-like identity signal removed. Sonic, two five-digit hands, comic paper-plane pose, fan and workshop preserved."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ],
+      "supersededReviews": [
+        {
+          "slot": "CG11",
+          "type": "goofy",
+          "nativePath": "/workspace/generated_images/exec-2dc2be47-4627-49cb-bc1f-3f246a7fa27b.png",
+          "sha256": "cbfdf16578c629797516c0429506cf9e9c748eab235377b54496c45fe2191fca",
+          "dimensions": [
+            1086,
+            1448
+          ],
+          "reviewedAt": "2026-10-18T05:04:38.959000+00:00",
+          "decision": "correction-requested",
+          "canonicalFidelityApproved": false,
+          "observations": {
+            "individualReview": "Sonic reaches with two five-digit gloved hands toward paper planes, one leg raised behind and one planted; green eyes, peach arms and standard costume stable. Toy workshop/fan comic situation readable."
+          },
+          "findings": [
+            "Small yellow five-pointed star with two black eyes on the left shelf strongly evokes an unrequested Mario Super Star. Remove its eyes or replace it with a neutral toy; preserve Sonic and the scene."
+          ],
+          "limitations": [
+            "Character anatomy/pose accepted in isolation; background-universe correction requested."
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "CG12",
+      "type": "alignmentSwap",
+      "nativePath": "/workspace/generated_images/exec-3b5959f2-49b8-4130-96e0-2aeeeeeb6164.png",
+      "sha256": "002d70c9908316ea37347667b9afb969d9ea08b5aa87f9273f70202741539294",
+      "dimensions": [
+        1087,
+        1447
+      ],
+      "reviewedAt": "2026-10-18T05:14:57.014455+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "WhatIf authoritarian guard in rear/side view with hands behind back, red mechanical control room. Modern blue silhouette, green iris, peach arm and original gloves/shoes remain; no SuperSonic or Classic substitution."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG13",
+      "type": "iconicOutfitSwap",
+      "nativePath": "/workspace/generated_images/exec-5069a486-5c59-4107-9b32-75469e310c24.png",
+      "sha256": "34713dad414800285cbaa1452e5167578865eceb67954e655f2e98e508232f70",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:17:06.156150+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Riders goggle rims/bridge corrected to bronze-gold with green lenses retained, matching the inspected official outfit reference. Character, five-digit glove, racing shoes, board and original track composition preserved."
+      },
+      "findings": [],
+      "limitations": [
+        "Original fan-art composition; hidden model faces, exact microgeometry and perfect visual likeness remain uncertified."
+      ],
+      "supersededReviews": [
+        {
+          "slot": "CG13",
+          "type": "iconicOutfitSwap",
+          "nativePath": "/workspace/generated_images/exec-fcc8d329-74dd-4d38-a183-0201c3749434.png",
+          "sha256": "d6f72d4c21bd1fa6e6920fe27965c8e4f0bce997817c76cc04b333e43c395f4e",
+          "dimensions": [
+            1086,
+            1448
+          ],
+          "reviewedAt": "2026-10-18T05:14:57.018494+00:00",
+          "decision": "correction-requested",
+          "canonicalFidelityApproved": false,
+          "observations": {
+            "individualReview": "Riders counterpart crouches on full board with green eyes, five-digit open glove, racing wristbands and source-inspired racing shoes."
+          },
+          "findings": [
+            "Goggle rims are silver, while inspected official Riders reference has bronze/gold frames. Recolor frames only, preserve green lenses, character, pose, shoes and board."
+          ],
+          "limitations": [
+            "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+          ]
+        }
+      ]
+    },
+    {
+      "slot": "CG14",
+      "type": "zombieVersion",
+      "nativePath": "/workspace/generated_images/exec-a1ce49d1-8908-4336-9892-0f7de6a202da.png",
+      "sha256": "703bbcf9cc5b36f24fd7bbd31dd1455576107de10ed978a6d03137486f27e76d",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "reviewedAt": "2026-10-18T05:14:57.020480+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "Fictional non-gory digital corruption on quills/arms/legs while body remains intact. Green eyes, blue Modern silhouette and standard costume stable; one raised curled glove, laboratory quarantine garden distinct."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    },
+    {
+      "slot": "CG15",
+      "type": "firstStep",
+      "nativePath": "/workspace/generated_images/exec-9f8e9098-7dcc-473b-80a2-1a88852dfa10.png",
+      "sha256": "f51c3444468f1fb745054b71cfbf43edab3409f40c805601a75c0749a6d9d7b4",
+      "dimensions": [
+        1087,
+        1447
+      ],
+      "reviewedAt": "2026-10-18T05:14:57.028976+00:00",
+      "decision": "accepted-for-packaging-with-source-limitations",
+      "canonicalFidelityApproved": false,
+      "observations": {
+        "individualReview": "First-step racing WhatIf uses the same Modern incarnation and no age change. One five-digit glove on ground at start line, other arm drawn back, two complete shoes and green eyes; jungle track distinct."
+      },
+      "findings": [],
+      "limitations": [
+        "Acceptance covers inspected visible identity, anatomy, costume/equipment, composition and theme; hidden surfaces and exact microdetails remain uncertified."
+      ]
+    }
+  ],
+  "summary": {
+    "reviewedCurrentSlots": 15,
+    "acceptedForPackaging": 15,
+    "openIssues": 0,
+    "correctionsRequested": 0,
+    "perfectVisualFidelityCertified": false
+  },
+  "limitations": [
+    "Uninspected or ungenerated slots are not approved.",
+    "A familiar silhouette or a project-generated image alone does not certify external franchise accuracy."
+  ],
+  "observedIdentityLocks": [
+    "Modern SEGA game Sonic: long thin blue legs, blue swept-back quills and body; peach bare arms, muzzle, inner ears and oval belly.",
+    "Large connected white eye area, green irises, black oval nose; white gloves and large folded white cuffs.",
+    "Base red shoes with broad white stripe and gray soles, white ankle cuffs.",
+    "CG13 only: Riders goggles and racing footwear/board are separately sourced from the official Riders stationery PDF.",
+    "Not Classic1991, Boom scarf, film fur, or SuperSonic coloration."
+  ],
+  "updatedAt": "2026-10-18T05:14:57.029000+00:00",
+  "reviewCompletedAt": "2026-10-18T05:17:06.156223+00:00",
+  "deliveryReceiptFile": "docs/cg/sonic-wave2-2026-10-18.json"
+}

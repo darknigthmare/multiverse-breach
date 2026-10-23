@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "characterId": "arca_bastion",
+  "incarnation": "original-project-canon",
+  "references": [
+    {
+      "path": "/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/arca-bastion-universal-v1.png",
+      "sha256": "ba6a82bf9566061137be08f3f771fab84e3b896db3381a6415c396198abc1277",
+      "bytes": 1078764,
+      "viewed": true,
+      "viewedAt": "2026-10-18",
+      "role": "current-canonical-original-project-universal-sprite"
+    },
+    {
+      "path": "/sprites/generated/heroes/nexus-de-convergence/arca-bastion.png",
+      "sha256": "4079a93203b714079756e09bac0a69196952ea271a89f12e6fb3b41d8d031beb",
+      "bytes": 954763,
+      "viewed": true,
+      "viewedAt": "2026-10-18",
+      "role": "historical-project-sprite-face-and-gear-comparison"
+    }
+  ],
+  "sourceRefs": [
+    "src/game/spriteAssets.js#BASTION_COMPLETE_SPRITES",
+    "src/game/heroes.js#arca_bastion",
+    "src/game/ocCampaign.js",
+    "/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/arca-bastion-universal-v1.png",
+    "/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete/manifest.json"
+  ],
+  "visualLocks": {
+    "face": "Humain, peau hâlée/olive, cheveux noirs courts irréguliers, yeux sombres, mâchoire forte et barbe très courte.",
+    "anatomy": "Carrure humaine robuste, deux bras/deux jambes, tête visible sans casque ; aucun robot.",
+    "costume": "Long manteau-armure anthracite/slate à liserés orange/or, col haut, épaules renforcées, ceintures/poches, gants, genouillères et bottes lourdes.",
+    "equipment": "Fusil Atrium compact noir/orange ; bouclier rectangulaire allongé à pans coupés avec maillage hexagonal orange ; balise physique basse orange/acier et trois petits panneaux cyan en soutien.",
+    "palette": "Slate #2f3f46, orange #ff8c00, accent or discret, pas de gantelet cyan Ancre."
+  },
+  "gameplayEvidence": {
+    "file": "src/game/heroes.js",
+    "weaponType": "gun",
+    "abilities": [
+      "Rafale Atrium",
+      "Balise Barricade",
+      "Rempart d Ancre",
+      "Verrou de Convergence"
+    ],
+    "classification": "original-project-gameplay"
+  },
+  "ageStatus": "unknown-family-safe-only",
+  "limitations": [
+    "Aucun portrait HUD ni équipement isolé séparé dans le pack Bastion actuel ; détails du visage et du fusil limités par la résolution des sprites.",
+    "Petit détail de vis, marquage, pouches et maillage interprété sans certification parfaite pixel pour pixel.",
+    "Âge numérique et majorité non documentés : toutes les scènes restent familiales et non romantiques.",
+    "Ne pas transférer l’identité du robot Bastion Overwatch, ni le casque ou gantelet de l’Ancre."
+  ]
+}

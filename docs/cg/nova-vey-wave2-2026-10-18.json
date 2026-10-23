@@ -1,0 +1,1822 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "characterId": "arca_nova",
+  "heroId": "arca_nova",
+  "characterName": "Nova Vey",
+  "incarnation": "Nova Vey — selected universal4x8pack / current original project design",
+  "continuityId": "nexus-original-nova-veyr-universal-v1",
+  "sourceScope": "internal-original-project-canon",
+  "status": "complete",
+  "expectedSlots": 15,
+  "entries": [
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:characterSolo:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG01 characterSolo",
+        "en": "Nova Vey — CG01 characterSolo"
+      },
+      "type": "characterSolo",
+      "slotNumber": 1,
+      "family": "Canon",
+      "rarity": "stable",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-characterSolo-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Portrait de référence de Nova Vey, analyste des possibles du canon original du projet.",
+        "en": "Portrait de référence de Nova Vey, analyste des possibles du canon original du projet."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/character-solo-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/character-solo-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/01-characterSolo-two-arms-correction.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg01",
+      "backgroundDescription": "Balcon extérieur de l’Observatoire Veyr entre deux arches de métal ancien. Dalles sombres gravées de lignes causales, petite marche et garde-corps bas en laiton patiné. Nova en posture analytique, manteau bleu nuit lisible et diapason U entier appuyé librement contre la balustrade à son côté. Tours de la Cité-Mosaïque, anneaux d’observation et ciel crépusculaire aux premières étoiles. Lumière bleue du crépuscule, touches d’or des lampes et faible lueur cyan de son équipement.",
+      "background": {
+        "location": "Balcon extérieur de l’Observatoire Veyr entre deux arches de métal ancien.",
+        "foreground": "Dalles sombres gravées de lignes causales, petite marche et garde-corps bas en laiton patiné.",
+        "midground": "Nova en posture analytique, manteau bleu nuit lisible et diapason U entier appuyé librement contre la balustrade à son côté.",
+        "background": "Tours de la Cité-Mosaïque, anneaux d’observation et ciel crépusculaire aux premières étoiles.",
+        "lighting": "Lumière bleue du crépuscule, touches d’or des lampes et faible lueur cyan de son équipement."
+      },
+      "poseId": "nova-vey-wave2-cg01",
+      "poseBrief": "Debout de trois quarts, jambes légèrement décalées, un bras relâché et autre main près du monocle, diapason entier libre appuyé à la balustrade.",
+      "poseDescription": "Debout de trois quarts, jambes légèrement décalées, un bras relâché et autre main près du monocle, diapason entier libre appuyé à la balustrade.",
+      "themeBrief": "Portrait de référence de Nova Vey, analyste des possibles du canon original du projet.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority.",
+          "A rejected draft had a third hand; final ImageGen revision has two arms/hands and an independently supported staff."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/character-solo-wave2-2026-10-18.png",
+          "sha256": "b79f479432fa8ff097023c0bd0aa1d44e1a5d0f952c33f5a04b7c00e1aa8c50b",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 4155006,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/character-solo-wave2-2026-10-18.webp",
+          "sha256": "bc4452152c721dcd122fd42926cbeb6b4254eb0bfde5b9aac91223e091d2900a",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 967632,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/character-solo-wave2-2026-10-18-thumb.webp",
+          "sha256": "2b739b0783aab520f76b1483ea9d5cb3e623816cafcfff17d4c97735d4b7df0d",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 91094,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:weaponSolo:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG02 weaponSolo",
+        "en": "Nova Vey — CG02 weaponSolo"
+      },
+      "type": "weaponSolo",
+      "slotNumber": 2,
+      "family": "Canon",
+      "rarity": "rare",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-weaponSolo-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Équipement propre à Nova : bâton-diapason bifurqué de résonance seul, sans corps ni outil emprunté.",
+        "en": "Équipement propre à Nova : bâton-diapason bifurqué de résonance seul, sans corps ni outil emprunté."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/signature-weapon-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/signature-weapon-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/02-weaponSolo.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg02",
+      "backgroundDescription": "Atelier de calibration de l’Observatoire, établi de céramique sombre et supports de mesure. Bord de l’établi et extrémité inférieure du long bâton, deux petits supports en métal noir. Diapason de résonance cyan entier en diagonale, deux branches parallèles ouvertes en U. Tiroirs fermés, bobines causales rangées et baie étroite sur un anneau d’observation. Éclairage blanc de travail, reflets cyan sur la céramique et lumière neutre sur la poignée.",
+      "background": {
+        "location": "Atelier de calibration de l’Observatoire, établi de céramique sombre et supports de mesure.",
+        "foreground": "Bord de l’établi et extrémité inférieure du long bâton, deux petits supports en métal noir.",
+        "midground": "Diapason de résonance cyan entier en diagonale, deux branches parallèles ouvertes en U.",
+        "background": "Tiroirs fermés, bobines causales rangées et baie étroite sur un anneau d’observation.",
+        "lighting": "Éclairage blanc de travail, reflets cyan sur la céramique et lumière neutre sur la poignée."
+      },
+      "poseId": "nova-vey-wave2-cg02",
+      "poseBrief": "Diapason de résonance complet posé en diagonale sur deux supports bas, tête bifurquée en U et poignée entièrement visibles.",
+      "poseDescription": "Diapason de résonance complet posé en diagonale sur deux supports bas, tête bifurquée en U et poignée entièrement visibles.",
+      "themeBrief": "Équipement propre à Nova : bâton-diapason bifurqué de résonance seul, sans corps ni outil emprunté.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/signature-weapon-wave2-2026-10-18.png",
+          "sha256": "94a296cf4b255d803de4ceea18ffb11577e9284528b32e7b48a0e2e9c9526e13",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 3828488,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/signature-weapon-wave2-2026-10-18.webp",
+          "sha256": "e17b580627abb4fc2dd4beed6679cf8745381af14b474b618981a4d415296d0f",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 1001012,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/signature-weapon-wave2-2026-10-18-thumb.webp",
+          "sha256": "3fa15e21e25baf032a73bb766c1ebf8155036693fb5050c819c0492064c127a7",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 80662,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:decorSolo:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG03 decorSolo",
+        "en": "Nova Vey — CG03 decorSolo"
+      },
+      "type": "decorSolo",
+      "slotNumber": 3,
+      "family": "Canon",
+      "rarity": "rare",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-decorSolo-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Observatoire Veyr seul, scène originale fondée sur les décors et le lore internes consultés.",
+        "en": "Observatoire Veyr seul, scène originale fondée sur les décors et le lore internes consultés."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/decor-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/decor-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/03-decorSolo.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg03",
+      "backgroundDescription": "Grande salle des probabilités de l’Observatoire Veyr, sans personnage ni silhouette. Anneau de circulation en pierre sombre, rainures lumineuses et premières marches d’une estrade. Grand mécanisme orbital en laiton, cristal central et trajets cyan ramifiés au niveau du sol. Fenêtres gothiques industrielles ouvertes sur les étoiles, passerelles et petits télescopes latéraux. Ciel nocturne violet, lueurs cyan des routes et éclairage doré discret des anneaux orbitaux.",
+      "background": {
+        "location": "Grande salle des probabilités de l’Observatoire Veyr, sans personnage ni silhouette.",
+        "foreground": "Anneau de circulation en pierre sombre, rainures lumineuses et premières marches d’une estrade.",
+        "midground": "Grand mécanisme orbital en laiton, cristal central et trajets cyan ramifiés au niveau du sol.",
+        "background": "Fenêtres gothiques industrielles ouvertes sur les étoiles, passerelles et petits télescopes latéraux.",
+        "lighting": "Ciel nocturne violet, lueurs cyan des routes et éclairage doré discret des anneaux orbitaux."
+      },
+      "poseId": "nova-vey-wave2-cg03",
+      "poseBrief": "Vue d’ensemble vide en hauteur, chemin circulaire au premier plan, sphères orbitales au centre et hautes fenêtres étoilées.",
+      "poseDescription": "Vue d’ensemble vide en hauteur, chemin circulaire au premier plan, sphères orbitales au centre et hautes fenêtres étoilées.",
+      "themeBrief": "Observatoire Veyr seul, scène originale fondée sur les décors et le lore internes consultés.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/decor-wave2-2026-10-18.png",
+          "sha256": "1a0977b3d8a398e4ece29c2999756258f4ba8b9305ed1576fedd171e8d1923f1",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 4112652,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/decor-wave2-2026-10-18.webp",
+          "sha256": "01023f3bb2b7d8270e3c29f2383b7dbf78e198e3c1dbbb3ef0438f06c4798b00",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 1312378,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/decor-wave2-2026-10-18-thumb.webp",
+          "sha256": "74d1bed7f7de7e212b79c9f420f4f4639dd3898d1d1f5940d917a048705bb71f",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 95642,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:coherentScene:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG04 coherentScene",
+        "en": "Nova Vey — CG04 coherentScene"
+      },
+      "type": "coherentScene",
+      "slotNumber": 4,
+      "family": "Canon",
+      "rarity": "rare",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-coherentScene-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Lecture mesurée de plusieurs possibilités : Nova expose des options et leurs coûts, sans prédire ni imposer l’avenir.",
+        "en": "Lecture mesurée de plusieurs possibilités : Nova expose des options et leurs coûts, sans prédire ni imposer l’avenir."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/coherent-scene-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/coherent-scene-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/04-coherentScene.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg04",
+      "backgroundDescription": "Annexe des archives de Veyr avec table de lecture basse et rayonnages courbes. Dalles claires, pieds de la table et bottes de Nova visibles sous le plateau. Nova assise compare un petit schéma de routes cyan, diapason complet appuyé contre un support latéral. Rayonnages de registres fermés, globes de verre et fenêtre circulaire sur une cour calme. Lumière chaude de lampes d’archive, reflet cyan doux du schéma et ombres lisibles sous la table.",
+      "background": {
+        "location": "Annexe des archives de Veyr avec table de lecture basse et rayonnages courbes.",
+        "foreground": "Dalles claires, pieds de la table et bottes de Nova visibles sous le plateau.",
+        "midground": "Nova assise compare un petit schéma de routes cyan, diapason complet appuyé contre un support latéral.",
+        "background": "Rayonnages de registres fermés, globes de verre et fenêtre circulaire sur une cour calme.",
+        "lighting": "Lumière chaude de lampes d’archive, reflet cyan doux du schéma et ombres lisibles sous la table."
+      },
+      "poseId": "nova-vey-wave2-cg04",
+      "poseBrief": "Assise de côté à une table de lecture, une main ouverte sous un petit schéma causal et l’autre au bord du pupitre, bâton appuyé à côté.",
+      "poseDescription": "Assise de côté à une table de lecture, une main ouverte sous un petit schéma causal et l’autre au bord du pupitre, bâton appuyé à côté.",
+      "themeBrief": "Lecture mesurée de plusieurs possibilités : Nova expose des options et leurs coûts, sans prédire ni imposer l’avenir.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/coherent-scene-wave2-2026-10-18.png",
+          "sha256": "7b76d299741d2ac1361bde536a171b12e52ca0d4e05a0d43ab3f123575a1c9b3",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 3851338,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/coherent-scene-wave2-2026-10-18.webp",
+          "sha256": "260d18b9f1c2d080ba054723da6cf9d60a026b5e2f9868a1cf6e34c48f4631db",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 840110,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/coherent-scene-wave2-2026-10-18-thumb.webp",
+          "sha256": "b8f57ea5014ace3347e71de1cc2ec8ef1919b2367820b50ce6c9a195d710c1c7",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 79188,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:actionScene:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG05 actionScene",
+        "en": "Nova Vey — CG05 actionScene"
+      },
+      "type": "actionScene",
+      "slotNumber": 5,
+      "family": "Nexus",
+      "rarity": "rare",
+      "canonStatus": "nexus-variant",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-actionScene-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Reboot de Faille : remise en stabilité locale du terrain, adaptation visuelle d’une technique réelle du projet.",
+        "en": "Reboot de Faille : remise en stabilité locale du terrain, adaptation visuelle d’une technique réelle du projet."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/action-scene-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/action-scene-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/05-actionScene-framing-correction.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg05",
+      "backgroundDescription": "Passerelle de la Fonderie des Éclats d’Origine traversée par une fracture causale limitée. Dalles désaxées et fragments fixes de pierre, base du diapason posée près de la rupture. Nova en fente stabilise le terrain avec des lignes cyan basses, manteau balayé sur le côté. Fourneaux d’Origine lointains, arches de manutention et passerelle intacte de retraite. Lumière ambre des fourneaux et éclats cyan localisés, silhouette éclairée sans explosion aveuglante.",
+      "background": {
+        "location": "Passerelle de la Fonderie des Éclats d’Origine traversée par une fracture causale limitée.",
+        "foreground": "Dalles désaxées et fragments fixes de pierre, base du diapason posée près de la rupture.",
+        "midground": "Nova en fente stabilise le terrain avec des lignes cyan basses, manteau balayé sur le côté.",
+        "background": "Fourneaux d’Origine lointains, arches de manutention et passerelle intacte de retraite.",
+        "lighting": "Lumière ambre des fourneaux et éclats cyan localisés, silhouette éclairée sans explosion aveuglante."
+      },
+      "poseId": "nova-vey-wave2-cg05",
+      "poseBrief": "En fente basse, un genou fléchi, elle plante le diapason dans une dalle et tend l’autre paume vers une fracture du sol.",
+      "poseDescription": "En fente basse, un genou fléchi, elle plante le diapason dans une dalle et tend l’autre paume vers une fracture du sol.",
+      "themeBrief": "Reboot de Faille : remise en stabilité locale du terrain, adaptation visuelle d’une technique réelle du projet.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority.",
+          "ImageGen restored/folded the complete cropped coat contour; earlier clipped native draft is preserved privately and is not delivered."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/action-scene-wave2-2026-10-18.png",
+          "sha256": "f05f51e3cb804e661aff25ac7db59892524ad60c6a93587e741d3c854f7cd708",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 4382850,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/action-scene-wave2-2026-10-18.webp",
+          "sha256": "fb7ec2fe6b47d1b5f3d663ca7677af03c275068c02309a882761f22ed6f9b7ac",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 1299768,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/action-scene-wave2-2026-10-18-thumb.webp",
+          "sha256": "6575d26363e8492757964450db214c914b44a059c5a26a4a47a09f9fb506c40f",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 109056,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:introPose:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG06 introPose",
+        "en": "Nova Vey — CG06 introPose"
+      },
+      "type": "introPose",
+      "slotNumber": 6,
+      "family": "Canon",
+      "rarity": "rare",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-introPose-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Arrivée de Nova dans l’Atrium : mobilité calme, tenue et matériel du pack sélectionné conservés.",
+        "en": "Arrivée de Nova dans l’Atrium : mobilité calme, tenue et matériel du pack sélectionné conservés."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/intro-pose-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/intro-pose-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/06-introPose.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg06",
+      "backgroundDescription": "Passerelle suspendue de l’Atrium central au-dessus d’un jardin intérieur de la Cité-Mosaïque. Panneaux de verre et montants d’ivoire, reflets des bottes au-dessus des plantes. Nova franchit le seuil de la passerelle, bâton U entier porté en diagonale et pans du manteau en mouvement. Terrasses ivoire, arbres d’intérieur, petits ponts et rotonde centrale baignée de lumière. Lumière de matin filtrée par la verrière, reflets turquoise doux et touches d’or d’archive.",
+      "background": {
+        "location": "Passerelle suspendue de l’Atrium central au-dessus d’un jardin intérieur de la Cité-Mosaïque.",
+        "foreground": "Panneaux de verre et montants d’ivoire, reflets des bottes au-dessus des plantes.",
+        "midground": "Nova franchit le seuil de la passerelle, bâton U entier porté en diagonale et pans du manteau en mouvement.",
+        "background": "Terrasses ivoire, arbres d’intérieur, petits ponts et rotonde centrale baignée de lumière.",
+        "lighting": "Lumière de matin filtrée par la verrière, reflets turquoise doux et touches d’or d’archive."
+      },
+      "poseId": "nova-vey-wave2-cg06",
+      "poseBrief": "Marche sur une passerelle en verre, un pied en avant, bâton porté obliquement derrière une épaule et tête tournée vers l’accès.",
+      "poseDescription": "Marche sur une passerelle en verre, un pied en avant, bâton porté obliquement derrière une épaule et tête tournée vers l’accès.",
+      "themeBrief": "Arrivée de Nova dans l’Atrium : mobilité calme, tenue et matériel du pack sélectionné conservés.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/intro-pose-wave2-2026-10-18.png",
+          "sha256": "585497855e9f3d3bf9ec733c3aa20705d792abebffa6a294d9fc38f4434e1f37",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 4480508,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/intro-pose-wave2-2026-10-18.webp",
+          "sha256": "9b7863d146711bfbb916185630ce4f165d3ed8044d912fb1f2024fe1e2337599",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 1148696,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/intro-pose-wave2-2026-10-18-thumb.webp",
+          "sha256": "db210a964a6f4af4cd3a4f7120926d38e401caca0662e9ef895761db82a37421",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 98368,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:victoryPose:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG07 victoryPose",
+        "en": "Nova Vey — CG07 victoryPose"
+      },
+      "type": "victoryPose",
+      "slotNumber": 7,
+      "family": "Canon",
+      "rarity": "rare",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-victoryPose-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Victoire sobre : une possibilité reste ouverte et partageable, sans transformer Nova en conquérante ou oracle.",
+        "en": "Victoire sobre : une possibilité reste ouverte et partageable, sans transformer Nova en conquérante ou oracle."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/victory-pose-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/victory-pose-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/07-victoryPose-garden-correction.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg07",
+      "backgroundDescription": "Cour-jardin close au niveau du sol, sous une pergola fleurie de l’Observatoire Veyr. Pavage de pierre claire, pétales et deux bornes basses de cuivre éclairées de cyan. Nova abaisse son diapason entier à deux mains, posture relâchée sous la treille végétale. Fontaine à vasques, murs ivoire bas, rosiers et arbres feuillus entourant la cour sans skyline. Fin d’après-midi dorée filtrée par les feuilles, reflets cyan discrets et ombres chaudes au sol.",
+      "background": {
+        "location": "Cour-jardin close au niveau du sol, sous une pergola fleurie de l’Observatoire Veyr.",
+        "foreground": "Pavage de pierre claire, pétales et deux bornes basses de cuivre éclairées de cyan.",
+        "midground": "Nova abaisse son diapason entier à deux mains, posture relâchée sous la treille végétale.",
+        "background": "Fontaine à vasques, murs ivoire bas, rosiers et arbres feuillus entourant la cour sans skyline.",
+        "lighting": "Fin d’après-midi dorée filtrée par les feuilles, reflets cyan discrets et ombres chaudes au sol."
+      },
+      "poseId": "nova-vey-wave2-cg07",
+      "poseBrief": "Debout en léger appui latéral, elle abaisse le bâton horizontalement à deux mains et laisse apparaître un sourire discret après l’effort.",
+      "poseDescription": "Debout en léger appui latéral, elle abaisse le bâton horizontalement à deux mains et laisse apparaître un sourire discret après l’effort.",
+      "themeBrief": "Victoire sobre : une possibilité reste ouverte et partageable, sans transformer Nova en conquérante ou oracle.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority.",
+          "ImageGen changed the repetitive terrace background to an enclosed garden with fountain/pergola; the two-handed victory pose is retained."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/victory-pose-wave2-2026-10-18.png",
+          "sha256": "f2a43d7328d12331c9614950f96cfb63f95ecb2fbbe5394f7841b00214c76b3a",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 4536772,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/victory-pose-wave2-2026-10-18.webp",
+          "sha256": "5330abfd845520d2d571df449600ef56412924d87ce5aa1323492a66d3d91055",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 1481870,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/victory-pose-wave2-2026-10-18-thumb.webp",
+          "sha256": "01d568da0fa33c438049693b770989cfb5151878e1259cd74eb2bafc3b4ebdb7",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 126972,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:defeatPose:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG08 defeatPose",
+        "en": "Nova Vey — CG08 defeatPose"
+      },
+      "type": "defeatPose",
+      "slotNumber": 8,
+      "family": "Canon",
+      "rarity": "rare",
+      "canonStatus": "project-canon",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-defeatPose-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Repli après surcharge d’analyse, vivant et digne, sans blessure graphique ni âge affirmé.",
+        "en": "Repli après surcharge d’analyse, vivant et digne, sans blessure graphique ni âge affirmé."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/defeat-pose-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/defeat-pose-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/08-defeatPose.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg08",
+      "backgroundDescription": "Alcôve de maintenance calme sous les anneaux d’archives, abri après une surcharge de Trame. Sol métallique humide, bottes et diapason posé horizontalement sans aucun élément coupé. Nova assise contre une paroi, une main près du front et l’autre au genou, expression concentrée et fatiguée. Conduites fermées, porte de maintenance éclairée et couloir vide menant à une zone sûre. Lampes de secours ambre douces et lumière cyan basse, contraste calme sans scène sanglante.",
+      "background": {
+        "location": "Alcôve de maintenance calme sous les anneaux d’archives, abri après une surcharge de Trame.",
+        "foreground": "Sol métallique humide, bottes et diapason posé horizontalement sans aucun élément coupé.",
+        "midground": "Nova assise contre une paroi, une main près du front et l’autre au genou, expression concentrée et fatiguée.",
+        "background": "Conduites fermées, porte de maintenance éclairée et couloir vide menant à une zone sûre.",
+        "lighting": "Lampes de secours ambre douces et lumière cyan basse, contraste calme sans scène sanglante."
+      },
+      "poseId": "nova-vey-wave2-cg08",
+      "poseBrief": "Assise au pied d’un mur, un genou relevé et une main sur le front près du monocle, bâton entier posé parallèlement au sol.",
+      "poseDescription": "Assise au pied d’un mur, un genou relevé et une main sur le front près du monocle, bâton entier posé parallèlement au sol.",
+      "themeBrief": "Repli après surcharge d’analyse, vivant et digne, sans blessure graphique ni âge affirmé.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/defeat-pose-wave2-2026-10-18.png",
+          "sha256": "a3e4f9f7281d07eda49400d06a6846932771b80a001fb55f4d7498bea67e8dcd",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 3616918,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/defeat-pose-wave2-2026-10-18.webp",
+          "sha256": "bedcc2638c449ae9212e92a1fea58251ac2aa6e1fefc7624853b85ab59ef20c9",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 891248,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/defeat-pose-wave2-2026-10-18-thumb.webp",
+          "sha256": "6dce45af5e1a06032db2f1f1c9654b71fcb4c393e0509f0358ac29e886391a99",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 78484,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:beachFamily:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG09 beachFamily",
+        "en": "Nova Vey — CG09 beachFamily"
+      },
+      "type": "beachFamily",
+      "slotNumber": 9,
+      "family": "Fan Art",
+      "rarity": "rare",
+      "canonStatus": "fan-art",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-beachFamily-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Beach/family : pause d’observation ludique sur une côte imaginaire, tenue confortable entièrement couvrante et non romantique.",
+        "en": "Beach/family : pause d’observation ludique sur une côte imaginaire, tenue confortable entièrement couvrante et non romantique."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/beach-family-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/beach-family-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/09-beachFamily-coat-correction.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg09",
+      "backgroundDescription": "Petite crique de galets originale en marge imaginaire de la Cité-Mosaïque, mer calme et végétation basse. Galets clairs secs disposés en petits chemins ramifiés, bottes et bord de manteau replié visibles. Nova assise en tenue technique marine/noire fermée, manteau replié entier sur les galets, gants et monocle conservés; diapason entier au repos contre la roche. Mer turquoise, ponton vide, herbes de dunes et tour d’observation éloignée. Soleil d’été doux, reflets clairs de la mer et ombres légères sous les galets.",
+      "background": {
+        "location": "Petite crique de galets originale en marge imaginaire de la Cité-Mosaïque, mer calme et végétation basse.",
+        "foreground": "Galets clairs secs disposés en petits chemins ramifiés, bottes et bord de manteau replié visibles.",
+        "midground": "Nova assise en tenue technique marine/noire fermée, manteau replié entier sur les galets, gants et monocle conservés; diapason entier au repos contre la roche.",
+        "background": "Mer turquoise, ponton vide, herbes de dunes et tour d’observation éloignée.",
+        "lighting": "Soleil d’été doux, reflets clairs de la mer et ombres légères sous les galets."
+      },
+      "poseId": "nova-vey-wave2-cg09",
+      "poseBrief": "Assise jambes croisées sur des galets secs, elle aligne de petits cailloux en chemins ramifiés, bras détendus et regard curieux.",
+      "poseDescription": "Assise jambes croisées sur des galets secs, elle aligne de petits cailloux en chemins ramifiés, bras détendus et regard curieux.",
+      "themeBrief": "Beach/family : pause d’observation ludique sur une côte imaginaire, tenue confortable entièrement couvrante et non romantique.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority.",
+          "ImageGen restored/folded the complete cropped coat contour; earlier clipped native draft is preserved privately and is not delivered."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/beach-family-wave2-2026-10-18.png",
+          "sha256": "e2693b405aadc6a16981e47e1805d2fbde8f4e2e4e0d0edaa0cd5079a81898ed",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 4150224,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/beach-family-wave2-2026-10-18.webp",
+          "sha256": "828569129b98b1389fdaf4d5b5f6bdebb8b62b2cc4106fcdd03cffbcd5cd51b3",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 1152168,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/beach-family-wave2-2026-10-18-thumb.webp",
+          "sha256": "1b0d7127d00c9bc15365bca0c593a7c873408a04baa0105bf778441d5528c0d6",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 108516,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:maidService:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG10 maidService",
+        "en": "Nova Vey — CG10 maidService"
+      },
+      "type": "maidService",
+      "slotNumber": 10,
+      "family": "Fan Art",
+      "rarity": "rare",
+      "canonStatus": "fan-art",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-maidService-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Service familial : pause au café de l’observatoire, sans costume fétichiste, romance ou majorité supposée.",
+        "en": "Service familial : pause au café de l’observatoire, sans costume fétichiste, romance ou majorité supposée."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/maid-service-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/maid-service-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/10-maidService.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg10",
+      "backgroundDescription": "Café d’étude de l’Observatoire, mobilier de bois sombre et petite serre d’intérieur. Chemin entre tables basses, bottes et plateau entier avec tasses de chocolat chaud. Nova en tablier marine simple porte le plateau avec soin, manteau conservé et diapason rangé dans un râtelier voisin. Comptoir sans enseigne, plantes sous verrière et étagères de vaisselle claire. Lumière chaude de fin de journée, lampes de cuivre et petits reflets cyan des équipements rangés.",
+      "background": {
+        "location": "Café d’étude de l’Observatoire, mobilier de bois sombre et petite serre d’intérieur.",
+        "foreground": "Chemin entre tables basses, bottes et plateau entier avec tasses de chocolat chaud.",
+        "midground": "Nova en tablier marine simple porte le plateau avec soin, manteau conservé et diapason rangé dans un râtelier voisin.",
+        "background": "Comptoir sans enseigne, plantes sous verrière et étagères de vaisselle claire.",
+        "lighting": "Lumière chaude de fin de journée, lampes de cuivre et petits reflets cyan des équipements rangés."
+      },
+      "poseId": "nova-vey-wave2-cg10",
+      "poseBrief": "Debout en déplacement court, elle porte des deux mains un plateau de boissons chaudes, tablier simple par-dessus la tenue fermée.",
+      "poseDescription": "Debout en déplacement court, elle porte des deux mains un plateau de boissons chaudes, tablier simple par-dessus la tenue fermée.",
+      "themeBrief": "Service familial : pause au café de l’observatoire, sans costume fétichiste, romance ou majorité supposée.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/maid-service-wave2-2026-10-18.png",
+          "sha256": "d1769f06d50cc99606df835c8173e2f49bfdd3fdd6ed90bfaf28e4cbb52afe8e",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 4016172,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/maid-service-wave2-2026-10-18.webp",
+          "sha256": "f5987d8c975dc9cf454541ced837942a15b4b55b656b9b2910ce5cc72568e867",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 918452,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/maid-service-wave2-2026-10-18-thumb.webp",
+          "sha256": "97fa188829c732ccc0c5f37e82c5d902a3468f6616d91d2b8ea45c2c2afca954",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 87134,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:goofy:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG11 goofy",
+        "en": "Nova Vey — CG11 goofy"
+      },
+      "type": "goofy",
+      "slotNumber": 11,
+      "family": "Fan Art",
+      "rarity": "rare",
+      "canonStatus": "fan-art",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-goofy-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "Goofy : une rafale brouille ses cartes de possibilités, mésaventure légère sans humiliation ni nouveau pouvoir.",
+        "en": "Goofy : une rafale brouille ses cartes de possibilités, mésaventure légère sans humiliation ni nouveau pouvoir."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/goofy-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/goofy-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/11-goofy.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg11",
+      "backgroundDescription": "Galerie de classement ouverte au vent entre deux ailes de l’Observatoire, pupitre et portants de cartes. Dalles claires, feuilles flottantes sans texte et petit presse-papier posé au bord du pupitre. Nova se penche pour rattraper plusieurs feuilles, deux mains ouvertes et bâton entièrement appuyé contre un montant. Grandes fenêtres ouvertes, arbres de la cour et cartes géométriques suspendues sur des supports. Lumière blanche d’après-midi, ombres mouvantes de la galerie et faible cyan du monocle.",
+      "background": {
+        "location": "Galerie de classement ouverte au vent entre deux ailes de l’Observatoire, pupitre et portants de cartes.",
+        "foreground": "Dalles claires, feuilles flottantes sans texte et petit presse-papier posé au bord du pupitre.",
+        "midground": "Nova se penche pour rattraper plusieurs feuilles, deux mains ouvertes et bâton entièrement appuyé contre un montant.",
+        "background": "Grandes fenêtres ouvertes, arbres de la cour et cartes géométriques suspendues sur des supports.",
+        "lighting": "Lumière blanche d’après-midi, ombres mouvantes de la galerie et faible cyan du monocle."
+      },
+      "poseId": "nova-vey-wave2-cg11",
+      "poseBrief": "En équilibre prudent sur un seul pied, elle tente de rattraper des feuilles soulevées par le vent, autre jambe fléchie et deux mains ouvertes.",
+      "poseDescription": "En équilibre prudent sur un seul pied, elle tente de rattraper des feuilles soulevées par le vent, autre jambe fléchie et deux mains ouvertes.",
+      "themeBrief": "Goofy : une rafale brouille ses cartes de possibilités, mésaventure légère sans humiliation ni nouveau pouvoir.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority.",
+          "Fingerless glove rendering varies from some other scenes; the small source sprite cannot establish this microcut. Five digits are visible on both open hands."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/goofy-wave2-2026-10-18.png",
+          "sha256": "efda30909b3096b24ae9e07e7d103d23029b887f0436a0f615504b9181da86a1",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 4301201,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/goofy-wave2-2026-10-18.webp",
+          "sha256": "dcef926642c14f7a96ca52fdf42aa0e1d87784e99dc05027da31af430df181e0",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 972040,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/goofy-wave2-2026-10-18-thumb.webp",
+          "sha256": "10da5316221936c7bc086c610a770444b9e0b49fb8a52c421566e1d1f2b5db98",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 85022,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:alignmentSwap:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG12 alignmentSwap",
+        "en": "Nova Vey — CG12 alignmentSwap"
+      },
+      "type": "alignmentSwap",
+      "slotNumber": 12,
+      "family": "What If",
+      "rarity": "anomaly",
+      "canonStatus": "what-if",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-alignmentSwap-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "What If nommé « Calcul fermé » : Nova impose l’option optimale, dérive explicitement opposée à sa doctrine canonique.",
+        "en": "What If nommé « Calcul fermé » : Nova impose l’option optimale, dérive explicitement opposée à sa doctrine canonique."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/alignment-swap-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/alignment-swap-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/12-alignmentSwap.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg12",
+      "backgroundDescription": "Salle de décision autoritaire alternative de Veyr, architecture lisse et unique trajectoire lumineuse. Marche de métal noir, lignes de contrôle droites et chaussures visibles en posture rigide. Nova garde sa tenue bleu nuit et son monocle, mains derrière le dos; diapason complet sur un support vertical. Grande carte à une seule route, panneaux fermés et baie sur une cité symétrique vide. Lumière blanche froide, accents corail des panneaux et cyan contenu autour de la route unique.",
+      "background": {
+        "location": "Salle de décision autoritaire alternative de Veyr, architecture lisse et unique trajectoire lumineuse.",
+        "foreground": "Marche de métal noir, lignes de contrôle droites et chaussures visibles en posture rigide.",
+        "midground": "Nova garde sa tenue bleu nuit et son monocle, mains derrière le dos; diapason complet sur un support vertical.",
+        "background": "Grande carte à une seule route, panneaux fermés et baie sur une cité symétrique vide.",
+        "lighting": "Lumière blanche froide, accents corail des panneaux et cyan contenu autour de la route unique."
+      },
+      "poseId": "nova-vey-wave2-cg12",
+      "poseBrief": "Debout droite de profil trois quarts, mains jointes derrière le dos et regard ferme vers une carte qui ne montre qu’une route.",
+      "poseDescription": "Debout droite de profil trois quarts, mains jointes derrière le dos et regard ferme vers une carte qui ne montre qu’une route.",
+      "themeBrief": "What If nommé « Calcul fermé » : Nova impose l’option optimale, dérive explicitement opposée à sa doctrine canonique.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/alignment-swap-wave2-2026-10-18.png",
+          "sha256": "6288b7750ae6c810e3651af3c7b5d1228ed55f756bc1c61f23f34874589c16f1",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 3984652,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/alignment-swap-wave2-2026-10-18.webp",
+          "sha256": "0edc48e0574bb0de3db97cebc8ab99dc41c655ee1c48d62eb2be28caa35470ee",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 1077224,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/alignment-swap-wave2-2026-10-18-thumb.webp",
+          "sha256": "0fce43dd2fede07a702c38d007b04f42da37bcf066f1d6614331f1e0159790ad",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 68542,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:genderSwap:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG13 genderSwap",
+        "en": "Nova Vey — CG13 genderSwap"
+      },
+      "type": "genderSwap",
+      "slotNumber": 13,
+      "family": "What If",
+      "rarity": "anomaly",
+      "canonStatus": "what-if",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-genderSwap-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "What If nommé « Nova Vey, analyste masculin » : une seule variation de genre, même identité argent/cyan et tenue couvrante.",
+        "en": "What If nommé « Nova Vey, analyste masculin » : une seule variation de genre, même identité argent/cyan et tenue couvrante."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/gender-swap-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/gender-swap-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/13-genderSwap.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg13",
+      "backgroundDescription": "Patio d’étude original de l’Observatoire, escalier ivoire et carte de parcours intégrée au sol. Carte géométrique sans texte et marche basse portant une botte, petit bassin calme sur le côté. Interprétation masculine de Nova assise de façon asymétrique, mêmes cheveux argentés, monocle, manteau marine et diapason U. Colonnes fines, treillage végétal et verrière ouverte sur un petit jardin d’altitude. Lumière turquoise réfléchie du bassin et soleil blanc doux sur les colonnes.",
+      "background": {
+        "location": "Patio d’étude original de l’Observatoire, escalier ivoire et carte de parcours intégrée au sol.",
+        "foreground": "Carte géométrique sans texte et marche basse portant une botte, petit bassin calme sur le côté.",
+        "midground": "Interprétation masculine de Nova assise de façon asymétrique, mêmes cheveux argentés, monocle, manteau marine et diapason U.",
+        "background": "Colonnes fines, treillage végétal et verrière ouverte sur un petit jardin d’altitude.",
+        "lighting": "Lumière turquoise réfléchie du bassin et soleil blanc doux sur les colonnes."
+      },
+      "poseId": "nova-vey-wave2-cg13",
+      "poseBrief": "Assis sur une marche haute, un pied en appui bas, le variant masculin tient le bâton diagonal et indique une carte au sol de la main libre.",
+      "poseDescription": "Assis sur une marche haute, un pied en appui bas, le variant masculin tient le bâton diagonal et indique une carte au sol de la main libre.",
+      "themeBrief": "What If nommé « Nova Vey, analyste masculin » : une seule variation de genre, même identité argent/cyan et tenue couvrante.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/gender-swap-wave2-2026-10-18.png",
+          "sha256": "f114a2c4a04e8ee3c4189cacd99a5a88cf8745a4ce461cd3782d3059c4fbb6fe",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 4377093,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/gender-swap-wave2-2026-10-18.webp",
+          "sha256": "14a2d26b23242559c64a6322d94616920982bf467725ab90027b7ba134ca07ce",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 1095258,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/gender-swap-wave2-2026-10-18-thumb.webp",
+          "sha256": "c4bf299a0091a3b8e9b6cf1b1292ea319cdf8cd3763571bde267ce7a2f08e009",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 99880,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:zombieVersion:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG14 zombieVersion",
+        "en": "Nova Vey — CG14 zombieVersion"
+      },
+      "type": "zombieVersion",
+      "slotNumber": 14,
+      "family": "What If",
+      "rarity": "anomaly",
+      "canonStatus": "what-if",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-zombieVersion-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "What If nommé « Trame fantôme » : corruption numérique superficielle non graphique, sans ajout d’anatomie ni perte d’identité.",
+        "en": "What If nommé « Trame fantôme » : corruption numérique superficielle non graphique, sans ajout d’anatomie ni perte d’identité."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/zombie-version-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/zombie-version-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/14-zombieVersion.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg14",
+      "backgroundDescription": "Serre d’isolement causale du Nexus, parois vitrées courbes et modules végétaux fermés. Sol de verre fumé avec lignes cyan brisées, bottes et reflet entier de la silhouette. Nova en pas suspendu touche une vitre, quelques motifs cyan instables sur sa tenue et son monocle; diapason entier au repos derrière elle. Plantes de laboratoire dans des modules scellés, passerelles vides et petites balises de quarantaine. Nuit bleu profond, lueurs cyan fragmentées et éclairage blanc doux des modules, sans gore.",
+      "background": {
+        "location": "Serre d’isolement causale du Nexus, parois vitrées courbes et modules végétaux fermés.",
+        "foreground": "Sol de verre fumé avec lignes cyan brisées, bottes et reflet entier de la silhouette.",
+        "midground": "Nova en pas suspendu touche une vitre, quelques motifs cyan instables sur sa tenue et son monocle; diapason entier au repos derrière elle.",
+        "background": "Plantes de laboratoire dans des modules scellés, passerelles vides et petites balises de quarantaine.",
+        "lighting": "Nuit bleu profond, lueurs cyan fragmentées et éclairage blanc doux des modules, sans gore."
+      },
+      "poseId": "nova-vey-wave2-cg14",
+      "poseBrief": "Arrêtée en plein pas devant une vitre, une paume posée à plat et l’autre bras relâché, légères traces cyan en rupture de rythme.",
+      "poseDescription": "Arrêtée en plein pas devant une vitre, une paume posée à plat et l’autre bras relâché, légères traces cyan en rupture de rythme.",
+      "themeBrief": "What If nommé « Trame fantôme » : corruption numérique superficielle non graphique, sans ajout d’anatomie ni perte d’identité.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/zombie-version-wave2-2026-10-18.png",
+          "sha256": "0ad79f9cce44b6f99274968ce62ae23646e06fda73948f792ba259f4480d56af",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 4139909,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/zombie-version-wave2-2026-10-18.webp",
+          "sha256": "0f262e5fc5eb1c7f9c7b403304129be41c7f27ab03f460785370218aec2b9e9b",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 1003062,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/zombie-version-wave2-2026-10-18-thumb.webp",
+          "sha256": "9f5f652eeaee28d47f5e5fe6fa588f53cc1037ef9367ff15a2023586c6bd0713",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 90276,
+          "channels": 3
+        }
+      }
+    },
+    {
+      "id": "cg:nexus-de-convergence:arca-nova:firstStep:openai-v1",
+      "universeKey": "nexus-de-convergence",
+      "universeName": "Nexus de Convergence",
+      "characterKey": "arca-nova",
+      "characterId": "arca_nova",
+      "heroId": "arca_nova",
+      "characterName": "Nova Vey",
+      "title": {
+        "fr": "Nova Vey — CG15 firstStep",
+        "en": "Nova Vey — CG15 firstStep"
+      },
+      "type": "firstStep",
+      "slotNumber": 15,
+      "family": "What If",
+      "rarity": "anomaly",
+      "canonStatus": "what-if",
+      "continuityId": "nexus-original-nova-veyr-universal-v1",
+      "contentRating": "family",
+      "ageStatus": "unknown-family-safe-only",
+      "consentStatus": "no-romance",
+      "characterReferenceId": "nova-vey-current-universal-project-pack",
+      "promptId": "cg-nova-vey-firstStep-wave2-2026-10-18",
+      "promptSummary": {
+        "fr": "What If nommé « Première lecture » : premier exercice imaginé de la même incarnation, sans rajeunissement ni âge adulte inventé.",
+        "en": "What If nommé « Première lecture » : premier exercice imaginé de la même incarnation, sans rajeunissement ni âge adulte inventé."
+      },
+      "publishedAt": "2026-10-18",
+      "source": "openai",
+      "rightsClass": "project-original",
+      "sourceRefs": [
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+        "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+        "src/game/heroes.js",
+        "src/game/characterPlaques.js",
+        "src/game/ocCampaign.js",
+        "docs/rift-dossiers/references/original-universes.json",
+        "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json"
+      ],
+      "credits": {
+        "fr": "Personnage original de Multiverse Breach. Illustration générée avec OpenAI à partir du canon interne courant.",
+        "en": "Original Multiverse Breach character. Illustration generated with OpenAI from the current internal project canon."
+      },
+      "unlock": {
+        "type": "heroOwned",
+        "heroId": "arca_nova"
+      },
+      "imagePath": "/cg/nexus-de-convergence/arca-nova/first-step-openai-v1.webp",
+      "thumbnailPath": "/cg/nexus-de-convergence/arca-nova/first-step-openai-v1-thumb.webp",
+      "generationMode": "openai-imagegen-built-in",
+      "promptFile": "docs/cg/prompts/wave2-2026-10-18/nova-vey/15-firstStep-coat-correction.txt",
+      "referenceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "backgroundId": "nova-vey-wave2-cg15",
+      "backgroundDescription": "Petite salle d’exercice de lecture causale de Veyr, portes ouvertes sur un jardin à l’aube. Marques géométriques simples au sol et dalle de test intacte, gants et bottes entièrement visibles. Nova à demi accroupie sur deux appuis pointe une marque au sol de la main libre, diapason U entier incliné dans l’autre main et manteau replié entier. Rangements sobres, trois petits anneaux de test et jardin silencieux au-delà du seuil. Aube claire et fraîche, lumière rasante sur les marques au sol et discret cyan du matériel.",
+      "background": {
+        "location": "Petite salle d’exercice de lecture causale de Veyr, portes ouvertes sur un jardin à l’aube.",
+        "foreground": "Marques géométriques simples au sol et dalle de test intacte, gants et bottes entièrement visibles.",
+        "midground": "Nova à demi accroupie sur deux appuis pointe une marque au sol de la main libre, diapason U entier incliné dans l’autre main et manteau replié entier.",
+        "background": "Rangements sobres, trois petits anneaux de test et jardin silencieux au-delà du seuil.",
+        "lighting": "Aube claire et fraîche, lumière rasante sur les marques au sol et discret cyan du matériel."
+      },
+      "poseId": "nova-vey-wave2-cg15",
+      "poseBrief": "À demi accroupie sur deux appuis, une main tient le diapason en biais et l’autre indique une marque lumineuse au sol de la salle d’exercice.",
+      "poseDescription": "À demi accroupie sur deux appuis, une main tient le diapason en biais et l’autre indique une marque lumineuse au sol de la salle d’exercice.",
+      "themeBrief": "What If nommé « Première lecture » : premier exercice imaginé de la même incarnation, sans rajeunissement ni âge adulte inventé.",
+      "themeSource": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+      "visualReview": {
+        "status": "accepted-with-internal-project-source-limitations",
+        "canonicalFidelityApproved": false,
+        "producerInspected": true,
+        "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+        "poseDistinct": true,
+        "backgroundDistinct": true,
+        "notes": [
+          "Full native visually inspected before format conditioning. Current selected internal project pack is the design authority.",
+          "ImageGen restored/folded the complete cropped coat contour; earlier clipped native draft is preserved privately and is not delivered."
+        ],
+        "limitations": [
+          "Internal sprite pack is not a high-resolution orthographic model; exact monocle side, microgeometry and small costume cuts remain unverified.",
+          "Larger CG proportions and unseen angles are a controlled interpretation; no perfect one-to-one certification is claimed."
+        ]
+      },
+      "assets": {
+        "source": {
+          "path": "/cg/nexus-de-convergence/arca-nova/first-step-wave2-2026-10-18.png",
+          "sha256": "51886bc400e39999fcef55a1ac7f5256d9065472fcdf1c1c0e12cfdbd4a1fa2a",
+          "width": 1086,
+          "height": 1448,
+          "format": "png",
+          "bytes": 4089908,
+          "channels": 3
+        },
+        "master": {
+          "path": "/cg/nexus-de-convergence/arca-nova/first-step-wave2-2026-10-18.webp",
+          "sha256": "f96afaeb420ea0783673ad2d5369a6c99e7c1bad23d5700818440923e9253fd3",
+          "width": 1536,
+          "height": 2048,
+          "format": "webp",
+          "bytes": 914272,
+          "channels": 3
+        },
+        "thumbnail": {
+          "path": "/cg/nexus-de-convergence/arca-nova/first-step-wave2-2026-10-18-thumb.webp",
+          "sha256": "5cd4d95292ea89d48f7cfcf1aa2c46f2fe3c22e5a19606923c1ccc28b222cfd0",
+          "width": 384,
+          "height": 512,
+          "format": "webp",
+          "bytes": 84468,
+          "channels": 3
+        }
+      }
+    }
+  ],
+  "sourceReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+  "independentReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+  "sourceReferences": [
+    {
+      "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/arca-nova-universal-v1.png",
+      "sha256": "048e53a9377fd55c249e7df6329636041864e831f699ad002c72d7a0f577494e",
+      "role": "canonical-original-project-sprite-pack",
+      "sourceScope": "original-project",
+      "viewed": true,
+      "read": false,
+      "usedForIdentity": true
+    },
+    {
+      "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete/manifest.json",
+      "sha256": "65ae5807f69b26c097c239ed15b4c253d8b279b71f51ab55a28c63c27ac538d2",
+      "role": "canonical-original-project-pack-manifest",
+      "sourceScope": "original-project",
+      "viewed": false,
+      "read": true,
+      "usedForIdentity": false
+    },
+    {
+      "path": "src/game/heroes.js",
+      "sha256": "99e103e87fdb1ff6e56108a1614f5a60400c836d21affba76cf6e3bf372604c1",
+      "role": "original-project-character-definition",
+      "sourceScope": "original-project",
+      "viewed": false,
+      "read": true,
+      "usedForIdentity": false
+    },
+    {
+      "path": "src/game/characterPlaques.js",
+      "sha256": "438fa6f7d81621f56a02a1abebc99811356e03ef6031362ea6c41eb8e3d86a31",
+      "role": "original-project-lore-and-personality",
+      "sourceScope": "original-project",
+      "viewed": false,
+      "read": true,
+      "usedForIdentity": false
+    },
+    {
+      "path": "src/game/ocCampaign.js",
+      "sha256": "03e8be2a60fbbcbef4e3f439046aa68d7f999e53b28107805dee6a114e11e2d8",
+      "role": "original-project-story-and-mission-authority",
+      "sourceScope": "original-project",
+      "viewed": false,
+      "read": true,
+      "usedForIdentity": false
+    },
+    {
+      "path": "docs/cg/references/wave2-2026-10-18/nova-vey/runtime-selection-excerpt.txt",
+      "sha256": "1473c028dcc8c090e1691a33d15e7a2eda57740be5b2eea7d3e9b1ba36609742",
+      "role": "runtime-selection-authority-excerpt",
+      "sourceScope": "original-project",
+      "viewed": false,
+      "read": true,
+      "usedForIdentity": false,
+      "sourcePath": "src/game/spriteAssets.js",
+      "initialInspectionSourceSha256": "8ff3c339f8783d9437af3539fadbcaf87a6f9dacded1aca88bdce29a22e4feee",
+      "sourceFileSha256AtExtraction": "73c71679345680f71bc1d9b578f1d5e6e2fb4f8e11bcbc54abd6057413ec7478",
+      "sourceFileHashScope": "snapshot-at-extraction-not-an-immutable-shared-runtime-file",
+      "selectionUnchangedAtRecheck": true,
+      "note": "Shared source gained unrelated corrected hero selections during production; the Nova selected pack lines are unchanged. This exact inspected excerpt is retained as stable documentary evidence."
+    },
+    {
+      "path": "docs/rift-dossiers/references/original-universes.json",
+      "sha256": "14cab6a932da87fc7614c554d22271f50519684bd64799af024831ff54976a53",
+      "role": "original-project-world-visual-direction",
+      "sourceScope": "original-project",
+      "viewed": false,
+      "read": true,
+      "usedForIdentity": false
+    },
+    {
+      "path": "public/images/campaign-oc/chapter-07-veyr-observatory-v1.png",
+      "sha256": "46d4ec5b9b0cf3f48cf17b473426a0510411dbedbbaf50ed588b688964756504",
+      "role": "original-project-location-art",
+      "sourceScope": "original-project",
+      "viewed": true,
+      "read": false,
+      "usedForIdentity": false
+    },
+    {
+      "path": "public/sprites/generated/heroes/nexus-de-convergence/arca-nova.png",
+      "sha256": "108e32438d9b2bc2b8f3b973045a2373317b55c97cff41e70afa0e1311413bfe",
+      "role": "historical-project-design-not-selected-for-current-production",
+      "viewed": true,
+      "usedForIdentity": false,
+      "preserved": true
+    }
+  ],
+  "visualLocks": {
+    "hair": "Short silver/grey asymmetric bob; longer fringe hides one eye. Never historical dark-haired male design.",
+    "face": "Youth-neutral fair face as selected sprite; visible cyan reading monocle, anatomical side unresolved at this sprite resolution.",
+    "costume": "Long split navy technical coat, closed black/navy bodysuit, dark chest and knee/shin plates, cyan seams, black gloves and boots. No helmet.",
+    "equipment": "One long cyan-lit black/metal resonance staff ending in two parallel open U prongs; no rectangular screen-head staff from historical atlas, no rifle, no shield or card deck.",
+    "palette": "Primary navy#153b55 and cyan#7df9ff, silver hair, black protective suit; modest copper/ivory environmental accents only.",
+    "anatomy": "One human body/head, two arms/two legs, ordinary five-finger gloved hands where visible.",
+    "personality": "Precise mobile possibility analyst. Measures causal routes without predicting certain futures or imposing her preferred choice.",
+    "distinction": "Nova reads possibilities with monocle/diapason; she is not Mirelle with cards/sutures, Bastion with heavy shield/gun, or the player Anchor commander."
+  },
+  "sourceLimitations": [
+    "Canonical authority here is internal project material, not an independently sourced real-world franchise.",
+    "Source raster is887x1774 with4x8frames; microdetails and exact monocle side are not reliably resolvable.",
+    "A generic ARCA signal-lens item was viewed for context but is not established as Nova-specific equipment and will not replace her staff.",
+    "The dedicated character-arcWebP path exists in catalog metadata but its file is absent; it is not claimed viewed.",
+    "Historical4x4atlas has conflicting dark-haired terminal-staff design; it remains untouched and is not mixed with current pack.",
+    "Age is not documented; all15scenes are family-safe/non-romantic and no adult age or age regression is inferred.",
+    "Glove finger coverage varies in some CG; the selected small sprite cannot establish this costume microcut. Larger anatomy/proportions are interpreted rather than validated by an orthographic model."
+  ],
+  "canonicalFidelityApproved": false,
+  "externalReferencesClaimed": false,
+  "runtimeRegistryChanged": false,
+  "deliveredSlots": 15,
+  "contactSheet": "docs/cg/screenshots/nova-vey-wave2-2026-10-18.webp",
+  "planFile": "docs/cg/nova-vey-wave2-plan-2026-10-18.json",
+  "deliveryReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-delivery-review.json",
+  "finalReview": {
+    "status": "complete-with-source-limitations",
+    "producerFullNativeInspections": 15,
+    "independentlyAcceptedCurrentArtworks": 15,
+    "producerContactSheetInspected": true,
+    "technicalAssetsVerified": 45,
+    "sourcePixelsMatchDeclaredNativeConditioning": true,
+    "uniqueBackgroundIds": 15,
+    "uniquePoseIds": 15,
+    "rejectedNativeDraftsPreserved": 6,
+    "canonicalFidelityApproved": false,
+    "externalReferencesClaimed": false,
+    "technicalAuditFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-delivery-review.json",
+    "independentVisualReviewFile": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+    "dryRun": {
+      "prepareCgRosterDeliveries": "passed",
+      "addedEntries": 15,
+      "registryWritten": false
+    },
+    "historicalSourcesUnchanged": true
+  }
+}

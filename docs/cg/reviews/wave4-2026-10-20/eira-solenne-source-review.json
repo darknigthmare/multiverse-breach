@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "characterId": "eira_solenne",
+  "incarnation": "Viridienne Ultime — original project Eira Solenne selected atlas and individual ocDlcPacks dossier, no portraitV2 exists",
+  "reviewer": "excel_fidelite",
+  "independentOfProducer": true,
+  "canonicalFidelityApproved": false,
+  "status": "source-qualified-with-internal-resolution-limitations",
+  "sourceEvidenceFile": "docs/cg/eira-solenne-reference-evidence-wave4-2026-10-20.json",
+  "references": [
+    {
+      "path": "public/sprites/generated/heroes/viridienne-ultime/eira-solenne.png",
+      "sha256": "eeddaedeed904f504c8c8fd352f8dafc4e4d1e18486de0676edf9940beb00182",
+      "bytes": 1171835,
+      "role": "canonical-original-project-sprite-pack",
+      "referenceScope": "Eira identity, silhouette, face/hair/leaf visor, green-gold robes, staff and visible seed-orb ability",
+      "viewed": true,
+      "viewedAt": "2026-10-20T10:37:47.798646+00:00",
+      "canonicalProjectReference": true,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite",
+      "referencePurpose": "identity"
+    },
+    {
+      "path": "src/game/ocDlcPacks.js",
+      "sha256": "4fa362764fd8a8feafa47cdda0985b3cbb8a2d18520e70e8f4772958ab67a69e",
+      "bytes": 81577,
+      "role": "original-project-individual-canon-and-world-text",
+      "referenceScope": "Eira hero block833 onward and Eira-specific dialogue nursery-listen and heart-question; world scenes only for Viridienne environment. Do not transfer Cael or other heroes anatomy/equipment.",
+      "viewed": true,
+      "viewedAt": "2026-10-20T10:37:47.798646+00:00",
+      "canonicalProjectReference": true,
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite"
+    },
+    {
+      "path": "public/visuals/cosmetics/openai/universes/viridienne-ultime/reference-dossier.json",
+      "sha256": "9dfcafb5f05a8d7277eb10065b41abdbfc2cb48c5fa55e316c7c7f2b0764633b",
+      "bytes": 9458,
+      "role": "original-project-world-context-with-exact-lead-confirmed",
+      "referenceScope": "leadHeroName Eira Solenne and leadReferencePath confirmed; shared architecture/palette/world motifs only, not an external official franchise source or new approval gate",
+      "viewed": true,
+      "viewedAt": "2026-10-20T10:37:47.798646+00:00",
+      "canonicalProjectReference": false,
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite"
+    },
+    {
+      "path": "public/backgrounds/lore-stages/viridienne-ultime/rpg.webp",
+      "sha256": "679cefd46a5da83c413c043fd58eff787ee4b160a66c2647282dfb41ffc8a2e8",
+      "bytes": 790536,
+      "role": "original-project-environment-only",
+      "referenceScope": "Cosmic garden architecture, glass seed enclosures, gold branching roots and distant eclipse; no character identity use",
+      "viewed": true,
+      "viewedAt": "2026-10-20T10:37:47.798646+00:00",
+      "canonicalProjectReference": false,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "referencePurpose": "environment-only",
+      "slot": "CG03",
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite"
+    },
+    {
+      "path": "public/backgrounds/lore-stages/viridienne-ultime/combat.webp",
+      "sha256": "72cae1c64d96bed90ce5b5178e20ca6f23195a4256cf5bd6c815df04724e9f39",
+      "bytes": 681000,
+      "role": "original-project-environment-only",
+      "referenceScope": "Cosmic tree, green root light, black-gold conservatory structures and star-seed orbs; no character identity use",
+      "viewed": true,
+      "viewedAt": "2026-10-20T10:37:47.798646+00:00",
+      "canonicalProjectReference": false,
+      "dimensions": [
+        1672,
+        941
+      ],
+      "referencePurpose": "environment-only",
+      "slot": "CG03",
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite"
+    },
+    {
+      "path": "docs/cg/references/wave4-2026-10-20/eira-solenne/runtime-hero-source-snapshot.json",
+      "sha256": "0bff46003d563c3757fc6d322faa9bb17916604db760e9357841f342f1ab53af",
+      "bytes": 1240,
+      "role": "derived-runtime-fields-and-selection-snapshot",
+      "referenceScope": "Actual HEROES_DB eira_solenne spritePrompt/lore/weapon, null portrait and production, selected sprite path; not an independent visual source",
+      "viewed": true,
+      "viewedAt": "2026-10-20T10:37:47.798646+00:00",
+      "canonicalProjectReference": false,
+      "independentlyViewed": true,
+      "inspectedBy": "excel_fidelite"
+    }
+  ],
+  "visualLocks": [
+    "Warm pale-peach humanoid face; long dark black/blue-green hair under green-gold botanical hood/circlet; large translucent pale-green LEAF VISOR covering both eyes, never green skin or opaque blindfold.",
+    "White small flower and foliage cluster at the source image-left temple, anatomical RIGHT in frontal view; gold vine/circlet loops. Keep this placement and leaf/flower scale close to the supplied crop.",
+    "Closed deep forest-green layered field robe/cape, wide bell sleeves, gold leaf shoulder collar, branching GOLD ROOT embroidery down robe and cuffs, green-gold waist/neck botanical details. No cleavage, bare thigh, elf ears, wings, combat armor or other Eira design.",
+    "Two normal connected arms and two legs, bare peach hands with five digits where visible; low green/gold closed footwear visible below the robe. Never carry Rayman detached anatomy into Eira.",
+    "Signature tall brown/bronze staff entwined by gold vines and small green leaves, branching basket top holding one reflective round photosphere globe with small green-gold seed-light specks. Never replace by a spear, scythe, wand, cross or another heroine’s weapon.",
+    "Floating small green/gold seed-orbs and root/leaf energy are grounded in Eira’s own visual/skills/atlas attack; exact microscopic globe interior remains interpreted.",
+    "Keep complete head/hair, all sleeve/robe/cape ends, both footwear and the ENTIRE staff including globe and bottom point inside each portrait with positive margins."
+  ],
+  "scopeLimitations": [
+    "Wholly original project character. The selected atlas and Eira-specific visual/spritePrompt/lore define internal authority, never an official external franchise reference.",
+    "Actual HEROES_DB portrait and production fields are null; Eira Solenne and Viridienne are absent from originalUniversesManifestV2, and no own V2 portrait file exists. Eira Hrafnsdottir from Nine Realms is a different character and is excluded.",
+    "Exact selected atlas is retained byte-for-byte and its crops are nearest inspection derivatives, not extra independent references.",
+    "The small source limits exact iris colors beneath the translucent visor, flower petal counts, tiny gold root embroidery, globe interior and unseen costume geometry. Do not certify microdetails or invent a foreign portrait.",
+    "Shared world dossier and two background assets supply environment only; historical generationPrompt text is metadata, not a new instruction or approval requirement.",
+    "Age remains unknown; preserve source apparent proportions in family-safe scenes without romance, sexualization or invented adulthood.",
+    "New settings are original Viridienne cosmic-garden scenes. CG05 is the project Nexus ability variant; CG09–11 are Fan Art; CG12–15 are What If, with13 solely genderSwap and15 solely firstStep at the first forbidden-nursery entry, same age.",
+    "Every real native needs independent visual acceptance before exports. No perfect1:1 fidelity certification follows from a filename, matching hash or internal-canon source status."
+  ],
+  "derivedInspection": {
+    "path": "docs/cg/references/wave4-2026-10-20/eira-solenne/frame0-inspection.png",
+    "sha256": "f5493e54e0fef34566da7abfe3ae4bbe0aada9b3f3f051f9023b34aaeb9fe520",
+    "viewed": true,
+    "role": "nearest-neighbor-inspection-crop-of-selected-sprite",
+    "parent": "public/sprites/generated/heroes/viridienne-ultime/eira-solenne.png",
+    "operation": "exact256x256cells enlarged3x nearest",
+    "paths": [
+      {
+        "path": "docs/cg/references/wave4-2026-10-20/eira-solenne/frame0-inspection.png",
+        "sha256": "f5493e54e0fef34566da7abfe3ae4bbe0aada9b3f3f051f9023b34aaeb9fe520",
+        "parent": "public/sprites/generated/heroes/viridienne-ultime/eira-solenne.png",
+        "parentSha256": "eeddaedeed904f504c8c8fd352f8dafc4e4d1e18486de0676edf9940beb00182",
+        "operation": {
+          "cropXYWH": [
+            0,
+            0,
+            256,
+            256
+          ],
+          "nearestScale": 3
+        },
+        "viewed": true,
+        "role": "nearest-neighbor-inspection-crop-of-selected-sprite",
+        "notIndependentReference": true
+      },
+      {
+        "path": "docs/cg/references/wave4-2026-10-20/eira-solenne/frame3-inspection.png",
+        "sha256": "720ff914f700afa5a5dcc10a137f41572b13570fc251f3907c582dc958c18503",
+        "parent": "public/sprites/generated/heroes/viridienne-ultime/eira-solenne.png",
+        "parentSha256": "eeddaedeed904f504c8c8fd352f8dafc4e4d1e18486de0676edf9940beb00182",
+        "operation": {
+          "cropXYWH": [
+            768,
+            0,
+            256,
+            256
+          ],
+          "nearestScale": 3
+        },
+        "viewed": true,
+        "role": "nearest-neighbor-inspection-crop-of-selected-sprite",
+        "notIndependentReference": true
+      },
+      {
+        "path": "docs/cg/references/wave4-2026-10-20/eira-solenne/frame8-inspection.png",
+        "sha256": "720d3086ba6704808d6468031cc5ceb6c649d2db7842dec345ed5c3f060b0806",
+        "parent": "public/sprites/generated/heroes/viridienne-ultime/eira-solenne.png",
+        "parentSha256": "eeddaedeed904f504c8c8fd352f8dafc4e4d1e18486de0676edf9940beb00182",
+        "operation": {
+          "cropXYWH": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "nearestScale": 3
+        },
+        "viewed": true,
+        "role": "nearest-neighbor-inspection-crop-of-selected-sprite",
+        "notIndependentReference": true
+      }
+    ]
+  },
+  "sourceSpecificObservation": [
+    "Original selected atlas, exact idle and attack nearest crops actually viewed; individual hero visual/lore, nursery-listen and heart-question dialogue, context dossier and null portrait/production snapshot read. No own V2 portrait exists; Eira Hrafnsdottir is explicitly another character.",
+    "Long dark blue/green-black hair, translucent light-green leaf visor, white flower at image-left/wearer-right temple, closed dark-green field robes, gold root embroidery/collar, bare warm hands and green/gold footwear retained. Exact hidden eye color or tiny flower/root pattern cannot be certified.",
+    "Tall brown/bronze vine-wrapped staff with round reflective globe and small seed light is shown by source; attack supports green seed orbs. The small globe interior is interpreted, not newly established microgeometry.",
+    "Both existing Viridienne RPG/combat backgrounds actually viewed as environment-only support: black/gold glass conservatories, white cosmic tree, green luminous roots, golden seed enclosures and eclipse. These are world motifs, not personal armor/props transferred from allies.",
+    "All fifteen personalized briefs read and distinct: CG05 Nexus orbit-redirection,09–11 family Fan Art,12–15 explicit What If;13 masculine presentation only,15 first nursery listening with unchanged apparent age."
+  ],
+  "planReview": {
+    "file": "docs/cg/eira-solenne-wave4-plan-2026-10-20.json",
+    "slotsReviewed": 15,
+    "distinctPoseBriefs": 15,
+    "distinctBackgroundIds": 15,
+    "themesAndFamilyScopeReviewed": true,
+    "perfectFidelityCertified": false
+  },
+  "reviewedAt": "2026-10-20T10:37:47.798646+00:00",
+  "inspectionDerivativeValidation": {
+    "checkedAt": "2026-10-20T10:50:25.475623+00:00",
+    "engine": "Sharp/libvips exact extract + nearest 3x",
+    "framesChecked": [
+      0,
+      3,
+      8
+    ],
+    "exactDeclaredOperationReproduced": true,
+    "independentSourcesAdded": 0,
+    "limitations": [
+      "Only the original atlas establishes identity. Diagnostic enlargements add no independent reference.",
+      "Libvips nearest retains source alpha and opaque pixels; soft-alpha RGB values may round during premultiplication, so raw RGBA color identity with a different resizer is not claimed."
+    ]
+  }
+}

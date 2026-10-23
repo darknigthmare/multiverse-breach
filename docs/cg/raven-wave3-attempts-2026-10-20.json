@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "characterId": "raven_tt",
+  "attempts": [
+    {
+      "slot": "CG04",
+      "status": "blocked-output-moderation",
+      "category": "other",
+      "outputProduced": false,
+      "requestId": "d4fd0f82-5457-436c-a4c7-64e75af9cec8",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/raven/04-coherentScene.txt",
+      "noRetryOrEvasion": true
+    },
+    {
+      "slot": "CG07",
+      "status": "blocked-output-moderation",
+      "category": "other",
+      "outputProduced": false,
+      "requestId": "c2276e13-a626-4bda-818c-c9dd6c1fdd32",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/raven/07-victoryPose.txt",
+      "noRetryOrEvasion": true
+    },
+    {
+      "slot": "CG08",
+      "status": "blocked-output-moderation",
+      "category": "other",
+      "outputProduced": false,
+      "requestId": "ccf16c4a-d91d-4737-8513-2bce05b0413f",
+      "promptFile": "docs/cg/prompts/wave3-2026-10-20/raven/08-defeatPose.txt",
+      "noRetryOrEvasion": true
+    }
+  ],
+  "unattemptedSlots": [
+    "CG09",
+    "CG10",
+    "CG11",
+    "CG12",
+    "CG13",
+    "CG14",
+    "CG15"
+  ],
+  "reasonForStoppingAdditionalSlots": "Three distinct body-scene outputs refused; no new body-scene requests attempted after the already-running batch returned. Accepted images are preserved and documented separately."
+}

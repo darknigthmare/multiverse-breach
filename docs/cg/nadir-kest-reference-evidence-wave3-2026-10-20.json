@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "characterId": "arca_nadir",
+  "heroId": "arca_nadir",
+  "reviewedAt": "2026-10-20",
+  "incarnation": "Nexus de Convergence — Nadir Kest, canon original du projet2026, atlas courant4×4 et dossier de personnage",
+  "sourceScope": "original-project-canon",
+  "status": "current-original-project-source-inspected",
+  "canonicalFidelityApproved": false,
+  "perfectVisualFidelityCertified": false,
+  "runtimeSelection": {
+    "function": "getHeroSpriteSheetSrc(HEROES_DB.find(id=arca_nadir))",
+    "path": "/sprites/generated/heroes/nexus-de-convergence/arca-nadir.png",
+    "layout": {
+      "columns": 4,
+      "rows": 4
+    },
+    "selectedInRuntime": true
+  },
+  "references": [
+    {
+      "path": "/sprites/generated/heroes/nexus-de-convergence/arca-nadir.png",
+      "sha256": "0a6aec8d4840a76e9a515f1e18b5bea61a432e4953038c17856e6a56fcdb3a45",
+      "bytes": 732327,
+      "viewed": true,
+      "viewedAt": "2026-10-20",
+      "role": "current-canonical-original-project-sprite-pack",
+      "sourceScope": "original-project-canon",
+      "limitations": [
+        "Original project generated atlas retained as internal character canon, never an independent franchise reference.",
+        "No separate facial portrait or item model; small details limited to sprite resolution."
+      ]
+    },
+    {
+      "path": "docs/cg/references/wave3-2026-10-20/nadir-kest/frame00-inspection-nearest.png",
+      "sha256": "28f7fbe0a1f166b8b37eb75b1a1ad84aad77c8a5b53bc16687dcae69e59da9f3",
+      "bytes": 73840,
+      "viewed": true,
+      "role": "derived-inspection-crop-same-canonical-project-pack",
+      "derivedFrom": "/sprites/generated/heroes/nexus-de-convergence/arca-nadir.png",
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 256,
+        "height": 256
+      },
+      "resize": {
+        "width": 1024,
+        "height": 1024,
+        "kernel": "nearest"
+      },
+      "usedAsIndependentReference": false
+    }
+  ],
+  "visualLocks": {
+    "face": "Warm olive/tan skin, dark eyes, short tousled black hair, light stubble; no hat, helmet or full face mask.",
+    "anatomy": "Human man, two arms/two legs; no extra limbs. Exact age not documented.",
+    "costume": "Navy/dark-teal segmented rescue armor and high scarf collar, grey-black harness straps, belt/thigh pouches, reinforced knees, navy segmented boots and gloves.",
+    "palette": "Primary navy #183a4a and turquoise #5ce1d8, cyan mechanical highlights; no orange Bastion or red Marrow palette.",
+    "equipment": "One short dark cyan-lit pistol, central mechanical chest cable reel with three curved cyan ribs, one small dark spherical low-domed return probe with short side fins attached to harness by a cyan cable.",
+    "forbiddenMixes": "No Anchor gauntlet, Loom medical cross, Nova long staff/monocle, Marrow coral blade, hat/coat of a mapmaker, extra drone or imported franchise gear."
+  },
+  "sourceRefs": [
+    "src/game/heroes.js#arca_nadir",
+    "src/game/characterPlaques.js#arca_nadir",
+    "src/game/spriteAssets.js#getHeroSpriteSheetSrc",
+    "/sprites/generated/heroes/nexus-de-convergence/arca-nadir.png"
+  ],
+  "loreEvidence": {
+    "file": "src/game/characterPlaques.js",
+    "scope": "arca_nadir record",
+    "role": "Safe-line opening and extraction through hostile portals; Return Runner.",
+    "doctrine": "Probe must return with same wear and elapsed time; harness tension proves a reciprocal exit. First into unknown routes, last to sever his line.",
+    "signatureTechniques": [
+      "Rafale de Ligne Sure",
+      "Sonde de Retour",
+      "Harnais Causal",
+      "Extraction des Marges"
+    ]
+  },
+  "ageStatus": "unknown-family-safe-only",
+  "limitations": [
+    "Atlas interne généré retenu par le projet = autorité visuelle de cette création originale, aucune source de licence externe.",
+    "Résolution limitée du visage, de la sonde et des articulations; aucune perfection1:1 automatiquement certifiée.",
+    "Aucun âge chiffré dans le dossier; scènes familiales et non romantiques."
+  ]
+}

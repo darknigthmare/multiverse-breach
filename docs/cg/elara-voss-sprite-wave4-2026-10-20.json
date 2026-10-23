@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "characterId": "elara_voss",
+  "characterName": "Elara Voss",
+  "operationKind": "genuine-v2-reference-imagegen-redraw-with-two-individual-hand-corrections",
+  "status": "installed-and-selected-with-source-limitations",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/aether_crown/heroes/elara_voss.png",
+    "sha256": "b684fd073a009907d21b0d8be36818c8bdeaac35a67596168a16b5198fd4a1b4",
+    "bytes": 2622115,
+    "format": "png"
+  },
+  "image": {
+    "sha256": "bbc66a11cc60ae6c1df8fa5baa3d7d27deadba1059fd6088a1254b79d5a35699",
+    "bytes": 829486,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png",
+    "path": "/sprites/generated/heroes/the-aether-crown/elara-voss-v2-fidelity-wave4-2026-10-20.png"
+  },
+  "installerManifest": {
+    "path": "docs/audits/elara-voss-v2-reference-sprite-fidelity-wave4-2026-10-20.json",
+    "sha256": "8851fefa2bf76336c5f5556a9dc4c72747f7cf23e4b8859fcbaff82c4b7135fe"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave4-2026-10-20/elara-voss-sprite-independent-review.json",
+    "sha256": "32d9cc976eabe5e81de0e0007070ade88eda5006456da46f9bcca0fddc1b569c",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/the-aether-crown/elara-voss.png",
+    "sha256": "ab91a7b94adc4aba23c885d1f2bbd0a1bee6b727b1d72e6a01f8122db32a49ff",
+    "preserved": true,
+    "accessibleAsVariant": true
+  },
+  "sourceAssembly": {
+    "sha256": "a1d5fdb50439765867086544b72395fc6142da526ddcf6c2a343effba258301d",
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "selectedImagegenNativeInputs": 3,
+    "selectedFramesFromWholeAtlasNative": 14,
+    "individualCorrectedFrames": [
+      9,
+      13
+    ],
+    "fourteenRgbaCellsUnchangedBeforeFinalNormalization": true,
+    "finalCommonNearestScale": 0.9747899159663865,
+    "minimumGuard": 16,
+    "baselines": [
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239
+    ],
+    "privateEvidenceSha256": "f462c901398f6eb2b9cd5bef227558e19a2eab241bc0816d333ca0e124349a2f",
+    "semanticEditsInTechnicalPacking": false
+  },
+  "frame09ActualPose": "RIGHT-hand rapier raised in windup at image left, LEFT-hand pistol lowered at image right. Replaces rejected cross-body thrust.",
+  "successfulAtlasGenerationAttempts": 5,
+  "retainedUnselectedWholeOrIndividualAttempts": 2,
+  "refusals": 0,
+  "screenshots": [
+    "docs/cg/screenshots/elara-voss-sprite-comparison-wave4-2026-10-20.webp"
+  ],
+  "limitations": [
+    "V2 is the current original-project portrait, not an external franchise model sheet.",
+    "Exact rapier point/length continues beyond the portrait crop; hidden geometry, pixel-size face and embroidery remain interpreted.",
+    "Fourteen accepted poses were retained semantically. Their packed pixels undergo a documented common nearest normalization after two true ImageGen pose corrections.",
+    "Technical frame count/margins do not certify perfect visual1:1 fidelity."
+  ]
+}

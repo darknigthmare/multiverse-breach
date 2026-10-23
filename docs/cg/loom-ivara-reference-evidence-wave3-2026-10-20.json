@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "characterId": "arca_loom",
+  "heroId": "arca_loom",
+  "incarnation": "Nexus de Convergence — Loom Ivara, canon original actuel du projet (atlas runtime 4×4 et dossier narratif, 2026)",
+  "incarnationId": "nexus-loom-ivara-current-original-2026",
+  "status": "original-project-reference-inspected-not-perfect-fidelity-approval",
+  "visualLocks": {
+    "silhouette": [
+      "Femme humaine de silhouette agile, cheveux noirs relevés en haut chignon/queue nouée, longues mèches latérales et frange oblique ; visage découvert sans casque.",
+      "Long manteau technique bleu nuit/navy à pans séparés et revers teal, liserés/boutons/boucles or, épaulettes discrètes, gants et bottes sombres renforcées."
+    ],
+    "anatomy": [
+      "Un corps humain, une tête, deux bras et deux jambes ; cinq doigts ordinaires par main gantée quand visibles. Aucun membre ni aile corporelle supplémentaire."
+    ],
+    "face": [
+      "Peau chaude olive, yeux foncés, cheveux noirs, visage calme et déterminé de l’atlas courant ; pas de masque ni monocle de Nova."
+    ],
+    "costume": [
+      "Manteau navy or à doublure teal, vêtements gris charbon fermés dessous, col triangulaire teal clair, ceinture à poches et holsters, genouillères/bottes sombres à structures or.",
+      "Croix blanche/marque de soin sur le haut de manche visible côté exposé dans l’atlas ; ne pas inventer une latéralité anatomique non lisible sur un seul angle."
+    ],
+    "palette": [
+      "Bleu nuit/slate dominant #24364a, teal/turquoise #39c5bb, or chaud et métal sombre ; peau olive et cheveux noirs."
+    ],
+    "equipment": [
+      "Drone de suture : petit noyau/corps vertical rectangulaire à angles arrondis, cadre métal sombre/or, noyau cyan portant une croix médicale claire, deux ailes/pales latérales cyan et petites formes lumineuses autour.",
+      "Holsters et outil compact sombre/cyan visibles à la ceinture ; le drone est équipement signature pour CG02, aucune arme générique extrapolée de weaponType."
+    ],
+    "forbiddenMixes": [
+      "Pas de manteau orange de Bastion, pas de masque de Marrow, pas de cartes/chapeau de Mirelle, pas de monocle/diapason de Nova.",
+      "Le drone conserve les voix des disparus ; le fil de retour doit permettre une vraie extraction, jamais certifier une porte parfaite sans preuve.",
+      "Les variantes WhatIf changent explicitement un thème et ne réécrivent pas le canon de base."
+    ]
+  },
+  "references": [
+    {
+      "path": "docs/cg/references/wave3-2026-10-20/loom/canonical-runtime-atlas.png",
+      "runtimePath": "/sprites/generated/heroes/nexus-de-convergence/arca-loom.png",
+      "sha256": "6e9e8b1dd9e13782011618d9a32682c1cf440d80ee8098d046c48ae88a172c45",
+      "role": "canonical-original-project-sprite-pack",
+      "sourceScope": "original-project-canon",
+      "referencePurpose": "identity",
+      "usedForIdentity": true,
+      "viewed": true,
+      "independentlyViewed": true,
+      "limitations": "Autorité visuelle interne du personnage ORIGINAL, pas une source indépendante de franchise tierce. Atlas4x4/1024px : petits détails et vues absentes restent approximatifs."
+    }
+  ],
+  "derivedInspection": {
+    "path": "docs/cg/references/wave3-2026-10-20/loom/idle-first-frame-detail.png",
+    "parent": "docs/cg/references/wave3-2026-10-20/loom/canonical-runtime-atlas.png",
+    "crop": [
+      0,
+      0,
+      256,
+      256
+    ],
+    "resize": [
+      768,
+      768
+    ],
+    "kernel": "nearest",
+    "sha256": "4aa8a1c46cb0700868a74621078e97587e36f4bc26c1fc37894cc8574f1900cd",
+    "separateIndependentSource": false
+  },
+  "narrativeEvidence": [
+    {
+      "path": "src/game/characterPlaques.js",
+      "sha256": "438fa6f7d81621f56a02a1abebc99811356e03ef6031362ea6c41eb8e3d86a31",
+      "scope": "LoomIvara dossier ARC-LOOM : extraction, soin de Trame, fil de retour, drone gardant les voix perdues, Cour des faux passages."
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "scope": "LOOM_COMPLETE_SPRITES.universal selected via getOcUniversalSpriteForContext, atlas4x4."
+    }
+  ],
+  "canonicalFidelityApproved": false,
+  "limitations": [
+    "Le canon visuel est celui du projet original explicitement retenu, pas un dessin officiel tiers.",
+    "Aucun âge précis établi, donc toutes les scènes restent familiales sans romance.",
+    "Source pixel-art4x4 : visage détaillé, vues de dos et mécanique interne du drone ne sont pas complètement qualifiés.",
+    "Les scènes sont originales, les transformations CG12-15 restent WhatIf séparées."
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "checkedAt": "2026-10-23T02:01:06.620Z",
+  "reviewer": "/root/prompt_global_roster",
+  "status": "passed",
+  "scope": "Runtime atlas selections only, after explicit root freeze; CG registry and CG media are not claimed frozen or audited by this report.",
+  "baseline": {
+    "path": ".tmp/cg-wave6-2026-10-23/runtime-baseline-before-integration.json",
+    "sha256": "c6f4bbc1675a4a5600c84d3d6897bc9e7b6cc7a2d3f5f69fd681d015539683d3"
+  },
+  "runtimeSource": {
+    "path": "src/game/spriteAssets.js",
+    "sha256": "d3cfc1e05dac8c172e41ce5eea9dee87ac1bf4af779fa3b979df0303d6c2bca7"
+  },
+  "contextsChecked": [
+    "rpg",
+    "tactics",
+    "melee",
+    "fps",
+    "kart"
+  ],
+  "correctedHeroSubjects": 21,
+  "correctedHeroContextChecks": 105,
+  "previousCorrectedSubjectsUnchanged": 16,
+  "previousVariantsUnchanged": true,
+  "unchangedOtherHeroSelections": 1907,
+  "oldAtlasFilesPreserved": 5,
+  "previousCorrectedAndVariantFilesPreserved": 36,
+  "atlasSelections": [
+    {
+      "characterId": "brann_crow",
+      "currentPath": "/sprites/generated/heroes/the-crownless-sea/brann-crow-v2-fidelity-wave6-2026-10-23.png",
+      "currentSha256": "2345b7d5b9ed3b281b402d3a44c09ef56ef5c147dbb9db92b8607b8cc74fffa7",
+      "previousPath": "/sprites/generated/heroes/the-crownless-sea/brann-crow.png",
+      "previousSha256": "38860bc450a65d0d522b1964bbf4ef5a5a0706c1f14dc195bcf9bb7c79c63f44",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/brann-crow-v2-reference-sprite-fidelity-wave6-2026-10-23.json",
+        "sha256": "cf71891b3101d54377986f2f8da7a0251ec754832d4b651a0c99c942faf3b1f0"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave6-2026-10-23/brann-crow-sprite-independent-review.json",
+        "sha256": "6be8514c37e1bddfc4c822472e5ec40d56a2c14e7a31d2e8f7338416ad810d0f"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 16,
+        "visibleFootBaselinesByCell": [
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239
+        ]
+      }
+    },
+    {
+      "characterId": "lyra_hexwind",
+      "currentPath": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/lyra-hexwind-v2-fidelity-wave6-2026-10-23.png",
+      "currentSha256": "d70a36f9ffb390a0fece6c24a2399a692335688c0444a0101259bed50c23e944",
+      "previousPath": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/lyra-hexwind.png",
+      "previousSha256": "ba2de411f810bc944c9030aa2026ac831b2a12e5233903b1fb6614e731c156b6",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/lyra-hexwind-v2-reference-sprite-fidelity-wave6-2026-10-23.json",
+        "sha256": "813474d7fd69e7a6a224139a2b141c86c3004a7bab63918142dcc164a1c90269"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-sprite-independent-review.json",
+        "sha256": "f73094c5c4b4d62f29c9cad86becacf90c60d1c459750b063e8924dcb3f3e8e7"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 16,
+        "visibleFootBaselinesByCell": [
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239
+        ]
+      }
+    },
+    {
+      "characterId": "mercy_ash",
+      "currentPath": "/sprites/generated/heroes/infernum-nine-pits/mercy-ash-v2-fidelity-wave6-2026-10-23.png",
+      "currentSha256": "73b4187c5cf7e46865c8550d899093cef8a8f8486baab8d92ea6e49f20dccef0",
+      "previousPath": "/sprites/generated/heroes/infernum-nine-pits/mercy-ash.png",
+      "previousSha256": "98d14fc54fcd0a06bba8eca9f496f4d76c8b14aabce10f49d9bb932028b03922",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/mercy-ash-v2-reference-sprite-fidelity-wave6-2026-10-23.json",
+        "sha256": "a3e78b41c53b099b6290c8c2a297a51a23831746a1ab86ff1ac672e0d5cce792"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave6-2026-10-23/mercy-ash-sprite-independent-review.json",
+        "sha256": "ff403d7ff9d8ef2583c56e80b5bd6ab7237603d78d24772831b70147ea0ec328"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 15,
+        "visibleFootBaselinesByCell": [
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240
+        ]
+      }
+    },
+    {
+      "characterId": "mara_ell",
+      "currentPath": "/sprites/generated/heroes/the-drowned-testament/mara-ell-v2-fidelity-wave6-2026-10-23.png",
+      "currentSha256": "c76f73edff03636bf3815a4b6e0e9868689d1a702aa8090094b2024cde695b9c",
+      "previousPath": "/sprites/generated/heroes/the-drowned-testament/mara-ell.png",
+      "previousSha256": "cec22b2901cd358af7123aac36bb947f225b589e5579daf67b64b54bd69321ee",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/mara-ell-v2-reference-sprite-fidelity-wave6-2026-10-23.json",
+        "sha256": "ff56d8814e37ae9cfb098258e1d4bb1a161df8bf465fa1b575bd7b46c5464d40"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave6-2026-10-23/mara-ell-sprite-independent-review.json",
+        "sha256": "aff0e67a175623623c6cf6039313d71620cc48e7e0ce9bb6e782db4f62ff04ce"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 15,
+        "visibleFootBaselinesByCell": [
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240
+        ]
+      }
+    },
+    {
+      "characterId": "orin_vale",
+      "currentPath": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/orin-vale-v2-fidelity-wave6-2026-10-23.png",
+      "currentSha256": "4dff45268edc433b4fe10bfc6a13f7e9def51eaf66ccb6a741a5a240f0f3feb7",
+      "previousPath": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/orin-vale.png",
+      "previousSha256": "b1e3f6783b01d1d94a3e3fe9eeec2f55328e01c91cc0c05ba18f2a3d8b54fc33",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/orin-vale-v2-reference-sprite-fidelity-wave6-2026-10-23.json",
+        "sha256": "903eecc53402edea21c0eeee223f14196a77e887207553a01a0d5b49673e0bb4"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave6-2026-10-23/orin-vale-sprite-independent-review.json",
+        "sha256": "3a3c3e742d4f7f04ee22eca0f43d1d7261fdb6723557868f0b0224cc2264fd5d"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 15,
+        "visibleFootBaselinesByCell": [
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240
+        ]
+      }
+    }
+  ],
+  "refusedBatmanAtlasUnselectedAndUnchanged": {
+    "characterId": "batman_n52",
+    "path": "/sprites/generated/heroes/joker-new-52/batman-n52.png",
+    "sha256": "22bbec0e8a7a286ccfa413bbaa357973df05154a5354df4791aa03177c61d0d1",
+    "receipt": {
+      "path": "docs/cg/batman-new52-sprite-wave6-2026-10-23.json",
+      "sha256": "510413de34210e70f63edc29196529d8100caa05de563c70b05348d7094f4023"
+    },
+    "imageProduced": false
+  },
+  "certifiesPerfectVisualFidelity": false,
+  "visualReviewScope": "Verifies bindings to independent sixteen-frame reviews. Does not add a new full sixteen-frame visual review; verifies the five independent review bindings."
+}

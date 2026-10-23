@@ -1,0 +1,13 @@
+Source: src/game/spriteAssets.js
+Extracted: 2026-10-18
+Scope: exact Nova Vey runtime selection lines; unrelated hero installations can modify the surrounding shared file.
+
+24: export const NOVA_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete';
+181: export const NOVA_COMPLETE_SPRITES = {
+182:   universal: `${NOVA_COMPLETE_SPRITE_BASE}/arca-nova-universal-v1.png`
+183: };
+185: export const NOVA_COMPLETE_SPRITE_PACK = [
+186:   { id: 'universal', label: 'RPG / Tactics / Melee / Nexus', src: NOVA_COMPLETE_SPRITES.universal }
+187: ];
+503:   if (hero?.id === 'arca_nova') return NOVA_COMPLETE_SPRITE_PACK;
+521:   if (hero?.id === 'arca_nova') return NOVA_COMPLETE_SPRITES.universal;

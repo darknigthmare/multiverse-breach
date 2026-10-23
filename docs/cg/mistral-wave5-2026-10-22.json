@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-22",
+  "characterId": "mistral_mgr",
+  "heroId": "mistral_mgr",
+  "incarnation": "Metal Gear Rising: Revengeance (2013)",
+  "status": "no-new-artwork-source-input-refused",
+  "plannedSlots": 15,
+  "deliveredNewSlots": 0,
+  "entries": [],
+  "applicability": [],
+  "sourceReviewFile": "docs/cg/mistral-reference-evidence-wave5-2026-10-22.json",
+  "planFile": "docs/cg/mistral-wave5-plan-2026-10-22.json",
+  "blockedSlots": [
+    {
+      "slot": "CG04",
+      "type": "coherentScene",
+      "status": "blocked-input-moderation",
+      "stage": "input",
+      "category": "sexual",
+      "categories": [
+        "sexual"
+      ],
+      "requestId": "e68f63d8-58b4-453c-9163-44b680b44745",
+      "promptFile": "docs/cg/prompts/wave5-2026-10-22/mistral/04-coherentScene.txt",
+      "reason": "Real input refusal for the unchanged canonical-source maintenance scene; no artwork delivered."
+    }
+  ],
+  "unattemptedSlots": [
+    {
+      "slot": "CG05",
+      "type": "actionScene",
+      "status": "not-attempted-wave5-after-provider-refusal",
+      "reason": "No further body-CG request made after the new CG04 input refusal; historical refusals remain documented independently."
+    },
+    {
+      "slot": "CG06",
+      "type": "introPose",
+      "status": "not-attempted-wave5-after-provider-refusal",
+      "reason": "No further body-CG request made after the new CG04 input refusal; historical refusals remain documented independently."
+    },
+    {
+      "slot": "CG07",
+      "type": "victoryPose",
+      "status": "not-attempted-wave5-after-provider-refusal",
+      "reason": "No further body-CG request made after the new CG04 input refusal; historical refusals remain documented independently."
+    },
+    {
+      "slot": "CG08",
+      "type": "defeatPose",
+      "status": "not-attempted-wave5-after-provider-refusal",
+      "reason": "No further body-CG request made after the new CG04 input refusal; historical refusals remain documented independently."
+    },
+    {
+      "slot": "CG09",
+      "type": "beachFamily",
+      "status": "not-attempted-wave5-after-provider-refusal",
+      "reason": "No further body-CG request made after the new CG04 input refusal; historical refusals remain documented independently."
+    },
+    {
+      "slot": "CG10",
+      "type": "maidService",
+      "status": "not-attempted-wave5-after-provider-refusal",
+      "reason": "No further body-CG request made after the new CG04 input refusal; historical refusals remain documented independently."
+    },
+    {
+      "slot": "CG11",
+      "type": "goofy",
+      "status": "not-attempted-wave5-after-provider-refusal",
+      "reason": "No further body-CG request made after the new CG04 input refusal; historical refusals remain documented independently."
+    },
+    {
+      "slot": "CG12",
+      "type": "alignmentSwap",
+      "status": "not-attempted-wave5-after-provider-refusal",
+      "reason": "No further body-CG request made after the new CG04 input refusal; historical refusals remain documented independently."
+    },
+    {
+      "slot": "CG13",
+      "type": "genderSwap",
+      "status": "not-attempted-wave5-after-provider-refusal",
+      "reason": "No further body-CG request made after the new CG04 input refusal; historical refusals remain documented independently."
+    },
+    {
+      "slot": "CG14",
+      "type": "zombieVersion",
+      "status": "not-attempted-wave5-after-provider-refusal",
+      "reason": "No further body-CG request made after the new CG04 input refusal; historical refusals remain documented independently."
+    },
+    {
+      "slot": "CG15",
+      "type": "futureExperienced",
+      "status": "not-attempted-wave5-after-provider-refusal",
+      "reason": "No further body-CG request made after the new CG04 input refusal; historical refusals remain documented independently."
+    }
+  ],
+  "revisionAttempts": [
+    {
+      "slot": "CG01",
+      "type": "characterSolo",
+      "status": "not-attempted-wave5-after-provider-refusal",
+      "existingHistoricalStudyNeedsSourceCorrection": true,
+      "existingFilesPreserved": true,
+      "historicalRefusalEvidence": "docs/cg/mistral-source-v2-2026-10-18.json"
+    }
+  ],
+  "nativeRecords": [],
+  "preservedExistingCgSlots": [
+    "CG01",
+    "CG02",
+    "CG03"
+  ],
+  "historicalBlockedSlots": [
+    "CG01",
+    "CG09",
+    "CG10"
+  ],
+  "historicalRefusalEvidenceFiles": [
+    "docs/cg/mistral-complete-2026-10-18.json",
+    "docs/cg/mistral-source-v2-2026-10-18.json"
+  ],
+  "historicalRefusalsSuperseded": false,
+  "newProviderRefusalCount": 1,
+  "newNativeOutputCount": 0,
+  "newNotApplicableCount": 0,
+  "runtimeRegistryChanged": false,
+  "canonicalFidelityApproved": false,
+  "notes": [
+    "No additional refused slot inferred from the single CG04 failure.",
+    "CG09/10 were not retried this wave, but their documented prior refusals still apply; do not erase their historical refusal status.",
+    "Existing deficient CG01 and corrected sprite retained byte-for-byte; CG01 was not attempted again this wave.",
+    "No pose/background-only substitute, placeholder or wrong-character image passed off as a Mistral CG."
+  ]
+}

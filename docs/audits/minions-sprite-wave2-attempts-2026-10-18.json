@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-18",
+  "scope": "One new built-in ImageGen sprite-atlas attempt for each of Kevin,Stuart,Bob after source inspection. Previous refusals remain recorded separately.",
+  "status": "all-three-attempts-blocked-by-generation-service",
+  "attemptedCharacters": 3,
+  "newAtlases": 0,
+  "installed": 0,
+  "runtimeRegistryChanged": false,
+  "references": [
+    {
+      "path": ".tmp/fidelity-2026-10-18/minions/universal-keyart-square.jpg",
+      "url": "https://images.contentstack.io/v3/assets/blt13adb7e2033fcee5/blt5dca2b9c2c63dfe2/695728ec32fa46959ca18eb2/Minions_keyart_square_4000x4000.jpg",
+      "sourcePage": "https://www.universalpicturesathome.com/movies/minions",
+      "publisher": "Universal / Illumination",
+      "sha256": "9e63474158c874515f2b481876d0a2bb865612f8eca037fc7535a345cd2f11ea",
+      "viewed": true,
+      "role": "official-character-art-not-full-turntable"
+    },
+    {
+      "path": ".tmp/fidelity-2026-10-18/minions/universal-poster.jpg",
+      "url": "https://images.contentstack.io/v3/assets/blt13adb7e2033fcee5/bltcbdb2c361773eb87/69572974b5904a2e85353c9d/Minions_Digital_Poster_2000x3000.jpg",
+      "sourcePage": "https://www.universalpicturesathome.com/movies/minions",
+      "publisher": "Universal / Illumination",
+      "sha256": "dcd8de07fa21bbd1dbd565cab37f7ee3509d41273251957f8f1ed182d38f0ad7",
+      "viewed": true,
+      "role": "official-character-art-not-full-turntable"
+    }
+  ],
+  "sourceReviewFile": "docs/cg/reviews/wave2-2026-10-18/selected-roster-visual-priorities.json",
+  "entries": [
+    {
+      "characterId": "kevin_minions",
+      "name": "Kevin",
+      "status": "blocked-by-image-generation-service",
+      "attemptsThisWave": 1,
+      "imageCreated": false,
+      "installed": false,
+      "generationResult": {
+        "code": "moderation_blocked",
+        "stage": "output",
+        "categories": [
+          "other"
+        ]
+      },
+      "historicalAtlas": {
+        "path": "public/sprites/generated/heroes/minions/kevin-minions.png",
+        "sha256": "8596cedf12484da0ad15b8a5efcdb9f395eb6d7504ef25a5d6903fabb594f19e",
+        "unchangedAgainstGitHead": true,
+        "preserved": true
+      },
+      "independentGeneratedAtlasReview": "not-possible-no-image-produced",
+      "privateAttemptRecord": ".tmp/minions-sprite-wave2-2026-10-18/kevin-attempt.json",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "characterId": "stuart_minions",
+      "name": "Stuart",
+      "status": "blocked-by-image-generation-service",
+      "attemptsThisWave": 1,
+      "imageCreated": false,
+      "installed": false,
+      "generationResult": {
+        "code": "moderation_blocked",
+        "stage": "output",
+        "categories": [
+          "other"
+        ]
+      },
+      "historicalAtlas": {
+        "path": "public/sprites/generated/heroes/minions/stuart-minions.png",
+        "sha256": "0b04ef89c9039baee4441d18fd3adc624adb8feda1c4a5603b86b06154fd82cd",
+        "unchangedAgainstGitHead": true,
+        "preserved": true
+      },
+      "independentGeneratedAtlasReview": "not-possible-no-image-produced",
+      "privateAttemptRecord": ".tmp/minions-sprite-wave2-2026-10-18/stuart-attempt.json",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "characterId": "bob_minions",
+      "name": "Bob",
+      "status": "blocked-by-image-generation-service",
+      "attemptsThisWave": 1,
+      "imageCreated": false,
+      "installed": false,
+      "generationResult": {
+        "code": "moderation_blocked",
+        "stage": "output",
+        "categories": [
+          "other"
+        ]
+      },
+      "historicalAtlas": {
+        "path": "public/sprites/generated/heroes/minions/bob-minions.png",
+        "sha256": "d24627706a7d66cc4d3c8f3e90f7580e593e8f31ee9e1362dd5787d6c4288998",
+        "unchangedAgainstGitHead": true,
+        "preserved": true
+      },
+      "independentGeneratedAtlasReview": "not-possible-no-image-produced",
+      "privateAttemptRecord": ".tmp/minions-sprite-wave2-2026-10-18/bob-attempt.json",
+      "canonicalFidelityApproved": false
+    }
+  ],
+  "limitations": [
+    "The service rejected all three outputs with moderation_blocked, stage output, category other; no finer reason was supplied.",
+    "There is no generated atlas to inspect or install; none is presented as delivered or fidelity-approved.",
+    "No rephrased retry, disguised substitute, manual drawing or workaround was attempted in this wave.",
+    "The historical wrong-identity robot atlases remain unchanged pending a permitted correction."
+  ],
+  "canonicalFidelityApproved": false,
+  "privateEvidenceIncludesExactPromptsAndToolErrors": true
+}
