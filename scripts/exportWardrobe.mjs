@@ -25,7 +25,12 @@ const summary={sourceBaseCommit,catalogueVersion:'R5',actors:actors.length,heroe
  fullCostumeSheetsProduced:0,artisticApprovals:0,sharedGroundEffects:3,
  note:'Source-backed outfit inventory and original design briefs. Full costume artwork is pending; procedural effects are separate. This is not a complete official-costume census.'};
 for(const [name,value] of Object.entries({summary,coverage,official,original}))fs.writeFileSync(path.join(out,`${name}.json`),JSON.stringify(value,null,2)+'\n');
-const cell=v=>'"'+String(v??'').replace(/^[\s\u0000-\u001f]*[=+@-]/,m=>"'"+m).replaceAll('"','""')+'"';
+const cell=value=>{
+  let text=String(value??'');
+  const first=[...text].find(c=>c.charCodeAt(0)>31 && !/\s/.test(c));
+  if(first && '=+@-'.includes(first))text="'"+text;
+  return '"'+text.replaceAll('"','""')+'"';
+};
 const csv=(rows,keys)=>'\uFEFF'+[keys,...rows.map(r=>keys.map(k=>typeof r[k]==='object'?JSON.stringify(r[k]):r[k]))].map(r=>r.map(cell).join(';')).join('\r\n')+'\r\n';
 fs.writeFileSync(path.join(out,'coverage.csv'),csv(coverage,['actorKey','actorId','actorName','universe','kind','official','originalConcepts','sourceResearch','completedCostumes','effectSelection','bodyFit']));
 fs.writeFileSync(path.join(out,'official.csv'),csv(official,['id','actorId','actorName','universe','name','sourceWork','sourceUrl','nature','artworkStatus','artApproval','equippable']));
