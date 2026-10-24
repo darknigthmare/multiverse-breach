@@ -1,0 +1,68 @@
+name: Publish audit workbooks
+on:
+  push:
+    branches: [codex/audit-fidelite-excels-2026-10-24]
+    paths: [.github/workflows/publish-audit-workbooks.yml]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Install exactly the validated documentation package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, concurrent.futures, hashlib, io, json, os, pathlib, urllib.request, zipfile
+          repo='darknigthmare/multiverse-breach'
+          branch='codex/audit-fidelite-excels-2026-10-24'
+          source='5f44cf344d1a9fbb0dbd7c899510b7dd16cf25d6'
+          expected='a2cf69d8a6eee4582b186d5ca04bbba231c9551727362df016cf7240cf9f3801'
+          url='https://sdmntprnortheu.oaiusercontent.com/files/00000000-81fc-81f4-8b0b-737ed642ce9f/raw?se=2026-10-24T12%3A17%3A08Z&sp=r&sv=2026-02-06&sr=b&scid=70f5858a-362a-539c-a11d-5b07c7be8f2f&skoid=002823aa-689d-47ca-9347-108c20f4f00d&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-24T02%3A12%3A35Z&ske=2026-10-25T02%3A12%3A35Z&sks=b&skv=2026-02-06&sig=0RW5UnDH/td9W2L/tN93hNsevFAeSqqvxr7v3L1AqjE%3D'
+          print('::add-mask::'+url)
+          assert os.environ['GITHUB_REF_NAME']==branch
+          with urllib.request.urlopen(url,timeout=60) as r:package=r.read()
+          assert hashlib.sha256(package).hexdigest()==expected,'Package checksum mismatch'
+          z=zipfile.ZipFile(io.BytesIO(package))
+          manifest=json.loads(z.read('manifest.json'))
+          assert manifest['sourceCommit']==source and manifest['destinationBranch']==branch
+          files=manifest['files']
+          assert len(files)==12
+          assert len(z.namelist())==13 and set(z.namelist())=={'manifest.json'}|{e['path'] for e in files}
+          for e in files:
+              p=pathlib.PurePosixPath(e['path'])
+              assert not p.is_absolute() and '..' not in p.parts and e['path'].startswith('docs/excel/')
+              assert p.suffix in ('.xlsx','.md','.json','.csv','.png')
+              data=z.read(e['path'])
+              assert len(data)==e['bytes'] and hashlib.sha256(data).hexdigest()==e['sha256']
+              if p.suffix=='.xlsx':
+                  with zipfile.ZipFile(io.BytesIO(data)) as x:assert x.testzip() is None and 'xl/workbook.xml' in x.namelist()
+          def api(path,method='GET',body=None):
+              payload=None if body is None else json.dumps(body).encode()
+              req=urllib.request.Request('https://api.github.com/repos/'+repo+'/'+path,data=payload,method=method,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json','User-Agent':'Multiverse-Excel-Audit'})
+              with urllib.request.urlopen(req,timeout=90) as r:return json.load(r)
+          ref=api('git/ref/heads/'+branch)
+          parent=ref['object']['sha']
+          assert parent==os.environ['GITHUB_SHA'],'Branch advanced: refusing to overwrite'
+          current=api('git/commits/'+parent)
+          def blob(e):
+              data=z.read(e['path'])
+              result=api('git/blobs','POST',{'content':base64.b64encode(data).decode(),'encoding':'base64'})
+              assert result['sha']==e['gitBlob'],'Git blob checksum mismatch'
+              return {'path':e['path'],'mode':'100644','type':'blob','sha':result['sha']}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:entries=list(pool.map(blob,files))
+          tree=api('git/trees','POST',{'base_tree':current['tree']['sha'],'tree':entries})
+          commit=api('git/commits','POST',{'message':'docs(excel): update fidelity audit against GitHub and Vercel 5f44cf34; restore reconstructed combat tracker','tree':tree['sha'],'parents':[parent]})
+          api('git/refs/heads/'+branch,'PATCH',{'sha':commit['sha'],'force':False})
+          result={'branch':branch,'commit':commit['sha'],'tree':tree['sha'],'packageSha256':expected,'files':files,'sourceCommit':source}
+          pathlib.Path('/tmp/publish-result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
+          print(json.dumps({'commit':commit['sha'],'tree':tree['sha'],'files':len(files),'source':source}))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: audit-workbook-publication-2026-10-24
+          path: /tmp/publish-result.json
+          retention-days: 7
