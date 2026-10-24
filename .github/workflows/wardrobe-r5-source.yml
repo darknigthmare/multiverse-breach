@@ -1,0 +1,51 @@
+name: Wardrobe R5 source validation
+on:
+  push:
+    branches: [codex/wardrobe-r5-source-review-20261024]
+permissions:
+  contents: write
+jobs:
+  reviewed-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Read the exact reviewed source-only delivery script
+        run: |
+          set -euo pipefail
+          curl -fsSL "https://raw.githubusercontent.com/darknigthmare/multiverse-breach/${GITHUB_SHA}/audit/wardrobe-r5-delivery/source_delivery.py" -o /tmp/wardrobe-delivery.py
+          echo '67570c9bc0bbd4f2a41ed37780eecb7fd60421648c766321383026fddce24ebe  /tmp/wardrobe-delivery.py' | sha256sum -c -
+          python /tmp/wardrobe-delivery.py prepare
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Run new wardrobe and previous scene regressions without publishing credentials
+        working-directory: /tmp/wardrobe-source
+        run: |
+          set -euo pipefail
+          node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs --test scripts/wardrobe.test.mjs scripts/wardrobeRoster.test.mjs scripts/reauditSourceScenes.test.mjs | tee /tmp/wardrobe-evidence/tests.log
+          node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs scripts/exportWardrobe.mjs /tmp/wardrobe-evidence/catalogue 20585ab5d0f61683c5f5586a04dda2ae0afc81a3
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx oxlint --max-warnings 0 src/game/wardrobe*.js src/components/CharacterWardrobe.jsx scripts/wardrobe*.mjs scripts/exportWardrobe.mjs | tee /tmp/wardrobe-evidence/lint.log
+          npx vite build | tee /tmp/wardrobe-evidence/build.log
+      - name: Test the actual React wardrobe in isolated Chromium
+        working-directory: /tmp/wardrobe-source
+        run: |
+          set -euo pipefail
+          python -m venv /tmp/wardrobe-playwright
+          /tmp/wardrobe-playwright/bin/pip install playwright==1.57.0
+          /tmp/wardrobe-playwright/bin/python -m playwright install --with-deps chromium
+          npm run dev -- --host 127.0.0.1 --port 4173 --strictPort > /tmp/wardrobe-evidence/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+          AUDIT_OUTPUT_DIR=/tmp/wardrobe-evidence/browser /tmp/wardrobe-playwright/bin/python scripts/browserWardrobeR5.py | tee /tmp/wardrobe-evidence/browser.log
+      - name: Publish only the fifteen reviewed and tested source files to the existing PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python /tmp/wardrobe-delivery.py publish
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: wardrobe-r5-source-evidence
+          path: /tmp/wardrobe-evidence/
+          retention-days: 7
