@@ -1,0 +1,40 @@
+name: Validate and publish source scenes R4
+on:
+  push:
+    branches: [codex/source-stages-r4-delivery-20261024]
+    paths: [docs/stage-delivery-r4/**, .github/workflows/source-stages-r4.yml]
+permissions:
+  contents: write
+jobs:
+  reviewed-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Read the reviewed source-delivery script
+        run: |
+          curl --fail --silent --show-error "https://raw.githubusercontent.com/darknigthmare/multiverse-breach/${GITHUB_SHA}/docs/stage-delivery-r4/publish_source.py" -o /tmp/publish-source.py
+      - name: Verify pinned sources and exact reviewed UTF-8 edits
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 /tmp/publish-source.py prepare
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Test the actual tactical engine with no publishing credential in the environment
+        working-directory: /tmp/source-stages-r4
+        run: |
+          set -euo pipefail
+          node --test scripts/reauditSourceScenes.test.mjs | tee source-scene-tests.log
+      - name: Publish only the sixteen tested source files to the existing PR branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 /tmp/publish-source.py publish
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: source-scenes-r4-validation
+          path: |
+            /tmp/source-stages-r4/source-scene-tests.log
+            /tmp/source-stages-r4/published.json
+            /tmp/source-stages-r4/delivery-manifest.json
+          retention-days: 7
