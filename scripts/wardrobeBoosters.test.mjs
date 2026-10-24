@@ -22,10 +22,10 @@ const leon = HEROES_DB.find(h => h.id === 'leon' && h.universe === 'Resident Evi
 const alien = poolFor('Alien');
 const pending = drawWardrobeBoosterBonus({ pool: alien, rng: () => 0 });
 
-test('all 19,871 registered costume entitlements have stable unique ids; no effects/research included', () => {
-  assert.equal(all.length, 19871); assert.equal(new Set(all.map(x => x.id)).size, all.length);
+test('all 19,895 registered costume entitlements have stable unique ids; no effects/research included', () => {
+  assert.equal(all.length, 19895); assert.equal(new Set(all.map(x => x.id)).size, all.length);
   assert.equal(new Set(all.map(x => x.actorKey)).size, 4936);
-  assert.equal(all.filter(x => x.origin === 'OFFICIAL').length, 67);
+  assert.equal(all.filter(x => x.origin === 'OFFICIAL').length, 91);
   assert.ok(all.every(x => !x.id.includes(':research-') && x.nature !== 'procedural-effect'));
 });
 test('all entries have a permanent route without unlocking campaign actors', () => {

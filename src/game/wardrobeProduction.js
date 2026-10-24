@@ -12,6 +12,7 @@ const common = Object.freeze([
 export function getCostumeProductionContract(item) {
   if(!item || item.nature==='procedural-effect')return null;
   const focus={
+    'official-skin':L('Relever textures et matières du skin ; confirmer séparément tout changement de modèle.', 'Record skin textures and materials; separately confirm any model change.'),
     'official-palette':L('Échantillonner la palette officielle sans changer la coupe.','Sample the official palette without changing the cut.'),
     'official-accessory':L('Vérifier points d’attache, occlusion et synchronisation des poses.','Check attachment points, occlusion and pose synchronization.'),
     'official-hairstyle':L('Coiffure seulement : visage, crâne et époque inchangés.','Hair only: preserve face, skull and era.'),
@@ -19,7 +20,7 @@ export function getCostumeProductionContract(item) {
   }[item.nature] || L('Conserver les marqueurs d’identité ; produire une tenue, pas un effet au sol.','Keep identity markers; produce an outfit, not a ground effect.');
   return {version:1,status:'ARTWORK_PENDING',equippable:false,artApproved:false,
     identityScope:item.actorKey || '', sourceWork:item.sourceWork || '',
-    sourceUrl:item.sourceUrl || '',focus,
+    sourceUrl:item.sourceUrl || '',focus,component:item.component || '',targetIncarnation:item.targetIncarnation || '',
     tasks:common.map(t=>({...t})),
     fidelityCriteria:COSTUME_FIDELITY_CRITERIA,requiredReferenceViews:COSTUME_REFERENCE_VIEWS,
     proofRule:L('Un score seul ne valide jamais une tenue : références et planches identifiées par empreinte, poses requises et captures en jeu sont nécessaires.',

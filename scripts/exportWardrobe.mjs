@@ -19,7 +19,7 @@ for(const actor of actors){
   coverage.push({...base,...getWardrobeCoverage(actor),effectSelection:actor.kind==='hero'?'HERO_SHEET':'READ_ONLY_ARCHIVE',
     incarnation:actor.incarnation||'',visualAnchor:actor.visualAnchor||'',bodyFit:'REVIEW_REQUIRED'});
 }
-const summary={sourceBaseCommit,catalogueVersion:'R7',actors:actors.length,heroes:actors.filter(a=>a.kind==='hero').length,
+const summary={sourceBaseCommit,catalogueVersion:'R9',actors:actors.length,heroes:actors.filter(a=>a.kind==='hero').length,
  officialDesigns:ALL_OFFICIAL_WARDROBE.length,officialActorBindings:official.length,actorsWithOfficial:coverage.filter(c=>c.official>0).length,
  actorsAwaitingOfficialResearch:coverage.filter(c=>!c.official).length,originalParametricBriefs:original.filter(c=>c.designMethod==='PARAMETRIC_BRIEF').length,
  characterSpecificBriefs:original.filter(c=>c.designMethod==='CHARACTER_SPECIFIC_BRIEF').length,researchTargets:research.length,

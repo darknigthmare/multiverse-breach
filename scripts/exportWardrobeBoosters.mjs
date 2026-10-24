@@ -1,3 +1,4 @@
+import { ALL_OFFICIAL_WARDROBE } from '../src/game/wardrobe.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import { getWardrobeUnlockCatalogue, getWardrobeBoosterPool } from '../src/game/wardrobeBoosterRewards.js';
@@ -24,10 +25,10 @@ const actors = [...new Set(entries.map(e => e.actorKey))].map(actorKey => {
     official:list.filter(e=>e.origin==='OFFICIAL').length,original:list.filter(e=>e.origin==='ORIGINAL').length,
     total:list.length,routes:first.routes.join(' | '),artwork:'NOT_PRODUCED',equippable:false};
 });
-const summary = {version:'R8',sourceCommit,actors:actors.length,universes:universes.length,
+const summary = {version:'R9',sourceCommit,actors:actors.length,universes:universes.length,
   costumeRights:entries.length,officialBindings:entries.filter(e=>e.origin==='OFFICIAL').length,
   originalBriefs:entries.filter(e=>e.origin==='ORIGINAL').length,boosterRoutes:boosters.length,
-  newCostumeSheets:0,newOfficialDesigns:0,extraPrice:0,
+  newCostumeSheets:0,officialDesigns:ALL_OFFICIAL_WARDROBE.length,extraPrice:0,
   note:'A free additional entitlement, distinct from the five paid/free-credit cards. Uniform sampling without replacement within the eligible, unowned pool. Artwork remains pending; no new actor or gameplay bonus.'};
 const cell = value => {
   let text = String(value ?? '');

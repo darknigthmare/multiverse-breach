@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R9 } from '../src/game/wardrobeOfficialR9.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { HEROES_DB } from '../src/game/heroes.js';
@@ -17,7 +18,7 @@ for(const row of OFFICIAL_COSTUMES_R7)test(`R7 exact actor and immutable moveset
  const item=getOfficialCostumes(actor).find(x=>x.key===row.key);assert.ok(item);assert.ok(item.visualSpec.fr&&item.visualSpec.en);
  assert.equal(item.equippable,false);assert.equal(applyActorAppearance(actor,item.id),actor);assert.equal(item.production.fidelityCriteria.length,10);
 });
-test('all 50 previous variants plus 14 new definitions retained',()=>assert.equal(ALL_OFFICIAL_WARDROBE.length,64));
+test('all 64 R7 definitions retained alongside the R9 extension',()=>assert.equal(ALL_OFFICIAL_WARDROBE.length,64+OFFICIAL_COSTUMES_R9.length));
 test('Raiden Cyborg Ninja is not rebound to Gray Fox or MGS2 Raiden',()=>{
  assert.equal(getOfficialCostumes({id:'gray_fox',universe:'Metal Gear'}).length,0);
  assert.equal(getOfficialCostumes({id:'raiden',universe:'Metal Gear'}).length,0);
