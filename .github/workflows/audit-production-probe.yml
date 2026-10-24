@@ -1,0 +1,68 @@
+name: Audit production probe
+on:
+  push:
+    branches: [codex/audit-fidelite-excels-2026-10-24]
+    paths: [.github/workflows/audit-production-probe.yml]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Compare historical substitutions with current Git and production bytes
+        run: |
+          python3 - <<'PY'
+          import concurrent.futures, hashlib, json, pathlib, urllib.request, urllib.parse
+          root=pathlib.Path('/tmp/audit-production');root.mkdir()
+          repo='https://raw.githubusercontent.com/darknigthmare/multiverse-breach/'
+          head='5f44cf344d1a9fbb0dbd7c899510b7dd16cf25d6'
+          old='6fd4fd24d690e84f6dfbfc022cd844d0def116ec'
+          def read(url):
+              with urllib.request.urlopen(url,timeout=90) as r:return r.read()
+          registry=json.loads(read(repo+head+'/docs/audits/fidelity-p0-wave4-2026-10-01.json'))
+          overrides={'saturnin_duck':'/sprites/generated/heroes/les-aventures-de-saturnin/saturnin-ortf-web.png'}
+          def check(e):
+              path=overrides.get(e['id'],e['output'])
+              data=read(repo+head+'/public'+path)
+              live=read('https://multiverse-breach.vercel.app'+path)
+              original=read(repo+old+'/public'+e['output'])
+              digest=lambda b:hashlib.sha256(b).hexdigest()
+              target=root/'sprites'/(e['id']+'.png');target.parent.mkdir(exist_ok=True);target.write_bytes(data)
+              return {'id':e['id'],'name':e['name'],'path':path,'baselinePath':e['output'],'baselineSha256':digest(original),'currentSha256':digest(data),'productionSha256':digest(live),'productionMatchesGit':data==live,'unchangedFromBaseline':data==original,'bytes':len(data),'image':str(target.relative_to(root))}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:results=list(pool.map(check,registry['entries']))
+          (root/'sprite-production-checks.json').write_text(json.dumps(results,ensure_ascii=False,indent=2))
+          (root/'production-build-info.json').write_bytes(read('https://multiverse-breach.vercel.app/build-info.json'))
+          print(json.dumps({'tested':len(results),'sameAsGit':sum(e['productionMatchesGit'] for e in results),'unchangedFromAugust':sum(e['unchangedFromBaseline'] for e in results)}))
+          PY
+      - name: Read-only production browser smoke check
+        run: |
+          python3 -m venv /tmp/audit-browser
+          /tmp/audit-browser/bin/pip -q install playwright==1.57.0
+          /tmp/audit-browser/bin/python -m playwright install --with-deps chromium > /tmp/audit-production/browser-install.log 2>&1
+          /tmp/audit-browser/bin/python - <<'PY'
+          import json, pathlib
+          from playwright.sync_api import sync_playwright
+          out=pathlib.Path('/tmp/audit-production');results=[]
+          with sync_playwright() as p:
+              browser=p.chromium.launch()
+              for width,height in [(1280,800),(390,844)]:
+                  page=browser.new_page(viewport={'width':width,'height':height},device_scale_factor=1)
+                  errors=[];requests=[]
+                  page.on('pageerror',lambda error:errors.append(str(error)))
+                  page.on('response',lambda response:requests.append({'url':response.url,'status':response.status}) if response.status>=400 else None)
+                  response=page.goto('https://multiverse-breach.vercel.app/',wait_until='domcontentloaded',timeout=60000)
+                  page.wait_for_timeout(10000)
+                  page.screenshot(path=str(out/f'production-{width}.png'),full_page=True)
+                  results.append({'viewport':[width,height],'url':page.url,'status':response.status,'title':page.title(),'bodyText':page.locator('body').inner_text()[:8000],'pageErrors':errors,'httpErrors':requests,'screenshot':f'production-{width}.png','scope':'Initial production screen only; no login, save changes, purchases or full gameplay traversal.'})
+                  page.close()
+              browser.close()
+          (out/'browser-production-results.json').write_text(json.dumps(results,ensure_ascii=False,indent=2))
+          print(json.dumps([{'viewport':r['viewport'],'status':r['status'],'pageErrors':len(r['pageErrors'])} for r in results]))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: audit-production-evidence-2026-10-24
+          path: /tmp/audit-production/
+          retention-days: 7
