@@ -1,91 +1,41 @@
-# Excel de suivi — actualisation du 24 octobre 2026
+# Suivi Multiverse Breach — R4, 24 octobre 2026
 
-## Fichiers actifs
+## État actuel : trois stages intégrés en PR
 
-- [Audit fidélité 1:1 et priorités](Multiverse_Breach_Audit_Fidelite_1a1_Priorites.xlsx)
-- [Suivi des signatures / combats **RECONSTITUÉ**](Multiverse_Breach_Suivi_Combats_RECONSTITUE.xlsx)
-- [Export filtrable des P0/P1](exports/priorites-P0-P1-2026-10-24.csv)
+La PR ne se limite plus à un audit. Le commit [`4c8f4b7f`](https://github.com/darknigthmare/multiverse-breach/commit/4c8f4b7f220a7808e7b849357deaf5771057344f) intègre **Sulaco, Narcissus et Blast Pit** dans le hub et le moteur Tactics, avec objectifs contextuels, commandes FR/EN, parcours manuel et automatique, décors procéduraux distincts et 83 tests.
 
-L'ancien fichier de la conversation est conservé, **sans modification**, dans [archives](archives/Audit_Fidelite_ancien_6fd4fd24_OBSOLETE.xlsx).
-Ses chiffres et priorités sont obsolètes et ne doivent pas être fusionnés avec les lignes actuelles.
+- [Rapport R4 : contenu livré, tests et limites](STAGES_JOUABLES_R4_2026-10-24.md)
+- [Suivi CSV des trois nouvelles scènes](exports/stages-jouables-R4-2026-10-24.csv)
+- [Preuves et empreintes R4](evidence/source-scenes-R4.json)
 
-Le fichier original `multiverse_breach_catalog_lore_UPDATED.xlsx` n'a pas été récupéré.
-L'arbre Git complet actuel ne contient aucun ancien `.xlsx`, `.xls` ou `.ods`.
-Le suivi des combats est donc explicitement **reconstruit** à partir de l'export JSON/CSV de CI, et non présenté comme une restauration de cet original.
+**Aucun merge ni déploiement de production effectué.** Le master pris comme base est `5f44cf344d1a9fbb0dbd7c899510b7dd16cf25d6`. Les derniers contrôles Vercel conservés portent sur cette version, pas sur une partie hébergée des nouveaux stages.
 
-## Versions vérifiées
+## Attention aux versions des fichiers Excel
 
-- GitHub master audité : [`5f44cf344d1a9fbb0dbd7c899510b7dd16cf25d6`](https://github.com/darknigthmare/multiverse-breach/commit/5f44cf344d1a9fbb0dbd7c899510b7dd16cf25d6).
-- Arbre : `69e7bfd3635d022942ad01277d0b1088a73472c2`.
-- Vercel public : https://multiverse-breach.vercel.app — `build-info.json` renvoie le même commit.
-- Déploiement production READY : `dpl_DBNFTwS2UNzb1X3QmNJ5DfFPcBF4`.
-- CI signatures : [run 39393362478](https://github.com/darknigthmare/multiverse-breach/actions/runs/39393362478), commit de fusion `2825479789c99499a39bef22ca37586a63bdf720` ; arbre strictement identique au master audité.
-- Nouvelle vérification de production : [run 40091057307](https://github.com/darknigthmare/multiverse-breach/actions/runs/40091057307).
-- [Versions et périmètres détaillés](evidence/versions-2026-10-24.json).
+Les deux XLSX stockés ci-dessous restent les **binaires R1**, conservés pour ne pas perdre leur contenu. Ils **ne contiennent pas les ajouts R2, R3 et R4**. Les fichiers R4 complets sont livrés séparément dans la conversation ; leur empreinte figure dans le rapport R4. Le suivi texte/CSV de cette PR est plus récent que ces deux binaires.
 
-## Inventaire réellement projeté
+- [Audit fidélité — binaire R1 historique](Multiverse_Breach_Audit_Fidelite_1a1_Priorites.xlsx)
+- [Suivi combats RECONSTITUÉ — binaire R1 historique](Multiverse_Breach_Suivi_Combats_RECONSTITUE.xlsx)
+- [Archive du tout premier audit, obsolète](archives/Audit_Fidelite_ancien_6fd4fd24_OBSOLETE.xlsx)
+- [Export P0/P1 historique R1](exports/priorites-P0-P1-2026-10-24.csv)
+- [Recontrôle R2](RECONTROLE_R2_2026-10-24.md)
+- [Reprise et corrections de l'audit R3](REPRISE_MANQUANTS_R3_2026-10-24.md)
 
-| Famille | Nombre | Unité / précision |
-|---|---:|---|
-| Héros / alliés | 1 912 | Acteurs, Ancre incluse |
-| Ennemis | 1 518 | Acteurs |
-| Boss | 1 110 | Acteurs |
-| World bosses | 396 | Acteurs |
-| Stages | 3 203 | ID runtime uniques |
-| PNJ / renforts | 1 076 | 525 contrats + 525 invocations + 26 liaisons natives, pas des individus distincts |
-| Épreuves non combattantes | 334 | Rencontres |
-| Objets / équipements | 4 215 | Définitions, hors objets d'invocation déjà suivis |
-| Costumes / variantes | 1 979 | Définitions ; une palette n'est pas un costume canon complet |
+Le catalogue original `multiverse_breach_catalog_lore_UPDATED.xlsx` n'a pas été retrouvé. Le suivi des combats demeure explicitement **RECONSTITUÉ**, et non présenté comme sa restauration.
 
-Les familles se recoupent. Il n'existe **pas** de total de 15 743 sprites uniques : ce sont des définitions, contrats et occurrences.
-Les modules de données ont été exécutés avec leurs overrides, au lieu d'additionner des listes historiques par expression régulière.
+## Compteurs à ne pas confondre
 
-## Priorités : acteurs + stages (8 139 lignes)
+La source initialement auditée contient 4 936 acteurs et 3 203 ID de stages. La branche R4 ajoute seulement trois scènes aux ID 50101, 50102 et 50103 : **3 206 stages dans la branche PR**, sans nouvel acteur de catalogue. Les familles PNJ, invocations, objets et variantes se recoupent ; ce ne sont pas des sprites uniques.
 
-| Priorité | Nombre | Sens |
-|---|---:|---|
-| P0 | 24 | Provenance de substitution non ressemblante et PNG historique inchangé, également servi sur Vercel |
-| P1 | 3 559 | Contrôle prioritaire : référence à compléter, raster calculé absent, ou nouvelle planche à valider |
-| P2 | 4 072 | Comparaison artistique / level design restant à réaliser |
-| P3 | 484 | Contrat original / interne, sans refonte canon externe automatique |
+Dans l'Excel R4, acteurs + stages : **22 P0 / 3 564 P1 / 4 072 P2 / 484 P3**, soit 8 142 lignes. Les trois nouvelles scènes sont P1 de revue artistique. Les deux créations originales reclassées en R3 restent en revue interne. Aucun des 1 477 rasters adverses manquants signalés en R3 n'est déclaré réparé.
 
-Un P1 n'ordonne pas aveuglément une refonte. Un chemin PNG absent peut déclencher un fallback ; cela ne prouve pas un plantage.
-Une adaptation déclarée ou une épreuve n'est plus automatiquement classée en P0.
-Les 24 P0 sont accessibles dans `01_P0_confirmes`. Pour les P1, filtrer la colonne Priorité des catalogues ou utiliser le CSV.
+Le suivi technique des 4 936 acteurs reste : 4 650 signatures spécifiques non couvertes, 185 contrats partiels, 101 non-combattants et 148 supers mêlée renseignés. Les commandes des nouvelles scènes sont contextuelles : elles n'ajoutent pas 21 capacités globales au roster.
 
-## Changements importants par rapport au premier fichier
+## Preuves historiques préservées
 
-Les définitions de Ripley (Alien 1979), Jungle Hunter (1987) et Gordon Freeman (Half-Life 2) ont été corrigées.
-Les scènes prioritaires comprennent maintenant Shadow Moses/REX, Xen/Nihilanth, Hadley's Hope/Queen, le train Lightmass/RAAM, Metropolis/Scarab et le camp du Légat/New Vegas.
-Cela corrige les mélanges de source constatés précédemment, **sans certifier leur rendu artistique**.
+- [Versions R1](evidence/versions-2026-10-24.json)
+- [25 PNG comparés à la production lors de la collecte initiale](evidence/sprite-production-checks.json)
+- [Accueil Vercel ordinateur/mobile initial](evidence/browser-production-results.json)
+- [Résumé R3](evidence/summary-R3.json)
 
-Sur les 25 substitutions historiques Wave4 :
-- 25/25 PNG actuels sont identiques entre GitHub et la production ;
-- 24/25 sont toujours identiques aux anciens PNG d'août ;
-- Saturnin utilise une nouvelle planche : retrait du P0 automatique, revue visuelle P1.
-
-[Hashes et chemins des 25 PNG](evidence/sprite-production-checks.json).
-
-## Vérification du jeu Vercel
-
-L'accueil public a été chargé et capturé dans Chromium en 1280×800 et 390×844.
-Les deux vues ont répondu HTTP 200, sans erreur JavaScript ni requête HTTP en échec observée.
-Cette vérification est **limitée à l'écran initial**, plus les 25 PNG ; elle n'est pas un parcours intégral des niveaux.
-Aucun compte réel, achat ni sauvegarde utilisateur n'a été utilisé.
-
-- [Rapport navigateur](evidence/browser-production-results.json)
-- [Capture ordinateur](evidence/production-1280.png)
-- [Capture mobile](evidence/production-390.png)
-
-## Fidélité artistique et signatures
-
-**Aucune certification visuelle 1:1 globale et aucune note artistique inventée.**
-La grille pondérée personnage / stage / PNJ figure dans `06_Methode`. Le total exige des critères complets et dans leurs bornes.
-Les scores non saisis de l'ancien audit n'ont pas été transformés en validations.
-
-Le deuxième classeur conserve les 4 936 lignes de couverture des signatures :
-4 650 signatures spécifiques non couvertes, 185 contrats partiels et 101 non-combattants.
-148 supers mêlée sont renseignés.
-« A_INTEGRER » ne signifie ni personnage absent, ni sprite absent, ni jeu injouable.
-
-Cette PR ne modifie aucun code de gameplay ni la production. Les workflows temporaires de collecte sont retirés du diff final.
+Ces preuves ne sont pas présentées comme rejouées en R4. **Présence de fichier, test réussi et scénario jouable ne constituent pas une certification artistique 1:1.**
