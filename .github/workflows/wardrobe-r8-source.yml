@@ -1,0 +1,51 @@
+name: Wardrobe R8 booster validation
+on:
+  push:
+    branches: [codex/wardrobe-r8-source-review-20261024]
+permissions:
+  contents: write
+jobs:
+  reviewed-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Read exact reviewed source integration script
+        run: |
+          set -euo pipefail
+          curl -fsSL "https://raw.githubusercontent.com/darknigthmare/multiverse-breach/${GITHUB_SHA}/audit/wardrobe-r8-delivery/source_delivery.py" -o /tmp/wardrobe-r8-delivery.py
+          echo '4690b6329460f847afa49ee6c90571fcc73dac0583961eda868c3bf11056dc91  /tmp/wardrobe-r8-delivery.py' | sha256sum -c -
+          python /tmp/wardrobe-r8-delivery.py prepare
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Test source regressions, inventory persistence and exact booster mappings
+        working-directory: /tmp/wardrobe-r8-source
+        run: |
+          set -euo pipefail
+          node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs --test scripts/wardrobeBoosters.test.mjs scripts/wardrobe.test.mjs scripts/wardrobeRoster.test.mjs scripts/reauditWardrobeCatalog.test.mjs scripts/reauditWardrobeCoverage.test.mjs scripts/reauditWardrobeFidelityR7.test.mjs scripts/reauditSourceScenes.test.mjs | tee /tmp/wardrobe-r8-evidence/tests.log
+          node --no-warnings --experimental-loader ./scripts/sourceSceneTestLoader.mjs scripts/exportWardrobeBoosters.mjs /tmp/wardrobe-r8-evidence/catalogue f857dcf6bd739aa93a46134d7bf13956981d7239
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx oxlint --max-warnings 0 src/game/wardrobeBoosterRewards.js src/components/WardrobeBoosterBonus.jsx scripts/wardrobeBoosters.test.mjs scripts/exportWardrobeBoosters.mjs | tee /tmp/wardrobe-r8-evidence/lint.log
+          npx vite build | tee /tmp/wardrobe-r8-evidence/build.log
+      - name: Exercise real booster and wardrobe components in isolated Chromium
+        working-directory: /tmp/wardrobe-r8-source
+        run: |
+          set -euo pipefail
+          python -m venv /tmp/wardrobe-r8-playwright
+          /tmp/wardrobe-r8-playwright/bin/pip install playwright==1.57.0
+          /tmp/wardrobe-r8-playwright/bin/python -m playwright install --with-deps chromium
+          npm run dev -- --host 127.0.0.1 --port 4173 --strictPort > /tmp/wardrobe-r8-evidence/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+          AUDIT_OUTPUT_DIR=/tmp/wardrobe-r8-evidence/browser /tmp/wardrobe-r8-playwright/bin/python scripts/browserWardrobeBoostersR8.py | tee /tmp/wardrobe-r8-evidence/browser.log
+      - name: Publish eleven tested UTF-8 source files to the existing PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python /tmp/wardrobe-r8-delivery.py publish
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: wardrobe-r8-source-evidence
+          path: /tmp/wardrobe-r8-evidence/
+          retention-days: 7
