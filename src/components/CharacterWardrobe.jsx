@@ -2,9 +2,10 @@ import React, { useMemo, useState } from 'react';
 import { getOfficialCostumes, getOriginalCostumes, getWardrobeEffects, getWardrobeResearchTargets,
   wardrobeActorKey, resolveWardrobeEffect, wardrobeSelectionStatus, isSafeWardrobeReference } from '../game/wardrobe.js';
 import { filterWardrobeEntries } from '../game/wardrobeProduction.js';
+import { getWardrobeOwnership, getWardrobeBoosterRoutes } from '../game/wardrobeBoosterRewards.js';
 import './CharacterWardrobe.css';
 
-export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readOnly=false}) {
+export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readOnly=false,inventory=[]}) {
   const l=lang==='fr'?'fr':'en',fr=l==='fr';
   const [section,setSection]=useState('official');
   const [query,setQuery]=useState('');
@@ -17,6 +18,7 @@ export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readO
   const groups={official,original:originals,effects};
   const visible=filterWardrobeEntries(groups[section],query);
   const selected=wardrobeSelectionStatus(actor,selectedId);
+  const routes=getWardrobeBoosterRoutes(actor);
   return <div className="character-wardrobe__body">
     <p className="character-wardrobe__notice">{fr
       ? 'Officiel décrit la provenance, pas une validation 1:1 du sprite. Les costumes sont à produire ; seuls les effets au sol sont équipables. Aucun changement de statistiques.'
@@ -37,6 +39,14 @@ export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readO
     <div className="character-wardrobe__cards">
       {visible.map(item=><article className="character-wardrobe__card" key={item.id}>
         <h5>{item.name[l]}</h5>
+        {item.nature !== 'procedural-effect' && <div className="character-wardrobe__ownership">
+          <strong>{getWardrobeOwnership(item,inventory)==='UNLOCKED_ARTWORK_PENDING'
+            ? (fr?'Droit débloqué — graphismes à produire':'Entitlement unlocked — artwork pending')
+            : (fr?'À débloquer dans les boosters correspondants':'Unlock in the matching boosters')}</strong>
+          <p>{fr?'Trame du porteur':'Wearer’s universe'} : {actor.universe}.
+            {' '}{fr?'Obtenu comme bonus gratuit, en plus des cinq cartes. Ne débloque pas le personnage.':'Granted as a free bonus in addition to the five cards. Does not unlock the character.'}</p>
+          <details><summary>{fr?'Boosters compatibles':'Compatible boosters'}</summary><ul>{routes.map(id=><li key={id}>{id}</li>)}</ul></details>
+        </div>}
         <span className="character-wardrobe__badge">{item.nature==='procedural-effect'
           ? (fr?'Effet procédural, pas un costume':'Procedural effect, not an outfit')
           : item.origin==='OFFICIAL' ? (fr?'Source officielle — graphismes à produire':'Official source — artwork pending')

@@ -10910,7 +10910,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   </div>
                 </div>
 
-                <CharacterWardrobe actor={selectedHero} lang={lang} selectedId={heroSkins?.[selectedHero.id]}
+                <CharacterWardrobe actor={selectedHero} lang={lang} inventory={inventory} selectedId={heroSkins?.[selectedHero.id]}
                   onSelect={appearanceId => setHeroSkins(prev => ({...prev, [selectedHero.id]: appearanceId}))} />
 
                 {/* Talent Mods Panel */}
@@ -12690,7 +12690,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                                   type: index === selectedUniverseArchive.allEnemies.length - 1 ? 'worldBoss' : 'menace'
                                 })}
                               </div>
-                              <CharacterWardrobe actor={{...enemy, universe: selectedUniverseArchive.universe}} lang={lang} readOnly />
+                              <CharacterWardrobe actor={{...enemy, universe: selectedUniverseArchive.universe}} lang={lang} inventory={inventory} readOnly />
                             </div>
                           </div>
                         );
