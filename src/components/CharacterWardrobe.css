@@ -1,0 +1,19 @@
+.character-wardrobe{margin-top:12px;border:1px solid #396370;border-radius:8px;background:#0b1720;color:#edf4f6;min-width:0;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.character-wardrobe>summary{padding:12px;cursor:pointer;font-weight:700}
+.character-wardrobe__body{padding:0 12px 12px;min-width:0}
+.character-wardrobe__notice{color:#c8d7dd;margin:0 0 12px}
+.character-wardrobe__sections{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.character-wardrobe button{font:inherit;color:#eaf6f7;background:#15313d;border:1px solid #5b8d9d;border-radius:5px;min-height:44px;padding:8px 12px;cursor:pointer;white-space:normal;text-align:left}
+.character-wardrobe button[aria-pressed=true]{background:#175245;border-color:#7ce2c7}
+.character-wardrobe button:focus-visible,.character-wardrobe summary:focus-visible,.character-wardrobe a:focus-visible{outline:3px solid #ffd887;outline-offset:3px}
+.character-wardrobe__sections span{font-weight:700}
+.character-wardrobe__cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:10px}
+.character-wardrobe__card{border:1px solid #35505b;border-radius:6px;padding:12px;min-width:0;background:#101f29}
+.character-wardrobe__card h5{font-size:15px;line-height:1.4;margin:0 0 8px}
+.character-wardrobe__card p{margin:8px 0}
+.character-wardrobe__badge{display:inline-block;color:#ffe0a8;font-size:12px;line-height:1.5}
+.character-wardrobe__card a{display:inline-block;padding:6px 0;color:#91deff;text-decoration:underline}
+.character-wardrobe__muted{color:#bacbd2;font-size:12px}
+.character-wardrobe__contract,.character-wardrobe__footer{margin-top:14px;border-top:1px solid #35505b;padding-top:10px}
+.character-wardrobe__footer p{color:#bacbd2;font-size:12px}
+@media(max-width:480px){.character-wardrobe__cards{grid-template-columns:1fr}.character-wardrobe__sections button{flex:1 1 120px}}

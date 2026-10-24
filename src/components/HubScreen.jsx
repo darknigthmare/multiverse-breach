@@ -1,3 +1,5 @@
+import CharacterWardrobe from './CharacterWardrobe.jsx';
+import { applyActorAppearance } from '../game/wardrobe.js';
 import React, { lazy, Suspense, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { HEROES_DB as BASE_HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game/heroes';
 import { getTranslation } from '../game/translation';
@@ -5425,8 +5427,7 @@ export default function HubScreen({
   )).length;
   const playerHero = useMemo(() => createPlayerHero(playerProfile), [playerProfile]);
   const applySkin = useCallback((hero) => {
-    const skin = SKIN_CATALOG[heroSkins?.[hero.id]];
-    return skin ? { ...hero, ...skin.colors, activeSkin: skin } : hero;
+    return applyActorAppearance(hero, heroSkins?.[hero.id], SKIN_CATALOG);
   }, [heroSkins]);
   const ALL_HEROES_DB = useMemo(() => [playerHero, ...BASE_HEROES_DB].map(applySkin), [applySkin, playerHero]);
   const HEROES_DB = useMemo(
@@ -10846,12 +10847,12 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '10px' }}>
                     <div>
                       <div style={{ fontSize: '10px', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase' }}>
-                        {lang === 'fr' ? 'Apparence Nexus' : 'Nexus appearance'}
+                        {lang === 'fr' ? 'Palettes héritées' : 'Legacy palettes'}
                       </div>
                       <div style={{ marginTop: '4px', fontSize: '11px', color: '#aeb8c2', lineHeight: 1.35 }}>
                         {lang === 'fr'
-                          ? 'Les apparences viennent des traces d arcs et stabilisent la signature visuelle du heros.'
-                          : 'Appearances come from arc traces and stabilize the hero visual signature.'}
+                          ? 'Palettes historiques : ce ne sont pas des costumes 1:1 et elles ne remplacent pas les PNG existants.'
+                          : 'Legacy palettes: not 1:1 outfits, and they do not replace existing PNGs.'}
                       </div>
                     </div>
                     <div style={{ flexShrink: 0, fontSize: '10px', color: selectedHero.primaryColor, textTransform: 'uppercase' }}>
@@ -10908,6 +10909,9 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                     })}
                   </div>
                 </div>
+
+                <CharacterWardrobe actor={selectedHero} lang={lang} selectedId={heroSkins?.[selectedHero.id]}
+                  onSelect={appearanceId => setHeroSkins(prev => ({...prev, [selectedHero.id]: appearanceId}))} />
 
                 {/* Talent Mods Panel */}
                 <div style={{ marginTop: '20px', padding: '15px', background: 'rgba(255, 235, 59, 0.02)', border: '1px solid rgba(255, 235, 59, 0.15)', borderRadius: '4px' }}>
@@ -12686,6 +12690,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                                   type: index === selectedUniverseArchive.allEnemies.length - 1 ? 'worldBoss' : 'menace'
                                 })}
                               </div>
+                              <CharacterWardrobe actor={{...enemy, universe: selectedUniverseArchive.universe}} lang={lang} readOnly />
                             </div>
                           </div>
                         );

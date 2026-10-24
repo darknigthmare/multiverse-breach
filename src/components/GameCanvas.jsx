@@ -1,3 +1,4 @@
+import { applyActorAppearance } from '../game/wardrobe.js';
 import { resolveSourceScene } from '../game/sourceSceneStages.js';
 import SourceScenePanel from './SourceScenePanel.jsx';
 import { drawSourceSceneBackdrop } from '../game/sourceScenePresentation.js';
@@ -236,9 +237,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [activeSynergies, setActiveSynergies] = useState([]);
   // HUD updates must not rebuild the entire multi-universe roster each frame.
   const HEROES_DB = useMemo(() => [createPlayerHero(playerProfile), ...BASE_HEROES_DB].map(hero => {
-    const skin = SKIN_CATALOG[heroSkins?.[hero.id]];
-    return skin ? { ...hero, ...skin.colors, activeSkin: skin } : hero;
-  }), [playerProfile, heroSkins]);
+    return applyActorAppearance(hero, heroSkins?.[hero.id], SKIN_CATALOG, {
+      sourceLocked: Boolean(stage.sourceSceneId || (stage.incarnation && stage.enemyRosterExclusive))
+    });
+  }), [playerProfile, heroSkins, stage.sourceSceneId, stage.incarnation, stage.enemyRosterExclusive]);
   const disabledHeroSet = new Set(disabledAssets.heroes || []);
   const disabledEnemySet = new Set(disabledAssets.enemies || []);
   const disabledGearSet = new Set(disabledAssets.gear || []);
