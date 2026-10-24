@@ -37,11 +37,11 @@ for (const entry of sourceEntries) {
 const load = relative => import(pathToFileURL(path.join(root, relative)).href);
 const [{HEROES_DB}, {ENEMIES_DB}, {createPlayerHero}, sprites, {CANON_ROSTER_WAVE},
   {getExpandedStages}, narrative, {OC_CAMPAIGN_MISSIONS}, {projectCharacterArcStage},
-  {projectUniverseArcDeploymentPhases}, {readStaticStages}] = await Promise.all([
+  {projectUniverseArcDeploymentPhases}, {readStaticStages}, {SOURCE_SCENE_STAGES}] = await Promise.all([
   load('src/game/heroes.js'), load('src/game/enemies.js'), load('src/game/playerHero.js'),
   load('src/game/spriteAssets.js'), load('src/game/canonRosterWave.js'), load('src/game/expandedUniverses.js'),
   load('src/game/narrativeSystems.js'), load('src/game/ocCampaign.js'), load('src/game/characterArcStage.js'),
-  load('src/game/missions/missionStageProjection.js'), load('scripts/riftDossierStaticStages.mjs')
+  load('src/game/missions/missionStageProjection.js'), load('scripts/riftDossierStaticStages.mjs'), load('src/game/sourceSceneStages.js')
 ]);
 const actors=[];
 const add = (actor,kind,index,universe) => actors.push({ ...actor, universe:actor.universe || universe,
@@ -58,6 +58,7 @@ const stages = [
   ...readStaticStages(fs.readFileSync(path.join(root,'src/components/HubScreen.jsx'),'utf8')),
   ...OC_CAMPAIGN_MISSIONS,
   ...getExpandedStages(),
+  ...SOURCE_SCENE_STAGES,
   ...narrative.FUSION_MISSIONS.map(m=>({id:m.stageId,name:m.title.en,universe:m.primaryUniverse,mode:m.mode})),
   ...narrative.CHARACTER_NARRATIVE_ARCS.map(projectCharacterArcStage),
   ...narrative.TRIO_NARRATIVE_ARCS.map(a=>({id:a.stageId,name:a.title.en,universe:a.universes[0],mode:a.mode})),

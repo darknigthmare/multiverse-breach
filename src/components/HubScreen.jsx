@@ -6,6 +6,7 @@ import sound from '../game/soundEngine';
 import { getProgressKeys, rollProgressCalendar } from '../game/progressCalendar.js';
 import { CORE_CODEX_ENTRIES, LORE_DB } from '../game/lore';
 import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
+import { SOURCE_SCENE_STAGES } from '../game/sourceSceneStages.js';
 import { CANON_PRIORITY_STAGES } from '../game/canonPriorityStages.js';
 import { isUniverseCombatMission } from '../game/missions/universeMissionCategory.js';
 import { getCanonicalEncounterBriefing } from '../game/canonEncounterBriefing.js';
@@ -5697,6 +5698,7 @@ export default function HubScreen({
   };
   insertBeforeMetaStage(BASE_OC_STAGES);
   insertBeforeMetaStage(getExpandedStages());
+insertBeforeMetaStage(SOURCE_SCENE_STAGES);
   insertBeforeMetaStage(FUSION_STAGES);
   insertBeforeMetaStage(UNIVERSE_ARC_STAGES);
   insertBeforeMetaStage(CHARACTER_STAGES);

@@ -1,3 +1,5 @@
+import { selectSourceSceneParticipants, createSourceSceneEncounter, executeSourceSceneCommand, advanceSourceScene, getSourceSceneState, getSourceSceneSummary, runSourceSceneAI } from './sourceSceneEncounter.js';
+import { drawSourceSceneBoard } from './sourceScenePresentation.js';
 import { canUseTacticsAttack, captureTacticsAttackCommitment } from './tacticsAttackCommitment.js';
 import { prepareTacticsHealing } from './tacticsSourceHealing.js';
 // FF Tactics / Metal Slug Tactics Grid Battle Engine with Obstacles & Synergies
@@ -139,7 +141,7 @@ export class EngineTactics {
     }
 
     // Convert heroes
-    this.heroes = heroes.map((h, idx) => ({
+    this.heroes = selectSourceSceneParticipants(stage, heroes).map((h, idx) => ({
       ...h,
       stats: { ...h.stats },
       gridX: this.battlefield.heroSpawns?.[idx]?.x ?? 0,
@@ -175,6 +177,7 @@ export class EngineTactics {
     this.isBossStage = this.singleRoster
       ? enemiesData.customRoster.some(enemy => enemy.isBoss || enemy.isWorldBoss)
       : (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
+    this.sourceScene = createSourceSceneEncounter(stage, this.heroes, enemiesData);
     this.initBoard();
     [...this.heroes, ...this.enemies].forEach(actor => {
       prepareStockMedic(actor, 'Tactics');
@@ -344,6 +347,8 @@ export class EngineTactics {
   }
 
   initBoard() {
+    // Source threats are environmental scene entities, not arbitrary enemy HP pools.
+    if (this.sourceScene) return;
     const monstersList = this.enemiesData.monsters;
     const bossesList = this.enemiesData.bosses;
     const worldBoss = this.enemiesData.worldBoss;
@@ -866,6 +871,7 @@ export class EngineTactics {
   }
 
   selectAction(actionType) {
+    if (this.sourceScene && !['guard','defense'].includes(actionType)) return false;
     if (actionType === 'rex_stinger') return this.selectRexStingerTarget();
     const isHumanTurn = this.activeUnitType === 'hero'
       || (this.opponentControl === 'p2' && this.activeUnitType === 'enemy');
@@ -1359,6 +1365,8 @@ export class EngineTactics {
   }
 
   canOccupyCell(unit, c, r) {
+    if (this.sourceScene?.definition.material === 'shuttle' && this.sourceScene.done.has('harness')
+      && unit === this.sourceScene.actor && (c !== unit.gridX || r !== unit.gridY)) return false;
     if (!unit || !this.isInsideGrid(c, r)) return false;
     if (!unit.tacticsFootprint) return !this.isCellOccupied(c, r, unit);
     if ((unit.tacticsFootprint.width || 1) > this.cols || (unit.tacticsFootprint.height || 1) > this.rows) return false;
@@ -1706,8 +1714,9 @@ export class EngineTactics {
       }
       this.playSfx('jump');
       
-      this.actionPhase = 'action';
-      this.selectedAction = 'simple';
+      this.actionPhase = this.sourceScene ? 'move' : 'action';
+      this.selectedAction = this.sourceScene ? null : 'simple';
+      if (this.sourceScene) this.calculateMovementRange();
       this.selectedActionExplicit = false;
       this.calculateAttackRange();
       return { handled: true, type: 'move', unit: this.activeUnit, x: c, y: r };
@@ -1869,6 +1878,7 @@ export class EngineTactics {
       this.completeBattle('defeat');
       return;
     }
+    if (this.sourceScene) { advanceSourceScene(this, advanceTurn); return; }
     if (this.objective === 'rex_weakpoints' && this.rexEncounter) {
       // Generic HP edits, hazards and special events cannot skip source targets.
       const rex = this.rexEncounter.body;
@@ -2040,6 +2050,7 @@ export class EngineTactics {
   }
 
   applyTacticsMissionPressure() {
+    if (this.sourceScene) return;
     if (this.gameOver || this.turnsElapsed <= 0) return;
     const { reinforcementEvery, hazardPulseEvery } = this.missionProfile;
     this.advanceEscortUnit();
@@ -2123,6 +2134,7 @@ export class EngineTactics {
   }
 
   applyTacticalBattleItem(pickup, _source = 'manual', triggerSide = this.activeUnitType) {
+    if (this.sourceScene) return false;
     if (!pickup || this.disposed || this.paused || this.gameOver) return false;
     const tier = pickup.tier || 'pickup';
     const effect = pickup.effect || {};
@@ -2555,6 +2567,7 @@ export class EngineTactics {
       }
       return;
     }
+    if (this.sourceScene) { runSourceSceneAI(this); return; }
     if (this.rexEncounter) { this.runRexHeroAI(); return; }
 
     const hero = this.activeUnit;
@@ -2776,6 +2789,10 @@ export class EngineTactics {
     }
     return false;
   }
+
+  getSourceSceneState() { return getSourceSceneState(this); }
+
+  triggerSourceSceneAction(id, turnToken) { return executeSourceSceneCommand(this, id, turnToken); }
 
   getRexEncounterState() {
     const encounter = this.rexEncounter;
@@ -3121,6 +3138,7 @@ export class EngineTactics {
 
   // Active Combat Event Item trigger
   triggerCombatEvent(effect) {
+    if (this.sourceScene) return false;
     if (this.disposed || this.paused || this.gameOver || typeof effect !== 'string' || !effect.trim()) return false;
     this.playSfx('special');
     this.particles.add(this.width/2, this.height/2, 0, 0, '#ffffff', 300, 30, 'glitch');
@@ -3386,7 +3404,7 @@ export class EngineTactics {
 
   draw(ctx, animTime) {
     const boardBounds = this.getBoardBounds();
-    if (!this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
+    if (!this.sourceScene && !this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
       ctx.save();
       this.tracePolygonPath(ctx, this.getBoardPolygon());
       ctx.clip();
@@ -3416,7 +3434,7 @@ export class EngineTactics {
       }
       ctx.restore();
     }
-    if (!this.generatedTilePattern && !this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
+    if (!this.sourceScene && !this.generatedTilePattern && !this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
       this.generatedTilePattern = getGeneratedStageTexturePattern(ctx, this.stage.universe, 'Tactics', 'tiles');
     }
     // 1. Draw Grid board
@@ -3447,6 +3465,7 @@ export class EngineTactics {
     }
 
     this.drawTacticsObjectiveZones(ctx, animTime);
+    drawSourceSceneBoard(ctx, this, animTime, drawPixelEnemy);
 
     const threatMap = this.getEnemyThreatMap();
     threatMap.forEach(cell => {
@@ -3855,6 +3874,10 @@ export class EngineTactics {
   }
 
   getObjectiveText(lang = 'fr') {
+    if (this.sourceScene) {
+      const s = this.sourceScene;
+      return `${lang === 'fr' ? 'Commandes de mission' : 'Mission commands'} ${s.done.size}/${this.objectiveTarget} · ${s.turns}/${s.definition.turnLimit}`;
+    }
     if (this.objective === 'rex_weakpoints' && this.rexEncounter) {
       if (this.rexEncounter.complete) return lang === 'en' ? 'Directive: REX disabled; Liquid survives' : 'Directive: REX désactivé ; Liquid survit';
       return this.rexEncounter.phase === 'radome'
@@ -3941,7 +3964,7 @@ export class EngineTactics {
       objectivePct,
       objectiveProgress: this.objectiveProgress,
       objectiveTarget: this.objectiveTarget,
-      sourceEncounter: getRexEncounterSummary(this.rexEncounter) || getScarabEncounterSummary(this.scarabEncounter),
+      sourceEncounter: getSourceSceneSummary(this.sourceScene) || getRexEncounterSummary(this.rexEncounter) || getScarabEncounterSummary(this.scarabEncounter),
       missionProfile: this.missionProfile,
       reinforcementsCalled: this.reinforcementsCalled,
       hazardPulses: this.hazardPulses,
