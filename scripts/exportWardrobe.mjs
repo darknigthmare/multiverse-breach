@@ -1,3 +1,4 @@
+import { UNBOUND_COSTUME_RESEARCH_R10 } from '../src/game/wardrobeOfficialR10.js';
 import { UNBOUND_COSTUME_RESEARCH_R7 } from '../src/game/wardrobeOfficialR7.js';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -19,11 +20,12 @@ for(const actor of actors){
   coverage.push({...base,...getWardrobeCoverage(actor),effectSelection:actor.kind==='hero'?'HERO_SHEET':'READ_ONLY_ARCHIVE',
     incarnation:actor.incarnation||'',visualAnchor:actor.visualAnchor||'',bodyFit:'REVIEW_REQUIRED'});
 }
-const summary={sourceBaseCommit,catalogueVersion:'R9',actors:actors.length,heroes:actors.filter(a=>a.kind==='hero').length,
+const unboundResearch=[...UNBOUND_COSTUME_RESEARCH_R7,...UNBOUND_COSTUME_RESEARCH_R10];
+const summary={sourceBaseCommit,catalogueVersion:'R10',actors:actors.length,heroes:actors.filter(a=>a.kind==='hero').length,
  officialDesigns:ALL_OFFICIAL_WARDROBE.length,officialActorBindings:official.length,actorsWithOfficial:coverage.filter(c=>c.official>0).length,
  actorsAwaitingOfficialResearch:coverage.filter(c=>!c.official).length,originalParametricBriefs:original.filter(c=>c.designMethod==='PARAMETRIC_BRIEF').length,
  characterSpecificBriefs:original.filter(c=>c.designMethod==='CHARACTER_SPECIFIC_BRIEF').length,researchTargets:research.length,
- unboundCostumeCandidates:UNBOUND_COSTUME_RESEARCH_R7.length,
+ unboundCostumeCandidates:unboundResearch.length,
  fullCostumeSheetsProduced:0,artisticApprovals:0,sharedGroundEffects:3,
  note:'Source-backed outfit inventory and original design briefs. Full costume artwork is pending; procedural effects are separate. This is not a complete official-costume census.'};
 for(const [name,value] of Object.entries({summary,coverage,official,original,research}))fs.writeFileSync(path.join(out,`${name}.json`),JSON.stringify(value,null,2)+'\n');
@@ -38,6 +40,6 @@ fs.writeFileSync(path.join(out,'coverage.csv'),csv(coverage,['actorKey','actorId
 fs.writeFileSync(path.join(out,'official.csv'),csv(official,['id','actorId','actorName','universe','name','sourceWork','sourceUrl','nature','artworkStatus','artApproval','equippable']));
 fs.writeFileSync(path.join(out,'personal-designs.csv'),csv(original.filter(c=>c.designMethod==='CHARACTER_SPECIFIC_BRIEF'),['id','actorId','actorName','universe','name','brief','artworkStatus','artApproval','equippable']));
 fs.writeFileSync(path.join(out,'research.csv'),csv(research,['entryId','actorName','universe','question','sourceUrl','status','officialConfirmed']));
-fs.writeFileSync(path.join(out,'unbound-costumes.json'),JSON.stringify(UNBOUND_COSTUME_RESEARCH_R7,null,2)+'\n');
-fs.writeFileSync(path.join(out,'unbound-costumes.csv'),csv(UNBOUND_COSTUME_RESEARCH_R7,['actorName','costume','universe','sourceWork','sourceUrl','sourceEvidence','status','equippable']));
+fs.writeFileSync(path.join(out,'unbound-costumes.json'),JSON.stringify(unboundResearch,null,2)+'\n');
+fs.writeFileSync(path.join(out,'unbound-costumes.csv'),csv(unboundResearch,['actorName','costume','universe','sourceWork','sourceUrl','sourceEvidence','status','equippable']));
 console.log(JSON.stringify(summary,null,2));

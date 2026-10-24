@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R10 } from './wardrobeOfficialR10.js';
 import { OFFICIAL_COSTUMES_R9, WARDROBE_RESEARCH_R9 } from './wardrobeOfficialR9.js';
 import { OFFICIAL_COSTUMES_R7 } from './wardrobeOfficialR7.js';
 import { OFFICIAL_WARDROBE } from './wardrobeOfficial.js';
@@ -6,7 +7,7 @@ import { OFFICIAL_COSTUME_EXTENSION, ORIGINAL_COLLECTION_EXTENSION, SIGNATURE_DE
 import { getCostumeProductionContract, assertUniqueWardrobeEntries } from './wardrobeProduction.js';
 
 const L = (fr,en) => Object.freeze({fr,en});
-export const WARDROBE_VERSION = 4;
+export const WARDROBE_VERSION = 5;
 // Persisted IDs deliberately remain wardrobe-v1: migration must not erase selections.
 export const WARDROBE_EFFECTS = Object.freeze([
   Object.freeze({key:'cyan',name:L('Résonance cyan','Cyan resonance'),color:'#39c5bb',shape:'ring'}),
@@ -30,7 +31,7 @@ export function isSafeWardrobeReference(value) {
     && ['store.steampowered.com','www.starwars.com','na.store.square-enix-games.com','www.halowaypoint.com'].includes(url.hostname);}
   catch {return false;}
 }
-export const ALL_OFFICIAL_WARDROBE = Object.freeze([...OFFICIAL_WARDROBE,...OFFICIAL_COSTUME_EXTENSION,...OFFICIAL_COSTUMES_R7,...OFFICIAL_COSTUMES_R9]);
+export const ALL_OFFICIAL_WARDROBE = Object.freeze([...OFFICIAL_WARDROBE,...OFFICIAL_COSTUME_EXTENSION,...OFFICIAL_COSTUMES_R7,...OFFICIAL_COSTUMES_R9,...OFFICIAL_COSTUMES_R10]);
 const officialByActor=new Map();
 for(const row of ALL_OFFICIAL_WARDROBE) {
   if(!isSafeWardrobeReference(row.sourceUrl))throw new Error(`Invalid wardrobe source ${row.key}`);

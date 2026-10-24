@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R10 } from '../src/game/wardrobeOfficialR10.js';
 import { OFFICIAL_COSTUMES_R9 } from '../src/game/wardrobeOfficialR9.js';
 import { OFFICIAL_COSTUMES_R7 } from '../src/game/wardrobeOfficialR7.js';
 import test from 'node:test';
@@ -77,5 +78,5 @@ test('effect unchanged and cannot cross identity or source scene',()=>{
 test('invalid colors are not copied',()=>{for(const color of ['#12345','#1234567','url(x)','red'])assert.equal(applyActorAppearance(leon,'x',{x:{colors:{primaryColor:color}}}).primaryColor,undefined);});
 test('valid CSS hex colors retained',()=>{for(const color of ['#abc','#abcd','#aabbcc','#aabbccdd'])assert.equal(applyActorAppearance(leon,'x',{x:{colors:{primaryColor:color}}}).primaryColor,color);});
 test('reference allowlist rejects suffix and credential tricks',()=>{for(const url of ['https://na.store.square-enix-games.com.evil.test/x','https://x:y@www.halowaypoint.com/','javascript:alert(1)'])assert.equal(isSafeWardrobeReference(url),false);});
-test('all official definitions kept in exportable registry',()=>assert.equal(ALL_OFFICIAL_WARDROBE.length,OFFICIAL_WARDROBE.length+OFFICIAL_COSTUME_EXTENSION.length+OFFICIAL_COSTUMES_R7.length+OFFICIAL_COSTUMES_R9.length));
+test('all official definitions kept in exportable registry',()=>assert.equal(ALL_OFFICIAL_WARDROBE.length,OFFICIAL_WARDROBE.length+OFFICIAL_COSTUME_EXTENSION.length+OFFICIAL_COSTUMES_R7.length+OFFICIAL_COSTUMES_R9.length+OFFICIAL_COSTUMES_R10.length));
 test('empty actor safe',()=>{assert.equal(wardrobeActorKey(null),'');assert.deepEqual(getWardrobeResearchTargets({}),[]);assert.equal(applyActorAppearance(leon,'x',null),leon);});

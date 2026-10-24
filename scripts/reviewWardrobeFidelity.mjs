@@ -1,7 +1,7 @@
 /** Read-only review assistant: hashes local PNG evidence; no network, save write or equip. */
 import fs from 'node:fs';
 import path from 'node:path';
-import {createHash} from 'node:crypto';
+import {inspectPngEvidence} from './pngEvidence.mjs';
 import {HEROES_DB} from '../src/game/heroes.js';
 import {getOfficialCostumes,getOriginalCostumes,wardrobeActorKey} from '../src/game/wardrobe.js';
 import {SPRITE_SHEET_META,getHeroSpriteSheetSrc,getSpriteSheetLayout} from '../src/game/spriteAssets.js';
@@ -38,12 +38,11 @@ if(options.template){
    if(!relative||relative.startsWith('..'+path.sep)||relative==='..'||path.isAbsolute(relative))throw new Error('Evidence escaped root');
    const stat=fs.statSync(resolved);if(!stat.isFile()||stat.size>25*1024*1024)throw new Error('Evidence must be a file <= 25 MiB');
    const bytes=fs.readFileSync(resolved);
-   if(bytes.length<45||bytes.subarray(0,8).toString('hex')!=='89504e470d0a1a0a'||bytes.subarray(12,16).toString()!=='IHDR'||!bytes.includes(Buffer.from('IEND')))throw new Error('PNG evidence header required');
-   inventory.set(file,{sha256:createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length,width:bytes.readUInt32BE(16),height:bytes.readUInt32BE(20)});
+   inventory.set(file,inspectPngEvidence(bytes));
   }catch(error){fileErrors.push({path:file,error:error.message});}
  }
  const result=assessCostumeFidelity(item,review,inventory,requirements);
  console.log(JSON.stringify({...result,requirements,fileErrors,verifiedFiles:inventory.size,
-  scope:'PNG header/dimensions/hash and record consistency only. Not full PNG decoding or artistic verification; FPS/kart require a separate review.'},null,2));
+  scope:'Static non-interlaced 8-bit PNG decoding, CRC and RGBA sample hashes; no color-profile conversion or artistic verification. Unsupported encodings require re-export; FPS/kart require separate review.'},null,2));
  process.exitCode=result.blockers.length||fileErrors.length?2:0;
 }

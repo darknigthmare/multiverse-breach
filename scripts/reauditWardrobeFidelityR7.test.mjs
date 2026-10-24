@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R10 } from '../src/game/wardrobeOfficialR10.js';
 import { OFFICIAL_COSTUMES_R9 } from '../src/game/wardrobeOfficialR9.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -9,7 +10,7 @@ const raiden=HEROES_DB.find(h=>h.id==='raiden_mgr');
 const entry=getOfficialCostumes(raiden).find(x=>x.key==='mgr-cyborg-ninja');
 function complete(){
   const inventory=new Map();let i=0;
-  const evidence=()=>{const path=`audit/costume/image-${++i}.png`,sha256=i.toString(16).padStart(64,'0');inventory.set(path,{sha256,bytes:200,width:512,height:512});return {path,sha256};};
+  const evidence=()=>{const path=`audit/costume/image-${++i}.png`,sha256=i.toString(16).padStart(64,'0');inventory.set(path,{sha256,pixelSha256:sha256,decoded:true,bytes:200,width:512,height:512});return {path,sha256};};
   const review={entryId:entry.id,actorKey:entry.actorKey,incarnation:'Revengeance Raiden — Cyborg Ninja skin',sourceWork:entry.sourceWork,reviewer:'Test reviewer',reviewedOn:'2026-10-24',scores:Object.fromEntries(criteria.map(c=>[c.key,c.max])),notes:Object.fromEntries(criteria.map(c=>[c.key,'Synthetic proof used only by unit tests.'])),references:views.map(view=>({view,sourceUrl:entry.sourceUrl,...evidence()})),sheet:evidence(),inGame:evidence(),checkedStates:['rpg:idle','tactics:attack','melee:shieldHold'].map(state=>({state,passed:true,notes:'Synthetic state check',...evidence()}))};
   return {review,inventory,requirements:{actorKey:entry.actorKey,asOf:'2026-10-24',states:review.checkedStates.map(x=>x.state)}};
 }
@@ -18,7 +19,7 @@ for(const row of OFFICIAL_COSTUMES_R7)test(`R7 exact actor and immutable moveset
  const item=getOfficialCostumes(actor).find(x=>x.key===row.key);assert.ok(item);assert.ok(item.visualSpec.fr&&item.visualSpec.en);
  assert.equal(item.equippable,false);assert.equal(applyActorAppearance(actor,item.id),actor);assert.equal(item.production.fidelityCriteria.length,10);
 });
-test('all 64 R7 definitions retained alongside the R9 extension',()=>assert.equal(ALL_OFFICIAL_WARDROBE.length,64+OFFICIAL_COSTUMES_R9.length));
+test('all 64 R7 definitions retained alongside the R9 extension',()=>assert.equal(ALL_OFFICIAL_WARDROBE.length,64+OFFICIAL_COSTUMES_R9.length+OFFICIAL_COSTUMES_R10.length));
 test('Raiden Cyborg Ninja is not rebound to Gray Fox or MGS2 Raiden',()=>{
  assert.equal(getOfficialCostumes({id:'gray_fox',universe:'Metal Gear'}).length,0);
  assert.equal(getOfficialCostumes({id:'raiden',universe:'Metal Gear'}).length,0);

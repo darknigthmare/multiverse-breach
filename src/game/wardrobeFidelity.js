@@ -24,10 +24,11 @@ export function isLocalEvidencePath(value) {
 function isImageEvidence(proof,inventory) {
   if(!proof || !isLocalEvidencePath(proof.path) || !sha256(proof.sha256))return false;
   const evidence=inventory.get(proof.path);
-  return evidence?.sha256===proof.sha256 && Number.isSafeInteger(evidence.bytes) && evidence.bytes>0
+  return evidence?.decoded===true && sha256(evidence.pixelSha256) && evidence.sha256===proof.sha256 && Number.isSafeInteger(evidence.bytes) && evidence.bytes>0
     && Number.isSafeInteger(evidence.width) && evidence.width>0
     && Number.isSafeInteger(evidence.height) && evidence.height>0;
 }
+const imageKey = (proof,inventory) => inventory.get(proof?.path)?.pixelSha256;
 const validDate = value => typeof value==='string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
   && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0,10)===value;
 /**
@@ -61,14 +62,14 @@ export function assessCostumeFidelity(entry,review={},inventory=new Map(),requir
     const reference=references.find(r=>r?.view===view);
     if(!isImageEvidence(reference,inventory))add(`REFERENCE_FILE_REQUIRED:${view}`);
     else {
-      if(proofIds.has(reference.sha256))add('REFERENCE_VIEWS_NOT_DISTINCT');
-      proofIds.add(reference.sha256);
+      if(proofIds.has(imageKey(reference,inventory)))add('REFERENCE_VIEWS_NOT_DISTINCT');
+      proofIds.add(imageKey(reference,inventory));
     }
     // Originals need a design sheet, not an unrelated official franchise page.
     if(entry?.origin==='OFFICIAL' && reference?.sourceUrl!==entry.sourceUrl)add(`REFERENCE_SOURCE_MISMATCH:${view}`);
   }
   if(!isImageEvidence(review.sheet,inventory))add('COSTUME_SHEET_REQUIRED');
-  if(proofIds.has(review.sheet?.sha256))add('SOURCE_IS_OUTPUT_SHEET');
+  if(proofIds.has(imageKey(review.sheet,inventory)))add('SOURCE_IS_OUTPUT_SHEET');
   const expected=Array.isArray(requirements.states)?requirements.states:[];
   if(!expected.length || !expected.every(nonempty) || new Set(expected).size!==expected.length)add('RUNTIME_STATES_REQUIRED');
   if(requirements.actorKey!==entry?.actorKey)add('RUNTIME_IDENTITY_MISMATCH');
@@ -76,10 +77,12 @@ export function assessCostumeFidelity(entry,review={},inventory=new Map(),requir
   for(const state of expected){
     const check=checked.find(s=>s?.state===state);
     if(!check || check.passed!==true || !nonempty(check.notes) || !isImageEvidence(check,inventory))add(`STATE_PROOF_REQUIRED:${state}`);
-    else if(check.path===review.sheet?.path || check.sha256===review.sheet?.sha256)add(`STATE_PROOF_IS_SHEET:${state}`);
+    else if(check.path===review.sheet?.path || imageKey(check,inventory)===imageKey(review.sheet,inventory))add(`STATE_PROOF_IS_SHEET:${state}`);
+    else if(proofIds.has(imageKey(check,inventory)))add(`STATE_PROOF_IS_REFERENCE:${state}`);
   }
   if(!isImageEvidence(review.inGame,inventory))add('IN_GAME_CAPTURE_REQUIRED');
-  else if(review.inGame.path===review.sheet?.path || review.inGame.sha256===review.sheet?.sha256)add('IN_GAME_CAPTURE_IS_SHEET');
+  else if(review.inGame.path===review.sheet?.path || imageKey(review.inGame,inventory)===imageKey(review.sheet,inventory))add('IN_GAME_CAPTURE_IS_SHEET');
+  else if(proofIds.has(imageKey(review.inGame,inventory)))add('IN_GAME_CAPTURE_IS_REFERENCE');
   const score=complete?Math.round(total*100)/100:null;
   const proposedAction=score===null?'A_AUDITER':score>=90?'GARDER_A_CONFIRMER':score>=80?'RETOUCHES':score>=65?'REFAIRE_PARTIEL':'REFAIRE';
   return {status:blockers.length?'EVIDENCE_INCOMPLETE':'READY_FOR_MANUAL_REVIEW',score,proposedAction,

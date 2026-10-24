@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R10 } from '../src/game/wardrobeOfficialR10.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { HEROES_DB } from '../src/game/heroes.js';
@@ -18,7 +19,7 @@ const all=getWardrobeUnlockCatalogue();
 const universes=[...new Set(actors.map(a=>a.universe))];
 const countByActor={lightning_ff13:14,sonic_hedgehog:4,horizon_zero_dawn_aloy:2,borderlands_2_salvador_gunzerking:4};
 test('R9 has 24 distinct variants with exact names, not packs counted as costumes',()=>{
- assert.equal(OFFICIAL_COSTUMES_R9.length,24);assert.equal(ALL_OFFICIAL_WARDROBE.length,88);
+ assert.equal(OFFICIAL_COSTUMES_R9.length,24);assert.equal(ALL_OFFICIAL_WARDROBE.length,88+OFFICIAL_COSTUMES_R10.length);
  assert.equal(new Set(OFFICIAL_COSTUMES_R9.map(r=>r.key)).size,24);
  for(const [id,count] of Object.entries(countByActor))assert.equal(OFFICIAL_COSTUMES_R9.filter(r=>r.actorIds.includes(id)).length,count);
 });
@@ -40,7 +41,7 @@ test('R5 to R7 designs and saved identifiers are all retained',()=>{
   const actor=byKey.get(wardrobeActorKey({id,universe:r.universe}));assert.ok(actor);
   assert.ok(getOfficialCostumes(actor).some(e=>e.key===r.key));
  }
- assert.equal(all.length,19895);assert.equal(all.filter(e=>e.origin==='OFFICIAL').length,91);
+ assert.equal(all.length,19895+OFFICIAL_COSTUMES_R10.length);assert.equal(all.filter(e=>e.origin==='OFFICIAL').length,91+OFFICIAL_COSTUMES_R10.length);
 });
 test('Lightning crossover garbs never become Cloud or Lara rewards',()=>{
  for(const id of ['cloud_ff7','lara_croft_tr'])assert.ok(!getOfficialCostumes(actors.find(a=>a.id===id)).some(e=>e.key.startsWith('lr-')));

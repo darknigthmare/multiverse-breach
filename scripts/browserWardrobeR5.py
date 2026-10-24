@@ -14,10 +14,10 @@ with sync_playwright() as p:
   root=page.locator('.character-wardrobe').first
   root.locator(':scope > summary').click()
   page.get_by_role('button',name='Officiels' if lang=='fr' else 'Official',exact=False).click()
-  assert root.locator('article').count()==7
+  assert root.locator('article').count()==8
   assert root.get_by_role('button',name='Équiper l’effet' if lang=='fr' else 'Equip effect').count()==0
-  refs=root.locator('article a');assert refs.count()==7
-  assert all('https://store.steampowered.com/' in refs.nth(i).get_attribute('href') for i in range(7))
+  refs=root.locator('article a');assert refs.count()==8
+  assert all('https://store.steampowered.com/' in refs.nth(i).get_attribute('href') for i in range(8))
   # R6: search is accent-insensitive and nested production details must not close the wardrobe.
   root.get_by_role('searchbox').fill('sherif')
   assert root.locator('article').count()==1
