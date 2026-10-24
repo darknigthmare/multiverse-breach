@@ -18,8 +18,17 @@ with sync_playwright() as p:
   assert root.get_by_role('button',name='Équiper l’effet' if lang=='fr' else 'Equip effect').count()==0
   refs=root.locator('article a');assert refs.count()==7
   assert all('https://store.steampowered.com/' in refs.nth(i).get_attribute('href') for i in range(7))
+  # R6: search is accent-insensitive and nested production details must not close the wardrobe.
+  root.get_by_role('searchbox').fill('sherif')
+  assert root.locator('article').count()==1
+  root.locator('article details > summary').first.click()
+  assert root.evaluate('e=>e.open')
+  assert root.locator('article li').count()==5
+  root.get_by_role('searchbox').fill('')
   root.get_by_role('button',name='Créations Nexus' if lang=='fr' else 'Nexus concepts').click()
-  assert root.locator('article').count()==4
+  assert root.locator('article').count()==5
+  root.get_by_role('searchbox').fill('commando')
+  assert root.locator('article').count()==1
   root.get_by_role('button',name='Effets disponibles' if lang=='fr' else 'Available effects').click()
   root.get_by_role('button',name='Équiper l’effet' if lang=='fr' else 'Equip effect',exact=True).first.click()
   page.wait_for_function('window.__wardrobeProbe?.effect?.endsWith("effect-cyan")')

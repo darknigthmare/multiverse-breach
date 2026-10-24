@@ -12,7 +12,7 @@ test('names never fuzzy-resolve a different actor',()=>assert.equal(getOfficialC
 test('pending outfit cannot be equipped from a forged save',()=>assert.equal(applyActorAppearance(leon,official[0].id),leon));
 test('pending original also cannot be equipped',()=>assert.equal(applyActorAppearance(leon,getOriginalCostumes(leon)[0].id),leon));
 test('original briefs carry a morphology gate and no art approval',()=>{for(const row of getOriginalCostumes(leon)){assert.equal(row.fitStatus,'MORPHOLOGY_REVIEW_REQUIRED');assert.equal(row.equippable,false);}});
-test('shared collection plus bespoke Leon brief',()=>{const rows=getOriginalCostumes(leon);assert.equal(rows.length,4);assert.equal(rows.at(-1).designMethod,'CHARACTER_SPECIFIC_BRIEF');});
+test('shared collection plus bespoke Leon brief',()=>{const rows=getOriginalCostumes(leon);assert.equal(rows.length,5);assert.equal(rows.at(-1).designMethod,'CHARACTER_SPECIFIC_BRIEF');});
 test('effects available without claiming an outfit',()=>{assert.equal(effects.length,3);assert.ok(effects.every(e=>e.nature==='procedural-effect'));});
 test('effects preserve stats and moveset objects by identity',()=>{const changed=applyActorAppearance(leon,effects[0].id);assert.equal(changed.stats,leon.stats);assert.equal(changed.special,leon.special);assert.equal(changed.id,leon.id);assert.equal(changed.name,leon.name);assert.equal(changed.primaryColor,leon.primaryColor);assert.equal(changed.wardrobeEffect,effects[0].id);assert.equal(leon.wardrobeEffect,undefined);});
 test('effect cannot cross characters',()=>assert.equal(applyActorAppearance({...leon,id:'jill'},effects[0].id).wardrobeEffect,undefined));
@@ -25,7 +25,7 @@ test('legacy hero ownership respected',()=>assert.equal(applyActorAppearance(leo
 test('legacy universe ownership respected',()=>assert.equal(applyActorAppearance(leon,'old',{old:{universe:'Halo',colors:{primaryColor:'#fff'}}}),leon));
 test('unresearched does not claim no official outfit exists',()=>assert.equal(getWardrobeCoverage({...leon,id:'unknown'}).sourceResearch,'NOT_RESEARCHED'));
 test('costume research and completion counts remain separate',()=>{const r=getWardrobeCoverage(leon);assert.ok(r.official>0);assert.equal(r.completedCostumes,0);assert.equal(r.artApproved,false);});
-test('actor naming fallback only within its universe',()=>{const a={name:'Queen',universe:'Alien'},b={name:'Queen',universe:'Other'};assert.notEqual(wardrobeActorKey(a),wardrobeActorKey(b));assert.equal(getOriginalCostumes(a).length,3);});
+test('actor naming fallback only within its universe',()=>{const a={name:'Queen',universe:'Alien'},b={name:'Queen',universe:'Other'};assert.notEqual(wardrobeActorKey(a),wardrobeActorKey(b));assert.equal(getOriginalCostumes(a).length,4);});
 test('renaming player anchor does not invalidate appearance',()=>assert.equal(wardrobeEntryId({...leon,id:'player_anchor',name:'A'},'effect-cyan'),wardrobeEntryId({...leon,id:'player_anchor',name:'B'},'effect-cyan')));
 test('malformed actor gets no entries',()=>{assert.equal(wardrobeActorKey({id:'x'}),'');assert.equal(getOriginalCostumes(null).length,0);assert.equal(getWardrobeEffects({}).length,0);});
 test('selection status distinguishes pending graphics',()=>assert.equal(wardrobeSelectionStatus(leon,official[0].id),'ASSET_PENDING'));

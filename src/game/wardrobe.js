@@ -1,15 +1,17 @@
 import { OFFICIAL_WARDROBE } from './wardrobeOfficial.js';
 import { ORIGINAL_COLLECTIONS, SIGNATURE_DESIGNS } from './wardrobeOriginals.js';
+import { OFFICIAL_COSTUME_EXTENSION, ORIGINAL_COLLECTION_EXTENSION, SIGNATURE_DESIGN_EXTENSION, WARDROBE_RESEARCH_TARGETS } from './wardrobeExpansion.js';
+import { getCostumeProductionContract, assertUniqueWardrobeEntries } from './wardrobeProduction.js';
 
 const L = (fr,en) => Object.freeze({fr,en});
-export const WARDROBE_VERSION = 1;
+export const WARDROBE_VERSION = 2;
+// Persisted IDs deliberately remain wardrobe-v1: migration must not erase selections.
 export const WARDROBE_EFFECTS = Object.freeze([
   Object.freeze({key:'cyan',name:L('Résonance cyan','Cyan resonance'),color:'#39c5bb',shape:'ring'}),
   Object.freeze({key:'amber',name:L('Balise d’expédition','Expedition beacon'),color:'#eab667',shape:'beacon'}),
   Object.freeze({key:'violet',name:L('Sceau nocturne','Nocturne seal'),color:'#b89ce6',shape:'seal'})
 ]);
 const effectByKey = new Map(WARDROBE_EFFECTS.map(e=>[e.key,e]));
-// An ID alone is insufficient: two franchises can reuse it. No fuzzy names or translation guesses.
 export function wardrobeActorKey(actor) {
   if (!actor || typeof actor.universe!=='string' || !actor.universe.trim()) return '';
   const ident = typeof actor.id==='string' && actor.id.trim() ? `id:${actor.id}`
@@ -23,21 +25,32 @@ export function wardrobeEntryId(actor, localKey) {
 }
 export function isSafeWardrobeReference(value) {
   try {const url=new URL(value); return url.protocol==='https:' && !url.username && !url.password
-    && ['store.steampowered.com','www.starwars.com'].includes(url.hostname);}
+    && ['store.steampowered.com','www.starwars.com','na.store.square-enix-games.com','www.halowaypoint.com'].includes(url.hostname);}
   catch {return false;}
 }
+export const ALL_OFFICIAL_WARDROBE = Object.freeze([...OFFICIAL_WARDROBE,...OFFICIAL_COSTUME_EXTENSION]);
 const officialByActor=new Map();
-for(const row of OFFICIAL_WARDROBE) {
+for(const row of ALL_OFFICIAL_WARDROBE) {
   if(!isSafeWardrobeReference(row.sourceUrl))throw new Error(`Invalid wardrobe source ${row.key}`);
   for(const id of row.actorIds) {
     const key=wardrobeActorKey({id,universe:row.universe});
-    officialByActor.set(key,[...(officialByActor.get(key)||[]),row]);
+    const rows=officialByActor.get(key)||[];
+    if(rows.some(c=>c.key===row.key))throw new Error(`Duplicate official outfit ${row.key}`);
+    officialByActor.set(key,[...rows,row]);
   }
 }
 const bespokeByActor=new Map(SIGNATURE_DESIGNS.map(row=>[wardrobeActorKey(row),row]));
+const extraByActor=new Map();
+for(const row of SIGNATURE_DESIGN_EXTENSION){
+  const key=wardrobeActorKey(row);
+  const rows=extraByActor.get(key)||[];
+  if(rows.some(c=>c.key===row.key))throw new Error(`Duplicate original outfit ${row.key}`);
+  extraByActor.set(key,[...rows,row]);
+}
+const withProduction = row => ({...row,production:getCostumeProductionContract(row)});
 export function getOfficialCostumes(actor) {
   const key=wardrobeActorKey(actor);
-  return (officialByActor.get(key)||[]).map(row=>({...row,id:wardrobeEntryId(actor,row.key),actorKey:key,
+  return (officialByActor.get(key)||[]).map(row=>withProduction({...row,id:wardrobeEntryId(actor,row.key),actorKey:key,
     origin:'OFFICIAL',sourceScope:'DOCUMENTED_EXISTENCE_NOT_VISUAL_APPROVAL',
     fitStatus:'INCARNATION_AND_ART_REVIEW_REQUIRED', colors:{}}));
 }
@@ -49,12 +62,20 @@ export function getOriginalCostumes(actor) {
     sourceAnchor:anchor,sourceUrl:'',colors:{},
     identityRule:L('Même identité, espèce, âge, proportions et capacités. Si la fiche représente un objet ou une épreuve, concevoir une finition adaptée, pas des habits humains.',
       'Same identity, species, age, proportions and abilities. When the record is an object or trial, design an appropriate surface treatment, not human clothing.')};
-  const rows=ORIGINAL_COLLECTIONS.map(c=>({...base,id:wardrobeEntryId(actor,`original-${c.key}`),key:c.key,
+  const rows=[...ORIGINAL_COLLECTIONS,...ORIGINAL_COLLECTION_EXTENSION].map(c=>({...base,id:wardrobeEntryId(actor,`original-${c.key}`),key:c.key,
     name:c.name,brief:c.brief,designMethod:'PARAMETRIC_BRIEF',collection:c.key}));
   const signature=bespokeByActor.get(key);
   if(signature) rows.push({...base,id:wardrobeEntryId(actor,'original-signature'),key:'signature',name:signature.name,
     brief:signature.brief,designMethod:'CHARACTER_SPECIFIC_BRIEF',collection:'signature'});
-  return rows;
+  for(const design of extraByActor.get(key)||[])rows.push({...base,id:wardrobeEntryId(actor,`original-personal-${design.key}`),
+    key:design.key,name:design.name,brief:design.brief,designMethod:'CHARACTER_SPECIFIC_BRIEF',collection:'personal'});
+  assertUniqueWardrobeEntries(rows);
+  return rows.map(withProduction);
+}
+export function getWardrobeResearchTargets(actor) {
+  const actorKey=wardrobeActorKey(actor); if(!actorKey)return [];
+  return WARDROBE_RESEARCH_TARGETS.filter(row=>wardrobeActorKey(row)===actorKey).map(row=>({...row,
+    actorKey,entryId:wardrobeEntryId(actor,`research-${row.key}`),equippable:false,officialConfirmed:false}));
 }
 export function getWardrobeEffects(actor) {
   const actorKey=wardrobeActorKey(actor); if(!actorKey)return [];
@@ -67,32 +88,28 @@ export function getWardrobeCoverage(actor) {
   const official=getOfficialCostumes(actor),original=getOriginalCostumes(actor);
   return {actorKey:wardrobeActorKey(actor),official:official.length,originalConcepts:original.length,
     sourceResearch:official.length?'PARTIAL_DOCUMENTED':'NOT_RESEARCHED',
-    // Absence from this first wave NEVER asserts that no official alternative exists.
+    researchTargets:getWardrobeResearchTargets(actor).length,
     completedCostumes:0,availableEffects:wardrobeActorKey(actor)?WARDROBE_EFFECTS.length:0,artApproved:false};
 }
 export function resolveWardrobeEffect(actor, selectedId) {
   if(typeof selectedId!=='string')return null;
   const prefix=wardrobeEntryId(actor,'effect-');
-  // Build from an exact actor key, never decode or trust arbitrary saved metadata.
   if(!prefix || !selectedId.startsWith(prefix))return null;
   return effectByKey.get(selectedId.slice(prefix.length)) || null;
 }
-// Only cosmetic color keys can cross the legacy bridge. No stats, identity, source or abilities.
 const LEGACY_COLOR_KEYS=['primaryColor','secondaryColor','weaponColor','color'];
 export function applyActorAppearance(actor,selectedId,legacyCatalog={},options={}) {
   if(!actor || !wardrobeActorKey(actor))return actor;
-  // Call on base catalogue actors, not on a previously tinted actor.
   if(!selectedId || selectedId==='default' || options.sourceLocked)return actor;
   const effect=resolveWardrobeEffect(actor,selectedId);
   if(effect)return {...actor,wardrobeEffect:selectedId,activeSkin:{id:selectedId,name:effect.name,colors:{},
     kind:'procedural-effect',canonical:false}};
-  // Pending official costumes and plans cannot borrow the origin sprite and pretend to be equipped.
   if(typeof selectedId!=='string' || selectedId.startsWith('wardrobe-v1:'))return actor;
-  if(!Object.hasOwn(legacyCatalog,selectedId))return actor;
+  if(!legacyCatalog || !Object.hasOwn(legacyCatalog,selectedId))return actor;
   const skin=legacyCatalog[selectedId];
   if(!skin || (skin.heroId && skin.heroId!==actor.id) || (skin.universe && skin.universe!==actor.universe))return actor;
   const colors={};
-  for(const key of LEGACY_COLOR_KEYS) if(typeof skin.colors?.[key]==='string' && /^#[a-f0-9]{3,8}$/i.test(skin.colors[key]))colors[key]=skin.colors[key];
+  for(const key of LEGACY_COLOR_KEYS) if(typeof skin.colors?.[key]==='string' && /^#(?:[a-f0-9]{3,4}|[a-f0-9]{6}|[a-f0-9]{8})$/i.test(skin.colors[key]))colors[key]=skin.colors[key];
   return {...actor,...colors,activeSkin:skin};
 }
 export function wardrobeSelectionStatus(actor,selectedId) {
