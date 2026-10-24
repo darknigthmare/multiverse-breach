@@ -1,0 +1,66 @@
+name: Audit workbook snapshot
+on:
+  push:
+    branches: [codex/audit-fidelite-excels-2026-10-24]
+    paths: [.github/workflows/audit-workbook-snapshot.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Collect exact source tree, existing spreadsheets and production evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, concurrent.futures, hashlib, json, os, pathlib, urllib.request
+          repo='darknigthmare/multiverse-breach'
+          sha='5f44cf344d1a9fbb0dbd7c899510b7dd16cf25d6'
+          root=pathlib.Path('/tmp/audit-snapshot');root.mkdir()
+          def api(path):
+              req=urllib.request.Request('https://api.github.com/repos/'+repo+'/'+path,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'Multiverse-Workbook-Audit'})
+              with urllib.request.urlopen(req,timeout=60) as r:return json.load(r)
+          commit=api('git/commits/'+sha)
+          tree=api('git/trees/'+commit['tree']['sha']+'?recursive=1')
+          if tree.get('truncated'):raise RuntimeError('Refuse incomplete Git tree')
+          (root/'commit.json').write_text(json.dumps(commit,ensure_ascii=False))
+          (root/'tree.json').write_text(json.dumps(tree,ensure_ascii=False))
+          selected=[]
+          for e in tree['tree']:
+              p=e['path']
+              if e['type']!='blob':continue
+              keep=(p.startswith('src/') and p.endswith(('.js','.jsx','.json','.css')))
+              keep=keep or p in ('package.json','src/game/originalUniversesManifest.json','docs/rift-dossiers/catalog.json','docs/rift-dossiers/character-reference-quality.json')
+              keep=keep or (p.startswith('scripts/') and p.endswith(('.mjs','.py')) and any(t in p.lower() for t in ('sprite','characterreference','signature','stage','catalog','npc','audit')))
+              keep=keep or (p.startswith('public/sprites/generated/') and p.endswith(('.json','.jsonl')) and any(t in p.lower() for t in ('manifest','provenance')))
+              keep=keep or (p.startswith('docs/openai-generation-prompts-2026-08-25/') and p.endswith('.json') and 'wave-4' in p)
+              keep=keep or (p.startswith('docs/audits/') and p.endswith(('.md','.json','.csv','.xlsx')))
+              keep=keep or p.lower().endswith(('.xlsx','.xls','.ods'))
+              if keep:selected.append(e)
+          def download(e):
+              p=e['path'];target=root/'source'/p;target.parent.mkdir(parents=True,exist_ok=True)
+              url='https://raw.githubusercontent.com/'+repo+'/'+sha+'/'+urllib.parse.quote(p)
+              with urllib.request.urlopen(url,timeout=90) as r:data=r.read()
+              gitsha=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+              if gitsha!=e['sha']:raise RuntimeError('Blob mismatch '+p)
+              target.write_bytes(data)
+              return {'path':p,'bytes':len(data),'gitBlob':gitsha,'sha256':hashlib.sha256(data).hexdigest()}
+          with concurrent.futures.ThreadPoolExecutor(max_workers=10) as pool:manifest=list(pool.map(download,selected))
+          (root/'source-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
+          (root/'excel-manifest.json').write_text(json.dumps([e for e in tree['tree'] if e['type']=='blob' and e['path'].lower().endswith(('.xlsx','.xls','.ods'))],indent=2))
+          live=[]
+          for p in ('/','/build-info.json'):
+              url='https://multiverse-breach.vercel.app'+p
+              with urllib.request.urlopen(url,timeout=60) as r:
+                  data=r.read();live.append({'url':url,'status':r.status,'contentType':r.headers.get('Content-Type'),'sha256':hashlib.sha256(data).hexdigest(),'body':data.decode('utf-8')})
+          (root/'production-http.json').write_text(json.dumps(live,ensure_ascii=False,indent=2))
+          print(json.dumps({'commit':sha,'tree':commit['tree']['sha'],'files':len(manifest),'spreadsheets':sum(e['path'].lower().endswith(('.xlsx','.xls','.ods')) for e in manifest)}))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: audit-workbook-source-2026-10-24
+          path: /tmp/audit-snapshot/
+          retention-days: 7
