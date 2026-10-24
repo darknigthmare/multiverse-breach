@@ -44,6 +44,7 @@ export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readO
         {item.sourceWork && <p>{item.sourceWork}</p>}
         {item.nature==='official-palette' && <p>{fr?'Variante officielle de couleurs, pas une nouvelle tenue.':'Official color variant, not a new outfit.'}</p>}
         {item.nature==='official-hairstyle' && <p>{fr?'Coiffure uniquement, pas une tenue complète.':'Hairstyle only, not a full outfit.'}</p>}
+        {item.nature==='official-model' && <p>{fr?'Modèle alternatif officiel : le porteur et ses capacités restent inchangés.':'Official alternate model: the wearer and abilities remain unchanged.'}</p>}
         {item.nature==='official-accessory' && <p>{fr?'Accessoire uniquement.':'Accessory only.'}</p>}
         {item.brief && <p>{item.brief[l]}</p>}
         {item.visualSpec && <p>{item.visualSpec[l]}</p>}
@@ -56,6 +57,8 @@ export function WardrobeContents({actor,lang='fr',selectedId=null,onSelect,readO
           <p>{item.production.focus[l]}</p>
           <ol>{item.production.tasks.map(t=><li key={t.key}>{t.name[l]} — {fr?'à faire':'to do'}</li>)}</ol>
           <p>{item.production.acceptance[l]}</p>
+          <p>{item.production.proofRule[l]}</p>
+          <dl>{item.production.fidelityCriteria.map(c=><React.Fragment key={c.key}><dt>{c.name[l]}</dt><dd>{c.max} {fr?'points — non noté':'points — not scored'}</dd></React.Fragment>)}</dl>
         </details>}
         {item.equippable && !readOnly && onSelect
           ? <button type="button" aria-pressed={selectedId===item.id} onClick={()=>{

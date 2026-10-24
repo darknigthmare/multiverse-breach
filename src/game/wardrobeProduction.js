@@ -1,3 +1,4 @@
+import { COSTUME_FIDELITY_CRITERIA, COSTUME_REFERENCE_VIEWS } from './wardrobeFidelity.js';
 // Production guidance, not a sprite generator or an automatic art approval system.
 const L = (fr, en) => Object.freeze({fr, en});
 const task = (key, fr, en) => Object.freeze({key, name:L(fr,en), status:'TODO'});
@@ -20,6 +21,9 @@ export function getCostumeProductionContract(item) {
     identityScope:item.actorKey || '', sourceWork:item.sourceWork || '',
     sourceUrl:item.sourceUrl || '',focus,
     tasks:common.map(t=>({...t})),
+    fidelityCriteria:COSTUME_FIDELITY_CRITERIA,requiredReferenceViews:COSTUME_REFERENCE_VIEWS,
+    proofRule:L('Un score seul ne valide jamais une tenue : références et planches identifiées par empreinte, poses requises et captures en jeu sont nécessaires.',
+      'A score alone never approves an outfit: hashed references and sheets, required poses and in-game captures are needed.'),
     acceptance:L('Silhouette, tête, vêtements, couleurs, marquages, équipement, gestuelle, identité et lisibilité à vérifier. Les animations requises viennent du moteur, pas d’un nombre de cellules supposé.',
       'Check silhouette, head, clothes, colors, markings, equipment, gestures, identity and readability. Required animations come from the engine, not an assumed cell count.')};
 }
