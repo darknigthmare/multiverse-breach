@@ -1,3 +1,4 @@
+import { FIGHTER_RANGED_SIGNATURE_KEYS } from './fighterRangedSignatures.js';
 import { FIGHTER_MELEE_SIGNATURE_KEYS } from './fighterMeleeSignatures.js';
 import { prepareSourceSignature } from './signatureSourceKits.js';
 
@@ -77,7 +78,10 @@ export function getSignatureSummary(codex, lang = 'fr') {
   const fighterMelee = FIGHTER_MELEE_SIGNATURE_KEYS.includes(codex.key) ? (fr
     ? ` Fighter : ${codex.hits} contact(s) à courte portée sur l’adversaire actif confirmé, sans toucher les réservistes. La puissance totale est répartie entre les contacts ; sortie de portée, esquive et garde restent applicables. Préparation et récupération adaptées à ce mode.`
     : ` Fighter: ${codex.hits} close-range contact(s) against the confirmed active opponent, never reserves. The total damage budget is split between contacts; moving out of reach, dodging and guarding still apply. Windup and recovery are adapted to this mode.`) : '';
-  return `${prefix} : ${codex.name}. ${stock || healing ? cost.split(' Tactics')[0] : cost}${adaptation}${healing}${fighterMelee} ${limit}`;
+  const fighterRanged = FIGHTER_RANGED_SIGNATURE_KEYS.includes(codex.key) ? (fr
+    ? ` Fighter : ${codex.hits} impact(s) à distance sur l’adversaire actif confirmé, jamais les réservistes. Portée ${codex.minRange || 0}–${codex.range} unités de jeu, hauteur et direction revérifiées à chaque impact. Budget total réparti ; garde et esquive conservées. Tirs/faisceaux directs adaptés : pas de projectile autonome, de poursuite ou de dégâts garantis hors portée.`
+    : ` Fighter: ${codex.hits} ranged impact(s) against the confirmed active opponent, never reserves. Range ${codex.minRange || 0}–${codex.range} game units, height and direction checked again at each impact. Shared total budget; guarding and evasion remain effective. Adapted direct shots/beams: no autonomous projectile, homing or guaranteed off-range damage.`) : '';
+  return `${prefix} : ${codex.name}. ${stock || healing ? cost.split(' Tactics')[0] : cost}${adaptation}${healing}${fighterMelee}${fighterRanged} ${limit}`;
 }
 
 /** Booster candidates carry their exact underlying hero; names are not keys. */

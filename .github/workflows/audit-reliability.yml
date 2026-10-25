@@ -56,9 +56,9 @@ jobs:
       - name: Lint reaudit changes
         run: >-
           node node_modules/oxlint/bin/oxlint --max-warnings 0
-          src/game/tacticsAttackCommitment.js scripts/fixtures/tacticsAttackHarness.jsx src/game/tacticsSourceHealing.js scripts/fixtures/tacticsHealingHarness.jsx src/game/stockMedicModes.js src/game/fighterHealing.js src/game/fighterMeleeSignatures.js src/game/combatActivity.js src/game/rpgActionEconomy.js src/game/rpgActionCommitment.js
+          src/game/tacticsAttackCommitment.js scripts/fixtures/tacticsAttackHarness.jsx src/game/tacticsSourceHealing.js scripts/fixtures/tacticsHealingHarness.jsx src/game/stockMedicModes.js src/game/fighterHealing.js src/game/fighterMeleeSignatures.js src/game/fighterRangedSignatures.js src/game/combatActivity.js src/game/rpgActionEconomy.js src/game/rpgActionCommitment.js
           src/game/engineFighter.js src/game/fighterControlOwnership.js src/game/originalUniverseProduction.js src/components/BuildIdentity.jsx
-          src/components/FighterMode.jsx scripts/fixtures/fighterLifecycleHarness.jsx scripts/fixtures/fighterMeleeHarness.jsx
+          src/components/FighterMode.jsx scripts/fixtures/fighterLifecycleHarness.jsx scripts/fixtures/fighterMeleeHarness.jsx scripts/fixtures/fighterRangedHarness.jsx
           src/components/TacticsSupportPanel.jsx scripts/reaudit*.test.mjs scripts/tacticsFacingRuntime.test.mjs
           scripts/buildIdentity.mjs scripts/progressionAudit.mjs vite.config.js
       - name: Lint changed modules and tests
@@ -101,6 +101,7 @@ jobs:
           /tmp/multiverse-playwright/bin/python scripts/browserTacticsAttack.py --evidence /tmp/reliability-evidence/tactics-attack-browser | tee /tmp/reliability-evidence/tactics-attack-browser.log
           /tmp/multiverse-playwright/bin/python scripts/browserFighterHealing.py --evidence /tmp/reliability-evidence/fighter-healing-browser | tee /tmp/reliability-evidence/fighter-healing-browser.log
           /tmp/multiverse-playwright/bin/python scripts/browserFighterMelee.py --evidence /tmp/reliability-evidence/fighter-melee-browser | tee /tmp/reliability-evidence/fighter-melee-browser.log
+          /tmp/multiverse-playwright/bin/python scripts/browserFighterRanged.py --evidence /tmp/reliability-evidence/fighter-ranged-browser | tee /tmp/reliability-evidence/fighter-ranged-browser.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
