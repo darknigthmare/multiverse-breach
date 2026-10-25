@@ -3,14 +3,12 @@ on:
   push:
     branches: [codex/costumes-fidelite-r14-2026-10-25]
   pull_request:
-    paths:
-      - 'src/game/wardrobe*.js'
-      - 'src/components/CharacterWardrobe*'
-      - 'scripts/*Wardrobe*.mjs'
-      - 'scripts/wardrobe*.mjs'
-      - '.github/workflows/wardrobe-regression.yml'
+    paths: ['src/game/wardrobe*.js', 'src/components/CharacterWardrobe*', 'scripts/*Wardrobe*.mjs', 'scripts/wardrobe*.mjs', '.github/workflows/wardrobe-regression.yml']
 permissions:
   contents: read
+concurrency:
+  group: wardrobe-${{ github.event.pull_request.head.ref || github.ref }}
+  cancel-in-progress: true
 jobs:
   wardrobe:
     runs-on: ubuntu-latest
@@ -31,23 +29,19 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
-      - name: Archive exact source and Git tree for reproducible review
+      - name: Archive exact source without downloading bitmap blobs
         run: |
           mkdir -p /tmp/wardrobe-review
           python - <<'PY'
           import hashlib,json,pathlib,subprocess,zipfile
-          root=pathlib.Path.cwd()
+          root=pathlib.Path.cwd();out=pathlib.Path('/tmp/wardrobe-review')
           sha=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
           rows=[]
-          raw=subprocess.check_output(['git','ls-tree','-r','-l','-z','HEAD'])
-          for line in raw.split(b'\0'):
+          for line in subprocess.check_output(['git','ls-tree','-r','-z','HEAD']).split(b'\0'):
               if not line: continue
-              head,name=line.split(b'\t',1)
-              mode,kind,oid,size=head.decode().split()
-              if kind=='blob': rows.append({'path':name.decode(),'sha':oid,'size':int(size),'type':kind})
-          out=pathlib.Path('/tmp/wardrobe-review')
-          tree={'sha':sha,'truncated':False,'tree':rows}
-          (out/'source-tree.json').write_text(json.dumps(tree))
+              head,name=line.split(b'\t',1);mode,kind,oid=head.decode().split()
+              if kind=='blob': rows.append({'path':name.decode(),'sha':oid,'type':kind})
+          (out/'source-tree.json').write_text(json.dumps({'sha':sha,'truncated':False,'tree':rows}))
           with zipfile.ZipFile(out/'source-snapshot.zip','w',zipfile.ZIP_DEFLATED) as z:
               manifest=[]
               for e in rows:
@@ -56,11 +50,17 @@ jobs:
                   if not include: continue
                   b=(root/p).read_bytes()
                   assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==e['sha'],e['path']
-                  z.writestr(e['path'],b)
-                  manifest.append(e)
+                  z.writestr(e['path'],b);manifest.append({**e,'size':len(b)})
               z.writestr('source-snapshot.json',json.dumps({'commit':sha,'files':manifest}))
           print(json.dumps({'commit':sha,'verifiedSourceFiles':len(manifest)}))
           PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: wardrobe-exact-source
+          path: |
+            /tmp/wardrobe-review/source-snapshot.zip
+            /tmp/wardrobe-review/source-tree.json
+          retention-days: 14
       - name: Test wardrobe, boosters, fidelity and source-scene regressions
         run: |
           set -euo pipefail
@@ -80,5 +80,8 @@ jobs:
         if: always()
         with:
           name: wardrobe-source-review
-          path: /tmp/wardrobe-review/
+          path: |
+            /tmp/wardrobe-review/*.log
+            /tmp/wardrobe-review/catalogue/
+            /tmp/wardrobe-review/boosters/
           retention-days: 14
