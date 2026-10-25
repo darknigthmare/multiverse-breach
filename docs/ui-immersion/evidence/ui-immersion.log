@@ -1,0 +1,19 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> lively-darwin@0.0.0 test:ui-immersion
+> node --test --test-concurrency=1 scripts/gameSystemImmersion.test.mjs scripts/combatViewport.test.mjs scripts/immersiveHubState.test.mjs scripts/shellImmersion.test.mjs scripts/shellImmersionPresentation.test.mjs scripts/cloudReconciliationRace.test.mjs
+
+✔ scripts/cloudReconciliationRace.test.mjs (77.984276ms)
+✔ scripts/combatViewport.test.mjs (49.394594ms)
+✔ scripts/gameSystemImmersion.test.mjs (47.966707ms)
+✔ scripts/immersiveHubState.test.mjs (57.971049ms)
+✔ scripts/shellImmersion.test.mjs (57.59876ms)
+✔ scripts/shellImmersionPresentation.test.mjs (1750.624632ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2051.231064

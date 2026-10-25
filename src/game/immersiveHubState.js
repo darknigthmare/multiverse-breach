@@ -41,6 +41,37 @@ export const normalizeHubNavigation = (memory = {}) => {
   return next;
 };
 
+// Canvas HUD overlays use CSS-pixel bounds, independent of the logical camera.
+// In portrait, the city map sits above the touch controls instead of behind them.
+export const getSceneCanvasSize = (width, height, logicalHeight) => ({
+  width: Math.max(1, Math.round(logicalHeight * width / Math.max(1, height))),
+  height: logicalHeight
+});
+
+export const getSceneHudLayout = ({ width, height, logicalHeight, hudScale = 1, safeArea = 12 }) => {
+  const units = logicalHeight / Math.max(1, height);
+  const scale = Math.max(0.9, Math.min(1.4, hudScale));
+  const edge = Math.max(12, Math.min(32, safeArea));
+  const mapWidth = Math.min(154 * scale, width * 0.34);
+  const mapHeight = mapWidth * 92 / 154;
+  const mapBottom = edge + (width <= 760 ? 64 * scale : 0);
+  const radarRadius = Math.min(42 * scale, width * 0.13);
+  return {
+    unitsPerCssPixel: units,
+    cityMinimap: {
+      x: (width - edge - mapWidth) * units,
+      y: (height - mapBottom - mapHeight) * units,
+      width: mapWidth * units,
+      height: mapHeight * units
+    },
+    fpsRadar: {
+      x: (width - edge - radarRadius) * units,
+      y: (56 + edge + radarRadius) * units,
+      radius: radarRadius * units
+    }
+  };
+};
+
 // Save only navigation state, never transient input, NPCs or a running simulation.
 export const restoreMosaicLocation = (saved, districts) => {
   const district = districts[saved?.districtId] || districts.atrium;

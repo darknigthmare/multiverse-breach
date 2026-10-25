@@ -113,11 +113,11 @@
       "Colonne de lecture bornée et focus isolé/restauré."
     ],
     "validation": [
-      "scripts/shellImmersionPresentation.test.mjs : un dialogue étiqueté, contenu intégral préservé",
+      "scripts/shellImmersionPresentation.test.mjs : réussi ; un dialogue étiqueté et contenu intégral préservé",
+      "scripts/universeArchiveView.test.mjs : réussi dans les 55 suites test:conversation après récupération du manifeste de médias ; preuve docs/ui-immersion/evidence/conversation-final.log.",
       "Lint ciblé : réussi"
     ],
     "limitations": [
-      "scripts/universeArchiveView.test.mjs bloqué initialement par public/sprites/generated/sprite-availability.json absent du checkout, avant ses assertions.",
       "Parcours réel Codex/collection à confirmer en preview."
     ]
   },

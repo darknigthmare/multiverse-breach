@@ -7,6 +7,7 @@ import { EngineSmash } from '../../src/game/engineSmash.js';
 import { SIGNATURE_SOURCE_KITS } from '../../src/game/signatureSourceKits.js';
 import { ENEMIES_DB } from '../../src/game/enemies.js';
 import '../../src/index.css';
+import './combatHarness.css';
 const query = new URLSearchParams(location.search);
 const mode = query.get('mode') === 'Smash' ? 'Smash' : 'RPG';
 const lang = query.get('lang') === 'en' ? 'en' : 'fr';
@@ -30,7 +31,7 @@ const stage = { id: 'qa-source-signatures', name: 'Synthetic source signature QA
   disableHazards: true, customBattle: { singleRoster: true, opponentControl: 'p2', enemyData: { customRoster: [foe], monsters: [foe], bosses: [], worldBoss: null } } };
 export default function Harness() {
   const [mounted, setMounted] = useState(true);
-  return <><header><p>QA synthetic start; real GameCanvas, combat, targeting and controls.</p>
+  return <><header className="combat-qa-toolbar"><p>QA synthetic start; real GameCanvas, combat, targeting and controls.</p>
     <button id="qa-unmount" onClick={() => setMounted(false)}>QA unmount</button></header>
     {mounted && <GameCanvas lang={lang} playerProfile={{ name: 'QA' }} activeTeam={[actorId]} stage={stage}
       heroLevels={{}} equippedGear={{}} equippedEventItems={{}} heroTalents={{}} heroSkins={{}} completedStages={[]}

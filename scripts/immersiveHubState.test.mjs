@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { advanceMosaicPlayer } from '../src/game/mosaicCityRuntime.js';
-import { applyExtinctionReport, compareGearBoosts, normalizeExtinctionReport, normalizeHubNavigation, restoreMosaicLocation, snapshotMosaicLocation } from '../src/game/immersiveHubState.js';
+import { applyExtinctionReport, compareGearBoosts, getSceneHudLayout, normalizeExtinctionReport, normalizeHubNavigation, restoreMosaicLocation, snapshotMosaicLocation } from '../src/game/immersiveHubState.js';
 
 const districts = {
   atrium: { id: 'atrium', worldW: 1640, worldH: 1080, spawn: { x: 780, y: 520 } },
@@ -66,6 +66,74 @@ test('abandonment and malformed reports cannot award XP or rewards', () => {
 // Exercise the real Hub completion callback, including all three React setters.
 // This catches the original loss of displayed gold/shards and premature session exit.
 const hub = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
+
+test('canvas map/radar bounds respect portrait, short landscape and desktop at both HUD scale extremes', () => {
+  for (const [width, height] of [[360, 800], [844, 390], [1366, 768]]) {
+    for (const hudScale of [0.9, 1.4]) {
+      const safeArea = 32;
+      const city = getSceneHudLayout({ width, height, logicalHeight: 540, hudScale, safeArea });
+      const fps = getSceneHudLayout({ width, height, logicalHeight: 430, hudScale, safeArea });
+      const map = Object.fromEntries(Object.entries(city.cityMinimap).map(([key, value]) => [key, value / city.unitsPerCssPixel]));
+      const radar = Object.fromEntries(Object.entries(fps.fpsRadar).map(([key, value]) => [key, value / fps.unitsPerCssPixel]));
+      assert.ok(map.x >= safeArea && map.y > 56);
+      assert.ok(map.x + map.width <= width - safeArea + 0.001);
+      assert.ok(map.y + map.height <= height - safeArea + 0.001);
+      if (width <= 760) assert.ok(map.y + map.height <= height - safeArea - 64 * hudScale + 0.001, 'map clears the touch control row');
+      assert.ok(radar.y - radar.radius >= 56 + safeArea - 0.001, 'radar clears the dedicated toolbar');
+      assert.ok(radar.x + radar.radius <= width - safeArea + 0.001);
+      assert.ok(radar.y + radar.radius < height - safeArea);
+    }
+  }
+});
+
+test('real Race and Extinction key handlers preserve native button activation inside paused menus', () => {
+  const race = readFileSync(new URL('../src/components/RaceMode.jsx', import.meta.url), 'utf8');
+  const readHandler = (source, marker = 'const onKeyDown = ') => {
+    const start = source.indexOf(marker) + marker.length;
+    return source.slice(start, source.indexOf('\n    };', start) + '\n    }'.length);
+  };
+  let prevents = 0, fires = 0;
+  const keysRef = { current: {} };
+  const pause = { current: true };
+  const event = button => ({ key: ' ', target: { closest: () => button ? {} : null }, preventDefault() { prevents++; } });
+  const raceKey = new Function('sessionPausedRef', 'document', 'engine', 'CONTROL_KEYS', 'normalizeKey', 'keysRef', `return (${readHandler(race)});`)(pause, { hidden: false }, { finished: false }, new Set([' ']), () => 'space', keysRef);
+  raceKey(event(false));
+  pause.current = false;
+  raceKey(event(true));
+  assert.equal(prevents, 0);
+  assert.deepEqual(keysRef.current, {});
+  raceKey(event(false));
+  assert.equal(prevents, 1);
+  assert.equal(keysRef.current.space, true);
+  prevents = 0;
+  const extinction = hub.slice(hub.indexOf('  const handleCanvasFire ='));
+  const extinctionKey = new Function('sessionPausedRef', 'stateRef', 'setMoveKey', 'fire', 'reload', 'collectLoot', 'activateRoleSkill', `return (${readHandler(extinction)});`)(pause, { current: { phase: 'running' } }, () => {}, () => { fires++; }, () => {}, () => {}, () => {});
+  extinctionKey(event(true));
+  assert.equal(prevents, 0);
+  assert.equal(fires, 0);
+  extinctionKey(event(false));
+  assert.equal(prevents, 1);
+  assert.equal(fires, 1);
+});
+
+test('the real pause focus trap yields to a modal that made its parent inert', () => {
+  const start = hub.indexOf('const trapPauseFocus = ') + 'const trapPauseFocus = '.length;
+  const body = hub.slice(start, hub.indexOf('\n    };', start) + '\n    }'.length);
+  let inert = true, focused = 0, prevented = 0;
+  const first = { focus: () => { focused++; } };
+  const dialog = { closest: () => inert ? {} : null, contains: () => false };
+  const trap = new Function('dialog', 'document', 'getFocusableControls', `return (${body});`)(dialog, { activeElement: {} }, () => [first]);
+  const event = { key: 'Tab', preventDefault: () => { prevented++; } };
+  trap(event);
+  assert.equal(focused, 0);
+  assert.equal(prevented, 0);
+  inert = false;
+  trap({ ...event, defaultPrevented: true });
+  assert.equal(focused, 0);
+  trap(event);
+  assert.equal(focused, 1);
+  assert.equal(prevented, 1);
+});
 
 test('UI memory restores mission, arc, filters and catalog cursors without save data or a running session', () => {
   const navigation = normalizeHubNavigation({
@@ -142,6 +210,23 @@ test('real category effect preserves restored selection on mount, and resets onl
   assert.equal(updates.setSelectedNarrativeArcId, null);
   assert.equal(updates.setBriefingStageId, null);
   assert.equal(updates.setMissionWorkspaceView, 'missions');
+
+  // The Directive shortcut changes category and selects a mission in one event.
+  // Its queued intent must survive the reset effect that follows that event.
+  const directiveStart = hub.indexOf('const openMissionDirective = ') + 'const openMissionDirective = '.length;
+  const directiveEnd = hub.indexOf('\n  };', directiveStart) + '\n  }'.length;
+  const routeSetters = ['setActiveTab', 'setMissionScreen', 'setMissionWorkspaceView', 'setBriefingStageId', 'setSelectedNarrativeArcId', 'setSelectedNarrativeGroupId'];
+  const openDirective = new Function('nextUnclearedStage', 'missionScreen', 'recommendedMissionScreen', 'missionEntryRequestRef', 'sound', ...routeSetters, `return (${hub.slice(directiveStart, directiveEnd)});`)(
+    { id: 42, universeArc: { id: 'halo-arc' } }, 'universeMissions', 'universeArcs', missionEntryRequestRef, { playSfx() {} },
+    ...routeSetters.map(name => value => { updates[name] = value; })
+  );
+  openDirective();
+  runEffect('universeArcs');
+  assert.equal(updates.setActiveTab, 'missions');
+  assert.equal(updates.setMissionScreen, 'universeArcs');
+  assert.equal(updates.setSelectedNarrativeArcId, 'halo-arc');
+  assert.equal(updates.setBriefingStageId, 42);
+  assert.equal(updates.setMissionWorkspaceView, 'map');
 });
 
 const callbackStart = hub.indexOf('const finishExtinctionSession = useCallback(') + 'const finishExtinctionSession = useCallback('.length;

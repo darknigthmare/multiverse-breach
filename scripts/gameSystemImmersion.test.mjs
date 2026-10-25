@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createBattleCompletionGate } from '../src/game/battleCompletionGate.js';
 import { createGameDialogQueue } from '../src/game/gameDialogQueue.js';
+import { hasActiveModal } from '../src/game/dialogFocus.js';
 import { applyDisplayPreferences, DEFAULT_DISPLAY_PREFERENCES, DISPLAY_PREFERENCES_KEY, normalizeDisplayPreferences, readDisplayPreferences, saveDisplayPreferences } from '../src/game/displayPreferences.js';
 
 test('campaign progression accepts one outcome per launch and rejects stale callbacks after relaunch', () => {
@@ -40,6 +41,18 @@ test('unmount cancels pending decisions without confirming destructive actions',
   const decisions = [queue.request({ kind: 'confirm' }), queue.request({ kind: 'input' })];
   queue.cancelAll();
   assert.deepEqual(await Promise.all(decisions), [null, null]);
+});
+
+test('closed combat drawers do not block Escape pause; an open modal owns Escape', () => {
+  const dialog = (open, { tagName = 'DIALOG', inert = false, visible = true } = {}) => ({
+    tagName, open, closest: () => inert ? {} : null, getAttribute: () => null,
+    getClientRects: () => visible ? [{}] : []
+  });
+  assert.equal(hasActiveModal({ querySelectorAll: () => [dialog(false), dialog(false)] }), false);
+  assert.equal(hasActiveModal({ querySelectorAll: () => [dialog(true)] }), true);
+  assert.equal(hasActiveModal({ querySelectorAll: () => [dialog(true, { inert: true })] }), false);
+  assert.equal(hasActiveModal({ querySelectorAll: () => [dialog(true, { visible: false })] }), false);
+  assert.equal(hasActiveModal({ querySelectorAll: () => [dialog(false, { tagName: 'SECTION' })] }), true);
 });
 
 test('invalid or unavailable display preferences use a readable bounded default', () => {

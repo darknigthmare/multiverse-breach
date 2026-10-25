@@ -171,6 +171,7 @@ def main():
                 _, page, errors, calls, blocked = new_case(390, guest=True, rate_limited=operation == "rate-limit")
                 page.goto(base + "/", wait_until="domcontentloaded")
                 page.get_by_role("button", name="CONTINUER", exact=True).click(timeout=30000)
+                page.locator(".game-system-trigger").click(timeout=30000)
                 page.locator(".auth-panel-toggle").click(timeout=30000)
                 panel = page.locator(".auth-panel-content")
                 reset = panel.get_by_role("button", name="Mot de passe oublie", exact=True)

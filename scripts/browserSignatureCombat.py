@@ -2,6 +2,7 @@
 import json, os
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from browserCombatUi import open_arsenal
 BASE = os.environ.get('AUDIT_BASE_URL', 'http://127.0.0.1:4173')
 OUT = Path(os.environ.get('AUDIT_OUTPUT_DIR', 'audit/signature-browser')); OUT.mkdir(parents=True, exist_ok=True)
 results = []
@@ -18,12 +19,23 @@ with sync_playwright() as p:
                 try:
                     page.goto(f'{BASE}/scripts/fixtures/signature-combat.html?mode={mode}&lang={lang}')
                     page.wait_for_function('window.__signatureAudit?.engine?.signatureDirector')
+                    if mode == 'Smash' and width < 760:
+                        # Keep complete translated touch labels within their buttons
+                        # and the viewport (the French taunt label is the longest).
+                        touch_bounds = page.locator('.melee-touch-buttons button').evaluate_all('''buttons => buttons.map(button => {
+                          const box=button.getBoundingClientRect(), label=button.querySelector('small').getBoundingClientRect();
+                          return {left:box.left,right:box.right,labelLeft:label.left,labelRight:label.right,
+                            width:button.clientWidth,scroll:button.scrollWidth};
+                        })''')
+                        assert touch_bounds and all(b['left'] >= -1 and b['right'] <= width + 1
+                            and b['labelLeft'] >= b['left'] - 1 and b['labelRight'] <= b['right'] + 1
+                            and b['scroll'] <= b['width'] + 1 for b in touch_bounds), touch_bounds
                     page.evaluate('''() => { const e=window.__signatureAudit.engine; const a=e.heroes[0];
                       e.syncPreMatchFromServer?.(3000);e.completeMeleeIntros?.();a.state='idle';a.action=null;a.atb=100;a.specialCharge=100;
                       if(e.stage.mode==='Smash'){a.x=200;e.enemies[0].x=240;a.y=e.enemies[0].y;a.facing=1;}
                       window.__beforeHp=e.enemies[0].currentHp;
                     }''')
-                    # Substring matching uses explicit regex rather than an exact localization.
+                    open_arsenal(page)
                     button = page.locator('[data-signature-invocation]' if mode == 'RPG' else '[data-signature-super=player]').first
                     button.scroll_into_view_if_needed(); button.click()
                     page.wait_for_function('window.__signatureAudit.engine.signatureDirector.busy')

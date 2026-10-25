@@ -13,6 +13,7 @@ import CampaignPauseMenu from './components/CampaignPauseMenu.jsx';
 import { GameDisplayPreferencesSync } from './components/GameDisplaySettings.jsx';
 import { createGameDialogQueue } from './game/gameDialogQueue.js';
 import { createBattleCompletionGate } from './game/battleCompletionGate.js';
+import { hasActiveModal } from './game/dialogFocus.js';
 import NetworkStatusBadge from './components/NetworkStatusBadge';
 import AuthPanel from './components/AuthPanel';
 import IntroSequence from './components/IntroSequence';
@@ -1299,7 +1300,7 @@ function App() {
   useEffect(() => {
     if (currentScreen !== 'battle') return;
     const handleKey = event => {
-      if (event.key !== 'Escape' || event.repeat || event.defaultPrevented || document.querySelector('[aria-modal="true"]')) return;
+      if (event.key !== 'Escape' || event.repeat || event.defaultPrevented || hasActiveModal()) return;
       event.preventDefault();
       pauseCampaign();
     };
@@ -2231,8 +2232,9 @@ function App() {
       normalizeSavePayload(imported, { existing: true });
       applySave(imported, { existing: true, navigateTo: 'hub', acceptExternalChange: true });
       invalidateCloudOperations();
-      if (account) setCloudSyncState('conflict');
-      if (account) {
+      const currentAccount = accountRef.current;
+      setCloudSyncState(currentAccount ? 'conflict' : 'detached');
+      if (currentAccount) {
         setCloudStatus(lang === 'fr'
           ? 'Trace importee localement. Archive cloud preservee jusqu a un choix explicite.'
           : 'Trace imported locally. Cloud archive preserved until an explicit choice.');
@@ -2263,10 +2265,11 @@ function App() {
   const resetSave = async () => {
     if (!await confirmGame(lang === 'fr' ? 'Purger complètement la trace locale ? Une copie de secours sera conservée. L’archive cloud restera intacte.' : 'Fully purge the local trace? A backup will be kept. The cloud archive will remain intact.', { title: lang === 'fr' ? 'Réinitialiser la progression locale' : 'Reset local progression', confirmLabel: lang === 'fr' ? 'Purger la trace locale' : 'Purge local trace', destructive: true })) return;
     if (!prepareLocalReset()) return;
-    setCloudSyncState(account ? 'conflict' : 'detached');
+    const currentAccount = accountRef.current;
+    setCloudSyncState(currentAccount ? 'conflict' : 'detached');
     cloudUpdatedAtRef.current = null;
     applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'title', acceptExternalChange: true, allowVolatile: true });
-    setCloudStatus(account
+    setCloudStatus(currentAccount
       ? (lang === 'fr' ? 'Trace locale purgee. Archive cloud preservee.' : 'Local trace purged. Cloud archive preserved.')
       : (lang === 'fr' ? 'Trace locale purgee.' : 'Local trace purged.'));
     sound.playSfx('click');
@@ -2727,7 +2730,6 @@ function App() {
               onSessionComplete={captureBattleOutcome}
               sessionPaused={battlePaused || Boolean(systemDialog)}
               onPauseRequest={pauseCampaign}
-              dedicatedSession
             />
           </Suspense>
         </CombatErrorBoundary>

@@ -6,6 +6,7 @@ import FighterMode from '../../src/components/FighterMode.jsx';
 import { EngineFighter } from '../../src/game/engineFighter.js';
 import { HEROES_DB } from '../../src/game/heroes.js';
 import '../../src/index.css';
+import './combatHarness.css';
 const q = new URLSearchParams(location.search);
 const lang = q.get('lang') === 'en' ? 'en' : 'fr';
 const heroIds = [q.get('scenario') === 'healing' ? 'aerith_ff7' : 'team_fortress_2_medic', 'cloud_ff7', 'barret_ff7'];
@@ -56,7 +57,7 @@ audit.injectDrawFailure = () => {
 };
 export default function Harness() {
   const [paused, setPaused] = useState(false), [mounted, setMounted] = useState(true);
-  return <><header><p>Isolated Fighter QA: prepared state, real controls, no campaign rewards.</p>
+  return <><header className="combat-qa-toolbar"><p>Isolated Fighter QA: prepared state, real controls, no campaign rewards.</p>
     <button id="qa-pause" onClick={() => setPaused(value => !value)}>QA pause</button>
     <button id="qa-unmount" onClick={() => setMounted(false)}>QA unmount</button>
   </header>{mounted && <FighterMode lang={lang} heroes={heroes} unlockedHeroes={heroIds}

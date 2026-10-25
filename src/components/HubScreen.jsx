@@ -284,7 +284,7 @@ function DedicatedGameSessionChrome({
     getFocusableControls()[0]?.focus();
 
     const trapPauseFocus = event => {
-      if (event.key !== 'Tab') return;
+      if (event.key !== 'Tab' || event.defaultPrevented || dialog.closest('[inert]')) return;
       const controls = getFocusableControls();
       if (!controls.length) {
         event.preventDefault();
@@ -309,8 +309,8 @@ function DedicatedGameSessionChrome({
       document.removeEventListener('keydown', trapPauseFocus);
       const previousFocus = previousFocusRef.current;
       window.requestAnimationFrame(() => {
-        if (previousFocus?.isConnected) previousFocus.focus();
-        else pauseButton?.focus();
+        if (previousFocus?.isConnected && !previousFocus.closest('[inert]')) previousFocus.focus();
+        else if (!pauseButton?.closest('[inert]')) pauseButton?.focus();
       });
     };
   }, [paused]);
@@ -2248,7 +2248,7 @@ function MosaicCityHub({
   sessionExitRequest = 0
 }) {
   const canvasRef = useRef(null);
-  useSceneViewport(canvasRef, 540);
+  const sceneHudRef = useSceneViewport(canvasRef, 540);
   const cityBackdropRef = useRef(null);
   useEffect(() => { const image = new Image(); image.src = MOSAIC_CITY_ART; cityBackdropRef.current = image; return () => { cityBackdropRef.current = null; }; }, []);
   const [cityMenuOpen, setCityMenuOpen] = useState(false);
@@ -3150,10 +3150,11 @@ function MosaicCityHub({
 
       ctx.restore();
 
-      const miniW = 154;
-      const miniH = 92;
-      const miniX = canvas.width - miniW - 14;
-      const miniY = canvas.height - miniH - 14;
+      const minimap = sceneHudRef.current?.cityMinimap;
+      const miniW = minimap?.width ?? 154;
+      const miniH = minimap?.height ?? 92;
+      const miniX = minimap?.x ?? canvas.width - miniW - 14;
+      const miniY = minimap?.y ?? canvas.height - miniH - 14;
       ctx.fillStyle = 'rgba(0,0,0,0.62)';
       ctx.fillRect(miniX, miniY, miniW, miniH);
       ctx.strokeStyle = district.color;
@@ -3180,7 +3181,7 @@ function MosaicCityHub({
       window.cancelAnimationFrame(rafId);
       document.removeEventListener('visibilitychange', onClockVisibilityChange);
     };
-  }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, interactWithNearby, lang, ownedHeroes.length, playerAvatar, playerName, recordGuide, sceneObstacles, scenery, unlockedUniverses.length, zones]);
+  }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, interactWithNearby, lang, ownedHeroes.length, playerAvatar, playerName, recordGuide, sceneHudRef, sceneObstacles, scenery, unlockedUniverses.length, zones]);
 
   const moveToPointer = event => {
     if (sessionPausedRef.current) return;
@@ -3387,7 +3388,7 @@ function ExtinctionRoyale({
   sessionExitRequest = 0
 }) {
   const canvasRef = useRef(null);
-  useSceneViewport(canvasRef, 430);
+  const sceneHudRef = useSceneViewport(canvasRef, 430);
   const fpsHandsRef = useRef(null);
   const fpsProjectileRef = useRef(null);
   const fpsBackdropRef = useRef(null);
@@ -3402,6 +3403,7 @@ function ExtinctionRoyale({
   const [runSnapshot, setRunSnapshot] = useState({
     phase: 'ready',
     hp: 100,
+    maxHp: 100,
     armor: 0,
     ammo: 24,
     reserveAmmo: 72,
@@ -3420,6 +3422,7 @@ function ExtinctionRoyale({
   const stateRef = useRef({
     phase: 'ready',
     hp: 100,
+    maxHp: 100,
     armor: 0,
     ammo: 24,
     maxAmmo: 24,
@@ -3509,12 +3512,14 @@ function ExtinctionRoyale({
   }, [lang, objectives, runMode]);
 
   const buildRunSnapshot = useCallback((state) => {
+    const maxHp = Math.max(1, state.maxHp || 100);
     const nearbyLoot = state.phase === 'running'
       ? state.loot?.find(candidate => !candidate.used && Math.hypot(candidate.wx - state.px, candidate.wy - state.py) < 1.25) || null
       : null;
     return {
       phase: state.phase,
-      hp: state.hp,
+      hp: Math.max(0, Math.min(maxHp, state.hp || 0)),
+      maxHp,
       armor: state.armor || 0,
       ammo: state.ammo || 0,
       reserveAmmo: state.reserveAmmo || 0,
@@ -3583,6 +3588,7 @@ function ExtinctionRoyale({
       ...stateRef.current,
       phase: 'ready',
       hp: 100,
+      maxHp: 100,
       ammo: 24,
       maxAmmo: 24,
       reserveAmmo: 72,
@@ -4067,9 +4073,10 @@ function ExtinctionRoyale({
       }
 
       // Circular Scanning Radar Minimap
-      const radX = canvas.width - 74;
-      const radY = 104;
-      const radR = 42;
+      const radar = sceneHudRef.current?.fpsRadar;
+      const radX = radar?.x ?? canvas.width - 74;
+      const radY = radar?.y ?? 104;
+      const radR = radar?.radius ?? 42;
       ctx.save();
       ctx.fillStyle = 'rgba(1, 10, 8, 0.72)';
       ctx.beginPath();
@@ -4170,7 +4177,7 @@ function ExtinctionRoyale({
       window.cancelAnimationFrame(rafId);
       document.removeEventListener('visibilitychange', onClockVisibilityChange);
     };
-  }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, getRunObjectiveText, lang, projectWorld, runMode, selectedHero, universeFragments, weaponProfile.color]);
+  }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, getRunObjectiveText, lang, projectWorld, runMode, sceneHudRef, selectedHero, universeFragments, weaponProfile.color]);
 
   const triggerEnemyDrop = (enemy, state) => {
     if (Math.random() < 0.24) {
@@ -4410,7 +4417,7 @@ function ExtinctionRoyale({
   useEffect(() => {
     const onKeyDown = (event) => {
       if (sessionPausedRef.current || stateRef.current.phase !== 'running') return;
-      if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+      if (event.defaultPrevented || event.target?.closest?.('button, a[href], input, textarea, select, [contenteditable="true"]')) return;
       const key = event.key.toLowerCase();
       if (key === 'w' || key === 'z' || key === 'arrowup') {
         setMoveKey('forward', true);
@@ -4522,14 +4529,7 @@ function ExtinctionRoyale({
             <small>{universeFragments.join(' / ')} - {lang === 'fr' ? 'Z/W avancer, S reculer, A/Q-D strafes, flèches tourner, glisser sur la vue pour viser' : 'W/Z forward, S back, A/Q-D strafe, arrows turn, drag the view to aim'}</small>
           </div>
         </div>
-        <div className="nexus-play-stats" role="status" aria-live="polite" aria-atomic="true">
-          <span>{runActive ? (lang === 'fr' ? 'RUN ACTIVE' : 'RUN ACTIVE') : (lang === 'fr' ? 'PRET' : 'READY')}</span>
-          <span>HP {Math.round(runSnapshot.hp || 0)} / ARM {Math.round(runSnapshot.armor || 0)}</span>
-          <span>AMMO {runSnapshot.ammo}+{runSnapshot.reserveAmmo}</span>
-          <span>WAVE {runSnapshot.wave}</span>
-          <span>KILLS {runSnapshot.kills}</span>
-          {runMode === 'extraction' && <span>BEACONS {runSnapshot.beacons}/{EXTINCTION_BEACON_TARGET}</span>}
-        </div>
+
         {runSnapshot.objectiveText && (
           <div className="extinction-objective-strip">
             <strong>{lang === 'fr' ? 'OBJECTIF ACTIF' : 'ACTIVE OBJECTIVE'}</strong>
@@ -4545,26 +4545,41 @@ function ExtinctionRoyale({
             <button type="button" className="btn-retro" autoFocus onClick={() => { stateRef.current.phase = 'ready'; stateRef.current.rewards = null; stateRef.current.result = null; setRunSnapshot(buildRunSnapshot(stateRef.current)); onSessionEnd?.({ reason: 'acknowledged' }); }}>{lang === 'fr' ? 'CONTINUER' : 'CONTINUE'}</button>
           </div>
         )}
-        <div className="nexus-play-actions">
-          {!runActive && !runEnded && (
-            <button className="btn-retro" onClick={startRun} title={lang === 'fr' ? 'Lance une run Zone d Extinction.' : 'Start an Extinction Zone run.'}>
-              {lang === 'fr' ? 'DEMARRER RUN' : 'START RUN'}
-            </button>
-          )}
-          {runActive && (
-            <>
-              <button className="btn-retro" onClick={fire} title={lang === 'fr' ? 'Tire avec l arme FPS du heros selectionne.' : 'Fire the selected hero FPS weapon.'}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
-              <button className="btn-retro" onClick={reload} disabled={runSnapshot.reserveAmmo <= 0} title={lang === 'fr' ? 'Transfère les munitions de la réserve vers le chargeur.' : 'Transfer reserve ammunition into the magazine.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
-              <button className="btn-retro" onClick={activateRoleSkill} disabled={runSnapshot.skillCooldown > 0} title={lang === 'fr' ? 'Active la capacité spéciale liée au rôle du héros.' : 'Activate the selected hero role ability.'}>{runSnapshot.skillCooldown > 0 ? `ROLE ${Math.ceil(runSnapshot.skillCooldown / 60)}s` : 'ROLE'}</button>
-              <button className="btn-retro" onClick={collectLoot} disabled={!runSnapshot.nearbyLoot} title={runSnapshot.nearbyLoot || (lang === 'fr' ? 'Approche-toi d un objet ou d une balise.' : 'Move near an item or beacon.')}>{runSnapshot.nearbyLoot ? `LOOT: ${runSnapshot.nearbyLoot}` : 'LOOT'}</button>
-              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'} onPointerDown={() => setMoveKey('forward', true)} onPointerUp={() => setMoveKey('forward', false)} onPointerCancel={() => setMoveKey('forward', false)} onPointerLeave={() => setMoveKey('forward', false)}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</button>
-              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'} onPointerDown={() => setMoveKey('back', true)} onPointerUp={() => setMoveKey('back', false)} onPointerCancel={() => setMoveKey('back', false)} onPointerLeave={() => setMoveKey('back', false)}>{lang === 'fr' ? 'RECUL' : 'BACK'}</button>
-              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à gauche.' : 'Hold to strafe left.'} onPointerDown={() => setMoveKey('strafeLeft', true)} onPointerUp={() => setMoveKey('strafeLeft', false)} onPointerCancel={() => setMoveKey('strafeLeft', false)} onPointerLeave={() => setMoveKey('strafeLeft', false)}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</button>
-              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à droite.' : 'Hold to strafe right.'} onPointerDown={() => setMoveKey('strafeRight', true)} onPointerUp={() => setMoveKey('strafeRight', false)} onPointerCancel={() => setMoveKey('strafeRight', false)} onPointerLeave={() => setMoveKey('strafeRight', false)}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</button>
-              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la gauche.' : 'Hold to turn the camera left.'} onPointerDown={() => setMoveKey('turnLeft', true)} onPointerUp={() => setMoveKey('turnLeft', false)} onPointerCancel={() => setMoveKey('turnLeft', false)} onPointerLeave={() => setMoveKey('turnLeft', false)}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</button>
-              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la droite.' : 'Hold to turn the camera right.'} onPointerDown={() => setMoveKey('turnRight', true)} onPointerUp={() => setMoveKey('turnRight', false)} onPointerCancel={() => setMoveKey('turnRight', false)} onPointerLeave={() => setMoveKey('turnRight', false)}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</button>
-            </>
-          )}
+
+        <div className="extinction-hud-dock" inert={runEnded}>
+          <div className="nexus-play-stats" role="status" aria-live="polite" aria-atomic="true">
+            <span>{runActive ? (lang === 'fr' ? 'RUN ACTIVE' : 'RUN ACTIVE') : (lang === 'fr' ? 'PRET' : 'READY')}</span>
+            <span className="extinction-health" data-critical={runSnapshot.hp <= runSnapshot.maxHp * 0.25}>
+              {lang === 'fr' ? 'PV' : 'HP'} {Math.round(runSnapshot.hp)} / {Math.round(runSnapshot.maxHp)}
+              <progress value={runSnapshot.hp} max={runSnapshot.maxHp} aria-label={lang === 'fr' ? 'Points de vie' : 'Health'} />
+            </span>
+            <span>ARM {Math.round(runSnapshot.armor || 0)}</span>
+            <span>AMMO {runSnapshot.ammo}+{runSnapshot.reserveAmmo}</span>
+            <span>WAVE {runSnapshot.wave}</span>
+            <span>KILLS {runSnapshot.kills}</span>
+            {runMode === 'extraction' && <span>BEACONS {runSnapshot.beacons}/{EXTINCTION_BEACON_TARGET}</span>}
+          </div>
+          <div className="nexus-play-actions">
+            {!runActive && !runEnded && (
+              <button className="btn-retro" onClick={startRun} title={lang === 'fr' ? 'Lance une run Zone d Extinction.' : 'Start an Extinction Zone run.'}>
+                {lang === 'fr' ? 'DEMARRER RUN' : 'START RUN'}
+              </button>
+            )}
+            {runActive && (
+              <>
+                <button className="btn-retro" onClick={fire} title={lang === 'fr' ? 'Tire avec l arme FPS du heros selectionne.' : 'Fire the selected hero FPS weapon.'}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
+                <button className="btn-retro" onClick={reload} disabled={runSnapshot.reserveAmmo <= 0} title={lang === 'fr' ? 'Transfère les munitions de la réserve vers le chargeur.' : 'Transfer reserve ammunition into the magazine.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
+                <button className="btn-retro" onClick={activateRoleSkill} disabled={runSnapshot.skillCooldown > 0} title={lang === 'fr' ? 'Active la capacité spéciale liée au rôle du héros.' : 'Activate the selected hero role ability.'}>{runSnapshot.skillCooldown > 0 ? `ROLE ${Math.ceil(runSnapshot.skillCooldown / 60)}s` : 'ROLE'}</button>
+                <button className="btn-retro" onClick={collectLoot} disabled={!runSnapshot.nearbyLoot} title={runSnapshot.nearbyLoot || (lang === 'fr' ? 'Approche-toi d un objet ou d une balise.' : 'Move near an item or beacon.')}>{runSnapshot.nearbyLoot ? `LOOT: ${runSnapshot.nearbyLoot}` : 'LOOT'}</button>
+                <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'} onPointerDown={() => setMoveKey('forward', true)} onPointerUp={() => setMoveKey('forward', false)} onPointerCancel={() => setMoveKey('forward', false)} onPointerLeave={() => setMoveKey('forward', false)}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</button>
+                <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'} onPointerDown={() => setMoveKey('back', true)} onPointerUp={() => setMoveKey('back', false)} onPointerCancel={() => setMoveKey('back', false)} onPointerLeave={() => setMoveKey('back', false)}>{lang === 'fr' ? 'RECUL' : 'BACK'}</button>
+                <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à gauche.' : 'Hold to strafe left.'} onPointerDown={() => setMoveKey('strafeLeft', true)} onPointerUp={() => setMoveKey('strafeLeft', false)} onPointerCancel={() => setMoveKey('strafeLeft', false)} onPointerLeave={() => setMoveKey('strafeLeft', false)}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</button>
+                <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à droite.' : 'Hold to strafe right.'} onPointerDown={() => setMoveKey('strafeRight', true)} onPointerUp={() => setMoveKey('strafeRight', false)} onPointerCancel={() => setMoveKey('strafeRight', false)} onPointerLeave={() => setMoveKey('strafeRight', false)}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</button>
+                <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la gauche.' : 'Hold to turn the camera left.'} onPointerDown={() => setMoveKey('turnLeft', true)} onPointerUp={() => setMoveKey('turnLeft', false)} onPointerCancel={() => setMoveKey('turnLeft', false)} onPointerLeave={() => setMoveKey('turnLeft', false)}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</button>
+                <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la droite.' : 'Hold to turn the camera right.'} onPointerDown={() => setMoveKey('turnRight', true)} onPointerUp={() => setMoveKey('turnRight', false)} onPointerCancel={() => setMoveKey('turnRight', false)} onPointerLeave={() => setMoveKey('turnRight', false)}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</button>
+              </>
+            )}
+          </div>
         </div>
       </div>
       {runActive && (
@@ -8834,7 +8849,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
     if (previousMissionScreenRef.current === missionScreen && !entryRequest) return;
     previousMissionScreenRef.current = missionScreen;
     missionEntryRequestRef.current = null;
-    setSelectedNarrativeArcId(null);
+    setSelectedNarrativeArcId(entryRequest?.arcId || null);
     setSelectedNarrativeGroupId(entryRequest?.groupId || null);
     setNarrativeGroupView('chapters');
     setMissionWorkspaceView(entryRequest?.view || (
@@ -8853,7 +8868,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
     if (missionScreen === 'ocDlc' || missionScreen === 'originalWorlds') {
       setMediaFilter('all');
     }
-    setBriefingStageId(null);
+    setBriefingStageId(entryRequest?.briefingStageId ?? null);
   }, [missionScreen]);
   useEffect(() => {
     if (selectedNarrativeGroupId && !narrativeArcGroups.some(group => group.id === selectedNarrativeGroupId)) {
@@ -8912,6 +8927,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
     ? 'trials'
     : nextUnclearedStage?.ocDlc
     ? 'ocDlc'
+    : nextUnclearedStage?.campaignDependency === 'originalCampaign'
+    ? 'originalWorlds'
     : nextUnclearedStage?.universeArc
       ? 'universeArcs'
       : nextUnclearedStage?.characterArc
@@ -8920,7 +8937,19 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
         ? 'trioArcs'
         : nextUnclearedStage?.fusionMission
           ? 'fusionMissions'
-          : 'story';
+          : !nextUnclearedStage || isOcStoryStage(nextUnclearedStage) ? 'story' : 'universeMissions';
+  const openMissionDirective = () => {
+    const arc = nextUnclearedStage?.universeArc || nextUnclearedStage?.characterArc || nextUnclearedStage?.trioArc;
+    const entry = { view: 'map', briefingStageId: nextUnclearedStage?.id ?? null, arcId: arc?.id || null };
+    if (missionScreen !== recommendedMissionScreen) missionEntryRequestRef.current = entry;
+    setActiveTab('missions');
+    setMissionScreen(recommendedMissionScreen);
+    setMissionWorkspaceView(entry.view);
+    setBriefingStageId(entry.briefingStageId);
+    setSelectedNarrativeArcId(entry.arcId);
+    setSelectedNarrativeGroupId(null);
+    sound.playSfx('coin');
+  };
   const seededMissionScore = (stage) => {
     const raw = Math.sin(stage.id * 9301 + missionSeed * 49297) * 10000;
     return raw - Math.floor(raw);
@@ -9780,12 +9809,9 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
           <button
             type="button"
             className="btn-retro"
-            onClick={() => {
-              setActiveTab('missions');
-              setMissionScreen(recommendedMissionScreen);
-              setBriefingStageId(nextUnclearedStage?.id || null);
-              setSelectedNarrativeArcId(null);
-              sound.playSfx('coin');
+            onClick={event => {
+              openMissionDirective();
+              event.currentTarget.closest('details')?.removeAttribute('open');
             }}
             title={lang === 'fr' ? 'Ouvre l ecran de mission correspondant et selectionne la prochaine faille disponible.' : 'Open the matching mission screen and select the next available rift.'}
           >

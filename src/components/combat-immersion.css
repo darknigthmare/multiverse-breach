@@ -198,6 +198,7 @@
 .combat-immersive-surface .melee-touch-field legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .combat-immersive-surface .melee-touch-buttons { grid-template-columns: repeat(3, 48px) minmax(12px, 1fr) repeat(3, 52px) !important; grid-template-rows: repeat(2, minmax(46px, auto)); gap: 5px !important; align-items: end; }
 .combat-immersive-surface .melee-touch-buttons button { pointer-events: auto; min-width: 44px; min-height: 46px !important; background: #081d2eea !important; border-color: #83c2cc99 !important; border-radius: 8px !important; }
+.combat-immersive-surface .melee-touch-buttons button small { min-width: 0; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
 .combat-immersive-surface .melee-touch-buttons [data-touch-slot='moveLeft'] { grid-area: 2 / 1; }
 .combat-immersive-surface .melee-touch-buttons [data-touch-slot='crouch'] { grid-area: 2 / 2; }
 .combat-immersive-surface .melee-touch-buttons [data-touch-slot='moveRight'] { grid-area: 2 / 3; }

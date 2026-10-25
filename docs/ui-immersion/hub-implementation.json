@@ -333,7 +333,7 @@
       "Cette mémoire de navigation est distincte des sauvegardes et n’inclut ni session active, pause, moteur, récompense ni état de progression."
     ],
     "validation": [
-      "Neuf tests fonctionnels immersiveHubState réussis : conservation/restauration UI, exclusion des simulations et sauvegardes, exécution du vrai handler de lancement et de l’effet de catégorie, déplacement/restauration Cité, récompenses Extinction et comparaison de relique.",
+      "Douze tests fonctionnels immersiveHubState réussis : conservation/restauration UI, exclusion des simulations et sauvegardes, exécution du vrai handler de lancement et de l’effet de catégorie, déplacement/restauration Cité, récompenses Extinction et comparaison de relique.",
       "catalogPagination, ocCampaignUiProgress et mosaicCityRuntime réussis après ajout de la mémoire."
     ],
     "limitations": [
@@ -341,6 +341,51 @@
       "Les dialogues, vidéos/transmissions ouvertes, simulation en cours et panneau de pause ne sont pas rouverts au retour.",
       "Les choix réévalués comme indisponibles (héros/groupe/catalogue) continuent de respecter leurs contrôles et bornages existants.",
       "Le parcours aller-retour briefing/combat dans la preview reste à vérifier visuellement."
+    ]
+  },
+  {
+    "id": "HUB-12",
+    "auditIds": [
+      "06",
+      "12",
+      "13",
+      "15",
+      "16",
+      "18",
+      "19",
+      "25"
+    ],
+    "status": "implemented_pending_visual_review",
+    "files": [
+      "src/components/HubScreen.jsx",
+      "src/components/RaceMode.jsx",
+      "src/components/HubImmersion.css",
+      "src/components/useSceneViewport.js",
+      "src/game/immersiveHubState.js",
+      "scripts/immersiveHubState.test.mjs",
+      "scripts/nonCombatTrial.test.mjs"
+    ],
+    "changes": [
+      "Revue de code après premier commit : les jauges et les dix commandes Extinction partagent désormais un quai à hauteur naturelle. Même principe pour la cache Course et ses commandes ; leur retour à la ligne ne provoque plus de chevauchement lié à des offsets fixes.",
+      "La mini-carte Cité et le radar Extinction sont dimensionnés en pixels d’écran, puis convertis en unités du canevas. Leur taille est bornée en portrait, la mini-carte reste au-dessus des commandes tactiles, et le radar garde la barre de session libre.",
+      "Les marges utilisateur/système et l’échelle HUD s’appliquent aux quais de commandes. Les bilans Course/Extinction défilent à l’intérieur de leur scène quand la hauteur manque.",
+      "Le piège de focus de pause cède les événements Tab à un dialogue enfant qui rend son parent inert. ImmersiveDrawer utilise déjà le gestionnaire modal partagé et suspend correctement son parent.",
+      "Les handlers clavier Course et Extinction respectent les boutons natifs et les champs ; Espace ne bloque plus une action du garage en pause. La course ignore les touches du moteur après son verdict.",
+      "En-tête du Hub borné en border-box ; compteurs sur un rail horizontal à petite largeur. La console Directive conserve une marge latérale et une colonne sur mobile.",
+      "Le raccourci Voir la directive transmet catégorie, mission et arc au changement de vue, au lieu de perdre le briefing dans l’effet de réinitialisation. Les missions indépendantes et univers OC rejoignent leur vraie catégorie.",
+      "PV maximum et jauge native progress rétablis dans le HUD Extinction, avec PV courants/max et armure séparée ; le snapshot borne la jauge après dégâts et soins sans modifier le moteur."
+    ],
+    "validation": [
+      "Douze tests immersiveHubState passent : ajout des bornes de mini-carte/radar pour 360×800, 844×390, 1366×768, échelles HUD 0,9 et 1,4, marge 32px ; exécution des vrais handlers clavier et du piège de focus pause.",
+      "Sept suites ciblées après correction : immersiveHubState, extinctionTiming, mosaicCityRuntime, fixedStepClock, customBattle, shellImmersion et fighterRaceGameplayAudit.",
+      "AST JSX validé après déplacement des deux quais, Oxlint sans avertissement et git diff --check réussi.",
+      "Le test exécute le vrai raccourci Directive puis l’effet de changement de catégorie et confirme que mission et arc restent sélectionnés.",
+      "Gate test:noncombat-trials réussie : les huit fichiers de suites passent. Le contrat Extinction exécute son vrai snapshot (80/200, 0/200 après dégâts, 200/200 après sursoin), vérifie le lien DOM de la jauge et les dimensions/radar aux trois résolutions."
+    ],
+    "limitations": [
+      "La vérification des trois dimensions est une vérification mathématique des overlays dessinés et une revue de CSS ; aucun rendu navigateur des changements n’est revendiqué.",
+      "Le texte des scènes et les jauges historiques dessinées par les autres moteurs ne deviennent pas tous vectoriels ni uniformément redimensionnables. La recette preview doit vérifier aussi les préférences agrandies.",
+      "Le guide de Cité et les libellés longs doivent encore être contrôlés sur les faibles hauteurs de viewport."
     ]
   }
 ]

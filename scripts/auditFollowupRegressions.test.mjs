@@ -92,15 +92,30 @@ const importSource = appSource.slice(appSource.indexOf('  const importSave ='), 
 for (const lang of ['fr', 'en']) for (const failure of [null, 'backup-failed', 'invalid']) {
   test(`actual import handler ${lang}/${failure || 'success'} leaves cloud untouched until local adoption`, async () => {
     const events = []; const alerts = [];
-    const run = new Function('requestGameDialog', 'lang', 'normalizeSavePayload', 'applySave', 'invalidateCloudOperations', 'account', 'setCloudSyncState', 'setCloudStatus', 'sound', `${importSource}; return importSave;`)(
+    const run = new Function('requestGameDialog', 'lang', 'normalizeSavePayload', 'applySave', 'invalidateCloudOperations', 'accountRef', 'setCloudSyncState', 'setCloudStatus', 'sound', `${importSource}; return importSave;`)(
       async dialog => dialog.kind === 'input' ? (failure === 'invalid' ? '{broken' : '{"gold":10}') : alerts.push(dialog.message), lang,
-      value => value, () => { events.push('apply'); if (failure === 'backup-failed') throw new Error(failure); }, () => events.push('invalidate'), session(),
+      value => value, () => { events.push('apply'); if (failure === 'backup-failed') throw new Error(failure); }, () => events.push('invalidate'), { current: session() },
       state => events.push(state), () => events.push('status'), { playSfx: () => events.push('sound') });
     await run();
     if (!failure) { assert.deepEqual(events, ['apply', 'invalidate', 'conflict', 'status', 'sound']); assert.equal(alerts.length, 0); }
     else { assert.deepEqual(events, failure === 'backup-failed' ? ['apply'] : []); assert.equal(alerts.length, 1); assert.match(alerts[0], failure === 'backup-failed' ? /secours|Backup failed/ : /invalide|Invalid/); }
   });
 }
+
+test('an account that finishes connecting during import cannot autosave the imported trace without an explicit cloud choice', async () => {
+  let answer;
+  const pendingInput = new Promise(resolve => { answer = resolve; });
+  const accountRef = { current: null };
+  const events = [];
+  const run = new Function('requestGameDialog', 'lang', 'normalizeSavePayload', 'applySave', 'invalidateCloudOperations', 'accountRef', 'setCloudSyncState', 'setCloudStatus', 'sound', `${importSource}; return importSave;`)(
+    () => pendingInput, 'fr', value => value, () => events.push('apply'), () => events.push('invalidate'), accountRef,
+    state => events.push(state), () => events.push('status'), { playSfx: () => events.push('sound') });
+  const pending = run();
+  accountRef.current = session();
+  answer('{"gold":10}');
+  await pending;
+  assert.deepEqual(events, ['apply', 'invalidate', 'conflict', 'status', 'sound']);
+});
 
 for (const hp of [NaN, Infinity, -Infinity, undefined, '40']) {
   test(`shared healing rejects malformed HP (${String(hp)}) without mutating its target`, () => {

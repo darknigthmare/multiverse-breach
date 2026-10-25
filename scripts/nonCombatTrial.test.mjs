@@ -11,9 +11,11 @@ import {
 import { LORE_WORLD_BOSS_POLICIES } from '../src/game/loreWorldBossOverrides.js';
 import { ENEMIES_DB } from '../src/game/enemies.js';
 import { getExpandedStages } from '../src/game/expandedUniverses.js';
+import { getSceneCanvasSize, getSceneHudLayout } from '../src/game/immersiveHubState.js';
 
 const hubSource = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
-const indexCssSource = readFileSync(new URL('../src/index.css', import.meta.url), 'utf8');
+const hubCssSource = readFileSync(new URL('../src/components/HubImmersion.css', import.meta.url), 'utf8');
+const viewportSource = readFileSync(new URL('../src/components/useSceneViewport.js', import.meta.url), 'utf8');
 
 const hero = id => ({
   id,
@@ -426,9 +428,38 @@ test('Extinction Zone contracts keep real objectives, bounded resources, aiming,
   ].forEach(marker => assert.ok(hubSource.includes(marker), `Extinction runtime missing ${marker}`));
   assert.match(hubSource, /effect: 'heal'/);
   assert.match(hubSource, /effect: 'ammo'/);
-  assert.match(hubSource, /state\.hp\s*\/\s*Math\.max\(1, state\.maxHp/);
-  assert.match(indexCssSource, /\.extinction-panel-active \.fps-royale-canvas[\s\S]*?aspect-ratio: 84 \/ 43/);
-  assert.doesNotMatch(indexCssSource, /\.extinction-panel-active \.fps-royale-canvas\s*\{[^}]*min-height:\s*52dvh/);
+
+  // Execute the snapshot used by the visible DOM HUD: health must keep its real
+  // maximum and remain bounded after damage/healing, not merely match old draw code.
+  const snapshotStart = hubSource.indexOf('const buildRunSnapshot = useCallback(') + 'const buildRunSnapshot = useCallback('.length;
+  const snapshotEnd = hubSource.indexOf('\n  }, [getRunObjectiveText]);', snapshotStart) + '\n  }'.length;
+  const buildSnapshot = new Function('getRunObjectiveText', `return (${hubSource.slice(snapshotStart, snapshotEnd)});`)(() => 'Objectif');
+  for (const [hp, expected] of [[80, 80], [-5, 0], [240, 200]]) {
+    const snapshot = buildSnapshot({ phase: 'running', hp, maxHp: 200, loot: [], px: 0, py: 0 });
+    assert.equal(snapshot.hp, expected);
+    assert.equal(snapshot.maxHp, 200);
+  }
+  assert.equal(buildSnapshot({ hp: 20 }).maxHp, 100, 'preparation has a valid fallback maximum');
+  assert.match(hubSource, /<progress value=\{runSnapshot\.hp\} max=\{runSnapshot\.maxHp\} aria-label=/);
+  assert.match(hubSource, /Math\.round\(runSnapshot\.hp\)[\s\S]{0,30}Math\.round\(runSnapshot\.maxHp\)/);
+
+  // The full viewport canvas now adapts its backing ratio instead of imposing
+  // 84:43. Test the exact size helper used by ResizeObserver at all review sizes.
+  assert.match(viewportSource, /getSceneCanvasSize\(rect\.width, rect\.height, logicalHeight\)/);
+  assert.match(hubSource, /useSceneViewport\(canvasRef, 430\)/);
+  assert.match(hubCssSource, /\.extinction-panel-active \.fps-royale-canvas\s*\{[^}]*width:\s*100%[^}]*height:\s*100%[^}]*aspect-ratio:\s*auto/);
+  assert.doesNotMatch(hubCssSource, /\.extinction-panel-active \.fps-royale-canvas\s*\{[^}]*min-height:\s*52dvh/);
+  for (const [width, height] of [[360, 800], [844, 390], [1366, 768]]) {
+    const backing = getSceneCanvasSize(width, height, 430);
+    assert.equal(backing.height, 430);
+    assert.ok(Math.abs(backing.width / backing.height - width / height) <= 0.5 / 430, 'uniform scale preserves world proportions');
+    const layout = getSceneHudLayout({ width, height, logicalHeight: 430, hudScale: 1.4, safeArea: 32 });
+    const radar = layout.fpsRadar;
+    const units = layout.unitsPerCssPixel;
+    assert.ok((radar.y - radar.radius) / units >= 88 - 0.001, 'radar stays below the toolbar plus safe margin');
+    assert.ok((radar.x + radar.radius) / units <= width - 32 + 0.001);
+    assert.ok((radar.y + radar.radius) / units < height - 32);
+  }
 });
 
 test('survive fails without active-zone participation even while guarding', () => {

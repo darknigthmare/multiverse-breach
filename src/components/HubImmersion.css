@@ -13,11 +13,11 @@
   background: radial-gradient(ellipse at 75% 25%, #10303988, transparent 58%), linear-gradient(125deg, #02070d, #0a1020 70%, #07191c) !important;
 }
 .hub-screen:not(.is-dedicated-game)::before { content: ''; position: absolute; inset: 0; z-index: -1; background-image: linear-gradient(115deg, transparent 49.8%, #63d5d20b 50%, transparent 50.2%); background-size: 160px 160px; pointer-events: none; }
-.hub-screen:not(.is-dedicated-game) .hub-header { grid-area: header; min-width: 0; margin: 0 !important; padding: 10px 230px 10px 24px !important; border-bottom: 1px solid #73d6d428 !important; gap: 16px; background: #030b12cc; }
+.hub-screen:not(.is-dedicated-game) .hub-header { grid-area: header; min-width: 0; box-sizing: border-box; align-items: center !important; margin: 0 !important; padding: 10px 230px 10px 24px !important; border-bottom: 1px solid #73d6d428 !important; gap: 16px; background: #030b12cc; }
 .hub-screen .hub-header-copy .cyber-title { font-size: clamp(14px, 1.6vw, 20px) !important; letter-spacing: .1em !important; }
 .hub-screen .hub-header-copy > span { font-size: 10px !important; }
-.hub-screen .hub-resource-strip { gap: 6px !important; }
-.hub-screen .hub-resource { border: 0 !important; background: transparent !important; padding: 5px 6px !important; font-size: 11px !important; white-space: nowrap; }
+.hub-screen .hub-resource-strip { display: flex !important; flex-wrap: nowrap !important; min-width: 0; max-width: 100%; gap: 6px !important; margin-left: auto; overflow-x: auto; justify-content: flex-start !important; }
+.hub-screen .hub-resource { flex: 0 0 auto; border: 0 !important; background: transparent !important; padding: 5px 6px !important; font-size: 11px !important; white-space: nowrap; }
 .hub-screen:not(.is-dedicated-game) .hub-navigation { grid-area: navigation; width: auto; max-width: none; margin: 0; padding: 18px 10px 70px; display: flex; flex-direction: column; gap: 24px; overflow-y: auto; border-right: 1px solid #73d6d42e; background: #030910ea; }
 .hub-screen .hub-navigation-primary { display: grid; gap: 6px; padding: 0; border: 0; background: none; }
 .hub-screen .hub-navigation-primary > button { min-height: 48px; padding: 11px 13px; text-align: left; font-size: 11px; line-height: 1.4; letter-spacing: .08em; border: 0; border-left: 3px solid transparent; border-radius: 0; background: transparent; color: #a3bbc6; }
@@ -46,7 +46,7 @@
 .hub-progress-console { position: fixed; z-index: 111; top: 17px; right: 76px; }
 .hub-progress-console > summary { cursor: pointer; list-style: none; min-height: 36px; display: flex; align-items: center; padding: 0 12px; border: 1px solid #6bb7bc66; background: #10232c; color: #c4f8f3; font-size: 10px; }
 .hub-progress-console[open] > summary { border-color: #7dfedb; }
-.hub-progress-console .hub-command-strip { position: absolute; top: 46px; right: 0; width: min(780px, calc(100vw - 36px)); margin: 0; padding: 20px; box-sizing: border-box; max-height: calc(100dvh - 100px); overflow: auto; background: #09141ef5; border: 1px solid #81e0da66; box-shadow: 0 18px 80px #000b; }
+.hub-progress-console .hub-command-strip { position: absolute; top: 46px; right: 0; width: min(780px, calc(100vw - 100px)); grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.9fr); margin: 0; padding: 20px; box-sizing: border-box; max-height: calc(100dvh - 100px); overflow: auto; background: #09141ef5; border: 1px solid #81e0da66; box-shadow: 0 18px 80px #000b; }
 .hub-screen .hub-nexus-message { position: fixed; z-index: 110; bottom: 18px; left: 232px; width: min(660px, calc(100vw - 260px)) !important; background: #06151cf5 !important; box-shadow: 0 5px 30px #0008; pointer-events: none; }
 .hub-return-city { position: fixed; bottom: 18px; left: 12px; z-index: 112; max-width: 184px; min-height: 38px; font-size: 10px; }
 .hub-dossier-section { margin-top: 16px; border: 1px solid #81bac335; background: #04101860; padding: 12px; }
@@ -203,7 +203,7 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
   .hub-screen .hub-catalog-layout > .glass-panel:first-child { position: static; max-height: 300px !important; }
   .hero-resonance-visual { grid-template-columns: minmax(0, 1fr) !important; gap: 12px !important; }
   .hub-progress-console { top: auto; bottom: 12px; left: 12px; right: auto; }
-  .hub-progress-console .hub-command-strip { top: auto; bottom: 44px; left: 0; right: auto; }
+  .hub-progress-console .hub-command-strip { top: auto; bottom: 44px; left: 0; right: auto; width: calc(100vw - 24px); grid-template-columns: minmax(0, 1fr); }
   .hub-progress-console > summary { min-height: 34px; padding: 0 8px; font-size: 9px; }
   .hub-return-city { left: auto; right: 12px; bottom: 12px; max-width: none; background: #0b252eee !important; }
   .hub-screen .hub-nexus-message { bottom: 62px; left: 12px; width: calc(100vw - 24px) !important; }
@@ -237,3 +237,45 @@ html[data-game-motion='reduced'] .hub-screen *, html[data-game-motion='reduced']
 
 .dedicated-pause-options .game-system-controls { margin-top: 20px; display: grid; gap: 12px; }
 .dedicated-pause-options .global-audio-control, .dedicated-pause-options .network-status-badge { position: static !important; inset: auto !important; transform: none !important; }
+
+/* Keep peripheral controls inside the chosen safe area and let enlarged HUDs reflow. */
+.hub-screen, .immersive-drawer-backdrop {
+  --hub-hud-left: max(12px, var(--game-safe-area, 12px), env(safe-area-inset-left, 0px));
+  --hub-hud-right: max(12px, var(--game-safe-area, 12px), env(safe-area-inset-right, 0px));
+  --hub-hud-top: max(12px, var(--game-safe-area, 12px), env(safe-area-inset-top, 0px));
+  --hub-hud-bottom: max(12px, var(--game-safe-area, 12px), env(safe-area-inset-bottom, 0px));
+}
+.mosaic-world-hud, .race-world-hud { left: var(--hub-hud-left); right: var(--hub-hud-right); top: calc(56px + var(--hub-hud-top)); }
+.mosaic-rpg-panel .mosaic-world-controls { left: var(--hub-hud-left); bottom: var(--hub-hud-bottom); max-width: calc(100% - var(--hub-hud-left) - var(--hub-hud-right)); }
+.mosaic-rpg-panel .mosaic-world-controls button { min-height: calc(46px * var(--game-hud-scale, 1)); min-width: calc(44px * var(--game-hud-scale, 1)); }
+.race-mode-shell .race-touch-controls { left: var(--hub-hud-left); right: var(--hub-hud-right); bottom: var(--hub-hud-bottom); }
+.race-mode-shell .race-touch-controls button { min-height: calc(44px * var(--game-hud-scale, 1)); font-size: calc(10px * var(--game-hud-scale, 1)); }
+.race-mode-shell .race-hud-dock { position: absolute; bottom: var(--hub-hud-bottom); left: var(--hub-hud-left); right: var(--hub-hud-right); display: flex; flex-direction: column; align-items: flex-end; gap: 10px; pointer-events: none; }
+.race-mode-shell .race-hud-dock .race-cache-card { position: static; width: min(160px, 45%); box-sizing: border-box; }
+.race-mode-shell .race-hud-dock .race-touch-controls { position: static; width: 100%; }
+.extinction-panel-active .extinction-hud-dock {
+  position: absolute; left: var(--hub-hud-left); right: var(--hub-hud-right); bottom: var(--hub-hud-bottom);
+  display: grid; grid-template-columns: minmax(190px, .8fr) minmax(0, 1.2fr); align-items: end; gap: 16px;
+}
+.extinction-panel-active .extinction-hud-dock .nexus-play-stats { position: static; width: auto; min-width: 0; }
+.extinction-panel-active .extinction-hud-dock .nexus-play-stats > span { font-size: calc(11px * var(--game-hud-scale, 1)); }
+.extinction-health progress { display: block; width: 100%; min-width: 120px; height: 8px; margin-top: 6px; accent-color: #7ef7b1; }
+.extinction-health[data-critical='true'] progress { accent-color: #ff8d79; }
+.extinction-panel-active .extinction-hud-dock .nexus-play-actions { position: static; width: auto; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.extinction-panel-active .extinction-hud-dock .nexus-play-actions .btn-retro { min-width: 0; min-height: calc(42px * var(--game-hud-scale, 1)); padding: 7px; font-size: calc(10px * var(--game-hud-scale, 1)); overflow-wrap: anywhere; }
+.extinction-panel-active .extinction-objective-strip { left: var(--hub-hud-left); top: calc(56px + var(--hub-hud-top)); min-width: 0; width: min(480px, calc(100% - var(--hub-hud-left) - var(--hub-hud-right) - 130px)); box-sizing: border-box; }
+.extinction-panel-active .extinction-result { z-index: 10; padding-top: 80px; }
+.extinction-panel-active .extinction-result, .race-mode-shell .race-result-banner { overflow-y: auto; overscroll-behavior: contain; justify-content: flex-start; }
+.extinction-result > :first-child, .race-result-banner > :first-child { margin-top: auto; }
+.extinction-result > :last-child, .race-result-banner > :last-child { margin-bottom: auto; }
+.extinction-result > *, .race-result-banner > * { flex-shrink: 0; max-width: 100%; }
+.immersive-drawer > header { flex-shrink: 0; padding-top: max(20px, var(--hub-hud-top)); padding-right: max(20px, var(--hub-hud-right)); }
+.immersive-drawer-content { padding-bottom: max(20px, var(--hub-hud-bottom)); }
+@media (max-width: 760px) {
+  .extinction-panel-active .extinction-hud-dock { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .extinction-panel-active .extinction-hud-dock .nexus-play-actions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hub-screen .dedicated-game-pause-dialog > .dedicated-pause-actions { grid-template-columns: minmax(0, 1fr); }
+  .mosaic-rpg-panel .mosaic-world-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) auto; gap: 3px; width: calc(100% - var(--hub-hud-left) - var(--hub-hud-right)); }
+  .mosaic-rpg-panel .mosaic-world-controls button { min-width: 0; }
+}
+@media (pointer: fine) { .mosaic-rpg-panel .mosaic-world-controls { display: flex; width: auto; } }

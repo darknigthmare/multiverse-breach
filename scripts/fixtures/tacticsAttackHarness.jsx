@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import GameCanvas from '../../src/components/GameCanvas.jsx';
 import { EngineTactics } from '../../src/game/engineTactics.js';
 import '../../src/index.css';
+import './combatHarness.css';
 const query = new URLSearchParams(location.search);
 const side = query.get('side') === 'enemy' ? 'enemy' : 'hero';
 const lang = query.get('lang') === 'en' ? 'en' : 'fr';
@@ -55,7 +56,7 @@ audit.prepare = kind => {
 };
 export function Harness() {
   const [paused, setPaused] = useState(false), [mounted, setMounted] = useState(true);
-  return <><header style={{ padding: 12 }}><span>Prepared QA state — native tactical AI. </span>
+  return <><header className="combat-qa-toolbar" style={{ padding: 12 }}><span>Prepared QA state — native tactical AI. </span>
     <button id="qa-pause" onClick={() => setPaused(v => !v)}>{paused ? 'Resume QA' : 'Pause QA'}</button>
     <button id="qa-unmount" onClick={() => setMounted(false)}>Unmount QA</button></header>
     {mounted && <GameCanvas lang={lang} playerProfile={{ name: 'QA' }} activeTeam={team}
