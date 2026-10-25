@@ -21,6 +21,7 @@ export function getCostumeProductionContract(item) {
   return {version:1,status:'ARTWORK_PENDING',equippable:false,artApproved:false,
     identityScope:item.actorKey || '', sourceWork:item.sourceWork || '',
     sourceUrl:item.sourceUrl || '',focus,component:item.component || '',targetIncarnation:item.targetIncarnation || '',
+    sourceMode:item.sourceMode || '', relatedDesignKey:item.relatedDesignKey || '',
     tasks:common.map(t=>({...t})),
     fidelityCriteria:COSTUME_FIDELITY_CRITERIA,requiredReferenceViews:COSTUME_REFERENCE_VIEWS,
     proofRule:L('Un score seul ne valide jamais une tenue : références et planches identifiées par empreinte, poses requises et captures en jeu sont nécessaires.',

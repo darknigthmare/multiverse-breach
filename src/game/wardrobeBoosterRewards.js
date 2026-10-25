@@ -43,6 +43,9 @@ export function getWardrobeUnlockCatalogue() {
         actorName: actor.name, actorKind: kind, universe: actor.universe,
         name: costume.name, origin: costume.origin, nature: costume.nature,
         sourceWork: costume.sourceWork || '', sourceUrl: costume.sourceUrl || '',
+        component: costume.component || '', sourceMode: costume.sourceMode || '',
+        targetIncarnation: costume.targetIncarnation || costume.sourceWork || '',
+        relatedDesignKey: costume.relatedDesignKey || '',
         collection: costume.collection || '', artworkStatus: costume.artworkStatus,
         // Unlocking a right is never approval of a sprite or a grant of its actor.
         artApproved: false, equippable: false, rewardKind: 'costume',

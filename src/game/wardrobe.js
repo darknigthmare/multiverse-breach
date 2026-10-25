@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R11, WARDROBE_RESEARCH_R11 } from './wardrobeOfficialR11.js';
 import { OFFICIAL_COSTUMES_R10 } from './wardrobeOfficialR10.js';
 import { OFFICIAL_COSTUMES_R9, WARDROBE_RESEARCH_R9 } from './wardrobeOfficialR9.js';
 import { OFFICIAL_COSTUMES_R7 } from './wardrobeOfficialR7.js';
@@ -7,7 +8,7 @@ import { OFFICIAL_COSTUME_EXTENSION, ORIGINAL_COLLECTION_EXTENSION, SIGNATURE_DE
 import { getCostumeProductionContract, assertUniqueWardrobeEntries } from './wardrobeProduction.js';
 
 const L = (fr,en) => Object.freeze({fr,en});
-export const WARDROBE_VERSION = 5;
+export const WARDROBE_VERSION = 6;
 // Persisted IDs deliberately remain wardrobe-v1: migration must not erase selections.
 export const WARDROBE_EFFECTS = Object.freeze([
   Object.freeze({key:'cyan',name:L('Résonance cyan','Cyan resonance'),color:'#39c5bb',shape:'ring'}),
@@ -31,7 +32,7 @@ export function isSafeWardrobeReference(value) {
     && ['store.steampowered.com','www.starwars.com','na.store.square-enix-games.com','www.halowaypoint.com'].includes(url.hostname);}
   catch {return false;}
 }
-export const ALL_OFFICIAL_WARDROBE = Object.freeze([...OFFICIAL_WARDROBE,...OFFICIAL_COSTUME_EXTENSION,...OFFICIAL_COSTUMES_R7,...OFFICIAL_COSTUMES_R9,...OFFICIAL_COSTUMES_R10]);
+export const ALL_OFFICIAL_WARDROBE = Object.freeze([...OFFICIAL_WARDROBE,...OFFICIAL_COSTUME_EXTENSION,...OFFICIAL_COSTUMES_R7,...OFFICIAL_COSTUMES_R9,...OFFICIAL_COSTUMES_R10,...OFFICIAL_COSTUMES_R11]);
 const officialByActor=new Map();
 for(const row of ALL_OFFICIAL_WARDROBE) {
   if(!isSafeWardrobeReference(row.sourceUrl))throw new Error(`Invalid wardrobe source ${row.key}`);
@@ -77,7 +78,7 @@ export function getOriginalCostumes(actor) {
 }
 export function getWardrobeResearchTargets(actor) {
   const actorKey=wardrobeActorKey(actor); if(!actorKey)return [];
-  return [...WARDROBE_RESEARCH_TARGETS,...WARDROBE_RESEARCH_R9].filter(row=>wardrobeActorKey(row)===actorKey).map(row=>({...row,
+  return [...WARDROBE_RESEARCH_TARGETS,...WARDROBE_RESEARCH_R9,...WARDROBE_RESEARCH_R11].filter(row=>wardrobeActorKey(row)===actorKey).map(row=>({...row,
     actorKey,entryId:wardrobeEntryId(actor,`research-${row.key}`),equippable:false,officialConfirmed:false}));
 }
 export function getWardrobeEffects(actor) {

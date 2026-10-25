@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R11 } from '../src/game/wardrobeOfficialR11.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { HEROES_DB } from '../src/game/heroes.js';
@@ -5,7 +6,7 @@ import { OFFICIAL_COSTUMES_R10, WARDROBE_SOURCES_R10, UNBOUND_COSTUME_RESEARCH_R
 import { getOfficialCostumes, applyActorAppearance, wardrobeActorKey, ALL_OFFICIAL_WARDROBE } from '../src/game/wardrobe.js';
 import { getWardrobeUnlockCatalogue, getWardrobeBoosterPool, grantWardrobeBoosterBonus } from '../src/game/wardrobeBoosterRewards.js';
 const all=getWardrobeUnlockCatalogue(),visible=[...new Set(all.map(r=>r.universe))];
-test('18 named additions, 106 cumulative designs and 109 bindings',()=>{assert.equal(OFFICIAL_COSTUMES_R10.length,18);assert.equal(ALL_OFFICIAL_WARDROBE.length,106);assert.equal(all.filter(r=>r.origin==='OFFICIAL').length,109);assert.equal(all.length,19913);});
+test('18 R10 definitions retained beside later releases',()=>{assert.equal(OFFICIAL_COSTUMES_R10.length,18);assert.equal(ALL_OFFICIAL_WARDROBE.length,106+OFFICIAL_COSTUMES_R11.length);assert.equal(all.filter(r=>r.origin==='OFFICIAL').length,109+OFFICIAL_COSTUMES_R11.length);assert.equal(all.length,19913+OFFICIAL_COSTUMES_R11.length);});
 for(const row of OFFICIAL_COSTUMES_R10)test(`R10 exact identity, edition and booster: ${row.key}`,()=>{
  const actor=HEROES_DB.find(a=>a.universe===row.universe&&a.id===row.actorIds[0]);assert.ok(actor);
  const entry=getOfficialCostumes(actor).find(e=>e.key===row.key),right=all.find(r=>r.id===entry.id);assert.ok(right);

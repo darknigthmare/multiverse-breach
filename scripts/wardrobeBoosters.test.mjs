@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R11 } from '../src/game/wardrobeOfficialR11.js';
 import { OFFICIAL_COSTUMES_R10 } from '../src/game/wardrobeOfficialR10.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -24,9 +25,9 @@ const alien = poolFor('Alien');
 const pending = drawWardrobeBoosterBonus({ pool: alien, rng: () => 0 });
 
 test('all 19,895 registered costume entitlements have stable unique ids; no effects/research included', () => {
-  assert.equal(all.length, 19895+OFFICIAL_COSTUMES_R10.length); assert.equal(new Set(all.map(x => x.id)).size, all.length);
+  assert.equal(all.length, 19895+(OFFICIAL_COSTUMES_R10.length+OFFICIAL_COSTUMES_R11.length)); assert.equal(new Set(all.map(x => x.id)).size, all.length);
   assert.equal(new Set(all.map(x => x.actorKey)).size, 4936);
-  assert.equal(all.filter(x => x.origin === 'OFFICIAL').length, 91+OFFICIAL_COSTUMES_R10.length);
+  assert.equal(all.filter(x => x.origin === 'OFFICIAL').length, 91+(OFFICIAL_COSTUMES_R10.length+OFFICIAL_COSTUMES_R11.length));
   assert.ok(all.every(x => !x.id.includes(':research-') && x.nature !== 'procedural-effect'));
 });
 test('all entries have a permanent route without unlocking campaign actors', () => {

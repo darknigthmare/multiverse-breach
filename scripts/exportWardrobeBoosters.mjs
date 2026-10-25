@@ -25,7 +25,7 @@ const actors = [...new Set(entries.map(e => e.actorKey))].map(actorKey => {
     official:list.filter(e=>e.origin==='OFFICIAL').length,original:list.filter(e=>e.origin==='ORIGINAL').length,
     total:list.length,routes:first.routes.join(' | '),artwork:'NOT_PRODUCED',equippable:false};
 });
-const summary = {version:'R10',sourceCommit,actors:actors.length,universes:universes.length,
+const summary = {version:'R11',sourceCommit,actors:actors.length,universes:universes.length,
   costumeRights:entries.length,officialBindings:entries.filter(e=>e.origin==='OFFICIAL').length,
   originalBriefs:entries.filter(e=>e.origin==='ORIGINAL').length,boosterRoutes:boosters.length,
   newCostumeSheets:0,officialDesigns:ALL_OFFICIAL_WARDROBE.length,extraPrice:0,
@@ -38,6 +38,6 @@ const cell = value => {
 };
 const csv = (rows, keys) => '\uFEFF' + [keys,...rows.map(row=>keys.map(key=>row[key]))].map(row=>row.map(cell).join(';')).join('\r\n')+'\r\n';
 for (const [name, data] of Object.entries({summary,actors,boosters,entries})) fs.writeFileSync(path.join(out,`${name}.json`),JSON.stringify(data,null,2)+'\n');
-fs.writeFileSync(path.join(out,'official-booster-routes.csv'),csv(entries.filter(e=>e.origin==='OFFICIAL').map(e=>({...e,name:e.name.fr,routes:e.routes.join(' | ')})),['id','actorName','universe','name','sourceWork','sourceUrl','routes','artworkStatus','equippable']));
+fs.writeFileSync(path.join(out,'official-booster-routes.csv'),csv(entries.filter(e=>e.origin==='OFFICIAL').map(e=>({...e,name:e.name.fr,routes:e.routes.join(' | ')})),['id','actorName','universe','name','sourceWork','sourceUrl','component','sourceMode','targetIncarnation','relatedDesignKey','routes','artworkStatus','equippable']));
 fs.writeFileSync(path.join(out,'booster-coverage.csv'),csv(boosters,['boosterId','universe','scope','total','official','original','actors','bonusPerOpening','extraPrice','baseCardsUnchanged']));
 console.log(JSON.stringify(summary,null,2));

@@ -46,7 +46,7 @@ const rows=actors.map(({actor,kind})=>{
 if(new Set(rows.map(r=>r.actorKey)).size!==rows.length)throw new Error('Actor identities collided.');
 const out=path.resolve(outArg);fs.mkdirSync(out,{recursive:true});
 const count=predicate=>rows.filter(predicate).length;
-const summary={version:'R10',sourceBaseCommit,assetTreeCommit:treeSourceCommit,
+const summary={version:'R11',sourceBaseCommit,assetTreeCommit:treeSourceCommit,
  scope:'All active runtime actors after overrides; not every character absent from a franchise, nor all NPC contacts/trials. Declared data and sampled paths only.',
  actors:rows.length,heroes:count(r=>r.kind==='hero'),universes:new Set(rows.map(r=>r.universe)).size,
  originalIdentities:count(r=>r.sourceScope==='ORIGINAL_DESIGN'),externalOrUnresolved:count(r=>r.sourceScope!=='ORIGINAL_DESIGN'),
