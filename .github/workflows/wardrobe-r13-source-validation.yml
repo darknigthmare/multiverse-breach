@@ -12,10 +12,19 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
+          sparse-checkout-cone-mode: false
           sparse-checkout: |
-            src
-            scripts
-            audit/wardrobe-r13-delivery
+            /*.json
+            /*.js
+            /*.mjs
+            /*.html
+            /.nvmrc
+            /.oxlintrc.json
+            /src/
+            /scripts/
+            /audit/wardrobe-r13-delivery/
+            /public/**/*.json
+            /public/**/*.jsonl
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 22
