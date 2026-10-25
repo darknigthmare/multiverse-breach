@@ -1,0 +1,68 @@
+name: Refresh derived rift dossiers
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/forgotten-fighter-followup-2026-10-25]
+    paths: [.github/workflows/refresh-rift-derived.yml]
+permissions:
+  contents: read
+concurrency:
+  group: refresh-rift-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  refresh:
+    if: startsWith(github.ref, 'refs/heads/codex/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          lfs: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Rebuild the two existing derived files, preserving all validation gates
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/rift-refresh
+          node scripts/buildRiftDossierCatalog.mjs > /tmp/rift-refresh/catalog.log
+          node scripts/buildRiftDossierAssetRegistry.mjs > /tmp/rift-refresh/registry.log
+          npm run rift:audit > /tmp/rift-refresh/check.log
+          git diff --check
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          import { execFileSync } from 'node:child_process';
+          import { readFileSync, writeFileSync } from 'node:fs';
+          import { createHash } from 'node:crypto';
+          const allowed = new Set(['docs/rift-dossiers/catalog.json', 'src/game/riftDossierAssets.json']);
+          const changed = execFileSync('git', ['diff', '--name-only'], { encoding: 'utf8' }).trim().split('\n').filter(Boolean);
+          assert.ok(changed.every(p => allowed.has(p)), 'Generator modified a non-derived file');
+          assert.equal(execFileSync('git', ['ls-files', '--others', '--exclude-standard'], { encoding: 'utf8' }).trim(), '', 'Unexpected untracked file');
+          const rows = changed.map(path => ({ path, sha256: createHash('sha256').update(readFileSync(path)).digest('hex') }));
+          writeFileSync('/tmp/rift-refresh/manifest.json', JSON.stringify({ base: process.env.GITHUB_SHA, files: rows }, null, 2));
+          JS
+      - name: Commit only generated dossiers, refusing concurrent branch changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then echo 'Derived dossiers already current'; exit 0; fi
+          test "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/$GITHUB_REF_NAME" --jq .object.sha)" = "$GITHUB_SHA"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- docs/rift-dossiers/catalog.json src/game/riftDossierAssets.json
+          git commit -m 'build(rift): refresh checked dossier catalog and asset registry'
+          gh auth setup-git
+          git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+          git rev-parse HEAD > /tmp/rift-refresh/published-commit.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: rift-refresh-${{ github.sha }}
+          path: /tmp/rift-refresh/
+          retention-days: 7
