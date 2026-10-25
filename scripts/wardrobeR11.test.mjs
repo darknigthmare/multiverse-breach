@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R13 } from '../src/game/wardrobeOfficialR13.js';
 import { OFFICIAL_COSTUMES_R12 } from '../src/game/wardrobeOfficialR12.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -11,14 +12,15 @@ import { getWardrobeUnlockCatalogue, getWardrobeBoosterPool, getWardrobeBoosterP
 const all=getWardrobeUnlockCatalogue(),visible=[...new Set(all.map(r=>r.universe))];
 const additions=new Set(OFFICIAL_COSTUMES_R11.map(r=>r.key));
 const rights=all.filter(r=>OFFICIAL_COSTUMES_R11.some(c=>c.key===r.id.slice(r.id.lastIndexOf(':')+1)));
-const r12Keys=new Set(OFFICIAL_COSTUMES_R12.map(c=>c.key));
+const laterRows=[...OFFICIAL_COSTUMES_R12,...OFFICIAL_COSTUMES_R13];
+const r12Keys=new Set(laterRows.map(c=>c.key));
 const previous=all.filter(r=>!rights.includes(r)&&!r12Keys.has(r.id.slice(r.id.lastIndexOf(':')+1)));
-const r12Bindings=OFFICIAL_COSTUMES_R12.reduce((n,c)=>n+c.actorIds.length,0);
+const r12Bindings=laterRows.reduce((n,c)=>n+c.actorIds.length,0);
 const pool=u=>getWardrobeBoosterPool({banner:{id:`universe:${u}`,universe:u},visibleUniverses:visible});
 const actorFor=row=>HEROES_DB.find(a=>a.id===row.actorIds[0]&&a.universe===row.universe);
 test('R11 adds eleven named variants without changing actor or prior right counts',()=>{
  assert.equal(OFFICIAL_COSTUMES_R11.length,11);assert.equal(additions.size,11);assert.equal(rights.length,11);
- assert.equal(ALL_OFFICIAL_WARDROBE.length,117+OFFICIAL_COSTUMES_R12.length);assert.equal(all.filter(r=>r.origin==='OFFICIAL').length,120+r12Bindings);
+ assert.equal(ALL_OFFICIAL_WARDROBE.length,117+laterRows.length);assert.equal(all.filter(r=>r.origin==='OFFICIAL').length,120+r12Bindings);
  assert.equal(all.length,19924+r12Bindings);assert.equal(previous.length,19913);assert.equal(new Set(all.map(r=>r.actorKey)).size,4936);
 });
 test('all previous persisted entitlement IDs retain their baseline digest',()=>{

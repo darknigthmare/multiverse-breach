@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R13, WARDROBE_SOURCE_SCOPES_R13 } from '../src/game/wardrobeOfficialR13.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -15,15 +16,17 @@ const byKey=new Map(actors.map(a=>[wardrobeActorKey(a),a]));
 const all=getWardrobeUnlockCatalogue(),visible=[...new Set(all.map(e=>e.universe))];
 const keys=new Set(OFFICIAL_COSTUMES_R12.map(c=>c.key));
 const isNew=e=>keys.has(e.id.slice(e.id.lastIndexOf(':')+1));
-const added=all.filter(isNew),previous=all.filter(e=>!isNew(e));
+const r13Keys=new Set(OFFICIAL_COSTUMES_R13.map(e=>e.key));
+const r13Bindings=OFFICIAL_COSTUMES_R13.reduce((n,e)=>n+e.actorIds.length,0);
+const added=all.filter(isNew),previous=all.filter(e=>!isNew(e)&&!r13Keys.has(e.id.slice(e.id.lastIndexOf(':')+1)));
 const pool=u=>getWardrobeBoosterPool({banner:{id:`universe:${u}`,universe:u},visibleUniverses:visible});
 const frank=byKey.get(wardrobeActorKey({universe:'Dead Rising',id:'dead_rising_frank_west'}));
 const scope=WARDROBE_SOURCE_SCOPES_R12[0];
 test('26 definitions bind to 29 exact rights across ten newly documented actors',()=>{
  assert.equal(OFFICIAL_COSTUMES_R12.length,26);assert.equal(keys.size,26);assert.equal(added.length,29);
- assert.equal(new Set(added.map(e=>e.actorKey)).size,10);assert.equal(ALL_OFFICIAL_WARDROBE.length,143);
- assert.equal(all.filter(e=>e.origin==='OFFICIAL').length,149);assert.equal(all.length,19953);assert.equal(previous.length,19924);
- assert.equal(byKey.size,4936);assert.equal(new Set(all.filter(e=>e.origin==='OFFICIAL').map(e=>e.actorKey)).size,45);
+ assert.equal(new Set(added.map(e=>e.actorKey)).size,10);assert.equal(ALL_OFFICIAL_WARDROBE.length,143+OFFICIAL_COSTUMES_R13.length);
+ assert.equal(all.filter(e=>e.origin==='OFFICIAL').length,149+r13Bindings);assert.equal(all.length,19953+r13Bindings);assert.equal(previous.length,19924);
+ assert.equal(byKey.size,4936);assert.equal(new Set(all.filter(e=>e.origin==='OFFICIAL').map(e=>e.actorKey)).size,54);
 });
 test('all 19924 pre-R12 IDs have unchanged digest',()=>assert.equal(createHash('sha256').update(JSON.stringify(previous.map(e=>e.id).sort())).digest('hex'),'6b300ad5b03f8b8770478359b1e9926266b54bd39177883f528b47642e8b40dd'));
 for(const row of OFFICIAL_COSTUMES_R12)for(const actorId of row.actorIds){
@@ -113,7 +116,7 @@ test('empty or duplicate source manifests are rejected',()=>{
 test('all 4936 actors retain honest open research and unmodified data',()=>{
  const before=JSON.stringify(actors);let covered=0;
  for(const a of actors){const c=getWardrobeCoverage(a);assert.equal(c.allCharacterCostumesResearched,false);assert.equal(c.completedCostumes,0);if(c.namedSourceScopes.length)covered++;}
- assert.equal(covered,1);assert.equal(JSON.stringify(actors),before);
+ assert.equal(covered,1+new Set(WARDROBE_SOURCE_SCOPES_R13.map(s=>`${s.universe}::${s.actorId}`)).size);assert.equal(JSON.stringify(actors),before);
 });
 test('named scope results are not shared mutable state',()=>{
  const a=getWardrobeSourceScopeCoverage(frank);a[0].missing.push('fake');assert.equal(getWardrobeSourceScopeCoverage(frank)[0].missing.length,0);

@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R13 } from '../src/game/wardrobeOfficialR13.js';
 import { OFFICIAL_COSTUMES_R12 } from '../src/game/wardrobeOfficialR12.js';
 import { OFFICIAL_COSTUMES_R11 } from '../src/game/wardrobeOfficialR11.js';
 import { OFFICIAL_COSTUMES_R10 } from '../src/game/wardrobeOfficialR10.js';
@@ -25,10 +26,10 @@ const leon = HEROES_DB.find(h => h.id === 'leon' && h.universe === 'Resident Evi
 const alien = poolFor('Alien');
 const pending = drawWardrobeBoosterBonus({ pool: alien, rng: () => 0 });
 
-test('all 19,895 registered costume entitlements have stable unique ids; no effects/research included', () => {
-  assert.equal(all.length, 19895+(OFFICIAL_COSTUMES_R10.length+OFFICIAL_COSTUMES_R11.length)+OFFICIAL_COSTUMES_R12.reduce((n,c)=>n+c.actorIds.length,0)); assert.equal(new Set(all.map(x => x.id)).size, all.length);
+test('all registered costume entitlements including R13 have stable unique ids; no effects/research included', () => {
+  assert.equal(all.length, 19895+(OFFICIAL_COSTUMES_R10.length+OFFICIAL_COSTUMES_R11.length)+OFFICIAL_COSTUMES_R12.reduce((n,c)=>n+c.actorIds.length,0)+OFFICIAL_COSTUMES_R13.reduce((n,c)=>n+c.actorIds.length,0)); assert.equal(new Set(all.map(x => x.id)).size, all.length);
   assert.equal(new Set(all.map(x => x.actorKey)).size, 4936);
-  assert.equal(all.filter(x => x.origin === 'OFFICIAL').length, 91+(OFFICIAL_COSTUMES_R10.length+OFFICIAL_COSTUMES_R11.length)+OFFICIAL_COSTUMES_R12.reduce((n,c)=>n+c.actorIds.length,0));
+  assert.equal(all.filter(x => x.origin === 'OFFICIAL').length, 91+(OFFICIAL_COSTUMES_R10.length+OFFICIAL_COSTUMES_R11.length)+OFFICIAL_COSTUMES_R12.reduce((n,c)=>n+c.actorIds.length,0)+OFFICIAL_COSTUMES_R13.reduce((n,c)=>n+c.actorIds.length,0));
   assert.ok(all.every(x => !x.id.includes(':research-') && x.nature !== 'procedural-effect'));
 });
 test('all entries have a permanent route without unlocking campaign actors', () => {
