@@ -146,14 +146,16 @@ for(const field of ['meter','currentHp','x','y'])test(`invalid ${field} prevents
     assert.equal(e.tryAction('player','super'),false);assert.equal(a.action,null);
   }
 });
-test('custom profiles, unsupported universes, noncombatants, ranged attacks and summons are not converted',()=>{
+test('custom profiles, unsupported universes, noncombatants and summons are not converted; direct fire stays ranged',()=>{
   for(const patch of [{id:'Other'},{universe:'Other'},{nonCombat:true},{combatEligible:false},
     {fighterAttacks:{super:{effect:'damage'}}},{special:{name:'Custom',dmg:1}},
     {special:{...heroes.find(h=>h.id==='tifa_ff7').special,fighterProfile:{effect:'damage'}}}]){
     const {a}=fixture({...heroes.find(h=>h.id==='tifa_ff7'),...patch});assert.equal(melee.getFighterMeleeDefinition(a),null);
     assert.equal(a.special?.sourceSignatureKey,undefined);
   }
-  for(const id of ['aerith_ff7','team_fortress_2_medic','goku_dbz','lightning_ff13','city_hunter']){
+  const {a: ranged}=fixture('goku_dbz');
+  assert.equal(melee.getFighterContactDefinition(ranged).delivery,'ranged');
+  for(const id of ['aerith_ff7','team_fortress_2_medic','lightning_ff13','city_hunter']){
     const {a}=fixture(id);assert.equal(melee.getFighterMeleeDefinition(a),null);
   }
 });
@@ -177,5 +179,6 @@ for(const lang of ['fr','en'])test(`${lang}: codex distinguishes Fighter contact
   assert.match(text,/Fighter/);assert.match(text,/15/);assert.match(text,lang==='fr'?/réservistes/:/reserves/);
   assert.match(text,lang==='fr'?/non certifiées/:/not certified/);assert.equal(JSON.stringify(source),before);
   const ranged=codex.getSignatureSummary(codex.getSignatureCodex(heroes.find(h=>h.id==='goku_dbz')),lang);
-  assert.doesNotMatch(ranged,/Fighter:/);assert.doesNotMatch(ranged,/Fighter :/);
+  assert.match(ranged,/Fighter/);assert.match(ranged,lang==='fr'?/à distance/:/ranged/);
+  assert.doesNotMatch(ranged,lang==='fr'?/à courte portée/:/close-range/);
 });

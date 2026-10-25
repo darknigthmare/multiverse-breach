@@ -1,4 +1,5 @@
-// Explicit Fighter adaptations of existing close-contact source contracts.
+import { getFighterRangedDefinition } from './fighterRangedSignatures.js';
+// Fighter contact scheduler: close combat plus explicitly listed direct-fire adaptations.
 // No new roster/unlock or source choreography: one confirmed active opponent,
 // native Fighter windup/recovery and damage budget, authored reach/contact count.
 import { resolveSourceSignature, prepareSourceSignature } from './signatureSourceKits.js';
@@ -28,7 +29,9 @@ const fields = a => [a?.name, a?.type, a?.dmg, a?.sourceSignatureKey];
 const HIT_AT = 0.45;
 const RECOVERY = 0.47;
 
-export function getFighterMeleeDefinition(actor) {
+export function getFighterContactDefinition(actor) {
+  const ranged = getFighterRangedDefinition(actor);
+  if (ranged) return ranged;
   if (actor?.fighterAttacks?.super || actor?.special?.fighterProfile) return null;
   const d = resolveSourceSignature(actor);
   return d && keys.has(d.key) && d.effect === 'damage' && d.delivery === 'melee'
@@ -37,6 +40,8 @@ export function getFighterMeleeDefinition(actor) {
     && Number.isInteger(d.hits) && d.hits >= 1 && d.hits <= 32
     && Number.isFinite(d.hitGapTicks) && d.hitGapTicks > 0 ? d : null;
 }
+// Historical engine import retained; delivery is explicit on the returned definition.
+export const getFighterMeleeDefinition = getFighterContactDefinition;
 export function prepareFighterMelee(actor) {
   return getFighterMeleeDefinition(actor) ? prepareSourceSignature(actor) : null;
 }
@@ -62,7 +67,8 @@ export function createFighterMeleeSignatures(engine) {
     && same(identity(t.actor), t.identity) && generation(t.actor) === t.life;
   const locked = () => disposed || engine.disposed || engine.paused || engine.finished || engine.countdown > 0;
   const inRange = (a, b, d, facing = null) => positioned(a) && positioned(b)
-    && Math.abs(b.x - a.x) <= d.range && Math.abs(b.y - a.y) < 92
+    && Math.abs(b.x - a.x) <= d.range && Math.abs(b.x - a.x) >= (d.minRange || 0)
+    && Math.abs(b.y - a.y) < 92
     && (facing === null || (b.x - a.x) * facing >= 0);
   const available = caster => {
     const d = getFighterMeleeDefinition(caster);
@@ -75,7 +81,7 @@ export function createFighterMeleeSignatures(engine) {
   const prepare = caster => {
     if (!available(caster)) return null;
     const d = getFighterMeleeDefinition(caster), target = engine.getOpponent(caster.side);
-    const token = Object.freeze({ key: d.key });
+    const token = Object.freeze({ key: d.key, delivery: d.delivery });
     const gap = d.hitGapTicks / 60;
     const duration = HIT_AT + (d.hits - 1) * gap + RECOVERY;
     plans.set(token, { caster: ticket(caster), target: ticket(target), definition: d,

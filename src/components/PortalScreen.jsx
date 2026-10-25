@@ -1,4 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import WardrobeBoosterBonus from './WardrobeBoosterBonus.jsx';
+import { getWardrobeBoosterPool, drawWardrobeBoosterBonus, grantWardrobeBoosterBonus, makeWardrobeBonusHistory } from '../game/wardrobeBoosterRewards.js';
 import { EQUIP_ITEMS_DB, EVENT_ITEMS_DB, HEROES_DB } from '../game/heroes';
 import sound from '../game/soundEngine';
 import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
@@ -94,6 +96,7 @@ const REWARD_KIND_LABELS = {
   equipment: { fr: 'EQUIPEMENT', en: 'EQUIPMENT' },
   event: { fr: 'PROTOCOLE', en: 'PROTOCOL' },
   skin: { fr: 'APPARENCE', en: 'APPEARANCE' },
+  costume: { fr: 'BONUS DE TENUE', en: 'OUTFIT BONUS' },
   archive: { fr: 'STAGE CUSTOM', en: 'CUSTOM STAGE' },
   kart: { fr: 'KART', en: 'KART' },
   battleMusic: { fr: 'MUSIQUE DE COMBAT', en: 'BATTLE MUSIC' },
@@ -769,6 +772,7 @@ export default function PortalScreen({
   const [artPreviewOpen, setArtPreviewOpen] = useState(false);
   const [openingPhase, setOpeningPhase] = useState('sealed');
   const [boosterRewards, setBoosterRewards] = useState([]);
+  const [wardrobeBonus, setWardrobeBonus] = useState(null);
   const [revealedCards, setRevealedCards] = useState([]);
   const [boosterRefund, setBoosterRefund] = useState(0);
   const [collectionOpen, setCollectionOpen] = useState(false);
@@ -1111,6 +1115,7 @@ export default function PortalScreen({
     setActiveBanner(DEFAULT_OC_BOOSTER_ID);
     setOpeningPhase('sealed');
     setBoosterRewards([]);
+    setWardrobeBonus(null);
     setRevealedCards([]);
   }, [activeBanner, visibleBannerIds]);
 
@@ -1169,6 +1174,11 @@ export default function PortalScreen({
     }),
     [activeBannerData, visibleHeroes, disabledGearSet]
   );
+  const activeWardrobePool = useMemo(() => getWardrobeBoosterPool({
+    banner: activeBannerData,
+    visibleUniverses: [...new Set(visibleHeroes.map(hero => hero.universe))],
+    hiddenUniverses, disabledAssets
+  }), [activeBannerData, visibleHeroes, hiddenUniverses, disabledAssets]);
   const activeContentUpdate = useMemo(
     () => resolvePortalBoosterEditorialWave({
       packId: activeBannerData.id,
@@ -1237,7 +1247,7 @@ export default function PortalScreen({
     return false;
   };
 
-  const applyBoosterTransaction = (rewards, pricePaid, freeCreditSetId = null) => {
+  const applyBoosterTransaction = (rewards, pricePaid, freeCreditSetId = null, outfitBonus = null) => {
     const obtainedAt = new Date().toISOString();
     const cardDefinitions = rewards
       .map(reward => reward.cardDefinition)
@@ -1307,7 +1317,9 @@ export default function PortalScreen({
 
     setBreachShards(previous => previous - pricePaid + totalRefund);
     if (newHeroIds.length > 0) setUnlockedHeroes(previous => appendUnique(previous, newHeroIds));
-    if (newInventoryIds.length > 0) setInventory(previous => appendUnique(previous, newInventoryIds));
+    if (newInventoryIds.length > 0 || outfitBonus) setInventory(previous => grantWardrobeBoosterBonus(
+      appendUnique(previous, newInventoryIds), outfitBonus, activeWardrobePool
+    ));
     setPortalCollection(previous => {
       const freeBoosterCredits = { ...previous?.freeBoosterCredits };
       if (freeCreditSetId) {
@@ -1359,6 +1371,7 @@ export default function PortalScreen({
       netCost,
       at: obtainedAt
     }));
+    const outfitHistory = makeWardrobeBonusHistory(outfitBonus, activeBannerData, lang, obtainedAt);
     setPortalStats(previous => appendOpeningHistory({
       ...previous,
       pulls: (previous?.pulls || 0) + rewards.length,
@@ -1375,10 +1388,11 @@ export default function PortalScreen({
         at: obtainedAt
       },
       lastPull: historyEntries[historyEntries.length - 1]
-    }, historyEntries.slice().reverse()));
+    }, [...(outfitHistory ? [outfitHistory] : []), ...historyEntries.slice().reverse()]));
     setBoosterRefund(totalRefund);
     if (
-      newHeroIds.length > 0
+      Boolean(outfitBonus)
+      || newHeroIds.length > 0
       || newInventoryIds.length > 0
       || newArchives.length > 0
       || newHudThemes.length > 0
@@ -1419,11 +1433,14 @@ export default function PortalScreen({
       ...reward,
       cardDefinition: cardDefinitionByReward.get(getCardRewardKey(reward)) || null
     }));
+    // Bonus does not enter the five-card pool, pity, refunds or album milestone economy.
+    const outfitBonus = drawWardrobeBoosterBonus({ pool: activeWardrobePool, inventory });
+    setWardrobeBonus(outfitBonus);
     setBoosterRewards(rewardsWithCards);
     setRevealedCards([]);
     setOpeningPhase('charging');
     sound.playSfx('portal');
-    applyBoosterTransaction(rewardsWithCards, pricePaid, freeCreditSetId);
+    applyBoosterTransaction(rewardsWithCards, pricePaid, freeCreditSetId, outfitBonus);
 
     const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) {
@@ -1448,6 +1465,7 @@ export default function PortalScreen({
     completionScheduledRef.current = false;
     setOpeningPhase('sealed');
     setBoosterRewards([]);
+    setWardrobeBonus(null);
     setRevealedCards([]);
     setBoosterRefund(0);
   };
@@ -1983,6 +2001,7 @@ export default function PortalScreen({
           >
             {lang === 'fr' ? 'DOSSIER ET CATALOGUE COMPLETS' : 'COMPLETE DOSSIER AND CATALOG'} · {activeRewardCandidates.length}
           </button>
+          <WardrobeBoosterBonus key={activeBannerData.id} pool={activeWardrobePool} inventory={inventory} lang={lang} />
           <div className="portal-rate-grid">
             {Object.values(PORTAL_RARITIES).map(rarity => (
               <span key={rarity.id} style={{ '--rarity-color': rarity.color }}>
@@ -2099,6 +2118,8 @@ export default function PortalScreen({
                   />
                 ))}
               </div>
+              {revealedCount === BOOSTER_CARD_COUNT && <WardrobeBoosterBonus
+                pool={activeWardrobePool} inventory={inventory} lang={lang} award={wardrobeBonus} receipt />}
               {boosterRefund > 0 && (
                 <div className="booster-refund-line">
                   {lang === 'fr'

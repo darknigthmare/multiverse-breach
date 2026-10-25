@@ -1,3 +1,5 @@
+import { drawWardrobeEffect } from './wardrobeEffects.js';
+
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
 import { EXPANDED_DECOR_THEMES } from './expandedUniverses';
@@ -449,6 +451,7 @@ export class ParticleSystem {
 }
 
 export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targetHeight = 72, context = 'auto') => {
+  drawWardrobeEffect(ctx, x, y, character, targetHeight);
   if (context === 'melee') {
     const meleeManifestStatus = drawMeleeManifestSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, () => {
       drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);

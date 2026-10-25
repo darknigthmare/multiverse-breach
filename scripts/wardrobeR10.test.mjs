@@ -1,0 +1,28 @@
+import { OFFICIAL_COSTUMES_R13 } from '../src/game/wardrobeOfficialR13.js';
+import { OFFICIAL_COSTUMES_R12 } from '../src/game/wardrobeOfficialR12.js';
+import { OFFICIAL_COSTUMES_R11 } from '../src/game/wardrobeOfficialR11.js';
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { HEROES_DB } from '../src/game/heroes.js';
+import { OFFICIAL_COSTUMES_R10, WARDROBE_SOURCES_R10, UNBOUND_COSTUME_RESEARCH_R10 } from '../src/game/wardrobeOfficialR10.js';
+import { getOfficialCostumes, applyActorAppearance, wardrobeActorKey, ALL_OFFICIAL_WARDROBE } from '../src/game/wardrobe.js';
+import { getWardrobeUnlockCatalogue, getWardrobeBoosterPool, grantWardrobeBoosterBonus } from '../src/game/wardrobeBoosterRewards.js';
+const all=getWardrobeUnlockCatalogue(),visible=[...new Set(all.map(r=>r.universe))];
+test('18 R10 definitions retained beside later releases',()=>{assert.equal(OFFICIAL_COSTUMES_R10.length,18);assert.equal(ALL_OFFICIAL_WARDROBE.length,106+OFFICIAL_COSTUMES_R11.length+OFFICIAL_COSTUMES_R12.length+OFFICIAL_COSTUMES_R13.length);assert.equal(all.filter(r=>r.origin==='OFFICIAL').length,109+OFFICIAL_COSTUMES_R11.length+OFFICIAL_COSTUMES_R12.reduce((n,c)=>n+c.actorIds.length,0)+OFFICIAL_COSTUMES_R13.reduce((n,c)=>n+c.actorIds.length,0));assert.equal(all.length,19913+OFFICIAL_COSTUMES_R11.length+OFFICIAL_COSTUMES_R12.reduce((n,c)=>n+c.actorIds.length,0)+OFFICIAL_COSTUMES_R13.reduce((n,c)=>n+c.actorIds.length,0));});
+for(const row of OFFICIAL_COSTUMES_R10)test(`R10 exact identity, edition and booster: ${row.key}`,()=>{
+ const actor=HEROES_DB.find(a=>a.universe===row.universe&&a.id===row.actorIds[0]);assert.ok(actor);
+ const entry=getOfficialCostumes(actor).find(e=>e.key===row.key),right=all.find(r=>r.id===entry.id);assert.ok(right);
+ assert.equal(entry.actorKey,wardrobeActorKey(actor));assert.ok(entry.brief.fr&&entry.brief.en);assert.ok(entry.targetIncarnation);
+ assert.ok(WARDROBE_SOURCES_R10.some(s=>s.id===entry.sourceId&&s.url===entry.sourceUrl));
+ const pool=getWardrobeBoosterPool({banner:{id:`universe:${actor.universe}`,universe:actor.universe},visibleUniverses:visible});assert.ok(pool.includes(right));
+ assert.ok(getWardrobeBoosterPool({banner:{id:'multi'},visibleUniverses:visible}).includes(right));
+ assert.equal(applyActorAppearance(actor,entry.id),actor);assert.equal(entry.artApproval,'NOT_REVIEWED');assert.equal(entry.equippable,false);
+ const inventory=grantWardrobeBoosterBonus(['existing-equipment'],right,pool);assert.deepEqual(inventory,['existing-equipment',entry.id]);assert.equal(grantWardrobeBoosterBonus(inventory,right,pool),inventory);
+ assert.ok(!row.stats&&!row.weapon&&!row.special&&!row.secondary);
+});
+test('five head accessories are not five full armor sets',()=>{const head=OFFICIAL_COSTUMES_R10.filter(r=>r.component==='head-only');assert.equal(head.length,5);assert.ok(head.every(r=>r.nature==='official-accessory'));});
+test('five pack-specific squad appearances stay explicitly named-only evidence',()=>assert.equal(OFFICIAL_COSTUMES_R10.filter(r=>r.sourceEvidence==='PUBLISHER_PACK_AND_WEARER_ONLY').length,5));
+test('Garrus ME2 and ME3 have different persistent costume identifiers',()=>{const list=getOfficialCostumes({id:'garrus',universe:'Mass Effect'});assert.equal(list.length,2);assert.notEqual(list[0].id,list[1].id);assert.notEqual(list[0].sourceWork,list[1].sourceWork);});
+test('new costumes cannot leak into another universe',()=>{for(const row of OFFICIAL_COSTUMES_R10)assert.equal(getOfficialCostumes({id:row.actorIds[0],universe:'Other'}).length,0);});
+test('six named recipients without roster bindings never become bonus rewards',()=>{assert.equal(UNBOUND_COSTUME_RESEARCH_R10.length,6);for(const r of UNBOUND_COSTUME_RESEARCH_R10){assert.equal(r.status,'ACTOR_BINDING_MISSING');assert.equal(r.equippable,false);assert.ok(!HEROES_DB.some(a=>a.name===r.actorName&&a.universe===r.universe));assert.ok(!all.some(a=>a.sourceWork===r.sourceWork&&a.actorName===r.actorName));}});
+test('Ashley Graham is never rebound to Ashley Williams',()=>assert.equal(getOfficialCostumes({id:'ashley_williams',universe:'Mass Effect'}).length,0));

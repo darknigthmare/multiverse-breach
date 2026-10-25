@@ -1,3 +1,7 @@
+import { applyActorAppearance } from '../game/wardrobe.js';
+import { resolveSourceScene } from '../game/sourceSceneStages.js';
+import SourceScenePanel from './SourceScenePanel.jsx';
+import { drawSourceSceneBackdrop } from '../game/sourceScenePresentation.js';
 import { drawSignatureCinematic } from '../game/signaturePresentation.js';
 import { installSignatureDirector } from '../game/signatureDirector.js';
 import SignatureSequencePanel from './SignatureSequencePanel.jsx';
@@ -233,9 +237,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [activeSynergies, setActiveSynergies] = useState([]);
   // HUD updates must not rebuild the entire multi-universe roster each frame.
   const HEROES_DB = useMemo(() => [createPlayerHero(playerProfile), ...BASE_HEROES_DB].map(hero => {
-    const skin = SKIN_CATALOG[heroSkins?.[hero.id]];
-    return skin ? { ...hero, ...skin.colors, activeSkin: skin } : hero;
-  }), [playerProfile, heroSkins]);
+    return applyActorAppearance(hero, heroSkins?.[hero.id], SKIN_CATALOG, {
+      sourceLocked: Boolean(stage.sourceSceneId || (stage.incarnation && stage.enemyRosterExclusive))
+    });
+  }), [playerProfile, heroSkins, stage.sourceSceneId, stage.incarnation, stage.enemyRosterExclusive]);
   const disabledHeroSet = new Set(disabledAssets.heroes || []);
   const disabledEnemySet = new Set(disabledAssets.enemies || []);
   const disabledGearSet = new Set(disabledAssets.gear || []);
@@ -1112,7 +1117,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       const anchor = HEROES_DB[0];
       squadHeroes = [{ ...anchor, stats: getHeroStats(anchor), archetypeSynergiesPrepared: true, talent: null }];
     }
-    if (enemyList.length === 0 && !stage.nonCombatTrial) {
+    if (enemyList.length === 0 && !stage.nonCombatTrial && !resolveSourceScene(arenaStage)) {
       setCombatRuntimeError(lang === 'fr'
         ? 'Aucune menace valide dans cette breche. Verifie les assets ennemis actifs dans ADMIN.'
         : 'No valid threat in this breach. Check active enemy assets in ADMIN.');
@@ -1401,7 +1406,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         const renderUniverse = arenaStage.forceBaseArena || arenaStage.dlcSuppressedArena
           ? 'Nexus de Convergence'
           : stage.universe;
-        const usingOpenAiBackdrop = drawUniverseBackground(ctx, renderUniverse, width, height, stage.mode);
+        const usingOpenAiBackdrop = drawSourceSceneBackdrop(ctx, arenaStage, width, height)
+          || drawUniverseBackground(ctx, renderUniverse, width, height, stage.mode);
         if (!bootClearedRef.current) {
           bootClearedRef.current = true;
           setCombatBooting(false);
@@ -1865,6 +1871,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const raamEncounter = stage.mode === 'RPG' ? engineRef.current?.getRaamEncounterState?.() : null;
   const aliensRescueEncounter = stage.mode === 'Smash' ? engineRef.current?.getAliensRescueEncounterState?.() : null;
   const piratesCurseEncounter = stage.mode === 'RPG' ? engineRef.current?.getPiratesCurseEncounterState?.() : null;
+  const sourceScene = stage.mode === 'Tactics' ? engineRef.current?.getSourceSceneState?.() : null;
+  const handleSourceSceneCommand = (id, token) => {
+    if (sessionPausedRef.current || battleCompleted || preMatchLocked || opponentHasCommand) return;
+    const engine = engineRef.current;
+    if (engine?.triggerSourceSceneAction?.(id, token)) { setSelectedAction(null); setTeamState([...engine.heroes]); }
+  };
   const rexEncounter = stage.mode === 'Tactics' ? engineRef.current?.getRexEncounterState?.() : null;
   const sourceAmmoHero = stage.mode === 'Smash' ? engineRef.current?.getActiveHero?.() || activeHeroObj : activeHeroObj;
   const sourceAmmunition = getBlackPearlSourceAmmunition(sourceAmmoHero);
@@ -2837,6 +2849,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             paused={sessionPaused || battleCompleted} targeting={Boolean(rpgTargeting)}
             onCommand={handleRaamCommand}
           />}
+          {stage.mode === 'Tactics' && <SourceScenePanel scene={sourceScene} lang={lang}
+            locked={sessionPaused || battleCompleted || preMatchLocked} onCommand={handleSourceSceneCommand} />}
           {stage.mode === 'Tactics' && !opponentHasCommand && <RexEncounterPanel
             encounter={rexEncounter} hero={engineRef.current?.activeUnit || activeHeroObj} lang={lang}
             paused={sessionPaused || battleCompleted || preMatchLocked} selectedAction={selectedAction}
@@ -2883,7 +2897,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               <div style={{ display: stage.mode === 'Smash' ? 'none' : 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                 <button
                   onClick={() => handleActiveHeroAbility('simple')}
-                  disabled={tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={!!sourceScene || tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'simple' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise l attaque de base du heros actif.' : 'Use the active hero basic attack.'}
                 >
@@ -2893,7 +2907,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('secondary')}
-                  disabled={tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (sourceAmmunition && (activeHeroObj.sourceAmmoRemaining <= 0 || piratesCurseEncounter?.curseActive)) || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={!!sourceScene || tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (sourceAmmunition && (activeHeroObj.sourceAmmoRemaining <= 0 || piratesCurseEncounter?.curseActive)) || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'secondary' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise la competence secondaire si elle n est pas en recharge.' : 'Use the secondary skill if it is not on cooldown.'}
                 >
@@ -2915,7 +2929,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('special')}
-                  disabled={tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={!!sourceScene || tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className="btn-special"
                   title={lang === 'fr' ? 'Utilise l attaque speciale quand la jauge speciale est a 100%.' : 'Use the special attack when the special gauge reaches 100%.'}
                   style={{
