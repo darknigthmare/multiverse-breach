@@ -76,7 +76,14 @@ def audit_global_batch(book, plan):
     assert counts["queueStatuses"] == dict(dispositions)
     assert counts["imageCallsMadeByThisBuilder"] == counts["imagesInstalledByThisBuilder"] == counts["automaticPerfectFidelityApprovals"] == 0
     assert counts["currentProviderRefusedOrCorrectionRefusedJobs"] == 20
-    assert counts["currentAtlasRefusedSubjects"] == 7 and counts["newAtlasRefusedSubjects"] == 1
+    active_atlas_refusals = [record for subject in manifest["subjects"]
+                            for record in subject.get("atlasCorrectionRefusals", [])
+                            if record.get("currentlyBlocksSourceCorrection")]
+    active_atlas_subjects = {record["characterId"] for record in active_atlas_refusals}
+    new_atlas_subjects = {record["characterId"] for record in active_atlas_refusals
+                          if record.get("receiptDate") == manifest["date"]}
+    assert counts["currentAtlasRefusedSubjects"] == len(active_atlas_subjects) == 7
+    assert counts["newAtlasRefusedSubjects"] == len(new_atlas_subjects)
     ns = {"s": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
     rel_id = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"
     with ZipFile(book) as archive:
@@ -90,7 +97,7 @@ def audit_global_batch(book, plan):
             "masterPrompt": batch["masterPromptPath"], "masterPromptSha256": batch["masterPromptSha256"],
             "subjects": len(subjects), "slots": sum(dispositions.values()),
             "actualDeliveredCg": counts["actualDeliveredCg"], "currentCgRefusals": 20,
-            "currentAtlasRefusals": 7, "newAtlasRefusals": 1,
+            "currentAtlasRefusals": len(active_atlas_subjects), "newAtlasRefusals": len(new_atlas_subjects),
             "homeEntryPointLinksVerified": 2, "instructionsMistakenForGeneratedImages": 0}
 
 
@@ -143,6 +150,8 @@ def audit(book):
     bible_by_id = {subject["characterId"]: subject for subject in bible["subjects"]}
     selected_sprite_checks = 0
     for row in roster_rows:
+        if row["ID personnage"] == "seyra_tal":
+            assert str(row["Référence visuelle"]).startswith("0 référence(s) externe(s), 1 canon interne, 1 tenue croisée seulement"), "A borrowed internal costume must not add an external source or another identity authority"
         selected = next((visual.get("path") for visual in bible_by_id[row["ID personnage"]].get("localVisuals", [])
                          if visual.get("selectedInRuntime") and visual.get("exists")), None)
         if selected:
@@ -212,6 +221,7 @@ def audit(book):
         "nyraInternalEquipmentReuse": 0, "nyraInternalEnvironmentReuse": 0,
         "jaxInternalEquipmentReuse": 0, "jaxInternalEnvironmentReuse": 0,
         "maraInternalEnvironmentOnly": 0,
+        "seyraInternalCostumeOnly": 0,
     }
     v2_portrait_paths = {
         "elara_voss": "aether_crown", "nyra_vale": "neon_requiem",
@@ -221,6 +231,18 @@ def audit(book):
         "brann_crow": "crownless_sea", "lyra_hexwind": "aetherion_seven_laws",
         "mercy_ash": "infernum_nine_pits", "mara_ell": "drowned_testament",
         "orin_vale": "aetherion_seven_laws",
+        "nessa_vire": "aetherion_seven_laws", "aelwen_starbough": "valedor_shattered_crown",
+        "ysara_flint": "crownless_sea", "aurelia_marcellina": "imperium_aeternum",
+        "seyra_tal": "ilyr_concordat",
+        "imani_quell": "neon_requiem", "bram_quill": "aether_crown",
+        "lio_ferrante": "meridian_clockwork", "anton_rook": "iron_tempest",
+        "khepri_sen": "kemet_devoured_sun",
+        "doros_bronzehand": "aegea_moirai", "lin_yue": "mandate_nine_heavens",
+        "eira_hrafnsdottir": "nine_realms_last_twilight",
+        "killa_mayu": "tawantinsuyu_split_sun", "aoi_mikazuki": "yomi_no_kage",
+        "thaleia_naxos": "aegea_moirai", "mei_zhen": "mandate_nine_heavens",
+        "yrsa_rune_binder": "nine_realms_last_twilight",
+        "sumaq_khipu": "tawantinsuyu_split_sun", "rei_kagetsu": "yomi_no_kage",
     }
     v2_original_identities = set()
     for row in rows(workbook["Comparaisons"]):
@@ -228,6 +250,15 @@ def audit(book):
         usage = str(row["Usage de la référence / CG"] or "")
         axes = str(row["Axes à comparer"] or "")
         character_id = row["ID personnage"]
+        if character_id == "seyra_tal" and source_file.endswith("/imperium_aeternum/heroes/aurelia_marcellina.png"):
+            assert usage == "CG13 — costume croisé What If seulement"
+            assert axes.startswith("Tenue croisée uniquement, CG13")
+            assert "Référence interne de tenue : aurelia_marcellina" in str(row["Statut de la source"] or "")
+            assert "aucune preuve d'identité ni d'anatomie" in str(row["Statut de la source"] or "")
+            actual = Path(row["Fichier source local"])
+            authority = ROOT / "public/images/oc-worlds/v2/imperium_aeternum/heroes/aurelia_marcellina.png"
+            assert hashlib.sha256(actual.read_bytes()).digest() == hashlib.sha256(authority.read_bytes()).digest()
+            scoped_reference_checks["seyraInternalCostumeOnly"] += 1
         if character_id == "neris_vale" and source_file.endswith("/current-atlas-source-copy.png"):
             scoped_reference_checks["excludedNerisCopyRows"] += 1
         if character_id == "nyra_vale" and source_file.endswith("/selected-runtime-atlas-comparison.png"):
@@ -283,6 +314,7 @@ def audit(book):
     assert scoped_reference_checks["raymanEnvironmentOnly"] >= 1
     assert scoped_reference_checks["excludedNerisCopyRows"] == 0, "A byte-identical Neris source copy became an independent identity reference"
     assert scoped_reference_checks["excludedNyraHistoricalComparisonRows"] == 0, "Nyra's divergent historical atlas became an independent V2 identity reference"
+    assert scoped_reference_checks["seyraInternalCostumeOnly"] == 1, "Seyra's borrowed internal costume must remain exactly one scoped CG13 reference"
     assert scoped_reference_checks["nyraInternalEquipmentReuse"] == 1
     assert scoped_reference_checks["nyraInternalEnvironmentReuse"] == 1
     assert scoped_reference_checks["jaxInternalEquipmentReuse"] == 1

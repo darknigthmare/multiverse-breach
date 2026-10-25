@@ -98,15 +98,23 @@ function addIndependent(id, reference, file) {
  const derivedInspection = /derived.*inspection|inspection.*crop/i.test(reference.role || '');
  const canonicalOriginalReference = !hasExternalSource && originalCharacter && /canonical.*original.*(?:sprite|portrait)/i.test(reference.role || '');
  const canonicalOriginalEnvironment = !hasExternalSource && originalCharacter && environmentOnly && reference.role === 'original-project-environment-reference';
+ const costumeOwner = heroes.get(reference.costumeAuthorityCharacterId || reference.referenceCharacter);
+ const costumePortrait = costumeOwner?.production?.audiovisual?.portrait;
+ const canonicalOriginalCostume = !hasExternalSource && originalCharacter && outfitOnly
+  && reference.role === 'internal-original-costume-reference' && reference.sourceScope === 'original-project-canon'
+  && reference.usedForIdentity === false && reference.viewed === true && reference.slot === 'CG13'
+  && costumeOwner?.id !== id && costumePortrait === costumeOwner?.portrait
+  && /^\/images\/oc-worlds\/v2\//.test(costumePortrait || '') && existsSync(localFile(costumePortrait))
+  && reference.sha256 === hash(localFile(costumePortrait)) && hash(localFile(reference.path)) === reference.sha256;
  const canonicalOriginalRole = /portrait/i.test(reference.role || '') ? 'canonical-original-project-portrait' : 'canonical-original-project-sprite-pack';
  const independentRole = outfitOnly ? 'independent-iconic-outfit-reference' : equipmentOnly ? 'independent-equipment-reference' : environmentOnly ? 'independent-environment-reference' : costumeSupport ? 'independent-costume-support-reference' : 'independent-canon-reference';
  rows.push({ path: reference.path, url: reference.finalUrl || reference.url || null,
-  role: derivedInspection ? 'derived-source-inspection-crop' : hasExternalSource ? independentRole : canonicalOriginalReference ? canonicalOriginalRole : canonicalOriginalEnvironment ? 'original-project-environment-reference' : 'project-generated-art',
+  role: derivedInspection ? 'derived-source-inspection-crop' : hasExternalSource ? independentRole : canonicalOriginalReference ? canonicalOriginalRole : canonicalOriginalEnvironment ? 'original-project-environment-reference' : canonicalOriginalCostume ? 'internal-original-costume-reference' : 'project-generated-art',
   referencePurpose: reference.referencePurpose || (outfitOnly ? 'costume-only' : equipmentOnly ? 'equipment-only' : environmentOnly ? 'environment-only' : reference.usedForIdentity === false ? 'historical-comparison-only' : 'identity'), referenceScope: reference.referenceScope || null, slot: reference.slot || null,
   referenceCharacter: reference.referenceCharacter || null,
-  sourceReferenceRole: reference.role || null, canonicalProjectReference: canonicalOriginalReference || canonicalOriginalEnvironment, ...(canonicalOriginalEnvironment ? { sourceScope: 'original-project-canon' } : {}), exists: true,
+  sourceReferenceRole: reference.role || null, canonicalProjectReference: canonicalOriginalReference || canonicalOriginalEnvironment, ...(canonicalOriginalEnvironment || canonicalOriginalCostume ? { sourceScope: 'original-project-canon' } : {}), ...(canonicalOriginalCostume ? { usedForIdentity: false, costumeAuthorityCharacterId: costumeOwner.id } : {}), exists: true,
   viewed: reference.viewed === true,
-  status: derivedInspection ? 'derived-from-existing-reference-not-independent-source' : hasExternalSource ? reference.viewed === true ? 'historically-viewed-not-1to1-approval' : 'downloaded-needs-inspection' : canonicalOriginalReference ? 'original-project-canon-reference-not-independent-source' : canonicalOriginalEnvironment ? 'original-project-canon-environment-reference-not-independent-source' : 'generated-project-reference-not-independent-source', sourceFile: file,
+  status: derivedInspection ? 'derived-from-existing-reference-not-independent-source' : hasExternalSource ? reference.viewed === true ? 'historically-viewed-not-1to1-approval' : 'downloaded-needs-inspection' : canonicalOriginalReference ? 'original-project-canon-reference-not-independent-source' : canonicalOriginalEnvironment ? 'original-project-canon-environment-reference-not-independent-source' : canonicalOriginalCostume ? 'original-project-costume-reference-not-identity-source' : 'generated-project-reference-not-independent-source', sourceFile: file,
   sha256: reference.sha256 || hash(localFile(reference.path)), limitations: reference.limitations || null });
  independentRefs.set(id, rows);
 }

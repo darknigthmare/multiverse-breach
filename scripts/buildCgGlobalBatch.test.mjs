@@ -282,7 +282,7 @@ test('atlas refusals retain their own receipts, history and active selections wi
   f.put(historical, JSON.stringify({ date: '2026-10-18', records: [{ characterId: 'beta', status: 'blocked-output-moderation', moderationStage: 'output', moderationCategories: ['fixture-historical-category'], outputProduced: false, oldAsset }] }));
   f.bible.subjects[1].readiness.currentSprite = { status: 'source-identity-qualified-existing-sprite-too-far-correction-blocked', correctionAttemptEvidence: historical };
   f.put('docs/cg/alpha-cg-wave6-2026-10-23.json', JSON.stringify({ characterId: 'alpha', plannedSlots: 15, status: 'blocked-output-moderation', entries: [] }));
-  let atlasHistory = loadAtlasCorrectionHistory(f.root, f.bible);
+  let atlasHistory = loadAtlasCorrectionHistory(f.root, f.bible, '2026-10-23');
   assert.equal(atlasHistory.records.length, 2);
   assert.equal(atlasHistory.currentBlockedSubjects, 2);
   assert.equal(atlasHistory.newBlockedSubjects, 1);
@@ -295,7 +295,7 @@ test('atlas refusals retain their own receipts, history and active selections wi
   assert.equal(batch.subjects[0].jobs.some(job => job.generationHistory.some(record => record.receiptFile === modern)), false);
   const replacement = f.put('public/sprites/new-atlas.png', 'private fixture: separately delivered atlas');
   f.bible.subjects[0].localVisuals[0].path = '/sprites/new-atlas.png';
-  atlasHistory = loadAtlasCorrectionHistory(f.root, f.bible);
+  atlasHistory = loadAtlasCorrectionHistory(f.root, f.bible, '2026-10-23');
   assert(replacement.sha256);
   assert.equal(atlasHistory.records.length, 2, 'Historical failed attempt remains documented after a genuine later replacement');
   assert.equal(atlasHistory.currentBlockedSubjects, 1, 'A failed predecessor must not poison a later selected atlas');

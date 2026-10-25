@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "characterId": "lio_ferrante",
+  "heroId": "lio_ferrante",
+  "characterName": "Lio Ferrante",
+  "operationKind": "genuine-selected-V2-ImageGen-sixteen-pose-redraw-plus-four-real-whole-pose-corrections",
+  "status": "installed-and-selected-after-independent-sixteen-frame-review",
+  "generationMode": "openai-imagegen-built-in",
+  "sourceAuthority": "original-project-current-selected-V2-portrait",
+  "canonicalFidelityApproved": false,
+  "visualFidelityApproved": false,
+  "reference": {
+    "output": "/images/oc-worlds/v2/meridian_clockwork/heroes/lio_ferrante.png",
+    "sha256": "33e29a8860faf61ab08a169399acdd005c4e94b10e8a6f2c940088505efcc302",
+    "bytes": 2805457,
+    "format": "png"
+  },
+  "image": {
+    "path": "/sprites/generated/heroes/meridian-clockwork/lio-ferrante-v2-fidelity-wave8-2026-10-24.png",
+    "sha256": "6c705005fc1623528201559c715c0c2d68360a5f0587d2d6d685a9a6f2c8897d",
+    "bytes": 1061529,
+    "width": 1024,
+    "height": 1024,
+    "channels": 4,
+    "format": "png"
+  },
+  "publicAuditFile": "docs/audits/lio-ferrante-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+  "installerManifest": {
+    "path": "docs/audits/lio-ferrante-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+    "sha256": "e8dfc0220216737855f53087be97e10dbcc69e71b4a18e32c2a70c531833eb2a"
+  },
+  "independentReview": {
+    "path": "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-sprite-independent-review.json",
+    "sha256": "3cc8e60bf6a0ab6be6b18b94a73d4d7f3cf5c818b21fbb85336a92bad98ad527",
+    "accepted": true,
+    "framesActuallyReviewed": 16
+  },
+  "previousAtlas": {
+    "path": "/sprites/generated/heroes/meridian-clockwork/lio-ferrante.png",
+    "sha256": "0bb4585ad3ed54541722b1498848359be535a24a351d628c4f42bbd6a2ba37ff",
+    "preserved": true,
+    "accessibleAsVariant": true,
+    "pendingRootRuntimeIntegration": false
+  },
+  "sourceAssembly": {
+    "sourceIsTechnicalAssemblyNotSingleToolNative": true,
+    "selectedImagegenNativeInputs": 2,
+    "initialTwelveWholeNormalizedRgbaFramesPreserved": true,
+    "genuineCorrectiveFrames": [
+      7,
+      9,
+      10,
+      13
+    ],
+    "correctiveVisiblePixelsBeforeNearest": 609644,
+    "correctiveAssignedPixelsBeforeNearest": 609644,
+    "correctiveCommonNearestScale": 0.3493975903614458,
+    "strictAssemblyVisiblePixels": 284908,
+    "strictAssemblyAssignedPixels": 284908,
+    "finalCommonNearestScale": 0.9747899159663865,
+    "minimumGuard": 16,
+    "visibleFootBaselinesByCell": [
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239,
+      239
+    ],
+    "semanticEditsInTechnicalPacking": false,
+    "proof": {
+      "path": ".tmp/cg-wave8-2026-10-24/lio-ferrante/atlas/packing-proof.json",
+      "sha256": "83b8cb10c78bad1b084659cfa0b96cc9e2f31d6fae8c20ed77155d2031dbcc4a"
+    },
+    "assemblyProof": {
+      "path": ".tmp/cg-wave8-2026-10-24/lio-ferrante/atlas/assembly-proof.json",
+      "sha256": "4bcf578cdbd44cfa84c96abc9655ba9951c59a3f1398e104e83458caf8967e43"
+    }
+  },
+  "nativeInputs": [
+    {
+      "nativePath": "/workspace/generated_images/exec-2fcf7dcd-78bf-4e60-aaca-e4e95ffd8c62.png",
+      "nativeSha256": "854a5af33aff0613a36981d7671fecdaddfbf6604652eff555d5ee248fd731e0",
+      "selectedFrames": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        11,
+        12,
+        14,
+        15,
+        16
+      ],
+      "promptFile": "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/atlas-sixteen-source-poses.txt",
+      "reason": "Twelve genuine whole poses retained;07/09/10/13 genuinely replaced after independent hand/headset review."
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-7ea791bd-8297-495c-bd4f-72e1771833eb.png",
+      "nativeSha256": "15e98736c492e714ee24dcd45ca005595e53bcbbfe69d61d51238bac2ca2472a",
+      "selectedFrames": [
+        7,
+        9,
+        10,
+        13
+      ],
+      "promptFile": "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/atlas-four-real-pose-corrections.txt",
+      "reason": "Four genuinely redrawn whole poses restore right-side headset, RIGHT cannon grip and separate LEFT orb."
+    }
+  ],
+  "successfulAtlasGenerationAttempts": 2,
+  "retainedWhollyUnselectedNativeAttempts": 0,
+  "refusals": 0,
+  "runtimeSelectionChanged": true,
+  "runtimeSelectionPending": false,
+  "oldAtlasAccessibleAsVariant": true,
+  "sourceReviewFile": "docs/cg/lio-ferrante-reference-evidence-wave8-2026-10-24.json",
+  "sourceReviewSha256": "e242825923dd01fa1fd39e00d7c2bfd4d55e4ac96e2fc723b07529be8d1f6fa3",
+  "limitations": [
+    "The currently selected individual V2 portrait is one internal original-project authority, not an external franchise source.",
+    "One front-threequarter portrait leaves hidden reverse headset/coat fastenings and tiny cannon machining uncertain; no absolute1:1 certification.",
+    "LEFT knee has one large frontal round brass gearplate; RIGHT may retain a smaller PARTIAL lateral bronze protector visible in the same source. No second large frontal RIGHT disk is accepted.",
+    "Initial native contributes12wholeposes; four original cells07/09/10/13 remain preserved within that partially used native but are not selected. One genuine four-pose corrective native restores headsetRIGHT and RIGHTheldcannon/LEFTorb; no extra native output is invented.",
+    "Every609644alpha>12pixel of corrective native was assigned before commonnearest densityscale. Twelve initialnormalizedRGBA cells remain byteexact before finalnormalization; finalstrict-grid assembly284908alpha>12pixels all assigned before finalcommonresize.",
+    "Nearestresampling changes pixel counts; matching delivery/proof hashes and geometry do not certify visual resemblance.",
+    "The producer installer left runtime maps unchanged; root subsequently selected the new atlas and exposed the exact unchanged old atlas as a variant."
+  ],
+  "pendingRootRuntimeIntegration": false,
+  "runtimeSelectionIntegrationPending": false,
+  "currentSelectionFile": "src/game/spriteAssets.js",
+  "rootRuntimeIntegration": {
+    "date": "2026-10-24",
+    "newAtlasSelected": true,
+    "oldAtlasAccessibleAsVariant": true,
+    "selectionFile": "src/game/spriteAssets.js"
+  },
+  "independentReviewFile": "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-sprite-independent-review.json",
+  "independentReviewSha256": "3cc8e60bf6a0ab6be6b18b94a73d4d7f3cf5c818b21fbb85336a92bad98ad527"
+}

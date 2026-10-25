@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "checkedAt": "2026-10-23T21:44:38.194Z",
+  "reviewer": "/root/wave7_coordination",
+  "status": "passed",
+  "scope": "Runtime atlas selections only, after explicit root freeze; CG registry and CG media are not claimed frozen or audited by this report.",
+  "baseline": {
+    "path": ".tmp/cg-wave7-2026-10-23/runtime-baseline-before-integration.json",
+    "sha256": "1094a43cc8ec1c2c6d1aeb2fa8609c980a2536215252a6199b5f99ff2dbcef65"
+  },
+  "runtimeSource": {
+    "path": "src/game/spriteAssets.js",
+    "sha256": "8c2d60b1b1fbce20f1306f66904993f85907a67886d59cffb251174745b624e2"
+  },
+  "contextsChecked": [
+    "rpg",
+    "tactics",
+    "melee",
+    "fps",
+    "kart"
+  ],
+  "correctedHeroSubjects": 26,
+  "correctedHeroContextChecks": 130,
+  "previousCorrectedSubjectsUnchanged": 21,
+  "previousVariantsUnchanged": true,
+  "unchangedOtherHeroSelections": 1907,
+  "oldAtlasFilesPreserved": 5,
+  "previousCorrectedAndVariantFilesPreserved": 46,
+  "atlasSelections": [
+    {
+      "characterId": "nessa_vire",
+      "currentPath": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/nessa-vire-v2-fidelity-wave7-2026-10-23.png",
+      "currentSha256": "1152f7b83a6a2c7411c6e45aa676429bd57f008b339f9d193ce962c056625e9a",
+      "previousPath": "/sprites/generated/heroes/aetherion-seven-laws-of-magic/nessa-vire.png",
+      "previousSha256": "4a74c4074b90f6708529879b40642fa7f03dbc7497586e2865ed357d76b57536",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/nessa-vire-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+        "sha256": "e0e33513f13bdcbf2b706b793e9a35211764488de54956d5207338a0b049d377"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave7-2026-10-23/nessa-vire-sprite-independent-review.json",
+        "sha256": "1d116c94854c989bd084cc3f061f90b4d6e15d4708f0a72509c81d96327a158d"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 13,
+        "visibleFootBaselinesByCell": [
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242,
+          242
+        ]
+      }
+    },
+    {
+      "characterId": "aelwen_starbough",
+      "currentPath": "/sprites/generated/heroes/valedor-the-shattered-crown/aelwen-starbough-v2-fidelity-wave7-2026-10-23.png",
+      "currentSha256": "a4e8a6a47402523d411d94e059419d52c39762345ef1f1468bae7e2b2836a7b6",
+      "previousPath": "/sprites/generated/heroes/valedor-the-shattered-crown/aelwen-starbough.png",
+      "previousSha256": "de235555677bfa3233a710765dcb946bd600c134d062cc353b41e66c89a9c3b1",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/aelwen-starbough-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+        "sha256": "9be783d2d434d95d31ef101085a4cbbd25eaebeb2731ba8aeedb1eb3f67535b0"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave7-2026-10-23/aelwen-starbough-sprite-independent-review.json",
+        "sha256": "be126e6ef9e06391f2ec160eda6bfac605145e4a9447d5aadc5b94b77f41c837"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 16,
+        "visibleFootBaselinesByCell": [
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239,
+          239
+        ]
+      }
+    },
+    {
+      "characterId": "ysara_flint",
+      "currentPath": "/sprites/generated/heroes/the-crownless-sea/ysara-flint-v2-fidelity-wave7-2026-10-23.png",
+      "currentSha256": "15a44c8d958a154c10721d4dc65d60eb88e826c705f7420c162ba8d430db59bf",
+      "previousPath": "/sprites/generated/heroes/the-crownless-sea/ysara-flint.png",
+      "previousSha256": "302a668a013345af9794c8ca7da2410bc00447c58ba3fd77612f086a348478b4",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/ysara-flint-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+        "sha256": "fe0484928a39015bd7eb75b5e5f298f2609a205469784940f97d185924f12b45"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave7-2026-10-23/ysara-flint-sprite-independent-review.json",
+        "sha256": "707afd4837604433f08178d1e2bdda5c83190371512369f2773de8f893b95132"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 15,
+        "visibleFootBaselinesByCell": [
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240
+        ]
+      }
+    },
+    {
+      "characterId": "aurelia_marcellina",
+      "currentPath": "/sprites/generated/heroes/imperium-aeternum/aurelia-marcellina-v2-fidelity-wave7-2026-10-23.png",
+      "currentSha256": "9bffee414117793ff228671d542300266c68e9fe9321f537b718bbe6084c37e2",
+      "previousPath": "/sprites/generated/heroes/imperium-aeternum/aurelia-marcellina.png",
+      "previousSha256": "b7606b93b466251a0d40af5f9d2bd4d4b7801890ac5906329feef92d312fb30b",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/aurelia-marcellina-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+        "sha256": "ab49ba7ae02c60392ebc744d20050737721e78ffa32540d6dd9feed26cb3cd4a"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave7-2026-10-23/aurelia-marcellina-sprite-independent-review.json",
+        "sha256": "c11a7a1bc5a9d02addcf4e17458dcd63d65c4215f78161626f66ff4652612287"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 15,
+        "visibleFootBaselinesByCell": [
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240,
+          240
+        ]
+      }
+    },
+    {
+      "characterId": "seyra_tal",
+      "currentPath": "/sprites/generated/heroes/ilyr-concordat/seyra-tal-v2-fidelity-wave7-2026-10-23.png",
+      "currentSha256": "7aacd129804187c238215cc440ad97560f70bf092b4ece3b752391a2c06e4e63",
+      "previousPath": "/sprites/generated/heroes/ilyr-concordat/seyra-tal.png",
+      "previousSha256": "2e02cbb8c851e738959ce906adc7f3c8aa4463b21a2f3c4d98cfccaadb059f8c",
+      "previousAccessibleAsVariant": true,
+      "contextsChecked": [
+        "rpg",
+        "tactics",
+        "melee",
+        "fps",
+        "kart"
+      ],
+      "allRuntimeContextsSelectReviewedAtlas": true,
+      "manifest": {
+        "path": "docs/audits/seyra-tal-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+        "sha256": "4f0bf781dc0c2b9af8c388364e389e8d8cba53ffccb9d85f134169098bb59c4f"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave7-2026-10-23/seyra-tal-sprite-independent-review.json",
+        "sha256": "16dd41756684bb97396770b137561aa007fc16003c5f707454bf82578a1f0daf"
+      },
+      "framesIndependentlyReviewed": 16,
+      "geometry": {
+        "nonemptyCells": 16,
+        "minimumGuard": 14,
+        "visibleFootBaselinesByCell": [
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241,
+          241
+        ]
+      }
+    }
+  ],
+  "frozenInputPins": [
+    {
+      "path": "src/game/cg/cgRosterArtwork.generated.json",
+      "sha256": "754ed7ce92119a8d0a40278c750ed8e7dbe52579593f721c5216538cb54174e1"
+    },
+    {
+      "path": "src/game/cg/cgRevisions.generated.json",
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee"
+    },
+    {
+      "path": "src/game/spriteAssets.js",
+      "sha256": "8c2d60b1b1fbce20f1306f66904993f85907a67886d59cffb251174745b624e2"
+    },
+    {
+      "path": "docs/cg/nessa-vire-sprite-wave7-2026-10-23.json",
+      "sha256": "b936c6f0189aa18c5650eca7c8e6f73bb8fccb1e2d9a00593e0fc7b91b4b7c7a"
+    },
+    {
+      "path": "docs/audits/nessa-vire-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+      "sha256": "e0e33513f13bdcbf2b706b793e9a35211764488de54956d5207338a0b049d377"
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/nessa-vire-sprite-independent-review.json",
+      "sha256": "1d116c94854c989bd084cc3f061f90b4d6e15d4708f0a72509c81d96327a158d"
+    },
+    {
+      "path": "docs/cg/aelwen-starbough-sprite-wave7-2026-10-23.json",
+      "sha256": "209da8a799a862e49f64fa103035d4d53077fd1f9542d0f6c79a5fa90d6f024f"
+    },
+    {
+      "path": "docs/audits/aelwen-starbough-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+      "sha256": "9be783d2d434d95d31ef101085a4cbbd25eaebeb2731ba8aeedb1eb3f67535b0"
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/aelwen-starbough-sprite-independent-review.json",
+      "sha256": "be126e6ef9e06391f2ec160eda6bfac605145e4a9447d5aadc5b94b77f41c837"
+    },
+    {
+      "path": "docs/cg/ysara-flint-sprite-wave7-2026-10-23.json",
+      "sha256": "485820da7f7780dc87b967bcddd7e314a46366610313680f94ff36b20a212a02"
+    },
+    {
+      "path": "docs/audits/ysara-flint-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+      "sha256": "fe0484928a39015bd7eb75b5e5f298f2609a205469784940f97d185924f12b45"
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/ysara-flint-sprite-independent-review.json",
+      "sha256": "707afd4837604433f08178d1e2bdda5c83190371512369f2773de8f893b95132"
+    },
+    {
+      "path": "docs/cg/aurelia-marcellina-sprite-wave7-2026-10-23.json",
+      "sha256": "7f76ddcdc8fe8ef8c83a2821de40dbc9510535e39a532416c6f17d73d1a8b5a3"
+    },
+    {
+      "path": "docs/audits/aurelia-marcellina-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+      "sha256": "ab49ba7ae02c60392ebc744d20050737721e78ffa32540d6dd9feed26cb3cd4a"
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/aurelia-marcellina-sprite-independent-review.json",
+      "sha256": "c11a7a1bc5a9d02addcf4e17458dcd63d65c4215f78161626f66ff4652612287"
+    },
+    {
+      "path": "docs/cg/seyra-tal-sprite-wave7-2026-10-23.json",
+      "sha256": "3cbce872f2ce92308bbc5f17b74cf2c1c07f3f233c0f59d80eb3228fcc433ca3"
+    },
+    {
+      "path": "docs/audits/seyra-tal-v2-reference-sprite-fidelity-wave7-2026-10-23.json",
+      "sha256": "4f0bf781dc0c2b9af8c388364e389e8d8cba53ffccb9d85f134169098bb59c4f"
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/seyra-tal-sprite-independent-review.json",
+      "sha256": "16dd41756684bb97396770b137561aa007fc16003c5f707454bf82578a1f0daf"
+    }
+  ],
+  "certifiesPerfectVisualFidelity": false,
+  "visualReviewScope": "Verifies bindings to independent sixteen-frame reviews. Does not add a new full sixteen-frame visual review; verifies the five independent review bindings."
+}

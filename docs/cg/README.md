@@ -2,17 +2,53 @@
 
 Ce dossier conserve le pilote historique de *Multiverse Breach* — 48 illustrations CG01–CG08 et 35 variantes applicables CG09–CG15, soit 83 sources — et suit ses corrections ainsi que l’extension des CG au roster complet.
 
-## Reprise du 23 octobre 2026 — vague 6 et consigne commune
+## Reprise du 25 octobre 2026 — vague 10 et consigne commune
+
+La [consigne unique pour tout le roster](PROMPT_GLOBAL_ROSTER_1_1.txt) et le [manifeste complet du 25 octobre](roster-global-batch-wave10-2026-10-25.json) couvrent **1 912 personnages, 525 univers et 28 680 emplacements CG**. Les règles restent identiques ; seul le chemin d’entrée du manifeste est actualisé. Une fiche préparée ne devient pas une image produite.
+
+Cette vague livre **75 nouvelles CG : cinq séries complètes de quinze** pour Thaleia de Naxos, Mei Zhen, Yrsa Lieuse-de-Runes, Sumaq Khipu et Rei Kagetsu, avec poses et décors distincts, ainsi que **cinq atlas, soit 80 poses redessinées et revues indépendamment**. Les anciens atlas restent accessibles en variantes ; les **2 967 médias CG antérieurs** sont inchangés.
+
+La galerie contient **970 CG pour 71 personnages, dont 64 séries complètes applicables**, avec **1064 versions et 3 192 médias enregistrés**. Le [classeur Excel](Multiverse_Breach_Fidelite_CG.xlsx), son [guide](EXCEL_FIDELITE.md) et son [audit indépendant](Multiverse_Breach_Fidelite_CG.validation.json) suivent les références, variantes et vrais blocages. **27 702 emplacements restent à produire**, avec huit N/A inchangés. Les variantes familiales et les limites des sources restent documentées, sans certification absolue de fidélité 1:1.
+
+Points d’entrée : [aperçu des cinq séries](screenshots/roster-wave10-overview-2026-10-25.webp), [bilan de la vague](FIDELITY_PROGRESS_WAVE10_2026-10-25.md), [quinze CG par personnage et comparaisons d’atlas](reviews/wave10-2026-10-25/README.md), [audit des médias](fidelity-delivery-wave10-2026-10-25.json). Le [plan](roster-production-2026-10-18.md) et la [bible](ROSTER_FIDELITY_BIBLE_2026-10-18.md) gardent leurs noms stables avec les données courantes.
+
+Le contrôle courant utilise `node scripts/auditCgFidelityDelivery.mjs --write --date 2026-10-25 --output docs/cg/fidelity-delivery-wave10-2026-10-25.json`. `npm run cg:global:batch:check` contrôle le manifeste ; `npm run cg:global:prompt -- mei_zhen CG01` affiche une fiche sans générer une image. Les [manifestes du 23](roster-global-batch-2026-10-23.json), [du 24](roster-global-batch-2026-10-24.json) et [du 25, vague 9](roster-global-batch-2026-10-25.json) restent figés.
+
+## Historique du 25 octobre 2026 — vague 9
+
+Cette vague a livré **75 CG** pour Doros Main-de-Bronze, Lin Yue, Eira Hrafnsdóttir, Killa Mayu et Aoi Mikazuki, ainsi que cinq atlas de seize poses. À son terme, la galerie contenait **895 CG pour 66 personnages, dont 59 séries complètes applicables**, avec **989 versions et 2 967 médias**. **27 777 emplacements** restaient à produire, avec huit N/A inchangés. Les 2 742 médias CG antérieurs étaient conservés.
+
+Le [bilan de la vague 9](FIDELITY_PROGRESS_WAVE9_2026-10-25.md), ses [planches et revues](reviews/wave9-2026-10-25/README.md), ses [contrôles finaux](reviews/wave9-2026-10-25/final-checks.json) et le [manifeste du 25](roster-global-batch-2026-10-25.json) sont historiques et figés. Le classeur, le guide, le plan, la bible et le nouveau manifeste portent les données courantes de la vague 10 ci-dessus.
+
+## Historique du 24 octobre 2026 — vague 8
+
+Cette vague a livré **75 CG** pour Imani Quell, Bram Quill, Lio Ferrante, Anton Rook et Khepri-Sen, ainsi que cinq atlas de seize poses. À son terme, la galerie contenait **820 CG pour 61 personnages, dont 54 séries complètes applicables**, avec **914 versions et 2 742 médias**. **27 852 emplacements** restaient à produire, avec huit N/A inchangés. Les 2 517 médias CG antérieurs étaient conservés.
+
+Le [bilan de la vague 8](FIDELITY_PROGRESS_WAVE8_2026-10-24.md), ses [planches et revues](reviews/wave8-2026-10-24/README.md), ses [contrôles finaux](reviews/wave8-2026-10-24/final-checks.json) et le [manifeste du 24](roster-global-batch-2026-10-24.json) sont historiques et figés. Le classeur, le guide, le plan, la bible et le nouveau manifeste portent les données courantes de la vague 10 ci-dessus.
+
+## Historique du 23 octobre 2026 — vague 7
+
+La [consigne unique pour tout le roster](PROMPT_GLOBAL_ROSTER_1_1.txt) et son [manifeste complet](roster-global-batch-2026-10-23.json) couvrent **1 912 personnages, 525 univers et 28 680 emplacements CG**, avec incarnations, références, thèmes imposés, poses et décors distincts. Une entrée préparée reste distincte d’une image réellement produite.
+
+Cette vague a livré **75 nouvelles CG : cinq séries complètes de quinze** pour Nessa Vire, Aelwen Starbough, Capitaine Ysara Flint, Aurelia Marcellina et Seyra Tal. **Cinq atlas, soit 80 poses**, ont été redessinés et revus indépendamment. Les anciens atlas restent accessibles en variantes ; les **2 292 médias CG antérieurs** sont inchangés.
+
+À son terme, la galerie contenait **745 CG pour 56 personnages, dont 49 séries complètes applicables**, avec **839 versions et 2 517 médias enregistrés**. Le [classeur Excel courant](Multiverse_Breach_Fidelite_CG.xlsx), son [guide](EXCEL_FIDELITE.md) et son [audit indépendant](Multiverse_Breach_Fidelite_CG.validation.json) suivent les références, comparaisons, variantes et vrais blocages. **27 927 emplacements restaient à produire** ; les huit N/A documentés restent inchangés. La tenue empruntée à Aurelia pour Seyra CG13 ne devient pas une référence d’identité ou d’anatomie. Aucune case ne certifie automatiquement une fidélité parfaite 1:1.
+
+Points d’entrée : [aperçu des cinq séries](screenshots/roster-wave7-overview-2026-10-23.webp), [bilan de la vague](FIDELITY_PROGRESS_WAVE7_2026-10-23.md), [index des CG et comparaisons d’atlas](reviews/wave7-2026-10-23/README.md), [audit des médias](fidelity-delivery-wave7-2026-10-23.json). Le [plan](roster-production-2026-10-18.md) et la [bible](ROSTER_FIDELITY_BIBLE_2026-10-18.md) gardent leurs noms stables avec les données courantes.
+
+Le manifeste du 23 et les rapports de cette vague restent figés. Le classeur, le guide, le plan, la bible et le nouveau manifeste portent les données courantes de la vague 10 ci-dessus.
+
+## Historique du 23 octobre 2026 — vague 6
 
 La [consigne unique pour tout le roster](PROMPT_GLOBAL_ROSTER_1_1.txt) et son [manifeste complet](roster-global-batch-2026-10-23.json) couvrent **1 912 personnages, 525 univers et 28 680 emplacements CG**. Ils conservent les incarnations, les références, les thèmes imposés, les poses et décors distincts, les variantes et les états réels de production. Une consigne commune permet de poursuivre tous les sujets sans réécrire la demande ; elle ne produit pas les milliers d’images par un seul appel.
 
-Cette vague livre **75 nouvelles CG : cinq séries complètes de quinze** pour Brann Crow, Lyra Hexwind, Mercy Ash, Dr Mara Ell et Orin Vale. **Cinq atlas, soit 80 poses**, ont été réellement redessinés d’après leurs portraits V2 sélectionnés et revus indépendamment. Les anciens atlas restent accessibles en variantes ; les **2 067 médias CG antérieurs** sont inchangés.
+Cette vague a livré **75 nouvelles CG : cinq séries complètes de quinze** pour Brann Crow, Lyra Hexwind, Mercy Ash, Dr Mara Ell et Orin Vale. **Cinq atlas, soit 80 poses**, ont été réellement redessinés d’après leurs portraits V2 sélectionnés et revus indépendamment. Les anciens atlas restent accessibles en variantes ; les **2 067 médias CG antérieurs** sont inchangés.
 
-La galerie contient désormais **670 CG pour 51 personnages, dont 44 séries complètes applicables**, avec **764 versions et 2 292 médias enregistrés**. Le [classeur Excel courant](Multiverse_Breach_Fidelite_CG.xlsx), son [guide](EXCEL_FIDELITE.md) et son [audit indépendant](Multiverse_Breach_Fidelite_CG.validation.json) donnent accès aux références, aux comparaisons et à la consigne commune. **28 002 emplacements restent à produire** ; les huit N/A documentés restent inchangés. Les lacunes de référence, refus réels et créneaux non tentés sont distincts. Aucune case ne certifie automatiquement une fidélité parfaite 1:1.
+À son terme, la galerie contenait **670 CG pour 51 personnages, dont 44 séries complètes applicables**, avec **764 versions et 2 292 médias enregistrés**. Le [classeur Excel courant](Multiverse_Breach_Fidelite_CG.xlsx), son [guide](EXCEL_FIDELITE.md) et son [audit indépendant](Multiverse_Breach_Fidelite_CG.validation.json) donnent accès aux références, aux comparaisons et à la consigne commune. **28 002 emplacements restaient à produire** ; les huit N/A documentés restent inchangés. Les lacunes de référence, refus réels et créneaux non tentés sont distincts. Aucune case ne certifie automatiquement une fidélité parfaite 1:1.
 
 Points d’entrée : [aperçu des cinq séries](screenshots/roster-wave6-overview-2026-10-23.webp), [bilan de la vague](FIDELITY_PROGRESS_WAVE6_2026-10-23.md), [index des CG et comparaisons d’atlas](reviews/wave6-2026-10-23/README.md), [audit des médias](fidelity-delivery-wave6-2026-10-23.json). Le [plan](roster-production-2026-10-18.md) et la [bible](ROSTER_FIDELITY_BIBLE_2026-10-18.md) gardent leurs noms stables avec les données courantes.
 
-Les rapports historiques restent figés. Pour contrôler les données courantes : `node scripts/auditCgFidelityDelivery.mjs --write --date 2026-10-23 --output docs/cg/fidelity-delivery-wave6-2026-10-23.json`. `npm run cg:global:batch:check` contrôle le manifeste ; `npm run cg:global:prompt -- orin_vale CG01` affiche une fiche de travail, sans générer une image.
+Les rapports de cette vague restent figés ; le classeur, le guide, le plan, la bible et le manifeste portent les données courantes de la vague 10 ci-dessus.
 
 ## Historique du 22 octobre 2026 — vague 5
 
@@ -22,9 +58,9 @@ Cette reprise ajoute **75 nouvelles CG : cinq séries complètes de quinze** pou
 
 Points d’entrée : [aperçu des cinq séries](screenshots/roster-wave5-overview-2026-10-22.webp), [bilan de la vague](FIDELITY_PROGRESS_WAVE5_2026-10-22.md), [index des quinze CG par personnage et des six comparaisons d’atlas](reviews/wave5-2026-10-22/README.md), [audit des médias](fidelity-delivery-wave5-2026-10-22.json).
 
-À cette étape, **28 077 emplacements restaient à produire** ; les huit N/A documentés étaient inchangés. Les 11 écarts majeurs de sprites encore ouverts, les refus réels du service et les créneaux non tentés restaient distincts. Le classeur, le plan et la bible portent maintenant les données de la vague 6 décrite plus haut.
+À cette étape, **28 077 emplacements restaient à produire** ; les huit N/A documentés étaient inchangés. Les 11 écarts majeurs de sprites encore ouverts, les refus réels du service et les créneaux non tentés restaient distincts. Le classeur, le plan et la bible portent maintenant les données de la vague 10 décrite plus haut.
 
-Le bilan et l’audit de cette vague restent figés. Le contrôle courant utilise la commande explicite de la vague 6 indiquée plus haut.
+Le bilan et l’audit de cette vague restent figés. Le contrôle courant utilise la commande explicite de la vague 10 indiquée plus haut.
 
 ## Historique du 20 octobre 2026 — vague 4
 
@@ -34,9 +70,9 @@ Cette reprise ajoute **135 nouvelles CG : neuf séries complètes** pour Crash B
 
 Points d’entrée historiques : [aperçu des neuf séries](screenshots/roster-wave4-overview-2026-10-20.webp), [bilan de la vague 4](FIDELITY_PROGRESS_WAVE4_2026-10-20.md), [index des quinze CG par personnage et revues](reviews/wave4-2026-10-20/README.md), [comparaison Elara](screenshots/elara-voss-sprite-comparison-wave4-2026-10-20.webp), [comparaison Nyra](screenshots/nyra-vale-sprite-comparison-wave4-2026-10-20.webp).
 
-À cette étape, le classeur regroupait les 1 912 personnages, 525 univers et 28 680 emplacements, avec **28 152 emplacements restant à produire** et 12 écarts majeurs de sprites encore ouverts. Les huit N/A documentés et les refus historiques demeuraient distincts. Le [classeur](Multiverse_Breach_Fidelite_CG.xlsx), son [audit](Multiverse_Breach_Fidelite_CG.validation.json), son [guide](EXCEL_FIDELITE.md), le [plan](roster-production-2026-10-18.md) et la [bible](ROSTER_FIDELITY_BIBLE_2026-10-18.md) ont depuis été actualisés à la vague 6 décrite plus haut.
+À cette étape, le classeur regroupait les 1 912 personnages, 525 univers et 28 680 emplacements, avec **28 152 emplacements restant à produire** et 12 écarts majeurs de sprites encore ouverts. Les huit N/A documentés et les refus historiques demeuraient distincts. Le [classeur](Multiverse_Breach_Fidelite_CG.xlsx), son [audit](Multiverse_Breach_Fidelite_CG.validation.json), son [guide](EXCEL_FIDELITE.md), le [plan](roster-production-2026-10-18.md) et la [bible](ROSTER_FIDELITY_BIBLE_2026-10-18.md) ont depuis été actualisés à la vague 10 décrite plus haut.
 
-L’[audit CG de cette vague](fidelity-delivery-wave4-2026-10-20.json) contrôle 1 842 fichiers distincts, dont les 249 du pilote historique. Ce rapport historique reste figé ; pour contrôler les données courantes, utiliser la commande de la vague 6 indiquée plus haut avec son nom de sortie explicite.
+L’[audit CG de cette vague](fidelity-delivery-wave4-2026-10-20.json) contrôle 1 842 fichiers distincts, dont les 249 du pilote historique. Ce rapport historique reste figé ; pour contrôler les données courantes, utiliser la commande de la vague 10 indiquée plus haut avec son nom de sortie explicite.
 
 ## Historique du 20 octobre 2026 — vague 3
 
@@ -46,7 +82,7 @@ L’[aperçu de cette étape](screenshots/roster-wave3-overview-2026-10-20.webp)
 
 Les seize poses du sprite existant d’Elyra ont aussi un [cadrage corrigé](reviews/wave3-2026-10-20/elyra-frame-packing-before-after.webp), sans nouveau dessin. L’aperçu du Hub présente les versions courantes et anciennes des huit héros concernés. Le suivi distingue neuf nouveaux refus CG et quarante créneaux non tentés, sans exception N/A inventée. **28 287 emplacements restent à produire sur le roster entier ; aucune fidélité parfaite 1:1 n’est certifiée automatiquement.**
 
-À l’issue de cette vague 3, le classeur comptait 385 CG, 479 versions et 2 600 images incorporées ; son audit avait vérifié les 1 912 sprites sélectionnés et 9 395 liens locaux. Les fichiers stables du [classeur](Multiverse_Breach_Fidelite_CG.xlsx), du [guide](EXCEL_FIDELITE.md), de la [bible](ROSTER_FIDELITY_BIBLE_2026-10-18.md) et du [plan complet](roster-production-2026-10-18.md) reflètent maintenant la vague 6 décrite plus haut. Le rapport historique à 385 CG reste figé ; les nouveaux audits utilisent un nom de sortie propre à leur vague.
+À l’issue de cette vague 3, le classeur comptait 385 CG, 479 versions et 2 600 images incorporées ; son audit avait vérifié les 1 912 sprites sélectionnés et 9 395 liens locaux. Les fichiers stables du [classeur](Multiverse_Breach_Fidelite_CG.xlsx), du [guide](EXCEL_FIDELITE.md), de la [bible](ROSTER_FIDELITY_BIBLE_2026-10-18.md) et du [plan complet](roster-production-2026-10-18.md) reflètent maintenant la vague 10 décrite plus haut. Le rapport historique à 385 CG reste figé ; les nouveaux audits utilisent un nom de sortie propre à leur vague.
 
 ## Historique du 18 octobre 2026
 
@@ -62,7 +98,7 @@ L’[aperçu des huit séries](screenshots/roster-wave2-overview-2026-10-18.webp
 
 Le [suivi complet du roster](roster-production-2026-10-18.md) recense 1 912 personnages et la matrice des 15 types. Il distingue les fichiers livrés, les emplacements non produits, les incarnations à préciser et les thèmes spéciaux encore à documenter. Un emplacement prévu n’est jamais installé comme image terminée.
 
-Pour les données courantes, le contrôle de livraison se lance avec `node scripts/auditCgFidelityDelivery.mjs --write --date 2026-10-23 --output docs/cg/fidelity-delivery-wave6-2026-10-23.json`. Ce nom de sortie conserve les rapports historiques. Le contrôle compare notamment les 249 anciens fichiers à leur manifeste historique, vérifie les nouveaux fichiers et compte uniquement les versions réellement enregistrées. Les empreintes et dimensions ne prouvent pas à elles seules une pose distincte ou une fidélité 1:1 : les images doivent aussi être examinées visuellement.
+Pour les données courantes, le contrôle de livraison se lance avec `node scripts/auditCgFidelityDelivery.mjs --write --date 2026-10-25 --output docs/cg/fidelity-delivery-wave10-2026-10-25.json`. Ce nom de sortie conserve les rapports historiques. Le contrôle compare notamment les 249 anciens fichiers à leur manifeste historique, vérifie les nouveaux fichiers et compte uniquement les versions réellement enregistrées. Les empreintes et dimensions ne prouvent pas à elles seules une pose distincte ou une fidélité 1:1 : les images doivent aussi être examinées visuellement.
 
 Pour intégrer des séries supplémentaires, `node scripts/installCgRosterDeliveries.mjs <reçu.json> --write` valide les identités, les fichiers, les poses et les exceptions N/A avant d’ajouter les seules images livrées. Les preuves privées et chemins de génération restent hors du registre utilisé par le jeu. Régénérer ensuite le plan, la bible et le classeur avec `npm run cg:roster:plan`, `npm run cg:fidelity:bible` et `npm run cg:fidelity:excel`.
 

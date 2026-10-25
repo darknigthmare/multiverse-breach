@@ -1,0 +1,1221 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "checkedAt": "2026-10-25T07:15:03.224Z",
+  "reviewer": "/root/wave9_coordination",
+  "status": "passed",
+  "scope": "CG byte preservation and historical reports after root CG freeze. Old sprite bitmaps are hash-checked; new sprite selections are not claimed frozen by this report.",
+  "baselineAdditionalDefinitionsUnchanged": 737,
+  "revisionDefinitionsUnchanged": 94,
+  "baselineCgMediaUnchanged": 2742,
+  "historicalPilotFilesUnchanged": 249,
+  "previousCorrectedAndVariantSpriteFilesUnchanged": 66,
+  "fivePreviousAtlasFilesUnchanged": [
+    {
+      "characterId": "doros_bronzehand",
+      "path": "/sprites/generated/heroes/aegea-war-of-the-moirai/doros-bronzehand.png",
+      "sha256": "509dcbb953e17982468abae71bf7acdd4827f7eecba6019708212400dc65c36f",
+      "bytes": 922091
+    },
+    {
+      "characterId": "lin_yue",
+      "path": "/sprites/generated/heroes/mandate-of-nine-heavens/lin-yue.png",
+      "sha256": "dd58717bbe7684e7090f2559846e86e0e1508b88e2f5e9994c12b085d77a0c6b",
+      "bytes": 1081676
+    },
+    {
+      "characterId": "eira_hrafnsdottir",
+      "path": "/sprites/generated/heroes/nine-realms-last-twilight/eira-hrafnsdottir.png",
+      "sha256": "5553b559453cb0804bae038181e76bcc014e883d8bda0cf37260141d452846ab",
+      "bytes": 1021864
+    },
+    {
+      "characterId": "killa_mayu",
+      "path": "/sprites/generated/heroes/tawantinsuyu-the-split-sun/killa-mayu.png",
+      "sha256": "5d55cd9204b866996d80f66e5d19604dc0825a65e23a4b96a2447561cf130694",
+      "bytes": 1106971
+    },
+    {
+      "characterId": "aoi_mikazuki",
+      "path": "/sprites/generated/heroes/yomi-no-kage/aoi-mikazuki.png",
+      "sha256": "453b4cf5eb102c4c0fc4f6e9e7fda32d9d1357592a21de12c4116f84d4892ff8",
+      "bytes": 817057
+    }
+  ],
+  "frozenHistoricalReportsUnchanged": [
+    {
+      "path": "docs/cg/FIDELITY_PROGRESS_2026-10-18.md",
+      "sha256": "6221bc3ab8ebb61e845aecfd7f5cbff40f373ce7fcb1ad6e27c0c02bec85c679",
+      "bytes": 13903
+    },
+    {
+      "path": "docs/cg/FIDELITY_PROGRESS_2026-10-20.md",
+      "sha256": "0ec6c226b542fc49bd1791715d9b08a084ef41ad60b00e8bd1a8eb5d4b27e154",
+      "bytes": 8154
+    },
+    {
+      "path": "docs/cg/FIDELITY_PROGRESS_WAVE4_2026-10-20.md",
+      "sha256": "e8fb76ea960ff51c12910f74c36f94629a8f870853ab72b4be54bef974d0b1d3",
+      "bytes": 6263
+    },
+    {
+      "path": "docs/cg/FIDELITY_PROGRESS_WAVE5_2026-10-22.md",
+      "sha256": "53e1d147d99f7c813d59e1838eb126b66bda1b9a7bd10382ef577e0fbdf0873f",
+      "bytes": 6835
+    },
+    {
+      "path": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+      "sha256": "2189030d591636bb0da5923eb7ba83797967c26a6ea0c306f7ffeac049087add",
+      "bytes": 7370
+    },
+    {
+      "path": "docs/cg/FIDELITY_PROGRESS_WAVE7_2026-10-23.md",
+      "sha256": "54d1fdf0e18e778f571e053cb53fe43043de69d0aee60c3a7189960f8c468970",
+      "bytes": 5990
+    },
+    {
+      "path": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+      "sha256": "bacc710f3f30ec6be52fe7ff05dc8b54f2da2667135b00198d37a8136a062ba0",
+      "bytes": 5755
+    },
+    {
+      "path": "docs/cg/fidelity-delivery-2026-10-18.json",
+      "sha256": "b012a5251fd85fd2e1b40c0f5c8a0f30e320a080c709b0b3c31e42c35c5709d3",
+      "bytes": 943075
+    },
+    {
+      "path": "docs/cg/fidelity-delivery-2026-10-20.json",
+      "sha256": "63b041d378cbe0a895d0afb2bc25cde0a2b2ebf2bd83d37cd074062080b66dd8",
+      "bytes": 1311954
+    },
+    {
+      "path": "docs/cg/fidelity-delivery-wave4-2026-10-20.json",
+      "sha256": "fe8dcb717772dc1bfba153003aadfd75016b33bed3e5e9e05b03b74cad85c20b",
+      "bytes": 1737333
+    },
+    {
+      "path": "docs/cg/fidelity-delivery-wave5-2026-10-22.json",
+      "sha256": "913c5289af04765ff9b6cbd72e55f99088124ae4686635d2097d79491ac3b4a7",
+      "bytes": 1977172
+    },
+    {
+      "path": "docs/cg/fidelity-delivery-wave6-2026-10-23.json",
+      "sha256": "8202380abb0e1b5cbad50cdaef25d4f326aa9eb77eb89baa922c6194af9eb068",
+      "bytes": 2212718
+    },
+    {
+      "path": "docs/cg/fidelity-delivery-wave7-2026-10-23.json",
+      "sha256": "00d19962172ca6973db839bb58dca947d1b38d14edb293126316361e32d2ab16",
+      "bytes": 2449554
+    },
+    {
+      "path": "docs/cg/fidelity-delivery-wave8-2026-10-24.json",
+      "sha256": "5429e6f0cc618635a07dd07c9c514eea45c95a4cd3e912e14a2926d9e62e9780",
+      "bytes": 2678280
+    },
+    {
+      "path": "docs/cg/reviews/complete-2026-10-18/batman-tdk.json",
+      "sha256": "d15e3b9450c4d18c6842971bed2ab76ced009de2bc07dcee9059e226f11d3f3b",
+      "bytes": 7686
+    },
+    {
+      "path": "docs/cg/reviews/complete-2026-10-18/independent-series-review.json",
+      "sha256": "0362b8212c891d49923a9703334df2e8416b345ef3b07ea2d4ef76d252458e3a",
+      "bytes": 64063
+    },
+    {
+      "path": "docs/cg/reviews/complete-2026-10-18/mirelle-delivered.webp",
+      "sha256": "02017ecd65eae07b36367625a971bea9d93aeb626f1e57801c8982f5d661fe1e",
+      "bytes": 647360
+    },
+    {
+      "path": "docs/cg/reviews/complete-2026-10-18/mirelle-independent-review.json",
+      "sha256": "ea16e9e4eb23df1807e3537baeba3eed72bfac7d0169b426754fc3326cd626c2",
+      "bytes": 20550
+    },
+    {
+      "path": "docs/cg/reviews/complete-2026-10-18/mistral-delivered.webp",
+      "sha256": "742fc9881dab9c9c09358ed410e8b289947851107967783760b04b2c906f9762",
+      "bytes": 135458
+    },
+    {
+      "path": "docs/cg/reviews/complete-2026-10-18/saturnin-reference-review.json",
+      "sha256": "47e33b50bea286a65f6f244406dcc0b58cfcb2306a8ece53581adb1c2aef7d51",
+      "bytes": 2992
+    },
+    {
+      "path": "docs/cg/reviews/complete-2026-10-18/true-ogre-tekken.json",
+      "sha256": "ce9ad95096a320c31744a196c49db2cecbba7d7714a03d3f152ae1f9506bc17b",
+      "bytes": 31655
+    },
+    {
+      "path": "docs/cg/reviews/complete-2026-10-18/vader-delivered.webp",
+      "sha256": "0d5f8eedac4ba036001a9a6c1ce783f764ffbb194fd97996b1d7ae648b7f677d",
+      "bytes": 104132
+    },
+    {
+      "path": "docs/cg/reviews/fidelity-2026-10-18/liquid-snake.json",
+      "sha256": "de965b7d719929fa4e4af66fb1e85247d44406c0d36f3b44474416ed37972e2b",
+      "bytes": 1718
+    },
+    {
+      "path": "docs/cg/reviews/fidelity-2026-10-18/mistral-mgr.json",
+      "sha256": "0d1b4788002c7d2db8dbb755d0d75a42aa95811f07520a9399d5960f6f92fe55",
+      "bytes": 2179
+    },
+    {
+      "path": "docs/cg/reviews/fidelity-2026-10-18/saturnin-duck.json",
+      "sha256": "c8ff1bec526c8d357e9b090e8084f9683271b56d76751ed50e4b828085a04064",
+      "bytes": 2502
+    },
+    {
+      "path": "docs/cg/reviews/fidelity-2026-10-18/true-ogre-tekken.json",
+      "sha256": "fef0de97999ae7c6fd4d302b43f0ba2fcd4b28c6e2613a573be57b1f1d2e43f5",
+      "bytes": 1610
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/README.md",
+      "sha256": "b067d5f599daf6ec3562a10b1470bfc04441e55430af16830bbd811207275fba",
+      "bytes": 3419
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/additional-selected-sprite-sources.json",
+      "sha256": "c29deb539017b1a28a7ef64311fcdb5640ad416612a31f76afe3a1367fb75cdd",
+      "bytes": 15467
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/aloy-delivered.webp",
+      "sha256": "4ac8efc850fb6a5dff7980d3da2a29b6cb67b80b2aff2dad583895cbcde007a9",
+      "bytes": 487470
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/aloy-independent-review.json",
+      "sha256": "675278b8dc04f2f3a67654ba32a18dbcea98cb24650b0a87affbe1319a488903",
+      "bytes": 43142
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/aloy-source-review.json",
+      "sha256": "48a9dd94733d1a632d6eedf8a5abc6da063cba2ac7e06521bf986464c280bf06",
+      "bytes": 37861
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/bastion-korr-delivered.webp",
+      "sha256": "19de2e9aa417a168d469ca5f113e0c742e326c0ced60f4cc888c8b9a253639ca",
+      "bytes": 548012
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/bastion-korr-delivery-review.md",
+      "sha256": "f83e9d02d11b320e1ef194c1edfae6005c21641d40bc78b7aac802ac46b2a4f7",
+      "bytes": 2588
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/bastion-korr-independent-review.json",
+      "sha256": "d104fd1df4263fc58582adf45a9b6708d9b34b2c9b31fe038ad2404dfce0704d",
+      "bytes": 19777
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/chris-redfield-delivered.webp",
+      "sha256": "cfa4b4e9082ba3f6fb9f170d4f6954b6ce42cb6bd7bee11740230a958e196c6d",
+      "bytes": 336754
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/chris-redfield-independent-review.json",
+      "sha256": "0dbd8a5a1661687e6413f01069c66d4b0cd65fd8b180b12368d17902e1dcd3ca",
+      "bytes": 36278
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/chris-redfield-source-review.json",
+      "sha256": "f0342b6b0bf8604420350ba8177fa60fc3d7d4073ca9d0f6a938584a88096c22",
+      "bytes": 38001
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/chris-redfield-sprite-independent-review.json",
+      "sha256": "26e6852c467c6b6343d6722e2817236a2e0ff35c279c140aa067e0a0a441d1de",
+      "bytes": 14929
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/dante-delivered.webp",
+      "sha256": "6e4ac559873b07790c0f1a330b44bdcd99a8c529ace56bacd1618db31d15532a",
+      "bytes": 560984
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/dante-independent-review.json",
+      "sha256": "cdf05fcbdb08cca778a34303ca50bd5846a3fd102bbfe1001d28dc22ec19efbc",
+      "bytes": 43017
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/dante-sprite-independent-review.json",
+      "sha256": "fb7f8e103369528a418a54f530188911b7f373de50c41bd10e7d2e00f7a72e65",
+      "bytes": 10105
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/delivery-integrity-review.json",
+      "sha256": "5ed2fcfb4e616f8dd5d2ee1fcba7ee32875f1fde465c144dc543de4b3d86d54f",
+      "bytes": 353033
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/doom-family-metadata-amendment.json",
+      "sha256": "8fd8e31994ba35cd86d62e8133a4c7fb92162bd49208d28083e56b10a94df8bd",
+      "bytes": 7128
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/doom-slayer-independent-review.json",
+      "sha256": "8a218e956cea119bfd1d07b8067590e71b9a028a0c20c1171c6ab78b2cec99f8",
+      "bytes": 28365
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/doom-slayer-sprite-independent-review.json",
+      "sha256": "fb3e77d44c5cd35390221d24b00d7700734a7dd1c009f3ea11efa144f80fbd35",
+      "bytes": 8193
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/luke-harry-sprite-attempts.json",
+      "sha256": "63e8bee17a9cab702bf363f44ca2e216d0a106d303332ecc6abd76fc95a216ad",
+      "bytes": 4241
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/marrow-kade-independent-review.json",
+      "sha256": "ea901c10b554b1bbe620785ae9ae0d426acfecff2ac25d9adbaa7731b44ba3b1",
+      "bytes": 27784
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/nova-vey-delivery-review.json",
+      "sha256": "61a1d79d9c750fda32e1bf1a49f235602979946f83c03259717a1443e627604f",
+      "bytes": 37566
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/nova-vey-independent-review.json",
+      "sha256": "ef534688bf22baa337b8cbd6d5d2c45d5418e9aa3bb81be1d4dd7dff33fe2b52",
+      "bytes": 47446
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/nova-vey-source-review.json",
+      "sha256": "e02dcaba5842e24f3d8f222b308341d72ce54f1e323b5aac9d81af8bf8d8e7b9",
+      "bytes": 6903
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/selected-roster-visual-priorities.json",
+      "sha256": "a1307633cb3df931890203bdafef4f51cf1f5461ab686fd39cf5ca0cc6230acb",
+      "bytes": 26800
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/sonic-independent-review.json",
+      "sha256": "4d175d3086a98d21df0a09649b36585ea69addd1de15582193158c37200bd40c",
+      "bytes": 20996
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/sonic-source-review.json",
+      "sha256": "70493b40801b24684268e7f2884f055498218337742cf07a7cc3b22b4836c283",
+      "bytes": 5278
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/sprite-before-after-independent-review.json",
+      "sha256": "7cb7a72431b4e1b55a96d1497420677ac429036273a26e1c780c8fb3f14e0257",
+      "bytes": 4048
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/sprite-before-after.json",
+      "sha256": "0a2e16df53e25c017055d85af3bf5133b67d125dd0ebdce8a35692c0cb0f1245",
+      "bytes": 18046
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/sprite-before-after.webp",
+      "sha256": "ced2f92cb5b17c192c45603dc96954f8cba510aef88505644910d167f730b1ee",
+      "bytes": 575572
+    },
+    {
+      "path": "docs/cg/reviews/wave2-2026-10-18/vader-batman-sprite-attempts.json",
+      "sha256": "479bea724bd9e0a5a6d96bf83ea08b4db51ac42e2c89a647d4b6ed39eec23aca",
+      "bytes": 5023
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/README.md",
+      "sha256": "c2236fd7345948ebee36e1ffc1d3e0570e9402a44aeb952bf61ba34ec8bc38e4",
+      "bytes": 5741
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/additional-fullbody-source-research.json",
+      "sha256": "376acf460d3a89de6105b0b2670ae809f56493518ba0a8521c5e2299501dd74d",
+      "bytes": 3098
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/delivery-integrity-review.json",
+      "sha256": "61ee888b9f765f2f7167220baf3b2c5e78f731876f45ca08f90cb7564aa22f7a",
+      "bytes": 370368
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/elyra-frame-packing-before-after.webp",
+      "sha256": "61b70ddd40c32f721b5d4b8375c8d48512db7b2e239c9dff339a422dc6d86da1",
+      "bytes": 462326
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/elyra-frame-packing-independent-review.json",
+      "sha256": "fb444f9fc38935a292f7ffeb83daf5b1dca35d796c994d73c0fc95ccc5a3b7f3",
+      "bytes": 9029
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/elyra-null-delivered.webp",
+      "sha256": "a6958e6086401ae34ab4dbeb1a70e2c72c0c8b8aaec54dea35606298bae81d9c",
+      "bytes": 513612
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/elyra-null-independent-review.json",
+      "sha256": "4048d983e0ac9087260244755ba24f28ec27be0e8cab67e927c0e455df81687d",
+      "bytes": 35338
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/elyra-null-source-review.json",
+      "sha256": "ab8fca98743f65df19431171e36ba5120b4762238bf28eaaf2c878c3af0dbaa8",
+      "bytes": 8300
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/fidelity-bible-plan-lookup-review.json",
+      "sha256": "523641405387b10108fbd6fe793e6442774ae24df573fa2a6190082f358c9948",
+      "bytes": 54066
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/jack-sparrow-delivered.webp",
+      "sha256": "5a1e03a02404ca7bf57d66ee5ccc8a1447676a54c109716d53f356dfecc08ae9",
+      "bytes": 78908
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/jack-sparrow-generation-attempts.json",
+      "sha256": "a2452a3c371f6512e07208570a3a3c8633164fd9287086125e9f787ce608ff93",
+      "bytes": 1138
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/jack-sparrow-independent-review.json",
+      "sha256": "231f009dec812c6435047fde263bbe349b29e25ab280693bbed1abfd5b63a835",
+      "bytes": 7346
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/jack-sparrow-source-review.json",
+      "sha256": "8d7e0b5b889f3d600f2e16b9c494d9aec5f499afaf61f99649d3f4864398cb45",
+      "bytes": 11613
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/loom-ivara-generation-attempts.json",
+      "sha256": "6450ed9c637b6fc8f304164f66f86f5306c741f0cad8c3a879ad953cbbc12ce7",
+      "bytes": 7891
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/loom-ivara-independent-review.json",
+      "sha256": "dd40afc4c0175115e07efafd64223d5c904c4713d2eea11e7b4a8ea4f5a0f6a1",
+      "bytes": 36627
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/loom-ivara-production-review.md",
+      "sha256": "2d4fb4a80f630ad7ba51f573c1a61d107910c13b2225951a61564c8eac531732",
+      "bytes": 1823
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/loom-ivara-source-review.json",
+      "sha256": "147277b5715569f44ea0f0f56536726acd7962d9eba3737f7d009822c2693e40",
+      "bytes": 4635
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-delivered.webp",
+      "sha256": "2968a65145accea8ec798556cd2db0e31a6be8cfa1eb152d8766b0ab4a9f773a",
+      "bytes": 585770
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/nadir-kest-independent-review.json",
+      "sha256": "89e8f8da0943a61e4259551cc1766cc080e06552e1ebf1becd37f142736fd193",
+      "bytes": 31236
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/oryn-xile-delivered.webp",
+      "sha256": "d813349b97565ecc2bda13ab117598382541db6b3f3873412c80d744abbf5eca",
+      "bytes": 603652
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/oryn-xile-independent-review.json",
+      "sha256": "3678d5ed247b9a7be0b83dd5cb317e4021a61d2b836d00aacaadfa55abcafa21",
+      "bytes": 33487
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/overview-review.json",
+      "sha256": "490aa92117c2a3f94b254dd24c21616805ec1a78c9a8590329c194fe1da85138",
+      "bytes": 16898
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/quillon-rusk-independent-review.json",
+      "sha256": "62ef5507e047af69586f789b8122bd618ffc9b68d0ae8f816cc795493d22cef7",
+      "bytes": 33408
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/quillon-rusk-source-review.json",
+      "sha256": "46f88b8319106bb60465e1e8bf1a5b7c5c29854c5b296bcefce922c0e3cef6c0",
+      "bytes": 5514
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/raven-current-sprite-review.json",
+      "sha256": "cb05d68912930e7019b7ae62a88a973d95c1e44521de1a1c2cd0bb431ed39be6",
+      "bytes": 2813
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/raven-independent-review.json",
+      "sha256": "4609c41a38c24f3a714076aa71b4cab0fd756284ebba2eaa87e65237a507eb5b",
+      "bytes": 21957
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/raven-source-review.json",
+      "sha256": "84630e74a24323dc9b95b457de127908e8f169b3ad3d1cc5ff62cdb1d7ddc041",
+      "bytes": 9286
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/sable-orison-independent-review.json",
+      "sha256": "7d4ecfb4d1d49698d29a93f62781d171a478525375301e0902a3e01a53156fec",
+      "bytes": 48721
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/selected-roster-visual-priorities.json",
+      "sha256": "37868a028e52f2d36c391631f661845bcc41b2fb49c35cc4cc481b65995ddcb9",
+      "bytes": 6739
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/starfire-current-sprite-review.json",
+      "sha256": "cb6b8f3caee7bc941136296c0d8a78d855fa651da4cbccbe13fb8c5108023aae",
+      "bytes": 2391
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/starfire-delivered.webp",
+      "sha256": "7a2b14163bba0e9a89a69017bc190c210c25f922a22275abee5c3df399ca7b4a",
+      "bytes": 108770
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/starfire-independent-review.json",
+      "sha256": "047a3c7f250c281a5ecc0b670d439e4d6a3f9134afdf66e7dcb1689758ea3fed",
+      "bytes": 13810
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/starfire-selected-sprite-review.json",
+      "sha256": "bc884d5026b1a51794c41d45f1434e5272eb210bb237ccfc87cb43f604daff63",
+      "bytes": 2060
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/starfire-source-review.json",
+      "sha256": "1c9692e90b6298b4ee36ca601064540c66a1f4fe69e14a73d040016360110850",
+      "bytes": 10394
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/stitch-generation-attempts.json",
+      "sha256": "6d0058259ab11d3f3179dd7bd367dbd919d0e6a402874ad4bcbdc3473f5a1b04",
+      "bytes": 1663
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/stitch-independent-review.json",
+      "sha256": "2c6ff0fa8a78e998a8fa18218f65e01e4a26e2fd0a2f1a4ec7b4627eafc9b631",
+      "bytes": 6683
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/stitch-production-review.md",
+      "sha256": "a41dfa888fc4b242ad7508b324bfb9645ca28791d949e1e84cdbe7327f7fed62",
+      "bytes": 1898
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/stitch-source-review.json",
+      "sha256": "3468ca294aef84019a14a69d740846d74b0d1d5e23b61525d4a9d013dece0eb8",
+      "bytes": 8301
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/tessera-vale-delivered.webp",
+      "sha256": "a226b45a72c040d59f12b6c31a12f03800a87d4380f7491c26fd72f0c12edd5a",
+      "bytes": 608066
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/tessera-vale-independent-review.json",
+      "sha256": "733957c35d8a8024d2de0a72ef63129c4f4ee4c9aeca4cecb966dc7db9f0e9a4",
+      "bytes": 34980
+    },
+    {
+      "path": "docs/cg/reviews/wave3-2026-10-20/tessera-vale-source-review.json",
+      "sha256": "eacb3d864d346674c6f1db1422bfe64ccb63096025100ed2ac7536c4d0227365",
+      "bytes": 6070
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/README.md",
+      "sha256": "295fa59712113802fbb46606fef4716010a2a62fe32007369c3ea5c5303d4f77",
+      "bytes": 20577
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/bible-root-semantic-verification.json",
+      "sha256": "4b2625c7f252133a7385957919225aa245963dc23f4ea2a707fec8f01e3afb7b",
+      "bytes": 421
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/chell-current-sprite-review.json",
+      "sha256": "5a2b7e95079126ecf38bdba0e548bc4df35908458c02945364a726372a23a3cc",
+      "bytes": 1879
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/chell-generation-attempts.json",
+      "sha256": "c7ab9aac83bca96c0e4dc795d53eb91d139ce39d93b68a5033e631b6b1ca12af",
+      "bytes": 9283
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/chell-independent-review.json",
+      "sha256": "bb8619b058b81a1ba7785ae13e6b319ec530c715a1fb96c483f424ea921c8f1e",
+      "bytes": 26107
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/chell-production-review.md",
+      "sha256": "c64a4a2afc4a2e0220c113f4bafc1efff7890a19d515b1c912c672add555c8c9",
+      "bytes": 2766
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/chell-root-export-verification.json",
+      "sha256": "1193695d9a6344d68b3cdf6ea61c6db188480ac4a7e48eb4dc534770587c95e9",
+      "bytes": 5048
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/chell-source-review.json",
+      "sha256": "4b1e070c20c7dd32edcd78afd5f7154be1fe0e7a3b0399d91aa440f5b435db9a",
+      "bytes": 17803
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/crash-bandicoot-current-sprite-review.json",
+      "sha256": "c32549cf7a005cadafa1deb0d079d0675e958ff3180ffaef518282d9ad043cd7",
+      "bytes": 6033
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/crash-bandicoot-delivered.webp",
+      "sha256": "5301e872cb41779b51175d057214e8360ce46c303e8a7470f2a23798998a01ed",
+      "bytes": 583960
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/crash-bandicoot-independent-review.json",
+      "sha256": "69c54d95adda54fd9be218791019114587f6be71c8a8c93c16e43a4741593870",
+      "bytes": 44570
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/crash-current-sprite-inspection/frame00-nearest.png",
+      "sha256": "bb6626a4744d6a4c64dff8c97e7e9ace37a7c6ec4601438c26bec5dcd6f7d00d",
+      "bytes": 81374
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/crash-current-sprite-inspection/frame12-nearest.png",
+      "sha256": "1a3929245d8b9044ed2a85125a514c6246a7984af293477720e63e9d71eca16b",
+      "bytes": 101804
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/eira-solenne-delivered.webp",
+      "sha256": "c49627a54359ffcce1613ab149d1c9216e2e670c8bc84206c093bb0321812108",
+      "bytes": 688982
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/eira-solenne-independent-review.json",
+      "sha256": "be2405b35cb13aff0db3b75a32dd0915be61e17bc654055bc54daa8fdaba085d",
+      "bytes": 40538
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/eira-solenne-source-review.json",
+      "sha256": "36a4fa554fc8b404293ab2ccb8fd130acdd95a36dcae0b88a4e4fa3fc5854efd",
+      "bytes": 12406
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/elara-voss-current-sprite-review.json",
+      "sha256": "a2248bef096d653dd8a28dde536a2f03c5cdaa0bc5d32b41c45de3bb082c9e96",
+      "bytes": 4308
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/elara-voss-independent-review.json",
+      "sha256": "50185e489c21118783ac688e485e7a24b42aba951402dafa1ecf200cb0975fdb",
+      "bytes": 44116
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/elara-voss-root-export-verification.json",
+      "sha256": "612658ff63a32ca7352265f41a5c537c902edc2294c1b03ba21a2859753a1864",
+      "bytes": 5160
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/elara-voss-sprite-independent-review.json",
+      "sha256": "32d9cc976eabe5e81de0e0007070ade88eda5006456da46f9bcca0fddc1b569c",
+      "bytes": 18125
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/fidelity-bible-plan-lookup-review.json",
+      "sha256": "6419b80aafab23f7a4454dbf35bc00c43e078a5c20bb722dc2582f681ec1c215",
+      "bytes": 31547
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/final-checks.json",
+      "sha256": "ce1bc3d01c221fe3c4649e463033eebaf1b18ecab46f7c1026c3e0614b18eeb9",
+      "bytes": 5527
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/global-cg-technical-review.json",
+      "sha256": "2e9143420cd894f7d5f797c584b2216a255724c15f222ed2505eb70458819ff6",
+      "bytes": 4624
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/historical-preservation-verification.json",
+      "sha256": "f1561b0d17e2fdf49c6d92cdd467e09d8d6e43e58ca1cc45979da04aedaa3e42",
+      "bytes": 697
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/kael-venn-independent-review.json",
+      "sha256": "faf08724768eb1e7431a23001eb16e26c1b17102d7430b6449373111c4c42e9d",
+      "bytes": 35712
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/kael-venn-source-review.json",
+      "sha256": "a268c384b540f7bdaf812b2b726eb2fd6d7f75fd6b4a84b6839542e0f32e1d14",
+      "bytes": 7038
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/neris-vale-delivered.webp",
+      "sha256": "825d7ed8bad802ff21301ae391bd08be1a1a8ece09f9f86f2abe4d4a10785a65",
+      "bytes": 640054
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/neris-vale-independent-review.json",
+      "sha256": "b1224e42ae4216a1d22139d7927f3148e481380ff4cf2d234c6988003d442c08",
+      "bytes": 41885
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/neris-vale-root-export-verification.json",
+      "sha256": "868ccb8bf1a2bcbe6fce44d95249229f1f8754234e64bc6bfcd30ca4d1ea2fa0",
+      "bytes": 4979
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/neris-vale-root-source-preflight.json",
+      "sha256": "856452071fc00d22dbc6d14ef6ccd0aef42d4fe82c4c0134afc010c28051a5b8",
+      "bytes": 1975
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-current-sprite-review.json",
+      "sha256": "7d345cde1bf9e7163bb83b4fffc6c4e5c772126bf3e6e6810e033e44594225d5",
+      "bytes": 4416
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-generation-attempts.json",
+      "sha256": "5f0c169bb21251e5f84455a0c0574fbf7724f924de11288b4b11f0545307e6ce",
+      "bytes": 10082
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-independent-review.json",
+      "sha256": "195fb02893022a3dea781496f8488b175931724e1cfc42930279a4ebf9a1beae",
+      "bytes": 45605
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-production-review.md",
+      "sha256": "79e6215be93801c29759f33b7d4232064352b6fdd87d88cdfb9fc2715859d926",
+      "bytes": 3234
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-root-export-verification.json",
+      "sha256": "7c2fcf288d5701e6e7a6f2ac8b95a3e1d4740b446b97481469abdcaf7fdf953f",
+      "bytes": 5060
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-source-review.json",
+      "sha256": "3630760566195805d4eab6364d985d7889275cd4c05c2aaa3cf93035b7bd278b",
+      "bytes": 14023
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-sprite-canon-counterreview.json",
+      "sha256": "fd7130b91b0ec417fe6c9977d1fa0f8fd9fc71ab1389f0b0a8ea38987b7db7e8",
+      "bytes": 4669
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/nyra-vale-sprite-independent-review.json",
+      "sha256": "b298487946a57c97a4362fb5f3b708c6376283a6d6e3b279f2844e641db218c8",
+      "bytes": 23090
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/rayman-delivered.webp",
+      "sha256": "44668985fe5be5d63009670bdbc5840d026882bd6a5545bbee16ecea8c53dbc7",
+      "bytes": 510284
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/rayman-independent-review.json",
+      "sha256": "b5526b12c1012a466efec5e67fc87d6a3bebfdf8d51d60c5afa87436ecb1da73",
+      "bytes": 38399
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/rayman-selected-sprite-review.json",
+      "sha256": "a65aee5a9a8c9f9a7d6af8a4573f370ee9ed048f156f7db42d448216ff3d8a18",
+      "bytes": 1985
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/rayman-source-purpose-normalization.json",
+      "sha256": "79c9ca3eba37321c4cd5086a29a6005fe4f0274728f96e0688c221ebad32c567",
+      "bytes": 877
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/rayman-source-review.json",
+      "sha256": "b40335bb6601a8f84bccf9ea7660952f3241b4d7cb72b4f7c3dbcf3512668a87",
+      "bytes": 12303
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/runtime-selection-independent-verification.json",
+      "sha256": "018429f90d8b0f4f9f3cf05a32682e2fbcb5e178171f091ba5eb479ca20b58dc",
+      "bytes": 65639
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/selected-roster-visual-priorities.json",
+      "sha256": "f994195dd59627dbaf50ccbe1c04a15066ab3f1851c36718be5e4daa50491fa7",
+      "bytes": 9732
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/spyro-independent-review.json",
+      "sha256": "8e6537952787c011000f96352260d446682b4c4ece31b620db4dcf468706002c",
+      "bytes": 34453
+    },
+    {
+      "path": "docs/cg/reviews/wave4-2026-10-20/spyro-source-review.json",
+      "sha256": "6525fbff82e5423edd7c845c1c9ff11a2e125fade477c044b54a85a7529e80cb",
+      "bytes": 9807
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/README.md",
+      "sha256": "d52b65317ccbfebbafdee8aa5572c48d6b2d86e8b09702da4703393fd1e17996",
+      "bytes": 12421
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/celeste-ray-independent-review.json",
+      "sha256": "8aedefbc59cd6241fff169345ff9ee6324d299dd5eb50c67731c2d82d6a6eede",
+      "bytes": 19746
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/celeste-ray-sprite-independent-review.json",
+      "sha256": "3e4779f9bf99ad303a43fc32c05b54988473d35f3bcfa04fcc91bc3a7f48b91c",
+      "bytes": 11324
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/comparison-preview-verification.json",
+      "sha256": "243bd8727dfe937af1765e2c8c5f09a0583dbcad566d36f959eb9bfc870dc5ca",
+      "bytes": 5648
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/crash-bandicoot-sprite-independent-review.json",
+      "sha256": "0d9d7702e350d3b58c5cd7b6aaf03c13dda9f3426372339a12049510f39ad0e9",
+      "bytes": 11822
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/crash-bandicoot-sprite-producer-review.json",
+      "sha256": "ec4ab51304767c981809d3d9062db5cb30f26072389d0b6fc9bbb47f5f801609",
+      "bytes": 11965
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/fidelity-bible-plan-lookup-review.json",
+      "sha256": "e3101166708bb5893090e98653e42b69eae3738e4af06247e23002d6af6f956f",
+      "bytes": 22360
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/final-checks.json",
+      "sha256": "4a54b43e57fa28da521de5b6fa3c45012e4a2c9c91f46c73589425370f531b9c",
+      "bytes": 7413
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/historical-preservation-verification.json",
+      "sha256": "16386188f638eac1aef367edcabd1635943de9a76e8384a6145c53203a42a400",
+      "bytes": 6233
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/index-and-preview-delivery-validation.json",
+      "sha256": "434a87149e589ea9a2fa7cc1bf76f09366987dd6dbf7a822c21d13556f0bbd78",
+      "bytes": 2478
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/jax-rook-independent-review.json",
+      "sha256": "501b61e287fb51f2c66853800088ef37066859fc82ce9b63379fb2660e1396cc",
+      "bytes": 22096
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/jax-rook-series-review.md",
+      "sha256": "44cb4edc9d3842641f5633fd6a6f3896b6267a251169450fd5d6e606e138fd56",
+      "bytes": 3506
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/jax-rook-sprite-independent-review.json",
+      "sha256": "ca5a1fab09cf4661d49219e06099ee8a0e29a4e603b51bed572a97076faa2fb3",
+      "bytes": 9011
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/mara-veylan-crossreview-jax.json",
+      "sha256": "a7fe5e73876d3498aee20b242cbf32652487da1f47bf4cb394cba57f5b71d97f",
+      "bytes": 12759
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/mara-veylan-independent-review.json",
+      "sha256": "e3604838845ce74e9468209de5282e5d249a4bad3be942cb479caa5462caba8d",
+      "bytes": 25893
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/mara-veylan-sprite-independent-review.json",
+      "sha256": "bcc795e44fd3bbe1d5ba6924b3117af411d3e382384bcb3c957a6bc891643c1e",
+      "bytes": 12550
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/mistral-source-and-attempt-review.json",
+      "sha256": "7edc8c22879c1554a939a9a1fa934d52318d18a93a9b4ca570012e08b19b94a4",
+      "bytes": 1344
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/nefra-balance-delivered.json",
+      "sha256": "88275d10bc868ac42dc234325692d2334774942f8262e67fa8a94e9c50a26af3",
+      "bytes": 5080
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/nefra-balance-delivered.webp",
+      "sha256": "d4093a2bfa0d4375c6e582cb4ee5f2730a5462ed156fc1ce74306bc0c6216d65",
+      "bytes": 542032
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/nefra-balance-independent-review.json",
+      "sha256": "13b9795712bb62fdfc1539a4d24511ff10b5220ae3faba7ad9063882a6226f16",
+      "bytes": 23741
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/nefra-balance-sprite-independent-review.json",
+      "sha256": "cd025529af2903b99bf8aa8acba2813f7f1bbc32b0fb6ab2190971d31efa4e74",
+      "bytes": 16487
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/runtime-atlas-selection-independent-verification.json",
+      "sha256": "544ab95dc63f306a23b95727bdcf0c2bc7010bfd4d7820d3ac29e7a0f4db0479",
+      "bytes": 10217
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/runtime-selection-independent-verification.json",
+      "sha256": "f6e0cabaab23f5bd4a6bba6d1b32476b19ee0b2803bfdf417efe65f71e83212b",
+      "bytes": 9388
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/selected-roster-visual-priorities.json",
+      "sha256": "ce60bdb4168736dc720742abb9bc72d25a61565e43182018110b246c706cf780",
+      "bytes": 12299
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/seraphine-meridius-delivery-review.md",
+      "sha256": "d2a213f2611492c931d7635a4b85c21e77a8e952b139484fe1135c0ad50719c0",
+      "bytes": 3735
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/seraphine-meridius-independent-review.json",
+      "sha256": "2195f01d1aa647e9d895556c8f5efb9cc2e113fc0194ee56de8d124dd1672494",
+      "bytes": 21445
+    },
+    {
+      "path": "docs/cg/reviews/wave5-2026-10-22/seraphine-meridius-sprite-independent-review.json",
+      "sha256": "525ac0abb92c4a1fbf2ee216050a7f83bd09d6cbff575cfc41bba234eb2bebad",
+      "bytes": 13623
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/README.md",
+      "sha256": "c6b9b8fe53f06dffda9680289abfc8748eec31c2b71c87f43d4d8a524a1597b6",
+      "bytes": 11272
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/brann-crow-independent-review.json",
+      "sha256": "568c7d1d3ffe56471b44e75f02f997edf64ad94d4896242e0807e10b09b1beff",
+      "bytes": 13956
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/brann-crow-sprite-independent-review.json",
+      "sha256": "6be8514c37e1bddfc4c822472e5ec40d56a2c14e7a31d2e8f7338416ad810d0f",
+      "bytes": 10898
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/comparison-preview-verification.json",
+      "sha256": "ef1865af6cade56c8be2db35fae56a4da7dd8d6ee7901546999b7a05639ab0c6",
+      "bytes": 8229
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/final-checks.json",
+      "sha256": "e5829362762ce857b7d9a4683d8db8b8d36586e106e378c93930abb1e36a67c3",
+      "bytes": 41119
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/generation-counts-independent-verification.json",
+      "sha256": "21440aeac6a488ec9b8296410a62dcfb6d424adb44df71fad4cf32769d7ade55",
+      "bytes": 211767
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/global-batch-semantic-verification.json",
+      "sha256": "ff5f92547aa1f9da7e57ae461314ed778ca838e5e054fcb4d2682d7209aa0d15",
+      "bytes": 50733
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/historical-preservation-verification.json",
+      "sha256": "8782270cfd7111d301417146a6c0d84643a692d06689c1c383ea68927b57ee2c",
+      "bytes": 3237
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-delivery-review.md",
+      "sha256": "15d19dcc65cca2e0ad7810174d66010df5e65c1497a4e83b29c114e21ce7ac89",
+      "bytes": 4466
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-independent-review.json",
+      "sha256": "8d938a874fd549ad239801bbfe8f5429162a043325999e964b2a06cdac1baaf9",
+      "bytes": 15088
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/lyra-hexwind-sprite-independent-review.json",
+      "sha256": "f73094c5c4b4d62f29c9cad86becacf90c60d1c459750b063e8924dcb3f3e8e7",
+      "bytes": 12985
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/mara-ell-independent-review.json",
+      "sha256": "a38c80ea5d3b74b5c59ead253df8761062582fd929337063725fee9e6957a8eb",
+      "bytes": 20792
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/mara-ell-sprite-independent-review.json",
+      "sha256": "aff0e67a175623623c6cf6039313d71620cc48e7e0ce9bb6e782db4f62ff04ce",
+      "bytes": 15403
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/mercy-ash-independent-review.json",
+      "sha256": "6dbacb8e4e1c6fa43cd9b3668ca1287d209f8a4b98173964b795743c9004838f",
+      "bytes": 11401
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/mercy-ash-sprite-independent-review.json",
+      "sha256": "ff403d7ff9d8ef2583c56e80b5bd6ab7237603d78d24772831b70147ea0ec328",
+      "bytes": 13319
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/orin-vale-independent-review.json",
+      "sha256": "d4287c7989783c2d85bfcf5e961a260c1096e838c756c305ce5b023f7b0fde76",
+      "bytes": 26030
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/orin-vale-sprite-independent-review.json",
+      "sha256": "3a3c3e742d4f7f04ee22eca0f43d1d7261fdb6723557868f0b0224cc2264fd5d",
+      "bytes": 12929
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/runtime-atlas-selection-independent-verification.json",
+      "sha256": "ee9b11eed49e1eb36a2180acc0ea82c9125c360c33c888dd7f205fb931dfce6e",
+      "bytes": 9129
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/runtime-selection-independent-verification.json",
+      "sha256": "8631f34101c26422d00df027c1bda1f954b4af73952d33f4afb67c30538ee17f",
+      "bytes": 8681
+    },
+    {
+      "path": "docs/cg/reviews/wave6-2026-10-23/selected-roster-visual-priorities.json",
+      "sha256": "2c2f5b9b579e476b48d04a93c7b8dd85d72e183c28961dd9f1335d571e0d6501",
+      "bytes": 26840
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/README.md",
+      "sha256": "db6e61fc88e66252165c96c867575d0b69da9bb54b45a67bfc7f7d624faf3310",
+      "bytes": 7595
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/aelwen-starbough-independent-review.json",
+      "sha256": "6d579806b44eb4409014c1e53d049bb018d129dc9a23ba5df8689dee963bfe45",
+      "bytes": 20452
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/aelwen-starbough-sprite-independent-review.json",
+      "sha256": "be126e6ef9e06391f2ec160eda6bfac605145e4a9447d5aadc5b94b77f41c837",
+      "bytes": 12071
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/aurelia-marcellina-independent-review.json",
+      "sha256": "4e04b452c2fd7d49cc392cfac9d145d32ded974fc31eb6e72a3abad9dae355d7",
+      "bytes": 26960
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/aurelia-marcellina-sprite-independent-review.json",
+      "sha256": "c11a7a1bc5a9d02addcf4e17458dcd63d65c4215f78161626f66ff4652612287",
+      "bytes": 17337
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/comparison-preview-verification.json",
+      "sha256": "e5696c63217101650a962d000ad111430a4c18ecb68b6d4a3a28be92c0c47fb4",
+      "bytes": 8705
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/final-checks.json",
+      "sha256": "1619b76eb8bdefaf4767d2f30c8296d8675a5e39df364f7086cdd2a4ef1aa6dd",
+      "bytes": 88749
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/generation-counts-independent-verification.json",
+      "sha256": "1713e66627293860975775dcd89281042129a464c2f62453d598011057de1da2",
+      "bytes": 273693
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/global-batch-semantic-verification.json",
+      "sha256": "91020a87d56f83655135fada04fd0386ad6c543561c8ce2df62029b0318c63d0",
+      "bytes": 52009
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/historical-preservation-verification.json",
+      "sha256": "cc0b3ae2a15aaf7551dfca383e215979b393bcbbbca50d2cc11badd5ee20b36b",
+      "bytes": 39763
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/nessa-vire-independent-review.json",
+      "sha256": "4826c6d40c907f9685c532934b4878c36a7dc74f92f2b05811a950d08c23aa3a",
+      "bytes": 19234
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/nessa-vire-sprite-independent-review.json",
+      "sha256": "1d116c94854c989bd084cc3f061f90b4d6e15d4708f0a72509c81d96327a158d",
+      "bytes": 21211
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/runtime-atlas-selection-independent-verification.json",
+      "sha256": "41391ccc5cbdaf0d527c75cc5ede4fa1dfd2811f86d7e17b4aad3acab84e5520",
+      "bytes": 11944
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/runtime-selection-independent-verification.json",
+      "sha256": "a094efa0cd6759dce1a422ac353774ffef2bbcdee8ab6ecb4253734aa2e08a9d",
+      "bytes": 5853
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/selected-roster-visual-priorities.json",
+      "sha256": "92ea8d4bf798112bcfe64bc4f51bd0ad047a4fe8a777d00a725cc6d7aa7bf3a2",
+      "bytes": 22943
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/seyra-tal-independent-review.json",
+      "sha256": "a253da4a0e9ba91af0b6e1aeecade99eb8faaa6b7177c1116c859bd27c2378f5",
+      "bytes": 19660
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/seyra-tal-sprite-independent-review.json",
+      "sha256": "16dd41756684bb97396770b137561aa007fc16003c5f707454bf82578a1f0daf",
+      "bytes": 21648
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/ysara-flint-independent-review.json",
+      "sha256": "583b20e61d93e9c8ca5f24d3845190b2f913d71f96f6e5197fff75b2391e8d1f",
+      "bytes": 19732
+    },
+    {
+      "path": "docs/cg/reviews/wave7-2026-10-23/ysara-flint-sprite-independent-review.json",
+      "sha256": "707afd4837604433f08178d1e2bdda5c83190371512369f2773de8f893b95132",
+      "bytes": 11199
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/README.md",
+      "sha256": "fd25962ca1b222c64fe923d0500cd2c5bd4e0cb782ac880795b1218db3caaf12",
+      "bytes": 7898
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/anton-rook-independent-review.json",
+      "sha256": "e672d3cc3265358291462986ea4ce72bee26900e90b8d52b79f6bda124fd802d",
+      "bytes": 18560
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/anton-rook-sprite-independent-review.json",
+      "sha256": "d63e208242d7cd60154b9b918ab72fe1ad246bdd2093431dc98147dc56de086d",
+      "bytes": 8005
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/bram-quill-independent-review.json",
+      "sha256": "70171cfad5eb4140c215712d2a32aff826b5f890647167f5f419f45d1e712988",
+      "bytes": 16624
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/bram-quill-sprite-independent-review.json",
+      "sha256": "9f7d18f86358e411da2dcbd6132e07a3802bf30ddb1e0457ff3278c9dee4833d",
+      "bytes": 10421
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/comparison-preview-verification.json",
+      "sha256": "236a4c68190c4cf44572fdf9a9142929defb7ff2ad306efdebaaa04926c8a785",
+      "bytes": 8675
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/final-checks.json",
+      "sha256": "8c0ebf45ab0e27355b5baf5aca1ca947243a9e53934bee6f7281f0d0937ac053",
+      "bytes": 93607
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/generation-counts-independent-verification.json",
+      "sha256": "7f48cb32abedb88081cff4da668d73098de373ecf0b1ac9df86be6dd5e26368a",
+      "bytes": 274417
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/global-batch-semantic-verification.json",
+      "sha256": "c70bd6aea16079d656d0246b0a4c2ec6b7e58c06979b9c67ae64d0db1330677f",
+      "bytes": 81684
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/historical-preservation-verification.json",
+      "sha256": "e3f80d663ae61ffcf0498f7e744b10ce880f13d0ee3399735addc116b5f30d41",
+      "bytes": 44318
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/imani-quell-independent-review.json",
+      "sha256": "634338eecdf1d60a45e6542ba05994dcbb3f3cd55593d554886adba5a607804c",
+      "bytes": 14498
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/imani-quell-sprite-independent-review.json",
+      "sha256": "352a3a1c5f0a3a6fb82d8b1c71e1b9c04f8c8936ffa8301171e465542f3d7075",
+      "bytes": 17106
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/khepri-sen-independent-review.json",
+      "sha256": "9e47f8b8afcdea5511b23028a8d639ca11080c39cfa172b8b275963333c8165a",
+      "bytes": 18728
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/khepri-sen-sprite-independent-review.json",
+      "sha256": "41f1373e521e96c77a4369d1337c4d4bbc194e04cbef1b11e0eb5397a9d307d2",
+      "bytes": 11932
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-independent-review.json",
+      "sha256": "efbcbf7d491743177a8f1547c25f2a66a2ed6bad43b1f7db6e150392ae556c45",
+      "bytes": 23403
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-sprite-independent-review.json",
+      "sha256": "3cc8e60bf6a0ab6be6b18b94a73d4d7f3cf5c818b21fbb85336a92bad98ad527",
+      "bytes": 16956
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/master-instruction-continuity-verification.json",
+      "sha256": "31a0c5e6252cbf2ffb5bd07d1ffdb1598144e026c493bb1a99e4415717d82ad4",
+      "bytes": 793
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/runtime-atlas-selection-independent-verification.json",
+      "sha256": "21bbaf37ddda0a7e1454aa0e389a7a47f1e36ee20da27636d403f81edcf41450",
+      "bytes": 11808
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/runtime-selection-independent-verification.json",
+      "sha256": "c422df0559eb2118d07e95dc328aa78a5b6b3cf95b564611bc9d62a98a7568fa",
+      "bytes": 5793
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json",
+      "sha256": "2db2467b8901fa6146e16bf2dbd66a8afaa44170a87c00e142b16c2f690e3520",
+      "bytes": 22784
+    },
+    {
+      "path": "docs/cg/roster-global-batch-2026-10-23.json",
+      "sha256": "9bfacf14ab94ad64a38b2698ec1d633f9a25ff3595452fa976dfb1b5f051f439",
+      "bytes": 68782073
+    },
+    {
+      "path": "docs/cg/roster-global-batch-2026-10-24.json",
+      "sha256": "d5ecbe02e6fff130c24b6dad56cd642c3456f348b7dccb130011665904d6be26",
+      "bytes": 69267215
+    }
+  ],
+  "baselineReport": {
+    "path": ".tmp/cg-wave9-2026-10-25/baseline-delivery-wave8.json",
+    "sha256": "5429e6f0cc618635a07dd07c9c514eea45c95a4cd3e912e14a2926d9e62e9780"
+  },
+  "currentRegistry": {
+    "path": "src/game/cg/cgRosterArtwork.generated.json",
+    "sha256": "635a822a0082fb2a9639561d0bdfdbb02b08dac437ac59113e95b61377b741a6"
+  },
+  "visualFidelityCertifiedByHashChecks": false
+}

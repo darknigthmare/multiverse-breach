@@ -73,7 +73,11 @@ test('Rayman woodland concept art remains environment-only evidence for CG03', (
 test('original characters keep their selected V2 portrait without qualifying divergent old atlases', () => {
   const locks = loadQualifiedCgIdentityLocks(ROOT);
   for (const id of ['jax_rook', 'seraphine_meridius', 'mara_veylan', 'celeste_ray', 'nefra_balance',
-    'brann_crow', 'lyra_hexwind', 'mercy_ash', 'mara_ell', 'orin_vale']) {
+    'brann_crow', 'lyra_hexwind', 'mercy_ash', 'mara_ell', 'orin_vale',
+    'nessa_vire', 'aelwen_starbough', 'ysara_flint', 'aurelia_marcellina', 'seyra_tal',
+    'imani_quell', 'bram_quill', 'lio_ferrante', 'anton_rook', 'khepri_sen',
+    'doros_bronzehand', 'lin_yue', 'eira_hrafnsdottir', 'killa_mayu', 'aoi_mikazuki',
+    'thaleia_naxos', 'mei_zhen', 'yrsa_rune_binder', 'sumaq_khipu', 'rei_kagetsu']) {
     const lock = locks.get(id);
     assert.ok(lock, `${id}: the actually inspected internal portrait must qualify`);
     assert.match(lock.incarnation, /V2/);
@@ -89,6 +93,20 @@ test('original characters keep their selected V2 portrait without qualifying div
     assert.ok(!reference.url, 'An internal original is not an external franchise reference');
     assert.equal(lock.visualFidelityApproved, false);
   }
+});
+
+test('Seyra keeps her crystal identity when CG13 borrows only Aurelia’s internal costume', () => {
+  const evidence = loadCgSourceEvidence(ROOT).get('seyra_tal');
+  const lock = loadQualifiedCgIdentityLocks(ROOT).get('seyra_tal');
+  assert.equal(lock.identityVisualReferences.length, 1);
+  assert.match(lock.identityVisualReferences[0].path, /ilyr_concordat\/heroes\/seyra_tal\.png$/);
+  const costume = evidence.references.find(ref => ref.referencePurpose === 'costume-only');
+  assert.ok(costume);
+  assert.equal(costume.slot, 'CG13');
+  assert.equal(costume.usedForIdentity, false);
+  assert.equal(costume.costumeAuthorityCharacterId, 'aurelia_marcellina');
+  assert.equal(costume.sha256, '49ecbbb631fc3b3e12a093f2d744b1bab88aa7369525779bd9b68a5cff328824');
+  assert.ok(lock.identityVisualReferences.every(ref => !/aurelia_marcellina/.test(ref.path)));
 });
 
 test('scoped costume/equipment/environment documents and references never qualify identity', t => {

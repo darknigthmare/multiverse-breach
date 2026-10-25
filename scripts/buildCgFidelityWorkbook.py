@@ -37,7 +37,7 @@ DOCS = ROOT / "docs" / "cg"
 PLAN = DOCS / "roster-production-2026-10-18.json"
 BIBLE = DOCS / "roster-fidelity-bible-2026-10-18.json"
 DEFAULT_OUTPUT = DOCS / "Multiverse_Breach_Fidelite_CG.xlsx"
-GLOBAL_BATCH = DOCS / "roster-global-batch-2026-10-23.json"
+GLOBAL_BATCH = DOCS / "roster-global-batch-wave10-2026-10-25.json"
 GLOBAL_PROMPT = DOCS / "PROMPT_GLOBAL_ROSTER_1_1.txt"
 LINK_BASE = DOCS
 THUMBNAIL_CACHE = ROOT / ".tmp" / "cg-fidelity-workbook-thumbnails" / "v1"
@@ -431,8 +431,32 @@ def collect_visual_evidence(bible: dict) -> dict:
             and item.get("viewed") is True
             and (item.get("usedForIdentity") is False or item.get("identityUse") is False)
         )
+        costume_owner_id = item.get("costumeAuthorityCharacterId")
+        costume_owner = bible.get(costume_owner_id, {})
+        original_scoped_costume = (
+            role == "internal-original-costume-reference"
+            and item.get("sourceScope") == "original-project-canon"
+            and item.get("referencePurpose") == "costume-only"
+            and item.get("slot") == "CG13"
+            and item.get("viewed") is True
+            and item.get("usedForIdentity") is False
+            and costume_owner_id != char_id
+            and (costume_owner.get("incarnation") or {}).get("status") == "original-project-canon"
+            and any(
+                ref.get("role") == "canonical-original-project-portrait"
+                and ref.get("canonicalProjectReference") is True
+                and ref.get("viewed") is True
+                and ref.get("sha256") == item.get("sha256")
+                and (owner_path := local_path(ref.get("path"))) is not None
+                and owner_path.is_file()
+                and hashlib.sha256(owner_path.read_bytes()).hexdigest() == item.get("sha256")
+                for ref in costume_owner.get("localVisuals", []) if isinstance(ref, dict)
+            )
+        )
+        if role == "internal-original-costume-reference" and not original_scoped_costume:
+            return
         original_authority = (
-            role in INTERNAL_CANON_VISUAL_ROLES or original_scoped_environment
+            role in INTERNAL_CANON_VISUAL_ROLES or original_scoped_environment or original_scoped_costume
         ) and isinstance(incarnation, dict) and incarnation.get("status") == "original-project-canon"
         # Moving a saved project bitmap under docs/ does not turn it into an
         # external source. Explicit source copies and old comparison art stay
@@ -487,6 +511,8 @@ def collect_visual_evidence(bible: dict) -> dict:
                 seen[key]["receipt"] = receipt or seen[key].get("receipt", "")
             return
         reference = {**item, "path": str(candidate.resolve()), "receipt": receipt, "sourceScope": "original-project-canon" if original_authority else "external-reference", "referencePurpose": purpose, "slot": item.get("slot") or purpose_slot}
+        if original_scoped_costume:
+            reference["scopedCrossCharacterCostume"] = True
         if reused_authority:
             reference.update({"reusedAuthorityBitmap": True, "authorityRole": reused_authority.get("role"), "authorityPath": reused_authority["path"]})
         seen[key] = reference
@@ -904,9 +930,9 @@ def build(output: Path, no_images=False) -> dict:
                     known_refs.add(value)
         reference_status = readiness.get("visualReference") or identity.get("evidenceStatus")
         if visual_evidence.get(char_id):
-            internal_count = sum(e.get("sourceScope") == "original-project-canon" for e in visual_evidence[char_id])
             costume_count = sum(e.get("referencePurpose") == "costume-only" for e in visual_evidence[char_id])
-            external_count = len(visual_evidence[char_id]) - internal_count - costume_count
+            internal_count = sum(e.get("sourceScope") == "original-project-canon" and e.get("referencePurpose") != "costume-only" for e in visual_evidence[char_id])
+            external_count = sum(e.get("sourceScope") != "original-project-canon" and e.get("referencePurpose") != "costume-only" for e in visual_evidence[char_id])
             reference_status = f"{external_count} référence(s) externe(s), {internal_count} canon interne, {costume_count} tenue croisée seulement; comparaison 1:1 à compléter.\nStatut de la bible: {plain(reference_status)}"
         sprite_review = readiness.get("currentSprite") or {}
         sprite_status = sprite_review.get("status") if isinstance(sprite_review, dict) else None
@@ -1088,6 +1114,8 @@ def build(output: Path, no_images=False) -> dict:
                 authority_kind = "portrait original" if authority_role == "canonical-original-project-portrait" else "décor original" if authority_role == "original-project-environment-reference" else "pack original"
                 authority_owner = "de l'univers" if authority_role == "original-project-environment-reference" else "du personnage"
                 evidence_status = f"Autorité canon interne documentée : {authority_kind} {authority_owner}; pas une source externe"
+                if evidence.get("scopedCrossCharacterCostume"):
+                    evidence_status = f"Référence interne de tenue : {evidence['costumeAuthorityCharacterId']}, CG13 uniquement; aucune preuve d'identité ni d'anatomie du personnage cible; pas une source externe"
                 if evidence.get("reusedAuthorityBitmap"):
                     evidence_status += ". Réutilisation du même bitmap source pour ce créneau uniquement; aucune nouvelle source ni preuve d'identité indépendante."
                 if evidence.get("inspectionPath"):
@@ -1289,7 +1317,7 @@ def build(output: Path, no_images=False) -> dict:
         "knownCurrentSourceCorrectionsRequired": sum((v.get("visualReview") or {}).get("status") == "needs-source-correction" for v in current.values()),
         "serviceRefusedSlots": sum(bool(v.get("blocked")) for v in production_notes.values()),
         "subjectsWithExternalIdentityReferences": sum(any(e.get("sourceScope") == "external-reference" and e.get("referencePurpose") not in {"costume-only", "equipment-only", "environment-only", "body-costume-support"} for e in evidence) for evidence in visual_evidence.values()),
-        "subjectsWithInternalCanonAuthorities": sum(any(e.get("sourceScope") == "original-project-canon" and not e.get("reusedAuthorityBitmap") for e in evidence) for evidence in visual_evidence.values()),
+        "subjectsWithInternalCanonAuthorities": sum(any(e.get("sourceScope") == "original-project-canon" and not e.get("reusedAuthorityBitmap") and not e.get("scopedCrossCharacterCostume") for e in evidence) for evidence in visual_evidence.values()),
         "scopedInternalBitmapReuses": sum(bool(e.get("reusedAuthorityBitmap")) for evidence in visual_evidence.values() for e in evidence),
         "subjectsWithCostumeOnlyReferences": sum(any(e.get("referencePurpose") == "costume-only" for e in evidence) for evidence in visual_evidence.values()),
         "workbookBytes": output.stat().st_size,

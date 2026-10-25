@@ -1,0 +1,1814 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "checkedAt": "2026-10-25T09:11:46.128Z",
+  "status": "passed",
+  "reviewer": "/root/wave10_coordination",
+  "scope": "Independent read-only source/slot/theme/provenance and real asset bindings after root freeze. This report checks the actual named visual reviews and does not claim a second exhaustive visual inspection of all75CG.",
+  "manifest": {
+    "path": "docs/cg/roster-global-batch-wave10-2026-10-25.json",
+    "sha256": "3c0c1d99705513e4c9b1220c575a2e7fa508f27e0e0a835f528821ddf7fa8262"
+  },
+  "instruction": {
+    "path": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt",
+    "sha256": "82988a4abcbe53556ab6717f7aa25d804fa40e48f2c95c52bc9a9e1e20ec3b52"
+  },
+  "masterInstructionContinuityReport": {
+    "path": "docs/cg/reviews/wave10-2026-10-25/master-instruction-continuity-verification.json",
+    "sha256": "76d9fb7f19eb1c8b26f667ecaafca1baccee2fc9198bc94a2669089fb79e123b"
+  },
+  "inputs": {
+    "plan": {
+      "path": "docs/cg/roster-production-2026-10-18.json",
+      "sha256": "b11334a0f45199853232d582db7e678128ce893ef1d503b2f9ecdee99ac3efac",
+      "bytes": 34883774
+    },
+    "bible": {
+      "path": "docs/cg/roster-fidelity-bible-2026-10-18.json",
+      "sha256": "187d02810be6388e3d5fd17a44a24ba811513e5a9bdb6ea9a659de1a49b40918",
+      "bytes": 41499143
+    },
+    "pilot": {
+      "path": "public/cg/cg-manifest.json",
+      "sha256": "d1432abdcaa07edfb654cfd1ef7b2f837a7ec35c6f05da57f2103f11fd236bee",
+      "bytes": 160270
+    },
+    "roster": {
+      "path": "src/game/cg/cgRosterArtwork.generated.json",
+      "sha256": "9c10f135b43ed543ebcc4e7bfe6a13db0a8cfed05697613674eb5e2fa2563cf8",
+      "bytes": 5944987
+    },
+    "revisions": {
+      "path": "src/game/cg/cgRevisions.generated.json",
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee",
+      "bytes": 202193
+    }
+  },
+  "coverage": {
+    "subjects": 1912,
+    "slots": 28680,
+    "actualDeliveredCg": 970,
+    "newCgBound": 75,
+    "unchangedOtherProductionCells": 28605,
+    "documentedNotApplicablePreserved": 8,
+    "registeredVersions": 1064,
+    "remainingSlots": 27702
+  },
+  "cgRefusalJobsPreserved": 20,
+  "atlasRefusalsSeparate": {
+    "current": 7,
+    "historical": 7,
+    "newToday": 0,
+    "newAtlasRefusalFromThisAudit": false
+  },
+  "explicitBodyCoverageGapSubjects": [
+    "batman_n52",
+    "harry",
+    "jack_sparrow_potc"
+  ],
+  "scopedCostumeChecks": {
+    "characterId": "seyra_tal",
+    "slot": "CG13",
+    "authorityOwner": "aurelia_marcellina",
+    "sourceSha256": "49ecbbb631fc3b3e12a093f2d744b1bab88aa7369525779bd9b68a5cff328824",
+    "usedForIdentity": false,
+    "costumeOnly": true,
+    "qualifiedIdentityTotalRemains70": true,
+    "directCostumeBitmapAttributions": 1,
+    "otherFourteenCgDoNotAttributeUnusedCostumeBitmap": 14,
+    "commonScopedSourceReceiptMayBeReferencedByAllEntries": true
+  },
+  "inspectionAuthorship": "The reviewers recorded above personally inspected the individual native images. This auditor verified their selected-native SHA bindings, authored themes, individual source and gallery assets and current manifest queues.",
+  "series": [
+    {
+      "characterId": "thaleia_naxos",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/thaleia-naxos-wave10-2026-10-25.json",
+        "sha256": "9cab4fea7558d8414ec07a1b17116b1ae77a472545c58c34cbd873bb6f505067"
+      },
+      "plan": {
+        "path": "docs/cg/thaleia-naxos-wave10-plan-2026-10-25.json",
+        "sha256": "0f7200af7e970e9c8df1914134768c7f29651db397019f8ac6be0d43bd4146b0"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave10-2026-10-25/thaleia-naxos-independent-review.json",
+        "sha256": "7c327501fc27e5787f3da053e97e0f30e635ebeb68224d250af9b8f503f52215"
+      },
+      "independentReviewer": "/root/cg_rei_wave10",
+      "producer": "/root/cg_thaleia_wave10",
+      "certificationEvidence": {
+        "topLevelCanonicalFlagPresent": true,
+        "allFifteenRuntimeReceiptVisualApprovalsExplicitlyFalse": true,
+        "allFifteenNamedQaEntryFlagsExplicitlyFalse": false,
+        "optionalAbsentFlagIsNotInferredAsCertification": false,
+        "selectedSourceCertificationEvidence": {
+          "path": "docs/cg/thaleia-naxos-reference-evidence-wave10-2026-10-25.json",
+          "sha256": "d975214406b1a0511efa6f51824d907b14ca58f09dfd5b07718449f426d881ab"
+        },
+        "selectedSourceCanonicalFlagExplicitlyFalse": true,
+        "optionalQaFlagsNotInventedWhenAbsent": true,
+        "sourceLimitations": [
+          "One selected internal V2 original-project portrait; hidden surfaces and tiny details remain unknown. No absolute 1:1 certification.",
+          "Source apparent proportions preserved; chronological age unknown, all variants fully clothed family-safe and nonromantic."
+        ]
+      },
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "a72fd0752ae3ad01e3ab399c0f6df5525a13cf4ea0df945307d4cca09e29071b",
+          "deliveredSourceSha256": "2c7ff9a8d190ebccf2c5c0dd86af44793fb28d82453a402f31be4929a4140531",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "1c362a19720d67b66796eab660d3abbd0790b37dfdb60f5b64caecd4867b6440",
+          "deliveredSourceSha256": "d0f84a106413f5b5205fee1545b639c0f4d4aff5e38266c1ac43cdb0f9e1b6d5",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "14e5a99fa6deeb23d18c7adc18cde4e3b8507870dbacd5d5070f06c858af1488",
+          "deliveredSourceSha256": "4ae5808b048e2f5eea7f3a450e566ce8785277b187fd654ddf5ff7d5e9cef656",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "62eb703ff49f5c2a97d905a159c5e1aba19a980d2a9ba2ff9d4d5244d095cf53",
+          "deliveredSourceSha256": "58eb96370495538efbf993575f5231dcf19866c81860a1f4ca2a7bda49a5d778",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "deab8e3c8fcd423eb8b973ad071aa755b45158ee532d1a43e98e56d25085c635",
+          "deliveredSourceSha256": "34f2582fc0e3a91bbf55709940031151d9081b23d2fdc1d9136504ff9be760a4",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "631c136f1b299c0541dc17077196601d8d4c88dccbe2cd6ccd5665bb4b38d015",
+          "deliveredSourceSha256": "25bcbcac1830c5ce54d34de68191227ee530d8c91bf73e8c6beb57051837f040",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "8fe5f2c5492ccfef26ad877b9e059d7b5f0fafda58f325e1d7ea57fc17c61720",
+          "deliveredSourceSha256": "48118b5fdb1220c989335e482a3a52c18afbce3417d7225f8c76c488e3c00ac9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "94130e33187962f7bfbc74ca09b24c2569ab46b5659a9c52c222d543b9e956f3",
+          "deliveredSourceSha256": "573e4331b1ab3ba78e8701b4d3b76c500221cc2786a717eb94a4b018009c6e07",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "d45363d17ffa78de0a0517f9c624156b8fad2f9ed8b2f745dc100052033544d7",
+          "deliveredSourceSha256": "3045655fdac37096d91770ce936d0c50eac6e695778fd37c2d6fda5807e229f6",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "ecd5d4ac9214cce53e131f46b2b75caa7cc91b20fb85bbf3a64d0d13c7478222",
+          "deliveredSourceSha256": "10b0284c1fe90c268d73a103ad0386615100038ef03264889974fa95b76c99d8",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "0c54ffa85e409a55d6eee6b7603b9529bc8f20bee6b4b472657b2dd0e1aab570",
+          "deliveredSourceSha256": "85fd2fe7b2ede62e78e428432cf2bcbaac88086783a112f6fe1b5580ed5330dd",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "d690f208e3aa56deed8d2cd1b0a89c39576c1f178903c87a080e61419a9b36d8",
+          "deliveredSourceSha256": "d12b2860b6f06b1263763a75858c20018480dba6315db74dabea45b8da4ef1c3",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "8705cf34a11b794a87d2bbef8c12ca709118bf236dd258f09307fc6be4fd5a23",
+          "deliveredSourceSha256": "2e980bf8cf2f3e8433c43c57c061a64bcea9242a8a7b87b5da2391527ef65c40",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "3f2b35c8f7586de981ef23e832d2cb06a2d088462acbd32a0a852ed07e6a9b04",
+          "deliveredSourceSha256": "33216b00f1e59cca6898a7238ce56ddab43805eff8b6c243cf9d0973c493ff6c",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:aegea-war-of-the-moirai:thaleia-naxos:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "9e2810bf9975b1b8b45bc615b86b583956999738031f6f91069b8b91f401bb63",
+          "deliveredSourceSha256": "31e6759e6fa93247b8ccab814f3208d8bc63e66503340d504f2f970433426ab9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_rei_wave10",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "mei_zhen",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/mei-zhen-wave10-2026-10-25.json",
+        "sha256": "1311c9e42c495aeb1e924ca864c1a2a12ceb4a3bd6269e5d44f4db487a5f13b7"
+      },
+      "plan": {
+        "path": "docs/cg/mei-zhen-wave10-plan-2026-10-25.json",
+        "sha256": "cfa8360adf6fb503c4e4d0a26ebdeb23dc4b5e1ba797a2576e3b6b8934f52c9f"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave10-2026-10-25/mei-zhen-independent-review.json",
+        "sha256": "b8ed3911fff06c9d2a4d0ba5f29eb3a4199afd506a445885efa137ba222b660b"
+      },
+      "independentReviewer": "/root/cg_thaleia_wave10",
+      "producer": "/root/cg_mei_wave10",
+      "certificationEvidence": {
+        "topLevelCanonicalFlagPresent": false,
+        "allFifteenRuntimeReceiptVisualApprovalsExplicitlyFalse": true,
+        "allFifteenNamedQaEntryFlagsExplicitlyFalse": false,
+        "optionalAbsentFlagIsNotInferredAsCertification": true,
+        "selectedSourceCertificationEvidence": {
+          "path": "docs/cg/mei-zhen-reference-evidence-wave10-2026-10-25.json",
+          "sha256": "ba963bbaf186169bf64cd32a92519f38402b59ae9f695531eee46c929466e962"
+        },
+        "selectedSourceCanonicalFlagExplicitlyFalse": true,
+        "optionalQaFlagsNotInventedWhenAbsent": true,
+        "sourceLimitations": [
+          "Selected individual V2 internal original-project portrait only; no external franchise certification.",
+          "Single front-three-quarter view; hidden reverse robes and tiny embroidery, bell engravings and hair ornament details remain uncertain. Absolute 1:1 fidelity is not certified.",
+          "Chronological age undocumented; retain apparent source proportions, fully clothed family-safe content and no romance.",
+          "Old atlas personally viewed, white short top, dark trousers, high ponytail and unarmed martial poses diverge from selected long bordeaux/ivory robes and right bell sword; old atlas stays byte-identical.",
+          "All settings are original universe-compatible interpretations. Guardian of family tablets and ancestral messages, not military ancestor conscription. CG05 Nexus, CG09-11 Fan Art, CG12-15 What If. Hypothetical future does not establish a canonical age."
+        ]
+      },
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "43c9d60da11d11bb9f88587414e22edcce2c0cd7f8609c3014cd098973b3c351",
+          "deliveredSourceSha256": "785b89e5b51bb0202a6384621524d3e3fe089d1aad69349807765baba189ba24",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "afe4fe2509db5b4365f419db44f5dc7d706329b50ddb7c862b2c4518ae5dd8e4",
+          "deliveredSourceSha256": "75d81f19703cc54f1382d71bb164c49a7a19cfd45879b886925dac2b6f77cc18",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "54c326f1423414a190187acb720db66034fc8a2a8326f3aad266a1f8b257f153",
+          "deliveredSourceSha256": "5c59d631181bc08facfdcbfb4e16302a2c326a9b9603aed091d6b287b85eda5a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "0edd718c9587012312a06be1ca47e836eb9399c905e6a9e308f68da776c0dc17",
+          "deliveredSourceSha256": "8a64c73d6ee4be357d8978e923baf874449fed7ebe2e02670dba0113f22d3123",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "7245f326d18a9655f22159d0f995d7f4519a33d7406eb38b1f4d9ba404e8b42e",
+          "deliveredSourceSha256": "fe518d921edcf10ba959157a269ca69cd7069b8165c95ec22f4925510f31424e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "7cce5db8a2591b1b6cf203f7b8f9ae652b1449d056e4cdee74066f8113cadbf6",
+          "deliveredSourceSha256": "e95dfe133045c7138f1cf55d62b0e24d545aede21e143e10b308d9f12412559a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "85b71de021e8276a9a5c53f2c94c81778f028f420746704ae3f52737c1cdb3aa",
+          "deliveredSourceSha256": "9efb2d1a89c9e848ea260642fbfa8bd0635cad7106b033375c6df03ed0ef2a81",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "598e6d9c3ef4dc711fd5cb35e06624383ff73cbacf26eb067f9784c2aca4b587",
+          "deliveredSourceSha256": "10193002fee81ddab8d11ce9c3011e856dcd70c4f654c3fe22537a93a97ceb69",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "7bb53336e35a80a564a59c02ab6ae9b7f2b0b441da2e0eb43b1f9603ab6c39a2",
+          "deliveredSourceSha256": "0ea0b069533efedbe6da6ef4c92169383c71f1474b78265b5508e0106d9e5158",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "12a1cd542bb99b4e25220c08c8934044c6b5a5132c104bc0c57f2aa8a6baa416",
+          "deliveredSourceSha256": "8b7397da0d9a116249406c729cc70834a75601e9fd0175fd722890d26d754258",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "eca2c01db05a50694623a2a45bbf8b714684b50f36d0688d9efcc818347d290a",
+          "deliveredSourceSha256": "733fe0ef68d7467cc35d6f9638ae47d725cf7552d17e674d7a5d9564d0aa42d4",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "3a8fc7175542d3bf76c64cc77e6c4439f7d43b1649ecc24845f409531199a7c9",
+          "deliveredSourceSha256": "565944626e9b8bf8d9545a7c33f88727803e8ab1fc2da316a8139698ec7ca271",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "c3b91b8878a60b12f298a30f1fda04cd9783684808839ded15d722a6d7f9e105",
+          "deliveredSourceSha256": "03a922a779918e90e4d0844c0462806c724137936080d6f4c2c58e48a68a87f5",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "28b57a4e73cdc4bcaa3024942a0f8588cc2a5f4bdb8eafc686e38572757f39ee",
+          "deliveredSourceSha256": "e2531e9c590a3743cb9906a2f93c958eb78b5e20d730c337338a419e5d2f46b8",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:mandate-of-nine-heavens:mei-zhen:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "3c5632ce7e94374cdd5ecbd94fcf7cdeaacd6cf5d20793f076e2d165fb9cbfb4",
+          "deliveredSourceSha256": "8fda62931669ce201f7ffafd69b88ef04eafe40ff550ef6edb1d01efdea4bb38",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_thaleia_wave10",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "yrsa_rune_binder",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/yrsa-rune-binder-wave10-2026-10-25.json",
+        "sha256": "e9070cc2158c19d0de67c88f684743f87dc0fec3f3e7fea012182bb88361e4f7"
+      },
+      "plan": {
+        "path": "docs/cg/yrsa-rune-binder-wave10-plan-2026-10-25.json",
+        "sha256": "015584b2aa70f6a7a1d875423a6ee617d05bc74d445bf6073d81b52bc6a1e7d3"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave10-2026-10-25/yrsa-rune-binder-independent-review.json",
+        "sha256": "d274a7955e53def8d2e3f134d3e109e8c19a2e1891e05d5d87d043c7cd542fd3"
+      },
+      "independentReviewer": "/root/cg_mei_wave10",
+      "producer": "/root/cg_yrsa_wave10",
+      "certificationEvidence": {
+        "topLevelCanonicalFlagPresent": true,
+        "allFifteenRuntimeReceiptVisualApprovalsExplicitlyFalse": true,
+        "allFifteenNamedQaEntryFlagsExplicitlyFalse": false,
+        "optionalAbsentFlagIsNotInferredAsCertification": false,
+        "selectedSourceCertificationEvidence": {
+          "path": "docs/cg/yrsa-rune-binder-reference-evidence-wave10-2026-10-25.json",
+          "sha256": "da32df1f443a350d75019ba7ae16b9626f9c3823f10db275c146f921e4d7d927"
+        },
+        "selectedSourceCanonicalFlagExplicitlyFalse": true,
+        "optionalQaFlagsNotInventedWhenAbsent": true,
+        "sourceLimitations": [
+          "The selected individual V2 portrait is internal original-project authority, not external franchise evidence.",
+          "One image establishes visible surfaces only. Hidden reverse construction and exact microdetails remain unknown; no absolute 1:1 certification.",
+          "Chronological age is unknown; all variants are fully clothed, family safe and without romance.",
+          "New Nine Realms scenes use the original manifest, not claims of historical Norse accuracy.",
+          "Previous atlas personally opened: brown hair, short blue clothes and no staff differ markedly from source; old bitmap remains unchanged."
+        ]
+      },
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "a51d2cc7594d08d99e13c8a436af8c4d954e7dab1b3ac35251f95e16bbbe02a3",
+          "deliveredSourceSha256": "71bdc4d1908daf37b2617a8d5342b054b762f86acc87caea05b0904c2322ff6c",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "08f9dc3285039ffceaebb5ca9a5232603f7944f2468f601193a0ab5f79262072",
+          "deliveredSourceSha256": "490af6bfbc0372e9ff2bf7591359da80f8683a0f7998fe9298efe754c5870f40",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "731da0710176b51146caf6468426fb71e3f00c41ac325f003f8aba53488390ae",
+          "deliveredSourceSha256": "f5093c42936dcbdffbf6a5be41e832ca071d5e371740abc408c9c6ccc3cc315d",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "9413fab604c1243a0d0df0dcc0ccaec1f082ef870390ab42183ef7c2819218eb",
+          "deliveredSourceSha256": "4e531484f557120d5d058551e1a0678c039da8d5ef496ed5f38bd4e495104d5f",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "c6460e98e9b22c17ae86528106ff5c7a7adba64f48770745a9d1d57808ba093f",
+          "deliveredSourceSha256": "6febb059330b8745cf644fba183657a5a9e4b1d41fdbe04931152d754d6466f7",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "d8aec2dba63b78f3a2ac3f71db5ba4589562b33cc607f4bdcb359383da5bc398",
+          "deliveredSourceSha256": "023ff3a1ee527732e1c01d358ea1153285b78be2fe639abc91359dbd5befca31",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "f01aae0a75c04073c1e20595a59e86f1291efa8efe1c86cf4ed7be1ba385c5b0",
+          "deliveredSourceSha256": "635d03fe9358769934d8b02783383736411121f7f54f72f9ac1b91a9c5b5d87e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "6569648afc75ba27ef2704c7b58a34fc7028110dc06d81262aba9a0a08190dc5",
+          "deliveredSourceSha256": "19cf66fdeb58698c2a732181a71c97c58025452e9564c3c6cf68b3e23d19d7e2",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "4b16be2755ccf96e0e2956110e559537afefef77241d5da29c36c3b47d33b530",
+          "deliveredSourceSha256": "780089419b8181a5c53b10648c642b1c8ff3bc8131bd016a8b248c4b703dd3e9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "266466f078664b11e4c7eb2901af75a5161b82765821f3e10afd25b9f2ad1847",
+          "deliveredSourceSha256": "82947d5e025526866d926a939a877d4c029fd118834607703d0e7fb7b78de253",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "17b334e03d8e8a76261d9e8fee735512a23c39f29f0f31bf369a5769e026d1df",
+          "deliveredSourceSha256": "e075f15a7db14e2973e6145344ff386770448895947277dded5ad4b8b1a106e2",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "6ba06972a9d113cd5fc8d43c5854bae9e95b35c8c0a8af8c378431e59cd4228a",
+          "deliveredSourceSha256": "9b1c348b052b1fa3d53219a115f807ccc6c177344003ab3ec59f434a763cfb62",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "5cf1d7b916118fb24fea4af6e58156c9008a67fabaabf9f820c02173ff074477",
+          "deliveredSourceSha256": "8fd07b132f738eef58c1e1bed1a77d4492c3fc5d15fccc3bece39606e2f0b0a4",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "4bb30ac865380ba1596027568678e8605e456b0291332aeef903fbc991b7bf0f",
+          "deliveredSourceSha256": "fd97896de7b5511d99b86c116ce7a009eb24ce1ceed1e847a804f477c7f60287",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:nine-realms-last-twilight:yrsa-rune-binder:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "c6a6b9406e5b74d13741cc4bd3cc5fb4827c6b345fe0f0d80ad18a2d2ed3f608",
+          "deliveredSourceSha256": "c627bdceab564baa48aec9b08c7d91ecd5b7840d03efd079e0947a1f7f333025",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_mei_wave10",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "sumaq_khipu",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/sumaq-khipu-wave10-2026-10-25.json",
+        "sha256": "706e0771084daec53aba0675232932e25d9b6227a0fc227638caf842682eef98"
+      },
+      "plan": {
+        "path": "docs/cg/sumaq-khipu-wave10-plan-2026-10-25.json",
+        "sha256": "917f49f496adfbadb6827981fa87d42464209432c7da79921ea4732b67a73da5"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave10-2026-10-25/sumaq-khipu-independent-review.json",
+        "sha256": "3c8dff048a112c3f648c74050462060f438cb4e479dcbf1156e37d64df738619"
+      },
+      "independentReviewer": "/root/cg_yrsa_wave10",
+      "producer": "/root/cg_sumaq_wave10",
+      "certificationEvidence": {
+        "topLevelCanonicalFlagPresent": false,
+        "allFifteenRuntimeReceiptVisualApprovalsExplicitlyFalse": true,
+        "allFifteenNamedQaEntryFlagsExplicitlyFalse": false,
+        "optionalAbsentFlagIsNotInferredAsCertification": true,
+        "selectedSourceCertificationEvidence": {
+          "path": "docs/cg/sumaq-khipu-reference-evidence-wave10-2026-10-25.json",
+          "sha256": "793bc228f724d95d2d3e438b26c8afc43c8229c6c10a27db7db17a4c6bd4866f"
+        },
+        "selectedSourceCanonicalFlagExplicitlyFalse": true,
+        "optionalQaFlagsNotInventedWhenAbsent": true,
+        "sourceLimitations": [
+          "Selected V2 portrait is an internal original-project source; hidden surfaces and tiny knot details remain uncertain. No absolute 1:1 certification."
+        ]
+      },
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "451392bd15a47651dbeb2786734581797e34c71f695784ce278db2a1cdc9d206",
+          "deliveredSourceSha256": "e291f442cba977fe01a366783d319a2737ecff92967ef096bac16e788c8d46d5",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "505028c58ed6c1bed6e825bd1aa1ebcf6abdad98019ec3519f6763a714d6310e",
+          "deliveredSourceSha256": "01e0a6571c3a11c760e1c08ea64d89b5c1c2624a29840d0a06a4f225c73044b3",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "fa79b55d55d55af4cfa50e15b0880619ce67c2d32555cc8cd92e19ad01f2528f",
+          "deliveredSourceSha256": "410955512f3633db5f3ed914eea977f37b8e57d58e42a0ca8d404db6023453df",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "79356fb2b86a20bccf3e1c0d41cbc240ddde5188f7e4bcb39e0bc1acff39a6a6",
+          "deliveredSourceSha256": "5f640faffdcf34774a507d42401d0990ceb7ffecd603904745e2275e7be86115",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "e38d7c6bd87fad0bae0d382bc216fb87384c2bc15e2a4c5de1bd2e4eb4837473",
+          "deliveredSourceSha256": "26e75ca67a5507e443d6fa01288547116d9cae953118e858d132286ac500aadb",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "15f88cafc96d8ca722be49b312ef266328d9ee10ee262798256324df53bf73c3",
+          "deliveredSourceSha256": "b21b3fe7fa549c8249b8199146e6c7fbeee052a2c4fcae8c56b0ab1c2ff90dfd",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "6bb5c0ce916485b19952cdda84be504473609e241327ce51559c687f310208ea",
+          "deliveredSourceSha256": "864969aa2fbbd33c8c7b2b3dcaa1df400342e21f34eed42e65adc62fc5c772a0",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "b4cfa2035265edfc08b783ef091a75050d41c8e4c3ef8d850835d69101641941",
+          "deliveredSourceSha256": "4c91a412350cc495e1d2091fe84d9bb1c5eef43982f1c400ab08c0ae788043eb",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "2342fda05e9e3bb08d8d130f2d59cb98cf1c1e16a1bff0a403ace518a227cbd6",
+          "deliveredSourceSha256": "8ca511eab2ccf8f364dfa0502eafdbe47d68b5aa50b5d4f10680883b47ef3704",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "9eb0c0da6776518be3a269bff25cf9914c27d24cdd5b1fe154992e1b5783faa0",
+          "deliveredSourceSha256": "5176e40a9961902abc18f6e7f33a6722840c89ff5bd4f13dd946f31b51dfc7cb",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "1d9feaa2541a93197abe390727cc29d11947e240a4d1048d07dd37048e108332",
+          "deliveredSourceSha256": "e23b20a9805ddf2a02f372841c1a7815bf6b62e9ebfe327a17bda15f50594821",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "47b622f99dd3428130f4fda438e83fb548b5ccc9ac470e7fed619952d3d26964",
+          "deliveredSourceSha256": "55d8b2e3ffe7c7b1deb33501b301f29e890c76d390cbb81582e5c0ee58dd3269",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "23aea3b4df40562430a383cf352352c60045ca03dda1f42dc4e55dd0f522b002",
+          "deliveredSourceSha256": "721cfd6a0069b4cc34933c42c718065a1a56c46f75ccc5d59bd2f09ffa56b58a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "2f2e0b2ac25861134bdf90ac7628a5d15fa5cdb520d1a391f20e4cee4067b49f",
+          "deliveredSourceSha256": "659fb651702f5146e033800d3d81033893715d5b6ea7049a98014c2dfaa5efa3",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "d0f9a83a7b97ef78eca15e427e256781597066a5637da37dc04b51d5e581b009",
+          "deliveredSourceSha256": "8b78dca753cd9e901c51bce1e23d05d0be0137defd451afb434641e3f88e9826",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_yrsa_wave10",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    },
+    {
+      "characterId": "rei_kagetsu",
+      "qualifiedIdentityAuthority": "internal-original-authority",
+      "receipt": {
+        "path": "docs/cg/rei-kagetsu-wave10-2026-10-25.json",
+        "sha256": "b8b870084af506d80f1ce2dae16577a355f8ec3dcac8d072c1d539cb5bdc8f49"
+      },
+      "plan": {
+        "path": "docs/cg/rei-kagetsu-wave10-plan-2026-10-25.json",
+        "sha256": "6feffd759048e349e029f0264c2f0e54d2c366df8e1a98811199b0691c529b7c"
+      },
+      "independentReview": {
+        "path": "docs/cg/reviews/wave10-2026-10-25/rei-kagetsu-independent-review.json",
+        "sha256": "f376540dbc897b406c2d4e3ed1171dd136019c8b15930f721943147dac767d8c"
+      },
+      "independentReviewer": "/root/cg_sumaq_wave10",
+      "producer": "/root/cg_rei_wave10",
+      "certificationEvidence": {
+        "topLevelCanonicalFlagPresent": true,
+        "allFifteenRuntimeReceiptVisualApprovalsExplicitlyFalse": true,
+        "allFifteenNamedQaEntryFlagsExplicitlyFalse": false,
+        "optionalAbsentFlagIsNotInferredAsCertification": false,
+        "selectedSourceCertificationEvidence": {
+          "path": "docs/cg/rei-kagetsu-reference-evidence-wave10-2026-10-25.json",
+          "sha256": "e5459dce36a9da0ddef17fe9a6ca0e7f1c568a83c998e657b6f3282a420016bc"
+        },
+        "selectedSourceCanonicalFlagExplicitlyFalse": true,
+        "optionalQaFlagsNotInventedWhenAbsent": true,
+        "sourceLimitations": [
+          "Internal V2 source qualified, not certified absolute 1:1; tiny inscriptions and hidden surfaces unknown."
+        ]
+      },
+      "acceptedSlots": [
+        {
+          "slot": "CG01",
+          "id": "cg:yomi-no-kage:rei-kagetsu:characterSolo:openai-v1",
+          "type": "characterSolo",
+          "family": "Canon",
+          "nativeSha256": "beb94e1af3ab896cda8169f4c15f1296e139fe982cf4f7123ccb8e17e60e7cfd",
+          "deliveredSourceSha256": "34b541eeed46b240bb8d38cfb157752e34f5714eac2b6e3e79815b2b6408fe70",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG02",
+          "id": "cg:yomi-no-kage:rei-kagetsu:weaponSolo:openai-v1",
+          "type": "weaponSolo",
+          "family": "Canon",
+          "nativeSha256": "47c0f9d1327df3d4a52e844d0d66b2f49cc6b63fe70dbe1fd3ad0bc0ea3a51db",
+          "deliveredSourceSha256": "6fff84b6a03715ffa927b92ef77ab6e348164e111a5c75e29adf903194371057",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG03",
+          "id": "cg:yomi-no-kage:rei-kagetsu:decorSolo:openai-v1",
+          "type": "decorSolo",
+          "family": "Canon",
+          "nativeSha256": "fe9d1ea64cba903220f6407f1e59409d67627cd373d89cd48246e045954b3636",
+          "deliveredSourceSha256": "397e5f8db9aece995e0ae1ab5483157c0b85c549138d304bac4d1b40ea005358",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG04",
+          "id": "cg:yomi-no-kage:rei-kagetsu:coherentScene:openai-v1",
+          "type": "coherentScene",
+          "family": "Canon",
+          "nativeSha256": "cc73034f98d7242b6136259930950042b58dd8c6606129a820c9ac05a0b21e0f",
+          "deliveredSourceSha256": "8f73b4b2a0e9f0847c24695886cb684f0ae20a9406faed9d69656d3285efe52a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG05",
+          "id": "cg:yomi-no-kage:rei-kagetsu:actionScene:openai-v1",
+          "type": "actionScene",
+          "family": "Nexus",
+          "nativeSha256": "b667d135617f554587ca2426bcd8bd1f384a46127c16a10163de5bc0b3d85f31",
+          "deliveredSourceSha256": "1ba2502dfc01c7217c061819ecf6349927e9c39bb695826725c1fd7b6b0d7194",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG06",
+          "id": "cg:yomi-no-kage:rei-kagetsu:introPose:openai-v1",
+          "type": "introPose",
+          "family": "Canon",
+          "nativeSha256": "50acf024e0bab53771a2bd996e4b17b60d77f2025efba97f4c2e158b57eb6c61",
+          "deliveredSourceSha256": "0bb450d7efd6be55765e3d8108cee3681968259863431781c244e9d59a311b50",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG07",
+          "id": "cg:yomi-no-kage:rei-kagetsu:victoryPose:openai-v1",
+          "type": "victoryPose",
+          "family": "Canon",
+          "nativeSha256": "2a4f27f0b2367b9664e353df6ccb4e6c7bc2897aa5c562fb3b986a5ab3a439ab",
+          "deliveredSourceSha256": "4e2c639ecd7fe9f9799d0083ca1fb93436435279e9f994a0ab053858af59c2a9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG08",
+          "id": "cg:yomi-no-kage:rei-kagetsu:defeatPose:openai-v1",
+          "type": "defeatPose",
+          "family": "Canon",
+          "nativeSha256": "3d58e6110d9819c7ad097ed01abc4eb1dda71663ed9d3506d99c56d65510de9e",
+          "deliveredSourceSha256": "ec7f7fc4d33a8a4e6a0c7babca2ae439108111afc1cc7f94ba1ec74d97cf5864",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG09",
+          "id": "cg:yomi-no-kage:rei-kagetsu:beachFamily:openai-v1",
+          "type": "beachFamily",
+          "family": "Fan Art",
+          "nativeSha256": "0d9da656992c515b005dd9682954ed993df99630bab452783a7a49340a98ef49",
+          "deliveredSourceSha256": "6804d0121209d1b1cbf1c382c7280384074ca870c642bd7bea221f6c873f5c45",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG10",
+          "id": "cg:yomi-no-kage:rei-kagetsu:maidService:openai-v1",
+          "type": "maidService",
+          "family": "Fan Art",
+          "nativeSha256": "9828a5c1e6b03dd5ab0b6d73ef4bd20803d408e1ee12ef5415ddff38d0be93f1",
+          "deliveredSourceSha256": "4cdfd1cde0afce32ce7fa7fc350f2271765388aa261741e295d59ab9d5ecbc0e",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG11",
+          "id": "cg:yomi-no-kage:rei-kagetsu:goofy:openai-v1",
+          "type": "goofy",
+          "family": "Fan Art",
+          "nativeSha256": "4065f3e88064c49ef6020b47e623ddadc1ad38bfe2ba3c1cba9f758e952d8d96",
+          "deliveredSourceSha256": "2ca498c74916b7a4033751a5e51eef5f3472fd0e37effc05854c41c7dc7c5e2a",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG12",
+          "id": "cg:yomi-no-kage:rei-kagetsu:alignmentSwap:openai-v1",
+          "type": "alignmentSwap",
+          "family": "What If",
+          "nativeSha256": "b4c1184c128804b92baaea584d3f7a32031957f90e60176eac019f8286c69735",
+          "deliveredSourceSha256": "5c1870dc1abad942495f0c9aec24c2e8145a636185b8b1e52c04a24686a4f36c",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG13",
+          "id": "cg:yomi-no-kage:rei-kagetsu:genderSwap:openai-v1",
+          "type": "genderSwap",
+          "family": "What If",
+          "nativeSha256": "b4535dca52af58ae9ca99e05e7f2a0c54f35798dad2e2753120a7c799572c97d",
+          "deliveredSourceSha256": "0b0b4985809c1d28d7d353df2aeffb3ec0998ef042059ba5a98a03a19849c445",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG14",
+          "id": "cg:yomi-no-kage:rei-kagetsu:zombieVersion:openai-v1",
+          "type": "zombieVersion",
+          "family": "What If",
+          "nativeSha256": "ab7ed0af54de9ffd64cfb0df405eb9a07e021e4baf3b8ad9506b82d417ff08be",
+          "deliveredSourceSha256": "23df67ae113dbbdb60b1dc2eb304dc66f7427b23153b1c21e9f8eaba87f905fc",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        },
+        {
+          "slot": "CG15",
+          "id": "cg:yomi-no-kage:rei-kagetsu:futureExperienced:openai-v1",
+          "type": "futureExperienced",
+          "family": "What If",
+          "nativeSha256": "e60f4fbcf4408fedaf4ac8238dbd07ec0b131bd2d8780ee1be420d3b846588d5",
+          "deliveredSourceSha256": "981f05eb12c4aba5f50dd5af43cee15ef43b1957b69c68a702cef1268dbeaef9",
+          "independentVisualDecision": "accepted-with-source-limitations",
+          "reviewer": "/root/cg_sumaq_wave10",
+          "queueStatus": "delivered-current"
+        }
+      ],
+      "allFifteenAuthoredPosesAndBackgroundIdsDistinct": true,
+      "sourceLimitationsRetained": true,
+      "certifiesPerfectFidelity": false
+    }
+  ],
+  "seriesPreviewsPersonallyOpened": [
+    {
+      "characterId": "rei_kagetsu",
+      "path": "docs/cg/screenshots/rei-kagetsu-wave10-2026-10-25.webp",
+      "sha256": "811cd70ffba428a7d1f0ed29ad30df445f2bd68b04d072aeff88483da044c24c",
+      "actuallyViewed": true,
+      "viewedAt": "2026-10-25T08:24:46.161584+00:00",
+      "scope": "Fifteen-thumbnail contact-sheet readability, correct wave10/25 title and families, distinct compositions/backgrounds at overview scale; named native QA remains authoritative.",
+      "receipt": "docs/cg/rei-kagetsu-wave10-2026-10-25.json",
+      "receiptSha256": "b8b870084af506d80f1ce2dae16577a355f8ec3dcac8d072c1d539cb5bdc8f49",
+      "independentReview": "docs/cg/reviews/wave10-2026-10-25/rei-kagetsu-independent-review.json",
+      "independentReviewSha256": "f376540dbc897b406c2d4e3ed1171dd136019c8b15930f721943147dac767d8c",
+      "previewProvenance": "docs/cg/screenshots/rei-kagetsu-wave10-2026-10-25.json",
+      "previewProvenanceSha256": "b054a67ab94c0da2d85ac1a84f9adad079ce07aa3d41b7aa9445f670992ba683",
+      "currentDeliveredAssetBindingsChecked": 15,
+      "observation": "Title reads vague10/25oct2026; CG02 equipment-only and CG03 empty environment readable; blue long robe, right talisman, left fan and cyan effects appear consistently at thumbnail scale; family-safe beach/service and labelled transformations visible.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "characterId": "thaleia_naxos",
+      "path": "docs/cg/screenshots/thaleia-naxos-wave10-2026-10-25.webp",
+      "sha256": "0ea8fd52df81a0b0c3c2e99d3eb86ad6e39160823140a1042348572e66455acc",
+      "actuallyViewed": true,
+      "viewedAt": "2026-10-25T08:35:45.225015+00:00",
+      "scope": "Fifteen-thumbnail contact-sheet readability, correct wave10/25 title and families, distinct compositions/backgrounds at overview scale; named native QA remains authoritative.",
+      "receipt": "docs/cg/thaleia-naxos-wave10-2026-10-25.json",
+      "receiptSha256": "9cab4fea7558d8414ec07a1b17116b1ae77a472545c58c34cbd873bb6f505067",
+      "independentReview": "docs/cg/reviews/wave10-2026-10-25/thaleia-naxos-independent-review.json",
+      "independentReviewSha256": "7c327501fc27e5787f3da053e97e0f30e635ebeb68224d250af9b8f503f52215",
+      "previewProvenance": "docs/cg/screenshots/thaleia-naxos-wave10-2026-10-25.json",
+      "previewProvenanceSha256": "6e171109d429597982b380c15eaa74c5eea73b3df9bf8ad18ec22f3879ab793e",
+      "currentDeliveredAssetBindingsChecked": 15,
+      "observation": "Corrected title reads vague10/25oct2026; equipment-onlyCG02 and emptyCG03 visible; blue/ivory long drape, right sword, left violet threads, leather sandals and warm brown hair repeated at thumbnail scale; family-safe beach/service and labelled transformations visible.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "characterId": "mei_zhen",
+      "path": "docs/cg/screenshots/mei-zhen-wave10-2026-10-25.webp",
+      "sha256": "654c634ecf938872f31ca44fbee2ab0dd532fd41c5c7d2d996583d93f85fed72",
+      "actuallyViewed": true,
+      "viewedAt": "2026-10-25T08:46:26.592001+00:00",
+      "scope": "Fifteen-thumbnail contact-sheet readability, correct wave10/25 title and families, distinct compositions/backgrounds at overview scale; named native QA remains authoritative.",
+      "receipt": "docs/cg/mei-zhen-wave10-2026-10-25.json",
+      "receiptSha256": "1311c9e42c495aeb1e924ca864c1a2a12ceb4a3bd6269e5d44f4db487a5f13b7",
+      "independentReview": "docs/cg/reviews/wave10-2026-10-25/mei-zhen-independent-review.json",
+      "independentReviewSha256": "b8ed3911fff06c9d2a4d0ba5f29eb3a4199afd506a445885efa137ba222b660b",
+      "previewProvenance": "docs/cg/screenshots/mei-zhen-wave10-2026-10-25.json",
+      "previewProvenanceSha256": "ebf25dc9036172efd028490c388c05f79b985d589755109d5ea6eb011b165643",
+      "currentDeliveredAssetBindingsChecked": 15,
+      "observation": "Correct vague10/25 title; long bordeaux/ivory robes, pinned gold ornaments, wide sleeves and large bronze bell-guard blade are readable at sheet scale. Equipment-onlyCG02, emptyCG03, family-safe beach/service and labelled transformations/cube corruption visible.",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "characterId": "sumaq_khipu",
+      "path": "docs/cg/screenshots/sumaq-khipu-wave10-2026-10-25.webp",
+      "sha256": "a914cfd32f4b6b0c68566997d5b1b5e14654c917697f15aedc1f595f011485d0",
+      "actuallyViewed": true,
+      "viewedAt": "2026-10-25T08:59:00.756072+00:00",
+      "scope": "Fifteen-thumbnail contact-sheet readability, correct wave10/25 title and families, distinct compositions/backgrounds at overview scale; named native QA remains authoritative.",
+      "receipt": "docs/cg/sumaq-khipu-wave10-2026-10-25.json",
+      "receiptSha256": "706e0771084daec53aba0675232932e25d9b6227a0fc227638caf842682eef98",
+      "independentReview": "docs/cg/reviews/wave10-2026-10-25/sumaq-khipu-independent-review.json",
+      "independentReviewSha256": "3c8dff048a112c3f648c74050462060f438cb4e479dcbf1156e37d64df738619",
+      "previewProvenance": "docs/cg/screenshots/sumaq-khipu-wave10-2026-10-25.json",
+      "previewProvenanceSha256": "1147617713ed6c93801753d41ba8d65fd4ac6a8268cc397e0054dff0be609fed",
+      "currentDeliveredAssetBindingsChecked": 15,
+      "observation": "New final sheet actually reopened after genuineCG14 correction and namedQA/regel. Correct vague10/25 title; CG14 now has a distinct twisted/stepping pose with hands closer and visible digital runes/fragmentation crossing clothing, separated from originalCG01 stance. Other source locks/families readable at thumbnail scale.",
+      "replacesSupersededPreviewSha256": "f251731d679dbbaa9786e35170ffb884f4e84e12f145aa649299022248a71e22",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "characterId": "yrsa_rune_binder",
+      "path": "docs/cg/screenshots/yrsa-rune-binder-wave10-2026-10-25.webp",
+      "sha256": "6fb3317385051fd1a87110539fc8b718dab8ef283389a087e93932ef5b6c0c52",
+      "actuallyViewed": true,
+      "viewedAt": "2026-10-25T09:05:03.024184+00:00",
+      "scope": "Fifteen-thumbnail contact-sheet readability, correct wave10/25 title and families, distinct compositions/backgrounds at overview scale; named native QA remains authoritative.",
+      "receipt": "docs/cg/yrsa-rune-binder-wave10-2026-10-25.json",
+      "receiptSha256": "e9070cc2158c19d0de67c88f684743f87dc0fec3f3e7fea012182bb88361e4f7",
+      "independentReview": "docs/cg/reviews/wave10-2026-10-25/yrsa-rune-binder-independent-review.json",
+      "independentReviewSha256": "d274a7955e53def8d2e3f134d3e109e8c19a2e1891e05d5d87d043c7cd542fd3",
+      "previewProvenance": "docs/cg/screenshots/yrsa-rune-binder-wave10-2026-10-25.json",
+      "previewProvenanceSha256": "a4697efeb02d0d04fc3ffd8de5031b878c160ff61ca4a2a0c102005b42fec30a",
+      "currentDeliveredAssetBindingsChecked": 15,
+      "observation": "New final sheet actually reopened after genuineCG14 corrective and namedQA/regel. Correct vague10/25 title; CG14 now visibly crouches and twists with prominent violet fragmentation through cloak/body silhouette, unlike uprightCG01. Pale braids, long violet cloak and whole staff remain readable at thumbnail scale.",
+      "replacesSupersededPreviewSha256": "281768480e5b41dcc92b154d440fe633fa0884d3108506df265ffbe905fcfd7f",
+      "canonicalFidelityApproved": false
+    }
+  ],
+  "seriesPreviewScope": "Fifteen-thumbnail contact-sheet readability, correct wave10/25 title and families, distinct compositions/backgrounds at overview scale; named native QA remains authoritative.",
+  "seriesPreviewSourceBindings": [
+    {
+      "characterId": "thaleia_naxos",
+      "screenshot": {
+        "path": "docs/cg/screenshots/thaleia-naxos-wave10-2026-10-25.webp",
+        "sha256": "0ea8fd52df81a0b0c3c2e99d3eb86ad6e39160823140a1042348572e66455acc"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/thaleia-naxos-wave10-2026-10-25.json",
+        "sha256": "6e171109d429597982b380c15eaa74c5eea73b3df9bf8ad18ec22f3879ab793e"
+      },
+      "receipt": {
+        "path": "docs/cg/thaleia-naxos-wave10-2026-10-25.json",
+        "sha256": "9cab4fea7558d8414ec07a1b17116b1ae77a472545c58c34cbd873bb6f505067"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/character-solo-wave10-2026-10-25.webp",
+          "sha256": "2d84613096b63ff819990650f1d3aa38beecb4f660b10a6bf9c5c311223f47e4"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/signature-weapon-wave10-2026-10-25.webp",
+          "sha256": "1cbeb606173c9602f52926edd37e94af1bcc3beb0759ea91519317d948105ad0"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/decor-wave10-2026-10-25.webp",
+          "sha256": "9553524d27386f0150b7abb6a5a6229fe430a4246f432a868caecb0140eb4c03"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/coherent-scene-wave10-2026-10-25.webp",
+          "sha256": "7dc06303de1dcc2a0d86214e9d7d67d86fc03d5927ed03de173444f3f010dc8b"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/action-scene-wave10-2026-10-25.webp",
+          "sha256": "dd4520e152bb184890df1b7b7a22460c9c37374926bb4f5a660997640e36e5bd"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/intro-pose-wave10-2026-10-25.webp",
+          "sha256": "6b9c1909e20c6fa113d39e9b29e480ce4252faeb2539f5bfcc3c7e00635249fe"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/victory-pose-wave10-2026-10-25.webp",
+          "sha256": "b1c29ec257043d2ce628df2a14746512c8073fb1602768ba65640336ff56369b"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/defeat-pose-wave10-2026-10-25.webp",
+          "sha256": "f481d27e05cec59a92ac94eb8cd5c28901cba5cbc3549275d85e4f16608e2b6f"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/beach-family-wave10-2026-10-25.webp",
+          "sha256": "69b54fdc64d4f8b434a7c3351f2ee940a02be10252ba016a89c5707298670c29"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/maid-service-wave10-2026-10-25.webp",
+          "sha256": "b19529a0bd4589b328d63696b52c3b611ebe70bc61476ae1b2a7eb09de35a92c"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/goofy-wave10-2026-10-25.webp",
+          "sha256": "1c529a4c294f083346c1aab1c4eae460c3026f637cbe885ddfc09ecbb2ffb304"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/alignment-swap-wave10-2026-10-25.webp",
+          "sha256": "2bb0482faf28120b564252f0b578433d33dc3422b16ee2194f9c1ab173a00e01"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/gender-swap-wave10-2026-10-25.webp",
+          "sha256": "bbe20160a5637b1d16953d55ed3e09a9ae4b3a7bd9c98abc572a90a2c51d3d49"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/zombie-version-wave10-2026-10-25.webp",
+          "sha256": "c8f26498b45faa1bc059557e60a5db85d9e5812e51042b50a9f2f2facf3fc7c9"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:aegea-war-of-the-moirai:thaleia-naxos:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/aegea-war-of-the-moirai/thaleia-naxos/future-experienced-wave10-2026-10-25.webp",
+          "sha256": "8e14ba50a563a99fe8f38f2ac904f795d723830816ff665d7652b9ea9e17e116"
+        }
+      ]
+    },
+    {
+      "characterId": "mei_zhen",
+      "screenshot": {
+        "path": "docs/cg/screenshots/mei-zhen-wave10-2026-10-25.webp",
+        "sha256": "654c634ecf938872f31ca44fbee2ab0dd532fd41c5c7d2d996583d93f85fed72"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/mei-zhen-wave10-2026-10-25.json",
+        "sha256": "ebf25dc9036172efd028490c388c05f79b985d589755109d5ea6eb011b165643"
+      },
+      "receipt": {
+        "path": "docs/cg/mei-zhen-wave10-2026-10-25.json",
+        "sha256": "1311c9e42c495aeb1e924ca864c1a2a12ceb4a3bd6269e5d44f4db487a5f13b7"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/character-solo-wave10-2026-10-25.webp",
+          "sha256": "d36a60cd6eb3e8dab4573e0cb58a0143a5bcf4b52b2e6b1bfa20d59e4ca4943c"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/signature-weapon-wave10-2026-10-25.webp",
+          "sha256": "664006f7884cad692123d24b26e279f32a657f7b1abf34232bd2eaf5bd4beb55"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/decor-wave10-2026-10-25.webp",
+          "sha256": "d7f650b8ec3a7dbb7f2dd84b3c77056aa175b720a9c807730676ceaa13ad6b19"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/coherent-scene-wave10-2026-10-25.webp",
+          "sha256": "4b5209dfc5682b5c9807c325fcf10652ab45cc0df32fa59931fdce479d59f948"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/action-scene-wave10-2026-10-25.webp",
+          "sha256": "bbfca863a946bf794f26c40e641278b2d07583055914e72af23fa3b2e048aa17"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/intro-pose-wave10-2026-10-25.webp",
+          "sha256": "39ac25965e8b80dfea823120b62e6ac2520ecd4403152482c064ca4dafa09b8c"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/victory-pose-wave10-2026-10-25.webp",
+          "sha256": "eb4096b7d04aa7280301881e9c320f5281a626167f676c166201b67bd6669634"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/defeat-pose-wave10-2026-10-25.webp",
+          "sha256": "e5c4c2cb0159b63b6ef96c10e984d50e0c2631a7104b01c34f4ec07874d34d6b"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/beach-family-wave10-2026-10-25.webp",
+          "sha256": "54de9345dd34766694f0c5a9a98441fdf1f45dd4f50430c43e9096eb9260a03f"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/maid-service-wave10-2026-10-25.webp",
+          "sha256": "64163a99f342267bee7cded2dfa8a4a8f17ba4cfe557df0e6e9174b4e17b8394"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/goofy-wave10-2026-10-25.webp",
+          "sha256": "b34e5dfb7966f7ece157dd52be289efa8abeb7bd8edf0db4ff4f9a54548db47f"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/alignment-swap-wave10-2026-10-25.webp",
+          "sha256": "c66899a7e62318590bbd772f4739a243fd832e87a734b07a3ef753f9644975a6"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/gender-swap-wave10-2026-10-25.webp",
+          "sha256": "7b80965aee1e3518df13d391b7ab2ae5176c7391709d2fe5a145f5e164196ad8"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/zombie-version-wave10-2026-10-25.webp",
+          "sha256": "d53f0ddf5fe0290c9271c5430fd32b948d14a642bc3c70ca1d209660323b25f4"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:mandate-of-nine-heavens:mei-zhen:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/mandate-of-nine-heavens/mei-zhen/future-experienced-wave10-2026-10-25.webp",
+          "sha256": "4854f288928ff679f2f319e0dae879f245cce769102648186ce9709403f1a696"
+        }
+      ]
+    },
+    {
+      "characterId": "yrsa_rune_binder",
+      "screenshot": {
+        "path": "docs/cg/screenshots/yrsa-rune-binder-wave10-2026-10-25.webp",
+        "sha256": "6fb3317385051fd1a87110539fc8b718dab8ef283389a087e93932ef5b6c0c52"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/yrsa-rune-binder-wave10-2026-10-25.json",
+        "sha256": "a4697efeb02d0d04fc3ffd8de5031b878c160ff61ca4a2a0c102005b42fec30a"
+      },
+      "receipt": {
+        "path": "docs/cg/yrsa-rune-binder-wave10-2026-10-25.json",
+        "sha256": "e9070cc2158c19d0de67c88f684743f87dc0fec3f3e7fea012182bb88361e4f7"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/character-solo-wave10-2026-10-25.webp",
+          "sha256": "ab03c7d8a58c3b4242b9d6da49f2f459c4f9712e3d172574d173b7026fd86fa9"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/signature-weapon-wave10-2026-10-25.webp",
+          "sha256": "dc9a9ce02d2db198a3a8519b3c43f45f7eaf65c97453eb638e0c32ceb1444986"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/decor-wave10-2026-10-25.webp",
+          "sha256": "2178875c0df2379698b2bfb27e6cd3694b119e8bf2b1d567f8ac770b7afa996d"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/coherent-scene-wave10-2026-10-25.webp",
+          "sha256": "817e30c42f2d0660bb1f0666a5c2d28f0b1a8bfbe9f9d4e05dec18d256f46893"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/action-scene-wave10-2026-10-25.webp",
+          "sha256": "e23d95f7d80c694bce362367874cb55c9f53dd6999d2080da7e22507e6a69595"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/intro-pose-wave10-2026-10-25.webp",
+          "sha256": "98a5e23be3d18342b08340012c6bde2eec82471eb5d9afd1c6b3fa067df39d3b"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/victory-pose-wave10-2026-10-25.webp",
+          "sha256": "469d5dd04b0acaffdbd0d439f5e0a442f96bfb5099b71c237ea80baedf05b7c5"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/defeat-pose-wave10-2026-10-25.webp",
+          "sha256": "31829b06b21f5ae9518ea26a640f787ebb0424757cf9ce04aa06fb921f2a9972"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/beach-family-wave10-2026-10-25.webp",
+          "sha256": "4c485145756261f44c169351fa68007cc98be503f68a12865acd3c848edfaa88"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/maid-service-wave10-2026-10-25.webp",
+          "sha256": "f14f7eef39ffffe3f034f6cc88760aa8c4d4708778948bb56e588737e406c67e"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/goofy-wave10-2026-10-25.webp",
+          "sha256": "67aabb9e176c18188cab276d2c2347d9e17ba12bbb91a3d55d0bb5fe1352ec46"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/alignment-swap-wave10-2026-10-25.webp",
+          "sha256": "ff3a18b52819cb7174d15f6b196979b99547224b038d7566ac67ed1877387719"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/gender-swap-wave10-2026-10-25.webp",
+          "sha256": "b2aae9e2d6a8a630bce0041f4f617be30a1bca7c0a2cb0d4a79ef1b1931c6043"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/zombie-version-wave10-2026-10-25.webp",
+          "sha256": "b3d67a5256a4dbd4bd89a2bc477f68c53c9c2a32332342c8a64736dee4f6955f"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:nine-realms-last-twilight:yrsa-rune-binder:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/nine-realms-last-twilight/yrsa-rune-binder/future-experienced-wave10-2026-10-25.webp",
+          "sha256": "12fc448b42098e3edde4fad96d417d1a90215ce4296ba90a5670e194f9d65e15"
+        }
+      ]
+    },
+    {
+      "characterId": "sumaq_khipu",
+      "screenshot": {
+        "path": "docs/cg/screenshots/sumaq-khipu-wave10-2026-10-25.webp",
+        "sha256": "a914cfd32f4b6b0c68566997d5b1b5e14654c917697f15aedc1f595f011485d0"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/sumaq-khipu-wave10-2026-10-25.json",
+        "sha256": "1147617713ed6c93801753d41ba8d65fd4ac6a8268cc397e0054dff0be609fed"
+      },
+      "receipt": {
+        "path": "docs/cg/sumaq-khipu-wave10-2026-10-25.json",
+        "sha256": "706e0771084daec53aba0675232932e25d9b6227a0fc227638caf842682eef98"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/character-solo-wave10-2026-10-25.webp",
+          "sha256": "e960f527c9274ccdd15d2bc6157d2f05a3640595b5070e0a0fb3450cde5a42c3"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/signature-weapon-wave10-2026-10-25.webp",
+          "sha256": "2b92be13da30bcbe714266338b91b20a2b3f51e9db3ec6907596011355a1c33f"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/decor-wave10-2026-10-25.webp",
+          "sha256": "5912db18f3ac3a2bdb65fee32c2ad40e13cb5f5bc32d54d7cf29330e110d26a0"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/coherent-scene-wave10-2026-10-25.webp",
+          "sha256": "3eb0c7884f0fdb1c33d032dabf8370337bb55f1d76d00c9476ab335be0d6a65f"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/action-scene-wave10-2026-10-25.webp",
+          "sha256": "d006d290866deb326515e488c571e47bc90463131b5af84e2e34189ff782b5a8"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/intro-pose-wave10-2026-10-25.webp",
+          "sha256": "a7d4068bff0723a9dd5b3e8faf12ffa78110a5744cdbd56249c3bb5aa7fe4138"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/victory-pose-wave10-2026-10-25.webp",
+          "sha256": "a71dfb898768fb39e2884c7a4a69a4f49429f0c719b0eccea9b7e762632b4e1a"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/defeat-pose-wave10-2026-10-25.webp",
+          "sha256": "38cb50a1463bd7f8b96fdba077571e63dc8a40a53326d2c113cc2bebcbaedb77"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/beach-family-wave10-2026-10-25.webp",
+          "sha256": "1a003105a8e3683d8383e7dd43511cf77ba0e2a88f88ad6bd8d5a057ed3e0de3"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/maid-service-wave10-2026-10-25.webp",
+          "sha256": "7f4e4d4139f2915431dfbcdac55a866b7028b8f7147132de5c7a0c21aeea730f"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/goofy-wave10-2026-10-25.webp",
+          "sha256": "831941a1ae4cf75736f09a07104382ce11eaf6c2bc0ce5ce843eef0259cc6384"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/alignment-swap-wave10-2026-10-25.webp",
+          "sha256": "3d0ebacfb98074bcfb7dad75baea108d32bb8cc763ab3f2af7a67446686cf622"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/gender-swap-wave10-2026-10-25.webp",
+          "sha256": "fd9ba6f232df524fee7470c6d43b83474de5a950f22e154ba11b0609a295fb16"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/zombie-version-wave10-2026-10-25.webp",
+          "sha256": "b7f949af7a1f94a36fc523ba2803d0594992eac53f80b5e5fd2661828aeb242a"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:tawantinsuyu-the-split-sun:sumaq-khipu:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/tawantinsuyu-the-split-sun/sumaq-khipu/future-experienced-wave10-2026-10-25.webp",
+          "sha256": "4b212fc6ea7757be21ccd0f26aa16af590738d0df68567a52cc07b14058c4f2c"
+        }
+      ]
+    },
+    {
+      "characterId": "rei_kagetsu",
+      "screenshot": {
+        "path": "docs/cg/screenshots/rei-kagetsu-wave10-2026-10-25.webp",
+        "sha256": "811cd70ffba428a7d1f0ed29ad30df445f2bd68b04d072aeff88483da044c24c"
+      },
+      "provenance": {
+        "path": "docs/cg/screenshots/rei-kagetsu-wave10-2026-10-25.json",
+        "sha256": "b054a67ab94c0da2d85ac1a84f9adad079ce07aa3d41b7aa9445f670992ba683"
+      },
+      "receipt": {
+        "path": "docs/cg/rei-kagetsu-wave10-2026-10-25.json",
+        "sha256": "b8b870084af506d80f1ce2dae16577a355f8ec3dcac8d072c1d539cb5bdc8f49"
+      },
+      "matchedCurrentAssets": [
+        {
+          "slot": "CG01",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:characterSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/character-solo-wave10-2026-10-25.webp",
+          "sha256": "50ac85c20c4737725db4e9cd120d780404475a0cd496943fd20144ba523ed1df"
+        },
+        {
+          "slot": "CG02",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:weaponSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/signature-weapon-wave10-2026-10-25.webp",
+          "sha256": "453495e7db4f53c89520b7ba9f8e90c7325fefed37f8c51949de5d535bd01711"
+        },
+        {
+          "slot": "CG03",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:decorSolo:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/decor-wave10-2026-10-25.webp",
+          "sha256": "31377caf7009e38c5281e0f93118be76fbf397462326bad17d51a22e26ea00d7"
+        },
+        {
+          "slot": "CG04",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:coherentScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/coherent-scene-wave10-2026-10-25.webp",
+          "sha256": "b5b6353a9b239188211d393a06ed1959b43b621d5ce2e513d3c02b7d3a6abf00"
+        },
+        {
+          "slot": "CG05",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:actionScene:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/action-scene-wave10-2026-10-25.webp",
+          "sha256": "1b3ad69ec24c1c851a995709897384a8de70b196c6a89f6e98a1b7cd16e39ec3"
+        },
+        {
+          "slot": "CG06",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:introPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/intro-pose-wave10-2026-10-25.webp",
+          "sha256": "b5439514d2580a6868f1ffbeb84cd8ac78ae271b21127ac763a3fcc99419b9d4"
+        },
+        {
+          "slot": "CG07",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:victoryPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/victory-pose-wave10-2026-10-25.webp",
+          "sha256": "148c68b8485525fee6fee12b8f0dc068dec1d6759733e0088c3806b9149e89c1"
+        },
+        {
+          "slot": "CG08",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:defeatPose:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/defeat-pose-wave10-2026-10-25.webp",
+          "sha256": "a6e738b046fd97964d503442adde1a3f25678f208868cfff489c16b58d2e70c2"
+        },
+        {
+          "slot": "CG09",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:beachFamily:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/beach-family-wave10-2026-10-25.webp",
+          "sha256": "4a6a9463c7d6b5b69728558f67ce652e55e80209be8a9548c2ed0854a152d343"
+        },
+        {
+          "slot": "CG10",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:maidService:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/maid-service-wave10-2026-10-25.webp",
+          "sha256": "fff8070e71c0b10d544d78ebed92b5cbf6478ab9b958b03f945e244c246969be"
+        },
+        {
+          "slot": "CG11",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:goofy:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/goofy-wave10-2026-10-25.webp",
+          "sha256": "20206ad5e17ea4e0e9c29b838bc07fe2b7937b31a6c571124a97f2caba38336d"
+        },
+        {
+          "slot": "CG12",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:alignmentSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/alignment-swap-wave10-2026-10-25.webp",
+          "sha256": "71819e5f385ee0fb0b9ccb122aebaf1cfff5703a399f7da8251d582f40740dc7"
+        },
+        {
+          "slot": "CG13",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:genderSwap:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/gender-swap-wave10-2026-10-25.webp",
+          "sha256": "c3512b0963184aa1f248812ca83343d52096a33e062c35f9bb24ab8bc0904dfc"
+        },
+        {
+          "slot": "CG14",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:zombieVersion:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/zombie-version-wave10-2026-10-25.webp",
+          "sha256": "f868f56f07904c0f9c7c5c7bf79883005ba7b1de9bc7a0f47d94c578968d06f0"
+        },
+        {
+          "slot": "CG15",
+          "entryId": "cg:yomi-no-kage:rei-kagetsu:futureExperienced:openai-v1",
+          "deliveredAssetKind": "master",
+          "path": "/cg/yomi-no-kage/rei-kagetsu/future-experienced-wave10-2026-10-25.webp",
+          "sha256": "cfffbbe5a3f11471cb69dd0796fd0512a5b944287992626956523e75b2ada3d5"
+        }
+      ]
+    }
+  ],
+  "seriesPreviewCurrentAssetBindingsVerified": 75,
+  "automaticImageCalls": 0,
+  "automaticInstallations": 0,
+  "automaticPerfectFidelityApprovals": 0
+}

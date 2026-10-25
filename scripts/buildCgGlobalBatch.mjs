@@ -10,9 +10,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
-export const DEFAULT_DATE = '2026-10-23';
+export const DEFAULT_DATE = '2026-10-25';
 export const PROMPT_FILE = 'docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt';
-export const MANIFEST_FILE = `docs/cg/roster-global-batch-${DEFAULT_DATE}.json`;
+export const MANIFEST_FILE = `docs/cg/roster-global-batch-wave10-${DEFAULT_DATE}.json`;
 export const SLOT_IDS = Array.from({ length: 15 }, (_, index) => `CG${String(index + 1).padStart(2, '0')}`);
 const INPUT_FILES = {
   plan: 'docs/cg/roster-production-2026-10-18.json',

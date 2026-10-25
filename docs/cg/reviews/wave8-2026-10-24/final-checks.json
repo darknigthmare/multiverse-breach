@@ -1,0 +1,2183 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "closedAt": "2026-10-24T03:01:12.709763+00:00",
+  "status": "pass",
+  "reviewer": "/root",
+  "scope": "Wave8 actual deliveries and common instruction coverage of the full roster; the entire roster is not finished.",
+  "newCurrentCg": 75,
+  "newCompleteSeries": 5,
+  "currentCg": 820,
+  "charactersWithCg": 61,
+  "completeApplicableSeries": 54,
+  "retainedCgVersions": 914,
+  "registeredCgMedia": 2742,
+  "unchangedEarlierCgMedia": 2517,
+  "unchangedEarlierRosterDefinitions": 662,
+  "unchangedRegisteredRevisions": 94,
+  "unchangedHistoricalReports": 210,
+  "newReferencedSpriteAtlases": 5,
+  "newSpriteFramesReviewed": 80,
+  "remainingRosterSlots": 27852,
+  "documentedNotApplicable": 8,
+  "workbook": {
+    "path": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx",
+    "sha256": "8738523419263761e26de6127e8018304880d9f7826283e025b1895d15ac1205",
+    "bytes": 78508562
+  },
+  "workbookIndependentAudit": {
+    "schemaVersion": 1,
+    "workbook": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx",
+    "sha256": "8738523419263761e26de6127e8018304880d9f7826283e025b1895d15ac1205",
+    "subjects": 1912,
+    "universes": 525,
+    "matrixRows": 28680,
+    "registeredCurrentCg": 820,
+    "selectedSpritesMatched": 1912,
+    "retainedVersions": 914,
+    "notApplicable": 8,
+    "embeddedImages": 3273,
+    "verifiedLocalHyperlinks": 14102,
+    "scopedReferenceUsageChecks": {
+      "danteEquipmentOnly": 1,
+      "danteEnvironmentOnly": 5,
+      "sonicCostumeOnly": 1,
+      "raymanEnvironmentOnly": 1,
+      "excludedNerisCopyRows": 0,
+      "excludedNyraHistoricalComparisonRows": 0,
+      "nyraInternalEquipmentReuse": 1,
+      "nyraInternalEnvironmentReuse": 1,
+      "jaxInternalEquipmentReuse": 1,
+      "jaxInternalEnvironmentReuse": 1,
+      "maraInternalEnvironmentOnly": 1,
+      "seyraInternalCostumeOnly": 1
+    },
+    "verifiedInternalV2PortraitSubjects": [
+      "aelwen_starbough",
+      "anton_rook",
+      "aurelia_marcellina",
+      "bram_quill",
+      "brann_crow",
+      "celeste_ray",
+      "elara_voss",
+      "imani_quell",
+      "jax_rook",
+      "khepri_sen",
+      "lio_ferrante",
+      "lyra_hexwind",
+      "mara_ell",
+      "mara_veylan",
+      "mercy_ash",
+      "nefra_balance",
+      "nessa_vire",
+      "nyra_vale",
+      "orin_vale",
+      "seraphine_meridius",
+      "seyra_tal",
+      "ysara_flint"
+    ],
+    "partialWaveRefusalAndNonAttemptChecks": {
+      "refused": 9,
+      "notAttempted": 40
+    },
+    "mistralRefusalAndNonAttemptChecks": {
+      "refused": 4,
+      "notAttempted": 9
+    },
+    "globalBatchChecks": {
+      "manifest": "docs/cg/roster-global-batch-2026-10-24.json",
+      "manifestSha256": "d5ecbe02e6fff130c24b6dad56cd642c3456f348b7dccb130011665904d6be26",
+      "masterPrompt": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt",
+      "masterPromptSha256": "4c70032eb4046c0f906ac03d121efc136bcc9a0aafa9453a5ff4d5e596127f99",
+      "subjects": 1912,
+      "slots": 28680,
+      "actualDeliveredCg": 820,
+      "currentCgRefusals": 20,
+      "currentAtlasRefusals": 7,
+      "newAtlasRefusals": 0,
+      "homeEntryPointLinksVerified": 2,
+      "instructionsMistakenForGeneratedImages": 0
+    },
+    "allCurrentMediaMatchRuntime": true,
+    "plannedImagesPresentedAsDelivered": 0,
+    "certifiesVisualResemblance": false
+  },
+  "manualPreservation": {
+    "privateFieldsVerified": 16,
+    "realRowsBefore": {
+      "Contrôles": 0,
+      "Matrice CG": 0
+    },
+    "realRowsAfter": {
+      "Contrôles": 0,
+      "Matrice CG": 0
+    },
+    "allExistingManualValuesUnchanged": true,
+    "syntheticTestValuesInProduction": false,
+    "completeInputCapturePersistedBeforeBuild": true,
+    "capturedInputFiles": 5268,
+    "documentaryJsonFiles": 405,
+    "capture": {
+      "path": ".tmp/cg-wave8-2026-10-24/excel-preflight/production-inputs-before-build.json",
+      "sha256": "4093a5fbf65caa2f3d1366360648ab82bb3170058fb53f00797f3a6a8d12b0dc",
+      "bytes": 825962
+    },
+    "preservationReport": {
+      "path": "docs/cg/Multiverse_Breach_Fidelite_CG.preservation-validation.json",
+      "sha256": "cd367e80e639e0037b312413c1b73c4b600d270f99577f049c136a19f35a4127",
+      "bytes": 778615
+    }
+  },
+  "generationCounts": {
+    "cg": {
+      "successfulNativeOutputs": 110,
+      "selectedNativeOutputs": 75,
+      "whollyUnselectedDraftNativeOutputs": 35,
+      "deliveredCGIllustrations": 75,
+      "deliveredMediaFiles": 225,
+      "strictNativeRgbSources": 69,
+      "fullFrameNearestConditionedSources": 6
+    },
+    "atlas": {
+      "successfulNativeOutputs": 17,
+      "selectedNativeContributors": 17,
+      "whollyUnselectedDraftNativeOutputs": 0,
+      "deliveredAtlasSheets": 5,
+      "deliveredPoseFrames": 80,
+      "deliveredMediaFiles": 5
+    },
+    "combined": {
+      "successfulNativeOutputs": 127,
+      "selectedNativeContributors": 92,
+      "whollyUnselectedDraftNativeOutputs": 35,
+      "deliveredCGIllustrations": 75,
+      "deliveredAtlasSheets": 5,
+      "deliveredAtlasPoseFrames": 80,
+      "deliveredMediaFiles": 230,
+      "newProviderRefusalsRecorded": 0
+    }
+  },
+  "runtimeAtlasChecks": {
+    "correctedSubjects": 31,
+    "contextsPerSubject": 5,
+    "checks": 155,
+    "unchangedOtherSubjects": 1907,
+    "oldVariantsPreserved": 5
+  },
+  "testsAndTechnicalChecks": {
+    "status": "pass",
+    "verifiedAt": "2026-10-24T02:53:54.593198+00:00",
+    "checks": [
+      {
+        "name": "CG tests",
+        "status": "pass",
+        "exitCode": 0,
+        "log": ".tmp/cg-wave8-2026-10-24/cg-tests.log",
+        "logSha256": "f61d978bd200839dd4bd558172ac864c0799d001d3b420262bb815fe31d1894f",
+        "passedTests": 69,
+        "failedTests": 0
+      },
+      {
+        "name": "PNG pipeline tests",
+        "status": "pass",
+        "exitCode": 0,
+        "log": ".tmp/cg-wave8-2026-10-24/png-tests.log",
+        "logSha256": "699b8735e8d6c71bb05dc0bf789232a1c61365ef71fd785b37dccb28ebeacf68",
+        "passedTests": 42,
+        "failedTests": 0
+      },
+      {
+        "name": "Character sprite audits",
+        "status": "pass",
+        "exitCode": 0,
+        "log": ".tmp/cg-wave8-2026-10-24/sprites-characters-audit.log",
+        "logSha256": "14cde8bb226cd5227c46714d065dc21a23a7ebdb3b16abfd24e4004ca1595781"
+      },
+      {
+        "name": "5520 sprite availability paths",
+        "status": "pass",
+        "exitCode": 0,
+        "log": ".tmp/cg-wave8-2026-10-24/sprites-availability-check.log",
+        "logSha256": "7e73616590692bcbab429db80fee5c66ba464547ecb9bfdde86d9941da594e00"
+      },
+      {
+        "name": "Targeted JS lint",
+        "status": "pass",
+        "exitCode": 0,
+        "log": ".tmp/cg-wave8-2026-10-24/lint-final.log",
+        "logSha256": "45342ca54fc3787657ce6eb4dbe6d4510cbf68d24318d44416c0176ab31ebf4b"
+      },
+      {
+        "name": "Python compile",
+        "status": "pass",
+        "exitCode": 0,
+        "log": ".tmp/cg-wave8-2026-10-24/python-compile.log",
+        "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "Vite code build without copying public media",
+        "status": "pass",
+        "exitCode": 0,
+        "log": ".tmp/cg-wave8-2026-10-24/vite-code-build.log",
+        "logSha256": "71889f318e3168e01874c82f09906b85d57558c8c3c2b67f5d3e02441141690d"
+      },
+      {
+        "name": "Bible reproducibility",
+        "status": "pass",
+        "exitCode": 0,
+        "log": ".tmp/cg-wave8-2026-10-24/bible-check.log",
+        "logSha256": "84a6c43d2ae77a2cb14943372ab4cd2cf821180aa5dc84915845875b4f593539"
+      },
+      {
+        "name": "Global manifest reproducibility",
+        "status": "pass",
+        "exitCode": 0,
+        "log": ".tmp/cg-wave8-2026-10-24/global-batch-check.log",
+        "logSha256": "a6fef643d2a1d2ffc3cdd7be810442f0cab6aa89c18f63f7bea0b299e8951958"
+      }
+    ],
+    "privateWorkbookPreservationFields": 16,
+    "privateCostumeScopeCases": 10,
+    "limitations": [
+      "Vite reports the existing bundle-size warning. No deployment or new interactive browser session was performed.",
+      "Technical tests, geometry and hashes do not certify absolute visual fidelity."
+    ]
+  },
+  "independentEvidenceReports": [
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/anton-rook-independent-review.json",
+      "sha256": "e672d3cc3265358291462986ea4ce72bee26900e90b8d52b79f6bda124fd802d",
+      "bytes": 18560
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/anton-rook-sprite-independent-review.json",
+      "sha256": "d63e208242d7cd60154b9b918ab72fe1ad246bdd2093431dc98147dc56de086d",
+      "bytes": 8005
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/bram-quill-independent-review.json",
+      "sha256": "70171cfad5eb4140c215712d2a32aff826b5f890647167f5f419f45d1e712988",
+      "bytes": 16624
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/bram-quill-sprite-independent-review.json",
+      "sha256": "9f7d18f86358e411da2dcbd6132e07a3802bf30ddb1e0457ff3278c9dee4833d",
+      "bytes": 10421
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/comparison-preview-verification.json",
+      "sha256": "236a4c68190c4cf44572fdf9a9142929defb7ff2ad306efdebaaa04926c8a785",
+      "bytes": 8675
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/generation-counts-independent-verification.json",
+      "sha256": "7f48cb32abedb88081cff4da668d73098de373ecf0b1ac9df86be6dd5e26368a",
+      "bytes": 274417
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/global-batch-semantic-verification.json",
+      "sha256": "c70bd6aea16079d656d0246b0a4c2ec6b7e58c06979b9c67ae64d0db1330677f",
+      "bytes": 81684
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/historical-preservation-verification.json",
+      "sha256": "e3f80d663ae61ffcf0498f7e744b10ce880f13d0ee3399735addc116b5f30d41",
+      "bytes": 44318
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/imani-quell-independent-review.json",
+      "sha256": "634338eecdf1d60a45e6542ba05994dcbb3f3cd55593d554886adba5a607804c",
+      "bytes": 14498
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/imani-quell-sprite-independent-review.json",
+      "sha256": "352a3a1c5f0a3a6fb82d8b1c71e1b9c04f8c8936ffa8301171e465542f3d7075",
+      "bytes": 17106
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/khepri-sen-independent-review.json",
+      "sha256": "9e47f8b8afcdea5511b23028a8d639ca11080c39cfa172b8b275963333c8165a",
+      "bytes": 18728
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/khepri-sen-sprite-independent-review.json",
+      "sha256": "41f1373e521e96c77a4369d1337c4d4bbc194e04cbef1b11e0eb5397a9d307d2",
+      "bytes": 11932
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-independent-review.json",
+      "sha256": "efbcbf7d491743177a8f1547c25f2a66a2ed6bad43b1f7db6e150392ae556c45",
+      "bytes": 23403
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-sprite-independent-review.json",
+      "sha256": "3cc8e60bf6a0ab6be6b18b94a73d4d7f3cf5c818b21fbb85336a92bad98ad527",
+      "bytes": 16956
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/master-instruction-continuity-verification.json",
+      "sha256": "31a0c5e6252cbf2ffb5bd07d1ffdb1598144e026c493bb1a99e4415717d82ad4",
+      "bytes": 793
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/runtime-atlas-selection-independent-verification.json",
+      "sha256": "21bbaf37ddda0a7e1454aa0e389a7a47f1e36ee20da27636d403f81edcf41450",
+      "bytes": 11808
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/runtime-selection-independent-verification.json",
+      "sha256": "c422df0559eb2118d07e95dc328aa78a5b6b3cf95b564611bc9d62a98a7568fa",
+      "bytes": 5793
+    },
+    {
+      "path": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json",
+      "sha256": "2db2467b8901fa6146e16bf2dbd66a8afaa44170a87c00e142b16c2f690e3520",
+      "bytes": 22784
+    }
+  ],
+  "documentation": {
+    "localLinksChecked": 168,
+    "brokenLocalLinks": 0,
+    "files": [
+      {
+        "path": "docs/cg/README.md",
+        "sha256": "2de85389c6f269b487903cd736c85be7ddcb21e131a4287290aaecb56a99031e",
+        "bytes": 22445
+      },
+      {
+        "path": "docs/cg/EXCEL_FIDELITE.md",
+        "sha256": "418fdf0552cf7d504cf688f7dbc8d209ea2beea36cf6860f7eccc1f813f28a57",
+        "bytes": 16173
+      },
+      {
+        "path": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "sha256": "bacc710f3f30ec6be52fe7ff05dc8b54f2da2667135b00198d37a8136a062ba0",
+        "bytes": 5755
+      },
+      {
+        "path": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "sha256": "fd25962ca1b222c64fe923d0500cd2c5bd4e0cb782ac880795b1218db3caaf12",
+        "bytes": 7898
+      }
+    ],
+    "links": [
+      {
+        "document": "docs/cg/README.md",
+        "target": "PROMPT_GLOBAL_ROSTER_1_1.txt",
+        "resolvedPath": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "roster-global-batch-2026-10-24.json",
+        "resolvedPath": "docs/cg/roster-global-batch-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "Multiverse_Breach_Fidelite_CG.xlsx",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "EXCEL_FIDELITE.md",
+        "resolvedPath": "docs/cg/EXCEL_FIDELITE.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "Multiverse_Breach_Fidelite_CG.validation.json",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.validation.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "screenshots/roster-wave8-overview-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/roster-wave8-overview-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "resolvedPath": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "reviews/wave8-2026-10-24/README.md",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/README.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "fidelity-delivery-wave8-2026-10-24.json",
+        "resolvedPath": "docs/cg/fidelity-delivery-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "roster-production-2026-10-18.md",
+        "resolvedPath": "docs/cg/roster-production-2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "ROSTER_FIDELITY_BIBLE_2026-10-18.md",
+        "resolvedPath": "docs/cg/ROSTER_FIDELITY_BIBLE_2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "PROMPT_GLOBAL_ROSTER_1_1.txt",
+        "resolvedPath": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "roster-global-batch-2026-10-23.json",
+        "resolvedPath": "docs/cg/roster-global-batch-2026-10-23.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "Multiverse_Breach_Fidelite_CG.xlsx",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "EXCEL_FIDELITE.md",
+        "resolvedPath": "docs/cg/EXCEL_FIDELITE.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "Multiverse_Breach_Fidelite_CG.validation.json",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.validation.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "screenshots/roster-wave7-overview-2026-10-23.webp",
+        "resolvedPath": "docs/cg/screenshots/roster-wave7-overview-2026-10-23.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "FIDELITY_PROGRESS_WAVE7_2026-10-23.md",
+        "resolvedPath": "docs/cg/FIDELITY_PROGRESS_WAVE7_2026-10-23.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "reviews/wave7-2026-10-23/README.md",
+        "resolvedPath": "docs/cg/reviews/wave7-2026-10-23/README.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "fidelity-delivery-wave7-2026-10-23.json",
+        "resolvedPath": "docs/cg/fidelity-delivery-wave7-2026-10-23.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "roster-production-2026-10-18.md",
+        "resolvedPath": "docs/cg/roster-production-2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "ROSTER_FIDELITY_BIBLE_2026-10-18.md",
+        "resolvedPath": "docs/cg/ROSTER_FIDELITY_BIBLE_2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "PROMPT_GLOBAL_ROSTER_1_1.txt",
+        "resolvedPath": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "roster-global-batch-2026-10-23.json",
+        "resolvedPath": "docs/cg/roster-global-batch-2026-10-23.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "Multiverse_Breach_Fidelite_CG.xlsx",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "EXCEL_FIDELITE.md",
+        "resolvedPath": "docs/cg/EXCEL_FIDELITE.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "Multiverse_Breach_Fidelite_CG.validation.json",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.validation.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "screenshots/roster-wave6-overview-2026-10-23.webp",
+        "resolvedPath": "docs/cg/screenshots/roster-wave6-overview-2026-10-23.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "FIDELITY_PROGRESS_WAVE6_2026-10-23.md",
+        "resolvedPath": "docs/cg/FIDELITY_PROGRESS_WAVE6_2026-10-23.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "reviews/wave6-2026-10-23/README.md",
+        "resolvedPath": "docs/cg/reviews/wave6-2026-10-23/README.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "fidelity-delivery-wave6-2026-10-23.json",
+        "resolvedPath": "docs/cg/fidelity-delivery-wave6-2026-10-23.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "roster-production-2026-10-18.md",
+        "resolvedPath": "docs/cg/roster-production-2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "ROSTER_FIDELITY_BIBLE_2026-10-18.md",
+        "resolvedPath": "docs/cg/ROSTER_FIDELITY_BIBLE_2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "screenshots/roster-wave5-overview-2026-10-22.webp",
+        "resolvedPath": "docs/cg/screenshots/roster-wave5-overview-2026-10-22.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "FIDELITY_PROGRESS_WAVE5_2026-10-22.md",
+        "resolvedPath": "docs/cg/FIDELITY_PROGRESS_WAVE5_2026-10-22.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "reviews/wave5-2026-10-22/README.md",
+        "resolvedPath": "docs/cg/reviews/wave5-2026-10-22/README.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "fidelity-delivery-wave5-2026-10-22.json",
+        "resolvedPath": "docs/cg/fidelity-delivery-wave5-2026-10-22.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "screenshots/roster-wave4-overview-2026-10-20.webp",
+        "resolvedPath": "docs/cg/screenshots/roster-wave4-overview-2026-10-20.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "FIDELITY_PROGRESS_WAVE4_2026-10-20.md",
+        "resolvedPath": "docs/cg/FIDELITY_PROGRESS_WAVE4_2026-10-20.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "reviews/wave4-2026-10-20/README.md",
+        "resolvedPath": "docs/cg/reviews/wave4-2026-10-20/README.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "screenshots/elara-voss-sprite-comparison-wave4-2026-10-20.webp",
+        "resolvedPath": "docs/cg/screenshots/elara-voss-sprite-comparison-wave4-2026-10-20.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "screenshots/nyra-vale-sprite-comparison-wave4-2026-10-20.webp",
+        "resolvedPath": "docs/cg/screenshots/nyra-vale-sprite-comparison-wave4-2026-10-20.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "Multiverse_Breach_Fidelite_CG.xlsx",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "Multiverse_Breach_Fidelite_CG.validation.json",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.validation.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "EXCEL_FIDELITE.md",
+        "resolvedPath": "docs/cg/EXCEL_FIDELITE.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "roster-production-2026-10-18.md",
+        "resolvedPath": "docs/cg/roster-production-2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "ROSTER_FIDELITY_BIBLE_2026-10-18.md",
+        "resolvedPath": "docs/cg/ROSTER_FIDELITY_BIBLE_2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "fidelity-delivery-wave4-2026-10-20.json",
+        "resolvedPath": "docs/cg/fidelity-delivery-wave4-2026-10-20.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "screenshots/roster-wave3-overview-2026-10-20.webp",
+        "resolvedPath": "docs/cg/screenshots/roster-wave3-overview-2026-10-20.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "FIDELITY_PROGRESS_2026-10-20.md",
+        "resolvedPath": "docs/cg/FIDELITY_PROGRESS_2026-10-20.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "reviews/wave3-2026-10-20/README.md",
+        "resolvedPath": "docs/cg/reviews/wave3-2026-10-20/README.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "fidelity-delivery-2026-10-20.json",
+        "resolvedPath": "docs/cg/fidelity-delivery-2026-10-20.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "reviews/wave3-2026-10-20/elyra-frame-packing-before-after.webp",
+        "resolvedPath": "docs/cg/reviews/wave3-2026-10-20/elyra-frame-packing-before-after.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "Multiverse_Breach_Fidelite_CG.xlsx",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "EXCEL_FIDELITE.md",
+        "resolvedPath": "docs/cg/EXCEL_FIDELITE.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "ROSTER_FIDELITY_BIBLE_2026-10-18.md",
+        "resolvedPath": "docs/cg/ROSTER_FIDELITY_BIBLE_2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "roster-production-2026-10-18.md",
+        "resolvedPath": "docs/cg/roster-production-2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "Multiverse_Breach_Fidelite_CG.xlsx",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "EXCEL_FIDELITE.md",
+        "resolvedPath": "docs/cg/EXCEL_FIDELITE.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "ROSTER_FIDELITY_BIBLE_2026-10-18.md",
+        "resolvedPath": "docs/cg/ROSTER_FIDELITY_BIBLE_2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "FIDELITY_PROGRESS_2026-10-18.md",
+        "resolvedPath": "docs/cg/FIDELITY_PROGRESS_2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "../../src/game/cg/cgRevisions.generated.json",
+        "resolvedPath": "src/game/cg/cgRevisions.generated.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "../../src/game/cg/cgRosterArtwork.generated.json",
+        "resolvedPath": "src/game/cg/cgRosterArtwork.generated.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "reviews/wave2-2026-10-18/README.md",
+        "resolvedPath": "docs/cg/reviews/wave2-2026-10-18/README.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "screenshots/roster-wave2-overview-2026-10-18.webp",
+        "resolvedPath": "docs/cg/screenshots/roster-wave2-overview-2026-10-18.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "reviews/wave2-2026-10-18/sprite-before-after.webp",
+        "resolvedPath": "docs/cg/reviews/wave2-2026-10-18/sprite-before-after.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "roster-production-2026-10-18.md",
+        "resolvedPath": "docs/cg/roster-production-2026-10-18.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./CG_PILOT_REFERENCE_AUDIT.md",
+        "resolvedPath": "docs/cg/CG_PILOT_REFERENCE_AUDIT.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./CG_PILOT_PROMPTS.md",
+        "resolvedPath": "docs/cg/CG_PILOT_PROMPTS.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./prompts/halo-chief-arbiter-cg02-05-openai-v1.md",
+        "resolvedPath": "docs/cg/prompts/halo-chief-arbiter-cg02-05-openai-v1.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./prompts/resident-evil-wesker-jill-cg02-05-openai-v1.md",
+        "resolvedPath": "docs/cg/prompts/resident-evil-wesker-jill-cg02-05-openai-v1.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./prompts/leon-anchor-cg02-05-openai-v1.md",
+        "resolvedPath": "docs/cg/prompts/leon-anchor-cg02-05-openai-v1.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./prompts/halo-chief-arbiter-cg06-08-openai-v1.md",
+        "resolvedPath": "docs/cg/prompts/halo-chief-arbiter-cg06-08-openai-v1.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./prompts/resident-evil-wesker-jill-cg06-08-openai-v1.md",
+        "resolvedPath": "docs/cg/prompts/resident-evil-wesker-jill-cg06-08-openai-v1.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./prompts/leon-anchor-cg06-08-openai-v1.md",
+        "resolvedPath": "docs/cg/prompts/leon-anchor-cg06-08-openai-v1.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./CG_VARIANT_WAVE_AUDIT.md",
+        "resolvedPath": "docs/cg/CG_VARIANT_WAVE_AUDIT.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./prompts/halo-chief-arbiter-cg09-15-openai-v1.md",
+        "resolvedPath": "docs/cg/prompts/halo-chief-arbiter-cg09-15-openai-v1.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./prompts/resident-evil-wesker-jill-cg09-15-openai-v1.md",
+        "resolvedPath": "docs/cg/prompts/resident-evil-wesker-jill-cg09-15-openai-v1.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./prompts/leon-anchor-cg09-15-openai-v1.md",
+        "resolvedPath": "docs/cg/prompts/leon-anchor-cg09-15-openai-v1.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./prompts/jill-goofy-alignment-style-corrections-openai-v1.md",
+        "resolvedPath": "docs/cg/prompts/jill-goofy-alignment-style-corrections-openai-v1.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./prompts/jill-gender-zombie-style-corrections-openai-v1.md",
+        "resolvedPath": "docs/cg/prompts/jill-gender-zombie-style-corrections-openai-v1.md"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./character-reference-approvals.json",
+        "resolvedPath": "docs/cg/character-reference-approvals.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./wave-approvals.json",
+        "resolvedPath": "docs/cg/wave-approvals.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./variant-wave-approvals.json",
+        "resolvedPath": "docs/cg/variant-wave-approvals.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "../../public/cg/cg-manifest.json",
+        "resolvedPath": "public/cg/cg-manifest.json"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./screenshots/cg-pilot-review-sheet.webp",
+        "resolvedPath": "docs/cg/screenshots/cg-pilot-review-sheet.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./screenshots/cg-pilot-cg01-08-review-sheet.webp",
+        "resolvedPath": "docs/cg/screenshots/cg-pilot-cg01-08-review-sheet.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./screenshots/cg-pilot-cg09-15-review-sheet.webp",
+        "resolvedPath": "docs/cg/screenshots/cg-pilot-cg09-15-review-sheet.webp"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./screenshots/cg-gallery-cg09-15-desktop.png",
+        "resolvedPath": "docs/cg/screenshots/cg-gallery-cg09-15-desktop.png"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./screenshots/cg-gallery-cg09-15-mobile.png",
+        "resolvedPath": "docs/cg/screenshots/cg-gallery-cg09-15-mobile.png"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./screenshots/cg-gallery-variant-compare-desktop.png",
+        "resolvedPath": "docs/cg/screenshots/cg-gallery-variant-compare-desktop.png"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./screenshots/cg-gallery-variant-compare-mobile.png",
+        "resolvedPath": "docs/cg/screenshots/cg-gallery-variant-compare-mobile.png"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./screenshots/cg-gallery-cg01-08-desktop.png",
+        "resolvedPath": "docs/cg/screenshots/cg-gallery-cg01-08-desktop.png"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./screenshots/cg-gallery-cg01-08-mobile.png",
+        "resolvedPath": "docs/cg/screenshots/cg-gallery-cg01-08-mobile.png"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./screenshots/cg-gallery-cg07-all-owned-desktop.png",
+        "resolvedPath": "docs/cg/screenshots/cg-gallery-cg07-all-owned-desktop.png"
+      },
+      {
+        "document": "docs/cg/README.md",
+        "target": "./screenshots/cg-gallery-arbiter-victory-corrected-desktop.png",
+        "resolvedPath": "docs/cg/screenshots/cg-gallery-arbiter-victory-corrected-desktop.png"
+      },
+      {
+        "document": "docs/cg/EXCEL_FIDELITE.md",
+        "target": "./Multiverse_Breach_Fidelite_CG.xlsx",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx"
+      },
+      {
+        "document": "docs/cg/EXCEL_FIDELITE.md",
+        "target": "PROMPT_GLOBAL_ROSTER_1_1.txt",
+        "resolvedPath": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt"
+      },
+      {
+        "document": "docs/cg/EXCEL_FIDELITE.md",
+        "target": "roster-global-batch-2026-10-24.json",
+        "resolvedPath": "docs/cg/roster-global-batch-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "reviews/wave8-2026-10-24/README.md",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/README.md"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "screenshots/roster-wave8-overview-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/roster-wave8-overview-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "PROMPT_GLOBAL_ROSTER_1_1.txt",
+        "resolvedPath": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "roster-global-batch-2026-10-24.json",
+        "resolvedPath": "docs/cg/roster-global-batch-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "roster-global-batch-2026-10-23.json",
+        "resolvedPath": "docs/cg/roster-global-batch-2026-10-23.json"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "reviews/wave8-2026-10-24/historical-preservation-verification.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/historical-preservation-verification.json"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "reviews/wave8-2026-10-24/runtime-selection-independent-verification.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/runtime-selection-independent-verification.json"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "reviews/wave8-2026-10-24/runtime-atlas-selection-independent-verification.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/runtime-atlas-selection-independent-verification.json"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "reviews/wave8-2026-10-24/generation-counts-independent-verification.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/generation-counts-independent-verification.json"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "fidelity-delivery-wave8-2026-10-24.json",
+        "resolvedPath": "docs/cg/fidelity-delivery-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "Multiverse_Breach_Fidelite_CG.xlsx",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "EXCEL_FIDELITE.md",
+        "resolvedPath": "docs/cg/EXCEL_FIDELITE.md"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "Multiverse_Breach_Fidelite_CG.validation.json",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.validation.json"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "Multiverse_Breach_Fidelite_CG.preservation-validation.json",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.preservation-validation.json"
+      },
+      {
+        "document": "docs/cg/FIDELITY_PROGRESS_WAVE8_2026-10-24.md",
+        "target": "reviews/wave8-2026-10-24/final-checks.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/final-checks.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../PROMPT_GLOBAL_ROSTER_1_1.txt",
+        "resolvedPath": "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../roster-global-batch-2026-10-24.json",
+        "resolvedPath": "docs/cg/roster-global-batch-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "master-instruction-continuity-verification.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/master-instruction-continuity-verification.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../screenshots/roster-wave8-overview-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/roster-wave8-overview-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../imani-quell-reference-evidence-wave8-2026-10-24.json",
+        "resolvedPath": "docs/cg/imani-quell-reference-evidence-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../imani-quell-wave8-plan-2026-10-24.json",
+        "resolvedPath": "docs/cg/imani-quell-wave8-plan-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../screenshots/imani-quell-wave8-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/imani-quell-wave8-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../imani-quell-wave8-2026-10-24.json",
+        "resolvedPath": "docs/cg/imani-quell-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../screenshots/imani-quell-sprite-comparison-wave8-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/imani-quell-sprite-comparison-wave8-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../../audits/imani-quell-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+        "resolvedPath": "docs/audits/imani-quell-v2-reference-sprite-fidelity-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "imani-quell-independent-review.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/imani-quell-independent-review.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "imani-quell-sprite-independent-review.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/imani-quell-sprite-independent-review.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../bram-quill-reference-evidence-wave8-2026-10-24.json",
+        "resolvedPath": "docs/cg/bram-quill-reference-evidence-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../bram-quill-wave8-plan-2026-10-24.json",
+        "resolvedPath": "docs/cg/bram-quill-wave8-plan-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../screenshots/bram-quill-wave8-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/bram-quill-wave8-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../bram-quill-wave8-2026-10-24.json",
+        "resolvedPath": "docs/cg/bram-quill-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../screenshots/bram-quill-sprite-comparison-wave8-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/bram-quill-sprite-comparison-wave8-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../../audits/bram-quill-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+        "resolvedPath": "docs/audits/bram-quill-v2-reference-sprite-fidelity-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "bram-quill-independent-review.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/bram-quill-independent-review.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "bram-quill-sprite-independent-review.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/bram-quill-sprite-independent-review.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../lio-ferrante-reference-evidence-wave8-2026-10-24.json",
+        "resolvedPath": "docs/cg/lio-ferrante-reference-evidence-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../lio-ferrante-wave8-plan-2026-10-24.json",
+        "resolvedPath": "docs/cg/lio-ferrante-wave8-plan-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../screenshots/lio-ferrante-wave8-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/lio-ferrante-wave8-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../lio-ferrante-wave8-2026-10-24.json",
+        "resolvedPath": "docs/cg/lio-ferrante-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../screenshots/lio-ferrante-sprite-comparison-wave8-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/lio-ferrante-sprite-comparison-wave8-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../../audits/lio-ferrante-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+        "resolvedPath": "docs/audits/lio-ferrante-v2-reference-sprite-fidelity-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "lio-ferrante-independent-review.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-independent-review.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "lio-ferrante-sprite-independent-review.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-sprite-independent-review.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../anton-rook-reference-evidence-wave8-2026-10-24.json",
+        "resolvedPath": "docs/cg/anton-rook-reference-evidence-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../anton-rook-wave8-plan-2026-10-24.json",
+        "resolvedPath": "docs/cg/anton-rook-wave8-plan-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../screenshots/anton-rook-wave8-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/anton-rook-wave8-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../anton-rook-wave8-2026-10-24.json",
+        "resolvedPath": "docs/cg/anton-rook-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../screenshots/anton-rook-sprite-comparison-wave8-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/anton-rook-sprite-comparison-wave8-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../../audits/anton-rook-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+        "resolvedPath": "docs/audits/anton-rook-v2-reference-sprite-fidelity-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "anton-rook-independent-review.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/anton-rook-independent-review.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "anton-rook-sprite-independent-review.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/anton-rook-sprite-independent-review.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../khepri-sen-reference-evidence-wave8-2026-10-24.json",
+        "resolvedPath": "docs/cg/khepri-sen-reference-evidence-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../khepri-sen-wave8-plan-2026-10-24.json",
+        "resolvedPath": "docs/cg/khepri-sen-wave8-plan-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../screenshots/khepri-sen-wave8-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/khepri-sen-wave8-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../khepri-sen-wave8-2026-10-24.json",
+        "resolvedPath": "docs/cg/khepri-sen-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../screenshots/khepri-sen-sprite-comparison-wave8-2026-10-24.webp",
+        "resolvedPath": "docs/cg/screenshots/khepri-sen-sprite-comparison-wave8-2026-10-24.webp"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../../audits/khepri-sen-v2-reference-sprite-fidelity-wave8-2026-10-24.json",
+        "resolvedPath": "docs/audits/khepri-sen-v2-reference-sprite-fidelity-wave8-2026-10-24.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "khepri-sen-independent-review.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/khepri-sen-independent-review.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "khepri-sen-sprite-independent-review.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/khepri-sen-sprite-independent-review.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "generation-counts-independent-verification.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/generation-counts-independent-verification.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "historical-preservation-verification.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/historical-preservation-verification.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "runtime-selection-independent-verification.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/runtime-selection-independent-verification.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "runtime-atlas-selection-independent-verification.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/runtime-atlas-selection-independent-verification.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "selected-roster-visual-priorities.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "comparison-preview-verification.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/comparison-preview-verification.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "global-batch-semantic-verification.json",
+        "resolvedPath": "docs/cg/reviews/wave8-2026-10-24/global-batch-semantic-verification.json"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../Multiverse_Breach_Fidelite_CG.xlsx",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.xlsx"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../EXCEL_FIDELITE.md",
+        "resolvedPath": "docs/cg/EXCEL_FIDELITE.md"
+      },
+      {
+        "document": "docs/cg/reviews/wave8-2026-10-24/README.md",
+        "target": "../../Multiverse_Breach_Fidelite_CG.validation.json",
+        "resolvedPath": "docs/cg/Multiverse_Breach_Fidelite_CG.validation.json"
+      }
+    ]
+  },
+  "frozenInputPinsUnchanged": 240,
+  "frozenInputPins": {
+    ".tmp/cg-wave8-2026-10-24/anton-rook/atlas-final-freeze.json": {
+      "sha256": "9e04011dae4303789f82632646775d9a7d735bb0e19b5d0f61e96ccf86195474",
+      "bytes": 2106
+    },
+    ".tmp/cg-wave8-2026-10-24/anton-rook/atlas-native-ledger.json": {
+      "sha256": "364816b1403cb860dfe62a91f614b12fa3166bbdc86cc03f978d0bbd5e77106b",
+      "bytes": 2086
+    },
+    ".tmp/cg-wave8-2026-10-24/anton-rook/cg-final-freeze.json": {
+      "sha256": "c972bcc5f1fd56fc33d98c04772bc6ecdf4455d5a7a15d5e9cee6f54ba2cb7f1",
+      "bytes": 2187
+    },
+    ".tmp/cg-wave8-2026-10-24/bram-quill/atlas-final-freeze.json": {
+      "sha256": "4d6285398cf3bbd1a39e22c5b07777c90ca5c5d90014ee96ab59b222d4397b4d",
+      "bytes": 2435
+    },
+    ".tmp/cg-wave8-2026-10-24/bram-quill/atlas-native-ledger.json": {
+      "sha256": "673216c5573c8a5e901825e61ec8b4c9c5a8846795943906f1c840b11a8bab30",
+      "bytes": 2671
+    },
+    ".tmp/cg-wave8-2026-10-24/bram-quill/cg-final-freeze.json": {
+      "sha256": "45beb05489ab888ed18aacb29e299c5840b3b1a8c2882911ce48852e2e7cf8d1",
+      "bytes": 11908
+    },
+    ".tmp/cg-wave8-2026-10-24/bram-quill/lio-atlas-qa-final-freeze.json": {
+      "sha256": "00f62c1c1c364632c73d9ef5236c18891f3bb15bde36084d846c60aeba48aa4b",
+      "bytes": 1430
+    },
+    ".tmp/cg-wave8-2026-10-24/cg-root-freeze-pins.json": {
+      "sha256": "3f33f88bad4d5d842c24ae85066c684d668727ff2ade895bf2a2de3a28b820eb",
+      "bytes": 2477
+    },
+    ".tmp/cg-wave8-2026-10-24/imani-quell/atlas-final-freeze.json": {
+      "sha256": "25e89b7bd14c2bc1163ea59253d6c78cbe9acefb13a7b59d936d90019b7b7aaf",
+      "bytes": 2591
+    },
+    ".tmp/cg-wave8-2026-10-24/imani-quell/atlas-native-ledger.json": {
+      "sha256": "53dd8613a97fa053d2ea4ab57a03bb78abc2abdd2fa2a88a8e38d0b3c3c1f3b5",
+      "bytes": 2126
+    },
+    ".tmp/cg-wave8-2026-10-24/imani-quell/cg-final-freeze.json": {
+      "sha256": "79de4633b4614590aa9b97c5389c8aad99bc030a6e5cd0d7a3bbc51e50f76499",
+      "bytes": 2324
+    },
+    ".tmp/cg-wave8-2026-10-24/khepri-sen/atlas-final-freeze.json": {
+      "sha256": "b2704b62be4eeb89897a8e3a47f6c63835d7c1bc5bad0cb1f1b265d2b32af7d4",
+      "bytes": 2730
+    },
+    ".tmp/cg-wave8-2026-10-24/khepri-sen/atlas-native-ledger.json": {
+      "sha256": "2f90ef366745222a5e128899a045f2ee07b2725e0b32a3c36c90637d3c75f278",
+      "bytes": 1291
+    },
+    ".tmp/cg-wave8-2026-10-24/khepri-sen/cg-final-freeze.json": {
+      "sha256": "d39edfa48e855e08fa4045754014714721a8b36f34cfd4a3b19cf6e0a47499f9",
+      "bytes": 14558
+    },
+    ".tmp/cg-wave8-2026-10-24/lio-ferrante/atlas-final-freeze.json": {
+      "sha256": "8a0aaf77a20d3cf98f3ac328ce0724ad1adf87ca856ab203bc57e6e7ee568f89",
+      "bytes": 3058
+    },
+    ".tmp/cg-wave8-2026-10-24/lio-ferrante/atlas-native-ledger.json": {
+      "sha256": "6f2153af1f7eb4d858170cc39ea15bf47a61cf6682c086ac8fc91b3e76529e67",
+      "bytes": 1142
+    },
+    ".tmp/cg-wave8-2026-10-24/lio-ferrante/cg-final-freeze.json": {
+      "sha256": "c8ae9e2cbd3ae74ddb76e77163a3e131af159a87955e16e91efb6f085deb028f",
+      "bytes": 11930
+    },
+    ".tmp/cg-wave8-2026-10-24/preimport-reviewed-cg-verification.json": {
+      "sha256": "def4dbcb79d7dca92c8d283cfc2fa8e542799a435d2cd926f3ad2d44024a427b",
+      "bytes": 44914
+    },
+    ".tmp/cg-wave8-2026-10-24/reference-recovery.json": {
+      "sha256": "afbaa36c0566fbdafad495e4e4333366b182eeb5077bb7a42f3516152b390da7",
+      "bytes": 1356
+    },
+    ".tmp/cg-wave8-2026-10-24/runtime-freeze-pins.json": {
+      "sha256": "46c2d9d0b586da585b965e31127b3658267c00716375884432c4e8f4428e7efb",
+      "bytes": 5406
+    },
+    ".tmp/cg-wave8-2026-10-24/verification-results.json": {
+      "sha256": "de41f48ab4c5fbcab457427bdde137edcc2c17024ae03ca828f5a37cb21a7381",
+      "bytes": 2706
+    },
+    "docs/audits/anton-rook-v2-reference-sprite-fidelity-wave8-2026-10-24.json": {
+      "sha256": "ef4e1530448fcc20cc007a68819831494fcf2c3ff4689cfdaed0400f547be373",
+      "bytes": 13111
+    },
+    "docs/audits/bram-quill-v2-reference-sprite-fidelity-wave8-2026-10-24.json": {
+      "sha256": "7145b2f347c02764b1577b6008b5f8943fa1ad167758e25bb880cc42532b5f31",
+      "bytes": 13154
+    },
+    "docs/audits/imani-quell-v2-reference-sprite-fidelity-wave8-2026-10-24.json": {
+      "sha256": "3310eef8d71fc5deceac2fe349aad51aeafc2f1253cf278d7e49da0febb807ee",
+      "bytes": 13149
+    },
+    "docs/audits/khepri-sen-v2-reference-sprite-fidelity-wave8-2026-10-24.json": {
+      "sha256": "af1a3cc0c025f944fc0636292b685acc628b99e879cd846c6e148cd7910eae06",
+      "bytes": 13095
+    },
+    "docs/audits/lio-ferrante-v2-reference-sprite-fidelity-wave8-2026-10-24.json": {
+      "sha256": "e8dfc0220216737855f53087be97e10dbcc69e71b4a18e32c2a70c531833eb2a",
+      "bytes": 13100
+    },
+    "docs/cg/PROMPT_GLOBAL_ROSTER_1_1.txt": {
+      "sha256": "4c70032eb4046c0f906ac03d121efc136bcc9a0aafa9453a5ff4d5e596127f99",
+      "bytes": 7683
+    },
+    "docs/cg/anton-rook-reference-evidence-wave8-2026-10-24.json": {
+      "sha256": "bf594ba2a955d5f8ee6c8626edb577b38a8337e58632dd2c97fc728cf85b0dc8",
+      "bytes": 4743
+    },
+    "docs/cg/anton-rook-sprite-wave8-2026-10-24.json": {
+      "sha256": "951a831e9770c00d7b283e3b965124ca0d3f41aaba30448e1307a14fe60a13d8",
+      "bytes": 6669
+    },
+    "docs/cg/anton-rook-wave8-2026-10-24.json": {
+      "sha256": "4da37fa2a3a7e09bf9bef21c355fdf7cbace2872ad7d2a303348dcc89a946fa0",
+      "bytes": 117884
+    },
+    "docs/cg/anton-rook-wave8-plan-2026-10-24.json": {
+      "sha256": "387dbf6d15e162d4497c1fb0f534b90609f81f6a3768817f238b1d3b02c27696",
+      "bytes": 19273
+    },
+    "docs/cg/bram-quill-reference-evidence-wave8-2026-10-24.json": {
+      "sha256": "92a7ac8046448fe7f46a077104ad02979f194d2a3aefee2fb19e6248e484336a",
+      "bytes": 4146
+    },
+    "docs/cg/bram-quill-sprite-wave8-2026-10-24.json": {
+      "sha256": "d6b472a669f59d0d5deea7bc1d66e588b41e5e11affdf854ef6bc3b21c9bfa1d",
+      "bytes": 7664
+    },
+    "docs/cg/bram-quill-wave8-2026-10-24.json": {
+      "sha256": "fae98da6b118880e83e10579d88afaf879e6faec387cb3d58e24287d77ad207d",
+      "bytes": 122637
+    },
+    "docs/cg/bram-quill-wave8-plan-2026-10-24.json": {
+      "sha256": "127b85b5190e09b68f149b314052ae126632414648a97d687f5888c708a19892",
+      "bytes": 22992
+    },
+    "docs/cg/fidelity-delivery-wave8-2026-10-24.json": {
+      "sha256": "5429e6f0cc618635a07dd07c9c514eea45c95a4cd3e912e14a2926d9e62e9780",
+      "bytes": 2678280
+    },
+    "docs/cg/imani-quell-reference-evidence-wave8-2026-10-24.json": {
+      "sha256": "592658fd848ce3ecaea3e566e88c048c0ba34c7124e2a33dc19bd1854de048f9",
+      "bytes": 3915
+    },
+    "docs/cg/imani-quell-sprite-wave8-2026-10-24.json": {
+      "sha256": "d49b86f2e405591b73a7200197c93fda47c66536b640a3717af018dd7b7e4883",
+      "bytes": 7142
+    },
+    "docs/cg/imani-quell-wave8-2026-10-24.json": {
+      "sha256": "d519cd3fd727beb598c9f99728f016703c5bc3f6d70353f1d7e689d00a17b7da",
+      "bytes": 110455
+    },
+    "docs/cg/imani-quell-wave8-plan-2026-10-24.json": {
+      "sha256": "5b544f10761ac27b28c3a5ec88299356fdf53075b3155f80977f2f628c9bbd5f",
+      "bytes": 18859
+    },
+    "docs/cg/khepri-sen-reference-evidence-wave8-2026-10-24.json": {
+      "sha256": "1666fe225a1e1ba9416253318e31d081795fb08782f44243930bac84d23cb397",
+      "bytes": 4616
+    },
+    "docs/cg/khepri-sen-sprite-wave8-2026-10-24.json": {
+      "sha256": "a7ae3465f35d5a29f50fd1817e8551d05e5b82d98a32a9f06b0514cc2fe0cc3f",
+      "bytes": 6240
+    },
+    "docs/cg/khepri-sen-wave8-2026-10-24.json": {
+      "sha256": "d01f1e7d5f98a535447512e0d2d7f080e37b315ffcc84619950e18da161b1962",
+      "bytes": 126535
+    },
+    "docs/cg/khepri-sen-wave8-plan-2026-10-24.json": {
+      "sha256": "cae0f603ca3cb1a86d77fd95ba537b536b8d40896ebc272767919339eaf0ec10",
+      "bytes": 27001
+    },
+    "docs/cg/lio-ferrante-reference-evidence-wave8-2026-10-24.json": {
+      "sha256": "e242825923dd01fa1fd39e00d7c2bfd4d55e4ac96e2fc723b07529be8d1f6fa3",
+      "bytes": 5384
+    },
+    "docs/cg/lio-ferrante-sprite-wave8-2026-10-24.json": {
+      "sha256": "cc685b8cb8e6807139c2abc7a02660bb11a69b62c9c3bac5b68742db7d571562",
+      "bytes": 6505
+    },
+    "docs/cg/lio-ferrante-wave8-2026-10-24.json": {
+      "sha256": "1ac0aab1558cc4416270ac8c0f7241ac93a1d8da9cc7506e30989fc8f6e157f3",
+      "bytes": 123346
+    },
+    "docs/cg/lio-ferrante-wave8-plan-2026-10-24.json": {
+      "sha256": "ac461a14fa520635b730f587a10240cfd204584bae2e679ff3a341715e2b5524",
+      "bytes": 18732
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/01-characterSolo.txt": {
+      "sha256": "11671bcca550ae47b03ebc93608c49699da58a4cc41d7e801fd0856bd7a50bbe",
+      "bytes": 1747
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/02-weaponSolo.txt": {
+      "sha256": "8ca47fd7540469eedc7a85898110894531f27fd84a43cc6b02490865c3681bed",
+      "bytes": 1726
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/03-decorSolo-v2-remove-character.txt": {
+      "sha256": "173f4d395cbaf29df7ade0cf557d8141840c86bdd244813b722b90ec77137e0e",
+      "bytes": 670
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/03-decorSolo.txt": {
+      "sha256": "79653d8916ec507bb122589b82984d5dc347ec3e780c7b6871e40ee898272b9e",
+      "bytes": 1663
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/04-coherentScene.txt": {
+      "sha256": "a81c90e14961e7d0e8d3d50a0971fb8041f504dd61d5601274ec80b6fb9d0b0c",
+      "bytes": 1766
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/05-actionScene.txt": {
+      "sha256": "2f592c1e4a6ba00eccb79228f520e3b6d2f99d15c8e419bf2aed7960ef6ee177",
+      "bytes": 1827
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/06-introPose.txt": {
+      "sha256": "95f5b22408a95b5faba837420dd2af382634c094806106337b31d41d43a34ae2",
+      "bytes": 1733
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/07-victoryPose.txt": {
+      "sha256": "9548674e8a45c9020058631765eb786d15f36a7a57e1bf256246550b5d8fabe9",
+      "bytes": 1771
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/08-defeatPose.txt": {
+      "sha256": "9b28af86f8e593472a6a4156bd985fbf491e5027783457037d2dee0a9295ef05",
+      "bytes": 1729
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/09-beachFamily.txt": {
+      "sha256": "c1994ac67bb42fe351a22be3e775890804a531523e1bbefd64fb351e2b8d3269",
+      "bytes": 1928
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/10-maidService.txt": {
+      "sha256": "0c6c4a4d718f9d4cf7265ab241880148d0dbc00b4bddb5a0f9869395103b07d8",
+      "bytes": 1878
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/11-goofy.txt": {
+      "sha256": "fc3fcce92644fdc533fdb658b664ceb757e33c5a757e05260a1f7b6d6653c89f",
+      "bytes": 1830
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/12-alignmentSwap-v2-correct-grips.txt": {
+      "sha256": "f62729e36a909771ff74aadc84dca02f5231af713a54fc138be3283deb443331",
+      "bytes": 1161
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/12-alignmentSwap-v3-two-hands.txt": {
+      "sha256": "56ac91b729809950767f40f5217e5bd880ca41888e6153b44810605e6f699c4c",
+      "bytes": 1046
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/12-alignmentSwap-v4-authority-seated.txt": {
+      "sha256": "ebf904b1ddc914583c4e8be144330b7623f1f558329bd2cefb96c00c7dcc1a36",
+      "bytes": 1564
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/12-alignmentSwap.txt": {
+      "sha256": "ee019e003b1d986f7e622ca484bb58bc660089e56b5d80d1c692e784ed44553d",
+      "bytes": 1815
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/13-genderSwap.txt": {
+      "sha256": "1aeec6f2c80293069d68c131b8a2a19e3de7871776d48c075798a873a38ac979",
+      "bytes": 2044
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/14-zombieVersion.txt": {
+      "sha256": "efdeb45a72b6874407470d9349e4d4467e21f1e54b2f7ae73f0cb486c9ff4c32",
+      "bytes": 1859
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/15-futureExperienced.txt": {
+      "sha256": "ecd024a5d99b57b4d7229c57877aa0c2fd2b74812e838507e63934fa1b5148b6",
+      "bytes": 1889
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/atlas-group-1.txt": {
+      "sha256": "3bcf9f3c0886c06ad427905fd536b918c52b19ce1137d5c14443bc8a31cc4503",
+      "bytes": 1854
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/atlas-group-2.txt": {
+      "sha256": "2eac906aebd86764dbfbf65c4e0aa304ad22e8042c8edc1f0f94275a0823f155",
+      "bytes": 1865
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/atlas-group-3.txt": {
+      "sha256": "c65086e9df64794207e8868692f19d997e8e0c545b9c78f4ddc93bd9184804e7",
+      "bytes": 1882
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/atlas-group-4.txt": {
+      "sha256": "6a92d6076ce17818f22c0813dac17682ce1aaf182e525dd8f55ad7b867bbc0d9",
+      "bytes": 1925
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/cg08-v2-full-cannon-reframe.txt": {
+      "sha256": "413335b9f22aac6d549c390fcb7ec62cd4ed0840ee0730e2664d14a345eddf8d",
+      "bytes": 980
+    },
+    "docs/cg/prompts/wave8-2026-10-24/anton-rook/cg11-v2-full-cannon-reframe.txt": {
+      "sha256": "413335b9f22aac6d549c390fcb7ec62cd4ed0840ee0730e2664d14a345eddf8d",
+      "bytes": 980
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/01-characterSolo.txt": {
+      "sha256": "b4298cecffd7db855eae4fd8529f43b5422aeb4c09e34c5c0f3c2d89794dc141",
+      "bytes": 1616
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/02-weaponSolo.txt": {
+      "sha256": "23b711192435349f2a07bae4bcb102bd364fd7f4e2461016cb8dc283e15583cc",
+      "bytes": 1657
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/03-decorSolo.txt": {
+      "sha256": "5817e0998160f19debaee057158c6acfb15aba59c1d27be4aab775e5bf0dcd84",
+      "bytes": 1634
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/04-coherentScene.txt": {
+      "sha256": "4817b8bd03bfb357362b1e5bc0f46dc257cc5077a121d831eb6ecb2249d13d05",
+      "bytes": 1648
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/05-actionScene-reframe.txt": {
+      "sha256": "c56646e6c273c45db18c580cede054e6e70c75d0149c6bc5d5cd70c1735a6b92",
+      "bytes": 2107
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/05-actionScene-reframe2.txt": {
+      "sha256": "1d6fc03f8b8662d3d2de2e80c8a973c76e478415301a1bc27a8507f43e05af8e",
+      "bytes": 2291
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/05-actionScene.txt": {
+      "sha256": "06ede3b60f10b701bd5103053c002dad2c6f457681d68c45140397b83c5cb68f",
+      "bytes": 1711
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/06-introPose.txt": {
+      "sha256": "44e1e6f855fc486d8c29c4ea1b618586b17d5fb9a5b1e36f21800a7280a30a2a",
+      "bytes": 1622
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/07-victoryPose.txt": {
+      "sha256": "f10bb714ee42b7c78862474b6d8ddf288ff5ff52ae4a03feb17bd9fef8c5e644",
+      "bytes": 1625
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/08-defeatPose-reframe.txt": {
+      "sha256": "e80bd631d7f9dbd88aa5005d5824a9e98b83ea786642825a422be04d4964aa64",
+      "bytes": 1893
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/08-defeatPose.txt": {
+      "sha256": "bd9d0e883245c1482275b908f9c89936d3a264fc6425b02bc8e3a68e0c3082f1",
+      "bytes": 1664
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/09-beachFamily.txt": {
+      "sha256": "c609e1d78b05d65034145a29d381485e064bee5c69ad36ae40481f657e17ac35",
+      "bytes": 1799
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/10-maidService-wrenchfix.txt": {
+      "sha256": "4812a8e7c478ff924f0e4952e2eaa2df428d2f7b6f54da0363b9d8f257b172d0",
+      "bytes": 2007
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/10-maidService.txt": {
+      "sha256": "23f759ed2575ec48e41e60c22514b1f93a7727dbad46cabcd3c349f0e5651ac9",
+      "bytes": 1739
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/11-goofy.txt": {
+      "sha256": "26906b16072fb8dbeefd6f7a9aeb0e29b9445121e4f796d44660ffd1f7f09523",
+      "bytes": 1698
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/12-alignmentSwap.txt": {
+      "sha256": "0f282130a5d0b086aa54671590f8c41fa68e62f3bbbc93a0ef52995321d0c63c",
+      "bytes": 1735
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/13-genderSwap.txt": {
+      "sha256": "8608ce360feb16772f8639d48a77b04cdcb5f50f08ce3adfc27913f3e7725839",
+      "bytes": 1849
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/14-zombieVersion.txt": {
+      "sha256": "4ae4177f67ee823301a28ab8b4fdc1a10ecced570aab030e01a15c63ea1006da",
+      "bytes": 1739
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/15-firstStep-handednessfix.txt": {
+      "sha256": "616c06dc6ad750a27e1788079e020af423083f68db4a1408133604acdcfb32eb",
+      "bytes": 2577
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/15-firstStep-ratiofix.txt": {
+      "sha256": "a9484423ac45019bf457f5909df4738d07849675444fa4451b56ccf866c383d2",
+      "bytes": 2066
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/15-firstStep.txt": {
+      "sha256": "c85ad74f4ceaf87c4c35d89bab66cbd1a78663680b69b08e00900774312aff91",
+      "bytes": 1870
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/atlas-group-1.txt": {
+      "sha256": "a82ace42a09d7644e4ec9d0c034e926d2a882709cc9a014d071526f07c915ad0",
+      "bytes": 1433
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/atlas-group-2.txt": {
+      "sha256": "f2907d7c6a47abd1d4e53df6544e79cb62230775649c767c7c2d808682a428b8",
+      "bytes": 1444
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/atlas-group-3.txt": {
+      "sha256": "ef9f4e27282be1cd34bfcd615a459533090c9ce5da335bb073483f7f2c644903",
+      "bytes": 1508
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/atlas-group-4.txt": {
+      "sha256": "4c5562828748f2480c0f17a79f4f8fdf55072edde66913c6ded68f2fbd1789aa",
+      "bytes": 1438
+    },
+    "docs/cg/prompts/wave8-2026-10-24/bram-quill/atlas-group-5-corrective16.txt": {
+      "sha256": "afaf3e7018e30a044c96ad8980cadf2908974758339d9397801e9fc3f4408a59",
+      "bytes": 1823
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/01-characterSolo.txt": {
+      "sha256": "03e5ab84c68e1084013b48fe3536af32b10e363cb20917779cdb71ac4da3e9dd",
+      "bytes": 1563
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/02-equipment-reframe-v2.txt": {
+      "sha256": "111149fc6962797cfb17b5e1d191e14373aede45e0bdc8495225ab5870239e7f",
+      "bytes": 985
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/02-weaponSolo.txt": {
+      "sha256": "581d55984eca7d56bfd47f84067b91b77d43983cb0a67b8410a70af9692b9dbc",
+      "bytes": 1687
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/03-decorSolo.txt": {
+      "sha256": "f8d54a0efbdd6c6dceb81e4ecd5b5f3e799eeca95f499cff47c239906dc05e2b",
+      "bytes": 1617
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/04-coherentScene.txt": {
+      "sha256": "b4074f827dab1be17cf2dc72398f7cae3ff727d16958208876b1337fb7ce6764",
+      "bytes": 1640
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/05-actionScene.txt": {
+      "sha256": "d1499737eec1c98c18008c1acd9fb311f5ef6a995b7a9143a64d0fe405d52821",
+      "bytes": 1691
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/06-introPose.txt": {
+      "sha256": "5b1856232806c32ce8aadbc5ebca62d19ebfb1a18f80125265fdd4a4c6daa3b7",
+      "bytes": 1593
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/07-victoryPose.txt": {
+      "sha256": "b01c762514e37cef736f0ecb3b7661088fcf5b89592016cc144e3927d30af55a",
+      "bytes": 1633
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/08-defeatPose.txt": {
+      "sha256": "66700c14e580a4ad600e4728949d6e8cdf2d6bc8515f5aa7d0eed62c2527df8d",
+      "bytes": 1609
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/09-beachFamily.txt": {
+      "sha256": "c61a5268c758474825d83f3b2a0a485c2cbba8876917e3d05b265ca0ebf9b2e3",
+      "bytes": 1812
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/10-maidService.txt": {
+      "sha256": "9b4a0307689b45da6f16359a3d26aeae9b46bfdf219f52c61dda3f3ceb29ade0",
+      "bytes": 1731
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/11-goofy.txt": {
+      "sha256": "4be555c381ab3d2213c5edbad18cb05e2216307424b88a55715b138be0d6abac",
+      "bytes": 1681
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/12-alignment-frontal-v2.txt": {
+      "sha256": "5cd89fad0fa22c80759cb3babbd90f4c02356aba2d1f2d703dfbca8e3de62ad1",
+      "bytes": 1471
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/12-alignmentSwap.txt": {
+      "sha256": "f887f09c9a01e963b27c7ddfe933606a49a0476b3edb541036fb6bf38ad7a1a9",
+      "bytes": 1806
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/13-gender-laterality-v2.txt": {
+      "sha256": "977b87adc34c061e4a33b88175b476d3936a0235b5929ba71ec5d14a1f815be4",
+      "bytes": 1375
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/13-genderSwap.txt": {
+      "sha256": "c5d02e7cf718c41a6770fc1bf9cf14ba3d3c0e85e8b0ab37bd7e37582c004f9f",
+      "bytes": 1818
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/13-left-medical-pouch-v3.txt": {
+      "sha256": "477e1686725256043b3ce94a30000d9b9dca438b25808ee49757950c64f00e39",
+      "bytes": 1052
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/14-drone-reframe-v3.txt": {
+      "sha256": "e9b7b49225216a46bcd299fbb59eb1da7d6089a538d4fca3919a09ba358a92d8",
+      "bytes": 1053
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/14-restore-drone-v2.txt": {
+      "sha256": "b4f26eda7636c753cbcd898f04c0f1b9752917d9f40713f1c1d3b4cb6fd49a6a",
+      "bytes": 1066
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/14-zombieVersion.txt": {
+      "sha256": "06681e85d3eb56e68f7ae015d7fe08f1d66d011aed02269750c673a66c579c4f",
+      "bytes": 1764
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/15-futureExperienced.txt": {
+      "sha256": "588f1d6cc8d6f89541a847cfb1a9e00d3cc013b7afdd9b854002df48f90a0ee4",
+      "bytes": 1837
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/atlas-group-1.txt": {
+      "sha256": "1e0119e365c54fdc926fb3f0b53a0493c297f2f0477aa85ad8a2d4db69bd064b",
+      "bytes": 1853
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/atlas-group-2.txt": {
+      "sha256": "1a20018fd33364bbb589776d8c760a67d194a9c8dee9b94ab45238c11640acf4",
+      "bytes": 1867
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/atlas-group-3.txt": {
+      "sha256": "33cee345081abaf5888caf7180ef629e2be9d58ce2b374274c4b7e73db03de86",
+      "bytes": 1895
+    },
+    "docs/cg/prompts/wave8-2026-10-24/imani-quell/atlas-group-4.txt": {
+      "sha256": "7b8ccf41d0f90fec340a8d96315042da6cf0304e303de32077dc9ec232c30812",
+      "bytes": 1824
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/01-characterSolo.txt": {
+      "sha256": "8cbab3d8b14d0a2c3eaf2382c3401da6d569104409418702e960c72e79c5894d",
+      "bytes": 1576
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/01-remove-background-crew.txt": {
+      "sha256": "11e2af12b8e94a2e06f07a4700fae9a91efe67e7f4088e78a19c59a63fe6de4a",
+      "bytes": 783
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/02-weaponSolo.txt": {
+      "sha256": "d1e08aa7a3f1887e1bd7a03e602a4ed1f5f72cbc3692878abdefaac846a532d5",
+      "bytes": 1774
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/03-decorSolo.txt": {
+      "sha256": "f4fc79e108272357b996048ac71b063d4b0f84ceb1bc6816e6d0d36b88a60375",
+      "bytes": 1616
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/03-remove-foreground-person.txt": {
+      "sha256": "534a7552b10513fdcd1984f29179da738967ae92f823bcc74410f33f2c033b50",
+      "bytes": 909
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/04-coherentScene.txt": {
+      "sha256": "c425d22bfe7d56980381535ff8128c76a6e27c0a5f591c676f5c0b2e15369e14",
+      "bytes": 1635
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/05-actionScene.txt": {
+      "sha256": "ebc69c9b825d13b2d8e3c993d2244b956090bad5079f33efc84afe6ac5071350",
+      "bytes": 1707
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/05-full-cape-reframe.txt": {
+      "sha256": "ac022c2b955ef0e6a1137a0fb7a97bbba23e2ac40e10d8ad3fbdedffbaadc85a",
+      "bytes": 977
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/06-introPose.txt": {
+      "sha256": "7845b761a512fb5b6ebda52d7cddd267ae474a52a7852567f628a076e556c26e",
+      "bytes": 1595
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/06-restore-full-length-staff.txt": {
+      "sha256": "5b083ea96afce9cea8707e3ffbf6449a51fd8cd104275bf77528d4705b788a5e",
+      "bytes": 1052
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/07-victoryPose.txt": {
+      "sha256": "6ee590da24e3312fea0996127b013531dec4ebef7eee3465931ea1e6548ee6dd",
+      "bytes": 1640
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/08-defeatPose.txt": {
+      "sha256": "1fa64d96a454a24251db5ffc7f4feb354d98c0a3ab5c9f109639b25afba5742a",
+      "bytes": 1634
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/09-beachFamily.txt": {
+      "sha256": "dd83898fc0420ce54c1d4751b7f19fbe7c3b149fbd0a8ddaf336cba2ccd6442c",
+      "bytes": 1813
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/09-empty-sandals-full-mat.txt": {
+      "sha256": "f1a09f51fa05982fd9bd7ed5881880dd942faf88d982040f83fc172cdb4e620b",
+      "bytes": 1114
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/09-remove-detached-shoes.txt": {
+      "sha256": "1d489aff1d33194cc548316e2aa1f7b3276e6e63b89a06d3f478c833616d6255",
+      "bytes": 963
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/10-maidService.txt": {
+      "sha256": "f6c70b052102cfd68703586fbd195ab728e71f6cd52a2ae5a7acd8241bdd2e3e",
+      "bytes": 1800
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/11-goofy.txt": {
+      "sha256": "fd8a7b499a59a922afd163dd79f408f1ad96654a0b8602e1d5207c17d1ca2d41",
+      "bytes": 1691
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/12-alignmentSwap.txt": {
+      "sha256": "bebda8d44881bf53e614be4c1531c317b39d3aabb759ac46b8f6f9ab5ab4abfd",
+      "bytes": 1874
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/13-frontal-correct-anatomical-hands.txt": {
+      "sha256": "5a5927b1c70c3d5585730429e9c4c80db54a11addd1799a61e370ae1e3d72276",
+      "bytes": 1686
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/13-genderSwap.txt": {
+      "sha256": "45b63a23d71bf81b1846d95454525a052f7cc8cca229ec3a904be3845493e3ce",
+      "bytes": 1813
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/14-zombieVersion.txt": {
+      "sha256": "942742a50d187c1f146a701b1d7cb91870187bf20da2a520f14b35b6928fc463",
+      "bytes": 1761
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/15-futureExperienced.txt": {
+      "sha256": "c2257fddb1b1a5221965137e96a56214b3183e54886d7616f585e774e12a14bb",
+      "bytes": 1786
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/atlas-single-pose01-full-clearance.txt": {
+      "sha256": "fa824338c8f3a0c9d8afb5d9e94a1f4c5fea8d990bf1bf1e02338331bedbf3f2",
+      "bytes": 1184
+    },
+    "docs/cg/prompts/wave8-2026-10-24/khepri-sen/atlas-sixteen-poses.txt": {
+      "sha256": "f2ee17adb2b84bde3349f771c82794d079180ffb5f82f66a467f746f2812bef2",
+      "bytes": 2960
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/01-characterSolo.txt": {
+      "sha256": "4ed5b8a8eeba31983c2b133fcc511da2b712abf4e7ec5c2995f8db06e9b180a0",
+      "bytes": 1877
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/02-weaponSolo.txt": {
+      "sha256": "ac7d9f3c582f01a5230247e6a027a65af29ebe448a05c0de134a0dcdb446a00c",
+      "bytes": 1952
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/03-decorSolo.txt": {
+      "sha256": "616fe2462cdb1761e32bbff69c25aa1c22ebf102c184727f0cf460b2b1acdb76",
+      "bytes": 1901
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/03-environment-only-correction.txt": {
+      "sha256": "8c85ba4c6d3e5872b7d80ba3e2b68d14798ffdff74048bc8b8c1698ef3349771",
+      "bytes": 539
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/04-coherentScene.txt": {
+      "sha256": "e4ceda80dc9b57f42184c14516c6a52674332fdb7b23d0b5d4dd4ec262e8896e",
+      "bytes": 1879
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/05-actionScene.txt": {
+      "sha256": "3206e4a62cafc24f98bacc27e4ebc30c7cc536fe9973568666af4b7ba6e689cc",
+      "bytes": 1952
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/06-introPose.txt": {
+      "sha256": "e133ceec7a5ed4ce60cece20c27ed4580c4bbf62ff59a3a626817e4ea5566d3c",
+      "bytes": 1860
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/07-victoryPose.txt": {
+      "sha256": "822e3f0638a189582269d0e49248c9bc7e763268dd34e7bef9092fc7ef84ef9f",
+      "bytes": 1887
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/08-defeatPose.txt": {
+      "sha256": "ac4cc370563e96c31f12a7ce02da819ad6e2159ddf365c46f86aff2a5d6fe4b2",
+      "bytes": 1901
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/09-beachFamily.txt": {
+      "sha256": "b1c783e164d890e931901af328098707610724dced4217de8acd4a5d93b33f44",
+      "bytes": 2086
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/10-maidService.txt": {
+      "sha256": "3e384d05dbd7cf242d44252839fed119be97a912ad5c15f713f0df1687679c8d",
+      "bytes": 2045
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/11-goofy.txt": {
+      "sha256": "c0a2ec5a7f533685923b73494996564dfc7365ed568ca78d8adffb641613a444",
+      "bytes": 1982
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/12-alignmentSwap.txt": {
+      "sha256": "6c05207ed9614dd630c7a33ef0a3f6df5a968a1d36c79963bc6fe5e580ede37a",
+      "bytes": 1969
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/13-genderSwap.txt": {
+      "sha256": "9b18ad084b9d7fc6c6d99c8764752cea03b014e9461733874625c60487176742",
+      "bytes": 2090
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/14-zombieVersion.txt": {
+      "sha256": "5f4363e0b5a34167bc7ba00f25cc96493ebb3b81f7a8fee6359b389da3f6cf8f",
+      "bytes": 1984
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/15-futureExperienced.txt": {
+      "sha256": "14d67e3ce461cf5a83bb153582fbbea4fd4f499e2f785b83ede61fb1369b9c5a",
+      "bytes": 2024
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/atlas-four-real-pose-corrections.txt": {
+      "sha256": "36c45204bc8ddc424e58d86c2d15cf65fbebab481f728123cb2e2e3493f5ea2f",
+      "bytes": 3230
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/atlas-sixteen-source-poses.txt": {
+      "sha256": "2f04613135da33bb09605530c67d79aee50d3678fb1461d0077d49d9ff10c324",
+      "bytes": 3041
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/cg01-right-knee-correction.txt": {
+      "sha256": "cf336d3d0790cb73b9dca4025ab2796980b61a8615a24b25699f8d104f4c96e6",
+      "bytes": 926
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/cg05-right-knee-correction.txt": {
+      "sha256": "cf336d3d0790cb73b9dca4025ab2796980b61a8615a24b25699f8d104f4c96e6",
+      "bytes": 926
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/cg06-right-knee-correction.txt": {
+      "sha256": "cf336d3d0790cb73b9dca4025ab2796980b61a8615a24b25699f8d104f4c96e6",
+      "bytes": 926
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/cg07-targeted-correction.txt": {
+      "sha256": "e4c8e71db48bb99fb8519c4c6872f1a5eed66db859c631c5f05d6f29c945966a",
+      "bytes": 481
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/cg08-targeted-correction.txt": {
+      "sha256": "da064f5b4c7225680b86f26ca3926b6040f07e0c6f86125a70c4a7ab61a606b2",
+      "bytes": 641
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/cg09-targeted-correction.txt": {
+      "sha256": "03421ec5478dc18890d87430fcf69df9232b50594dc9c12fabed995522351d98",
+      "bytes": 606
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/cg12-theme-correction.txt": {
+      "sha256": "99621f496444ea862859ef2b145225aca5a6178eabfbc1d77c77f0d7a3e7eca9",
+      "bytes": 1052
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/cg14-theme-correction.txt": {
+      "sha256": "a20cb8040bfa3668b1ae0c907bdf9c061b4172065060fcff6f8e7ad9304f68df",
+      "bytes": 900
+    },
+    "docs/cg/prompts/wave8-2026-10-24/lio-ferrante/cg15-theme-correction.txt": {
+      "sha256": "6427e0571eaa5458c8ba20f47817f720344cd9a7346f4e7742480782085b6232",
+      "bytes": 763
+    },
+    "docs/cg/reviews/wave8-2026-10-24/README.md": {
+      "sha256": "fd25962ca1b222c64fe923d0500cd2c5bd4e0cb782ac880795b1218db3caaf12",
+      "bytes": 7898
+    },
+    "docs/cg/reviews/wave8-2026-10-24/anton-rook-independent-review.json": {
+      "sha256": "e672d3cc3265358291462986ea4ce72bee26900e90b8d52b79f6bda124fd802d",
+      "bytes": 18560
+    },
+    "docs/cg/reviews/wave8-2026-10-24/anton-rook-sprite-independent-review.json": {
+      "sha256": "d63e208242d7cd60154b9b918ab72fe1ad246bdd2093431dc98147dc56de086d",
+      "bytes": 8005
+    },
+    "docs/cg/reviews/wave8-2026-10-24/bram-quill-independent-review.json": {
+      "sha256": "70171cfad5eb4140c215712d2a32aff826b5f890647167f5f419f45d1e712988",
+      "bytes": 16624
+    },
+    "docs/cg/reviews/wave8-2026-10-24/bram-quill-sprite-independent-review.json": {
+      "sha256": "9f7d18f86358e411da2dcbd6132e07a3802bf30ddb1e0457ff3278c9dee4833d",
+      "bytes": 10421
+    },
+    "docs/cg/reviews/wave8-2026-10-24/comparison-preview-verification.json": {
+      "sha256": "236a4c68190c4cf44572fdf9a9142929defb7ff2ad306efdebaaa04926c8a785",
+      "bytes": 8675
+    },
+    "docs/cg/reviews/wave8-2026-10-24/generation-counts-independent-verification.json": {
+      "sha256": "7f48cb32abedb88081cff4da668d73098de373ecf0b1ac9df86be6dd5e26368a",
+      "bytes": 274417
+    },
+    "docs/cg/reviews/wave8-2026-10-24/global-batch-semantic-verification.json": {
+      "sha256": "c70bd6aea16079d656d0246b0a4c2ec6b7e58c06979b9c67ae64d0db1330677f",
+      "bytes": 81684
+    },
+    "docs/cg/reviews/wave8-2026-10-24/historical-preservation-verification.json": {
+      "sha256": "e3f80d663ae61ffcf0498f7e744b10ce880f13d0ee3399735addc116b5f30d41",
+      "bytes": 44318
+    },
+    "docs/cg/reviews/wave8-2026-10-24/imani-quell-independent-review.json": {
+      "sha256": "634338eecdf1d60a45e6542ba05994dcbb3f3cd55593d554886adba5a607804c",
+      "bytes": 14498
+    },
+    "docs/cg/reviews/wave8-2026-10-24/imani-quell-sprite-independent-review.json": {
+      "sha256": "352a3a1c5f0a3a6fb82d8b1c71e1b9c04f8c8936ffa8301171e465542f3d7075",
+      "bytes": 17106
+    },
+    "docs/cg/reviews/wave8-2026-10-24/khepri-sen-independent-review.json": {
+      "sha256": "9e47f8b8afcdea5511b23028a8d639ca11080c39cfa172b8b275963333c8165a",
+      "bytes": 18728
+    },
+    "docs/cg/reviews/wave8-2026-10-24/khepri-sen-sprite-independent-review.json": {
+      "sha256": "41f1373e521e96c77a4369d1337c4d4bbc194e04cbef1b11e0eb5397a9d307d2",
+      "bytes": 11932
+    },
+    "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-independent-review.json": {
+      "sha256": "efbcbf7d491743177a8f1547c25f2a66a2ed6bad43b1f7db6e150392ae556c45",
+      "bytes": 23403
+    },
+    "docs/cg/reviews/wave8-2026-10-24/lio-ferrante-sprite-independent-review.json": {
+      "sha256": "3cc8e60bf6a0ab6be6b18b94a73d4d7f3cf5c818b21fbb85336a92bad98ad527",
+      "bytes": 16956
+    },
+    "docs/cg/reviews/wave8-2026-10-24/master-instruction-continuity-verification.json": {
+      "sha256": "31a0c5e6252cbf2ffb5bd07d1ffdb1598144e026c493bb1a99e4415717d82ad4",
+      "bytes": 793
+    },
+    "docs/cg/reviews/wave8-2026-10-24/runtime-atlas-selection-independent-verification.json": {
+      "sha256": "21bbaf37ddda0a7e1454aa0e389a7a47f1e36ee20da27636d403f81edcf41450",
+      "bytes": 11808
+    },
+    "docs/cg/reviews/wave8-2026-10-24/runtime-selection-independent-verification.json": {
+      "sha256": "c422df0559eb2118d07e95dc328aa78a5b6b3cf95b564611bc9d62a98a7568fa",
+      "bytes": 5793
+    },
+    "docs/cg/reviews/wave8-2026-10-24/selected-roster-visual-priorities.json": {
+      "sha256": "2db2467b8901fa6146e16bf2dbd66a8afaa44170a87c00e142b16c2f690e3520",
+      "bytes": 22784
+    },
+    "docs/cg/roster-fidelity-bible-2026-10-18.json": {
+      "sha256": "1b5138d566bf036ca449a70917e7697d7f252a765d50b535b4bebdc569239738",
+      "bytes": 41236952
+    },
+    "docs/cg/roster-global-batch-2026-10-24.json": {
+      "sha256": "d5ecbe02e6fff130c24b6dad56cd642c3456f348b7dccb130011665904d6be26",
+      "bytes": 69267215
+    },
+    "docs/cg/roster-production-2026-10-18.json": {
+      "sha256": "b5e7dc2f5be4de724d4c308ad8fcadcfac9f713372d8da5c6701754a96b090a5",
+      "bytes": 34268361
+    },
+    "docs/cg/screenshots/anton-rook-sprite-comparison-wave8-2026-10-24.json": {
+      "sha256": "6386ad2c13908a1a2dd27655b9c75601f7e4adb8bc566e6bdf71ecf19c9212e3",
+      "bytes": 1401
+    },
+    "docs/cg/screenshots/anton-rook-sprite-comparison-wave8-2026-10-24.webp": {
+      "sha256": "d1513c8be57984006ddf172fff57c5bbf5c6fa613b2fd6c608999af48982d714",
+      "bytes": 193644
+    },
+    "docs/cg/screenshots/anton-rook-wave8-2026-10-24.json": {
+      "sha256": "b0b4dfcbc06e03b8674d2547ad962765c02db85edde5c488c8fca71442938d6e",
+      "bytes": 6019
+    },
+    "docs/cg/screenshots/anton-rook-wave8-2026-10-24.webp": {
+      "sha256": "e6a98aec92213d20194c0050060f853b09612aaa34186dd17f13f351de1d2575",
+      "bytes": 915494
+    },
+    "docs/cg/screenshots/bram-quill-sprite-comparison-wave8-2026-10-24.json": {
+      "sha256": "ac5c38e7c9ded3c438ea4677564fd12a5cf313e47136b70b69b1660177bde6f7",
+      "bytes": 1399
+    },
+    "docs/cg/screenshots/bram-quill-sprite-comparison-wave8-2026-10-24.webp": {
+      "sha256": "408a77daae525b277e5856f596af21be62ce56716b54abbb14258e6e0ad27dd2",
+      "bytes": 327538
+    },
+    "docs/cg/screenshots/bram-quill-wave8-2026-10-24.json": {
+      "sha256": "d051d823ae23cfe7cd6a73796948c14bd1247281316ccd48588fdb0147c2c7c1",
+      "bytes": 6073
+    },
+    "docs/cg/screenshots/bram-quill-wave8-2026-10-24.webp": {
+      "sha256": "e4dc87cef59a533325516635df9a58c77bdff759966deca7e50fc094f56788b0",
+      "bytes": 977096
+    },
+    "docs/cg/screenshots/imani-quell-sprite-comparison-wave8-2026-10-24.json": {
+      "sha256": "1eff9c8af55449aa8ec3e5dcd04b4a5f060cb6e5311635f99ef83f7faaae7d51",
+      "bytes": 1397
+    },
+    "docs/cg/screenshots/imani-quell-sprite-comparison-wave8-2026-10-24.webp": {
+      "sha256": "85e1b10e3b426fbe59a26e8bd0489af8abbc9f948f961fe34d2425e6c97ead21",
+      "bytes": 292594
+    },
+    "docs/cg/screenshots/imani-quell-wave8-2026-10-24.json": {
+      "sha256": "9ca50f9091b568e28a393e8d13ecfcc429ea1de8f4286c24752ce45e216d5dee",
+      "bytes": 6033
+    },
+    "docs/cg/screenshots/imani-quell-wave8-2026-10-24.webp": {
+      "sha256": "08e3ed17d77f51f7a613563e0bd52a0662e31717d2e11b63ffed1bd50e31111c",
+      "bytes": 911110
+    },
+    "docs/cg/screenshots/khepri-sen-sprite-comparison-wave8-2026-10-24.json": {
+      "sha256": "05effe77d91d412d54a34a578d6c02b8333d03d077b61e94bfa56e916b413399",
+      "bytes": 1591
+    },
+    "docs/cg/screenshots/khepri-sen-sprite-comparison-wave8-2026-10-24.webp": {
+      "sha256": "361911f595ec3024af041424c9f2cad69ac9fc6cb7948b58ea322e9864f336aa",
+      "bytes": 191124
+    },
+    "docs/cg/screenshots/khepri-sen-wave8-2026-10-24.json": {
+      "sha256": "92e745a63a290e76acc8ef3e96ed49fa06accfd2518d9bc7cbd2dddd1c96510a",
+      "bytes": 6326
+    },
+    "docs/cg/screenshots/khepri-sen-wave8-2026-10-24.webp": {
+      "sha256": "4c5e3a49b4e0ee223a7794b828068e80ccfbdcd68a9958899c915bc678b5dcdc",
+      "bytes": 838958
+    },
+    "docs/cg/screenshots/lio-ferrante-sprite-comparison-wave8-2026-10-24.json": {
+      "sha256": "ba6615bb97cbddf0b3165c608e98b3e5cdfd21b7a8c4afe84b14cf1422404317",
+      "bytes": 1734
+    },
+    "docs/cg/screenshots/lio-ferrante-sprite-comparison-wave8-2026-10-24.webp": {
+      "sha256": "c3b881703f3362eb702727d09f336aa2ec6005ca17e7bf13016019252b3a6e87",
+      "bytes": 225114
+    },
+    "docs/cg/screenshots/lio-ferrante-wave8-2026-10-24.json": {
+      "sha256": "b1b843a7a2a9594390a4b62a093314126efb6f415c81431a02f2e6a26d113a11",
+      "bytes": 6391
+    },
+    "docs/cg/screenshots/lio-ferrante-wave8-2026-10-24.webp": {
+      "sha256": "7428cde07008ae3281c05bfbdb1bcda5e8dcf4ed99a5386c39b2bc27c275317f",
+      "bytes": 973650
+    },
+    "docs/cg/screenshots/roster-wave8-overview-2026-10-24.json": {
+      "sha256": "2b555715bbf421ddc07c0ef7984e5973d56ef91d48429f5592dea0bdcb3db8ca",
+      "bytes": 7715
+    },
+    "docs/cg/screenshots/roster-wave8-overview-2026-10-24.webp": {
+      "sha256": "760ddae023eb96f26740caf9707b6327ba55e8a7df4974abf7912649fc46b5ae",
+      "bytes": 538902
+    },
+    "package.json": {
+      "sha256": "73eed2190ba27ac09934a8674b09eb05b5f4a72001ebddc584e14476d8699cf4",
+      "bytes": 23747
+    },
+    "public/cg/cg-manifest.json": {
+      "sha256": "d1432abdcaa07edfb654cfd1ef7b2f837a7ec35c6f05da57f2103f11fd236bee",
+      "bytes": 160270
+    },
+    "public/sprites/generated/heroes/iron-tempest/anton-rook-v2-fidelity-wave8-2026-10-24.png": {
+      "sha256": "e9a96d6b7f7ec0a5f9903c1f68e029f77de89d2764e299b903743c00bccb1098",
+      "bytes": 947645
+    },
+    "public/sprites/generated/heroes/iron-tempest/anton-rook.png": {
+      "sha256": "ffb0f63aa9146fa03d1098c1e73b16cb9e01f8b98d711a421698ac2c0706b27e",
+      "bytes": 971234
+    },
+    "public/sprites/generated/heroes/kemet-the-devoured-sun/khepri-sen-v2-fidelity-wave8-2026-10-24.png": {
+      "sha256": "c13ff34fbfc64b2ccbba0d494ffc6188612ed700beb576cf6cb2a501a0fe89e7",
+      "bytes": 1233742
+    },
+    "public/sprites/generated/heroes/kemet-the-devoured-sun/khepri-sen.png": {
+      "sha256": "4ec0712a74d543d1c25714ac7bcdf19abcdaceb33e4d04cac3059929964e0664",
+      "bytes": 999997
+    },
+    "public/sprites/generated/heroes/meridian-clockwork/lio-ferrante-v2-fidelity-wave8-2026-10-24.png": {
+      "sha256": "6c705005fc1623528201559c715c0c2d68360a5f0587d2d6d685a9a6f2c8897d",
+      "bytes": 1061529
+    },
+    "public/sprites/generated/heroes/meridian-clockwork/lio-ferrante.png": {
+      "sha256": "0bb4585ad3ed54541722b1498848359be535a24a351d628c4f42bbd6a2ba37ff",
+      "bytes": 987418
+    },
+    "public/sprites/generated/heroes/neon-requiem/imani-quell-v2-fidelity-wave8-2026-10-24.png": {
+      "sha256": "1f395d569faafa49c43c6867c0506eceec5ac234013b6e2ac8440ca7b64d30e3",
+      "bytes": 964757
+    },
+    "public/sprites/generated/heroes/neon-requiem/imani-quell.png": {
+      "sha256": "2d9097e27b6bf356ffe0afd9509af854a9f986a6258b6c2212a0652c497b435d",
+      "bytes": 880841
+    },
+    "public/sprites/generated/heroes/the-aether-crown/bram-quill-v2-fidelity-wave8-2026-10-24.png": {
+      "sha256": "2e612083f93c6cfa419ea43102a4e4fda2cdfa6a84ff9b1f8e9425c40f79bb69",
+      "bytes": 986588
+    },
+    "public/sprites/generated/heroes/the-aether-crown/bram-quill.png": {
+      "sha256": "c047710378f548ecac97e655539dea98fb5272e7d170a226b8cdee9de46c6244",
+      "bytes": 966846
+    },
+    "scripts/auditCgFidelityWorkbook.py": {
+      "sha256": "c1ecb2341373cbb7537ff1bb82041b9e1d10f170da24db5a70debc1b80afebfc",
+      "bytes": 24725
+    },
+    "scripts/buildCgFidelityWorkbook.py": {
+      "sha256": "ec4e1b241021be33c2387f9174ea961c7d80b9be19e011f42aee61dc81b7e978",
+      "bytes": 91385
+    },
+    "scripts/buildCgGlobalBatch.mjs": {
+      "sha256": "cdae9a23f987722cb19851ffc211ff3026277e2599b39d863a7ebb94165d1f83",
+      "bytes": 41920
+    },
+    "scripts/buildCgGlobalBatch.test.mjs": {
+      "sha256": "cae89a0047cadc72795de5d8282b40f049fd0c710e9f757f22d6a4fb3fcb714f",
+      "bytes": 22349
+    },
+    "scripts/buildCgRosterFidelityBible.mjs": {
+      "sha256": "cf293d90674bcc306f9bdb5c4a2af59a40d97cecbf8a9520b006ed6979f7c172",
+      "bytes": 54995
+    },
+    "scripts/cgSourceEvidence.test.mjs": {
+      "sha256": "709c5576646d7aedf1dd11b61230a93acac5dbf16c650e1781d98292074aad48",
+      "bytes": 13510
+    },
+    "src/game/cg/cgRevisions.generated.json": {
+      "sha256": "243eac314849514ec628414ed534963fb1748e0daa9ecd56f251ff216c14d3ee",
+      "bytes": 202193
+    },
+    "src/game/cg/cgRosterArtwork.generated.json": {
+      "sha256": "2ab3b5a89add3368b15ee5224e547ad9aa7e35b0b2a7bca24e2b8d75feb6d8a6",
+      "bytes": 4936413
+    },
+    "src/game/spriteAssets.js": {
+      "sha256": "4936018b6b475566f4a124ad943bb05188d1515cefa3ace850d88f94a39d3131",
+      "bytes": 45065
+    }
+  },
+  "coordinationFrozenPinsUnchanged": 95,
+  "coordinationFreeze": {
+    "path": ".tmp/cg-wave8-2026-10-24/coordination-final-freeze-pins.json",
+    "sha256": "96d072502a84c482965f4e4395d2aae6ea4ad86c9caea8b2732963f8866c56c1",
+    "bytes": 18987
+  },
+  "limitations": [
+    "The source portraits are internal original-project authorities; hidden geometry and tiny details remain limited by those sources.",
+    "Seyra CG13 uses Aurelia only as a scoped internal costume reference, never as identity, anatomy, weapon or environment authority.",
+    "Independent named native reviews are bound to the delivered files. Overview/comparison observations are not a second exhaustive native review.",
+    "Programmatic runtime checks are not a new interactive browser session. No deployment, commit or pull request was made.",
+    "A common instruction and prepared manifest do not imply generated images, a background worker, full-roster completion or certified absolute 1:1 fidelity."
+  ],
+  "automaticPerfectFidelityApprovals": 0
+}
