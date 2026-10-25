@@ -1,0 +1,106 @@
+[
+  {
+    "id": "COMBAT-01",
+    "auditIds": ["21", "22", "23", "T01", "T03", "T04"],
+    "status": "implemented; automated checks passed; visual preview pending",
+    "files": ["src/components/GameCanvas.jsx", "src/components/combat-immersion.css", "src/game/combatViewport.js", "scripts/combatViewport.test.mjs"],
+    "changes": [
+      "RPG, Tactics, Smash and noncombat trials now use a fixed viewport scene, without the centered page, framing border or action dashboard below the canvas.",
+      "Existing universe backdrop fills the scene; the 1040×460 logical arena remains proportional with object-fit contain. The dedicated session toolbar reserves 56px so it cannot hide raster HUD information.",
+      "Pointer selection, tactical dragging and wheel anchors use the same uniform transform as the displayed canvas. Decorative letterboxes cannot issue a command.",
+      "HUD elements honor safe-area insets and shared HUD-size/margin preferences. Narrow and short layouts adapt; the player can collapse HUD details while commands stay reachable."
+    ],
+    "validation": [
+      "scripts/combatViewport.test.mjs: 10/10 passed, including desktop, phone portrait, phone landscape, ultrawide, embedded offset, letterbox rejection and terminal-result contracts.",
+      "JSX parsed through Vite transformWithOxc for all five combat components."
+    ],
+    "limitations": ["No local browser screenshot claimed. Final visual inspection and touch-device confirmation remain part of the shared preview validation.", "Logical gameplay geometry intentionally remains unchanged; wide or tall displays receive decorative margins instead of stretched or cropped combat."]
+  },
+  {
+    "id": "COMBAT-02",
+    "auditIds": ["21", "T02", "T08"],
+    "status": "implemented; automated checks passed; visual preview pending",
+    "files": ["src/components/GameCanvas.jsx", "src/components/CombatDrawer.jsx", "src/components/combat-immersion.css"],
+    "changes": [
+      "RPG health and ATB remain on a compact squad strip with contextual primary actions at the battlefield edge.",
+      "The existing target chooser is relocated into a bounded overlay with confirmation, cancellation, estimates, source details and wait mode intact. On portrait screens it replaces the action dock during targeting.",
+      "One Auto control and the speed control remain in the HUD. The former duplicate Auto control is removed without removing automatic combat.",
+      "Relics, equipped events, support, invocations, field supers, assists, enemy P2 selection, RAAM, Pirates Curse, Black Pearl ammo and all other original panels remain in a live Arsenal drawer."
+    ],
+    "validation": ["scripts/rpgTargetingPresentation.test.mjs: 2/2 passed.", "scripts/customBattle.test.mjs: 42/42 passed, including real custom RPG/tactical routes and paused schedulers.", "scripts/fixedStepClock.test.mjs: 10/10 passed; independent RPG target-wait clock reset preserved."],
+    "limitations": ["The Arsenal is explicitly labelled live; it does not stop combat. Mission briefing, controls and display settings pause simulation."]
+  },
+  {
+    "id": "COMBAT-03",
+    "auditIds": ["22", "T02", "T08"],
+    "status": "implemented; automated checks passed; visual preview pending",
+    "files": ["src/components/GameCanvas.jsx", "src/game/combatViewport.js", "src/components/combat-immersion.css"],
+    "changes": [
+      "Tactical commands, cancel targeting and guarded End Turn remain available without page scrolling.",
+      "Active-unit identity and remaining movement AP appear next to the action dock. Existing canvas turn timeline, tile cost, ranges, cover and mission markers are retained.",
+      "All escort instructions, TacticsSupportPanel, RexEncounterPanel and the newer SourceScenePanel remain available in the appropriate briefing or live command drawer.",
+      "Drag/click suppression and pointer capture are preserved while canvas coordinates now account for ratio-preserving containment."
+    ],
+    "validation": ["Tactical geometry cases in scripts/combatViewport.test.mjs passed.", "Guarded actions and pause scheduler regressions in scripts/customBattle.test.mjs passed.", "GameCanvas fixed-step pause/visibility transitions passed."],
+    "limitations": ["No tactical rule, timer, movement budget, source ability, range or damage value was changed."]
+  },
+  {
+    "id": "COMBAT-04",
+    "auditIds": ["23", "T02", "T04", "T08"],
+    "status": "implemented; automated checks passed; visual preview pending",
+    "files": ["src/components/GameCanvas.jsx", "src/components/MeleeControlsPanel.jsx", "src/components/combat-immersion.css"],
+    "changes": [
+      "MeleeControlsPanel now supports separate HUD meters, touch controls and full settings presentations while retaining its backwards-compatible all presentation.",
+      "Guard, charge and actor state stay in the HUD; keyboard remapping and reset move into the paused Commands drawer.",
+      "Touch movement sits under the left thumb and attacks under the right. Pointer capture, release, cancel, lost-capture and focus-loss cleanup preserve held-input behavior.",
+      "The touch layer is automatically enabled for coarse pointers or narrow screens, and can be toggled explicitly in Commands.",
+      "Removed the duplicated visual DOM prematch announcement; kept the engine announcement, accessible live announcement and training-only skip control.",
+      "Existing keyboard maps, gamepad merging, local P2 controls, supers, signatures, assists and special encounter panels are retained."
+    ],
+    "validation": ["scripts/meleeInputMap.test.mjs: 7/7 passed, including merged inputs and one-time action edges.", "scripts/customBattle.test.mjs: 42/42 passed, including prematch and objective-result cases.", "Pause and visibility tests confirm input cleanup and clock reset without engine replacement."],
+    "limitations": ["Physical gamepad and multitouch testing remain to be performed in the final browser/device pass. No claim of missing controls or missing pause was made against the previous build."]
+  },
+  {
+    "id": "COMBAT-05",
+    "auditIds": ["24", "T02", "T03", "T04"],
+    "status": "implemented; automated checks passed; visual preview pending",
+    "files": ["src/components/FighterMode.jsx", "src/components/CombatDrawer.jsx", "src/components/combat-immersion.css"],
+    "changes": [
+      "The Fighter lobby uses the selected real arena backdrop and larger existing sprite portraits in a versus composition; all owned stage, music, field-super, opponent, difficulty and launch choices remain.",
+      "The duel uses a viewport scene with the original 960×540 ratio. Engine health bars and timer remain intact; bench tags become compact overlay controls.",
+      "Field supers and assists move to a live drawer, command references and display options to a paused drawer. A compact arena toolbar remains in reach.",
+      "Both players retain their own keyboard and touch actions. Touch controls can be enabled explicitly; held buttons also release on lost capture and blur."
+    ],
+    "validation": ["scripts/reauditFighterTagRoutes.test.mjs: 16/16 passed against the actual component callbacks and real Fighter engine, covering both sides, all three tag slots and paused/hidden/hit-stop guards.", "Fighter visibility and shell pause clock-reset tests passed.", "Fighter JSX compilation passed."],
+    "limitations": ["The engine, hitboxes, action rules and match balance are unchanged. Full visual certification waits for the shared deployment preview."]
+  },
+  {
+    "id": "COMBAT-06",
+    "auditIds": ["25", "26", "T05", "T09"],
+    "status": "implemented; automated checks passed; integrated with App and Hub owners",
+    "files": ["src/components/GameCanvas.jsx", "src/components/FighterMode.jsx", "src/components/CombatDrawer.jsx", "src/components/CombatResultDialog.jsx", "src/game/combatViewport.js", "scripts/combatViewport.test.mjs", "scripts/customBattle.test.mjs"],
+    "changes": [
+      "GameCanvas/Fighter expose optional onPauseRequest and compose external pause with local briefing/settings pause, keeping the engine mounted and its clock reset on transitions.",
+      "Native dialogs isolate focus for paused drawers and full-screen results; Escape is consumed by the current dialog and cannot open a session pause above a result.",
+      "GameCanvas separates the engine verdict from acknowledgment. onSessionComplete still announces the verdict; onBattleEnd is sent once after acknowledgment. A stale retreat cannot replace victory or defeat.",
+      "Fighter keeps onMatchComplete at the existing one-time engine verdict. onSessionEnd now waits for explicit rematch or return from the result, so the dedicated shell stays mounted during the report.",
+      "The full result retains mission summary lines, reward text, custom-session distinctions, pose, score, rank, duration, rematch and the existing return action."
+    ],
+    "validation": ["Completion-gate tests reject victory/defeat before an engine verdict, invalid results, late retreat, duplicate acknowledgment and late completion after abandonment.", "scripts/customBattle.test.mjs updated to check the guarded pause entry and the shared completion gate instead of the removed direct-quit markup; 42/42 passed.", "scripts/fixedStepClock.test.mjs: 10/10 passed."],
+    "limitations": ["App remains the authoritative campaign reward boundary; its separate gate is owned and verified by the root implementation.", "CustomBattleMode now retains the dedicated envelope until onBattleEnd; integration implemented by the Hub owner."]
+  },
+  {
+    "id": "COMBAT-07",
+    "auditIds": ["40", "T06", "T07"],
+    "status": "implemented; parsed; visual preview pending",
+    "files": ["src/components/GameCanvas.jsx", "src/components/MeleeControlsPanel.jsx", "src/components/combat-immersion.css"],
+    "changes": [
+      "Loading copy describes synchronizing combat signatures, replacing the OpenAI sprite-sheet construction message.",
+      "The unavailable-threat state guides the player to another mission instead of an ADMIN tool. Runtime errors show a player-facing recovery message and preserve signal details in a disclosure.",
+      "Removed the P4 development label from the melee controls title and translated the no-actor state.",
+      "Drawer text has readable minimum sizes, controls have visible focus and touch targets, high contrast preferences are honored, and reduced-motion preferences suppress ornamental effects."
+    ],
+    "validation": ["JSX parsed for GameCanvas, FighterMode, MeleeControlsPanel, CombatDrawer and CombatResultDialog.", "All 87 targeted checks across geometry/result, fixed clock, targeting presentation, Fighter tags, melee mappings and custom combat passed."],
+    "limitations": ["Reduced motion affects interface ornamentation only; authored gameplay animations and timings remain unchanged."]
+  }
+]

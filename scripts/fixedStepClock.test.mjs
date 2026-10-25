@@ -45,7 +45,7 @@ const runComponentTransition = (body, environment) => new Function(...Object.key
 const transitionEnvironment = clock => {
   const engine = { paused: false, calls: [], setPaused(value) { this.paused = value; this.calls.push(value); } };
   return ({
-  simulationClockRef: { current: clock }, sessionPausedRef: { current: false }, sessionPaused: false,
+  simulationClockRef: { current: clock }, sessionPausedRef: { current: false }, sessionPaused: false, raceMenuOpen: false,
   document: { hidden: false }, engine, engineRef: { current: engine },
   inputRef: { current: {} }, keysRef: { current: {} }, keyPulseRef: { current: {} },
   tacticsCameraPointerRef: { current: {} }, suppressTacticsClickRef: { current: false },
@@ -86,7 +86,7 @@ for (const component of ['GameCanvas', 'FighterMode', 'RaceMode']) {
 
   test(`${component} shell pause and resume reset elapsed time without reconstructing the engine`, () => {
     const source = componentSource(component);
-    const effect = source.match(/useEffect\(\(\) => \{\s*(sessionPausedRef\.current = sessionPaused;[\s\S]*?)\}, \[sessionPaused\]\);/);
+    const effect = source.match(/useEffect\(\(\) => \{\s*(sessionPausedRef\.current = sessionPaused(?: \|\| raceMenuOpen)?;[\s\S]*?)\}, \[sessionPaused(?:, raceMenuOpen)?\]\);/);
     assert.ok(effect, 'missing shell pause effect');
     const clock = createFixedStepClock();
     const environment = transitionEnvironment(clock);
@@ -97,6 +97,14 @@ for (const component of ['GameCanvas', 'FighterMode', 'RaceMode']) {
     runComponentTransition(effect[1], environment);
     environment.sessionPaused = false;
     runComponentTransition(effect[1], environment);
+    if (component === 'RaceMode') {
+      environment.raceMenuOpen = true;
+      runComponentTransition(effect[1], environment);
+      assert.equal(environment.sessionPausedRef.current, true, 'garage must freeze the race');
+      environment.raceMenuOpen = false;
+      runComponentTransition(effect[1], environment);
+      assert.equal(environment.sessionPausedRef.current, false);
+    }
     assert.equal(environment.engineRef.current, sameEngine);
     assert.equal(clock.advance(520), 0);
     assert.equal(clock.advance(540), 1);

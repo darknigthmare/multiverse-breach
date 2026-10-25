@@ -2,13 +2,17 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineFighter, resolveFighterCosmetics } from '../game/engineFighter';
 import { synchronizeFighterControlOwners } from '../game/fighterControlOwnership.js';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
-import { ParticleSystem, drawUniverseBackground, preloadSpriteSheetSrcs } from '../game/renderer';
+import { ParticleSystem, getOpenAiBackdropSrc, drawUniverseBackground, preloadSpriteSheetSrcs } from '../game/renderer';
 import { getRecentUniverseLevelProfile } from '../game/recentUniverseLevels';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout } from '../game/spriteAssets';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import sound from '../game/soundEngine';
 import GameHudThemeLayer from './GameHudThemeLayer';
+import CombatDrawer from './CombatDrawer.jsx';
+import CombatResultDialog from './CombatResultDialog.jsx';
+import GameDisplaySettings from './GameDisplaySettings.jsx';
+import './combat-immersion.css';
 
 const CONTROL_KEYS = new Set([
   'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
@@ -265,10 +269,14 @@ export default function FighterMode({
   onExit,
   onSessionStart,
   onSessionEnd,
-  sessionPaused = false,
+  sessionPaused: externalSessionPaused = false,
+  onPauseRequest,
   sessionExitRequest = 0,
   dedicatedSession = false
 }) {
+  const [activeDrawer, setActiveDrawer] = useState(null);
+  const [showTouchControls, setShowTouchControls] = useState(() => typeof window !== 'undefined' && (window.matchMedia?.('(any-pointer: coarse)')?.matches || window.innerWidth < 760));
+  const sessionPaused = externalSessionPaused || ['controls', 'leave'].includes(activeDrawer);
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const inputRef = useRef({ player: {}, cpu: {} });
@@ -304,6 +312,10 @@ export default function FighterMode({
     onSessionEndRef.current = onSessionEnd;
   }, [onSessionEnd]);
 
+  useEffect(() => {
+    if (externalSessionPaused) setActiveDrawer(null);
+  }, [externalSessionPaused]);
+
   // Le shell du hub pilote la pause sans reconstruire le moteur du duel.
   useEffect(() => {
     sessionPausedRef.current = sessionPaused;
@@ -317,6 +329,7 @@ export default function FighterMode({
     if (sessionExitRequestRef.current === sessionExitRequest) return;
     sessionExitRequestRef.current = sessionExitRequest;
     engineRef.current?.dispose();
+    setActiveDrawer(null);
     setMatchStarted(false);
     setSummary(null);
     setSnapshot(emptySnapshot);
@@ -518,11 +531,13 @@ export default function FighterMode({
             ? { gold: 0, shards: 0, seasonXp: 0 }
             : report.rewards
         };
+        setActiveDrawer(null);
         setSummary(resolved);
         setSnapshot(engine.getSnapshot());
         sound.setStageMusicState(result, { ...battleMusicStage, result });
         onMatchCompleteRef.current?.(resolved);
-        onSessionEndRef.current?.({ reason: 'completed', report: resolved });
+        // Keep the dedicated scene mounted until the player acknowledges the
+        // result. Rewards are still reported once by onMatchComplete above.
       },
       {
         difficulty: configuredDifficulty,
@@ -597,7 +612,8 @@ export default function FighterMode({
       inputRef.current[side][control] = active;
     };
     const onKeyDown = event => {
-      if (event.repeat || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable) return;
+      if (event.repeat || event.defaultPrevented || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable || event.target?.closest?.('[data-combat-drawer].is-paused')) return;
+      if ([' ', 'Enter'].includes(event.key) && event.target?.closest?.('button')) return;
       if (!CONTROL_KEYS.has(event.key)) return;
       event.preventDefault();
       if (sessionPausedRef.current || document.hidden) return;
@@ -712,6 +728,7 @@ export default function FighterMode({
 
   const startMatch = () => {
     if (sessionPausedRef.current || document.hidden || !playerHeroes.length || !opponentHeroes.length) return;
+    if (summary) onSessionEndRef.current?.({ reason: 'completed', report: summary });
     engineRef.current?.dispose();
     setRuntimeError(false);
     onSessionStart?.();
@@ -723,7 +740,11 @@ export default function FighterMode({
   };
 
   const returnToLobby = () => {
-    if (sessionPausedRef.current) return;
+    if (externalSessionPaused) return;
+    setActiveDrawer(null);
+    onSessionEndRef.current?.(summary
+      ? { reason: 'completed', report: summary }
+      : { reason: 'abandoned' });
     engineRef.current?.dispose();
     setRuntimeError(false);
     setMatchStarted(false);
@@ -828,7 +849,7 @@ export default function FighterMode({
 
   if (!matchStarted) {
     return (
-      <section className={`fighter-mode-shell ${activeHudTheme ? 'game-hud-themed-interface' : ''}`} aria-labelledby="fighter-mode-title">
+      <section className={`fighter-mode-shell fighter-immersive-lobby ${activeHudTheme ? 'game-hud-themed-interface' : ''}`} aria-labelledby="fighter-mode-title" style={{ '--combat-backdrop': getOpenAiBackdropSrc(arenaUniverse, 'Combat') ? `url("${getOpenAiBackdropSrc(arenaUniverse, 'Combat')}")` : 'none' }}>
         <GameHudThemeLayer theme={activeHudTheme} mode="combat" />
         <header className="fighter-mode-header">
           <div>
@@ -845,6 +866,11 @@ export default function FighterMode({
           </div>
         </header>
 
+        <div className="fighter-arena-preview">
+          <span>{lang === 'fr' ? 'PROCHAINE ARÈNE' : 'NEXT ARENA'}</span>
+          <strong>{arenaUniverse}</strong>
+          <small>{arenaLevelProfile?.combat?.name || (lang === 'fr' ? 'Duel de convergence' : 'Convergence duel')}</small>
+        </div>
         <div className="fighter-versus-grid">
           <section>
             <span className="fighter-section-label">{lang === 'fr' ? 'CELLULE JOUEUR' : 'PLAYER CELL'}</span>
@@ -961,35 +987,24 @@ export default function FighterMode({
   }
 
   return (
-    <section className={`fighter-mode-shell fighter-mode-active ${activeHudTheme ? 'game-hud-themed-interface' : ''}`} aria-labelledby="fighter-mode-title">
+    <section className={`fighter-mode-shell fighter-mode-active combat-immersive-surface ${activeHudTheme ? 'game-hud-themed-interface' : ''}`} aria-labelledby="fighter-mode-title" data-battle-completed={Boolean(summary)} data-touch-controls={showTouchControls}
+      style={{ '--combat-backdrop': getOpenAiBackdropSrc(arenaUniverse, 'Combat') ? `url("${getOpenAiBackdropSrc(arenaUniverse, 'Combat')}")` : 'none' }}>
+      <div className="combat-scene-fill" aria-hidden="true" />
       <GameHudThemeLayer theme={activeHudTheme} mode="combat" />
-      <header className="fighter-battle-header">
-        <div>
-          <span>ARENE D IMPACT A.R.C.A. / {arenaUniverse}</span>
-          <strong>{arenaLevelProfile?.combat?.name || (lang === 'fr' ? 'Duel de convergence' : 'Convergence Duel')}</strong>
-        </div>
-        <div>
-          <b>{snapshot.phase === 'countdown' ? snapshot.countdown : snapshot.timer}s</b>
-          <small>
-            {opponentControl === 'p2'
-              ? (lang === 'fr' ? 'P2 LOCAL' : 'LOCAL P2')
-              : snapshot.phase === 'countdown'
-                ? (lang === 'fr' ? 'ANCRAGE' : 'SYNC')
-              : snapshot.phase === 'running'
-                ? (lang === 'fr' ? 'DUEL ACTIF' : 'LIVE FIGHT')
-                : snapshot.phase.toUpperCase()}
-          </small>
-        </div>
-        {!dedicatedSession && (
-          <button type="button" className="btn-retro" onClick={returnToLobby}>
-            {isCustomBattle
-              ? (lang === 'fr' ? 'RETOUR CONFIGURATION' : 'BACK TO SETUP')
-              : (lang === 'fr' ? 'QUITTER' : 'LEAVE')}
-          </button>
-        )}
+      <header className="fighter-battle-header combat-fighter-toolbar">
+        <div><span id="fighter-mode-title">{arenaUniverse}</span><strong>{lang === 'fr' ? 'DUEL DE RÉSONANCE' : 'RESONANCE DUEL'}</strong></div>
+        <nav className="combat-hud-tools" aria-label={lang === 'fr' ? 'Menu du duel' : 'Duel menu'}>
+          <button type="button" onClick={() => setActiveDrawer(activeDrawer === 'arsenal' ? null : 'arsenal')}
+            disabled={sessionPaused || Boolean(summary)} aria-expanded={activeDrawer === 'arsenal'}>{lang === 'fr' ? 'RENFORTS / SUPERS' : 'ASSISTS / SUPERS'}</button>
+          <button type="button" onClick={() => setActiveDrawer(activeDrawer === 'controls' ? null : 'controls')}
+            disabled={Boolean(summary)} aria-expanded={activeDrawer === 'controls'}>{lang === 'fr' ? 'COMMANDES' : 'CONTROLS'}</button>
+          {!dedicatedSession && <button type="button" disabled={Boolean(summary)} onClick={() => {
+            setActiveDrawer(onPauseRequest ? null : 'controls'); onPauseRequest?.();
+          }} aria-label={lang === 'fr' ? 'Mettre le duel en pause' : 'Pause duel'}>Ⅱ</button>}
+        </nav>
       </header>
 
-      {runtimeError && <div role="alert" data-fighter-runtime-error="true" style={{ padding: 16 }}>
+      {runtimeError && <div className="combat-runtime-error" role="alert" data-fighter-runtime-error="true" style={{ padding: 16 }}>
         <p>{lang === 'fr'
           ? 'Le combat a été arrêté après une erreur. Aucun résultat supplémentaire ne sera enregistré.'
           : 'The fight stopped after an error. No additional result will be recorded.'}</p>
@@ -1006,7 +1021,7 @@ export default function FighterMode({
             ref={canvasRef}
             width="960"
             height="540"
-            className="fighter-mode-canvas"
+            className="fighter-mode-canvas combat-stage-canvas"
             aria-label={lang === 'fr' ? 'Arene de combat A.R.C.A. jouable' : 'Playable A.R.C.A. fighting arena'}
             data-fighter-phase={snapshot.phase}
             data-fighter-timer={snapshot.timer}
@@ -1019,6 +1034,7 @@ export default function FighterMode({
               : `Fight ${snapshot.phase}. ${snapshot.timer} seconds. ${playerSnapshot.fighters.filter(fighter => !fighter.ko).length} player signatures and ${cpuSnapshot.fighters.filter(fighter => !fighter.ko).length} opponent signatures remain.`}
           </p>
           {summary && (
+            <CombatResultDialog label={lang === 'fr' ? 'RAPPORT DE DUEL' : 'DUEL REPORT'}>
             <div
               className={`fighter-result-banner ${summary.result}`}
               data-victory-pose={summary.victoryPose?.style || 'standard'}
@@ -1058,10 +1074,15 @@ export default function FighterMode({
                 </button>
               </div>
             </div>
+            </CombatResultDialog>
           )}
         </div>
 
-        <aside className="fighter-side-panel">
+
+      </div>
+
+      {!summary && <div className="fighter-hud-lineups">
+
           <section>
             <div className="fighter-side-heading">
               <span>{lang === 'fr' ? 'REMPLACANTS' : 'TAG ROSTER'}</span>
@@ -1086,6 +1107,66 @@ export default function FighterMode({
               onTag={index => triggerTag(index, 'cpu')}
             />
           </section>
+      </div>}
+      <div
+        className="fighter-touch-controls"
+        hidden={Boolean(summary)}
+        data-opponent-control={opponentControl}
+        aria-label={lang === 'fr' ? 'Commandes tactiles de combat' : 'Touch fighting controls'}
+      >
+        <div
+          aria-label={lang === 'fr' ? 'Mouvements tactiles J1' : 'P1 touch movement'}
+          style={{ gridTemplateColumns: 'repeat(5, minmax(44px, 1fr))' }}
+        >
+          <span style={{ gridColumn: '1 / -1', color: '#39c5bb', fontSize: 9 }}>J1 / P1</span>
+          <button type="button" title={lang === 'fr' ? 'Gauche' : 'Left'} onPointerDown={() => setHeldInput('left', true)} onPointerUp={() => setHeldInput('left', false)} onPointerCancel={() => setHeldInput('left', false)} onLostPointerCapture={() => setHeldInput('left', false)} onBlur={() => setHeldInput('left', false)} onPointerLeave={() => setHeldInput('left', false)}>&larr;</button>
+          <button type="button" title={lang === 'fr' ? 'Accroupi' : 'Crouch'} onPointerDown={() => setHeldInput('down', true)} onPointerUp={() => setHeldInput('down', false)} onPointerCancel={() => setHeldInput('down', false)} onLostPointerCapture={() => setHeldInput('down', false)} onBlur={() => setHeldInput('down', false)} onPointerLeave={() => setHeldInput('down', false)}>&darr;</button>
+          <button type="button" title={lang === 'fr' ? 'Saut' : 'Jump'} onClick={() => triggerAction('jump')}>&uarr;</button>
+          <button type="button" title={lang === 'fr' ? 'Droite' : 'Right'} onPointerDown={() => setHeldInput('right', true)} onPointerUp={() => setHeldInput('right', false)} onPointerCancel={() => setHeldInput('right', false)} onLostPointerCapture={() => setHeldInput('right', false)} onBlur={() => setHeldInput('right', false)} onPointerLeave={() => setHeldInput('right', false)}>&rarr;</button>
+          <button type="button" title={lang === 'fr' ? 'Garde [E]' : 'Guard [E]'} onPointerDown={() => setHeldInput('guard', true)} onPointerUp={() => setHeldInput('guard', false)} onPointerCancel={() => setHeldInput('guard', false)} onLostPointerCapture={() => setHeldInput('guard', false)} onBlur={() => setHeldInput('guard', false)} onPointerLeave={() => setHeldInput('guard', false)}>E</button>
+        </div>
+        <div aria-label={lang === 'fr' ? 'Actions tactiles J1' : 'P1 touch actions'}>
+          <span style={{ gridColumn: '1 / -1', color: '#39c5bb', fontSize: 9 }}>
+            {lang === 'fr' ? 'ACTIONS J1' : 'P1 ACTIONS'}
+          </span>
+          <button type="button" title={lang === 'fr' ? 'Attaque legere [F]' : 'Light attack [F]'} onClick={() => triggerAction('light')}>F</button>
+          <button type="button" title={lang === 'fr' ? 'Attaque lourde [G]' : 'Heavy attack [G]'} onClick={() => triggerAction('heavy')}>G</button>
+          <button type="button" title={lang === 'fr' ? 'Special [H]' : 'Special [H]'} onClick={() => triggerAction('special')}>H</button>
+          <button type="button" title={`${playerSnapshot.superName || 'Rupture'} [R]`} disabled={sessionPaused || !playerSnapshot.superReady} onClick={() => triggerAction('super')}>R</button>
+          <button type="button" title={lang === 'fr' ? 'Super de terrain [T]' : 'Field super [T]'} disabled={!fieldSuperReady} onClick={() => triggerFieldSuper('player')}>T</button>
+          {playerAssist && <button type="button" title={lang === 'fr' ? 'Assist PNJ [Y]' : 'NPC assist [Y]'} disabled={!playerAssistReady} onClick={() => triggerAssist('player')}>Y</button>}
+        </div>
+        {opponentControl === 'p2' && (
+          <>
+            <div
+              aria-label={lang === 'fr' ? 'Mouvements tactiles J2' : 'P2 touch movement'}
+              style={{ gridTemplateColumns: 'repeat(5, minmax(44px, 1fr))' }}
+            >
+              <span style={{ gridColumn: '1 / -1', color: '#ff8c50', fontSize: 9 }}>J2 / P2</span>
+              <button type="button" title={lang === 'fr' ? 'J2 gauche' : 'P2 left'} onPointerDown={() => setHeldInput('left', true, 'cpu')} onPointerUp={() => setHeldInput('left', false, 'cpu')} onPointerCancel={() => setHeldInput('left', false, 'cpu')} onLostPointerCapture={() => setHeldInput('left', false, 'cpu')} onBlur={() => setHeldInput('left', false, 'cpu')} onPointerLeave={() => setHeldInput('left', false, 'cpu')}>&larr;</button>
+              <button type="button" title={lang === 'fr' ? 'J2 accroupi' : 'P2 crouch'} onPointerDown={() => setHeldInput('down', true, 'cpu')} onPointerUp={() => setHeldInput('down', false, 'cpu')} onPointerCancel={() => setHeldInput('down', false, 'cpu')} onLostPointerCapture={() => setHeldInput('down', false, 'cpu')} onBlur={() => setHeldInput('down', false, 'cpu')} onPointerLeave={() => setHeldInput('down', false, 'cpu')}>&darr;</button>
+              <button type="button" title={lang === 'fr' ? 'J2 saut' : 'P2 jump'} onClick={() => triggerAction('jump', 'cpu')}>&uarr;</button>
+              <button type="button" title={lang === 'fr' ? 'J2 droite' : 'P2 right'} onPointerDown={() => setHeldInput('right', true, 'cpu')} onPointerUp={() => setHeldInput('right', false, 'cpu')} onPointerCancel={() => setHeldInput('right', false, 'cpu')} onLostPointerCapture={() => setHeldInput('right', false, 'cpu')} onBlur={() => setHeldInput('right', false, 'cpu')} onPointerLeave={() => setHeldInput('right', false, 'cpu')}>&rarr;</button>
+              <button type="button" title={lang === 'fr' ? 'Garde J2 [U]' : 'P2 guard [U]'} onPointerDown={() => setHeldInput('guard', true, 'cpu')} onPointerUp={() => setHeldInput('guard', false, 'cpu')} onPointerCancel={() => setHeldInput('guard', false, 'cpu')} onLostPointerCapture={() => setHeldInput('guard', false, 'cpu')} onBlur={() => setHeldInput('guard', false, 'cpu')} onPointerLeave={() => setHeldInput('guard', false, 'cpu')}>U</button>
+            </div>
+            <div aria-label={lang === 'fr' ? 'Actions tactiles J2' : 'P2 touch actions'}>
+              <span style={{ gridColumn: '1 / -1', color: '#ff8c50', fontSize: 9 }}>
+                {lang === 'fr' ? 'ACTIONS J2' : 'P2 ACTIONS'}
+              </span>
+              <button type="button" title={lang === 'fr' ? 'Attaque legere J2 [P]' : 'P2 light attack [P]'} onClick={() => triggerAction('light', 'cpu')}>P</button>
+              <button type="button" title={lang === 'fr' ? 'Attaque lourde J2 [M]' : 'P2 heavy attack [M]'} onClick={() => triggerAction('heavy', 'cpu')}>M</button>
+              <button type="button" title={lang === 'fr' ? 'Special J2 [L]' : 'P2 special [L]'} onClick={() => triggerAction('special', 'cpu')}>L</button>
+              <button type="button" title={`${cpuSnapshot.superName || (lang === 'fr' ? 'Rupture J2' : 'P2 rupture')} [O]`} disabled={sessionPaused || !cpuSnapshot.superReady} onClick={() => triggerAction('super', 'cpu')}>O</button>
+              <button type="button" title={lang === 'fr' ? 'Super de terrain J2 [I]' : 'P2 field super [I]'} disabled={!opponentFieldSuperReady} onClick={() => triggerFieldSuper('cpu')}>I</button>
+              {opponentAssist && <button type="button" title={lang === 'fr' ? 'Assist PNJ J2 [K]' : 'P2 NPC assist [K]'} disabled={!opponentAssistReady} onClick={() => triggerAssist('cpu')}>K</button>}
+            </div>
+          </>
+        )}
+      </div>
+
+      <CombatDrawer open={activeDrawer === 'arsenal' && !summary} onClose={() => setActiveDrawer(null)}
+        title={lang === 'fr' ? 'Renforts & supers' : 'Assists & supers'} lang={lang}>
+        <aside className="fighter-side-panel">
           <section>
             <div className="fighter-side-heading">
               <span>{lang === 'fr' ? 'SUPER TERRAIN J1 / T' : 'P1 FIELD SUPER / T'}</span>
@@ -1198,6 +1279,29 @@ export default function FighterMode({
               onTrigger={() => triggerAssist('cpu')}
             />
           )}
+        </aside>
+      </CombatDrawer>
+      <CombatDrawer open={activeDrawer === 'controls' && !summary} onClose={() => setActiveDrawer(null)} modal
+        title={lang === 'fr' ? 'Commandes du duel' : 'Duel controls'} lang={lang}>
+        <div className="fighter-drawer-status">
+        <div>
+          <span>ARENE D IMPACT A.R.C.A. / {arenaUniverse}</span>
+          <strong>{arenaLevelProfile?.combat?.name || (lang === 'fr' ? 'Duel de convergence' : 'Convergence Duel')}</strong>
+        </div>
+        <div>
+          <b>{snapshot.phase === 'countdown' ? snapshot.countdown : snapshot.timer}s</b>
+          <small>
+            {opponentControl === 'p2'
+              ? (lang === 'fr' ? 'P2 LOCAL' : 'LOCAL P2')
+              : snapshot.phase === 'countdown'
+                ? (lang === 'fr' ? 'ANCRAGE' : 'SYNC')
+              : snapshot.phase === 'running'
+                ? (lang === 'fr' ? 'DUEL ACTIF' : 'LIVE FIGHT')
+                : snapshot.phase.toUpperCase()}
+          </small>
+        </div>
+
+        </div>
           <section className="fighter-control-list">
             <span>{opponentControl === 'p2' ? (lang === 'fr' ? 'COMMANDES J1' : 'P1 CONTROLS') : (lang === 'fr' ? 'COMMANDES' : 'CONTROLS')}</span>
             <div><b>ZQSD</b><small>{lang === 'fr' ? 'Mouvement' : 'Move'}</small></div>
@@ -1220,63 +1324,22 @@ export default function FighterMode({
               <div><b>7 / 8 / 9</b><small>Tag</small></div>
             </section>
           )}
-        </aside>
-      </div>
 
-      <div
-        className="fighter-touch-controls"
-        data-opponent-control={opponentControl}
-        aria-label={lang === 'fr' ? 'Commandes tactiles de combat' : 'Touch fighting controls'}
-      >
-        <div
-          aria-label={lang === 'fr' ? 'Mouvements tactiles J1' : 'P1 touch movement'}
-          style={{ gridTemplateColumns: 'repeat(5, minmax(44px, 1fr))' }}
-        >
-          <span style={{ gridColumn: '1 / -1', color: '#39c5bb', fontSize: 9 }}>J1 / P1</span>
-          <button type="button" title={lang === 'fr' ? 'Gauche' : 'Left'} onPointerDown={() => setHeldInput('left', true)} onPointerUp={() => setHeldInput('left', false)} onPointerCancel={() => setHeldInput('left', false)} onPointerLeave={() => setHeldInput('left', false)}>&larr;</button>
-          <button type="button" title={lang === 'fr' ? 'Accroupi' : 'Crouch'} onPointerDown={() => setHeldInput('down', true)} onPointerUp={() => setHeldInput('down', false)} onPointerCancel={() => setHeldInput('down', false)} onPointerLeave={() => setHeldInput('down', false)}>&darr;</button>
-          <button type="button" title={lang === 'fr' ? 'Saut' : 'Jump'} onClick={() => triggerAction('jump')}>&uarr;</button>
-          <button type="button" title={lang === 'fr' ? 'Droite' : 'Right'} onPointerDown={() => setHeldInput('right', true)} onPointerUp={() => setHeldInput('right', false)} onPointerCancel={() => setHeldInput('right', false)} onPointerLeave={() => setHeldInput('right', false)}>&rarr;</button>
-          <button type="button" title={lang === 'fr' ? 'Garde [E]' : 'Guard [E]'} onPointerDown={() => setHeldInput('guard', true)} onPointerUp={() => setHeldInput('guard', false)} onPointerCancel={() => setHeldInput('guard', false)} onPointerLeave={() => setHeldInput('guard', false)}>E</button>
+        <label className="game-toggle-setting"><input type="checkbox" checked={showTouchControls} onChange={event => setShowTouchControls(event.target.checked)} />
+          <span>{lang === 'fr' ? 'Afficher les commandes tactiles à l’écran' : 'Show touch controls on screen'}</span></label>
+        <GameDisplaySettings lang={lang} />
+        <div className="combat-pause-actions">
+          <button type="button" className="btn-retro" onClick={() => setActiveDrawer(null)}>{lang === 'fr' ? 'REPRENDRE' : 'RESUME'}</button>
+          {onPauseRequest ? <button type="button" className="btn-retro" onClick={() => { setActiveDrawer(null); onPauseRequest(); }}>{lang === 'fr' ? 'MENU PAUSE' : 'PAUSE MENU'}</button> :
+            <button type="button" className="btn-retro" onClick={() => setActiveDrawer('leave')}>{lang === 'fr' ? 'QUITTER LE DUEL' : 'LEAVE DUEL'}</button>}
         </div>
-        <div aria-label={lang === 'fr' ? 'Actions tactiles J1' : 'P1 touch actions'}>
-          <span style={{ gridColumn: '1 / -1', color: '#39c5bb', fontSize: 9 }}>
-            {lang === 'fr' ? 'ACTIONS J1' : 'P1 ACTIONS'}
-          </span>
-          <button type="button" title={lang === 'fr' ? 'Attaque legere [F]' : 'Light attack [F]'} onClick={() => triggerAction('light')}>F</button>
-          <button type="button" title={lang === 'fr' ? 'Attaque lourde [G]' : 'Heavy attack [G]'} onClick={() => triggerAction('heavy')}>G</button>
-          <button type="button" title={lang === 'fr' ? 'Special [H]' : 'Special [H]'} onClick={() => triggerAction('special')}>H</button>
-          <button type="button" title={`${playerSnapshot.superName || 'Rupture'} [R]`} disabled={sessionPaused || !playerSnapshot.superReady} onClick={() => triggerAction('super')}>R</button>
-          <button type="button" title={lang === 'fr' ? 'Super de terrain [T]' : 'Field super [T]'} disabled={!fieldSuperReady} onClick={() => triggerFieldSuper('player')}>T</button>
-          {playerAssist && <button type="button" title={lang === 'fr' ? 'Assist PNJ [Y]' : 'NPC assist [Y]'} disabled={!playerAssistReady} onClick={() => triggerAssist('player')}>Y</button>}
-        </div>
-        {opponentControl === 'p2' && (
-          <>
-            <div
-              aria-label={lang === 'fr' ? 'Mouvements tactiles J2' : 'P2 touch movement'}
-              style={{ gridTemplateColumns: 'repeat(5, minmax(44px, 1fr))' }}
-            >
-              <span style={{ gridColumn: '1 / -1', color: '#ff8c50', fontSize: 9 }}>J2 / P2</span>
-              <button type="button" title={lang === 'fr' ? 'J2 gauche' : 'P2 left'} onPointerDown={() => setHeldInput('left', true, 'cpu')} onPointerUp={() => setHeldInput('left', false, 'cpu')} onPointerCancel={() => setHeldInput('left', false, 'cpu')} onPointerLeave={() => setHeldInput('left', false, 'cpu')}>&larr;</button>
-              <button type="button" title={lang === 'fr' ? 'J2 accroupi' : 'P2 crouch'} onPointerDown={() => setHeldInput('down', true, 'cpu')} onPointerUp={() => setHeldInput('down', false, 'cpu')} onPointerCancel={() => setHeldInput('down', false, 'cpu')} onPointerLeave={() => setHeldInput('down', false, 'cpu')}>&darr;</button>
-              <button type="button" title={lang === 'fr' ? 'J2 saut' : 'P2 jump'} onClick={() => triggerAction('jump', 'cpu')}>&uarr;</button>
-              <button type="button" title={lang === 'fr' ? 'J2 droite' : 'P2 right'} onPointerDown={() => setHeldInput('right', true, 'cpu')} onPointerUp={() => setHeldInput('right', false, 'cpu')} onPointerCancel={() => setHeldInput('right', false, 'cpu')} onPointerLeave={() => setHeldInput('right', false, 'cpu')}>&rarr;</button>
-              <button type="button" title={lang === 'fr' ? 'Garde J2 [U]' : 'P2 guard [U]'} onPointerDown={() => setHeldInput('guard', true, 'cpu')} onPointerUp={() => setHeldInput('guard', false, 'cpu')} onPointerCancel={() => setHeldInput('guard', false, 'cpu')} onPointerLeave={() => setHeldInput('guard', false, 'cpu')}>U</button>
-            </div>
-            <div aria-label={lang === 'fr' ? 'Actions tactiles J2' : 'P2 touch actions'}>
-              <span style={{ gridColumn: '1 / -1', color: '#ff8c50', fontSize: 9 }}>
-                {lang === 'fr' ? 'ACTIONS J2' : 'P2 ACTIONS'}
-              </span>
-              <button type="button" title={lang === 'fr' ? 'Attaque legere J2 [P]' : 'P2 light attack [P]'} onClick={() => triggerAction('light', 'cpu')}>P</button>
-              <button type="button" title={lang === 'fr' ? 'Attaque lourde J2 [M]' : 'P2 heavy attack [M]'} onClick={() => triggerAction('heavy', 'cpu')}>M</button>
-              <button type="button" title={lang === 'fr' ? 'Special J2 [L]' : 'P2 special [L]'} onClick={() => triggerAction('special', 'cpu')}>L</button>
-              <button type="button" title={`${cpuSnapshot.superName || (lang === 'fr' ? 'Rupture J2' : 'P2 rupture')} [O]`} disabled={sessionPaused || !cpuSnapshot.superReady} onClick={() => triggerAction('super', 'cpu')}>O</button>
-              <button type="button" title={lang === 'fr' ? 'Super de terrain J2 [I]' : 'P2 field super [I]'} disabled={!opponentFieldSuperReady} onClick={() => triggerFieldSuper('cpu')}>I</button>
-              {opponentAssist && <button type="button" title={lang === 'fr' ? 'Assist PNJ J2 [K]' : 'P2 NPC assist [K]'} disabled={!opponentAssistReady} onClick={() => triggerAssist('cpu')}>K</button>}
-            </div>
-          </>
-        )}
-      </div>
+      </CombatDrawer>
+      <CombatDrawer open={activeDrawer === 'leave' && !summary} onClose={() => setActiveDrawer(null)} modal
+        title={lang === 'fr' ? 'Quitter le duel ?' : 'Leave the duel?'} lang={lang}>
+        <p>{lang === 'fr' ? 'Le duel en cours restera inachevé. Ta collection et tes victoires acquises sont conservées.' : 'The current duel will remain incomplete. Your collection and previous wins are preserved.'}</p>
+        <div className="combat-pause-actions"><button type="button" className="btn-retro" onClick={() => setActiveDrawer(null)}>{lang === 'fr' ? 'CONTINUER LE DUEL' : 'CONTINUE DUEL'}</button>
+          <button type="button" className="btn-retro" onClick={returnToLobby}>{lang === 'fr' ? 'CONFIRMER LA SORTIE' : 'CONFIRM EXIT'}</button></div>
+      </CombatDrawer>
     </section>
   );
 }

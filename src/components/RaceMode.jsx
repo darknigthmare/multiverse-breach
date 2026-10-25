@@ -6,6 +6,8 @@ import sound from '../game/soundEngine';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import GameHudThemeLayer from './GameHudThemeLayer';
+import ImmersiveDrawer from './ImmersiveDrawer.jsx';
+import './HubImmersion.css';
 
 const CONTROL_KEYS = new Set([
   'ArrowUp',
@@ -57,6 +59,7 @@ export default function RaceMode({
   hiddenUniverses = [],
   onSessionStart,
   onSessionEnd,
+  onPauseRequest,
   sessionPaused = false,
   sessionExitRequest = 0,
   dedicatedSession = false
@@ -71,6 +74,8 @@ export default function RaceMode({
   const sessionPausedRef = useRef(sessionPaused);
   const simulationClockRef = useRef(null);
   const sessionExitRequestRef = useRef(sessionExitRequest);
+  const [raceMenuOpen, setRaceMenuOpen] = useState(false);
+  const closeRaceMenu = useCallback(() => setRaceMenuOpen(false), []);
   const [trackId, setTrackId] = useState(null);
   const [pilotId, setPilotId] = useState(null);
   const [raceStarted, setRaceStarted] = useState(false);
@@ -103,6 +108,8 @@ export default function RaceMode({
     career.upgrades.capacitor,
     career.upgrades.stabilizer
   ]);
+  const garageUpgradesRef = useRef(garageUpgrades);
+  garageUpgradesRef.current = garageUpgrades;
   const updateCareer = useCallback(updater => {
     setPortalCollection?.(previous => {
       const currentCareer = normalizeKartCareer(previous?.raceCareer);
@@ -170,13 +177,13 @@ export default function RaceMode({
 
   // La pause du shell dedie gele la course et vide les commandes maintenues.
   useEffect(() => {
-    sessionPausedRef.current = sessionPaused;
+    sessionPausedRef.current = sessionPaused || raceMenuOpen;
     simulationClockRef.current?.reset();
-    if (sessionPaused) {
+    if (sessionPaused || raceMenuOpen) {
       keysRef.current = {};
       keyPulseRef.current = {};
     }
-  }, [sessionPaused]);
+  }, [sessionPaused, raceMenuOpen]);
 
   // Le retour au hub n'est applique qu'apres confirmation dans le menu pause.
   useEffect(() => {
@@ -212,7 +219,7 @@ export default function RaceMode({
         result: raceSummary.rank === 1 ? 'victory' : 'complete'
       });
       onSessionEndRef.current?.({ reason: 'completed', report: raceSummary });
-    }, trackId, garageUpgrades, selectedKart);
+    }, trackId, garageUpgradesRef.current, selectedKart);
     engineRef.current = engine;
     raceMusicStateRef.current = 'grid';
     sound.playStageBgm(raceMusicStage, 'grid');
@@ -320,7 +327,9 @@ export default function RaceMode({
       sound.stopBgm();
       engineRef.current = null;
     };
-  }, [garageUpgrades, raceMusicStage, raceStarted, selectedKart, track, trackId, updateCareer]);
+  }, [raceMusicStage, raceStarted, selectedKart, track, trackId, updateCareer]);
+
+  useEffect(() => { engineRef.current?.updateGarage(garageUpgrades); }, [garageUpgrades]);
 
   const resetRace = () => {
     if (sessionPausedRef.current) return;
@@ -360,6 +369,7 @@ export default function RaceMode({
 
   const returnToGrid = () => {
     if (sessionPausedRef.current) return;
+    onSessionEndRef.current?.({ reason: 'acknowledged' });
     keysRef.current = {};
     keyPulseRef.current = {};
     setRaceStarted(false);
@@ -392,7 +402,7 @@ export default function RaceMode({
   };
 
   const buyUpgrade = (upgradeId) => {
-    if (sessionPausedRef.current) return;
+    if (sessionPaused) return;
     const config = KART_GARAGE_UPGRADES[upgradeId];
     if (!config) return;
     updateCareer(prev => {
@@ -408,16 +418,73 @@ export default function RaceMode({
           [upgradeId]: currentLevel + 1
         }
       };
-      engineRef.current?.updateGarage(nextCareer.upgrades);
       return nextCareer;
     });
   };
 
   const selectedBestTime = career.bestTimes?.[trackId];
 
+  const raceSystemPanel = <ImmersiveDrawer open={raceMenuOpen} onClose={closeRaceMenu} lang={lang} title={lang === 'fr' ? 'Garage & carnet de course' : 'Garage & race log'}>
+    <p>{lang === 'fr' ? 'Mirelle pilote en vue arrière : conduite, drift, objets, checkpoints et adversaires IA. La mini-carte présente le circuit vu de dessus.' : 'Mirelle drives in rear view: steering, drift, items, checkpoints and AI rivals. The minimap shows the circuit from above.'}</p>
+    {raceStarted && <p role="status">{lang === 'fr' ? 'Course en pause. Les améliorations conservent la course en cours.' : 'Race paused. Upgrades preserve the current race.'}</p>}
+          <div className="race-career-card">
+            <span>{lang === 'fr' ? 'Carriere kart' : 'Kart career'}</span>
+            <div className="race-career-grid">
+              <strong>{career.garageParts}</strong><small>parts</small>
+              <strong>{career.fragments}</strong><small>fragments</small>
+              <strong>{career.xp}</strong><small>XP</small>
+              <strong>{selectedBestTime ? formatRaceTime(selectedBestTime) : '--'}</strong><small>{lang === 'fr' ? 'record' : 'best'}</small>
+            </div>
+          </div>
+          <div className="race-garage-card">
+            <span>{lang === 'fr' ? 'Garage Nexus' : 'Nexus garage'}</span>
+            <img src={RACE_ASSETS.hudGarage} alt={lang === 'fr' ? 'Garage et HUD kart de Mirelle' : 'Mirelle kart garage and HUD'} />
+            <strong>{selectedKartName}</strong>
+            <div className="race-upgrade-list">
+              {Object.entries(KART_GARAGE_UPGRADES).map(([upgradeId, upgrade]) => {
+                const level = career.upgrades[upgradeId] || 0;
+                const cost = upgrade.cost(level);
+                const capped = level >= upgrade.maxLevel;
+                return (
+                  <button
+                    key={upgradeId}
+                    type="button"
+                    className="race-upgrade-row"
+                    disabled={capped || career.garageParts < cost}
+                    onClick={() => buyUpgrade(upgradeId)}
+                  >
+                    <span>{upgrade.label[lang] || upgrade.label.fr}</span>
+                    <strong>{level}/{upgrade.maxLevel}</strong>
+                    <small>{capped ? 'MAX' : `${cost} parts`}</small>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <div className="race-track-selector">
+            <span>{lang === 'fr' ? 'Grille engagee' : 'Grid engaged'}</span>
+            <strong>{track ? (track.name[lang] || track.name.fr) : (lang === 'fr' ? 'Choisir un circuit' : 'Choose a track')}</strong>
+            <small>{track?.tags.join(' / ')} / D{track?.difficulty || '--'} / {track?.laps || '--'} {lang === 'fr' ? 'tours' : 'laps'}</small>
+            {raceStarted && !dedicatedSession && (
+              <button type="button" className="btn-retro" onClick={() => { closeRaceMenu(); onSessionEndRef.current?.({ reason: 'acknowledged' }); setRaceStarted(false); setSummary(null); }}>{lang === 'fr' ? 'CHANGER LA GRILLE' : 'CHANGE GRID'}</button>
+            )}
+          </div>
+          <div className="race-control-list">
+            {controlRows.map(row => (
+              <div key={row.label}>
+                <span>{row.label}</span>
+                <strong>{row.value}</strong>
+              </div>
+            ))}
+          </div>
+    <label className="race-assist-toggle"><input type="checkbox" checked={autoAccelerate} onChange={event => setAutoAccelerate(event.target.checked)} />{lang === 'fr' ? 'Accélération assistée' : 'Assisted acceleration'}</label>
+  </ImmersiveDrawer>;
+
   if (!raceStarted) {
     return (
-      <div className={`race-mode-shell ${activeHudTheme ? 'game-hud-themed-interface' : ''}`}>
+      <div className={`race-mode-shell race-preflight-shell ${activeHudTheme ? 'game-hud-themed-interface' : ''}`}>
+        {raceSystemPanel}
+        <div className="race-preflight-utilities"><button type="button" className="btn-retro" onClick={() => setRaceMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'GARAGE · CARRIÈRE · COMMANDES' : 'GARAGE · CAREER · CONTROLS'}</button></div>
         <GameHudThemeLayer theme={activeHudTheme} mode="kart" />
         <div className="race-mode-header">
           <div>
@@ -510,23 +577,11 @@ export default function RaceMode({
   return (
     <div className={`race-mode-shell ${activeHudTheme ? 'game-hud-themed-interface' : ''}`}>
       <GameHudThemeLayer theme={activeHudTheme} mode="kart" />
-      <div className="race-mode-header">
-        <div>
-          <div className="portal-focus-kicker">{lang === 'fr' ? 'PROTOCOLE COURSE / TEST NEXUS' : 'RACE PROTOCOL / NEXUS TEST'}</div>
-          <h3>{lang === 'fr' ? 'Circuit A.R.C.A. Kart' : 'A.R.C.A. Kart Circuit'}</h3>
-          <p>
-            {lang === 'fr'
-              ? `Pilote ${pilotName}, Mirelle ouvre la premiere plaquette jouable en camera arriere: conduite, drift, objets, checkpoints et adversaires IA. La vue de dessus reste limitee a la mini-map.`
-              : `Pilot ${pilotName}, Mirelle opens the first playable rear-camera sheet: driving, drift, items, checkpoints, and AI rivals. Top-down view stays limited to the minimap.`}
-          </p>
-        </div>
-        <div className="race-mode-pilot">
-          <img className="race-mode-pilot-icon" src={RACE_ASSETS.hudAvatar} alt="Mirelle kart HUD" />
-          <div>
-            <strong>Mirelle Suture</strong>
-            <span>{selectedKartName}</span>
-          </div>
-        </div>
+      {raceSystemPanel}
+      <div className="race-world-hud" inert={Boolean(summary)}>
+        <div><strong>{track.name[lang] || track.name.fr}</strong><small>Mirelle Suture · {selectedKartName} · {pilotName}</small></div>
+        <button type="button" className="btn-retro" onClick={() => setRaceMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'GARAGE / COMMANDES' : 'GARAGE / CONTROLS'}</button>
+        {!dedicatedSession && onPauseRequest && <button type="button" className="btn-retro" onClick={onPauseRequest}>PAUSE</button>}
       </div>
 
       <div className="race-mode-grid">
@@ -536,6 +591,7 @@ export default function RaceMode({
             width="960"
             height="540"
             className="race-mode-canvas"
+            tabIndex={0}
             aria-label={lang === 'fr' ? 'Circuit kart jouable A.R.C.A.' : 'Playable A.R.C.A. kart circuit'}
             data-race-state={snapshot.raceState}
             data-speed={snapshot.speed}
@@ -548,7 +604,7 @@ export default function RaceMode({
               : `Race ${snapshot.raceState}. Position ${snapshot.rank} of 4. Lap ${snapshot.lap} of ${track.laps}.`}
           </p>
           {summary && (
-            <div className="race-result-banner">
+            <div className="race-result-banner" role="region" aria-label={lang === 'fr' ? 'Bilan de course' : 'Race results'}>
               <strong>{lang === 'fr' ? 'COURSE STABILISEE' : 'RACE STABILIZED'} // {summary.grade}</strong>
               <span>
                 {lang === 'fr'
@@ -558,7 +614,7 @@ export default function RaceMode({
               <span>
                 +{summary.rewards?.garageParts || 0} parts / +{summary.rewards?.fragments || 0} fragments / +{summary.rewards?.xp || 0} XP
               </span>
-              <button type="button" className="btn-retro" onClick={resetRace}>
+              <button type="button" autoFocus className="btn-retro" onClick={resetRace}>
                 {lang === 'fr' ? 'RELANCER' : 'RESTART'}
               </button>
               <button type="button" className="btn-retro" onClick={returnToGrid}>
@@ -568,21 +624,12 @@ export default function RaceMode({
           )}
         </div>
 
-        <aside className="race-side-panel">
+        <aside className="race-side-panel" inert={Boolean(summary)}>
           <div className="race-stat-grid">
             <div><span>{lang === 'fr' ? 'Position' : 'Position'}</span><strong>{snapshot.rank}/4</strong></div>
             <div><span>{lang === 'fr' ? 'Tour' : 'Lap'}</span><strong>{snapshot.lap}/{track.laps}</strong></div>
             <div><span>{lang === 'fr' ? 'Vitesse' : 'Speed'}</span><strong>{snapshot.speed}</strong></div>
             <div><span>{lang === 'fr' ? 'Temps' : 'Time'}</span><strong>{formatRaceTime(snapshot.time)}</strong></div>
-          </div>
-          <div className="race-career-card">
-            <span>{lang === 'fr' ? 'Carriere kart' : 'Kart career'}</span>
-            <div className="race-career-grid">
-              <strong>{career.garageParts}</strong><small>parts</small>
-              <strong>{career.fragments}</strong><small>fragments</small>
-              <strong>{career.xp}</strong><small>XP</small>
-              <strong>{selectedBestTime ? formatRaceTime(selectedBestTime) : '--'}</strong><small>{lang === 'fr' ? 'record' : 'best'}</small>
-            </div>
           </div>
           <div className="race-objective-card">
             <span>{lang === 'fr' ? 'Objectif A.R.C.A.' : 'A.R.C.A. objective'}</span>
@@ -603,47 +650,6 @@ export default function RaceMode({
             >
               {snapshot.item ? (lang === 'fr' ? 'UTILISER' : 'USE') : (lang === 'fr' ? 'CACHE VIDE' : 'EMPTY CACHE')}
             </button>
-          </div>
-          <div className="race-garage-card">
-            <span>{lang === 'fr' ? 'Garage Nexus' : 'Nexus garage'}</span>
-            <img src={RACE_ASSETS.hudGarage} alt={lang === 'fr' ? 'Garage et HUD kart de Mirelle' : 'Mirelle kart garage and HUD'} />
-            <strong>{selectedKartName}</strong>
-            <div className="race-upgrade-list">
-              {Object.entries(KART_GARAGE_UPGRADES).map(([upgradeId, upgrade]) => {
-                const level = career.upgrades[upgradeId] || 0;
-                const cost = upgrade.cost(level);
-                const capped = level >= upgrade.maxLevel;
-                return (
-                  <button
-                    key={upgradeId}
-                    type="button"
-                    className="race-upgrade-row"
-                    disabled={capped || career.garageParts < cost}
-                    onClick={() => buyUpgrade(upgradeId)}
-                  >
-                    <span>{upgrade.label[lang] || upgrade.label.fr}</span>
-                    <strong>{level}/{upgrade.maxLevel}</strong>
-                    <small>{capped ? 'MAX' : `${cost} parts`}</small>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-          <div className="race-track-selector">
-            <span>{lang === 'fr' ? 'Grille engagee' : 'Grid engaged'}</span>
-            <strong>{track.name[lang] || track.name.fr}</strong>
-            <small>{track.tags.join(' / ')} / D{track.difficulty} / {track.laps} {lang === 'fr' ? 'tours' : 'laps'}</small>
-            {!dedicatedSession && (
-              <button type="button" className="btn-retro" onClick={returnToGrid}>{lang === 'fr' ? 'CHANGER LA GRILLE' : 'CHANGE GRID'}</button>
-            )}
-          </div>
-          <div className="race-control-list">
-            {controlRows.map(row => (
-              <div key={row.label}>
-                <span>{row.label}</span>
-                <strong>{row.value}</strong>
-              </div>
-            ))}
           </div>
           <div className="race-touch-controls">
             <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('up')} onPointerDown={() => activateVirtualKey('up', true)} onPointerUp={() => activateVirtualKey('up', false)} onPointerCancel={() => activateVirtualKey('up', false)} onPointerLeave={() => activateVirtualKey('up', false)}>ACC</button>

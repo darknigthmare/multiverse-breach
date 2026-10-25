@@ -1,0 +1,346 @@
+[
+  {
+    "id": "HUB-01",
+    "auditIds": [
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "29",
+      "30",
+      "32",
+      "34",
+      "39"
+    ],
+    "status": "implemented_pending_visual_review",
+    "files": [
+      "src/components/HubScreen.jsx",
+      "src/components/HubImmersion.css"
+    ],
+    "changes": [
+      "Shell de jeu en grille 100dvh : navigation latérale compacte, en-tête de ressources, filtres contextuels et espace principal borné. Navigation mobile sur deux rails horizontaux.",
+      "Les cinq groupes, quinze destinations internes et sortie vers le Portail restent présents. Les catégories et sous-vues de mission, sélection des héros, réglages de régulation et handlers de progression sont conservés.",
+      "La directive et les indicateurs du cycle sont consultables dans une console ouvrable. Retour à la Cité accessible après une visite.",
+      "Le contenu défile dans son espace principal ou son dossier ; le document de jeu ne devient plus une longue page centrée."
+    ],
+    "validation": [
+      "Oxlint sur les six sources du lot : succès, aucun avertissement.",
+      "11 fichiers de suites ciblées réussis le 25 octobre 2026 : immersiveHubState, extinctionTiming, mosaicCityRuntime, fixedStepClock, customBattle, fighterRaceGameplayAudit, kartCareerSave, catalogPagination, squadPreparation, ocCampaignUiProgress, anchorCustomization.",
+      "git diff --check : succès."
+    ],
+    "limitations": [
+      "Recette visuelle Vercel encore nécessaire, notamment 390px, 1363px et ultralarge.",
+      "Les catalogues et cartes existants conservent leur contenu et leur logique ; le travail ne crée pas de nouveaux décors propres à chaque écran secondaire."
+    ]
+  },
+  {
+    "id": "HUB-02",
+    "auditIds": [
+      "06",
+      "09",
+      "30"
+    ],
+    "status": "implemented_pending_visual_review",
+    "files": [
+      "src/components/HubScreen.jsx",
+      "src/components/ImmersiveDrawer.jsx",
+      "src/components/HubImmersion.css"
+    ],
+    "changes": [
+      "Les quatre blocs de progression auparavant conditionnés par legacyStoryMeta sont déplacés, via une transformation AST contrôlée, vers un Registre accessible depuis Directive & cycle.",
+      "Quatre dossiers : jalons, réputations/stratégie, campagne/factions, cycles/collections. Les données, descriptions et boutons de récompenses existants sont conservés avec leurs conditions.",
+      "Modal partagé avec isolation des couches, retour du focus, Échap et défilement interne."
+    ],
+    "validation": [
+      "AST JSX validé avant et après déplacement des quatre blocs.",
+      "Oxlint sur les six sources du lot : succès, aucun avertissement.",
+      "11 fichiers de suites ciblées réussis le 25 octobre 2026 : immersiveHubState, extinctionTiming, mosaicCityRuntime, fixedStepClock, customBattle, fighterRaceGameplayAudit, kartCareerSave, catalogPagination, squadPreparation, ocCampaignUiProgress, anchorCustomization.",
+      "git diff --check : succès."
+    ],
+    "limitations": [
+      "Contrôle visuel et activation manuelle de chaque dossier en preview encore à réaliser ; les tests de progression existants restent verts."
+    ]
+  },
+  {
+    "id": "HUB-03",
+    "auditIds": [
+      "12",
+      "13"
+    ],
+    "status": "implemented_pending_visual_review",
+    "files": [
+      "src/components/HubScreen.jsx",
+      "src/components/HubImmersion.css",
+      "src/components/useSceneViewport.js",
+      "src/components/ImmersiveDrawer.jsx",
+      "src/game/immersiveHubState.js",
+      "scripts/mosaicCityRuntime.test.mjs",
+      "scripts/immersiveHubState.test.mjs"
+    ],
+    "changes": [
+      "Cité rendue dans une scène fixe couvrant le viewport : lieu courant, interaction, mini-carte et objectif restent contextuels.",
+      "Le canevas adapte son ratio logique à la fenêtre, sans étirer les personnages ni modifier vitesse/collisions ; le fond Atrium existant est utilisé dans le monde.",
+      "Destinations, statistiques, journal, commandes et gestion du guide sont déplacés dans un terminal ouvrable qui gèle l’exploration.",
+      "Un seul panneau de guide est affiché : dialogue d’accueil ou étape active. Pause, reprise, ignorer, redémarrer et revoir l’accueil restent disponibles.",
+      "Position, orientation et quartier sont sauvegardés dans activityProgress.mosaicLocation toutes les cinq secondes, à la sortie et au pagehide. Retour sûr à l’Atrium si le quartier devient indisponible.",
+      "Services connectés : Archives → Codex ; chambre des arcs → arcs ; relectures → journal ; récupération → équipe ; reliques → inventaire ; simulateur → Custom. La navigation mission conserve le contexte de l’univers malgré la remise à zéro des sous-vues."
+    ],
+    "validation": [
+      "34 tests mosaicCityRuntime réussis, dont navigation de proximité, destinations autorisées, tutoriel, collisions et entrées clavier/tactiles.",
+      "Tests nouveaux : déplacement réel puis sérialisation/restauration du quartier/position ; limites et données invalides ; état transitoire non sauvegardé.",
+      "Oxlint sur les six sources du lot : succès, aucun avertissement.",
+      "11 fichiers de suites ciblées réussis le 25 octobre 2026 : immersiveHubState, extinctionTiming, mosaicCityRuntime, fixedStepClock, customBattle, fighterRaceGameplayAudit, kartCareerSave, catalogPagination, squadPreparation, ocCampaignUiProgress, anchorCustomization.",
+      "git diff --check : succès."
+    ],
+    "limitations": [
+      "Les portails restent soumis à proximité et autorisation ; le terminal ne téléporte pas dans un univers verrouillé.",
+      "Le décor illustré ajouté réutilise uniquement l’Atrium existant. Les autres quartiers gardent leur décor procédural.",
+      "La position est sauvegardée à un point de contrôle toutes les cinq secondes ; une fermeture brutale peut perdre les dernières secondes de marche."
+    ]
+  },
+  {
+    "id": "HUB-04",
+    "auditIds": [
+      "14",
+      "15"
+    ],
+    "status": "implemented_pending_visual_review",
+    "files": [
+      "src/components/HubScreen.jsx",
+      "src/components/HubImmersion.css",
+      "src/components/useSceneViewport.js"
+    ],
+    "changes": [
+      "Préparation Extinction avec quatre cartes de variantes, aperçu de la signature et carrière XP/runs/victoires.",
+      "Partie FPS dans une scène couvrant le viewport, avec objectif, PV/armure/munitions et commandes superposés aux bords. Radar, réticule, arme et simulation sont conservés.",
+      "Suppression du doublon visuel des mêmes statistiques dans le canevas, puisque toutes restent présentes dans un HUD DOM lisible et accessible."
+    ],
+    "validation": [
+      "extinctionTiming : simulation réelle, dégâts, déplacements et recharge identiques à 30/60/120/144 Hz ; pause et visibilité sans rattrapage.",
+      "Oxlint sur les six sources du lot : succès, aucun avertissement.",
+      "11 fichiers de suites ciblées réussis le 25 octobre 2026 : immersiveHubState, extinctionTiming, mosaicCityRuntime, fixedStepClock, customBattle, fighterRaceGameplayAudit, kartCareerSave, catalogPagination, squadPreparation, ocCampaignUiProgress, anchorCustomization.",
+      "git diff --check : succès."
+    ],
+    "limitations": [
+      "Recette tactile et contrôle de la densité des boutons sur petits écrans encore nécessaires en preview."
+    ]
+  },
+  {
+    "id": "HUB-05",
+    "auditIds": [
+      "16"
+    ],
+    "status": "implemented_pending_visual_review",
+    "files": [
+      "src/components/HubScreen.jsx",
+      "src/game/immersiveHubState.js",
+      "scripts/immersiveHubState.test.mjs"
+    ],
+    "changes": [
+      "Chaque run reçoit un identifiant unique. Le rapport de verdict est consommé par setGold, setBreachShards et setActivityProgress.",
+      "Or et fragments affichés sont transférés aux compteurs réels. XP Extinction sauvegardée dans extinctionCareer, avec nombre de runs, victoires, reçu et dernier rapport ; journal conservé.",
+      "Le reçu empêche un versement répété. Abandon et rapport mal formé ne donnent pas de récompense. Les gains de repli du moteur sont respectés.",
+      "Le résultat demeure en scène dédiée jusqu’à Continuer ; sa validation ne verse rien une seconde fois."
+    ],
+    "validation": [
+      "Exécution du vrai callback Hub dans le test : +172 Or / +45 fragments / +210 XP une seule fois sur double rapport ; aucun appel de sortie avant acknowledgement ; bilan défaite distinct.",
+      "Sérialisation/rechargement du reçu : même rapport refusé ; données de progression sans rapport conservées.",
+      "Oxlint sur les six sources du lot : succès, aucun avertissement.",
+      "11 fichiers de suites ciblées réussis le 25 octobre 2026 : immersiveHubState, extinctionTiming, mosaicCityRuntime, fixedStepClock, customBattle, fighterRaceGameplayAudit, kartCareerSave, catalogPagination, squadPreparation, ocCampaignUiProgress, anchorCustomization.",
+      "git diff --check : succès."
+    ],
+    "limitations": [
+      "Les gains sont ceux du moteur existant ; aucune révision économique ajoutée.",
+      "Une victoire jouée de bout en bout dans chaque variante reste à vérifier en preview. La preuve actuelle couvre le callback réel et la simulation déterministe."
+    ]
+  },
+  {
+    "id": "HUB-06",
+    "auditIds": [
+      "17",
+      "18",
+      "19"
+    ],
+    "status": "implemented_pending_visual_review",
+    "files": [
+      "src/components/RaceMode.jsx",
+      "src/components/HubScreen.jsx",
+      "src/components/HubImmersion.css",
+      "src/components/ImmersiveDrawer.jsx",
+      "scripts/fixedStepClock.test.mjs"
+    ],
+    "changes": [
+      "Préparation conserve Mirelle, tous les châssis/circuits disponibles et l’accélération assistée. Garage, carrière, commandes et informations de circuit regroupés dans un terminal accessible avant et pendant la course.",
+      "Le terminal de course suspend réellement l’horloge et vide les touches maintenues. Une amélioration met à jour le moteur existant au lieu de redémarrer une course.",
+      "Scène de course sur tout le viewport, cadre caméra 960×540 conservé sans déformation, HUD et actions contextuelles superposés.",
+      "Bilan conservé en scène jusqu’à Rejouer ou Changer de circuit ; les contrôles de la course derrière le bilan deviennent inertes."
+    ],
+    "validation": [
+      "Tests fighterRaceGameplayAudit et kartCareerSave réussis.",
+      "fixedStepClock enrichi : ouverture/fermeture garage ne reconstruit pas le moteur et ne rattrape pas le temps suspendu.",
+      "Oxlint sur les six sources du lot : succès, aucun avertissement.",
+      "11 fichiers de suites ciblées réussis le 25 octobre 2026 : immersiveHubState, extinctionTiming, mosaicCityRuntime, fixedStepClock, customBattle, fighterRaceGameplayAudit, kartCareerSave, catalogPagination, squadPreparation, ocCampaignUiProgress, anchorCustomization.",
+      "git diff --check : succès."
+    ],
+    "limitations": [
+      "Le ratio physique du moteur de course reste 16:9 : bandes de fond possibles sur portrait ou ultralarge, afin de conserver cadrage et collisions.",
+      "Le compteur de temps/objectif accessible est conservé dans le DOM ; les jauges graphiques existantes restent dessinées par le moteur.",
+      "Une course complète et un achat de garage via la preview restent à vérifier."
+    ]
+  },
+  {
+    "id": "HUB-07",
+    "auditIds": [
+      "20"
+    ],
+    "status": "implemented_pending_visual_review",
+    "files": [
+      "src/components/CustomBattleMode.jsx",
+      "src/components/HubImmersion.css"
+    ],
+    "changes": [
+      "Lobby de préparation en quatre étapes librement revisitées : Mode, Équipes, Arène, Règles. Résumé persistant et lancement à la fin de la préparation.",
+      "Tous les choix sont conservés : quatre moteurs, CPU/P2 local, équipes/menaces, arène, difficulté, musiques, super terrain, objets/dangers, variante/intensité/topologie mêlée, pré-match et cosmétiques du preset.",
+      "Aperçus de héros via le renderer existant. Le preset reste sauvegardé indépendamment de l’étape ; aucune progression de campagne attribuée aux simulations.",
+      "onPauseRequest transmis aux moteurs. Le verdict est mémorisé ; seule la validation onBattleEnd termine la session Custom.",
+      "Libellés de règles expliquent l’effet joueur, sans jargon de production P5/runtime."
+    ],
+    "validation": [
+      "customBattle.test.mjs : succès (42 cas), y compris contenu choisi, limites de roster, CPU/P2, aucune récompense campagne et contrat de pause.",
+      "Oxlint JSX : succès.",
+      "Oxlint sur les six sources du lot : succès, aucun avertissement.",
+      "11 fichiers de suites ciblées réussis le 25 octobre 2026 : immersiveHubState, extinctionTiming, mosaicCityRuntime, fixedStepClock, customBattle, fighterRaceGameplayAudit, kartCareerSave, catalogPagination, squadPreparation, ocCampaignUiProgress, anchorCustomization.",
+      "git diff --check : succès."
+    ],
+    "limitations": [
+      "Les menaces restent choisies dans le catalogue existant avec recherche et règles existantes ; aucune menace ni arène n’est débloquée par cette refonte.",
+      "Parcours des quatre étapes dans les quatre moteurs à vérifier visuellement."
+    ]
+  },
+  {
+    "id": "HUB-08",
+    "auditIds": [
+      "25"
+    ],
+    "status": "implemented_pending_visual_review",
+    "files": [
+      "src/components/HubScreen.jsx",
+      "src/components/HubImmersion.css",
+      "src/components/ImmersiveDrawer.jsx"
+    ],
+    "changes": [
+      "Barre dédiée de 56px superposée au monde et menu de pause existant conservé avec focus/inert.",
+      "Sections Partie, Options et Commandes. Options intègre les réglages d’affichage partagés, plein écran système, AudioControl, deux volumes et état réseau.",
+      "L’accès aux options laisse la simulation gelée. Échap respecte les panneaux modaux plus profonds.",
+      "Course, Extinction et Custom conservent leurs résultats dans l’enveloppe jusqu’au choix explicite."
+    ],
+    "validation": [
+      "Contrats pause customBattle et fixedStepClock réussis.",
+      "Oxlint sur les six sources du lot : succès, aucun avertissement.",
+      "11 fichiers de suites ciblées réussis le 25 octobre 2026 : immersiveHubState, extinctionTiming, mosaicCityRuntime, fixedStepClock, customBattle, fighterRaceGameplayAudit, kartCareerSave, catalogPagination, squadPreparation, ocCampaignUiProgress, anchorCustomization.",
+      "git diff --check : succès."
+    ],
+    "limitations": [
+      "Les moteurs qui dessinent leurs jauges en haut réservent 56px au plan de jeu ; le décor couvre néanmoins le viewport.",
+      "Le navigateur reste décisionnaire de l’autorisation du plein écran système."
+    ]
+  },
+  {
+    "id": "HUB-09",
+    "auditIds": [
+      "28",
+      "29",
+      "30"
+    ],
+    "status": "implemented_pending_visual_review",
+    "files": [
+      "src/components/HubScreen.jsx",
+      "src/components/HubImmersion.css"
+    ],
+    "changes": [
+      "Fiche de héros avec aperçu/statistiques et actions de niveau au premier plan ; origines/doctrine/dossier et apparences/garde-robe dans des sections ouvrables.",
+      "Chaque talent devient un vrai bouton avec aria-pressed : entrée clavier Entrée/Espace et focus visibles.",
+      "Liste des héros, équipe/réserves, propositions de composition et profil partagent le nouvel espace principal ; pagination et filtres existants sont conservés.",
+      "Le mobile empile la fiche et l’aperçu sans forcer les deux colonnes desktop."
+    ],
+    "validation": [
+      "squadPreparation, catalogPagination et anchorCustomization réussis.",
+      "Oxlint : aucun avertissement.",
+      "Oxlint sur les six sources du lot : succès, aucun avertissement.",
+      "11 fichiers de suites ciblées réussis le 25 octobre 2026 : immersiveHubState, extinctionTiming, mosaicCityRuntime, fixedStepClock, customBattle, fighterRaceGameplayAudit, kartCareerSave, catalogPagination, squadPreparation, ocCampaignUiProgress, anchorCustomization.",
+      "git diff --check : succès."
+    ],
+    "limitations": [
+      "Les talents n’ont pas été rééquilibrés. Le profil garde les fonctionnalités locales existantes ; aucun multijoueur ni guilde inventé.",
+      "Recette visuelle de l’aperçu et navigation des talents au clavier à réaliser en preview."
+    ]
+  },
+  {
+    "id": "HUB-10",
+    "auditIds": [
+      "31",
+      "32",
+      "34"
+    ],
+    "status": "implemented_pending_visual_review",
+    "files": [
+      "src/components/HubScreen.jsx",
+      "src/components/HubImmersion.css",
+      "src/game/immersiveHubState.js",
+      "scripts/immersiveHubState.test.mjs"
+    ],
+    "changes": [
+      "Équipement : comparaison explicite de chaque bonus de relique, incluant les statistiques perdues en remplaçant l’emplacement. Les deltas sont nommés bonus de relique, sans prétendre être les attributs finaux du combat.",
+      "Lore des objets et entrées canon du Codex consultables dans des sections natives ouvrables. Aucun texte supprimé.",
+      "Boutique et inventaire utilisent la surface principale du jeu avec leurs prix, compatibilités, équipements attribués, fusion et filtres inchangés."
+    ],
+    "validation": [
+      "Test de comparaison : ATK +3, SPD +2 et HP −45 correctement conservés pour le remplacement d’une relique.",
+      "catalogPagination : succès.",
+      "Oxlint sur les six sources du lot : succès, aucun avertissement.",
+      "11 fichiers de suites ciblées réussis le 25 octobre 2026 : immersiveHubState, extinctionTiming, mosaicCityRuntime, fixedStepClock, customBattle, fighterRaceGameplayAudit, kartCareerSave, catalogPagination, squadPreparation, ocCampaignUiProgress, anchorCustomization.",
+      "git diff --check : succès."
+    ],
+    "limitations": [
+      "La comparaison concerne les bonus additifs du slot relique ; les multiplicateurs de synergie/talent et objets événementiels ne sont pas estimés comme des statistiques finales.",
+      "Les actions d’achat et fusion restent celles du jeu ; elles n’ont pas été réécrites."
+    ]
+  },
+  {
+    "id": "HUB-11",
+    "auditIds": [
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "25",
+      "26"
+    ],
+    "status": "implemented_pending_visual_review",
+    "files": [
+      "src/components/HubScreen.jsx",
+      "src/game/immersiveHubState.js",
+      "scripts/immersiveHubState.test.mjs"
+    ],
+    "changes": [
+      "La ref hubNavigationRef détenue par App conserve les choix d’interface entre les montages du Hub : destination, catégorie, mission de briefing, groupe/arc, sous-vues, filtres média/mode, recherches et statut du répertoire, recherche des groupes, héros sélectionné et pagination/filtres des cinq catalogues.",
+      "Un lancement direct mémorise explicitement la mission avant la navigation vers App. Les conditions d’accès sont toujours évaluées avant ce transfert.",
+      "L’effet de changement de catégorie ignore le premier montage ; un vrai changement réinitialise les filtres de sa catégorie, en préservant les demandes contextuelles venant de la Cité.",
+      "Cette mémoire de navigation est distincte des sauvegardes et n’inclut ni session active, pause, moteur, récompense ni état de progression."
+    ],
+    "validation": [
+      "Neuf tests fonctionnels immersiveHubState réussis : conservation/restauration UI, exclusion des simulations et sauvegardes, exécution du vrai handler de lancement et de l’effet de catégorie, déplacement/restauration Cité, récompenses Extinction et comparaison de relique.",
+      "catalogPagination, ocCampaignUiProgress et mosaicCityRuntime réussis après ajout de la mémoire."
+    ],
+    "limitations": [
+      "Cette mémoire vit pendant la session App ; un rechargement complet du navigateur reprend les préférences d’interface initiales. La progression reste dans le système de sauvegarde existant.",
+      "Les dialogues, vidéos/transmissions ouvertes, simulation en cours et panneau de pause ne sont pas rouverts au retour.",
+      "Les choix réévalués comme indisponibles (héros/groupe/catalogue) continuent de respecter leurs contrôles et bornages existants.",
+      "Le parcours aller-retour briefing/combat dans la preview reste à vérifier visuellement."
+    ]
+  }
+]

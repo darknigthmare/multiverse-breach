@@ -43,6 +43,10 @@ jobs:
           npm run test:audit-combat | tee /tmp/reliability-evidence/combat-regressions.log
           npm run test:audit-tactics | tee /tmp/reliability-evidence/tactics-regressions.log
           npm run test:polish | tee /tmp/reliability-evidence/polish.log
+      - name: Immersive UI and progression preservation
+        run: |
+          set -euo pipefail
+          npm run test:ui-immersion | tee /tmp/reliability-evidence/ui-immersion.log
       - name: Reaudit regression contracts
         run: |
           set -euo pipefail

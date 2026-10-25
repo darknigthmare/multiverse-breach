@@ -1,4 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import ArchiveDrawer from './collection/ArchiveDrawer.jsx';
+import useModalDialog from './collection/useModalDialog.js';
+import './PortalImmersion.css';
 import WardrobeBoosterBonus from './WardrobeBoosterBonus.jsx';
 import { getWardrobeBoosterPool, drawWardrobeBoosterBonus, grantWardrobeBoosterBonus, makeWardrobeBonusHistory } from '../game/wardrobeBoosterRewards.js';
 import { EQUIP_ITEMS_DB, EVENT_ITEMS_DB, HEROES_DB } from '../game/heroes';
@@ -777,12 +781,16 @@ export default function PortalScreen({
   const [boosterRefund, setBoosterRefund] = useState(0);
   const [collectionOpen, setCollectionOpen] = useState(false);
   const [portalLabOpen, setPortalLabOpen] = useState(false);
+  const [catalogOpen, setCatalogOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
   const [rotationNow, setRotationNow] = useState(() => Date.now());
   const timersRef = useRef([]);
   const openingGuardRef = useRef(false);
   const completionScheduledRef = useRef(false);
   const previewTriggerRef = useRef(null);
   const previewCloseRef = useRef(null);
+  const previewOverlayRef = useRef(null);
+  const previewDialogRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
@@ -797,26 +805,7 @@ export default function PortalScreen({
     setArtPreviewOpen(false);
   }, [activeBanner]);
 
-  useEffect(() => {
-    if (!artPreviewOpen) return undefined;
-
-    const previousOverflow = document.body.style.overflow;
-    const handlePreviewKeyDown = event => {
-      if (event.key === 'Escape') {
-        setArtPreviewOpen(false);
-        window.requestAnimationFrame(() => previewTriggerRef.current?.focus());
-      }
-    };
-
-    document.body.style.overflow = 'hidden';
-    document.addEventListener('keydown', handlePreviewKeyDown);
-    previewCloseRef.current?.focus();
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener('keydown', handlePreviewKeyDown);
-    };
-  }, [artPreviewOpen]);
+  useModalDialog({ open: artPreviewOpen, overlayRef: previewOverlayRef, dialogRef: previewDialogRef, initialFocusRef: previewCloseRef, onClose: () => setArtPreviewOpen(false) });
 
   const clearOpeningTimers = () => {
     timersRef.current.forEach(timer => window.clearTimeout(timer));
@@ -1697,8 +1686,7 @@ export default function PortalScreen({
 
   return (
     <div
-      className="portal-container booster-portal"
-      inert={Boolean(dossierBanner)}
+      className="portal-container booster-portal portal-game-screen"
       data-pack-id={activeBannerData.id}
       data-booster-phase={openingPhase}
       data-portal-effect={equippedCustomCosmetics.portalEffect?.style || 'standard'}
@@ -1737,6 +1725,9 @@ export default function PortalScreen({
         >
           {getTranslation(lang, 'backToHub')}
         </button>
+        <button type="button" className="btn-retro" disabled={openingLocked} aria-haspopup="dialog" onClick={() => setCatalogOpen(true)}>
+          {lang === 'fr' ? 'CHOISIR UN BOOSTER' : 'CHOOSE A BOOSTER'}
+        </button>
         <button
           type="button"
           className="btn-retro"
@@ -1749,6 +1740,10 @@ export default function PortalScreen({
         >
           {lang === 'fr' ? 'ALBUM DES TRAMES' : 'THREAD ALBUM'} {collectionOwnedCount}/{cardCatalog.definitions.length}
         </button>
+        <details className="portal-advanced-menu">
+          <summary>{lang === 'fr' ? 'MENU' : 'MENU'}</summary>
+          <div>
+          <button type="button" className="btn-retro" disabled={openingLocked} aria-haspopup="dialog" onClick={() => setResourcesOpen(true)}>{lang === 'fr' ? 'COLLECTION ET PERSONNALISATION' : 'COLLECTION AND CUSTOMIZATION'}</button>
         <button
           type="button"
           className="btn-retro"
@@ -1759,8 +1754,10 @@ export default function PortalScreen({
             sound.playSfx('click');
           }}
         >
-          PORTAL LAB P3
+          {lang === 'fr' ? 'OUTILS AVANCÉS · PORTAL LAB' : 'ADVANCED TOOLS · PORTAL LAB'}
         </button>
+          </div>
+        </details>
         <div className="portal-shard-counter">
           {getTranslation(lang, 'shards')}: <strong>{breachShards}</strong>
           {activeFreeBoosterCredits > 0 ? (
@@ -1770,12 +1767,7 @@ export default function PortalScreen({
       </div>
 
       <h1 className="cyber-title booster-portal-title">{getTranslation(lang, 'btnPortal')}</h1>
-      <p className="booster-portal-lead">
-        {lang === 'fr'
-          ? 'Chaque booster renferme exactement 5 cartes. L Album des Trames conserve les copies, la maitrise, les finitions et les 100 derniers tirages sans doubler les remboursements de fragments.'
-          : 'Every booster contains exactly 5 cards. The Thread Album preserves copies, mastery, finishes and the last 100 pulls without duplicating fragment refunds.'}
-      </p>
-
+      {catalogOpen && <ArchiveDrawer title={lang === 'fr' ? 'Catalogue des boosters' : 'Booster catalog'} lang={lang} onClose={() => setCatalogOpen(false)} className="portal-catalog-drawer">
       <section className="booster-catalog-panel" aria-labelledby="booster-catalog-title">
         <div className="booster-catalog-toolbar">
           <div>
@@ -1946,6 +1938,7 @@ export default function PortalScreen({
           </div>
         )}
       </section>
+      </ArchiveDrawer>}
 
       <section className="portal-focus-panel booster-focus-panel">
         <div className="portal-focus-info">
@@ -1954,6 +1947,8 @@ export default function PortalScreen({
           </div>
           <h2>{activeBannerData.label[lang]}</h2>
           <p>{activeBannerData.meta[lang]}</p>
+          <details className="portal-booster-information">
+          <summary>{lang === 'fr' ? 'Contenu, probabilités et progression' : 'Contents, odds and progression'}</summary>
           {activeContentUpdate && (
             <div
               className="portal-focus-rate booster-guarantee"
@@ -2026,6 +2021,14 @@ export default function PortalScreen({
               ? 'Les missions et les modes restent lies a la progression de jeu. Les remboursements d echos sont plafonnes a 70 % du prix du pack.'
               : 'Missions and modes remain tied to gameplay progression. Echo refunds are capped at 70% of the pack price.'}
           </p>
+          <p className="booster-portal-lead">{lang === 'fr'
+            ? 'Chaque booster renferme exactement 5 cartes. L Album des Trames conserve les copies, la maitrise, les finitions et les 100 derniers tirages sans doubler les remboursements de fragments.'
+            : 'Every booster contains exactly 5 cards. The Thread Album preserves copies, mastery, finishes and the last 100 pulls without duplicating fragment refunds.'}</p>
+          </details>
+          <p className="portal-purchase-summary">{lang === 'fr'
+            ? `5 cartes · 1 personnage · 1 Rare ou mieux${activeBannerData.guaranteeNonHeroRare ? ' hors personnage' : ''}. Prix : ${activeBoosterPrice} Fragments.`
+            : `5 cards · 1 character · 1 Rare or better${activeBannerData.guaranteeNonHeroRare ? ' non-character' : ''}. Price: ${activeBoosterPrice} Shards.`}</p>
+          <button type="button" className="btn-retro" disabled={openingLocked} onClick={() => setDossierBannerId(activeBannerData.id)} aria-haspopup="dialog">{lang === 'fr' ? 'GARANTIES, TAUX ET DOSSIER' : 'GUARANTEES, RATES AND DOSSIER'}</button>
         </div>
 
         <div
@@ -2162,6 +2165,7 @@ export default function PortalScreen({
         )}
       </div>
 
+      {resourcesOpen && <ArchiveDrawer title={lang === 'fr' ? 'Collection et personnalisation' : 'Collection and customization'} lang={lang} onClose={() => setResourcesOpen(false)} className="portal-resources-drawer">
       <section className="booster-collection-panel" aria-label={lang === 'fr' ? 'Collection et personnalisation' : 'Collection and customization'}>
         <p>{portalCollectionTotal} {lang === 'fr' ? 'déblocages conservés. Consulte les cartes dans l’Album ; personnalise le HUD et ton profil dans le Dossier d’Ancre.' : 'preserved unlocks. Browse cards in the Album; customize your HUD and profile in the Anchor record.'}</p>
         <button type="button" className="btn-retro" onClick={() => setCollectionOpen(true)}>{lang === 'fr' ? 'Ouvrir l’Album' : 'Open Album'}</button>
@@ -2191,6 +2195,7 @@ export default function PortalScreen({
           </div>
         </details>
       )}
+      </ArchiveDrawer>}
 
       {dossierBanner && (
         <PortalBoosterDossier
@@ -2207,6 +2212,7 @@ export default function PortalScreen({
           onSelect={bannerId => {
             handleSelectBanner(bannerId);
             closeDossier();
+            setCatalogOpen(false);
           }}
           kindLabels={REWARD_KIND_LABELS}
           kindOrder={REWARD_KIND_ORDER}
@@ -2257,14 +2263,17 @@ export default function PortalScreen({
         </React.Suspense>
       ) : null}
 
-      {artPreviewOpen && activeBoosterArt && (
+      {artPreviewOpen && activeBoosterArt && createPortal(
         <div
+          ref={previewOverlayRef}
           className="booster-art-lightbox"
           onMouseDown={event => {
             if (event.target === event.currentTarget) closeArtPreview();
           }}
         >
           <section
+            ref={previewDialogRef}
+            tabIndex={-1}
             className="booster-art-preview-dialog"
             role="dialog"
             aria-modal="true"
@@ -2300,7 +2309,7 @@ export default function PortalScreen({
                 : 'Complete uncropped preview. Opening the booster remains a separate action.'}
             </small>
           </section>
-        </div>
+        </div>, document.body
       )}
     </div>
   );

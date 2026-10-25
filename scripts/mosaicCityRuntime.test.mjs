@@ -259,6 +259,7 @@ test('the Archives Codex terminal opens the actual global archive only after app
     useCallback: callback => callback, sessionPausedRef: { current: false }, stateRef,
     resolveMosaicInteraction, district: { portals: [] }, zones, lang: 'fr',
     setHubLog: () => {}, recordGuide: () => {}, switchDistrict: () => {},
+    onOpenService: () => assert.fail('Codex cannot open another service'),
     onOpenCodex: universe => opened.push(universe), onOpenMissions: () => assert.fail('Codex cannot open missions'),
     playerName: 'Ancre', universeStageStats: {}, sound: { playSfx: () => {} }, setSelectedHeroId: () => {},
     setWelcomeIndex: () => {}, setWelcomeOpen: () => {}, MOSAIC_WELCOME
@@ -317,7 +318,7 @@ test('Nexus banner and anchor sprite refer to existing project bitmaps', () => {
 test('city controls retain proximity validation, focus loss cleanup and cancellable touch controls', () => {
   assert.match(city, /resolveMosaicInteraction\(stateRef\.current\.player, scene, preferred\)/);
   assert.match(city, /pendingInteraction = preferred/);
-  assert.match(city, /sessionPausedRef\.current \|\| document\.hidden/);
+  assert.match(city, /sessionPausedRef\.current \|\| cityMenuRef\.current \|\| document\.hidden/);
   assert.match(city, /onClockVisibilityChange = \(\) => \{ lastFrame = null;/);
   assert.match(city, /addEventListener\('blur', clearInput\)/);
   assert.match(city, /onLostPointerCapture=/);
@@ -461,7 +462,7 @@ test('actual catalog button only queues walking to an authorized visible portal'
   const stateRef = { current: makeState() };
   const portal = { id: 'to-last', universe: 'Last available world', x: 500, y: 300 };
   const gallery = { ...district, portals: [portal] };
-  const approach = new Function('sessionPausedRef', 'currentDistrict', 'district', 'clearCityDestination', 'stateRef', 'clampMosaicPosition', 'setHubLog', 'lang', `${source}; return approachDistrictPortal;`)({ current: false }, 'threads', gallery, () => { stateRef.current.destination = null; stateRef.current.pendingInteraction = null; }, stateRef, clampMosaicPosition, () => {}, 'fr');
+  const approach = new Function('sessionPausedRef', 'currentDistrict', 'district', 'clearCityDestination', 'stateRef', 'clampMosaicPosition', 'setHubLog', 'lang', 'setCityMenuOpen', `${source}; return approachDistrictPortal;`)({ current: false }, 'threads', gallery, () => { stateRef.current.destination = null; stateRef.current.pendingInteraction = null; }, stateRef, clampMosaicPosition, () => {}, 'fr', open => assert.equal(open, false));
   approach('Locked world');
   assert.equal(stateRef.current.destination, null);
   approach(portal.universe);
@@ -472,7 +473,7 @@ test('actual catalog button only queues walking to an authorized visible portal'
   assert.doesNotMatch(source, /recordGuide|switchDistrict|setActiveTeam|setEquippedGear/);
 });
 
-test('city persists only its tutorial field and exposes pause, resume, skip, restart and welcome replay', () => {
+test('city saves tutorial and location independently and keeps pause, resume, skip, restart and welcome replay', () => {
   const invocation = hub.slice(hub.lastIndexOf('<MosaicCityHub'), hub.lastIndexOf('<ExtinctionRoyale'));
   assert.match(invocation, /tutorialProgress=\{activityProgress\.mosaicTutorial\}/);
   assert.match(invocation, /\.\.\.previous, mosaicTutorial/);

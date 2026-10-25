@@ -61,7 +61,7 @@ import { isArcReplayProgressionBypassed } from '../game/missions/missionReplayPo
 import { projectUniverseArcDeploymentPhases } from '../game/missions/missionStageProjection';
 import { resolveRiftDossierAssetSrc } from '../game/riftDossierAssets';
 import CatalogPagination from './CatalogPagination';
-import { catalogSearchText, createCatalogView, paginateCatalog, updateCatalogView } from '../game/catalogPagination';
+import { catalogSearchText, paginateCatalog, updateCatalogView } from '../game/catalogPagination';
 import { calculateSquadReadiness, proposeRelicAssignment, proposeSquad } from '../game/squadPreparation';
 import SquadProposalPanel from './SquadProposalPanel';
 import AnchorCustomizationPanel from './AnchorCustomizationPanel';
@@ -73,6 +73,13 @@ import {
   resolveMissionHeroLevelRequirement
 } from '../game/characterArcStage';
 import './MosaicCityHub.css';
+import './HubImmersion.css';
+import ImmersiveDrawer from './ImmersiveDrawer.jsx';
+import GameDisplaySettings from './GameDisplaySettings.jsx';
+import AudioControl from './AudioControl.jsx';
+import NetworkStatusBadge from './NetworkStatusBadge.jsx';
+import useSceneViewport from './useSceneViewport.js';
+import { applyExtinctionReport, compareGearBoosts, normalizeExtinctionReport, normalizeHubNavigation, restoreMosaicLocation, snapshotMosaicLocation } from '../game/immersiveHubState.js';
 
 const TAU = Math.PI * 2;
 const getFeaturedUniverseIconSrc = (universe) => FEATURED_UNIVERSE_ICONS[universe] || null;
@@ -248,10 +255,16 @@ function DedicatedGameSessionChrome({
   lang,
   mode,
   paused,
+  audioSettings = { musicVolume: 0.7, sfxVolume: 0.8, muted: false },
+  onChangeAudioSetting,
+  onToggleMute,
+  isOnline = true,
   onOpenPause,
   onResume,
   onConfirmExit
 }) {
+  const [pauseSection, setPauseSection] = useState('session');
+  useEffect(() => { if (!paused) setPauseSection('session'); }, [paused]);
   const pauseButtonRef = useRef(null);
   const dialogRef = useRef(null);
   const previousFocusRef = useRef(null);
@@ -350,7 +363,30 @@ function DedicatedGameSessionChrome({
                   ? 'La simulation est gelee. Reprends la partie ou confirme son abandon pour revenir a la configuration du mode.'
                   : 'The simulation is frozen. Resume play or confirm abandonment to return to this mode setup.')}
             </p>
-            <div>
+            <nav className="dedicated-pause-sections" aria-label={lang === 'fr' ? 'Menu de pause' : 'Pause menu'}>
+              {[['session', lang === 'fr' ? 'PARTIE' : 'SESSION'], ['options', 'OPTIONS'], ['help', lang === 'fr' ? 'COMMANDES' : 'CONTROLS']].map(([id, label]) => <button type="button" key={id} className="btn-retro" aria-pressed={pauseSection === id} onClick={() => setPauseSection(id)}>{label}</button>)}
+            </nav>
+            {pauseSection === 'options' && <section className="dedicated-pause-options">
+              <GameDisplaySettings lang={lang} />
+              <section className="game-system-controls">
+                <AudioControl lang={lang} muted={audioSettings.muted} onToggleMute={onToggleMute} />
+                <NetworkStatusBadge lang={lang} isOnline={isOnline} />
+                {['musicVolume', 'sfxVolume'].map(setting => <label className="game-range-setting" key={setting}>
+                  <span>{setting === 'musicVolume' ? (lang === 'fr' ? 'Volume musique' : 'Music volume') : (lang === 'fr' ? 'Effets sonores' : 'Sound effects')}</span>
+                  <input type="range" min="0" max="1" step="0.05" value={audioSettings[setting] ?? 0.7} onChange={event => onChangeAudioSetting?.(setting, Number(event.target.value))} />
+                  <output>{Math.round((audioSettings[setting] ?? 0.7) * 100)} %</output>
+                </label>)}
+              </section>
+            </section>}
+            {pauseSection === 'help' && <section className="dedicated-pause-help">
+              <h3>{lang === 'fr' ? 'Repères de jeu' : 'Game controls'}</h3>
+              <p>{mode === 'nexus'
+                ? (lang === 'fr' ? 'ZQSD / WASD ou flèches : marcher. E : interagir. Un toucher au sol déplace ton Ancre. Le terminal de poche conserve destinations, journal et guide.' : 'WASD or arrows: walk. E: interact. Tap the ground to move. The pocket terminal holds destinations, journal and guide.')
+                : mode === 'race' ? (lang === 'fr' ? 'Z/W : accélérer. Q/A et D : tourner. S : freiner. Espace : drift. E : objet. R : réancrer. Le garage est accessible avant la grille et dans le menu de course.' : 'W: accelerate. A/D: steer. S: brake. Space: drift. E: item. R: recover. The garage is available before the grid and in the race menu.')
+                : mode === 'extinction' ? (lang === 'fr' ? 'Z/W : avancer. S : reculer. Q/A et D : pas latéraux. Flèches : viser. Glisser sur la vue : viser, toucher : tirer. Toutes les actions sont aussi accessibles dans le HUD.' : 'W: move forward. S: back. A/D: strafe. Arrows: aim. Drag the view to aim, tap to shoot. HUD buttons provide every action.')
+                : (lang === 'fr' ? 'Les commandes et les actions disponibles restent indiquées sur le HUD de combat. Reprends pour choisir une cible, une compétence ou consulter le panneau des commandes.' : 'Available actions and controls are shown on the combat HUD. Resume to choose a target, ability or open the controls panel.')}</p>
+            </section>}
+            <div className="dedicated-pause-actions">
               <button type="button" className="btn-retro" onClick={onResume}>
                 {lang === 'fr' ? 'REPRENDRE' : 'RESUME'}
               </button>
@@ -381,10 +417,12 @@ function MissionDirectory({
   getRichBreachBrief,
   getStageRewardPreview,
   accent = '#39c5bb',
-  emptyBackdrop
+  emptyBackdrop,
+  query = '',
+  onQueryChange,
+  statusFilter = 'all',
+  onStatusFilterChange
 }) {
-  const [query, setQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState('all');
   const normalizedQuery = query.trim().toLowerCase();
   const filteredStages = stages.filter(stage => {
     const completed = completedStages.includes(stage.id);
@@ -446,7 +484,7 @@ function MissionDirectory({
           <span>{lang === 'fr' ? 'RECHERCHE' : 'SEARCH'}</span>
           <input
             value={query}
-            onChange={event => setQuery(event.target.value)}
+            onChange={event => onQueryChange(event.target.value)}
             placeholder={lang === 'fr' ? 'Nom, univers, boss ou mode...' : 'Name, universe, boss, or mode...'}
           />
         </label>
@@ -455,7 +493,7 @@ function MissionDirectory({
         lang={lang}
         items={statusItems}
         activeId={statusFilter}
-        onChange={setStatusFilter}
+        onChange={onStatusFilterChange}
         label={lang === 'fr' ? 'Filtrer les missions par statut' : 'Filter missions by status'}
       />
       {filteredStages.length > 0 ? (
@@ -1475,9 +1513,10 @@ function NarrativeArcGroupBrowser({
   onGroupViewChange,
   categoryColor = '#ffb15c',
   getStageUnlockRequirementText,
-  emptyBackdrop
+  emptyBackdrop,
+  groupQuery = '',
+  onGroupQueryChange
 }) {
-  const [groupQuery, setGroupQuery] = useState('');
   const normalizedGroupQuery = groupQuery.trim().toLowerCase();
   const filteredGroups = normalizedGroupQuery
     ? groups.filter(group => [group.label, group.desc, group.kicker, group.primaryUniverse]
@@ -1506,7 +1545,7 @@ function NarrativeArcGroupBrowser({
         <div className="arc-browser-tools">
           <input
             value={groupQuery}
-            onChange={(event) => setGroupQuery(event.target.value)}
+            onChange={(event) => onGroupQueryChange(event.target.value)}
             placeholder={lang === 'fr' ? 'Filtrer par univers, heros ou trio...' : 'Filter by universe, hero, or trio...'}
             aria-label={lang === 'fr' ? 'Filtrer les cartes narratives' : 'Filter narrative cards'}
           />
@@ -2200,12 +2239,25 @@ function MosaicCityHub({
   onTutorialProgress,
   onOpenMissions,
   onOpenCodex,
+  onOpenService,
+  savedLocation = null,
+  onLocationChange,
   onSessionEnd,
   hudTheme = null,
   sessionPaused = false,
   sessionExitRequest = 0
 }) {
   const canvasRef = useRef(null);
+  useSceneViewport(canvasRef, 540);
+  const cityBackdropRef = useRef(null);
+  useEffect(() => { const image = new Image(); image.src = MOSAIC_CITY_ART; cityBackdropRef.current = image; return () => { cityBackdropRef.current = null; }; }, []);
+  const [cityMenuOpen, setCityMenuOpen] = useState(false);
+  const closeCityMenu = useCallback(() => setCityMenuOpen(false), []);
+  const cityMenuRef = useRef(false);
+  cityMenuRef.current = cityMenuOpen;
+  const locationCallbackRef = useRef(onLocationChange);
+  locationCallbackRef.current = onLocationChange;
+  const restoredLocationRef = useRef(false);
   const sessionPausedRef = useRef(sessionPaused);
   const sessionExitRequestRef = useRef(sessionExitRequest);
   const stateRef = useRef({
@@ -2261,10 +2313,10 @@ function MosaicCityHub({
   const [nearZoneId, setNearZoneId] = useState(null);
   const [selectedHeroId, setSelectedHeroId] = useState(null);
   const [currentZone, setCurrentZone] = useState('atrium');
-  const [currentDistrict, setCurrentDistrict] = useState('atrium');
+  const [currentDistrict, setCurrentDistrict] = useState(savedLocation?.districtId || 'atrium');
   const nearHeroIdRef = useRef(null);
   const currentZoneRef = useRef('atrium');
-  const currentDistrictRef = useRef('atrium');
+  const currentDistrictRef = useRef(savedLocation?.districtId || 'atrium');
   const [hubLog, setHubLog] = useState(lang === 'fr'
     ? 'A.R.C.A. maintient la Cite-Mosaique stable. Deplace ton Ancre et synchronise les signatures proches.'
     : 'A.R.C.A. keeps Mosaic City stable. Move your Anchor and synchronize nearby signatures.');
@@ -2464,15 +2516,15 @@ function MosaicCityHub({
     if (currentDistrict === 'archives') {
       return [
         { id: 'codex', universe: null, action: 'codex', label: lang === 'fr' ? 'Codex vivant' : 'Living Codex', x: 270, y: 165, w: 460, h: 210, color: '#ffea00', role: lang === 'fr' ? 'archives des mondes' : 'world archives' },
-        { id: 'arcs', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Chambre des arcs' : 'Arc Chamber', x: 900, y: 165, w: 460, h: 210, color: '#d9b6ff', role: lang === 'fr' ? 'memoire narrative' : 'narrative memory' },
-        { id: 'replay', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Salle des relectures' : 'Signal Replay', x: 585, y: 520, w: 470, h: 170, color: '#39c5bb', role: lang === 'fr' ? 'signaux et briefings' : 'signals and briefings' }
+        { id: 'arcs', action: 'arcs', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Chambre des arcs' : 'Arc Chamber', x: 900, y: 165, w: 460, h: 210, color: '#d9b6ff', role: lang === 'fr' ? 'memoire narrative' : 'narrative memory' },
+        { id: 'replay', action: 'journal', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Salle des relectures' : 'Signal Replay', x: 585, y: 520, w: 470, h: 170, color: '#39c5bb', role: lang === 'fr' ? 'signaux et briefings' : 'signals and briefings' }
       ];
     }
     if (currentDistrict === 'forge') {
       return [
-        { id: 'recovery', universe: 'Nexus', label: lang === 'fr' ? 'Baies de repli' : 'Retreat Bays', x: 245, y: 500, w: 420, h: 190, color: '#2ecc71', role: lang === 'fr' ? 'fatigue et soins' : 'fatigue and recovery' },
-        { id: 'gear', universe: 'Nexus', label: lang === 'fr' ? 'Etablis reliques' : 'Relic Benches', x: 975, y: 500, w: 420, h: 190, color: '#ff4500', role: lang === 'fr' ? 'equipement futur' : 'future gear' },
-        { id: 'training', universe: 'Nexus', label: lang === 'fr' ? 'Simulateur court' : 'Short Simulator', x: 610, y: 230, w: 420, h: 160, color: '#3498db', role: lang === 'fr' ? 'tests de role' : 'role tests' }
+        { id: 'recovery', action: 'party', universe: 'Nexus', label: lang === 'fr' ? 'Baies de repli' : 'Retreat Bays', x: 245, y: 500, w: 420, h: 190, color: '#2ecc71', role: lang === 'fr' ? 'fatigue et soins' : 'fatigue and recovery' },
+        { id: 'gear', action: 'inventory', universe: 'Nexus', label: lang === 'fr' ? 'Etablis reliques' : 'Relic Benches', x: 975, y: 500, w: 420, h: 190, color: '#ff4500', role: lang === 'fr' ? 'equiper les reliques' : 'equip relics' },
+        { id: 'training', action: 'customBattle', universe: 'Nexus', label: lang === 'fr' ? 'Simulateur court' : 'Short Simulator', x: 610, y: 230, w: 420, h: 160, color: '#3498db', role: lang === 'fr' ? 'tests de role' : 'role tests' }
       ];
     }
     const threadRooms = source.slice(0, 3).map((universe, index) => {
@@ -2495,6 +2547,24 @@ function MosaicCityHub({
       ...threadRooms
     ];
   }, [currentDistrict, district, lang, universeStageStats, visibleThreadUniverses]);
+  useEffect(() => {
+    if (restoredLocationRef.current) return;
+    restoredLocationRef.current = true;
+    const restored = restoreMosaicLocation(savedLocation, districts);
+    Object.assign(stateRef.current.player, restored.player);
+    stateRef.current.camera = restored.camera;
+    currentDistrictRef.current = restored.districtId;
+    currentZoneRef.current = restored.zoneId;
+    setCurrentDistrict(restored.districtId);
+    setCurrentZone(restored.zoneId);
+  }, [districts, savedLocation]);
+  useEffect(() => {
+    const publish = () => locationCallbackRef.current?.(snapshotMosaicLocation(stateRef.current, currentDistrictRef.current, currentZoneRef.current));
+    const checkpoint = window.setInterval(publish, 5000);
+    window.addEventListener('pagehide', publish);
+    return () => { window.clearInterval(checkpoint); window.removeEventListener('pagehide', publish); publish(); };
+  }, []);
+  useEffect(() => { if (cityMenuOpen) stateRef.current.keys = {}; }, [cityMenuOpen]);
   const scenery = useMemo(() => getMosaicScenery(district), [district]);
   const sceneObstacles = useMemo(() => getMosaicSceneObstacles(district, zones), [district, zones]);
   stateRef.current.obstacles = sceneObstacles;
@@ -2637,6 +2707,11 @@ function MosaicCityHub({
       onOpenCodex?.(zone.universe);
       return;
     }
+    if (['arcs', 'journal', 'party', 'inventory', 'customBattle'].includes(zone?.action)) {
+      locationCallbackRef.current?.(snapshotMosaicLocation(stateRef.current, currentDistrictRef.current, currentZoneRef.current));
+      onOpenService?.(zone.action);
+      return;
+    }
     if (zone?.action === 'anchor') {
       const stats = universeStageStats[zone.universe] || { total: 0, cleared: 0 };
       setHubLog(lang === 'fr'
@@ -2672,11 +2747,11 @@ function MosaicCityHub({
       ? `${target.name} synchronise sa Trame avec ${playerName}. ${compatible.length ? `Discussion compatible avec ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} faille(s) stabilisee(s).`
       : `${target.name} synchronizes their Thread with ${playerName}. ${compatible.length ? `Compatible discussion with ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} stabilized rift(s).`);
     sound.playSfx('confirm');
-  }, [district, lang, onOpenCodex, onOpenMissions, playerName, recordGuide, switchDistrict, universeStageStats, zones]);
+  }, [district, lang, onOpenCodex, onOpenMissions, onOpenService, playerName, recordGuide, switchDistrict, universeStageStats, zones]);
 
   useEffect(() => {
     const onKeyDown = event => {
-      if (sessionPausedRef.current) return;
+      if (sessionPausedRef.current || cityMenuRef.current) return;
       if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
       const key = event.key.toLowerCase();
       if (['arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'w', 'a', 's', 'd', 'z', 'q'].includes(key)) {
@@ -2809,7 +2884,7 @@ function MosaicCityHub({
     };
 
     const loop = (timestamp = performance.now()) => {
-      if (sessionPausedRef.current || document.hidden) {
+      if (sessionPausedRef.current || cityMenuRef.current || document.hidden) {
         lastFrame = null;
         rafId = window.requestAnimationFrame(loop);
         return;
@@ -2904,6 +2979,13 @@ function MosaicCityHub({
 
       ctx.save();
       ctx.translate(-state.camera.x, -state.camera.y);
+      const cityBackdrop = cityBackdropRef.current;
+      if (currentDistrict === 'atrium' && cityBackdrop?.complete && cityBackdrop.naturalWidth) {
+        const scale = Math.max(district.worldW / cityBackdrop.naturalWidth, district.worldH / cityBackdrop.naturalHeight);
+        ctx.save(); ctx.globalAlpha = 0.42;
+        ctx.drawImage(cityBackdrop, (district.worldW - cityBackdrop.naturalWidth * scale) / 2, (district.worldH - cityBackdrop.naturalHeight * scale) / 2, cityBackdrop.naturalWidth * scale, cityBackdrop.naturalHeight * scale);
+        ctx.restore();
+      }
 
       ctx.strokeStyle = 'rgba(255,255,255,0.08)';
       ctx.strokeRect(10, 10, district.worldW - 20, district.worldH - 20);
@@ -3068,37 +3150,6 @@ function MosaicCityHub({
 
       ctx.restore();
 
-      ctx.fillStyle = 'rgba(0,0,0,0.68)';
-      ctx.fillRect(12, 12, 290, 88);
-      ctx.strokeStyle = '#39c5bb';
-      ctx.strokeRect(12, 12, 290, 88);
-      ctx.fillStyle = '#39c5bb';
-      ctx.font = '11px "Press Start 2P"';
-      ctx.fillText(lang === 'fr' ? 'CITE-MOSAIQUE' : 'MOSAIC CITY', 24, 34);
-      ctx.fillStyle = '#fff';
-      ctx.font = '11px "Share Tech Mono"';
-      ctx.fillText(`${lang === 'fr' ? 'Zone' : 'Zone'}: ${activeZone.label}`, 24, 57);
-      if (district.universe) {
-        ctx.fillStyle = districtProgress >= 0.6 ? '#2ecc71' : districtProgress > 0 ? '#ffeb3b' : '#aaa';
-        ctx.font = '10px "Share Tech Mono"';
-        ctx.fillText(districtStateLabel.toUpperCase().slice(0, 30), 24, 72);
-      }
-      if (interaction) {
-        ctx.fillStyle = '#ffea00';
-        ctx.font = '10px "Share Tech Mono"';
-        ctx.fillText(`E: ${interaction.target.label || interaction.target.hero?.name}`.slice(0, 40), 24, district.universe ? 88 : 78);
-      }
-
-      ctx.fillStyle = 'rgba(0,0,0,0.58)';
-      ctx.fillRect(canvas.width - 292, 12, 280, 64);
-      ctx.strokeStyle = '#ffea00';
-      ctx.strokeRect(canvas.width - 292, 12, 280, 64);
-      ctx.fillStyle = '#ffea00';
-      ctx.font = '10px "Share Tech Mono"';
-      ctx.fillText(`${ownedHeroes.length} signatures / ${unlockedUniverses.length} trames`, canvas.width - 276, 34);
-      ctx.fillStyle = '#d8f7ff';
-      ctx.fillText(`${completedStages.length} ${lang === 'fr' ? 'breches scellees' : 'sealed breaches'}`, canvas.width - 276, 56);
-
       const miniW = 154;
       const miniH = 92;
       const miniX = canvas.width - miniW - 14;
@@ -3181,6 +3232,7 @@ function MosaicCityHub({
     clearCityDestination();
     stateRef.current.destination = clampMosaicPosition(portal, district);
     stateRef.current.pendingInteraction = { type: 'portal', id: portal.id };
+    setCityMenuOpen(false);
     setHubLog(lang === 'fr' ? `Approche du portail ${universe}. L entree se fait a proximite.` : `Approaching the ${universe} portal. Entry requires reaching it.`);
   };
   const welcomeLanguage = lang === 'fr' ? 'fr' : 'en';
@@ -3202,6 +3254,12 @@ function MosaicCityHub({
   return (
     <div className={`glass-panel nexus-play-panel mosaic-rpg-panel ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
       <GameHudThemeLayer theme={hudTheme} mode="nexus" />
+      <span className="gameplay-live-status" id="mosaic-city-controls-help">{lang === 'fr' ? 'ZQSD / WASD ou flèches : marcher. E : interagir. Terminal : destinations, journal et aide.' : 'WASD or arrows: walk. E: interact. Terminal: destinations, journal and help.'}</span>
+      <div className="mosaic-world-hud">
+        <div className="mosaic-location"><span>{lang === 'fr' ? 'CITÉ-MOSAÏQUE' : 'MOSAIC CITY'}</span><strong>{district.label}</strong><small>{currentZoneData?.label || 'Nexus'}</small></div>
+        <button type="button" className="btn-retro" onClick={() => setCityMenuOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'TERMINAL · JOURNAL' : 'TERMINAL · JOURNAL'}</button>
+      </div>
+      <ImmersiveDrawer open={cityMenuOpen} onClose={closeCityMenu} lang={lang} title={lang === 'fr' ? 'Terminal de poche A.R.C.A.' : 'A.R.C.A. pocket terminal'}>
       <div className="nexus-play-copy">
         <div className="portal-focus-kicker">{lang === 'fr' ? 'CITE-MOSAIQUE / RPG VIVANT' : 'MOSAIC CITY / LIVING RPG'}</div>
         <h3>{lang === 'fr' ? 'Cite-Mosaique' : 'Mosaic City'}</h3>
@@ -3269,12 +3327,21 @@ function MosaicCityHub({
           <span>{hubLog}</span>
         </div>
         <div className="mosaic-rpg-controls">
-          <span id="mosaic-city-controls-help">{lang === 'fr' ? 'ZQSD/WASD ou fleches : marcher. E : interagir. Touche le sol pour avancer; une personne ou une borne pour l approcher.' : 'WASD or arrows: walk. E: interact. Tap the ground to move; tap a person or terminal to approach.'}</span>
+          <span>{lang === 'fr' ? 'ZQSD/WASD ou fleches : marcher. E : interagir. Touche le sol pour avancer; une personne ou une borne pour l approcher.' : 'WASD or arrows: walk. E: interact. Tap the ground to move; tap a person or terminal to approach.'}</span>
           <button className="btn-retro" onClick={interactWithNearby} disabled={!nearbyLabel} title={lang === 'fr' ? 'Interagit avec le heros ou le portail le plus proche.' : 'Interact with the nearest hero or portal.'}>
             {nearbyLabel ? `${lang === 'fr' ? 'INTERAGIR' : 'INTERACT'} - ${nearbyLabel}` : (lang === 'fr' ? 'APPROCHE UNE SIGNATURE' : 'APPROACH A SIGNATURE')}
           </button>
         </div>
+        <section className="mosaic-terminal-guide"><strong>{guideCopy.title}</strong><p>{guideCopy.body}</p>
+          {(guideState.status === 'paused' || guideState.status === 'skipped') && <button type="button" className="btn-retro" onClick={() => { controlGuide('resume'); setCityMenuOpen(false); }}>{lang === 'fr' ? 'REPRENDRE LE GUIDE' : 'RESUME GUIDE'}</button>}
+        </section>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+          <button className="mosaic-city-guide-restore" type="button" onClick={() => { setWelcomeIndex(0); setWelcomeOpen(true); setCityMenuOpen(false); }}>{lang === 'fr' ? 'Revoir l accueil' : 'Replay welcome'}</button>
+          <button className="mosaic-city-guide-restore" type="button" onClick={() => { controlGuide('restart'); setCityMenuOpen(false); }}>{lang === 'fr' ? 'Rejouer les reperes' : 'Replay first steps'}</button>
+          {guideState.status !== 'completed' && guideState.status !== 'skipped' && <button className="mosaic-city-guide-restore" type="button" onClick={() => controlGuide('skip')}>{lang === 'fr' ? 'Ignorer le guide' : 'Skip guide'}</button>}
+        </div>
       </div>
+      </ImmersiveDrawer>
       <div className="mosaic-rpg-stage">
         {welcomeOpen && (
           <section className="mosaic-city-guide" style={{ gridTemplateColumns: 'minmax(0, 1fr) auto' }} aria-label={MOSAIC_WELCOME.title[welcomeLanguage]}>
@@ -3285,20 +3352,16 @@ function MosaicCityHub({
             </div>
           </section>
         )}
-        {guideState.status === 'active' || guideState.status === 'completed' ? (
+        {!welcomeOpen && guideState.status === 'active' ? (
           <section className="mosaic-city-guide" aria-label={lang === 'fr' ? 'Premiers pas dans la Cite' : 'First steps in the City'}>
             <div className="mosaic-city-guide-progress" aria-label={lang === 'fr' ? 'Progression du guide' : 'Guide progress'}>{['move', 'interact', 'objective'].map((step, index) => <span key={step} className={guideStep === 'done' || index < ['move', 'interact', 'objective'].indexOf(guideStep) ? 'is-done' : guideStep === step ? 'is-current' : ''}>{index + 1}</span>)}</div>
             <div aria-live="polite"><strong>{guideCopy.title}</strong><p>{guideCopy.body}</p></div>
             {guideState.status === 'active' && <button type="button" onClick={() => controlGuide('pause')}>{lang === 'fr' ? 'Pause guide' : 'Pause guide'}</button>}
           </section>
-        ) : <div className="mosaic-city-guide" style={{ gridTemplateColumns: 'minmax(0, 1fr) auto' }}><span>{guideState.status === 'skipped' ? (lang === 'fr' ? 'Guide ignore. Exploration libre, progression conservee.' : 'Guide skipped. Free exploration, progress retained.') : (lang === 'fr' ? 'Guide en pause. Ton dernier repere est conserve.' : 'Guide paused. Your last checkpoint is retained.')}</span><button type="button" onClick={() => controlGuide('resume')}>{lang === 'fr' ? 'Reprendre' : 'Resume'}</button></div>}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-          <button className="mosaic-city-guide-restore" type="button" onClick={() => { setWelcomeIndex(0); setWelcomeOpen(true); }}>{lang === 'fr' ? 'Revoir l accueil' : 'Replay welcome'}</button>
-          <button className="mosaic-city-guide-restore" type="button" onClick={() => controlGuide('restart')}>{lang === 'fr' ? 'Rejouer les reperes' : 'Replay first steps'}</button>
-          {guideState.status !== 'completed' && guideState.status !== 'skipped' && <button className="mosaic-city-guide-restore" type="button" onClick={() => controlGuide('skip')}>{lang === 'fr' ? 'Ignorer le guide' : 'Skip guide'}</button>}
-        </div>
+        ) : null}
+        <p className="mosaic-world-log" role="status">{hubLog}</p>
         <canvas ref={canvasRef} width="960" height="540" tabIndex={0} aria-label={lang === 'fr' ? 'Cite-Mosaique, zone d exploration interactive' : 'Mosaic City, interactive exploration area'} aria-describedby="mosaic-city-controls-help" className="nexus-hub-canvas mosaic-rpg-canvas" onPointerDown={moveToPointer} />
-        <div className="mosaic-mobile-pad">
+        <div className="mosaic-mobile-pad mosaic-world-controls">
           {[['arrowleft', '←'], ['arrowup', '↑'], ['arrowdown', '↓'], ['arrowright', '→']].map(([key, label]) => (
             <button key={key} type="button" aria-label={`${lang === 'fr' ? 'Deplacement' : 'Move'} ${label}`} onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture?.(event.pointerId); setVirtualKey(key, true); }} onPointerUp={() => setVirtualKey(key, false)} onPointerCancel={() => setVirtualKey(key, false)} onLostPointerCapture={() => setVirtualKey(key, false)} onPointerLeave={() => setVirtualKey(key, false)}>{label}</button>
           ))}
@@ -3318,11 +3381,13 @@ function ExtinctionRoyale({
   unlockedHeroes,
   onSessionStart,
   onSessionEnd,
+  career = {},
   hudTheme = null,
   sessionPaused = false,
   sessionExitRequest = 0
 }) {
   const canvasRef = useRef(null);
+  useSceneViewport(canvasRef, 430);
   const fpsHandsRef = useRef(null);
   const fpsProjectileRef = useRef(null);
   const fpsBackdropRef = useRef(null);
@@ -3397,11 +3462,11 @@ function ExtinctionRoyale({
 
   const weaponProfile = useMemo(() => {
     const category = selectedHero?.category || 'marine';
-    if (selectedHero?.weaponType === 'melee' || category === 'slayer') return { name: lang === 'fr' ? 'Plaquette FPS: lame/shotgun de rupture' : 'FPS plaque: rupture blade/shotgun', color: '#ff5a36', fireRate: 1, spread: 0.18 };
-    if (category === 'hacker') return { name: lang === 'fr' ? 'Plaquette FPS: outil de scan anormal' : 'FPS plaque: anomaly scan tool', color: '#39c5bb', fireRate: 0.85, spread: 0.08 };
-    if (category === 'tactical') return { name: lang === 'fr' ? 'Plaquette FPS: carabine A.R.C.A.' : 'FPS plaque: A.R.C.A. carbine', color: '#9b59b6', fireRate: 1, spread: 0.1 };
-    if (category === 'horror') return { name: lang === 'fr' ? 'Plaquette FPS: relique sombre' : 'FPS plaque: dark relic', color: '#8e44ad', fireRate: 0.9, spread: 0.16 };
-    return { name: lang === 'fr' ? 'Plaquette FPS: fusil d Ancre' : 'FPS plaque: Anchor rifle', color: '#ffea00', fireRate: 1, spread: 0.12 };
+    if (selectedHero?.weaponType === 'melee' || category === 'slayer') return { name: lang === 'fr' ? 'Arme: lame/shotgun de rupture' : 'Weapon: rupture blade/shotgun', color: '#ff5a36', fireRate: 1, spread: 0.18 };
+    if (category === 'hacker') return { name: lang === 'fr' ? 'Arme: outil de scan anormal' : 'Weapon: anomaly scan tool', color: '#39c5bb', fireRate: 0.85, spread: 0.08 };
+    if (category === 'tactical') return { name: lang === 'fr' ? 'Arme: carabine A.R.C.A.' : 'Weapon: A.R.C.A. carbine', color: '#9b59b6', fireRate: 1, spread: 0.1 };
+    if (category === 'horror') return { name: lang === 'fr' ? 'Arme: relique sombre' : 'Weapon: dark relic', color: '#8e44ad', fireRate: 0.9, spread: 0.16 };
+    return { name: lang === 'fr' ? 'Arme: fusil d Ancre' : 'Weapon: Anchor rifle', color: '#ffea00', fireRate: 1, spread: 0.12 };
   }, [lang, selectedHero]);
 
   const universeFragments = useMemo(() => {
@@ -3608,6 +3673,7 @@ function ExtinctionRoyale({
     };
     const next = {
       phase: 'running',
+      runId: `extinction-${globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`}`,
       hp: Math.min(260, Math.max(85, Math.round(stats.hp * 0.75 * role.hp))),
       maxHp: Math.min(260, Math.max(85, Math.round(stats.hp * 0.75 * role.hp))),
       armor: role.armor,
@@ -3674,7 +3740,7 @@ function ExtinctionRoyale({
     state.statusText = rewards.title;
     setRunSnapshot(buildRunSnapshot(state));
     sound.playSfx(victory ? 'victory' : 'defeat');
-    onSessionEnd?.({ reason: 'completed', result, rewards });
+    onSessionEnd?.({ reason: 'completed', runId: state.runId, at: new Date().toISOString(), mode: runMode, kills: state.kills, waves: state.wave, result, rewards });
   }, [buildRunSnapshot, lang, onSessionEnd, runMode]);
 
   useEffect(() => {
@@ -3950,7 +4016,7 @@ function ExtinctionRoyale({
           const y = canvas.height * 0.58 - 28 * scale;
           const w = 46 * scale;
           const h = 76 * scale;
-          
+
           if (enemy.kind === 'Champion de Trame' && enemy.shieldActive) {
             ctx.save();
             ctx.strokeStyle = '#3498db';
@@ -3976,24 +4042,6 @@ function ExtinctionRoyale({
           ctx.font = `${Math.max(7, 10 * scale)}px "Share Tech Mono"`;
           ctx.fillText(enemy.kind.toUpperCase().slice(0, 12), x - w * 0.42, y - 13);
         });
-
-      ctx.fillStyle = 'rgba(0,0,0,0.66)';
-      ctx.fillRect(0, 0, canvas.width, 48);
-      const hpRatio = Math.max(0, Math.min(1, state.hp / Math.max(1, state.maxHp || state.hp || 1)));
-      ctx.fillStyle = state.hp < 35 ? '#e74c3c' : '#2ecc71';
-      ctx.fillRect(18, 17, 308 * hpRatio, 10);
-      ctx.strokeStyle = '#2ecc71';
-      ctx.strokeRect(18, 17, 308, 10);
-      ctx.fillStyle = '#3498db';
-      ctx.fillRect(18, 30, Math.min(308, Math.max(0, state.armor) * 3), 5);
-      ctx.fillStyle = '#fff';
-      ctx.font = '12px "Share Tech Mono"';
-      ctx.fillText(`${selectedHero.name} / HP ${Math.round(state.hp)} / ARM ${Math.round(state.armor)} / AMMO ${state.ammo}+${state.reserveAmmo || 0} / W${state.wave} / K${state.kills}`, 18, 45);
-      ctx.fillStyle = '#ffea00';
-      ctx.font = 'bold 12px "Share Tech Mono"';
-      ctx.textAlign = 'right';
-      ctx.fillText(getRunObjectiveText(state), canvas.width - 18, 31, Math.min(430, canvas.width * 0.52));
-      ctx.textAlign = 'left';
 
       ctx.strokeStyle = state.muzzle ? '#ffea00' : 'rgba(255,255,255,0.72)';
       ctx.beginPath();
@@ -4168,7 +4216,7 @@ function ExtinctionRoyale({
       state.statusText = lang === 'fr' ? 'Chargeur vide: recharge avec R.' : 'Magazine empty: reload with R.';
       return;
     }
-    
+
     wep.ammo -= 1;
     state.ammo = wep.ammo;
     state.lastFireTime = state.t;
@@ -4179,7 +4227,7 @@ function ExtinctionRoyale({
       .map(enemy => ({ enemy, projection: projectWorld(enemy, state) }))
       .filter(({ projection }) => projection.camZ > 0.24 && Math.abs(projection.aim) < 0.2 + wep.spread)
       .sort((a, b) => (Math.abs(a.projection.aim) + a.projection.camZ * 0.035) - (Math.abs(b.projection.aim) + b.projection.camZ * 0.035))[0]?.enemy;
-    
+
     if (target) {
       if (target.kind === 'Champion de Trame' && target.shieldActive) {
         const dronesAlive = state.enemies.some(enemy => enemy.kind === 'Drone Protecteur' && enemy.hp > 0);
@@ -4191,12 +4239,12 @@ function ExtinctionRoyale({
           target.shieldActive = false;
         }
       }
-      
+
       const closeBonus = selectedHero?.category === 'slayer' && projectWorld(target, state).dist < 2.2 ? 1.45 : 1;
       target.hp -= Math.round(34 * role.dmg * closeBonus * wep.dmgMult);
       state.hitMarkerTimer = 6;
       state.screenShake = 5.5 + wep.dmgMult * 1.5;
-      
+
       if (target.hp <= 0 && !target.counted) {
         target.counted = true;
         state.kills += 1;
@@ -4434,9 +4482,10 @@ function ExtinctionRoyale({
   });
 
   const runActive = runSnapshot.phase === 'running';
+  const runEnded = runSnapshot.phase === 'ended';
 
   return (
-    <div className={`glass-panel nexus-play-panel extinction-panel ${runActive ? 'extinction-panel-active' : ''} ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
+    <div className={`glass-panel nexus-play-panel extinction-panel ${runActive || runEnded ? 'extinction-panel-active' : ''} ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
       <GameHudThemeLayer theme={hudTheme} mode="fps" />
       <div className="nexus-play-copy">
         <div className="extinction-setup-copy">
@@ -4447,17 +4496,16 @@ function ExtinctionRoyale({
               ? 'Simulation dangereuse A.R.C.A.: les Trames trop instables sont compressees avant d envahir la Cite-Mosaique. Choisis une signature, loot, survis aux vagues, evite la Marge Blanche et force une extraction.'
               : 'Dangerous A.R.C.A. simulation: unstable Threads are compressed before they invade Mosaic City. Pick a signature, loot, survive waves, avoid the White Margin, and force extraction.'}
           </p>
-          <select
-            value={runMode}
-            onChange={event => setRunMode(event.target.value)}
-            className="nexus-select"
-            aria-label={lang === 'fr' ? 'Type de run Zone d Extinction' : 'Extinction Zone run type'}
-          >
-            <option value="extraction">{lang === 'fr' ? 'Solo Extraction' : 'Solo Extraction'}</option>
-            <option value="last_signal">{lang === 'fr' ? 'Dernier Signal' : 'Last Signal'}</option>
-            <option value="infestation">{lang === 'fr' ? 'Infestation' : 'Infestation'}</option>
-            <option value="hunt">{lang === 'fr' ? 'Chasse au Champion' : 'Champion Hunt'}</option>
-          </select>
+          <div className="extinction-mode-options" role="group" aria-label={lang === 'fr' ? 'Type de run Zone d Extinction' : 'Extinction Zone run type'}>
+            {[
+              ['extraction', 'Solo Extraction', 'Solo Extraction'], ['last_signal', 'Dernier Signal', 'Last Signal'],
+              ['infestation', 'Infestation', 'Infestation'], ['hunt', 'Chasse au Champion', 'Champion Hunt']
+            ].map(([id, fr, en]) => <button key={id} type="button" aria-pressed={runMode === id} onClick={() => setRunMode(id)}><strong>{lang === 'fr' ? fr : en}</strong><small>{objectives[id]}</small></button>)}
+          </div>
+          <div className="extinction-pilot-selection">
+            <canvas width="150" height="150" aria-hidden="true" ref={canvas => { if (!canvas || !selectedHero) return; const ctx = canvas.getContext('2d'); ctx.clearRect(0, 0, 150, 150); drawPixelSprite(ctx, 75, 110, selectedHero, 0, 1, 104, 'nexus'); }} />
+            <div><strong>{selectedHero?.name}</strong><span>{selectedHero?.universe}</span><small>{career.runs || 0} {lang === 'fr' ? 'runs archivées' : 'archived runs'} · {career.wins || 0} {lang === 'fr' ? 'victoires' : 'wins'} · {career.xp || 0} XP Extinction</small></div>
+          </div>
           <select
             value={selectedHero?.id || ''}
             onChange={event => setSelectedHeroId(event.target.value)}
@@ -4490,13 +4538,15 @@ function ExtinctionRoyale({
           </div>
         )}
         {runSnapshot.rewards && (
-          <div className="nexus-play-intel">
+          <div className="nexus-play-intel extinction-result" role="region" aria-label={lang === 'fr' ? 'Bilan de la run' : 'Run results'}>
             <strong>{runSnapshot.rewards.title}</strong>
-            <span>+{runSnapshot.rewards.gold} Or / +{runSnapshot.rewards.shards} Fragments / +{runSnapshot.rewards.modeXp} XP</span>
+            <span>+{runSnapshot.rewards.gold} {lang === 'fr' ? 'Or' : 'Gold'} / +{runSnapshot.rewards.shards} {lang === 'fr' ? 'Fragments' : 'Shards'} / +{runSnapshot.rewards.modeXp} XP {lang === 'fr' ? 'Extinction' : 'Extinction'}</span>
+            <small>{lang === 'fr' ? 'Récompenses transférées. Ce bilan reste ouvert jusqu’à ta validation.' : 'Rewards transferred. Results stay open until you continue.'}</small>
+            <button type="button" className="btn-retro" autoFocus onClick={() => { stateRef.current.phase = 'ready'; stateRef.current.rewards = null; stateRef.current.result = null; setRunSnapshot(buildRunSnapshot(stateRef.current)); onSessionEnd?.({ reason: 'acknowledged' }); }}>{lang === 'fr' ? 'CONTINUER' : 'CONTINUE'}</button>
           </div>
         )}
         <div className="nexus-play-actions">
-          {!runActive && (
+          {!runActive && !runEnded && (
             <button className="btn-retro" onClick={startRun} title={lang === 'fr' ? 'Lance une run Zone d Extinction.' : 'Start an Extinction Zone run.'}>
               {lang === 'fr' ? 'DEMARRER RUN' : 'START RUN'}
             </button>
@@ -5153,6 +5203,11 @@ export function RiftBriefingPanel({
 export default function HubScreen({
   lang,
   initialTab = 'missions',
+  hubNavigationRef,
+  audioSettings,
+  onChangeAudioSetting,
+  onToggleMute,
+  isOnline = true,
   playerProfile,
   publicProfile,
   setPublicProfile,
@@ -5183,10 +5238,15 @@ export default function HubScreen({
   onLaunchStage,
   onGoToPortal
 }) {
-  const [activeTab, setActiveTab] = useState(() => HUB_NAV_GROUPS.some(group => group.tabs.some(tab => !tab.portal && tab.id === initialTab)) ? initialTab : 'missions');
+  const initialNavigation = useRef(normalizeHubNavigation(hubNavigationRef?.current)).current;
+  const [activeTab, setActiveTab] = useState(() => {
+    const requestedTab = initialTab === 'missions' && initialNavigation.activeTab !== 'mosaicHub'
+      ? initialNavigation.activeTab : initialTab;
+    return HUB_NAV_GROUPS.some(group => group.tabs.some(tab => !tab.portal && tab.id === requestedTab)) ? requestedTab : 'missions';
+  });
   // Une session active verrouille le hub sans demonter le composant de jeu.
   const gameWorkspaceRef = useRef(null);
-  const [activeGameMode, setActiveGameMode] = useState(null);
+  const [activeGameMode, setActiveGameMode] = useState(initialTab === 'mosaicHub' ? 'nexus' : null);
   const [pauseMenuOpen, setPauseMenuOpen] = useState(false);
   const [sessionExitRequests, setSessionExitRequests] = useState({
     custom: 0,
@@ -5212,9 +5272,21 @@ export default function HubScreen({
     if (report.reason === 'abandoned') setActiveTab('missions');
   }, [finishDedicatedGame]);
   const startRaceSession = useCallback(() => startDedicatedGame('race'), [startDedicatedGame]);
-  const finishRaceSession = useCallback(() => finishDedicatedGame('race'), [finishDedicatedGame]);
+  const finishRaceSession = useCallback((report = {}) => { if (report.reason !== 'completed') finishDedicatedGame('race'); }, [finishDedicatedGame]);
   const startExtinctionSession = useCallback(() => startDedicatedGame('extinction'), [startDedicatedGame]);
-  const finishExtinctionSession = useCallback(() => finishDedicatedGame('extinction'), [finishDedicatedGame]);
+  const extinctionReceiptsRef = useRef(new Set(Array.isArray(activityProgress.extinctionCareer?.receipts) ? activityProgress.extinctionCareer.receipts : []));
+  const finishExtinctionSession = useCallback((report = {}) => {
+    if (report.reason === 'completed') {
+      const normalized = normalizeExtinctionReport(report);
+      if (!normalized || extinctionReceiptsRef.current.has(normalized.runId) || activityProgress.extinctionCareer?.receipts?.includes?.(normalized.runId)) return;
+      extinctionReceiptsRef.current.add(normalized.runId);
+      setGold(previous => previous + normalized.rewards.gold);
+      setBreachShards(previous => previous + normalized.rewards.shards);
+      setActivityProgress(previous => applyExtinctionReport(previous, normalized));
+      return;
+    }
+    finishDedicatedGame('extinction');
+  }, [activityProgress.extinctionCareer?.receipts, finishDedicatedGame, setActivityProgress, setBreachShards, setGold]);
   const confirmDedicatedGameExit = useCallback(() => {
     if (!activeGameMode) return;
     setSessionExitRequests(previous => ({
@@ -5257,20 +5329,18 @@ export default function HubScreen({
       : null;
     openNavigationTab(currentTab || nexusLandingTab || group.tabs.find(tab => !tab.portal) || group.tabs[0]);
   }, [activeGameMode, activeTab, onGoToPortal, openNavigationTab]);
-  const [selectedHeroId, setSelectedHeroId] = useState(unlockedHeroes[0]);
+  const [selectedHeroId, setSelectedHeroId] = useState(() => unlockedHeroes.includes(initialNavigation.selectedHeroId) ? initialNavigation.selectedHeroId : unlockedHeroes[0]);
   const [squadProposal, setSquadProposal] = useState(null);
   const [squadProposalBusy, setSquadProposalBusy] = useState(false);
   const [squadProposalChecked, setSquadProposalChecked] = useState(0);
-  const [squadUniverse, setSquadUniverse] = useState('');
+  const [squadUniverse, setSquadUniverse] = useState(initialNavigation.squadUniverse);
   const squadProposalRequestRef = useRef(0);
   useEffect(() => () => { squadProposalRequestRef.current++; }, []);
-  const [catalogViews, setCatalogViews] = useState(() => Object.fromEntries(
-    ['roster', 'reserve', 'arsenalHeroes', 'inventory', 'shop'].map(key => [key, createCatalogView()])
-  ));
+  const [catalogViews, setCatalogViews] = useState(initialNavigation.catalogViews);
   const updateCatalog = useCallback((key, changes) => {
     setCatalogViews(previous => updateCatalogView(previous, key, changes));
   }, []);
-  const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga' | 'music'
+  const [mediaFilter, setMediaFilter] = useState(initialNavigation.mediaFilter); // 'all' | 'game' | 'movie' | 'manga' | 'music'
   // Les vues Arsenal partagent le meme heros pour eviter toute re-selection.
   const openHeroArsenal = useCallback((heroId, tabId) => {
     if (activeGameMode) return;
@@ -5279,19 +5349,27 @@ export default function HubScreen({
     setActiveTab(tabId);
     sound.playSfx('click');
   }, [activeGameMode]);
-  const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
-  const [missionScreen, setMissionScreen] = useState('index'); // 'index' | 'story' | 'ocDlc' | narrative arc screens
-  const [missionWorkspaceView, setMissionWorkspaceView] = useState('campaign');
-  const [narrativeGroupView, setNarrativeGroupView] = useState('chapters');
-  const [missionSeed, setMissionSeed] = useState(() => Date.now());
-  const [showMissionArchive, setShowMissionArchive] = useState(false);
-  const [briefingStageId, setBriefingStageId] = useState(null);
-  const [selectedNarrativeArcId, setSelectedNarrativeArcId] = useState(null);
-  const [selectedNarrativeGroupId, setSelectedNarrativeGroupId] = useState(null);
+  const [missionModeFilter, setMissionModeFilter] = useState(initialNavigation.missionModeFilter); // 'all' | 'RPG' | 'Tactics' | 'Smash'
+  const [missionScreen, setMissionScreen] = useState(initialNavigation.missionScreen); // 'index' | 'story' | 'ocDlc' | narrative arc screens
+  const [missionWorkspaceView, setMissionWorkspaceView] = useState(initialNavigation.missionWorkspaceView);
+  const missionEntryRequestRef = useRef(null);
+  const previousMissionScreenRef = useRef(missionScreen);
+  const [narrativeGroupView, setNarrativeGroupView] = useState(initialNavigation.narrativeGroupView);
+  const [missionSeed, setMissionSeed] = useState(() => initialNavigation.missionSeed ?? Date.now());
+  const [showMissionArchive, setShowMissionArchive] = useState(initialNavigation.showMissionArchive);
+  const [briefingStageId, setBriefingStageId] = useState(initialNavigation.briefingStageId);
+  const [selectedNarrativeArcId, setSelectedNarrativeArcId] = useState(initialNavigation.selectedNarrativeArcId);
+  const [selectedNarrativeGroupId, setSelectedNarrativeGroupId] = useState(initialNavigation.selectedNarrativeGroupId);
+  const [directoryQuery, setDirectoryQuery] = useState(initialNavigation.directoryQuery);
+  const [directoryStatus, setDirectoryStatus] = useState(initialNavigation.directoryStatus);
+  const [narrativeGroupQuery, setNarrativeGroupQuery] = useState(initialNavigation.narrativeGroupQuery);
   const [completedArcIntros, setCompletedArcIntros] = useState(() => activityProgress?.arcIntros || {});
   const [nexusMessage, setNexusMessage] = useState(null);
-  const [codexView, setCodexView] = useState('canon');
-  const [adminUniverseSearch, setAdminUniverseSearch] = useState('');
+  const [registryOpen, setRegistryOpen] = useState(false);
+  const [registrySection, setRegistrySection] = useState(initialNavigation.registrySection);
+  const closeRegistry = useCallback(() => setRegistryOpen(false), []);
+  const [codexView, setCodexView] = useState(initialNavigation.codexView);
+  const [adminUniverseSearch, setAdminUniverseSearch] = useState(initialNavigation.adminUniverseSearch);
   const [expandedAdminUniverses, setExpandedAdminUniverses] = useState({});
   const [selectedCollectionUniverse, setSelectedCollectionUniverse] = useState(null);
   const [universeArchiveSection, setUniverseArchiveSection] = useState('signatures');
@@ -5300,7 +5378,7 @@ export default function HubScreen({
     setUniverseArchiveSection('signatures');
     setSelectedCollectionUniverse(universe);
   }, []);
-  const hubContentMax = activeGameMode ? '100%' : 'min(1500px, calc(100vw - 32px))';
+  const hubContentMax = '100%';
   const [spritePreview, setSpritePreview] = useState(null);
   const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
   const disabledAssetSets = useMemo(() => ({
@@ -5316,7 +5394,7 @@ export default function HubScreen({
   useEffect(() => {
     if (!activeGameMode) return undefined;
     const onKeyDown = (event) => {
-      if (event.key !== 'Escape') return;
+      if (event.key !== 'Escape' || event.defaultPrevented) return;
       event.preventDefault();
       if (event.repeat) return;
       setPauseMenuOpen(open => !open);
@@ -5418,7 +5496,20 @@ export default function HubScreen({
     ));
     return !pack || isUniverseVisible(pack.universe);
   }, [isUniverseVisible]);
-  const [inventoryFilter, setInventoryFilter] = useState('all');
+  const [inventoryFilter, setInventoryFilter] = useState(initialNavigation.inventoryFilter);
+  const navigationSnapshot = useMemo(() => normalizeHubNavigation({
+    activeTab, selectedHeroId, squadUniverse, catalogViews, mediaFilter, missionModeFilter,
+    missionScreen, missionWorkspaceView, narrativeGroupView, missionSeed, showMissionArchive,
+    briefingStageId, selectedNarrativeArcId, selectedNarrativeGroupId, directoryQuery,
+    directoryStatus, narrativeGroupQuery, registrySection, codexView, adminUniverseSearch, inventoryFilter
+  }), [activeTab, selectedHeroId, squadUniverse, catalogViews, mediaFilter, missionModeFilter,
+    missionScreen, missionWorkspaceView, narrativeGroupView, missionSeed, showMissionArchive,
+    briefingStageId, selectedNarrativeArcId, selectedNarrativeGroupId, directoryQuery,
+    directoryStatus, narrativeGroupQuery, registrySection, codexView, adminUniverseSearch, inventoryFilter]);
+  const rememberHubNavigation = useCallback((overrides = {}) => {
+    if (hubNavigationRef) hubNavigationRef.current = normalizeHubNavigation({ ...navigationSnapshot, ...overrides });
+  }, [hubNavigationRef, navigationSnapshot]);
+  useEffect(() => { rememberHubNavigation(); }, [rememberHubNavigation]);
   const collectionBonusCount = inventory.filter(itemId => (
     itemId.startsWith('collection_reward_')
     || itemId.startsWith('arc_reward_')
@@ -5567,7 +5658,7 @@ export default function HubScreen({
     CANON_PRIORITY_STAGES.legatesCamp,
     { id: 23, name: 'Nekravol Argent Tower', universe: 'Doom', mode: 'RPG', difficulty: 'Expert', goldPrize: 200, shardPrize: 60, bossName: 'Icon of Sin' },
     { id: 24, name: 'Liandri Tournament Grid', universe: 'Unreal', mode: 'Tactics', difficulty: 'Expert', goldPrize: 220, shardPrize: 70, bossName: 'Skaarj Warlord' },
-    
+
     // --- NEW 13 STAGES ---
     { id: 25, name: 'Hogwarts Great Hall Breach', universe: 'Harry Potter', mode: 'RPG', difficulty: 'Easy', goldPrize: 45, shardPrize: 15, bossName: 'Lord Voldemort' },
     { id: 26, name: 'Death Star Trench Corridor', universe: 'Star Wars', mode: 'Smash', difficulty: 'Medium', goldPrize: 70, shardPrize: 25, bossName: 'Darth Vader' },
@@ -5582,7 +5673,7 @@ export default function HubScreen({
     { id: 35, name: 'Mahora Academy Tree Breach', universe: 'Negima', mode: 'Tactics', difficulty: 'Hard', goldPrize: 125, shardPrize: 40, bossName: 'Mage of the Beginning God' },
     { id: 36, name: 'New Port City Network Node', universe: 'Ghost in the Shell', mode: 'Smash', difficulty: 'Hard', goldPrize: 130, shardPrize: 40, bossName: 'Think Tank Tachikoma Core' },
     { id: 37, name: 'Fury Road Desert Outpost', universe: 'Mad Max', mode: 'RPG', difficulty: 'Very Hard', goldPrize: 155, shardPrize: 45, bossName: 'The Gigahorse Interceptor Rig' },
-    
+
     // 38th final stage
     { id: 38, name: 'Final Omniverse Singularity', universe: 'Matrix', mode: 'RPG', difficulty: 'Final World Boss', goldPrize: 500, shardPrize: 150, bossName: 'Breach Singularity Core', metaStage: true, finalGameBoss: true, dlcStage: true }
   ].map(stage => {
@@ -7483,7 +7574,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
     const enabledEnemies = enemyRows.filter(enemy => !isAssetDisabled('enemies', getEnemyAdminKey(universe, enemy)));
     const stageRows = ADMIN_VISIBLE_STAGES.filter(entry => entry.universe === universe || entry.sourceUniverses?.includes(universe));
     const enabledStages = stageRows.filter(entry => !isAssetDisabled('stages', getStageAdminKey(entry)));
-    
+
     const monstersCount = ENEMIES_DB[universe]?.monsters?.filter(enemy => !isAssetDisabled('enemies', getEnemyAdminKey(universe, enemy))).length || 0;
     const bossesCount = ENEMIES_DB[universe]?.bosses?.filter(enemy => !isAssetDisabled('enemies', getEnemyAdminKey(universe, enemy))).length || 0;
     const worldBossCount = (ENEMIES_DB[universe]?.worldBoss && !isAssetDisabled('enemies', getEnemyAdminKey(universe, ENEMIES_DB[universe].worldBoss))) ? 1 : 0;
@@ -7779,6 +7870,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
       sound.playSfx('click');
       return;
     }
+    // Direct launch buttons must remember the selected mission before App unmounts this hub.
+    rememberHubNavigation({ activeTab: 'missions', briefingStageId: stage.id });
     onLaunchStage(prepareStage(stage, deployment));
   };
 
@@ -8737,10 +8830,14 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
     })
     : missionPool;
   useEffect(() => {
+    const entryRequest = missionEntryRequestRef.current;
+    if (previousMissionScreenRef.current === missionScreen && !entryRequest) return;
+    previousMissionScreenRef.current = missionScreen;
+    missionEntryRequestRef.current = null;
     setSelectedNarrativeArcId(null);
-    setSelectedNarrativeGroupId(null);
+    setSelectedNarrativeGroupId(entryRequest?.groupId || null);
     setNarrativeGroupView('chapters');
-    setMissionWorkspaceView(
+    setMissionWorkspaceView(entryRequest?.view || (
       missionScreen === 'story'
         ? 'campaign'
         : missionScreen === 'ocDlc'
@@ -8748,8 +8845,11 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
           : missionScreen === 'universeMissions'
             ? 'missions'
           : 'map'
-    );
+    ));
     setMissionModeFilter('all');
+    setDirectoryQuery('');
+    setDirectoryStatus('all');
+    setNarrativeGroupQuery('');
     if (missionScreen === 'ocDlc' || missionScreen === 'originalWorlds') {
       setMediaFilter('all');
     }
@@ -9119,6 +9219,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
     <div
       className={`hub-screen ${activeGameMode ? 'is-dedicated-game' : ''}`}
       data-game-mode={activeGameMode || 'hub'}
+      data-hub-tab={activeTab}
       style={{
       minHeight: '100vh',
       background: 'radial-gradient(circle, #0e0722 0%, #03010b 100%)',
@@ -9137,10 +9238,503 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
         lang={lang}
         mode={activeGameMode}
         paused={pauseMenuOpen}
+        audioSettings={audioSettings}
+        onChangeAudioSetting={onChangeAudioSetting}
+        onToggleMute={onToggleMute}
+        isOnline={isOnline}
         onOpenPause={() => setPauseMenuOpen(true)}
         onResume={() => setPauseMenuOpen(false)}
         onConfirmExit={confirmDedicatedGameExit}
       />
+      <ImmersiveDrawer open={registryOpen} onClose={closeRegistry} lang={lang} title={lang === 'fr' ? 'Registre de progression A.R.C.A.' : 'A.R.C.A. progression register'} className="nexus-registry-drawer">
+        <nav className="nexus-registry-tabs" aria-label={lang === 'fr' ? 'Dossiers de progression' : 'Progress records'}>
+          {[['milestones', 'JALONS', 'MILESTONES'], ['strategy', 'RÉPUTATIONS', 'REPUTATIONS'], ['campaign', 'CAMPAGNE', 'CAMPAIGN'], ['cycles', 'CYCLES & COLLECTIONS', 'CYCLES & COLLECTIONS']].map(([id, fr, en]) => <button type="button" className="btn-retro" key={id} aria-pressed={registrySection === id} onClick={() => setRegistrySection(id)}>{lang === 'fr' ? fr : en}</button>)}
+        </nav>
+        {registrySection === 'milestones' && (<div style={{
+              padding: '14px',
+              marginBottom: '14px',
+              background: 'rgba(57,197,187,0.05)',
+              border: '1px solid rgba(57,197,187,0.22)',
+              borderRadius: '5px'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
+                <div>
+                  <div style={{ fontSize: '11px', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Campagne de Trame A.R.C.A.' : 'A.R.C.A. Thread Campaign'}
+                  </div>
+                  <div style={{ fontSize: '10px', color: '#9fb6bb', marginTop: '3px' }}>
+                    {lang === 'fr'
+                      ? 'Memoire durable: presence, stabilisations, cycle actif, artefacts et jalons d Ancre.'
+                      : 'Durable memory: presence, stabilizations, active cycle, artifacts, and Anchor milestones.'}
+                  </div>
+                </div>
+                <div style={{ fontSize: '10px', color: '#ffeb3b' }}>
+                  {lang === 'fr'
+                    ? `Prime de cycle: +${seasonRewardBonus}% ressources`
+                    : `Cycle prime: +${seasonRewardBonus}% resources`}
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '8px', marginBottom: '10px' }}>
+                {[
+                  { label: lang === 'fr' ? 'Grade de cycle' : 'Cycle grade', value: seasonLevel, color: '#ffeb3b', sub: `${seasonXpIntoLevel}/250 resonance` },
+                  { label: lang === 'fr' ? 'Signal continu' : 'Continuous signal', value: `${activityProgress.loginStreak || 0}j`, color: '#39c5bb', sub: activityProgress.lastSeenDay || todayKey },
+                  { label: lang === 'fr' ? 'Cycle actif' : 'Active cycle', value: `${weeklyWins}/5`, color: '#2ecc71', sub: lang === 'fr' ? 'stabilisations' : 'stabilizations' },
+                  { label: lang === 'fr' ? 'Artefacts semaine' : 'Weekly artifacts', value: `${weeklyItemActivations}/12`, color: '#ff8c00', sub: lang === 'fr' ? 'economie terrain' : 'field economy' },
+                  { label: lang === 'fr' ? 'Trames stabilisees' : 'Threads stabilized', value: activityProgress.lifetimeWins || 0, color: '#d9b6ff', sub: `${activityProgress.lifetimeAttempts || 0} ${lang === 'fr' ? 'contacts' : 'contacts'}` }
+                ].map(metric => (
+                  <div key={metric.label} style={{ padding: '9px', border: `1px solid ${metric.color}44`, background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
+                    <div style={{ color: metric.color, fontSize: '9px', textTransform: 'uppercase' }}>{metric.label}</div>
+                    <div style={{ color: '#fff', fontSize: '16px', fontWeight: 'bold', marginTop: '3px' }}>{metric.value}</div>
+                    <div style={{ color: '#8fa5aa', fontSize: '9px', marginTop: '2px' }}>{metric.sub}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '8px' }}>
+                {longTermMilestones.map(milestone => {
+                  const ready = milestone.progress >= milestone.target;
+                  const claimed = claimedMilestones.includes(milestone.id);
+                  const ratio = Math.min(1, milestone.progress / milestone.target);
+                  return (
+                    <div key={milestone.id} style={{
+                      padding: '10px',
+                      border: claimed ? '1px solid #2ecc71' : ready ? '1px solid #ffeb3b' : '1px solid rgba(255,255,255,0.1)',
+                      background: claimed ? 'rgba(46,204,113,0.06)' : ready ? 'rgba(255,235,59,0.06)' : 'rgba(0,0,0,0.18)',
+                      borderRadius: '4px'
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center' }}>
+                        <strong style={{ color: ready ? '#ffeb3b' : '#ddd', fontSize: '10px' }}>{milestone.title[lang]}</strong>
+                        <span style={{ color: claimed ? '#2ecc71' : '#aaa', fontSize: '9px' }}>{claimed ? (lang === 'fr' ? 'SCELLE' : 'SEALED') : `${Math.min(milestone.progress, milestone.target)}/${milestone.target}`}</span>
+                      </div>
+                      <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', margin: '7px 0', borderRadius: '3px', overflow: 'hidden' }}>
+                        <div style={{ width: `${ratio * 100}%`, height: '100%', background: claimed ? '#2ecc71' : '#ffeb3b' }} />
+                      </div>
+                      <div style={{ color: '#aaa', fontSize: '9px', lineHeight: 1.35 }}>{milestone.lore[lang]}</div>
+                      <div style={{ color: '#d9d9d9', fontSize: '9px', marginTop: '6px' }}>
+                        +{milestone.reward.gold} Or | +{milestone.reward.shards} Fragments | +{milestone.reward.tokens} Jetons
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => claimLongTermMilestone(milestone)}
+                        disabled={!ready || claimed}
+                        className="btn-retro"
+                        title={lang === 'fr' ? 'Recupere la recompense de ce jalon si l objectif est atteint.' : 'Claim this milestone reward if the objective is complete.'}
+                        style={{
+                          marginTop: '7px',
+                          padding: '5px 8px',
+                          fontSize: '9px',
+                          borderColor: claimed ? '#2ecc71' : ready ? '#ffeb3b' : '#444',
+                          color: claimed ? '#2ecc71' : ready ? '#ffeb3b' : '#666'
+                        }}
+                      >
+                        {claimed ? (lang === 'fr' ? 'ARCHIVE' : 'ARCHIVED') : ready ? (lang === 'fr' ? 'SCELLER' : 'SEAL') : (lang === 'fr' ? 'INSTABLE' : 'UNSTABLE')}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>)}
+        {registrySection === 'strategy' && (<div style={{
+              padding: '14px',
+              marginBottom: '14px',
+              background: 'rgba(0,0,0,0.28)',
+              border: '1px solid rgba(255,235,59,0.18)',
+              borderRadius: '5px'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
+                <div>
+                  <div style={{ fontSize: '11px', color: '#ffeb3b', fontWeight: 'bold', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Lecture strategique Nexus' : 'Nexus Strategic Reading'}
+                  </div>
+                  <div style={{ fontSize: '10px', color: '#9fb6bb', marginTop: '3px' }}>
+                    {lang === 'fr' ? 'Directives d Ancre, reputations, signaux actifs et failles fusionnees.' : 'Anchor directives, reputations, active signals, and fused rifts.'}
+                  </div>
+                </div>
+                <div style={{ fontSize: '10px', color: '#39c5bb' }}>
+                  {lang === 'fr'
+                    ? `${completedStages.length} breches stabilisees / statut ${metaRank} / ${collectionBonusCount} traces Nexus`
+                    : `${completedStages.length} breaches stabilized / ${metaRank} status / ${collectionBonusCount} Nexus traces`}
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px' }}>
+                <div style={{ padding: '10px', border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.05)', borderRadius: '4px' }}>
+                  <strong style={{ color: '#39c5bb', fontSize: '10px', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Prochaines decisions' : 'Next decisions'}
+                  </strong>
+                  <div style={{ display: 'grid', gap: '5px', marginTop: '7px' }}>
+                    {META_NEXUS_RECOMMENDATIONS.map(entry => (
+                      <span key={entry.id} style={{ color: '#dceff0', fontSize: '10px', lineHeight: 1.35 }}>{entry.text[lang]}</span>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ padding: '10px', border: '1px solid rgba(155,89,182,0.22)', background: 'rgba(155,89,182,0.05)', borderRadius: '4px' }}>
+                  <strong style={{ color: '#d9b6ff', fontSize: '10px', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Reputations actives' : 'Active reputations'}
+                  </strong>
+                  <div style={{ display: 'grid', gap: '5px', marginTop: '7px' }}>
+                    {REPUTATION_TRACKS.slice(0, 5).map(track => {
+                      const reputationEntry = activityProgress.reputationProgress?.[track.id] || { xp: 0 };
+                      const rank = getReputationRank(track.id, activityProgress.reputationProgress);
+                      const nextThreshold = track.thresholds[rank + 1];
+                      return (
+                        <span key={track.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.3 }}>
+                          <b>{track.label[lang]} / {lang === 'fr' ? 'RANG' : 'RANK'} {rank}</b>
+                          {` - ${reputationEntry.xp || 0}/${nextThreshold || 'MAX'} XP: ${track.gameplay[lang]}`}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+                <div style={{ padding: '10px', border: '1px solid rgba(255,140,0,0.22)', background: 'rgba(255,140,0,0.05)', borderRadius: '4px' }}>
+                  <strong style={{ color: '#ffb15c', fontSize: '10px', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Missions fusionnees' : 'Fused missions'}
+                  </strong>
+                  <div style={{ display: 'grid', gap: '6px', marginTop: '7px' }}>
+                    {FUSION_MISSIONS.map(mission => (
+                      <span key={mission.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.3 }}>
+                        <b>{mission.title[lang]}</b>: {mission.decor[lang]} {lang === 'fr' ? 'Item' : 'Item'}: {mission.item[lang]}.
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ padding: '10px', border: '1px solid rgba(46,204,113,0.22)', background: 'rgba(46,204,113,0.05)', borderRadius: '4px' }}>
+                  <strong style={{ color: '#8dffb1', fontSize: '10px', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Evenements saisonniers' : 'Seasonal events'}
+                  </strong>
+                  <div style={{ display: 'grid', gap: '5px', marginTop: '7px' }}>
+                    {SPECIAL_EVENTS.map(event => (
+                      <span key={event.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.3 }}>
+                        <b>{event.title[lang]}</b>: {event.reward[lang]}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>)}
+        {registrySection === 'campaign' && (<div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr',
+              gap: '12px',
+              marginBottom: '14px'
+            }}>
+              <div style={{
+                padding: '14px',
+                background: 'rgba(57,197,187,0.06)',
+                border: '1px solid rgba(57,197,187,0.22)',
+                borderRadius: '5px'
+              }}>
+                <div style={{ fontSize: '10px', color: '#39c5bb', textTransform: 'uppercase', marginBottom: '5px' }}>
+                  {lang === 'fr' ? 'Chapitre actif' : 'Active chapter'}
+                </div>
+                <div style={{ fontSize: '15px', fontWeight: 'bold', color: '#fff', marginBottom: '6px' }}>
+                  {currentChapter.name[lang]}
+                </div>
+                <div style={{ fontSize: '11px', color: '#c8d6d6', lineHeight: 1.45, marginBottom: '8px' }}>
+                  {currentChapter.desc[lang]}
+                </div>
+                <div style={{ fontSize: '10px', color: '#ffeb3b' }}>
+                  {currentChapter.focus[lang]}
+                </div>
+                {nextChapter && (
+                  <div style={{ marginTop: '8px', fontSize: '10px', color: '#8fa5aa' }}>
+                    {lang === 'fr'
+                      ? `Termine les operations du chapitre actif pour ouvrir ${getLocalizedText(nextChapter.name, lang)}.`
+                      : `Complete the active chapter operations to open ${getLocalizedText(nextChapter.name, lang)}.`}
+                  </div>
+                )}
+                <div className="story-chapter-rail">
+                  {STORY_CHAPTERS.map((chapter, index) => {
+                    const active = chapter.id === currentChapter.id;
+                    const open = isStoryChapterUnlocked(chapter);
+                    const chapterStageCount = getChapterStageCount(chapter);
+                    const firstChapterStage = getFirstStoryStageForChapter(chapter);
+                    return (
+                      <div
+                        key={chapter.id}
+                        className={`story-chapter-node ${active ? 'active' : ''} ${open ? 'open' : 'locked'}`}
+                      >
+                        <span>{index + 1}</span>
+                        <strong>{chapter.name[lang]}</strong>
+                        <em>
+                          {open
+                            ? (active
+                              ? (lang === 'fr' ? 'Chapitre projete dans les portails' : 'Chapter projected in portals')
+                              : (lang === 'fr' ? 'Archive scellee' : 'Sealed archive'))
+                            : (firstChapterStage
+                              ? getLockedReason(firstChapterStage)
+                              : (lang === 'fr' ? 'Aucune operation canonique associee.' : 'No canonical operation assigned.'))}
+                        </em>
+                        <b>{chapterStageCount} {lang === 'fr' ? 'failles' : 'rifts'}</b>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="story-chapter-rule">
+                  {lang === 'fr'
+                    ? 'Regle A.R.C.A.: les portails de campagne ne projettent que le chapitre actif. Les chapitres futurs restent hors champ pour eviter les spoilers de Trame et les sauts de progression.'
+                    : 'A.R.C.A. rule: campaign portals only project the active chapter. Future chapters stay out of range to avoid Thread spoilers and progression skips.'}
+                </div>
+              </div>
+
+              <div style={{
+                padding: '14px',
+                background: 'rgba(255,255,255,0.02)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '5px'
+              }}>
+                <div style={{ fontSize: '10px', color: '#ffeb3b', textTransform: 'uppercase', marginBottom: '8px' }}>
+                  {lang === 'fr' ? 'Arcs narratifs de faction' : 'Faction narrative arcs'}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '8px' }}>
+                  {arcProgress.map(arc => {
+                    const ratio = arc.total ? arc.completed / arc.total : 0;
+                    const phase = ratio === 1
+                      ? (lang === 'fr' ? 'Arc stabilise' : 'Arc stabilized')
+                      : ratio >= 0.66
+                        ? (lang === 'fr' ? 'Finale approche' : 'Finale incoming')
+                        : ratio >= 0.33
+                          ? (lang === 'fr' ? 'Conflit ouvert' : 'Open conflict')
+                          : (lang === 'fr' ? 'Signal faible' : 'Weak signal');
+                    return (
+                      <div key={arc.id} style={{
+                        padding: '9px',
+                        border: `1px solid ${ratio === 1 ? arc.color : 'rgba(255,255,255,0.08)'}`,
+                        background: ratio === 1 ? `${arc.color}18` : 'rgba(0,0,0,0.16)',
+                        borderRadius: '4px'
+                      }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '4px' }}>
+                          <strong style={{ fontSize: '11px', color: arc.color }}>{arc.title[lang]}</strong>
+                          <span style={{ fontSize: '10px', color: '#ddd' }}>{arc.completed}/{arc.total}</span>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '6px', alignItems: 'center' }}>
+                          <span style={{ fontSize: '9px', color: '#cfd8dc' }}>{arc.faction?.[lang]}</span>
+                          <span style={{ fontSize: '8px', color: arc.color, border: `1px solid ${arc.color}66`, padding: '1px 5px', borderRadius: '3px', textTransform: 'uppercase' }}>{phase}</span>
+                        </div>
+                        <div style={{ height: '4px', background: '#111', borderRadius: '4px', overflow: 'hidden', marginBottom: '6px' }}>
+                          <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: arc.color }} />
+                        </div>
+                        <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35 }}>{arc.premise[lang]}</div>
+                        {arc.intro && (
+                          <div style={{ fontSize: '9px', color: '#ffeb3b', lineHeight: 1.35, marginTop: '6px' }}>
+                            {lang === 'fr' ? 'Intro: ' : 'Intro: '}{arc.intro[lang]}
+                          </div>
+                        )}
+                        <div style={{ fontSize: '10px', color: '#d0d0d0', lineHeight: 1.35, marginTop: '7px' }}>{arc.stakes?.[lang]}</div>
+                        <div style={{ fontSize: '9px', color: '#9adbd6', lineHeight: 1.35, marginTop: '6px' }}>{arc.gameplay?.[lang]}</div>
+                        {arc.missions && (
+                          <div style={{ display: 'grid', gap: '3px', marginTop: '7px' }}>
+                            {arc.missions.slice(0, 3).map((mission, idx) => (
+                              <span key={`${arc.id}-mission-${idx}`} style={{ fontSize: '9px', color: '#cfcfcf', lineHeight: 1.25 }}>
+                                {idx + 1}. {mission[lang]}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        <div style={{ fontSize: '9px', color: '#888', marginTop: '5px' }}>{arc.reward[lang]} - {arc.finale?.[lang]}</div>
+                        {arc.rewards && (
+                          <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: '6px' }}>
+                            {arc.rewards.map(reward => (
+                              <span key={reward.name[lang]} style={{ fontSize: '8px', color: '#fff', border: `1px solid ${arc.color}66`, padding: '1px 5px', borderRadius: '3px' }}>
+                                {reward.name[lang]}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        {arc.claimReward && (
+                          <button
+                            onClick={() => claimArcReward(arc)}
+                            disabled={!arc.complete || arc.claimed}
+                            className="btn-retro"
+                            title={lang === 'fr' ? 'Recupere la recompense finale de cet arc si toutes ses missions sont terminees.' : 'Claim this arc final reward if all its missions are complete.'}
+                            style={{
+                              marginTop: '7px',
+                              padding: '4px 7px',
+                              fontSize: '9px',
+                              borderColor: arc.claimed ? '#2ecc71' : arc.complete ? arc.color : '#444',
+                              color: arc.claimed ? '#2ecc71' : arc.complete ? arc.color : '#666'
+                            }}
+                          >
+                            {arc.claimed
+                              ? (lang === 'fr' ? 'ARC SCELLE' : 'ARC SEALED')
+                              : arc.complete
+                                ? (lang === 'fr' ? 'SCELLER ARC' : 'SEAL ARC')
+                                : (lang === 'fr' ? 'ARC INSTABLE' : 'ARC UNSTABLE')}
+                          </button>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>)}
+        {registrySection === 'cycles' && (<>
+            <div style={{
+              padding: '12px',
+              marginBottom: '14px',
+              background: 'rgba(155,89,182,0.07)',
+              border: '1px solid rgba(155,89,182,0.28)',
+              borderRadius: '5px'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap' }}>
+                <strong style={{ color: '#d7b5ff', fontSize: '11px', textTransform: 'uppercase' }}>
+                  {lang === 'fr' ? 'Cycles hebdomadaires' : 'Weekly cycles'}
+                </strong>
+                <span style={{ color: '#aaa', fontSize: '10px' }}>{currentWeekKey} · UTC / ISO</span>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '8px' }}>
+                {weeklyOperations.map(operation => {
+                  const claimed = claimedWeekly.includes(operation.id);
+                  const ratio = Math.min(1, (operation.progress || 0) / operation.target);
+                  return (
+                    <div key={operation.id} style={{ padding: '9px', border: operation.done ? '1px solid rgba(46,204,113,0.45)' : '1px solid rgba(255,255,255,0.08)', background: operation.done ? 'rgba(46,204,113,0.06)' : 'rgba(0,0,0,0.16)', borderRadius: '4px' }}>
+                      <div style={{ fontSize: '10px', color: operation.done ? '#8dffb1' : '#ddd', fontWeight: 'bold', marginBottom: '5px' }}>{operation.title[lang]}</div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', color: '#8fa5aa', fontSize: '9px', marginBottom: '5px' }}>
+                        <span>{lang === 'fr' ? 'Ancrage' : 'Anchoring'}</span>
+                        <span>{Math.min(operation.progress || 0, operation.target)}/{operation.target}</span>
+                      </div>
+                      <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '7px', borderRadius: '3px', overflow: 'hidden' }}>
+                        <div style={{ width: `${ratio * 100}%`, height: '100%', background: operation.done ? '#2ecc71' : '#9b59b6' }} />
+                      </div>
+                      <div style={{ fontSize: '9px', color: '#aaa', marginBottom: '7px' }}>
+                        +{operation.reward.gold} Or | +{operation.reward.shards} Fragments | +{operation.reward.tokens} Jetons
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => claimWeeklyOperation(operation)}
+                        disabled={!operation.done || claimed}
+                        className="btn-retro"
+                        title={lang === 'fr' ? 'Recupere la recompense hebdomadaire si l objectif est termine.' : 'Claim the weekly reward if the objective is complete.'}
+                        style={{ fontSize: '9px', padding: '5px 8px', borderColor: claimed ? '#2ecc71' : operation.done ? '#ffeb3b' : '#444', color: claimed ? '#2ecc71' : operation.done ? '#ffeb3b' : '#666' }}
+                      >
+                        {claimed
+                          ? (lang === 'fr' ? 'SCELLE' : 'SEALED')
+                          : operation.done
+                            ? (lang === 'fr' ? 'SCELLER' : 'SEAL')
+                            : (lang === 'fr' ? 'INSTABLE' : 'UNSTABLE')}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div style={{
+              padding: '14px',
+              marginBottom: '14px',
+              background: 'rgba(0,0,0,0.22)',
+              border: '1px solid rgba(255,235,59,0.16)',
+              borderRadius: '5px'
+            }}>
+              <div style={{ fontSize: '10px', color: '#ffeb3b', textTransform: 'uppercase', marginBottom: '8px' }}>
+                {lang === 'fr' ? 'Collections de franchise' : 'Franchise collections'}
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '8px' }}>
+                {visibleCollectionProgress.length === 0 && (
+                  <div style={{ padding: '10px', border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.05)', borderRadius: '4px', color: '#9fc', fontSize: '11px', lineHeight: 1.35 }}>
+                    {lang === 'fr'
+                      ? 'Aucune collection de Trame externe ouverte. Le Socle Nexus conserve seulement les archives OC tant que la Regulation maintient les autres mondes en reserve.'
+                      : 'No external Thread collection is open. The Nexus Core keeps only OC archives while Regulation holds other worlds in reserve.'}
+                  </div>
+                )}
+                {visibleCollectionProgress.map(collection => {
+                  const ratio = collection.total ? collection.completed / collection.total : 0;
+                  const partialText = collection.hiddenCount > 0
+                    ? (lang === 'fr' ? `${collection.hiddenCount} Trame(s) en reserve` : `${collection.hiddenCount} reserve Thread(s)`)
+                    : mediaFilter !== 'all'
+                      ? (lang === 'fr' ? `${collection.fullCompleted}/${collection.fullTotal} actifs hors filtre` : `${collection.fullCompleted}/${collection.fullTotal} active outside filter`)
+                      : '';
+                  return (
+                    <div key={collection.id} style={{
+                      padding: '10px',
+                      border: collection.complete ? '1px solid #2ecc71' : '1px solid rgba(255,255,255,0.08)',
+                      background: collection.complete ? 'rgba(46,204,113,0.07)' : 'rgba(255,255,255,0.02)',
+                      borderRadius: '4px'
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center' }}>
+                        <strong style={{ fontSize: '11px', color: collection.complete ? '#2ecc71' : '#ddd' }}>{collection.title[lang]}</strong>
+                        <span style={{ fontSize: '10px', color: '#ffeb3b' }}>{collection.completed}/{collection.total}</span>
+                      </div>
+                      {partialText && (
+                        <div style={{ fontSize: '9px', color: '#ff8c00', marginTop: '4px' }}>
+                          {partialText}
+                        </div>
+                      )}
+                      <div style={{ height: '4px', background: '#111', borderRadius: '4px', overflow: 'hidden', margin: '7px 0' }}>
+                        <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: collection.complete ? '#2ecc71' : '#ffeb3b' }} />
+                      </div>
+                      <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35 }}>{collection.bonus[lang]}</div>
+                      <div style={{ fontSize: '10px', color: '#d9d9d9', marginTop: '6px' }}>
+                        +{collection.reward.gold} Or | +{collection.reward.shards} Fragments | +{collection.reward.tokens} Jetons
+                      </div>
+                      <div style={{ fontSize: '9px', color: '#2ecc71', marginTop: '4px' }}>
+                        {lang === 'fr' ? 'Passif permanent: +2% toutes stats.' : 'Permanent passive: +2% all stats.'}
+                      </div>
+                      <button
+                        onClick={() => claimCollectionReward(collection)}
+                        disabled={!collection.complete || collection.claimed}
+                        className="btn-retro"
+                        title={collection.complete
+                          ? (lang === 'fr' ? 'Recupere la cache de collection si tous les elements requis sont obtenus.' : 'Claim the collection cache if every required element is obtained.')
+                          : (lang === 'fr' ? 'Cache verrouillee: tous les univers de cette collection doivent etre actifs et stabilises.' : 'Cache locked: every universe in this collection must be active and stabilized.')}
+                        style={{
+                          marginTop: '8px',
+                          padding: '5px 9px',
+                          fontSize: '10px',
+                          borderColor: collection.claimed ? '#2ecc71' : collection.complete ? '#ffeb3b' : '#444',
+                          color: collection.claimed ? '#2ecc71' : collection.complete ? '#ffeb3b' : '#666'
+                        }}
+                      >
+                        {collection.claimed
+                          ? (lang === 'fr' ? 'SCELLE' : 'SEALED')
+                          : collection.complete
+                            ? (lang === 'fr' ? 'OUVRIR CACHE' : 'OPEN CACHE')
+                            : (lang === 'fr' ? 'INSTABLE' : 'UNSTABLE')}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px', marginBottom: '14px' }}>
+              {activeFactionSynergies.map(rule => (
+                <div key={rule.id} style={{
+                  padding: '8px 10px',
+                  border: rule.active ? '1px solid #2ecc71' : '1px solid rgba(255,255,255,0.08)',
+                  background: rule.active ? 'rgba(46,204,113,0.08)' : 'rgba(255,255,255,0.02)',
+                  borderRadius: '4px',
+                  fontSize: '10px',
+                  color: rule.active ? '#d9ffe5' : '#888'
+                }}>
+                  <strong>{rule.label}</strong> {rule.count}/{rule.minMembers} - {rule.bonusLabel}
+                </div>
+              ))}
+            </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
+              gap: '8px',
+              marginBottom: '14px',
+              padding: '10px',
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '5px'
+            }}>
+              <div style={{ fontSize: '10px', color: '#aaa' }}>
+                <strong style={{ color: '#39c5bb' }}>{lang === 'fr' ? 'Statut d Ancre' : 'Anchor status'}:</strong> {metaRank}
+              </div>
+              <div style={{ fontSize: '10px', color: '#aaa' }}>
+                <strong style={{ color: '#ffeb3b' }}>{lang === 'fr' ? 'Trames scellees' : 'Sealed Threads'}:</strong> {completedStages.length}/{STAGES.length}
+              </div>
+              <div style={{ fontSize: '10px', color: '#aaa' }}>
+                <strong style={{ color: '#9b59b6' }}>{lang === 'fr' ? 'Niveaux équipe' : 'Roster levels'}:</strong> {totalHeroLevels}
+              </div>
+              <div style={{ fontSize: '10px', color: '#ccc' }}>
+                {nextProgressGoal}
+              </div>
+            </div>
+            </>)}
+      </ImmersiveDrawer>
       <header className="hub-header" style={{
         width: '100%',
         maxWidth: hubContentMax,
@@ -9171,6 +9765,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
         </div>
       </header>
 
+      <details className="hub-progress-console"><summary>{lang === 'fr' ? 'DIRECTIVE & CYCLE' : 'DIRECTIVE & CYCLE'}</summary>
       <section className="hub-command-strip" aria-label={lang === 'fr' ? 'Resume de progression et prochaine mission' : 'Progress summary and next mission'}>
         <div className="hub-next-directive">
           <span>{lang === 'fr' ? 'DIRECTIVE ACTIVE' : 'ACTIVE DIRECTIVE'}</span>
@@ -9197,6 +9792,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             {lang === 'fr' ? 'VOIR LA DIRECTIVE' : 'VIEW DIRECTIVE'}
           </button>
         </div>
+        <button type="button" className="btn-retro" onClick={() => setRegistryOpen(true)} aria-haspopup="dialog">{lang === 'fr' ? 'REGISTRE · JALONS · RÉCOMPENSES' : 'REGISTER · MILESTONES · REWARDS'}</button>
         <div className="hub-cycle-metrics">
           <div><span>{lang === 'fr' ? 'GRADE DE CYCLE' : 'CYCLE GRADE'}</span><strong>{seasonLevel}</strong><small>{seasonXpIntoLevel}/250</small></div>
           <div><span>{lang === 'fr' ? 'SIGNAL CONTINU' : 'CONTINUOUS SIGNAL'}</span><strong>{activityProgress.loginStreak || 0}j</strong><small>{lang === 'fr' ? 'presence' : 'presence'}</small></div>
@@ -9204,6 +9800,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
           <div><span>{lang === 'fr' ? 'TRAMES STABLES' : 'STABLE THREADS'}</span><strong>{completedStages.length}</strong><small>{activeTeam.length} {lang === 'fr' ? 'signatures actives' : 'active signatures'}</small></div>
         </div>
       </section>
+      </details>
 
       {nexusMessage && (
         <div className="hub-nexus-message" style={{
@@ -9230,6 +9827,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
               type="button"
               className={`${activeNavGroup.id === group.id ? 'is-active' : ''} ${group.portal ? 'is-portal' : ''}`}
               onClick={() => openNavigationGroup(group)}
+              aria-current={activeNavGroup.id === group.id ? 'page' : undefined}
               title={getLocalizedText(group.title, lang)}
             >
               {getLocalizedText(group.label, lang)}
@@ -9251,6 +9849,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                 type="button"
                 onClick={() => openNavigationTab(tab)}
                 className={`btn-tab ${activeTab === tab.id ? 'active-tab' : ''} ${tab.portal ? 'is-portal' : ''}`}
+                aria-current={activeTab === tab.id ? 'page' : undefined}
                 title={getLocalizedText(tab.title, lang)}
               >
                 {getLocalizedText(tab.label, lang)}
@@ -9313,10 +9912,12 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
         </div>
       )}
 
+      {!activeGameMode && activityProgress.mosaicLocation && <button type="button" className="hub-return-city btn-retro" onClick={() => openNavigationTab({ id: 'mosaicHub' })}>{lang === 'fr' ? '↩ REPRENDRE LA CITÉ' : '↩ RESUME CITY'}</button>}
       {/* Tab bodies */}
       <div
         ref={gameWorkspaceRef}
         className="hub-tab-workspace"
+        tabIndex={-1}
         aria-hidden={activeGameMode && pauseMenuOpen ? 'true' : undefined}
         style={{ width: '100%', maxWidth: hubContentMax, flex: 1 }}
       >
@@ -9329,6 +9930,20 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             completedStages={completedStages}
             stages={visibleStages}
             playerProfile={playerProfile}
+            savedLocation={activityProgress.mosaicLocation}
+            onLocationChange={next => setActivityProgress(previous => JSON.stringify(previous.mosaicLocation) === JSON.stringify(next) ? previous : { ...previous, mosaicLocation: next })}
+            onOpenService={service => {
+              finishNexusSession({ reason: 'transition' });
+              if (service === 'arcs' || service === 'journal') {
+                setActiveTab('missions');
+                const nextScreen = service === 'arcs' ? 'universeArcs' : 'story';
+                if (missionScreen !== nextScreen) missionEntryRequestRef.current = { view: service === 'journal' ? 'journal' : 'map' };
+                setMissionScreen(nextScreen);
+                if (service === 'journal') setMissionWorkspaceView('journal');
+                setSelectedNarrativeGroupId(null);
+                setSelectedNarrativeArcId(null);
+              } else setActiveTab(service);
+            }}
             tutorialProgress={activityProgress.mosaicTutorial}
             onTutorialProgress={next => setActivityProgress?.(previous => {
               const mosaicTutorial = createMosaicGuide(next);
@@ -9337,6 +9952,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             onOpenMissions={universe => {
               finishNexusSession({ reason: 'transition' });
               setActiveTab('missions');
+              if (missionScreen !== 'universeArcs') missionEntryRequestRef.current = { groupId: universe ? `universe-${universe}` : null };
               setMissionScreen('universeArcs');
               setMediaFilter('all');
               setMissionModeFilter('all');
@@ -9366,6 +9982,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             unlockedHeroes={unlockedHeroes}
             onSessionStart={startExtinctionSession}
             onSessionEnd={finishExtinctionSession}
+            career={activityProgress.extinctionCareer || {}}
             hudTheme={activeHudTheme}
             sessionPaused={activeGameMode === 'extinction' && pauseMenuOpen}
             sessionExitRequest={sessionExitRequests.extinction}
@@ -9387,6 +10004,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             onMatchComplete={recordFighterMatch}
             onSessionStart={startFighterSession}
             onSessionEnd={finishFighterSession}
+            onPauseRequest={() => setPauseMenuOpen(true)}
             sessionPaused={activeGameMode === 'fighter' && pauseMenuOpen}
             sessionExitRequest={sessionExitRequests.fighter}
             dedicatedSession={activeGameMode === 'fighter'}
@@ -9414,6 +10032,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             disabledAssets={disabledAssets}
             onSessionStart={startCustomSession}
             onSessionEnd={finishCustomSession}
+            onPauseRequest={() => setPauseMenuOpen(true)}
             sessionPaused={activeGameMode === 'custom' && pauseMenuOpen}
             sessionExitRequest={sessionExitRequests.custom}
             dedicatedSession={activeGameMode === 'custom'}
@@ -9431,6 +10050,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
             hiddenUniverses={hiddenUniverses}
             onSessionStart={startRaceSession}
             onSessionEnd={finishRaceSession}
+            onPauseRequest={() => setPauseMenuOpen(true)}
             sessionPaused={activeGameMode === 'race' && pauseMenuOpen}
             sessionExitRequest={sessionExitRequests.race}
             dedicatedSession={activeGameMode === 'race'}
@@ -9606,6 +10226,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   stages={visibleStages}
                   completedStages={completedStages}
                   groupView={narrativeGroupView}
+                  groupQuery={narrativeGroupQuery}
+                  onGroupQueryChange={setNarrativeGroupQuery}
                   onGroupViewChange={(viewId) => { setNarrativeGroupView(viewId); setBriefingStageId(null); sound.playSfx('click'); }}
                   categoryColor={selectedMissionMeta.color}
                   getStageUnlockRequirementText={getArcUnlockRequirementText}
@@ -9799,6 +10421,10 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                 {missionWorkspaceView === 'missions' && (
                   <MissionDirectory
                     lang={lang}
+                    query={directoryQuery}
+                    onQueryChange={setDirectoryQuery}
+                    statusFilter={directoryStatus}
+                    onStatusFilterChange={setDirectoryStatus}
                     stages={missionPool}
                     completedStages={completedStages}
                     isStageUnlocked={isStageUnlocked}
@@ -9840,332 +10466,6 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   </div>
                 )}
               </>
-            )}
-
-            {missionScreen === 'legacyStoryMeta' && (
-            <div style={{
-              padding: '14px',
-              marginBottom: '14px',
-              background: 'rgba(57,197,187,0.05)',
-              border: '1px solid rgba(57,197,187,0.22)',
-              borderRadius: '5px'
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
-                <div>
-                  <div style={{ fontSize: '11px', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase' }}>
-                    {lang === 'fr' ? 'Campagne de Trame A.R.C.A.' : 'A.R.C.A. Thread Campaign'}
-                  </div>
-                  <div style={{ fontSize: '10px', color: '#9fb6bb', marginTop: '3px' }}>
-                    {lang === 'fr'
-                      ? 'Memoire durable: presence, stabilisations, cycle actif, artefacts et jalons d Ancre.'
-                      : 'Durable memory: presence, stabilizations, active cycle, artifacts, and Anchor milestones.'}
-                  </div>
-                </div>
-                <div style={{ fontSize: '10px', color: '#ffeb3b' }}>
-                  {lang === 'fr'
-                    ? `Prime de cycle: +${seasonRewardBonus}% ressources`
-                    : `Cycle prime: +${seasonRewardBonus}% resources`}
-                </div>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '8px', marginBottom: '10px' }}>
-                {[
-                  { label: lang === 'fr' ? 'Grade de cycle' : 'Cycle grade', value: seasonLevel, color: '#ffeb3b', sub: `${seasonXpIntoLevel}/250 resonance` },
-                  { label: lang === 'fr' ? 'Signal continu' : 'Continuous signal', value: `${activityProgress.loginStreak || 0}j`, color: '#39c5bb', sub: activityProgress.lastSeenDay || todayKey },
-                  { label: lang === 'fr' ? 'Cycle actif' : 'Active cycle', value: `${weeklyWins}/5`, color: '#2ecc71', sub: lang === 'fr' ? 'stabilisations' : 'stabilizations' },
-                  { label: lang === 'fr' ? 'Artefacts semaine' : 'Weekly artifacts', value: `${weeklyItemActivations}/12`, color: '#ff8c00', sub: lang === 'fr' ? 'economie terrain' : 'field economy' },
-                  { label: lang === 'fr' ? 'Trames stabilisees' : 'Threads stabilized', value: activityProgress.lifetimeWins || 0, color: '#d9b6ff', sub: `${activityProgress.lifetimeAttempts || 0} ${lang === 'fr' ? 'contacts' : 'contacts'}` }
-                ].map(metric => (
-                  <div key={metric.label} style={{ padding: '9px', border: `1px solid ${metric.color}44`, background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
-                    <div style={{ color: metric.color, fontSize: '9px', textTransform: 'uppercase' }}>{metric.label}</div>
-                    <div style={{ color: '#fff', fontSize: '16px', fontWeight: 'bold', marginTop: '3px' }}>{metric.value}</div>
-                    <div style={{ color: '#8fa5aa', fontSize: '9px', marginTop: '2px' }}>{metric.sub}</div>
-                  </div>
-                ))}
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '8px' }}>
-                {longTermMilestones.map(milestone => {
-                  const ready = milestone.progress >= milestone.target;
-                  const claimed = claimedMilestones.includes(milestone.id);
-                  const ratio = Math.min(1, milestone.progress / milestone.target);
-                  return (
-                    <div key={milestone.id} style={{
-                      padding: '10px',
-                      border: claimed ? '1px solid #2ecc71' : ready ? '1px solid #ffeb3b' : '1px solid rgba(255,255,255,0.1)',
-                      background: claimed ? 'rgba(46,204,113,0.06)' : ready ? 'rgba(255,235,59,0.06)' : 'rgba(0,0,0,0.18)',
-                      borderRadius: '4px'
-                    }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center' }}>
-                        <strong style={{ color: ready ? '#ffeb3b' : '#ddd', fontSize: '10px' }}>{milestone.title[lang]}</strong>
-                        <span style={{ color: claimed ? '#2ecc71' : '#aaa', fontSize: '9px' }}>{claimed ? (lang === 'fr' ? 'SCELLE' : 'SEALED') : `${Math.min(milestone.progress, milestone.target)}/${milestone.target}`}</span>
-                      </div>
-                      <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', margin: '7px 0', borderRadius: '3px', overflow: 'hidden' }}>
-                        <div style={{ width: `${ratio * 100}%`, height: '100%', background: claimed ? '#2ecc71' : '#ffeb3b' }} />
-                      </div>
-                      <div style={{ color: '#aaa', fontSize: '9px', lineHeight: 1.35 }}>{milestone.lore[lang]}</div>
-                      <div style={{ color: '#d9d9d9', fontSize: '9px', marginTop: '6px' }}>
-                        +{milestone.reward.gold} Or | +{milestone.reward.shards} Fragments | +{milestone.reward.tokens} Jetons
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => claimLongTermMilestone(milestone)}
-                        disabled={!ready || claimed}
-                        className="btn-retro"
-                        title={lang === 'fr' ? 'Recupere la recompense de ce jalon si l objectif est atteint.' : 'Claim this milestone reward if the objective is complete.'}
-                        style={{
-                          marginTop: '7px',
-                          padding: '5px 8px',
-                          fontSize: '9px',
-                          borderColor: claimed ? '#2ecc71' : ready ? '#ffeb3b' : '#444',
-                          color: claimed ? '#2ecc71' : ready ? '#ffeb3b' : '#666'
-                        }}
-                      >
-                        {claimed ? (lang === 'fr' ? 'ARCHIVE' : 'ARCHIVED') : ready ? (lang === 'fr' ? 'SCELLER' : 'SEAL') : (lang === 'fr' ? 'INSTABLE' : 'UNSTABLE')}
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            )}
-
-            {missionScreen === 'legacyStoryMeta' && (
-            <div style={{
-              padding: '14px',
-              marginBottom: '14px',
-              background: 'rgba(0,0,0,0.28)',
-              border: '1px solid rgba(255,235,59,0.18)',
-              borderRadius: '5px'
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
-                <div>
-                  <div style={{ fontSize: '11px', color: '#ffeb3b', fontWeight: 'bold', textTransform: 'uppercase' }}>
-                    {lang === 'fr' ? 'Lecture strategique Nexus' : 'Nexus Strategic Reading'}
-                  </div>
-                  <div style={{ fontSize: '10px', color: '#9fb6bb', marginTop: '3px' }}>
-                    {lang === 'fr' ? 'Directives d Ancre, reputations, signaux actifs et failles fusionnees.' : 'Anchor directives, reputations, active signals, and fused rifts.'}
-                  </div>
-                </div>
-                <div style={{ fontSize: '10px', color: '#39c5bb' }}>
-                  {lang === 'fr'
-                    ? `${completedStages.length} breches stabilisees / statut ${metaRank} / ${collectionBonusCount} traces Nexus`
-                    : `${completedStages.length} breaches stabilized / ${metaRank} status / ${collectionBonusCount} Nexus traces`}
-                </div>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px' }}>
-                <div style={{ padding: '10px', border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.05)', borderRadius: '4px' }}>
-                  <strong style={{ color: '#39c5bb', fontSize: '10px', textTransform: 'uppercase' }}>
-                    {lang === 'fr' ? 'Prochaines decisions' : 'Next decisions'}
-                  </strong>
-                  <div style={{ display: 'grid', gap: '5px', marginTop: '7px' }}>
-                    {META_NEXUS_RECOMMENDATIONS.map(entry => (
-                      <span key={entry.id} style={{ color: '#dceff0', fontSize: '10px', lineHeight: 1.35 }}>{entry.text[lang]}</span>
-                    ))}
-                  </div>
-                </div>
-                <div style={{ padding: '10px', border: '1px solid rgba(155,89,182,0.22)', background: 'rgba(155,89,182,0.05)', borderRadius: '4px' }}>
-                  <strong style={{ color: '#d9b6ff', fontSize: '10px', textTransform: 'uppercase' }}>
-                    {lang === 'fr' ? 'Reputations actives' : 'Active reputations'}
-                  </strong>
-                  <div style={{ display: 'grid', gap: '5px', marginTop: '7px' }}>
-                    {REPUTATION_TRACKS.slice(0, 5).map(track => {
-                      const reputationEntry = activityProgress.reputationProgress?.[track.id] || { xp: 0 };
-                      const rank = getReputationRank(track.id, activityProgress.reputationProgress);
-                      const nextThreshold = track.thresholds[rank + 1];
-                      return (
-                        <span key={track.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.3 }}>
-                          <b>{track.label[lang]} / {lang === 'fr' ? 'RANG' : 'RANK'} {rank}</b>
-                          {` - ${reputationEntry.xp || 0}/${nextThreshold || 'MAX'} XP: ${track.gameplay[lang]}`}
-                        </span>
-                      );
-                    })}
-                  </div>
-                </div>
-                <div style={{ padding: '10px', border: '1px solid rgba(255,140,0,0.22)', background: 'rgba(255,140,0,0.05)', borderRadius: '4px' }}>
-                  <strong style={{ color: '#ffb15c', fontSize: '10px', textTransform: 'uppercase' }}>
-                    {lang === 'fr' ? 'Missions fusionnees' : 'Fused missions'}
-                  </strong>
-                  <div style={{ display: 'grid', gap: '6px', marginTop: '7px' }}>
-                    {FUSION_MISSIONS.map(mission => (
-                      <span key={mission.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.3 }}>
-                        <b>{mission.title[lang]}</b>: {mission.decor[lang]} {lang === 'fr' ? 'Item' : 'Item'}: {mission.item[lang]}.
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div style={{ padding: '10px', border: '1px solid rgba(46,204,113,0.22)', background: 'rgba(46,204,113,0.05)', borderRadius: '4px' }}>
-                  <strong style={{ color: '#8dffb1', fontSize: '10px', textTransform: 'uppercase' }}>
-                    {lang === 'fr' ? 'Evenements saisonniers' : 'Seasonal events'}
-                  </strong>
-                  <div style={{ display: 'grid', gap: '5px', marginTop: '7px' }}>
-                    {SPECIAL_EVENTS.map(event => (
-                      <span key={event.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.3 }}>
-                        <b>{event.title[lang]}</b>: {event.reward[lang]}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            )}
-
-            {missionScreen === 'legacyStoryMeta' && (
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr',
-              gap: '12px',
-              marginBottom: '14px'
-            }}>
-              <div style={{
-                padding: '14px',
-                background: 'rgba(57,197,187,0.06)',
-                border: '1px solid rgba(57,197,187,0.22)',
-                borderRadius: '5px'
-              }}>
-                <div style={{ fontSize: '10px', color: '#39c5bb', textTransform: 'uppercase', marginBottom: '5px' }}>
-                  {lang === 'fr' ? 'Chapitre actif' : 'Active chapter'}
-                </div>
-                <div style={{ fontSize: '15px', fontWeight: 'bold', color: '#fff', marginBottom: '6px' }}>
-                  {currentChapter.name[lang]}
-                </div>
-                <div style={{ fontSize: '11px', color: '#c8d6d6', lineHeight: 1.45, marginBottom: '8px' }}>
-                  {currentChapter.desc[lang]}
-                </div>
-                <div style={{ fontSize: '10px', color: '#ffeb3b' }}>
-                  {currentChapter.focus[lang]}
-                </div>
-                {nextChapter && (
-                  <div style={{ marginTop: '8px', fontSize: '10px', color: '#8fa5aa' }}>
-                    {lang === 'fr'
-                      ? `Termine les operations du chapitre actif pour ouvrir ${getLocalizedText(nextChapter.name, lang)}.`
-                      : `Complete the active chapter operations to open ${getLocalizedText(nextChapter.name, lang)}.`}
-                  </div>
-                )}
-                <div className="story-chapter-rail">
-                  {STORY_CHAPTERS.map((chapter, index) => {
-                    const active = chapter.id === currentChapter.id;
-                    const open = isStoryChapterUnlocked(chapter);
-                    const chapterStageCount = getChapterStageCount(chapter);
-                    const firstChapterStage = getFirstStoryStageForChapter(chapter);
-                    return (
-                      <div
-                        key={chapter.id}
-                        className={`story-chapter-node ${active ? 'active' : ''} ${open ? 'open' : 'locked'}`}
-                      >
-                        <span>{index + 1}</span>
-                        <strong>{chapter.name[lang]}</strong>
-                        <em>
-                          {open
-                            ? (active
-                              ? (lang === 'fr' ? 'Chapitre projete dans les portails' : 'Chapter projected in portals')
-                              : (lang === 'fr' ? 'Archive scellee' : 'Sealed archive'))
-                            : (firstChapterStage
-                              ? getLockedReason(firstChapterStage)
-                              : (lang === 'fr' ? 'Aucune operation canonique associee.' : 'No canonical operation assigned.'))}
-                        </em>
-                        <b>{chapterStageCount} {lang === 'fr' ? 'failles' : 'rifts'}</b>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className="story-chapter-rule">
-                  {lang === 'fr'
-                    ? 'Regle A.R.C.A.: les portails de campagne ne projettent que le chapitre actif. Les chapitres futurs restent hors champ pour eviter les spoilers de Trame et les sauts de progression.'
-                    : 'A.R.C.A. rule: campaign portals only project the active chapter. Future chapters stay out of range to avoid Thread spoilers and progression skips.'}
-                </div>
-              </div>
-
-              <div style={{
-                display: 'none',
-                padding: '14px',
-                background: 'rgba(255,255,255,0.02)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                borderRadius: '5px'
-              }}>
-                <div style={{ fontSize: '10px', color: '#ffeb3b', textTransform: 'uppercase', marginBottom: '8px' }}>
-                  {lang === 'fr' ? 'Arcs narratifs de faction' : 'Faction narrative arcs'}
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '8px' }}>
-                  {arcProgress.map(arc => {
-                    const ratio = arc.total ? arc.completed / arc.total : 0;
-                    const phase = ratio === 1
-                      ? (lang === 'fr' ? 'Arc stabilise' : 'Arc stabilized')
-                      : ratio >= 0.66
-                        ? (lang === 'fr' ? 'Finale approche' : 'Finale incoming')
-                        : ratio >= 0.33
-                          ? (lang === 'fr' ? 'Conflit ouvert' : 'Open conflict')
-                          : (lang === 'fr' ? 'Signal faible' : 'Weak signal');
-                    return (
-                      <div key={arc.id} style={{
-                        padding: '9px',
-                        border: `1px solid ${ratio === 1 ? arc.color : 'rgba(255,255,255,0.08)'}`,
-                        background: ratio === 1 ? `${arc.color}18` : 'rgba(0,0,0,0.16)',
-                        borderRadius: '4px'
-                      }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '4px' }}>
-                          <strong style={{ fontSize: '11px', color: arc.color }}>{arc.title[lang]}</strong>
-                          <span style={{ fontSize: '10px', color: '#ddd' }}>{arc.completed}/{arc.total}</span>
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '6px', alignItems: 'center' }}>
-                          <span style={{ fontSize: '9px', color: '#cfd8dc' }}>{arc.faction?.[lang]}</span>
-                          <span style={{ fontSize: '8px', color: arc.color, border: `1px solid ${arc.color}66`, padding: '1px 5px', borderRadius: '3px', textTransform: 'uppercase' }}>{phase}</span>
-                        </div>
-                        <div style={{ height: '4px', background: '#111', borderRadius: '4px', overflow: 'hidden', marginBottom: '6px' }}>
-                          <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: arc.color }} />
-                        </div>
-                        <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35 }}>{arc.premise[lang]}</div>
-                        {arc.intro && (
-                          <div style={{ fontSize: '9px', color: '#ffeb3b', lineHeight: 1.35, marginTop: '6px' }}>
-                            {lang === 'fr' ? 'Intro: ' : 'Intro: '}{arc.intro[lang]}
-                          </div>
-                        )}
-                        <div style={{ fontSize: '10px', color: '#d0d0d0', lineHeight: 1.35, marginTop: '7px' }}>{arc.stakes?.[lang]}</div>
-                        <div style={{ fontSize: '9px', color: '#9adbd6', lineHeight: 1.35, marginTop: '6px' }}>{arc.gameplay?.[lang]}</div>
-                        {arc.missions && (
-                          <div style={{ display: 'grid', gap: '3px', marginTop: '7px' }}>
-                            {arc.missions.slice(0, 3).map((mission, idx) => (
-                              <span key={`${arc.id}-mission-${idx}`} style={{ fontSize: '9px', color: '#cfcfcf', lineHeight: 1.25 }}>
-                                {idx + 1}. {mission[lang]}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                        <div style={{ fontSize: '9px', color: '#888', marginTop: '5px' }}>{arc.reward[lang]} - {arc.finale?.[lang]}</div>
-                        {arc.rewards && (
-                          <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: '6px' }}>
-                            {arc.rewards.map(reward => (
-                              <span key={reward.name[lang]} style={{ fontSize: '8px', color: '#fff', border: `1px solid ${arc.color}66`, padding: '1px 5px', borderRadius: '3px' }}>
-                                {reward.name[lang]}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                        {arc.claimReward && (
-                          <button
-                            onClick={() => claimArcReward(arc)}
-                            disabled={!arc.complete || arc.claimed}
-                            className="btn-retro"
-                            title={lang === 'fr' ? 'Recupere la recompense finale de cet arc si toutes ses missions sont terminees.' : 'Claim this arc final reward if all its missions are complete.'}
-                            style={{
-                              marginTop: '7px',
-                              padding: '4px 7px',
-                              fontSize: '9px',
-                              borderColor: arc.claimed ? '#2ecc71' : arc.complete ? arc.color : '#444',
-                              color: arc.claimed ? '#2ecc71' : arc.complete ? arc.color : '#666'
-                            }}
-                          >
-                            {arc.claimed
-                              ? (lang === 'fr' ? 'ARC SCELLE' : 'ARC SEALED')
-                              : arc.complete
-                                ? (lang === 'fr' ? 'SCELLER ARC' : 'SEAL ARC')
-                                : (lang === 'fr' ? 'ARC INSTABLE' : 'ARC UNSTABLE')}
-                          </button>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
             )}
 
             {missionScreen === 'fusionMissions' && missionWorkspaceView === 'protocols' && (
@@ -10213,176 +10513,6 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
               </section>
             )}
 
-            {missionScreen === 'legacyStoryMeta' && (
-            <>
-            <div style={{
-              padding: '12px',
-              marginBottom: '14px',
-              background: 'rgba(155,89,182,0.07)',
-              border: '1px solid rgba(155,89,182,0.28)',
-              borderRadius: '5px'
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap' }}>
-                <strong style={{ color: '#d7b5ff', fontSize: '11px', textTransform: 'uppercase' }}>
-                  {lang === 'fr' ? 'Cycles hebdomadaires' : 'Weekly cycles'}
-                </strong>
-                <span style={{ color: '#aaa', fontSize: '10px' }}>{currentWeekKey} · UTC / ISO</span>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '8px' }}>
-                {weeklyOperations.map(operation => {
-                  const claimed = claimedWeekly.includes(operation.id);
-                  const ratio = Math.min(1, (operation.progress || 0) / operation.target);
-                  return (
-                    <div key={operation.id} style={{ padding: '9px', border: operation.done ? '1px solid rgba(46,204,113,0.45)' : '1px solid rgba(255,255,255,0.08)', background: operation.done ? 'rgba(46,204,113,0.06)' : 'rgba(0,0,0,0.16)', borderRadius: '4px' }}>
-                      <div style={{ fontSize: '10px', color: operation.done ? '#8dffb1' : '#ddd', fontWeight: 'bold', marginBottom: '5px' }}>{operation.title[lang]}</div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', color: '#8fa5aa', fontSize: '9px', marginBottom: '5px' }}>
-                        <span>{lang === 'fr' ? 'Ancrage' : 'Anchoring'}</span>
-                        <span>{Math.min(operation.progress || 0, operation.target)}/{operation.target}</span>
-                      </div>
-                      <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '7px', borderRadius: '3px', overflow: 'hidden' }}>
-                        <div style={{ width: `${ratio * 100}%`, height: '100%', background: operation.done ? '#2ecc71' : '#9b59b6' }} />
-                      </div>
-                      <div style={{ fontSize: '9px', color: '#aaa', marginBottom: '7px' }}>
-                        +{operation.reward.gold} Or | +{operation.reward.shards} Fragments | +{operation.reward.tokens} Jetons
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => claimWeeklyOperation(operation)}
-                        disabled={!operation.done || claimed}
-                        className="btn-retro"
-                        title={lang === 'fr' ? 'Recupere la recompense hebdomadaire si l objectif est termine.' : 'Claim the weekly reward if the objective is complete.'}
-                        style={{ fontSize: '9px', padding: '5px 8px', borderColor: claimed ? '#2ecc71' : operation.done ? '#ffeb3b' : '#444', color: claimed ? '#2ecc71' : operation.done ? '#ffeb3b' : '#666' }}
-                      >
-                        {claimed
-                          ? (lang === 'fr' ? 'SCELLE' : 'SEALED')
-                          : operation.done
-                            ? (lang === 'fr' ? 'SCELLER' : 'SEAL')
-                            : (lang === 'fr' ? 'INSTABLE' : 'UNSTABLE')}
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div style={{
-              padding: '14px',
-              marginBottom: '14px',
-              background: 'rgba(0,0,0,0.22)',
-              border: '1px solid rgba(255,235,59,0.16)',
-              borderRadius: '5px'
-            }}>
-              <div style={{ fontSize: '10px', color: '#ffeb3b', textTransform: 'uppercase', marginBottom: '8px' }}>
-                {lang === 'fr' ? 'Collections de franchise' : 'Franchise collections'}
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '8px' }}>
-                {visibleCollectionProgress.length === 0 && (
-                  <div style={{ padding: '10px', border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.05)', borderRadius: '4px', color: '#9fc', fontSize: '11px', lineHeight: 1.35 }}>
-                    {lang === 'fr'
-                      ? 'Aucune collection de Trame externe ouverte. Le Socle Nexus conserve seulement les archives OC tant que la Regulation maintient les autres mondes en reserve.'
-                      : 'No external Thread collection is open. The Nexus Core keeps only OC archives while Regulation holds other worlds in reserve.'}
-                  </div>
-                )}
-                {visibleCollectionProgress.map(collection => {
-                  const ratio = collection.total ? collection.completed / collection.total : 0;
-                  const partialText = collection.hiddenCount > 0
-                    ? (lang === 'fr' ? `${collection.hiddenCount} Trame(s) en reserve` : `${collection.hiddenCount} reserve Thread(s)`)
-                    : mediaFilter !== 'all'
-                      ? (lang === 'fr' ? `${collection.fullCompleted}/${collection.fullTotal} actifs hors filtre` : `${collection.fullCompleted}/${collection.fullTotal} active outside filter`)
-                      : '';
-                  return (
-                    <div key={collection.id} style={{
-                      padding: '10px',
-                      border: collection.complete ? '1px solid #2ecc71' : '1px solid rgba(255,255,255,0.08)',
-                      background: collection.complete ? 'rgba(46,204,113,0.07)' : 'rgba(255,255,255,0.02)',
-                      borderRadius: '4px'
-                    }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center' }}>
-                        <strong style={{ fontSize: '11px', color: collection.complete ? '#2ecc71' : '#ddd' }}>{collection.title[lang]}</strong>
-                        <span style={{ fontSize: '10px', color: '#ffeb3b' }}>{collection.completed}/{collection.total}</span>
-                      </div>
-                      {partialText && (
-                        <div style={{ fontSize: '9px', color: '#ff8c00', marginTop: '4px' }}>
-                          {partialText}
-                        </div>
-                      )}
-                      <div style={{ height: '4px', background: '#111', borderRadius: '4px', overflow: 'hidden', margin: '7px 0' }}>
-                        <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: collection.complete ? '#2ecc71' : '#ffeb3b' }} />
-                      </div>
-                      <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35 }}>{collection.bonus[lang]}</div>
-                      <div style={{ fontSize: '10px', color: '#d9d9d9', marginTop: '6px' }}>
-                        +{collection.reward.gold} Or | +{collection.reward.shards} Fragments | +{collection.reward.tokens} Jetons
-                      </div>
-                      <div style={{ fontSize: '9px', color: '#2ecc71', marginTop: '4px' }}>
-                        {lang === 'fr' ? 'Passif permanent: +2% toutes stats.' : 'Permanent passive: +2% all stats.'}
-                      </div>
-                      <button
-                        onClick={() => claimCollectionReward(collection)}
-                        disabled={!collection.complete || collection.claimed}
-                        className="btn-retro"
-                        title={collection.complete
-                          ? (lang === 'fr' ? 'Recupere la cache de collection si tous les elements requis sont obtenus.' : 'Claim the collection cache if every required element is obtained.')
-                          : (lang === 'fr' ? 'Cache verrouillee: tous les univers de cette collection doivent etre actifs et stabilises.' : 'Cache locked: every universe in this collection must be active and stabilized.')}
-                        style={{
-                          marginTop: '8px',
-                          padding: '5px 9px',
-                          fontSize: '10px',
-                          borderColor: collection.claimed ? '#2ecc71' : collection.complete ? '#ffeb3b' : '#444',
-                          color: collection.claimed ? '#2ecc71' : collection.complete ? '#ffeb3b' : '#666'
-                        }}
-                      >
-                        {collection.claimed
-                          ? (lang === 'fr' ? 'SCELLE' : 'SEALED')
-                          : collection.complete
-                            ? (lang === 'fr' ? 'OUVRIR CACHE' : 'OPEN CACHE')
-                            : (lang === 'fr' ? 'INSTABLE' : 'UNSTABLE')}
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px', marginBottom: '14px' }}>
-              {activeFactionSynergies.map(rule => (
-                <div key={rule.id} style={{
-                  padding: '8px 10px',
-                  border: rule.active ? '1px solid #2ecc71' : '1px solid rgba(255,255,255,0.08)',
-                  background: rule.active ? 'rgba(46,204,113,0.08)' : 'rgba(255,255,255,0.02)',
-                  borderRadius: '4px',
-                  fontSize: '10px',
-                  color: rule.active ? '#d9ffe5' : '#888'
-                }}>
-                  <strong>{rule.label}</strong> {rule.count}/{rule.minMembers} - {rule.bonusLabel}
-                </div>
-              ))}
-            </div>
-
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
-              gap: '8px',
-              marginBottom: '14px',
-              padding: '10px',
-              background: 'rgba(255,255,255,0.02)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: '5px'
-            }}>
-              <div style={{ fontSize: '10px', color: '#aaa' }}>
-                <strong style={{ color: '#39c5bb' }}>{lang === 'fr' ? 'Statut d Ancre' : 'Anchor status'}:</strong> {metaRank}
-              </div>
-              <div style={{ fontSize: '10px', color: '#aaa' }}>
-                <strong style={{ color: '#ffeb3b' }}>{lang === 'fr' ? 'Trames scellees' : 'Sealed Threads'}:</strong> {completedStages.length}/{STAGES.length}
-              </div>
-              <div style={{ fontSize: '10px', color: '#aaa' }}>
-                <strong style={{ color: '#9b59b6' }}>{lang === 'fr' ? 'Niveaux équipe' : 'Roster levels'}:</strong> {totalHeroLevels}
-              </div>
-              <div style={{ fontSize: '10px', color: '#ccc' }}>
-                {nextProgressGoal}
-              </div>
-            </div>
-            </>
-            )}
             {!isArcMissionScreen && !isFactionArcScreen && missionWorkspaceView === 'legacy' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {missionDeck.map((stage) => {
@@ -10689,7 +10819,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1.1fr', gap: '20px', marginTop: '15px' }}>
+                <div className="hero-resonance-visual" style={{ display: 'grid', gridTemplateColumns: '1.1fr 1.1fr', gap: '20px', marginTop: '15px' }}>
                   <div style={{
                     background: '#04020a',
                     minHeight: '260px',
@@ -10741,10 +10871,10 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                       title={lang === 'fr'
                         ? 'Depense 20 Fragments pour augmenter ce heros d un niveau.'
                         : 'Spend 20 Shards to increase this hero by one level.'}
-                      style={{ 
-                        width: '100%', 
-                        fontSize: '11px', 
-                        padding: '6px', 
+                      style={{
+                        width: '100%',
+                        fontSize: '11px',
+                        padding: '6px',
                         marginTop: '8px',
                         background: 'rgba(155, 89, 182, 0.15)',
                         borderColor: '#9b59b6',
@@ -10756,6 +10886,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   </div>
                 </div>
 
+                <details className="hub-dossier-section"><summary>{lang === 'fr' ? 'ORIGINES, DOCTRINE & DOSSIER' : 'ORIGIN, DOCTRINE & DOSSIER'}</summary>
                 <div style={{ marginTop: '15px', display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '12px' }}>
                   <div style={{ padding: '12px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.24)', borderRadius: '4px' }}>
                     <div style={{ fontSize: '10px', color: selectedHero.primaryColor, fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
@@ -10816,6 +10947,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   </div>
                 </div>
 
+                </details>
                 <div style={{ marginTop: '12px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                   <div className="equip-lore-card">
                     <div className="equip-lore-label">{getTranslation(lang, 'weaponRelic')}</div>
@@ -10843,6 +10975,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                   </div>
                 </div>
 
+                <details className="hub-dossier-section"><summary>{lang === 'fr' ? 'APPARENCES & GARDE-ROBE' : 'APPEARANCES & WARDROBE'}</summary>
                 <div style={{ marginTop: '12px', padding: '12px', border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.05)', borderRadius: '4px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '10px' }}>
                     <div>
@@ -10913,6 +11046,8 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                 <CharacterWardrobe actor={selectedHero} lang={lang} inventory={inventory} selectedId={heroSkins?.[selectedHero.id]}
                   onSelect={appearanceId => setHeroSkins(prev => ({...prev, [selectedHero.id]: appearanceId}))} />
 
+                </details>
+
                 {/* Talent Mods Panel */}
                 <div style={{ marginTop: '20px', padding: '15px', background: 'rgba(255, 235, 59, 0.02)', border: '1px solid rgba(255, 235, 59, 0.15)', borderRadius: '4px' }}>
                   <h4 style={{ margin: '0 0 10px 0', fontSize: '13px', color: '#ffea00', textTransform: 'uppercase', textShadow: '0 0 3px #ffea00' }}>
@@ -10953,7 +11088,9 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                       return options.map(opt => {
                         const isActive = activeTalent === opt.id;
                         return (
-                          <div
+                          <button
+                            type="button"
+                            aria-pressed={isActive}
                             key={opt.id}
                             onClick={() => {
                               sound.playSfx('confirm');
@@ -10974,7 +11111,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                           >
                             <div style={{ fontWeight: 'bold', fontSize: '11px', color: isActive ? '#fff' : '#aaa' }}>{opt.name[lang]}</div>
                             <div style={{ fontSize: '9px', color: '#888', marginTop: '4px' }}>{opt.desc[lang]}</div>
-                          </div>
+                          </button>
                         );
                       });
                     })()}
@@ -11790,7 +11927,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                       {inventoryPage.items.filter(item => item.catalogKind === 'gear').map(item => {
                         const isEquippedElsewhere = Object.keys(equippedGear).some(id => equippedGear[id] === item.id);
                         const isEquippedOnSelf = equippedGear[selectedHero.id] === item.id;
-                        
+
                         return (
                           <div key={item.id} style={{
                             padding: '8px 12px',
@@ -11802,12 +11939,14 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
                           }}>
                             <div>
                               <div style={{ fontWeight: 'bold', fontSize: '12px' }}>{item.name[lang]}</div>
-                              <span style={{ fontSize: '10px', color: '#888' }}>
+                              <span style={{ fontSize: '10px', color: '#b8cbd1' }}>
                                 Univers: {item.universe} | Boost: {formatBoostText(item.boost)}
                               </span>
-                              <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35, marginTop: '3px', maxWidth: '520px' }}>
-                                {getGearLore(item)}
-                              </div>
+                              {!isEquippedOnSelf && <div className="gear-comparison" aria-label={lang === 'fr' ? 'Différence de bonus de relique' : 'Relic boost difference'}>
+                                <small>{lang === 'fr' ? 'Par rapport à la relique équipée : ' : 'Compared with equipped relic: '}</small>
+                                {compareGearBoosts(item, selectedEquippedGear).map(({ stat, delta }) => <span key={stat} data-change={delta > 0 ? 'gain' : delta < 0 ? 'loss' : 'same'}>{stat.toUpperCase()} {delta > 0 ? '+' : ''}{delta}</span>)}
+                              </div>}
+                              <details className="gear-item-lore"><summary>{lang === 'fr' ? 'Histoire de la relique' : 'Relic lore'}</summary><p>{getGearLore(item)}</p></details>
                             </div>
 
                             {!isEquippedOnSelf && (
@@ -12916,7 +13055,7 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
               {lang === 'fr' ? 'ARCHIVES ET LORE DES UNIVERS' : 'MULTIVERSE CODEX & HISTORICAL RECORDS'}
             </h3>
             <p style={{ color: '#aaa', fontSize: '12px', marginBottom: '20px' }}>
-              {lang === 'fr' 
+              {lang === 'fr'
                 ? `Consultez les enregistrements historiques des anomalies détectées sur les ${TOTAL_UNIVERSE_COUNT} univers connus du Multivers.`
                 : `Browse the historical logs of the spacetime anomalies detected across the ${TOTAL_UNIVERSE_COUNT} known universes of the Multiverse.`}
             </p>
@@ -12952,23 +13091,23 @@ insertBeforeMetaStage(SOURCE_SCENE_STAGES);
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '10px' }}>
                 {CORE_CODEX_ENTRIES.map(entry => (
-                  <div key={entry.id} style={{
+                  <details className="codex-record" key={entry.id} style={{
                     padding: '12px',
                     border: '1px solid rgba(57,197,187,0.25)',
                     background: 'linear-gradient(135deg, rgba(57,197,187,0.08), rgba(155,89,182,0.05))',
                     borderRadius: '6px',
                     minHeight: '118px'
                   }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'flex-start', marginBottom: '6px' }}>
+                    <summary style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'flex-start', marginBottom: '6px' }}>
                       <strong style={{ color: '#ffeb3b', fontSize: '12px' }}>{entry.title[lang]}</strong>
                       <span style={{ color: '#39c5bb', fontSize: '8px', textTransform: 'uppercase', border: '1px solid rgba(57,197,187,0.35)', padding: '2px 5px', borderRadius: '3px' }}>
                         {entry.category[lang]}
                       </span>
-                    </div>
+                    </summary>
                     <div style={{ color: '#d8d8d8', fontSize: '10px', lineHeight: 1.45 }}>
                       {entry.desc[lang]}
                     </div>
-                  </div>
+                  </details>
                 ))}
               </div>
             </div>

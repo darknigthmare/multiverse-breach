@@ -1,0 +1,288 @@
+[
+  {
+    "id": "shell-title",
+    "auditIds": [
+      "01",
+      "03"
+    ],
+    "status": "preserved",
+    "files": [
+      "src/components/IntroSequence.jsx",
+      "src/components/IntroImmersion.css"
+    ],
+    "changes": [
+      "Écran-titre plein écran, attract, rotation, Continuer, Nouvelle Trace, Collection, crédits et prologue conservés.",
+      "Les dialogues du titre utilisent le cycle de focus partagé. Fermeture accessible en tête de fenêtre."
+    ],
+    "validation": [
+      "scripts/titleNavigation.test.mjs : réussi",
+      "scripts/titlePresentation.test.mjs : réussi",
+      "Lint ciblé : réussi"
+    ],
+    "limitations": [
+      "Pas de nouveau parcours navigateur sur la branche au moment de ce relevé."
+    ]
+  },
+  {
+    "id": "shell-profile",
+    "auditIds": [
+      "02"
+    ],
+    "status": "implemented",
+    "files": [
+      "src/components/IntroSequence.jsx",
+      "src/components/IntroImmersion.css"
+    ],
+    "changes": [
+      "Création d’Ancre composée sur le viewport avec identité à gauche et cellule de départ à droite.",
+      "Mirelle et Bastion utilisent une pose de leurs sprites existants. Compte et synchronisation restent dans une section facultative.",
+      "Nom, démarrage local, connexion et création de compte conservés. Validation du formulaire par Entrée."
+    ],
+    "validation": [
+      "scripts/shellImmersionPresentation.test.mjs : création locale et compte facultatif vérifiés par SSR",
+      "Lint ciblé : réussi"
+    ],
+    "limitations": [
+      "Responsive défini, rendu mobile réel non validé."
+    ]
+  },
+  {
+    "id": "shell-options",
+    "auditIds": [
+      "04"
+    ],
+    "status": "implemented",
+    "files": [
+      "src/components/IntroSequence.jsx",
+      "src/components/IntroImmersion.css"
+    ],
+    "changes": [
+      "GameDisplaySettings intégré aux options du titre.",
+      "Volumes, mute, langue, variantes événementielles, crédits et confirmation Nouvelle Trace conservés.",
+      "Dialogues centrés avec défilement interne et fermeture visible en tête."
+    ],
+    "validation": [
+      "scripts/titleNavigation.test.mjs : réussi",
+      "scripts/titlePresentation.test.mjs : réussi",
+      "scripts/shellImmersion.test.mjs et scripts/dialogFocus.test.mjs : cycle modal vérifié"
+    ],
+    "limitations": [
+      "Plein écran système et paramètres partagés sont implémentés par le lot App.",
+      "Aucun test navigateur de l’API fullscreen dans ce relevé."
+    ]
+  },
+  {
+    "id": "shell-account",
+    "auditIds": [
+      "05"
+    ],
+    "status": "implemented",
+    "files": [
+      "src/components/AuthPanel.jsx",
+      "src/components/AuthImmersion.css",
+      "src/components/collection/ArchiveDrawer.jsx"
+    ],
+    "changes": [
+      "Compte et sauvegardes affichés dans un tiroir interne avec arrière-plan inactif, Échap et retour du focus.",
+      "Toutes les actions de compte, récupération de mot de passe, renvoi de confirmation, cloud et sauvegarde locale conservent leurs callbacks.",
+      "Version embarquée préservée pour la création d’Ancre."
+    ],
+    "validation": [
+      "Lint ciblé : réussi",
+      "scripts/shellImmersionPresentation.test.mjs : compte embarqué rendu",
+      "scripts/shellImmersion.test.mjs : isolation du tiroir vérifiée"
+    ],
+    "limitations": [
+      "Synchronisation cloud et envoi réel d’emails non testés.",
+      "Confirmations et prévention des conflits asynchrones traitées par le lot App."
+    ]
+  },
+  {
+    "id": "shell-universe",
+    "auditIds": [
+      "33"
+    ],
+    "status": "implemented",
+    "files": [
+      "src/components/UniverseArchiveDialog.jsx",
+      "src/components/UniverseArchiveDialog.css"
+    ],
+    "changes": [
+      "Dossier d’univers étendu au viewport avec lecteur et défilement internes.",
+      "Tous les contenus fournis par le hub, onglets et navigation précédent/suivant restent conservés.",
+      "Colonne de lecture bornée et focus isolé/restauré."
+    ],
+    "validation": [
+      "scripts/shellImmersionPresentation.test.mjs : un dialogue étiqueté, contenu intégral préservé",
+      "Lint ciblé : réussi"
+    ],
+    "limitations": [
+      "scripts/universeArchiveView.test.mjs bloqué initialement par public/sprites/generated/sprite-availability.json absent du checkout, avant ses assertions.",
+      "Parcours réel Codex/collection à confirmer en preview."
+    ]
+  },
+  {
+    "id": "shell-cg",
+    "auditIds": [
+      "35"
+    ],
+    "status": "implemented",
+    "files": [
+      "src/components/cg/CgGallery.jsx",
+      "src/components/cg/cgImmersion.css"
+    ],
+    "changes": [
+      "Image principale immédiatement visible avec bande de vignettes et filtres repliables.",
+      "Visionneuse plein viewport, zoom 1–3, comparaison, favoris et plein écran système conservés.",
+      "Dossier, crédits, prompts, statut et références déplacés dans un panneau ouvrable. Filmstrip dans la visionneuse et retour à la sélection courante.",
+      "Média verrouillé non exposé dans la scène principale. Message explicite si fullscreen indisponible."
+    ],
+    "validation": [
+      "scripts/cgCatalog.test.mjs : réussi",
+      "scripts/shellImmersionPresentation.test.mjs : galerie déverrouillée/verrouillée vérifiée",
+      "Lint ciblé : réussi"
+    ],
+    "limitations": [
+      "Pan/zoom, comparaison et fullscreen à vérifier dans un navigateur.",
+      "La galerie conserve un défilement interne sur très faible hauteur pour préserver l’accès aux commandes."
+    ]
+  },
+  {
+    "id": "shell-portal",
+    "auditIds": [
+      "36"
+    ],
+    "status": "implemented",
+    "files": [
+      "src/components/PortalScreen.jsx",
+      "src/components/PortalImmersion.css",
+      "src/components/PortalBoosterDossier.jsx",
+      "src/components/collection/ArchiveDrawer.jsx"
+    ],
+    "changes": [
+      "Le booster sélectionné devient la scène principale du viewport.",
+      "Catalogue, recherche, groupes et rotation dans un tiroir. Dossier complet plein écran accessible sans achat.",
+      "Garanties et prix visibles avant l’ouverture. Taux, contenu exhaustif, Compas Nexus, remboursements, bonus tenues et historique restent accessibles.",
+      "Aucune règle de prix, tirage, remboursement, récompense ou rotation modifiée."
+    ],
+    "validation": [
+      "scripts/portalCatalogView.test.mjs : réussi",
+      "scripts/portalBoosterEngine.test.mjs : réussi",
+      "scripts/portalBoosterEconomy.test.mjs : réussi",
+      "Lint ciblé : réussi"
+    ],
+    "limitations": [
+      "Ouverture réelle et catalogue dense à valider dans la preview de la branche."
+    ]
+  },
+  {
+    "id": "shell-reveal",
+    "auditIds": [
+      "37"
+    ],
+    "status": "implemented",
+    "files": [
+      "src/components/PortalScreen.jsx",
+      "src/components/PortalImmersion.css"
+    ],
+    "changes": [
+      "Révélation conservée avec exactement cinq cartes, retournement individuel, Tout révéler et Booster suivant.",
+      "Cartes dans une zone interne adaptable ; défilement horizontal sur petit écran et faces dimensionnées pour conserver les descriptions.",
+      "Verrou d’ouverture, timers, transactions, reçus et remboursements inchangés."
+    ],
+    "validation": [
+      "scripts/portalBoosterEngine.test.mjs : réussi",
+      "scripts/portalBoosterEconomy.test.mjs : réussi",
+      "scripts/portalCatalogView.test.mjs : réussi"
+    ],
+    "limitations": [
+      "Pas de preuve navigateur d’un achat puis révélation complète sur la nouvelle branche."
+    ]
+  },
+  {
+    "id": "shell-album",
+    "auditIds": [
+      "38"
+    ],
+    "status": "implemented",
+    "files": [
+      "src/components/collection/CollectionHome.jsx",
+      "src/components/collection/UniverseBinder.jsx",
+      "src/components/collection/CardDetailModal.jsx",
+      "src/components/collection/CardSignatureDetails.jsx",
+      "src/components/collection/collectionView.js",
+      "src/components/collection/collectionImmersion.css",
+      "src/components/cards/CollectibleCard.jsx",
+      "src/components/cards/cardArtPresentation.js"
+    ],
+    "changes": [
+      "Album plein viewport, en-tête et navigation persistants, contenu interne défilant.",
+      "Filtres Bibliothèque et Classeur partagent la même logique. Obtenues/Favoris/recherche/rareté/type/canon masquent les classeurs sans correspondance. Progression calculée sur le set complet.",
+      "Les filtres de cartes ne sont plus affichés en Historique. Les trois vues, pagination, paliers, maîtrise, copies et finitions sont conservés.",
+      "Une pose remplace l’affichage de planches entières dans les cartes. La planche, les statuts provisoires et la provenance restent en Détails.",
+      "Fiche carte portalisée, album inactif derrière et restitution de focus. Dossiers de personnages existants réutilisés sans création de lore."
+    ],
+    "validation": [
+      "scripts/shellImmersion.test.mjs : filtres cohérents, données non mutées, pose Mirelle, modal imbriqué vérifiés",
+      "scripts/shellImmersionPresentation.test.mjs : structure d’Album vérifiée",
+      "scripts/cardCatalog.test.mjs, scripts/cardCollectionEngine.test.mjs, scripts/cardSaveMigration.test.mjs : réussis",
+      "Lint ciblé : réussi"
+    ],
+    "limitations": [
+      "Collection de taille réelle et lecteurs d’écran à confirmer en navigateur.",
+      "La pose réutilise la grille source déclarée ; aucune nouvelle illustration n’est générée."
+    ]
+  },
+  {
+    "id": "shell-advanced",
+    "auditIds": [
+      "39"
+    ],
+    "status": "implemented",
+    "files": [
+      "src/components/PortalScreen.jsx",
+      "src/components/PortalImmersion.css"
+    ],
+    "changes": [
+      "Portal Lab déplacé dans Menu > Outils avancés.",
+      "Collection/personnalisation et historique du portail gardent une destination explicite.",
+      "Aucun outil de diagnostic supprimé."
+    ],
+    "validation": [
+      "Lint ciblé : réussi",
+      "scripts/portalCatalogView.test.mjs : catalogue et historique conservés"
+    ],
+    "limitations": [
+      "La rubrique Régulation du hub appartient au lot Hub."
+    ]
+  },
+  {
+    "id": "shell-modal-lifecycle",
+    "auditIds": [
+      "T05"
+    ],
+    "status": "implemented",
+    "files": [
+      "src/components/collection/modalIsolation.js",
+      "src/components/collection/useModalDialog.js",
+      "src/components/collection/ArchiveDrawer.jsx",
+      "src/components/collection/archiveDrawer.css",
+      "scripts/shellImmersion.test.mjs",
+      "scripts/shellImmersionPresentation.test.mjs"
+    ],
+    "changes": [
+      "Cycle partagé de focus, Tab/Échap, inert et verrouillage du scroll.",
+      "Verrous comptés par élément pour éviter un jeu bloqué après fermeture simultanée de plusieurs niveaux.",
+      "État précédent de inert et focus du déclencheur restaurés. Dialogues parents suspendus pendant un dialogue enfant."
+    ],
+    "validation": [
+      "scripts/shellImmersion.test.mjs : 8 tests réussis",
+      "scripts/shellImmersionPresentation.test.mjs : 4 tests réussis",
+      "scripts/dialogFocus.test.mjs : réussi"
+    ],
+    "limitations": [
+      "Validation automatisée et SSR. Validation clavier et lecteur d’écran sur navigateur restant à réaliser."
+    ]
+  }
+]
+

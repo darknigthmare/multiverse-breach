@@ -7,6 +7,12 @@ import { getBrowserStorage, readStorageValue, removeStorageValue } from './game/
 import { backupLocalSave, readLocalSaveSnapshot, getSaveBackupKey } from './game/saveRecovery.js';
 import { createCloudOperationEpoch } from './game/cloudOperationEpoch.js';
 import AudioControl from './components/AudioControl';
+import GameSystemMenu from './components/GameSystemMenu.jsx';
+import GameSystemDialog from './components/GameSystemDialog.jsx';
+import CampaignPauseMenu from './components/CampaignPauseMenu.jsx';
+import { GameDisplayPreferencesSync } from './components/GameDisplaySettings.jsx';
+import { createGameDialogQueue } from './game/gameDialogQueue.js';
+import { createBattleCompletionGate } from './game/battleCompletionGate.js';
 import NetworkStatusBadge from './components/NetworkStatusBadge';
 import AuthPanel from './components/AuthPanel';
 import IntroSequence from './components/IntroSequence';
@@ -798,7 +804,7 @@ const getMissionNarrative = (stage, lang, isOutro, victory) => {
     : (lang === 'fr' ? `${stage.universe} resiste encore, mais la prochaine ouverture sera plus lisible.` : `${stage.universe} still resists, but the next opening will be easier to read.`);
 };
 
-function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue }) {
+function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue, onBack }) {
   const isOutro = Boolean(result);
   const escortBriefing = useMemo(() => stage.mode === 'Tactics' && getTacticsBattlefield(stage).objective === 'escort' ? getTacticsEscortBriefing(stage, lang) : '', [stage, lang]);
   const victory = result === 'victory';
@@ -871,7 +877,16 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
           <p>{isOutro ? outroText : introText}</p>
           {escortBriefing && <div className="narrative-intel">{escortBriefing}</div>}
           {isOutro && rewardSummary && (
-            <div className="narrative-intel" style={{ display: 'grid', gap: '6px' }}>
+            <>
+            <div className="narrative-loot-summary" aria-label={lang === 'fr' ? 'Récompenses attribuées' : 'Granted rewards'}>
+              <span><b>+{rewardSummary.gold}</b>{lang === 'fr' ? ' Or' : ' Gold'}</span>
+              <span><b>+{rewardSummary.shards}</b>{lang === 'fr' ? ' Fragments' : ' Shards'}</span>
+              {rewardSummary.tokens > 0 && <span><b>+{rewardSummary.tokens}</b>{lang === 'fr' ? ' Jetons' : ' Tokens'}</span>}
+              {(rewardSummary.rewardHeroName || rewardSummary.rewardItemName || rewardSummary.droppedItemName) && <span>{rewardSummary.rewardHeroName || rewardSummary.rewardItemName || rewardSummary.droppedItemName}</span>}
+            </div>
+            <details className="narrative-report">
+              <summary>{lang === 'fr' ? 'Rapport complet · butin, progression et conséquences' : 'Full report · loot, progression and consequences'}</summary>
+              <div className="narrative-intel" style={{ display: 'grid', gap: '6px' }}>
               <strong style={{ color: rewardSummary.result === 'victory' ? '#2ecc71' : '#ffeb3b' }}>
                 {lang === 'fr' ? 'Transmission de stabilisation A.R.C.A.' : 'A.R.C.A. stabilization transmission'}
               </strong>
@@ -942,7 +957,9 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
                   ? `Maitrise tactique: rang ${rewardSummary.battleSummary.grade}, +${rewardSummary.tacticsMasteryBonus} fragments de stabilisation.`
                   : `Tactics mastery: grade ${rewardSummary.battleSummary.grade}, +${rewardSummary.tacticsMasteryBonus} stabilization shards.`}</span>
               )}
-            </div>
+              </div>
+            </details>
+            </>
           )}
           <div className="narrative-tags">
             <span>{stage.mode}</span>
@@ -950,6 +967,8 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
             <span>{nonCombatDetails?.title || stage.bossName}</span>
           </div>
           {modifierDesc && <div className="narrative-intel">{modifierDesc}</div>}
+          <div className="narrative-actions">
+          {!isOutro && onBack && <button type="button" onClick={onBack} className="btn-retro">{lang === 'fr' ? 'REVENIR À LA PRÉPARATION' : 'BACK TO PREPARATION'}</button>}
           <button onClick={onContinue} className="btn-retro narrative-button">
             {isOutro && victory && stage.campaignFinale
               ? (lang === 'fr' ? 'OUVRIR LE REGISTRE PRIMORDIAL' : 'OPEN THE PRIMORDIAL LEDGER')
@@ -957,6 +976,7 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
                 ? (lang === 'fr' ? 'RETOUR AU HUB' : 'RETURN TO HUB')
               : (lang === 'fr' ? 'LANCER LA MISSION' : 'LAUNCH MISSION')}
           </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1186,7 +1206,7 @@ class CombatErrorBoundary extends React.Component {
                 ? 'A.R.C.A. a coupe la breche avant un ecran noir complet. Retourne au hub puis relance la mission.'
                 : 'A.R.C.A. cut the breach before a full black screen. Return to the hub and launch the mission again.'}
             </p>
-            <div className="narrative-intel">{error.message}</div>
+            <details className="game-error-details"><summary>{lang === 'fr' ? 'Détails du diagnostic' : 'Diagnostic details'}</summary><pre>{error.message}</pre></details>
             <button onClick={onBack} className="btn-retro narrative-button">
               {lang === 'fr' ? 'RETOUR AU HUB' : 'RETURN TO HUB'}
             </button>
@@ -1227,7 +1247,7 @@ class HubErrorBoundary extends React.Component {
                 ? 'A.R.C.A. a isole l onglet fautif avant qu il ne fasse tomber toute la partie. La progression locale reste conservee.'
                 : 'A.R.C.A. isolated the faulty tab before it could crash the whole game. Local progress remains preserved.'}
             </p>
-            <div className="narrative-intel">{error.message}</div>
+            <details className="game-error-details"><summary>{lang === 'fr' ? 'Détails du diagnostic' : 'Diagnostic details'}</summary><pre>{error.message}</pre></details>
             <button onClick={onBack} className="btn-retro narrative-button">
               {lang === 'fr' ? 'RETOUR AU SIGNAL TITRE' : 'RETURN TO TITLE SIGNAL'}
             </button>
@@ -1263,8 +1283,34 @@ function App() {
   }, []);
   const [lang, setLang] = useState(initialSave.lang); // FR default as requested, EN toggle
   const [currentScreen, setCurrentScreen] = useState('title');
+  const [systemDialog, setSystemDialog] = useState(null);
+  const dialogQueueRef = useRef(null);
+  if (!dialogQueueRef.current) dialogQueueRef.current = createGameDialogQueue(setSystemDialog);
+  const requestGameDialog = useCallback(options => dialogQueueRef.current.request(options), []);
+  const confirmGame = useCallback((message, options = {}) => requestGameDialog({ ...options, kind: 'confirm', message }), [requestGameDialog]);
+  useEffect(() => () => dialogQueueRef.current.cancelAll(), []);
+  const battleGateRef = useRef(null);
+  if (!battleGateRef.current) battleGateRef.current = createBattleCompletionGate();
+  const [battleSessionId, setBattleSessionId] = useState(null);
+  const [battlePaused, setBattlePaused] = useState(false);
+  const battleOutcomeRef = useRef(null);
+  const pauseCampaign = useCallback(() => { if (!battleOutcomeRef.current) setBattlePaused(true); }, []);
+  const captureBattleOutcome = useCallback(result => { battleOutcomeRef.current = result; setBattlePaused(false); }, []);
+  useEffect(() => {
+    if (currentScreen !== 'battle') return;
+    const handleKey = event => {
+      if (event.key !== 'Escape' || event.repeat || event.defaultPrevented || document.querySelector('[aria-modal="true"]')) return;
+      event.preventDefault();
+      pauseCampaign();
+    };
+    const handleVisibility = () => { if (document.hidden) pauseCampaign(); };
+    window.addEventListener('keydown', handleKey);
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => { window.removeEventListener('keydown', handleKey); document.removeEventListener('visibilitychange', handleVisibility); };
+  }, [currentScreen, pauseCampaign]);
   const [portalMode, setPortalMode] = useState('store');
   const [hubInitialTab, setHubInitialTab] = useState('missions');
+  const hubNavigationRef = useRef(null);
   const [audioSettings, setAudioSettings] = useState(() => sound.getSettings());
   const [isOnline, setIsOnline] = useState(() => (
     typeof navigator === 'undefined' ? true : navigator.onLine
@@ -1719,6 +1765,10 @@ function App() {
     // Defense en profondeur : un appel programmatique ne contourne pas le
     // verrou de composition deja evalue par le Hub.
     if (!canLaunchPreparedMission(stage)) return;
+    setHubInitialTab('missions');
+    setBattleSessionId(battleGateRef.current.begin());
+    battleOutcomeRef.current = null;
+    setBattlePaused(false);
     sound.playSfx('special');
     setActiveStage(stage);
     setLastBattleResult(null);
@@ -1737,6 +1787,8 @@ function App() {
   };
 
   const handleBattleEnd = (result, report = {}) => {
+    if (!activeStage || !battleGateRef.current.claim(battleSessionId, result)) return;
+    setBattlePaused(false);
     const battleItemsUsed = report.battleItemsUsed || 0;
     const battleSummary = report.battleSummary || null;
     const firstClear = isFirstClearMissionVictory(result, activeStage, completedStages);
@@ -2144,6 +2196,10 @@ function App() {
     setEquippedGear(merged.equippedGear);
     setEquippedEventItems(merged.equippedEventItems);
     setActiveStage(null);
+    battleGateRef.current.invalidate();
+    hubNavigationRef.current = null;
+    battleOutcomeRef.current = null;
+    setBattlePaused(false);
     setLastBattleResult(null);
     setLastBattleSummary(null);
     if (navigateTo) setCurrentScreen(navigateTo);
@@ -2154,21 +2210,21 @@ function App() {
     const raw = JSON.stringify(getCurrentSave());
     try {
       await navigator.clipboard.writeText(raw);
-      window.alert(lang === 'fr' ? 'Trace Nexus copiee dans le presse-papiers.' : 'Nexus trace copied to clipboard.');
+      await requestGameDialog({ kind: 'message', message: lang === 'fr' ? 'Trace Nexus copiée dans le presse-papiers.' : 'Nexus trace copied to clipboard.' });
     } catch {
-      window.prompt(lang === 'fr' ? 'Copie ta trace Nexus :' : 'Copy your Nexus trace:', raw);
+      await requestGameDialog({ kind: 'copy', message: lang === 'fr' ? 'Copie ta trace Nexus et conserve-la dans un fichier.' : 'Copy your Nexus trace and keep it in a file.', initialValue: raw });
     }
   };
 
   const exportPreservedSave = () => {
     const key = ['invalid-save', 'backup-failed', 'save-conflict'].includes(localSaveIssue) ? SAVE_KEY : getSaveBackupKey(SAVE_KEY);
     const result = readStorageValue(key);
-    if (result.ok && result.value) window.prompt(lang === 'fr' ? 'Copie de secours conservee :' : 'Preserved backup:', result.value);
-    else window.alert(lang === 'fr' ? 'Aucune copie de secours accessible.' : 'No accessible backup.');
+    if (result.ok && result.value) requestGameDialog({ kind: 'copy', message: lang === 'fr' ? 'Copie de secours conservée :' : 'Preserved backup:', initialValue: result.value });
+    else requestGameDialog({ kind: 'message', message: lang === 'fr' ? 'Aucune copie de secours accessible.' : 'No accessible backup.' });
   };
 
-  const importSave = () => {
-    const raw = window.prompt(lang === 'fr' ? 'Colle ta trace Nexus exportee :' : 'Paste exported Nexus trace:');
+  const importSave = async () => {
+    const raw = await requestGameDialog({ kind: 'input', title: lang === 'fr' ? 'Importer une trace' : 'Import a trace', message: lang === 'fr' ? 'Colle ta trace Nexus exportée. La progression actuelle sera conservée en copie de secours avant le remplacement.' : 'Paste your exported Nexus trace. Current progress will be backed up before replacement.' });
     if (!raw) return;
     try {
       const imported = JSON.parse(raw);
@@ -2183,9 +2239,9 @@ function App() {
       }
       sound.playSfx('levelup');
     } catch (error) {
-      window.alert(error?.message === 'backup-failed'
+      await requestGameDialog({ kind: 'message', message: error?.message === 'backup-failed'
         ? (lang === 'fr' ? 'Copie de secours impossible : import annule, progression actuelle conservee.' : 'Backup failed: import cancelled, current progress preserved.')
-        : (lang === 'fr' ? 'Trace Nexus invalide.' : 'Invalid Nexus trace.'));
+        : (lang === 'fr' ? 'Trace Nexus invalide.' : 'Invalid Nexus trace.') });
     }
   };
 
@@ -2204,8 +2260,8 @@ function App() {
     return true;
   };
 
-  const resetSave = () => {
-    if (!window.confirm(lang === 'fr' ? 'Purger completement la trace Nexus ?' : 'Fully purge Nexus trace?')) return;
+  const resetSave = async () => {
+    if (!await confirmGame(lang === 'fr' ? 'Purger complètement la trace locale ? Une copie de secours sera conservée. L’archive cloud restera intacte.' : 'Fully purge the local trace? A backup will be kept. The cloud archive will remain intact.', { title: lang === 'fr' ? 'Réinitialiser la progression locale' : 'Reset local progression', confirmLabel: lang === 'fr' ? 'Purger la trace locale' : 'Purge local trace', destructive: true })) return;
     if (!prepareLocalReset()) return;
     setCloudSyncState(account ? 'conflict' : 'detached');
     cloudUpdatedAtRef.current = null;
@@ -2271,9 +2327,14 @@ function App() {
       }
 
       setCloudSyncState('conflict');
-      const acceptCloud = window.confirm(lang === 'fr'
-        ? `Deux Traces differentes existent. Charger l archive cloud du ${new Date(row.updated_at).toLocaleString('fr-FR')} ?\n\nOK : charger le cloud.\nAnnuler : garder les deux Traces intactes et suspendre la synchronisation.`
-        : `Two different Traces exist. Load the cloud archive from ${new Date(row.updated_at).toLocaleString('en-GB')}?\n\nOK: load cloud.\nCancel: keep both Traces intact and suspend sync.`);
+      const acceptCloud = await confirmGame(lang === 'fr'
+        ? `Deux Traces différentes existent. Charger l’archive cloud du ${new Date(row.updated_at).toLocaleString('fr-FR')} ? La Trace locale sera sauvegardée avant le remplacement. Annuler conserve les deux Traces et suspend la synchronisation.`
+        : `Two different Traces exist. Load the cloud archive from ${new Date(row.updated_at).toLocaleString('en-GB')}? The local Trace will be backed up before replacement. Cancel keeps both Traces and suspends sync.`, {
+          title: lang === 'fr' ? 'Choisir la trace active' : 'Choose the active trace',
+          confirmLabel: lang === 'fr' ? 'Charger le cloud' : 'Load cloud',
+          cancelLabel: lang === 'fr' ? 'Conserver les deux' : 'Keep both'
+        });
+      if (!isCurrent()) return cancelledResult;
       if (!acceptCloud) {
         setCloudStatus(lang === 'fr'
           ? 'Conflit conserve. Trace locale active, archive cloud intacte, envois suspendus.'
@@ -2281,6 +2342,15 @@ function App() {
         return { status: 'conflict-preserved', merged: null, row };
       }
 
+      const choiceLocalStatus = localSaveGuardRef.current?.check();
+      if (!choiceLocalStatus?.ok) {
+        setLocalSaveIssue(choiceLocalStatus?.reason || 'persistence-failed');
+        throw new Error(choiceLocalStatus?.reason || 'persistence-failed');
+      }
+      if (JSON.stringify(getCurrentSaveRef.current()) !== JSON.stringify(localPayload)) {
+        setCloudStatus(lang === 'fr' ? 'La Trace locale a évolué pendant le choix. Relance la comparaison pour conserver cette progression.' : 'The local Trace changed during the choice. Compare again to preserve this progress.');
+        return { status: 'conflict-preserved', merged: null, row };
+      }
       cloudUpdatedAtRef.current = row.updated_at;
       skipNextCloudSaveRef.current = true;
       const merged = applySave(cloudPayload, { existing: true, navigateTo: null, acceptExternalChange: true });
@@ -2405,18 +2475,24 @@ function App() {
           cloudHasTrace: hasMeaningfulTrace(row.payload)
         }).action === CLOUD_SAVE_CONFLICT_ACTIONS.NOOP;
         if (!equivalent) {
-          const replaceCloud = window.confirm(lang === 'fr'
+          const replaceCloud = await confirmGame(lang === 'fr'
             ? `Remplacer explicitement l archive cloud du ${new Date(row.updated_at).toLocaleString('fr-FR')} par la Trace locale ?`
-            : `Explicitly replace the cloud archive from ${new Date(row.updated_at).toLocaleString('en-GB')} with the local Trace?`);
+            : `Explicitly replace the cloud archive from ${new Date(row.updated_at).toLocaleString('en-GB')} with the local Trace?`, {
+              title: lang === 'fr' ? 'Remplacer l’archive cloud' : 'Replace cloud archive',
+              confirmLabel: lang === 'fr' ? 'Envoyer la trace locale' : 'Upload local trace'
+            });
+          if (!isCurrent()) return;
           if (!replaceCloud) {
             setCloudSyncState('conflict');
             setCloudStatus(lang === 'fr' ? 'Envoi annule. Les deux Traces restent intactes.' : 'Upload cancelled. Both Traces remain intact.');
             return;
           }
         }
+        const uploadLocalStatus = localSaveGuardRef.current?.check();
+        if (!uploadLocalStatus?.ok) throw new Error(uploadLocalStatus?.reason || 'persistence-failed');
         const updatedRow = equivalent
           ? row
-          : await updateCloudSave(account, localPayload, row.updated_at);
+          : await updateCloudSave(account, getCurrentSaveRef.current(), row.updated_at);
         if (!isCurrent()) return;
         cloudUpdatedAtRef.current = updatedRow.updated_at;
       }
@@ -2467,18 +2543,11 @@ function App() {
 
   return (
     <>
+      <GameDisplayPreferencesSync />
+      {systemDialog && <GameSystemDialog key={systemDialog.id} dialog={systemDialog} lang={lang} onResolve={(id, value) => dialogQueueRef.current.settle(id, value)} />}
+      {currentScreen !== 'battle' && <GameSystemMenu key={currentScreen} lang={lang}>
       <AudioControl lang={lang} muted={audioSettings.muted} onToggleMute={toggleMute} />
       <NetworkStatusBadge lang={lang} isOnline={isOnline} />
-      {localSaveIssue && <aside role="alert" style={{ position: 'fixed', zIndex: 50000, bottom: 16, left: 16, right: 16, padding: 16, background: '#3b1717', color: '#fff0df', border: '2px solid #ffb478' }}>
-        <p>{['invalid-save', 'backup-failed'].includes(localSaveIssue)
-          ? (lang === 'fr' ? 'Trace illisible ou copie de secours impossible. Le fichier original est conserve; sauvegarde automatique bloquee. Exporte la trace conservee avant de choisir un import ou une nouvelle partie.' : 'Unreadable Trace or backup unavailable. Original bytes preserved; automatic saving blocked. Export the preserved Trace before importing or starting over.')
-          : localSaveIssue === 'save-conflict'
-          ? (lang === 'fr' ? 'Une autre fenêtre a modifié la Trace. Sauvegarde automatique suspendue pour ne pas écraser sa progression. Exporte tes changements de cette fenêtre avant de recharger.' : 'Another window changed the Trace. Automatic saving is paused to preserve its progress. Export this window’s changes before reloading.')
-          : (lang === 'fr' ? 'Sauvegarde locale impossible. Les achats de rotation sont bloqués. Exporte ta Trace avant de quitter ou de recharger.' : 'Local saving failed. Rotation purchases are blocked. Export your Trace before leaving or reloading.')}</p>
-        <button type="button" className="btn-retro" onClick={exportSave}>{lang === 'fr' ? 'Exporter cette Trace' : 'Export this Trace'}</button>
-        <button type="button" className="btn-retro" onClick={exportPreservedSave}>{lang === 'fr' ? 'Exporter la trace conservee' : 'Export preserved Trace'}</button>
-        <button type="button" className="btn-retro" onClick={() => window.location.reload()}>{lang === 'fr' ? 'Recharger la sauvegarde conservée' : 'Reload preserved save'}</button>
-      </aside>}
       {(currentScreen === 'hub' || (currentScreen === 'portal' && portalMode === 'store')) && (
         <AuthPanel
           lang={lang}
@@ -2496,6 +2565,18 @@ function App() {
           onResetSave={resetSave}
         />
       )}
+
+      </GameSystemMenu>}
+      {localSaveIssue && <aside role="alert" style={{ position: 'fixed', zIndex: 18000, bottom: 16, left: 16, right: 16, padding: 16, background: '#3b1717', color: '#fff0df', border: '2px solid #ffb478' }}>
+        <p>{['invalid-save', 'backup-failed'].includes(localSaveIssue)
+          ? (lang === 'fr' ? 'Trace illisible ou copie de secours impossible. Le fichier original est conserve; sauvegarde automatique bloquee. Exporte la trace conservee avant de choisir un import ou une nouvelle partie.' : 'Unreadable Trace or backup unavailable. Original bytes preserved; automatic saving blocked. Export the preserved Trace before importing or starting over.')
+          : localSaveIssue === 'save-conflict'
+          ? (lang === 'fr' ? 'Une autre fenêtre a modifié la Trace. Sauvegarde automatique suspendue pour ne pas écraser sa progression. Exporte tes changements de cette fenêtre avant de recharger.' : 'Another window changed the Trace. Automatic saving is paused to preserve its progress. Export this window’s changes before reloading.')
+          : (lang === 'fr' ? 'Sauvegarde locale impossible. Les achats de rotation sont bloqués. Exporte ta Trace avant de quitter ou de recharger.' : 'Local saving failed. Rotation purchases are blocked. Export your Trace before leaving or reloading.')}</p>
+        <button type="button" className="btn-retro" onClick={exportSave}>{lang === 'fr' ? 'Exporter cette Trace' : 'Export this Trace'}</button>
+        <button type="button" className="btn-retro" onClick={exportPreservedSave}>{lang === 'fr' ? 'Exporter la trace conservee' : 'Export preserved Trace'}</button>
+        <button type="button" className="btn-retro" onClick={() => window.location.reload()}>{lang === 'fr' ? 'Recharger la sauvegarde conservée' : 'Reload preserved save'}</button>
+      </aside>}
 
       {/* Screen Router */}
       {currentScreen === 'title' && <BuildIdentity lang={lang} />}
@@ -2551,6 +2632,11 @@ function App() {
             <HubScreen
             lang={lang}
             initialTab={hubInitialTab}
+            hubNavigationRef={hubNavigationRef}
+            audioSettings={audioSettings}
+            onChangeAudioSetting={changeAudioSetting}
+            onToggleMute={toggleMute}
+            isOnline={isOnline}
             playerProfile={playerProfile}
             publicProfile={publicProfile}
             setPublicProfile={setPublicProfile}
@@ -2599,6 +2685,7 @@ function App() {
         <MissionNarrativeScreen
           lang={lang}
           stage={activeStage}
+          onBack={() => { battleGateRef.current.invalidate(); setActiveStage(null); setCurrentScreen('hub'); }}
           onContinue={() => {
             sound.playSfx('special');
             setCurrentScreen('battle');
@@ -2607,11 +2694,14 @@ function App() {
       )}
 
       {currentScreen === 'battle' && activeStage && (
+        <div className="campaign-session">
         <CombatErrorBoundary
-          key={activeStage.id}
+          key={battleSessionId}
           lang={lang}
           onBack={() => {
             sound.stopBgm();
+            battleGateRef.current.invalidate();
+            setBattlePaused(false);
             setCurrentScreen('hub');
             setActiveStage(null);
           }}
@@ -2634,9 +2724,23 @@ function App() {
               disabledAssets={disabledAssets}
               hudTheme={resolveActiveHudTheme(portalCollection)}
               onBattleEnd={handleBattleEnd}
+              onSessionComplete={captureBattleOutcome}
+              sessionPaused={battlePaused || Boolean(systemDialog)}
+              onPauseRequest={pauseCampaign}
+              dedicatedSession
             />
           </Suspense>
         </CombatErrorBoundary>
+        {battlePaused && <CampaignPauseMenu lang={lang} stage={activeStage} audioSettings={audioSettings}
+          onChangeAudioSetting={changeAudioSetting} onToggleMute={toggleMute} isOnline={isOnline} onResume={() => setBattlePaused(false)}
+          onRetreat={async () => {
+            const confirmed = await confirmGame(lang === 'fr' ? 'Quitter cette mission et revenir au Nexus ? Le résultat de cette tentative sera un repli.' : 'Leave this mission and return to the Nexus? This attempt will count as a retreat.', {
+              title: lang === 'fr' ? 'Confirmer le repli' : 'Confirm retreat',
+              confirmLabel: lang === 'fr' ? 'Se replier' : 'Retreat'
+            });
+            if (confirmed && !battleOutcomeRef.current) handleBattleEnd('quit');
+          }} />}
+        </div>
       )}
 
       {currentScreen === 'missionOutro' && activeStage && (

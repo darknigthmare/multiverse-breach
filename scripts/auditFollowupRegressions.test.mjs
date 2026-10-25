@@ -90,13 +90,13 @@ for (const failure of [null, 'write', 'rename']) {
 const appSource = readFileSync(new URL('../src/App.jsx', import.meta.url), 'utf8');
 const importSource = appSource.slice(appSource.indexOf('  const importSave ='), appSource.indexOf('  const prepareLocalReset ='));
 for (const lang of ['fr', 'en']) for (const failure of [null, 'backup-failed', 'invalid']) {
-  test(`actual import handler ${lang}/${failure || 'success'} leaves cloud untouched until local adoption`, () => {
+  test(`actual import handler ${lang}/${failure || 'success'} leaves cloud untouched until local adoption`, async () => {
     const events = []; const alerts = [];
-    const run = new Function('window', 'lang', 'normalizeSavePayload', 'applySave', 'invalidateCloudOperations', 'account', 'setCloudSyncState', 'setCloudStatus', 'sound', `${importSource}; return importSave;`)(
-      { prompt: () => failure === 'invalid' ? '{broken' : '{"gold":10}', alert: message => alerts.push(message) }, lang,
+    const run = new Function('requestGameDialog', 'lang', 'normalizeSavePayload', 'applySave', 'invalidateCloudOperations', 'account', 'setCloudSyncState', 'setCloudStatus', 'sound', `${importSource}; return importSave;`)(
+      async dialog => dialog.kind === 'input' ? (failure === 'invalid' ? '{broken' : '{"gold":10}') : alerts.push(dialog.message), lang,
       value => value, () => { events.push('apply'); if (failure === 'backup-failed') throw new Error(failure); }, () => events.push('invalidate'), session(),
       state => events.push(state), () => events.push('status'), { playSfx: () => events.push('sound') });
-    run();
+    await run();
     if (!failure) { assert.deepEqual(events, ['apply', 'invalidate', 'conflict', 'status', 'sound']); assert.equal(alerts.length, 0); }
     else { assert.deepEqual(events, failure === 'backup-failed' ? ['apply'] : []); assert.equal(alerts.length, 1); assert.match(alerts[0], failure === 'backup-failed' ? /secours|Backup failed/ : /invalide|Invalid/); }
   });
