@@ -1,9 +1,6 @@
 name: Refresh derived rift dossiers
 on:
   workflow_dispatch:
-  push:
-    branches: [codex/forgotten-fighter-followup-2026-10-25]
-    paths: [.github/workflows/refresh-rift-derived.yml]
 permissions:
   contents: read
 concurrency:
