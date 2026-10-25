@@ -12,9 +12,15 @@ for p in m['files']:
     assert p.startswith(('src/game/wardrobe','scripts/')) and p.endswith(('.js','.mjs')) and '..' not in p.split('/')
 def blob(data):return hashlib.sha1(f'blob {len(data)}\0'.encode()+data).hexdigest()
 def check_after(p):
-    data=(ROOT/p).read_bytes(); h=m['files'][p]
-    assert hashlib.sha256(data).hexdigest()==h['afterSha256'],p+' sha256'
-    assert blob(data)==h['afterGit'],p+' git blob'
+    data=(ROOT/p).read_bytes();h=m['files'][p]
+    actual=hashlib.sha256(data).hexdigest();git=blob(data)
+    if actual!=h['afterSha256'] or git!=h['afterGit']:
+        diagnostic={'path':p,'bytes':len(data),'expected':h,'actualSha256':actual,'actualGit':git}
+        (OUT/'source-mismatch.json').write_text(json.dumps(diagnostic,indent=2))
+        (OUT/'source-mismatch.mjs').write_bytes(data)
+        (OUT/'reviewed-manifest.json').write_text(json.dumps(m,indent=2))
+        print(json.dumps(diagnostic))
+        raise AssertionError('Reviewed source hash mismatch: '+p)
     return data
 if sys.argv[1]=='prepare':
     for p,h in m['files'].items():
