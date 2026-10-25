@@ -17,6 +17,18 @@ export const SOURCE_ENEMY_RECOVERY_TICKS = 180;
  * damage/healing rules. The director owns all pause and interruption semantics. */
 export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eligibleState, sideOf, enemiesOf, busy }) {
   const prepared = new WeakSet();
+  // A target object can be revived/reused before the next tick. Observe its
+  // lifetime at the damage boundary, independently of its later HP value.
+  const lives = new WeakMap();
+  const identity = target => [target.sourceId || target.id, target.sourceUniverse || target.universe,
+    target.canonicalName || target.name, target.incarnation, target.continuityScope];
+  const targetTicket = target => ({ side: sideOf(target), life: lives.get(target) || 0, identity: identity(target) });
+  const validTarget = (target, ticket) => !!ticket && alive(target) && sideOf(target) === ticket.side
+    && (lives.get(target) || 0) === ticket.life
+    && identity(target).every((value, index) => Object.is(value, ticket.identity[index]));
+  const onKnockout = target => {
+    if (target && typeof target === 'object') lives.set(target, (lives.get(target) || 0) + 1);
+  };
   const support = createSignatureMedicSupport(engine, mode);
   let aiRecoveryTicks = 0;
   const candidates = actor => actor.special?.rpgProfile?.targetSide === 'ally'
@@ -79,6 +91,7 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     if (!ready.ready || !Array.isArray(targets) || !targets.length) return false;
     const d = ready.definition;
     const action = actor.special;
+    const confirmed = new Map(targets.map(target => [target, targetTicket(target)]));
     if (targets.some(target => !ready.targets.includes(target))) return false;
     if (d.summonAgent && (!finitePosition(actor) || targets.length > SPIRIT_RULES.maxTargets
       || new Set(targets).size !== targets.length || targets.some(target => !finitePosition(target)))) return false;
@@ -101,15 +114,16 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     const started = begin(descriptor, actor, targets, hit => {
       if (autonomous) {
         // Release all four once; subsequent cinematic markers do not deal damage.
-        if (hit === 1) spirits.launch(actor, targets, d, total);
+        if (hit === 1 && targets.every(target => validTarget(target, confirmed.get(target)))) spirits.launch(actor, targets, d, total);
         return;
       }
       if (physicalDisc) {
-        if (meleeTargets(actor).includes(targets[0])) flights.launch(actor, targets[0], d, total);
+        if (validTarget(targets[0], confirmed.get(targets[0])) && meleeTargets(actor).includes(targets[0])) flights.launch(actor, targets[0], d, total);
         return;
       }
-      const current = d.protection ? targets.filter(target => support.canLink(actor, target, d))
-        : mode === 'Smash' ? meleeTargets(actor) : candidates(actor).filter(alive);
+      const current = (d.protection ? targets.filter(target => support.canLink(actor, target, d))
+        : mode === 'Smash' ? meleeTargets(actor) : candidates(actor).filter(alive))
+        .filter(target => validTarget(target, confirmed.get(target)));
       if (d.protection) {
         const patient = targets[0];
         if (current.includes(patient)) support.grant(actor, patient, d);
@@ -225,5 +239,5 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     if (actor && triggerMelee(actor, 'special')) aiRecoveryTicks = SOURCE_ENEMY_RECOVERY_TICKS;
   };
   prepareRoster();
-  return { prepareRoster, definitionFor, readiness, triggerRpg, triggerMelee, previewRpg, tickEnemyAI, support, filterRpgContext, flights, spirits };
+  return { prepareRoster, definitionFor, readiness, triggerRpg, triggerMelee, previewRpg, tickEnemyAI, support, filterRpgContext, flights, spirits, onKnockout };
 }

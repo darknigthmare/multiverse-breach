@@ -24,8 +24,10 @@ const card = (id = 'cloud_ff7') => ({ kind: 'character', rewardKind: 'hero', cha
 const freeze = value => { if (value && typeof value === 'object') { Object.values(value).forEach(freeze); Object.freeze(value); } return value; };
 const render = (actor, lang = 'fr') => renderToStaticMarkup(React.createElement(Panel, { actor, lang }));
 
-test('all 118 explicit contracts have an immutable display view matching battle preparation', async t => {
-  assert.equal(Object.keys(kits).length, 118);
+test('all explicit contracts have an immutable display view matching battle preparation', async t => {
+  assert.equal(Object.values(kits).filter(kit => !kit.wave || kit.wave <= 5).length, 118);
+  assert.equal(Object.values(kits).filter(kit => kit.wave === 6).length, 6);
+  assert.equal(Object.keys(kits).length, 124);
   for (const d of Object.values(kits)) await t.test(d.key, () => {
     const source = findSource(d); assert.ok(source, d.key);
     const actor = freeze({ ...structuredClone(source), universe: d.universe, specialCharge: 42, atb: 17 });

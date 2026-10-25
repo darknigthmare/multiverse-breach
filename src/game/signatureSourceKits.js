@@ -1,3 +1,4 @@
+import { SIGNATURE_WAVE6_REFERENCES, SIGNATURE_WAVE6_ROWS } from './signatureSourceWave6.js';
 import { SIGNATURE_WAVE5_REFERENCES, SIGNATURE_WAVE5_ROWS, SIGNATURE_WAVE5_UPGRADES } from './signatureSourceWave5.js';
 import { SIGNATURE_WAVE4_REFERENCES, SIGNATURE_WAVE4_ROWS } from './signatureSourceWave4.js';
 import { SIGNATURE_WAVE3_REFERENCES, SIGNATURE_WAVE3_ROWS } from './signatureSourceWave3.js';
@@ -5,6 +6,7 @@ import { SIGNATURE_WAVE2_REFERENCES, SIGNATURE_WAVE2_ROWS } from './signatureSou
 // Explicit source identities only. No blanket franchise abilities or 1:1 claim.
 // Source URLs document identity/attack-family evidence, not our pixel choreography.
 export const SIGNATURE_SOURCE_REFERENCES = Object.freeze({
+  ...SIGNATURE_WAVE6_REFERENCES,
   ...SIGNATURE_WAVE2_REFERENCES,
   ...SIGNATURE_WAVE5_REFERENCES,
   ...SIGNATURE_WAVE4_REFERENCES,
@@ -71,6 +73,7 @@ const rows = [
   enemy("Doom", "Mancubus Heavy Demon", null, "Mancubus Fireball Salvo", "barrage", 320, "doom", {"hits": 6, "shape": "multi", "distribution": "cycle"}),
   enemy("Doom", "Cyberdemon Lord", "Tyrant Rocket Storm", "Cyberdemon Rocket Salvo", "barrage", 390, "doom", {"hits": 3, "shape": "multi", "distribution": "cycle"}),
   enemy("Doom", "Spider Mastermind Mother", "Plasma Pulse Ring", "Spider Mastermind Chaingun", "barrage", 380, "doom", {"hits": 3}),
+  ...SIGNATURE_WAVE6_ROWS,
   ...SIGNATURE_WAVE2_ROWS,
   ...SIGNATURE_WAVE5_ROWS,
   ...SIGNATURE_WAVE4_ROWS,

@@ -10,14 +10,16 @@ import '../../src/index.css';
 const query = new URLSearchParams(location.search);
 const mode = query.get('mode') === 'Smash' ? 'Smash' : 'RPG';
 const lang = query.get('lang') === 'en' ? 'en' : 'fr';
-const key = query.get('source') || 'cloud_ff7';
-const definition = Object.hasOwn(SIGNATURE_SOURCE_KITS, key) ? SIGNATURE_SOURCE_KITS[key] : SIGNATURE_SOURCE_KITS.cloud_ff7;
+const key = query.get('source') ?? 'cloud_ff7';
+const definition = Object.hasOwn(SIGNATURE_SOURCE_KITS, key) ? SIGNATURE_SOURCE_KITS[key] : null;
+if (!definition) throw new Error(`Unknown source signature fixture: ${key}`);
 const side = definition.enemyName ? 'enemy' : 'player';
 const actorId = definition.actorId || 'cloud_ff7';
 const universe = definition.universe;
 const pool = ENEMIES_DB[universe];
 const rawFoe = definition.enemyName
   ? [...pool.monsters, ...pool.bosses, pool.worldBoss].filter(Boolean).find(actor => actor.name === definition.enemyName) : null;
+if (definition.enemyName && !rawFoe) throw new Error(`Unknown enemy for source signature fixture: ${key}`);
 const foe = rawFoe ? { ...rawFoe, universe, isBoss: pool.bosses.includes(rawFoe) || rawFoe === pool.worldBoss }
   : { id: 'source-qa-target', name: 'QA target', universe, hp: 20000, atk: 1, spd: 1, color: '#888888' };
 const audit = { engine: null, side, definition, results: [] };window.__sourceAudit = audit;

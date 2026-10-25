@@ -6,6 +6,7 @@ import { createServer } from 'vite';
 import { getHeroById } from '../src/game/heroes.js';
 import { ENEMIES_DB } from '../src/game/enemies.js';
 import { CANON_PRIORITY_STAGES } from '../src/game/canonPriorityStages.js';
+import { SOURCE_SCENE_STAGES } from '../src/game/sourceSceneStages.js';
 import { resolveStageEnemyData } from '../src/game/stageEnemyResolver.js';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';
 import { readStaticStages } from './riftDossierStaticStages.mjs';
@@ -93,7 +94,15 @@ test('LV-426 selects the 1986 Queen and warriors, without a Predalien or later f
   assert.doesNotMatch(selected.bosses[0].equipment.join(' '), /spit|acid/i);
   assert.match(stage.gameplayAdaptation, /Rescue Newt.*evacuation.*living carrier/);
   assert.match(stage.gameplayAdaptation, /Queen damage is nonlethal/);
-  assert.match(stage.gameplayAdaptation, /Sulaco.*separate and unimplemented/);
+  // The Sulaco follow-up now exists. Verify the boundary and prerequisite,
+  // rather than requiring the obsolete phrase 'unimplemented' in the briefing.
+  const sulaco = SOURCE_SCENE_STAGES.find(scene => scene.sourceSceneId === 'sulaco_cargo_airlock_1986');
+  assert.ok(sulaco);
+  assert.notEqual(sulaco.id, stage.id);
+  assert.equal(sulaco.requiredLeadInStageId, stage.id);
+  assert.equal(sulaco.mode, 'Tactics');
+  assert.equal(sulaco.requiredTeam.heroId, 'ripley_aliens');
+  assert.match(stage.gameplayAdaptation, /Sulaco/);
   assert.equal(getEnemySpriteSheetSrc({ ...selected.bosses[0], universe: stage.universe }), '/sprites/generated/bosses/alien/alien-queen.png');
 });
 
@@ -115,9 +124,9 @@ test('the four repaired static missions preserve saved IDs, modes, rewards and t
   const contracts = [
     [CANON_PRIORITY_STAGES.lightmassTrain, 1, 'RPG', 40, 15],
     [CANON_PRIORITY_STAGES.metropolisScarab, 2, 'Tactics', 40, 15],
-    [CANON_PRIORITY_STAGES.hadleysQueen, 3, 'Smash', 45, 15],
     [CANON_PRIORITY_STAGES.xenNihilanth, 10, 'Smash', 75, 25]
   ];
+  contracts.splice(2, 0, [CANON_PRIORITY_STAGES.hadleysQueen, 3, 'Smash', 45, 15]);
   const source = await readFile(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
   const stages = readStaticStages(source);
   for (const [stage, id, mode, gold, shards] of contracts) {
