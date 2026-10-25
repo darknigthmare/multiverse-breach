@@ -1,3 +1,4 @@
+import { UNBOUND_COSTUME_RESEARCH_R12 } from '../src/game/wardrobeOfficialR12.js';
 import { UNBOUND_COSTUME_RESEARCH_R11 } from '../src/game/wardrobeOfficialR11.js';
 import { UNBOUND_COSTUME_RESEARCH_R10 } from '../src/game/wardrobeOfficialR10.js';
 import { UNBOUND_COSTUME_RESEARCH_R7 } from '../src/game/wardrobeOfficialR7.js';
@@ -21,8 +22,8 @@ for(const actor of actors){
   coverage.push({...base,...getWardrobeCoverage(actor),effectSelection:actor.kind==='hero'?'HERO_SHEET':'READ_ONLY_ARCHIVE',
     incarnation:actor.incarnation||'',visualAnchor:actor.visualAnchor||'',bodyFit:'REVIEW_REQUIRED'});
 }
-const unboundResearch=[...UNBOUND_COSTUME_RESEARCH_R7,...UNBOUND_COSTUME_RESEARCH_R10,...UNBOUND_COSTUME_RESEARCH_R11];
-const summary={sourceBaseCommit,catalogueVersion:'R11',actors:actors.length,heroes:actors.filter(a=>a.kind==='hero').length,
+const unboundResearch=[...UNBOUND_COSTUME_RESEARCH_R7,...UNBOUND_COSTUME_RESEARCH_R10,...UNBOUND_COSTUME_RESEARCH_R11,...UNBOUND_COSTUME_RESEARCH_R12];
+const summary={sourceBaseCommit,catalogueVersion:'R12',actors:actors.length,heroes:actors.filter(a=>a.kind==='hero').length,
  officialDesigns:ALL_OFFICIAL_WARDROBE.length,officialActorBindings:official.length,actorsWithOfficial:coverage.filter(c=>c.official>0).length,
  actorsAwaitingOfficialResearch:coverage.filter(c=>!c.official).length,originalParametricBriefs:original.filter(c=>c.designMethod==='PARAMETRIC_BRIEF').length,
  characterSpecificBriefs:original.filter(c=>c.designMethod==='CHARACTER_SPECIFIC_BRIEF').length,researchTargets:research.length,
@@ -37,7 +38,7 @@ const cell=value=>{
   return '"'+text.replaceAll('"','""')+'"';
 };
 const csv=(rows,keys)=>'\uFEFF'+[keys,...rows.map(r=>keys.map(k=>typeof r[k]==='object'?JSON.stringify(r[k]):r[k]))].map(r=>r.map(cell).join(';')).join('\r\n')+'\r\n';
-fs.writeFileSync(path.join(out,'coverage.csv'),csv(coverage,['actorKey','actorId','actorName','universe','kind','official','originalConcepts','sourceResearch','completedCostumes','effectSelection','bodyFit']));
+fs.writeFileSync(path.join(out,'coverage.csv'),csv(coverage,['actorKey','actorId','actorName','universe','kind','official','originalConcepts','sourceResearch','completedCostumes','effectSelection','bodyFit','namedSourceScopes','allCharacterCostumesResearched']));
 fs.writeFileSync(path.join(out,'official.csv'),csv(official,['id','actorId','actorName','universe','name','sourceWork','sourceUrl','nature','component','sourceMode','targetIncarnation','relatedDesignKey','artworkStatus','artApproval','equippable']));
 fs.writeFileSync(path.join(out,'personal-designs.csv'),csv(original.filter(c=>c.designMethod==='CHARACTER_SPECIFIC_BRIEF'),['id','actorId','actorName','universe','name','brief','artworkStatus','artApproval','equippable']));
 fs.writeFileSync(path.join(out,'research.csv'),csv(research,['entryId','actorName','universe','question','sourceUrl','status','officialConfirmed']));

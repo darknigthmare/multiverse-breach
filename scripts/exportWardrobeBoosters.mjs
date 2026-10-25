@@ -25,7 +25,7 @@ const actors = [...new Set(entries.map(e => e.actorKey))].map(actorKey => {
     official:list.filter(e=>e.origin==='OFFICIAL').length,original:list.filter(e=>e.origin==='ORIGINAL').length,
     total:list.length,routes:first.routes.join(' | '),artwork:'NOT_PRODUCED',equippable:false};
 });
-const summary = {version:'R11',sourceCommit,actors:actors.length,universes:universes.length,
+const summary = {version:'R12',sourceCommit,actors:actors.length,universes:universes.length,
   costumeRights:entries.length,officialBindings:entries.filter(e=>e.origin==='OFFICIAL').length,
   originalBriefs:entries.filter(e=>e.origin==='ORIGINAL').length,boosterRoutes:boosters.length,
   newCostumeSheets:0,officialDesigns:ALL_OFFICIAL_WARDROBE.length,extraPrice:0,
