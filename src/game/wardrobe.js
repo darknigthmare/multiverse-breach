@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R14, WARDROBE_RESEARCH_R14, WARDROBE_SOURCE_SCOPES_R14 } from './wardrobeOfficialR14.js';
 import { OFFICIAL_COSTUMES_R13, WARDROBE_RESEARCH_R13, WARDROBE_SOURCE_SCOPES_R13 } from './wardrobeOfficialR13.js';
 import { OFFICIAL_COSTUMES_R12, WARDROBE_RESEARCH_R12, WARDROBE_SOURCE_SCOPES_R12 } from './wardrobeOfficialR12.js';
 import { assessNamedCostumeScope } from './wardrobeSourceCoverage.js';
@@ -11,7 +12,7 @@ import { OFFICIAL_COSTUME_EXTENSION, ORIGINAL_COLLECTION_EXTENSION, SIGNATURE_DE
 import { getCostumeProductionContract, assertUniqueWardrobeEntries } from './wardrobeProduction.js';
 
 const L = (fr,en) => Object.freeze({fr,en});
-export const WARDROBE_VERSION = 8;
+export const WARDROBE_VERSION = 9;
 // Persisted IDs deliberately remain wardrobe-v1: migration must not erase selections.
 export const WARDROBE_EFFECTS = Object.freeze([
   Object.freeze({key:'cyan',name:L('Résonance cyan','Cyan resonance'),color:'#39c5bb',shape:'ring'}),
@@ -32,10 +33,10 @@ export function wardrobeEntryId(actor, localKey) {
 }
 export function isSafeWardrobeReference(value) {
   try {const url=new URL(value); return url.protocol==='https:' && !url.username && !url.password
-    && ['store.steampowered.com','www.starwars.com','na.store.square-enix-games.com','www.halowaypoint.com','deadbydaylight.com'].includes(url.hostname);}
+    && ['store.steampowered.com','www.starwars.com','na.store.square-enix-games.com','www.halowaypoint.com','deadbydaylight.com','ioi.dk','www.nacongaming.com'].includes(url.hostname);}
   catch {return false;}
 }
-export const ALL_OFFICIAL_WARDROBE = Object.freeze([...OFFICIAL_WARDROBE,...OFFICIAL_COSTUME_EXTENSION,...OFFICIAL_COSTUMES_R7,...OFFICIAL_COSTUMES_R9,...OFFICIAL_COSTUMES_R10,...OFFICIAL_COSTUMES_R11,...OFFICIAL_COSTUMES_R12,...OFFICIAL_COSTUMES_R13]);
+export const ALL_OFFICIAL_WARDROBE = Object.freeze([...OFFICIAL_WARDROBE,...OFFICIAL_COSTUME_EXTENSION,...OFFICIAL_COSTUMES_R7,...OFFICIAL_COSTUMES_R9,...OFFICIAL_COSTUMES_R10,...OFFICIAL_COSTUMES_R11,...OFFICIAL_COSTUMES_R12,...OFFICIAL_COSTUMES_R13,...OFFICIAL_COSTUMES_R14]);
 const officialByActor=new Map();
 for(const row of ALL_OFFICIAL_WARDROBE) {
   if(!isSafeWardrobeReference(row.sourceUrl))throw new Error(`Invalid wardrobe source ${row.key}`);
@@ -81,7 +82,7 @@ export function getOriginalCostumes(actor) {
 }
 export function getWardrobeResearchTargets(actor) {
   const actorKey=wardrobeActorKey(actor); if(!actorKey)return [];
-  return [...WARDROBE_RESEARCH_TARGETS,...WARDROBE_RESEARCH_R9,...WARDROBE_RESEARCH_R11,...WARDROBE_RESEARCH_R12,...WARDROBE_RESEARCH_R13].filter(row=>wardrobeActorKey(row)===actorKey).map(row=>({...row,
+  return [...WARDROBE_RESEARCH_TARGETS,...WARDROBE_RESEARCH_R9,...WARDROBE_RESEARCH_R11,...WARDROBE_RESEARCH_R12,...WARDROBE_RESEARCH_R13,...WARDROBE_RESEARCH_R14].filter(row=>wardrobeActorKey(row)===actorKey).map(row=>({...row,
     actorKey,entryId:wardrobeEntryId(actor,`research-${row.key}`),equippable:false,officialConfirmed:false}));
 }
 export function getWardrobeEffects(actor) {
@@ -92,7 +93,7 @@ export function getWardrobeEffects(actor) {
       'Ground effect only; does not replace the outfit or sprite.')}));
 }
 export function getWardrobeSourceScopeCoverage(actor) {
-  return [...WARDROBE_SOURCE_SCOPES_R12,...WARDROBE_SOURCE_SCOPES_R13].filter(scope=>actor?.universe===scope.universe&&actor?.id===scope.actorId)
+  return [...WARDROBE_SOURCE_SCOPES_R12,...WARDROBE_SOURCE_SCOPES_R13,...WARDROBE_SOURCE_SCOPES_R14].filter(scope=>actor?.universe===scope.universe&&actor?.id===scope.actorId)
     .map(scope=>assessNamedCostumeScope(actor,scope,ALL_OFFICIAL_WARDROBE));
 }
 export function getWardrobeCoverage(actor) {

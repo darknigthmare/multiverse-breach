@@ -1,3 +1,4 @@
+import { OFFICIAL_COSTUMES_R14 } from '../src/game/wardrobeOfficialR14.js';
 import { OFFICIAL_COSTUMES_R13 } from '../src/game/wardrobeOfficialR13.js';
 import { OFFICIAL_COSTUMES_R12 } from '../src/game/wardrobeOfficialR12.js';
 import test from 'node:test';
@@ -12,7 +13,7 @@ import { getWardrobeUnlockCatalogue, getWardrobeBoosterPool, getWardrobeBoosterP
 const all=getWardrobeUnlockCatalogue(),visible=[...new Set(all.map(r=>r.universe))];
 const additions=new Set(OFFICIAL_COSTUMES_R11.map(r=>r.key));
 const rights=all.filter(r=>OFFICIAL_COSTUMES_R11.some(c=>c.key===r.id.slice(r.id.lastIndexOf(':')+1)));
-const laterRows=[...OFFICIAL_COSTUMES_R12,...OFFICIAL_COSTUMES_R13];
+const laterRows=[...OFFICIAL_COSTUMES_R12,...OFFICIAL_COSTUMES_R13,...OFFICIAL_COSTUMES_R14];
 const r12Keys=new Set(laterRows.map(c=>c.key));
 const previous=all.filter(r=>!rights.includes(r)&&!r12Keys.has(r.id.slice(r.id.lastIndexOf(':')+1)));
 const r12Bindings=laterRows.reduce((n,c)=>n+c.actorIds.length,0);
