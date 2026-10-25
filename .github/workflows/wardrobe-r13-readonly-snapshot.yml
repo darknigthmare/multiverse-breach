@@ -4,10 +4,13 @@ on:
     branches: [codex/wardrobe-r13-snapshot-20261025]
 permissions:
   contents: read
+concurrency:
+  group: wardrobe-r13-snapshot
+  cancel-in-progress: true
 jobs:
   snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -17,7 +20,7 @@ jobs:
             src
             scripts
             docs/excel
-      - name: Export verified source bytes and complete tracked-file index
+      - name: Export verified source bytes and complete tracked-file index without fetching raster blobs
         shell: bash
         run: |
           set -euo pipefail
@@ -26,17 +29,17 @@ jobs:
           root=pathlib.Path.cwd(); out=pathlib.Path('/tmp/wardrobe-r13-snapshot'); out.mkdir()
           commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
           assert commit=='e09265fa5a6b75caa8b66b6784629ea69cd0da8a'
-          raw=subprocess.check_output(['git','ls-tree','-r','-l','-z',commit]).decode()
+          raw=subprocess.check_output(['git','ls-tree','-r','-z',commit]).decode()
           entries=[]
           for row in raw.split('\0'):
               if not row: continue
-              header,p=row.split('\t',1); mode,kind,sha,size=header.split()
-              entries.append({'path':p,'mode':mode,'type':kind,'sha':sha,'size':int(size) if size.isdigit() else None})
+              header,p=row.split('\t',1); mode,kind,sha=header.split()
+              entries.append({'path':p,'mode':mode,'type':kind,'sha':sha})
           manifest=[]
           with zipfile.ZipFile(out/'source.zip','w',zipfile.ZIP_DEFLATED) as z:
               for e in entries:
                   p=e['path']; f=root/p
-                  selected=(p.startswith(('src/','scripts/')) or p.startswith('docs/excel/')) and p.endswith(('.js','.jsx','.mjs','.py','.json','.csv','.md','.css','.html','.yml'))
+                  selected=p.startswith(('src/','scripts/','docs/excel/')) and p.endswith(('.js','.jsx','.mjs','.py','.json','.csv','.md','.css','.html','.yml'))
                   selected=selected or ('/' not in p and p.endswith(('.json','.js','.mjs','.html')))
                   if not selected or not f.is_file(): continue
                   data=f.read_bytes(); digest=hashlib.sha1(f'blob {len(data)}\0'.encode()+data).hexdigest()
