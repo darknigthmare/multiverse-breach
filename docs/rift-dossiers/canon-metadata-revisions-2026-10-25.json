@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "kind": "rift-dossier-gameplay-metadata-revision",
+  "createdAt": "2026-10-25",
+  "historicalRemediationFile": "docs/rift-dossiers/canon-remediation-2026-10-01.json",
+  "historicalRemediationSha256": "559d1dba89470e9c34dae5b9b1710441a75abca5ac9ce7a5a74f4f57fe896a30",
+  "policy": "Append-only metadata revision. Historical images, prompt proofs and generation records stay unchanged. No image approval or asset availability is granted.",
+  "revisions": [
+    {
+      "stageId": 3,
+      "scope": "gameplay-metadata-only",
+      "sourceCommit": "b8b2c326da45ce11ed8bd8868fca0bf266dfd31a",
+      "catalogUpdateCommit": "38279a48d43549b365f799635e3837f8fb4a2983",
+      "previousPromptSha256": "cfa92430fcd3981e1141f78b35ea44ad854a1a0bb8fb1ce7a510386cc8550d73",
+      "currentPromptSha256": "9f5a12d8867b25af289b98ab12ed0ae214a15925fdf34e845685c61e5530a919",
+      "assetPath": "/images/rift-dossiers/openai/statique/stage-3-hadley-s-hope-atmosphere-processor-hive-v1.webp",
+      "previousGameplayAdaptation": "Rescue Newt at the nest marker, then reach the evacuation marker with her living carrier. Queen damage is nonlethal and her defeat cannot win this hive mission. Combat waves, the 2D route, interaction markers and carrier-loss condition adapt the film rescue; Newt is not a damageable combatant. The later Sulaco power-loader finale remains separate and unimplemented.",
+      "currentGameplayAdaptation": "Rescue Newt at the nest marker, then reach the evacuation marker with her living carrier. Queen damage is nonlethal and her defeat cannot win this hive mission. Combat waves, the 2D route, interaction markers and carrier-loss condition adapt the film rescue; Newt is not a damageable combatant. The separate Sulaco tactical reconstruction (50101) follows this rescue; source choreography and artwork remain partial.",
+      "reason": "The separate Sulaco tactical scene 50101 was implemented by PR 6; this updates its existence notice without changing the LV-426 visual anchors, historical image, identity or source mission boundaries."
+    }
+  ]
+}
